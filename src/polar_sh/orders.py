@@ -398,9 +398,9 @@ class Orders(BaseSDK):
 
     
     
-    def orders_get_invoice(
+    def invoice(
         self, *,
-        security: Union[models.OrdersGetInvoiceSecurity, models.OrdersGetInvoiceSecurityTypedDict],
+        security: Union[models.OrdersInvoiceSecurity, models.OrdersInvoiceSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -424,7 +424,7 @@ class Orders(BaseSDK):
         if server_url is not None:
             base_url = server_url
         
-        request = models.OrdersGetInvoiceRequest(
+        request = models.OrdersInvoiceRequest(
             id=id,
         )
         
@@ -439,7 +439,7 @@ class Orders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrdersGetInvoiceSecurity),
+            security=utils.get_pydantic_model(security, models.OrdersInvoiceSecurity),
             timeout_ms=timeout_ms,
         )
         
@@ -458,7 +458,7 @@ class Orders(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="orders:get_invoice", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="orders:invoice", oauth2_scopes=[], security_source=security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -481,9 +481,9 @@ class Orders(BaseSDK):
 
     
     
-    async def orders_get_invoice_async(
+    async def invoice_async(
         self, *,
-        security: Union[models.OrdersGetInvoiceSecurity, models.OrdersGetInvoiceSecurityTypedDict],
+        security: Union[models.OrdersInvoiceSecurity, models.OrdersInvoiceSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -507,7 +507,7 @@ class Orders(BaseSDK):
         if server_url is not None:
             base_url = server_url
         
-        request = models.OrdersGetInvoiceRequest(
+        request = models.OrdersInvoiceRequest(
             id=id,
         )
         
@@ -522,7 +522,7 @@ class Orders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrdersGetInvoiceSecurity),
+            security=utils.get_pydantic_model(security, models.OrdersInvoiceSecurity),
             timeout_ms=timeout_ms,
         )
         
@@ -541,7 +541,7 @@ class Orders(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="orders:get_invoice", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="orders:invoice", oauth2_scopes=[], security_source=security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config

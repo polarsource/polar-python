@@ -169,9 +169,9 @@ class MetricsSDK(BaseSDK):
 
     
     
-    def metrics_get_limits(
+    def limits(
         self, *,
-        security: Union[models.MetricsGetLimitsSecurity, models.MetricsGetLimitsSecurityTypedDict],
+        security: Union[models.MetricsLimitsSecurity, models.MetricsLimitsSecurityTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -203,7 +203,7 @@ class MetricsSDK(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.MetricsGetLimitsSecurity),
+            security=utils.get_pydantic_model(security, models.MetricsLimitsSecurity),
             timeout_ms=timeout_ms,
         )
         
@@ -222,7 +222,7 @@ class MetricsSDK(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="metrics:get_limits", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="metrics:limits", oauth2_scopes=[], security_source=security),
             request=req,
             error_status_codes=["4XX","5XX"],
             retry_config=retry_config
@@ -238,9 +238,9 @@ class MetricsSDK(BaseSDK):
 
     
     
-    async def metrics_get_limits_async(
+    async def limits_async(
         self, *,
-        security: Union[models.MetricsGetLimitsSecurity, models.MetricsGetLimitsSecurityTypedDict],
+        security: Union[models.MetricsLimitsSecurity, models.MetricsLimitsSecurityTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -272,7 +272,7 @@ class MetricsSDK(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.MetricsGetLimitsSecurity),
+            security=utils.get_pydantic_model(security, models.MetricsLimitsSecurity),
             timeout_ms=timeout_ms,
         )
         
@@ -291,7 +291,7 @@ class MetricsSDK(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="metrics:get_limits", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="metrics:limits", oauth2_scopes=[], security_source=security),
             request=req,
             error_status_codes=["4XX","5XX"],
             retry_config=retry_config

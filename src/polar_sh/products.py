@@ -740,7 +740,7 @@ class Products(BaseSDK):
 
     
     
-    def products_update_benefits(
+    def update_benefits(
         self, *,
         security: Union[models.ProductsUpdateBenefitsSecurity, models.ProductsUpdateBenefitsSecurityTypedDict],
         id: str,
@@ -830,7 +830,7 @@ class Products(BaseSDK):
 
     
     
-    async def products_update_benefits_async(
+    async def update_benefits_async(
         self, *,
         security: Union[models.ProductsUpdateBenefitsSecurity, models.ProductsUpdateBenefitsSecurityTypedDict],
         id: str,

@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [retrieve](#retrieve) - Get Metrics
-* [metrics_get_limits](#metrics_get_limits) - Get Metrics Limits
+* [limits](#limits) - Get Metrics Limits
 
 ## retrieve
 
@@ -56,7 +56,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## metrics_get_limits
+## limits
 
 Get the interval limits for the metrics endpoint.
 
@@ -69,7 +69,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.metrics.metrics_get_limits(security=polar_sh.MetricsGetLimitsSecurity(
+res = s.metrics.limits(security=polar_sh.MetricsLimitsSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
@@ -81,10 +81,10 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `security`                                                           | [models.MetricsGetLimitsSecurity](../../metricsgetlimitssecurity.md) | :heavy_check_mark:                                                   | The security requirements to use for the request.                    |
-| `retries`                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)     | :heavy_minus_sign:                                                   | Configuration to override the default retry behavior of the client.  |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `security`                                                          | [models.MetricsLimitsSecurity](../../metricslimitssecurity.md)      | :heavy_check_mark:                                                  | The security requirements to use for the request.                   |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 

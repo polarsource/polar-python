@@ -930,14 +930,14 @@ class Benefits(BaseSDK):
 
     
     
-    def benefits_list_grants(
+    def grants(
         self, *,
-        security: Union[models.BenefitsListGrantsSecurity, models.BenefitsListGrantsSecurityTypedDict],
-        request: Union[models.BenefitsListGrantsRequest, models.BenefitsListGrantsRequestTypedDict],
+        security: Union[models.BenefitsGrantsSecurity, models.BenefitsGrantsSecurityTypedDict],
+        request: Union[models.BenefitsGrantsRequest, models.BenefitsGrantsRequestTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.BenefitsListGrantsResponse:
+    ) -> models.BenefitsGrantsResponse:
         r"""List Benefit Grants
 
         List the individual grants for a benefit.
@@ -959,8 +959,8 @@ class Benefits(BaseSDK):
             base_url = server_url
         
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.BenefitsListGrantsRequest)
-        request = cast(models.BenefitsListGrantsRequest, request)
+            request = utils.unmarshal(request, models.BenefitsGrantsRequest)
+        request = cast(models.BenefitsGrantsRequest, request)
         
         req = self.build_request(
             method="GET",
@@ -973,7 +973,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.BenefitsListGrantsSecurity),
+            security=utils.get_pydantic_model(security, models.BenefitsGrantsSecurity),
             timeout_ms=timeout_ms,
         )
         
@@ -992,13 +992,13 @@ class Benefits(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="benefits:list_grants", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="benefits:grants", oauth2_scopes=[], security_source=security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
         )
         
-        def next_func() -> Optional[models.BenefitsListGrantsResponse]:
+        def next_func() -> Optional[models.BenefitsGrantsResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
@@ -1016,8 +1016,8 @@ class Benefits(BaseSDK):
             if len(results[0]) < limit:
                 return None
 
-            return self.benefits_list_grants(
-                request=models.BenefitsListGrantsRequest(
+            return self.grants(
+                request=models.BenefitsGrantsRequest(
                     id=request.id,
                     is_granted=request.is_granted,
                     user_id=request.user_id,
@@ -1030,7 +1030,7 @@ class Benefits(BaseSDK):
         
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.BenefitsListGrantsResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceBenefitGrant]), next=next_func)
+            return models.BenefitsGrantsResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceBenefitGrant]), next=next_func)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -1045,14 +1045,14 @@ class Benefits(BaseSDK):
 
     
     
-    async def benefits_list_grants_async(
+    async def grants_async(
         self, *,
-        security: Union[models.BenefitsListGrantsSecurity, models.BenefitsListGrantsSecurityTypedDict],
-        request: Union[models.BenefitsListGrantsRequest, models.BenefitsListGrantsRequestTypedDict],
+        security: Union[models.BenefitsGrantsSecurity, models.BenefitsGrantsSecurityTypedDict],
+        request: Union[models.BenefitsGrantsRequest, models.BenefitsGrantsRequestTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.BenefitsListGrantsResponse:
+    ) -> models.BenefitsGrantsResponse:
         r"""List Benefit Grants
 
         List the individual grants for a benefit.
@@ -1074,8 +1074,8 @@ class Benefits(BaseSDK):
             base_url = server_url
         
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.BenefitsListGrantsRequest)
-        request = cast(models.BenefitsListGrantsRequest, request)
+            request = utils.unmarshal(request, models.BenefitsGrantsRequest)
+        request = cast(models.BenefitsGrantsRequest, request)
         
         req = self.build_request(
             method="GET",
@@ -1088,7 +1088,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.BenefitsListGrantsSecurity),
+            security=utils.get_pydantic_model(security, models.BenefitsGrantsSecurity),
             timeout_ms=timeout_ms,
         )
         
@@ -1107,13 +1107,13 @@ class Benefits(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="benefits:list_grants", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="benefits:grants", oauth2_scopes=[], security_source=security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
         )
         
-        def next_func() -> Optional[models.BenefitsListGrantsResponse]:
+        def next_func() -> Optional[models.BenefitsGrantsResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
@@ -1131,8 +1131,8 @@ class Benefits(BaseSDK):
             if len(results[0]) < limit:
                 return None
 
-            return self.benefits_list_grants(
-                request=models.BenefitsListGrantsRequest(
+            return self.grants(
+                request=models.BenefitsGrantsRequest(
                     id=request.id,
                     is_granted=request.is_granted,
                     user_id=request.user_id,
@@ -1145,7 +1145,7 @@ class Benefits(BaseSDK):
         
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.BenefitsListGrantsResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceBenefitGrant]), next=next_func)
+            return models.BenefitsGrantsResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceBenefitGrant]), next=next_func)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)

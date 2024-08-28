@@ -7,7 +7,7 @@
 
 * [list](#list) - List Files
 * [create](#create) - Create File
-* [files_uploaded](#files_uploaded) - Complete File Upload
+* [uploaded](#uploaded) - Complete File Upload
 * [delete](#delete) - Delete File
 * [update](#update) - Update File
 
@@ -118,7 +118,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## files_uploaded
+## uploaded
 
 Complete a file upload.
 
@@ -131,14 +131,14 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.files.files_uploaded(security=polar_sh.FilesUploadedSecurity(
+res = s.files.uploaded(security=polar_sh.FilesUploadedSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>", file_upload_completed={
     "id": "<id>",
-    "path": "/private/tmp",
+    "path": "/sys",
     "parts": [
         {
-            "number": 944087,
+            "number": 241210,
             "checksum_etag": "<value>",
             "checksum_sha256_base64": "<value>",
         },

@@ -404,7 +404,7 @@ class Files(BaseSDK):
 
     
     
-    def files_uploaded(
+    def uploaded(
         self, *,
         security: Union[models.FilesUploadedSecurity, models.FilesUploadedSecurityTypedDict],
         id: str,
@@ -488,7 +488,7 @@ class Files(BaseSDK):
 
     
     
-    async def files_uploaded_async(
+    async def uploaded_async(
         self, *,
         security: Union[models.FilesUploadedSecurity, models.FilesUploadedSecurityTypedDict],
         id: str,

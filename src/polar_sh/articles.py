@@ -914,9 +914,9 @@ class Articles(BaseSDK):
 
     
     
-    def articles_get_receivers(
+    def receivers(
         self, *,
-        security: Union[models.ArticlesGetReceiversSecurity, models.ArticlesGetReceiversSecurityTypedDict],
+        security: Union[models.ArticlesReceiversSecurity, models.ArticlesReceiversSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -940,7 +940,7 @@ class Articles(BaseSDK):
         if server_url is not None:
             base_url = server_url
         
-        request = models.ArticlesGetReceiversRequest(
+        request = models.ArticlesReceiversRequest(
             id=id,
         )
         
@@ -955,7 +955,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesGetReceiversSecurity),
+            security=utils.get_pydantic_model(security, models.ArticlesReceiversSecurity),
             timeout_ms=timeout_ms,
         )
         
@@ -974,7 +974,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:get_receivers", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:receivers", oauth2_scopes=[], security_source=security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -994,9 +994,9 @@ class Articles(BaseSDK):
 
     
     
-    async def articles_get_receivers_async(
+    async def receivers_async(
         self, *,
-        security: Union[models.ArticlesGetReceiversSecurity, models.ArticlesGetReceiversSecurityTypedDict],
+        security: Union[models.ArticlesReceiversSecurity, models.ArticlesReceiversSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1020,7 +1020,7 @@ class Articles(BaseSDK):
         if server_url is not None:
             base_url = server_url
         
-        request = models.ArticlesGetReceiversRequest(
+        request = models.ArticlesReceiversRequest(
             id=id,
         )
         
@@ -1035,7 +1035,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesGetReceiversSecurity),
+            security=utils.get_pydantic_model(security, models.ArticlesReceiversSecurity),
             timeout_ms=timeout_ms,
         )
         
@@ -1054,7 +1054,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:get_receivers", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:receivers", oauth2_scopes=[], security_source=security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -1074,9 +1074,9 @@ class Articles(BaseSDK):
 
     
     
-    def articles_send_preview(
+    def preview(
         self, *,
-        security: Union[models.ArticlesSendPreviewSecurity, models.ArticlesSendPreviewSecurityTypedDict],
+        security: Union[models.ArticlesPreviewSecurity, models.ArticlesPreviewSecurityTypedDict],
         id: str,
         article_preview: Union[models.ArticlePreview, models.ArticlePreviewTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -1102,7 +1102,7 @@ class Articles(BaseSDK):
         if server_url is not None:
             base_url = server_url
         
-        request = models.ArticlesSendPreviewRequest(
+        request = models.ArticlesPreviewRequest(
             id=id,
             article_preview=utils.get_pydantic_model(article_preview, models.ArticlePreview),
         )
@@ -1118,7 +1118,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesSendPreviewSecurity),
+            security=utils.get_pydantic_model(security, models.ArticlesPreviewSecurity),
             get_serialized_body=lambda: utils.serialize_request_body(request.article_preview, False, False, "json", models.ArticlePreview),
             timeout_ms=timeout_ms,
         )
@@ -1138,7 +1138,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:send_preview", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:preview", oauth2_scopes=[], security_source=security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -1164,9 +1164,9 @@ class Articles(BaseSDK):
 
     
     
-    async def articles_send_preview_async(
+    async def preview_async(
         self, *,
-        security: Union[models.ArticlesSendPreviewSecurity, models.ArticlesSendPreviewSecurityTypedDict],
+        security: Union[models.ArticlesPreviewSecurity, models.ArticlesPreviewSecurityTypedDict],
         id: str,
         article_preview: Union[models.ArticlePreview, models.ArticlePreviewTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -1192,7 +1192,7 @@ class Articles(BaseSDK):
         if server_url is not None:
             base_url = server_url
         
-        request = models.ArticlesSendPreviewRequest(
+        request = models.ArticlesPreviewRequest(
             id=id,
             article_preview=utils.get_pydantic_model(article_preview, models.ArticlePreview),
         )
@@ -1208,7 +1208,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesSendPreviewSecurity),
+            security=utils.get_pydantic_model(security, models.ArticlesPreviewSecurity),
             get_serialized_body=lambda: utils.serialize_request_body(request.article_preview, False, False, "json", models.ArticlePreview),
             timeout_ms=timeout_ms,
         )
@@ -1228,7 +1228,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:send_preview", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:preview", oauth2_scopes=[], security_source=security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -1254,7 +1254,7 @@ class Articles(BaseSDK):
 
     
     
-    def articles_send(
+    def send(
         self, *,
         security: Union[models.ArticlesSendSecurity, models.ArticlesSendSecurityTypedDict],
         id: str,
@@ -1340,7 +1340,7 @@ class Articles(BaseSDK):
 
     
     
-    async def articles_send_async(
+    async def send_async(
         self, *,
         security: Union[models.ArticlesSendSecurity, models.ArticlesSendSecurityTypedDict],
         id: str,

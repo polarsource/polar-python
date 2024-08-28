@@ -394,7 +394,7 @@ class Subscriptions(BaseSDK):
 
     
     
-    def subscriptions_import(
+    def import(
         self, *,
         security: Union[models.SubscriptionsImportSecurity, models.SubscriptionsImportSecurityTypedDict],
         request: Union[models.BodySubscriptionsImport, models.BodySubscriptionsImportTypedDict],
@@ -475,7 +475,7 @@ class Subscriptions(BaseSDK):
 
     
     
-    async def subscriptions_import_async(
+    async def import_async(
         self, *,
         security: Union[models.SubscriptionsImportSecurity, models.SubscriptionsImportSecurityTypedDict],
         request: Union[models.BodySubscriptionsImport, models.BodySubscriptionsImportTypedDict],
@@ -556,7 +556,7 @@ class Subscriptions(BaseSDK):
 
     
     
-    def subscriptions_export(
+    def export(
         self, *,
         security: Union[models.SubscriptionsExportSecurity, models.SubscriptionsExportSecurityTypedDict],
         organization_id: OptionalNullable[Union[models.OrganizationID, models.OrganizationIDTypedDict]] = UNSET,
@@ -636,7 +636,7 @@ class Subscriptions(BaseSDK):
 
     
     
-    async def subscriptions_export_async(
+    async def export_async(
         self, *,
         security: Union[models.SubscriptionsExportSecurity, models.SubscriptionsExportSecurityTypedDict],
         organization_id: OptionalNullable[Union[models.OrganizationID, models.OrganizationIDTypedDict]] = UNSET,

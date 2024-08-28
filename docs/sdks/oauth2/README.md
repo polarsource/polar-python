@@ -5,251 +5,13 @@
 
 ### Available Operations
 
-* [oauth2_list_clients](#oauth2_list_clients) - List Clients
-* [oauth2_oauth2_create_client](#oauth2_oauth2_create_client) - Create Client
-* [oauth2_oauth2_get_client](#oauth2_oauth2_get_client) - Get Client
-* [oauth2_oauth2_update_client](#oauth2_oauth2_update_client) - Update Client
-* [oauth2_oauth2_delete_client](#oauth2_oauth2_delete_client) - Delete Client
-* [oauth2_authorize](#oauth2_authorize) - Authorize
-* [oauth2_request_token](#oauth2_request_token) - Request Token
-* [oauth2_revoke_token](#oauth2_revoke_token) - Revoke Token
-* [oauth2_introspect_token](#oauth2_introspect_token) - Introspect Token
-* [oauth2_userinfo](#oauth2_userinfo) - Get User Info
-
-## oauth2_list_clients
-
-List OAuth2 clients.
-
-### Example Usage
-
-```python
-import polar_sh
-from polar_sh import Polar
-
-s = Polar()
-
-
-res = s.oauth2.oauth2_list_clients(security=polar_sh.Oauth2ListClientsSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
-
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.Next()
-        if res is None:
-            break
-
-
-```
-
-### Parameters
-
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `security`                                                                    | [models.Oauth2ListClientsSecurity](../../models/oauth2listclientssecurity.md) | :heavy_check_mark:                                                            | N/A                                                                           |
-| `page`                                                                        | *Optional[int]*                                                               | :heavy_minus_sign:                                                            | Page number, defaults to 1.                                                   |
-| `limit`                                                                       | *Optional[int]*                                                               | :heavy_minus_sign:                                                            | Size of a page, defaults to 10. Maximum is 100.                               |
-| `retries`                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                            | Configuration to override the default retry behavior of the client.           |
-
-### Response
-
-**[models.Oauth2ListClientsResponse](../../models/oauth2listclientsresponse.md)**
-
-### Errors
-
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4xx-5xx                    | */*                        |
-
-
-## oauth2_oauth2_create_client
-
-Create an OAuth2 client.
-
-### Example Usage
-
-```python
-import polar_sh
-from polar_sh import Polar
-
-s = Polar()
-
-
-res = s.oauth2.oauth2_oauth2_create_client(security=polar_sh.Oauth2Oauth2CreateClientSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), request={
-    "redirect_uris": [
-        "https://showy-food.com",
-    ],
-    "client_name": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
-
-```
-
-### Parameters
-
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [models.OAuth2ClientConfiguration](../../models/oauth2clientconfiguration.md)        | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `security`                                                                           | [models.Oauth2Oauth2CreateClientSecurity](../../oauth2oauth2createclientsecurity.md) | :heavy_check_mark:                                                                   | The security requirements to use for the request.                                    |
-| `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
-
-### Response
-
-**[Any](../../models/.md)**
-
-### Errors
-
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4xx-5xx                    | */*                        |
-
-
-## oauth2_oauth2_get_client
-
-Get an OAuth2 client by Client ID.
-
-### Example Usage
-
-```python
-import polar_sh
-from polar_sh import Polar
-
-s = Polar()
-
-
-res = s.oauth2.oauth2_oauth2_get_client(security=polar_sh.Oauth2Oauth2GetClientSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), client_id="<value>")
-
-if res is not None:
-    # handle response
-    pass
-
-```
-
-### Parameters
-
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `security`                                                                            | [models.Oauth2Oauth2GetClientSecurity](../../models/oauth2oauth2getclientsecurity.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `client_id`                                                                           | *str*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `retries`                                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                      | :heavy_minus_sign:                                                                    | Configuration to override the default retry behavior of the client.                   |
-
-### Response
-
-**[Any](../../models/.md)**
-
-### Errors
-
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4xx-5xx                    | */*                        |
-
-
-## oauth2_oauth2_update_client
-
-Update an OAuth2 client.
-
-### Example Usage
-
-```python
-import polar_sh
-from polar_sh import Polar
-
-s = Polar()
-
-
-res = s.oauth2.oauth2_oauth2_update_client(security=polar_sh.Oauth2Oauth2UpdateClientSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), client_id="<value>", o_auth2_client_configuration_update={
-    "redirect_uris": [
-        "http://assured-generosity.net",
-    ],
-    "client_name": "<value>",
-    "client_id": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
-
-```
-
-### Parameters
-
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `security`                                                                                  | [models.Oauth2Oauth2UpdateClientSecurity](../../models/oauth2oauth2updateclientsecurity.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `client_id`                                                                                 | *str*                                                                                       | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `o_auth2_client_configuration_update`                                                       | [models.OAuth2ClientConfigurationUpdate](../../models/oauth2clientconfigurationupdate.md)   | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `retries`                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                            | :heavy_minus_sign:                                                                          | Configuration to override the default retry behavior of the client.                         |
-
-### Response
-
-**[Any](../../models/.md)**
-
-### Errors
-
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4xx-5xx                    | */*                        |
-
-
-## oauth2_oauth2_delete_client
-
-Delete an OAuth2 client.
-
-### Example Usage
-
-```python
-import polar_sh
-from polar_sh import Polar
-
-s = Polar()
-
-
-res = s.oauth2.oauth2_oauth2_delete_client(security=polar_sh.Oauth2Oauth2DeleteClientSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), client_id="<value>")
-
-if res is not None:
-    # handle response
-    pass
-
-```
-
-### Parameters
-
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `security`                                                                                  | [models.Oauth2Oauth2DeleteClientSecurity](../../models/oauth2oauth2deleteclientsecurity.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `client_id`                                                                                 | *str*                                                                                       | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `retries`                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                            | :heavy_minus_sign:                                                                          | Configuration to override the default retry behavior of the client.                         |
-
-### Response
-
-**[Any](../../models/.md)**
-
-### Errors
-
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4xx-5xx                    | */*                        |
-
-
-## oauth2_authorize
+* [authorize](#authorize) - Authorize
+* [token](#token) - Request Token
+* [revoke](#revoke) - Revoke Token
+* [introspect](#introspect) - Introspect Token
+* [userinfo](#userinfo) - Get User Info
+
+## authorize
 
 Authorize
 
@@ -262,7 +24,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.oauth2.oauth2_authorize(security=polar_sh.Oauth2AuthorizeSecurity(
+res = s.oauth2.authorize(security=polar_sh.Oauth2AuthorizeSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
@@ -290,7 +52,7 @@ if res is not None:
 | models.SDKError | 4xx-5xx         | */*             |
 
 
-## oauth2_request_token
+## token
 
 Request an access token using a valid grant.
 
@@ -304,10 +66,11 @@ s = Polar(
 )
 
 
-res = s.oauth2.oauth2_request_token(request={
+res = s.oauth2.token(request={
     "client_id": "<value>",
     "client_secret": "<value>",
-    "refresh_token": "<value>",
+    "code": "<value>",
+    "redirect_uri": "http://multicolored-chivalry.name",
 })
 
 if res is not None:
@@ -334,7 +97,7 @@ if res is not None:
 | models.SDKError | 4xx-5xx         | */*             |
 
 
-## oauth2_revoke_token
+## revoke
 
 Revoke an access token or a refresh token.
 
@@ -348,7 +111,7 @@ s = Polar(
 )
 
 
-res = s.oauth2.oauth2_revoke_token(request={
+res = s.oauth2.revoke(request={
     "token": "<value>",
     "client_id": "<value>",
     "client_secret": "<value>",
@@ -378,7 +141,7 @@ if res is not None:
 | models.SDKError | 4xx-5xx         | */*             |
 
 
-## oauth2_introspect_token
+## introspect
 
 Get information about an access token.
 
@@ -392,7 +155,7 @@ s = Polar(
 )
 
 
-res = s.oauth2.oauth2_introspect_token(request={
+res = s.oauth2.introspect(request={
     "token": "<value>",
     "client_id": "<value>",
     "client_secret": "<value>",
@@ -422,7 +185,7 @@ if res is not None:
 | models.SDKError | 4xx-5xx         | */*             |
 
 
-## oauth2_userinfo
+## userinfo
 
 Get information about the authenticated user.
 
@@ -436,7 +199,7 @@ s = Polar(
 )
 
 
-res = s.oauth2.oauth2_userinfo()
+res = s.oauth2.userinfo()
 
 if res is not None:
     # handle response

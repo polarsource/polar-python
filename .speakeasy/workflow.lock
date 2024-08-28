@@ -1,17 +1,17 @@
-speakeasyVersion: 1.381.0
+speakeasyVersion: 1.381.4
 sources:
     Polar-OAS:
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:a51fd8f7b8309c2a556f2d8ac16a12c706b42bf0049e23459687e97c32dd17f8
-        sourceBlobDigest: sha256:f6317697af810855bebcb22bfffc7cc45099d5a80a88fb2f5d17fce955d35a6d
+        sourceRevisionDigest: sha256:31d4788571446adbaf171b962edff4b0dce90d5962c8ac1f93db62cb56f9dad7
+        sourceBlobDigest: sha256:3053e1be11580e0e18b9201b351f20b24df8b641613d9c2000cb910a5fe5cda5
         tags:
             - latest
 targets:
     polar:
         source: Polar-OAS
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:a51fd8f7b8309c2a556f2d8ac16a12c706b42bf0049e23459687e97c32dd17f8
-        sourceBlobDigest: sha256:f6317697af810855bebcb22bfffc7cc45099d5a80a88fb2f5d17fce955d35a6d
+        sourceRevisionDigest: sha256:31d4788571446adbaf171b962edff4b0dce90d5962c8ac1f93db62cb56f9dad7
+        sourceBlobDigest: sha256:3053e1be11580e0e18b9201b351f20b24df8b641613d9c2000cb910a5fe5cda5
         outLocation: /Users/fvoron/Development/polar-python
 workflow:
     workflowVersion: 1.0.0

@@ -7,7 +7,7 @@
 
 * [list](#list) - List Orders
 * [retrieve](#retrieve) - Get Order
-* [orders_get_invoice](#orders_get_invoice) - Get Order Invoice
+* [invoice](#invoice) - Get Order Invoice
 
 ## list
 
@@ -101,7 +101,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## orders_get_invoice
+## invoice
 
 Get an order's invoice data.
 
@@ -114,7 +114,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.orders.orders_get_invoice(security=polar_sh.OrdersGetInvoiceSecurity(
+res = s.orders.invoice(security=polar_sh.OrdersInvoiceSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>")
 
@@ -126,11 +126,11 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `security`                                                                  | [models.OrdersGetInvoiceSecurity](../../models/ordersgetinvoicesecurity.md) | :heavy_check_mark:                                                          | N/A                                                                         |
-| `id`                                                                        | *str*                                                                       | :heavy_check_mark:                                                          | The order ID.                                                               |
-| `retries`                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)            | :heavy_minus_sign:                                                          | Configuration to override the default retry behavior of the client.         |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `security`                                                            | [models.OrdersInvoiceSecurity](../../models/ordersinvoicesecurity.md) | :heavy_check_mark:                                                    | N/A                                                                   |
+| `id`                                                                  | *str*                                                                 | :heavy_check_mark:                                                    | The order ID.                                                         |
+| `retries`                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)      | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |
 
 ### Response
 

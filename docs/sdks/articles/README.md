@@ -10,9 +10,9 @@
 * [retrieve](#retrieve) - Get Article
 * [delete](#delete) - Delete Article
 * [update](#update) - Update Article
-* [articles_get_receivers](#articles_get_receivers) - Get Article Receivers Count
-* [articles_send_preview](#articles_send_preview) - Send Article Preview
-* [articles_send](#articles_send) - Send Article
+* [receivers](#receivers) - Get Article Receivers Count
+* [preview](#preview) - Send Article Preview
+* [send](#send) - Send Article
 
 ## list
 
@@ -236,7 +236,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## articles_get_receivers
+## receivers
 
 Get number of potential receivers for an article.
 
@@ -249,7 +249,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.articles.articles_get_receivers(security=polar_sh.ArticlesGetReceiversSecurity(
+res = s.articles.receivers(security=polar_sh.ArticlesReceiversSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>")
 
@@ -261,11 +261,11 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `security`                                                                          | [models.ArticlesGetReceiversSecurity](../../models/articlesgetreceiverssecurity.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |
-| `id`                                                                                | *str*                                                                               | :heavy_check_mark:                                                                  | N/A                                                                                 |
-| `retries`                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                    | :heavy_minus_sign:                                                                  | Configuration to override the default retry behavior of the client.                 |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `security`                                                                    | [models.ArticlesReceiversSecurity](../../models/articlesreceiverssecurity.md) | :heavy_check_mark:                                                            | N/A                                                                           |
+| `id`                                                                          | *str*                                                                         | :heavy_check_mark:                                                            | N/A                                                                           |
+| `retries`                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                            | Configuration to override the default retry behavior of the client.           |
 
 ### Response
 
@@ -279,7 +279,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## articles_send_preview
+## preview
 
 Send an article preview by email.
 
@@ -292,10 +292,10 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.articles.articles_send_preview(security=polar_sh.ArticlesSendPreviewSecurity(
+res = s.articles.preview(security=polar_sh.ArticlesPreviewSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>", article_preview={
-    "email": "Emily_Ryan@hotmail.com",
+    "email": "Eileen56@yahoo.com",
 })
 
 if res is not None:
@@ -306,12 +306,12 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `security`                                                                        | [models.ArticlesSendPreviewSecurity](../../models/articlessendpreviewsecurity.md) | :heavy_check_mark:                                                                | N/A                                                                               |
-| `id`                                                                              | *str*                                                                             | :heavy_check_mark:                                                                | N/A                                                                               |
-| `article_preview`                                                                 | [models.ArticlePreview](../../models/articlepreview.md)                           | :heavy_check_mark:                                                                | N/A                                                                               |
-| `retries`                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                  | :heavy_minus_sign:                                                                | Configuration to override the default retry behavior of the client.               |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `security`                                                                | [models.ArticlesPreviewSecurity](../../models/articlespreviewsecurity.md) | :heavy_check_mark:                                                        | N/A                                                                       |
+| `id`                                                                      | *str*                                                                     | :heavy_check_mark:                                                        | N/A                                                                       |
+| `article_preview`                                                         | [models.ArticlePreview](../../models/articlepreview.md)                   | :heavy_check_mark:                                                        | N/A                                                                       |
+| `retries`                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)          | :heavy_minus_sign:                                                        | Configuration to override the default retry behavior of the client.       |
 
 ### Response
 
@@ -327,7 +327,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## articles_send
+## send
 
 Send an article by email to all subscribers.
 
@@ -340,7 +340,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.articles.articles_send(security=polar_sh.ArticlesSendSecurity(
+res = s.articles.send(security=polar_sh.ArticlesSendSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>")
 

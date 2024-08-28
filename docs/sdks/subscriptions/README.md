@@ -7,8 +7,8 @@
 
 * [list](#list) - List Subscriptions
 * [create](#create) - Create Free Subscription
-* [subscriptions_import](#subscriptions_import) - Import Subscriptions
-* [subscriptions_export](#subscriptions_export) - Export Subscriptions
+* [import](#import) - Import Subscriptions
+* [export](#export) - Export Subscriptions
 
 ## list
 
@@ -104,7 +104,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## subscriptions_import
+## import
 
 Import subscriptions from a CSV file.
 
@@ -117,7 +117,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.subscriptions.subscriptions_import(security=polar_sh.SubscriptionsImportSecurity(
+res = s.subscriptions.import(security=polar_sh.SubscriptionsImportSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), request={
     "file": {
@@ -153,7 +153,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## subscriptions_export
+## export
 
 Export subscriptions as a CSV file.
 
@@ -166,7 +166,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.subscriptions.subscriptions_export(security=polar_sh.SubscriptionsExportSecurity(
+res = s.subscriptions.export(security=polar_sh.SubscriptionsExportSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 

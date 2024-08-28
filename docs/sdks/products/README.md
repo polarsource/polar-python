@@ -9,7 +9,7 @@
 * [create](#create) - Create Product
 * [retrieve](#retrieve) - Get Product
 * [update](#update) - Update Product
-* [products_update_benefits](#products_update_benefits) - Update Product Benefits
+* [update_benefits](#update_benefits) - Update Product Benefits
 
 ## list
 
@@ -200,7 +200,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## products_update_benefits
+## update_benefits
 
 Update benefits granted by a product.
 
@@ -213,7 +213,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.products.products_update_benefits(security=polar_sh.ProductsUpdateBenefitsSecurity(
+res = s.products.update_benefits(security=polar_sh.ProductsUpdateBenefitsSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>", product_benefits_update={
     "benefits": [

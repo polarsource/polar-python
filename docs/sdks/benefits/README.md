@@ -10,7 +10,7 @@
 * [retrieve](#retrieve) - Get Benefit
 * [delete](#delete) - Delete Benefit
 * [update](#update) - Update Benefit
-* [benefits_list_grants](#benefits_list_grants) - List Benefit Grants
+* [grants](#grants) - List Benefit Grants
 
 ## list
 
@@ -245,7 +245,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## benefits_list_grants
+## grants
 
 List the individual grants for a benefit.
 
@@ -260,7 +260,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.benefits.benefits_list_grants(security=polar_sh.BenefitsListGrantsSecurity(
+res = s.benefits.grants(security=polar_sh.BenefitsGrantsSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), request={
     "id": "<value>",
@@ -279,15 +279,15 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `request`                                                                     | [models.BenefitsListGrantsRequest](../../models/benefitslistgrantsrequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
-| `security`                                                                    | [models.BenefitsListGrantsSecurity](../../benefitslistgrantssecurity.md)      | :heavy_check_mark:                                                            | The security requirements to use for the request.                             |
-| `retries`                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                            | Configuration to override the default retry behavior of the client.           |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `request`                                                             | [models.BenefitsGrantsRequest](../../models/benefitsgrantsrequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
+| `security`                                                            | [models.BenefitsGrantsSecurity](../../benefitsgrantssecurity.md)      | :heavy_check_mark:                                                    | The security requirements to use for the request.                     |
+| `retries`                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)      | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |
 
 ### Response
 
-**[models.BenefitsListGrantsResponse](../../models/benefitslistgrantsresponse.md)**
+**[models.BenefitsGrantsResponse](../../models/benefitsgrantsresponse.md)**
 
 ### Errors
 

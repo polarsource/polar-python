@@ -53,7 +53,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
+res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
@@ -78,7 +78,7 @@ from polar_sh import Polar
 
 async def main():
     s = Polar()
-    res = await s.users.users_list_benefits_async(security=polar_sh.UsersListBenefitsSecurity(
+    res = await s.users.benefits.list_async(security=polar_sh.UsersBenefitsListSecurity(
         open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
     ))
     if res is not None:
@@ -96,26 +96,38 @@ asyncio.run(main())
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [users](docs/sdks/users/README.md)
+### [users.benefits](docs/sdks/polarbenefits/README.md)
 
-* [users_list_benefits](docs/sdks/users/README.md#users_list_benefits) - List Benefits
-* [users_get_benefit](docs/sdks/users/README.md#users_get_benefit) - Get Benefit
-* [users_list_orders](docs/sdks/users/README.md#users_list_orders) - List Orders
-* [users_get_order](docs/sdks/users/README.md#users_get_order) - Get Order
-* [users_get_order_invoice](docs/sdks/users/README.md#users_get_order_invoice) - Get Order Invoice
-* [users_list_subscriptions](docs/sdks/users/README.md#users_list_subscriptions) - List Subscriptions
-* [users_create_subscription](docs/sdks/users/README.md#users_create_subscription) - Create Subscription
-* [users_get_subscription](docs/sdks/users/README.md#users_get_subscription) - Get Subscription
-* [users_cancel_subscription](docs/sdks/users/README.md#users_cancel_subscription) - Cancel Subscription
-* [users_update_subscription](docs/sdks/users/README.md#users_update_subscription) - Update Subscription
-* [users_list_advertisement_campaigns](docs/sdks/users/README.md#users_list_advertisement_campaigns) - List Advertisement Campaigns
-* [users_create_advertisement_campaign](docs/sdks/users/README.md#users_create_advertisement_campaign) - Create Advertisement Campaign
-* [users_get_advertisement_campaign](docs/sdks/users/README.md#users_get_advertisement_campaign) - Get Advertisement Campaign
-* [users_delete_advertisement_campaign](docs/sdks/users/README.md#users_delete_advertisement_campaign) - Delete Advertisement Campaign
-* [users_update_advertisement_campaign](docs/sdks/users/README.md#users_update_advertisement_campaign) - Update Advertisement Campaign
-* [users_enable_advertisement_campaign](docs/sdks/users/README.md#users_enable_advertisement_campaign) - Enable Advertisement Campaign
-* [users_list_downloadables](docs/sdks/users/README.md#users_list_downloadables) - List Downloadables
-* [users_get_downloadable](docs/sdks/users/README.md#users_get_downloadable) - Get Downloadable
+* [list](docs/sdks/polarbenefits/README.md#list) - List Benefits
+* [retrieve](docs/sdks/polarbenefits/README.md#retrieve) - Get Benefit
+
+### [users.orders](docs/sdks/polarorders/README.md)
+
+* [list](docs/sdks/polarorders/README.md#list) - List Orders
+* [retrieve](docs/sdks/polarorders/README.md#retrieve) - Get Order
+* [invoice](docs/sdks/polarorders/README.md#invoice) - Get Order Invoice
+
+### [users.subscriptions](docs/sdks/polarsubscriptions/README.md)
+
+* [list](docs/sdks/polarsubscriptions/README.md#list) - List Subscriptions
+* [create](docs/sdks/polarsubscriptions/README.md#create) - Create Free Subscription
+* [retrieve](docs/sdks/polarsubscriptions/README.md#retrieve) - Get Subscription
+* [cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
+* [update](docs/sdks/polarsubscriptions/README.md#update) - Update Subscription
+
+### [users.advertisements](docs/sdks/polaradvertisements/README.md)
+
+* [list](docs/sdks/polaradvertisements/README.md#list) - List Advertisements
+* [create](docs/sdks/polaradvertisements/README.md#create) - Create Advertisement
+* [retrieve](docs/sdks/polaradvertisements/README.md#retrieve) - Get Advertisement
+* [delete](docs/sdks/polaradvertisements/README.md#delete) - Delete Advertisement
+* [update](docs/sdks/polaradvertisements/README.md#update) - Update Advertisement
+* [enable](docs/sdks/polaradvertisements/README.md#enable) - Enable Advertisement
+
+### [users.downloadables](docs/sdks/downloadables/README.md)
+
+* [list](docs/sdks/downloadables/README.md#list) - List Downloadables
+* [retrieve](docs/sdks/downloadables/README.md#retrieve) - Get Downloadable
 
 ### [external_organizations](docs/sdks/externalorganizations/README.md)
 
@@ -133,14 +145,13 @@ asyncio.run(main())
 * [create](docs/sdks/organizations/README.md#create) - Create Organization
 * [retrieve](docs/sdks/organizations/README.md#retrieve) - Get Organization
 * [update](docs/sdks/organizations/README.md#update) - Update Organization
-* [organizations_list_organization_customers](docs/sdks/organizations/README.md#organizations_list_organization_customers) - List Organization Customers
 
 ### [subscriptions](docs/sdks/subscriptions/README.md)
 
 * [list](docs/sdks/subscriptions/README.md#list) - List Subscriptions
 * [create](docs/sdks/subscriptions/README.md#create) - Create Free Subscription
-* [subscriptions_import](docs/sdks/subscriptions/README.md#subscriptions_import) - Import Subscriptions
-* [subscriptions_export](docs/sdks/subscriptions/README.md#subscriptions_export) - Export Subscriptions
+* [import](docs/sdks/subscriptions/README.md#import) - Import Subscriptions
+* [export](docs/sdks/subscriptions/README.md#export) - Export Subscriptions
 
 ### [articles](docs/sdks/articles/README.md)
 
@@ -149,9 +160,9 @@ asyncio.run(main())
 * [retrieve](docs/sdks/articles/README.md#retrieve) - Get Article
 * [delete](docs/sdks/articles/README.md#delete) - Delete Article
 * [update](docs/sdks/articles/README.md#update) - Update Article
-* [articles_get_receivers](docs/sdks/articles/README.md#articles_get_receivers) - Get Article Receivers Count
-* [articles_send_preview](docs/sdks/articles/README.md#articles_send_preview) - Send Article Preview
-* [articles_send](docs/sdks/articles/README.md#articles_send) - Send Article
+* [receivers](docs/sdks/articles/README.md#receivers) - Get Article Receivers Count
+* [preview](docs/sdks/articles/README.md#preview) - Send Article Preview
+* [send](docs/sdks/articles/README.md#send) - Send Article
 
 ### [advertisements](docs/sdks/advertisements/README.md)
 
@@ -160,16 +171,19 @@ asyncio.run(main())
 
 ### [oauth2](docs/sdks/oauth2/README.md)
 
-* [oauth2_list_clients](docs/sdks/oauth2/README.md#oauth2_list_clients) - List Clients
-* [oauth2_oauth2_create_client](docs/sdks/oauth2/README.md#oauth2_oauth2_create_client) - Create Client
-* [oauth2_oauth2_get_client](docs/sdks/oauth2/README.md#oauth2_oauth2_get_client) - Get Client
-* [oauth2_oauth2_update_client](docs/sdks/oauth2/README.md#oauth2_oauth2_update_client) - Update Client
-* [oauth2_oauth2_delete_client](docs/sdks/oauth2/README.md#oauth2_oauth2_delete_client) - Delete Client
-* [oauth2_authorize](docs/sdks/oauth2/README.md#oauth2_authorize) - Authorize
-* [oauth2_request_token](docs/sdks/oauth2/README.md#oauth2_request_token) - Request Token
-* [oauth2_revoke_token](docs/sdks/oauth2/README.md#oauth2_revoke_token) - Revoke Token
-* [oauth2_introspect_token](docs/sdks/oauth2/README.md#oauth2_introspect_token) - Introspect Token
-* [oauth2_userinfo](docs/sdks/oauth2/README.md#oauth2_userinfo) - Get User Info
+* [authorize](docs/sdks/oauth2/README.md#authorize) - Authorize
+* [token](docs/sdks/oauth2/README.md#token) - Request Token
+* [revoke](docs/sdks/oauth2/README.md#revoke) - Revoke Token
+* [introspect](docs/sdks/oauth2/README.md#introspect) - Introspect Token
+* [userinfo](docs/sdks/oauth2/README.md#userinfo) - Get User Info
+
+### [oauth2.clients](docs/sdks/clients/README.md)
+
+* [list](docs/sdks/clients/README.md#list) - List Clients
+* [create](docs/sdks/clients/README.md#create) - Create Client
+* [retrieve](docs/sdks/clients/README.md#retrieve) - Get Client
+* [update](docs/sdks/clients/README.md#update) - Update Client
+* [delete](docs/sdks/clients/README.md#delete) - Delete Client
 
 ### [benefits](docs/sdks/benefits/README.md)
 
@@ -178,7 +192,7 @@ asyncio.run(main())
 * [retrieve](docs/sdks/benefits/README.md#retrieve) - Get Benefit
 * [delete](docs/sdks/benefits/README.md#delete) - Delete Benefit
 * [update](docs/sdks/benefits/README.md#update) - Update Benefit
-* [benefits_list_grants](docs/sdks/benefits/README.md#benefits_list_grants) - List Benefit Grants
+* [grants](docs/sdks/benefits/README.md#grants) - List Benefit Grants
 
 ### [products](docs/sdks/products/README.md)
 
@@ -186,13 +200,13 @@ asyncio.run(main())
 * [create](docs/sdks/products/README.md#create) - Create Product
 * [retrieve](docs/sdks/products/README.md#retrieve) - Get Product
 * [update](docs/sdks/products/README.md#update) - Update Product
-* [products_update_benefits](docs/sdks/products/README.md#products_update_benefits) - Update Product Benefits
+* [update_benefits](docs/sdks/products/README.md#update_benefits) - Update Product Benefits
 
 ### [orders](docs/sdks/orders/README.md)
 
 * [list](docs/sdks/orders/README.md#list) - List Orders
 * [retrieve](docs/sdks/orders/README.md#retrieve) - Get Order
-* [orders_get_invoice](docs/sdks/orders/README.md#orders_get_invoice) - Get Order Invoice
+* [invoice](docs/sdks/orders/README.md#invoice) - Get Order Invoice
 
 ### [checkouts](docs/sdks/checkouts/README.md)
 
@@ -203,14 +217,14 @@ asyncio.run(main())
 
 * [list](docs/sdks/files/README.md#list) - List Files
 * [create](docs/sdks/files/README.md#create) - Create File
-* [files_uploaded](docs/sdks/files/README.md#files_uploaded) - Complete File Upload
+* [uploaded](docs/sdks/files/README.md#uploaded) - Complete File Upload
 * [delete](docs/sdks/files/README.md#delete) - Delete File
 * [update](docs/sdks/files/README.md#update) - Update File
 
 ### [metrics](docs/sdks/metricssdk/README.md)
 
 * [retrieve](docs/sdks/metricssdk/README.md#retrieve) - Get Metrics
-* [metrics_get_limits](docs/sdks/metricssdk/README.md#metrics_get_limits) - Get Metrics Limits
+* [limits](docs/sdks/metricssdk/README.md#limits) - Get Metrics Limits
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start File uploads [file-upload] -->
@@ -230,7 +244,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.subscriptions.subscriptions_import(security=polar_sh.SubscriptionsImportSecurity(
+res = s.subscriptions.import(security=polar_sh.SubscriptionsImportSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), request={
     "file": {
@@ -261,7 +275,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
+res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ),
     RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
@@ -288,7 +302,7 @@ s = Polar(
 )
 
 
-res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
+res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
@@ -324,7 +338,7 @@ s = Polar()
 
 res = None
 try:
-    res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
+    res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
@@ -369,7 +383,7 @@ s = Polar(
 )
 
 
-res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
+res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
@@ -397,7 +411,7 @@ s = Polar(
 )
 
 
-res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
+res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
@@ -537,7 +551,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
+res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
@@ -583,7 +597,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
+res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 

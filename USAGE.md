@@ -7,7 +7,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
+res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
@@ -32,7 +32,7 @@ from polar_sh import Polar
 
 async def main():
     s = Polar()
-    res = await s.users.users_list_benefits_async(security=polar_sh.UsersListBenefitsSecurity(
+    res = await s.users.benefits.list_async(security=polar_sh.UsersBenefitsListSecurity(
         open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
     ))
     if res is not None:
