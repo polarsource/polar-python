@@ -1,0 +1,11 @@
+workflowVersion: 1.0.0
+sources:
+    Polar-OAS:
+        inputs:
+            - location: https://api.polar.sh/openapi.json
+        registry:
+            location: registry.speakeasyapi.dev/polar/polar/polar-oas
+targets:
+    polar:
+        target: python
+        source: Polar-OAS

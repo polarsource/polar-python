@@ -1,0 +1,14 @@
+# BenefitCustomCreate
+
+Schema to create a benefit of type `custom`.
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `description`                                                                                     | *str*                                                                                             | :heavy_check_mark:                                                                                | The description of the benefit. Will be displayed on products having this benefit.                |
+| `is_tax_applicable`                                                                               | *bool*                                                                                            | :heavy_check_mark:                                                                                | Whether the benefit is taxable.                                                                   |
+| `properties`                                                                                      | [models.BenefitCustomProperties](../models/benefitcustomproperties.md)                            | :heavy_check_mark:                                                                                | Properties for a benefit of type `custom`.                                                        |
+| `type`                                                                                            | [models.BenefitCustomCreateType](../models/benefitcustomcreatetype.md)                            | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `organization_id`                                                                                 | *OptionalNullable[str]*                                                                           | :heavy_minus_sign:                                                                                | The ID of the organization owning the benefit. **Required unless you use an organization token.** |

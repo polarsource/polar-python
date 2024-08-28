@@ -1,0 +1,27 @@
+speakeasyVersion: 1.381.0
+sources:
+    Polar-OAS:
+        sourceNamespace: polar-oas
+        sourceRevisionDigest: sha256:99ccb88f1297be8b3693d1124e6a9175d681565d08ac1e1deb51d7687c251ddc
+        sourceBlobDigest: sha256:b1439d71ec559b9ed8efa92dd6cc04124801b74b01e5fd63ad18916d1f65fee6
+        tags:
+            - latest
+targets:
+    polar:
+        source: Polar-OAS
+        sourceNamespace: polar-oas
+        sourceRevisionDigest: sha256:99ccb88f1297be8b3693d1124e6a9175d681565d08ac1e1deb51d7687c251ddc
+        sourceBlobDigest: sha256:b1439d71ec559b9ed8efa92dd6cc04124801b74b01e5fd63ad18916d1f65fee6
+        outLocation: /Users/fvoron/Development/polar-python
+workflow:
+    workflowVersion: 1.0.0
+    sources:
+        Polar-OAS:
+            inputs:
+                - location: https://api.polar.sh/openapi.json
+            registry:
+                location: registry.speakeasyapi.dev/polar/polar/polar-oas
+    targets:
+        polar:
+            target: python
+            source: Polar-OAS

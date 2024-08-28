@@ -1,0 +1,11 @@
+# OrganizationsListOrganizationCustomersRequest
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `id`                                                                           | *str*                                                                          | :heavy_check_mark:                                                             | N/A                                                                            |
+| `customer_types`                                                               | List[[models.OrganizationCustomerType](../models/organizationcustomertype.md)] | :heavy_minus_sign:                                                             | Filter by the type of purchase the customer made.                              |
+| `page`                                                                         | *Optional[int]*                                                                | :heavy_minus_sign:                                                             | Page number, defaults to 1.                                                    |
+| `limit`                                                                        | *Optional[int]*                                                                | :heavy_minus_sign:                                                             | Size of a page, defaults to 10. Maximum is 100.                                |
