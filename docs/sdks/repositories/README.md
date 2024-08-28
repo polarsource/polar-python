@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [repositories_list](#repositories_list) - List Repositories
-* [repositories_get](#repositories_get) - Get Repository
-* [repositories_update](#repositories_update) - Update Repository
+* [list](#list) - List Repositories
+* [retrieve](#retrieve) - Get Repository
+* [update](#update) - Update Repository
 
-## repositories_list
+## list
 
 List repositories.
 
@@ -22,13 +22,18 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.repositories.repositories_list(security=polar_sh.RepositoriesListSecurity(
+res = s.repositories.list(security=polar_sh.RepositoriesListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -42,7 +47,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceRepository](../../models/listresourcerepository.md)**
+**[models.RepositoriesListResponse](../../models/repositorieslistresponse.md)**
 
 ### Errors
 
@@ -52,7 +57,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## repositories_get
+## retrieve
 
 Get a repository by ID.
 
@@ -65,7 +70,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.repositories.repositories_get(security=polar_sh.RepositoriesGetSecurity(
+res = s.repositories.retrieve(security=polar_sh.RepositoriesGetSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>")
 
@@ -96,7 +101,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## repositories_update
+## update
 
 Update a repository.
 
@@ -109,7 +114,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.repositories.repositories_update(security=polar_sh.RepositoriesUpdateSecurity(
+res = s.repositories.update(security=polar_sh.RepositoriesUpdateSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>", repository_update={})
 

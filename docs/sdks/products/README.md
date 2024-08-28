@@ -5,13 +5,13 @@
 
 ### Available Operations
 
-* [products_list](#products_list) - List Products
-* [products_create](#products_create) - Create Product
-* [products_get](#products_get) - Get Product
-* [products_update](#products_update) - Update Product
+* [list](#list) - List Products
+* [create](#create) - Create Product
+* [retrieve](#retrieve) - Get Product
+* [update](#update) - Update Product
 * [products_update_benefits](#products_update_benefits) - Update Product Benefits
 
-## products_list
+## list
 
 List products.
 
@@ -24,13 +24,18 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.products.products_list(security=polar_sh.ProductsListSecurity(
+res = s.products.list(security=polar_sh.ProductsListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -44,7 +49,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceProduct](../../models/listresourceproduct.md)**
+**[models.ProductsListResponse](../../models/productslistresponse.md)**
 
 ### Errors
 
@@ -54,7 +59,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## products_create
+## create
 
 Create a product.
 
@@ -67,14 +72,14 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.products.products_create(security=polar_sh.ProductsCreateSecurity(
+res = s.products.create(security=polar_sh.ProductsCreateSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), request={
     "name": "<value>",
     "prices": [
         {
-            "recurring_interval": polar_sh.ProductPriceRecurringInterval.YEAR,
-            "price_amount": 978594,
+            "recurring_interval": polar_sh.ProductPriceRecurringInterval.MONTH,
+            "price_amount": 638424,
         },
     ],
 })
@@ -105,7 +110,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## products_get
+## retrieve
 
 Get a product by ID.
 
@@ -118,7 +123,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.products.products_get(security=polar_sh.ProductsGetSecurity(
+res = s.products.retrieve(security=polar_sh.ProductsGetSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>")
 
@@ -149,7 +154,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## products_update
+## update
 
 Update a product.
 
@@ -162,7 +167,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.products.products_update(security=polar_sh.ProductsUpdateSecurity(
+res = s.products.update(security=polar_sh.ProductsUpdateSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>", product_update={})
 

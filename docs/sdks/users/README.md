@@ -42,8 +42,13 @@ res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -57,7 +62,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceAnnotatedUnionBenefitArticlesSubscriberBenefitAdsSubscriberBenefitDiscordSubscriberBenefitCustomSubscriberBenefitGitHubRepositorySubscriberBenefitDownloadablesSubscriberDiscriminatorMergeJSONSchema](../../models/listresourceannotatedunionbenefitarticlessubscriberbenefitadssubscriberbenefitdiscordsubscriberbenefitcustomsubscriberbenefitgithubrepositorysubscriberbenefitdownloadablessubscriberdiscriminatormergejsonschema.md)**
+**[models.UsersListBenefitsResponse](../../models/userslistbenefitsresponse.md)**
 
 ### Errors
 
@@ -129,8 +134,13 @@ res = s.users.users_list_orders(security=polar_sh.UsersListOrdersSecurity(
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -144,7 +154,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceUserOrder](../../models/listresourceuserorder.md)**
+**[models.UsersListOrdersResponse](../../models/userslistordersresponse.md)**
 
 ### Errors
 
@@ -260,8 +270,13 @@ res = s.users.users_list_subscriptions(security=polar_sh.UsersListSubscriptionsS
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -275,7 +290,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceUserSubscription](../../models/listresourceusersubscription.md)**
+**[models.UsersListSubscriptionsResponse](../../models/userslistsubscriptionsresponse.md)**
 
 ### Errors
 
@@ -489,8 +504,13 @@ res = s.users.users_list_advertisement_campaigns(security=polar_sh.UsersListAdve
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -501,12 +521,12 @@ if res is not None:
 | `security`                                                                                                                                                              | [models.UsersListAdvertisementCampaignsSecurity](../../models/userslistadvertisementcampaignssecurity.md)                                                               | :heavy_check_mark:                                                                                                                                                      | N/A                                                                                                                                                                     |
 | `page`                                                                                                                                                                  | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |
 | `limit`                                                                                                                                                                 | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Size of a page, defaults to 10. Maximum is 100.                                                                                                                         |
-| `sorting`                                                                                                                                                               | [OptionalNullable[models.UsersListAdvertisementCampaignsQueryParamSorting]](../../models/userslistadvertisementcampaignsqueryparamsorting.md)                           | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
+| `sorting`                                                                                                                                                               | List[[models.UserAdvertisementSortProperty](../../models/useradvertisementsortproperty.md)]                                                                             | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
 | `retries`                                                                                                                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                        | :heavy_minus_sign:                                                                                                                                                      | Configuration to override the default retry behavior of the client.                                                                                                     |
 
 ### Response
 
-**[models.ListResourceUserAdvertisementCampaign](../../models/listresourceuseradvertisementcampaign.md)**
+**[models.UsersListAdvertisementCampaignsResponse](../../models/userslistadvertisementcampaignsresponse.md)**
 
 ### Errors
 
@@ -757,8 +777,13 @@ res = s.users.users_list_downloadables(security=polar_sh.UsersListDownloadablesS
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -775,7 +800,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceDownloadableRead](../../models/listresourcedownloadableread.md)**
+**[models.UsersListDownloadablesResponse](../../models/userslistdownloadablesresponse.md)**
 
 ### Errors
 

@@ -5,12 +5,12 @@
 
 ### Available Operations
 
-* [subscriptions_list](#subscriptions_list) - List Subscriptions
-* [subscriptions_create](#subscriptions_create) - Create Free Subscription
+* [list](#list) - List Subscriptions
+* [create](#create) - Create Free Subscription
 * [subscriptions_import](#subscriptions_import) - Import Subscriptions
 * [subscriptions_export](#subscriptions_export) - Export Subscriptions
 
-## subscriptions_list
+## list
 
 List subscriptions.
 
@@ -23,13 +23,18 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.subscriptions.subscriptions_list(security=polar_sh.SubscriptionsListSecurity(
+res = s.subscriptions.list(security=polar_sh.SubscriptionsListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -43,7 +48,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceSubscription](../../models/listresourcesubscription.md)**
+**[models.SubscriptionsListResponse](../../models/subscriptionslistresponse.md)**
 
 ### Errors
 
@@ -53,7 +58,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## subscriptions_create
+## create
 
 Create a subscription on the free tier for a given email.
 
@@ -66,10 +71,10 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.subscriptions.subscriptions_create(security=polar_sh.SubscriptionsCreateSecurity(
+res = s.subscriptions.create(security=polar_sh.SubscriptionsCreateSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), request={
-    "email": "Paxton_Schaden@hotmail.com",
+    "email": "Jena.Nienow28@yahoo.com",
     "product_id": "<value>",
 })
 

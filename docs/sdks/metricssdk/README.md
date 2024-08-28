@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [metrics_get](#metrics_get) - Get Metrics
+* [retrieve](#retrieve) - Get Metrics
 * [metrics_get_limits](#metrics_get_limits) - Get Metrics Limits
 
-## metrics_get
+## retrieve
 
 Get metrics about your orders and subscriptions.
 
@@ -22,12 +22,12 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.metrics.metrics_get(security=polar_sh.MetricsGetSecurity(
+res = s.metrics.retrieve(security=polar_sh.MetricsGetSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), request={
-    "start_date": dateutil.parser.parse("2022-03-06").date(),
-    "end_date": dateutil.parser.parse("2022-01-25").date(),
-    "interval": polar_sh.Interval.DAY,
+    "start_date": dateutil.parser.parse("2023-02-11").date(),
+    "end_date": dateutil.parser.parse("2024-11-01").date(),
+    "interval": polar_sh.Interval.HOUR,
 })
 
 if res is not None:

@@ -5,13 +5,13 @@
 
 ### Available Operations
 
-* [files_list](#files_list) - List Files
-* [files_create](#files_create) - Create File
+* [list](#list) - List Files
+* [create](#create) - Create File
 * [files_uploaded](#files_uploaded) - Complete File Upload
-* [files_delete](#files_delete) - Delete File
-* [files_update](#files_update) - Update File
+* [delete](#delete) - Delete File
+* [update](#update) - Update File
 
-## files_list
+## list
 
 List files.
 
@@ -24,13 +24,18 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.files.files_list(security=polar_sh.FilesListSecurity(
+res = s.files.list(security=polar_sh.FilesListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -47,7 +52,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceAnnotatedUnionDownloadableFileReadProductMediaFileReadOrganizationAvatarFileReadDiscriminatorMergeJSONSchema](../../models/listresourceannotateduniondownloadablefilereadproductmediafilereadorganizationavatarfilereaddiscriminatormergejsonschema.md)**
+**[models.FilesListResponse](../../models/fileslistresponse.md)**
 
 ### Errors
 
@@ -57,7 +62,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## files_create
+## create
 
 Create a file.
 
@@ -70,18 +75,18 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.files.files_create(security=polar_sh.FilesCreateSecurity(
+res = s.files.create(security=polar_sh.FilesCreateSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), request={
     "name": "<value>",
     "mime_type": "<value>",
-    "size": 4212,
+    "size": 489382,
     "upload": {
         "parts": [
             {
-                "number": 369186,
-                "chunk_start": 547093,
-                "chunk_end": 85233,
+                "number": 638424,
+                "chunk_start": 859213,
+                "chunk_end": 417458,
             },
         ],
     },
@@ -167,7 +172,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## files_delete
+## delete
 
 Delete a file.
 
@@ -180,7 +185,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-s.files.files_delete(security=polar_sh.FilesDeleteSecurity(
+s.files.delete(security=polar_sh.FilesDeleteSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>")
 
@@ -206,7 +211,7 @@ s.files.files_delete(security=polar_sh.FilesDeleteSecurity(
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## files_update
+## update
 
 Update a file.
 
@@ -219,7 +224,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.files.files_update(security=polar_sh.FilesUpdateSecurity(
+res = s.files.update(security=polar_sh.FilesUpdateSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>", file_patch={})
 

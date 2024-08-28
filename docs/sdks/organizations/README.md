@@ -5,13 +5,13 @@
 
 ### Available Operations
 
-* [organizations_list](#organizations_list) - List Organizations
-* [organizations_create](#organizations_create) - Create Organization
-* [organizations_get](#organizations_get) - Get Organization
-* [organizations_update](#organizations_update) - Update Organization
+* [list](#list) - List Organizations
+* [create](#create) - Create Organization
+* [retrieve](#retrieve) - Get Organization
+* [update](#update) - Update Organization
 * [organizations_list_organization_customers](#organizations_list_organization_customers) - List Organization Customers
 
-## organizations_list
+## list
 
 List organizations.
 
@@ -24,13 +24,18 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.organizations.organizations_list(security=polar_sh.OrganizationsListSecurity(
+res = s.organizations.list(security=polar_sh.OrganizationsListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -44,7 +49,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceOrganization](../../models/listresourceorganization.md)**
+**[models.OrganizationsListResponse](../../models/organizationslistresponse.md)**
 
 ### Errors
 
@@ -54,7 +59,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## organizations_create
+## create
 
 Create an organization.
 
@@ -67,7 +72,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.organizations.organizations_create(security=polar_sh.OrganizationsCreateSecurity(
+res = s.organizations.create(security=polar_sh.OrganizationsCreateSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), request={
     "name": "<value>",
@@ -100,7 +105,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## organizations_get
+## retrieve
 
 Get an organization by ID.
 
@@ -113,7 +118,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.organizations.organizations_get(security=polar_sh.OrganizationsGetSecurity(
+res = s.organizations.retrieve(security=polar_sh.OrganizationsGetSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>")
 
@@ -144,7 +149,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## organizations_update
+## update
 
 Update an organization.
 
@@ -157,7 +162,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.organizations.organizations_update(security=polar_sh.OrganizationsUpdateSecurity(
+res = s.organizations.update(security=polar_sh.OrganizationsUpdateSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>", organization_update={})
 
@@ -208,8 +213,13 @@ res = s.organizations.organizations_list_organization_customers(security=polar_s
 ), id="<value>")
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -226,7 +236,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceOrganizationCustomer](../../models/listresourceorganizationcustomer.md)**
+**[models.OrganizationsListOrganizationCustomersResponse](../../models/organizationslistorganizationcustomersresponse.md)**
 
 ### Errors
 

@@ -34,8 +34,13 @@ res = s.oauth2.oauth2_list_clients(security=polar_sh.Oauth2ListClientsSecurity(
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -50,7 +55,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceOAuth2Client](../../models/listresourceoauth2client.md)**
+**[models.Oauth2ListClientsResponse](../../models/oauth2listclientsresponse.md)**
 
 ### Errors
 

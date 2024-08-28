@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [external_organizations_list](#external_organizations_list) - List External Organizations
+* [list](#list) - List External Organizations
 
-## external_organizations_list
+## list
 
 List external organizations.
 
@@ -20,13 +20,18 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.external_organizations.external_organizations_list(security=polar_sh.ExternalOrganizationsListSecurity(
+res = s.external_organizations.list(security=polar_sh.ExternalOrganizationsListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -40,7 +45,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceExternalOrganization](../../models/listresourceexternalorganization.md)**
+**[models.ExternalOrganizationsListResponse](../../models/externalorganizationslistresponse.md)**
 
 ### Errors
 

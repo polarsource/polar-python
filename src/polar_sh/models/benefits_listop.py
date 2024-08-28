@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 from .benefittype import BenefitType
+from .listresource_union_benefitarticles_benefitads_benefitcustom_benefitdiscord_benefitgithubrepository_benefitdownloadables_ import ListResourceUnionBenefitArticlesBenefitAdsBenefitCustomBenefitDiscordBenefitGitHubRepositoryBenefitDownloadables, ListResourceUnionBenefitArticlesBenefitAdsBenefitCustomBenefitDiscordBenefitGitHubRepositoryBenefitDownloadablesTypedDict
 from polar_sh.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sh.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
 from pydantic import model_serializer
-from typing import List, Optional, TypedDict, Union
+from typing import Callable, List, Optional, TypedDict, Union
 from typing_extensions import Annotated, NotRequired
 
 
@@ -82,3 +83,13 @@ class BenefitsListRequest(BaseModel):
 
         return m
         
+
+class BenefitsListResponseTypedDict(TypedDict):
+    result: ListResourceUnionBenefitArticlesBenefitAdsBenefitCustomBenefitDiscordBenefitGitHubRepositoryBenefitDownloadablesTypedDict
+    
+
+class BenefitsListResponse(BaseModel):
+    next: Callable[[], Optional[BenefitsListResponse]]
+    
+    result: ListResourceUnionBenefitArticlesBenefitAdsBenefitCustomBenefitDiscordBenefitGitHubRepositoryBenefitDownloadables
+    

@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [advertisements_list](#advertisements_list) - List Campaigns
-* [advertisements_get](#advertisements_get) - Get Campaign
+* [list](#list) - List Campaigns
+* [retrieve](#retrieve) - Get Campaign
 
-## advertisements_list
+## list
 
 List active advertisement campaigns for a benefit.
 
@@ -22,11 +22,16 @@ s = Polar(
 )
 
 
-res = s.advertisements.advertisements_list(benefit_id="<value>")
+res = s.advertisements.list(benefit_id="<value>")
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -37,12 +42,12 @@ if res is not None:
 | `benefit_id`                                                                                                                                                            | *str*                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                      | N/A                                                                                                                                                                     |
 | `page`                                                                                                                                                                  | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |
 | `limit`                                                                                                                                                                 | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Size of a page, defaults to 10. Maximum is 100.                                                                                                                         |
-| `sorting`                                                                                                                                                               | [OptionalNullable[models.AdvertisementsListQueryParamSorting]](../../models/advertisementslistqueryparamsorting.md)                                                     | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
+| `sorting`                                                                                                                                                               | List[[models.AdvertisementSortProperty](../../models/advertisementsortproperty.md)]                                                                                     | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
 | `retries`                                                                                                                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                        | :heavy_minus_sign:                                                                                                                                                      | Configuration to override the default retry behavior of the client.                                                                                                     |
 
 ### Response
 
-**[models.AdvertisementCampaignListResource](../../models/advertisementcampaignlistresource.md)**
+**[models.AdvertisementsListResponse](../../models/advertisementslistresponse.md)**
 
 ### Errors
 
@@ -52,7 +57,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## advertisements_get
+## retrieve
 
 Get an advertisement campaign by ID.
 
@@ -66,7 +71,7 @@ s = Polar(
 )
 
 
-res = s.advertisements.advertisements_get(id="<value>")
+res = s.advertisements.retrieve(id="<value>")
 
 if res is not None:
     # handle response

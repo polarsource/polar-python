@@ -10,10 +10,10 @@ from pydantic import model_serializer
 from typing import TypedDict, Union
 
 
-DonationInputDonorTypedDict = Union[DonationUserTypedDict, DonationOrganizationTypedDict]
+DonorTypedDict = Union[DonationUserTypedDict, DonationOrganizationTypedDict]
 
 
-DonationInputDonor = Union[DonationUser, DonationOrganization]
+Donor = Union[DonationUser, DonationOrganization]
 
 
 class DonationInputTypedDict(TypedDict):
@@ -26,7 +26,7 @@ class DonationInputTypedDict(TypedDict):
     amount: int
     currency: str
     message: Nullable[str]
-    donor: Nullable[DonationInputDonorTypedDict]
+    donor: Nullable[DonorTypedDict]
     email: str
     issue: Nullable[IssueInputTypedDict]
     
@@ -41,7 +41,7 @@ class DonationInput(BaseModel):
     amount: int
     currency: str
     message: Nullable[str]
-    donor: Nullable[DonationInputDonor]
+    donor: Nullable[Donor]
     email: str
     issue: Nullable[IssueInput]
     

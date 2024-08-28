@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 from .benefittype import BenefitType
+from .listresource_annotated_union_benefitarticlessubscriber_benefitadssubscriber_benefitdiscordsubscriber_benefitcustomsubscriber_benefitgithubrepositorysubscriber_benefitdownloadablessubscriber_discriminator_mergejsonschema_ import ListResourceAnnotatedUnionBenefitArticlesSubscriberBenefitAdsSubscriberBenefitDiscordSubscriberBenefitCustomSubscriberBenefitGitHubRepositorySubscriberBenefitDownloadablesSubscriberDiscriminatorMergeJSONSchema, ListResourceAnnotatedUnionBenefitArticlesSubscriberBenefitAdsSubscriberBenefitDiscordSubscriberBenefitCustomSubscriberBenefitGitHubRepositorySubscriberBenefitDownloadablesSubscriberDiscriminatorMergeJSONSchemaTypedDict
+from .userbenefitsortproperty import UserBenefitSortProperty
 from polar_sh.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sh.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
 from pydantic import model_serializer
-from typing import Any, List, Optional, TypedDict, Union
+from typing import Callable, List, Optional, TypedDict, Union
 from typing_extensions import Annotated, NotRequired
 
 
@@ -51,14 +53,6 @@ SubscriptionIDFilter = Union[str, List[str]]
 r"""Filter by subscription ID."""
 
 
-SortingTypedDict = Union[List[Any], str]
-r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
-
-
-Sorting = Union[List[Any], str]
-r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
-
-
 class UsersListBenefitsRequestTypedDict(TypedDict):
     type: NotRequired[Nullable[BenefitTypeFilterTypedDict]]
     r"""Filter by benefit type."""
@@ -72,7 +66,7 @@ class UsersListBenefitsRequestTypedDict(TypedDict):
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
     r"""Size of a page, defaults to 10. Maximum is 100."""
-    sorting: NotRequired[Nullable[SortingTypedDict]]
+    sorting: NotRequired[Nullable[List[UserBenefitSortProperty]]]
     r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
     
 
@@ -89,7 +83,7 @@ class UsersListBenefitsRequest(BaseModel):
     r"""Page number, defaults to 1."""
     limit: Annotated[Optional[int], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = 10
     r"""Size of a page, defaults to 10. Maximum is 100."""
-    sorting: Annotated[OptionalNullable[Sorting], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+    sorting: Annotated[OptionalNullable[List[UserBenefitSortProperty]], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
     r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
     
     @model_serializer(mode="wrap")
@@ -118,3 +112,13 @@ class UsersListBenefitsRequest(BaseModel):
 
         return m
         
+
+class UsersListBenefitsResponseTypedDict(TypedDict):
+    result: ListResourceAnnotatedUnionBenefitArticlesSubscriberBenefitAdsSubscriberBenefitDiscordSubscriberBenefitCustomSubscriberBenefitGitHubRepositorySubscriberBenefitDownloadablesSubscriberDiscriminatorMergeJSONSchemaTypedDict
+    
+
+class UsersListBenefitsResponse(BaseModel):
+    next: Callable[[], Optional[UsersListBenefitsResponse]]
+    
+    result: ListResourceAnnotatedUnionBenefitArticlesSubscriberBenefitAdsSubscriberBenefitDiscordSubscriberBenefitCustomSubscriberBenefitGitHubRepositorySubscriberBenefitDownloadablesSubscriberDiscriminatorMergeJSONSchema
+    

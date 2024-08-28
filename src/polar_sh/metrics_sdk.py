@@ -9,7 +9,7 @@ from typing import Any, Optional, Union, cast
 class MetricsSDK(BaseSDK):
     
     
-    def metrics_get(
+    def retrieve(
         self, *,
         security: Union[models.MetricsGetSecurity, models.MetricsGetSecurityTypedDict],
         request: Union[models.MetricsGetRequest, models.MetricsGetRequestTypedDict],
@@ -89,7 +89,7 @@ class MetricsSDK(BaseSDK):
 
     
     
-    async def metrics_get_async(
+    async def retrieve_async(
         self, *,
         security: Union[models.MetricsGetSecurity, models.MetricsGetSecurityTypedDict],
         request: Union[models.MetricsGetRequest, models.MetricsGetRequestTypedDict],

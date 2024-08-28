@@ -9,7 +9,7 @@ from typing import Any, Optional, Union, cast
 class Checkouts(BaseSDK):
     
     
-    def checkouts_create(
+    def create(
         self, *,
         security: Union[models.CheckoutsCreateSecurity, models.CheckoutsCreateSecurityTypedDict],
         request: Union[models.CheckoutCreate, models.CheckoutCreateTypedDict],
@@ -90,7 +90,7 @@ class Checkouts(BaseSDK):
 
     
     
-    async def checkouts_create_async(
+    async def create_async(
         self, *,
         security: Union[models.CheckoutsCreateSecurity, models.CheckoutsCreateSecurityTypedDict],
         request: Union[models.CheckoutCreate, models.CheckoutCreateTypedDict],
@@ -171,7 +171,7 @@ class Checkouts(BaseSDK):
 
     
     
-    def checkouts_get(
+    def retrieve(
         self, *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -249,7 +249,7 @@ class Checkouts(BaseSDK):
 
     
     
-    async def checkouts_get_async(
+    async def retrieve_async(
         self, *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,

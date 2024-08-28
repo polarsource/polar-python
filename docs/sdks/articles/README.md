@@ -5,16 +5,16 @@
 
 ### Available Operations
 
-* [articles_list](#articles_list) - List Articles
-* [articles_create](#articles_create) - Create Article
-* [articles_get](#articles_get) - Get Article
-* [articles_delete](#articles_delete) - Delete Article
-* [articles_update](#articles_update) - Update Article
+* [list](#list) - List Articles
+* [create](#create) - Create Article
+* [retrieve](#retrieve) - Get Article
+* [delete](#delete) - Delete Article
+* [update](#update) - Update Article
 * [articles_get_receivers](#articles_get_receivers) - Get Article Receivers Count
 * [articles_send_preview](#articles_send_preview) - Send Article Preview
 * [articles_send](#articles_send) - Send Article
 
-## articles_list
+## list
 
 List articles.
 
@@ -27,13 +27,18 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.articles.articles_list(security=polar_sh.ArticlesListSecurity(
+res = s.articles.list(security=polar_sh.ArticlesListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -47,7 +52,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceArticle](../../models/listresourcearticle.md)**
+**[models.ArticlesListResponse](../../models/articleslistresponse.md)**
 
 ### Errors
 
@@ -57,7 +62,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## articles_create
+## create
 
 Create an article.
 
@@ -70,7 +75,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.articles.articles_create(security=polar_sh.ArticlesCreateSecurity(
+res = s.articles.create(security=polar_sh.ArticlesCreateSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), request={
     "title": "<value>",
@@ -102,7 +107,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## articles_get
+## retrieve
 
 Get an article by ID.
 
@@ -115,7 +120,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.articles.articles_get(security=polar_sh.ArticlesGetSecurity(
+res = s.articles.retrieve(security=polar_sh.ArticlesGetSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>")
 
@@ -146,7 +151,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## articles_delete
+## delete
 
 Delete an article.
 
@@ -159,7 +164,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-s.articles.articles_delete(security=polar_sh.ArticlesDeleteSecurity(
+s.articles.delete(security=polar_sh.ArticlesDeleteSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>")
 
@@ -185,7 +190,7 @@ s.articles.articles_delete(security=polar_sh.ArticlesDeleteSecurity(
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## articles_update
+## update
 
 Update an article.
 
@@ -198,7 +203,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.articles.articles_update(security=polar_sh.ArticlesUpdateSecurity(
+res = s.articles.update(security=polar_sh.ArticlesUpdateSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>", article_update={})
 

@@ -58,8 +58,13 @@ res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 ```
 
 </br>
@@ -77,8 +82,12 @@ async def main():
         open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
     ))
     if res is not None:
-        # handle response
-        pass
+        while True:
+            # handle items
+    
+            res = res.Next()
+            if res is None:
+                break
 
 asyncio.run(main())
 ```
@@ -108,223 +117,46 @@ asyncio.run(main())
 * [users_list_downloadables](docs/sdks/users/README.md#users_list_downloadables) - List Downloadables
 * [users_get_downloadable](docs/sdks/users/README.md#users_get_downloadable) - Get Downloadable
 
-### [documented](docs/sdks/documented/README.md)
-
-* [users_list_benefits](docs/sdks/documented/README.md#users_list_benefits) - List Benefits
-* [users_get_benefit](docs/sdks/documented/README.md#users_get_benefit) - Get Benefit
-* [users_list_orders](docs/sdks/documented/README.md#users_list_orders) - List Orders
-* [users_get_order](docs/sdks/documented/README.md#users_get_order) - Get Order
-* [users_get_order_invoice](docs/sdks/documented/README.md#users_get_order_invoice) - Get Order Invoice
-* [users_list_subscriptions](docs/sdks/documented/README.md#users_list_subscriptions) - List Subscriptions
-* [users_create_subscription](docs/sdks/documented/README.md#users_create_subscription) - Create Subscription
-* [users_get_subscription](docs/sdks/documented/README.md#users_get_subscription) - Get Subscription
-* [users_cancel_subscription](docs/sdks/documented/README.md#users_cancel_subscription) - Cancel Subscription
-* [users_update_subscription](docs/sdks/documented/README.md#users_update_subscription) - Update Subscription
-* [users_list_advertisement_campaigns](docs/sdks/documented/README.md#users_list_advertisement_campaigns) - List Advertisement Campaigns
-* [users_create_advertisement_campaign](docs/sdks/documented/README.md#users_create_advertisement_campaign) - Create Advertisement Campaign
-* [users_get_advertisement_campaign](docs/sdks/documented/README.md#users_get_advertisement_campaign) - Get Advertisement Campaign
-* [users_delete_advertisement_campaign](docs/sdks/documented/README.md#users_delete_advertisement_campaign) - Delete Advertisement Campaign
-* [users_update_advertisement_campaign](docs/sdks/documented/README.md#users_update_advertisement_campaign) - Update Advertisement Campaign
-* [users_enable_advertisement_campaign](docs/sdks/documented/README.md#users_enable_advertisement_campaign) - Enable Advertisement Campaign
-* [users_list_downloadables](docs/sdks/documented/README.md#users_list_downloadables) - List Downloadables
-* [users_get_downloadable](docs/sdks/documented/README.md#users_get_downloadable) - Get Downloadable
-* [external_organizations_list](docs/sdks/documented/README.md#external_organizations_list) - List External Organizations
-* [repositories_list](docs/sdks/documented/README.md#repositories_list) - List Repositories
-* [repositories_get](docs/sdks/documented/README.md#repositories_get) - Get Repository
-* [repositories_update](docs/sdks/documented/README.md#repositories_update) - Update Repository
-* [organizations_list](docs/sdks/documented/README.md#organizations_list) - List Organizations
-* [organizations_create](docs/sdks/documented/README.md#organizations_create) - Create Organization
-* [organizations_get](docs/sdks/documented/README.md#organizations_get) - Get Organization
-* [organizations_update](docs/sdks/documented/README.md#organizations_update) - Update Organization
-* [organizations_list_organization_customers](docs/sdks/documented/README.md#organizations_list_organization_customers) - List Organization Customers
-* [subscriptions_list](docs/sdks/documented/README.md#subscriptions_list) - List Subscriptions
-* [subscriptions_create](docs/sdks/documented/README.md#subscriptions_create) - Create Free Subscription
-* [subscriptions_import](docs/sdks/documented/README.md#subscriptions_import) - Import Subscriptions
-* [subscriptions_export](docs/sdks/documented/README.md#subscriptions_export) - Export Subscriptions
-* [articles_list](docs/sdks/documented/README.md#articles_list) - List Articles
-* [articles_create](docs/sdks/documented/README.md#articles_create) - Create Article
-* [articles_get](docs/sdks/documented/README.md#articles_get) - Get Article
-* [articles_delete](docs/sdks/documented/README.md#articles_delete) - Delete Article
-* [articles_update](docs/sdks/documented/README.md#articles_update) - Update Article
-* [articles_get_receivers](docs/sdks/documented/README.md#articles_get_receivers) - Get Article Receivers Count
-* [articles_send_preview](docs/sdks/documented/README.md#articles_send_preview) - Send Article Preview
-* [articles_send](docs/sdks/documented/README.md#articles_send) - Send Article
-* [advertisements_list](docs/sdks/documented/README.md#advertisements_list) - List Campaigns
-* [advertisements_get](docs/sdks/documented/README.md#advertisements_get) - Get Campaign
-* [oauth2_list_clients](docs/sdks/documented/README.md#oauth2_list_clients) - List Clients
-* [oauth2_oauth2_create_client](docs/sdks/documented/README.md#oauth2_oauth2_create_client) - Create Client
-* [oauth2_oauth2_get_client](docs/sdks/documented/README.md#oauth2_oauth2_get_client) - Get Client
-* [oauth2_oauth2_update_client](docs/sdks/documented/README.md#oauth2_oauth2_update_client) - Update Client
-* [oauth2_oauth2_delete_client](docs/sdks/documented/README.md#oauth2_oauth2_delete_client) - Delete Client
-* [oauth2_authorize](docs/sdks/documented/README.md#oauth2_authorize) - Authorize
-* [oauth2_request_token](docs/sdks/documented/README.md#oauth2_request_token) - Request Token
-* [oauth2_revoke_token](docs/sdks/documented/README.md#oauth2_revoke_token) - Revoke Token
-* [oauth2_introspect_token](docs/sdks/documented/README.md#oauth2_introspect_token) - Introspect Token
-* [oauth2_userinfo](docs/sdks/documented/README.md#oauth2_userinfo) - Get User Info
-* [benefits_list](docs/sdks/documented/README.md#benefits_list) - List Benefits
-* [benefits_create](docs/sdks/documented/README.md#benefits_create) - Create Benefit
-* [benefits_get](docs/sdks/documented/README.md#benefits_get) - Get Benefit
-* [benefits_delete](docs/sdks/documented/README.md#benefits_delete) - Delete Benefit
-* [benefits_update](docs/sdks/documented/README.md#benefits_update) - Update Benefit
-* [benefits_list_grants](docs/sdks/documented/README.md#benefits_list_grants) - List Benefit Grants
-* [products_list](docs/sdks/documented/README.md#products_list) - List Products
-* [products_create](docs/sdks/documented/README.md#products_create) - Create Product
-* [products_get](docs/sdks/documented/README.md#products_get) - Get Product
-* [products_update](docs/sdks/documented/README.md#products_update) - Update Product
-* [products_update_benefits](docs/sdks/documented/README.md#products_update_benefits) - Update Product Benefits
-* [orders_list](docs/sdks/documented/README.md#orders_list) - List Orders
-* [orders_get](docs/sdks/documented/README.md#orders_get) - Get Order
-* [orders_get_invoice](docs/sdks/documented/README.md#orders_get_invoice) - Get Order Invoice
-* [checkouts_create](docs/sdks/documented/README.md#checkouts_create) - Create Checkout
-* [checkouts_get](docs/sdks/documented/README.md#checkouts_get) - Get Checkout
-* [files_list](docs/sdks/documented/README.md#files_list) - List Files
-* [files_create](docs/sdks/documented/README.md#files_create) - Create File
-* [files_uploaded](docs/sdks/documented/README.md#files_uploaded) - Complete File Upload
-* [files_delete](docs/sdks/documented/README.md#files_delete) - Delete File
-* [files_update](docs/sdks/documented/README.md#files_update) - Update File
-* [metrics_get](docs/sdks/documented/README.md#metrics_get) - Get Metrics
-* [metrics_get_limits](docs/sdks/documented/README.md#metrics_get_limits) - Get Metrics Limits
-
-### [featured](docs/sdks/featured/README.md)
-
-* [users_list_benefits](docs/sdks/featured/README.md#users_list_benefits) - List Benefits
-* [users_get_benefit](docs/sdks/featured/README.md#users_get_benefit) - Get Benefit
-* [users_list_orders](docs/sdks/featured/README.md#users_list_orders) - List Orders
-* [users_get_order](docs/sdks/featured/README.md#users_get_order) - Get Order
-* [users_get_order_invoice](docs/sdks/featured/README.md#users_get_order_invoice) - Get Order Invoice
-* [users_list_subscriptions](docs/sdks/featured/README.md#users_list_subscriptions) - List Subscriptions
-* [users_create_subscription](docs/sdks/featured/README.md#users_create_subscription) - Create Subscription
-* [users_get_subscription](docs/sdks/featured/README.md#users_get_subscription) - Get Subscription
-* [users_cancel_subscription](docs/sdks/featured/README.md#users_cancel_subscription) - Cancel Subscription
-* [users_update_subscription](docs/sdks/featured/README.md#users_update_subscription) - Update Subscription
-* [users_list_downloadables](docs/sdks/featured/README.md#users_list_downloadables) - List Downloadables
-* [users_get_downloadable](docs/sdks/featured/README.md#users_get_downloadable) - Get Downloadable
-* [organizations_list](docs/sdks/featured/README.md#organizations_list) - List Organizations
-* [organizations_create](docs/sdks/featured/README.md#organizations_create) - Create Organization
-* [organizations_get](docs/sdks/featured/README.md#organizations_get) - Get Organization
-* [organizations_update](docs/sdks/featured/README.md#organizations_update) - Update Organization
-* [articles_list](docs/sdks/featured/README.md#articles_list) - List Articles
-* [articles_create](docs/sdks/featured/README.md#articles_create) - Create Article
-* [articles_get](docs/sdks/featured/README.md#articles_get) - Get Article
-* [articles_delete](docs/sdks/featured/README.md#articles_delete) - Delete Article
-* [articles_update](docs/sdks/featured/README.md#articles_update) - Update Article
-* [articles_get_receivers](docs/sdks/featured/README.md#articles_get_receivers) - Get Article Receivers Count
-* [articles_send_preview](docs/sdks/featured/README.md#articles_send_preview) - Send Article Preview
-* [articles_send](docs/sdks/featured/README.md#articles_send) - Send Article
-* [oauth2_request_token](docs/sdks/featured/README.md#oauth2_request_token) - Request Token
-* [oauth2_revoke_token](docs/sdks/featured/README.md#oauth2_revoke_token) - Revoke Token
-* [oauth2_introspect_token](docs/sdks/featured/README.md#oauth2_introspect_token) - Introspect Token
-* [oauth2_userinfo](docs/sdks/featured/README.md#oauth2_userinfo) - Get User Info
-* [products_list](docs/sdks/featured/README.md#products_list) - List Products
-* [products_create](docs/sdks/featured/README.md#products_create) - Create Product
-* [products_get](docs/sdks/featured/README.md#products_get) - Get Product
-* [products_update](docs/sdks/featured/README.md#products_update) - Update Product
-* [products_update_benefits](docs/sdks/featured/README.md#products_update_benefits) - Update Product Benefits
-* [checkouts_create](docs/sdks/featured/README.md#checkouts_create) - Create Checkout
-* [checkouts_get](docs/sdks/featured/README.md#checkouts_get) - Get Checkout
-
-### [funding](docs/sdks/fundingsdk/README.md)
-
-* [funding_search](docs/sdks/fundingsdk/README.md#funding_search) - Search
-* [funding_lookup](docs/sdks/fundingsdk/README.md#funding_lookup) - Lookup
-
 ### [external_organizations](docs/sdks/externalorganizations/README.md)
 
-* [external_organizations_list](docs/sdks/externalorganizations/README.md#external_organizations_list) - List External Organizations
-
-### [issue_funding](docs/sdks/issuefundingsdk/README.md)
-
-* [external_organizations_list](docs/sdks/issuefundingsdk/README.md#external_organizations_list) - List External Organizations
-* [repositories_list](docs/sdks/issuefundingsdk/README.md#repositories_list) - List Repositories
-* [repositories_get](docs/sdks/issuefundingsdk/README.md#repositories_get) - Get Repository
-* [repositories_update](docs/sdks/issuefundingsdk/README.md#repositories_update) - Update Repository
+* [list](docs/sdks/externalorganizations/README.md#list) - List External Organizations
 
 ### [repositories](docs/sdks/repositories/README.md)
 
-* [repositories_list](docs/sdks/repositories/README.md#repositories_list) - List Repositories
-* [repositories_get](docs/sdks/repositories/README.md#repositories_get) - Get Repository
-* [repositories_update](docs/sdks/repositories/README.md#repositories_update) - Update Repository
-
-### [rewards](docs/sdks/rewards/README.md)
-
-* [rewards_search](docs/sdks/rewards/README.md#rewards_search) - Search rewards
-* [rewards_summary](docs/sdks/rewards/README.md#rewards_summary) - Get rewards summary
-
-### [pull_requests](docs/sdks/pullrequests/README.md)
-
-* [pull_requests_search](docs/sdks/pullrequests/README.md#pull_requests_search) - Search pull requests
-
-### [accounts](docs/sdks/accounts/README.md)
-
-* [accounts_search](docs/sdks/accounts/README.md#accounts_search) - Search
-* [accounts_get](docs/sdks/accounts/README.md#accounts_get) - Get
-* [accounts_onboarding_link](docs/sdks/accounts/README.md#accounts_onboarding_link) - Onboarding Link
-* [accounts_dashboard_link](docs/sdks/accounts/README.md#accounts_dashboard_link) - Dashboard Link
-* [accounts_create](docs/sdks/accounts/README.md#accounts_create) - Create
-
-### [issues](docs/sdks/issues/README.md)
-
-* [issues_list](docs/sdks/issues/README.md#issues_list) - List Issues
-* [issues_lookup](docs/sdks/issues/README.md#issues_lookup) - Lookup
-* [issues_get_body](docs/sdks/issues/README.md#issues_get_body) - Get Body
-* [issues_get](docs/sdks/issues/README.md#issues_get) - Get issue
-* [issues_update](docs/sdks/issues/README.md#issues_update) - Update issue.
-* [issues_confirm](docs/sdks/issues/README.md#issues_confirm) - Mark an issue as confirmed solved.
-
-### [pledges](docs/sdks/pledges/README.md)
-
-* [pledges_search](docs/sdks/pledges/README.md#pledges_search) - Search pledges
-* [pledges_summary](docs/sdks/pledges/README.md#pledges_summary) - Get pledges summary
-* [pledges_spending](docs/sdks/pledges/README.md#pledges_spending) - Get user spending
-* [pledges_get](docs/sdks/pledges/README.md#pledges_get) - Get pledge
+* [list](docs/sdks/repositories/README.md#list) - List Repositories
+* [retrieve](docs/sdks/repositories/README.md#retrieve) - Get Repository
+* [update](docs/sdks/repositories/README.md#update) - Update Repository
 
 ### [organizations](docs/sdks/organizations/README.md)
 
-* [organizations_list](docs/sdks/organizations/README.md#organizations_list) - List Organizations
-* [organizations_create](docs/sdks/organizations/README.md#organizations_create) - Create Organization
-* [organizations_get](docs/sdks/organizations/README.md#organizations_get) - Get Organization
-* [organizations_update](docs/sdks/organizations/README.md#organizations_update) - Update Organization
+* [list](docs/sdks/organizations/README.md#list) - List Organizations
+* [create](docs/sdks/organizations/README.md#create) - Create Organization
+* [retrieve](docs/sdks/organizations/README.md#retrieve) - Get Organization
+* [update](docs/sdks/organizations/README.md#update) - Update Organization
 * [organizations_list_organization_customers](docs/sdks/organizations/README.md#organizations_list_organization_customers) - List Organization Customers
 
 ### [subscriptions](docs/sdks/subscriptions/README.md)
 
-* [subscriptions_list](docs/sdks/subscriptions/README.md#subscriptions_list) - List Subscriptions
-* [subscriptions_create](docs/sdks/subscriptions/README.md#subscriptions_create) - Create Free Subscription
+* [list](docs/sdks/subscriptions/README.md#list) - List Subscriptions
+* [create](docs/sdks/subscriptions/README.md#create) - Create Free Subscription
 * [subscriptions_import](docs/sdks/subscriptions/README.md#subscriptions_import) - Import Subscriptions
 * [subscriptions_export](docs/sdks/subscriptions/README.md#subscriptions_export) - Export Subscriptions
 
 ### [articles](docs/sdks/articles/README.md)
 
-* [articles_list](docs/sdks/articles/README.md#articles_list) - List Articles
-* [articles_create](docs/sdks/articles/README.md#articles_create) - Create Article
-* [articles_get](docs/sdks/articles/README.md#articles_get) - Get Article
-* [articles_delete](docs/sdks/articles/README.md#articles_delete) - Delete Article
-* [articles_update](docs/sdks/articles/README.md#articles_update) - Update Article
+* [list](docs/sdks/articles/README.md#list) - List Articles
+* [create](docs/sdks/articles/README.md#create) - Create Article
+* [retrieve](docs/sdks/articles/README.md#retrieve) - Get Article
+* [delete](docs/sdks/articles/README.md#delete) - Delete Article
+* [update](docs/sdks/articles/README.md#update) - Update Article
 * [articles_get_receivers](docs/sdks/articles/README.md#articles_get_receivers) - Get Article Receivers Count
 * [articles_send_preview](docs/sdks/articles/README.md#articles_send_preview) - Send Article Preview
 * [articles_send](docs/sdks/articles/README.md#articles_send) - Send Article
 
-### [transactions](docs/sdks/transactions/README.md)
-
-* [transactions_search_transactions](docs/sdks/transactions/README.md#transactions_search_transactions) - Search Transactions
-* [transactions_lookup_transaction](docs/sdks/transactions/README.md#transactions_lookup_transaction) - Lookup Transaction
-* [transactions_get_summary](docs/sdks/transactions/README.md#transactions_get_summary) - Get Summary
-* [transactions_get_payout_estimate](docs/sdks/transactions/README.md#transactions_get_payout_estimate) - Get Payout Estimate
-* [transactions_create_payout](docs/sdks/transactions/README.md#transactions_create_payout) - Create Payout
-* [transactions_get_payout_csv](docs/sdks/transactions/README.md#transactions_get_payout_csv) - Get Payout Csv
-
 ### [advertisements](docs/sdks/advertisements/README.md)
 
-* [advertisements_list](docs/sdks/advertisements/README.md#advertisements_list) - List Campaigns
-* [advertisements_get](docs/sdks/advertisements/README.md#advertisements_get) - Get Campaign
-
-### [donations](docs/sdks/donations/README.md)
-
-* [donations_search_donations](docs/sdks/donations/README.md#donations_search_donations) - Search Donations
-* [donations_create_payment_intent](docs/sdks/donations/README.md#donations_create_payment_intent) - Create Payment Intent
-* [donations_update_payment_intent](docs/sdks/donations/README.md#donations_update_payment_intent) - Update Payment Intent
-* [donations_statistics](docs/sdks/donations/README.md#donations_statistics) - Statistics
-* [donations_donations_public_search](docs/sdks/donations/README.md#donations_donations_public_search) - Donations Public Search
+* [list](docs/sdks/advertisements/README.md#list) - List Campaigns
+* [retrieve](docs/sdks/advertisements/README.md#retrieve) - Get Campaign
 
 ### [oauth2](docs/sdks/oauth2/README.md)
 
@@ -341,53 +173,43 @@ asyncio.run(main())
 
 ### [benefits](docs/sdks/benefits/README.md)
 
-* [benefits_list](docs/sdks/benefits/README.md#benefits_list) - List Benefits
-* [benefits_create](docs/sdks/benefits/README.md#benefits_create) - Create Benefit
-* [benefits_get](docs/sdks/benefits/README.md#benefits_get) - Get Benefit
-* [benefits_delete](docs/sdks/benefits/README.md#benefits_delete) - Delete Benefit
-* [benefits_update](docs/sdks/benefits/README.md#benefits_update) - Update Benefit
+* [list](docs/sdks/benefits/README.md#list) - List Benefits
+* [create](docs/sdks/benefits/README.md#create) - Create Benefit
+* [retrieve](docs/sdks/benefits/README.md#retrieve) - Get Benefit
+* [delete](docs/sdks/benefits/README.md#delete) - Delete Benefit
+* [update](docs/sdks/benefits/README.md#update) - Update Benefit
 * [benefits_list_grants](docs/sdks/benefits/README.md#benefits_list_grants) - List Benefit Grants
-
-### [webhooks](docs/sdks/webhooks/README.md)
-
-* [webhooks_list_webhook_endpoints](docs/sdks/webhooks/README.md#webhooks_list_webhook_endpoints) - List Webhook Endpoints
-* [webhooks_create_webhook_endpoint](docs/sdks/webhooks/README.md#webhooks_create_webhook_endpoint) - Create Webhook Endpoint
-* [webhooks_get_webhook_endpoint](docs/sdks/webhooks/README.md#webhooks_get_webhook_endpoint) - Get Webhook Endpoint
-* [webhooks_delete_webhook_endpoint](docs/sdks/webhooks/README.md#webhooks_delete_webhook_endpoint) - Delete Webhook Endpoint
-* [webhooks_update_webhook_endpoint](docs/sdks/webhooks/README.md#webhooks_update_webhook_endpoint) - Update Webhook Endpoint
-* [webhooks_list_webhook_deliveries](docs/sdks/webhooks/README.md#webhooks_list_webhook_deliveries) - List Webhook Deliveries
-* [webhooks_redeliver_webhook_event](docs/sdks/webhooks/README.md#webhooks_redeliver_webhook_event) - Redeliver Webhook Event
 
 ### [products](docs/sdks/products/README.md)
 
-* [products_list](docs/sdks/products/README.md#products_list) - List Products
-* [products_create](docs/sdks/products/README.md#products_create) - Create Product
-* [products_get](docs/sdks/products/README.md#products_get) - Get Product
-* [products_update](docs/sdks/products/README.md#products_update) - Update Product
+* [list](docs/sdks/products/README.md#list) - List Products
+* [create](docs/sdks/products/README.md#create) - Create Product
+* [retrieve](docs/sdks/products/README.md#retrieve) - Get Product
+* [update](docs/sdks/products/README.md#update) - Update Product
 * [products_update_benefits](docs/sdks/products/README.md#products_update_benefits) - Update Product Benefits
 
 ### [orders](docs/sdks/orders/README.md)
 
-* [orders_list](docs/sdks/orders/README.md#orders_list) - List Orders
-* [orders_get](docs/sdks/orders/README.md#orders_get) - Get Order
+* [list](docs/sdks/orders/README.md#list) - List Orders
+* [retrieve](docs/sdks/orders/README.md#retrieve) - Get Order
 * [orders_get_invoice](docs/sdks/orders/README.md#orders_get_invoice) - Get Order Invoice
 
 ### [checkouts](docs/sdks/checkouts/README.md)
 
-* [checkouts_create](docs/sdks/checkouts/README.md#checkouts_create) - Create Checkout
-* [checkouts_get](docs/sdks/checkouts/README.md#checkouts_get) - Get Checkout
+* [create](docs/sdks/checkouts/README.md#create) - Create Checkout
+* [retrieve](docs/sdks/checkouts/README.md#retrieve) - Get Checkout
 
 ### [files](docs/sdks/files/README.md)
 
-* [files_list](docs/sdks/files/README.md#files_list) - List Files
-* [files_create](docs/sdks/files/README.md#files_create) - Create File
+* [list](docs/sdks/files/README.md#list) - List Files
+* [create](docs/sdks/files/README.md#create) - Create File
 * [files_uploaded](docs/sdks/files/README.md#files_uploaded) - Complete File Upload
-* [files_delete](docs/sdks/files/README.md#files_delete) - Delete File
-* [files_update](docs/sdks/files/README.md#files_update) - Update File
+* [delete](docs/sdks/files/README.md#delete) - Delete File
+* [update](docs/sdks/files/README.md#update) - Update File
 
 ### [metrics](docs/sdks/metricssdk/README.md)
 
-* [metrics_get](docs/sdks/metricssdk/README.md#metrics_get) - Get Metrics
+* [retrieve](docs/sdks/metricssdk/README.md#retrieve) - Get Metrics
 * [metrics_get_limits](docs/sdks/metricssdk/README.md#metrics_get_limits) - Get Metrics Limits
 <!-- End Available Resources and Operations [operations] -->
 
@@ -408,7 +230,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.documented.subscriptions_import(security=polar_sh.SubscriptionsImportSecurity(
+res = s.subscriptions.subscriptions_import(security=polar_sh.SubscriptionsImportSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), request={
     "file": {
@@ -445,8 +267,13 @@ res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
     RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -466,8 +293,13 @@ res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 <!-- End Retries [retries] -->
@@ -504,8 +336,13 @@ except models.SDKError as e:
     raise(e)
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 <!-- End Error Handling [errors] -->
@@ -537,8 +374,13 @@ res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -560,8 +402,13 @@ res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 <!-- End Server Selection [server] -->
@@ -667,11 +514,16 @@ s = Polar(
 )
 
 
-res = s.documented.advertisements_list(benefit_id="<value>")
+res = s.advertisements.list(benefit_id="<value>")
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -690,8 +542,13 @@ res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 <!-- End Authentication [security] -->
@@ -710,6 +567,37 @@ logging.basicConfig(level=logging.DEBUG)
 s = Polar(debug_logger=logging.getLogger("polar_sh"))
 ```
 <!-- End Debugging [debug] -->
+
+<!-- Start Pagination [pagination] -->
+## Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `Next` method that can be called to pull down the next group of results. If the
+return value of `Next` is `None`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+```python
+import polar_sh
+from polar_sh import Polar
+
+s = Polar()
+
+
+res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
+    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
+))
+
+if res is not None:
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
+
+```
+<!-- End Pagination [pagination] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

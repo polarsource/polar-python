@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [orders_list](#orders_list) - List Orders
-* [orders_get](#orders_get) - Get Order
+* [list](#list) - List Orders
+* [retrieve](#retrieve) - Get Order
 * [orders_get_invoice](#orders_get_invoice) - Get Order Invoice
 
-## orders_list
+## list
 
 List orders.
 
@@ -22,13 +22,18 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.orders.orders_list(security=polar_sh.OrdersListSecurity(
+res = s.orders.list(security=polar_sh.OrdersListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -42,7 +47,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceOrder](../../models/listresourceorder.md)**
+**[models.OrdersListResponse](../../models/orderslistresponse.md)**
 
 ### Errors
 
@@ -52,7 +57,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## orders_get
+## retrieve
 
 Get an order by ID.
 
@@ -65,7 +70,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.orders.orders_get(security=polar_sh.OrdersGetSecurity(
+res = s.orders.retrieve(security=polar_sh.OrdersGetSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>")
 

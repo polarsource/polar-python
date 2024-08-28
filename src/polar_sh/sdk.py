@@ -8,33 +8,21 @@ from .utils.retries import RetryConfig
 import httpx
 from polar_sh import models, utils
 from polar_sh._hooks import SDKHooks
-from polar_sh.accounts import Accounts
 from polar_sh.advertisements import Advertisements
 from polar_sh.articles import Articles
 from polar_sh.benefits import Benefits
 from polar_sh.checkouts import Checkouts
-from polar_sh.documented import Documented
-from polar_sh.donations import Donations
 from polar_sh.external_organizations import ExternalOrganizations
-from polar_sh.featured import Featured
 from polar_sh.files import Files
-from polar_sh.funding_sdk import FundingSDK
-from polar_sh.issue_funding_sdk import IssueFundingSDK
-from polar_sh.issues import Issues
 from polar_sh.metrics_sdk import MetricsSDK
 from polar_sh.oauth2 import Oauth2
 from polar_sh.orders import Orders
 from polar_sh.organizations import Organizations
-from polar_sh.pledges import Pledges
 from polar_sh.products import Products
-from polar_sh.pull_requests import PullRequests
 from polar_sh.repositories import Repositories
-from polar_sh.rewards import Rewards
 from polar_sh.subscriptions import Subscriptions
-from polar_sh.transactions import Transactions
 from polar_sh.types import OptionalNullable, UNSET
 from polar_sh.users import Users
-from polar_sh.webhooks import Webhooks
 from typing import Any, Callable, Dict, Optional, Union
 
 class Polar(BaseSDK):
@@ -43,29 +31,14 @@ class Polar(BaseSDK):
     Read the docs at https://docs.polar.sh/api
     """
     users: Users
-    documented: Documented
-    r"""Endpoints shown and documented in the Polar API documentation."""
-    featured: Featured
-    r"""Endpoints featured in the Polar API documentation for their interest in common use-cases."""
-    funding: FundingSDK
     external_organizations: ExternalOrganizations
-    issue_funding: IssueFundingSDK
-    r"""Endpoints related to issue funding and rewards in the Polar API."""
     repositories: Repositories
-    rewards: Rewards
-    pull_requests: PullRequests
-    accounts: Accounts
-    issues: Issues
-    pledges: Pledges
     organizations: Organizations
     subscriptions: Subscriptions
     articles: Articles
-    transactions: Transactions
     advertisements: Advertisements
-    donations: Donations
     oauth2: Oauth2
     benefits: Benefits
-    webhooks: Webhooks
     products: Products
     orders: Orders
     checkouts: Checkouts
@@ -148,26 +121,14 @@ class Polar(BaseSDK):
 
     def _init_sdks(self):
         self.users = Users(self.sdk_configuration)
-        self.documented = Documented(self.sdk_configuration)
-        self.featured = Featured(self.sdk_configuration)
-        self.funding = FundingSDK(self.sdk_configuration)
         self.external_organizations = ExternalOrganizations(self.sdk_configuration)
-        self.issue_funding = IssueFundingSDK(self.sdk_configuration)
         self.repositories = Repositories(self.sdk_configuration)
-        self.rewards = Rewards(self.sdk_configuration)
-        self.pull_requests = PullRequests(self.sdk_configuration)
-        self.accounts = Accounts(self.sdk_configuration)
-        self.issues = Issues(self.sdk_configuration)
-        self.pledges = Pledges(self.sdk_configuration)
         self.organizations = Organizations(self.sdk_configuration)
         self.subscriptions = Subscriptions(self.sdk_configuration)
         self.articles = Articles(self.sdk_configuration)
-        self.transactions = Transactions(self.sdk_configuration)
         self.advertisements = Advertisements(self.sdk_configuration)
-        self.donations = Donations(self.sdk_configuration)
         self.oauth2 = Oauth2(self.sdk_configuration)
         self.benefits = Benefits(self.sdk_configuration)
-        self.webhooks = Webhooks(self.sdk_configuration)
         self.products = Products(self.sdk_configuration)
         self.orders = Orders(self.sdk_configuration)
         self.checkouts = Checkouts(self.sdk_configuration)

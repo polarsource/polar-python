@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [checkouts_create](#checkouts_create) - Create Checkout
-* [checkouts_get](#checkouts_get) - Get Checkout
+* [create](#create) - Create Checkout
+* [retrieve](#retrieve) - Get Checkout
 
-## checkouts_create
+## create
 
 Create a checkout session.
 
@@ -21,11 +21,11 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.checkouts.checkouts_create(security=polar_sh.CheckoutsCreateSecurity(
+res = s.checkouts.create(security=polar_sh.CheckoutsCreateSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), request={
     "product_price_id": "<value>",
-    "success_url": "http://unsung-scow.com",
+    "success_url": "http://limp-pastry.org",
 })
 
 if res is not None:
@@ -54,7 +54,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## checkouts_get
+## retrieve
 
 Get an active checkout session by ID.
 
@@ -68,7 +68,7 @@ s = Polar(
 )
 
 
-res = s.checkouts.checkouts_get(id="<value>")
+res = s.checkouts.retrieve(id="<value>")
 
 if res is not None:
     # handle response

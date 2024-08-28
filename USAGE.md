@@ -12,8 +12,13 @@ res = s.users.users_list_benefits(security=polar_sh.UsersListBenefitsSecurity(
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 ```
 
 </br>
@@ -31,8 +36,12 @@ async def main():
         open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
     ))
     if res is not None:
-        # handle response
-        pass
+        while True:
+            # handle items
+    
+            res = res.Next()
+            if res is None:
+                break
 
 asyncio.run(main())
 ```

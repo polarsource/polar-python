@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 from .articlevisibility import ArticleVisibility
+from .listresource_article_ import ListResourceArticle, ListResourceArticleTypedDict
 from polar_sh.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sh.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
 from pydantic import model_serializer
-from typing import List, Optional, TypedDict, Union
+from typing import Callable, List, Optional, TypedDict, Union
 from typing_extensions import Annotated, NotRequired
 
 
@@ -98,3 +99,13 @@ class ArticlesListRequest(BaseModel):
 
         return m
         
+
+class ArticlesListResponseTypedDict(TypedDict):
+    result: ListResourceArticleTypedDict
+    
+
+class ArticlesListResponse(BaseModel):
+    next: Callable[[], Optional[ArticlesListResponse]]
+    
+    result: ListResourceArticle
+    

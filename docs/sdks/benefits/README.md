@@ -5,14 +5,14 @@
 
 ### Available Operations
 
-* [benefits_list](#benefits_list) - List Benefits
-* [benefits_create](#benefits_create) - Create Benefit
-* [benefits_get](#benefits_get) - Get Benefit
-* [benefits_delete](#benefits_delete) - Delete Benefit
-* [benefits_update](#benefits_update) - Update Benefit
+* [list](#list) - List Benefits
+* [create](#create) - Create Benefit
+* [retrieve](#retrieve) - Get Benefit
+* [delete](#delete) - Delete Benefit
+* [update](#update) - Update Benefit
 * [benefits_list_grants](#benefits_list_grants) - List Benefit Grants
 
-## benefits_list
+## list
 
 List benefits.
 
@@ -25,13 +25,18 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.benefits.benefits_list(security=polar_sh.BenefitsListSecurity(
+res = s.benefits.list(security=polar_sh.BenefitsListSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ))
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -48,7 +53,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceUnionBenefitArticlesBenefitAdsBenefitCustomBenefitDiscordBenefitGitHubRepositoryBenefitDownloadables](../../models/listresourceunionbenefitarticlesbenefitadsbenefitcustombenefitdiscordbenefitgithubrepositorybenefitdownloadables.md)**
+**[models.BenefitsListResponse](../../models/benefitslistresponse.md)**
 
 ### Errors
 
@@ -58,7 +63,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## benefits_create
+## create
 
 Create a benefit.
 
@@ -71,13 +76,13 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.benefits.benefits_create(security=polar_sh.BenefitsCreateSecurity(
+res = s.benefits.create(security=polar_sh.BenefitsCreateSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), request={
-    "description": "Customer-focused client-driven groupware",
-    "is_tax_applicable": False,
+    "description": "Multi-tiered motivating standardization",
     "properties": {
-        "note": "<value>",
+        "guild_token": "<value>",
+        "role_id": "<value>",
     },
 })
 
@@ -107,7 +112,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## benefits_get
+## retrieve
 
 Get a benefit by ID.
 
@@ -120,7 +125,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.benefits.benefits_get(security=polar_sh.BenefitsGetSecurity(
+res = s.benefits.retrieve(security=polar_sh.BenefitsGetSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>")
 
@@ -151,7 +156,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## benefits_delete
+## delete
 
 Delete a benefit.
 
@@ -168,7 +173,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-s.benefits.benefits_delete(security=polar_sh.BenefitsDeleteSecurity(
+s.benefits.delete(security=polar_sh.BenefitsDeleteSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>")
 
@@ -194,7 +199,7 @@ s.benefits.benefits_delete(security=polar_sh.BenefitsDeleteSecurity(
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## benefits_update
+## update
 
 Update a benefit.
 
@@ -207,7 +212,7 @@ from polar_sh import Polar
 s = Polar()
 
 
-res = s.benefits.benefits_update(security=polar_sh.BenefitsUpdateSecurity(
+res = s.benefits.update(security=polar_sh.BenefitsUpdateSecurity(
     open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
 ), id="<value>", request_body={})
 
@@ -262,8 +267,13 @@ res = s.benefits.benefits_list_grants(security=polar_sh.BenefitsListGrantsSecuri
 })
 
 if res is not None:
-    # handle response
-    pass
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 
 ```
 
@@ -277,7 +287,7 @@ if res is not None:
 
 ### Response
 
-**[models.ListResourceBenefitGrant](../../models/listresourcebenefitgrant.md)**
+**[models.BenefitsListGrantsResponse](../../models/benefitslistgrantsresponse.md)**
 
 ### Errors
 
