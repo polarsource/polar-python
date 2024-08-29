@@ -18,7 +18,7 @@ List products.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -40,10 +40,16 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [models.ProductsListRequest](../../models/productslistrequest.md)   | :heavy_check_mark:                                                  | The request object to use for the request.                          |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                                                                                  | Type                                                                                                                                       | Required                                                                                                                                   | Description                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `organization_id`                                                                                                                          | [OptionalNullable[models.ProductsListQueryParamOrganizationIDFilter]](../../models/productslistqueryparamorganizationidfilter.md)          | :heavy_minus_sign:                                                                                                                         | Filter by organization ID.                                                                                                                 |
+| `is_archived`                                                                                                                              | *OptionalNullable[bool]*                                                                                                                   | :heavy_minus_sign:                                                                                                                         | Filter on archived products.                                                                                                               |
+| `is_recurring`                                                                                                                             | *OptionalNullable[bool]*                                                                                                                   | :heavy_minus_sign:                                                                                                                         | Filter on recurring products. If `true`, only subscriptions tiers are returned. If `false`, only one-time purchase products are returned.  |
+| `benefit_id`                                                                                                                               | [OptionalNullable[models.QueryParamBenefitIDFilter]](../../models/queryparambenefitidfilter.md)                                            | :heavy_minus_sign:                                                                                                                         | Filter products granting specific benefit.                                                                                                 |
+| `type`                                                                                                                                     | [OptionalNullable[models.QueryParamSubscriptionTierTypeFilter]](../../models/queryparamsubscriptiontiertypefilter.md)                      | :heavy_minus_sign:                                                                                                                         | Filter by subscription tier type.                                                                                                          |
+| `page`                                                                                                                                     | *Optional[int]*                                                                                                                            | :heavy_minus_sign:                                                                                                                         | Page number, defaults to 1.                                                                                                                |
+| `limit`                                                                                                                                    | *Optional[int]*                                                                                                                            | :heavy_minus_sign:                                                                                                                         | Size of a page, defaults to 10. Maximum is 100.                                                                                            |
+| `retries`                                                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                           | :heavy_minus_sign:                                                                                                                         | Configuration to override the default retry behavior of the client.                                                                        |
 
 ### Response
 
@@ -64,8 +70,8 @@ Create a product.
 ### Example Usage
 
 ```python
-import polar_sh
-from polar_sh import Polar
+import polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -76,7 +82,7 @@ res = s.products.create(request={
     "name": "<value>",
     "prices": [
         {
-            "recurring_interval": polar_sh.ProductPriceRecurringInterval.MONTH,
+            "recurring_interval": polar.ProductPriceRecurringInterval.MONTH,
             "price_amount": 638424,
         },
     ],
@@ -114,7 +120,7 @@ Get a product by ID.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -156,7 +162,7 @@ Update a product.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -200,7 +206,7 @@ Update benefits granted by a product.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

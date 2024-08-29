@@ -21,7 +21,7 @@ List articles.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -43,10 +43,17 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [models.ArticlesListRequest](../../models/articleslistrequest.md)   | :heavy_check_mark:                                                  | The request object to use for the request.                          |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                                                                         | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `organization_id`                                                                                                                 | [OptionalNullable[models.ArticlesListQueryParamOrganizationIDFilter]](../../models/articleslistqueryparamorganizationidfilter.md) | :heavy_minus_sign:                                                                                                                | Filter by organization ID.                                                                                                        |
+| `slug`                                                                                                                            | *OptionalNullable[str]*                                                                                                           | :heavy_minus_sign:                                                                                                                | Filter by slug.                                                                                                                   |
+| `visibility`                                                                                                                      | [OptionalNullable[models.ArticleVisibilityFilter]](../../models/articlevisibilityfilter.md)                                       | :heavy_minus_sign:                                                                                                                | Filter by visibility.                                                                                                             |
+| `is_subscribed`                                                                                                                   | *OptionalNullable[bool]*                                                                                                          | :heavy_minus_sign:                                                                                                                | Filter by subscription status.                                                                                                    |
+| `is_published`                                                                                                                    | *OptionalNullable[bool]*                                                                                                          | :heavy_minus_sign:                                                                                                                | Filter by published status.                                                                                                       |
+| `is_pinned`                                                                                                                       | *OptionalNullable[bool]*                                                                                                          | :heavy_minus_sign:                                                                                                                | Filter by pinned status.                                                                                                          |
+| `page`                                                                                                                            | *Optional[int]*                                                                                                                   | :heavy_minus_sign:                                                                                                                | Page number, defaults to 1.                                                                                                       |
+| `limit`                                                                                                                           | *Optional[int]*                                                                                                                   | :heavy_minus_sign:                                                                                                                | Size of a page, defaults to 10. Maximum is 100.                                                                                   |
+| `retries`                                                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                  | :heavy_minus_sign:                                                                                                                | Configuration to override the default retry behavior of the client.                                                               |
 
 ### Response
 
@@ -67,7 +74,7 @@ Create an article.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -110,7 +117,7 @@ Get an article by ID.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -152,7 +159,7 @@ Update an article.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -196,7 +203,7 @@ Delete an article.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -233,7 +240,7 @@ Get number of potential receivers for an article.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -274,7 +281,7 @@ Send an article preview by email.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -320,7 +327,7 @@ Send an article by email to all subscribers.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

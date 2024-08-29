@@ -35,7 +35,7 @@ python:
       shared: ""
       webhooks: ""
   inputModelSuffix: input
-  maxMethodParams: 0
+  maxMethodParams: 100
   methodArguments: infer-optional-args
   outputModelSuffix: output
   packageName: polar

@@ -19,7 +19,7 @@ List benefits.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -68,7 +68,7 @@ Create a benefit.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -115,7 +115,7 @@ Get a benefit by ID.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -157,7 +157,7 @@ Update a benefit.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -205,7 +205,7 @@ Delete a benefit.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -244,16 +244,14 @@ It's especially useful to check if a user has been granted a benefit.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 
-res = s.benefits.grants(request={
-    "id": "<value>",
-})
+res = s.benefits.grants(id="<value>")
 
 if res is not None:
     while True:
@@ -268,10 +266,15 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `request`                                                             | [models.BenefitsGrantsRequest](../../models/benefitsgrantsrequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
-| `retries`                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)      | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |
+| Parameter                                                                                                                         | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                                              | *str*                                                                                                                             | :heavy_check_mark:                                                                                                                | N/A                                                                                                                               |
+| `is_granted`                                                                                                                      | *OptionalNullable[bool]*                                                                                                          | :heavy_minus_sign:                                                                                                                | Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned.  |
+| `user_id`                                                                                                                         | *OptionalNullable[str]*                                                                                                           | :heavy_minus_sign:                                                                                                                | Filter by user ID.                                                                                                                |
+| `github_user_id`                                                                                                                  | *OptionalNullable[int]*                                                                                                           | :heavy_minus_sign:                                                                                                                | Filter by GitHub user ID. Only available for users who have linked their GitHub account on Polar.                                 |
+| `page`                                                                                                                            | *Optional[int]*                                                                                                                   | :heavy_minus_sign:                                                                                                                | Page number, defaults to 1.                                                                                                       |
+| `limit`                                                                                                                           | *Optional[int]*                                                                                                                   | :heavy_minus_sign:                                                                                                                | Size of a page, defaults to 10. Maximum is 100.                                                                                   |
+| `retries`                                                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                  | :heavy_minus_sign:                                                                                                                | Configuration to override the default retry behavior of the client.                                                               |
 
 ### Response
 

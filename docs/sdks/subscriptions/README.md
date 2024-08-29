@@ -17,7 +17,7 @@ List subscriptions.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -39,10 +39,16 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [models.SubscriptionsListRequest](../../models/subscriptionslistrequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
-| `retries`                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)            | :heavy_minus_sign:                                                          | Configuration to override the default retry behavior of the client.         |
+| Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `organization_id`                                                                                                                                                       | [OptionalNullable[models.SubscriptionsListQueryParamOrganizationIDFilter]](../../models/subscriptionslistqueryparamorganizationidfilter.md)                             | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
+| `product_id`                                                                                                                                                            | [OptionalNullable[models.SubscriptionsListQueryParamProductIDFilter]](../../models/subscriptionslistqueryparamproductidfilter.md)                                       | :heavy_minus_sign:                                                                                                                                                      | Filter by product ID.                                                                                                                                                   |
+| `type`                                                                                                                                                                  | [OptionalNullable[models.SubscriptionTierTypeFilter]](../../models/subscriptiontiertypefilter.md)                                                                       | :heavy_minus_sign:                                                                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>Filter by subscription tier type.      |
+| `active`                                                                                                                                                                | *OptionalNullable[bool]*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                      | Filter by active or inactive subscription.                                                                                                                              |
+| `page`                                                                                                                                                                  | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |
+| `limit`                                                                                                                                                                 | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Size of a page, defaults to 10. Maximum is 100.                                                                                                                         |
+| `sorting`                                                                                                                                                               | List[[models.SubscriptionSortProperty](../../models/subscriptionsortproperty.md)]                                                                                       | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
+| `retries`                                                                                                                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                        | :heavy_minus_sign:                                                                                                                                                      | Configuration to override the default retry behavior of the client.                                                                                                     |
 
 ### Response
 
@@ -63,7 +69,7 @@ Create a subscription on the free tier for a given email.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -107,7 +113,7 @@ Import subscriptions from a CSV file.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -154,7 +160,7 @@ Export subscriptions as a CSV file.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

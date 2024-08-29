@@ -16,7 +16,7 @@ List repositories.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -38,10 +38,17 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `request`                                                                 | [models.RepositoriesListRequest](../../models/repositorieslistrequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
-| `retries`                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)          | :heavy_minus_sign:                                                        | Configuration to override the default retry behavior of the client.       |
+| Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `platform`                                                                                                                                                              | [OptionalNullable[models.QueryParamPlatformFilter]](../../models/queryparamplatformfilter.md)                                                                           | :heavy_minus_sign:                                                                                                                                                      | Filter by platform.                                                                                                                                                     |
+| `name`                                                                                                                                                                  | [OptionalNullable[models.QueryParamRepositoryNameFilter]](../../models/queryparamrepositorynamefilter.md)                                                               | :heavy_minus_sign:                                                                                                                                                      | Filter by name.                                                                                                                                                         |
+| `external_organization_name`                                                                                                                                            | [OptionalNullable[models.ExternalOrganizationNameFilter]](../../models/externalorganizationnamefilter.md)                                                               | :heavy_minus_sign:                                                                                                                                                      | Filter by external organization name.                                                                                                                                   |
+| `is_private`                                                                                                                                                            | *OptionalNullable[bool]*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                      | Filter by private status.                                                                                                                                               |
+| `organization_id`                                                                                                                                                       | [OptionalNullable[models.RepositoriesListQueryParamOrganizationIDFilter]](../../models/repositorieslistqueryparamorganizationidfilter.md)                               | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
+| `page`                                                                                                                                                                  | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |
+| `limit`                                                                                                                                                                 | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Size of a page, defaults to 10. Maximum is 100.                                                                                                                         |
+| `sorting`                                                                                                                                                               | List[[models.RepositorySortProperty](../../models/repositorysortproperty.md)]                                                                                           | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
+| `retries`                                                                                                                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                        | :heavy_minus_sign:                                                                                                                                                      | Configuration to override the default retry behavior of the client.                                                                                                     |
 
 ### Response
 
@@ -62,7 +69,7 @@ Get a repository by ID.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -104,7 +111,7 @@ Update a repository.
 ### Example Usage
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
