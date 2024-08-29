@@ -17,7 +17,7 @@ List subscriptions.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -69,7 +69,7 @@ Create a subscription on the free tier for a given email.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -113,7 +113,7 @@ Import subscriptions from a CSV file.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -160,7 +160,7 @@ Export subscriptions as a CSV file.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

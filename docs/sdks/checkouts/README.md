@@ -15,7 +15,7 @@ Create a checkout session.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -59,7 +59,7 @@ Get an active checkout session by ID.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

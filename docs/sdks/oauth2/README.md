@@ -17,7 +17,7 @@ Request an access token using a valid grant.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -62,7 +62,7 @@ Revoke an access token or a refresh token.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -106,7 +106,7 @@ Get information about an access token.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -150,7 +150,7 @@ Get information about the authenticated user.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

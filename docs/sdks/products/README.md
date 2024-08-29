@@ -18,7 +18,7 @@ List products.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -70,8 +70,8 @@ Create a product.
 ### Example Usage
 
 ```python
-import polar
-from polar import Polar
+import polar_sh
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -82,7 +82,7 @@ res = s.products.create(request={
     "name": "<value>",
     "prices": [
         {
-            "recurring_interval": polar.ProductPriceRecurringInterval.MONTH,
+            "recurring_interval": polar_sh.ProductPriceRecurringInterval.MONTH,
             "price_amount": 638424,
         },
     ],
@@ -120,7 +120,7 @@ Get a product by ID.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -162,7 +162,7 @@ Update a product.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -206,7 +206,7 @@ Update benefits granted by a product.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

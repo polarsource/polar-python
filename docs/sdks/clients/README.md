@@ -18,7 +18,7 @@ List OAuth2 clients.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -65,7 +65,7 @@ Create an OAuth2 client.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -111,7 +111,7 @@ Get an OAuth2 client by Client ID.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -152,7 +152,7 @@ Update an OAuth2 client.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -200,7 +200,7 @@ Delete an OAuth2 client.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

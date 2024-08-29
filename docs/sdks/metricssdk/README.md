@@ -16,15 +16,15 @@ Get metrics about your orders and subscriptions.
 
 ```python
 import dateutil.parser
-import polar
-from polar import Polar
+import polar_sh
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 
-res = s.metrics.retrieve(start_date=dateutil.parser.parse("2023-02-11").date(), end_date=dateutil.parser.parse("2024-11-01").date(), interval=polar.Interval.HOUR)
+res = s.metrics.retrieve(start_date=dateutil.parser.parse("2023-02-11").date(), end_date=dateutil.parser.parse("2024-11-01").date(), interval=polar_sh.Interval.HOUR)
 
 if res is not None:
     # handle response
@@ -63,7 +63,7 @@ Get the interval limits for the metrics endpoint.
 ### Example Usage
 
 ```python
-from polar import Polar
+from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

@@ -1,16 +1,16 @@
 [tool.poetry]
-name = "polar"
-version = "0.4.1"
+name = "polar-sh"
+version = "0.1.0"
 description = "Polar SDK for Python"
 authors = ["Polar",]
 readme = "README-PYPI.md"
 packages = [
-    { include = "polar", from = "src" }
+    { include = "polar_sh", from = "src" }
 ]
-include = ["py.typed", "src/polar/py.typed"]
+include = ["py.typed", "src/polar_sh/py.typed"]
 
 [tool.setuptools.package-data]
-"*" = ["py.typed", "src/polar/py.typed"]
+"*" = ["py.typed", "src/polar_sh/py.typed"]
 
 [virtualenvs]
 in-project = true
