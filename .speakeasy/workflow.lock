@@ -2,16 +2,16 @@ speakeasyVersion: 1.382.0
 sources:
     Polar-OAS:
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:dba606aad8b9ad4be4d3841be7e4d318af413d26e4971f578f93dec4380d418f
-        sourceBlobDigest: sha256:ef869d012295d0bbbbe68d1a942f9b44ca8544c15c9fc29b2c0fa27f04fc7301
+        sourceRevisionDigest: sha256:095bfc945d733625e16f13ae3257a53221a78cc6cb75c6301a74ede022df4260
+        sourceBlobDigest: sha256:2e445b28e1c8f9fe80a9f4cfd04b44748fc6daa3cc521d13d73ea571bec616f2
         tags:
             - latest
 targets:
     polar:
         source: Polar-OAS
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:dba606aad8b9ad4be4d3841be7e4d318af413d26e4971f578f93dec4380d418f
-        sourceBlobDigest: sha256:ef869d012295d0bbbbe68d1a942f9b44ca8544c15c9fc29b2c0fa27f04fc7301
+        sourceRevisionDigest: sha256:095bfc945d733625e16f13ae3257a53221a78cc6cb75c6301a74ede022df4260
+        sourceBlobDigest: sha256:2e445b28e1c8f9fe80a9f4cfd04b44748fc6daa3cc521d13d73ea571bec616f2
         outLocation: /Users/fvoron/Development/polar-python
 workflow:
     workflowVersion: 1.0.0
@@ -21,7 +21,8 @@ workflow:
             inputs:
                 - location: https://api.polar.sh/openapi.json
             overlays:
-                - location: .speakeasy/overlay.yml
+                - location: .speakeasy/security.overlay.yml
+                - location: .speakeasy/type_parameter.overlay.yml
             registry:
                 location: registry.speakeasyapi.dev/polar/polar/polar-oas
     targets:

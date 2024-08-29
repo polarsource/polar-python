@@ -6,6 +6,7 @@ from .listresource_annotated_union_benefitarticlessubscriber_benefitadssubscribe
 from .userbenefitsortproperty import UserBenefitSortProperty
 from polar.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar.utils import FieldMetadata, QueryParamMetadata
+import pydantic
 from pydantic import model_serializer
 from typing import Callable, List, Optional, TypedDict, Union
 from typing_extensions import Annotated, NotRequired
@@ -44,7 +45,7 @@ r"""Filter by subscription ID."""
 
 
 class UsersBenefitsListRequestTypedDict(TypedDict):
-    type: NotRequired[Nullable[BenefitTypeFilterTypedDict]]
+    type_filter: NotRequired[Nullable[BenefitTypeFilterTypedDict]]
     r"""Filter by benefit type."""
     organization_id: NotRequired[Nullable[OrganizationIDFilterTypedDict]]
     r"""Filter by organization ID."""
@@ -61,7 +62,7 @@ class UsersBenefitsListRequestTypedDict(TypedDict):
     
 
 class UsersBenefitsListRequest(BaseModel):
-    type: Annotated[OptionalNullable[BenefitTypeFilter], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+    type_filter: Annotated[OptionalNullable[BenefitTypeFilter], pydantic.Field(alias="type"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
     r"""Filter by benefit type."""
     organization_id: Annotated[OptionalNullable[OrganizationIDFilter], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
     r"""Filter by organization ID."""
@@ -78,8 +79,8 @@ class UsersBenefitsListRequest(BaseModel):
     
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["type", "organization_id", "order_id", "subscription_id", "page", "limit", "sorting"]
-        nullable_fields = ["type", "organization_id", "order_id", "subscription_id", "sorting"]
+        optional_fields = ["type_filter", "organization_id", "order_id", "subscription_id", "page", "limit", "sorting"]
+        nullable_fields = ["type_filter", "organization_id", "order_id", "subscription_id", "sorting"]
         null_default_fields = []
 
         serialized = handler(self)

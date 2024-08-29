@@ -4,20 +4,19 @@ from __future__ import annotations
 from .advertisementcampaign import AdvertisementCampaign, AdvertisementCampaignTypedDict
 from .pagination import Pagination, PaginationTypedDict
 from polar.types import BaseModel
-from typing import List, Optional, TypedDict
-from typing_extensions import NotRequired
+from typing import List, TypedDict
 
 
 class AdvertisementCampaignListResourceTypedDict(TypedDict):
+    items: List[AdvertisementCampaignTypedDict]
     pagination: PaginationTypedDict
     dimensions: List[int]
     r"""The dimensions (width, height) in pixels of the advertisement images."""
-    items: NotRequired[List[AdvertisementCampaignTypedDict]]
     
 
 class AdvertisementCampaignListResource(BaseModel):
+    items: List[AdvertisementCampaign]
     pagination: Pagination
     dimensions: List[int]
     r"""The dimensions (width, height) in pixels of the advertisement images."""
-    items: Optional[List[AdvertisementCampaign]] = None
     

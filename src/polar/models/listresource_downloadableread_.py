@@ -4,16 +4,15 @@ from __future__ import annotations
 from .downloadableread import DownloadableRead, DownloadableReadTypedDict
 from .pagination import Pagination, PaginationTypedDict
 from polar.types import BaseModel
-from typing import List, Optional, TypedDict
-from typing_extensions import NotRequired
+from typing import List, TypedDict
 
 
 class ListResourceDownloadableReadTypedDict(TypedDict):
+    items: List[DownloadableReadTypedDict]
     pagination: PaginationTypedDict
-    items: NotRequired[List[DownloadableReadTypedDict]]
     
 
 class ListResourceDownloadableRead(BaseModel):
+    items: List[DownloadableRead]
     pagination: Pagination
-    items: Optional[List[DownloadableRead]] = None
     

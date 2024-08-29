@@ -8,8 +8,8 @@ from .productmediafileread_output import ProductMediaFileReadOutput, ProductMedi
 from polar.types import BaseModel
 from polar.utils import get_discriminator
 from pydantic import Discriminator, Tag
-from typing import List, Optional, TypedDict, Union
-from typing_extensions import Annotated, NotRequired
+from typing import List, TypedDict, Union
+from typing_extensions import Annotated
 
 
 FileReadTypedDict = Union[DownloadableFileReadTypedDict, ProductMediaFileReadOutputTypedDict, OrganizationAvatarFileReadTypedDict]
@@ -19,11 +19,11 @@ FileRead = Annotated[Union[Annotated[DownloadableFileRead, Tag("downloadable")],
 
 
 class ListResourceAnnotatedUnionDownloadableFileReadProductMediaFileReadOrganizationAvatarFileReadDiscriminatorMergeJSONSchemaTypedDict(TypedDict):
+    items: List[FileReadTypedDict]
     pagination: PaginationTypedDict
-    items: NotRequired[List[FileReadTypedDict]]
     
 
 class ListResourceAnnotatedUnionDownloadableFileReadProductMediaFileReadOrganizationAvatarFileReadDiscriminatorMergeJSONSchema(BaseModel):
+    items: List[FileRead]
     pagination: Pagination
-    items: Optional[List[FileRead]] = None
     

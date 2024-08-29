@@ -16,7 +16,7 @@ class Products(BaseSDK):
         is_archived: OptionalNullable[bool] = UNSET,
         is_recurring: OptionalNullable[bool] = UNSET,
         benefit_id: OptionalNullable[Union[models.QueryParamBenefitIDFilter, models.QueryParamBenefitIDFilterTypedDict]] = UNSET,
-        type_: OptionalNullable[Union[models.QueryParamSubscriptionTierTypeFilter, models.QueryParamSubscriptionTierTypeFilterTypedDict]] = UNSET,
+        type_filter: OptionalNullable[Union[models.QueryParamSubscriptionTierTypeFilter, models.QueryParamSubscriptionTierTypeFilterTypedDict]] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -31,7 +31,7 @@ class Products(BaseSDK):
         :param is_archived: Filter on archived products.
         :param is_recurring: Filter on recurring products. If `true`, only subscriptions tiers are returned. If `false`, only one-time purchase products are returned.
         :param benefit_id: Filter products granting specific benefit.
-        :param type: Filter by subscription tier type.
+        :param type_filter: Filter by subscription tier type.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -51,7 +51,7 @@ class Products(BaseSDK):
             is_archived=is_archived,
             is_recurring=is_recurring,
             benefit_id=benefit_id,
-            type=type_,
+            type_filter=type_filter,
             page=page,
             limit=limit,
         )
@@ -115,7 +115,7 @@ class Products(BaseSDK):
                 is_archived=is_archived,
                 is_recurring=is_recurring,
                 benefit_id=benefit_id,
-                type=type,
+                type_filter=type_filter,
                 page=next_page,
                 limit=limit,
                 retries=retries,
@@ -141,7 +141,7 @@ class Products(BaseSDK):
         is_archived: OptionalNullable[bool] = UNSET,
         is_recurring: OptionalNullable[bool] = UNSET,
         benefit_id: OptionalNullable[Union[models.QueryParamBenefitIDFilter, models.QueryParamBenefitIDFilterTypedDict]] = UNSET,
-        type_: OptionalNullable[Union[models.QueryParamSubscriptionTierTypeFilter, models.QueryParamSubscriptionTierTypeFilterTypedDict]] = UNSET,
+        type_filter: OptionalNullable[Union[models.QueryParamSubscriptionTierTypeFilter, models.QueryParamSubscriptionTierTypeFilterTypedDict]] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -156,7 +156,7 @@ class Products(BaseSDK):
         :param is_archived: Filter on archived products.
         :param is_recurring: Filter on recurring products. If `true`, only subscriptions tiers are returned. If `false`, only one-time purchase products are returned.
         :param benefit_id: Filter products granting specific benefit.
-        :param type: Filter by subscription tier type.
+        :param type_filter: Filter by subscription tier type.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -176,7 +176,7 @@ class Products(BaseSDK):
             is_archived=is_archived,
             is_recurring=is_recurring,
             benefit_id=benefit_id,
-            type=type_,
+            type_filter=type_filter,
             page=page,
             limit=limit,
         )
@@ -240,7 +240,7 @@ class Products(BaseSDK):
                 is_archived=is_archived,
                 is_recurring=is_recurring,
                 benefit_id=benefit_id,
-                type=type,
+                type_filter=type_filter,
                 page=next_page,
                 limit=limit,
                 retries=retries,

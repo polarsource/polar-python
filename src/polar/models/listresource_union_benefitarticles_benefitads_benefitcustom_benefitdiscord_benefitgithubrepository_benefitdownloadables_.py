@@ -9,8 +9,7 @@ from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesType
 from .benefitgithubrepository import BenefitGitHubRepository, BenefitGitHubRepositoryTypedDict
 from .pagination import Pagination, PaginationTypedDict
 from polar.types import BaseModel
-from typing import List, Optional, TypedDict, Union
-from typing_extensions import NotRequired
+from typing import List, TypedDict, Union
 
 
 ItemsTypedDict = Union[BenefitArticlesTypedDict, BenefitAdsTypedDict, BenefitDiscordOutputTypedDict, BenefitGitHubRepositoryTypedDict, BenefitDownloadablesTypedDict, BenefitCustomTypedDict]
@@ -20,11 +19,11 @@ Items = Union[BenefitArticles, BenefitAds, BenefitDiscordOutput, BenefitGitHubRe
 
 
 class ListResourceUnionBenefitArticlesBenefitAdsBenefitCustomBenefitDiscordBenefitGitHubRepositoryBenefitDownloadablesTypedDict(TypedDict):
+    items: List[ItemsTypedDict]
     pagination: PaginationTypedDict
-    items: NotRequired[List[ItemsTypedDict]]
     
 
 class ListResourceUnionBenefitArticlesBenefitAdsBenefitCustomBenefitDiscordBenefitGitHubRepositoryBenefitDownloadables(BaseModel):
+    items: List[Items]
     pagination: Pagination
-    items: Optional[List[Items]] = None
     

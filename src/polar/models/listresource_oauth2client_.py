@@ -4,16 +4,15 @@ from __future__ import annotations
 from .oauth2client import OAuth2Client, OAuth2ClientTypedDict
 from .pagination import Pagination, PaginationTypedDict
 from polar.types import BaseModel
-from typing import List, Optional, TypedDict
-from typing_extensions import NotRequired
+from typing import List, TypedDict
 
 
 class ListResourceOAuth2ClientTypedDict(TypedDict):
+    items: List[OAuth2ClientTypedDict]
     pagination: PaginationTypedDict
-    items: NotRequired[List[OAuth2ClientTypedDict]]
     
 
 class ListResourceOAuth2Client(BaseModel):
+    items: List[OAuth2Client]
     pagination: Pagination
-    items: Optional[List[OAuth2Client]] = None
     

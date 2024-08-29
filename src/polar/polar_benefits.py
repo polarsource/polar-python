@@ -12,7 +12,7 @@ class PolarBenefits(BaseSDK):
     
     def list(
         self, *,
-        type_: OptionalNullable[Union[models.BenefitTypeFilter, models.BenefitTypeFilterTypedDict]] = UNSET,
+        type_filter: OptionalNullable[Union[models.BenefitTypeFilter, models.BenefitTypeFilterTypedDict]] = UNSET,
         organization_id: OptionalNullable[Union[models.OrganizationIDFilter, models.OrganizationIDFilterTypedDict]] = UNSET,
         order_id: OptionalNullable[Union[models.OrderIDFilter, models.OrderIDFilterTypedDict]] = UNSET,
         subscription_id: OptionalNullable[Union[models.SubscriptionIDFilter, models.SubscriptionIDFilterTypedDict]] = UNSET,
@@ -27,7 +27,7 @@ class PolarBenefits(BaseSDK):
 
         List my granted benefits.
 
-        :param type: Filter by benefit type.
+        :param type_filter: Filter by benefit type.
         :param organization_id: Filter by organization ID.
         :param order_id: Filter by order ID.
         :param subscription_id: Filter by subscription ID.
@@ -47,7 +47,7 @@ class PolarBenefits(BaseSDK):
             base_url = server_url
         
         request = models.UsersBenefitsListRequest(
-            type=type_,
+            type_filter=type_filter,
             organization_id=organization_id,
             order_id=order_id,
             subscription_id=subscription_id,
@@ -111,7 +111,7 @@ class PolarBenefits(BaseSDK):
                 return None
 
             return self.list(
-                type=type,
+                type_filter=type_filter,
                 organization_id=organization_id,
                 order_id=order_id,
                 subscription_id=subscription_id,
@@ -137,7 +137,7 @@ class PolarBenefits(BaseSDK):
     
     async def list_async(
         self, *,
-        type_: OptionalNullable[Union[models.BenefitTypeFilter, models.BenefitTypeFilterTypedDict]] = UNSET,
+        type_filter: OptionalNullable[Union[models.BenefitTypeFilter, models.BenefitTypeFilterTypedDict]] = UNSET,
         organization_id: OptionalNullable[Union[models.OrganizationIDFilter, models.OrganizationIDFilterTypedDict]] = UNSET,
         order_id: OptionalNullable[Union[models.OrderIDFilter, models.OrderIDFilterTypedDict]] = UNSET,
         subscription_id: OptionalNullable[Union[models.SubscriptionIDFilter, models.SubscriptionIDFilterTypedDict]] = UNSET,
@@ -152,7 +152,7 @@ class PolarBenefits(BaseSDK):
 
         List my granted benefits.
 
-        :param type: Filter by benefit type.
+        :param type_filter: Filter by benefit type.
         :param organization_id: Filter by organization ID.
         :param order_id: Filter by order ID.
         :param subscription_id: Filter by subscription ID.
@@ -172,7 +172,7 @@ class PolarBenefits(BaseSDK):
             base_url = server_url
         
         request = models.UsersBenefitsListRequest(
-            type=type_,
+            type_filter=type_filter,
             organization_id=organization_id,
             order_id=order_id,
             subscription_id=subscription_id,
@@ -236,7 +236,7 @@ class PolarBenefits(BaseSDK):
                 return None
 
             return self.list(
-                type=type,
+                type_filter=type_filter,
                 organization_id=organization_id,
                 order_id=order_id,
                 subscription_id=subscription_id,

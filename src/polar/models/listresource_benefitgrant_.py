@@ -4,16 +4,15 @@ from __future__ import annotations
 from .benefitgrant import BenefitGrant, BenefitGrantTypedDict
 from .pagination import Pagination, PaginationTypedDict
 from polar.types import BaseModel
-from typing import List, Optional, TypedDict
-from typing_extensions import NotRequired
+from typing import List, TypedDict
 
 
 class ListResourceBenefitGrantTypedDict(TypedDict):
+    items: List[BenefitGrantTypedDict]
     pagination: PaginationTypedDict
-    items: NotRequired[List[BenefitGrantTypedDict]]
     
 
 class ListResourceBenefitGrant(BaseModel):
+    items: List[BenefitGrant]
     pagination: Pagination
-    items: Optional[List[BenefitGrant]] = None
     

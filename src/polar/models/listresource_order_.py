@@ -4,16 +4,15 @@ from __future__ import annotations
 from .order_output import OrderOutput, OrderOutputTypedDict
 from .pagination import Pagination, PaginationTypedDict
 from polar.types import BaseModel
-from typing import List, Optional, TypedDict
-from typing_extensions import NotRequired
+from typing import List, TypedDict
 
 
 class ListResourceOrderTypedDict(TypedDict):
+    items: List[OrderOutputTypedDict]
     pagination: PaginationTypedDict
-    items: NotRequired[List[OrderOutputTypedDict]]
     
 
 class ListResourceOrder(BaseModel):
+    items: List[OrderOutput]
     pagination: Pagination
-    items: Optional[List[OrderOutput]] = None
     

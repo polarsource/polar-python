@@ -14,7 +14,7 @@ class Subscriptions(BaseSDK):
         self, *,
         organization_id: OptionalNullable[Union[models.SubscriptionsListQueryParamOrganizationIDFilter, models.SubscriptionsListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
         product_id: OptionalNullable[Union[models.SubscriptionsListQueryParamProductIDFilter, models.SubscriptionsListQueryParamProductIDFilterTypedDict]] = UNSET,
-        type_: OptionalNullable[Union[models.SubscriptionTierTypeFilter, models.SubscriptionTierTypeFilterTypedDict]] = UNSET,
+        type_filter: OptionalNullable[Union[models.SubscriptionTierTypeFilter, models.SubscriptionTierTypeFilterTypedDict]] = UNSET,
         active: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -29,7 +29,7 @@ class Subscriptions(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
-        :param type: Filter by subscription tier type.
+        :param type_filter: Filter by subscription tier type.
         :param active: Filter by active or inactive subscription.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -49,7 +49,7 @@ class Subscriptions(BaseSDK):
         request = models.SubscriptionsListRequest(
             organization_id=organization_id,
             product_id=product_id,
-            type=type_,
+            type_filter=type_filter,
             active=active,
             page=page,
             limit=limit,
@@ -113,7 +113,7 @@ class Subscriptions(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 product_id=product_id,
-                type=type,
+                type_filter=type_filter,
                 active=active,
                 page=next_page,
                 limit=limit,
@@ -139,7 +139,7 @@ class Subscriptions(BaseSDK):
         self, *,
         organization_id: OptionalNullable[Union[models.SubscriptionsListQueryParamOrganizationIDFilter, models.SubscriptionsListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
         product_id: OptionalNullable[Union[models.SubscriptionsListQueryParamProductIDFilter, models.SubscriptionsListQueryParamProductIDFilterTypedDict]] = UNSET,
-        type_: OptionalNullable[Union[models.SubscriptionTierTypeFilter, models.SubscriptionTierTypeFilterTypedDict]] = UNSET,
+        type_filter: OptionalNullable[Union[models.SubscriptionTierTypeFilter, models.SubscriptionTierTypeFilterTypedDict]] = UNSET,
         active: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -154,7 +154,7 @@ class Subscriptions(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
-        :param type: Filter by subscription tier type.
+        :param type_filter: Filter by subscription tier type.
         :param active: Filter by active or inactive subscription.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -174,7 +174,7 @@ class Subscriptions(BaseSDK):
         request = models.SubscriptionsListRequest(
             organization_id=organization_id,
             product_id=product_id,
-            type=type_,
+            type_filter=type_filter,
             active=active,
             page=page,
             limit=limit,
@@ -238,7 +238,7 @@ class Subscriptions(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 product_id=product_id,
-                type=type,
+                type_filter=type_filter,
                 active=active,
                 page=next_page,
                 limit=limit,

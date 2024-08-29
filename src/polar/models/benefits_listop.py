@@ -5,6 +5,7 @@ from .benefittype import BenefitType
 from .listresource_union_benefitarticles_benefitads_benefitcustom_benefitdiscord_benefitgithubrepository_benefitdownloadables_ import ListResourceUnionBenefitArticlesBenefitAdsBenefitCustomBenefitDiscordBenefitGitHubRepositoryBenefitDownloadables, ListResourceUnionBenefitArticlesBenefitAdsBenefitCustomBenefitDiscordBenefitGitHubRepositoryBenefitDownloadablesTypedDict
 from polar.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar.utils import FieldMetadata, QueryParamMetadata
+import pydantic
 from pydantic import model_serializer
 from typing import Callable, List, Optional, TypedDict, Union
 from typing_extensions import Annotated, NotRequired
@@ -29,7 +30,7 @@ r"""Filter by benefit type."""
 class BenefitsListRequestTypedDict(TypedDict):
     organization_id: NotRequired[Nullable[BenefitsListQueryParamOrganizationIDFilterTypedDict]]
     r"""Filter by organization ID."""
-    type: NotRequired[Nullable[QueryParamBenefitTypeFilterTypedDict]]
+    type_filter: NotRequired[Nullable[QueryParamBenefitTypeFilterTypedDict]]
     r"""Filter by benefit type."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
@@ -40,7 +41,7 @@ class BenefitsListRequestTypedDict(TypedDict):
 class BenefitsListRequest(BaseModel):
     organization_id: Annotated[OptionalNullable[BenefitsListQueryParamOrganizationIDFilter], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
     r"""Filter by organization ID."""
-    type: Annotated[OptionalNullable[QueryParamBenefitTypeFilter], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+    type_filter: Annotated[OptionalNullable[QueryParamBenefitTypeFilter], pydantic.Field(alias="type"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
     r"""Filter by benefit type."""
     page: Annotated[Optional[int], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = 1
     r"""Page number, defaults to 1."""
@@ -49,8 +50,8 @@ class BenefitsListRequest(BaseModel):
     
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["organization_id", "type", "page", "limit"]
-        nullable_fields = ["organization_id", "type"]
+        optional_fields = ["organization_id", "type_filter", "page", "limit"]
+        nullable_fields = ["organization_id", "type_filter"]
         null_default_fields = []
 
         serialized = handler(self)

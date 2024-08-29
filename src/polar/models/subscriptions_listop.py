@@ -41,7 +41,7 @@ class SubscriptionsListRequestTypedDict(TypedDict):
     r"""Filter by organization ID."""
     product_id: NotRequired[Nullable[SubscriptionsListQueryParamProductIDFilterTypedDict]]
     r"""Filter by product ID."""
-    type: NotRequired[Nullable[SubscriptionTierTypeFilterTypedDict]]
+    type_filter: NotRequired[Nullable[SubscriptionTierTypeFilterTypedDict]]
     r"""Filter by subscription tier type."""
     active: NotRequired[Nullable[bool]]
     r"""Filter by active or inactive subscription."""
@@ -58,7 +58,7 @@ class SubscriptionsListRequest(BaseModel):
     r"""Filter by organization ID."""
     product_id: Annotated[OptionalNullable[SubscriptionsListQueryParamProductIDFilter], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
     r"""Filter by product ID."""
-    type: Annotated[OptionalNullable[SubscriptionTierTypeFilter], pydantic.Field(deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+    type_filter: Annotated[OptionalNullable[SubscriptionTierTypeFilter], pydantic.Field(deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible.", alias="type"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
     r"""Filter by subscription tier type."""
     active: Annotated[OptionalNullable[bool], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
     r"""Filter by active or inactive subscription."""
@@ -71,8 +71,8 @@ class SubscriptionsListRequest(BaseModel):
     
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["organization_id", "product_id", "type", "active", "page", "limit", "sorting"]
-        nullable_fields = ["organization_id", "product_id", "type", "active", "sorting"]
+        optional_fields = ["organization_id", "product_id", "type_filter", "active", "page", "limit", "sorting"]
+        nullable_fields = ["organization_id", "product_id", "type_filter", "active", "sorting"]
         null_default_fields = []
 
         serialized = handler(self)

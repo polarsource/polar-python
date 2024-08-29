@@ -4,16 +4,15 @@ from __future__ import annotations
 from .pagination import Pagination, PaginationTypedDict
 from .useradvertisementcampaign import UserAdvertisementCampaign, UserAdvertisementCampaignTypedDict
 from polar.types import BaseModel
-from typing import List, Optional, TypedDict
-from typing_extensions import NotRequired
+from typing import List, TypedDict
 
 
 class ListResourceUserAdvertisementCampaignTypedDict(TypedDict):
+    items: List[UserAdvertisementCampaignTypedDict]
     pagination: PaginationTypedDict
-    items: NotRequired[List[UserAdvertisementCampaignTypedDict]]
     
 
 class ListResourceUserAdvertisementCampaign(BaseModel):
+    items: List[UserAdvertisementCampaign]
     pagination: Pagination
-    items: Optional[List[UserAdvertisementCampaign]] = None
     

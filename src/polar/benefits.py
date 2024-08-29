@@ -13,7 +13,7 @@ class Benefits(BaseSDK):
     def list(
         self, *,
         organization_id: OptionalNullable[Union[models.BenefitsListQueryParamOrganizationIDFilter, models.BenefitsListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
-        type_: OptionalNullable[Union[models.QueryParamBenefitTypeFilter, models.QueryParamBenefitTypeFilterTypedDict]] = UNSET,
+        type_filter: OptionalNullable[Union[models.QueryParamBenefitTypeFilter, models.QueryParamBenefitTypeFilterTypedDict]] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -25,7 +25,7 @@ class Benefits(BaseSDK):
         List benefits.
 
         :param organization_id: Filter by organization ID.
-        :param type: Filter by benefit type.
+        :param type_filter: Filter by benefit type.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -42,7 +42,7 @@ class Benefits(BaseSDK):
         
         request = models.BenefitsListRequest(
             organization_id=organization_id,
-            type=type_,
+            type_filter=type_filter,
             page=page,
             limit=limit,
         )
@@ -103,7 +103,7 @@ class Benefits(BaseSDK):
 
             return self.list(
                 organization_id=organization_id,
-                type=type,
+                type_filter=type_filter,
                 page=next_page,
                 limit=limit,
                 retries=retries,
@@ -126,7 +126,7 @@ class Benefits(BaseSDK):
     async def list_async(
         self, *,
         organization_id: OptionalNullable[Union[models.BenefitsListQueryParamOrganizationIDFilter, models.BenefitsListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
-        type_: OptionalNullable[Union[models.QueryParamBenefitTypeFilter, models.QueryParamBenefitTypeFilterTypedDict]] = UNSET,
+        type_filter: OptionalNullable[Union[models.QueryParamBenefitTypeFilter, models.QueryParamBenefitTypeFilterTypedDict]] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -138,7 +138,7 @@ class Benefits(BaseSDK):
         List benefits.
 
         :param organization_id: Filter by organization ID.
-        :param type: Filter by benefit type.
+        :param type_filter: Filter by benefit type.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -155,7 +155,7 @@ class Benefits(BaseSDK):
         
         request = models.BenefitsListRequest(
             organization_id=organization_id,
-            type=type_,
+            type_filter=type_filter,
             page=page,
             limit=limit,
         )
@@ -216,7 +216,7 @@ class Benefits(BaseSDK):
 
             return self.list(
                 organization_id=organization_id,
-                type=type,
+                type_filter=type_filter,
                 page=next_page,
                 limit=limit,
                 retries=retries,

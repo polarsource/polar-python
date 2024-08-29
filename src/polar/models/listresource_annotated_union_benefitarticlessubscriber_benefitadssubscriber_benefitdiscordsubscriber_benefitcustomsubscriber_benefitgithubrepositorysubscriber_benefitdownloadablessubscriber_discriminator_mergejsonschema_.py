@@ -11,8 +11,8 @@ from .pagination import Pagination, PaginationTypedDict
 from polar.types import BaseModel
 from polar.utils import get_discriminator
 from pydantic import Discriminator, Tag
-from typing import List, Optional, TypedDict, Union
-from typing_extensions import Annotated, NotRequired
+from typing import List, TypedDict, Union
+from typing_extensions import Annotated
 
 
 UserBenefitTypedDict = Union[BenefitArticlesSubscriberTypedDict, BenefitDiscordSubscriberTypedDict, BenefitGitHubRepositorySubscriberTypedDict, BenefitDownloadablesSubscriberTypedDict, BenefitAdsSubscriberTypedDict, BenefitCustomSubscriberTypedDict]
@@ -22,11 +22,11 @@ UserBenefit = Annotated[Union[Annotated[BenefitAdsSubscriber, Tag("ads")], Annot
 
 
 class ListResourceAnnotatedUnionBenefitArticlesSubscriberBenefitAdsSubscriberBenefitDiscordSubscriberBenefitCustomSubscriberBenefitGitHubRepositorySubscriberBenefitDownloadablesSubscriberDiscriminatorMergeJSONSchemaTypedDict(TypedDict):
+    items: List[UserBenefitTypedDict]
     pagination: PaginationTypedDict
-    items: NotRequired[List[UserBenefitTypedDict]]
     
 
 class ListResourceAnnotatedUnionBenefitArticlesSubscriberBenefitAdsSubscriberBenefitDiscordSubscriberBenefitCustomSubscriberBenefitGitHubRepositorySubscriberBenefitDownloadablesSubscriberDiscriminatorMergeJSONSchema(BaseModel):
+    items: List[UserBenefit]
     pagination: Pagination
-    items: Optional[List[UserBenefit]] = None
     
