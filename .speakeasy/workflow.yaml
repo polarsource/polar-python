@@ -10,3 +10,5 @@ targets:
     polar:
         target: python
         source: Polar-OAS
+        codeSamples:
+            output: codeSamples.yaml
