@@ -2,7 +2,7 @@ speakeasyVersion: 1.382.0
 sources:
     Polar-OAS:
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:7df5794270ddb644dea07ef9e6b884392ad3913ecfd80b92277050c33517314f
+        sourceRevisionDigest: sha256:80deb00134bbd166622e97b5106be3e2360cc8e598d74696c1d5fb1b687bf9ac
         sourceBlobDigest: sha256:2e445b28e1c8f9fe80a9f4cfd04b44748fc6daa3cc521d13d73ea571bec616f2
         tags:
             - latest
@@ -10,7 +10,7 @@ targets:
     polar:
         source: Polar-OAS
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:7df5794270ddb644dea07ef9e6b884392ad3913ecfd80b92277050c33517314f
+        sourceRevisionDigest: sha256:80deb00134bbd166622e97b5106be3e2360cc8e598d74696c1d5fb1b687bf9ac
         sourceBlobDigest: sha256:2e445b28e1c8f9fe80a9f4cfd04b44748fc6daa3cc521d13d73ea571bec616f2
         outLocation: /Users/fvoron/Development/polar-python
 workflow:
@@ -29,3 +29,5 @@ workflow:
         polar:
             target: python
             source: Polar-OAS
+            codeSamples:
+                output: codeSamples.yaml
