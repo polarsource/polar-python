@@ -13,5 +13,8 @@ targets:
     polar:
         target: python
         source: Polar-OAS
+        publish:
+            pypi:
+                token: $pypi_token
         codeSamples:
             output: codeSamples.yaml
