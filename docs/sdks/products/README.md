@@ -18,15 +18,14 @@ List products.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.products.list(security=polar_sh.ProductsListSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
+res = s.products.list()
 
 if res is not None:
     while True:
@@ -44,7 +43,6 @@ if res is not None:
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `request`                                                           | [models.ProductsListRequest](../../models/productslistrequest.md)   | :heavy_check_mark:                                                  | The request object to use for the request.                          |
-| `security`                                                          | [models.ProductsListSecurity](../../productslistsecurity.md)        | :heavy_check_mark:                                                  | The security requirements to use for the request.                   |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -69,12 +67,12 @@ Create a product.
 import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.products.create(security=polar_sh.ProductsCreateSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), request={
+res = s.products.create(request={
     "name": "<value>",
     "prices": [
         {
@@ -95,7 +93,6 @@ if res is not None:
 | Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | `request`                                                                         | [models.ProductsCreateProductCreate](../../models/productscreateproductcreate.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
-| `security`                                                                        | [models.ProductsCreateSecurity](../../productscreatesecurity.md)                  | :heavy_check_mark:                                                                | The security requirements to use for the request.                                 |
 | `retries`                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                  | :heavy_minus_sign:                                                                | Configuration to override the default retry behavior of the client.               |
 
 ### Response
@@ -117,15 +114,14 @@ Get a product by ID.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.products.retrieve(security=polar_sh.ProductsGetSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), id="<value>")
+res = s.products.retrieve(id="<value>")
 
 if res is not None:
     # handle response
@@ -137,7 +133,6 @@ if res is not None:
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `security`                                                          | [models.ProductsGetSecurity](../../models/productsgetsecurity.md)   | :heavy_check_mark:                                                  | N/A                                                                 |
 | `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
@@ -161,15 +156,14 @@ Update a product.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.products.update(security=polar_sh.ProductsUpdateSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), id="<value>", product_update={})
+res = s.products.update(id="<value>", product_update={})
 
 if res is not None:
     # handle response
@@ -179,12 +173,11 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `security`                                                              | [models.ProductsUpdateSecurity](../../models/productsupdatesecurity.md) | :heavy_check_mark:                                                      | N/A                                                                     |
-| `id`                                                                    | *str*                                                                   | :heavy_check_mark:                                                      | N/A                                                                     |
-| `product_update`                                                        | [models.ProductUpdate](../../models/productupdate.md)                   | :heavy_check_mark:                                                      | N/A                                                                     |
-| `retries`                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)        | :heavy_minus_sign:                                                      | Configuration to override the default retry behavior of the client.     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `product_update`                                                    | [models.ProductUpdate](../../models/productupdate.md)               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
@@ -207,15 +200,14 @@ Update benefits granted by a product.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.products.update_benefits(security=polar_sh.ProductsUpdateBenefitsSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), id="<value>", product_benefits_update={
+res = s.products.update_benefits(id="<value>", product_benefits_update={
     "benefits": [
         "<value>",
     ],
@@ -229,12 +221,11 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `security`                                                                              | [models.ProductsUpdateBenefitsSecurity](../../models/productsupdatebenefitssecurity.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
-| `id`                                                                                    | *str*                                                                                   | :heavy_check_mark:                                                                      | N/A                                                                                     |
-| `product_benefits_update`                                                               | [models.ProductBenefitsUpdate](../../models/productbenefitsupdate.md)                   | :heavy_check_mark:                                                                      | N/A                                                                                     |
-| `retries`                                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                        | :heavy_minus_sign:                                                                      | Configuration to override the default retry behavior of the client.                     |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `id`                                                                  | *str*                                                                 | :heavy_check_mark:                                                    | N/A                                                                   |
+| `product_benefits_update`                                             | [models.ProductBenefitsUpdate](../../models/productbenefitsupdate.md) | :heavy_check_mark:                                                    | N/A                                                                   |
+| `retries`                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)      | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |
 
 ### Response
 

@@ -12,7 +12,6 @@ class PolarBenefits(BaseSDK):
     
     def list(
         self, *,
-        security: Union[models.UsersBenefitsListSecurity, models.UsersBenefitsListSecurityTypedDict],
         request: Optional[Union[models.UsersBenefitsListRequest, models.UsersBenefitsListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -22,7 +21,6 @@ class PolarBenefits(BaseSDK):
 
         List my granted benefits.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -51,7 +49,7 @@ class PolarBenefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersBenefitsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -70,7 +68,7 @@ class PolarBenefits(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:benefits:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:benefits:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -123,7 +121,6 @@ class PolarBenefits(BaseSDK):
     
     async def list_async(
         self, *,
-        security: Union[models.UsersBenefitsListSecurity, models.UsersBenefitsListSecurityTypedDict],
         request: Optional[Union[models.UsersBenefitsListRequest, models.UsersBenefitsListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -133,7 +130,6 @@ class PolarBenefits(BaseSDK):
 
         List my granted benefits.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -162,7 +158,7 @@ class PolarBenefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersBenefitsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -181,7 +177,7 @@ class PolarBenefits(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:benefits:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:benefits:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -234,7 +230,6 @@ class PolarBenefits(BaseSDK):
     
     def retrieve(
         self, *,
-        security: Union[models.UsersBenefitsGetSecurity, models.UsersBenefitsGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -244,7 +239,6 @@ class PolarBenefits(BaseSDK):
 
         Get a granted benefit by ID.
 
-        :param security: 
         :param id: The benefit ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -273,7 +267,7 @@ class PolarBenefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersBenefitsGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -292,7 +286,7 @@ class PolarBenefits(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:benefits:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:benefits:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -317,7 +311,6 @@ class PolarBenefits(BaseSDK):
     
     async def retrieve_async(
         self, *,
-        security: Union[models.UsersBenefitsGetSecurity, models.UsersBenefitsGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -327,7 +320,6 @@ class PolarBenefits(BaseSDK):
 
         Get a granted benefit by ID.
 
-        :param security: 
         :param id: The benefit ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -356,7 +348,7 @@ class PolarBenefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersBenefitsGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -375,7 +367,7 @@ class PolarBenefits(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:benefits:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:benefits:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config

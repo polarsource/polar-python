@@ -15,15 +15,14 @@ List Downloadables
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.users.downloadables.list(security=polar_sh.UsersDownloadablesListSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
+res = s.users.downloadables.list()
 
 if res is not None:
     while True:
@@ -40,7 +39,6 @@ if res is not None:
 
 | Parameter                                                                                                                                             | Type                                                                                                                                                  | Required                                                                                                                                              | Description                                                                                                                                           |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                                                            | [models.UsersDownloadablesListSecurity](../../models/usersdownloadableslistsecurity.md)                                                               | :heavy_check_mark:                                                                                                                                    | N/A                                                                                                                                                   |
 | `organization_id`                                                                                                                                     | [OptionalNullable[models.UsersDownloadablesListQueryParamOrganizationIDFilter]](../../models/usersdownloadableslistqueryparamorganizationidfilter.md) | :heavy_minus_sign:                                                                                                                                    | Filter by organization ID.                                                                                                                            |
 | `benefit_id`                                                                                                                                          | [OptionalNullable[models.BenefitIDFilter]](../../models/benefitidfilter.md)                                                                           | :heavy_minus_sign:                                                                                                                                    | Filter by given benefit ID.                                                                                                                           |
 | `page`                                                                                                                                                | *Optional[int]*                                                                                                                                       | :heavy_minus_sign:                                                                                                                                    | Page number, defaults to 1.                                                                                                                           |
@@ -66,15 +64,14 @@ Get Downloadable
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.users.downloadables.retrieve(security=polar_sh.UsersDownloadablesGetSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), token="<value>")
+res = s.users.downloadables.retrieve(token="<value>")
 
 if res is not None:
     # handle response
@@ -84,11 +81,10 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `security`                                                                            | [models.UsersDownloadablesGetSecurity](../../models/usersdownloadablesgetsecurity.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `token`                                                                               | *str*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `retries`                                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                      | :heavy_minus_sign:                                                                    | Configuration to override the default retry behavior of the client.                   |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `token`                                                             | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 

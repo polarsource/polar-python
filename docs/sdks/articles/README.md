@@ -8,8 +8,8 @@
 * [list](#list) - List Articles
 * [create](#create) - Create Article
 * [retrieve](#retrieve) - Get Article
-* [delete](#delete) - Delete Article
 * [update](#update) - Update Article
+* [delete](#delete) - Delete Article
 * [receivers](#receivers) - Get Article Receivers Count
 * [preview](#preview) - Send Article Preview
 * [send](#send) - Send Article
@@ -21,15 +21,14 @@ List articles.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.articles.list(security=polar_sh.ArticlesListSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
+res = s.articles.list()
 
 if res is not None:
     while True:
@@ -47,7 +46,6 @@ if res is not None:
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `request`                                                           | [models.ArticlesListRequest](../../models/articleslistrequest.md)   | :heavy_check_mark:                                                  | The request object to use for the request.                          |
-| `security`                                                          | [models.ArticlesListSecurity](../../articleslistsecurity.md)        | :heavy_check_mark:                                                  | The security requirements to use for the request.                   |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -69,15 +67,14 @@ Create an article.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.articles.create(security=polar_sh.ArticlesCreateSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), request={
+res = s.articles.create(request={
     "title": "<value>",
 })
 
@@ -92,7 +89,6 @@ if res is not None:
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `request`                                                           | [models.ArticleCreate](../../models/articlecreate.md)               | :heavy_check_mark:                                                  | The request object to use for the request.                          |
-| `security`                                                          | [models.ArticlesCreateSecurity](../../articlescreatesecurity.md)    | :heavy_check_mark:                                                  | The security requirements to use for the request.                   |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -114,15 +110,14 @@ Get an article by ID.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.articles.retrieve(security=polar_sh.ArticlesGetSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), id="<value>")
+res = s.articles.retrieve(id="<value>")
 
 if res is not None:
     # handle response
@@ -134,7 +129,6 @@ if res is not None:
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `security`                                                          | [models.ArticlesGetSecurity](../../models/articlesgetsecurity.md)   | :heavy_check_mark:                                                  | N/A                                                                 |
 | `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
@@ -151,34 +145,39 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## delete
+## update
 
-Delete an article.
+Update an article.
 
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-s.articles.delete(security=polar_sh.ArticlesDeleteSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), id="<value>")
+res = s.articles.update(id="<value>", article_update={})
 
-# Use the SDK ...
+if res is not None:
+    # handle response
+    pass
 
 ```
 
 ### Parameters
 
-| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `security`                                                              | [models.ArticlesDeleteSecurity](../../models/articlesdeletesecurity.md) | :heavy_check_mark:                                                      | N/A                                                                     |
-| `id`                                                                    | *str*                                                                   | :heavy_check_mark:                                                      | N/A                                                                     |
-| `retries`                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)        | :heavy_minus_sign:                                                      | Configuration to override the default retry behavior of the client.     |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `article_update`                                                    | [models.ArticleUpdate](../../models/articleupdate.md)               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.Article](../../models/article.md)**
 
 ### Errors
 
@@ -190,41 +189,32 @@ s.articles.delete(security=polar_sh.ArticlesDeleteSecurity(
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## update
+## delete
 
-Update an article.
+Delete an article.
 
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.articles.update(security=polar_sh.ArticlesUpdateSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), id="<value>", article_update={})
+s.articles.delete(id="<value>")
 
-if res is not None:
-    # handle response
-    pass
+# Use the SDK ...
 
 ```
 
 ### Parameters
 
-| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `security`                                                              | [models.ArticlesUpdateSecurity](../../models/articlesupdatesecurity.md) | :heavy_check_mark:                                                      | N/A                                                                     |
-| `id`                                                                    | *str*                                                                   | :heavy_check_mark:                                                      | N/A                                                                     |
-| `article_update`                                                        | [models.ArticleUpdate](../../models/articleupdate.md)                   | :heavy_check_mark:                                                      | N/A                                                                     |
-| `retries`                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)        | :heavy_minus_sign:                                                      | Configuration to override the default retry behavior of the client.     |
-
-### Response
-
-**[models.Article](../../models/article.md)**
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Errors
 
@@ -243,15 +233,14 @@ Get number of potential receivers for an article.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.articles.receivers(security=polar_sh.ArticlesReceiversSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), id="<value>")
+res = s.articles.receivers(id="<value>")
 
 if res is not None:
     # handle response
@@ -261,11 +250,10 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `security`                                                                    | [models.ArticlesReceiversSecurity](../../models/articlesreceiverssecurity.md) | :heavy_check_mark:                                                            | N/A                                                                           |
-| `id`                                                                          | *str*                                                                         | :heavy_check_mark:                                                            | N/A                                                                           |
-| `retries`                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                            | Configuration to override the default retry behavior of the client.           |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
@@ -286,15 +274,14 @@ Send an article preview by email.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.articles.preview(security=polar_sh.ArticlesPreviewSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), id="<value>", article_preview={
+res = s.articles.preview(id="<value>", article_preview={
     "email": "Eileen56@yahoo.com",
 })
 
@@ -306,12 +293,11 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `security`                                                                | [models.ArticlesPreviewSecurity](../../models/articlespreviewsecurity.md) | :heavy_check_mark:                                                        | N/A                                                                       |
-| `id`                                                                      | *str*                                                                     | :heavy_check_mark:                                                        | N/A                                                                       |
-| `article_preview`                                                         | [models.ArticlePreview](../../models/articlepreview.md)                   | :heavy_check_mark:                                                        | N/A                                                                       |
-| `retries`                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)          | :heavy_minus_sign:                                                        | Configuration to override the default retry behavior of the client.       |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `article_preview`                                                   | [models.ArticlePreview](../../models/articlepreview.md)             | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
@@ -334,15 +320,14 @@ Send an article by email to all subscribers.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.articles.send(security=polar_sh.ArticlesSendSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), id="<value>")
+res = s.articles.send(id="<value>")
 
 if res is not None:
     # handle response
@@ -354,7 +339,6 @@ if res is not None:
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `security`                                                          | [models.ArticlesSendSecurity](../../models/articlessendsecurity.md) | :heavy_check_mark:                                                  | N/A                                                                 |
 | `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 

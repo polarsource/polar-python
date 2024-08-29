@@ -3,20 +3,10 @@
 from __future__ import annotations
 from .organizationupdate import OrganizationUpdate, OrganizationUpdateTypedDict
 from polar_sh.types import BaseModel
-from polar_sh.utils import FieldMetadata, PathParamMetadata, RequestMetadata, SecurityMetadata
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from polar_sh.utils import FieldMetadata, PathParamMetadata, RequestMetadata
+from typing import TypedDict
+from typing_extensions import Annotated
 
-
-class OrganizationsUpdateSecurityTypedDict(TypedDict):
-    open_id_connect: NotRequired[str]
-    http_bearer: NotRequired[str]
-    
-
-class OrganizationsUpdateSecurity(BaseModel):
-    open_id_connect: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="openIdConnect", field_name="Authorization"))] = None
-    http_bearer: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="http", sub_type="bearer", field_name="Authorization"))] = None
-    
 
 class OrganizationsUpdateRequestTypedDict(TypedDict):
     id: str

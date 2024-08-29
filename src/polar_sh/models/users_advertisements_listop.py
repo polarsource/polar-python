@@ -4,21 +4,11 @@ from __future__ import annotations
 from .listresource_useradvertisementcampaign_ import ListResourceUserAdvertisementCampaign, ListResourceUserAdvertisementCampaignTypedDict
 from .useradvertisementsortproperty import UserAdvertisementSortProperty
 from polar_sh.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from polar_sh.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
+from polar_sh.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing import Callable, List, Optional, TypedDict
 from typing_extensions import Annotated, NotRequired
 
-
-class UsersAdvertisementsListSecurityTypedDict(TypedDict):
-    open_id_connect: NotRequired[str]
-    http_bearer: NotRequired[str]
-    
-
-class UsersAdvertisementsListSecurity(BaseModel):
-    open_id_connect: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="openIdConnect", field_name="Authorization"))] = None
-    http_bearer: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="http", sub_type="bearer", field_name="Authorization"))] = None
-    
 
 class UsersAdvertisementsListRequestTypedDict(TypedDict):
     page: NotRequired[int]

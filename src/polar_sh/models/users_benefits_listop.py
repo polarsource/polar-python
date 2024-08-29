@@ -5,21 +5,11 @@ from .benefittype import BenefitType
 from .listresource_annotated_union_benefitarticlessubscriber_benefitadssubscriber_benefitdiscordsubscriber_benefitcustomsubscriber_benefitgithubrepositorysubscriber_benefitdownloadablessubscriber_discriminator_mergejsonschema_ import ListResourceAnnotatedUnionBenefitArticlesSubscriberBenefitAdsSubscriberBenefitDiscordSubscriberBenefitCustomSubscriberBenefitGitHubRepositorySubscriberBenefitDownloadablesSubscriberDiscriminatorMergeJSONSchema, ListResourceAnnotatedUnionBenefitArticlesSubscriberBenefitAdsSubscriberBenefitDiscordSubscriberBenefitCustomSubscriberBenefitGitHubRepositorySubscriberBenefitDownloadablesSubscriberDiscriminatorMergeJSONSchemaTypedDict
 from .userbenefitsortproperty import UserBenefitSortProperty
 from polar_sh.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from polar_sh.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
+from polar_sh.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing import Callable, List, Optional, TypedDict, Union
 from typing_extensions import Annotated, NotRequired
 
-
-class UsersBenefitsListSecurityTypedDict(TypedDict):
-    open_id_connect: NotRequired[str]
-    http_bearer: NotRequired[str]
-    
-
-class UsersBenefitsListSecurity(BaseModel):
-    open_id_connect: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="openIdConnect", field_name="Authorization"))] = None
-    http_bearer: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="http", sub_type="bearer", field_name="Authorization"))] = None
-    
 
 BenefitTypeFilterTypedDict = Union[BenefitType, List[BenefitType]]
 r"""Filter by benefit type."""

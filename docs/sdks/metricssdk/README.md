@@ -19,12 +19,12 @@ import dateutil.parser
 import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.metrics.retrieve(security=polar_sh.MetricsGetSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), request={
+res = s.metrics.retrieve(request={
     "start_date": dateutil.parser.parse("2023-02-11").date(),
     "end_date": dateutil.parser.parse("2024-11-01").date(),
     "interval": polar_sh.Interval.HOUR,
@@ -41,7 +41,6 @@ if res is not None:
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `request`                                                           | [models.MetricsGetRequest](../../models/metricsgetrequest.md)       | :heavy_check_mark:                                                  | The request object to use for the request.                          |
-| `security`                                                          | [models.MetricsGetSecurity](../../metricsgetsecurity.md)            | :heavy_check_mark:                                                  | The security requirements to use for the request.                   |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -63,15 +62,14 @@ Get the interval limits for the metrics endpoint.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.metrics.limits(security=polar_sh.MetricsLimitsSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
+res = s.metrics.limits()
 
 if res is not None:
     # handle response
@@ -83,7 +81,6 @@ if res is not None:
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `security`                                                          | [models.MetricsLimitsSecurity](../../metricslimitssecurity.md)      | :heavy_check_mark:                                                  | The security requirements to use for the request.                   |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response

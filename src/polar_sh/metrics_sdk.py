@@ -11,7 +11,6 @@ class MetricsSDK(BaseSDK):
     
     def retrieve(
         self, *,
-        security: Union[models.MetricsGetSecurity, models.MetricsGetSecurityTypedDict],
         request: Union[models.MetricsGetRequest, models.MetricsGetRequestTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -21,7 +20,6 @@ class MetricsSDK(BaseSDK):
 
         Get metrics about your orders and subscriptions.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -50,7 +48,7 @@ class MetricsSDK(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.MetricsGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -69,7 +67,7 @@ class MetricsSDK(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="metrics:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="metrics:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -91,7 +89,6 @@ class MetricsSDK(BaseSDK):
     
     async def retrieve_async(
         self, *,
-        security: Union[models.MetricsGetSecurity, models.MetricsGetSecurityTypedDict],
         request: Union[models.MetricsGetRequest, models.MetricsGetRequestTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -101,7 +98,6 @@ class MetricsSDK(BaseSDK):
 
         Get metrics about your orders and subscriptions.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -130,7 +126,7 @@ class MetricsSDK(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.MetricsGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -149,7 +145,7 @@ class MetricsSDK(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="metrics:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="metrics:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -171,7 +167,6 @@ class MetricsSDK(BaseSDK):
     
     def limits(
         self, *,
-        security: Union[models.MetricsLimitsSecurity, models.MetricsLimitsSecurityTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -180,7 +175,6 @@ class MetricsSDK(BaseSDK):
 
         Get the interval limits for the metrics endpoint.
 
-        :param security: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -203,7 +197,7 @@ class MetricsSDK(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.MetricsLimitsSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -222,7 +216,7 @@ class MetricsSDK(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="metrics:limits", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="metrics:limits", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["4XX","5XX"],
             retry_config=retry_config
@@ -240,7 +234,6 @@ class MetricsSDK(BaseSDK):
     
     async def limits_async(
         self, *,
-        security: Union[models.MetricsLimitsSecurity, models.MetricsLimitsSecurityTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -249,7 +242,6 @@ class MetricsSDK(BaseSDK):
 
         Get the interval limits for the metrics endpoint.
 
-        :param security: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -272,7 +264,7 @@ class MetricsSDK(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.MetricsLimitsSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -291,7 +283,7 @@ class MetricsSDK(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="metrics:limits", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="metrics:limits", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["4XX","5XX"],
             retry_config=retry_config

@@ -12,7 +12,6 @@ class Organizations(BaseSDK):
     
     def list(
         self, *,
-        security: Union[models.OrganizationsListSecurity, models.OrganizationsListSecurityTypedDict],
         request: Optional[Union[models.OrganizationsListRequest, models.OrganizationsListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -22,7 +21,6 @@ class Organizations(BaseSDK):
 
         List organizations.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -51,7 +49,7 @@ class Organizations(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrganizationsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -70,7 +68,7 @@ class Organizations(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="organizations:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="organizations:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -121,7 +119,6 @@ class Organizations(BaseSDK):
     
     async def list_async(
         self, *,
-        security: Union[models.OrganizationsListSecurity, models.OrganizationsListSecurityTypedDict],
         request: Optional[Union[models.OrganizationsListRequest, models.OrganizationsListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -131,7 +128,6 @@ class Organizations(BaseSDK):
 
         List organizations.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -160,7 +156,7 @@ class Organizations(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrganizationsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -179,7 +175,7 @@ class Organizations(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="organizations:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="organizations:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -230,7 +226,6 @@ class Organizations(BaseSDK):
     
     def create(
         self, *,
-        security: Union[models.OrganizationsCreateSecurity, models.OrganizationsCreateSecurityTypedDict],
         request: Union[models.OrganizationCreate, models.OrganizationCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -240,7 +235,6 @@ class Organizations(BaseSDK):
 
         Create an organization.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -269,7 +263,7 @@ class Organizations(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrganizationsCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.OrganizationCreate),
             timeout_ms=timeout_ms,
         )
@@ -289,7 +283,7 @@ class Organizations(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="organizations:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="organizations:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -311,7 +305,6 @@ class Organizations(BaseSDK):
     
     async def create_async(
         self, *,
-        security: Union[models.OrganizationsCreateSecurity, models.OrganizationsCreateSecurityTypedDict],
         request: Union[models.OrganizationCreate, models.OrganizationCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -321,7 +314,6 @@ class Organizations(BaseSDK):
 
         Create an organization.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -350,7 +342,7 @@ class Organizations(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrganizationsCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.OrganizationCreate),
             timeout_ms=timeout_ms,
         )
@@ -370,7 +362,7 @@ class Organizations(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="organizations:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="organizations:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -392,7 +384,6 @@ class Organizations(BaseSDK):
     
     def retrieve(
         self, *,
-        security: Union[models.OrganizationsGetSecurity, models.OrganizationsGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -402,7 +393,6 @@ class Organizations(BaseSDK):
 
         Get an organization by ID.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -431,7 +421,7 @@ class Organizations(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrganizationsGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -450,7 +440,7 @@ class Organizations(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="organizations:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="organizations:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -475,7 +465,6 @@ class Organizations(BaseSDK):
     
     async def retrieve_async(
         self, *,
-        security: Union[models.OrganizationsGetSecurity, models.OrganizationsGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -485,7 +474,6 @@ class Organizations(BaseSDK):
 
         Get an organization by ID.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -514,7 +502,7 @@ class Organizations(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrganizationsGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -533,7 +521,7 @@ class Organizations(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="organizations:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="organizations:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -558,7 +546,6 @@ class Organizations(BaseSDK):
     
     def update(
         self, *,
-        security: Union[models.OrganizationsUpdateSecurity, models.OrganizationsUpdateSecurityTypedDict],
         id: str,
         organization_update: Union[models.OrganizationUpdate, models.OrganizationUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -569,7 +556,6 @@ class Organizations(BaseSDK):
 
         Update an organization.
 
-        :param security: 
         :param id: 
         :param organization_update: 
         :param retries: Override the default retry configuration for this method
@@ -600,7 +586,7 @@ class Organizations(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrganizationsUpdateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.organization_update, False, False, "json", models.OrganizationUpdate),
             timeout_ms=timeout_ms,
         )
@@ -620,7 +606,7 @@ class Organizations(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="organizations:update", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="organizations:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -648,7 +634,6 @@ class Organizations(BaseSDK):
     
     async def update_async(
         self, *,
-        security: Union[models.OrganizationsUpdateSecurity, models.OrganizationsUpdateSecurityTypedDict],
         id: str,
         organization_update: Union[models.OrganizationUpdate, models.OrganizationUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -659,7 +644,6 @@ class Organizations(BaseSDK):
 
         Update an organization.
 
-        :param security: 
         :param id: 
         :param organization_update: 
         :param retries: Override the default retry configuration for this method
@@ -690,7 +674,7 @@ class Organizations(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrganizationsUpdateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.organization_update, False, False, "json", models.OrganizationUpdate),
             timeout_ms=timeout_ms,
         )
@@ -710,7 +694,7 @@ class Organizations(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="organizations:update", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="organizations:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config

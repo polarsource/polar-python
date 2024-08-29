@@ -5,21 +5,11 @@ from .listresource_userorder_ import ListResourceUserOrder, ListResourceUserOrde
 from .productpricetype import ProductPriceType
 from .userordersortproperty import UserOrderSortProperty
 from polar_sh.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from polar_sh.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
+from polar_sh.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing import Callable, List, Optional, TypedDict, Union
 from typing_extensions import Annotated, NotRequired
 
-
-class UsersOrdersListSecurityTypedDict(TypedDict):
-    open_id_connect: NotRequired[str]
-    http_bearer: NotRequired[str]
-    
-
-class UsersOrdersListSecurity(BaseModel):
-    open_id_connect: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="openIdConnect", field_name="Authorization"))] = None
-    http_bearer: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="http", sub_type="bearer", field_name="Authorization"))] = None
-    
 
 QueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]
 r"""Filter by organization ID."""

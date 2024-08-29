@@ -3,21 +3,11 @@
 from __future__ import annotations
 from .listresource_downloadableread_ import ListResourceDownloadableRead, ListResourceDownloadableReadTypedDict
 from polar_sh.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from polar_sh.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
+from polar_sh.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing import Callable, List, Optional, TypedDict, Union
 from typing_extensions import Annotated, NotRequired
 
-
-class UsersDownloadablesListSecurityTypedDict(TypedDict):
-    open_id_connect: NotRequired[str]
-    http_bearer: NotRequired[str]
-    
-
-class UsersDownloadablesListSecurity(BaseModel):
-    open_id_connect: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="openIdConnect", field_name="Authorization"))] = None
-    http_bearer: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="http", sub_type="bearer", field_name="Authorization"))] = None
-    
 
 UsersDownloadablesListQueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]
 r"""Filter by organization ID."""

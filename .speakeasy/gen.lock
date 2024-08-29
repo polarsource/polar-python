@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: d3a26f233b98f92bb2caf1ca3517fb2b
+  docChecksum: 62ace0a77becfd5d971b822544271bbe
   docVersion: 0.1.0
   speakeasyVersion: 1.382.0
   generationVersion: 2.404.11
-  releaseVersion: 0.1.0
-  configChecksum: f05fd5aadedb912d5a4482e75ce3e960
+  releaseVersion: 0.4.0
+  configChecksum: 41fea5792a745d0e560436690ec1f43c
 features:
   python:
     additionalDependencies: 1.0.0
@@ -23,7 +23,6 @@ features:
     globalServerURLs: 3.0.0
     groups: 3.0.0
     ignores: 3.0.0
-    methodSecurity: 3.0.0
     multipartFileContentType: 1.0.0
     nameOverrides: 3.0.0
     nullables: 1.0.0
@@ -139,23 +138,21 @@ generatedFiles:
   - src/polar_sh/models/usersubscriptionsortproperty.py
   - src/polar_sh/models/alreadysubscribed.py
   - src/polar_sh/models/userfreesubscriptioncreate.py
-  - src/polar_sh/models/users_subscriptions_createop.py
   - src/polar_sh/models/users_subscriptions_getop.py
-  - src/polar_sh/models/alreadycanceledsubscription.py
-  - src/polar_sh/models/users_subscriptions_cancelop.py
   - src/polar_sh/models/freesubscriptionupgrade.py
   - src/polar_sh/models/users_subscriptions_updateop.py
   - src/polar_sh/models/usersubscriptionupdate.py
+  - src/polar_sh/models/alreadycanceledsubscription.py
+  - src/polar_sh/models/users_subscriptions_cancelop.py
   - src/polar_sh/models/users_advertisements_listop.py
   - src/polar_sh/models/listresource_useradvertisementcampaign_.py
   - src/polar_sh/models/useradvertisementcampaign.py
   - src/polar_sh/models/useradvertisementsortproperty.py
   - src/polar_sh/models/useradvertisementcampaigncreate.py
-  - src/polar_sh/models/users_advertisements_createop.py
   - src/polar_sh/models/users_advertisements_getop.py
-  - src/polar_sh/models/users_advertisements_deleteop.py
   - src/polar_sh/models/users_advertisements_updateop.py
   - src/polar_sh/models/useradvertisementcampaignupdate.py
+  - src/polar_sh/models/users_advertisements_deleteop.py
   - src/polar_sh/models/users_advertisements_enableop.py
   - src/polar_sh/models/useradvertisementcampaignenable.py
   - src/polar_sh/models/users_downloadables_listop.py
@@ -188,7 +185,6 @@ generatedFiles:
   - src/polar_sh/models/organizationsubscribepromotesettings.py
   - src/polar_sh/models/organizationsortproperty.py
   - src/polar_sh/models/organizationcreate.py
-  - src/polar_sh/models/organizations_createop.py
   - src/polar_sh/models/organizations_getop.py
   - src/polar_sh/models/organizations_updateop.py
   - src/polar_sh/models/organizationupdate.py
@@ -199,10 +195,8 @@ generatedFiles:
   - src/polar_sh/models/subscriptionuser.py
   - src/polar_sh/models/subscriptionsortproperty.py
   - src/polar_sh/models/subscriptioncreateemail.py
-  - src/polar_sh/models/subscriptions_createop.py
   - src/polar_sh/models/subscriptionsimported.py
   - src/polar_sh/models/body_subscriptions_import.py
-  - src/polar_sh/models/subscriptions_importop.py
   - src/polar_sh/models/subscriptions_exportop.py
   - src/polar_sh/models/articles_listop.py
   - src/polar_sh/models/listresource_article_.py
@@ -210,12 +204,11 @@ generatedFiles:
   - src/polar_sh/models/articlevisibility.py
   - src/polar_sh/models/bylineprofile.py
   - src/polar_sh/models/articlecreate.py
-  - src/polar_sh/models/articles_createop.py
   - src/polar_sh/models/articles_getop.py
-  - src/polar_sh/models/articles_deleteop.py
   - src/polar_sh/models/articles_updateop.py
   - src/polar_sh/models/articleupdate.py
   - src/polar_sh/models/articlebyline.py
+  - src/polar_sh/models/articles_deleteop.py
   - src/polar_sh/models/articlereceivers.py
   - src/polar_sh/models/articles_receiversop.py
   - src/polar_sh/models/articles_previewop.py
@@ -226,13 +219,6 @@ generatedFiles:
   - src/polar_sh/models/advertisementcampaign.py
   - src/polar_sh/models/advertisementsortproperty.py
   - src/polar_sh/models/advertisements_getop.py
-  - src/polar_sh/models/oauth2_authorizeop.py
-  - src/polar_sh/models/authorizeresponseuser.py
-  - src/polar_sh/models/scope.py
-  - src/polar_sh/models/authorizeuser.py
-  - src/polar_sh/models/oauth2clientpublic.py
-  - src/polar_sh/models/authorizeresponseorganization.py
-  - src/polar_sh/models/authorizeorganization.py
   - src/polar_sh/models/tokenresponse.py
   - src/polar_sh/models/oauth2_request_tokenop.py
   - src/polar_sh/models/onev1_1oauth2_1token_post_x_components_authorizationcodetokenrequest.py
@@ -249,7 +235,6 @@ generatedFiles:
   - src/polar_sh/models/listresource_oauth2client_.py
   - src/polar_sh/models/oauth2client.py
   - src/polar_sh/models/oauth2clientconfiguration.py
-  - src/polar_sh/models/oauth2_clients_oauth2_create_clientop.py
   - src/polar_sh/models/oauth2_clients_oauth2_get_clientop.py
   - src/polar_sh/models/oauth2_clients_oauth2_update_clientop.py
   - src/polar_sh/models/oauth2clientconfigurationupdate.py
@@ -275,7 +260,6 @@ generatedFiles:
   - src/polar_sh/models/benefitdownloadablescreate.py
   - src/polar_sh/models/benefitdownloadablescreateproperties.py
   - src/polar_sh/models/benefits_getop.py
-  - src/polar_sh/models/benefits_deleteop.py
   - src/polar_sh/models/benefits_updateop.py
   - src/polar_sh/models/benefitarticlesupdate.py
   - src/polar_sh/models/benefitadsupdate.py
@@ -283,6 +267,7 @@ generatedFiles:
   - src/polar_sh/models/benefitdiscordupdate.py
   - src/polar_sh/models/benefitgithubrepositoryupdate.py
   - src/polar_sh/models/benefitdownloadablesupdate.py
+  - src/polar_sh/models/benefits_deleteop.py
   - src/polar_sh/models/benefits_grantsop.py
   - src/polar_sh/models/listresource_benefitgrant_.py
   - src/polar_sh/models/products_listop.py
@@ -310,7 +295,6 @@ generatedFiles:
   - src/polar_sh/models/orders_invoiceop.py
   - src/polar_sh/models/checkout.py
   - src/polar_sh/models/checkoutcreate.py
-  - src/polar_sh/models/checkouts_createop.py
   - src/polar_sh/models/checkouts_getop.py
   - src/polar_sh/models/files_listop.py
   - src/polar_sh/models/listresource_annotated_union_downloadablefileread_productmediafileread_organizationavatarfileread_discriminator_mergejsonschema_.py
@@ -328,10 +312,10 @@ generatedFiles:
   - src/polar_sh/models/files_uploadedop.py
   - src/polar_sh/models/fileuploadcompleted.py
   - src/polar_sh/models/s3fileuploadcompletedpart.py
-  - src/polar_sh/models/filenotfound.py
-  - src/polar_sh/models/files_deleteop.py
   - src/polar_sh/models/files_updateop.py
   - src/polar_sh/models/filepatch.py
+  - src/polar_sh/models/filenotfound.py
+  - src/polar_sh/models/files_deleteop.py
   - src/polar_sh/models/metricsresponse.py
   - src/polar_sh/models/metrics.py
   - src/polar_sh/models/metric.py
@@ -341,7 +325,6 @@ generatedFiles:
   - src/polar_sh/models/metricslimits.py
   - src/polar_sh/models/metricsintervalslimits.py
   - src/polar_sh/models/metricsintervallimit.py
-  - src/polar_sh/models/metrics_limitsop.py
   - src/polar_sh/models/security.py
   - src/polar_sh/models/webhookordercreatedpayload.py
   - src/polar_sh/models/order_input.py
@@ -379,7 +362,6 @@ generatedFiles:
   - src/polar_sh/models/benefitdiscordproperties_input.py
   - src/polar_sh/models/webhookbenefitupdatedpayload.py
   - src/polar_sh/models/__init__.py
-  - docs/models/usersbenefitslistsecurity.md
   - docs/models/benefittypefilter.md
   - docs/models/organizationidfilter.md
   - docs/models/orderidfilter.md
@@ -416,12 +398,10 @@ generatedFiles:
   - docs/models/validationerror.md
   - docs/models/userbenefitsortproperty.md
   - docs/models/benefittype.md
-  - docs/models/usersbenefitsgetsecurity.md
   - docs/models/usersbenefitsgetrequest.md
   - docs/models/usersbenefitsgetresponseusersbenefitsget.md
   - docs/models/resourcenotfoundtype.md
   - docs/models/resourcenotfound.md
-  - docs/models/usersorderslistsecurity.md
   - docs/models/queryparamorganizationidfilter.md
   - docs/models/productidfilter.md
   - docs/models/productpricetypefilter.md
@@ -449,12 +429,9 @@ generatedFiles:
   - docs/models/subscriptiontiertype.md
   - docs/models/userordersortproperty.md
   - docs/models/productpricetype.md
-  - docs/models/usersordersgetsecurity.md
   - docs/models/usersordersgetrequest.md
   - docs/models/userorderinvoice.md
-  - docs/models/usersordersinvoicesecurity.md
   - docs/models/usersordersinvoicerequest.md
-  - docs/models/userssubscriptionslistsecurity.md
   - docs/models/userssubscriptionslistqueryparamorganizationidfilter.md
   - docs/models/queryparamproductidfilter.md
   - docs/models/userssubscriptionslistrequest.md
@@ -467,37 +444,26 @@ generatedFiles:
   - docs/models/alreadysubscribedtype.md
   - docs/models/alreadysubscribed.md
   - docs/models/userfreesubscriptioncreate.md
-  - docs/models/userssubscriptionscreatesecurity.md
-  - docs/models/userssubscriptionsgetsecurity.md
   - docs/models/userssubscriptionsgetrequest.md
-  - docs/models/alreadycanceledsubscriptiontype.md
-  - docs/models/alreadycanceledsubscription.md
-  - docs/models/userssubscriptionscancelsecurity.md
-  - docs/models/userssubscriptionscancelrequest.md
   - docs/models/freesubscriptionupgradetype.md
   - docs/models/freesubscriptionupgrade.md
-  - docs/models/userssubscriptionsupdatesecurity.md
   - docs/models/userssubscriptionsupdaterequest.md
   - docs/models/usersubscriptionupdate.md
-  - docs/models/usersadvertisementslistsecurity.md
+  - docs/models/alreadycanceledsubscriptiontype.md
+  - docs/models/alreadycanceledsubscription.md
+  - docs/models/userssubscriptionscancelrequest.md
   - docs/models/usersadvertisementslistrequest.md
   - docs/models/usersadvertisementslistresponse.md
   - docs/models/listresourceuseradvertisementcampaign.md
   - docs/models/useradvertisementcampaign.md
   - docs/models/useradvertisementsortproperty.md
   - docs/models/useradvertisementcampaigncreate.md
-  - docs/models/usersadvertisementscreatesecurity.md
-  - docs/models/usersadvertisementsgetsecurity.md
   - docs/models/usersadvertisementsgetrequest.md
-  - docs/models/usersadvertisementsdeletesecurity.md
-  - docs/models/usersadvertisementsdeleterequest.md
-  - docs/models/usersadvertisementsupdatesecurity.md
   - docs/models/usersadvertisementsupdaterequest.md
   - docs/models/useradvertisementcampaignupdate.md
-  - docs/models/usersadvertisementsenablesecurity.md
+  - docs/models/usersadvertisementsdeleterequest.md
   - docs/models/usersadvertisementsenablerequest.md
   - docs/models/useradvertisementcampaignenable.md
-  - docs/models/usersdownloadableslistsecurity.md
   - docs/models/usersdownloadableslistqueryparamorganizationidfilter.md
   - docs/models/benefitidfilter.md
   - docs/models/usersdownloadableslistrequest.md
@@ -507,9 +473,7 @@ generatedFiles:
   - docs/models/filedownload.md
   - docs/models/fileservicetypes.md
   - docs/models/s3downloadurl.md
-  - docs/models/usersdownloadablesgetsecurity.md
   - docs/models/usersdownloadablesgetrequest.md
-  - docs/models/externalorganizationslistsecurity.md
   - docs/models/platformfilter.md
   - docs/models/repositorynamefilter.md
   - docs/models/externalorganizationslistqueryparamorganizationidfilter.md
@@ -519,7 +483,6 @@ generatedFiles:
   - docs/models/externalorganization.md
   - docs/models/platforms.md
   - docs/models/externalorganizationsortproperty.md
-  - docs/models/repositorieslistsecurity.md
   - docs/models/queryparamplatformfilter.md
   - docs/models/queryparamrepositorynamefilter.md
   - docs/models/externalorganizationnamefilter.md
@@ -530,15 +493,12 @@ generatedFiles:
   - docs/models/repositoryoutput.md
   - docs/models/repositoryprofilesettings.md
   - docs/models/repositorysortproperty.md
-  - docs/models/repositoriesgetsecurity.md
   - docs/models/repositoriesgetrequest.md
   - docs/models/notpermittedtype.md
   - docs/models/notpermitted.md
-  - docs/models/repositoriesupdatesecurity.md
   - docs/models/repositoriesupdaterequest.md
   - docs/models/repositoryupdate.md
   - docs/models/repositoryprofilesettingsupdate.md
-  - docs/models/organizationslistsecurity.md
   - docs/models/organizationslistrequest.md
   - docs/models/organizationslistresponse.md
   - docs/models/listresourceorganization.md
@@ -548,13 +508,9 @@ generatedFiles:
   - docs/models/organizationsubscribepromotesettings.md
   - docs/models/organizationsortproperty.md
   - docs/models/organizationcreate.md
-  - docs/models/organizationscreatesecurity.md
-  - docs/models/organizationsgetsecurity.md
   - docs/models/organizationsgetrequest.md
-  - docs/models/organizationsupdatesecurity.md
   - docs/models/organizationsupdaterequest.md
   - docs/models/organizationupdate.md
-  - docs/models/subscriptionslistsecurity.md
   - docs/models/subscriptionslistqueryparamorganizationidfilter.md
   - docs/models/subscriptionslistqueryparamproductidfilter.md
   - docs/models/subscriptiontiertypefilter.md
@@ -567,15 +523,11 @@ generatedFiles:
   - docs/models/subscriptionuser.md
   - docs/models/subscriptionsortproperty.md
   - docs/models/subscriptioncreateemail.md
-  - docs/models/subscriptionscreatesecurity.md
   - docs/models/subscriptionsimported.md
   - docs/models/file.md
   - docs/models/bodysubscriptionsimport.md
-  - docs/models/subscriptionsimportsecurity.md
-  - docs/models/subscriptionsexportsecurity.md
   - docs/models/organizationid.md
   - docs/models/subscriptionsexportrequest.md
-  - docs/models/articleslistsecurity.md
   - docs/models/articleslistqueryparamorganizationidfilter.md
   - docs/models/articlevisibilityfilter.md
   - docs/models/articleslistrequest.md
@@ -587,22 +539,15 @@ generatedFiles:
   - docs/models/articlecreatearticlebyline.md
   - docs/models/articlecreatearticlevisibility.md
   - docs/models/articlecreate.md
-  - docs/models/articlescreatesecurity.md
-  - docs/models/articlesgetsecurity.md
   - docs/models/articlesgetrequest.md
-  - docs/models/articlesdeletesecurity.md
-  - docs/models/articlesdeleterequest.md
-  - docs/models/articlesupdatesecurity.md
   - docs/models/articlesupdaterequest.md
   - docs/models/articleupdate.md
   - docs/models/articlebyline.md
+  - docs/models/articlesdeleterequest.md
   - docs/models/articlereceivers.md
-  - docs/models/articlesreceiverssecurity.md
   - docs/models/articlesreceiversrequest.md
-  - docs/models/articlespreviewsecurity.md
   - docs/models/articlespreviewrequest.md
   - docs/models/articlepreview.md
-  - docs/models/articlessendsecurity.md
   - docs/models/articlessendrequest.md
   - docs/models/advertisementslistrequest.md
   - docs/models/advertisementslistresponse.md
@@ -610,16 +555,6 @@ generatedFiles:
   - docs/models/advertisementcampaign.md
   - docs/models/advertisementsortproperty.md
   - docs/models/advertisementsgetrequest.md
-  - docs/models/oauth2authorizesecurity.md
-  - docs/models/oauth2authorizeresponseoauth2authorize.md
-  - docs/models/authorizeresponseusersubtype.md
-  - docs/models/authorizeresponseuser.md
-  - docs/models/scope.md
-  - docs/models/authorizeuser.md
-  - docs/models/oauth2clientpublic.md
-  - docs/models/authorizeresponseorganizationsubtype.md
-  - docs/models/authorizeresponseorganization.md
-  - docs/models/authorizeorganization.md
   - docs/models/tokentype.md
   - docs/models/tokenresponse.md
   - docs/models/oauth2requesttokenrequestbody.md
@@ -638,7 +573,6 @@ generatedFiles:
   - docs/models/oauth2userinforesponseoauth2userinfo.md
   - docs/models/userinfouser.md
   - docs/models/userinfoorganization.md
-  - docs/models/oauth2clientslistsecurity.md
   - docs/models/oauth2clientslistrequest.md
   - docs/models/oauth2clientslistresponse.md
   - docs/models/listresourceoauth2client.md
@@ -650,18 +584,13 @@ generatedFiles:
   - docs/models/oauth2clientconfigurationgranttypes.md
   - docs/models/oauth2clientconfigurationresponsetypes.md
   - docs/models/oauth2clientconfiguration.md
-  - docs/models/oauth2clientsoauth2createclientsecurity.md
-  - docs/models/oauth2clientsoauth2getclientsecurity.md
   - docs/models/oauth2clientsoauth2getclientrequest.md
-  - docs/models/oauth2clientsoauth2updateclientsecurity.md
   - docs/models/oauth2clientsoauth2updateclientrequest.md
   - docs/models/oauth2clientconfigurationupdatetokenendpointauthmethod.md
   - docs/models/oauth2clientconfigurationupdategranttypes.md
   - docs/models/oauth2clientconfigurationupdateresponsetypes.md
   - docs/models/oauth2clientconfigurationupdate.md
-  - docs/models/oauth2clientsoauth2deleteclientsecurity.md
   - docs/models/oauth2clientsoauth2deleteclientrequest.md
-  - docs/models/benefitslistsecurity.md
   - docs/models/benefitslistqueryparamorganizationidfilter.md
   - docs/models/queryparambenefittypefilter.md
   - docs/models/benefitslistrequest.md
@@ -683,7 +612,6 @@ generatedFiles:
   - docs/models/benefitdownloadablestype.md
   - docs/models/benefitdownloadables.md
   - docs/models/benefitdownloadablesproperties.md
-  - docs/models/benefitscreatesecurity.md
   - docs/models/benefitscreatebenefitcreate.md
   - docs/models/benefitscreateresponsebenefitscreate.md
   - docs/models/benefitcustomcreatetype.md
@@ -700,12 +628,8 @@ generatedFiles:
   - docs/models/benefitdownloadablescreatetype.md
   - docs/models/benefitdownloadablescreate.md
   - docs/models/benefitdownloadablescreateproperties.md
-  - docs/models/benefitsgetsecurity.md
   - docs/models/benefitsgetrequest.md
   - docs/models/benefitsgetresponsebenefitsget.md
-  - docs/models/benefitsdeletesecurity.md
-  - docs/models/benefitsdeleterequest.md
-  - docs/models/benefitsupdatesecurity.md
   - docs/models/benefitsupdatebenefitupdate.md
   - docs/models/benefitsupdaterequest.md
   - docs/models/benefitsupdateresponsebenefitsupdate.md
@@ -721,18 +645,16 @@ generatedFiles:
   - docs/models/benefitgithubrepositoryupdate.md
   - docs/models/benefitdownloadablesupdatetype.md
   - docs/models/benefitdownloadablesupdate.md
-  - docs/models/benefitsgrantssecurity.md
+  - docs/models/benefitsdeleterequest.md
   - docs/models/benefitsgrantsrequest.md
   - docs/models/benefitsgrantsresponse.md
   - docs/models/listresourcebenefitgrant.md
-  - docs/models/productslistsecurity.md
   - docs/models/productslistqueryparamorganizationidfilter.md
   - docs/models/queryparambenefitidfilter.md
   - docs/models/queryparamsubscriptiontiertypefilter.md
   - docs/models/productslistrequest.md
   - docs/models/productslistresponse.md
   - docs/models/listresourceproduct.md
-  - docs/models/productscreatesecurity.md
   - docs/models/productscreateproductcreate.md
   - docs/models/productrecurringcreatetype.md
   - docs/models/productrecurringcreate.md
@@ -741,17 +663,13 @@ generatedFiles:
   - docs/models/productonetimecreate.md
   - docs/models/productpriceonetimecreatetype.md
   - docs/models/productpriceonetimecreate.md
-  - docs/models/productsgetsecurity.md
   - docs/models/productsgetrequest.md
-  - docs/models/productsupdatesecurity.md
   - docs/models/productsupdaterequest.md
   - docs/models/prices.md
   - docs/models/productupdate.md
   - docs/models/existingproductprice.md
-  - docs/models/productsupdatebenefitssecurity.md
   - docs/models/productsupdatebenefitsrequest.md
   - docs/models/productbenefitsupdate.md
-  - docs/models/orderslistsecurity.md
   - docs/models/orderslistqueryparamorganizationidfilter.md
   - docs/models/orderslistqueryparamproductidfilter.md
   - docs/models/queryparamproductpricetypefilter.md
@@ -764,16 +682,12 @@ generatedFiles:
   - docs/models/orderproduct.md
   - docs/models/orderuser.md
   - docs/models/ordersortproperty.md
-  - docs/models/ordersgetsecurity.md
   - docs/models/ordersgetrequest.md
   - docs/models/orderinvoice.md
-  - docs/models/ordersinvoicesecurity.md
   - docs/models/ordersinvoicerequest.md
   - docs/models/checkout.md
   - docs/models/checkoutcreate.md
-  - docs/models/checkoutscreatesecurity.md
   - docs/models/checkoutsgetrequest.md
-  - docs/models/fileslistsecurity.md
   - docs/models/fileslistrequest.md
   - docs/models/fileslistresponse.md
   - docs/models/fileread.md
@@ -785,7 +699,6 @@ generatedFiles:
   - docs/models/fileupload.md
   - docs/models/s3fileuploadmultipart.md
   - docs/models/s3fileuploadpart.md
-  - docs/models/filescreatesecurity.md
   - docs/models/filescreatefilecreate.md
   - docs/models/downloadablefilecreateservice.md
   - docs/models/downloadablefilecreate.md
@@ -795,25 +708,21 @@ generatedFiles:
   - docs/models/productmediafilecreate.md
   - docs/models/organizationavatarfilecreateservice.md
   - docs/models/organizationavatarfilecreate.md
-  - docs/models/filesuploadedsecurity.md
   - docs/models/filesuploadedrequest.md
   - docs/models/filesuploadedresponsefilesuploaded.md
   - docs/models/fileuploadcompleted.md
   - docs/models/s3fileuploadcompletedpart.md
-  - docs/models/filenotfoundtype.md
-  - docs/models/filenotfound.md
-  - docs/models/filesdeletesecurity.md
-  - docs/models/filesdeleterequest.md
-  - docs/models/filesupdatesecurity.md
   - docs/models/filesupdaterequest.md
   - docs/models/filesupdateresponsefilesupdate.md
   - docs/models/filepatch.md
+  - docs/models/filenotfoundtype.md
+  - docs/models/filenotfound.md
+  - docs/models/filesdeleterequest.md
   - docs/models/metricsresponse.md
   - docs/models/metrics.md
   - docs/models/metric.md
   - docs/models/metrictype.md
   - docs/models/metricperiod.md
-  - docs/models/metricsgetsecurity.md
   - docs/models/interval.md
   - docs/models/metricsgetqueryparamorganizationidfilter.md
   - docs/models/metricsgetqueryparamproductidfilter.md
@@ -822,7 +731,6 @@ generatedFiles:
   - docs/models/metricslimits.md
   - docs/models/metricsintervalslimits.md
   - docs/models/metricsintervallimit.md
-  - docs/models/metricslimitssecurity.md
   - docs/models/security.md
   - docs/models/webhookordercreatedpayloadtype.md
   - docs/models/webhookordercreatedpayload.md

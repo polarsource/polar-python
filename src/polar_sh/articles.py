@@ -12,7 +12,6 @@ class Articles(BaseSDK):
     
     def list(
         self, *,
-        security: Union[models.ArticlesListSecurity, models.ArticlesListSecurityTypedDict],
         request: Optional[Union[models.ArticlesListRequest, models.ArticlesListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -22,7 +21,6 @@ class Articles(BaseSDK):
 
         List articles.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -51,7 +49,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -70,7 +68,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -124,7 +122,6 @@ class Articles(BaseSDK):
     
     async def list_async(
         self, *,
-        security: Union[models.ArticlesListSecurity, models.ArticlesListSecurityTypedDict],
         request: Optional[Union[models.ArticlesListRequest, models.ArticlesListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -134,7 +131,6 @@ class Articles(BaseSDK):
 
         List articles.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -163,7 +159,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -182,7 +178,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -236,7 +232,6 @@ class Articles(BaseSDK):
     
     def create(
         self, *,
-        security: Union[models.ArticlesCreateSecurity, models.ArticlesCreateSecurityTypedDict],
         request: Union[models.ArticleCreate, models.ArticleCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -246,7 +241,6 @@ class Articles(BaseSDK):
 
         Create an article.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -275,7 +269,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.ArticleCreate),
             timeout_ms=timeout_ms,
         )
@@ -295,7 +289,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -317,7 +311,6 @@ class Articles(BaseSDK):
     
     async def create_async(
         self, *,
-        security: Union[models.ArticlesCreateSecurity, models.ArticlesCreateSecurityTypedDict],
         request: Union[models.ArticleCreate, models.ArticleCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -327,7 +320,6 @@ class Articles(BaseSDK):
 
         Create an article.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -356,7 +348,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.ArticleCreate),
             timeout_ms=timeout_ms,
         )
@@ -376,7 +368,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -398,7 +390,6 @@ class Articles(BaseSDK):
     
     def retrieve(
         self, *,
-        security: Union[models.ArticlesGetSecurity, models.ArticlesGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -408,7 +399,6 @@ class Articles(BaseSDK):
 
         Get an article by ID.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -437,7 +427,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -456,7 +446,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -481,7 +471,6 @@ class Articles(BaseSDK):
     
     async def retrieve_async(
         self, *,
-        security: Union[models.ArticlesGetSecurity, models.ArticlesGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -491,7 +480,6 @@ class Articles(BaseSDK):
 
         Get an article by ID.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -520,7 +508,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -539,7 +527,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -562,181 +550,8 @@ class Articles(BaseSDK):
 
     
     
-    def delete(
-        self, *,
-        security: Union[models.ArticlesDeleteSecurity, models.ArticlesDeleteSecurityTypedDict],
-        id: str,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-    ):
-        r"""Delete Article
-
-        Delete an article.
-
-        :param security: 
-        :param id: 
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-        
-        if server_url is not None:
-            base_url = server_url
-        
-        request = models.ArticlesDeleteRequest(
-            id=id,
-        )
-        
-        req = self.build_request(
-            method="DELETE",
-            path="/v1/articles/{id}",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=False,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesDeleteSecurity),
-            timeout_ms=timeout_ms,
-        )
-        
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:delete", oauth2_scopes=[], security_source=security),
-            request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        data: Any = None
-        if utils.match_response(http_res, "204", "*"):
-            return
-        if utils.match_response(http_res, "403", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
-            raise models.NotPermitted(data=data)
-        if utils.match_response(http_res, "404", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
-            raise models.ResourceNotFound(data=data)
-        if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
-            raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
-
-    
-    
-    async def delete_async(
-        self, *,
-        security: Union[models.ArticlesDeleteSecurity, models.ArticlesDeleteSecurityTypedDict],
-        id: str,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-    ):
-        r"""Delete Article
-
-        Delete an article.
-
-        :param security: 
-        :param id: 
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-        
-        if server_url is not None:
-            base_url = server_url
-        
-        request = models.ArticlesDeleteRequest(
-            id=id,
-        )
-        
-        req = self.build_request(
-            method="DELETE",
-            path="/v1/articles/{id}",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=False,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesDeleteSecurity),
-            timeout_ms=timeout_ms,
-        )
-        
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:delete", oauth2_scopes=[], security_source=security),
-            request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        data: Any = None
-        if utils.match_response(http_res, "204", "*"):
-            return
-        if utils.match_response(http_res, "403", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
-            raise models.NotPermitted(data=data)
-        if utils.match_response(http_res, "404", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
-            raise models.ResourceNotFound(data=data)
-        if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
-            raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
-
-    
-    
     def update(
         self, *,
-        security: Union[models.ArticlesUpdateSecurity, models.ArticlesUpdateSecurityTypedDict],
         id: str,
         article_update: Union[models.ArticleUpdate, models.ArticleUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -747,7 +562,6 @@ class Articles(BaseSDK):
 
         Update an article.
 
-        :param security: 
         :param id: 
         :param article_update: 
         :param retries: Override the default retry configuration for this method
@@ -778,7 +592,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesUpdateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.article_update, False, False, "json", models.ArticleUpdate),
             timeout_ms=timeout_ms,
         )
@@ -798,7 +612,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:update", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -826,7 +640,6 @@ class Articles(BaseSDK):
     
     async def update_async(
         self, *,
-        security: Union[models.ArticlesUpdateSecurity, models.ArticlesUpdateSecurityTypedDict],
         id: str,
         article_update: Union[models.ArticleUpdate, models.ArticleUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -837,7 +650,6 @@ class Articles(BaseSDK):
 
         Update an article.
 
-        :param security: 
         :param id: 
         :param article_update: 
         :param retries: Override the default retry configuration for this method
@@ -868,7 +680,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesUpdateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.article_update, False, False, "json", models.ArticleUpdate),
             timeout_ms=timeout_ms,
         )
@@ -888,7 +700,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:update", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -914,9 +726,176 @@ class Articles(BaseSDK):
 
     
     
+    def delete(
+        self, *,
+        id: str,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+    ):
+        r"""Delete Article
+
+        Delete an article.
+
+        :param id: 
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+        
+        if server_url is not None:
+            base_url = server_url
+        
+        request = models.ArticlesDeleteRequest(
+            id=id,
+        )
+        
+        req = self.build_request(
+            method="DELETE",
+            path="/v1/articles/{id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+        
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, [
+                "429",
+                "500",
+                "502",
+                "503",
+                "504"
+            ])                
+        
+        http_res = self.do_request(
+            hook_ctx=HookContext(operation_id="articles:delete", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            request=req,
+            error_status_codes=["403","404","422","4XX","5XX"],
+            retry_config=retry_config
+        )
+        
+        data: Any = None
+        if utils.match_response(http_res, "204", "*"):
+            return
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
+            raise models.NotPermitted(data=data)
+        if utils.match_response(http_res, "404", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
+            raise models.ResourceNotFound(data=data)
+        if utils.match_response(http_res, "422", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
+            raise models.HTTPValidationError(data=data)
+        if utils.match_response(http_res, ["4XX","5XX"], "*"):
+            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
+        
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+
+    
+    
+    async def delete_async(
+        self, *,
+        id: str,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+    ):
+        r"""Delete Article
+
+        Delete an article.
+
+        :param id: 
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+        
+        if server_url is not None:
+            base_url = server_url
+        
+        request = models.ArticlesDeleteRequest(
+            id=id,
+        )
+        
+        req = self.build_request(
+            method="DELETE",
+            path="/v1/articles/{id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+        
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, [
+                "429",
+                "500",
+                "502",
+                "503",
+                "504"
+            ])                
+        
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(operation_id="articles:delete", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            request=req,
+            error_status_codes=["403","404","422","4XX","5XX"],
+            retry_config=retry_config
+        )
+        
+        data: Any = None
+        if utils.match_response(http_res, "204", "*"):
+            return
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
+            raise models.NotPermitted(data=data)
+        if utils.match_response(http_res, "404", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
+            raise models.ResourceNotFound(data=data)
+        if utils.match_response(http_res, "422", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
+            raise models.HTTPValidationError(data=data)
+        if utils.match_response(http_res, ["4XX","5XX"], "*"):
+            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
+        
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+
+    
+    
     def receivers(
         self, *,
-        security: Union[models.ArticlesReceiversSecurity, models.ArticlesReceiversSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -926,7 +905,6 @@ class Articles(BaseSDK):
 
         Get number of potential receivers for an article.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -955,7 +933,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesReceiversSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -974,7 +952,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:receivers", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:receivers", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -996,7 +974,6 @@ class Articles(BaseSDK):
     
     async def receivers_async(
         self, *,
-        security: Union[models.ArticlesReceiversSecurity, models.ArticlesReceiversSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1006,7 +983,6 @@ class Articles(BaseSDK):
 
         Get number of potential receivers for an article.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1035,7 +1011,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesReceiversSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -1054,7 +1030,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:receivers", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:receivers", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -1076,7 +1052,6 @@ class Articles(BaseSDK):
     
     def preview(
         self, *,
-        security: Union[models.ArticlesPreviewSecurity, models.ArticlesPreviewSecurityTypedDict],
         id: str,
         article_preview: Union[models.ArticlePreview, models.ArticlePreviewTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -1087,7 +1062,6 @@ class Articles(BaseSDK):
 
         Send an article preview by email.
 
-        :param security: 
         :param id: 
         :param article_preview: 
         :param retries: Override the default retry configuration for this method
@@ -1118,7 +1092,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesPreviewSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.article_preview, False, False, "json", models.ArticlePreview),
             timeout_ms=timeout_ms,
         )
@@ -1138,7 +1112,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:preview", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:preview", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -1166,7 +1140,6 @@ class Articles(BaseSDK):
     
     async def preview_async(
         self, *,
-        security: Union[models.ArticlesPreviewSecurity, models.ArticlesPreviewSecurityTypedDict],
         id: str,
         article_preview: Union[models.ArticlePreview, models.ArticlePreviewTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -1177,7 +1150,6 @@ class Articles(BaseSDK):
 
         Send an article preview by email.
 
-        :param security: 
         :param id: 
         :param article_preview: 
         :param retries: Override the default retry configuration for this method
@@ -1208,7 +1180,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesPreviewSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.article_preview, False, False, "json", models.ArticlePreview),
             timeout_ms=timeout_ms,
         )
@@ -1228,7 +1200,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:preview", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:preview", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -1256,7 +1228,6 @@ class Articles(BaseSDK):
     
     def send(
         self, *,
-        security: Union[models.ArticlesSendSecurity, models.ArticlesSendSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1266,7 +1237,6 @@ class Articles(BaseSDK):
 
         Send an article by email to all subscribers.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1295,7 +1265,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesSendSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -1314,7 +1284,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:send", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:send", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["400","403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -1342,7 +1312,6 @@ class Articles(BaseSDK):
     
     async def send_async(
         self, *,
-        security: Union[models.ArticlesSendSecurity, models.ArticlesSendSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1352,7 +1321,6 @@ class Articles(BaseSDK):
 
         Send an article by email to all subscribers.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1381,7 +1349,7 @@ class Articles(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ArticlesSendSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -1400,7 +1368,7 @@ class Articles(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:send", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="articles:send", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["400","403","404","422","4XX","5XX"],
             retry_config=retry_config

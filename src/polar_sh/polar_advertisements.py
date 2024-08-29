@@ -12,7 +12,6 @@ class PolarAdvertisements(BaseSDK):
     
     def list(
         self, *,
-        security: Union[models.UsersAdvertisementsListSecurity, models.UsersAdvertisementsListSecurityTypedDict],
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.UserAdvertisementSortProperty]] = UNSET,
@@ -24,7 +23,6 @@ class PolarAdvertisements(BaseSDK):
 
         List advertisement campaigns.
 
-        :param security: 
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -57,7 +55,7 @@ class PolarAdvertisements(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersAdvertisementsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -76,7 +74,7 @@ class PolarAdvertisements(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:advertisements:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:advertisements:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -101,7 +99,6 @@ class PolarAdvertisements(BaseSDK):
                 return None
 
             return self.list(
-                security=security,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -124,7 +121,6 @@ class PolarAdvertisements(BaseSDK):
     
     async def list_async(
         self, *,
-        security: Union[models.UsersAdvertisementsListSecurity, models.UsersAdvertisementsListSecurityTypedDict],
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.UserAdvertisementSortProperty]] = UNSET,
@@ -136,7 +132,6 @@ class PolarAdvertisements(BaseSDK):
 
         List advertisement campaigns.
 
-        :param security: 
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -169,7 +164,7 @@ class PolarAdvertisements(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersAdvertisementsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -188,7 +183,7 @@ class PolarAdvertisements(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:advertisements:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:advertisements:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -213,7 +208,6 @@ class PolarAdvertisements(BaseSDK):
                 return None
 
             return self.list(
-                security=security,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -236,7 +230,6 @@ class PolarAdvertisements(BaseSDK):
     
     def create(
         self, *,
-        security: Union[models.UsersAdvertisementsCreateSecurity, models.UsersAdvertisementsCreateSecurityTypedDict],
         request: Union[models.UserAdvertisementCampaignCreate, models.UserAdvertisementCampaignCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -246,7 +239,6 @@ class PolarAdvertisements(BaseSDK):
 
         Create an advertisement campaign.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -275,7 +267,7 @@ class PolarAdvertisements(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersAdvertisementsCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.UserAdvertisementCampaignCreate),
             timeout_ms=timeout_ms,
         )
@@ -295,7 +287,7 @@ class PolarAdvertisements(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:advertisements:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:advertisements:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -317,7 +309,6 @@ class PolarAdvertisements(BaseSDK):
     
     async def create_async(
         self, *,
-        security: Union[models.UsersAdvertisementsCreateSecurity, models.UsersAdvertisementsCreateSecurityTypedDict],
         request: Union[models.UserAdvertisementCampaignCreate, models.UserAdvertisementCampaignCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -327,7 +318,6 @@ class PolarAdvertisements(BaseSDK):
 
         Create an advertisement campaign.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -356,7 +346,7 @@ class PolarAdvertisements(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersAdvertisementsCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.UserAdvertisementCampaignCreate),
             timeout_ms=timeout_ms,
         )
@@ -376,7 +366,7 @@ class PolarAdvertisements(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:advertisements:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:advertisements:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -398,7 +388,6 @@ class PolarAdvertisements(BaseSDK):
     
     def retrieve(
         self, *,
-        security: Union[models.UsersAdvertisementsGetSecurity, models.UsersAdvertisementsGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -408,7 +397,6 @@ class PolarAdvertisements(BaseSDK):
 
         Get an advertisement campaign by ID.
 
-        :param security: 
         :param id: The advertisement campaign ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -437,7 +425,7 @@ class PolarAdvertisements(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersAdvertisementsGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -456,7 +444,7 @@ class PolarAdvertisements(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:advertisements:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:advertisements:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -481,7 +469,6 @@ class PolarAdvertisements(BaseSDK):
     
     async def retrieve_async(
         self, *,
-        security: Union[models.UsersAdvertisementsGetSecurity, models.UsersAdvertisementsGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -491,7 +478,6 @@ class PolarAdvertisements(BaseSDK):
 
         Get an advertisement campaign by ID.
 
-        :param security: 
         :param id: The advertisement campaign ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -520,7 +506,7 @@ class PolarAdvertisements(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersAdvertisementsGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -539,7 +525,177 @@ class PolarAdvertisements(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:advertisements:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:advertisements:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            request=req,
+            error_status_codes=["404","422","4XX","5XX"],
+            retry_config=retry_config
+        )
+        
+        data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(http_res.text, Optional[models.UserAdvertisementCampaign])
+        if utils.match_response(http_res, "404", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
+            raise models.ResourceNotFound(data=data)
+        if utils.match_response(http_res, "422", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
+            raise models.HTTPValidationError(data=data)
+        if utils.match_response(http_res, ["4XX","5XX"], "*"):
+            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
+        
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+
+    
+    
+    def update(
+        self, *,
+        id: str,
+        user_advertisement_campaign_update: Union[models.UserAdvertisementCampaignUpdate, models.UserAdvertisementCampaignUpdateTypedDict],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+    ) -> Optional[models.UserAdvertisementCampaign]:
+        r"""Update Advertisement
+
+        Update an advertisement campaign.
+
+        :param id: The advertisement campaign ID.
+        :param user_advertisement_campaign_update: 
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+        
+        if server_url is not None:
+            base_url = server_url
+        
+        request = models.UsersAdvertisementsUpdateRequest(
+            id=id,
+            user_advertisement_campaign_update=utils.get_pydantic_model(user_advertisement_campaign_update, models.UserAdvertisementCampaignUpdate),
+        )
+        
+        req = self.build_request(
+            method="PATCH",
+            path="/v1/users/advertisements/{id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(request.user_advertisement_campaign_update, False, False, "json", models.UserAdvertisementCampaignUpdate),
+            timeout_ms=timeout_ms,
+        )
+        
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, [
+                "429",
+                "500",
+                "502",
+                "503",
+                "504"
+            ])                
+        
+        http_res = self.do_request(
+            hook_ctx=HookContext(operation_id="users:advertisements:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            request=req,
+            error_status_codes=["404","422","4XX","5XX"],
+            retry_config=retry_config
+        )
+        
+        data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(http_res.text, Optional[models.UserAdvertisementCampaign])
+        if utils.match_response(http_res, "404", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
+            raise models.ResourceNotFound(data=data)
+        if utils.match_response(http_res, "422", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
+            raise models.HTTPValidationError(data=data)
+        if utils.match_response(http_res, ["4XX","5XX"], "*"):
+            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
+        
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+
+    
+    
+    async def update_async(
+        self, *,
+        id: str,
+        user_advertisement_campaign_update: Union[models.UserAdvertisementCampaignUpdate, models.UserAdvertisementCampaignUpdateTypedDict],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+    ) -> Optional[models.UserAdvertisementCampaign]:
+        r"""Update Advertisement
+
+        Update an advertisement campaign.
+
+        :param id: The advertisement campaign ID.
+        :param user_advertisement_campaign_update: 
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+        
+        if server_url is not None:
+            base_url = server_url
+        
+        request = models.UsersAdvertisementsUpdateRequest(
+            id=id,
+            user_advertisement_campaign_update=utils.get_pydantic_model(user_advertisement_campaign_update, models.UserAdvertisementCampaignUpdate),
+        )
+        
+        req = self.build_request(
+            method="PATCH",
+            path="/v1/users/advertisements/{id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(request.user_advertisement_campaign_update, False, False, "json", models.UserAdvertisementCampaignUpdate),
+            timeout_ms=timeout_ms,
+        )
+        
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, [
+                "429",
+                "500",
+                "502",
+                "503",
+                "504"
+            ])                
+        
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(operation_id="users:advertisements:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -564,7 +720,6 @@ class PolarAdvertisements(BaseSDK):
     
     def delete(
         self, *,
-        security: Union[models.UsersAdvertisementsDeleteSecurity, models.UsersAdvertisementsDeleteSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -576,7 +731,6 @@ class PolarAdvertisements(BaseSDK):
 
         It'll be automatically disabled on all granted benefits.
 
-        :param security: 
         :param id: The advertisement campaign ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -605,7 +759,7 @@ class PolarAdvertisements(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersAdvertisementsDeleteSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -624,7 +778,7 @@ class PolarAdvertisements(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:advertisements:delete", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:advertisements:delete", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -651,7 +805,6 @@ class PolarAdvertisements(BaseSDK):
     
     async def delete_async(
         self, *,
-        security: Union[models.UsersAdvertisementsDeleteSecurity, models.UsersAdvertisementsDeleteSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -663,7 +816,6 @@ class PolarAdvertisements(BaseSDK):
 
         It'll be automatically disabled on all granted benefits.
 
-        :param security: 
         :param id: The advertisement campaign ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -692,7 +844,7 @@ class PolarAdvertisements(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersAdvertisementsDeleteSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -711,7 +863,7 @@ class PolarAdvertisements(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:advertisements:delete", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:advertisements:delete", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -736,183 +888,8 @@ class PolarAdvertisements(BaseSDK):
 
     
     
-    def update(
-        self, *,
-        security: Union[models.UsersAdvertisementsUpdateSecurity, models.UsersAdvertisementsUpdateSecurityTypedDict],
-        id: str,
-        user_advertisement_campaign_update: Union[models.UserAdvertisementCampaignUpdate, models.UserAdvertisementCampaignUpdateTypedDict],
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserAdvertisementCampaign]:
-        r"""Update Advertisement
-
-        Update an advertisement campaign.
-
-        :param security: 
-        :param id: The advertisement campaign ID.
-        :param user_advertisement_campaign_update: 
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-        
-        if server_url is not None:
-            base_url = server_url
-        
-        request = models.UsersAdvertisementsUpdateRequest(
-            id=id,
-            user_advertisement_campaign_update=utils.get_pydantic_model(user_advertisement_campaign_update, models.UserAdvertisementCampaignUpdate),
-        )
-        
-        req = self.build_request(
-            method="PATCH",
-            path="/v1/users/advertisements/{id}",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersAdvertisementsUpdateSecurity),
-            get_serialized_body=lambda: utils.serialize_request_body(request.user_advertisement_campaign_update, False, False, "json", models.UserAdvertisementCampaignUpdate),
-            timeout_ms=timeout_ms,
-        )
-        
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:advertisements:update", oauth2_scopes=[], security_source=security),
-            request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.UserAdvertisementCampaign])
-        if utils.match_response(http_res, "404", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
-            raise models.ResourceNotFound(data=data)
-        if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
-            raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
-
-    
-    
-    async def update_async(
-        self, *,
-        security: Union[models.UsersAdvertisementsUpdateSecurity, models.UsersAdvertisementsUpdateSecurityTypedDict],
-        id: str,
-        user_advertisement_campaign_update: Union[models.UserAdvertisementCampaignUpdate, models.UserAdvertisementCampaignUpdateTypedDict],
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserAdvertisementCampaign]:
-        r"""Update Advertisement
-
-        Update an advertisement campaign.
-
-        :param security: 
-        :param id: The advertisement campaign ID.
-        :param user_advertisement_campaign_update: 
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-        
-        if server_url is not None:
-            base_url = server_url
-        
-        request = models.UsersAdvertisementsUpdateRequest(
-            id=id,
-            user_advertisement_campaign_update=utils.get_pydantic_model(user_advertisement_campaign_update, models.UserAdvertisementCampaignUpdate),
-        )
-        
-        req = self.build_request(
-            method="PATCH",
-            path="/v1/users/advertisements/{id}",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersAdvertisementsUpdateSecurity),
-            get_serialized_body=lambda: utils.serialize_request_body(request.user_advertisement_campaign_update, False, False, "json", models.UserAdvertisementCampaignUpdate),
-            timeout_ms=timeout_ms,
-        )
-        
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:advertisements:update", oauth2_scopes=[], security_source=security),
-            request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.UserAdvertisementCampaign])
-        if utils.match_response(http_res, "404", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
-            raise models.ResourceNotFound(data=data)
-        if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
-            raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
-
-    
-    
     def enable(
         self, *,
-        security: Union[models.UsersAdvertisementsEnableSecurity, models.UsersAdvertisementsEnableSecurityTypedDict],
         id: str,
         user_advertisement_campaign_enable: Union[models.UserAdvertisementCampaignEnable, models.UserAdvertisementCampaignEnableTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -923,7 +900,6 @@ class PolarAdvertisements(BaseSDK):
 
         Enable an advertisement campaign on a granted benefit.
 
-        :param security: 
         :param id: The advertisement campaign ID.
         :param user_advertisement_campaign_enable: 
         :param retries: Override the default retry configuration for this method
@@ -954,7 +930,7 @@ class PolarAdvertisements(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersAdvertisementsEnableSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.user_advertisement_campaign_enable, False, False, "json", models.UserAdvertisementCampaignEnable),
             timeout_ms=timeout_ms,
         )
@@ -974,7 +950,7 @@ class PolarAdvertisements(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:advertisements:enable", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:advertisements:enable", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -999,7 +975,6 @@ class PolarAdvertisements(BaseSDK):
     
     async def enable_async(
         self, *,
-        security: Union[models.UsersAdvertisementsEnableSecurity, models.UsersAdvertisementsEnableSecurityTypedDict],
         id: str,
         user_advertisement_campaign_enable: Union[models.UserAdvertisementCampaignEnable, models.UserAdvertisementCampaignEnableTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -1010,7 +985,6 @@ class PolarAdvertisements(BaseSDK):
 
         Enable an advertisement campaign on a granted benefit.
 
-        :param security: 
         :param id: The advertisement campaign ID.
         :param user_advertisement_campaign_enable: 
         :param retries: Override the default retry configuration for this method
@@ -1041,7 +1015,7 @@ class PolarAdvertisements(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersAdvertisementsEnableSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.user_advertisement_campaign_enable, False, False, "json", models.UserAdvertisementCampaignEnable),
             timeout_ms=timeout_ms,
         )
@@ -1061,7 +1035,7 @@ class PolarAdvertisements(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:advertisements:enable", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:advertisements:enable", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config

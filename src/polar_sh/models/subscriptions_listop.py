@@ -5,22 +5,12 @@ from .listresource_subscription_ import ListResourceSubscription, ListResourceSu
 from .subscriptionsortproperty import SubscriptionSortProperty
 from .subscriptiontiertype import SubscriptionTierType
 from polar_sh.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from polar_sh.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
+from polar_sh.utils import FieldMetadata, QueryParamMetadata
 import pydantic
 from pydantic import model_serializer
 from typing import Callable, List, Optional, TypedDict, Union
 from typing_extensions import Annotated, NotRequired
 
-
-class SubscriptionsListSecurityTypedDict(TypedDict):
-    open_id_connect: NotRequired[str]
-    http_bearer: NotRequired[str]
-    
-
-class SubscriptionsListSecurity(BaseModel):
-    open_id_connect: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="openIdConnect", field_name="Authorization"))] = None
-    http_bearer: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="http", sub_type="bearer", field_name="Authorization"))] = None
-    
 
 SubscriptionsListQueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]
 r"""Filter by organization ID."""

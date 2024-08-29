@@ -47,15 +47,14 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 
 ```python
 # Synchronous Example
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
+res = s.users.benefits.list()
 
 if res is not None:
     while True:
@@ -73,14 +72,13 @@ The same SDK client can also be used to make asychronous requests by importing a
 ```python
 # Asynchronous Example
 import asyncio
-import polar_sh
 from polar_sh import Polar
 
 async def main():
-    s = Polar()
-    res = await s.users.benefits.list_async(security=polar_sh.UsersBenefitsListSecurity(
-        open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-    ))
+    s = Polar(
+        access_token="<YOUR_BEARER_TOKEN_HERE>",
+    )
+    res = await s.users.benefits.list_async()
     if res is not None:
         while True:
             # handle items
@@ -112,16 +110,16 @@ asyncio.run(main())
 * [list](docs/sdks/polarsubscriptions/README.md#list) - List Subscriptions
 * [create](docs/sdks/polarsubscriptions/README.md#create) - Create Free Subscription
 * [retrieve](docs/sdks/polarsubscriptions/README.md#retrieve) - Get Subscription
-* [cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
 * [update](docs/sdks/polarsubscriptions/README.md#update) - Update Subscription
+* [cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
 
 ### [users.advertisements](docs/sdks/polaradvertisements/README.md)
 
 * [list](docs/sdks/polaradvertisements/README.md#list) - List Advertisements
 * [create](docs/sdks/polaradvertisements/README.md#create) - Create Advertisement
 * [retrieve](docs/sdks/polaradvertisements/README.md#retrieve) - Get Advertisement
-* [delete](docs/sdks/polaradvertisements/README.md#delete) - Delete Advertisement
 * [update](docs/sdks/polaradvertisements/README.md#update) - Update Advertisement
+* [delete](docs/sdks/polaradvertisements/README.md#delete) - Delete Advertisement
 * [enable](docs/sdks/polaradvertisements/README.md#enable) - Enable Advertisement
 
 ### [users.downloadables](docs/sdks/downloadables/README.md)
@@ -150,7 +148,7 @@ asyncio.run(main())
 
 * [list](docs/sdks/subscriptions/README.md#list) - List Subscriptions
 * [create](docs/sdks/subscriptions/README.md#create) - Create Free Subscription
-* [import](docs/sdks/subscriptions/README.md#import) - Import Subscriptions
+* [import_subscriptions](docs/sdks/subscriptions/README.md#import_subscriptions) - Import Subscriptions
 * [export](docs/sdks/subscriptions/README.md#export) - Export Subscriptions
 
 ### [articles](docs/sdks/articles/README.md)
@@ -158,8 +156,8 @@ asyncio.run(main())
 * [list](docs/sdks/articles/README.md#list) - List Articles
 * [create](docs/sdks/articles/README.md#create) - Create Article
 * [retrieve](docs/sdks/articles/README.md#retrieve) - Get Article
-* [delete](docs/sdks/articles/README.md#delete) - Delete Article
 * [update](docs/sdks/articles/README.md#update) - Update Article
+* [delete](docs/sdks/articles/README.md#delete) - Delete Article
 * [receivers](docs/sdks/articles/README.md#receivers) - Get Article Receivers Count
 * [preview](docs/sdks/articles/README.md#preview) - Send Article Preview
 * [send](docs/sdks/articles/README.md#send) - Send Article
@@ -171,7 +169,6 @@ asyncio.run(main())
 
 ### [oauth2](docs/sdks/oauth2/README.md)
 
-* [authorize](docs/sdks/oauth2/README.md#authorize) - Authorize
 * [token](docs/sdks/oauth2/README.md#token) - Request Token
 * [revoke](docs/sdks/oauth2/README.md#revoke) - Revoke Token
 * [introspect](docs/sdks/oauth2/README.md#introspect) - Introspect Token
@@ -190,8 +187,8 @@ asyncio.run(main())
 * [list](docs/sdks/benefits/README.md#list) - List Benefits
 * [create](docs/sdks/benefits/README.md#create) - Create Benefit
 * [retrieve](docs/sdks/benefits/README.md#retrieve) - Get Benefit
-* [delete](docs/sdks/benefits/README.md#delete) - Delete Benefit
 * [update](docs/sdks/benefits/README.md#update) - Update Benefit
+* [delete](docs/sdks/benefits/README.md#delete) - Delete Benefit
 * [grants](docs/sdks/benefits/README.md#grants) - List Benefit Grants
 
 ### [products](docs/sdks/products/README.md)
@@ -218,8 +215,8 @@ asyncio.run(main())
 * [list](docs/sdks/files/README.md#list) - List Files
 * [create](docs/sdks/files/README.md#create) - Create File
 * [uploaded](docs/sdks/files/README.md#uploaded) - Complete File Upload
-* [delete](docs/sdks/files/README.md#delete) - Delete File
 * [update](docs/sdks/files/README.md#update) - Update File
+* [delete](docs/sdks/files/README.md#delete) - Delete File
 
 ### [metrics](docs/sdks/metricssdk/README.md)
 
@@ -238,15 +235,14 @@ Certain SDK methods accept file objects as part of a request body or multi-part 
 >
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.subscriptions.import(security=polar_sh.SubscriptionsImportSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), request={
+res = s.subscriptions.import_subscriptions(request={
     "file": {
         "file_name": "your_file_here",
         "content": open("<file_path>", "rb"),
@@ -269,15 +265,14 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
 from polar.utils import BackoffStrategy, RetryConfig
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-),
+res = s.users.benefits.list(,
     RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
 if res is not None:
@@ -294,17 +289,15 @@ if res is not None:
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
 from polar.utils import BackoffStrategy, RetryConfig
-import polar_sh
 from polar_sh import Polar
 
 s = Polar(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 
-res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
+res = s.users.benefits.list()
 
 if res is not None:
     while True:
@@ -331,16 +324,15 @@ Handling errors in this SDK should largely match your expectations.  All operati
 ### Example
 
 ```python
-import polar_sh
 from polar_sh import Polar, models
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 res = None
 try:
-    res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
+    res = s.users.benefits.list()
 
 except models.HTTPValidationError as e:
     # handle exception
@@ -375,17 +367,15 @@ You can override the default server globally by passing a server index to the `s
 #### Example
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
 s = Polar(
     server_idx=0,
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 
-res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
+res = s.users.benefits.list()
 
 if res is not None:
     while True:
@@ -403,17 +393,15 @@ if res is not None:
 
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
-import polar_sh
 from polar_sh import Polar
 
 s = Polar(
     server_url="https://api.polar.sh",
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 
-res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
+res = s.users.benefits.list()
 
 if res is not None:
     while True:
@@ -515,45 +503,20 @@ s = Polar(async_client=CustomClient(httpx.AsyncClient()))
 
 This SDK supports the following security scheme globally:
 
-| Name                     | Type                     | Scheme                   |
-| ------------------------ | ------------------------ | ------------------------ |
-| `open_id_connect`        | openIdConnect            | OpenID Connect Discovery |
+| Name           | Type           | Scheme         |
+| -------------- | -------------- | -------------- |
+| `access_token` | http           | HTTP Bearer    |
 
-To authenticate with the API the `open_id_connect` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `access_token` parameter must be set when initializing the SDK client instance. For example:
 ```python
 from polar_sh import Polar
 
 s = Polar(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 
-res = s.advertisements.list(benefit_id="<value>")
-
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.Next()
-        if res is None:
-            break
-
-
-```
-
-### Per-Operation Security Schemes
-
-Some operations in this SDK require the security scheme to be specified at the request level. For example:
-```python
-import polar_sh
-from polar_sh import Polar
-
-s = Polar()
-
-
-res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
+res = s.users.benefits.list()
 
 if res is not None:
     while True:
@@ -591,15 +554,14 @@ return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
+res = s.users.benefits.list()
 
 if res is not None:
     while True:

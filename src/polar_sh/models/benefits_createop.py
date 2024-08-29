@@ -12,22 +12,11 @@ from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesType
 from .benefitdownloadablescreate import BenefitDownloadablesCreate, BenefitDownloadablesCreateTypedDict
 from .benefitgithubrepository import BenefitGitHubRepository, BenefitGitHubRepositoryTypedDict
 from .benefitgithubrepositorycreate import BenefitGitHubRepositoryCreate, BenefitGitHubRepositoryCreateTypedDict
-from polar_sh.types import BaseModel
-from polar_sh.utils import FieldMetadata, SecurityMetadata, get_discriminator
+from polar_sh.utils import get_discriminator
 from pydantic import Discriminator, Tag
-from typing import Optional, TypedDict, Union
-from typing_extensions import Annotated, NotRequired
+from typing import Union
+from typing_extensions import Annotated
 
-
-class BenefitsCreateSecurityTypedDict(TypedDict):
-    open_id_connect: NotRequired[str]
-    http_bearer: NotRequired[str]
-    
-
-class BenefitsCreateSecurity(BaseModel):
-    open_id_connect: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="openIdConnect", field_name="Authorization"))] = None
-    http_bearer: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="http", sub_type="bearer", field_name="Authorization"))] = None
-    
 
 BenefitsCreateBenefitCreateTypedDict = Union[BenefitAdsCreateTypedDict, BenefitDiscordCreateTypedDict, BenefitGitHubRepositoryCreateTypedDict, BenefitDownloadablesCreateTypedDict, BenefitCustomCreateTypedDict]
 

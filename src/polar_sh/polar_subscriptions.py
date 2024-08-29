@@ -12,7 +12,6 @@ class PolarSubscriptions(BaseSDK):
     
     def list(
         self, *,
-        security: Union[models.UsersSubscriptionsListSecurity, models.UsersSubscriptionsListSecurityTypedDict],
         request: Optional[Union[models.UsersSubscriptionsListRequest, models.UsersSubscriptionsListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -22,7 +21,6 @@ class PolarSubscriptions(BaseSDK):
 
         List my subscriptions.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -51,7 +49,7 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersSubscriptionsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -70,7 +68,7 @@ class PolarSubscriptions(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:subscriptions:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:subscriptions:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -123,7 +121,6 @@ class PolarSubscriptions(BaseSDK):
     
     async def list_async(
         self, *,
-        security: Union[models.UsersSubscriptionsListSecurity, models.UsersSubscriptionsListSecurityTypedDict],
         request: Optional[Union[models.UsersSubscriptionsListRequest, models.UsersSubscriptionsListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -133,7 +130,6 @@ class PolarSubscriptions(BaseSDK):
 
         List my subscriptions.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -162,7 +158,7 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersSubscriptionsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -181,7 +177,7 @@ class PolarSubscriptions(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:subscriptions:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:subscriptions:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -234,7 +230,6 @@ class PolarSubscriptions(BaseSDK):
     
     def create(
         self, *,
-        security: Union[models.UsersSubscriptionsCreateSecurity, models.UsersSubscriptionsCreateSecurityTypedDict],
         request: Union[models.UserFreeSubscriptionCreate, models.UserFreeSubscriptionCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -246,7 +241,6 @@ class PolarSubscriptions(BaseSDK):
 
         If you want to subscribe to a paid tier, you need to create a checkout session.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -275,7 +269,7 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersSubscriptionsCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.UserFreeSubscriptionCreate),
             timeout_ms=timeout_ms,
         )
@@ -295,7 +289,7 @@ class PolarSubscriptions(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:subscriptions:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:subscriptions:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["400","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -323,7 +317,6 @@ class PolarSubscriptions(BaseSDK):
     
     async def create_async(
         self, *,
-        security: Union[models.UsersSubscriptionsCreateSecurity, models.UsersSubscriptionsCreateSecurityTypedDict],
         request: Union[models.UserFreeSubscriptionCreate, models.UserFreeSubscriptionCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -335,7 +328,6 @@ class PolarSubscriptions(BaseSDK):
 
         If you want to subscribe to a paid tier, you need to create a checkout session.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -364,7 +356,7 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersSubscriptionsCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.UserFreeSubscriptionCreate),
             timeout_ms=timeout_ms,
         )
@@ -384,7 +376,7 @@ class PolarSubscriptions(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:subscriptions:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:subscriptions:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["400","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -412,7 +404,6 @@ class PolarSubscriptions(BaseSDK):
     
     def retrieve(
         self, *,
-        security: Union[models.UsersSubscriptionsGetSecurity, models.UsersSubscriptionsGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -422,7 +413,6 @@ class PolarSubscriptions(BaseSDK):
 
         Get a subscription by ID.
 
-        :param security: 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -451,7 +441,7 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersSubscriptionsGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -470,7 +460,7 @@ class PolarSubscriptions(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:subscriptions:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:subscriptions:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -495,7 +485,6 @@ class PolarSubscriptions(BaseSDK):
     
     async def retrieve_async(
         self, *,
-        security: Union[models.UsersSubscriptionsGetSecurity, models.UsersSubscriptionsGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -505,7 +494,6 @@ class PolarSubscriptions(BaseSDK):
 
         Get a subscription by ID.
 
-        :param security: 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -534,7 +522,7 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersSubscriptionsGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -553,7 +541,7 @@ class PolarSubscriptions(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:subscriptions:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:subscriptions:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -576,181 +564,8 @@ class PolarSubscriptions(BaseSDK):
 
     
     
-    def cancel(
-        self, *,
-        security: Union[models.UsersSubscriptionsCancelSecurity, models.UsersSubscriptionsCancelSecurityTypedDict],
-        id: str,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserSubscription]:
-        r"""Cancel Subscription
-
-        Cancel a subscription.
-
-        :param security: 
-        :param id: The subscription ID.
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-        
-        if server_url is not None:
-            base_url = server_url
-        
-        request = models.UsersSubscriptionsCancelRequest(
-            id=id,
-        )
-        
-        req = self.build_request(
-            method="DELETE",
-            path="/v1/users/subscriptions/{id}",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=False,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersSubscriptionsCancelSecurity),
-            timeout_ms=timeout_ms,
-        )
-        
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:subscriptions:cancel", oauth2_scopes=[], security_source=security),
-            request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.UserSubscription])
-        if utils.match_response(http_res, "403", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.AlreadyCanceledSubscriptionData)
-            raise models.AlreadyCanceledSubscription(data=data)
-        if utils.match_response(http_res, "404", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
-            raise models.ResourceNotFound(data=data)
-        if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
-            raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
-
-    
-    
-    async def cancel_async(
-        self, *,
-        security: Union[models.UsersSubscriptionsCancelSecurity, models.UsersSubscriptionsCancelSecurityTypedDict],
-        id: str,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserSubscription]:
-        r"""Cancel Subscription
-
-        Cancel a subscription.
-
-        :param security: 
-        :param id: The subscription ID.
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-        
-        if server_url is not None:
-            base_url = server_url
-        
-        request = models.UsersSubscriptionsCancelRequest(
-            id=id,
-        )
-        
-        req = self.build_request(
-            method="DELETE",
-            path="/v1/users/subscriptions/{id}",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=False,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersSubscriptionsCancelSecurity),
-            timeout_ms=timeout_ms,
-        )
-        
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:subscriptions:cancel", oauth2_scopes=[], security_source=security),
-            request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.UserSubscription])
-        if utils.match_response(http_res, "403", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.AlreadyCanceledSubscriptionData)
-            raise models.AlreadyCanceledSubscription(data=data)
-        if utils.match_response(http_res, "404", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
-            raise models.ResourceNotFound(data=data)
-        if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
-            raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
-
-    
-    
     def update(
         self, *,
-        security: Union[models.UsersSubscriptionsUpdateSecurity, models.UsersSubscriptionsUpdateSecurityTypedDict],
         id: str,
         user_subscription_update: Union[models.UserSubscriptionUpdate, models.UserSubscriptionUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -761,7 +576,6 @@ class PolarSubscriptions(BaseSDK):
 
         Update a subscription.
 
-        :param security: 
         :param id: The subscription ID.
         :param user_subscription_update: 
         :param retries: Override the default retry configuration for this method
@@ -792,7 +606,7 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersSubscriptionsUpdateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.user_subscription_update, False, False, "json", models.UserSubscriptionUpdate),
             timeout_ms=timeout_ms,
         )
@@ -812,7 +626,7 @@ class PolarSubscriptions(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:subscriptions:update", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:subscriptions:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -840,7 +654,6 @@ class PolarSubscriptions(BaseSDK):
     
     async def update_async(
         self, *,
-        security: Union[models.UsersSubscriptionsUpdateSecurity, models.UsersSubscriptionsUpdateSecurityTypedDict],
         id: str,
         user_subscription_update: Union[models.UserSubscriptionUpdate, models.UserSubscriptionUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -851,7 +664,6 @@ class PolarSubscriptions(BaseSDK):
 
         Update a subscription.
 
-        :param security: 
         :param id: The subscription ID.
         :param user_subscription_update: 
         :param retries: Override the default retry configuration for this method
@@ -882,7 +694,7 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersSubscriptionsUpdateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.user_subscription_update, False, False, "json", models.UserSubscriptionUpdate),
             timeout_ms=timeout_ms,
         )
@@ -902,7 +714,7 @@ class PolarSubscriptions(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:subscriptions:update", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:subscriptions:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -914,6 +726,174 @@ class PolarSubscriptions(BaseSDK):
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.FreeSubscriptionUpgradeData)
             raise models.FreeSubscriptionUpgrade(data=data)
+        if utils.match_response(http_res, "404", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
+            raise models.ResourceNotFound(data=data)
+        if utils.match_response(http_res, "422", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
+            raise models.HTTPValidationError(data=data)
+        if utils.match_response(http_res, ["4XX","5XX"], "*"):
+            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
+        
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+
+    
+    
+    def cancel(
+        self, *,
+        id: str,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+    ) -> Optional[models.UserSubscription]:
+        r"""Cancel Subscription
+
+        Cancel a subscription.
+
+        :param id: The subscription ID.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+        
+        if server_url is not None:
+            base_url = server_url
+        
+        request = models.UsersSubscriptionsCancelRequest(
+            id=id,
+        )
+        
+        req = self.build_request(
+            method="DELETE",
+            path="/v1/users/subscriptions/{id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+        
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, [
+                "429",
+                "500",
+                "502",
+                "503",
+                "504"
+            ])                
+        
+        http_res = self.do_request(
+            hook_ctx=HookContext(operation_id="users:subscriptions:cancel", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            request=req,
+            error_status_codes=["403","404","422","4XX","5XX"],
+            retry_config=retry_config
+        )
+        
+        data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(http_res.text, Optional[models.UserSubscription])
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.AlreadyCanceledSubscriptionData)
+            raise models.AlreadyCanceledSubscription(data=data)
+        if utils.match_response(http_res, "404", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
+            raise models.ResourceNotFound(data=data)
+        if utils.match_response(http_res, "422", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
+            raise models.HTTPValidationError(data=data)
+        if utils.match_response(http_res, ["4XX","5XX"], "*"):
+            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
+        
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+
+    
+    
+    async def cancel_async(
+        self, *,
+        id: str,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+    ) -> Optional[models.UserSubscription]:
+        r"""Cancel Subscription
+
+        Cancel a subscription.
+
+        :param id: The subscription ID.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+        
+        if server_url is not None:
+            base_url = server_url
+        
+        request = models.UsersSubscriptionsCancelRequest(
+            id=id,
+        )
+        
+        req = self.build_request(
+            method="DELETE",
+            path="/v1/users/subscriptions/{id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+        
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, [
+                "429",
+                "500",
+                "502",
+                "503",
+                "504"
+            ])                
+        
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(operation_id="users:subscriptions:cancel", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            request=req,
+            error_status_codes=["403","404","422","4XX","5XX"],
+            retry_config=retry_config
+        )
+        
+        data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(http_res.text, Optional[models.UserSubscription])
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.AlreadyCanceledSubscriptionData)
+            raise models.AlreadyCanceledSubscription(data=data)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)

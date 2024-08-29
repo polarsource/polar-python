@@ -12,7 +12,6 @@ class Products(BaseSDK):
     
     def list(
         self, *,
-        security: Union[models.ProductsListSecurity, models.ProductsListSecurityTypedDict],
         request: Optional[Union[models.ProductsListRequest, models.ProductsListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -22,7 +21,6 @@ class Products(BaseSDK):
 
         List products.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -51,7 +49,7 @@ class Products(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ProductsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -70,7 +68,7 @@ class Products(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="products:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="products:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -123,7 +121,6 @@ class Products(BaseSDK):
     
     async def list_async(
         self, *,
-        security: Union[models.ProductsListSecurity, models.ProductsListSecurityTypedDict],
         request: Optional[Union[models.ProductsListRequest, models.ProductsListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -133,7 +130,6 @@ class Products(BaseSDK):
 
         List products.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -162,7 +158,7 @@ class Products(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ProductsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -181,7 +177,7 @@ class Products(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="products:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="products:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -234,7 +230,6 @@ class Products(BaseSDK):
     
     def create(
         self, *,
-        security: Union[models.ProductsCreateSecurity, models.ProductsCreateSecurityTypedDict],
         request: Union[models.ProductsCreateProductCreate, models.ProductsCreateProductCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -244,7 +239,6 @@ class Products(BaseSDK):
 
         Create a product.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -273,7 +267,7 @@ class Products(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ProductsCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.ProductsCreateProductCreate),
             timeout_ms=timeout_ms,
         )
@@ -293,7 +287,7 @@ class Products(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="products:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="products:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -315,7 +309,6 @@ class Products(BaseSDK):
     
     async def create_async(
         self, *,
-        security: Union[models.ProductsCreateSecurity, models.ProductsCreateSecurityTypedDict],
         request: Union[models.ProductsCreateProductCreate, models.ProductsCreateProductCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -325,7 +318,6 @@ class Products(BaseSDK):
 
         Create a product.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -354,7 +346,7 @@ class Products(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ProductsCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.ProductsCreateProductCreate),
             timeout_ms=timeout_ms,
         )
@@ -374,7 +366,7 @@ class Products(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="products:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="products:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -396,7 +388,6 @@ class Products(BaseSDK):
     
     def retrieve(
         self, *,
-        security: Union[models.ProductsGetSecurity, models.ProductsGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -406,7 +397,6 @@ class Products(BaseSDK):
 
         Get a product by ID.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -435,7 +425,7 @@ class Products(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ProductsGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -454,7 +444,7 @@ class Products(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="products:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="products:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -479,7 +469,6 @@ class Products(BaseSDK):
     
     async def retrieve_async(
         self, *,
-        security: Union[models.ProductsGetSecurity, models.ProductsGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -489,7 +478,6 @@ class Products(BaseSDK):
 
         Get a product by ID.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -518,7 +506,7 @@ class Products(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ProductsGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -537,7 +525,7 @@ class Products(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="products:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="products:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -562,7 +550,6 @@ class Products(BaseSDK):
     
     def update(
         self, *,
-        security: Union[models.ProductsUpdateSecurity, models.ProductsUpdateSecurityTypedDict],
         id: str,
         product_update: Union[models.ProductUpdate, models.ProductUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -573,7 +560,6 @@ class Products(BaseSDK):
 
         Update a product.
 
-        :param security: 
         :param id: 
         :param product_update: 
         :param retries: Override the default retry configuration for this method
@@ -604,7 +590,7 @@ class Products(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ProductsUpdateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.product_update, False, False, "json", models.ProductUpdate),
             timeout_ms=timeout_ms,
         )
@@ -624,7 +610,7 @@ class Products(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="products:update", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="products:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -652,7 +638,6 @@ class Products(BaseSDK):
     
     async def update_async(
         self, *,
-        security: Union[models.ProductsUpdateSecurity, models.ProductsUpdateSecurityTypedDict],
         id: str,
         product_update: Union[models.ProductUpdate, models.ProductUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -663,7 +648,6 @@ class Products(BaseSDK):
 
         Update a product.
 
-        :param security: 
         :param id: 
         :param product_update: 
         :param retries: Override the default retry configuration for this method
@@ -694,7 +678,7 @@ class Products(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ProductsUpdateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.product_update, False, False, "json", models.ProductUpdate),
             timeout_ms=timeout_ms,
         )
@@ -714,7 +698,7 @@ class Products(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="products:update", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="products:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -742,7 +726,6 @@ class Products(BaseSDK):
     
     def update_benefits(
         self, *,
-        security: Union[models.ProductsUpdateBenefitsSecurity, models.ProductsUpdateBenefitsSecurityTypedDict],
         id: str,
         product_benefits_update: Union[models.ProductBenefitsUpdate, models.ProductBenefitsUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -753,7 +736,6 @@ class Products(BaseSDK):
 
         Update benefits granted by a product.
 
-        :param security: 
         :param id: 
         :param product_benefits_update: 
         :param retries: Override the default retry configuration for this method
@@ -784,7 +766,7 @@ class Products(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ProductsUpdateBenefitsSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.product_benefits_update, False, False, "json", models.ProductBenefitsUpdate),
             timeout_ms=timeout_ms,
         )
@@ -804,7 +786,7 @@ class Products(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="products:update_benefits", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="products:update_benefits", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -832,7 +814,6 @@ class Products(BaseSDK):
     
     async def update_benefits_async(
         self, *,
-        security: Union[models.ProductsUpdateBenefitsSecurity, models.ProductsUpdateBenefitsSecurityTypedDict],
         id: str,
         product_benefits_update: Union[models.ProductBenefitsUpdate, models.ProductBenefitsUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -843,7 +824,6 @@ class Products(BaseSDK):
 
         Update benefits granted by a product.
 
-        :param security: 
         :param id: 
         :param product_benefits_update: 
         :param retries: Override the default retry configuration for this method
@@ -874,7 +854,7 @@ class Products(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.ProductsUpdateBenefitsSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.product_benefits_update, False, False, "json", models.ProductBenefitsUpdate),
             timeout_ms=timeout_ms,
         )
@@ -894,7 +874,7 @@ class Products(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="products:update_benefits", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="products:update_benefits", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config

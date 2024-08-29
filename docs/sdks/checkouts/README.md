@@ -15,15 +15,14 @@ Create a checkout session.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.checkouts.create(security=polar_sh.CheckoutsCreateSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), request={
+res = s.checkouts.create(request={
     "product_price_id": "<value>",
     "success_url": "http://limp-pastry.org",
 })
@@ -39,7 +38,6 @@ if res is not None:
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `request`                                                           | [models.CheckoutCreate](../../models/checkoutcreate.md)             | :heavy_check_mark:                                                  | The request object to use for the request.                          |
-| `security`                                                          | [models.CheckoutsCreateSecurity](../../checkoutscreatesecurity.md)  | :heavy_check_mark:                                                  | The security requirements to use for the request.                   |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -64,7 +62,7 @@ Get an active checkout session by ID.
 from polar_sh import Polar
 
 s = Polar(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 

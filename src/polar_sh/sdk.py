@@ -46,7 +46,7 @@ class Polar(BaseSDK):
     metrics: MetricsSDK
     def __init__(
         self,
-        open_id_connect: Optional[Union[Optional[str], Callable[[], Optional[str]]]] = None,
+        access_token: Union[str, Callable[[], str]],
         server_idx: Optional[int] = None,
         server_url: Optional[str] = None,
         url_params: Optional[Dict[str, str]] = None,
@@ -58,7 +58,7 @@ class Polar(BaseSDK):
     ) -> None:
         r"""Instantiates the SDK configuring it with the provided parameters.
 
-        :param open_id_connect: The open_id_connect required for authentication
+        :param access_token: The access_token required for authentication
         :param server_idx: The index of the server to use for all methods
         :param server_url: The server URL to use for all methods
         :param url_params: Parameters to optionally template the server URL with
@@ -85,10 +85,10 @@ class Polar(BaseSDK):
         ), "The provided async_client must implement the AsyncHttpClient protocol."
         
         security: Any = None
-        if callable(open_id_connect):
-            security = lambda: models.Security(open_id_connect = open_id_connect()) # pylint: disable=unnecessary-lambda-assignment
+        if callable(access_token):
+            security = lambda: models.Security(access_token = access_token()) # pylint: disable=unnecessary-lambda-assignment
         else:
-            security = models.Security(open_id_connect = open_id_connect)
+            security = models.Security(access_token = access_token)
 
         if server_url is not None:
             if url_params is not None:

@@ -12,7 +12,6 @@ class Repositories(BaseSDK):
     
     def list(
         self, *,
-        security: Union[models.RepositoriesListSecurity, models.RepositoriesListSecurityTypedDict],
         request: Optional[Union[models.RepositoriesListRequest, models.RepositoriesListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -22,7 +21,6 @@ class Repositories(BaseSDK):
 
         List repositories.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -51,7 +49,7 @@ class Repositories(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.RepositoriesListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -70,7 +68,7 @@ class Repositories(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="repositories:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="repositories:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -124,7 +122,6 @@ class Repositories(BaseSDK):
     
     async def list_async(
         self, *,
-        security: Union[models.RepositoriesListSecurity, models.RepositoriesListSecurityTypedDict],
         request: Optional[Union[models.RepositoriesListRequest, models.RepositoriesListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -134,7 +131,6 @@ class Repositories(BaseSDK):
 
         List repositories.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -163,7 +159,7 @@ class Repositories(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.RepositoriesListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -182,7 +178,7 @@ class Repositories(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="repositories:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="repositories:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -236,7 +232,6 @@ class Repositories(BaseSDK):
     
     def retrieve(
         self, *,
-        security: Union[models.RepositoriesGetSecurity, models.RepositoriesGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -246,7 +241,6 @@ class Repositories(BaseSDK):
 
         Get a repository by ID.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -275,7 +269,7 @@ class Repositories(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.RepositoriesGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -294,7 +288,7 @@ class Repositories(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="repositories:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="repositories:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -319,7 +313,6 @@ class Repositories(BaseSDK):
     
     async def retrieve_async(
         self, *,
-        security: Union[models.RepositoriesGetSecurity, models.RepositoriesGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -329,7 +322,6 @@ class Repositories(BaseSDK):
 
         Get a repository by ID.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -358,7 +350,7 @@ class Repositories(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.RepositoriesGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -377,7 +369,7 @@ class Repositories(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="repositories:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="repositories:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -402,7 +394,6 @@ class Repositories(BaseSDK):
     
     def update(
         self, *,
-        security: Union[models.RepositoriesUpdateSecurity, models.RepositoriesUpdateSecurityTypedDict],
         id: str,
         repository_update: Union[models.RepositoryUpdate, models.RepositoryUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -413,7 +404,6 @@ class Repositories(BaseSDK):
 
         Update a repository.
 
-        :param security: 
         :param id: 
         :param repository_update: 
         :param retries: Override the default retry configuration for this method
@@ -444,7 +434,7 @@ class Repositories(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.RepositoriesUpdateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.repository_update, False, False, "json", models.RepositoryUpdate),
             timeout_ms=timeout_ms,
         )
@@ -464,7 +454,7 @@ class Repositories(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="repositories:update", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="repositories:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -492,7 +482,6 @@ class Repositories(BaseSDK):
     
     async def update_async(
         self, *,
-        security: Union[models.RepositoriesUpdateSecurity, models.RepositoriesUpdateSecurityTypedDict],
         id: str,
         repository_update: Union[models.RepositoryUpdate, models.RepositoryUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -503,7 +492,6 @@ class Repositories(BaseSDK):
 
         Update a repository.
 
-        :param security: 
         :param id: 
         :param repository_update: 
         :param retries: Override the default retry configuration for this method
@@ -534,7 +522,7 @@ class Repositories(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.RepositoriesUpdateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.repository_update, False, False, "json", models.RepositoryUpdate),
             timeout_ms=timeout_ms,
         )
@@ -554,7 +542,7 @@ class Repositories(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="repositories:update", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="repositories:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config

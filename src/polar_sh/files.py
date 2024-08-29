@@ -12,7 +12,6 @@ class Files(BaseSDK):
     
     def list(
         self, *,
-        security: Union[models.FilesListSecurity, models.FilesListSecurityTypedDict],
         organization_id: OptionalNullable[str] = UNSET,
         ids: OptionalNullable[List[str]] = UNSET,
         page: Optional[int] = 1,
@@ -25,7 +24,6 @@ class Files(BaseSDK):
 
         List files.
 
-        :param security: 
         :param organization_id: 
         :param ids: List of file IDs to get.
         :param page: Page number, defaults to 1.
@@ -60,7 +58,7 @@ class Files(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.FilesListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -79,7 +77,7 @@ class Files(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="files:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="files:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -104,7 +102,6 @@ class Files(BaseSDK):
                 return None
 
             return self.list(
-                security=security,
                 organization_id=organization_id,
                 ids=ids,
                 page=next_page,
@@ -128,7 +125,6 @@ class Files(BaseSDK):
     
     async def list_async(
         self, *,
-        security: Union[models.FilesListSecurity, models.FilesListSecurityTypedDict],
         organization_id: OptionalNullable[str] = UNSET,
         ids: OptionalNullable[List[str]] = UNSET,
         page: Optional[int] = 1,
@@ -141,7 +137,6 @@ class Files(BaseSDK):
 
         List files.
 
-        :param security: 
         :param organization_id: 
         :param ids: List of file IDs to get.
         :param page: Page number, defaults to 1.
@@ -176,7 +171,7 @@ class Files(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.FilesListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -195,7 +190,7 @@ class Files(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="files:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="files:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -220,7 +215,6 @@ class Files(BaseSDK):
                 return None
 
             return self.list(
-                security=security,
                 organization_id=organization_id,
                 ids=ids,
                 page=next_page,
@@ -244,7 +238,6 @@ class Files(BaseSDK):
     
     def create(
         self, *,
-        security: Union[models.FilesCreateSecurity, models.FilesCreateSecurityTypedDict],
         request: Union[models.FilesCreateFileCreate, models.FilesCreateFileCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -254,7 +247,6 @@ class Files(BaseSDK):
 
         Create a file.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -283,7 +275,7 @@ class Files(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.FilesCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.FilesCreateFileCreate),
             timeout_ms=timeout_ms,
         )
@@ -303,7 +295,7 @@ class Files(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="files:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="files:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -325,7 +317,6 @@ class Files(BaseSDK):
     
     async def create_async(
         self, *,
-        security: Union[models.FilesCreateSecurity, models.FilesCreateSecurityTypedDict],
         request: Union[models.FilesCreateFileCreate, models.FilesCreateFileCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -335,7 +326,6 @@ class Files(BaseSDK):
 
         Create a file.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -364,7 +354,7 @@ class Files(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.FilesCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.FilesCreateFileCreate),
             timeout_ms=timeout_ms,
         )
@@ -384,7 +374,7 @@ class Files(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="files:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="files:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -406,7 +396,6 @@ class Files(BaseSDK):
     
     def uploaded(
         self, *,
-        security: Union[models.FilesUploadedSecurity, models.FilesUploadedSecurityTypedDict],
         id: str,
         file_upload_completed: Union[models.FileUploadCompleted, models.FileUploadCompletedTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -417,7 +406,6 @@ class Files(BaseSDK):
 
         Complete a file upload.
 
-        :param security: 
         :param id: The file ID.
         :param file_upload_completed: 
         :param retries: Override the default retry configuration for this method
@@ -448,7 +436,7 @@ class Files(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.FilesUploadedSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.file_upload_completed, False, False, "json", models.FileUploadCompleted),
             timeout_ms=timeout_ms,
         )
@@ -468,7 +456,7 @@ class Files(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="files:uploaded", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="files:uploaded", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -490,7 +478,6 @@ class Files(BaseSDK):
     
     async def uploaded_async(
         self, *,
-        security: Union[models.FilesUploadedSecurity, models.FilesUploadedSecurityTypedDict],
         id: str,
         file_upload_completed: Union[models.FileUploadCompleted, models.FileUploadCompletedTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -501,7 +488,6 @@ class Files(BaseSDK):
 
         Complete a file upload.
 
-        :param security: 
         :param id: The file ID.
         :param file_upload_completed: 
         :param retries: Override the default retry configuration for this method
@@ -532,7 +518,7 @@ class Files(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.FilesUploadedSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.file_upload_completed, False, False, "json", models.FileUploadCompleted),
             timeout_ms=timeout_ms,
         )
@@ -552,7 +538,7 @@ class Files(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="files:uploaded", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="files:uploaded", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -572,9 +558,172 @@ class Files(BaseSDK):
 
     
     
+    def update(
+        self, *,
+        id: str,
+        file_patch: Union[models.FilePatch, models.FilePatchTypedDict],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+    ) -> Optional[models.FilesUpdateResponseFilesUpdate]:
+        r"""Update File
+
+        Update a file.
+
+        :param id: The file ID.
+        :param file_patch: 
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+        
+        if server_url is not None:
+            base_url = server_url
+        
+        request = models.FilesUpdateRequest(
+            id=id,
+            file_patch=utils.get_pydantic_model(file_patch, models.FilePatch),
+        )
+        
+        req = self.build_request(
+            method="PATCH",
+            path="/v1/files/{id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(request.file_patch, False, False, "json", models.FilePatch),
+            timeout_ms=timeout_ms,
+        )
+        
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, [
+                "429",
+                "500",
+                "502",
+                "503",
+                "504"
+            ])                
+        
+        http_res = self.do_request(
+            hook_ctx=HookContext(operation_id="files:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            request=req,
+            error_status_codes=["422","4XX","5XX"],
+            retry_config=retry_config
+        )
+        
+        data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(http_res.text, Optional[models.FilesUpdateResponseFilesUpdate])
+        if utils.match_response(http_res, "422", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
+            raise models.HTTPValidationError(data=data)
+        if utils.match_response(http_res, ["4XX","5XX"], "*"):
+            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
+        
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+
+    
+    
+    async def update_async(
+        self, *,
+        id: str,
+        file_patch: Union[models.FilePatch, models.FilePatchTypedDict],
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+    ) -> Optional[models.FilesUpdateResponseFilesUpdate]:
+        r"""Update File
+
+        Update a file.
+
+        :param id: The file ID.
+        :param file_patch: 
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+        
+        if server_url is not None:
+            base_url = server_url
+        
+        request = models.FilesUpdateRequest(
+            id=id,
+            file_patch=utils.get_pydantic_model(file_patch, models.FilePatch),
+        )
+        
+        req = self.build_request(
+            method="PATCH",
+            path="/v1/files/{id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=True,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            security=self.sdk_configuration.security,
+            get_serialized_body=lambda: utils.serialize_request_body(request.file_patch, False, False, "json", models.FilePatch),
+            timeout_ms=timeout_ms,
+        )
+        
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, [
+                "429",
+                "500",
+                "502",
+                "503",
+                "504"
+            ])                
+        
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(operation_id="files:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            request=req,
+            error_status_codes=["422","4XX","5XX"],
+            retry_config=retry_config
+        )
+        
+        data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(http_res.text, Optional[models.FilesUpdateResponseFilesUpdate])
+        if utils.match_response(http_res, "422", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
+            raise models.HTTPValidationError(data=data)
+        if utils.match_response(http_res, ["4XX","5XX"], "*"):
+            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
+        
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+
+    
+    
     def delete(
         self, *,
-        security: Union[models.FilesDeleteSecurity, models.FilesDeleteSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -584,7 +733,6 @@ class Files(BaseSDK):
 
         Delete a file.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -613,7 +761,7 @@ class Files(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.FilesDeleteSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -632,7 +780,7 @@ class Files(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="files:delete", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="files:delete", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -660,7 +808,6 @@ class Files(BaseSDK):
     
     async def delete_async(
         self, *,
-        security: Union[models.FilesDeleteSecurity, models.FilesDeleteSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -670,7 +817,6 @@ class Files(BaseSDK):
 
         Delete a file.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -699,7 +845,7 @@ class Files(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.FilesDeleteSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -718,7 +864,7 @@ class Files(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="files:delete", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="files:delete", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -733,174 +879,6 @@ class Files(BaseSDK):
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.FileNotFoundData)
             raise models.FileNotFound(data=data)
-        if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
-            raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
-
-    
-    
-    def update(
-        self, *,
-        security: Union[models.FilesUpdateSecurity, models.FilesUpdateSecurityTypedDict],
-        id: str,
-        file_patch: Union[models.FilePatch, models.FilePatchTypedDict],
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-    ) -> Optional[models.FilesUpdateResponseFilesUpdate]:
-        r"""Update File
-
-        Update a file.
-
-        :param security: 
-        :param id: The file ID.
-        :param file_patch: 
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-        
-        if server_url is not None:
-            base_url = server_url
-        
-        request = models.FilesUpdateRequest(
-            id=id,
-            file_patch=utils.get_pydantic_model(file_patch, models.FilePatch),
-        )
-        
-        req = self.build_request(
-            method="PATCH",
-            path="/v1/files/{id}",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.FilesUpdateSecurity),
-            get_serialized_body=lambda: utils.serialize_request_body(request.file_patch, False, False, "json", models.FilePatch),
-            timeout_ms=timeout_ms,
-        )
-        
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="files:update", oauth2_scopes=[], security_source=security),
-            request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.FilesUpdateResponseFilesUpdate])
-        if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
-            raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
-
-    
-    
-    async def update_async(
-        self, *,
-        security: Union[models.FilesUpdateSecurity, models.FilesUpdateSecurityTypedDict],
-        id: str,
-        file_patch: Union[models.FilePatch, models.FilePatchTypedDict],
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-    ) -> Optional[models.FilesUpdateResponseFilesUpdate]:
-        r"""Update File
-
-        Update a file.
-
-        :param security: 
-        :param id: The file ID.
-        :param file_patch: 
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-        
-        if server_url is not None:
-            base_url = server_url
-        
-        request = models.FilesUpdateRequest(
-            id=id,
-            file_patch=utils.get_pydantic_model(file_patch, models.FilePatch),
-        )
-        
-        req = self.build_request(
-            method="PATCH",
-            path="/v1/files/{id}",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.FilesUpdateSecurity),
-            get_serialized_body=lambda: utils.serialize_request_body(request.file_patch, False, False, "json", models.FilePatch),
-            timeout_ms=timeout_ms,
-        )
-        
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="files:update", oauth2_scopes=[], security_source=security),
-            request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.FilesUpdateResponseFilesUpdate])
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)

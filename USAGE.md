@@ -1,15 +1,14 @@
 <!-- Start SDK Example Usage [usage] -->
 ```python
 # Synchronous Example
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.users.benefits.list(security=polar_sh.UsersBenefitsListSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
+res = s.users.benefits.list()
 
 if res is not None:
     while True:
@@ -27,14 +26,13 @@ The same SDK client can also be used to make asychronous requests by importing a
 ```python
 # Asynchronous Example
 import asyncio
-import polar_sh
 from polar_sh import Polar
 
 async def main():
-    s = Polar()
-    res = await s.users.benefits.list_async(security=polar_sh.UsersBenefitsListSecurity(
-        open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-    ))
+    s = Polar(
+        access_token="<YOUR_BEARER_TOKEN_HERE>",
+    )
+    res = await s.users.benefits.list_async()
     if res is not None:
         while True:
             # handle items

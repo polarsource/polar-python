@@ -2,21 +2,11 @@
 
 from __future__ import annotations
 from polar_sh.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from polar_sh.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
+from polar_sh.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
-from typing import List, Optional, TypedDict, Union
+from typing import List, TypedDict, Union
 from typing_extensions import Annotated, NotRequired
 
-
-class SubscriptionsExportSecurityTypedDict(TypedDict):
-    open_id_connect: NotRequired[str]
-    http_bearer: NotRequired[str]
-    
-
-class SubscriptionsExportSecurity(BaseModel):
-    open_id_connect: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="openIdConnect", field_name="Authorization"))] = None
-    http_bearer: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="http", sub_type="bearer", field_name="Authorization"))] = None
-    
 
 OrganizationIDTypedDict = Union[str, List[str]]
 r"""Filter by organization ID."""

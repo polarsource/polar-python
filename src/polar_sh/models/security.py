@@ -3,14 +3,14 @@
 from __future__ import annotations
 from polar_sh.types import BaseModel
 from polar_sh.utils import FieldMetadata, SecurityMetadata
-from typing import Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import TypedDict
+from typing_extensions import Annotated
 
 
 class SecurityTypedDict(TypedDict):
-    open_id_connect: NotRequired[str]
+    access_token: str
     
 
 class Security(BaseModel):
-    open_id_connect: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="openIdConnect", field_name="Authorization"))] = None
+    access_token: Annotated[str, FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="http", sub_type="bearer", field_name="Authorization"))]
     

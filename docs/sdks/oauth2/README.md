@@ -5,52 +5,10 @@
 
 ### Available Operations
 
-* [authorize](#authorize) - Authorize
 * [token](#token) - Request Token
 * [revoke](#revoke) - Revoke Token
 * [introspect](#introspect) - Introspect Token
 * [userinfo](#userinfo) - Get User Info
-
-## authorize
-
-Authorize
-
-### Example Usage
-
-```python
-import polar_sh
-from polar_sh import Polar
-
-s = Polar()
-
-
-res = s.oauth2.authorize(security=polar_sh.Oauth2AuthorizeSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
-
-if res is not None:
-    # handle response
-    pass
-
-```
-
-### Parameters
-
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `security`                                                          | [models.Oauth2AuthorizeSecurity](../../oauth2authorizesecurity.md)  | :heavy_check_mark:                                                  | The security requirements to use for the request.                   |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[models.Oauth2AuthorizeResponseOauth2Authorize](../../models/oauth2authorizeresponseoauth2authorize.md)**
-
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 4xx-5xx         | */*             |
-
 
 ## token
 
@@ -62,7 +20,7 @@ Request an access token using a valid grant.
 from polar_sh import Polar
 
 s = Polar(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 
@@ -107,7 +65,7 @@ Revoke an access token or a refresh token.
 from polar_sh import Polar
 
 s = Polar(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 
@@ -151,7 +109,7 @@ Get information about an access token.
 from polar_sh import Polar
 
 s = Polar(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 
@@ -195,7 +153,7 @@ Get information about the authenticated user.
 from polar_sh import Polar
 
 s = Polar(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 

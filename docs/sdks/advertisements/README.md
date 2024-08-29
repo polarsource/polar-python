@@ -18,7 +18,7 @@ List active advertisement campaigns for a benefit.
 from polar_sh import Polar
 
 s = Polar(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 
@@ -67,7 +67,7 @@ Get an advertisement campaign by ID.
 from polar_sh import Polar
 
 s = Polar(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 

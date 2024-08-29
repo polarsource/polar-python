@@ -12,7 +12,6 @@ class Orders(BaseSDK):
     
     def list(
         self, *,
-        security: Union[models.OrdersListSecurity, models.OrdersListSecurityTypedDict],
         request: Optional[Union[models.OrdersListRequest, models.OrdersListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -22,7 +21,6 @@ class Orders(BaseSDK):
 
         List orders.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -51,7 +49,7 @@ class Orders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrdersListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -70,7 +68,7 @@ class Orders(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="orders:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="orders:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -123,7 +121,6 @@ class Orders(BaseSDK):
     
     async def list_async(
         self, *,
-        security: Union[models.OrdersListSecurity, models.OrdersListSecurityTypedDict],
         request: Optional[Union[models.OrdersListRequest, models.OrdersListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -133,7 +130,6 @@ class Orders(BaseSDK):
 
         List orders.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -162,7 +158,7 @@ class Orders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrdersListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -181,7 +177,7 @@ class Orders(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="orders:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="orders:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -234,7 +230,6 @@ class Orders(BaseSDK):
     
     def retrieve(
         self, *,
-        security: Union[models.OrdersGetSecurity, models.OrdersGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -244,7 +239,6 @@ class Orders(BaseSDK):
 
         Get an order by ID.
 
-        :param security: 
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -273,7 +267,7 @@ class Orders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrdersGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -292,7 +286,7 @@ class Orders(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="orders:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="orders:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -317,7 +311,6 @@ class Orders(BaseSDK):
     
     async def retrieve_async(
         self, *,
-        security: Union[models.OrdersGetSecurity, models.OrdersGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -327,7 +320,6 @@ class Orders(BaseSDK):
 
         Get an order by ID.
 
-        :param security: 
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -356,7 +348,7 @@ class Orders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrdersGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -375,7 +367,7 @@ class Orders(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="orders:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="orders:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -400,7 +392,6 @@ class Orders(BaseSDK):
     
     def invoice(
         self, *,
-        security: Union[models.OrdersInvoiceSecurity, models.OrdersInvoiceSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -410,7 +401,6 @@ class Orders(BaseSDK):
 
         Get an order's invoice data.
 
-        :param security: 
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -439,7 +429,7 @@ class Orders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrdersInvoiceSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -458,7 +448,7 @@ class Orders(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="orders:invoice", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="orders:invoice", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -483,7 +473,6 @@ class Orders(BaseSDK):
     
     async def invoice_async(
         self, *,
-        security: Union[models.OrdersInvoiceSecurity, models.OrdersInvoiceSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -493,7 +482,6 @@ class Orders(BaseSDK):
 
         Get an order's invoice data.
 
-        :param security: 
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -522,7 +510,7 @@ class Orders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.OrdersInvoiceSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -541,7 +529,7 @@ class Orders(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="orders:invoice", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="orders:invoice", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config

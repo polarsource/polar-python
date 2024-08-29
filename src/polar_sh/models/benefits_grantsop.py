@@ -3,21 +3,11 @@
 from __future__ import annotations
 from .listresource_benefitgrant_ import ListResourceBenefitGrant, ListResourceBenefitGrantTypedDict
 from polar_sh.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from polar_sh.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata, SecurityMetadata
+from polar_sh.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing import Callable, Optional, TypedDict
 from typing_extensions import Annotated, NotRequired
 
-
-class BenefitsGrantsSecurityTypedDict(TypedDict):
-    open_id_connect: NotRequired[str]
-    http_bearer: NotRequired[str]
-    
-
-class BenefitsGrantsSecurity(BaseModel):
-    open_id_connect: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="openIdConnect", field_name="Authorization"))] = None
-    http_bearer: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="http", sub_type="bearer", field_name="Authorization"))] = None
-    
 
 class BenefitsGrantsRequestTypedDict(TypedDict):
     id: str

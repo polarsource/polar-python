@@ -12,7 +12,6 @@ class Benefits(BaseSDK):
     
     def list(
         self, *,
-        security: Union[models.BenefitsListSecurity, models.BenefitsListSecurityTypedDict],
         organization_id: OptionalNullable[Union[models.BenefitsListQueryParamOrganizationIDFilter, models.BenefitsListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
         type_: OptionalNullable[Union[models.QueryParamBenefitTypeFilter, models.QueryParamBenefitTypeFilterTypedDict]] = UNSET,
         page: Optional[int] = 1,
@@ -25,7 +24,6 @@ class Benefits(BaseSDK):
 
         List benefits.
 
-        :param security: 
         :param organization_id: Filter by organization ID.
         :param type: Filter by benefit type.
         :param page: Page number, defaults to 1.
@@ -60,7 +58,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.BenefitsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -79,7 +77,7 @@ class Benefits(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="benefits:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="benefits:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -104,7 +102,6 @@ class Benefits(BaseSDK):
                 return None
 
             return self.list(
-                security=security,
                 organization_id=organization_id,
                 type=type,
                 page=next_page,
@@ -128,7 +125,6 @@ class Benefits(BaseSDK):
     
     async def list_async(
         self, *,
-        security: Union[models.BenefitsListSecurity, models.BenefitsListSecurityTypedDict],
         organization_id: OptionalNullable[Union[models.BenefitsListQueryParamOrganizationIDFilter, models.BenefitsListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
         type_: OptionalNullable[Union[models.QueryParamBenefitTypeFilter, models.QueryParamBenefitTypeFilterTypedDict]] = UNSET,
         page: Optional[int] = 1,
@@ -141,7 +137,6 @@ class Benefits(BaseSDK):
 
         List benefits.
 
-        :param security: 
         :param organization_id: Filter by organization ID.
         :param type: Filter by benefit type.
         :param page: Page number, defaults to 1.
@@ -176,7 +171,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.BenefitsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -195,7 +190,7 @@ class Benefits(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="benefits:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="benefits:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -220,7 +215,6 @@ class Benefits(BaseSDK):
                 return None
 
             return self.list(
-                security=security,
                 organization_id=organization_id,
                 type=type,
                 page=next_page,
@@ -244,7 +238,6 @@ class Benefits(BaseSDK):
     
     def create(
         self, *,
-        security: Union[models.BenefitsCreateSecurity, models.BenefitsCreateSecurityTypedDict],
         request: Union[models.BenefitsCreateBenefitCreate, models.BenefitsCreateBenefitCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -254,7 +247,6 @@ class Benefits(BaseSDK):
 
         Create a benefit.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -283,7 +275,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.BenefitsCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.BenefitsCreateBenefitCreate),
             timeout_ms=timeout_ms,
         )
@@ -303,7 +295,7 @@ class Benefits(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="benefits:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="benefits:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -325,7 +317,6 @@ class Benefits(BaseSDK):
     
     async def create_async(
         self, *,
-        security: Union[models.BenefitsCreateSecurity, models.BenefitsCreateSecurityTypedDict],
         request: Union[models.BenefitsCreateBenefitCreate, models.BenefitsCreateBenefitCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -335,7 +326,6 @@ class Benefits(BaseSDK):
 
         Create a benefit.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -364,7 +354,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.BenefitsCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.BenefitsCreateBenefitCreate),
             timeout_ms=timeout_ms,
         )
@@ -384,7 +374,7 @@ class Benefits(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="benefits:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="benefits:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -406,7 +396,6 @@ class Benefits(BaseSDK):
     
     def retrieve(
         self, *,
-        security: Union[models.BenefitsGetSecurity, models.BenefitsGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -416,7 +405,6 @@ class Benefits(BaseSDK):
 
         Get a benefit by ID.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -445,7 +433,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.BenefitsGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -464,7 +452,7 @@ class Benefits(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="benefits:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="benefits:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -489,7 +477,6 @@ class Benefits(BaseSDK):
     
     async def retrieve_async(
         self, *,
-        security: Union[models.BenefitsGetSecurity, models.BenefitsGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -499,7 +486,6 @@ class Benefits(BaseSDK):
 
         Get a benefit by ID.
 
-        :param security: 
         :param id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -528,7 +514,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.BenefitsGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -547,7 +533,7 @@ class Benefits(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="benefits:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="benefits:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -570,189 +556,8 @@ class Benefits(BaseSDK):
 
     
     
-    def delete(
-        self, *,
-        security: Union[models.BenefitsDeleteSecurity, models.BenefitsDeleteSecurityTypedDict],
-        id: str,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-    ):
-        r"""Delete Benefit
-
-        Delete a benefit.
-
-        > [!WARNING]
-        > Every grants associated with the benefit will be revoked.
-        > Users will lose access to the benefit.
-
-        :param security: 
-        :param id: 
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-        
-        if server_url is not None:
-            base_url = server_url
-        
-        request = models.BenefitsDeleteRequest(
-            id=id,
-        )
-        
-        req = self.build_request(
-            method="DELETE",
-            path="/v1/benefits/{id}",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=False,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.BenefitsDeleteSecurity),
-            timeout_ms=timeout_ms,
-        )
-        
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="benefits:delete", oauth2_scopes=[], security_source=security),
-            request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        data: Any = None
-        if utils.match_response(http_res, "204", "*"):
-            return
-        if utils.match_response(http_res, "403", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
-            raise models.NotPermitted(data=data)
-        if utils.match_response(http_res, "404", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
-            raise models.ResourceNotFound(data=data)
-        if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
-            raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
-
-    
-    
-    async def delete_async(
-        self, *,
-        security: Union[models.BenefitsDeleteSecurity, models.BenefitsDeleteSecurityTypedDict],
-        id: str,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-    ):
-        r"""Delete Benefit
-
-        Delete a benefit.
-
-        > [!WARNING]
-        > Every grants associated with the benefit will be revoked.
-        > Users will lose access to the benefit.
-
-        :param security: 
-        :param id: 
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-        
-        if server_url is not None:
-            base_url = server_url
-        
-        request = models.BenefitsDeleteRequest(
-            id=id,
-        )
-        
-        req = self.build_request(
-            method="DELETE",
-            path="/v1/benefits/{id}",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=False,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.BenefitsDeleteSecurity),
-            timeout_ms=timeout_ms,
-        )
-        
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="benefits:delete", oauth2_scopes=[], security_source=security),
-            request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        data: Any = None
-        if utils.match_response(http_res, "204", "*"):
-            return
-        if utils.match_response(http_res, "403", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
-            raise models.NotPermitted(data=data)
-        if utils.match_response(http_res, "404", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
-            raise models.ResourceNotFound(data=data)
-        if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
-            raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
-
-    
-    
     def update(
         self, *,
-        security: Union[models.BenefitsUpdateSecurity, models.BenefitsUpdateSecurityTypedDict],
         id: str,
         request_body: Union[models.BenefitsUpdateBenefitUpdate, models.BenefitsUpdateBenefitUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -763,7 +568,6 @@ class Benefits(BaseSDK):
 
         Update a benefit.
 
-        :param security: 
         :param id: 
         :param request_body: 
         :param retries: Override the default retry configuration for this method
@@ -794,7 +598,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.BenefitsUpdateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.request_body, False, False, "json", models.BenefitsUpdateBenefitUpdate),
             timeout_ms=timeout_ms,
         )
@@ -814,7 +618,7 @@ class Benefits(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="benefits:update", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="benefits:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -842,7 +646,6 @@ class Benefits(BaseSDK):
     
     async def update_async(
         self, *,
-        security: Union[models.BenefitsUpdateSecurity, models.BenefitsUpdateSecurityTypedDict],
         id: str,
         request_body: Union[models.BenefitsUpdateBenefitUpdate, models.BenefitsUpdateBenefitUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -853,7 +656,6 @@ class Benefits(BaseSDK):
 
         Update a benefit.
 
-        :param security: 
         :param id: 
         :param request_body: 
         :param retries: Override the default retry configuration for this method
@@ -884,7 +686,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.BenefitsUpdateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.request_body, False, False, "json", models.BenefitsUpdateBenefitUpdate),
             timeout_ms=timeout_ms,
         )
@@ -904,7 +706,7 @@ class Benefits(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="benefits:update", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="benefits:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["403","404","422","4XX","5XX"],
             retry_config=retry_config
@@ -930,9 +732,184 @@ class Benefits(BaseSDK):
 
     
     
+    def delete(
+        self, *,
+        id: str,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+    ):
+        r"""Delete Benefit
+
+        Delete a benefit.
+
+        > [!WARNING]
+        > Every grants associated with the benefit will be revoked.
+        > Users will lose access to the benefit.
+
+        :param id: 
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+        
+        if server_url is not None:
+            base_url = server_url
+        
+        request = models.BenefitsDeleteRequest(
+            id=id,
+        )
+        
+        req = self.build_request(
+            method="DELETE",
+            path="/v1/benefits/{id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+        
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, [
+                "429",
+                "500",
+                "502",
+                "503",
+                "504"
+            ])                
+        
+        http_res = self.do_request(
+            hook_ctx=HookContext(operation_id="benefits:delete", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            request=req,
+            error_status_codes=["403","404","422","4XX","5XX"],
+            retry_config=retry_config
+        )
+        
+        data: Any = None
+        if utils.match_response(http_res, "204", "*"):
+            return
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
+            raise models.NotPermitted(data=data)
+        if utils.match_response(http_res, "404", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
+            raise models.ResourceNotFound(data=data)
+        if utils.match_response(http_res, "422", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
+            raise models.HTTPValidationError(data=data)
+        if utils.match_response(http_res, ["4XX","5XX"], "*"):
+            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
+        
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+
+    
+    
+    async def delete_async(
+        self, *,
+        id: str,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+    ):
+        r"""Delete Benefit
+
+        Delete a benefit.
+
+        > [!WARNING]
+        > Every grants associated with the benefit will be revoked.
+        > Users will lose access to the benefit.
+
+        :param id: 
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+        
+        if server_url is not None:
+            base_url = server_url
+        
+        request = models.BenefitsDeleteRequest(
+            id=id,
+        )
+        
+        req = self.build_request(
+            method="DELETE",
+            path="/v1/benefits/{id}",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+        
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, [
+                "429",
+                "500",
+                "502",
+                "503",
+                "504"
+            ])                
+        
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(operation_id="benefits:delete", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            request=req,
+            error_status_codes=["403","404","422","4XX","5XX"],
+            retry_config=retry_config
+        )
+        
+        data: Any = None
+        if utils.match_response(http_res, "204", "*"):
+            return
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
+            raise models.NotPermitted(data=data)
+        if utils.match_response(http_res, "404", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
+            raise models.ResourceNotFound(data=data)
+        if utils.match_response(http_res, "422", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
+            raise models.HTTPValidationError(data=data)
+        if utils.match_response(http_res, ["4XX","5XX"], "*"):
+            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
+        
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+
+    
+    
     def grants(
         self, *,
-        security: Union[models.BenefitsGrantsSecurity, models.BenefitsGrantsSecurityTypedDict],
         request: Union[models.BenefitsGrantsRequest, models.BenefitsGrantsRequestTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -944,7 +921,6 @@ class Benefits(BaseSDK):
 
         It's especially useful to check if a user has been granted a benefit.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -973,7 +949,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.BenefitsGrantsSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -992,7 +968,7 @@ class Benefits(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="benefits:grants", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="benefits:grants", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -1047,7 +1023,6 @@ class Benefits(BaseSDK):
     
     async def grants_async(
         self, *,
-        security: Union[models.BenefitsGrantsSecurity, models.BenefitsGrantsSecurityTypedDict],
         request: Union[models.BenefitsGrantsRequest, models.BenefitsGrantsRequestTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1059,7 +1034,6 @@ class Benefits(BaseSDK):
 
         It's especially useful to check if a user has been granted a benefit.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1088,7 +1062,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.BenefitsGrantsSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -1107,7 +1081,7 @@ class Benefits(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="benefits:grants", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="benefits:grants", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config

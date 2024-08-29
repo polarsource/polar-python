@@ -12,7 +12,6 @@ class PolarOrders(BaseSDK):
     
     def list(
         self, *,
-        security: Union[models.UsersOrdersListSecurity, models.UsersOrdersListSecurityTypedDict],
         request: Optional[Union[models.UsersOrdersListRequest, models.UsersOrdersListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -22,7 +21,6 @@ class PolarOrders(BaseSDK):
 
         List my orders.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -51,7 +49,7 @@ class PolarOrders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersOrdersListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -70,7 +68,7 @@ class PolarOrders(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:orders:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:orders:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -124,7 +122,6 @@ class PolarOrders(BaseSDK):
     
     async def list_async(
         self, *,
-        security: Union[models.UsersOrdersListSecurity, models.UsersOrdersListSecurityTypedDict],
         request: Optional[Union[models.UsersOrdersListRequest, models.UsersOrdersListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -134,7 +131,6 @@ class PolarOrders(BaseSDK):
 
         List my orders.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -163,7 +159,7 @@ class PolarOrders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersOrdersListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -182,7 +178,7 @@ class PolarOrders(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:orders:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:orders:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -236,7 +232,6 @@ class PolarOrders(BaseSDK):
     
     def retrieve(
         self, *,
-        security: Union[models.UsersOrdersGetSecurity, models.UsersOrdersGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -246,7 +241,6 @@ class PolarOrders(BaseSDK):
 
         Get an order by ID.
 
-        :param security: 
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -275,7 +269,7 @@ class PolarOrders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersOrdersGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -294,7 +288,7 @@ class PolarOrders(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:orders:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:orders:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -319,7 +313,6 @@ class PolarOrders(BaseSDK):
     
     async def retrieve_async(
         self, *,
-        security: Union[models.UsersOrdersGetSecurity, models.UsersOrdersGetSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -329,7 +322,6 @@ class PolarOrders(BaseSDK):
 
         Get an order by ID.
 
-        :param security: 
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -358,7 +350,7 @@ class PolarOrders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersOrdersGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -377,7 +369,7 @@ class PolarOrders(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:orders:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:orders:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -402,7 +394,6 @@ class PolarOrders(BaseSDK):
     
     def invoice(
         self, *,
-        security: Union[models.UsersOrdersInvoiceSecurity, models.UsersOrdersInvoiceSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -412,7 +403,6 @@ class PolarOrders(BaseSDK):
 
         Get an order's invoice data.
 
-        :param security: 
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -441,7 +431,7 @@ class PolarOrders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersOrdersInvoiceSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -460,7 +450,7 @@ class PolarOrders(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:orders:invoice", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:orders:invoice", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config
@@ -485,7 +475,6 @@ class PolarOrders(BaseSDK):
     
     async def invoice_async(
         self, *,
-        security: Union[models.UsersOrdersInvoiceSecurity, models.UsersOrdersInvoiceSecurityTypedDict],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -495,7 +484,6 @@ class PolarOrders(BaseSDK):
 
         Get an order's invoice data.
 
-        :param security: 
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -524,7 +512,7 @@ class PolarOrders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersOrdersInvoiceSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -543,7 +531,7 @@ class PolarOrders(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:orders:invoice", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:orders:invoice", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["404","422","4XX","5XX"],
             retry_config=retry_config

@@ -12,7 +12,6 @@ class Subscriptions(BaseSDK):
     
     def list(
         self, *,
-        security: Union[models.SubscriptionsListSecurity, models.SubscriptionsListSecurityTypedDict],
         request: Optional[Union[models.SubscriptionsListRequest, models.SubscriptionsListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -22,7 +21,6 @@ class Subscriptions(BaseSDK):
 
         List subscriptions.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -51,7 +49,7 @@ class Subscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.SubscriptionsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -70,7 +68,7 @@ class Subscriptions(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="subscriptions:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="subscriptions:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -123,7 +121,6 @@ class Subscriptions(BaseSDK):
     
     async def list_async(
         self, *,
-        security: Union[models.SubscriptionsListSecurity, models.SubscriptionsListSecurityTypedDict],
         request: Optional[Union[models.SubscriptionsListRequest, models.SubscriptionsListRequestTypedDict]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -133,7 +130,6 @@ class Subscriptions(BaseSDK):
 
         List subscriptions.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -162,7 +158,7 @@ class Subscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.SubscriptionsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -181,7 +177,7 @@ class Subscriptions(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="subscriptions:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="subscriptions:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -234,7 +230,6 @@ class Subscriptions(BaseSDK):
     
     def create(
         self, *,
-        security: Union[models.SubscriptionsCreateSecurity, models.SubscriptionsCreateSecurityTypedDict],
         request: Union[models.SubscriptionCreateEmail, models.SubscriptionCreateEmailTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -244,7 +239,6 @@ class Subscriptions(BaseSDK):
 
         Create a subscription on the free tier for a given email.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -273,7 +267,7 @@ class Subscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.SubscriptionsCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.SubscriptionCreateEmail),
             timeout_ms=timeout_ms,
         )
@@ -293,7 +287,7 @@ class Subscriptions(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="subscriptions:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="subscriptions:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -315,7 +309,6 @@ class Subscriptions(BaseSDK):
     
     async def create_async(
         self, *,
-        security: Union[models.SubscriptionsCreateSecurity, models.SubscriptionsCreateSecurityTypedDict],
         request: Union[models.SubscriptionCreateEmail, models.SubscriptionCreateEmailTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -325,7 +318,6 @@ class Subscriptions(BaseSDK):
 
         Create a subscription on the free tier for a given email.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -354,7 +346,7 @@ class Subscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.SubscriptionsCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.SubscriptionCreateEmail),
             timeout_ms=timeout_ms,
         )
@@ -374,7 +366,7 @@ class Subscriptions(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="subscriptions:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="subscriptions:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -394,9 +386,8 @@ class Subscriptions(BaseSDK):
 
     
     
-    def import(
+    def import_subscriptions(
         self, *,
-        security: Union[models.SubscriptionsImportSecurity, models.SubscriptionsImportSecurityTypedDict],
         request: Union[models.BodySubscriptionsImport, models.BodySubscriptionsImportTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -406,7 +397,6 @@ class Subscriptions(BaseSDK):
 
         Import subscriptions from a CSV file.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -435,7 +425,7 @@ class Subscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.SubscriptionsImportSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "multipart", models.BodySubscriptionsImport),
             timeout_ms=timeout_ms,
         )
@@ -455,7 +445,7 @@ class Subscriptions(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="subscriptions:import", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="subscriptions:import", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -475,9 +465,8 @@ class Subscriptions(BaseSDK):
 
     
     
-    async def import_async(
+    async def import_subscriptions_async(
         self, *,
-        security: Union[models.SubscriptionsImportSecurity, models.SubscriptionsImportSecurityTypedDict],
         request: Union[models.BodySubscriptionsImport, models.BodySubscriptionsImportTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -487,7 +476,6 @@ class Subscriptions(BaseSDK):
 
         Import subscriptions from a CSV file.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -516,7 +504,7 @@ class Subscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.SubscriptionsImportSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "multipart", models.BodySubscriptionsImport),
             timeout_ms=timeout_ms,
         )
@@ -536,7 +524,7 @@ class Subscriptions(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="subscriptions:import", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="subscriptions:import", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -558,7 +546,6 @@ class Subscriptions(BaseSDK):
     
     def export(
         self, *,
-        security: Union[models.SubscriptionsExportSecurity, models.SubscriptionsExportSecurityTypedDict],
         organization_id: OptionalNullable[Union[models.OrganizationID, models.OrganizationIDTypedDict]] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -568,7 +555,6 @@ class Subscriptions(BaseSDK):
 
         Export subscriptions as a CSV file.
 
-        :param security: 
         :param organization_id: Filter by organization ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -597,7 +583,7 @@ class Subscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.SubscriptionsExportSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -616,7 +602,7 @@ class Subscriptions(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="subscriptions:export", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="subscriptions:export", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -638,7 +624,6 @@ class Subscriptions(BaseSDK):
     
     async def export_async(
         self, *,
-        security: Union[models.SubscriptionsExportSecurity, models.SubscriptionsExportSecurityTypedDict],
         organization_id: OptionalNullable[Union[models.OrganizationID, models.OrganizationIDTypedDict]] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -648,7 +633,6 @@ class Subscriptions(BaseSDK):
 
         Export subscriptions as a CSV file.
 
-        :param security: 
         :param organization_id: Filter by organization ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -677,7 +661,7 @@ class Subscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.SubscriptionsExportSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -696,7 +680,7 @@ class Subscriptions(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="subscriptions:export", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="subscriptions:export", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config

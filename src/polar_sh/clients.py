@@ -12,7 +12,6 @@ class Clients(BaseSDK):
     
     def list(
         self, *,
-        security: Union[models.Oauth2ClientsListSecurity, models.Oauth2ClientsListSecurityTypedDict],
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -23,7 +22,6 @@ class Clients(BaseSDK):
 
         List OAuth2 clients.
 
-        :param security: 
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -54,7 +52,7 @@ class Clients(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.Oauth2ClientsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -73,7 +71,7 @@ class Clients(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="oauth2:clients:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="oauth2:clients:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -98,7 +96,6 @@ class Clients(BaseSDK):
                 return None
 
             return self.list(
-                security=security,
                 page=next_page,
                 limit=limit,
                 retries=retries,
@@ -120,7 +117,6 @@ class Clients(BaseSDK):
     
     async def list_async(
         self, *,
-        security: Union[models.Oauth2ClientsListSecurity, models.Oauth2ClientsListSecurityTypedDict],
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -131,7 +127,6 @@ class Clients(BaseSDK):
 
         List OAuth2 clients.
 
-        :param security: 
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -162,7 +157,7 @@ class Clients(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.Oauth2ClientsListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -181,7 +176,7 @@ class Clients(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="oauth2:clients:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="oauth2:clients:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -206,7 +201,6 @@ class Clients(BaseSDK):
                 return None
 
             return self.list(
-                security=security,
                 page=next_page,
                 limit=limit,
                 retries=retries,
@@ -228,7 +222,6 @@ class Clients(BaseSDK):
     
     def create(
         self, *,
-        security: Union[models.Oauth2ClientsOauth2CreateClientSecurity, models.Oauth2ClientsOauth2CreateClientSecurityTypedDict],
         request: Union[models.OAuth2ClientConfiguration, models.OAuth2ClientConfigurationTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -238,7 +231,6 @@ class Clients(BaseSDK):
 
         Create an OAuth2 client.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -267,7 +259,7 @@ class Clients(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.Oauth2ClientsOauth2CreateClientSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.OAuth2ClientConfiguration),
             timeout_ms=timeout_ms,
         )
@@ -287,7 +279,7 @@ class Clients(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:create_client", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:create_client", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -309,7 +301,6 @@ class Clients(BaseSDK):
     
     async def create_async(
         self, *,
-        security: Union[models.Oauth2ClientsOauth2CreateClientSecurity, models.Oauth2ClientsOauth2CreateClientSecurityTypedDict],
         request: Union[models.OAuth2ClientConfiguration, models.OAuth2ClientConfigurationTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -319,7 +310,6 @@ class Clients(BaseSDK):
 
         Create an OAuth2 client.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -348,7 +338,7 @@ class Clients(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.Oauth2ClientsOauth2CreateClientSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.OAuth2ClientConfiguration),
             timeout_ms=timeout_ms,
         )
@@ -368,7 +358,7 @@ class Clients(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:create_client", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:create_client", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -390,7 +380,6 @@ class Clients(BaseSDK):
     
     def retrieve(
         self, *,
-        security: Union[models.Oauth2ClientsOauth2GetClientSecurity, models.Oauth2ClientsOauth2GetClientSecurityTypedDict],
         client_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -400,7 +389,6 @@ class Clients(BaseSDK):
 
         Get an OAuth2 client by Client ID.
 
-        :param security: 
         :param client_id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -429,7 +417,7 @@ class Clients(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.Oauth2ClientsOauth2GetClientSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -448,7 +436,7 @@ class Clients(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:get_client", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:get_client", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -470,7 +458,6 @@ class Clients(BaseSDK):
     
     async def retrieve_async(
         self, *,
-        security: Union[models.Oauth2ClientsOauth2GetClientSecurity, models.Oauth2ClientsOauth2GetClientSecurityTypedDict],
         client_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -480,7 +467,6 @@ class Clients(BaseSDK):
 
         Get an OAuth2 client by Client ID.
 
-        :param security: 
         :param client_id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -509,7 +495,7 @@ class Clients(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.Oauth2ClientsOauth2GetClientSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -528,7 +514,7 @@ class Clients(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:get_client", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:get_client", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -550,7 +536,6 @@ class Clients(BaseSDK):
     
     def update(
         self, *,
-        security: Union[models.Oauth2ClientsOauth2UpdateClientSecurity, models.Oauth2ClientsOauth2UpdateClientSecurityTypedDict],
         client_id: str,
         o_auth2_client_configuration_update: Union[models.OAuth2ClientConfigurationUpdate, models.OAuth2ClientConfigurationUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -561,7 +546,6 @@ class Clients(BaseSDK):
 
         Update an OAuth2 client.
 
-        :param security: 
         :param client_id: 
         :param o_auth2_client_configuration_update: 
         :param retries: Override the default retry configuration for this method
@@ -592,7 +576,7 @@ class Clients(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.Oauth2ClientsOauth2UpdateClientSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.o_auth2_client_configuration_update, False, False, "json", models.OAuth2ClientConfigurationUpdate),
             timeout_ms=timeout_ms,
         )
@@ -612,7 +596,7 @@ class Clients(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:update_client", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:update_client", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -634,7 +618,6 @@ class Clients(BaseSDK):
     
     async def update_async(
         self, *,
-        security: Union[models.Oauth2ClientsOauth2UpdateClientSecurity, models.Oauth2ClientsOauth2UpdateClientSecurityTypedDict],
         client_id: str,
         o_auth2_client_configuration_update: Union[models.OAuth2ClientConfigurationUpdate, models.OAuth2ClientConfigurationUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -645,7 +628,6 @@ class Clients(BaseSDK):
 
         Update an OAuth2 client.
 
-        :param security: 
         :param client_id: 
         :param o_auth2_client_configuration_update: 
         :param retries: Override the default retry configuration for this method
@@ -676,7 +658,7 @@ class Clients(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.Oauth2ClientsOauth2UpdateClientSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request.o_auth2_client_configuration_update, False, False, "json", models.OAuth2ClientConfigurationUpdate),
             timeout_ms=timeout_ms,
         )
@@ -696,7 +678,7 @@ class Clients(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:update_client", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:update_client", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -718,7 +700,6 @@ class Clients(BaseSDK):
     
     def delete(
         self, *,
-        security: Union[models.Oauth2ClientsOauth2DeleteClientSecurity, models.Oauth2ClientsOauth2DeleteClientSecurityTypedDict],
         client_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -728,7 +709,6 @@ class Clients(BaseSDK):
 
         Delete an OAuth2 client.
 
-        :param security: 
         :param client_id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -757,7 +737,7 @@ class Clients(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.Oauth2ClientsOauth2DeleteClientSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -776,7 +756,7 @@ class Clients(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:delete_client", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:delete_client", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -798,7 +778,6 @@ class Clients(BaseSDK):
     
     async def delete_async(
         self, *,
-        security: Union[models.Oauth2ClientsOauth2DeleteClientSecurity, models.Oauth2ClientsOauth2DeleteClientSecurityTypedDict],
         client_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -808,7 +787,6 @@ class Clients(BaseSDK):
 
         Delete an OAuth2 client.
 
-        :param security: 
         :param client_id: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -837,7 +815,7 @@ class Clients(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.Oauth2ClientsOauth2DeleteClientSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -856,7 +834,7 @@ class Clients(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:delete_client", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="oauth2:clients:oauth2:delete_client", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config

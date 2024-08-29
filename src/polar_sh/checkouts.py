@@ -11,7 +11,6 @@ class Checkouts(BaseSDK):
     
     def create(
         self, *,
-        security: Union[models.CheckoutsCreateSecurity, models.CheckoutsCreateSecurityTypedDict],
         request: Union[models.CheckoutCreate, models.CheckoutCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -21,7 +20,6 @@ class Checkouts(BaseSDK):
 
         Create a checkout session.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -50,7 +48,7 @@ class Checkouts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.CheckoutsCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.CheckoutCreate),
             timeout_ms=timeout_ms,
         )
@@ -70,7 +68,7 @@ class Checkouts(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="checkouts:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="checkouts:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -92,7 +90,6 @@ class Checkouts(BaseSDK):
     
     async def create_async(
         self, *,
-        security: Union[models.CheckoutsCreateSecurity, models.CheckoutsCreateSecurityTypedDict],
         request: Union[models.CheckoutCreate, models.CheckoutCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -102,7 +99,6 @@ class Checkouts(BaseSDK):
 
         Create a checkout session.
 
-        :param security: 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -131,7 +127,7 @@ class Checkouts(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.CheckoutsCreateSecurity),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.CheckoutCreate),
             timeout_ms=timeout_ms,
         )
@@ -151,7 +147,7 @@ class Checkouts(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="checkouts:create", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="checkouts:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config

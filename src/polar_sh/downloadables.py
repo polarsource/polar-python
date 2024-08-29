@@ -12,7 +12,6 @@ class Downloadables(BaseSDK):
     
     def list(
         self, *,
-        security: Union[models.UsersDownloadablesListSecurity, models.UsersDownloadablesListSecurityTypedDict],
         organization_id: OptionalNullable[Union[models.UsersDownloadablesListQueryParamOrganizationIDFilter, models.UsersDownloadablesListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
         benefit_id: OptionalNullable[Union[models.BenefitIDFilter, models.BenefitIDFilterTypedDict]] = UNSET,
         page: Optional[int] = 1,
@@ -23,7 +22,6 @@ class Downloadables(BaseSDK):
     ) -> models.UsersDownloadablesListResponse:
         r"""List Downloadables
 
-        :param security: 
         :param organization_id: Filter by organization ID.
         :param benefit_id: Filter by given benefit ID.
         :param page: Page number, defaults to 1.
@@ -58,7 +56,7 @@ class Downloadables(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersDownloadablesListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -77,7 +75,7 @@ class Downloadables(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:downloadables:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:downloadables:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -102,7 +100,6 @@ class Downloadables(BaseSDK):
                 return None
 
             return self.list(
-                security=security,
                 organization_id=organization_id,
                 benefit_id=benefit_id,
                 page=next_page,
@@ -126,7 +123,6 @@ class Downloadables(BaseSDK):
     
     async def list_async(
         self, *,
-        security: Union[models.UsersDownloadablesListSecurity, models.UsersDownloadablesListSecurityTypedDict],
         organization_id: OptionalNullable[Union[models.UsersDownloadablesListQueryParamOrganizationIDFilter, models.UsersDownloadablesListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
         benefit_id: OptionalNullable[Union[models.BenefitIDFilter, models.BenefitIDFilterTypedDict]] = UNSET,
         page: Optional[int] = 1,
@@ -137,7 +133,6 @@ class Downloadables(BaseSDK):
     ) -> models.UsersDownloadablesListResponse:
         r"""List Downloadables
 
-        :param security: 
         :param organization_id: Filter by organization ID.
         :param benefit_id: Filter by given benefit ID.
         :param page: Page number, defaults to 1.
@@ -172,7 +167,7 @@ class Downloadables(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersDownloadablesListSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -191,7 +186,7 @@ class Downloadables(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:downloadables:list", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:downloadables:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["422","4XX","5XX"],
             retry_config=retry_config
@@ -216,7 +211,6 @@ class Downloadables(BaseSDK):
                 return None
 
             return self.list(
-                security=security,
                 organization_id=organization_id,
                 benefit_id=benefit_id,
                 page=next_page,
@@ -240,7 +234,6 @@ class Downloadables(BaseSDK):
     
     def retrieve(
         self, *,
-        security: Union[models.UsersDownloadablesGetSecurity, models.UsersDownloadablesGetSecurityTypedDict],
         token: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -248,7 +241,6 @@ class Downloadables(BaseSDK):
     ) -> Optional[Any]:
         r"""Get Downloadable
 
-        :param security: 
         :param token: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -277,7 +269,7 @@ class Downloadables(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersDownloadablesGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -296,7 +288,7 @@ class Downloadables(BaseSDK):
             ])                
         
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:downloadables:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:downloadables:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["400","404","410","422","4XX","5XX"],
             retry_config=retry_config
@@ -320,7 +312,6 @@ class Downloadables(BaseSDK):
     
     async def retrieve_async(
         self, *,
-        security: Union[models.UsersDownloadablesGetSecurity, models.UsersDownloadablesGetSecurityTypedDict],
         token: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -328,7 +319,6 @@ class Downloadables(BaseSDK):
     ) -> Optional[Any]:
         r"""Get Downloadable
 
-        :param security: 
         :param token: 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -357,7 +347,7 @@ class Downloadables(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
-            security=utils.get_pydantic_model(security, models.UsersDownloadablesGetSecurity),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
         
@@ -376,7 +366,7 @@ class Downloadables(BaseSDK):
             ])                
         
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:downloadables:get", oauth2_scopes=[], security_source=security),
+            hook_ctx=HookContext(operation_id="users:downloadables:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
             request=req,
             error_status_codes=["400","404","410","422","4XX","5XX"],
             retry_config=retry_config

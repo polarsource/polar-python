@@ -16,15 +16,14 @@ List orders.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.orders.list(security=polar_sh.OrdersListSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
+res = s.orders.list()
 
 if res is not None:
     while True:
@@ -42,7 +41,6 @@ if res is not None:
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `request`                                                           | [models.OrdersListRequest](../../models/orderslistrequest.md)       | :heavy_check_mark:                                                  | The request object to use for the request.                          |
-| `security`                                                          | [models.OrdersListSecurity](../../orderslistsecurity.md)            | :heavy_check_mark:                                                  | The security requirements to use for the request.                   |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -64,15 +62,14 @@ Get an order by ID.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.orders.retrieve(security=polar_sh.OrdersGetSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), id="<value>")
+res = s.orders.retrieve(id="<value>")
 
 if res is not None:
     # handle response
@@ -84,7 +81,6 @@ if res is not None:
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `security`                                                          | [models.OrdersGetSecurity](../../models/ordersgetsecurity.md)       | :heavy_check_mark:                                                  | N/A                                                                 |
 | `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The order ID.                                                       |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
@@ -108,15 +104,14 @@ Get an order's invoice data.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.orders.invoice(security=polar_sh.OrdersInvoiceSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-), id="<value>")
+res = s.orders.invoice(id="<value>")
 
 if res is not None:
     # handle response
@@ -126,11 +121,10 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `security`                                                            | [models.OrdersInvoiceSecurity](../../models/ordersinvoicesecurity.md) | :heavy_check_mark:                                                    | N/A                                                                   |
-| `id`                                                                  | *str*                                                                 | :heavy_check_mark:                                                    | The order ID.                                                         |
-| `retries`                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)      | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The order ID.                                                       |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 

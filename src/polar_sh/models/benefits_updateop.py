@@ -14,20 +14,10 @@ from .benefitdownloadablesupdate import BenefitDownloadablesUpdate, BenefitDownl
 from .benefitgithubrepository import BenefitGitHubRepository, BenefitGitHubRepositoryTypedDict
 from .benefitgithubrepositoryupdate import BenefitGitHubRepositoryUpdate, BenefitGitHubRepositoryUpdateTypedDict
 from polar_sh.types import BaseModel
-from polar_sh.utils import FieldMetadata, PathParamMetadata, RequestMetadata, SecurityMetadata
-from typing import Optional, TypedDict, Union
-from typing_extensions import Annotated, NotRequired
+from polar_sh.utils import FieldMetadata, PathParamMetadata, RequestMetadata
+from typing import TypedDict, Union
+from typing_extensions import Annotated
 
-
-class BenefitsUpdateSecurityTypedDict(TypedDict):
-    open_id_connect: NotRequired[str]
-    http_bearer: NotRequired[str]
-    
-
-class BenefitsUpdateSecurity(BaseModel):
-    open_id_connect: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="openIdConnect", field_name="Authorization"))] = None
-    http_bearer: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="http", sub_type="bearer", field_name="Authorization"))] = None
-    
 
 BenefitsUpdateBenefitUpdateTypedDict = Union[BenefitArticlesUpdateTypedDict, BenefitAdsUpdateTypedDict, BenefitCustomUpdateTypedDict, BenefitDiscordUpdateTypedDict, BenefitGitHubRepositoryUpdateTypedDict, BenefitDownloadablesUpdateTypedDict]
 

@@ -4,22 +4,11 @@ from __future__ import annotations
 from .downloadablefilecreate import DownloadableFileCreate, DownloadableFileCreateTypedDict
 from .organizationavatarfilecreate import OrganizationAvatarFileCreate, OrganizationAvatarFileCreateTypedDict
 from .productmediafilecreate import ProductMediaFileCreate, ProductMediaFileCreateTypedDict
-from polar_sh.types import BaseModel
-from polar_sh.utils import FieldMetadata, SecurityMetadata, get_discriminator
+from polar_sh.utils import get_discriminator
 from pydantic import Discriminator, Tag
-from typing import Optional, TypedDict, Union
-from typing_extensions import Annotated, NotRequired
+from typing import Union
+from typing_extensions import Annotated
 
-
-class FilesCreateSecurityTypedDict(TypedDict):
-    open_id_connect: NotRequired[str]
-    http_bearer: NotRequired[str]
-    
-
-class FilesCreateSecurity(BaseModel):
-    open_id_connect: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="openIdConnect", field_name="Authorization"))] = None
-    http_bearer: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="http", sub_type="bearer", field_name="Authorization"))] = None
-    
 
 FilesCreateFileCreateTypedDict = Union[DownloadableFileCreateTypedDict, ProductMediaFileCreateTypedDict, OrganizationAvatarFileCreateTypedDict]
 

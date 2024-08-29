@@ -6,21 +6,11 @@ from .filepatch import FilePatch, FilePatchTypedDict
 from .organizationavatarfileread import OrganizationAvatarFileRead, OrganizationAvatarFileReadTypedDict
 from .productmediafileread_output import ProductMediaFileReadOutput, ProductMediaFileReadOutputTypedDict
 from polar_sh.types import BaseModel
-from polar_sh.utils import FieldMetadata, PathParamMetadata, RequestMetadata, SecurityMetadata, get_discriminator
+from polar_sh.utils import FieldMetadata, PathParamMetadata, RequestMetadata, get_discriminator
 from pydantic import Discriminator, Tag
-from typing import Optional, TypedDict, Union
-from typing_extensions import Annotated, NotRequired
+from typing import TypedDict, Union
+from typing_extensions import Annotated
 
-
-class FilesUpdateSecurityTypedDict(TypedDict):
-    open_id_connect: NotRequired[str]
-    http_bearer: NotRequired[str]
-    
-
-class FilesUpdateSecurity(BaseModel):
-    open_id_connect: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="openIdConnect", field_name="Authorization"))] = None
-    http_bearer: Annotated[Optional[str], FieldMetadata(security=SecurityMetadata(scheme=True, scheme_type="http", sub_type="bearer", field_name="Authorization"))] = None
-    
 
 class FilesUpdateRequestTypedDict(TypedDict):
     id: str

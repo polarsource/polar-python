@@ -14,15 +14,14 @@ List external organizations.
 ### Example Usage
 
 ```python
-import polar_sh
 from polar_sh import Polar
 
-s = Polar()
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
 
 
-res = s.external_organizations.list(security=polar_sh.ExternalOrganizationsListSecurity(
-    open_id_connect="<YOUR_OPEN_ID_CONNECT_HERE>",
-))
+res = s.external_organizations.list()
 
 if res is not None:
     while True:
@@ -40,7 +39,6 @@ if res is not None:
 | Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
 | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | `request`                                                                                   | [models.ExternalOrganizationsListRequest](../../models/externalorganizationslistrequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
-| `security`                                                                                  | [models.ExternalOrganizationsListSecurity](../../externalorganizationslistsecurity.md)      | :heavy_check_mark:                                                                          | The security requirements to use for the request.                                           |
 | `retries`                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                            | :heavy_minus_sign:                                                                          | Configuration to override the default retry behavior of the client.                         |
 
 ### Response
