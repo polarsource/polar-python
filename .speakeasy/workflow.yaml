@@ -7,7 +7,8 @@ sources:
         registry:
             location: registry.speakeasyapi.dev/polar/polar/polar-oas
         overlays:
-          - location: .speakeasy/overlay.yml
+          - location: .speakeasy/security.overlay.yml
+          - location: .speakeasy/type_parameter.overlay.yml
 targets:
     polar:
         target: python
