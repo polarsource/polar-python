@@ -21,12 +21,12 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 
 PIP
 ```bash
-pip install git+<UNSET>.git
+pip install git+https://github.com/polarsource/polar-python.git
 ```
 
 Poetry
 ```bash
-poetry add git+<UNSET>.git
+poetry add git+https://github.com/polarsource/polar-python.git
 ```
 <!-- End SDK Installation [installation] -->
 
