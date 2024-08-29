@@ -2,7 +2,7 @@ speakeasyVersion: 1.382.0
 sources:
     Polar-OAS:
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:1e252550ec6627ad40066e15bdc3f66bd2dc2206614e6d8d0cb5fa11cff9900f
+        sourceRevisionDigest: sha256:06df82efb53fb213aad1b9aa5471c9060a6102b9255e539d38028912152a852c
         sourceBlobDigest: sha256:3303542239bcd6692ae1b85934483e76917bf962b7ffdddbe792c78718887a36
         tags:
             - latest
@@ -11,7 +11,7 @@ targets:
     polar:
         source: Polar-OAS
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:1e252550ec6627ad40066e15bdc3f66bd2dc2206614e6d8d0cb5fa11cff9900f
+        sourceRevisionDigest: sha256:06df82efb53fb213aad1b9aa5471c9060a6102b9255e539d38028912152a852c
         sourceBlobDigest: sha256:3303542239bcd6692ae1b85934483e76917bf962b7ffdddbe792c78718887a36
         outLocation: /github/workspace/repo
 workflow:
