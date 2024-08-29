@@ -47,7 +47,7 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 
 ```python
 # Synchronous Example
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -72,7 +72,7 @@ The same SDK client can also be used to make asychronous requests by importing a
 ```python
 # Asynchronous Example
 import asyncio
-from polar_sh import Polar
+from polar import Polar
 
 async def main():
     s = Polar(
@@ -235,7 +235,7 @@ Certain SDK methods accept file objects as part of a request body or multi-part 
 >
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -264,8 +264,8 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 
 To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
+from polar import Polar
 from polar.utils import BackoffStrategy, RetryConfig
-from polar_sh import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -288,8 +288,8 @@ if res is not None:
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
+from polar import Polar
 from polar.utils import BackoffStrategy, RetryConfig
-from polar_sh import Polar
 
 s = Polar(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
@@ -324,7 +324,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 ### Example
 
 ```python
-from polar_sh import Polar, models
+from polar import Polar, models
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -367,7 +367,7 @@ You can override the default server globally by passing a server index to the `s
 #### Example
 
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     server_idx=0,
@@ -393,7 +393,7 @@ if res is not None:
 
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     server_url="https://api.polar.sh",
@@ -424,7 +424,7 @@ This allows you to wrap the client with your own custom logic, such as adding cu
 
 For example, you could specify a header for every request that this sdk makes as follows:
 ```python
-from polar_sh import Polar
+from polar import Polar
 import httpx
 
 http_client = httpx.Client(headers={"x-custom-header": "someValue"})
@@ -433,8 +433,8 @@ s = Polar(client=http_client)
 
 or you could wrap the client with your own custom logic:
 ```python
-from polar_sh import Polar
-from polar_sh.httpclient import AsyncHttpClient
+from polar import Polar
+from polar.httpclient import AsyncHttpClient
 import httpx
 
 class CustomClient(AsyncHttpClient):
@@ -509,7 +509,7 @@ This SDK supports the following security scheme globally:
 
 To authenticate with the API the `access_token` parameter must be set when initializing the SDK client instance. For example:
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -537,11 +537,11 @@ You can setup your SDK to emit debug logs for SDK requests and responses.
 
 You can pass your own logger class directly into your SDK.
 ```python
-from polar_sh import Polar
+from polar import Polar
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
-s = Polar(debug_logger=logging.getLogger("polar_sh"))
+s = Polar(debug_logger=logging.getLogger("polar"))
 ```
 <!-- End Debugging [debug] -->
 
@@ -554,7 +554,7 @@ return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
 ```python
-from polar_sh import Polar
+from polar import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

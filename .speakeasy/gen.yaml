@@ -38,6 +38,6 @@ python:
   maxMethodParams: 100
   methodArguments: infer-optional-args
   outputModelSuffix: output
-  packageName: polar-sh
+  packageName: polar
   responseFormat: flat
   templateVersion: v2
