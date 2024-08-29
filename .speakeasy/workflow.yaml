@@ -6,6 +6,8 @@ sources:
             - location: https://api.polar.sh/openapi.json
         registry:
             location: registry.speakeasyapi.dev/polar/polar/polar-oas
+        overlays:
+          - location: .speakeasy/overlay.yml
 targets:
     polar:
         target: python
