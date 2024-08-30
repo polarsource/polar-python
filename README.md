@@ -19,14 +19,22 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-PIP
+The SDK can be installed with either *pip* or *poetry* package managers.
+
+### PIP
+
+*PIP* is the default package installer for Python, enabling easy installation and management of packages from PyPI via the command line.
+
 ```bash
-pip install git+https://github.com/polarsource/polar-python.git
+pip install polar-sdk
 ```
 
-Poetry
+### Poetry
+
+*Poetry* is a modern tool that simplifies dependency management and package publishing by using a single `pyproject.toml` file to handle project metadata and dependencies.
+
 ```bash
-poetry add git+https://github.com/polarsource/polar-python.git
+poetry add polar-sdk
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -47,7 +55,7 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 
 ```python
 # Synchronous Example
-from polar import Polar
+from polar_sdk import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -72,7 +80,7 @@ The same SDK client can also be used to make asychronous requests by importing a
 ```python
 # Asynchronous Example
 import asyncio
-from polar import Polar
+from polar_sdk import Polar
 
 async def main():
     s = Polar(
@@ -235,7 +243,7 @@ Certain SDK methods accept file objects as part of a request body or multi-part 
 >
 
 ```python
-from polar import Polar
+from polar_sdk import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -264,8 +272,8 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 
 To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
-from polar import Polar
 from polar.utils import BackoffStrategy, RetryConfig
+from polar_sdk import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -288,8 +296,8 @@ if res is not None:
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
-from polar import Polar
 from polar.utils import BackoffStrategy, RetryConfig
+from polar_sdk import Polar
 
 s = Polar(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
@@ -324,7 +332,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 ### Example
 
 ```python
-from polar import Polar, models
+from polar_sdk import Polar, models
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -335,7 +343,7 @@ try:
     res = s.users.benefits.list()
 
 except models.HTTPValidationError as e:
-    # handle exception
+    # handle e.data: models.HTTPValidationErrorData
     raise(e)
 except models.SDKError as e:
     # handle exception
@@ -367,7 +375,7 @@ You can override the default server globally by passing a server index to the `s
 #### Example
 
 ```python
-from polar import Polar
+from polar_sdk import Polar
 
 s = Polar(
     server_idx=0,
@@ -393,7 +401,7 @@ if res is not None:
 
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
-from polar import Polar
+from polar_sdk import Polar
 
 s = Polar(
     server_url="https://api.polar.sh",
@@ -424,7 +432,7 @@ This allows you to wrap the client with your own custom logic, such as adding cu
 
 For example, you could specify a header for every request that this sdk makes as follows:
 ```python
-from polar import Polar
+from polar_sdk import Polar
 import httpx
 
 http_client = httpx.Client(headers={"x-custom-header": "someValue"})
@@ -433,8 +441,8 @@ s = Polar(client=http_client)
 
 or you could wrap the client with your own custom logic:
 ```python
-from polar import Polar
-from polar.httpclient import AsyncHttpClient
+from polar_sdk import Polar
+from polar_sdk.httpclient import AsyncHttpClient
 import httpx
 
 class CustomClient(AsyncHttpClient):
@@ -509,7 +517,7 @@ This SDK supports the following security scheme globally:
 
 To authenticate with the API the `access_token` parameter must be set when initializing the SDK client instance. For example:
 ```python
-from polar import Polar
+from polar_sdk import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -537,11 +545,11 @@ You can setup your SDK to emit debug logs for SDK requests and responses.
 
 You can pass your own logger class directly into your SDK.
 ```python
-from polar import Polar
+from polar_sdk import Polar
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
-s = Polar(debug_logger=logging.getLogger("polar"))
+s = Polar(debug_logger=logging.getLogger("polar_sdk"))
 ```
 <!-- End Debugging [debug] -->
 
@@ -554,7 +562,7 @@ return value of `Next` is `None`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
 ```python
-from polar import Polar
+from polar_sdk import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -574,6 +582,31 @@ if res is not None:
 
 ```
 <!-- End Pagination [pagination] -->
+
+<!-- Start Summary [summary] -->
+## Summary
+
+Polar API: Polar HTTP and Webhooks API
+
+Read the docs at https://docs.polar.sh/api
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [IDE Support](#ide-support)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Pagination](#pagination)
+* [File uploads](#file-uploads)
+* [Retries](#retries)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Custom HTTP Client](#custom-http-client)
+* [Authentication](#authentication)
+* [Debugging](#debugging)
+<!-- End Table of Contents [toc] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

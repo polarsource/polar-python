@@ -1,8 +1,0 @@
-# Service
-
-
-## Values
-
-| Name            | Value           |
-| --------------- | --------------- |
-| `PRODUCT_MEDIA` | product_media   |

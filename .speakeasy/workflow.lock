@@ -1,19 +1,18 @@
-speakeasyVersion: 1.382.0
+speakeasyVersion: 1.383.2
 sources:
     Polar-OAS:
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:19ff53595232890cef232fc6931e820feeea0e0c71f084811d2ab3d2d50363fe
-        sourceBlobDigest: sha256:3303542239bcd6692ae1b85934483e76917bf962b7ffdddbe792c78718887a36
+        sourceRevisionDigest: sha256:22abf4ccd2c959ac89d9e96f652ca32747feb8df6bd18fb20b570e3a88da2786
+        sourceBlobDigest: sha256:2e445b28e1c8f9fe80a9f4cfd04b44748fc6daa3cc521d13d73ea571bec616f2
         tags:
             - latest
-            - main
 targets:
     polar:
         source: Polar-OAS
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:19ff53595232890cef232fc6931e820feeea0e0c71f084811d2ab3d2d50363fe
-        sourceBlobDigest: sha256:3303542239bcd6692ae1b85934483e76917bf962b7ffdddbe792c78718887a36
-        outLocation: /github/workspace/repo
+        sourceRevisionDigest: sha256:22abf4ccd2c959ac89d9e96f652ca32747feb8df6bd18fb20b570e3a88da2786
+        sourceBlobDigest: sha256:2e445b28e1c8f9fe80a9f4cfd04b44748fc6daa3cc521d13d73ea571bec616f2
+        outLocation: /Users/fvoron/Development/polar-python
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -30,5 +29,8 @@ workflow:
         polar:
             target: python
             source: Polar-OAS
+            publish:
+                pypi:
+                    token: $pypi_token
             codeSamples:
                 output: codeSamples.yaml

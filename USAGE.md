@@ -1,7 +1,7 @@
 <!-- Start SDK Example Usage [usage] -->
 ```python
 # Synchronous Example
-from polar import Polar
+from polar_sdk import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -26,7 +26,7 @@ The same SDK client can also be used to make asychronous requests by importing a
 ```python
 # Asynchronous Example
 import asyncio
-from polar import Polar
+from polar_sdk import Polar
 
 async def main():
     s = Polar(
