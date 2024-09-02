@@ -4,6 +4,7 @@ permissions:
   contents: write
   pull-requests: write
   statuses: write
+  id-token: write
 "on":
   push:
     branches:
@@ -14,9 +15,6 @@ permissions:
 jobs:
   mint-token:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      id-token: write
     outputs:
       api-token: ${{ steps.mint-token.outputs.api-token }}
     steps:
