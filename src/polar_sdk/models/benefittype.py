@@ -11,3 +11,4 @@ class BenefitType(str, Enum):
     DISCORD = "discord"
     GITHUB_REPOSITORY = "github_repository"
     DOWNLOADABLES = "downloadables"
+    LICENSE_KEYS = "license_keys"

@@ -7,6 +7,7 @@ from .benefitcustom import BenefitCustom, BenefitCustomTypedDict
 from .benefitdiscord_input import BenefitDiscordInput, BenefitDiscordInputTypedDict
 from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesTypedDict
 from .benefitgithubrepository import BenefitGitHubRepository, BenefitGitHubRepositoryTypedDict
+from .benefitlicensekeys_input import BenefitLicenseKeysInput, BenefitLicenseKeysInputTypedDict
 from enum import Enum
 from polar_sdk.types import BaseModel
 import pydantic
@@ -17,10 +18,10 @@ from typing_extensions import Annotated
 class WebhookBenefitUpdatedPayloadType(str, Enum):
     BENEFIT_UPDATED = "benefit.updated"
 
-WebhookBenefitUpdatedPayloadDataTypedDict = Union[BenefitArticlesTypedDict, BenefitAdsTypedDict, BenefitDiscordInputTypedDict, BenefitGitHubRepositoryTypedDict, BenefitDownloadablesTypedDict, BenefitCustomTypedDict]
+WebhookBenefitUpdatedPayloadBenefitTypedDict = Union[BenefitArticlesTypedDict, BenefitAdsTypedDict, BenefitDiscordInputTypedDict, BenefitGitHubRepositoryTypedDict, BenefitDownloadablesTypedDict, BenefitLicenseKeysInputTypedDict, BenefitCustomTypedDict]
 
 
-WebhookBenefitUpdatedPayloadData = Union[BenefitArticles, BenefitAds, BenefitDiscordInput, BenefitGitHubRepository, BenefitDownloadables, BenefitCustom]
+WebhookBenefitUpdatedPayloadBenefit = Union[BenefitArticles, BenefitAds, BenefitDiscordInput, BenefitGitHubRepository, BenefitDownloadables, BenefitLicenseKeysInput, BenefitCustom]
 
 
 class WebhookBenefitUpdatedPayloadTypedDict(TypedDict):
@@ -29,7 +30,7 @@ class WebhookBenefitUpdatedPayloadTypedDict(TypedDict):
     **Discord & Slack support:** Basic
     """
     
-    data: WebhookBenefitUpdatedPayloadDataTypedDict
+    data: WebhookBenefitUpdatedPayloadBenefitTypedDict
     
 
 class WebhookBenefitUpdatedPayload(BaseModel):
@@ -38,6 +39,6 @@ class WebhookBenefitUpdatedPayload(BaseModel):
     **Discord & Slack support:** Basic
     """
     
-    data: WebhookBenefitUpdatedPayloadData
+    data: WebhookBenefitUpdatedPayloadBenefit
     TYPE: Annotated[Final[WebhookBenefitUpdatedPayloadType], pydantic.Field(alias="type")] = WebhookBenefitUpdatedPayloadType.BENEFIT_UPDATED # type: ignore
     

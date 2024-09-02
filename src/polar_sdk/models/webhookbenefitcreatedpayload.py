@@ -7,6 +7,7 @@ from .benefitcustom import BenefitCustom, BenefitCustomTypedDict
 from .benefitdiscord_input import BenefitDiscordInput, BenefitDiscordInputTypedDict
 from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesTypedDict
 from .benefitgithubrepository import BenefitGitHubRepository, BenefitGitHubRepositoryTypedDict
+from .benefitlicensekeys_input import BenefitLicenseKeysInput, BenefitLicenseKeysInputTypedDict
 from enum import Enum
 from polar_sdk.types import BaseModel
 import pydantic
@@ -17,10 +18,10 @@ from typing_extensions import Annotated
 class WebhookBenefitCreatedPayloadType(str, Enum):
     BENEFIT_CREATED = "benefit.created"
 
-DataTypedDict = Union[BenefitArticlesTypedDict, BenefitAdsTypedDict, BenefitDiscordInputTypedDict, BenefitGitHubRepositoryTypedDict, BenefitDownloadablesTypedDict, BenefitCustomTypedDict]
+WebhookBenefitCreatedPayloadBenefitTypedDict = Union[BenefitArticlesTypedDict, BenefitAdsTypedDict, BenefitDiscordInputTypedDict, BenefitGitHubRepositoryTypedDict, BenefitDownloadablesTypedDict, BenefitLicenseKeysInputTypedDict, BenefitCustomTypedDict]
 
 
-Data = Union[BenefitArticles, BenefitAds, BenefitDiscordInput, BenefitGitHubRepository, BenefitDownloadables, BenefitCustom]
+WebhookBenefitCreatedPayloadBenefit = Union[BenefitArticles, BenefitAds, BenefitDiscordInput, BenefitGitHubRepository, BenefitDownloadables, BenefitLicenseKeysInput, BenefitCustom]
 
 
 class WebhookBenefitCreatedPayloadTypedDict(TypedDict):
@@ -29,7 +30,7 @@ class WebhookBenefitCreatedPayloadTypedDict(TypedDict):
     **Discord & Slack support:** Basic
     """
     
-    data: DataTypedDict
+    data: WebhookBenefitCreatedPayloadBenefitTypedDict
     
 
 class WebhookBenefitCreatedPayload(BaseModel):
@@ -38,6 +39,6 @@ class WebhookBenefitCreatedPayload(BaseModel):
     **Discord & Slack support:** Basic
     """
     
-    data: Data
+    data: WebhookBenefitCreatedPayloadBenefit
     TYPE: Annotated[Final[WebhookBenefitCreatedPayloadType], pydantic.Field(alias="type")] = WebhookBenefitCreatedPayloadType.BENEFIT_CREATED # type: ignore
     

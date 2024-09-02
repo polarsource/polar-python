@@ -5,6 +5,7 @@ from .sdkconfiguration import SDKConfiguration
 from polar_sdk.downloadables import Downloadables
 from polar_sdk.polar_advertisements import PolarAdvertisements
 from polar_sdk.polar_benefits import PolarBenefits
+from polar_sdk.polar_license_keys import PolarLicenseKeys
 from polar_sdk.polar_orders import PolarOrders
 from polar_sdk.polar_subscriptions import PolarSubscriptions
 
@@ -14,6 +15,7 @@ class Users(BaseSDK):
     subscriptions: PolarSubscriptions
     advertisements: PolarAdvertisements
     downloadables: Downloadables
+    license_keys: PolarLicenseKeys
     def __init__(self, sdk_config: SDKConfiguration) -> None:
         BaseSDK.__init__(self, sdk_config)
         self.sdk_configuration = sdk_config
@@ -25,4 +27,5 @@ class Users(BaseSDK):
         self.subscriptions = PolarSubscriptions(self.sdk_configuration)
         self.advertisements = PolarAdvertisements(self.sdk_configuration)
         self.downloadables = Downloadables(self.sdk_configuration)
+        self.license_keys = PolarLicenseKeys(self.sdk_configuration)
     

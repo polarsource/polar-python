@@ -111,7 +111,7 @@ class Benefits(BaseSDK):
         
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.BenefitsListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceUnionBenefitArticlesBenefitAdsBenefitCustomBenefitDiscordBenefitGitHubRepositoryBenefitDownloadables]), next=next_func)
+            return models.BenefitsListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceBenefit]), next=next_func)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -224,7 +224,7 @@ class Benefits(BaseSDK):
         
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.BenefitsListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceUnionBenefitArticlesBenefitAdsBenefitCustomBenefitDiscordBenefitGitHubRepositoryBenefitDownloadables]), next=next_func)
+            return models.BenefitsListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceBenefit]), next=next_func)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)

@@ -13,16 +13,18 @@ from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesType
 from .benefitdownloadablesupdate import BenefitDownloadablesUpdate, BenefitDownloadablesUpdateTypedDict
 from .benefitgithubrepository import BenefitGitHubRepository, BenefitGitHubRepositoryTypedDict
 from .benefitgithubrepositoryupdate import BenefitGitHubRepositoryUpdate, BenefitGitHubRepositoryUpdateTypedDict
+from .benefitlicensekeys_output import BenefitLicenseKeysOutput, BenefitLicenseKeysOutputTypedDict
+from .benefitlicensekeysupdate import BenefitLicenseKeysUpdate, BenefitLicenseKeysUpdateTypedDict
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, PathParamMetadata, RequestMetadata
 from typing import TypedDict, Union
 from typing_extensions import Annotated
 
 
-BenefitsUpdateBenefitUpdateTypedDict = Union[BenefitArticlesUpdateTypedDict, BenefitAdsUpdateTypedDict, BenefitCustomUpdateTypedDict, BenefitDiscordUpdateTypedDict, BenefitGitHubRepositoryUpdateTypedDict, BenefitDownloadablesUpdateTypedDict]
+BenefitsUpdateBenefitUpdateTypedDict = Union[BenefitArticlesUpdateTypedDict, BenefitAdsUpdateTypedDict, BenefitCustomUpdateTypedDict, BenefitDiscordUpdateTypedDict, BenefitGitHubRepositoryUpdateTypedDict, BenefitDownloadablesUpdateTypedDict, BenefitLicenseKeysUpdateTypedDict]
 
 
-BenefitsUpdateBenefitUpdate = Union[BenefitArticlesUpdate, BenefitAdsUpdate, BenefitCustomUpdate, BenefitDiscordUpdate, BenefitGitHubRepositoryUpdate, BenefitDownloadablesUpdate]
+BenefitsUpdateBenefitUpdate = Union[BenefitArticlesUpdate, BenefitAdsUpdate, BenefitCustomUpdate, BenefitDiscordUpdate, BenefitGitHubRepositoryUpdate, BenefitDownloadablesUpdate, BenefitLicenseKeysUpdate]
 
 
 class BenefitsUpdateRequestTypedDict(TypedDict):
@@ -35,10 +37,10 @@ class BenefitsUpdateRequest(BaseModel):
     request_body: Annotated[BenefitsUpdateBenefitUpdate, FieldMetadata(request=RequestMetadata(media_type="application/json"))]
     
 
-BenefitsUpdateResponseBenefitsUpdateTypedDict = Union[BenefitArticlesTypedDict, BenefitAdsTypedDict, BenefitDiscordOutputTypedDict, BenefitGitHubRepositoryTypedDict, BenefitDownloadablesTypedDict, BenefitCustomTypedDict]
+BenefitsUpdateResponseBenefitsUpdateTypedDict = Union[BenefitArticlesTypedDict, BenefitAdsTypedDict, BenefitDiscordOutputTypedDict, BenefitGitHubRepositoryTypedDict, BenefitDownloadablesTypedDict, BenefitLicenseKeysOutputTypedDict, BenefitCustomTypedDict]
 r"""Benefit updated."""
 
 
-BenefitsUpdateResponseBenefitsUpdate = Union[BenefitArticles, BenefitAds, BenefitDiscordOutput, BenefitGitHubRepository, BenefitDownloadables, BenefitCustom]
+BenefitsUpdateResponseBenefitsUpdate = Union[BenefitArticles, BenefitAds, BenefitDiscordOutput, BenefitGitHubRepository, BenefitDownloadables, BenefitLicenseKeysOutput, BenefitCustom]
 r"""Benefit updated."""
 

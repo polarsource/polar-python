@@ -14,6 +14,7 @@ from polar_sdk.benefits import Benefits
 from polar_sdk.checkouts import Checkouts
 from polar_sdk.external_organizations import ExternalOrganizations
 from polar_sdk.files import Files
+from polar_sdk.license_keys import LicenseKeys
 from polar_sdk.metrics_sdk import MetricsSDK
 from polar_sdk.oauth2 import Oauth2
 from polar_sdk.orders import Orders
@@ -44,6 +45,7 @@ class Polar(BaseSDK):
     checkouts: Checkouts
     files: Files
     metrics: MetricsSDK
+    license_keys: LicenseKeys
     def __init__(
         self,
         access_token: Union[str, Callable[[], str]],
@@ -134,4 +136,5 @@ class Polar(BaseSDK):
         self.checkouts = Checkouts(self.sdk_configuration)
         self.files = Files(self.sdk_configuration)
         self.metrics = MetricsSDK(self.sdk_configuration)
+        self.license_keys = LicenseKeys(self.sdk_configuration)
     

@@ -1,0 +1,12 @@
+# LicenseKeyUpdate
+
+
+## Fields
+
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `status`                                                                   | [OptionalNullable[models.LicenseKeyStatus]](../models/licensekeystatus.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `usage`                                                                    | *Optional[int]*                                                            | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `limit_activations`                                                        | *OptionalNullable[int]*                                                    | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `limit_usage`                                                              | *OptionalNullable[int]*                                                    | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `expires_at`                                                               | [date](https://docs.python.org/3/library/datetime.html#date-objects)       | :heavy_minus_sign:                                                         | N/A                                                                        |

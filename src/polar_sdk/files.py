@@ -111,7 +111,7 @@ class Files(BaseSDK):
         
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.FilesListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceAnnotatedUnionDownloadableFileReadProductMediaFileReadOrganizationAvatarFileReadDiscriminatorMergeJSONSchema]), next=next_func)
+            return models.FilesListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceFileRead]), next=next_func)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -224,7 +224,7 @@ class Files(BaseSDK):
         
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.FilesListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceAnnotatedUnionDownloadableFileReadProductMediaFileReadOrganizationAvatarFileReadDiscriminatorMergeJSONSchema]), next=next_func)
+            return models.FilesListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceFileRead]), next=next_func)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)

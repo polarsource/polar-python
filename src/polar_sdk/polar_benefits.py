@@ -123,7 +123,7 @@ class PolarBenefits(BaseSDK):
         
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.UsersBenefitsListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceAnnotatedUnionBenefitArticlesSubscriberBenefitAdsSubscriberBenefitDiscordSubscriberBenefitCustomSubscriberBenefitGitHubRepositorySubscriberBenefitDownloadablesSubscriberDiscriminatorMergeJSONSchema]), next=next_func)
+            return models.UsersBenefitsListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceUserBenefit]), next=next_func)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -248,7 +248,7 @@ class PolarBenefits(BaseSDK):
         
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.UsersBenefitsListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceAnnotatedUnionBenefitArticlesSubscriberBenefitAdsSubscriberBenefitDiscordSubscriberBenefitCustomSubscriberBenefitGitHubRepositorySubscriberBenefitDownloadablesSubscriberDiscriminatorMergeJSONSchema]), next=next_func)
+            return models.UsersBenefitsListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceUserBenefit]), next=next_func)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: 831b44751bca6c2d3add461819fcbf1b
+  docChecksum: 1457c7a0b5015bae5c5e9b2c47ca23c3
   docVersion: 0.1.0
-  speakeasyVersion: 1.383.2
-  generationVersion: 2.407.0
-  releaseVersion: 0.1.4
-  configChecksum: 7ced5029701d7f8290aa181f1751bd91
+  speakeasyVersion: 1.385.0
+  generationVersion: 2.407.2
+  releaseVersion: 0.1.5
+  configChecksum: 74186547e8a46645865e3572955c993c
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -43,6 +43,7 @@ generatedFiles:
   - src/polar_sdk/polar_subscriptions.py
   - src/polar_sdk/polar_advertisements.py
   - src/polar_sdk/downloadables.py
+  - src/polar_sdk/polar_license_keys.py
   - src/polar_sdk/users.py
   - src/polar_sdk/external_organizations.py
   - src/polar_sdk/repositories.py
@@ -58,6 +59,7 @@ generatedFiles:
   - src/polar_sdk/checkouts.py
   - src/polar_sdk/files.py
   - src/polar_sdk/metrics_sdk.py
+  - src/polar_sdk/license_keys.py
   - src/polar_sdk/sdk.py
   - .vscode/settings.json
   - poetry.toml
@@ -90,7 +92,7 @@ generatedFiles:
   - src/polar_sdk/utils/values.py
   - src/polar_sdk/models/sdkerror.py
   - src/polar_sdk/models/users_benefits_listop.py
-  - src/polar_sdk/models/listresource_annotated_union_benefitarticlessubscriber_benefitadssubscriber_benefitdiscordsubscriber_benefitcustomsubscriber_benefitgithubrepositorysubscriber_benefitdownloadablessubscriber_discriminator_mergejsonschema_.py
+  - src/polar_sdk/models/listresource_userbenefit_.py
   - src/polar_sdk/models/pagination.py
   - src/polar_sdk/models/benefitarticlessubscriber.py
   - src/polar_sdk/models/benefitarticlessubscriberproperties.py
@@ -108,6 +110,12 @@ generatedFiles:
   - src/polar_sdk/models/benefitgithubrepositorysubscriberproperties.py
   - src/polar_sdk/models/benefitdownloadablessubscriber.py
   - src/polar_sdk/models/benefitdownloadablessubscriberproperties.py
+  - src/polar_sdk/models/benefitlicensekeyssubscriber.py
+  - src/polar_sdk/models/benefitgrantlicensekeys.py
+  - src/polar_sdk/models/benefitgrantlicensekeysproperties.py
+  - src/polar_sdk/models/benefitlicensekeyssubscriberproperties.py
+  - src/polar_sdk/models/benefitlicensekeyactivationproperties.py
+  - src/polar_sdk/models/benefitlicensekeyexpirationproperties.py
   - src/polar_sdk/models/httpvalidationerror.py
   - src/polar_sdk/models/validationerror.py
   - src/polar_sdk/models/userbenefitsortproperty.py
@@ -165,6 +173,20 @@ generatedFiles:
   - src/polar_sdk/models/fileservicetypes.py
   - src/polar_sdk/models/s3downloadurl.py
   - src/polar_sdk/models/users_downloadables_getop.py
+  - src/polar_sdk/models/users_license_keys_listop.py
+  - src/polar_sdk/models/listresource_licensekeyread_.py
+  - src/polar_sdk/models/licensekeyread.py
+  - src/polar_sdk/models/licensekeystatus.py
+  - src/polar_sdk/models/unauthorized.py
+  - src/polar_sdk/models/licensekeywithactivations.py
+  - src/polar_sdk/models/licensekeyactivationbase.py
+  - src/polar_sdk/models/users_license_keys_getop.py
+  - src/polar_sdk/models/validatedlicensekey.py
+  - src/polar_sdk/models/licensekeyvalidate.py
+  - src/polar_sdk/models/licensekeyactivationread.py
+  - src/polar_sdk/models/notpermitted.py
+  - src/polar_sdk/models/licensekeyactivate.py
+  - src/polar_sdk/models/licensekeydeactivate.py
   - src/polar_sdk/models/external_organizations_listop.py
   - src/polar_sdk/models/listresource_externalorganization_.py
   - src/polar_sdk/models/externalorganization.py
@@ -176,7 +198,6 @@ generatedFiles:
   - src/polar_sdk/models/repositoryprofilesettings.py
   - src/polar_sdk/models/repositorysortproperty.py
   - src/polar_sdk/models/repositories_getop.py
-  - src/polar_sdk/models/notpermitted.py
   - src/polar_sdk/models/repositories_updateop.py
   - src/polar_sdk/models/repositoryupdate.py
   - src/polar_sdk/models/repositoryprofilesettingsupdate.py
@@ -243,7 +264,7 @@ generatedFiles:
   - src/polar_sdk/models/oauth2clientconfigurationupdate.py
   - src/polar_sdk/models/oauth2_clients_oauth2_delete_clientop.py
   - src/polar_sdk/models/benefits_listop.py
-  - src/polar_sdk/models/listresource_union_benefitarticles_benefitads_benefitcustom_benefitdiscord_benefitgithubrepository_benefitdownloadables_.py
+  - src/polar_sdk/models/listresource_benefit_.py
   - src/polar_sdk/models/benefitads.py
   - src/polar_sdk/models/benefitcustom.py
   - src/polar_sdk/models/benefitcustomproperties.py
@@ -253,6 +274,8 @@ generatedFiles:
   - src/polar_sdk/models/benefitgithubrepositoryproperties.py
   - src/polar_sdk/models/benefitdownloadables.py
   - src/polar_sdk/models/benefitdownloadablesproperties.py
+  - src/polar_sdk/models/benefitlicensekeys_output.py
+  - src/polar_sdk/models/benefitlicensekeysproperties.py
   - src/polar_sdk/models/benefits_createop.py
   - src/polar_sdk/models/benefitcustomcreate.py
   - src/polar_sdk/models/benefitadscreate.py
@@ -262,6 +285,8 @@ generatedFiles:
   - src/polar_sdk/models/benefitgithubrepositorycreateproperties.py
   - src/polar_sdk/models/benefitdownloadablescreate.py
   - src/polar_sdk/models/benefitdownloadablescreateproperties.py
+  - src/polar_sdk/models/benefitlicensekeyscreate.py
+  - src/polar_sdk/models/benefitlicensekeyscreateproperties.py
   - src/polar_sdk/models/benefits_getop.py
   - src/polar_sdk/models/benefits_updateop.py
   - src/polar_sdk/models/benefitarticlesupdate.py
@@ -270,6 +295,7 @@ generatedFiles:
   - src/polar_sdk/models/benefitdiscordupdate.py
   - src/polar_sdk/models/benefitgithubrepositoryupdate.py
   - src/polar_sdk/models/benefitdownloadablesupdate.py
+  - src/polar_sdk/models/benefitlicensekeysupdate.py
   - src/polar_sdk/models/benefits_deleteop.py
   - src/polar_sdk/models/benefits_grantsop.py
   - src/polar_sdk/models/listresource_benefitgrant_.py
@@ -300,7 +326,7 @@ generatedFiles:
   - src/polar_sdk/models/checkoutcreate.py
   - src/polar_sdk/models/checkouts_getop.py
   - src/polar_sdk/models/files_listop.py
-  - src/polar_sdk/models/listresource_annotated_union_downloadablefileread_productmediafileread_organizationavatarfileread_discriminator_mergejsonschema_.py
+  - src/polar_sdk/models/listresource_fileread_.py
   - src/polar_sdk/models/downloadablefileread.py
   - src/polar_sdk/models/organizationavatarfileread.py
   - src/polar_sdk/models/fileupload.py
@@ -328,6 +354,11 @@ generatedFiles:
   - src/polar_sdk/models/metricslimits.py
   - src/polar_sdk/models/metricsintervalslimits.py
   - src/polar_sdk/models/metricsintervallimit.py
+  - src/polar_sdk/models/license_keys_listop.py
+  - src/polar_sdk/models/license_keys_getop.py
+  - src/polar_sdk/models/license_keys_updateop.py
+  - src/polar_sdk/models/licensekeyupdate.py
+  - src/polar_sdk/models/license_keys_get_activationop.py
   - src/polar_sdk/models/security.py
   - src/polar_sdk/models/webhookordercreatedpayload.py
   - src/polar_sdk/models/order_input.py
@@ -363,6 +394,7 @@ generatedFiles:
   - src/polar_sdk/models/webhookbenefitcreatedpayload.py
   - src/polar_sdk/models/benefitdiscord_input.py
   - src/polar_sdk/models/benefitdiscordproperties_input.py
+  - src/polar_sdk/models/benefitlicensekeys_input.py
   - src/polar_sdk/models/webhookbenefitupdatedpayload.py
   - src/polar_sdk/models/__init__.py
   - docs/models/benefittypefilter.md
@@ -372,7 +404,7 @@ generatedFiles:
   - docs/models/usersbenefitslistrequest.md
   - docs/models/usersbenefitslistresponse.md
   - docs/models/userbenefit.md
-  - docs/models/listresourceannotatedunionbenefitarticlessubscriberbenefitadssubscriberbenefitdiscordsubscriberbenefitcustomsubscriberbenefitgithubrepositorysubscriberbenefitdownloadablessubscriberdiscriminatormergejsonschema.md
+  - docs/models/listresourceuserbenefit.md
   - docs/models/pagination.md
   - docs/models/type.md
   - docs/models/benefitarticlessubscriber.md
@@ -396,6 +428,14 @@ generatedFiles:
   - docs/models/benefitdownloadablessubscribertype.md
   - docs/models/benefitdownloadablessubscriber.md
   - docs/models/benefitdownloadablessubscriberproperties.md
+  - docs/models/benefitlicensekeyssubscribertype.md
+  - docs/models/benefitlicensekeyssubscriber.md
+  - docs/models/benefitgrantlicensekeys.md
+  - docs/models/benefitgrantlicensekeysproperties.md
+  - docs/models/benefitlicensekeyssubscriberproperties.md
+  - docs/models/benefitlicensekeyactivationproperties.md
+  - docs/models/timeframe.md
+  - docs/models/benefitlicensekeyexpirationproperties.md
   - docs/models/httpvalidationerror.md
   - docs/models/loc.md
   - docs/models/validationerror.md
@@ -477,6 +517,29 @@ generatedFiles:
   - docs/models/fileservicetypes.md
   - docs/models/s3downloadurl.md
   - docs/models/usersdownloadablesgetrequest.md
+  - docs/models/userslicensekeyslistqueryparamorganizationidfilter.md
+  - docs/models/userslicensekeyslistrequest.md
+  - docs/models/userslicensekeyslistresponse.md
+  - docs/models/listresourcelicensekeyread.md
+  - docs/models/licensekeyread.md
+  - docs/models/licensekeystatus.md
+  - docs/models/unauthorizedtype.md
+  - docs/models/unauthorized.md
+  - docs/models/licensekeywithactivations.md
+  - docs/models/meta.md
+  - docs/models/licensekeyactivationbase.md
+  - docs/models/userslicensekeysgetrequest.md
+  - docs/models/validatedlicensekey.md
+  - docs/models/conditions.md
+  - docs/models/licensekeyvalidate.md
+  - docs/models/licensekeyactivationreadmeta.md
+  - docs/models/licensekeyactivationread.md
+  - docs/models/notpermittedtype.md
+  - docs/models/notpermitted.md
+  - docs/models/licensekeyactivateconditions.md
+  - docs/models/licensekeyactivatemeta.md
+  - docs/models/licensekeyactivate.md
+  - docs/models/licensekeydeactivate.md
   - docs/models/platformfilter.md
   - docs/models/repositorynamefilter.md
   - docs/models/externalorganizationslistqueryparamorganizationidfilter.md
@@ -497,8 +560,6 @@ generatedFiles:
   - docs/models/repositoryprofilesettings.md
   - docs/models/repositorysortproperty.md
   - docs/models/repositoriesgetrequest.md
-  - docs/models/notpermittedtype.md
-  - docs/models/notpermitted.md
   - docs/models/repositoriesupdaterequest.md
   - docs/models/repositoryupdate.md
   - docs/models/repositoryprofilesettingsupdate.md
@@ -598,8 +659,8 @@ generatedFiles:
   - docs/models/queryparambenefittypefilter.md
   - docs/models/benefitslistrequest.md
   - docs/models/benefitslistresponse.md
-  - docs/models/items.md
-  - docs/models/listresourceunionbenefitarticlesbenefitadsbenefitcustombenefitdiscordbenefitgithubrepositorybenefitdownloadables.md
+  - docs/models/benefit.md
+  - docs/models/listresourcebenefit.md
   - docs/models/benefitadstype.md
   - docs/models/benefitads.md
   - docs/models/benefitcustomtype.md
@@ -615,6 +676,9 @@ generatedFiles:
   - docs/models/benefitdownloadablestype.md
   - docs/models/benefitdownloadables.md
   - docs/models/benefitdownloadablesproperties.md
+  - docs/models/benefitlicensekeysoutputtype.md
+  - docs/models/benefitlicensekeysoutput.md
+  - docs/models/benefitlicensekeysproperties.md
   - docs/models/benefitscreatebenefitcreate.md
   - docs/models/benefitscreateresponsebenefitscreate.md
   - docs/models/benefitcustomcreatetype.md
@@ -631,6 +695,9 @@ generatedFiles:
   - docs/models/benefitdownloadablescreatetype.md
   - docs/models/benefitdownloadablescreate.md
   - docs/models/benefitdownloadablescreateproperties.md
+  - docs/models/benefitlicensekeyscreatetype.md
+  - docs/models/benefitlicensekeyscreate.md
+  - docs/models/benefitlicensekeyscreateproperties.md
   - docs/models/benefitsgetrequest.md
   - docs/models/benefitsgetresponsebenefitsget.md
   - docs/models/benefitsupdatebenefitupdate.md
@@ -648,6 +715,8 @@ generatedFiles:
   - docs/models/benefitgithubrepositoryupdate.md
   - docs/models/benefitdownloadablesupdatetype.md
   - docs/models/benefitdownloadablesupdate.md
+  - docs/models/benefitlicensekeysupdatetype.md
+  - docs/models/benefitlicensekeysupdate.md
   - docs/models/benefitsdeleterequest.md
   - docs/models/benefitsgrantsrequest.md
   - docs/models/benefitsgrantsresponse.md
@@ -694,7 +763,7 @@ generatedFiles:
   - docs/models/fileslistrequest.md
   - docs/models/fileslistresponse.md
   - docs/models/fileread.md
-  - docs/models/listresourceannotateduniondownloadablefilereadproductmediafilereadorganizationavatarfilereaddiscriminatormergejsonschema.md
+  - docs/models/listresourcefileread.md
   - docs/models/downloadablefilereadservice.md
   - docs/models/downloadablefileread.md
   - docs/models/organizationavatarfilereadservice.md
@@ -734,6 +803,13 @@ generatedFiles:
   - docs/models/metricslimits.md
   - docs/models/metricsintervalslimits.md
   - docs/models/metricsintervallimit.md
+  - docs/models/licensekeyslistqueryparamorganizationidfilter.md
+  - docs/models/licensekeyslistrequest.md
+  - docs/models/licensekeyslistresponse.md
+  - docs/models/licensekeysgetrequest.md
+  - docs/models/licensekeysupdaterequest.md
+  - docs/models/licensekeyupdate.md
+  - docs/models/licensekeysgetactivationrequest.md
   - docs/models/security.md
   - docs/models/webhookordercreatedpayloadtype.md
   - docs/models/webhookordercreatedpayload.md
@@ -779,13 +855,15 @@ generatedFiles:
   - docs/models/webhookorganizationupdatedpayload.md
   - docs/models/organizationinput.md
   - docs/models/webhookbenefitcreatedpayloadtype.md
-  - docs/models/data.md
+  - docs/models/webhookbenefitcreatedpayloadbenefit.md
   - docs/models/webhookbenefitcreatedpayload.md
   - docs/models/benefitdiscordinputtype.md
   - docs/models/benefitdiscordinput.md
   - docs/models/benefitdiscordpropertiesinput.md
+  - docs/models/benefitlicensekeysinputtype.md
+  - docs/models/benefitlicensekeysinput.md
   - docs/models/webhookbenefitupdatedpayloadtype.md
-  - docs/models/webhookbenefitupdatedpayloaddata.md
+  - docs/models/webhookbenefitupdatedpayloadbenefit.md
   - docs/models/webhookbenefitupdatedpayload.md
   - docs/sdks/polar/README.md
   - docs/sdks/users/README.md
@@ -795,6 +873,7 @@ generatedFiles:
   - docs/sdks/polarsubscriptions/README.md
   - docs/sdks/polaradvertisements/README.md
   - docs/sdks/downloadables/README.md
+  - docs/sdks/polarlicensekeys/README.md
   - docs/sdks/externalorganizations/README.md
   - docs/sdks/repositories/README.md
   - docs/sdks/organizations/README.md
@@ -809,6 +888,7 @@ generatedFiles:
   - docs/sdks/checkouts/README.md
   - docs/sdks/files/README.md
   - docs/sdks/metricssdk/README.md
+  - docs/sdks/licensekeys/README.md
   - USAGE.md
   - .gitattributes
   - .devcontainer/README.md

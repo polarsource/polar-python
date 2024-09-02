@@ -135,6 +135,14 @@ asyncio.run(main())
 * [list](docs/sdks/downloadables/README.md#list) - List Downloadables
 * [retrieve](docs/sdks/downloadables/README.md#retrieve) - Get Downloadable
 
+### [users.license_keys](docs/sdks/polarlicensekeys/README.md)
+
+* [list](docs/sdks/polarlicensekeys/README.md#list) - List License Keys
+* [retrieve](docs/sdks/polarlicensekeys/README.md#retrieve) - Get License Key
+* [validate](docs/sdks/polarlicensekeys/README.md#validate) - Validate License Key
+* [activate](docs/sdks/polarlicensekeys/README.md#activate) - Activate License Key
+* [deactivate](docs/sdks/polarlicensekeys/README.md#deactivate) - Deactivate License Key
+
 ### [external_organizations](docs/sdks/externalorganizations/README.md)
 
 * [list](docs/sdks/externalorganizations/README.md#list) - List External Organizations
@@ -230,6 +238,13 @@ asyncio.run(main())
 
 * [retrieve](docs/sdks/metricssdk/README.md#retrieve) - Get Metrics
 * [limits](docs/sdks/metricssdk/README.md#limits) - Get Metrics Limits
+
+### [license_keys](docs/sdks/licensekeys/README.md)
+
+* [list](docs/sdks/licensekeys/README.md#list) - List License Keys
+* [retrieve](docs/sdks/licensekeys/README.md#retrieve) - Get License Key
+* [update](docs/sdks/licensekeys/README.md#update) - Update License Key
+* [get_activation](docs/sdks/licensekeys/README.md#get_activation) - Get Activation
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start File uploads [file-upload] -->

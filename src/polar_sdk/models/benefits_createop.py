@@ -12,22 +12,24 @@ from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesType
 from .benefitdownloadablescreate import BenefitDownloadablesCreate, BenefitDownloadablesCreateTypedDict
 from .benefitgithubrepository import BenefitGitHubRepository, BenefitGitHubRepositoryTypedDict
 from .benefitgithubrepositorycreate import BenefitGitHubRepositoryCreate, BenefitGitHubRepositoryCreateTypedDict
+from .benefitlicensekeys_output import BenefitLicenseKeysOutput, BenefitLicenseKeysOutputTypedDict
+from .benefitlicensekeyscreate import BenefitLicenseKeysCreate, BenefitLicenseKeysCreateTypedDict
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
 from typing_extensions import Annotated
 
 
-BenefitsCreateBenefitCreateTypedDict = Union[BenefitAdsCreateTypedDict, BenefitDiscordCreateTypedDict, BenefitGitHubRepositoryCreateTypedDict, BenefitDownloadablesCreateTypedDict, BenefitCustomCreateTypedDict]
+BenefitsCreateBenefitCreateTypedDict = Union[BenefitAdsCreateTypedDict, BenefitDiscordCreateTypedDict, BenefitGitHubRepositoryCreateTypedDict, BenefitDownloadablesCreateTypedDict, BenefitLicenseKeysCreateTypedDict, BenefitCustomCreateTypedDict]
 
 
-BenefitsCreateBenefitCreate = Annotated[Union[Annotated[BenefitCustomCreate, Tag("custom")], Annotated[BenefitAdsCreate, Tag("ads")], Annotated[BenefitDiscordCreate, Tag("discord")], Annotated[BenefitGitHubRepositoryCreate, Tag("github_repository")], Annotated[BenefitDownloadablesCreate, Tag("downloadables")]], Discriminator(lambda m: get_discriminator(m, "type", "type"))]
+BenefitsCreateBenefitCreate = Annotated[Union[Annotated[BenefitCustomCreate, Tag("custom")], Annotated[BenefitAdsCreate, Tag("ads")], Annotated[BenefitDiscordCreate, Tag("discord")], Annotated[BenefitGitHubRepositoryCreate, Tag("github_repository")], Annotated[BenefitDownloadablesCreate, Tag("downloadables")], Annotated[BenefitLicenseKeysCreate, Tag("license_keys")]], Discriminator(lambda m: get_discriminator(m, "type", "type"))]
 
 
-BenefitsCreateResponseBenefitsCreateTypedDict = Union[BenefitArticlesTypedDict, BenefitAdsTypedDict, BenefitDiscordOutputTypedDict, BenefitGitHubRepositoryTypedDict, BenefitDownloadablesTypedDict, BenefitCustomTypedDict]
+BenefitsCreateResponseBenefitsCreateTypedDict = Union[BenefitArticlesTypedDict, BenefitAdsTypedDict, BenefitDiscordOutputTypedDict, BenefitGitHubRepositoryTypedDict, BenefitDownloadablesTypedDict, BenefitLicenseKeysOutputTypedDict, BenefitCustomTypedDict]
 r"""Benefit created."""
 
 
-BenefitsCreateResponseBenefitsCreate = Union[BenefitArticles, BenefitAds, BenefitDiscordOutput, BenefitGitHubRepository, BenefitDownloadables, BenefitCustom]
+BenefitsCreateResponseBenefitsCreate = Union[BenefitArticles, BenefitAds, BenefitDiscordOutput, BenefitGitHubRepository, BenefitDownloadables, BenefitLicenseKeysOutput, BenefitCustom]
 r"""Benefit created."""
 

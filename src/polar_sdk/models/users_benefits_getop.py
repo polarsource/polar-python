@@ -7,6 +7,7 @@ from .benefitcustomsubscriber import BenefitCustomSubscriber, BenefitCustomSubsc
 from .benefitdiscordsubscriber import BenefitDiscordSubscriber, BenefitDiscordSubscriberTypedDict
 from .benefitdownloadablessubscriber import BenefitDownloadablesSubscriber, BenefitDownloadablesSubscriberTypedDict
 from .benefitgithubrepositorysubscriber import BenefitGitHubRepositorySubscriber, BenefitGitHubRepositorySubscriberTypedDict
+from .benefitlicensekeyssubscriber import BenefitLicenseKeysSubscriber, BenefitLicenseKeysSubscriberTypedDict
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, PathParamMetadata, get_discriminator
 from pydantic import Discriminator, Tag
@@ -24,10 +25,10 @@ class UsersBenefitsGetRequest(BaseModel):
     r"""The benefit ID."""
     
 
-UsersBenefitsGetResponseUsersBenefitsGetTypedDict = Union[BenefitArticlesSubscriberTypedDict, BenefitDiscordSubscriberTypedDict, BenefitGitHubRepositorySubscriberTypedDict, BenefitDownloadablesSubscriberTypedDict, BenefitAdsSubscriberTypedDict, BenefitCustomSubscriberTypedDict]
+UsersBenefitsGetResponseUsersBenefitsGetTypedDict = Union[BenefitArticlesSubscriberTypedDict, BenefitDiscordSubscriberTypedDict, BenefitGitHubRepositorySubscriberTypedDict, BenefitDownloadablesSubscriberTypedDict, BenefitAdsSubscriberTypedDict, BenefitCustomSubscriberTypedDict, BenefitLicenseKeysSubscriberTypedDict]
 r"""Successful Response"""
 
 
-UsersBenefitsGetResponseUsersBenefitsGet = Annotated[Union[Annotated[BenefitArticlesSubscriber, Tag("articles")], Annotated[BenefitAdsSubscriber, Tag("ads")], Annotated[BenefitDiscordSubscriber, Tag("discord")], Annotated[BenefitCustomSubscriber, Tag("custom")], Annotated[BenefitGitHubRepositorySubscriber, Tag("github_repository")], Annotated[BenefitDownloadablesSubscriber, Tag("downloadables")]], Discriminator(lambda m: get_discriminator(m, "type", "type"))]
+UsersBenefitsGetResponseUsersBenefitsGet = Annotated[Union[Annotated[BenefitArticlesSubscriber, Tag("articles")], Annotated[BenefitAdsSubscriber, Tag("ads")], Annotated[BenefitDiscordSubscriber, Tag("discord")], Annotated[BenefitCustomSubscriber, Tag("custom")], Annotated[BenefitGitHubRepositorySubscriber, Tag("github_repository")], Annotated[BenefitDownloadablesSubscriber, Tag("downloadables")], Annotated[BenefitLicenseKeysSubscriber, Tag("license_keys")]], Discriminator(lambda m: get_discriminator(m, "type", "type"))]
 r"""Successful Response"""
 

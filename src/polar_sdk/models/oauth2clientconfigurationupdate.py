@@ -41,7 +41,7 @@ class OAuth2ClientConfigurationUpdate(BaseModel):
     token_endpoint_auth_method: Optional[OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod] = OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod.CLIENT_SECRET_POST
     grant_types: Optional[List[OAuth2ClientConfigurationUpdateGrantTypes]] = None
     response_types: Optional[List[OAuth2ClientConfigurationUpdateResponseTypes]] = None
-    scope: Optional[str] = "openid profile email user:read organizations:read organizations:write products:read products:write benefits:read benefits:write files:read files:write subscriptions:read subscriptions:write orders:read metrics:read articles:read articles:write webhooks:read webhooks:write external_organizations:read repositories:read repositories:write issues:read issues:write user:benefits:read user:orders:read user:subscriptions:read user:subscriptions:write user:downloadables:read user:advertisement_campaigns:read user:advertisement_campaigns:write"
+    scope: Optional[str] = "openid profile email user:read organizations:read organizations:write products:read products:write benefits:read benefits:write files:read files:write subscriptions:read subscriptions:write orders:read metrics:read articles:read articles:write webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write user:benefits:read user:orders:read user:subscriptions:read user:subscriptions:write user:downloadables:read user:license_keys:read user:advertisement_campaigns:read user:advertisement_campaigns:write"
     client_uri: OptionalNullable[str] = UNSET
     logo_uri: OptionalNullable[str] = UNSET
     tos_uri: OptionalNullable[str] = UNSET

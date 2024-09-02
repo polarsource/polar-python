@@ -18,7 +18,7 @@ class NotPermittedData(BaseModel):
 
 
 class NotPermitted(Exception):
-    r"""You don't have the permission to update this organization."""
+    r"""You don't have the permission to update this repository."""
     data: NotPermittedData
 
     def __init__(self, data: NotPermittedData):
