@@ -5,8 +5,8 @@ sources:
         inputs:
             - location: https://api.polar.sh/openapi.json
         overlays:
-            - location: .speakeasy/security.overlay.yml
-            - location: .speakeasy/type_parameter.overlay.yml
+            - location: https://raw.githubusercontent.com/polarsource/polar/main/sdk/overlays/security.yml
+            - location: https://raw.githubusercontent.com/polarsource/polar/main/sdk/overlays/type_parameter.yml
         registry:
             location: registry.speakeasyapi.dev/polar/polar/polar-oas
 targets:
