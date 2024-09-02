@@ -15,8 +15,6 @@ on:
 jobs:
   mint-token:
     runs-on: ubuntu-latest
-    outputs:
-      api-token: ${{ steps.mint-token.outputs.api-token }}
     steps:
       - name: Mint API token
         id: mint-token
@@ -33,12 +31,12 @@ jobs:
           # mask the newly minted API token, so that we don't accidentally leak it
           echo "::add-mask::${api_token}"
 
-          # set the output for the job
-          echo "::set-output name=api-token::${api_token}"
+          # set the environment variable for the job
+          echo "API_TOKEN=${api_token}" >> $GITHUB_ENV
   publish:
     needs: mint-token
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      pypi_token: ${{ needs.mint-token.outputs.api-token }}
+      pypi_token: ${{ github.env.API_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
