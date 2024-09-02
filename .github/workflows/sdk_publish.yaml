@@ -5,7 +5,7 @@ permissions:
   pull-requests: write
   statuses: write
   id-token: write
-"on":
+on:
   push:
     branches:
       - main
@@ -19,6 +19,7 @@ jobs:
       api-token: ${{ steps.mint-token.outputs.api-token }}
     steps:
       - name: Mint API token
+        id: mint-token
         run: |
           # retrieve the ambient OIDC token
           resp=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
