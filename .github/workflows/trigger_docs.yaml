@@ -17,6 +17,8 @@ jobs:
       with:
         app-id: ${{ secrets.INTERNAL_GHA_APP_ID }}
         private-key: ${{ secrets.INTERNAL_GHA_APP_PRIVATE_KEY }}
+        owner: polarsource
+        repositories: polar
 
     - name: Dispatch workflow
       uses: octokit/request-action@v2.x
