@@ -27,5 +27,7 @@ jobs:
         owner: polarsource
         repo: polar
         workflow_id: code_samples.yml
+        ref: main
+        inputs: null
       env:
         GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
