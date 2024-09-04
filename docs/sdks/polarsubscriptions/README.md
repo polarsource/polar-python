@@ -7,7 +7,7 @@
 
 * [list](#list) - List Subscriptions
 * [create](#create) - Create Free Subscription
-* [retrieve](#retrieve) - Get Subscription
+* [get](#get) - Get Subscription
 * [update](#update) - Update Subscription
 * [cancel](#cancel) - Cancel Subscription
 
@@ -110,7 +110,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## retrieve
+## get
 
 Get a subscription by ID.
 
@@ -124,7 +124,7 @@ s = Polar(
 )
 
 
-res = s.users.subscriptions.retrieve(id="<value>")
+res = s.users.subscriptions.get(id="<value>")
 
 if res is not None:
     # handle response

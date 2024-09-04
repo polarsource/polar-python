@@ -7,7 +7,7 @@
 
 * [list](#list) - List Organizations
 * [create](#create) - Create Organization
-* [retrieve](#retrieve) - Get Organization
+* [get](#get) - Get Organization
 * [update](#update) - Update Organization
 
 ## list
@@ -104,7 +104,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## retrieve
+## get
 
 Get an organization by ID.
 
@@ -118,7 +118,7 @@ s = Polar(
 )
 
 
-res = s.organizations.retrieve(id="<value>")
+res = s.organizations.get(id="<value>")
 
 if res is not None:
     # handle response

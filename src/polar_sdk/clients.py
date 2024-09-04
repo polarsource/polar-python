@@ -378,7 +378,7 @@ class Clients(BaseSDK):
 
     
     
-    def retrieve(
+    def get(
         self, *,
         client_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -456,7 +456,7 @@ class Clients(BaseSDK):
 
     
     
-    async def retrieve_async(
+    async def get_async(
         self, *,
         client_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,

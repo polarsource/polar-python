@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [list](#list) - List Orders
-* [retrieve](#retrieve) - Get Order
+* [get](#get) - Get Order
 * [invoice](#invoice) - Get Order Invoice
 
 ## list
@@ -62,7 +62,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## retrieve
+## get
 
 Get an order by ID.
 
@@ -76,7 +76,7 @@ s = Polar(
 )
 
 
-res = s.users.orders.retrieve(id="<value>")
+res = s.users.orders.get(id="<value>")
 
 if res is not None:
     # handle response

@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [list](#list) - List Repositories
-* [retrieve](#retrieve) - Get Repository
+* [get](#get) - Get Repository
 * [update](#update) - Update Repository
 
 ## list
@@ -62,7 +62,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## retrieve
+## get
 
 Get a repository by ID.
 
@@ -76,7 +76,7 @@ s = Polar(
 )
 
 
-res = s.repositories.retrieve(id="<value>")
+res = s.repositories.get(id="<value>")
 
 if res is not None:
     # handle response

@@ -426,7 +426,7 @@ class Articles(BaseSDK):
 
     
     
-    def retrieve(
+    def get(
         self, *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -507,7 +507,7 @@ class Articles(BaseSDK):
 
     
     
-    async def retrieve_async(
+    async def get_async(
         self, *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,

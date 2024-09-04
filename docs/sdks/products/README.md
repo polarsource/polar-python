@@ -7,7 +7,7 @@
 
 * [list](#list) - List Products
 * [create](#create) - Create Product
-* [retrieve](#retrieve) - Get Product
+* [get](#get) - Get Product
 * [update](#update) - Update Product
 * [update_benefits](#update_benefits) - Update Product Benefits
 
@@ -113,7 +113,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## retrieve
+## get
 
 Get a product by ID.
 
@@ -127,7 +127,7 @@ s = Polar(
 )
 
 
-res = s.products.retrieve(id="<value>")
+res = s.products.get(id="<value>")
 
 if res is not None:
     # handle response

@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [list](#list) - List Downloadables
-* [retrieve](#retrieve) - Get Downloadable
+* [get](#get) - Get Downloadable
 
 ## list
 
@@ -57,7 +57,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## retrieve
+## get
 
 Get Downloadable
 
@@ -71,7 +71,7 @@ s = Polar(
 )
 
 
-res = s.users.downloadables.retrieve(token="<value>")
+res = s.users.downloadables.get(token="<value>")
 
 if res is not None:
     # handle response

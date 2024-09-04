@@ -7,7 +7,7 @@
 
 * [list](#list) - List Benefits
 * [create](#create) - Create Benefit
-* [retrieve](#retrieve) - Get Benefit
+* [get](#get) - Get Benefit
 * [update](#update) - Update Benefit
 * [delete](#delete) - Delete Benefit
 * [grants](#grants) - List Benefit Grants
@@ -108,7 +108,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## retrieve
+## get
 
 Get a benefit by ID.
 
@@ -122,7 +122,7 @@ s = Polar(
 )
 
 
-res = s.benefits.retrieve(id="<value>")
+res = s.benefits.get(id="<value>")
 
 if res is not None:
     # handle response

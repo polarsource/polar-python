@@ -96,19 +96,19 @@ asyncio.run(main())
 ### [users.benefits](docs/sdks/polarbenefits/README.md)
 
 * [list](docs/sdks/polarbenefits/README.md#list) - List Benefits
-* [retrieve](docs/sdks/polarbenefits/README.md#retrieve) - Get Benefit
+* [get](docs/sdks/polarbenefits/README.md#get) - Get Benefit
 
 ### [users.orders](docs/sdks/polarorders/README.md)
 
 * [list](docs/sdks/polarorders/README.md#list) - List Orders
-* [retrieve](docs/sdks/polarorders/README.md#retrieve) - Get Order
+* [get](docs/sdks/polarorders/README.md#get) - Get Order
 * [invoice](docs/sdks/polarorders/README.md#invoice) - Get Order Invoice
 
 ### [users.subscriptions](docs/sdks/polarsubscriptions/README.md)
 
 * [list](docs/sdks/polarsubscriptions/README.md#list) - List Subscriptions
 * [create](docs/sdks/polarsubscriptions/README.md#create) - Create Free Subscription
-* [retrieve](docs/sdks/polarsubscriptions/README.md#retrieve) - Get Subscription
+* [get](docs/sdks/polarsubscriptions/README.md#get) - Get Subscription
 * [update](docs/sdks/polarsubscriptions/README.md#update) - Update Subscription
 * [cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
 
@@ -116,7 +116,7 @@ asyncio.run(main())
 
 * [list](docs/sdks/polaradvertisements/README.md#list) - List Advertisements
 * [create](docs/sdks/polaradvertisements/README.md#create) - Create Advertisement
-* [retrieve](docs/sdks/polaradvertisements/README.md#retrieve) - Get Advertisement
+* [get](docs/sdks/polaradvertisements/README.md#get) - Get Advertisement
 * [update](docs/sdks/polaradvertisements/README.md#update) - Update Advertisement
 * [delete](docs/sdks/polaradvertisements/README.md#delete) - Delete Advertisement
 * [enable](docs/sdks/polaradvertisements/README.md#enable) - Enable Advertisement
@@ -124,12 +124,12 @@ asyncio.run(main())
 ### [users.downloadables](docs/sdks/downloadables/README.md)
 
 * [list](docs/sdks/downloadables/README.md#list) - List Downloadables
-* [retrieve](docs/sdks/downloadables/README.md#retrieve) - Get Downloadable
+* [get](docs/sdks/downloadables/README.md#get) - Get Downloadable
 
 ### [users.license_keys](docs/sdks/polarlicensekeys/README.md)
 
 * [list](docs/sdks/polarlicensekeys/README.md#list) - List License Keys
-* [retrieve](docs/sdks/polarlicensekeys/README.md#retrieve) - Get License Key
+* [get](docs/sdks/polarlicensekeys/README.md#get) - Get License Key
 * [validate](docs/sdks/polarlicensekeys/README.md#validate) - Validate License Key
 * [activate](docs/sdks/polarlicensekeys/README.md#activate) - Activate License Key
 * [deactivate](docs/sdks/polarlicensekeys/README.md#deactivate) - Deactivate License Key
@@ -141,14 +141,14 @@ asyncio.run(main())
 ### [repositories](docs/sdks/repositories/README.md)
 
 * [list](docs/sdks/repositories/README.md#list) - List Repositories
-* [retrieve](docs/sdks/repositories/README.md#retrieve) - Get Repository
+* [get](docs/sdks/repositories/README.md#get) - Get Repository
 * [update](docs/sdks/repositories/README.md#update) - Update Repository
 
 ### [organizations](docs/sdks/organizations/README.md)
 
 * [list](docs/sdks/organizations/README.md#list) - List Organizations
 * [create](docs/sdks/organizations/README.md#create) - Create Organization
-* [retrieve](docs/sdks/organizations/README.md#retrieve) - Get Organization
+* [get](docs/sdks/organizations/README.md#get) - Get Organization
 * [update](docs/sdks/organizations/README.md#update) - Update Organization
 
 ### [subscriptions](docs/sdks/subscriptions/README.md)
@@ -162,7 +162,7 @@ asyncio.run(main())
 
 * [list](docs/sdks/articles/README.md#list) - List Articles
 * [create](docs/sdks/articles/README.md#create) - Create Article
-* [retrieve](docs/sdks/articles/README.md#retrieve) - Get Article
+* [get](docs/sdks/articles/README.md#get) - Get Article
 * [update](docs/sdks/articles/README.md#update) - Update Article
 * [delete](docs/sdks/articles/README.md#delete) - Delete Article
 * [receivers](docs/sdks/articles/README.md#receivers) - Get Article Receivers Count
@@ -172,7 +172,7 @@ asyncio.run(main())
 ### [advertisements](docs/sdks/advertisements/README.md)
 
 * [list](docs/sdks/advertisements/README.md#list) - List Campaigns
-* [retrieve](docs/sdks/advertisements/README.md#retrieve) - Get Campaign
+* [get](docs/sdks/advertisements/README.md#get) - Get Campaign
 
 ### [oauth2](docs/sdks/oauth2/README.md)
 
@@ -185,7 +185,7 @@ asyncio.run(main())
 
 * [list](docs/sdks/clients/README.md#list) - List Clients
 * [create](docs/sdks/clients/README.md#create) - Create Client
-* [retrieve](docs/sdks/clients/README.md#retrieve) - Get Client
+* [get](docs/sdks/clients/README.md#get) - Get Client
 * [update](docs/sdks/clients/README.md#update) - Update Client
 * [delete](docs/sdks/clients/README.md#delete) - Delete Client
 
@@ -193,7 +193,7 @@ asyncio.run(main())
 
 * [list](docs/sdks/benefits/README.md#list) - List Benefits
 * [create](docs/sdks/benefits/README.md#create) - Create Benefit
-* [retrieve](docs/sdks/benefits/README.md#retrieve) - Get Benefit
+* [get](docs/sdks/benefits/README.md#get) - Get Benefit
 * [update](docs/sdks/benefits/README.md#update) - Update Benefit
 * [delete](docs/sdks/benefits/README.md#delete) - Delete Benefit
 * [grants](docs/sdks/benefits/README.md#grants) - List Benefit Grants
@@ -202,20 +202,20 @@ asyncio.run(main())
 
 * [list](docs/sdks/products/README.md#list) - List Products
 * [create](docs/sdks/products/README.md#create) - Create Product
-* [retrieve](docs/sdks/products/README.md#retrieve) - Get Product
+* [get](docs/sdks/products/README.md#get) - Get Product
 * [update](docs/sdks/products/README.md#update) - Update Product
 * [update_benefits](docs/sdks/products/README.md#update_benefits) - Update Product Benefits
 
 ### [orders](docs/sdks/orders/README.md)
 
 * [list](docs/sdks/orders/README.md#list) - List Orders
-* [retrieve](docs/sdks/orders/README.md#retrieve) - Get Order
+* [get](docs/sdks/orders/README.md#get) - Get Order
 * [invoice](docs/sdks/orders/README.md#invoice) - Get Order Invoice
 
 ### [checkouts](docs/sdks/checkouts/README.md)
 
 * [create](docs/sdks/checkouts/README.md#create) - Create Checkout
-* [retrieve](docs/sdks/checkouts/README.md#retrieve) - Get Checkout
+* [get](docs/sdks/checkouts/README.md#get) - Get Checkout
 
 ### [files](docs/sdks/files/README.md)
 
@@ -227,13 +227,13 @@ asyncio.run(main())
 
 ### [metrics](docs/sdks/metricssdk/README.md)
 
-* [retrieve](docs/sdks/metricssdk/README.md#retrieve) - Get Metrics
+* [get](docs/sdks/metricssdk/README.md#get) - Get Metrics
 * [limits](docs/sdks/metricssdk/README.md#limits) - Get Metrics Limits
 
 ### [license_keys](docs/sdks/licensekeys/README.md)
 
 * [list](docs/sdks/licensekeys/README.md#list) - List License Keys
-* [retrieve](docs/sdks/licensekeys/README.md#retrieve) - Get License Key
+* [get](docs/sdks/licensekeys/README.md#get) - Get License Key
 * [update](docs/sdks/licensekeys/README.md#update) - Update License Key
 * [get_activation](docs/sdks/licensekeys/README.md#get_activation) - Get Activation
 <!-- End Available Resources and Operations [operations] -->
@@ -259,7 +259,7 @@ s = Polar(
 res = s.subscriptions.import_subscriptions(request={
     "file": {
         "file_name": "your_file_here",
-        "content": open("<file_path>", "rb"),
+        "content": open("example.file", "rb"),
     },
     "organization_id": "<value>",
 })

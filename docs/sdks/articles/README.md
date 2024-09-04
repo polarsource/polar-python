@@ -7,7 +7,7 @@
 
 * [list](#list) - List Articles
 * [create](#create) - Create Article
-* [retrieve](#retrieve) - Get Article
+* [get](#get) - Get Article
 * [update](#update) - Update Article
 * [delete](#delete) - Delete Article
 * [receivers](#receivers) - Get Article Receivers Count
@@ -110,7 +110,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## retrieve
+## get
 
 Get an article by ID.
 
@@ -124,7 +124,7 @@ s = Polar(
 )
 
 
-res = s.articles.retrieve(id="<value>")
+res = s.articles.get(id="<value>")
 
 if res is not None:
     # handle response

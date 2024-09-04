@@ -232,7 +232,7 @@ class Downloadables(BaseSDK):
 
     
     
-    def retrieve(
+    def get(
         self, *,
         token: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -310,7 +310,7 @@ class Downloadables(BaseSDK):
 
     
     
-    async def retrieve_async(
+    async def get_async(
         self, *,
         token: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,

@@ -1,9 +1,9 @@
-speakeasyVersion: 1.385.0
+speakeasyVersion: 1.390.1
 sources:
     Polar-OAS:
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:d005a2a9d9efe714ad796e20a4e1228a7a9c154badc8cd488e02f6e02f440551
-        sourceBlobDigest: sha256:839047495a6cbe8a089b36a53f0c00857d55e79c000b662b5f6e4b39ff927a8c
+        sourceRevisionDigest: sha256:04f24e21b244c66b24f548772f3a1fcf3b0732586daed8f0f9b98735428ed402
+        sourceBlobDigest: sha256:3e5775321e8bfce8b04f57138abe6ea40d3d5a1bf0fe7be1df498cf91a5d6901
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     polar:
         source: Polar-OAS
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:d005a2a9d9efe714ad796e20a4e1228a7a9c154badc8cd488e02f6e02f440551
-        sourceBlobDigest: sha256:839047495a6cbe8a089b36a53f0c00857d55e79c000b662b5f6e4b39ff927a8c
+        sourceRevisionDigest: sha256:04f24e21b244c66b24f548772f3a1fcf3b0732586daed8f0f9b98735428ed402
+        sourceBlobDigest: sha256:3e5775321e8bfce8b04f57138abe6ea40d3d5a1bf0fe7be1df498cf91a5d6901
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
@@ -22,8 +22,8 @@ workflow:
             inputs:
                 - location: https://api.polar.sh/openapi.json
             overlays:
-                - location: .speakeasy/security.overlay.yml
-                - location: .speakeasy/type_parameter.overlay.yml
+                - location: https://raw.githubusercontent.com/polarsource/polar/main/sdk/overlays/security.yml
+                - location: https://raw.githubusercontent.com/polarsource/polar/main/sdk/overlays/type_parameter.yml
             registry:
                 location: registry.speakeasyapi.dev/polar/polar/polar-oas
     targets:
