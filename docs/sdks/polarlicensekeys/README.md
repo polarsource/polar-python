@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [list](#list) - List License Keys
-* [retrieve](#retrieve) - Get License Key
+* [get](#get) - Get License Key
 * [validate](#validate) - Validate License Key
 * [activate](#activate) - Activate License Key
 * [deactivate](#deactivate) - Deactivate License Key
@@ -62,7 +62,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## retrieve
+## get
 
 Get a license key.
 
@@ -76,7 +76,7 @@ s = Polar(
 )
 
 
-res = s.users.license_keys.retrieve(id="<value>")
+res = s.users.license_keys.get(id="<value>")
 
 if res is not None:
     # handle response

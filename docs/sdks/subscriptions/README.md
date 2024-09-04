@@ -123,7 +123,7 @@ s = Polar(
 res = s.subscriptions.import_subscriptions(request={
     "file": {
         "file_name": "your_file_here",
-        "content": open("<file_path>", "rb"),
+        "content": open("example.file", "rb"),
     },
     "organization_id": "<value>",
 })

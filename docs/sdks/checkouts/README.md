@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [create](#create) - Create Checkout
-* [retrieve](#retrieve) - Get Checkout
+* [get](#get) - Get Checkout
 
 ## create
 
@@ -52,7 +52,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## retrieve
+## get
 
 Get an active checkout session by ID.
 
@@ -66,7 +66,7 @@ s = Polar(
 )
 
 
-res = s.checkouts.retrieve(id="<value>")
+res = s.checkouts.get(id="<id>")
 
 if res is not None:
     # handle response

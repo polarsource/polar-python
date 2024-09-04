@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [list](#list) - List Benefits
-* [retrieve](#retrieve) - Get Benefit
+* [get](#get) - Get Benefit
 
 ## list
 
@@ -60,7 +60,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## retrieve
+## get
 
 Get a granted benefit by ID.
 
@@ -74,7 +74,7 @@ s = Polar(
 )
 
 
-res = s.users.benefits.retrieve(id="<value>")
+res = s.users.benefits.get(id="<value>")
 
 if res is not None:
     # handle response

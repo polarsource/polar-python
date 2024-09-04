@@ -10,7 +10,7 @@ from typing import Any, Optional, Union
 class MetricsSDK(BaseSDK):
     
     
-    def retrieve(
+    def get(
         self, *,
         start_date: date,
         end_date: date,
@@ -103,7 +103,7 @@ class MetricsSDK(BaseSDK):
 
     
     
-    async def retrieve_async(
+    async def get_async(
         self, *,
         start_date: date,
         end_date: date,

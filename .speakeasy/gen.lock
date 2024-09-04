@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: 1457c7a0b5015bae5c5e9b2c47ca23c3
+  docChecksum: 023dd0396155eafbbdd3b7acf11e1395
   docVersion: 0.1.0
-  speakeasyVersion: 1.385.0
-  generationVersion: 2.407.2
-  releaseVersion: 0.1.13
-  configChecksum: d9517d11112c178f29209516cd09bb12
+  speakeasyVersion: 1.390.1
+  generationVersion: 2.409.0
+  releaseVersion: 0.1.14
+  configChecksum: b830b0c39bb8ce401dd8826df5c24aea
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true

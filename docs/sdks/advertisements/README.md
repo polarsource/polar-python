@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [list](#list) - List Campaigns
-* [retrieve](#retrieve) - Get Campaign
+* [get](#get) - Get Campaign
 
 ## list
 
@@ -57,7 +57,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## retrieve
+## get
 
 Get an advertisement campaign by ID.
 
@@ -71,7 +71,7 @@ s = Polar(
 )
 
 
-res = s.advertisements.retrieve(id="<value>")
+res = s.advertisements.get(id="<value>")
 
 if res is not None:
     # handle response

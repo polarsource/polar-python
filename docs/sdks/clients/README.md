@@ -7,7 +7,7 @@
 
 * [list](#list) - List Clients
 * [create](#create) - Create Client
-* [retrieve](#retrieve) - Get Client
+* [get](#get) - Get Client
 * [update](#update) - Update Client
 * [delete](#delete) - Delete Client
 
@@ -104,7 +104,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## retrieve
+## get
 
 Get an OAuth2 client by Client ID.
 
@@ -118,7 +118,7 @@ s = Polar(
 )
 
 
-res = s.oauth2.clients.retrieve(client_id="<value>")
+res = s.oauth2.clients.get(client_id="<value>")
 
 if res is not None:
     # handle response

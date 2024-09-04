@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [retrieve](#retrieve) - Get Metrics
+* [get](#get) - Get Metrics
 * [limits](#limits) - Get Metrics Limits
 
-## retrieve
+## get
 
 Get metrics about your orders and subscriptions.
 
@@ -24,7 +24,7 @@ s = Polar(
 )
 
 
-res = s.metrics.retrieve(start_date=dateutil.parser.parse("2023-02-11").date(), end_date=dateutil.parser.parse("2024-11-01").date(), interval=polar_sdk.Interval.HOUR)
+res = s.metrics.get(start_date=dateutil.parser.parse("2024-02-07").date(), end_date=dateutil.parser.parse("2022-04-09").date(), interval=polar_sdk.Interval.WEEK)
 
 if res is not None:
     # handle response

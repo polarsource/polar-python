@@ -7,7 +7,7 @@
 
 * [list](#list) - List Advertisements
 * [create](#create) - Create Advertisement
-* [retrieve](#retrieve) - Get Advertisement
+* [get](#get) - Get Advertisement
 * [update](#update) - Update Advertisement
 * [delete](#delete) - Delete Advertisement
 * [enable](#enable) - Enable Advertisement
@@ -105,7 +105,7 @@ if res is not None:
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
 
-## retrieve
+## get
 
 Get an advertisement campaign by ID.
 
@@ -119,7 +119,7 @@ s = Polar(
 )
 
 
-res = s.users.advertisements.retrieve(id="<value>")
+res = s.users.advertisements.get(id="<value>")
 
 if res is not None:
     # handle response
