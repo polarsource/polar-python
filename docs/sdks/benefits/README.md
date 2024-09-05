@@ -25,7 +25,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.benefits.list()
 
 if res is not None:
@@ -35,7 +34,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 
@@ -73,7 +71,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.benefits.create(request={
     "description": "Multi-tiered motivating standardization",
@@ -121,7 +118,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.benefits.get(id="<value>")
 
 if res is not None:
@@ -162,7 +158,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.benefits.update(id="<value>", request_body={})
 
@@ -211,7 +206,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 s.benefits.delete(id="<value>")
 
 # Use the SDK ...
@@ -250,7 +244,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.benefits.grants(id="<value>")
 
 if res is not None:
@@ -260,7 +253,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 

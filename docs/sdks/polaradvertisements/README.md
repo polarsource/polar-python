@@ -25,7 +25,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.advertisements.list()
 
 if res is not None:
@@ -35,7 +34,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 
@@ -72,7 +70,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.users.advertisements.create(request={
     "image_url": "http://limp-pastry.org",
@@ -118,7 +115,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.advertisements.get(id="<value>")
 
 if res is not None:
@@ -159,7 +155,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.users.advertisements.update(id="<value>", user_advertisement_campaign_update={})
 
@@ -205,7 +200,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.advertisements.delete(id="<value>")
 
 if res is not None:
@@ -246,7 +240,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 s.users.advertisements.enable(id="<value>", user_advertisement_campaign_enable={
     "benefit_id": "<value>",

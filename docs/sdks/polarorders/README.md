@@ -22,7 +22,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.orders.list()
 
 if res is not None:
@@ -32,7 +31,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 
@@ -75,7 +73,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.orders.get(id="<value>")
 
 if res is not None:
@@ -116,7 +113,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.users.orders.invoice(id="<value>")
 

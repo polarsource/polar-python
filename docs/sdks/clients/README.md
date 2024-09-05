@@ -24,7 +24,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.oauth2.clients.list()
 
 if res is not None:
@@ -34,7 +33,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 
@@ -70,7 +68,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.oauth2.clients.create(request={
     "redirect_uris": [
@@ -117,7 +114,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.oauth2.clients.get(client_id="<value>")
 
 if res is not None:
@@ -157,7 +153,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.oauth2.clients.update(client_id="<value>", o_auth2_client_configuration_update={
     "redirect_uris": [
@@ -205,7 +200,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.oauth2.clients.delete(client_id="<value>")
 

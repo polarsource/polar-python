@@ -23,7 +23,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.oauth2.token(request={
     "client_id": "<value>",
     "client_secret": "<value>",
@@ -68,7 +67,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.oauth2.revoke(request={
     "token": "<value>",
     "client_id": "<value>",
@@ -112,7 +110,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.oauth2.introspect(request={
     "token": "<value>",
     "client_id": "<value>",
@@ -155,7 +152,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.oauth2.userinfo()
 

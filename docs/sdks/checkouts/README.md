@@ -21,7 +21,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.checkouts.create(request={
     "product_price_id": "<value>",
     "success_url": "http://limp-pastry.org",
@@ -64,7 +63,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.checkouts.get(id="<id>")
 

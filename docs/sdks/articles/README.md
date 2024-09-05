@@ -27,7 +27,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.articles.list()
 
 if res is not None:
@@ -37,7 +36,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 
@@ -79,7 +77,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.articles.create(request={
     "title": "<value>",
@@ -123,7 +120,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.articles.get(id="<value>")
 
 if res is not None:
@@ -164,7 +160,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.articles.update(id="<value>", article_update={})
 
@@ -209,7 +204,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 s.articles.delete(id="<value>")
 
 # Use the SDK ...
@@ -245,7 +239,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.articles.receivers(id="<value>")
 
@@ -286,7 +279,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.articles.preview(id="<value>", article_preview={
     "email": "Eileen56@yahoo.com",
@@ -332,7 +324,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.articles.send(id="<value>")
 

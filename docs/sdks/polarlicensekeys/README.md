@@ -24,7 +24,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.license_keys.list()
 
 if res is not None:
@@ -34,7 +33,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 
@@ -74,7 +72,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.users.license_keys.get(id="<value>")
 
@@ -117,7 +114,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.users.license_keys.validate(request={
     "key": "<key>",
@@ -162,7 +158,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.users.license_keys.activate(request={
     "key": "<key>",
@@ -209,7 +204,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 s.users.license_keys.deactivate(request={
     "key": "<key>",
