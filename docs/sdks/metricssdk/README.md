@@ -23,7 +23,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.metrics.get(start_date=dateutil.parser.parse("2024-02-07").date(), end_date=dateutil.parser.parse("2022-04-09").date(), interval=polar_sdk.Interval.WEEK)
 
 if res is not None:
@@ -68,7 +67,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.metrics.limits()
 

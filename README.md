@@ -52,7 +52,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.benefits.list()
 
 if res is not None:
@@ -62,7 +61,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 ```
 
 </br>
@@ -81,7 +79,7 @@ async def main():
     if res is not None:
         while True:
             # handle items
-    
+
             res = res.Next()
             if res is None:
                 break
@@ -255,7 +253,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.subscriptions.import_subscriptions(request={
     "file": {
         "file_name": "your_file_here",
@@ -285,7 +282,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.benefits.list(,
     RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
@@ -296,7 +292,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 
@@ -310,7 +305,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.benefits.list()
 
 if res is not None:
@@ -320,7 +314,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 <!-- End Retries [retries] -->
@@ -348,22 +341,20 @@ res = None
 try:
     res = s.users.benefits.list()
 
+    if res is not None:
+        while True:
+            # handle items
+
+            res = res.Next()
+            if res is None:
+                break
+
 except models.HTTPValidationError as e:
     # handle e.data: models.HTTPValidationErrorData
     raise(e)
 except models.SDKError as e:
     # handle exception
     raise(e)
-
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.Next()
-        if res is None:
-            break
-
-
 ```
 <!-- End Error Handling [errors] -->
 
@@ -388,7 +379,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.benefits.list()
 
 if res is not None:
@@ -398,7 +388,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 
@@ -414,7 +403,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.benefits.list()
 
 if res is not None:
@@ -424,7 +412,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 <!-- End Server Selection [server] -->
@@ -529,7 +516,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.benefits.list()
 
 if res is not None:
@@ -539,7 +525,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 <!-- End Authentication [security] -->
@@ -574,7 +559,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.benefits.list()
 
 if res is not None:
@@ -584,7 +568,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 <!-- End Pagination [pagination] -->

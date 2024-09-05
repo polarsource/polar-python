@@ -23,7 +23,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.subscriptions.list()
 
 if res is not None:
@@ -33,7 +32,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 
@@ -74,7 +72,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.subscriptions.create(request={
     "email": "Jena.Nienow28@yahoo.com",
@@ -118,7 +115,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.subscriptions.import_subscriptions(request={
     "file": {
@@ -165,7 +161,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.subscriptions.export()
 

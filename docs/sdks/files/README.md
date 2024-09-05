@@ -24,7 +24,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.files.list()
 
 if res is not None:
@@ -34,7 +33,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 
@@ -72,7 +70,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.files.create(request={
     "name": "<value>",
@@ -127,7 +124,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.files.uploaded(id="<value>", file_upload_completed={
     "id": "<id>",
     "path": "/sys",
@@ -179,7 +175,6 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.files.update(id="<value>", file_patch={})
 
 if res is not None:
@@ -220,7 +215,6 @@ from polar_sdk import Polar
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 s.files.delete(id="<value>")
 
