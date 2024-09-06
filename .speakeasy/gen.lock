@@ -5,8 +5,8 @@ management:
   docVersion: 0.1.0
   speakeasyVersion: 1.390.8
   generationVersion: 2.409.8
-  releaseVersion: 0.1.16
-  configChecksum: 43cb854f8c1160432cc085657e61b849
+  releaseVersion: 0.1.15
+  configChecksum: 289111a5ff06d5e426f4f5b22d795095
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
