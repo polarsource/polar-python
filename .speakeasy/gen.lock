@@ -3,10 +3,10 @@ id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
   docChecksum: 0dbe07aa0aa542216a4fed03ea0f1102
   docVersion: 0.1.0
-  speakeasyVersion: 1.390.5
-  generationVersion: 2.409.3
-  releaseVersion: 0.1.15
-  configChecksum: 289111a5ff06d5e426f4f5b22d795095
+  speakeasyVersion: 1.390.8
+  generationVersion: 2.409.8
+  releaseVersion: 0.1.16
+  configChecksum: 43cb854f8c1160432cc085657e61b849
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true

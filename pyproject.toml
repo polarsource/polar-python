@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "polar-sdk"
-version = "0.1.15"
+version = "0.1.16"
 description = "Polar SDK for Python"
 authors = ["Polar",]
 readme = "README-PYPI.md"
