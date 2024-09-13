@@ -10,11 +10,13 @@ class AssigneeTypedDict(TypedDict):
     login: str
     html_url: str
     avatar_url: str
-    
+
 
 class Assignee(BaseModel):
     id: int
+
     login: str
+
     html_url: str
+
     avatar_url: str
-    

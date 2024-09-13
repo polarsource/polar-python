@@ -12,21 +12,24 @@ from typing_extensions import Annotated
 class WebhookPledgeUpdatedPayloadType(str, Enum):
     PLEDGE_UPDATED = "pledge.updated"
 
+
 class WebhookPledgeUpdatedPayloadTypedDict(TypedDict):
     r"""Sent when a pledge is updated.
 
     **Discord & Slack support:** Basic
     """
-    
+
     data: PledgeInputTypedDict
-    
+
 
 class WebhookPledgeUpdatedPayload(BaseModel):
     r"""Sent when a pledge is updated.
 
     **Discord & Slack support:** Basic
     """
-    
+
     data: PledgeInput
+
+    # fmt: off
     TYPE: Annotated[Final[WebhookPledgeUpdatedPayloadType], pydantic.Field(alias="type")] = WebhookPledgeUpdatedPayloadType.PLEDGE_UPDATED # type: ignore
-    
+    # fmt: on

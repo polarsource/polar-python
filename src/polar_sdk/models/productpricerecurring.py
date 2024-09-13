@@ -13,11 +13,13 @@ from typing_extensions import Annotated
 
 class ProductPriceRecurringType(str, Enum):
     r"""The type of the price."""
+
     RECURRING = "recurring"
+
 
 class ProductPriceRecurringTypedDict(TypedDict):
     r"""A recurring price for a product, i.e. a subscription."""
-    
+
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
@@ -32,28 +34,37 @@ class ProductPriceRecurringTypedDict(TypedDict):
     r"""Whether the price is archived and no longer available."""
     recurring_interval: Nullable[ProductPriceRecurringInterval]
     r"""The recurring interval of the price, if type is `recurring`."""
-    
+
 
 class ProductPriceRecurring(BaseModel):
     r"""A recurring price for a product, i.e. a subscription."""
-    
+
     created_at: datetime
     r"""Creation timestamp of the object."""
+
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
+
     id: str
     r"""The ID of the price."""
+
     price_amount: int
     r"""The price in cents."""
+
     price_currency: str
     r"""The currency."""
+
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
+
     recurring_interval: Nullable[ProductPriceRecurringInterval]
     r"""The recurring interval of the price, if type is `recurring`."""
+
+    # fmt: off
     TYPE: Annotated[Final[ProductPriceRecurringType], pydantic.Field(alias="type")] = ProductPriceRecurringType.RECURRING # type: ignore
+    # fmt: on
     r"""The type of the price."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
@@ -67,9 +78,13 @@ class ProductPriceRecurring(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -79,4 +94,3 @@ class ProductPriceRecurring(BaseModel):
                 m[k] = val
 
         return m
-        

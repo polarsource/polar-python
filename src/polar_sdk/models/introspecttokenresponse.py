@@ -11,6 +11,7 @@ class IntrospectTokenResponseTokenType(str, Enum):
     ACCESS_TOKEN = "access_token"
     REFRESH_TOKEN = "refresh_token"
 
+
 class IntrospectTokenResponseTypedDict(TypedDict):
     active: bool
     client_id: str
@@ -22,17 +23,25 @@ class IntrospectTokenResponseTypedDict(TypedDict):
     iss: str
     exp: int
     iat: int
-    
+
 
 class IntrospectTokenResponse(BaseModel):
     active: bool
+
     client_id: str
+
     token_type: IntrospectTokenResponseTokenType
+
     scope: str
+
     sub_type: SubType
+
     sub: str
+
     aud: str
+
     iss: str
+
     exp: int
+
     iat: int
-    

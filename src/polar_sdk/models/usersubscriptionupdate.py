@@ -7,8 +7,7 @@ from typing import TypedDict
 
 class UserSubscriptionUpdateTypedDict(TypedDict):
     product_price_id: str
-    
+
 
 class UserSubscriptionUpdate(BaseModel):
     product_price_id: str
-    

@@ -11,12 +11,13 @@ class Timeframe(str, Enum):
     MONTH = "month"
     DAY = "day"
 
+
 class BenefitLicenseKeyExpirationPropertiesTypedDict(TypedDict):
     ttl: int
     timeframe: Timeframe
-    
+
 
 class BenefitLicenseKeyExpirationProperties(BaseModel):
     ttl: int
+
     timeframe: Timeframe
-    

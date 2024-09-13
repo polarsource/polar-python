@@ -30,33 +30,61 @@ class ArticleTypedDict(TypedDict):
     email_sent_to_count: Nullable[int]
     og_image_url: Nullable[str]
     og_description: Nullable[str]
-    
+
 
 class Article(BaseModel):
     id: str
+
     slug: str
+
     title: str
+
     body: str
+
     byline: BylineProfile
+
     visibility: ArticleVisibility
+
     user_id: Nullable[str]
+
     organization_id: str
+
     organization: OrganizationOutput
+
     published_at: Nullable[datetime]
+
     paid_subscribers_only: Nullable[bool]
+
     paid_subscribers_only_ends_at: Nullable[datetime]
+
     is_preview: bool
+
     is_pinned: bool
+
     notify_subscribers: Nullable[bool]
+
     notifications_sent_at: Nullable[datetime]
+
     email_sent_to_count: Nullable[int]
+
     og_image_url: Nullable[str]
+
     og_description: Nullable[str]
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
-        nullable_fields = ["user_id", "published_at", "paid_subscribers_only", "paid_subscribers_only_ends_at", "notify_subscribers", "notifications_sent_at", "email_sent_to_count", "og_image_url", "og_description"]
+        nullable_fields = [
+            "user_id",
+            "published_at",
+            "paid_subscribers_only",
+            "paid_subscribers_only_ends_at",
+            "notify_subscribers",
+            "notifications_sent_at",
+            "email_sent_to_count",
+            "og_image_url",
+            "og_description",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -66,9 +94,13 @@ class Article(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -78,4 +110,3 @@ class Article(BaseModel):
                 m[k] = val
 
         return m
-        

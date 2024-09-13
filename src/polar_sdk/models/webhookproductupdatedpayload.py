@@ -12,23 +12,26 @@ from typing_extensions import Annotated
 class WebhookProductUpdatedPayloadType(str, Enum):
     PRODUCT_UPDATED = "product.updated"
 
+
 class WebhookProductUpdatedPayloadTypedDict(TypedDict):
     r"""Sent when a product is updated.
 
     **Discord & Slack support:** Basic
     """
-    
+
     data: ProductInputTypedDict
     r"""A product."""
-    
+
 
 class WebhookProductUpdatedPayload(BaseModel):
     r"""Sent when a product is updated.
 
     **Discord & Slack support:** Basic
     """
-    
+
     data: ProductInput
     r"""A product."""
+
+    # fmt: off
     TYPE: Annotated[Final[WebhookProductUpdatedPayloadType], pydantic.Field(alias="type")] = WebhookProductUpdatedPayloadType.PRODUCT_UPDATED # type: ignore
-    
+    # fmt: on

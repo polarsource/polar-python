@@ -11,9 +11,14 @@ from typing_extensions import Annotated
 class ArticlesUpdateRequestTypedDict(TypedDict):
     id: str
     article_update: ArticleUpdateTypedDict
-    
+
 
 class ArticlesUpdateRequest(BaseModel):
-    id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
-    article_update: Annotated[ArticleUpdate, FieldMetadata(request=RequestMetadata(media_type="application/json"))]
-    
+    id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
+
+    article_update: Annotated[
+        ArticleUpdate,
+        FieldMetadata(request=RequestMetadata(media_type="application/json")),
+    ]

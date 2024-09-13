@@ -8,7 +8,7 @@ from typing import TypedDict
 
 class MetricsIntervalsLimitsTypedDict(TypedDict):
     r"""Date interval limits to get metrics for each interval."""
-    
+
     hour: MetricsIntervalLimitTypedDict
     r"""Limits for the hour interval."""
     day: MetricsIntervalLimitTypedDict
@@ -19,19 +19,22 @@ class MetricsIntervalsLimitsTypedDict(TypedDict):
     r"""Limits for the month interval."""
     year: MetricsIntervalLimitTypedDict
     r"""Limits for the year interval."""
-    
+
 
 class MetricsIntervalsLimits(BaseModel):
     r"""Date interval limits to get metrics for each interval."""
-    
+
     hour: MetricsIntervalLimit
     r"""Limits for the hour interval."""
+
     day: MetricsIntervalLimit
     r"""Limits for the day interval."""
+
     week: MetricsIntervalLimit
     r"""Limits for the week interval."""
+
     month: MetricsIntervalLimit
     r"""Limits for the month interval."""
+
     year: MetricsIntervalLimit
     r"""Limits for the year interval."""
-    

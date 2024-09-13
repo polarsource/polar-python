@@ -21,7 +21,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/advertisements/{id}"]["get"]
@@ -59,7 +59,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/articles/"]["post"]
@@ -201,7 +201,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/benefits/"]["post"]
@@ -294,7 +294,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/checkouts/"]["post"]
@@ -352,7 +352,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/files/"]["get"]
@@ -373,7 +373,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/files/"]["post"]
@@ -455,7 +455,7 @@ actions:
                 "path": "/sys",
                 "parts": [
                     {
-                        "number": 241210,
+                        "number": 606865,
                         "checksum_etag": "<value>",
                         "checksum_sha256_base64": "<value>",
                     },
@@ -483,7 +483,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/license-keys/{id}"]["get"]
@@ -591,7 +591,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/oauth2/introspect"]["post"]
@@ -772,7 +772,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/orders/{id}"]["get"]
@@ -827,7 +827,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/organizations/"]["post"]
@@ -896,13 +896,15 @@ actions:
                 access_token="<YOUR_BEARER_TOKEN_HERE>",
             )
 
-            res = s.products.list()
+            res = s.products.list(organization_id=[
+                "<value>",
+            ])
 
             if res is not None:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/products/"]["post"]
@@ -923,9 +925,10 @@ actions:
                 "prices": [
                     {
                         "recurring_interval": polar_sdk.ProductPriceRecurringInterval.MONTH,
-                        "price_amount": 638424,
+                        "price_amount": 489382,
                     },
                 ],
+                "type": polar_sdk.ProductRecurringCreateType.INDIVIDUAL,
             })
 
             if res is not None:
@@ -1004,7 +1007,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/repositories/{id}"]["get"]
@@ -1059,7 +1062,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/subscriptions/"]["post"]
@@ -1113,7 +1116,7 @@ actions:
 
             res = s.subscriptions.import_subscriptions(request={
                 "file": {
-                    "file_name": "your_file_here",
+                    "file_name": "example.file",
                     "content": open("example.file", "rb"),
                 },
                 "organization_id": "<value>",
@@ -1140,7 +1143,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/users/advertisements/"]["post"]
@@ -1250,7 +1253,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/users/benefits/{id}"]["get"]
@@ -1288,7 +1291,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/users/downloadables/{token}"]["get"]
@@ -1326,7 +1329,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/users/license-keys/activate"]["post"]
@@ -1424,7 +1427,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/users/orders/{id}"]["get"]
@@ -1479,7 +1482,7 @@ actions:
                 while True:
                     # handle items
 
-                    res = res.Next()
+                    res = res.next()
                     if res is None:
                         break
   - target: $["paths"]["/v1/users/subscriptions/"]["post"]

@@ -8,9 +8,8 @@ from typing import TypedDict
 class UserAdvertisementCampaignEnableTypedDict(TypedDict):
     benefit_id: str
     r"""The benefit ID."""
-    
+
 
 class UserAdvertisementCampaignEnable(BaseModel):
     benefit_id: str
     r"""The benefit ID."""
-    

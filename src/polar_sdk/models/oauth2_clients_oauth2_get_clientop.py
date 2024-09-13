@@ -9,8 +9,9 @@ from typing_extensions import Annotated
 
 class Oauth2ClientsOauth2GetClientRequestTypedDict(TypedDict):
     client_id: str
-    
+
 
 class Oauth2ClientsOauth2GetClientRequest(BaseModel):
-    client_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
-    
+    client_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]

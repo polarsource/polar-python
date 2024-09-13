@@ -7,8 +7,7 @@ from typing import TypedDict
 
 class RevokeTokenResponseTypedDict(TypedDict):
     pass
-    
+
 
 class RevokeTokenResponse(BaseModel):
     pass
-    

@@ -7,18 +7,23 @@ from polar_sdk._hooks import HookContext
 from polar_sdk.types import OptionalNullable, UNSET
 from typing import Any, Dict, Optional, Union
 
+
 class LicenseKeys(BaseSDK):
-    
-    
     def list(
-        self, *,
-        organization_id: OptionalNullable[Union[models.LicenseKeysListQueryParamOrganizationIDFilter, models.LicenseKeysListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
+        self,
+        *,
+        organization_id: OptionalNullable[
+            Union[
+                models.LicenseKeysListQueryParamOrganizationIDFilter,
+                models.LicenseKeysListQueryParamOrganizationIDFilterTypedDict,
+            ]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.LicenseKeysListResponse:
+    ) -> Optional[models.LicenseKeysListResponse]:
         r"""List License Keys
 
         Get license keys connected to the given organization & filters.
@@ -34,16 +39,16 @@ class LicenseKeys(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.LicenseKeysListRequest(
             organization_id=organization_id,
             page=page,
             limit=limit,
         )
-        
+
         req = self.build_request(
             method="GET",
             path="/v1/license-keys",
@@ -58,33 +63,31 @@ class LicenseKeys(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="license_keys:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="license_keys:list",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["401","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["401", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         def next_func() -> Optional[models.LicenseKeysListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
-            
+
             num_pages = JSONPath("$.pagination.max_page").parse(body)
             if len(num_pages) == 0 or num_pages[0] <= page:
                 return None
@@ -104,10 +107,15 @@ class LicenseKeys(BaseSDK):
                 limit=limit,
                 retries=retries,
             )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.LicenseKeysListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceLicenseKeyRead]), next=next_func)
+            return models.LicenseKeysListResponse(
+                result=utils.unmarshal_json(
+                    http_res.text, Optional[models.ListResourceLicenseKeyRead]
+                ),
+                next=next_func,
+            )
         if utils.match_response(http_res, "401", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.UnauthorizedData)
             raise models.Unauthorized(data=data)
@@ -117,23 +125,34 @@ class LicenseKeys(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def list_async(
-        self, *,
-        organization_id: OptionalNullable[Union[models.LicenseKeysListQueryParamOrganizationIDFilter, models.LicenseKeysListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
+        self,
+        *,
+        organization_id: OptionalNullable[
+            Union[
+                models.LicenseKeysListQueryParamOrganizationIDFilter,
+                models.LicenseKeysListQueryParamOrganizationIDFilterTypedDict,
+            ]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.LicenseKeysListResponse:
+    ) -> Optional[models.LicenseKeysListResponse]:
         r"""List License Keys
 
         Get license keys connected to the given organization & filters.
@@ -149,17 +168,17 @@ class LicenseKeys(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.LicenseKeysListRequest(
             organization_id=organization_id,
             page=page,
             limit=limit,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/v1/license-keys",
             base_url=base_url,
@@ -173,33 +192,31 @@ class LicenseKeys(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="license_keys:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="license_keys:list",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["401","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["401", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         def next_func() -> Optional[models.LicenseKeysListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
-            
+
             num_pages = JSONPath("$.pagination.max_page").parse(body)
             if len(num_pages) == 0 or num_pages[0] <= page:
                 return None
@@ -219,10 +236,15 @@ class LicenseKeys(BaseSDK):
                 limit=limit,
                 retries=retries,
             )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.LicenseKeysListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceLicenseKeyRead]), next=next_func)
+            return models.LicenseKeysListResponse(
+                result=utils.unmarshal_json(
+                    http_res.text, Optional[models.ListResourceLicenseKeyRead]
+                ),
+                next=next_func,
+            )
         if utils.match_response(http_res, "401", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.UnauthorizedData)
             raise models.Unauthorized(data=data)
@@ -232,16 +254,22 @@ class LicenseKeys(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def get(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -251,7 +279,7 @@ class LicenseKeys(BaseSDK):
 
         Get a license key.
 
-        :param id: 
+        :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -260,14 +288,14 @@ class LicenseKeys(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.LicenseKeysGetRequest(
             id=id,
         )
-        
+
         req = self.build_request(
             method="GET",
             path="/v1/license-keys/{id}",
@@ -282,31 +310,31 @@ class LicenseKeys(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="license_keys:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="license_keys:get",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["401","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["401", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.LicenseKeyWithActivations])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.LicenseKeyWithActivations]
+            )
         if utils.match_response(http_res, "401", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.UnauthorizedData)
             raise models.Unauthorized(data=data)
@@ -316,16 +344,22 @@ class LicenseKeys(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def get_async(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -335,7 +369,7 @@ class LicenseKeys(BaseSDK):
 
         Get a license key.
 
-        :param id: 
+        :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -344,15 +378,15 @@ class LicenseKeys(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.LicenseKeysGetRequest(
             id=id,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/v1/license-keys/{id}",
             base_url=base_url,
@@ -366,31 +400,31 @@ class LicenseKeys(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="license_keys:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="license_keys:get",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["401","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["401", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.LicenseKeyWithActivations])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.LicenseKeyWithActivations]
+            )
         if utils.match_response(http_res, "401", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.UnauthorizedData)
             raise models.Unauthorized(data=data)
@@ -400,18 +434,26 @@ class LicenseKeys(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def update(
-        self, *,
+        self,
+        *,
         id: str,
-        license_key_update: Union[models.LicenseKeyUpdate, models.LicenseKeyUpdateTypedDict],
+        license_key_update: Union[
+            models.LicenseKeyUpdate, models.LicenseKeyUpdateTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -420,8 +462,8 @@ class LicenseKeys(BaseSDK):
 
         Update a license key.
 
-        :param id: 
-        :param license_key_update: 
+        :param id:
+        :param license_key_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -430,15 +472,17 @@ class LicenseKeys(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.LicenseKeysUpdateRequest(
             id=id,
-            license_key_update=utils.get_pydantic_model(license_key_update, models.LicenseKeyUpdate),
+            license_key_update=utils.get_pydantic_model(
+                license_key_update, models.LicenseKeyUpdate
+            ),
         )
-        
+
         req = self.build_request(
             method="PATCH",
             path="/v1/license-keys/{id}",
@@ -451,31 +495,35 @@ class LicenseKeys(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.license_key_update, False, False, "json", models.LicenseKeyUpdate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.license_key_update,
+                False,
+                False,
+                "json",
+                models.LicenseKeyUpdate,
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="license_keys:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="license_keys:update",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["401","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["401", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.LicenseKeyRead])
@@ -488,18 +536,26 @@ class LicenseKeys(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def update_async(
-        self, *,
+        self,
+        *,
         id: str,
-        license_key_update: Union[models.LicenseKeyUpdate, models.LicenseKeyUpdateTypedDict],
+        license_key_update: Union[
+            models.LicenseKeyUpdate, models.LicenseKeyUpdateTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -508,8 +564,8 @@ class LicenseKeys(BaseSDK):
 
         Update a license key.
 
-        :param id: 
-        :param license_key_update: 
+        :param id:
+        :param license_key_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -518,16 +574,18 @@ class LicenseKeys(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.LicenseKeysUpdateRequest(
             id=id,
-            license_key_update=utils.get_pydantic_model(license_key_update, models.LicenseKeyUpdate),
+            license_key_update=utils.get_pydantic_model(
+                license_key_update, models.LicenseKeyUpdate
+            ),
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="PATCH",
             path="/v1/license-keys/{id}",
             base_url=base_url,
@@ -539,31 +597,35 @@ class LicenseKeys(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.license_key_update, False, False, "json", models.LicenseKeyUpdate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.license_key_update,
+                False,
+                False,
+                "json",
+                models.LicenseKeyUpdate,
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="license_keys:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="license_keys:update",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["401","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["401", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.LicenseKeyRead])
@@ -576,16 +638,22 @@ class LicenseKeys(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def get_activation(
-        self, *,
+        self,
+        *,
         id: str,
         activation_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -596,8 +664,8 @@ class LicenseKeys(BaseSDK):
 
         Get a license key activation.
 
-        :param id: 
-        :param activation_id: 
+        :param id:
+        :param activation_id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -606,15 +674,15 @@ class LicenseKeys(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.LicenseKeysGetActivationRequest(
             id=id,
             activation_id=activation_id,
         )
-        
+
         req = self.build_request(
             method="GET",
             path="/v1/license-keys/{id}/activations/{activation_id}",
@@ -629,31 +697,31 @@ class LicenseKeys(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="license_keys:get_activation", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="license_keys:get_activation",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["401","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["401", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.LicenseKeyActivationRead])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.LicenseKeyActivationRead]
+            )
         if utils.match_response(http_res, "401", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.UnauthorizedData)
             raise models.Unauthorized(data=data)
@@ -663,16 +731,22 @@ class LicenseKeys(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def get_activation_async(
-        self, *,
+        self,
+        *,
         id: str,
         activation_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -683,8 +757,8 @@ class LicenseKeys(BaseSDK):
 
         Get a license key activation.
 
-        :param id: 
-        :param activation_id: 
+        :param id:
+        :param activation_id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -693,16 +767,16 @@ class LicenseKeys(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.LicenseKeysGetActivationRequest(
             id=id,
             activation_id=activation_id,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/v1/license-keys/{id}/activations/{activation_id}",
             base_url=base_url,
@@ -716,31 +790,31 @@ class LicenseKeys(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="license_keys:get_activation", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="license_keys:get_activation",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["401","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["401", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.LicenseKeyActivationRead])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.LicenseKeyActivationRead]
+            )
         if utils.match_response(http_res, "401", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.UnauthorizedData)
             raise models.Unauthorized(data=data)
@@ -750,10 +824,15 @@ class LicenseKeys(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )

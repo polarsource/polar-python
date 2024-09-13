@@ -7,20 +7,21 @@ from typing import TypedDict
 
 class BenefitDiscordPropertiesOutputTypedDict(TypedDict):
     r"""Properties for a benefit of type `discord`."""
-    
+
     guild_id: str
     r"""The ID of the Discord server."""
     role_id: str
     r"""The ID of the Discord role to grant."""
     guild_token: str
-    
+
 
 class BenefitDiscordPropertiesOutput(BaseModel):
     r"""Properties for a benefit of type `discord`."""
-    
+
     guild_id: str
     r"""The ID of the Discord server."""
+
     role_id: str
     r"""The ID of the Discord role to grant."""
+
     guild_token: str
-    

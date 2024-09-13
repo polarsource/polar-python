@@ -6,8 +6,14 @@ from .benefitarticles import BenefitArticles, BenefitArticlesTypedDict
 from .benefitcustom import BenefitCustom, BenefitCustomTypedDict
 from .benefitdiscord_output import BenefitDiscordOutput, BenefitDiscordOutputTypedDict
 from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesTypedDict
-from .benefitgithubrepository import BenefitGitHubRepository, BenefitGitHubRepositoryTypedDict
-from .benefitlicensekeys_output import BenefitLicenseKeysOutput, BenefitLicenseKeysOutputTypedDict
+from .benefitgithubrepository import (
+    BenefitGitHubRepository,
+    BenefitGitHubRepositoryTypedDict,
+)
+from .benefitlicensekeys_output import (
+    BenefitLicenseKeysOutput,
+    BenefitLicenseKeysOutputTypedDict,
+)
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, PathParamMetadata
 from typing import TypedDict, Union
@@ -16,16 +22,33 @@ from typing_extensions import Annotated
 
 class BenefitsGetRequestTypedDict(TypedDict):
     id: str
-    
+
 
 class BenefitsGetRequest(BaseModel):
-    id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
-    
+    id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
 
-BenefitsGetResponseBenefitsGetTypedDict = Union[BenefitArticlesTypedDict, BenefitAdsTypedDict, BenefitDiscordOutputTypedDict, BenefitGitHubRepositoryTypedDict, BenefitDownloadablesTypedDict, BenefitLicenseKeysOutputTypedDict, BenefitCustomTypedDict]
+
+BenefitsGetResponseBenefitsGetTypedDict = Union[
+    BenefitArticlesTypedDict,
+    BenefitAdsTypedDict,
+    BenefitDiscordOutputTypedDict,
+    BenefitGitHubRepositoryTypedDict,
+    BenefitDownloadablesTypedDict,
+    BenefitLicenseKeysOutputTypedDict,
+    BenefitCustomTypedDict,
+]
 r"""Successful Response"""
 
 
-BenefitsGetResponseBenefitsGet = Union[BenefitArticles, BenefitAds, BenefitDiscordOutput, BenefitGitHubRepository, BenefitDownloadables, BenefitLicenseKeysOutput, BenefitCustom]
+BenefitsGetResponseBenefitsGet = Union[
+    BenefitArticles,
+    BenefitAds,
+    BenefitDiscordOutput,
+    BenefitGitHubRepository,
+    BenefitDownloadables,
+    BenefitLicenseKeysOutput,
+    BenefitCustom,
+]
 r"""Successful Response"""
-

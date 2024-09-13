@@ -8,9 +8,9 @@ from typing import TypedDict
 class LabelTypedDict(TypedDict):
     name: str
     color: str
-    
+
 
 class Label(BaseModel):
     name: str
+
     color: str
-    

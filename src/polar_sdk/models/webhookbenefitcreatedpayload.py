@@ -6,8 +6,14 @@ from .benefitarticles import BenefitArticles, BenefitArticlesTypedDict
 from .benefitcustom import BenefitCustom, BenefitCustomTypedDict
 from .benefitdiscord_input import BenefitDiscordInput, BenefitDiscordInputTypedDict
 from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesTypedDict
-from .benefitgithubrepository import BenefitGitHubRepository, BenefitGitHubRepositoryTypedDict
-from .benefitlicensekeys_input import BenefitLicenseKeysInput, BenefitLicenseKeysInputTypedDict
+from .benefitgithubrepository import (
+    BenefitGitHubRepository,
+    BenefitGitHubRepositoryTypedDict,
+)
+from .benefitlicensekeys_input import (
+    BenefitLicenseKeysInput,
+    BenefitLicenseKeysInputTypedDict,
+)
 from enum import Enum
 from polar_sdk.types import BaseModel
 import pydantic
@@ -18,10 +24,27 @@ from typing_extensions import Annotated
 class WebhookBenefitCreatedPayloadType(str, Enum):
     BENEFIT_CREATED = "benefit.created"
 
-WebhookBenefitCreatedPayloadBenefitTypedDict = Union[BenefitArticlesTypedDict, BenefitAdsTypedDict, BenefitDiscordInputTypedDict, BenefitGitHubRepositoryTypedDict, BenefitDownloadablesTypedDict, BenefitLicenseKeysInputTypedDict, BenefitCustomTypedDict]
+
+WebhookBenefitCreatedPayloadBenefitTypedDict = Union[
+    BenefitArticlesTypedDict,
+    BenefitAdsTypedDict,
+    BenefitDiscordInputTypedDict,
+    BenefitGitHubRepositoryTypedDict,
+    BenefitDownloadablesTypedDict,
+    BenefitLicenseKeysInputTypedDict,
+    BenefitCustomTypedDict,
+]
 
 
-WebhookBenefitCreatedPayloadBenefit = Union[BenefitArticles, BenefitAds, BenefitDiscordInput, BenefitGitHubRepository, BenefitDownloadables, BenefitLicenseKeysInput, BenefitCustom]
+WebhookBenefitCreatedPayloadBenefit = Union[
+    BenefitArticles,
+    BenefitAds,
+    BenefitDiscordInput,
+    BenefitGitHubRepository,
+    BenefitDownloadables,
+    BenefitLicenseKeysInput,
+    BenefitCustom,
+]
 
 
 class WebhookBenefitCreatedPayloadTypedDict(TypedDict):
@@ -29,16 +52,18 @@ class WebhookBenefitCreatedPayloadTypedDict(TypedDict):
 
     **Discord & Slack support:** Basic
     """
-    
+
     data: WebhookBenefitCreatedPayloadBenefitTypedDict
-    
+
 
 class WebhookBenefitCreatedPayload(BaseModel):
     r"""Sent when a new benefit is created.
 
     **Discord & Slack support:** Basic
     """
-    
+
     data: WebhookBenefitCreatedPayloadBenefit
+
+    # fmt: off
     TYPE: Annotated[Final[WebhookBenefitCreatedPayloadType], pydantic.Field(alias="type")] = WebhookBenefitCreatedPayloadType.BENEFIT_CREATED # type: ignore
-    
+    # fmt: on

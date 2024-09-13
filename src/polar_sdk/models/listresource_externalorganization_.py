@@ -10,9 +10,9 @@ from typing import List, TypedDict
 class ListResourceExternalOrganizationTypedDict(TypedDict):
     items: List[ExternalOrganizationTypedDict]
     pagination: PaginationTypedDict
-    
+
 
 class ListResourceExternalOrganization(BaseModel):
     items: List[ExternalOrganization]
+
     pagination: Pagination
-    

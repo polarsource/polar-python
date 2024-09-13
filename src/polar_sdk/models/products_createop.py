@@ -2,12 +2,16 @@
 
 from __future__ import annotations
 from .productonetimecreate import ProductOneTimeCreate, ProductOneTimeCreateTypedDict
-from .productrecurringcreate import ProductRecurringCreate, ProductRecurringCreateTypedDict
+from .productrecurringcreate import (
+    ProductRecurringCreate,
+    ProductRecurringCreateTypedDict,
+)
 from typing import Union
 
 
-ProductsCreateProductCreateTypedDict = Union[ProductOneTimeCreateTypedDict, ProductRecurringCreateTypedDict]
+ProductsCreateProductCreateTypedDict = Union[
+    ProductOneTimeCreateTypedDict, ProductRecurringCreateTypedDict
+]
 
 
 ProductsCreateProductCreate = Union[ProductOneTimeCreate, ProductRecurringCreate]
-

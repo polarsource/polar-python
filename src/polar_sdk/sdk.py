@@ -26,11 +26,13 @@ from polar_sdk.types import OptionalNullable, UNSET
 from polar_sdk.users import Users
 from typing import Any, Callable, Dict, Optional, Union
 
+
 class Polar(BaseSDK):
     r"""Polar API: Polar HTTP and Webhooks API
 
     Read the docs at https://docs.polar.sh/api
     """
+
     users: Users
     external_organizations: ExternalOrganizations
     repositories: Repositories
@@ -46,6 +48,7 @@ class Polar(BaseSDK):
     files: Files
     metrics: MetricsSDK
     license_keys: LicenseKeys
+
     def __init__(
         self,
         access_token: Union[str, Callable[[], str]],
@@ -56,7 +59,7 @@ class Polar(BaseSDK):
         async_client: Optional[AsyncHttpClient] = None,
         retry_config: OptionalNullable[RetryConfig] = UNSET,
         timeout_ms: Optional[int] = None,
-        debug_logger: Optional[Logger] = None
+        debug_logger: Optional[Logger] = None,
     ) -> None:
         r"""Instantiates the SDK configuring it with the provided parameters.
 
@@ -85,33 +88,37 @@ class Polar(BaseSDK):
         assert issubclass(
             type(async_client), AsyncHttpClient
         ), "The provided async_client must implement the AsyncHttpClient protocol."
-        
+
         security: Any = None
         if callable(access_token):
-            security = lambda: models.Security(access_token = access_token()) # pylint: disable=unnecessary-lambda-assignment
+            security = lambda: models.Security(access_token=access_token())  # pylint: disable=unnecessary-lambda-assignment
         else:
-            security = models.Security(access_token = access_token)
+            security = models.Security(access_token=access_token)
 
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
-    
 
-        BaseSDK.__init__(self, SDKConfiguration(
-            client=client,
-            async_client=async_client,
-            security=security,
-            server_url=server_url,
-            server_idx=server_idx,
-            retry_config=retry_config,
-            timeout_ms=timeout_ms,
-            debug_logger=debug_logger
-        ))
+        BaseSDK.__init__(
+            self,
+            SDKConfiguration(
+                client=client,
+                async_client=async_client,
+                security=security,
+                server_url=server_url,
+                server_idx=server_idx,
+                retry_config=retry_config,
+                timeout_ms=timeout_ms,
+                debug_logger=debug_logger,
+            ),
+        )
 
         hooks = SDKHooks()
 
         current_server_url, *_ = self.sdk_configuration.get_server_details()
-        server_url, self.sdk_configuration.client = hooks.sdk_init(current_server_url, self.sdk_configuration.client)
+        server_url, self.sdk_configuration.client = hooks.sdk_init(
+            current_server_url, self.sdk_configuration.client
+        )
         if current_server_url != server_url:
             self.sdk_configuration.server_url = server_url
 
@@ -119,7 +126,6 @@ class Polar(BaseSDK):
         self.sdk_configuration.__dict__["_hooks"] = hooks
 
         self._init_sdks()
-
 
     def _init_sdks(self):
         self.users = Users(self.sdk_configuration)
@@ -137,4 +143,3 @@ class Polar(BaseSDK):
         self.files = Files(self.sdk_configuration)
         self.metrics = MetricsSDK(self.sdk_configuration)
         self.license_keys = LicenseKeys(self.sdk_configuration)
-    

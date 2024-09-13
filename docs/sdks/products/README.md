@@ -24,13 +24,15 @@ s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-res = s.products.list()
+res = s.products.list(organization_id=[
+    "<value>",
+])
 
 if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
 
@@ -40,7 +42,7 @@ if res is not None:
 
 | Parameter                                                                                                                                  | Type                                                                                                                                       | Required                                                                                                                                   | Description                                                                                                                                |
 | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `organization_id`                                                                                                                          | [OptionalNullable[models.ProductsListQueryParamOrganizationIDFilter]](../../models/productslistqueryparamorganizationidfilter.md)          | :heavy_minus_sign:                                                                                                                         | Filter by organization ID.                                                                                                                 |
+| `organization_id`                                                                                                                          | [models.ProductsListQueryParamOrganizationIDFilter](../../models/productslistqueryparamorganizationidfilter.md)                            | :heavy_check_mark:                                                                                                                         | Filter by organization ID.                                                                                                                 |
 | `is_archived`                                                                                                                              | *OptionalNullable[bool]*                                                                                                                   | :heavy_minus_sign:                                                                                                                         | Filter on archived products.                                                                                                               |
 | `is_recurring`                                                                                                                             | *OptionalNullable[bool]*                                                                                                                   | :heavy_minus_sign:                                                                                                                         | Filter on recurring products. If `true`, only subscriptions tiers are returned. If `false`, only one-time purchase products are returned.  |
 | `benefit_id`                                                                                                                               | [OptionalNullable[models.QueryParamBenefitIDFilter]](../../models/queryparambenefitidfilter.md)                                            | :heavy_minus_sign:                                                                                                                         | Filter products granting specific benefit.                                                                                                 |
@@ -80,9 +82,10 @@ res = s.products.create(request={
     "prices": [
         {
             "recurring_interval": polar_sdk.ProductPriceRecurringInterval.MONTH,
-            "price_amount": 638424,
+            "price_amount": 489382,
         },
     ],
+    "type": polar_sdk.ProductRecurringCreateType.INDIVIDUAL,
 })
 
 if res is not None:

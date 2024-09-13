@@ -12,21 +12,24 @@ from typing_extensions import Annotated
 class WebhookOrderCreatedPayloadType(str, Enum):
     ORDER_CREATED = "order.created"
 
+
 class WebhookOrderCreatedPayloadTypedDict(TypedDict):
     r"""Sent when a new order is created.
 
     **Discord & Slack support:** Full
     """
-    
+
     data: OrderInputTypedDict
-    
+
 
 class WebhookOrderCreatedPayload(BaseModel):
     r"""Sent when a new order is created.
 
     **Discord & Slack support:** Full
     """
-    
+
     data: OrderInput
+
+    # fmt: off
     TYPE: Annotated[Final[WebhookOrderCreatedPayloadType], pydantic.Field(alias="type")] = WebhookOrderCreatedPayloadType.ORDER_CREATED # type: ignore
-    
+    # fmt: on

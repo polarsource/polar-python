@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class UsersSubscriptionsGetRequestTypedDict(TypedDict):
     id: str
     r"""The subscription ID."""
-    
+
 
 class UsersSubscriptionsGetRequest(BaseModel):
-    id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The subscription ID."""
-    

@@ -28,7 +28,9 @@ r"""Filter by benefit type."""
 
 
 class BenefitsListRequestTypedDict(TypedDict):
-    organization_id: NotRequired[Nullable[BenefitsListQueryParamOrganizationIDFilterTypedDict]]
+    organization_id: NotRequired[
+        Nullable[BenefitsListQueryParamOrganizationIDFilterTypedDict]
+    ]
     r"""Filter by organization ID."""
     type_filter: NotRequired[Nullable[QueryParamBenefitTypeFilterTypedDict]]
     r"""Filter by benefit type."""
@@ -36,18 +38,34 @@ class BenefitsListRequestTypedDict(TypedDict):
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
     r"""Size of a page, defaults to 10. Maximum is 100."""
-    
+
 
 class BenefitsListRequest(BaseModel):
-    organization_id: Annotated[OptionalNullable[BenefitsListQueryParamOrganizationIDFilter], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+    organization_id: Annotated[
+        OptionalNullable[BenefitsListQueryParamOrganizationIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
     r"""Filter by organization ID."""
-    type_filter: Annotated[OptionalNullable[QueryParamBenefitTypeFilter], pydantic.Field(alias="type"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+
+    type_filter: Annotated[
+        OptionalNullable[QueryParamBenefitTypeFilter],
+        pydantic.Field(alias="type"),
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
     r"""Filter by benefit type."""
-    page: Annotated[Optional[int], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = 1
+
+    page: Annotated[
+        Optional[int],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = 1
     r"""Page number, defaults to 1."""
-    limit: Annotated[Optional[int], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = 10
+
+    limit: Annotated[
+        Optional[int],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = 10
     r"""Size of a page, defaults to 10. Maximum is 100."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = ["organization_id", "type_filter", "page", "limit"]
@@ -61,9 +79,13 @@ class BenefitsListRequest(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -73,14 +95,13 @@ class BenefitsListRequest(BaseModel):
                 m[k] = val
 
         return m
-        
+
 
 class BenefitsListResponseTypedDict(TypedDict):
     result: ListResourceBenefitTypedDict
-    
+
 
 class BenefitsListResponse(BaseModel):
     next: Callable[[], Optional[BenefitsListResponse]]
-    
+
     result: ListResourceBenefit
-    

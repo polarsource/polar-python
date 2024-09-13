@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class UsersAdvertisementsDeleteRequestTypedDict(TypedDict):
     id: str
     r"""The advertisement campaign ID."""
-    
+
 
 class UsersAdvertisementsDeleteRequest(BaseModel):
-    id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The advertisement campaign ID."""
-    

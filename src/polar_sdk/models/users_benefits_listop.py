@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 from .benefittype import BenefitType
-from .listresource_userbenefit_ import ListResourceUserBenefit, ListResourceUserBenefitTypedDict
+from .listresource_userbenefit_ import (
+    ListResourceUserBenefit,
+    ListResourceUserBenefitTypedDict,
+)
 from .userbenefitsortproperty import UserBenefitSortProperty
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
@@ -59,28 +62,70 @@ class UsersBenefitsListRequestTypedDict(TypedDict):
     r"""Size of a page, defaults to 10. Maximum is 100."""
     sorting: NotRequired[Nullable[List[UserBenefitSortProperty]]]
     r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
-    
+
 
 class UsersBenefitsListRequest(BaseModel):
-    type_filter: Annotated[OptionalNullable[BenefitTypeFilter], pydantic.Field(alias="type"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+    type_filter: Annotated[
+        OptionalNullable[BenefitTypeFilter],
+        pydantic.Field(alias="type"),
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
     r"""Filter by benefit type."""
-    organization_id: Annotated[OptionalNullable[OrganizationIDFilter], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+
+    organization_id: Annotated[
+        OptionalNullable[OrganizationIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
     r"""Filter by organization ID."""
-    order_id: Annotated[OptionalNullable[OrderIDFilter], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+
+    order_id: Annotated[
+        OptionalNullable[OrderIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
     r"""Filter by order ID."""
-    subscription_id: Annotated[OptionalNullable[SubscriptionIDFilter], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+
+    subscription_id: Annotated[
+        OptionalNullable[SubscriptionIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
     r"""Filter by subscription ID."""
-    page: Annotated[Optional[int], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = 1
+
+    page: Annotated[
+        Optional[int],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = 1
     r"""Page number, defaults to 1."""
-    limit: Annotated[Optional[int], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = 10
+
+    limit: Annotated[
+        Optional[int],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = 10
     r"""Size of a page, defaults to 10. Maximum is 100."""
-    sorting: Annotated[OptionalNullable[List[UserBenefitSortProperty]], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+
+    sorting: Annotated[
+        OptionalNullable[List[UserBenefitSortProperty]],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
     r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["type_filter", "organization_id", "order_id", "subscription_id", "page", "limit", "sorting"]
-        nullable_fields = ["type_filter", "organization_id", "order_id", "subscription_id", "sorting"]
+        optional_fields = [
+            "type_filter",
+            "organization_id",
+            "order_id",
+            "subscription_id",
+            "page",
+            "limit",
+            "sorting",
+        ]
+        nullable_fields = [
+            "type_filter",
+            "organization_id",
+            "order_id",
+            "subscription_id",
+            "sorting",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -90,9 +135,13 @@ class UsersBenefitsListRequest(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -102,14 +151,13 @@ class UsersBenefitsListRequest(BaseModel):
                 m[k] = val
 
         return m
-        
+
 
 class UsersBenefitsListResponseTypedDict(TypedDict):
     result: ListResourceUserBenefitTypedDict
-    
+
 
 class UsersBenefitsListResponse(BaseModel):
     next: Callable[[], Optional[UsersBenefitsListResponse]]
-    
+
     result: ListResourceUserBenefit
-    

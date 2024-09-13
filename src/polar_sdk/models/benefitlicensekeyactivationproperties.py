@@ -8,9 +8,9 @@ from typing import TypedDict
 class BenefitLicenseKeyActivationPropertiesTypedDict(TypedDict):
     limit: int
     enable_user_admin: bool
-    
+
 
 class BenefitLicenseKeyActivationProperties(BaseModel):
     limit: int
+
     enable_user_admin: bool
-    

@@ -10,11 +10,13 @@ class AuthorTypedDict(TypedDict):
     login: str
     html_url: str
     avatar_url: str
-    
+
 
 class Author(BaseModel):
     id: int
+
     login: str
+
     html_url: str
+
     avatar_url: str
-    

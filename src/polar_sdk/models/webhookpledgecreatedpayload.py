@@ -12,21 +12,24 @@ from typing_extensions import Annotated
 class WebhookPledgeCreatedPayloadType(str, Enum):
     PLEDGE_CREATED = "pledge.created"
 
+
 class WebhookPledgeCreatedPayloadTypedDict(TypedDict):
     r"""Sent when a new pledge is created. Note that this does mean that the pledge has been paid yet.
 
     **Discord & Slack support:** Full
     """
-    
+
     data: PledgeInputTypedDict
-    
+
 
 class WebhookPledgeCreatedPayload(BaseModel):
     r"""Sent when a new pledge is created. Note that this does mean that the pledge has been paid yet.
 
     **Discord & Slack support:** Full
     """
-    
+
     data: PledgeInput
+
+    # fmt: off
     TYPE: Annotated[Final[WebhookPledgeCreatedPayloadType], pydantic.Field(alias="type")] = WebhookPledgeCreatedPayloadType.PLEDGE_CREATED # type: ignore
-    
+    # fmt: on

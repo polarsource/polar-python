@@ -27,16 +27,20 @@ QueryParamBenefitIDFilter = Union[str, List[str]]
 r"""Filter products granting specific benefit."""
 
 
-QueryParamSubscriptionTierTypeFilterTypedDict = Union[SubscriptionTierType, List[SubscriptionTierType]]
+QueryParamSubscriptionTierTypeFilterTypedDict = Union[
+    SubscriptionTierType, List[SubscriptionTierType]
+]
 r"""Filter by subscription tier type."""
 
 
-QueryParamSubscriptionTierTypeFilter = Union[SubscriptionTierType, List[SubscriptionTierType]]
+QueryParamSubscriptionTierTypeFilter = Union[
+    SubscriptionTierType, List[SubscriptionTierType]
+]
 r"""Filter by subscription tier type."""
 
 
 class ProductsListRequestTypedDict(TypedDict):
-    organization_id: NotRequired[Nullable[ProductsListQueryParamOrganizationIDFilterTypedDict]]
+    organization_id: ProductsListQueryParamOrganizationIDFilterTypedDict
     r"""Filter by organization ID."""
     is_archived: NotRequired[Nullable[bool]]
     r"""Filter on archived products."""
@@ -50,28 +54,63 @@ class ProductsListRequestTypedDict(TypedDict):
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
     r"""Size of a page, defaults to 10. Maximum is 100."""
-    
+
 
 class ProductsListRequest(BaseModel):
-    organization_id: Annotated[OptionalNullable[ProductsListQueryParamOrganizationIDFilter], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+    organization_id: Annotated[
+        ProductsListQueryParamOrganizationIDFilter,
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ]
     r"""Filter by organization ID."""
-    is_archived: Annotated[OptionalNullable[bool], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+
+    is_archived: Annotated[
+        OptionalNullable[bool],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
     r"""Filter on archived products."""
-    is_recurring: Annotated[OptionalNullable[bool], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+
+    is_recurring: Annotated[
+        OptionalNullable[bool],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
     r"""Filter on recurring products. If `true`, only subscriptions tiers are returned. If `false`, only one-time purchase products are returned."""
-    benefit_id: Annotated[OptionalNullable[QueryParamBenefitIDFilter], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+
+    benefit_id: Annotated[
+        OptionalNullable[QueryParamBenefitIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
     r"""Filter products granting specific benefit."""
-    type_filter: Annotated[OptionalNullable[QueryParamSubscriptionTierTypeFilter], pydantic.Field(alias="type"), FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = UNSET
+
+    type_filter: Annotated[
+        OptionalNullable[QueryParamSubscriptionTierTypeFilter],
+        pydantic.Field(alias="type"),
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
     r"""Filter by subscription tier type."""
-    page: Annotated[Optional[int], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = 1
+
+    page: Annotated[
+        Optional[int],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = 1
     r"""Page number, defaults to 1."""
-    limit: Annotated[Optional[int], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = 10
+
+    limit: Annotated[
+        Optional[int],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = 10
     r"""Size of a page, defaults to 10. Maximum is 100."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["organization_id", "is_archived", "is_recurring", "benefit_id", "type_filter", "page", "limit"]
-        nullable_fields = ["organization_id", "is_archived", "is_recurring", "benefit_id", "type_filter"]
+        optional_fields = [
+            "is_archived",
+            "is_recurring",
+            "benefit_id",
+            "type_filter",
+            "page",
+            "limit",
+        ]
+        nullable_fields = ["is_archived", "is_recurring", "benefit_id", "type_filter"]
         null_default_fields = []
 
         serialized = handler(self)
@@ -81,9 +120,13 @@ class ProductsListRequest(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -93,14 +136,13 @@ class ProductsListRequest(BaseModel):
                 m[k] = val
 
         return m
-        
+
 
 class ProductsListResponseTypedDict(TypedDict):
     result: ListResourceProductTypedDict
-    
+
 
 class ProductsListResponse(BaseModel):
     next: Callable[[], Optional[ProductsListResponse]]
-    
+
     result: ListResourceProduct
-    

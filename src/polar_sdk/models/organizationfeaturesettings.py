@@ -13,13 +13,14 @@ class OrganizationFeatureSettingsTypedDict(TypedDict):
     r"""If this organization has subscriptions enabled"""
     issue_funding_enabled: NotRequired[bool]
     r"""If this organization has issue funding enabled"""
-    
+
 
 class OrganizationFeatureSettings(BaseModel):
     articles_enabled: Optional[bool] = False
     r"""If this organization has articles enabled"""
+
     subscriptions_enabled: Optional[bool] = False
     r"""If this organization has subscriptions enabled"""
+
     issue_funding_enabled: Optional[bool] = False
     r"""If this organization has issue funding enabled"""
-    

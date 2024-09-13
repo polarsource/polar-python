@@ -9,8 +9,9 @@ from typing_extensions import Annotated
 
 class ProductsGetRequestTypedDict(TypedDict):
     id: str
-    
+
 
 class ProductsGetRequest(BaseModel):
-    id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
-    
+    id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]

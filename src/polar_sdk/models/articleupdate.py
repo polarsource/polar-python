@@ -34,37 +34,77 @@ class ArticleUpdateTypedDict(TypedDict):
     r"""Custom og:image URL value"""
     og_description: NotRequired[Nullable[str]]
     r"""Custom og:description value"""
-    
+
 
 class ArticleUpdate(BaseModel):
     title: OptionalNullable[str] = UNSET
+
     body: OptionalNullable[str] = UNSET
     r"""Body in string format. body and body_base64 are mutually exclusive."""
+
     body_base64: OptionalNullable[str] = UNSET
     r"""Body in base64-encoded format. Can be helpful to bypass Web Application Firewalls (WAF). body and body_base64 are mutually exclusive."""
+
     slug: OptionalNullable[str] = UNSET
+
     byline: OptionalNullable[ArticleByline] = UNSET
     r"""If the user or organization should be credited in the byline."""
+
     visibility: OptionalNullable[ArticleVisibility] = UNSET
+
     paid_subscribers_only: OptionalNullable[bool] = UNSET
     r"""Set to true to only make this article available for subscribers to a paid subscription tier in the organization."""
+
     paid_subscribers_only_ends_at: OptionalNullable[datetime] = UNSET
     r"""If specified, time at which the article should no longer be restricted to paid subscribers. Only relevant if `paid_subscribers_only` is true."""
+
     published_at: OptionalNullable[datetime] = UNSET
     r"""Time of publishing. If this date is in the future, the post will be scheduled to publish at this time."""
+
     notify_subscribers: OptionalNullable[bool] = UNSET
     r"""Set to true to deliver this article via email and/or notifications to subscribers."""
+
     is_pinned: OptionalNullable[bool] = UNSET
     r"""If the article should be pinned"""
+
     og_image_url: OptionalNullable[str] = UNSET
     r"""Custom og:image URL value"""
+
     og_description: OptionalNullable[str] = UNSET
     r"""Custom og:description value"""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["title", "body", "body_base64", "slug", "byline", "visibility", "paid_subscribers_only", "paid_subscribers_only_ends_at", "published_at", "notify_subscribers", "is_pinned", "og_image_url", "og_description"]
-        nullable_fields = ["title", "body", "body_base64", "slug", "byline", "visibility", "paid_subscribers_only", "paid_subscribers_only_ends_at", "published_at", "notify_subscribers", "is_pinned", "og_image_url", "og_description"]
+        optional_fields = [
+            "title",
+            "body",
+            "body_base64",
+            "slug",
+            "byline",
+            "visibility",
+            "paid_subscribers_only",
+            "paid_subscribers_only_ends_at",
+            "published_at",
+            "notify_subscribers",
+            "is_pinned",
+            "og_image_url",
+            "og_description",
+        ]
+        nullable_fields = [
+            "title",
+            "body",
+            "body_base64",
+            "slug",
+            "byline",
+            "visibility",
+            "paid_subscribers_only",
+            "paid_subscribers_only_ends_at",
+            "published_at",
+            "notify_subscribers",
+            "is_pinned",
+            "og_image_url",
+            "og_description",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -74,9 +114,13 @@ class ArticleUpdate(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -86,4 +130,3 @@ class ArticleUpdate(BaseModel):
                 m[k] = val
 
         return m
-        

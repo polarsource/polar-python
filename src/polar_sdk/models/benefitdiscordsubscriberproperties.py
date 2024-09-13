@@ -7,14 +7,13 @@ from typing import TypedDict
 
 class BenefitDiscordSubscriberPropertiesTypedDict(TypedDict):
     r"""Properties available to subscribers for a benefit of type `discord`."""
-    
+
     guild_id: str
     r"""The ID of the Discord server."""
-    
+
 
 class BenefitDiscordSubscriberProperties(BaseModel):
     r"""Properties available to subscribers for a benefit of type `discord`."""
-    
+
     guild_id: str
     r"""The ID of the Discord server."""
-    

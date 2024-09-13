@@ -29,29 +29,38 @@ class MetricsTypedDict(TypedDict):
     r"""Information about a metric."""
     monthly_recurring_revenue: MetricTypedDict
     r"""Information about a metric."""
-    
+
 
 class Metrics(BaseModel):
     orders: Metric
     r"""Information about a metric."""
+
     revenue: Metric
     r"""Information about a metric."""
+
     average_order_value: Metric
     r"""Information about a metric."""
+
     one_time_products: Metric
     r"""Information about a metric."""
+
     one_time_products_revenue: Metric
     r"""Information about a metric."""
+
     new_subscriptions: Metric
     r"""Information about a metric."""
+
     new_subscriptions_revenue: Metric
     r"""Information about a metric."""
+
     renewed_subscriptions: Metric
     r"""Information about a metric."""
+
     renewed_subscriptions_revenue: Metric
     r"""Information about a metric."""
+
     active_subscriptions: Metric
     r"""Information about a metric."""
+
     monthly_recurring_revenue: Metric
     r"""Information about a metric."""
-    

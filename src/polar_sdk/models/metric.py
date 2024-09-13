@@ -8,22 +8,23 @@ from typing import TypedDict
 
 class MetricTypedDict(TypedDict):
     r"""Information about a metric."""
-    
+
     slug: str
     r"""Unique identifier for the metric."""
     display_name: str
     r"""Human-readable name for the metric."""
     type: MetricType
     r"""Type of the metric, useful to know the unit or format of the value."""
-    
+
 
 class Metric(BaseModel):
     r"""Information about a metric."""
-    
+
     slug: str
     r"""Unique identifier for the metric."""
+
     display_name: str
     r"""Human-readable name for the metric."""
+
     type: MetricType
     r"""Type of the metric, useful to know the unit or format of the value."""
-    

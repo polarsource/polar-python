@@ -7,14 +7,13 @@ from typing import TypedDict
 
 class BenefitArticlesPropertiesTypedDict(TypedDict):
     r"""Properties for a benefit of type `articles`."""
-    
+
     paid_articles: bool
     r"""Whether the user can access paid articles."""
-    
+
 
 class BenefitArticlesProperties(BaseModel):
     r"""Properties for a benefit of type `articles`."""
-    
+
     paid_articles: bool
     r"""Whether the user can access paid articles."""
-    

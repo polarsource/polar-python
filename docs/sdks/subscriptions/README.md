@@ -29,7 +29,7 @@ if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
 
@@ -118,7 +118,7 @@ s = Polar(
 
 res = s.subscriptions.import_subscriptions(request={
     "file": {
-        "file_name": "your_file_here",
+        "file_name": "example.file",
         "content": open("example.file", "rb"),
     },
     "organization_id": "<value>",

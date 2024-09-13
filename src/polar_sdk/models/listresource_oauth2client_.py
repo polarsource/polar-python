@@ -10,9 +10,9 @@ from typing import List, TypedDict
 class ListResourceOAuth2ClientTypedDict(TypedDict):
     items: List[OAuth2ClientTypedDict]
     pagination: PaginationTypedDict
-    
+
 
 class ListResourceOAuth2Client(BaseModel):
     items: List[OAuth2Client]
+
     pagination: Pagination
-    

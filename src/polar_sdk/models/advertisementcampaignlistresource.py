@@ -12,11 +12,12 @@ class AdvertisementCampaignListResourceTypedDict(TypedDict):
     pagination: PaginationTypedDict
     dimensions: List[int]
     r"""The dimensions (width, height) in pixels of the advertisement images."""
-    
+
 
 class AdvertisementCampaignListResource(BaseModel):
     items: List[AdvertisementCampaign]
+
     pagination: Pagination
+
     dimensions: List[int]
     r"""The dimensions (width, height) in pixels of the advertisement images."""
-    

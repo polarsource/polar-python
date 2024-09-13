@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class OrdersGetRequestTypedDict(TypedDict):
     id: str
     r"""The order ID."""
-    
+
 
 class OrdersGetRequest(BaseModel):
-    id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The order ID."""
-    

@@ -13,9 +13,10 @@ from typing_extensions import Annotated, NotRequired
 class OrganizationAvatarFileCreateService(str, Enum):
     ORGANIZATION_AVATAR = "organization_avatar"
 
+
 class OrganizationAvatarFileCreateTypedDict(TypedDict):
     r"""Schema to create a file to be used as an organization avatar."""
-    
+
     name: str
     mime_type: str
     r"""MIME type of the file. Only images are supported for this type of file."""
@@ -25,22 +26,31 @@ class OrganizationAvatarFileCreateTypedDict(TypedDict):
     organization_id: NotRequired[Nullable[str]]
     checksum_sha256_base64: NotRequired[Nullable[str]]
     version: NotRequired[Nullable[str]]
-    
+
 
 class OrganizationAvatarFileCreate(BaseModel):
     r"""Schema to create a file to be used as an organization avatar."""
-    
+
     name: str
+
     mime_type: str
     r"""MIME type of the file. Only images are supported for this type of file."""
+
     size: int
     r"""Size of the file. A maximum of 1 MB is allowed for this type of file."""
+
     upload: S3FileCreateMultipart
+
     organization_id: OptionalNullable[str] = UNSET
+
     checksum_sha256_base64: OptionalNullable[str] = UNSET
+
+    # fmt: off
     SERVICE: Annotated[Final[OrganizationAvatarFileCreateService], pydantic.Field(alias="service")] = OrganizationAvatarFileCreateService.ORGANIZATION_AVATAR # type: ignore
+    # fmt: on
+
     version: OptionalNullable[str] = UNSET
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = ["organization_id", "checksum_sha256_base64", "version"]
@@ -54,9 +64,13 @@ class OrganizationAvatarFileCreate(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -66,4 +80,3 @@ class OrganizationAvatarFileCreate(BaseModel):
                 m[k] = val
 
         return m
-        

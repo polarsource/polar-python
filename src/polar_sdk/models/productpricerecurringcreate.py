@@ -12,25 +12,30 @@ from typing_extensions import Annotated, NotRequired
 class ProductPriceRecurringCreateType(str, Enum):
     RECURRING = "recurring"
 
+
 class ProductPriceRecurringCreateTypedDict(TypedDict):
     r"""Schema to create a recurring product price, i.e. a subscription."""
-    
+
     recurring_interval: ProductPriceRecurringInterval
     r"""The recurring interval of the price."""
     price_amount: int
     r"""The price in cents."""
     price_currency: NotRequired[str]
     r"""The currency. Currently, only `usd` is supported."""
-    
+
 
 class ProductPriceRecurringCreate(BaseModel):
     r"""Schema to create a recurring product price, i.e. a subscription."""
-    
+
     recurring_interval: ProductPriceRecurringInterval
     r"""The recurring interval of the price."""
+
     price_amount: int
     r"""The price in cents."""
+
+    # fmt: off
     TYPE: Annotated[Final[ProductPriceRecurringCreateType], pydantic.Field(alias="type")] = ProductPriceRecurringCreateType.RECURRING # type: ignore
+    # fmt: on
+
     price_currency: Optional[str] = "usd"
     r"""The currency. Currently, only `usd` is supported."""
-    

@@ -7,14 +7,13 @@ from typing import TypedDict
 
 class UserOrderInvoiceTypedDict(TypedDict):
     r"""Order's invoice data."""
-    
+
     url: str
     r"""The URL to the invoice."""
-    
+
 
 class UserOrderInvoice(BaseModel):
     r"""Order's invoice data."""
-    
+
     url: str
     r"""The URL to the invoice."""
-    

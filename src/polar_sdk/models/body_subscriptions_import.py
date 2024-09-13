@@ -13,24 +13,40 @@ class FileTypedDict(TypedDict):
     file_name: str
     content: Union[bytes, IO[bytes], io.BufferedReader]
     content_type: NotRequired[str]
-    
+
 
 class File(BaseModel):
-    file_name: Annotated[str, pydantic.Field(alias="file"), FieldMetadata(multipart=True)]
-    content: Annotated[Union[bytes, IO[bytes], io.BufferedReader], pydantic.Field(alias=""), FieldMetadata(multipart=MultipartFormMetadata(content=True))]
-    content_type: Annotated[Optional[str], pydantic.Field(alias="Content-Type"), FieldMetadata(multipart=True)] = None
-    
+    file_name: Annotated[
+        str, pydantic.Field(alias="file"), FieldMetadata(multipart=True)
+    ]
+
+    content: Annotated[
+        Union[bytes, IO[bytes], io.BufferedReader],
+        pydantic.Field(alias=""),
+        FieldMetadata(multipart=MultipartFormMetadata(content=True)),
+    ]
+
+    content_type: Annotated[
+        Optional[str],
+        pydantic.Field(alias="Content-Type"),
+        FieldMetadata(multipart=True),
+    ] = None
+
 
 class BodySubscriptionsImportTypedDict(TypedDict):
     file: FileTypedDict
     r"""CSV file with emails."""
     organization_id: str
     r"""The organization ID on which to import the subscriptions."""
-    
+
 
 class BodySubscriptionsImport(BaseModel):
-    file: Annotated[File, pydantic.Field(alias=""), FieldMetadata(multipart=MultipartFormMetadata(file=True))]
+    file: Annotated[
+        File,
+        pydantic.Field(alias=""),
+        FieldMetadata(multipart=MultipartFormMetadata(file=True)),
+    ]
     r"""CSV file with emails."""
+
     organization_id: Annotated[str, FieldMetadata(multipart=True)]
     r"""The organization ID on which to import the subscriptions."""
-    

@@ -9,10 +9,11 @@ class LicenseKeyDeactivateTypedDict(TypedDict):
     key: str
     organization_id: str
     activation_id: str
-    
+
 
 class LicenseKeyDeactivate(BaseModel):
     key: str
+
     organization_id: str
+
     activation_id: str
-    

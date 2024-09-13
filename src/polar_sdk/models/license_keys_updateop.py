@@ -11,9 +11,14 @@ from typing_extensions import Annotated
 class LicenseKeysUpdateRequestTypedDict(TypedDict):
     id: str
     license_key_update: LicenseKeyUpdateTypedDict
-    
+
 
 class LicenseKeysUpdateRequest(BaseModel):
-    id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
-    license_key_update: Annotated[LicenseKeyUpdate, FieldMetadata(request=RequestMetadata(media_type="application/json"))]
-    
+    id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
+
+    license_key_update: Annotated[
+        LicenseKeyUpdate,
+        FieldMetadata(request=RequestMetadata(media_type="application/json")),
+    ]

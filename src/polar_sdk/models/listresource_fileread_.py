@@ -2,9 +2,15 @@
 
 from __future__ import annotations
 from .downloadablefileread import DownloadableFileRead, DownloadableFileReadTypedDict
-from .organizationavatarfileread import OrganizationAvatarFileRead, OrganizationAvatarFileReadTypedDict
+from .organizationavatarfileread import (
+    OrganizationAvatarFileRead,
+    OrganizationAvatarFileReadTypedDict,
+)
 from .pagination import Pagination, PaginationTypedDict
-from .productmediafileread_output import ProductMediaFileReadOutput, ProductMediaFileReadOutputTypedDict
+from .productmediafileread_output import (
+    ProductMediaFileReadOutput,
+    ProductMediaFileReadOutputTypedDict,
+)
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
@@ -12,18 +18,29 @@ from typing import List, TypedDict, Union
 from typing_extensions import Annotated
 
 
-FileReadTypedDict = Union[DownloadableFileReadTypedDict, ProductMediaFileReadOutputTypedDict, OrganizationAvatarFileReadTypedDict]
+FileReadTypedDict = Union[
+    DownloadableFileReadTypedDict,
+    ProductMediaFileReadOutputTypedDict,
+    OrganizationAvatarFileReadTypedDict,
+]
 
 
-FileRead = Annotated[Union[Annotated[DownloadableFileRead, Tag("downloadable")], Annotated[OrganizationAvatarFileRead, Tag("organization_avatar")], Annotated[ProductMediaFileReadOutput, Tag("product_media")]], Discriminator(lambda m: get_discriminator(m, "service", "service"))]
+FileRead = Annotated[
+    Union[
+        Annotated[DownloadableFileRead, Tag("downloadable")],
+        Annotated[OrganizationAvatarFileRead, Tag("organization_avatar")],
+        Annotated[ProductMediaFileReadOutput, Tag("product_media")],
+    ],
+    Discriminator(lambda m: get_discriminator(m, "service", "service")),
+]
 
 
 class ListResourceFileReadTypedDict(TypedDict):
     items: List[FileReadTypedDict]
     pagination: PaginationTypedDict
-    
+
 
 class ListResourceFileRead(BaseModel):
     items: List[FileRead]
+
     pagination: Pagination
-    
