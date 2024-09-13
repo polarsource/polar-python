@@ -12,21 +12,24 @@ from typing_extensions import Annotated
 class WebhookDonationCreatedPayloadType(str, Enum):
     DONATION_CREATED = "donation.created"
 
+
 class WebhookDonationCreatedPayloadTypedDict(TypedDict):
     r"""Sent when a new donation is created.
 
     **Discord & Slack support:** Full
     """
-    
+
     data: DonationInputTypedDict
-    
+
 
 class WebhookDonationCreatedPayload(BaseModel):
     r"""Sent when a new donation is created.
 
     **Discord & Slack support:** Full
     """
-    
+
     data: DonationInput
+
+    # fmt: off
     TYPE: Annotated[Final[WebhookDonationCreatedPayloadType], pydantic.Field(alias="type")] = WebhookDonationCreatedPayloadType.DONATION_CREATED # type: ignore
-    
+    # fmt: on

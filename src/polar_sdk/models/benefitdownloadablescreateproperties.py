@@ -9,9 +9,9 @@ from typing_extensions import NotRequired
 class BenefitDownloadablesCreatePropertiesTypedDict(TypedDict):
     files: List[str]
     archived: NotRequired[Dict[str, bool]]
-    
+
 
 class BenefitDownloadablesCreateProperties(BaseModel):
     files: List[str]
+
     archived: Optional[Dict[str, bool]] = None
-    

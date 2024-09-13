@@ -11,10 +11,14 @@ from typing_extensions import Annotated
 
 class AlreadySubscribedType(str, Enum):
     ALREADY_SUBSCRIBED = "AlreadySubscribed"
+
+
 class AlreadySubscribedData(BaseModel):
     detail: str
+
+    # fmt: off
     TYPE: Annotated[Final[AlreadySubscribedType], pydantic.Field(alias="type")] = AlreadySubscribedType.ALREADY_SUBSCRIBED # type: ignore
-    
+    # fmt: on
 
 
 class AlreadySubscribed(Exception):
@@ -25,4 +29,3 @@ class AlreadySubscribed(Exception):
 
     def __str__(self) -> str:
         return utils.marshal_json(self.data, AlreadySubscribedData)
-

@@ -7,18 +7,18 @@ from polar_sdk._hooks import HookContext
 from polar_sdk.types import BaseModel, OptionalNullable, UNSET
 from typing import Any, Dict, List, Optional, Union, cast
 
+
 class PolarAdvertisements(BaseSDK):
-    
-    
     def list(
-        self, *,
+        self,
+        *,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.UserAdvertisementSortProperty]] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.UsersAdvertisementsListResponse:
+    ) -> Optional[models.UsersAdvertisementsListResponse]:
         r"""List Advertisements
 
         List advertisement campaigns.
@@ -34,16 +34,16 @@ class PolarAdvertisements(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.UsersAdvertisementsListRequest(
             page=page,
             limit=limit,
             sorting=sorting,
         )
-        
+
         req = self.build_request(
             method="GET",
             path="/v1/users/advertisements/",
@@ -58,33 +58,31 @@ class PolarAdvertisements(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:advertisements:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="users:advertisements:list",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         def next_func() -> Optional[models.UsersAdvertisementsListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
-            
+
             num_pages = JSONPath("$.pagination.max_page").parse(body)
             if len(num_pages) == 0 or num_pages[0] <= page:
                 return None
@@ -104,30 +102,42 @@ class PolarAdvertisements(BaseSDK):
                 sorting=sorting,
                 retries=retries,
             )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.UsersAdvertisementsListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceUserAdvertisementCampaign]), next=next_func)
+            return models.UsersAdvertisementsListResponse(
+                result=utils.unmarshal_json(
+                    http_res.text,
+                    Optional[models.ListResourceUserAdvertisementCampaign],
+                ),
+                next=next_func,
+            )
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def list_async(
-        self, *,
+        self,
+        *,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.UserAdvertisementSortProperty]] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.UsersAdvertisementsListResponse:
+    ) -> Optional[models.UsersAdvertisementsListResponse]:
         r"""List Advertisements
 
         List advertisement campaigns.
@@ -143,17 +153,17 @@ class PolarAdvertisements(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.UsersAdvertisementsListRequest(
             page=page,
             limit=limit,
             sorting=sorting,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/v1/users/advertisements/",
             base_url=base_url,
@@ -167,33 +177,31 @@ class PolarAdvertisements(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:advertisements:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="users:advertisements:list",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         def next_func() -> Optional[models.UsersAdvertisementsListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
-            
+
             num_pages = JSONPath("$.pagination.max_page").parse(body)
             if len(num_pages) == 0 or num_pages[0] <= page:
                 return None
@@ -213,24 +221,39 @@ class PolarAdvertisements(BaseSDK):
                 sorting=sorting,
                 retries=retries,
             )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.UsersAdvertisementsListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceUserAdvertisementCampaign]), next=next_func)
+            return models.UsersAdvertisementsListResponse(
+                result=utils.unmarshal_json(
+                    http_res.text,
+                    Optional[models.ListResourceUserAdvertisementCampaign],
+                ),
+                next=next_func,
+            )
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def create(
-        self, *,
-        request: Union[models.UserAdvertisementCampaignCreate, models.UserAdvertisementCampaignCreateTypedDict],
+        self,
+        *,
+        request: Union[
+            models.UserAdvertisementCampaignCreate,
+            models.UserAdvertisementCampaignCreateTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -248,14 +271,14 @@ class PolarAdvertisements(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.UserAdvertisementCampaignCreate)
         request = cast(models.UserAdvertisementCampaignCreate, request)
-        
+
         req = self.build_request(
             method="POST",
             path="/v1/users/advertisements/",
@@ -268,48 +291,59 @@ class PolarAdvertisements(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.UserAdvertisementCampaignCreate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request, False, False, "json", models.UserAdvertisementCampaignCreate
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:advertisements:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="users:advertisements:create",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.UserAdvertisementCampaign])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.UserAdvertisementCampaign]
+            )
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def create_async(
-        self, *,
-        request: Union[models.UserAdvertisementCampaignCreate, models.UserAdvertisementCampaignCreateTypedDict],
+        self,
+        *,
+        request: Union[
+            models.UserAdvertisementCampaignCreate,
+            models.UserAdvertisementCampaignCreateTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -327,15 +361,15 @@ class PolarAdvertisements(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.UserAdvertisementCampaignCreate)
         request = cast(models.UserAdvertisementCampaignCreate, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="POST",
             path="/v1/users/advertisements/",
             base_url=base_url,
@@ -347,47 +381,55 @@ class PolarAdvertisements(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.UserAdvertisementCampaignCreate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request, False, False, "json", models.UserAdvertisementCampaignCreate
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:advertisements:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="users:advertisements:create",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.UserAdvertisementCampaign])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.UserAdvertisementCampaign]
+            )
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def get(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -406,14 +448,14 @@ class PolarAdvertisements(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.UsersAdvertisementsGetRequest(
             id=id,
         )
-        
+
         req = self.build_request(
             method="GET",
             path="/v1/users/advertisements/{id}",
@@ -428,47 +470,53 @@ class PolarAdvertisements(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:advertisements:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="users:advertisements:get",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.UserAdvertisementCampaign])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.UserAdvertisementCampaign]
+            )
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def get_async(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -487,15 +535,15 @@ class PolarAdvertisements(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.UsersAdvertisementsGetRequest(
             id=id,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/v1/users/advertisements/{id}",
             base_url=base_url,
@@ -509,49 +557,58 @@ class PolarAdvertisements(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:advertisements:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="users:advertisements:get",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.UserAdvertisementCampaign])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.UserAdvertisementCampaign]
+            )
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def update(
-        self, *,
+        self,
+        *,
         id: str,
-        user_advertisement_campaign_update: Union[models.UserAdvertisementCampaignUpdate, models.UserAdvertisementCampaignUpdateTypedDict],
+        user_advertisement_campaign_update: Union[
+            models.UserAdvertisementCampaignUpdate,
+            models.UserAdvertisementCampaignUpdateTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -561,7 +618,7 @@ class PolarAdvertisements(BaseSDK):
         Update an advertisement campaign.
 
         :param id: The advertisement campaign ID.
-        :param user_advertisement_campaign_update: 
+        :param user_advertisement_campaign_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -570,15 +627,18 @@ class PolarAdvertisements(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.UsersAdvertisementsUpdateRequest(
             id=id,
-            user_advertisement_campaign_update=utils.get_pydantic_model(user_advertisement_campaign_update, models.UserAdvertisementCampaignUpdate),
+            user_advertisement_campaign_update=utils.get_pydantic_model(
+                user_advertisement_campaign_update,
+                models.UserAdvertisementCampaignUpdate,
+            ),
         )
-        
+
         req = self.build_request(
             method="PATCH",
             path="/v1/users/advertisements/{id}",
@@ -591,52 +651,67 @@ class PolarAdvertisements(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.user_advertisement_campaign_update, False, False, "json", models.UserAdvertisementCampaignUpdate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.user_advertisement_campaign_update,
+                False,
+                False,
+                "json",
+                models.UserAdvertisementCampaignUpdate,
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:advertisements:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="users:advertisements:update",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.UserAdvertisementCampaign])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.UserAdvertisementCampaign]
+            )
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def update_async(
-        self, *,
+        self,
+        *,
         id: str,
-        user_advertisement_campaign_update: Union[models.UserAdvertisementCampaignUpdate, models.UserAdvertisementCampaignUpdateTypedDict],
+        user_advertisement_campaign_update: Union[
+            models.UserAdvertisementCampaignUpdate,
+            models.UserAdvertisementCampaignUpdateTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -646,7 +721,7 @@ class PolarAdvertisements(BaseSDK):
         Update an advertisement campaign.
 
         :param id: The advertisement campaign ID.
-        :param user_advertisement_campaign_update: 
+        :param user_advertisement_campaign_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -655,16 +730,19 @@ class PolarAdvertisements(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.UsersAdvertisementsUpdateRequest(
             id=id,
-            user_advertisement_campaign_update=utils.get_pydantic_model(user_advertisement_campaign_update, models.UserAdvertisementCampaignUpdate),
+            user_advertisement_campaign_update=utils.get_pydantic_model(
+                user_advertisement_campaign_update,
+                models.UserAdvertisementCampaignUpdate,
+            ),
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="PATCH",
             path="/v1/users/advertisements/{id}",
             base_url=base_url,
@@ -676,50 +754,62 @@ class PolarAdvertisements(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.user_advertisement_campaign_update, False, False, "json", models.UserAdvertisementCampaignUpdate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.user_advertisement_campaign_update,
+                False,
+                False,
+                "json",
+                models.UserAdvertisementCampaignUpdate,
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:advertisements:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="users:advertisements:update",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.UserAdvertisementCampaign])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.UserAdvertisementCampaign]
+            )
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def delete(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -740,14 +830,14 @@ class PolarAdvertisements(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.UsersAdvertisementsDeleteRequest(
             id=id,
         )
-        
+
         req = self.build_request(
             method="DELETE",
             path="/v1/users/advertisements/{id}",
@@ -762,28 +852,26 @@ class PolarAdvertisements(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:advertisements:delete", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="users:advertisements:delete",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[Any])
@@ -795,16 +883,22 @@ class PolarAdvertisements(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def delete_async(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -825,15 +919,15 @@ class PolarAdvertisements(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.UsersAdvertisementsDeleteRequest(
             id=id,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="DELETE",
             path="/v1/users/advertisements/{id}",
             base_url=base_url,
@@ -847,28 +941,26 @@ class PolarAdvertisements(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:advertisements:delete", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="users:advertisements:delete",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[Any])
@@ -880,18 +972,27 @@ class PolarAdvertisements(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def enable(
-        self, *,
+        self,
+        *,
         id: str,
-        user_advertisement_campaign_enable: Union[models.UserAdvertisementCampaignEnable, models.UserAdvertisementCampaignEnableTypedDict],
+        user_advertisement_campaign_enable: Union[
+            models.UserAdvertisementCampaignEnable,
+            models.UserAdvertisementCampaignEnableTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -901,7 +1002,7 @@ class PolarAdvertisements(BaseSDK):
         Enable an advertisement campaign on a granted benefit.
 
         :param id: The advertisement campaign ID.
-        :param user_advertisement_campaign_enable: 
+        :param user_advertisement_campaign_enable:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -910,15 +1011,18 @@ class PolarAdvertisements(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.UsersAdvertisementsEnableRequest(
             id=id,
-            user_advertisement_campaign_enable=utils.get_pydantic_model(user_advertisement_campaign_enable, models.UserAdvertisementCampaignEnable),
+            user_advertisement_campaign_enable=utils.get_pydantic_model(
+                user_advertisement_campaign_enable,
+                models.UserAdvertisementCampaignEnable,
+            ),
         )
-        
+
         req = self.build_request(
             method="POST",
             path="/v1/users/advertisements/{id}/enable",
@@ -931,31 +1035,35 @@ class PolarAdvertisements(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.user_advertisement_campaign_enable, False, False, "json", models.UserAdvertisementCampaignEnable),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.user_advertisement_campaign_enable,
+                False,
+                False,
+                "json",
+                models.UserAdvertisementCampaignEnable,
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="users:advertisements:enable", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="users:advertisements:enable",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "204", "*"):
             return
@@ -965,18 +1073,27 @@ class PolarAdvertisements(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def enable_async(
-        self, *,
+        self,
+        *,
         id: str,
-        user_advertisement_campaign_enable: Union[models.UserAdvertisementCampaignEnable, models.UserAdvertisementCampaignEnableTypedDict],
+        user_advertisement_campaign_enable: Union[
+            models.UserAdvertisementCampaignEnable,
+            models.UserAdvertisementCampaignEnableTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -986,7 +1103,7 @@ class PolarAdvertisements(BaseSDK):
         Enable an advertisement campaign on a granted benefit.
 
         :param id: The advertisement campaign ID.
-        :param user_advertisement_campaign_enable: 
+        :param user_advertisement_campaign_enable:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -995,16 +1112,19 @@ class PolarAdvertisements(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.UsersAdvertisementsEnableRequest(
             id=id,
-            user_advertisement_campaign_enable=utils.get_pydantic_model(user_advertisement_campaign_enable, models.UserAdvertisementCampaignEnable),
+            user_advertisement_campaign_enable=utils.get_pydantic_model(
+                user_advertisement_campaign_enable,
+                models.UserAdvertisementCampaignEnable,
+            ),
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="POST",
             path="/v1/users/advertisements/{id}/enable",
             base_url=base_url,
@@ -1016,31 +1136,35 @@ class PolarAdvertisements(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.user_advertisement_campaign_enable, False, False, "json", models.UserAdvertisementCampaignEnable),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.user_advertisement_campaign_enable,
+                False,
+                False,
+                "json",
+                models.UserAdvertisementCampaignEnable,
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="users:advertisements:enable", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="users:advertisements:enable",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "204", "*"):
             return
@@ -1050,10 +1174,15 @@ class PolarAdvertisements(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )

@@ -7,16 +7,16 @@ from typing import TypedDict
 
 class BenefitDiscordCreatePropertiesTypedDict(TypedDict):
     r"""Properties to create a benefit of type `discord`."""
-    
+
     guild_token: str
     role_id: str
     r"""The ID of the Discord role to grant."""
-    
+
 
 class BenefitDiscordCreateProperties(BaseModel):
     r"""Properties to create a benefit of type `discord`."""
-    
+
     guild_token: str
+
     role_id: str
     r"""The ID of the Discord role to grant."""
-    

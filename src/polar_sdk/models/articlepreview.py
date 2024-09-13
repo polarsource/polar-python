@@ -8,9 +8,8 @@ from typing import TypedDict
 class ArticlePreviewTypedDict(TypedDict):
     email: str
     r"""Email address to send the preview to. The user must be registered on Polar."""
-    
+
 
 class ArticlePreview(BaseModel):
     email: str
     r"""Email address to send the preview to. The user must be registered on Polar."""
-    

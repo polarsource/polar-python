@@ -9,10 +9,11 @@ class ArticleReceiversTypedDict(TypedDict):
     free_subscribers: int
     premium_subscribers: int
     organization_members: int
-    
+
 
 class ArticleReceivers(BaseModel):
     free_subscribers: int
+
     premium_subscribers: int
+
     organization_members: int
-    

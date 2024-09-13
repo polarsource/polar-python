@@ -7,12 +7,11 @@ from typing import TypedDict
 
 class SubscriptionsImportedTypedDict(TypedDict):
     r"""Result of a subscription import operation."""
-    
+
     count: int
-    
+
 
 class SubscriptionsImported(BaseModel):
     r"""Result of a subscription import operation."""
-    
+
     count: int
-    

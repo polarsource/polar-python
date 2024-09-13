@@ -7,23 +7,43 @@ from polar_sdk._hooks import HookContext
 from polar_sdk.types import OptionalNullable, UNSET
 from typing import Any, Dict, List, Optional, Union
 
+
 class Repositories(BaseSDK):
-    
-    
     def list(
-        self, *,
-        platform: OptionalNullable[Union[models.QueryParamPlatformFilter, models.QueryParamPlatformFilterTypedDict]] = UNSET,
-        name: OptionalNullable[Union[models.QueryParamRepositoryNameFilter, models.QueryParamRepositoryNameFilterTypedDict]] = UNSET,
-        external_organization_name: OptionalNullable[Union[models.ExternalOrganizationNameFilter, models.ExternalOrganizationNameFilterTypedDict]] = UNSET,
+        self,
+        *,
+        platform: OptionalNullable[
+            Union[
+                models.QueryParamPlatformFilter,
+                models.QueryParamPlatformFilterTypedDict,
+            ]
+        ] = UNSET,
+        name: OptionalNullable[
+            Union[
+                models.QueryParamRepositoryNameFilter,
+                models.QueryParamRepositoryNameFilterTypedDict,
+            ]
+        ] = UNSET,
+        external_organization_name: OptionalNullable[
+            Union[
+                models.ExternalOrganizationNameFilter,
+                models.ExternalOrganizationNameFilterTypedDict,
+            ]
+        ] = UNSET,
         is_private: OptionalNullable[bool] = UNSET,
-        organization_id: OptionalNullable[Union[models.RepositoriesListQueryParamOrganizationIDFilter, models.RepositoriesListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
+        organization_id: OptionalNullable[
+            Union[
+                models.RepositoriesListQueryParamOrganizationIDFilter,
+                models.RepositoriesListQueryParamOrganizationIDFilterTypedDict,
+            ]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.RepositorySortProperty]] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.RepositoriesListResponse:
+    ) -> Optional[models.RepositoriesListResponse]:
         r"""List Repositories
 
         List repositories.
@@ -44,10 +64,10 @@ class Repositories(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.RepositoriesListRequest(
             platform=platform,
             name=name,
@@ -58,7 +78,7 @@ class Repositories(BaseSDK):
             limit=limit,
             sorting=sorting,
         )
-        
+
         req = self.build_request(
             method="GET",
             path="/v1/repositories/",
@@ -73,33 +93,31 @@ class Repositories(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="repositories:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="repositories:list",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         def next_func() -> Optional[models.RepositoriesListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
-            
+
             num_pages = JSONPath("$.pagination.max_page").parse(body)
             if len(num_pages) == 0 or num_pages[0] <= page:
                 return None
@@ -124,35 +142,66 @@ class Repositories(BaseSDK):
                 sorting=sorting,
                 retries=retries,
             )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.RepositoriesListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceRepository]), next=next_func)
+            return models.RepositoriesListResponse(
+                result=utils.unmarshal_json(
+                    http_res.text, Optional[models.ListResourceRepository]
+                ),
+                next=next_func,
+            )
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def list_async(
-        self, *,
-        platform: OptionalNullable[Union[models.QueryParamPlatformFilter, models.QueryParamPlatformFilterTypedDict]] = UNSET,
-        name: OptionalNullable[Union[models.QueryParamRepositoryNameFilter, models.QueryParamRepositoryNameFilterTypedDict]] = UNSET,
-        external_organization_name: OptionalNullable[Union[models.ExternalOrganizationNameFilter, models.ExternalOrganizationNameFilterTypedDict]] = UNSET,
+        self,
+        *,
+        platform: OptionalNullable[
+            Union[
+                models.QueryParamPlatformFilter,
+                models.QueryParamPlatformFilterTypedDict,
+            ]
+        ] = UNSET,
+        name: OptionalNullable[
+            Union[
+                models.QueryParamRepositoryNameFilter,
+                models.QueryParamRepositoryNameFilterTypedDict,
+            ]
+        ] = UNSET,
+        external_organization_name: OptionalNullable[
+            Union[
+                models.ExternalOrganizationNameFilter,
+                models.ExternalOrganizationNameFilterTypedDict,
+            ]
+        ] = UNSET,
         is_private: OptionalNullable[bool] = UNSET,
-        organization_id: OptionalNullable[Union[models.RepositoriesListQueryParamOrganizationIDFilter, models.RepositoriesListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
+        organization_id: OptionalNullable[
+            Union[
+                models.RepositoriesListQueryParamOrganizationIDFilter,
+                models.RepositoriesListQueryParamOrganizationIDFilterTypedDict,
+            ]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.RepositorySortProperty]] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.RepositoriesListResponse:
+    ) -> Optional[models.RepositoriesListResponse]:
         r"""List Repositories
 
         List repositories.
@@ -173,10 +222,10 @@ class Repositories(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.RepositoriesListRequest(
             platform=platform,
             name=name,
@@ -187,8 +236,8 @@ class Repositories(BaseSDK):
             limit=limit,
             sorting=sorting,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/v1/repositories/",
             base_url=base_url,
@@ -202,33 +251,31 @@ class Repositories(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="repositories:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="repositories:list",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         def next_func() -> Optional[models.RepositoriesListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
-            
+
             num_pages = JSONPath("$.pagination.max_page").parse(body)
             if len(num_pages) == 0 or num_pages[0] <= page:
                 return None
@@ -253,23 +300,34 @@ class Repositories(BaseSDK):
                 sorting=sorting,
                 retries=retries,
             )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.RepositoriesListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceRepository]), next=next_func)
+            return models.RepositoriesListResponse(
+                result=utils.unmarshal_json(
+                    http_res.text, Optional[models.ListResourceRepository]
+                ),
+                next=next_func,
+            )
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def get(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -279,7 +337,7 @@ class Repositories(BaseSDK):
 
         Get a repository by ID.
 
-        :param id: 
+        :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -288,14 +346,14 @@ class Repositories(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.RepositoriesGetRequest(
             id=id,
         )
-        
+
         req = self.build_request(
             method="GET",
             path="/v1/repositories/{id}",
@@ -310,47 +368,53 @@ class Repositories(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="repositories:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="repositories:get",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.RepositoryOutput])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.RepositoryOutput]
+            )
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def get_async(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -360,7 +424,7 @@ class Repositories(BaseSDK):
 
         Get a repository by ID.
 
-        :param id: 
+        :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -369,15 +433,15 @@ class Repositories(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.RepositoriesGetRequest(
             id=id,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/v1/repositories/{id}",
             base_url=base_url,
@@ -391,49 +455,57 @@ class Repositories(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="repositories:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="repositories:get",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.RepositoryOutput])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.RepositoryOutput]
+            )
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def update(
-        self, *,
+        self,
+        *,
         id: str,
-        repository_update: Union[models.RepositoryUpdate, models.RepositoryUpdateTypedDict],
+        repository_update: Union[
+            models.RepositoryUpdate, models.RepositoryUpdateTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -442,8 +514,8 @@ class Repositories(BaseSDK):
 
         Update a repository.
 
-        :param id: 
-        :param repository_update: 
+        :param id:
+        :param repository_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -452,15 +524,17 @@ class Repositories(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.RepositoriesUpdateRequest(
             id=id,
-            repository_update=utils.get_pydantic_model(repository_update, models.RepositoryUpdate),
+            repository_update=utils.get_pydantic_model(
+                repository_update, models.RepositoryUpdate
+            ),
         )
-        
+
         req = self.build_request(
             method="PATCH",
             path="/v1/repositories/{id}",
@@ -473,34 +547,36 @@ class Repositories(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.repository_update, False, False, "json", models.RepositoryUpdate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.repository_update, False, False, "json", models.RepositoryUpdate
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="repositories:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="repositories:update",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.RepositoryOutput])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.RepositoryOutput]
+            )
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)
@@ -510,18 +586,26 @@ class Repositories(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def update_async(
-        self, *,
+        self,
+        *,
         id: str,
-        repository_update: Union[models.RepositoryUpdate, models.RepositoryUpdateTypedDict],
+        repository_update: Union[
+            models.RepositoryUpdate, models.RepositoryUpdateTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -530,8 +614,8 @@ class Repositories(BaseSDK):
 
         Update a repository.
 
-        :param id: 
-        :param repository_update: 
+        :param id:
+        :param repository_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -540,16 +624,18 @@ class Repositories(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.RepositoriesUpdateRequest(
             id=id,
-            repository_update=utils.get_pydantic_model(repository_update, models.RepositoryUpdate),
+            repository_update=utils.get_pydantic_model(
+                repository_update, models.RepositoryUpdate
+            ),
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="PATCH",
             path="/v1/repositories/{id}",
             base_url=base_url,
@@ -561,34 +647,36 @@ class Repositories(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.repository_update, False, False, "json", models.RepositoryUpdate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.repository_update, False, False, "json", models.RepositoryUpdate
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="repositories:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="repositories:update",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.RepositoryOutput])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.RepositoryOutput]
+            )
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)
@@ -598,10 +686,15 @@ class Repositories(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )

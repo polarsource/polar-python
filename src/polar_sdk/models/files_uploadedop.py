@@ -3,10 +3,21 @@
 from __future__ import annotations
 from .downloadablefileread import DownloadableFileRead, DownloadableFileReadTypedDict
 from .fileuploadcompleted import FileUploadCompleted, FileUploadCompletedTypedDict
-from .organizationavatarfileread import OrganizationAvatarFileRead, OrganizationAvatarFileReadTypedDict
-from .productmediafileread_output import ProductMediaFileReadOutput, ProductMediaFileReadOutputTypedDict
+from .organizationavatarfileread import (
+    OrganizationAvatarFileRead,
+    OrganizationAvatarFileReadTypedDict,
+)
+from .productmediafileread_output import (
+    ProductMediaFileReadOutput,
+    ProductMediaFileReadOutputTypedDict,
+)
 from polar_sdk.types import BaseModel
-from polar_sdk.utils import FieldMetadata, PathParamMetadata, RequestMetadata, get_discriminator
+from polar_sdk.utils import (
+    FieldMetadata,
+    PathParamMetadata,
+    RequestMetadata,
+    get_discriminator,
+)
 from pydantic import Discriminator, Tag
 from typing import TypedDict, Union
 from typing_extensions import Annotated
@@ -16,18 +27,34 @@ class FilesUploadedRequestTypedDict(TypedDict):
     id: str
     r"""The file ID."""
     file_upload_completed: FileUploadCompletedTypedDict
-    
+
 
 class FilesUploadedRequest(BaseModel):
-    id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The file ID."""
-    file_upload_completed: Annotated[FileUploadCompleted, FieldMetadata(request=RequestMetadata(media_type="application/json"))]
-    
 
-FilesUploadedResponseFilesUploadedTypedDict = Union[DownloadableFileReadTypedDict, ProductMediaFileReadOutputTypedDict, OrganizationAvatarFileReadTypedDict]
+    file_upload_completed: Annotated[
+        FileUploadCompleted,
+        FieldMetadata(request=RequestMetadata(media_type="application/json")),
+    ]
+
+
+FilesUploadedResponseFilesUploadedTypedDict = Union[
+    DownloadableFileReadTypedDict,
+    ProductMediaFileReadOutputTypedDict,
+    OrganizationAvatarFileReadTypedDict,
+]
 r"""Successful Response"""
 
 
-FilesUploadedResponseFilesUploaded = Annotated[Union[Annotated[DownloadableFileRead, Tag("downloadable")], Annotated[ProductMediaFileReadOutput, Tag("product_media")], Annotated[OrganizationAvatarFileRead, Tag("organization_avatar")]], Discriminator(lambda m: get_discriminator(m, "service", "service"))]
+FilesUploadedResponseFilesUploaded = Annotated[
+    Union[
+        Annotated[DownloadableFileRead, Tag("downloadable")],
+        Annotated[ProductMediaFileReadOutput, Tag("product_media")],
+        Annotated[OrganizationAvatarFileRead, Tag("organization_avatar")],
+    ],
+    Discriminator(lambda m: get_discriminator(m, "service", "service")),
+]
 r"""Successful Response"""
-

@@ -9,11 +9,11 @@ from typing_extensions import NotRequired
 
 class ConditionsTypedDict(TypedDict):
     pass
-    
+
 
 class Conditions(BaseModel):
     pass
-    
+
 
 class LicenseKeyValidateTypedDict(TypedDict):
     key: str
@@ -23,20 +23,32 @@ class LicenseKeyValidateTypedDict(TypedDict):
     user_id: NotRequired[Nullable[str]]
     increment_usage: NotRequired[Nullable[int]]
     conditions: NotRequired[ConditionsTypedDict]
-    
+
 
 class LicenseKeyValidate(BaseModel):
     key: str
+
     organization_id: str
+
     activation_id: OptionalNullable[str] = UNSET
+
     benefit_id: OptionalNullable[str] = UNSET
+
     user_id: OptionalNullable[str] = UNSET
+
     increment_usage: OptionalNullable[int] = UNSET
+
     conditions: Optional[Conditions] = None
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["activation_id", "benefit_id", "user_id", "increment_usage", "conditions"]
+        optional_fields = [
+            "activation_id",
+            "benefit_id",
+            "user_id",
+            "increment_usage",
+            "conditions",
+        ]
         nullable_fields = ["activation_id", "benefit_id", "user_id", "increment_usage"]
         null_default_fields = []
 
@@ -47,9 +59,13 @@ class LicenseKeyValidate(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -59,4 +75,3 @@ class LicenseKeyValidate(BaseModel):
                 m[k] = val
 
         return m
-        

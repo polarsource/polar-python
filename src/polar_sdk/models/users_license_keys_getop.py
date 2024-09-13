@@ -9,8 +9,9 @@ from typing_extensions import Annotated
 
 class UsersLicenseKeysGetRequestTypedDict(TypedDict):
     id: str
-    
+
 
 class UsersLicenseKeysGetRequest(BaseModel):
-    id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
-    
+    id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]

@@ -14,12 +14,13 @@ from typing_extensions import Annotated
 class BenefitAdsType(str, Enum):
     ADS = "ads"
 
+
 class BenefitAdsTypedDict(TypedDict):
     r"""A benefit of type `ads`.
 
     Use it so your backers can display ads on your README, website, etc.
     """
-    
+
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
@@ -36,32 +37,42 @@ class BenefitAdsTypedDict(TypedDict):
     r"""The ID of the organization owning the benefit."""
     properties: BenefitAdsPropertiesTypedDict
     r"""Properties for a benefit of type `ads`."""
-    
+
 
 class BenefitAds(BaseModel):
     r"""A benefit of type `ads`.
 
     Use it so your backers can display ads on your README, website, etc.
     """
-    
+
     created_at: datetime
     r"""Creation timestamp of the object."""
+
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
+
     id: str
     r"""The ID of the benefit."""
+
     description: str
     r"""The description of the benefit."""
+
     selectable: bool
     r"""Whether the benefit is selectable when creating a product."""
+
     deletable: bool
     r"""Whether the benefit is deletable."""
+
     organization_id: str
     r"""The ID of the organization owning the benefit."""
+
     properties: BenefitAdsProperties
     r"""Properties for a benefit of type `ads`."""
+
+    # fmt: off
     TYPE: Annotated[Final[BenefitAdsType], pydantic.Field(alias="type")] = BenefitAdsType.ADS # type: ignore
-    
+    # fmt: on
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
@@ -75,9 +86,13 @@ class BenefitAds(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -87,4 +102,3 @@ class BenefitAds(BaseModel):
                 m[k] = val
 
         return m
-        

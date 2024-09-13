@@ -7,14 +7,23 @@ from polar_sdk._hooks import HookContext
 from polar_sdk.types import BaseModel, OptionalNullable, UNSET
 from typing import Any, Dict, Optional, Union, cast
 
+
 class Articles(BaseSDK):
-    
-    
     def list(
-        self, *,
-        organization_id: OptionalNullable[Union[models.ArticlesListQueryParamOrganizationIDFilter, models.ArticlesListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
+        self,
+        *,
+        organization_id: OptionalNullable[
+            Union[
+                models.ArticlesListQueryParamOrganizationIDFilter,
+                models.ArticlesListQueryParamOrganizationIDFilterTypedDict,
+            ]
+        ] = UNSET,
         slug: OptionalNullable[str] = UNSET,
-        visibility: OptionalNullable[Union[models.ArticleVisibilityFilter, models.ArticleVisibilityFilterTypedDict]] = UNSET,
+        visibility: OptionalNullable[
+            Union[
+                models.ArticleVisibilityFilter, models.ArticleVisibilityFilterTypedDict
+            ]
+        ] = UNSET,
         is_subscribed: OptionalNullable[bool] = UNSET,
         is_published: OptionalNullable[bool] = UNSET,
         is_pinned: OptionalNullable[bool] = UNSET,
@@ -23,7 +32,7 @@ class Articles(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.ArticlesListResponse:
+    ) -> Optional[models.ArticlesListResponse]:
         r"""List Articles
 
         List articles.
@@ -44,10 +53,10 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ArticlesListRequest(
             organization_id=organization_id,
             slug=slug,
@@ -58,7 +67,7 @@ class Articles(BaseSDK):
             page=page,
             limit=limit,
         )
-        
+
         req = self.build_request(
             method="GET",
             path="/v1/articles/",
@@ -73,33 +82,31 @@ class Articles(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:list",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         def next_func() -> Optional[models.ArticlesListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
-            
+
             num_pages = JSONPath("$.pagination.max_page").parse(body)
             if len(num_pages) == 0 or num_pages[0] <= page:
                 return None
@@ -124,26 +131,46 @@ class Articles(BaseSDK):
                 limit=limit,
                 retries=retries,
             )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.ArticlesListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceArticle]), next=next_func)
+            return models.ArticlesListResponse(
+                result=utils.unmarshal_json(
+                    http_res.text, Optional[models.ListResourceArticle]
+                ),
+                next=next_func,
+            )
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def list_async(
-        self, *,
-        organization_id: OptionalNullable[Union[models.ArticlesListQueryParamOrganizationIDFilter, models.ArticlesListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
+        self,
+        *,
+        organization_id: OptionalNullable[
+            Union[
+                models.ArticlesListQueryParamOrganizationIDFilter,
+                models.ArticlesListQueryParamOrganizationIDFilterTypedDict,
+            ]
+        ] = UNSET,
         slug: OptionalNullable[str] = UNSET,
-        visibility: OptionalNullable[Union[models.ArticleVisibilityFilter, models.ArticleVisibilityFilterTypedDict]] = UNSET,
+        visibility: OptionalNullable[
+            Union[
+                models.ArticleVisibilityFilter, models.ArticleVisibilityFilterTypedDict
+            ]
+        ] = UNSET,
         is_subscribed: OptionalNullable[bool] = UNSET,
         is_published: OptionalNullable[bool] = UNSET,
         is_pinned: OptionalNullable[bool] = UNSET,
@@ -152,7 +179,7 @@ class Articles(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.ArticlesListResponse:
+    ) -> Optional[models.ArticlesListResponse]:
         r"""List Articles
 
         List articles.
@@ -173,10 +200,10 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ArticlesListRequest(
             organization_id=organization_id,
             slug=slug,
@@ -187,8 +214,8 @@ class Articles(BaseSDK):
             page=page,
             limit=limit,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/v1/articles/",
             base_url=base_url,
@@ -202,33 +229,31 @@ class Articles(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:list",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         def next_func() -> Optional[models.ArticlesListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
-            
+
             num_pages = JSONPath("$.pagination.max_page").parse(body)
             if len(num_pages) == 0 or num_pages[0] <= page:
                 return None
@@ -253,23 +278,34 @@ class Articles(BaseSDK):
                 limit=limit,
                 retries=retries,
             )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.ArticlesListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceArticle]), next=next_func)
+            return models.ArticlesListResponse(
+                result=utils.unmarshal_json(
+                    http_res.text, Optional[models.ListResourceArticle]
+                ),
+                next=next_func,
+            )
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def create(
-        self, *,
+        self,
+        *,
         request: Union[models.ArticleCreate, models.ArticleCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -288,14 +324,14 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.ArticleCreate)
         request = cast(models.ArticleCreate, request)
-        
+
         req = self.build_request(
             method="POST",
             path="/v1/articles/",
@@ -308,47 +344,53 @@ class Articles(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.ArticleCreate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request, False, False, "json", models.ArticleCreate
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:create",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.Article])
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def create_async(
-        self, *,
+        self,
+        *,
         request: Union[models.ArticleCreate, models.ArticleCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -367,15 +409,15 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.ArticleCreate)
         request = cast(models.ArticleCreate, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="POST",
             path="/v1/articles/",
             base_url=base_url,
@@ -387,47 +429,53 @@ class Articles(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.ArticleCreate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request, False, False, "json", models.ArticleCreate
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:create",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.Article])
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def get(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -437,7 +485,7 @@ class Articles(BaseSDK):
 
         Get an article by ID.
 
-        :param id: 
+        :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -446,14 +494,14 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ArticlesGetRequest(
             id=id,
         )
-        
+
         req = self.build_request(
             method="GET",
             path="/v1/articles/{id}",
@@ -468,28 +516,26 @@ class Articles(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:get",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.Article])
@@ -499,16 +545,22 @@ class Articles(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def get_async(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -518,7 +570,7 @@ class Articles(BaseSDK):
 
         Get an article by ID.
 
-        :param id: 
+        :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -527,15 +579,15 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ArticlesGetRequest(
             id=id,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/v1/articles/{id}",
             base_url=base_url,
@@ -549,28 +601,26 @@ class Articles(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:get",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.Article])
@@ -580,16 +630,22 @@ class Articles(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def update(
-        self, *,
+        self,
+        *,
         id: str,
         article_update: Union[models.ArticleUpdate, models.ArticleUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -600,8 +656,8 @@ class Articles(BaseSDK):
 
         Update an article.
 
-        :param id: 
-        :param article_update: 
+        :param id:
+        :param article_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -610,15 +666,17 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ArticlesUpdateRequest(
             id=id,
-            article_update=utils.get_pydantic_model(article_update, models.ArticleUpdate),
+            article_update=utils.get_pydantic_model(
+                article_update, models.ArticleUpdate
+            ),
         )
-        
+
         req = self.build_request(
             method="PATCH",
             path="/v1/articles/{id}",
@@ -631,31 +689,31 @@ class Articles(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.article_update, False, False, "json", models.ArticleUpdate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.article_update, False, False, "json", models.ArticleUpdate
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:update",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.Article])
@@ -668,16 +726,22 @@ class Articles(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def update_async(
-        self, *,
+        self,
+        *,
         id: str,
         article_update: Union[models.ArticleUpdate, models.ArticleUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -688,8 +752,8 @@ class Articles(BaseSDK):
 
         Update an article.
 
-        :param id: 
-        :param article_update: 
+        :param id:
+        :param article_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -698,16 +762,18 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ArticlesUpdateRequest(
             id=id,
-            article_update=utils.get_pydantic_model(article_update, models.ArticleUpdate),
+            article_update=utils.get_pydantic_model(
+                article_update, models.ArticleUpdate
+            ),
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="PATCH",
             path="/v1/articles/{id}",
             base_url=base_url,
@@ -719,31 +785,31 @@ class Articles(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.article_update, False, False, "json", models.ArticleUpdate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.article_update, False, False, "json", models.ArticleUpdate
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:update",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.Article])
@@ -756,16 +822,22 @@ class Articles(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def delete(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -775,7 +847,7 @@ class Articles(BaseSDK):
 
         Delete an article.
 
-        :param id: 
+        :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -784,14 +856,14 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ArticlesDeleteRequest(
             id=id,
         )
-        
+
         req = self.build_request(
             method="DELETE",
             path="/v1/articles/{id}",
@@ -806,28 +878,26 @@ class Articles(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:delete", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:delete",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "204", "*"):
             return
@@ -840,16 +910,22 @@ class Articles(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def delete_async(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -859,7 +935,7 @@ class Articles(BaseSDK):
 
         Delete an article.
 
-        :param id: 
+        :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -868,15 +944,15 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ArticlesDeleteRequest(
             id=id,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="DELETE",
             path="/v1/articles/{id}",
             base_url=base_url,
@@ -890,28 +966,26 @@ class Articles(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:delete", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:delete",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "204", "*"):
             return
@@ -924,16 +998,22 @@ class Articles(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def receivers(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -943,7 +1023,7 @@ class Articles(BaseSDK):
 
         Get number of potential receivers for an article.
 
-        :param id: 
+        :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -952,14 +1032,14 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ArticlesReceiversRequest(
             id=id,
         )
-        
+
         req = self.build_request(
             method="GET",
             path="/v1/articles/{id}/receivers",
@@ -974,44 +1054,50 @@ class Articles(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:receivers", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:receivers",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.ArticleReceivers])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.ArticleReceivers]
+            )
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def receivers_async(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1021,7 +1107,7 @@ class Articles(BaseSDK):
 
         Get number of potential receivers for an article.
 
-        :param id: 
+        :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1030,15 +1116,15 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ArticlesReceiversRequest(
             id=id,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/v1/articles/{id}/receivers",
             base_url=base_url,
@@ -1052,44 +1138,50 @@ class Articles(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:receivers", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:receivers",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.ArticleReceivers])
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.ArticleReceivers]
+            )
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def preview(
-        self, *,
+        self,
+        *,
         id: str,
         article_preview: Union[models.ArticlePreview, models.ArticlePreviewTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -1100,8 +1192,8 @@ class Articles(BaseSDK):
 
         Send an article preview by email.
 
-        :param id: 
-        :param article_preview: 
+        :param id:
+        :param article_preview:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1110,15 +1202,17 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ArticlesPreviewRequest(
             id=id,
-            article_preview=utils.get_pydantic_model(article_preview, models.ArticlePreview),
+            article_preview=utils.get_pydantic_model(
+                article_preview, models.ArticlePreview
+            ),
         )
-        
+
         req = self.build_request(
             method="POST",
             path="/v1/articles/{id}/preview",
@@ -1131,31 +1225,31 @@ class Articles(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.article_preview, False, False, "json", models.ArticlePreview),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.article_preview, False, False, "json", models.ArticlePreview
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:preview", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:preview",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "202", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[Any])
@@ -1168,16 +1262,22 @@ class Articles(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def preview_async(
-        self, *,
+        self,
+        *,
         id: str,
         article_preview: Union[models.ArticlePreview, models.ArticlePreviewTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -1188,8 +1288,8 @@ class Articles(BaseSDK):
 
         Send an article preview by email.
 
-        :param id: 
-        :param article_preview: 
+        :param id:
+        :param article_preview:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1198,16 +1298,18 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ArticlesPreviewRequest(
             id=id,
-            article_preview=utils.get_pydantic_model(article_preview, models.ArticlePreview),
+            article_preview=utils.get_pydantic_model(
+                article_preview, models.ArticlePreview
+            ),
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="POST",
             path="/v1/articles/{id}/preview",
             base_url=base_url,
@@ -1219,31 +1321,31 @@ class Articles(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.article_preview, False, False, "json", models.ArticlePreview),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.article_preview, False, False, "json", models.ArticlePreview
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:preview", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:preview",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "202", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[Any])
@@ -1256,16 +1358,22 @@ class Articles(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def send(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1275,7 +1383,7 @@ class Articles(BaseSDK):
 
         Send an article by email to all subscribers.
 
-        :param id: 
+        :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1284,14 +1392,14 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ArticlesSendRequest(
             id=id,
         )
-        
+
         req = self.build_request(
             method="POST",
             path="/v1/articles/{id}/send",
@@ -1306,33 +1414,33 @@ class Articles(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="articles:send", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:send",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","403","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["400", "403", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "202", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[Any])
-        if utils.match_response(http_res, ["400","4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["400", "4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)
@@ -1342,14 +1450,18 @@ class Articles(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def send_async(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -1359,7 +1471,7 @@ class Articles(BaseSDK):
 
         Send an article by email to all subscribers.
 
-        :param id: 
+        :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1368,15 +1480,15 @@ class Articles(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ArticlesSendRequest(
             id=id,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="POST",
             path="/v1/articles/{id}/send",
             base_url=base_url,
@@ -1390,33 +1502,33 @@ class Articles(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="articles:send", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="articles:send",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","403","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["400", "403", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "202", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[Any])
-        if utils.match_response(http_res, ["400","4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["400", "4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)
@@ -1426,8 +1538,11 @@ class Articles(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
 
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )

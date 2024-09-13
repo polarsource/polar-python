@@ -10,11 +10,11 @@ class CurrencyAmountTypedDict(TypedDict):
     r"""Three letter currency code (eg: USD)"""
     amount: int
     r"""Amount in the currencies smallest unit (cents if currency is USD)"""
-    
+
 
 class CurrencyAmount(BaseModel):
     currency: str
     r"""Three letter currency code (eg: USD)"""
+
     amount: int
     r"""Amount in the currencies smallest unit (cents if currency is USD)"""
-    

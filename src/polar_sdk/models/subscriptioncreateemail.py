@@ -7,18 +7,18 @@ from typing import TypedDict
 
 class SubscriptionCreateEmailTypedDict(TypedDict):
     r"""Request schema for creating a subscription by email."""
-    
+
     email: str
     r"""The email address of the user."""
     product_id: str
     r"""The ID of the product. **Must be the free subscription tier**."""
-    
+
 
 class SubscriptionCreateEmail(BaseModel):
     r"""Request schema for creating a subscription by email."""
-    
+
     email: str
     r"""The email address of the user."""
+
     product_id: str
     r"""The ID of the product. **Must be the free subscription tier**."""
-    

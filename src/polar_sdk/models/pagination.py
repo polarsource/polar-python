@@ -8,9 +8,9 @@ from typing import TypedDict
 class PaginationTypedDict(TypedDict):
     total_count: int
     max_page: int
-    
+
 
 class Pagination(BaseModel):
     total_count: int
+
     max_page: int
-    

@@ -15,21 +15,43 @@ class RepositoryProfileSettingsUpdateTypedDict(TypedDict):
     featured_organizations: NotRequired[Nullable[List[str]]]
     highlighted_subscription_tiers: NotRequired[Nullable[List[str]]]
     links: NotRequired[Nullable[List[str]]]
-    
+
 
 class RepositoryProfileSettingsUpdate(BaseModel):
     set_description: OptionalNullable[bool] = UNSET
+
     description: OptionalNullable[str] = UNSET
+
     set_cover_image_url: OptionalNullable[bool] = UNSET
+
     cover_image_url: OptionalNullable[str] = UNSET
+
     featured_organizations: OptionalNullable[List[str]] = UNSET
+
     highlighted_subscription_tiers: OptionalNullable[List[str]] = UNSET
+
     links: OptionalNullable[List[str]] = UNSET
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["set_description", "description", "set_cover_image_url", "cover_image_url", "featured_organizations", "highlighted_subscription_tiers", "links"]
-        nullable_fields = ["set_description", "description", "set_cover_image_url", "cover_image_url", "featured_organizations", "highlighted_subscription_tiers", "links"]
+        optional_fields = [
+            "set_description",
+            "description",
+            "set_cover_image_url",
+            "cover_image_url",
+            "featured_organizations",
+            "highlighted_subscription_tiers",
+            "links",
+        ]
+        nullable_fields = [
+            "set_description",
+            "description",
+            "set_cover_image_url",
+            "cover_image_url",
+            "featured_organizations",
+            "highlighted_subscription_tiers",
+            "links",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -39,9 +61,13 @@ class RepositoryProfileSettingsUpdate(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -51,4 +77,3 @@ class RepositoryProfileSettingsUpdate(BaseModel):
                 m[k] = val
 
         return m
-        

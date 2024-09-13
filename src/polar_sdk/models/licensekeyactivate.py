@@ -8,19 +8,19 @@ from typing_extensions import NotRequired
 
 class LicenseKeyActivateConditionsTypedDict(TypedDict):
     pass
-    
+
 
 class LicenseKeyActivateConditions(BaseModel):
     pass
-    
+
 
 class LicenseKeyActivateMetaTypedDict(TypedDict):
     pass
-    
+
 
 class LicenseKeyActivateMeta(BaseModel):
     pass
-    
+
 
 class LicenseKeyActivateTypedDict(TypedDict):
     key: str
@@ -28,12 +28,15 @@ class LicenseKeyActivateTypedDict(TypedDict):
     label: str
     conditions: NotRequired[LicenseKeyActivateConditionsTypedDict]
     meta: NotRequired[LicenseKeyActivateMetaTypedDict]
-    
+
 
 class LicenseKeyActivate(BaseModel):
     key: str
+
     organization_id: str
+
     label: str
+
     conditions: Optional[LicenseKeyActivateConditions] = None
+
     meta: Optional[LicenseKeyActivateMeta] = None
-    

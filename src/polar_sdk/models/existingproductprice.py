@@ -10,15 +10,14 @@ class ExistingProductPriceTypedDict(TypedDict):
 
     Useful when updating a product if you want to keep an existing price.
     """
-    
+
     id: str
-    
+
 
 class ExistingProductPrice(BaseModel):
     r"""A price that already exists for this product.
 
     Useful when updating a product if you want to keep an existing price.
     """
-    
+
     id: str
-    

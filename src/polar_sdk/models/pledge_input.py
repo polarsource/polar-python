@@ -42,43 +42,72 @@ class PledgeInputTypedDict(TypedDict):
     r"""If the currently authenticated subject can perform admin actions on behalf of the receiver of the peldge"""
     created_by: NotRequired[Nullable[PledgerTypedDict]]
     r"""For pledges made by an organization, or on behalf of an organization. This is the user that made the pledge. Only visible for members of said organization."""
-    
+
 
 class PledgeInput(BaseModel):
     created_at: datetime
     r"""Creation timestamp of the object."""
+
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
+
     id: str
     r"""The ID of the object."""
+
     amount: int
     r"""Amount pledged towards the issue"""
+
     currency: str
+
     state: PledgeState
     r"""Current state of the pledge"""
+
     type: PledgeType
     r"""Type of pledge"""
+
     issue: IssueInput
     r"""The issue that the pledge was made towards"""
+
     refunded_at: OptionalNullable[datetime] = UNSET
     r"""If and when the pledge was refunded to the pledger"""
+
     scheduled_payout_at: OptionalNullable[datetime] = UNSET
     r"""When the payout is scheduled to be made to the maintainers behind the issue. Disputes must be made before this date."""
+
     pledger: OptionalNullable[Pledger] = UNSET
     r"""The user or organization that made this pledge"""
+
     hosted_invoice_url: OptionalNullable[str] = UNSET
     r"""URL of invoice for this pledge"""
+
     authed_can_admin_sender: Optional[bool] = False
     r"""If the currently authenticated subject can perform admin actions on behalf of the maker of the peldge"""
+
     authed_can_admin_received: Optional[bool] = False
     r"""If the currently authenticated subject can perform admin actions on behalf of the receiver of the peldge"""
+
     created_by: OptionalNullable[Pledger] = UNSET
     r"""For pledges made by an organization, or on behalf of an organization. This is the user that made the pledge. Only visible for members of said organization."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["refunded_at", "scheduled_payout_at", "pledger", "hosted_invoice_url", "authed_can_admin_sender", "authed_can_admin_received", "created_by"]
-        nullable_fields = ["modified_at", "refunded_at", "scheduled_payout_at", "pledger", "hosted_invoice_url", "created_by"]
+        optional_fields = [
+            "refunded_at",
+            "scheduled_payout_at",
+            "pledger",
+            "hosted_invoice_url",
+            "authed_can_admin_sender",
+            "authed_can_admin_received",
+            "created_by",
+        ]
+        nullable_fields = [
+            "modified_at",
+            "refunded_at",
+            "scheduled_payout_at",
+            "pledger",
+            "hosted_invoice_url",
+            "created_by",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -88,9 +117,13 @@ class PledgeInput(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -100,4 +133,3 @@ class PledgeInput(BaseModel):
                 m[k] = val
 
         return m
-        

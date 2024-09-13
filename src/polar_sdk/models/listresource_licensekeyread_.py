@@ -10,9 +10,9 @@ from typing import List, TypedDict
 class ListResourceLicenseKeyReadTypedDict(TypedDict):
     items: List[LicenseKeyReadTypedDict]
     pagination: PaginationTypedDict
-    
+
 
 class ListResourceLicenseKeyRead(BaseModel):
     items: List[LicenseKeyRead]
+
     pagination: Pagination
-    

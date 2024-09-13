@@ -58,7 +58,7 @@ if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
 ```
@@ -80,7 +80,7 @@ async def main():
         while True:
             # handle items
 
-            res = res.Next()
+            res = res.next()
             if res is None:
                 break
 
@@ -91,70 +91,13 @@ asyncio.run(main())
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [users.benefits](docs/sdks/polarbenefits/README.md)
+<details open>
+<summary>Available methods</summary>
 
-* [list](docs/sdks/polarbenefits/README.md#list) - List Benefits
-* [get](docs/sdks/polarbenefits/README.md#get) - Get Benefit
+### [advertisements](docs/sdks/advertisements/README.md)
 
-### [users.orders](docs/sdks/polarorders/README.md)
-
-* [list](docs/sdks/polarorders/README.md#list) - List Orders
-* [get](docs/sdks/polarorders/README.md#get) - Get Order
-* [invoice](docs/sdks/polarorders/README.md#invoice) - Get Order Invoice
-
-### [users.subscriptions](docs/sdks/polarsubscriptions/README.md)
-
-* [list](docs/sdks/polarsubscriptions/README.md#list) - List Subscriptions
-* [create](docs/sdks/polarsubscriptions/README.md#create) - Create Free Subscription
-* [get](docs/sdks/polarsubscriptions/README.md#get) - Get Subscription
-* [update](docs/sdks/polarsubscriptions/README.md#update) - Update Subscription
-* [cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
-
-### [users.advertisements](docs/sdks/polaradvertisements/README.md)
-
-* [list](docs/sdks/polaradvertisements/README.md#list) - List Advertisements
-* [create](docs/sdks/polaradvertisements/README.md#create) - Create Advertisement
-* [get](docs/sdks/polaradvertisements/README.md#get) - Get Advertisement
-* [update](docs/sdks/polaradvertisements/README.md#update) - Update Advertisement
-* [delete](docs/sdks/polaradvertisements/README.md#delete) - Delete Advertisement
-* [enable](docs/sdks/polaradvertisements/README.md#enable) - Enable Advertisement
-
-### [users.downloadables](docs/sdks/downloadables/README.md)
-
-* [list](docs/sdks/downloadables/README.md#list) - List Downloadables
-* [get](docs/sdks/downloadables/README.md#get) - Get Downloadable
-
-### [users.license_keys](docs/sdks/polarlicensekeys/README.md)
-
-* [list](docs/sdks/polarlicensekeys/README.md#list) - List License Keys
-* [get](docs/sdks/polarlicensekeys/README.md#get) - Get License Key
-* [validate](docs/sdks/polarlicensekeys/README.md#validate) - Validate License Key
-* [activate](docs/sdks/polarlicensekeys/README.md#activate) - Activate License Key
-* [deactivate](docs/sdks/polarlicensekeys/README.md#deactivate) - Deactivate License Key
-
-### [external_organizations](docs/sdks/externalorganizations/README.md)
-
-* [list](docs/sdks/externalorganizations/README.md#list) - List External Organizations
-
-### [repositories](docs/sdks/repositories/README.md)
-
-* [list](docs/sdks/repositories/README.md#list) - List Repositories
-* [get](docs/sdks/repositories/README.md#get) - Get Repository
-* [update](docs/sdks/repositories/README.md#update) - Update Repository
-
-### [organizations](docs/sdks/organizations/README.md)
-
-* [list](docs/sdks/organizations/README.md#list) - List Organizations
-* [create](docs/sdks/organizations/README.md#create) - Create Organization
-* [get](docs/sdks/organizations/README.md#get) - Get Organization
-* [update](docs/sdks/organizations/README.md#update) - Update Organization
-
-### [subscriptions](docs/sdks/subscriptions/README.md)
-
-* [list](docs/sdks/subscriptions/README.md#list) - List Subscriptions
-* [create](docs/sdks/subscriptions/README.md#create) - Create Free Subscription
-* [import_subscriptions](docs/sdks/subscriptions/README.md#import_subscriptions) - Import Subscriptions
-* [export](docs/sdks/subscriptions/README.md#export) - Export Subscriptions
+* [list](docs/sdks/advertisements/README.md#list) - List Campaigns
+* [get](docs/sdks/advertisements/README.md#get) - Get Campaign
 
 ### [articles](docs/sdks/articles/README.md)
 
@@ -167,26 +110,6 @@ asyncio.run(main())
 * [preview](docs/sdks/articles/README.md#preview) - Send Article Preview
 * [send](docs/sdks/articles/README.md#send) - Send Article
 
-### [advertisements](docs/sdks/advertisements/README.md)
-
-* [list](docs/sdks/advertisements/README.md#list) - List Campaigns
-* [get](docs/sdks/advertisements/README.md#get) - Get Campaign
-
-### [oauth2](docs/sdks/oauth2/README.md)
-
-* [token](docs/sdks/oauth2/README.md#token) - Request Token
-* [revoke](docs/sdks/oauth2/README.md#revoke) - Revoke Token
-* [introspect](docs/sdks/oauth2/README.md#introspect) - Introspect Token
-* [userinfo](docs/sdks/oauth2/README.md#userinfo) - Get User Info
-
-### [oauth2.clients](docs/sdks/clients/README.md)
-
-* [list](docs/sdks/clients/README.md#list) - List Clients
-* [create](docs/sdks/clients/README.md#create) - Create Client
-* [get](docs/sdks/clients/README.md#get) - Get Client
-* [update](docs/sdks/clients/README.md#update) - Update Client
-* [delete](docs/sdks/clients/README.md#delete) - Delete Client
-
 ### [benefits](docs/sdks/benefits/README.md)
 
 * [list](docs/sdks/benefits/README.md#list) - List Benefits
@@ -196,24 +119,14 @@ asyncio.run(main())
 * [delete](docs/sdks/benefits/README.md#delete) - Delete Benefit
 * [grants](docs/sdks/benefits/README.md#grants) - List Benefit Grants
 
-### [products](docs/sdks/products/README.md)
-
-* [list](docs/sdks/products/README.md#list) - List Products
-* [create](docs/sdks/products/README.md#create) - Create Product
-* [get](docs/sdks/products/README.md#get) - Get Product
-* [update](docs/sdks/products/README.md#update) - Update Product
-* [update_benefits](docs/sdks/products/README.md#update_benefits) - Update Product Benefits
-
-### [orders](docs/sdks/orders/README.md)
-
-* [list](docs/sdks/orders/README.md#list) - List Orders
-* [get](docs/sdks/orders/README.md#get) - Get Order
-* [invoice](docs/sdks/orders/README.md#invoice) - Get Order Invoice
-
 ### [checkouts](docs/sdks/checkouts/README.md)
 
 * [create](docs/sdks/checkouts/README.md#create) - Create Checkout
 * [get](docs/sdks/checkouts/README.md#get) - Get Checkout
+
+### [external_organizations](docs/sdks/externalorganizations/README.md)
+
+* [list](docs/sdks/externalorganizations/README.md#list) - List External Organizations
 
 ### [files](docs/sdks/files/README.md)
 
@@ -223,17 +136,113 @@ asyncio.run(main())
 * [update](docs/sdks/files/README.md#update) - Update File
 * [delete](docs/sdks/files/README.md#delete) - Delete File
 
-### [metrics](docs/sdks/metricssdk/README.md)
-
-* [get](docs/sdks/metricssdk/README.md#get) - Get Metrics
-* [limits](docs/sdks/metricssdk/README.md#limits) - Get Metrics Limits
-
 ### [license_keys](docs/sdks/licensekeys/README.md)
 
 * [list](docs/sdks/licensekeys/README.md#list) - List License Keys
 * [get](docs/sdks/licensekeys/README.md#get) - Get License Key
 * [update](docs/sdks/licensekeys/README.md#update) - Update License Key
 * [get_activation](docs/sdks/licensekeys/README.md#get_activation) - Get Activation
+
+### [metrics](docs/sdks/metricssdk/README.md)
+
+* [get](docs/sdks/metricssdk/README.md#get) - Get Metrics
+* [limits](docs/sdks/metricssdk/README.md#limits) - Get Metrics Limits
+
+### [oauth2](docs/sdks/oauth2/README.md)
+
+* [token](docs/sdks/oauth2/README.md#token) - Request Token
+* [revoke](docs/sdks/oauth2/README.md#revoke) - Revoke Token
+* [introspect](docs/sdks/oauth2/README.md#introspect) - Introspect Token
+* [userinfo](docs/sdks/oauth2/README.md#userinfo) - Get User Info
+
+#### [oauth2.clients](docs/sdks/clients/README.md)
+
+* [list](docs/sdks/clients/README.md#list) - List Clients
+* [create](docs/sdks/clients/README.md#create) - Create Client
+* [get](docs/sdks/clients/README.md#get) - Get Client
+* [update](docs/sdks/clients/README.md#update) - Update Client
+* [delete](docs/sdks/clients/README.md#delete) - Delete Client
+
+### [orders](docs/sdks/orders/README.md)
+
+* [list](docs/sdks/orders/README.md#list) - List Orders
+* [get](docs/sdks/orders/README.md#get) - Get Order
+* [invoice](docs/sdks/orders/README.md#invoice) - Get Order Invoice
+
+### [organizations](docs/sdks/organizations/README.md)
+
+* [list](docs/sdks/organizations/README.md#list) - List Organizations
+* [create](docs/sdks/organizations/README.md#create) - Create Organization
+* [get](docs/sdks/organizations/README.md#get) - Get Organization
+* [update](docs/sdks/organizations/README.md#update) - Update Organization
+
+
+### [products](docs/sdks/products/README.md)
+
+* [list](docs/sdks/products/README.md#list) - List Products
+* [create](docs/sdks/products/README.md#create) - Create Product
+* [get](docs/sdks/products/README.md#get) - Get Product
+* [update](docs/sdks/products/README.md#update) - Update Product
+* [update_benefits](docs/sdks/products/README.md#update_benefits) - Update Product Benefits
+
+### [repositories](docs/sdks/repositories/README.md)
+
+* [list](docs/sdks/repositories/README.md#list) - List Repositories
+* [get](docs/sdks/repositories/README.md#get) - Get Repository
+* [update](docs/sdks/repositories/README.md#update) - Update Repository
+
+### [subscriptions](docs/sdks/subscriptions/README.md)
+
+* [list](docs/sdks/subscriptions/README.md#list) - List Subscriptions
+* [create](docs/sdks/subscriptions/README.md#create) - Create Free Subscription
+* [import_subscriptions](docs/sdks/subscriptions/README.md#import_subscriptions) - Import Subscriptions
+* [export](docs/sdks/subscriptions/README.md#export) - Export Subscriptions
+
+### [users](docs/sdks/users/README.md)
+
+
+#### [users.advertisements](docs/sdks/polaradvertisements/README.md)
+
+* [list](docs/sdks/polaradvertisements/README.md#list) - List Advertisements
+* [create](docs/sdks/polaradvertisements/README.md#create) - Create Advertisement
+* [get](docs/sdks/polaradvertisements/README.md#get) - Get Advertisement
+* [update](docs/sdks/polaradvertisements/README.md#update) - Update Advertisement
+* [delete](docs/sdks/polaradvertisements/README.md#delete) - Delete Advertisement
+* [enable](docs/sdks/polaradvertisements/README.md#enable) - Enable Advertisement
+
+#### [users.benefits](docs/sdks/polarbenefits/README.md)
+
+* [list](docs/sdks/polarbenefits/README.md#list) - List Benefits
+* [get](docs/sdks/polarbenefits/README.md#get) - Get Benefit
+
+#### [users.downloadables](docs/sdks/downloadables/README.md)
+
+* [list](docs/sdks/downloadables/README.md#list) - List Downloadables
+* [get](docs/sdks/downloadables/README.md#get) - Get Downloadable
+
+#### [users.license_keys](docs/sdks/polarlicensekeys/README.md)
+
+* [list](docs/sdks/polarlicensekeys/README.md#list) - List License Keys
+* [get](docs/sdks/polarlicensekeys/README.md#get) - Get License Key
+* [validate](docs/sdks/polarlicensekeys/README.md#validate) - Validate License Key
+* [activate](docs/sdks/polarlicensekeys/README.md#activate) - Activate License Key
+* [deactivate](docs/sdks/polarlicensekeys/README.md#deactivate) - Deactivate License Key
+
+#### [users.orders](docs/sdks/polarorders/README.md)
+
+* [list](docs/sdks/polarorders/README.md#list) - List Orders
+* [get](docs/sdks/polarorders/README.md#get) - Get Order
+* [invoice](docs/sdks/polarorders/README.md#invoice) - Get Order Invoice
+
+#### [users.subscriptions](docs/sdks/polarsubscriptions/README.md)
+
+* [list](docs/sdks/polarsubscriptions/README.md#list) - List Subscriptions
+* [create](docs/sdks/polarsubscriptions/README.md#create) - Create Free Subscription
+* [get](docs/sdks/polarsubscriptions/README.md#get) - Get Subscription
+* [update](docs/sdks/polarsubscriptions/README.md#update) - Update Subscription
+* [cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
+
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start File uploads [file-upload] -->
@@ -255,7 +264,7 @@ s = Polar(
 
 res = s.subscriptions.import_subscriptions(request={
     "file": {
-        "file_name": "your_file_here",
+        "file_name": "example.file",
         "content": open("example.file", "rb"),
     },
     "organization_id": "<value>",
@@ -289,7 +298,7 @@ if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
 
@@ -311,7 +320,7 @@ if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
 
@@ -345,7 +354,7 @@ try:
         while True:
             # handle items
 
-            res = res.Next()
+            res = res.next()
             if res is None:
                 break
 
@@ -385,7 +394,7 @@ if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
 
@@ -409,7 +418,7 @@ if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
 
@@ -522,7 +531,7 @@ if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
 
@@ -565,7 +574,7 @@ if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
 

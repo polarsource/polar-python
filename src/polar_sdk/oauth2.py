@@ -8,20 +8,25 @@ from polar_sdk.clients import Clients
 from polar_sdk.types import BaseModel, OptionalNullable, UNSET
 from typing import Optional, Union, cast
 
+
 class Oauth2(BaseSDK):
     clients: Clients
+
     def __init__(self, sdk_config: SDKConfiguration) -> None:
         BaseSDK.__init__(self, sdk_config)
         self.sdk_configuration = sdk_config
         self._init_sdks()
-    
+
     def _init_sdks(self):
         self.clients = Clients(self.sdk_configuration)
-    
-    
+
     def token(
-        self, *,
-        request: Union[models.Oauth2RequestTokenRequestBody, models.Oauth2RequestTokenRequestBodyTypedDict],
+        self,
+        *,
+        request: Union[
+            models.Oauth2RequestTokenRequestBody,
+            models.Oauth2RequestTokenRequestBodyTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -39,14 +44,14 @@ class Oauth2(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.Oauth2RequestTokenRequestBody)
         request = cast(models.Oauth2RequestTokenRequestBody, request)
-        
+
         req = self.build_request(
             method="POST",
             path="/v1/oauth2/token",
@@ -59,44 +64,53 @@ class Oauth2(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "form", models.Oauth2RequestTokenRequestBody),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request, False, False, "form", models.Oauth2RequestTokenRequestBody
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="oauth2:request_token", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="oauth2:request_token",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.TokenResponse])
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def token_async(
-        self, *,
-        request: Union[models.Oauth2RequestTokenRequestBody, models.Oauth2RequestTokenRequestBodyTypedDict],
+        self,
+        *,
+        request: Union[
+            models.Oauth2RequestTokenRequestBody,
+            models.Oauth2RequestTokenRequestBodyTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -114,15 +128,15 @@ class Oauth2(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.Oauth2RequestTokenRequestBody)
         request = cast(models.Oauth2RequestTokenRequestBody, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="POST",
             path="/v1/oauth2/token",
             base_url=base_url,
@@ -134,44 +148,53 @@ class Oauth2(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "form", models.Oauth2RequestTokenRequestBody),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request, False, False, "form", models.Oauth2RequestTokenRequestBody
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="oauth2:request_token", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="oauth2:request_token",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.TokenResponse])
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def revoke(
-        self, *,
-        request: Union[models.Oauth2RevokeTokenRevokeTokenRequest, models.Oauth2RevokeTokenRevokeTokenRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            models.Oauth2RevokeTokenRevokeTokenRequest,
+            models.Oauth2RevokeTokenRevokeTokenRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -189,14 +212,16 @@ class Oauth2(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.Oauth2RevokeTokenRevokeTokenRequest)
+            request = utils.unmarshal(
+                request, models.Oauth2RevokeTokenRevokeTokenRequest
+            )
         request = cast(models.Oauth2RevokeTokenRevokeTokenRequest, request)
-        
+
         req = self.build_request(
             method="POST",
             path="/v1/oauth2/revoke",
@@ -209,44 +234,59 @@ class Oauth2(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "form", models.Oauth2RevokeTokenRevokeTokenRequest),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request,
+                False,
+                False,
+                "form",
+                models.Oauth2RevokeTokenRevokeTokenRequest,
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="oauth2:revoke_token", oauth2_scopes=[], security_source=self.sdk_configuration.security),
-            request=req,
-            error_status_codes=["4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.RevokeTokenResponse])
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
 
-    
-    
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                operation_id="oauth2:revoke_token",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.RevokeTokenResponse]
+            )
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
+
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def revoke_async(
-        self, *,
-        request: Union[models.Oauth2RevokeTokenRevokeTokenRequest, models.Oauth2RevokeTokenRevokeTokenRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            models.Oauth2RevokeTokenRevokeTokenRequest,
+            models.Oauth2RevokeTokenRevokeTokenRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -264,15 +304,17 @@ class Oauth2(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.Oauth2RevokeTokenRevokeTokenRequest)
+            request = utils.unmarshal(
+                request, models.Oauth2RevokeTokenRevokeTokenRequest
+            )
         request = cast(models.Oauth2RevokeTokenRevokeTokenRequest, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="POST",
             path="/v1/oauth2/revoke",
             base_url=base_url,
@@ -284,44 +326,59 @@ class Oauth2(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "form", models.Oauth2RevokeTokenRevokeTokenRequest),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request,
+                False,
+                False,
+                "form",
+                models.Oauth2RevokeTokenRevokeTokenRequest,
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="oauth2:revoke_token", oauth2_scopes=[], security_source=self.sdk_configuration.security),
-            request=req,
-            error_status_codes=["4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.RevokeTokenResponse])
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
 
-    
-    
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                operation_id="oauth2:revoke_token",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.RevokeTokenResponse]
+            )
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
+
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def introspect(
-        self, *,
-        request: Union[models.Oauth2IntrospectTokenIntrospectTokenRequest, models.Oauth2IntrospectTokenIntrospectTokenRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            models.Oauth2IntrospectTokenIntrospectTokenRequest,
+            models.Oauth2IntrospectTokenIntrospectTokenRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -339,14 +396,16 @@ class Oauth2(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.Oauth2IntrospectTokenIntrospectTokenRequest)
+            request = utils.unmarshal(
+                request, models.Oauth2IntrospectTokenIntrospectTokenRequest
+            )
         request = cast(models.Oauth2IntrospectTokenIntrospectTokenRequest, request)
-        
+
         req = self.build_request(
             method="POST",
             path="/v1/oauth2/introspect",
@@ -359,44 +418,59 @@ class Oauth2(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "form", models.Oauth2IntrospectTokenIntrospectTokenRequest),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request,
+                False,
+                False,
+                "form",
+                models.Oauth2IntrospectTokenIntrospectTokenRequest,
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="oauth2:introspect_token", oauth2_scopes=[], security_source=self.sdk_configuration.security),
-            request=req,
-            error_status_codes=["4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.IntrospectTokenResponse])
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
 
-    
-    
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                operation_id="oauth2:introspect_token",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.IntrospectTokenResponse]
+            )
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
+
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def introspect_async(
-        self, *,
-        request: Union[models.Oauth2IntrospectTokenIntrospectTokenRequest, models.Oauth2IntrospectTokenIntrospectTokenRequestTypedDict],
+        self,
+        *,
+        request: Union[
+            models.Oauth2IntrospectTokenIntrospectTokenRequest,
+            models.Oauth2IntrospectTokenIntrospectTokenRequestTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -414,15 +488,17 @@ class Oauth2(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.Oauth2IntrospectTokenIntrospectTokenRequest)
+            request = utils.unmarshal(
+                request, models.Oauth2IntrospectTokenIntrospectTokenRequest
+            )
         request = cast(models.Oauth2IntrospectTokenIntrospectTokenRequest, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="POST",
             path="/v1/oauth2/introspect",
             base_url=base_url,
@@ -434,43 +510,55 @@ class Oauth2(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "form", models.Oauth2IntrospectTokenIntrospectTokenRequest),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request,
+                False,
+                False,
+                "form",
+                models.Oauth2IntrospectTokenIntrospectTokenRequest,
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="oauth2:introspect_token", oauth2_scopes=[], security_source=self.sdk_configuration.security),
-            request=req,
-            error_status_codes=["4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.IntrospectTokenResponse])
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
 
-    
-    
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                operation_id="oauth2:introspect_token",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.IntrospectTokenResponse]
+            )
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
+
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def userinfo(
-        self, *,
+        self,
+        *,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -487,7 +575,7 @@ class Oauth2(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
         req = self.build_request(
@@ -504,40 +592,46 @@ class Oauth2(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="oauth2:userinfo", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="oauth2:userinfo",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
-        if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Oauth2UserinfoResponseOauth2Userinfo])
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
 
-    
-    
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.Oauth2UserinfoResponseOauth2Userinfo]
+            )
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
+
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def userinfo_async(
-        self, *,
+        self,
+        *,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -554,10 +648,10 @@ class Oauth2(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        req = self.build_request(
+        req = self.build_request_async(
             method="GET",
             path="/v1/oauth2/userinfo",
             base_url=base_url,
@@ -571,34 +665,39 @@ class Oauth2(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="oauth2:userinfo", oauth2_scopes=[], security_source=self.sdk_configuration.security),
-            request=req,
-            error_status_codes=["4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Oauth2UserinfoResponseOauth2Userinfo])
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
 
-    
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                operation_id="oauth2:userinfo",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(
+                http_res.text, Optional[models.Oauth2UserinfoResponseOauth2Userinfo]
+            )
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
+
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )

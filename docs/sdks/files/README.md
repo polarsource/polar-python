@@ -30,7 +30,7 @@ if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
 
@@ -129,7 +129,7 @@ res = s.files.uploaded(id="<value>", file_upload_completed={
     "path": "/sys",
     "parts": [
         {
-            "number": 241210,
+            "number": 606865,
             "checksum_etag": "<value>",
             "checksum_sha256_base64": "<value>",
         },

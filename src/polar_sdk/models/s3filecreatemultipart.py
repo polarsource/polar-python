@@ -8,8 +8,7 @@ from typing import List, TypedDict
 
 class S3FileCreateMultipartTypedDict(TypedDict):
     parts: List[S3FileCreatePartTypedDict]
-    
+
 
 class S3FileCreateMultipart(BaseModel):
     parts: List[S3FileCreatePart]
-    

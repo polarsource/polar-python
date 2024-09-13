@@ -11,9 +11,14 @@ from typing_extensions import Annotated
 class ProductsUpdateBenefitsRequestTypedDict(TypedDict):
     id: str
     product_benefits_update: ProductBenefitsUpdateTypedDict
-    
+
 
 class ProductsUpdateBenefitsRequest(BaseModel):
-    id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
-    product_benefits_update: Annotated[ProductBenefitsUpdate, FieldMetadata(request=RequestMetadata(media_type="application/json"))]
-    
+    id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
+
+    product_benefits_update: Annotated[
+        ProductBenefitsUpdate,
+        FieldMetadata(request=RequestMetadata(media_type="application/json")),
+    ]

@@ -9,18 +9,18 @@ from typing import List, TypedDict
 
 class MetricsResponseTypedDict(TypedDict):
     r"""Metrics response schema."""
-    
+
     periods: List[MetricPeriodTypedDict]
     r"""List of data for each timestamp."""
     metrics: MetricsTypedDict
     r"""Information about the returned metrics."""
-    
+
 
 class MetricsResponse(BaseModel):
     r"""Metrics response schema."""
-    
+
     periods: List[MetricPeriod]
     r"""List of data for each timestamp."""
+
     metrics: Metrics
     r"""Information about the returned metrics."""
-    

@@ -6,25 +6,47 @@ from .benefitarticles import BenefitArticles, BenefitArticlesTypedDict
 from .benefitcustom import BenefitCustom, BenefitCustomTypedDict
 from .benefitdiscord_output import BenefitDiscordOutput, BenefitDiscordOutputTypedDict
 from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesTypedDict
-from .benefitgithubrepository import BenefitGitHubRepository, BenefitGitHubRepositoryTypedDict
-from .benefitlicensekeys_output import BenefitLicenseKeysOutput, BenefitLicenseKeysOutputTypedDict
+from .benefitgithubrepository import (
+    BenefitGitHubRepository,
+    BenefitGitHubRepositoryTypedDict,
+)
+from .benefitlicensekeys_output import (
+    BenefitLicenseKeysOutput,
+    BenefitLicenseKeysOutputTypedDict,
+)
 from .pagination import Pagination, PaginationTypedDict
 from polar_sdk.types import BaseModel
 from typing import List, TypedDict, Union
 
 
-BenefitTypedDict = Union[BenefitArticlesTypedDict, BenefitAdsTypedDict, BenefitDiscordOutputTypedDict, BenefitGitHubRepositoryTypedDict, BenefitDownloadablesTypedDict, BenefitLicenseKeysOutputTypedDict, BenefitCustomTypedDict]
+BenefitTypedDict = Union[
+    BenefitArticlesTypedDict,
+    BenefitAdsTypedDict,
+    BenefitDiscordOutputTypedDict,
+    BenefitGitHubRepositoryTypedDict,
+    BenefitDownloadablesTypedDict,
+    BenefitLicenseKeysOutputTypedDict,
+    BenefitCustomTypedDict,
+]
 
 
-Benefit = Union[BenefitArticles, BenefitAds, BenefitDiscordOutput, BenefitGitHubRepository, BenefitDownloadables, BenefitLicenseKeysOutput, BenefitCustom]
+Benefit = Union[
+    BenefitArticles,
+    BenefitAds,
+    BenefitDiscordOutput,
+    BenefitGitHubRepository,
+    BenefitDownloadables,
+    BenefitLicenseKeysOutput,
+    BenefitCustom,
+]
 
 
 class ListResourceBenefitTypedDict(TypedDict):
     items: List[BenefitTypedDict]
     pagination: PaginationTypedDict
-    
+
 
 class ListResourceBenefit(BaseModel):
     items: List[Benefit]
+
     pagination: Pagination
-    

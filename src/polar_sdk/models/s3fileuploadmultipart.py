@@ -10,10 +10,11 @@ class S3FileUploadMultipartTypedDict(TypedDict):
     id: str
     path: str
     parts: List[S3FileUploadPartTypedDict]
-    
+
 
 class S3FileUploadMultipart(BaseModel):
     id: str
+
     path: str
+
     parts: List[S3FileUploadPart]
-    

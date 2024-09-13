@@ -10,10 +10,11 @@ class DownloadableReadTypedDict(TypedDict):
     id: str
     benefit_id: str
     file: FileDownloadTypedDict
-    
+
 
 class DownloadableRead(BaseModel):
     id: str
+
     benefit_id: str
+
     file: FileDownload
-    

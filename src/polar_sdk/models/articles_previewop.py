@@ -11,9 +11,14 @@ from typing_extensions import Annotated
 class ArticlesPreviewRequestTypedDict(TypedDict):
     id: str
     article_preview: ArticlePreviewTypedDict
-    
+
 
 class ArticlesPreviewRequest(BaseModel):
-    id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
-    article_preview: Annotated[ArticlePreview, FieldMetadata(request=RequestMetadata(media_type="application/json"))]
-    
+    id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
+
+    article_preview: Annotated[
+        ArticlePreview,
+        FieldMetadata(request=RequestMetadata(media_type="application/json")),
+    ]

@@ -7,14 +7,13 @@ from typing import List, TypedDict
 
 class ProductBenefitsUpdateTypedDict(TypedDict):
     r"""Schema to update the benefits granted by a product."""
-    
+
     benefits: List[str]
     r"""List of benefit IDs. Each one must be on the same organization as the product."""
-    
+
 
 class ProductBenefitsUpdate(BaseModel):
     r"""Schema to update the benefits granted by a product."""
-    
+
     benefits: List[str]
     r"""List of benefit IDs. Each one must be on the same organization as the product."""
-    

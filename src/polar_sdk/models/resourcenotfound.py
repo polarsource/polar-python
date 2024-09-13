@@ -11,14 +11,19 @@ from typing_extensions import Annotated
 
 class ResourceNotFoundType(str, Enum):
     RESOURCE_NOT_FOUND = "ResourceNotFound"
+
+
 class ResourceNotFoundData(BaseModel):
     detail: str
+
+    # fmt: off
     TYPE: Annotated[Final[ResourceNotFoundType], pydantic.Field(alias="type")] = ResourceNotFoundType.RESOURCE_NOT_FOUND # type: ignore
-    
+    # fmt: on
 
 
 class ResourceNotFound(Exception):
     r"""Order not found."""
+
     data: ResourceNotFoundData
 
     def __init__(self, data: ResourceNotFoundData):
@@ -26,4 +31,3 @@ class ResourceNotFound(Exception):
 
     def __str__(self) -> str:
         return utils.marshal_json(self.data, ResourceNotFoundData)
-

@@ -7,8 +7,7 @@ from typing import List, TypedDict
 
 class BenefitDownloadablesSubscriberPropertiesTypedDict(TypedDict):
     active_files: List[str]
-    
+
 
 class BenefitDownloadablesSubscriberProperties(BaseModel):
     active_files: List[str]
-    

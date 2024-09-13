@@ -11,14 +11,19 @@ from typing_extensions import Annotated
 
 class NotPermittedType(str, Enum):
     NOT_PERMITTED = "NotPermitted"
+
+
 class NotPermittedData(BaseModel):
     detail: str
+
+    # fmt: off
     TYPE: Annotated[Final[NotPermittedType], pydantic.Field(alias="type")] = NotPermittedType.NOT_PERMITTED # type: ignore
-    
+    # fmt: on
 
 
 class NotPermitted(Exception):
     r"""You don't have the permission to update this repository."""
+
     data: NotPermittedData
 
     def __init__(self, data: NotPermittedData):
@@ -26,4 +31,3 @@ class NotPermitted(Exception):
 
     def __str__(self) -> str:
         return utils.marshal_json(self.data, NotPermittedData)
-

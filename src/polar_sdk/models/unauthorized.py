@@ -11,14 +11,19 @@ from typing_extensions import Annotated
 
 class UnauthorizedType(str, Enum):
     UNAUTHORIZED = "Unauthorized"
+
+
 class UnauthorizedData(BaseModel):
     detail: str
+
+    # fmt: off
     TYPE: Annotated[Final[UnauthorizedType], pydantic.Field(alias="type")] = UnauthorizedType.UNAUTHORIZED # type: ignore
-    
+    # fmt: on
 
 
 class Unauthorized(Exception):
     r"""Not authorized to manage license key."""
+
     data: UnauthorizedData
 
     def __init__(self, data: UnauthorizedData):
@@ -26,4 +31,3 @@ class Unauthorized(Exception):
 
     def __str__(self) -> str:
         return utils.marshal_json(self.data, UnauthorizedData)
-

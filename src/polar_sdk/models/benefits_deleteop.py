@@ -9,8 +9,9 @@ from typing_extensions import Annotated
 
 class BenefitsDeleteRequestTypedDict(TypedDict):
     id: str
-    
+
 
 class BenefitsDeleteRequest(BaseModel):
-    id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
-    
+    id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]

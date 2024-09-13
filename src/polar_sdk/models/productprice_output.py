@@ -9,8 +9,15 @@ from typing import Union
 from typing_extensions import Annotated
 
 
-ProductPriceOutputTypedDict = Union[ProductPriceOneTimeTypedDict, ProductPriceRecurringTypedDict]
+ProductPriceOutputTypedDict = Union[
+    ProductPriceOneTimeTypedDict, ProductPriceRecurringTypedDict
+]
 
 
-ProductPriceOutput = Annotated[Union[Annotated[ProductPriceOneTime, Tag("one_time")], Annotated[ProductPriceRecurring, Tag("recurring")]], Discriminator(lambda m: get_discriminator(m, "type", "type"))]
-
+ProductPriceOutput = Annotated[
+    Union[
+        Annotated[ProductPriceOneTime, Tag("one_time")],
+        Annotated[ProductPriceRecurring, Tag("recurring")],
+    ],
+    Discriminator(lambda m: get_discriminator(m, "type", "type")),
+]

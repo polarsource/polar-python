@@ -11,10 +11,14 @@ from typing_extensions import Annotated
 
 class FreeSubscriptionUpgradeType(str, Enum):
     FREE_SUBSCRIPTION_UPGRADE = "FreeSubscriptionUpgrade"
+
+
 class FreeSubscriptionUpgradeData(BaseModel):
     detail: str
+
+    # fmt: off
     TYPE: Annotated[Final[FreeSubscriptionUpgradeType], pydantic.Field(alias="type")] = FreeSubscriptionUpgradeType.FREE_SUBSCRIPTION_UPGRADE # type: ignore
-    
+    # fmt: on
 
 
 class FreeSubscriptionUpgrade(Exception):
@@ -25,4 +29,3 @@ class FreeSubscriptionUpgrade(Exception):
 
     def __str__(self) -> str:
         return utils.marshal_json(self.data, FreeSubscriptionUpgradeData)
-

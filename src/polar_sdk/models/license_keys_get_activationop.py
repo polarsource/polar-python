@@ -10,9 +10,13 @@ from typing_extensions import Annotated
 class LicenseKeysGetActivationRequestTypedDict(TypedDict):
     id: str
     activation_id: str
-    
+
 
 class LicenseKeysGetActivationRequest(BaseModel):
-    id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
-    activation_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
-    
+    id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
+
+    activation_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]

@@ -2,8 +2,14 @@
 
 from __future__ import annotations
 from .existingproductprice import ExistingProductPrice, ExistingProductPriceTypedDict
-from .productpriceonetimecreate import ProductPriceOneTimeCreate, ProductPriceOneTimeCreateTypedDict
-from .productpricerecurringcreate import ProductPriceRecurringCreate, ProductPriceRecurringCreateTypedDict
+from .productpriceonetimecreate import (
+    ProductPriceOneTimeCreate,
+    ProductPriceOneTimeCreateTypedDict,
+)
+from .productpricerecurringcreate import (
+    ProductPriceRecurringCreate,
+    ProductPriceRecurringCreateTypedDict,
+)
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
@@ -11,15 +17,21 @@ from typing import List, TypedDict, Union
 from typing_extensions import Annotated, NotRequired
 
 
-PricesTypedDict = Union[ExistingProductPriceTypedDict, ProductPriceOneTimeCreateTypedDict, ProductPriceRecurringCreateTypedDict]
+PricesTypedDict = Union[
+    ExistingProductPriceTypedDict,
+    ProductPriceOneTimeCreateTypedDict,
+    ProductPriceRecurringCreateTypedDict,
+]
 
 
-Prices = Union[ExistingProductPrice, ProductPriceOneTimeCreate, ProductPriceRecurringCreate]
+Prices = Union[
+    ExistingProductPrice, ProductPriceOneTimeCreate, ProductPriceRecurringCreate
+]
 
 
 class ProductUpdateTypedDict(TypedDict):
     r"""Schema to update a product."""
-    
+
     name: NotRequired[Nullable[str]]
     description: NotRequired[Nullable[str]]
     r"""The description of the product."""
@@ -30,26 +42,50 @@ class ProductUpdateTypedDict(TypedDict):
     r"""List of available prices for this product. If you want to keep existing prices, include them in the list as an `ExistingProductPrice` object."""
     medias: NotRequired[Nullable[List[str]]]
     r"""List of file IDs. Each one must be on the same organization as the product, of type `product_media` and correctly uploaded."""
-    
+
 
 class ProductUpdate(BaseModel):
     r"""Schema to update a product."""
-    
+
     name: OptionalNullable[str] = UNSET
+
     description: OptionalNullable[str] = UNSET
     r"""The description of the product."""
-    is_highlighted: Annotated[OptionalNullable[bool], pydantic.Field(deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible.")] = UNSET
+
+    is_highlighted: Annotated[
+        OptionalNullable[bool],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ] = UNSET
+
     is_archived: OptionalNullable[bool] = UNSET
     r"""Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally."""
+
     prices: OptionalNullable[List[Prices]] = UNSET
     r"""List of available prices for this product. If you want to keep existing prices, include them in the list as an `ExistingProductPrice` object."""
+
     medias: OptionalNullable[List[str]] = UNSET
     r"""List of file IDs. Each one must be on the same organization as the product, of type `product_media` and correctly uploaded."""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["name", "description", "is_highlighted", "is_archived", "prices", "medias"]
-        nullable_fields = ["name", "description", "is_highlighted", "is_archived", "prices", "medias"]
+        optional_fields = [
+            "name",
+            "description",
+            "is_highlighted",
+            "is_archived",
+            "prices",
+            "medias",
+        ]
+        nullable_fields = [
+            "name",
+            "description",
+            "is_highlighted",
+            "is_archived",
+            "prices",
+            "medias",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -59,9 +95,13 @@ class ProductUpdate(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -71,4 +111,3 @@ class ProductUpdate(BaseModel):
                 m[k] = val
 
         return m
-        

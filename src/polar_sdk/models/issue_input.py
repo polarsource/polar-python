@@ -51,49 +51,94 @@ class IssueInputTypedDict(TypedDict):
     r"""Share of rewrads that will be rewarded to contributors of this issue. A number between 0 and 100 (inclusive)."""
     badge_custom_content: NotRequired[Nullable[str]]
     r"""Optional custom badge SVG promotional content"""
-    
+
 
 class IssueInput(BaseModel):
     id: str
+
     number: int
     r"""GitHub #number"""
+
     title: str
     r"""GitHub issue title"""
+
     state: State
+
     issue_created_at: datetime
+
     needs_confirmation_solved: bool
     r"""If a maintainer needs to mark this issue as solved"""
+
     funding: Funding
+
     repository: RepositoryInput
     r"""The repository that the issue is in"""
+
     pledge_badge_currently_embedded: bool
     r"""If this issue currently has the Polar badge SVG embedded"""
+
+    # fmt: off
     PLATFORM: Annotated[Final[Platforms], pydantic.Field(alias="platform")] = Platforms.GITHUB # type: ignore
+    # fmt: on
     r"""Issue platform (currently always GitHub)"""
+
     body: OptionalNullable[str] = UNSET
     r"""GitHub issue body"""
+
     comments: OptionalNullable[int] = UNSET
     r"""Number of GitHub comments made on the issue"""
+
     labels: Optional[List[Label]] = None
+
     author: OptionalNullable[Author] = UNSET
     r"""GitHub author"""
+
     assignees: OptionalNullable[List[Assignee]] = UNSET
     r"""GitHub assignees"""
+
     reactions: OptionalNullable[Reactions] = UNSET
     r"""GitHub reactions"""
+
     issue_closed_at: OptionalNullable[datetime] = UNSET
+
     issue_modified_at: OptionalNullable[datetime] = UNSET
+
     confirmed_solved_at: OptionalNullable[datetime] = UNSET
     r"""If this issue has been marked as confirmed solved through Polar"""
+
     upfront_split_to_contributors: OptionalNullable[int] = UNSET
     r"""Share of rewrads that will be rewarded to contributors of this issue. A number between 0 and 100 (inclusive)."""
+
     badge_custom_content: OptionalNullable[str] = UNSET
     r"""Optional custom badge SVG promotional content"""
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["body", "comments", "labels", "author", "assignees", "reactions", "issue_closed_at", "issue_modified_at", "confirmed_solved_at", "upfront_split_to_contributors", "badge_custom_content"]
-        nullable_fields = ["body", "comments", "author", "assignees", "reactions", "issue_closed_at", "issue_modified_at", "confirmed_solved_at", "upfront_split_to_contributors", "badge_custom_content"]
+        optional_fields = [
+            "body",
+            "comments",
+            "labels",
+            "author",
+            "assignees",
+            "reactions",
+            "issue_closed_at",
+            "issue_modified_at",
+            "confirmed_solved_at",
+            "upfront_split_to_contributors",
+            "badge_custom_content",
+        ]
+        nullable_fields = [
+            "body",
+            "comments",
+            "author",
+            "assignees",
+            "reactions",
+            "issue_closed_at",
+            "issue_modified_at",
+            "confirmed_solved_at",
+            "upfront_split_to_contributors",
+            "badge_custom_content",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
@@ -103,9 +148,13 @@ class IssueInput(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -115,4 +164,3 @@ class IssueInput(BaseModel):
                 m[k] = val
 
         return m
-        

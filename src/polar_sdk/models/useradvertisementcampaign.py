@@ -20,22 +20,31 @@ class UserAdvertisementCampaignTypedDict(TypedDict):
     image_url_dark: Nullable[str]
     text: str
     link_url: str
-    
+
 
 class UserAdvertisementCampaign(BaseModel):
     created_at: datetime
     r"""Creation timestamp of the object."""
+
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
+
     id: str
+
     user_id: str
+
     views: int
+
     clicks: int
+
     image_url: str
+
     image_url_dark: Nullable[str]
+
     text: str
+
     link_url: str
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
@@ -49,9 +58,13 @@ class UserAdvertisementCampaign(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -61,4 +74,3 @@ class UserAdvertisementCampaign(BaseModel):
                 m[k] = val
 
         return m
-        

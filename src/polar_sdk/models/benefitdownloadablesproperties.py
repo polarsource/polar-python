@@ -8,9 +8,9 @@ from typing import Dict, List, TypedDict
 class BenefitDownloadablesPropertiesTypedDict(TypedDict):
     archived: Dict[str, bool]
     files: List[str]
-    
+
 
 class BenefitDownloadablesProperties(BaseModel):
     archived: Dict[str, bool]
+
     files: List[str]
-    

@@ -13,7 +13,7 @@ if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
 ```
@@ -35,7 +35,7 @@ async def main():
         while True:
             # handle items
 
-            res = res.Next()
+            res = res.next()
             if res is None:
                 break
 

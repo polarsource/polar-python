@@ -12,15 +12,20 @@ from typing_extensions import Annotated
 class Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType(str, Enum):
     REFRESH_TOKEN = "refresh_token"
 
+
 class Onev11oauth21tokenPostXComponentsRefreshTokenRequestTypedDict(TypedDict):
     client_id: str
     client_secret: str
     refresh_token: str
-    
+
 
 class Onev11oauth21tokenPostXComponentsRefreshTokenRequest(BaseModel):
     client_id: Annotated[str, FieldMetadata(form=True)]
+
     client_secret: Annotated[str, FieldMetadata(form=True)]
+
     refresh_token: Annotated[str, FieldMetadata(form=True)]
+
+    # fmt: off
     GRANT_TYPE: Annotated[Final[Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType], pydantic.Field(alias="grant_type"), FieldMetadata(form=True)] = Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType.REFRESH_TOKEN # type: ignore
-    
+    # fmt: on

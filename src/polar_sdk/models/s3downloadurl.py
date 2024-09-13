@@ -11,10 +11,11 @@ class S3DownloadURLTypedDict(TypedDict):
     url: str
     expires_at: datetime
     headers: NotRequired[Dict[str, str]]
-    
+
 
 class S3DownloadURL(BaseModel):
     url: str
+
     expires_at: datetime
+
     headers: Optional[Dict[str, str]] = None
-    

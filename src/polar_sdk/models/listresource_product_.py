@@ -10,9 +10,9 @@ from typing import List, TypedDict
 class ListResourceProductTypedDict(TypedDict):
     items: List[ProductOutputTypedDict]
     pagination: PaginationTypedDict
-    
+
 
 class ListResourceProduct(BaseModel):
     items: List[ProductOutput]
+
     pagination: Pagination
-    

@@ -13,12 +13,17 @@ class DonationOrganizationTypedDict(TypedDict):
     name: str
     avatar_url: str
     is_personal: bool
-    
+
 
 class DonationOrganization(BaseModel):
     id: str
+
     name: str
+
     avatar_url: str
+
     is_personal: bool
+
+    # fmt: off
     PLATFORM: Annotated[Final[Platforms], pydantic.Field(alias="platform")] = Platforms.GITHUB # type: ignore
-    
+    # fmt: on

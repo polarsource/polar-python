@@ -12,21 +12,24 @@ from typing_extensions import Annotated
 class WebhookSubscriptionCreatedPayloadType(str, Enum):
     SUBSCRIPTION_CREATED = "subscription.created"
 
+
 class WebhookSubscriptionCreatedPayloadTypedDict(TypedDict):
     r"""Sent when a new subscription is created.
 
     **Discord & Slack support:** Full
     """
-    
+
     data: SubscriptionInputTypedDict
-    
+
 
 class WebhookSubscriptionCreatedPayload(BaseModel):
     r"""Sent when a new subscription is created.
 
     **Discord & Slack support:** Full
     """
-    
+
     data: SubscriptionInput
+
+    # fmt: off
     TYPE: Annotated[Final[WebhookSubscriptionCreatedPayloadType], pydantic.Field(alias="type")] = WebhookSubscriptionCreatedPayloadType.SUBSCRIPTION_CREATED # type: ignore
-    
+    # fmt: on

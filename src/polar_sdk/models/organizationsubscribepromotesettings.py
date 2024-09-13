@@ -13,13 +13,14 @@ class OrganizationSubscribePromoteSettingsTypedDict(TypedDict):
     r"""Show subscription count publicly"""
     count_free: NotRequired[bool]
     r"""Include free subscribers in total count"""
-    
+
 
 class OrganizationSubscribePromoteSettings(BaseModel):
     promote: Optional[bool] = True
     r"""Promote email subscription (free)"""
+
     show_count: Optional[bool] = True
     r"""Show subscription count publicly"""
+
     count_free: Optional[bool] = True
     r"""Include free subscribers in total count"""
-    

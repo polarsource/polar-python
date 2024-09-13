@@ -12,21 +12,24 @@ from typing_extensions import Annotated
 class WebhookSubscriptionUpdatedPayloadType(str, Enum):
     SUBSCRIPTION_UPDATED = "subscription.updated"
 
+
 class WebhookSubscriptionUpdatedPayloadTypedDict(TypedDict):
     r"""Sent when a new subscription is updated. This event fires if the subscription is cancelled, both immediately and if the subscription is cancelled at the end of the current period.
 
     **Discord & Slack support:** On cancellation
     """
-    
+
     data: SubscriptionInputTypedDict
-    
+
 
 class WebhookSubscriptionUpdatedPayload(BaseModel):
     r"""Sent when a new subscription is updated. This event fires if the subscription is cancelled, both immediately and if the subscription is cancelled at the end of the current period.
 
     **Discord & Slack support:** On cancellation
     """
-    
+
     data: SubscriptionInput
+
+    # fmt: off
     TYPE: Annotated[Final[WebhookSubscriptionUpdatedPayloadType], pydantic.Field(alias="type")] = WebhookSubscriptionUpdatedPayloadType.SUBSCRIPTION_UPDATED # type: ignore
-    
+    # fmt: on

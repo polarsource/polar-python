@@ -7,22 +7,35 @@ from polar_sdk._hooks import HookContext
 from polar_sdk.types import BaseModel, OptionalNullable, UNSET
 from typing import Any, Dict, Optional, Union, cast
 
+
 class Products(BaseSDK):
-    
-    
     def list(
-        self, *,
-        organization_id: OptionalNullable[Union[models.ProductsListQueryParamOrganizationIDFilter, models.ProductsListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
+        self,
+        *,
+        organization_id: Union[
+            models.ProductsListQueryParamOrganizationIDFilter,
+            models.ProductsListQueryParamOrganizationIDFilterTypedDict,
+        ],
         is_archived: OptionalNullable[bool] = UNSET,
         is_recurring: OptionalNullable[bool] = UNSET,
-        benefit_id: OptionalNullable[Union[models.QueryParamBenefitIDFilter, models.QueryParamBenefitIDFilterTypedDict]] = UNSET,
-        type_filter: OptionalNullable[Union[models.QueryParamSubscriptionTierTypeFilter, models.QueryParamSubscriptionTierTypeFilterTypedDict]] = UNSET,
+        benefit_id: OptionalNullable[
+            Union[
+                models.QueryParamBenefitIDFilter,
+                models.QueryParamBenefitIDFilterTypedDict,
+            ]
+        ] = UNSET,
+        type_filter: OptionalNullable[
+            Union[
+                models.QueryParamSubscriptionTierTypeFilter,
+                models.QueryParamSubscriptionTierTypeFilterTypedDict,
+            ]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.ProductsListResponse:
+    ) -> Optional[models.ProductsListResponse]:
         r"""List Products
 
         List products.
@@ -42,10 +55,10 @@ class Products(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ProductsListRequest(
             organization_id=organization_id,
             is_archived=is_archived,
@@ -55,7 +68,7 @@ class Products(BaseSDK):
             page=page,
             limit=limit,
         )
-        
+
         req = self.build_request(
             method="GET",
             path="/v1/products/",
@@ -70,33 +83,31 @@ class Products(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="products:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="products:list",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         def next_func() -> Optional[models.ProductsListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
-            
+
             num_pages = JSONPath("$.pagination.max_page").parse(body)
             if len(num_pages) == 0 or num_pages[0] <= page:
                 return None
@@ -120,34 +131,58 @@ class Products(BaseSDK):
                 limit=limit,
                 retries=retries,
             )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.ProductsListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceProduct]), next=next_func)
+            return models.ProductsListResponse(
+                result=utils.unmarshal_json(
+                    http_res.text, Optional[models.ListResourceProduct]
+                ),
+                next=next_func,
+            )
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def list_async(
-        self, *,
-        organization_id: OptionalNullable[Union[models.ProductsListQueryParamOrganizationIDFilter, models.ProductsListQueryParamOrganizationIDFilterTypedDict]] = UNSET,
+        self,
+        *,
+        organization_id: Union[
+            models.ProductsListQueryParamOrganizationIDFilter,
+            models.ProductsListQueryParamOrganizationIDFilterTypedDict,
+        ],
         is_archived: OptionalNullable[bool] = UNSET,
         is_recurring: OptionalNullable[bool] = UNSET,
-        benefit_id: OptionalNullable[Union[models.QueryParamBenefitIDFilter, models.QueryParamBenefitIDFilterTypedDict]] = UNSET,
-        type_filter: OptionalNullable[Union[models.QueryParamSubscriptionTierTypeFilter, models.QueryParamSubscriptionTierTypeFilterTypedDict]] = UNSET,
+        benefit_id: OptionalNullable[
+            Union[
+                models.QueryParamBenefitIDFilter,
+                models.QueryParamBenefitIDFilterTypedDict,
+            ]
+        ] = UNSET,
+        type_filter: OptionalNullable[
+            Union[
+                models.QueryParamSubscriptionTierTypeFilter,
+                models.QueryParamSubscriptionTierTypeFilterTypedDict,
+            ]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.ProductsListResponse:
+    ) -> Optional[models.ProductsListResponse]:
         r"""List Products
 
         List products.
@@ -167,10 +202,10 @@ class Products(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ProductsListRequest(
             organization_id=organization_id,
             is_archived=is_archived,
@@ -180,8 +215,8 @@ class Products(BaseSDK):
             page=page,
             limit=limit,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/v1/products/",
             base_url=base_url,
@@ -195,33 +230,31 @@ class Products(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="products:list", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="products:list",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         def next_func() -> Optional[models.ProductsListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
-            
+
             num_pages = JSONPath("$.pagination.max_page").parse(body)
             if len(num_pages) == 0 or num_pages[0] <= page:
                 return None
@@ -245,24 +278,38 @@ class Products(BaseSDK):
                 limit=limit,
                 retries=retries,
             )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.ProductsListResponse(result=utils.unmarshal_json(http_res.text, Optional[models.ListResourceProduct]), next=next_func)
+            return models.ProductsListResponse(
+                result=utils.unmarshal_json(
+                    http_res.text, Optional[models.ListResourceProduct]
+                ),
+                next=next_func,
+            )
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def create(
-        self, *,
-        request: Union[models.ProductsCreateProductCreate, models.ProductsCreateProductCreateTypedDict],
+        self,
+        *,
+        request: Union[
+            models.ProductsCreateProductCreate,
+            models.ProductsCreateProductCreateTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -280,14 +327,14 @@ class Products(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.ProductsCreateProductCreate)
         request = cast(models.ProductsCreateProductCreate, request)
-        
+
         req = self.build_request(
             method="POST",
             path="/v1/products/",
@@ -300,48 +347,57 @@ class Products(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.ProductsCreateProductCreate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request, False, False, "json", models.ProductsCreateProductCreate
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="products:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="products:create",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.ProductOutput])
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def create_async(
-        self, *,
-        request: Union[models.ProductsCreateProductCreate, models.ProductsCreateProductCreateTypedDict],
+        self,
+        *,
+        request: Union[
+            models.ProductsCreateProductCreate,
+            models.ProductsCreateProductCreateTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -359,15 +415,15 @@ class Products(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.ProductsCreateProductCreate)
         request = cast(models.ProductsCreateProductCreate, request)
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="POST",
             path="/v1/products/",
             base_url=base_url,
@@ -379,47 +435,53 @@ class Products(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request, False, False, "json", models.ProductsCreateProductCreate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request, False, False, "json", models.ProductsCreateProductCreate
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="products:create", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="products:create",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.ProductOutput])
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def get(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -429,7 +491,7 @@ class Products(BaseSDK):
 
         Get a product by ID.
 
-        :param id: 
+        :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -438,14 +500,14 @@ class Products(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ProductsGetRequest(
             id=id,
         )
-        
+
         req = self.build_request(
             method="GET",
             path="/v1/products/{id}",
@@ -460,28 +522,26 @@ class Products(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="products:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="products:get",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.ProductOutput])
@@ -491,16 +551,22 @@ class Products(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def get_async(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -510,7 +576,7 @@ class Products(BaseSDK):
 
         Get a product by ID.
 
-        :param id: 
+        :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -519,15 +585,15 @@ class Products(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ProductsGetRequest(
             id=id,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/v1/products/{id}",
             base_url=base_url,
@@ -541,28 +607,26 @@ class Products(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="products:get", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="products:get",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.ProductOutput])
@@ -572,16 +636,22 @@ class Products(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def update(
-        self, *,
+        self,
+        *,
         id: str,
         product_update: Union[models.ProductUpdate, models.ProductUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -592,8 +662,8 @@ class Products(BaseSDK):
 
         Update a product.
 
-        :param id: 
-        :param product_update: 
+        :param id:
+        :param product_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -602,15 +672,17 @@ class Products(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ProductsUpdateRequest(
             id=id,
-            product_update=utils.get_pydantic_model(product_update, models.ProductUpdate),
+            product_update=utils.get_pydantic_model(
+                product_update, models.ProductUpdate
+            ),
         )
-        
+
         req = self.build_request(
             method="PATCH",
             path="/v1/products/{id}",
@@ -623,31 +695,31 @@ class Products(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.product_update, False, False, "json", models.ProductUpdate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.product_update, False, False, "json", models.ProductUpdate
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="products:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="products:update",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.ProductOutput])
@@ -660,16 +732,22 @@ class Products(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def update_async(
-        self, *,
+        self,
+        *,
         id: str,
         product_update: Union[models.ProductUpdate, models.ProductUpdateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -680,8 +758,8 @@ class Products(BaseSDK):
 
         Update a product.
 
-        :param id: 
-        :param product_update: 
+        :param id:
+        :param product_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -690,16 +768,18 @@ class Products(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ProductsUpdateRequest(
             id=id,
-            product_update=utils.get_pydantic_model(product_update, models.ProductUpdate),
+            product_update=utils.get_pydantic_model(
+                product_update, models.ProductUpdate
+            ),
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="PATCH",
             path="/v1/products/{id}",
             base_url=base_url,
@@ -711,31 +791,31 @@ class Products(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.product_update, False, False, "json", models.ProductUpdate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.product_update, False, False, "json", models.ProductUpdate
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="products:update", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="products:update",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.ProductOutput])
@@ -748,18 +828,26 @@ class Products(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     def update_benefits(
-        self, *,
+        self,
+        *,
         id: str,
-        product_benefits_update: Union[models.ProductBenefitsUpdate, models.ProductBenefitsUpdateTypedDict],
+        product_benefits_update: Union[
+            models.ProductBenefitsUpdate, models.ProductBenefitsUpdateTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -768,8 +856,8 @@ class Products(BaseSDK):
 
         Update benefits granted by a product.
 
-        :param id: 
-        :param product_benefits_update: 
+        :param id:
+        :param product_benefits_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -778,15 +866,17 @@ class Products(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ProductsUpdateBenefitsRequest(
             id=id,
-            product_benefits_update=utils.get_pydantic_model(product_benefits_update, models.ProductBenefitsUpdate),
+            product_benefits_update=utils.get_pydantic_model(
+                product_benefits_update, models.ProductBenefitsUpdate
+            ),
         )
-        
+
         req = self.build_request(
             method="POST",
             path="/v1/products/{id}/benefits",
@@ -799,31 +889,35 @@ class Products(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.product_benefits_update, False, False, "json", models.ProductBenefitsUpdate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.product_benefits_update,
+                False,
+                False,
+                "json",
+                models.ProductBenefitsUpdate,
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="products:update_benefits", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="products:update_benefits",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.ProductOutput])
@@ -836,18 +930,26 @@ class Products(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )
+
     async def update_benefits_async(
-        self, *,
+        self,
+        *,
         id: str,
-        product_benefits_update: Union[models.ProductBenefitsUpdate, models.ProductBenefitsUpdateTypedDict],
+        product_benefits_update: Union[
+            models.ProductBenefitsUpdate, models.ProductBenefitsUpdateTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -856,8 +958,8 @@ class Products(BaseSDK):
 
         Update benefits granted by a product.
 
-        :param id: 
-        :param product_benefits_update: 
+        :param id:
+        :param product_benefits_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -866,16 +968,18 @@ class Products(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.ProductsUpdateBenefitsRequest(
             id=id,
-            product_benefits_update=utils.get_pydantic_model(product_benefits_update, models.ProductBenefitsUpdate),
+            product_benefits_update=utils.get_pydantic_model(
+                product_benefits_update, models.ProductBenefitsUpdate
+            ),
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="POST",
             path="/v1/products/{id}/benefits",
             base_url=base_url,
@@ -887,31 +991,35 @@ class Products(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request.product_benefits_update, False, False, "json", models.ProductBenefitsUpdate),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request.product_benefits_update,
+                False,
+                False,
+                "json",
+                models.ProductBenefitsUpdate,
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="products:update_benefits", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="products:update_benefits",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["403","404","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.ProductOutput])
@@ -924,10 +1032,15 @@ class Products(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res.text, http_res
+            )
 
-    
+        content_type = http_res.headers.get("Content-Type")
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res.text,
+            http_res,
+        )

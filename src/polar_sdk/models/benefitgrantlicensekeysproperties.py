@@ -8,9 +8,9 @@ from typing import TypedDict
 class BenefitGrantLicenseKeysPropertiesTypedDict(TypedDict):
     license_key_id: str
     display_key: str
-    
+
 
 class BenefitGrantLicenseKeysProperties(BaseModel):
     license_key_id: str
+
     display_key: str
-    
