@@ -12,6 +12,8 @@ from typing_extensions import NotRequired
 
 
 class OrganizationProfileSettingsTypedDict(TypedDict):
+    enabled: NotRequired[Nullable[bool]]
+    r"""If this organization has a profile enabled"""
     description: NotRequired[Nullable[str]]
     r"""A description of the organization"""
     featured_projects: NotRequired[Nullable[List[str]]]
@@ -22,9 +24,14 @@ class OrganizationProfileSettingsTypedDict(TypedDict):
     r"""A list of links associated with the organization"""
     subscribe: NotRequired[Nullable[OrganizationSubscribePromoteSettingsTypedDict]]
     r"""Subscription promotion settings"""
+    accent_color: NotRequired[Nullable[str]]
+    r"""Accent color for the organization"""
 
 
 class OrganizationProfileSettings(BaseModel):
+    enabled: OptionalNullable[bool] = UNSET
+    r"""If this organization has a profile enabled"""
+
     description: OptionalNullable[str] = UNSET
     r"""A description of the organization"""
 
@@ -40,21 +47,28 @@ class OrganizationProfileSettings(BaseModel):
     subscribe: OptionalNullable[OrganizationSubscribePromoteSettings] = UNSET
     r"""Subscription promotion settings"""
 
+    accent_color: OptionalNullable[str] = UNSET
+    r"""Accent color for the organization"""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "enabled",
             "description",
             "featured_projects",
             "featured_organizations",
             "links",
             "subscribe",
+            "accent_color",
         ]
         nullable_fields = [
+            "enabled",
             "description",
             "featured_projects",
             "featured_organizations",
             "links",
             "subscribe",
+            "accent_color",
         ]
         null_default_fields = []
 
