@@ -2,22 +2,16 @@
 
 from __future__ import annotations
 from .productpriceonetime import ProductPriceOneTime, ProductPriceOneTimeTypedDict
-from .productpricerecurring import ProductPriceRecurring, ProductPriceRecurringTypedDict
-from polar_sdk.utils import get_discriminator
-from pydantic import Discriminator, Tag
+from .productpricerecurring_output import (
+    ProductPriceRecurringOutput,
+    ProductPriceRecurringOutputTypedDict,
+)
 from typing import Union
-from typing_extensions import Annotated
 
 
 ProductPriceOutputTypedDict = Union[
-    ProductPriceOneTimeTypedDict, ProductPriceRecurringTypedDict
+    ProductPriceRecurringOutputTypedDict, ProductPriceOneTimeTypedDict
 ]
 
 
-ProductPriceOutput = Annotated[
-    Union[
-        Annotated[ProductPriceOneTime, Tag("one_time")],
-        Annotated[ProductPriceRecurring, Tag("recurring")],
-    ],
-    Discriminator(lambda m: get_discriminator(m, "type", "type")),
-]
+ProductPriceOutput = Union[ProductPriceRecurringOutput, ProductPriceOneTime]

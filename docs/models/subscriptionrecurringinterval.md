@@ -1,4 +1,4 @@
-# ProductPriceRecurringInterval
+# SubscriptionRecurringInterval
 
 
 ## Values

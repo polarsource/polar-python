@@ -4,6 +4,6 @@ from __future__ import annotations
 from enum import Enum
 
 
-class ProductPriceRecurringInterval(str, Enum):
+class SubscriptionRecurringInterval(str, Enum):
     MONTH = "month"
     YEAR = "year"

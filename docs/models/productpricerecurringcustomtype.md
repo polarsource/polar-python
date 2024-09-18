@@ -1,4 +1,4 @@
-# ProductPriceRecurringType
+# ProductPriceRecurringCustomType
 
 The type of the price.
 

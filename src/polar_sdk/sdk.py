@@ -52,7 +52,7 @@ class Polar(BaseSDK):
     def __init__(
         self,
         access_token: Union[str, Callable[[], str]],
-        server_idx: Optional[int] = None,
+        server: Optional[str] = None,
         server_url: Optional[str] = None,
         url_params: Optional[Dict[str, str]] = None,
         client: Optional[HttpClient] = None,
@@ -64,7 +64,7 @@ class Polar(BaseSDK):
         r"""Instantiates the SDK configuring it with the provided parameters.
 
         :param access_token: The access_token required for authentication
-        :param server_idx: The index of the server to use for all methods
+        :param server: The server by name to use for all methods
         :param server_url: The server URL to use for all methods
         :param url_params: Parameters to optionally template the server URL with
         :param client: The HTTP client to use for all synchronous methods
@@ -106,7 +106,7 @@ class Polar(BaseSDK):
                 async_client=async_client,
                 security=security,
                 server_url=server_url,
-                server_idx=server_idx,
+                server=server,
                 retry_config=retry_config,
                 timeout_ms=timeout_ms,
                 debug_logger=debug_logger,

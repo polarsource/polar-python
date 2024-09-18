@@ -7,8 +7,8 @@
 | -------------------- | -------------------- |
 | `STARTED_AT`         | started_at           |
 | `MINUS_STARTED_AT`   | -started_at          |
-| `PRICE_AMOUNT`       | price_amount         |
-| `MINUS_PRICE_AMOUNT` | -price_amount        |
+| `AMOUNT`             | amount               |
+| `MINUS_AMOUNT`       | -amount              |
 | `STATUS`             | status               |
 | `MINUS_STATUS`       | -status              |
 | `ORGANIZATION`       | organization         |

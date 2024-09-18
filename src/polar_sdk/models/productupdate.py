@@ -2,9 +2,13 @@
 
 from __future__ import annotations
 from .existingproductprice import ExistingProductPrice, ExistingProductPriceTypedDict
-from .productpriceonetimecreate import (
-    ProductPriceOneTimeCreate,
-    ProductPriceOneTimeCreateTypedDict,
+from .productpriceonetimecustomcreate import (
+    ProductPriceOneTimeCustomCreate,
+    ProductPriceOneTimeCustomCreateTypedDict,
+)
+from .productpriceonetimefixedcreate import (
+    ProductPriceOneTimeFixedCreate,
+    ProductPriceOneTimeFixedCreateTypedDict,
 )
 from .productpricerecurringcreate import (
     ProductPriceRecurringCreate,
@@ -17,15 +21,19 @@ from typing import List, TypedDict, Union
 from typing_extensions import Annotated, NotRequired
 
 
-PricesTypedDict = Union[
+ProductUpdatePricesTypedDict = Union[
     ExistingProductPriceTypedDict,
-    ProductPriceOneTimeCreateTypedDict,
+    ProductPriceOneTimeFixedCreateTypedDict,
     ProductPriceRecurringCreateTypedDict,
+    ProductPriceOneTimeCustomCreateTypedDict,
 ]
 
 
-Prices = Union[
-    ExistingProductPrice, ProductPriceOneTimeCreate, ProductPriceRecurringCreate
+ProductUpdatePrices = Union[
+    ExistingProductPrice,
+    ProductPriceOneTimeFixedCreate,
+    ProductPriceRecurringCreate,
+    ProductPriceOneTimeCustomCreate,
 ]
 
 
@@ -38,7 +46,7 @@ class ProductUpdateTypedDict(TypedDict):
     is_highlighted: NotRequired[Nullable[bool]]
     is_archived: NotRequired[Nullable[bool]]
     r"""Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally."""
-    prices: NotRequired[Nullable[List[PricesTypedDict]]]
+    prices: NotRequired[Nullable[List[ProductUpdatePricesTypedDict]]]
     r"""List of available prices for this product. If you want to keep existing prices, include them in the list as an `ExistingProductPrice` object."""
     medias: NotRequired[Nullable[List[str]]]
     r"""List of file IDs. Each one must be on the same organization as the product, of type `product_media` and correctly uploaded."""
@@ -62,7 +70,7 @@ class ProductUpdate(BaseModel):
     is_archived: OptionalNullable[bool] = UNSET
     r"""Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally."""
 
-    prices: OptionalNullable[List[Prices]] = UNSET
+    prices: OptionalNullable[List[ProductUpdatePrices]] = UNSET
     r"""List of available prices for this product. If you want to keep existing prices, include them in the list as an `ExistingProductPrice` object."""
 
     medias: OptionalNullable[List[str]] = UNSET

@@ -81,8 +81,8 @@ res = s.products.create(request={
     "name": "<value>",
     "prices": [
         {
-            "recurring_interval": polar_sdk.ProductPriceRecurringInterval.MONTH,
-            "price_amount": 489382,
+            "price_amount": 486589,
+            "recurring_interval": polar_sdk.SubscriptionRecurringInterval.MONTH,
         },
     ],
     "type": polar_sdk.ProductRecurringCreateType.INDIVIDUAL,

@@ -1,7 +1,19 @@
-# Prices
+# ProductUpdatePrices
 
 
 ## Supported Types
+
+### `models.ExistingProductPrice`
+
+```python
+value: models.ExistingProductPrice = /* values here */
+```
+
+### `models.ProductPriceRecurringCreate`
+
+```python
+value: models.ProductPriceRecurringCreate = /* values here */
+```
 
 ### `models.ProductPriceOneTimeFixedCreate`
 
