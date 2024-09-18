@@ -1,9 +1,9 @@
-speakeasyVersion: 1.398.0
+speakeasyVersion: 1.399.2
 sources:
     Polar-OAS:
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:079c66417cf8ba0d4da343834e14c32111328f1cbd5a060f2e4b0e65705a64d1
-        sourceBlobDigest: sha256:cfa0bf065ba416bba77fc02ee0ff34c6b24d3363ba1d7bf3f3158a065b661d7d
+        sourceRevisionDigest: sha256:845dacdd7a7a8361e00244e91be8d5238df1630b8d43a880081955a4d0bc131a
+        sourceBlobDigest: sha256:be5d595269c5d0a01528d11da1b2fbaea4a2f76c96d09aaab78fc853af5be99d
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     polar:
         source: Polar-OAS
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:079c66417cf8ba0d4da343834e14c32111328f1cbd5a060f2e4b0e65705a64d1
-        sourceBlobDigest: sha256:cfa0bf065ba416bba77fc02ee0ff34c6b24d3363ba1d7bf3f3158a065b661d7d
+        sourceRevisionDigest: sha256:845dacdd7a7a8361e00244e91be8d5238df1630b8d43a880081955a4d0bc131a
+        sourceBlobDigest: sha256:be5d595269c5d0a01528d11da1b2fbaea4a2f76c96d09aaab78fc853af5be99d
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -23,6 +23,7 @@ workflow:
             overlays:
                 - location: https://raw.githubusercontent.com/polarsource/polar/main/sdk/overlays/security.yml
                 - location: https://raw.githubusercontent.com/polarsource/polar/main/sdk/overlays/type_parameter.yml
+                - location: https://raw.githubusercontent.com/polarsource/polar/main/sdk/overlays/product_price_discriminator.yml
             registry:
                 location: registry.speakeasyapi.dev/polar/polar/polar-oas
     targets:

@@ -1,6 +1,4 @@
-# ProductPriceOneTimeType
-
-The type of the price.
+# ProductPriceOneTimeCustomCreateType
 
 
 ## Values

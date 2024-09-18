@@ -8,11 +8,11 @@ from typing import Final, Optional, TypedDict
 from typing_extensions import Annotated, NotRequired
 
 
-class ProductPriceOneTimeCreateType(str, Enum):
+class ProductPriceOneTimeFixedCreateType(str, Enum):
     ONE_TIME = "one_time"
 
 
-class ProductPriceOneTimeCreateTypedDict(TypedDict):
+class ProductPriceOneTimeFixedCreateTypedDict(TypedDict):
     r"""Schema to create a one-time product price."""
 
     price_amount: int
@@ -21,14 +21,14 @@ class ProductPriceOneTimeCreateTypedDict(TypedDict):
     r"""The currency. Currently, only `usd` is supported."""
 
 
-class ProductPriceOneTimeCreate(BaseModel):
+class ProductPriceOneTimeFixedCreate(BaseModel):
     r"""Schema to create a one-time product price."""
 
     price_amount: int
     r"""The price in cents."""
 
     # fmt: off
-    TYPE: Annotated[Final[ProductPriceOneTimeCreateType], pydantic.Field(alias="type")] = ProductPriceOneTimeCreateType.ONE_TIME # type: ignore
+    TYPE: Annotated[Final[ProductPriceOneTimeFixedCreateType], pydantic.Field(alias="type")] = ProductPriceOneTimeFixedCreateType.ONE_TIME # type: ignore
     # fmt: on
 
     price_currency: Optional[str] = "usd"

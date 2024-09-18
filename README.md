@@ -370,13 +370,14 @@ except models.SDKError as e:
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Select Server by Index
+### Select Server by Name
 
-You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+You can override the default server globally by passing a server name to the `server: str` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
 
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.polar.sh` | None |
+| Name | Server | Variables |
+| ----- | ------ | --------- |
+| `production` | `https://api.polar.sh` | None |
+| `sandbox` | `https://sandbox-api.polar.sh` | None |
 
 #### Example
 
@@ -384,7 +385,7 @@ You can override the default server globally by passing a server index to the `s
 from polar_sdk import Polar
 
 s = Polar(
-    server_idx=0,
+    server="sandbox",
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 

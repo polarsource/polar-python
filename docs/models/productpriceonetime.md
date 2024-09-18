@@ -1,16 +1,17 @@
 # ProductPriceOneTime
 
-A one-time price for a product.
 
+## Supported Types
 
-## Fields
+### `models.ProductPriceOneTimeFixed`
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `created_at`                                                           | [date](https://docs.python.org/3/library/datetime.html#date-objects)   | :heavy_check_mark:                                                     | Creation timestamp of the object.                                      |
-| `modified_at`                                                          | [date](https://docs.python.org/3/library/datetime.html#date-objects)   | :heavy_check_mark:                                                     | Last modification timestamp of the object.                             |
-| `id`                                                                   | *str*                                                                  | :heavy_check_mark:                                                     | The ID of the price.                                                   |
-| `price_amount`                                                         | *int*                                                                  | :heavy_check_mark:                                                     | The price in cents.                                                    |
-| `price_currency`                                                       | *str*                                                                  | :heavy_check_mark:                                                     | The currency.                                                          |
-| `is_archived`                                                          | *bool*                                                                 | :heavy_check_mark:                                                     | Whether the price is archived and no longer available.                 |
-| `type`                                                                 | [models.ProductPriceOneTimeType](../models/productpriceonetimetype.md) | :heavy_check_mark:                                                     | The type of the price.                                                 |
+```python
+value: models.ProductPriceOneTimeFixed = /* values here */
+```
+
+### `models.ProductPriceOneTimeCustom`
+
+```python
+value: models.ProductPriceOneTimeCustom = /* values here */
+```
+

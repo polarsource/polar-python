@@ -717,30 +717,62 @@ from .productmediafileread_output import (
     ProductMediaFileReadOutputTypedDict,
     Service,
 )
-from .productonetimecreate import ProductOneTimeCreate, ProductOneTimeCreateTypedDict
+from .productonetimecreate import (
+    Prices,
+    PricesTypedDict,
+    ProductOneTimeCreate,
+    ProductOneTimeCreateTypedDict,
+)
 from .productprice_input import ProductPriceInput, ProductPriceInputTypedDict
 from .productprice_output import ProductPriceOutput, ProductPriceOutputTypedDict
-from .productpriceonetime import (
-    ProductPriceOneTime,
-    ProductPriceOneTimeType,
-    ProductPriceOneTimeTypedDict,
+from .productpriceonetime import ProductPriceOneTime, ProductPriceOneTimeTypedDict
+from .productpriceonetimecustom import (
+    ProductPriceOneTimeCustom,
+    ProductPriceOneTimeCustomAmountType,
+    ProductPriceOneTimeCustomType,
+    ProductPriceOneTimeCustomTypedDict,
 )
-from .productpriceonetimecreate import (
-    ProductPriceOneTimeCreate,
-    ProductPriceOneTimeCreateType,
-    ProductPriceOneTimeCreateTypedDict,
+from .productpriceonetimecustomcreate import (
+    ProductPriceOneTimeCustomCreate,
+    ProductPriceOneTimeCustomCreateType,
+    ProductPriceOneTimeCustomCreateTypedDict,
 )
-from .productpricerecurring import (
-    ProductPriceRecurring,
-    ProductPriceRecurringType,
-    ProductPriceRecurringTypedDict,
+from .productpriceonetimefixed import (
+    ProductPriceOneTimeFixed,
+    ProductPriceOneTimeFixedAmountType,
+    ProductPriceOneTimeFixedType,
+    ProductPriceOneTimeFixedTypedDict,
+)
+from .productpriceonetimefixedcreate import (
+    ProductPriceOneTimeFixedCreate,
+    ProductPriceOneTimeFixedCreateType,
+    ProductPriceOneTimeFixedCreateTypedDict,
+)
+from .productpricerecurring_input import (
+    ProductPriceRecurringInput,
+    ProductPriceRecurringInputTypedDict,
+)
+from .productpricerecurring_output import (
+    ProductPriceRecurringOutput,
+    ProductPriceRecurringOutputTypedDict,
 )
 from .productpricerecurringcreate import (
     ProductPriceRecurringCreate,
     ProductPriceRecurringCreateType,
     ProductPriceRecurringCreateTypedDict,
 )
-from .productpricerecurringinterval import ProductPriceRecurringInterval
+from .productpricerecurringcustom import (
+    ProductPriceRecurringCustom,
+    ProductPriceRecurringCustomAmountType,
+    ProductPriceRecurringCustomType,
+    ProductPriceRecurringCustomTypedDict,
+)
+from .productpricerecurringfixed import (
+    AmountType,
+    ProductPriceRecurringFixed,
+    ProductPriceRecurringFixedType,
+    ProductPriceRecurringFixedTypedDict,
+)
 from .productpricetype import ProductPriceType
 from .productrecurringcreate import (
     ProductRecurringCreate,
@@ -770,9 +802,9 @@ from .products_update_benefitsop import (
 )
 from .products_updateop import ProductsUpdateRequest, ProductsUpdateRequestTypedDict
 from .productupdate import (
-    Prices,
-    PricesTypedDict,
     ProductUpdate,
+    ProductUpdatePrices,
+    ProductUpdatePricesTypedDict,
     ProductUpdateTypedDict,
 )
 from .reactions import Reactions, ReactionsTypedDict
@@ -831,6 +863,7 @@ from .subscriptioncreateemail import (
     SubscriptionCreateEmail,
     SubscriptionCreateEmailTypedDict,
 )
+from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptions_exportop import (
     OrganizationID,
     OrganizationIDTypedDict,
@@ -1097,6 +1130,7 @@ __all__ = [
     "AlreadySubscribed",
     "AlreadySubscribedData",
     "AlreadySubscribedType",
+    "AmountType",
     "Article",
     "ArticleByline",
     "ArticleCreate",
@@ -1637,20 +1671,37 @@ __all__ = [
     "ProductPriceInput",
     "ProductPriceInputTypedDict",
     "ProductPriceOneTime",
-    "ProductPriceOneTimeCreate",
-    "ProductPriceOneTimeCreateType",
-    "ProductPriceOneTimeCreateTypedDict",
-    "ProductPriceOneTimeType",
+    "ProductPriceOneTimeCustom",
+    "ProductPriceOneTimeCustomAmountType",
+    "ProductPriceOneTimeCustomCreate",
+    "ProductPriceOneTimeCustomCreateType",
+    "ProductPriceOneTimeCustomCreateTypedDict",
+    "ProductPriceOneTimeCustomType",
+    "ProductPriceOneTimeCustomTypedDict",
+    "ProductPriceOneTimeFixed",
+    "ProductPriceOneTimeFixedAmountType",
+    "ProductPriceOneTimeFixedCreate",
+    "ProductPriceOneTimeFixedCreateType",
+    "ProductPriceOneTimeFixedCreateTypedDict",
+    "ProductPriceOneTimeFixedType",
+    "ProductPriceOneTimeFixedTypedDict",
     "ProductPriceOneTimeTypedDict",
     "ProductPriceOutput",
     "ProductPriceOutputTypedDict",
-    "ProductPriceRecurring",
     "ProductPriceRecurringCreate",
     "ProductPriceRecurringCreateType",
     "ProductPriceRecurringCreateTypedDict",
-    "ProductPriceRecurringInterval",
-    "ProductPriceRecurringType",
-    "ProductPriceRecurringTypedDict",
+    "ProductPriceRecurringCustom",
+    "ProductPriceRecurringCustomAmountType",
+    "ProductPriceRecurringCustomType",
+    "ProductPriceRecurringCustomTypedDict",
+    "ProductPriceRecurringFixed",
+    "ProductPriceRecurringFixedType",
+    "ProductPriceRecurringFixedTypedDict",
+    "ProductPriceRecurringInput",
+    "ProductPriceRecurringInputTypedDict",
+    "ProductPriceRecurringOutput",
+    "ProductPriceRecurringOutputTypedDict",
     "ProductPriceType",
     "ProductPriceTypeFilter",
     "ProductPriceTypeFilterTypedDict",
@@ -1658,6 +1709,8 @@ __all__ = [
     "ProductRecurringCreateType",
     "ProductRecurringCreateTypedDict",
     "ProductUpdate",
+    "ProductUpdatePrices",
+    "ProductUpdatePricesTypedDict",
     "ProductUpdateTypedDict",
     "ProductsCreateProductCreate",
     "ProductsCreateProductCreateTypedDict",
@@ -1748,6 +1801,7 @@ __all__ = [
     "SubscriptionInputTypedDict",
     "SubscriptionOutput",
     "SubscriptionOutputTypedDict",
+    "SubscriptionRecurringInterval",
     "SubscriptionSortProperty",
     "SubscriptionStatus",
     "SubscriptionTierType",

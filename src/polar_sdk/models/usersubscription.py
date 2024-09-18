@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .productprice_output import ProductPriceOutput, ProductPriceOutputTypedDict
+from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptionstatus import SubscriptionStatus
 from .usersubscriptionproduct import (
     UserSubscriptionProduct,
@@ -19,6 +20,10 @@ class UserSubscriptionTypedDict(TypedDict):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
     id: str
+    r"""The ID of the object."""
+    amount: Nullable[int]
+    currency: Nullable[str]
+    recurring_interval: SubscriptionRecurringInterval
     status: SubscriptionStatus
     current_period_start: datetime
     current_period_end: Nullable[datetime]
@@ -40,6 +45,13 @@ class UserSubscription(BaseModel):
     r"""Last modification timestamp of the object."""
 
     id: str
+    r"""The ID of the object."""
+
+    amount: Nullable[int]
+
+    currency: Nullable[str]
+
+    recurring_interval: SubscriptionRecurringInterval
 
     status: SubscriptionStatus
 
@@ -68,6 +80,8 @@ class UserSubscription(BaseModel):
         optional_fields = []
         nullable_fields = [
             "modified_at",
+            "amount",
+            "currency",
             "current_period_end",
             "started_at",
             "ended_at",
