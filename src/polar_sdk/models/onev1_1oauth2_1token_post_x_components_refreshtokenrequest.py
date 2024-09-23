@@ -17,6 +17,7 @@ class Onev11oauth21tokenPostXComponentsRefreshTokenRequestTypedDict(TypedDict):
     client_id: str
     client_secret: str
     refresh_token: str
+    grant_type: Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType
 
 
 class Onev11oauth21tokenPostXComponentsRefreshTokenRequest(BaseModel):

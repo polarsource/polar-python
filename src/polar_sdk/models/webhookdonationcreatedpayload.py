@@ -20,6 +20,7 @@ class WebhookDonationCreatedPayloadTypedDict(TypedDict):
     """
 
     data: DonationInputTypedDict
+    type: WebhookDonationCreatedPayloadType
 
 
 class WebhookDonationCreatedPayload(BaseModel):

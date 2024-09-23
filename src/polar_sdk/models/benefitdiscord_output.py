@@ -40,6 +40,7 @@ class BenefitDiscordOutputTypedDict(TypedDict):
     r"""The ID of the organization owning the benefit."""
     properties: BenefitDiscordPropertiesOutputTypedDict
     r"""Properties for a benefit of type `discord`."""
+    type: BenefitDiscordOutputType
 
 
 class BenefitDiscordOutput(BaseModel):

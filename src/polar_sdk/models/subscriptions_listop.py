@@ -6,10 +6,8 @@ from .listresource_subscription_ import (
     ListResourceSubscriptionTypedDict,
 )
 from .subscriptionsortproperty import SubscriptionSortProperty
-from .subscriptiontiertype import SubscriptionTierType
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
-import pydantic
 from pydantic import model_serializer
 from typing import Callable, List, Optional, TypedDict, Union
 from typing_extensions import Annotated, NotRequired
@@ -31,16 +29,6 @@ SubscriptionsListQueryParamProductIDFilter = Union[str, List[str]]
 r"""Filter by product ID."""
 
 
-SubscriptionTierTypeFilterTypedDict = Union[
-    SubscriptionTierType, List[SubscriptionTierType]
-]
-r"""Filter by subscription tier type."""
-
-
-SubscriptionTierTypeFilter = Union[SubscriptionTierType, List[SubscriptionTierType]]
-r"""Filter by subscription tier type."""
-
-
 class SubscriptionsListRequestTypedDict(TypedDict):
     organization_id: NotRequired[
         Nullable[SubscriptionsListQueryParamOrganizationIDFilterTypedDict]
@@ -50,8 +38,6 @@ class SubscriptionsListRequestTypedDict(TypedDict):
         Nullable[SubscriptionsListQueryParamProductIDFilterTypedDict]
     ]
     r"""Filter by product ID."""
-    type_filter: NotRequired[Nullable[SubscriptionTierTypeFilterTypedDict]]
-    r"""Filter by subscription tier type."""
     active: NotRequired[Nullable[bool]]
     r"""Filter by active or inactive subscription."""
     page: NotRequired[int]
@@ -74,16 +60,6 @@ class SubscriptionsListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by product ID."""
-
-    type_filter: Annotated[
-        OptionalNullable[SubscriptionTierTypeFilter],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible.",
-            alias="type",
-        ),
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = UNSET
-    r"""Filter by subscription tier type."""
 
     active: Annotated[
         OptionalNullable[bool],
@@ -114,19 +90,12 @@ class SubscriptionsListRequest(BaseModel):
         optional_fields = [
             "organization_id",
             "product_id",
-            "type_filter",
             "active",
             "page",
             "limit",
             "sorting",
         ]
-        nullable_fields = [
-            "organization_id",
-            "product_id",
-            "type_filter",
-            "active",
-            "sorting",
-        ]
+        nullable_fields = ["organization_id", "product_id", "active", "sorting"]
         null_default_fields = []
 
         serialized = handler(self)

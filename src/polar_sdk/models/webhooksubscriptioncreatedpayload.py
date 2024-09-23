@@ -20,6 +20,7 @@ class WebhookSubscriptionCreatedPayloadTypedDict(TypedDict):
     """
 
     data: SubscriptionInputTypedDict
+    type: WebhookSubscriptionCreatedPayloadType
 
 
 class WebhookSubscriptionCreatedPayload(BaseModel):

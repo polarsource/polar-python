@@ -16,6 +16,7 @@ class BenefitArticlesUpdateType(str, Enum):
 class BenefitArticlesUpdateTypedDict(TypedDict):
     description: NotRequired[Nullable[str]]
     r"""The description of the benefit. Will be displayed on products having this benefit."""
+    type: BenefitArticlesUpdateType
 
 
 class BenefitArticlesUpdate(BaseModel):

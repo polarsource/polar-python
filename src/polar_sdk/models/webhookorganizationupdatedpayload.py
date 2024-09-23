@@ -20,6 +20,7 @@ class WebhookOrganizationUpdatedPayloadTypedDict(TypedDict):
     """
 
     data: OrganizationInputTypedDict
+    type: WebhookOrganizationUpdatedPayloadType
 
 
 class WebhookOrganizationUpdatedPayload(BaseModel):

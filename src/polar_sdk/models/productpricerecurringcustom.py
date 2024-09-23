@@ -30,10 +30,10 @@ class ProductPriceRecurringCustomTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the price."""
-    price_currency: str
-    r"""The currency."""
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
+    price_currency: str
+    r"""The currency."""
     minimum_amount: Nullable[int]
     r"""The minimum amount the customer can pay."""
     maximum_amount: Nullable[int]
@@ -42,6 +42,9 @@ class ProductPriceRecurringCustomTypedDict(TypedDict):
     r"""The initial amount shown to the customer."""
     recurring_interval: SubscriptionRecurringInterval
     r"""The recurring interval of the price."""
+    amount_type: ProductPriceRecurringCustomAmountType
+    type: ProductPriceRecurringCustomType
+    r"""The type of the price."""
 
 
 class ProductPriceRecurringCustom(BaseModel):
@@ -56,11 +59,11 @@ class ProductPriceRecurringCustom(BaseModel):
     id: str
     r"""The ID of the price."""
 
-    price_currency: str
-    r"""The currency."""
-
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
+
+    price_currency: str
+    r"""The currency."""
 
     minimum_amount: Nullable[int]
     r"""The minimum amount the customer can pay."""

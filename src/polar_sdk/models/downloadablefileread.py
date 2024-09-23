@@ -32,6 +32,7 @@ class DownloadableFileReadTypedDict(TypedDict):
     is_uploaded: bool
     created_at: datetime
     size_readable: str
+    service: DownloadableFileReadService
 
 
 class DownloadableFileRead(BaseModel):

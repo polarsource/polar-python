@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 from .listresource_product_ import ListResourceProduct, ListResourceProductTypedDict
-from .subscriptiontiertype import SubscriptionTierType
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
-import pydantic
 from pydantic import model_serializer
 from typing import Callable, List, Optional, TypedDict, Union
 from typing_extensions import Annotated, NotRequired
@@ -27,18 +25,6 @@ QueryParamBenefitIDFilter = Union[str, List[str]]
 r"""Filter products granting specific benefit."""
 
 
-QueryParamSubscriptionTierTypeFilterTypedDict = Union[
-    SubscriptionTierType, List[SubscriptionTierType]
-]
-r"""Filter by subscription tier type."""
-
-
-QueryParamSubscriptionTierTypeFilter = Union[
-    SubscriptionTierType, List[SubscriptionTierType]
-]
-r"""Filter by subscription tier type."""
-
-
 class ProductsListRequestTypedDict(TypedDict):
     organization_id: ProductsListQueryParamOrganizationIDFilterTypedDict
     r"""Filter by organization ID."""
@@ -48,8 +34,6 @@ class ProductsListRequestTypedDict(TypedDict):
     r"""Filter on recurring products. If `true`, only subscriptions tiers are returned. If `false`, only one-time purchase products are returned."""
     benefit_id: NotRequired[Nullable[QueryParamBenefitIDFilterTypedDict]]
     r"""Filter products granting specific benefit."""
-    type_filter: NotRequired[Nullable[QueryParamSubscriptionTierTypeFilterTypedDict]]
-    r"""Filter by subscription tier type."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -81,13 +65,6 @@ class ProductsListRequest(BaseModel):
     ] = UNSET
     r"""Filter products granting specific benefit."""
 
-    type_filter: Annotated[
-        OptionalNullable[QueryParamSubscriptionTierTypeFilter],
-        pydantic.Field(alias="type"),
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = UNSET
-    r"""Filter by subscription tier type."""
-
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -102,15 +79,8 @@ class ProductsListRequest(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "is_archived",
-            "is_recurring",
-            "benefit_id",
-            "type_filter",
-            "page",
-            "limit",
-        ]
-        nullable_fields = ["is_archived", "is_recurring", "benefit_id", "type_filter"]
+        optional_fields = ["is_archived", "is_recurring", "benefit_id", "page", "limit"]
+        nullable_fields = ["is_archived", "is_recurring", "benefit_id"]
         null_default_fields = []
 
         serialized = handler(self)

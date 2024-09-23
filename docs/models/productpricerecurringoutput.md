@@ -15,3 +15,9 @@ value: models.ProductPriceRecurringCustom = /* values here */
 value: models.ProductPriceRecurringFixed = /* values here */
 ```
 
+### `models.ProductPriceRecurringFree`
+
+```python
+value: models.ProductPriceRecurringFree = /* values here */
+```
+

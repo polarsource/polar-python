@@ -33,6 +33,7 @@ class ProductMediaFileReadOutputTypedDict(TypedDict):
     created_at: datetime
     size_readable: str
     public_url: str
+    service: Service
 
 
 class ProductMediaFileReadOutput(BaseModel):

@@ -12,11 +12,17 @@ class ProductPriceOneTimeFixedCreateType(str, Enum):
     ONE_TIME = "one_time"
 
 
+class ProductPriceOneTimeFixedCreateAmountType(str, Enum):
+    FIXED = "fixed"
+
+
 class ProductPriceOneTimeFixedCreateTypedDict(TypedDict):
     r"""Schema to create a one-time product price."""
 
     price_amount: int
     r"""The price in cents."""
+    type: ProductPriceOneTimeFixedCreateType
+    amount_type: ProductPriceOneTimeFixedCreateAmountType
     price_currency: NotRequired[str]
     r"""The currency. Currently, only `usd` is supported."""
 
@@ -29,6 +35,10 @@ class ProductPriceOneTimeFixedCreate(BaseModel):
 
     # fmt: off
     TYPE: Annotated[Final[ProductPriceOneTimeFixedCreateType], pydantic.Field(alias="type")] = ProductPriceOneTimeFixedCreateType.ONE_TIME # type: ignore
+    # fmt: on
+
+    # fmt: off
+    AMOUNT_TYPE: Annotated[Final[ProductPriceOneTimeFixedCreateAmountType], pydantic.Field(alias="amount_type")] = ProductPriceOneTimeFixedCreateAmountType.FIXED # type: ignore
     # fmt: on
 
     price_currency: Optional[str] = "usd"

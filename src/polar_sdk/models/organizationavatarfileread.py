@@ -33,6 +33,7 @@ class OrganizationAvatarFileReadTypedDict(TypedDict):
     created_at: datetime
     size_readable: str
     public_url: str
+    service: OrganizationAvatarFileReadService
 
 
 class OrganizationAvatarFileRead(BaseModel):

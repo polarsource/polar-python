@@ -1,22 +1,21 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: ae458e053e5d17139936b85058488fb2
+  docChecksum: 2c4af22de10e6543957de6ddb476ba38
   docVersion: 0.1.0
-  speakeasyVersion: 1.399.2
-  generationVersion: 2.416.6
-  releaseVersion: 0.3.0
-  configChecksum: 66e95865a7851ad47b785b742caa93d3
+  speakeasyVersion: 1.401.2
+  generationVersion: 2.421.3
+  releaseVersion: 0.4.0
+  configChecksum: 02efbe623af54401c4ce0b8a06743b3a
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
 features:
   python:
     additionalDependencies: 1.0.0
-    constsAndDefaults: 1.0.2
-    core: 5.5.3
+    constsAndDefaults: 1.0.3
+    core: 5.5.4
     defaultEnabledRetries: 0.2.0
-    deprecations: 3.0.0
     devContainers: 3.0.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.3.1
@@ -27,8 +26,7 @@ features:
     globalServerURLs: 3.0.0
     groups: 3.0.0
     ignores: 3.0.0
-    methodArguments: 1.0.1
-    multipartFileContentType: 1.0.0
+    methodArguments: 1.0.2
     nameOverrides: 3.0.0
     nullables: 1.0.0
     pagination: 3.0.1
@@ -37,7 +35,6 @@ features:
     sdkHooks: 1.0.0
     serverIDs: 3.0.0
     unions: 3.0.2
-    uploadStreams: 1.0.0
     webhooks: 2.0.0
 generatedFiles:
   - .devcontainer/README.md
@@ -55,8 +52,6 @@ generatedFiles:
   - docs/models/advertisementsortproperty.md
   - docs/models/alreadycanceledsubscription.md
   - docs/models/alreadycanceledsubscriptiontype.md
-  - docs/models/alreadysubscribed.md
-  - docs/models/alreadysubscribedtype.md
   - docs/models/amounttype.md
   - docs/models/article.md
   - docs/models/articlebyline.md
@@ -182,7 +177,6 @@ generatedFiles:
   - docs/models/benefitsupdateresponsebenefitsupdate.md
   - docs/models/benefittype.md
   - docs/models/benefittypefilter.md
-  - docs/models/bodysubscriptionsimport.md
   - docs/models/bylineprofile.md
   - docs/models/checkout.md
   - docs/models/checkoutcreate.md
@@ -205,7 +199,6 @@ generatedFiles:
   - docs/models/externalorganizationslistrequest.md
   - docs/models/externalorganizationslistresponse.md
   - docs/models/externalorganizationsortproperty.md
-  - docs/models/file.md
   - docs/models/filedownload.md
   - docs/models/filenotfound.md
   - docs/models/filenotfoundtype.md
@@ -222,8 +215,6 @@ generatedFiles:
   - docs/models/filesuploadedresponsefilesuploaded.md
   - docs/models/fileupload.md
   - docs/models/fileuploadcompleted.md
-  - docs/models/freesubscriptionupgrade.md
-  - docs/models/freesubscriptionupgradetype.md
   - docs/models/funding.md
   - docs/models/granttype.md
   - docs/models/granttypes.md
@@ -364,27 +355,42 @@ generatedFiles:
   - docs/models/productpriceonetimecustom.md
   - docs/models/productpriceonetimecustomamounttype.md
   - docs/models/productpriceonetimecustomcreate.md
+  - docs/models/productpriceonetimecustomcreateamounttype.md
   - docs/models/productpriceonetimecustomcreatetype.md
   - docs/models/productpriceonetimecustomtype.md
   - docs/models/productpriceonetimefixed.md
   - docs/models/productpriceonetimefixedamounttype.md
   - docs/models/productpriceonetimefixedcreate.md
+  - docs/models/productpriceonetimefixedcreateamounttype.md
   - docs/models/productpriceonetimefixedcreatetype.md
   - docs/models/productpriceonetimefixedtype.md
+  - docs/models/productpriceonetimefree.md
+  - docs/models/productpriceonetimefreeamounttype.md
+  - docs/models/productpriceonetimefreecreate.md
+  - docs/models/productpriceonetimefreecreateamounttype.md
+  - docs/models/productpriceonetimefreecreatetype.md
+  - docs/models/productpriceonetimefreetype.md
   - docs/models/productpriceoutput.md
-  - docs/models/productpricerecurringcreate.md
-  - docs/models/productpricerecurringcreatetype.md
   - docs/models/productpricerecurringcustom.md
   - docs/models/productpricerecurringcustomamounttype.md
   - docs/models/productpricerecurringcustomtype.md
   - docs/models/productpricerecurringfixed.md
+  - docs/models/productpricerecurringfixedcreate.md
+  - docs/models/productpricerecurringfixedcreateamounttype.md
+  - docs/models/productpricerecurringfixedcreatetype.md
   - docs/models/productpricerecurringfixedtype.md
+  - docs/models/productpricerecurringfree.md
+  - docs/models/productpricerecurringfreeamounttype.md
+  - docs/models/productpricerecurringfreecreate.md
+  - docs/models/productpricerecurringfreecreateamounttype.md
+  - docs/models/productpricerecurringfreecreatetype.md
+  - docs/models/productpricerecurringfreetype.md
   - docs/models/productpricerecurringinput.md
   - docs/models/productpricerecurringoutput.md
   - docs/models/productpricetype.md
   - docs/models/productpricetypefilter.md
   - docs/models/productrecurringcreate.md
-  - docs/models/productrecurringcreatetype.md
+  - docs/models/productrecurringcreateprices.md
   - docs/models/productscreateproductcreate.md
   - docs/models/productsgetrequest.md
   - docs/models/productslistqueryparamorganizationidfilter.md
@@ -402,7 +408,6 @@ generatedFiles:
   - docs/models/queryparamproductpricetypefilter.md
   - docs/models/queryparamrepositorynamefilter.md
   - docs/models/queryparamsubscriptionidfilter.md
-  - docs/models/queryparamsubscriptiontiertypefilter.md
   - docs/models/reactions.md
   - docs/models/repositoriesgetrequest.md
   - docs/models/repositorieslistqueryparamorganizationidfilter.md
@@ -429,21 +434,17 @@ generatedFiles:
   - docs/models/security.md
   - docs/models/service.md
   - docs/models/state.md
-  - docs/models/subscriptioncreateemail.md
   - docs/models/subscriptionidfilter.md
   - docs/models/subscriptioninput.md
   - docs/models/subscriptionoutput.md
   - docs/models/subscriptionrecurringinterval.md
   - docs/models/subscriptionsexportrequest.md
-  - docs/models/subscriptionsimported.md
   - docs/models/subscriptionslistqueryparamorganizationidfilter.md
   - docs/models/subscriptionslistqueryparamproductidfilter.md
   - docs/models/subscriptionslistrequest.md
   - docs/models/subscriptionslistresponse.md
   - docs/models/subscriptionsortproperty.md
   - docs/models/subscriptionstatus.md
-  - docs/models/subscriptiontiertype.md
-  - docs/models/subscriptiontiertypefilter.md
   - docs/models/subscriptionuser.md
   - docs/models/subtype.md
   - docs/models/timeframe.md
@@ -461,7 +462,6 @@ generatedFiles:
   - docs/models/useradvertisementsortproperty.md
   - docs/models/userbenefit.md
   - docs/models/userbenefitsortproperty.md
-  - docs/models/userfreesubscriptioncreate.md
   - docs/models/useridfilter.md
   - docs/models/userinfoorganization.md
   - docs/models/userinfouser.md
@@ -583,7 +583,6 @@ generatedFiles:
   - src/polar_sdk/models/advertisements_listop.py
   - src/polar_sdk/models/advertisementsortproperty.py
   - src/polar_sdk/models/alreadycanceledsubscription.py
-  - src/polar_sdk/models/alreadysubscribed.py
   - src/polar_sdk/models/article.py
   - src/polar_sdk/models/articlebyline.py
   - src/polar_sdk/models/articlecreate.py
@@ -663,7 +662,6 @@ generatedFiles:
   - src/polar_sdk/models/benefits_listop.py
   - src/polar_sdk/models/benefits_updateop.py
   - src/polar_sdk/models/benefittype.py
-  - src/polar_sdk/models/body_subscriptions_import.py
   - src/polar_sdk/models/bylineprofile.py
   - src/polar_sdk/models/checkout.py
   - src/polar_sdk/models/checkoutcreate.py
@@ -690,7 +688,6 @@ generatedFiles:
   - src/polar_sdk/models/fileservicetypes.py
   - src/polar_sdk/models/fileupload.py
   - src/polar_sdk/models/fileuploadcompleted.py
-  - src/polar_sdk/models/freesubscriptionupgrade.py
   - src/polar_sdk/models/funding.py
   - src/polar_sdk/models/httpvalidationerror.py
   - src/polar_sdk/models/introspecttokenresponse.py
@@ -792,11 +789,15 @@ generatedFiles:
   - src/polar_sdk/models/productpriceonetimecustomcreate.py
   - src/polar_sdk/models/productpriceonetimefixed.py
   - src/polar_sdk/models/productpriceonetimefixedcreate.py
+  - src/polar_sdk/models/productpriceonetimefree.py
+  - src/polar_sdk/models/productpriceonetimefreecreate.py
   - src/polar_sdk/models/productpricerecurring_input.py
   - src/polar_sdk/models/productpricerecurring_output.py
-  - src/polar_sdk/models/productpricerecurringcreate.py
   - src/polar_sdk/models/productpricerecurringcustom.py
   - src/polar_sdk/models/productpricerecurringfixed.py
+  - src/polar_sdk/models/productpricerecurringfixedcreate.py
+  - src/polar_sdk/models/productpricerecurringfree.py
+  - src/polar_sdk/models/productpricerecurringfreecreate.py
   - src/polar_sdk/models/productpricetype.py
   - src/polar_sdk/models/productrecurringcreate.py
   - src/polar_sdk/models/products_createop.py
@@ -828,14 +829,11 @@ generatedFiles:
   - src/polar_sdk/models/state.py
   - src/polar_sdk/models/subscription_input.py
   - src/polar_sdk/models/subscription_output.py
-  - src/polar_sdk/models/subscriptioncreateemail.py
   - src/polar_sdk/models/subscriptionrecurringinterval.py
   - src/polar_sdk/models/subscriptions_exportop.py
   - src/polar_sdk/models/subscriptions_listop.py
-  - src/polar_sdk/models/subscriptionsimported.py
   - src/polar_sdk/models/subscriptionsortproperty.py
   - src/polar_sdk/models/subscriptionstatus.py
-  - src/polar_sdk/models/subscriptiontiertype.py
   - src/polar_sdk/models/subscriptionuser.py
   - src/polar_sdk/models/subtype.py
   - src/polar_sdk/models/tokenresponse.py
@@ -846,7 +844,6 @@ generatedFiles:
   - src/polar_sdk/models/useradvertisementcampaignupdate.py
   - src/polar_sdk/models/useradvertisementsortproperty.py
   - src/polar_sdk/models/userbenefitsortproperty.py
-  - src/polar_sdk/models/userfreesubscriptioncreate.py
   - src/polar_sdk/models/userinfoorganization.py
   - src/polar_sdk/models/userinfouser.py
   - src/polar_sdk/models/userorder.py
@@ -935,7 +932,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2022-04-09T17:04:24.706Z", "modified_at": "2023-09-05T11:33:52.010Z", "id": "<value>", "description": "Switchable interactive service-desk", "selectable": true, "deletable": false, "organization_id": "<value>", "properties": {"repository_owner": "polarsource", "repository_name": "private_repo"}}
+          application/json: {"created_at": "2023-09-05T11:33:52.011Z", "modified_at": "2023-08-20T11:11:04.610Z", "id": "<value>", "description": "Open-source well-modulated hub", "selectable": true, "deletable": true, "organization_id": "<value>", "properties": {"repository_owner": "polarsource", "repository_name": "private_repo"}}
         "404":
           application/json: {"detail": "<value>"}
         "422": {}
@@ -952,7 +949,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2024-02-07T13:54:48.780Z", "modified_at": "2022-04-09T17:04:24.706Z", "id": "<value>", "amount": 558834, "tax_amount": 844199, "currency": "Ouguiya", "user_id": "<value>", "product_id": "<value>", "product_price_id": "<value>", "subscription_id": "<value>", "product": {"created_at": "2024-06-29T09:01:50.308Z", "modified_at": "2023-07-26T06:33:15.886Z", "id": "<value>", "name": "<value>", "description": "Centralized well-modulated strategy", "is_recurring": true, "is_archived": true, "organization_id": "<value>", "type": "individual", "is_highlighted": true, "prices": [], "benefits": [], "medias": []}, "product_price": {"created_at": "2023-09-05T11:33:52.010Z", "modified_at": "2024-07-14T05:47:45.857Z", "id": "<value>", "price_currency": "<value>", "is_archived": true, "price_amount": 830636}, "subscription": {"created_at": "2022-11-08T10:33:23.061Z", "modified_at": "2023-04-26T04:53:50.205Z", "id": "<value>", "amount": 521235, "currency": "Bulgarian Lev", "recurring_interval": "year", "status": "trialing", "current_period_start": "2024-05-28T07:17:56.701Z", "current_period_end": "2024-03-20T23:00:26.309Z", "cancel_at_period_end": false, "started_at": "2024-12-06T14:08:11.458Z", "ended_at": "2022-08-30T01:43:46.083Z", "user_id": "<value>", "product_id": "<value>", "price_id": "<value>"}}
+          application/json: {"created_at": "2024-02-07T13:54:48.780Z", "modified_at": "2022-04-09T17:04:24.706Z", "id": "<value>", "amount": 558834, "tax_amount": 844199, "currency": "Ouguiya", "user_id": "<value>", "product_id": "<value>", "product_price_id": "<value>", "subscription_id": "<value>", "product": {"created_at": "2024-06-29T09:01:50.308Z", "modified_at": "2023-07-26T06:33:15.886Z", "id": "<value>", "name": "<value>", "description": "Centralized well-modulated strategy", "is_recurring": true, "is_archived": true, "organization_id": "<value>", "prices": [], "benefits": [], "medias": []}, "product_price": {"created_at": "2023-08-20T11:11:04.610Z", "modified_at": "2023-07-26T06:33:15.810Z", "id": "<value>", "is_archived": false, "price_currency": "<value>", "minimum_amount": 458049, "maximum_amount": 450824, "preset_amount": 262795}, "subscription": {"created_at": "2022-11-08T10:33:23.061Z", "modified_at": "2023-04-26T04:53:50.205Z", "id": "<value>", "amount": 521235, "currency": "Bulgarian Lev", "recurring_interval": "year", "status": "trialing", "current_period_start": "2024-05-28T07:17:56.701Z", "current_period_end": "2024-03-20T23:00:26.309Z", "cancel_at_period_end": false, "started_at": "2024-12-06T14:08:11.458Z", "ended_at": "2022-08-30T01:43:46.083Z", "user_id": "<value>", "product_id": "<value>", "price_id": "<value>"}}
         "404":
           application/json: {"detail": "<value>"}
         "422": {}
@@ -992,7 +989,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2024-02-07T13:54:48.780Z", "modified_at": "2022-04-09T17:04:24.706Z", "id": "<value>", "amount": 700347, "currency": "Burundi Franc", "recurring_interval": "year", "status": "active", "current_period_start": "2024-07-14T05:47:45.857Z", "current_period_end": "2023-08-20T11:11:04.289Z", "cancel_at_period_end": false, "started_at": "2023-07-26T06:33:15.886Z", "ended_at": "2022-03-28T03:17:21.516Z", "user_id": "<value>", "product_id": "<value>", "price_id": "<value>", "product": {"created_at": "2024-11-29T01:50:48.387Z", "modified_at": "2024-08-07T07:28:43.175Z", "id": "<value>", "name": "<value>", "description": "Multi-channelled optimal hierarchy", "is_recurring": true, "is_archived": true, "organization_id": "<value>", "type": "business", "is_highlighted": true, "prices": [], "benefits": [], "medias": []}, "price": {"created_at": "2024-06-29T09:01:50.308Z", "modified_at": "2023-07-26T06:33:15.886Z", "id": "<value>", "price_currency": "<value>", "is_archived": false, "minimum_amount": 969961, "maximum_amount": 866161, "preset_amount": 458049}}
+          application/json: {"created_at": "2024-02-07T13:54:48.780Z", "modified_at": "2022-04-09T17:04:24.706Z", "id": "<value>", "amount": 700347, "currency": "Burundi Franc", "recurring_interval": "year", "status": "active", "current_period_start": "2024-07-14T05:47:45.857Z", "current_period_end": "2023-08-20T11:11:04.289Z", "cancel_at_period_end": false, "started_at": "2023-07-26T06:33:15.886Z", "ended_at": "2022-03-28T03:17:21.516Z", "user_id": "<value>", "product_id": "<value>", "price_id": "<value>", "product": {"created_at": "2024-11-29T01:50:48.387Z", "modified_at": "2024-08-07T07:28:43.175Z", "id": "<value>", "name": "<value>", "description": "Multi-channelled optimal hierarchy", "is_recurring": true, "is_archived": true, "organization_id": "<value>", "prices": [], "benefits": [], "medias": []}, "price": {"created_at": "2023-08-20T11:11:04.610Z", "modified_at": "2023-07-26T06:33:15.810Z", "id": "<value>", "is_archived": false, "price_currency": "<value>", "minimum_amount": 458049, "maximum_amount": 450824, "preset_amount": 262795}}
         "404":
           application/json: {"detail": "<value>"}
         "422": {}
@@ -1005,7 +1002,7 @@ examples:
         application/json: {"product_price_id": "<value>"}
       responses:
         "200":
-          application/json: {"created_at": "2024-07-28T19:04:48.900Z", "modified_at": "2022-01-27T21:53:39.052Z", "id": "<value>", "amount": 857478, "currency": "Netherlands Antillian Guilder", "recurring_interval": "year", "status": "past_due", "current_period_start": "2022-01-18T03:43:33.232Z", "current_period_end": "2023-01-13T16:52:57.237Z", "cancel_at_period_end": true, "started_at": "2024-12-22T15:27:45.933Z", "ended_at": "2022-10-24T06:37:05.817Z", "user_id": "<value>", "product_id": "<value>", "price_id": "<value>", "product": {"created_at": "2023-11-19T22:44:57.818Z", "modified_at": "2024-01-20T21:09:11.127Z", "id": "<value>", "name": "<value>", "description": "Multi-tiered grid-enabled website", "is_recurring": true, "is_archived": false, "organization_id": "<value>", "type": "free", "is_highlighted": true, "prices": [], "benefits": [], "medias": []}, "price": {"created_at": "2024-02-16T11:11:26.963Z", "modified_at": "2024-12-22T15:27:45.933Z", "id": "<value>", "price_currency": "<value>", "is_archived": false, "minimum_amount": 627690, "maximum_amount": 684199, "preset_amount": 488852, "recurring_interval": "month"}}
+          application/json: {"created_at": "2024-07-28T19:04:48.900Z", "modified_at": "2022-01-27T21:53:39.052Z", "id": "<value>", "amount": 857478, "currency": "Netherlands Antillian Guilder", "recurring_interval": "year", "status": "past_due", "current_period_start": "2022-01-18T03:43:33.232Z", "current_period_end": "2023-01-13T16:52:57.237Z", "cancel_at_period_end": true, "started_at": "2024-12-22T15:27:45.933Z", "ended_at": "2022-10-24T06:37:05.817Z", "user_id": "<value>", "product_id": "<value>", "price_id": "<value>", "product": {"created_at": "2023-11-19T22:44:57.818Z", "modified_at": "2024-01-20T21:09:11.127Z", "id": "<value>", "name": "<value>", "description": "Multi-tiered grid-enabled website", "is_recurring": true, "is_archived": false, "organization_id": "<value>", "prices": [], "benefits": [], "medias": []}, "price": {"created_at": "2023-01-13T16:52:57.274Z", "modified_at": "2024-12-22T15:27:45.882Z", "id": "<value>", "is_archived": false, "price_currency": "<value>", "minimum_amount": 488852, "maximum_amount": 984008, "preset_amount": 54062}}
         "403":
           application/json: {"detail": "<value>"}
         "404":
@@ -1018,7 +1015,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2022-01-28T04:39:19.402Z", "modified_at": "2022-07-26T00:54:13.634Z", "id": "<value>", "amount": 24812, "currency": "Cuban Peso", "recurring_interval": "year", "status": "unpaid", "current_period_start": "2023-12-06T17:35:22.378Z", "current_period_end": "2023-06-04T09:53:22.955Z", "cancel_at_period_end": false, "started_at": "2022-04-04T13:59:58.493Z", "ended_at": "2022-07-16T10:00:54.807Z", "user_id": "<value>", "product_id": "<value>", "price_id": "<value>", "product": {"created_at": "2022-08-03T23:44:35.164Z", "modified_at": "2022-05-01T05:45:14.845Z", "id": "<value>", "name": "<value>", "description": "Fully-configurable multimedia alliance", "is_recurring": true, "is_archived": true, "organization_id": "<value>", "type": "free", "is_highlighted": true, "prices": [], "benefits": [], "medias": []}, "price": {"created_at": "2022-03-14T04:23:41.774Z", "modified_at": "2022-04-04T13:59:58.493Z", "id": "<value>", "price_currency": "<value>", "is_archived": true, "price_amount": 196158}}
+          application/json: {"created_at": "2022-01-28T04:39:19.402Z", "modified_at": "2022-07-26T00:54:13.634Z", "id": "<value>", "amount": 24812, "currency": "Cuban Peso", "recurring_interval": "year", "status": "unpaid", "current_period_start": "2023-12-06T17:35:22.378Z", "current_period_end": "2023-06-04T09:53:22.955Z", "cancel_at_period_end": false, "started_at": "2022-04-04T13:59:58.493Z", "ended_at": "2022-07-16T10:00:54.807Z", "user_id": "<value>", "product_id": "<value>", "price_id": "<value>", "product": {"created_at": "2022-08-03T23:44:35.164Z", "modified_at": "2022-05-01T05:45:14.845Z", "id": "<value>", "name": "<value>", "description": "Fully-configurable multimedia alliance", "is_recurring": true, "is_archived": true, "organization_id": "<value>", "prices": [], "benefits": [], "medias": []}, "price": {"created_at": "2023-06-04T09:53:22.758Z", "modified_at": "2022-04-04T13:59:58.090Z", "id": "<value>", "is_archived": true, "recurring_interval": "month"}}
         "403":
           application/json: {"detail": "<value>"}
         "404":
@@ -1361,7 +1358,7 @@ examples:
   oauth2:request_token:
     speakeasy-default-oauth2-:request-token:
       requestBody:
-        application/x-www-form-urlencoded: {"client_id": "<value>", "client_secret": "<value>", "code": "<value>", "redirect_uri": "http://multicolored-chivalry.name"}
+        application/x-www-form-urlencoded: {"client_id": "<value>", "client_secret": "<value>", "code": "<value>", "redirect_uri": "https://old-fort.name"}
       responses:
         "200":
           application/json: {"access_token": "<value>", "expires_in": 542214, "refresh_token": "<value>", "scope": "<value>", "id_token": "<value>"}
@@ -1433,10 +1430,10 @@ examples:
   benefits:create:
     speakeasy-default-benefits:create:
       requestBody:
-        application/json: {"description": "Multi-tiered motivating standardization", "properties": {"guild_token": "<value>", "role_id": "<value>"}}
+        application/json: {"description": "Proactive full-range artificial intelligence", "properties": {"guild_token": "<value>", "role_id": "<value>"}}
       responses:
         "201":
-          application/json: {"created_at": "2022-11-13T02:16:42.101Z", "modified_at": "2022-05-28T06:20:22.608Z", "id": "<value>", "description": "Seamless actuating workforce", "selectable": false, "deletable": false, "organization_id": "<value>", "properties": {"note": "<value>"}, "is_tax_applicable": false}
+          application/json: {"created_at": "2024-05-22T22:27:14.379Z", "modified_at": "2024-11-08T08:43:39.394Z", "id": "<value>", "description": "Adaptive client-driven approach", "selectable": false, "deletable": false, "organization_id": "<value>", "properties": {"paid_articles": false}}
         "422": {}
   benefits:get:
     speakeasy-default-benefits:get:
@@ -1445,7 +1442,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2022-04-09T17:04:24.706Z", "modified_at": "2023-09-05T11:33:52.010Z", "id": "<value>", "description": "Switchable interactive service-desk", "selectable": true, "deletable": false, "organization_id": "<value>", "properties": {"repository_id": "<value>", "repository_owner": "polarsource", "repository_name": "private_repo", "permission": "admin"}}
+          application/json: {"created_at": "2023-09-05T11:33:52.011Z", "modified_at": "2023-08-20T11:11:04.610Z", "id": "<value>", "description": "Open-source well-modulated hub", "selectable": true, "deletable": true, "organization_id": "<value>", "properties": {"repository_id": "<value>", "repository_owner": "polarsource", "repository_name": "private_repo", "permission": "triage"}}
         "404":
           application/json: {"detail": "<value>"}
         "422": {}
@@ -1456,7 +1453,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2023-10-17T10:52:42.269Z", "modified_at": "2022-01-18T03:43:33.232Z", "id": "<value>", "description": "Future-proofed next generation workforce", "selectable": false, "deletable": false, "organization_id": "<value>", "properties": {"paid_articles": true}}
+          application/json: {"created_at": "2023-01-13T16:52:57.274Z", "modified_at": "2024-12-22T15:27:45.882Z", "id": "<value>", "description": "Pre-emptive human-resource website", "selectable": true, "deletable": false, "organization_id": "<value>", "properties": {"repository_id": "<value>", "repository_owner": "polarsource", "repository_name": "private_repo", "permission": "push"}}
         "403":
           application/json: {"detail": "<value>"}
         "404":
@@ -1497,10 +1494,10 @@ examples:
   products:create:
     speakeasy-default-products:create:
       requestBody:
-        application/json: {"name": "<value>", "prices": [], "type": "individual"}
+        application/json: {"name": "<value>", "prices": [{"recurring_interval": "month"}]}
       responses:
         "201":
-          application/json: {"created_at": "2023-12-01T17:06:07.793Z", "modified_at": "2024-07-30T16:43:31.437Z", "id": "<value>", "name": "<value>", "description": "Inverse discrete benchmark", "is_recurring": false, "is_archived": true, "organization_id": "<value>", "type": "business", "is_highlighted": false, "prices": [], "benefits": [], "medias": []}
+          application/json: {"created_at": "2023-12-01T17:06:07.793Z", "modified_at": "2024-07-30T16:43:31.437Z", "id": "<value>", "name": "<value>", "description": "Inverse discrete benchmark", "is_recurring": false, "is_archived": true, "organization_id": "<value>", "prices": [], "benefits": [], "medias": []}
         "422": {}
   products:get:
     speakeasy-default-products:get:
@@ -1509,7 +1506,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2024-02-07T13:54:48.780Z", "modified_at": "2022-04-09T17:04:24.706Z", "id": "<value>", "name": "<value>", "description": "Optional static intranet", "is_recurring": false, "is_archived": true, "organization_id": "<value>", "type": "free", "is_highlighted": true, "prices": [], "benefits": [], "medias": []}
+          application/json: {"created_at": "2024-02-07T13:54:48.780Z", "modified_at": "2022-04-09T17:04:24.706Z", "id": "<value>", "name": "<value>", "description": "Optional static intranet", "is_recurring": false, "is_archived": true, "organization_id": "<value>", "prices": [], "benefits": [], "medias": []}
         "404":
           application/json: {"detail": "<value>"}
         "422": {}
@@ -1520,7 +1517,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2024-07-28T19:04:48.900Z", "modified_at": "2022-01-27T21:53:39.052Z", "id": "<value>", "name": "<value>", "description": "Persistent 24/7 focus group", "is_recurring": true, "is_archived": false, "organization_id": "<value>", "type": "free", "is_highlighted": false, "prices": [], "benefits": [], "medias": []}
+          application/json: {"created_at": "2024-07-28T19:04:48.900Z", "modified_at": "2022-01-27T21:53:39.052Z", "id": "<value>", "name": "<value>", "description": "Persistent 24/7 focus group", "is_recurring": true, "is_archived": false, "organization_id": "<value>", "prices": [], "benefits": [], "medias": []}
         "403":
           application/json: {"detail": "<value>"}
         "404":
@@ -1535,7 +1532,7 @@ examples:
         application/json: {"benefits": []}
       responses:
         "200":
-          application/json: {"created_at": "2023-02-17T23:13:10.706Z", "modified_at": "2024-10-03T16:30:23.323Z", "id": "<value>", "name": "<value>", "description": "Intuitive object-oriented parallelism", "is_recurring": false, "is_archived": true, "organization_id": "<value>", "type": "business", "is_highlighted": true, "prices": [], "benefits": [], "medias": []}
+          application/json: {"created_at": "2023-02-17T23:13:10.706Z", "modified_at": "2024-10-03T16:30:23.323Z", "id": "<value>", "name": "<value>", "description": "Intuitive object-oriented parallelism", "is_recurring": false, "is_archived": true, "organization_id": "<value>", "prices": [], "benefits": [], "medias": []}
         "403":
           application/json: {"detail": "<value>"}
         "404":
@@ -1554,7 +1551,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2024-02-07T13:54:48.780Z", "modified_at": "2022-04-09T17:04:24.706Z", "id": "<value>", "amount": 558834, "tax_amount": 844199, "currency": "Ouguiya", "user_id": "<value>", "product_id": "<value>", "product_price_id": "<value>", "subscription_id": "<value>", "user": {"id": "<value>", "email": "Jovanny_Block45@hotmail.com", "public_name": "<value>", "github_username": "<value>", "avatar_url": "<value>"}, "product": {"created_at": "2024-03-16T20:58:20.526Z", "modified_at": "2023-05-10T02:28:23.859Z", "id": "<value>", "name": "<value>", "description": "Inverse demand-driven superstructure", "is_recurring": true, "is_archived": true, "organization_id": "<value>", "type": "business", "is_highlighted": false}, "product_price": {"created_at": "2023-09-05T11:33:52.010Z", "modified_at": "2024-07-14T05:47:45.857Z", "id": "<value>", "price_currency": "<value>", "is_archived": true, "price_amount": 830636}, "subscription": {"created_at": "2024-12-06T14:08:11.458Z", "modified_at": "2022-08-30T01:43:46.083Z", "id": "<value>", "amount": 521235, "currency": "Bulgarian Lev", "recurring_interval": "year", "status": "trialing", "current_period_start": "2022-12-10T13:21:21.114Z", "current_period_end": "2023-09-21T05:37:11.740Z", "cancel_at_period_end": true, "started_at": "2023-01-14T09:14:56.629Z", "ended_at": "2023-08-29T15:06:35.313Z", "user_id": "<value>", "product_id": "<value>", "price_id": "<value>"}}
+          application/json: {"created_at": "2024-02-07T13:54:48.780Z", "modified_at": "2022-04-09T17:04:24.706Z", "id": "<value>", "amount": 558834, "tax_amount": 844199, "currency": "Ouguiya", "user_id": "<value>", "product_id": "<value>", "product_price_id": "<value>", "subscription_id": "<value>", "user": {"id": "<value>", "email": "Jovanny_Block45@hotmail.com", "public_name": "<value>", "github_username": "<value>", "avatar_url": "<value>"}, "product": {"created_at": "2024-03-16T20:58:20.526Z", "modified_at": "2023-05-10T02:28:23.859Z", "id": "<value>", "name": "<value>", "description": "Inverse demand-driven superstructure", "is_recurring": true, "is_archived": true, "organization_id": "<value>"}, "product_price": {"created_at": "2023-08-20T11:11:04.610Z", "modified_at": "2023-07-26T06:33:15.810Z", "id": "<value>", "is_archived": false, "price_currency": "<value>", "minimum_amount": 458049, "maximum_amount": 450824, "preset_amount": 262795}, "subscription": {"created_at": "2024-12-06T14:08:11.458Z", "modified_at": "2022-08-30T01:43:46.083Z", "id": "<value>", "amount": 521235, "currency": "Bulgarian Lev", "recurring_interval": "year", "status": "trialing", "current_period_start": "2022-12-10T13:21:21.114Z", "current_period_end": "2023-09-21T05:37:11.740Z", "cancel_at_period_end": true, "started_at": "2023-01-14T09:14:56.629Z", "ended_at": "2023-08-29T15:06:35.313Z", "user_id": "<value>", "product_id": "<value>", "price_id": "<value>"}}
         "404":
           application/json: {"detail": "<value>"}
         "422": {}
@@ -1575,7 +1572,7 @@ examples:
         application/json: {"product_price_id": "<value>", "success_url": "http://limp-pastry.org"}
       responses:
         "201":
-          application/json: {"id": "<id>", "customer_email": "<value>", "customer_name": "<value>", "product": {"created_at": "2023-04-03T12:48:32.050Z", "modified_at": "2022-11-13T02:16:42.101Z", "id": "<value>", "name": "<value>", "description": "Customer-focused regional approach", "is_recurring": false, "is_archived": false, "organization_id": "<value>", "type": "individual", "is_highlighted": false, "prices": [], "benefits": [], "medias": []}, "product_price": {"created_at": "2023-12-01T17:06:07.793Z", "modified_at": "2024-07-30T16:43:31.437Z", "id": "<value>", "price_currency": "<value>", "is_archived": false, "minimum_amount": 288408, "maximum_amount": 134365, "preset_amount": 786546, "recurring_interval": "month"}}
+          application/json: {"id": "<id>", "customer_email": "<value>", "customer_name": "<value>", "product": {"created_at": "2023-04-03T12:48:32.050Z", "modified_at": "2022-11-13T02:16:42.101Z", "id": "<value>", "name": "<value>", "description": "Customer-focused regional approach", "is_recurring": false, "is_archived": false, "organization_id": "<value>", "prices": [], "benefits": [], "medias": []}, "product_price": {"created_at": "2023-04-03T12:48:32.253Z", "modified_at": "2022-05-28T06:20:22.766Z", "id": "<value>", "is_archived": true, "price_currency": "<value>", "price_amount": 796474, "recurring_interval": "year"}}
         "422": {}
   checkouts:get:
     speakeasy-default-checkouts:get:
@@ -1584,7 +1581,7 @@ examples:
           id: "<id>"
       responses:
         "200":
-          application/json: {"id": "<id>", "customer_email": "<value>", "customer_name": "<value>", "product": {"created_at": "2024-02-07T13:54:48.780Z", "modified_at": "2022-04-09T17:04:24.706Z", "id": "<value>", "name": "<value>", "description": "Optional static intranet", "is_recurring": false, "is_archived": true, "organization_id": "<value>", "type": "free", "is_highlighted": true, "prices": [], "benefits": [], "medias": []}, "product_price": {"created_at": "2023-09-05T11:33:52.010Z", "modified_at": "2024-07-14T05:47:45.857Z", "id": "<value>", "price_currency": "<value>", "is_archived": true, "price_amount": 830636}}
+          application/json: {"id": "<id>", "customer_email": "<value>", "customer_name": "<value>", "product": {"created_at": "2024-02-07T13:54:48.780Z", "modified_at": "2022-04-09T17:04:24.706Z", "id": "<value>", "name": "<value>", "description": "Optional static intranet", "is_recurring": false, "is_archived": true, "organization_id": "<value>", "prices": [], "benefits": [], "medias": []}, "product_price": {"created_at": "2023-08-20T11:11:04.610Z", "modified_at": "2023-07-26T06:33:15.810Z", "id": "<value>", "is_archived": false, "price_currency": "<value>", "minimum_amount": 458049, "maximum_amount": 450824, "preset_amount": 262795}}
         "422": {}
   files:list:
     speakeasy-default-files:list:
@@ -1595,7 +1592,7 @@ examples:
   files:create:
     speakeasy-default-files:create:
       requestBody:
-        application/json: {"name": "<value>", "mime_type": "<value>", "size": 489382, "upload": {"parts": []}}
+        application/json: {"name": "<value>", "mime_type": "<value>", "size": 638424, "upload": {"parts": [{"number": 134365, "chunk_start": 69025, "chunk_end": 796474}]}}
       responses:
         "200":
           application/json: {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/tmp", "mime_type": "<value>", "size": 859213, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-04-03T12:48:32.050Z", "upload": {"id": "<id>", "path": "/media", "parts": []}, "version": "<value>", "service": "downloadable", "size_readable": "<value>"}
@@ -1609,7 +1606,7 @@ examples:
         application/json: {"id": "<id>", "path": "/sys", "parts": []}
       responses:
         "200":
-          application/json: {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/lib", "mime_type": "<value>", "size": 848922, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-02-26T16:44:47.879Z", "version": "<value>", "is_uploaded": false, "created_at": "2022-04-22T09:03:01.257Z", "size_readable": "<value>", "public_url": "<value>"}
+          application/json: {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/usr/ports", "mime_type": "<value>", "size": 173116, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2024-09-06T20:34:00.390Z", "version": "<value>", "is_uploaded": false, "created_at": "2023-12-06T04:28:57.373Z", "size_readable": "<value>", "public_url": "<value>"}
         "422": {}
   files:update:
     speakeasy-default-files:update:
@@ -1618,7 +1615,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/bin", "mime_type": "<value>", "size": 597129, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2022-01-18T03:43:33.232Z", "version": "<value>", "is_uploaded": false, "created_at": "2024-02-16T11:11:26.963Z", "size_readable": "<value>", "public_url": "<value>"}
+          application/json: {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/srv", "mime_type": "<value>", "size": 344620, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2024-12-22T15:27:45.882Z", "version": "<value>", "is_uploaded": false, "created_at": "2023-06-20T18:46:17.643Z", "size_readable": "<value>", "public_url": "<value>"}
         "422": {}
   files:delete:
     speakeasy-default-files:delete:

@@ -37,6 +37,7 @@ class BenefitCustomSubscriberTypedDict(TypedDict):
     grants: List[BenefitGrantTypedDict]
     properties: BenefitCustomSubscriberPropertiesTypedDict
     r"""Properties available to subscribers for a benefit of type `custom`."""
+    type: BenefitCustomSubscriberType
 
 
 class BenefitCustomSubscriber(BaseModel):

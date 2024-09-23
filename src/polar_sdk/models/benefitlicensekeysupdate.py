@@ -20,6 +20,7 @@ class BenefitLicenseKeysUpdateType(str, Enum):
 class BenefitLicenseKeysUpdateTypedDict(TypedDict):
     description: NotRequired[Nullable[str]]
     r"""The description of the benefit. Will be displayed on products having this benefit."""
+    type: BenefitLicenseKeysUpdateType
     properties: NotRequired[Nullable[BenefitLicenseKeysCreatePropertiesTypedDict]]
 
 

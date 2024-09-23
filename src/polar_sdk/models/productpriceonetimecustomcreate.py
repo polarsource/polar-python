@@ -13,9 +13,15 @@ class ProductPriceOneTimeCustomCreateType(str, Enum):
     ONE_TIME = "one_time"
 
 
+class ProductPriceOneTimeCustomCreateAmountType(str, Enum):
+    CUSTOM = "custom"
+
+
 class ProductPriceOneTimeCustomCreateTypedDict(TypedDict):
     r"""Schema to create a pay-what-you-want price for a one-time product."""
 
+    type: ProductPriceOneTimeCustomCreateType
+    amount_type: ProductPriceOneTimeCustomCreateAmountType
     price_currency: NotRequired[str]
     r"""The currency. Currently, only `usd` is supported."""
     minimum_amount: NotRequired[Nullable[int]]
@@ -31,6 +37,10 @@ class ProductPriceOneTimeCustomCreate(BaseModel):
 
     # fmt: off
     TYPE: Annotated[Final[ProductPriceOneTimeCustomCreateType], pydantic.Field(alias="type")] = ProductPriceOneTimeCustomCreateType.ONE_TIME # type: ignore
+    # fmt: on
+
+    # fmt: off
+    AMOUNT_TYPE: Annotated[Final[ProductPriceOneTimeCustomCreateAmountType], pydantic.Field(alias="amount_type")] = ProductPriceOneTimeCustomCreateAmountType.CUSTOM # type: ignore
     # fmt: on
 
     price_currency: Optional[str] = "usd"

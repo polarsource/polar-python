@@ -31,6 +31,7 @@ class ProductMediaFileReadInputTypedDict(TypedDict):
     version: Nullable[str]
     is_uploaded: bool
     created_at: datetime
+    service: ProductMediaFileReadInputService
 
 
 class ProductMediaFileReadInput(BaseModel):

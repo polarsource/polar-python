@@ -13,6 +13,7 @@ class DonationOrganizationTypedDict(TypedDict):
     name: str
     avatar_url: str
     is_personal: bool
+    platform: Platforms
 
 
 class DonationOrganization(BaseModel):

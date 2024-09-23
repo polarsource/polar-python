@@ -10,8 +10,8 @@ from typing import Union
 
 
 ProductsCreateProductCreateTypedDict = Union[
-    ProductOneTimeCreateTypedDict, ProductRecurringCreateTypedDict
+    ProductRecurringCreateTypedDict, ProductOneTimeCreateTypedDict
 ]
 
 
-ProductsCreateProductCreate = Union[ProductOneTimeCreate, ProductRecurringCreate]
+ProductsCreateProductCreate = Union[ProductRecurringCreate, ProductOneTimeCreate]

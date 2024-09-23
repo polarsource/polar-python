@@ -17,6 +17,7 @@ class BenefitAdsUpdateType(str, Enum):
 class BenefitAdsUpdateTypedDict(TypedDict):
     description: NotRequired[Nullable[str]]
     r"""The description of the benefit. Will be displayed on products having this benefit."""
+    type: BenefitAdsUpdateType
     properties: NotRequired[Nullable[BenefitAdsPropertiesTypedDict]]
 
 

@@ -25,6 +25,7 @@ class OrganizationAvatarFileCreateTypedDict(TypedDict):
     upload: S3FileCreateMultipartTypedDict
     organization_id: NotRequired[Nullable[str]]
     checksum_sha256_base64: NotRequired[Nullable[str]]
+    service: OrganizationAvatarFileCreateService
     version: NotRequired[Nullable[str]]
 
 

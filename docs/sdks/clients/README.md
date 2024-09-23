@@ -71,7 +71,7 @@ s = Polar(
 
 res = s.oauth2.clients.create(request={
     "redirect_uris": [
-        "http://limp-pastry.org",
+        "https://probable-heating.com/",
     ],
     "client_name": "<value>",
 })
@@ -156,7 +156,7 @@ s = Polar(
 
 res = s.oauth2.clients.update(client_id="<value>", o_auth2_client_configuration_update={
     "redirect_uris": [
-        "https://alarming-nondisclosure.com",
+        "https://passionate-flu.org",
     ],
     "client_name": "<value>",
     "client_id": "<value>",

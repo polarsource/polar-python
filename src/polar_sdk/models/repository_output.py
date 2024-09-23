@@ -25,6 +25,7 @@ class RepositoryOutputTypedDict(TypedDict):
     profile_settings: Nullable[RepositoryProfileSettingsTypedDict]
     r"""Settings for the repository profile"""
     organization: ExternalOrganizationTypedDict
+    platform: Platforms
 
 
 class RepositoryOutput(BaseModel):

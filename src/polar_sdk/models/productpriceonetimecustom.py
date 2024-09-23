@@ -29,16 +29,19 @@ class ProductPriceOneTimeCustomTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the price."""
-    price_currency: str
-    r"""The currency."""
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
+    price_currency: str
+    r"""The currency."""
     minimum_amount: Nullable[int]
     r"""The minimum amount the customer can pay."""
     maximum_amount: Nullable[int]
     r"""The maximum amount the customer can pay."""
     preset_amount: Nullable[int]
     r"""The initial amount shown to the customer."""
+    amount_type: ProductPriceOneTimeCustomAmountType
+    type: ProductPriceOneTimeCustomType
+    r"""The type of the price."""
 
 
 class ProductPriceOneTimeCustom(BaseModel):
@@ -53,11 +56,11 @@ class ProductPriceOneTimeCustom(BaseModel):
     id: str
     r"""The ID of the price."""
 
-    price_currency: str
-    r"""The currency."""
-
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
+
+    price_currency: str
+    r"""The currency."""
 
     minimum_amount: Nullable[int]
     r"""The minimum amount the customer can pay."""

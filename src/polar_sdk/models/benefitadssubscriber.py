@@ -34,6 +34,7 @@ class BenefitAdsSubscriberTypedDict(TypedDict):
     properties: BenefitAdsPropertiesTypedDict
     r"""Properties for a benefit of type `ads`."""
     grants: List[BenefitGrantAdsTypedDict]
+    type: BenefitAdsSubscriberType
 
 
 class BenefitAdsSubscriber(BaseModel):

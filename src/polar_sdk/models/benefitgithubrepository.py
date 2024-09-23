@@ -40,6 +40,7 @@ class BenefitGitHubRepositoryTypedDict(TypedDict):
     r"""The ID of the organization owning the benefit."""
     properties: BenefitGitHubRepositoryPropertiesTypedDict
     r"""Properties for a benefit of type `github_repository`."""
+    type: BenefitGitHubRepositoryType
 
 
 class BenefitGitHubRepository(BaseModel):

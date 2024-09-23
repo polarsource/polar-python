@@ -15,3 +15,9 @@ value: models.ProductPriceOneTimeFixed = /* values here */
 value: models.ProductPriceOneTimeCustom = /* values here */
 ```
 
+### `models.ProductPriceOneTimeFree`
+
+```python
+value: models.ProductPriceOneTimeFree = /* values here */
+```
+

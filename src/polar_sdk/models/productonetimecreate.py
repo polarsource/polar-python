@@ -9,6 +9,10 @@ from .productpriceonetimefixedcreate import (
     ProductPriceOneTimeFixedCreate,
     ProductPriceOneTimeFixedCreateTypedDict,
 )
+from .productpriceonetimefreecreate import (
+    ProductPriceOneTimeFreeCreate,
+    ProductPriceOneTimeFreeCreateTypedDict,
+)
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, TypedDict, Union
@@ -16,11 +20,17 @@ from typing_extensions import NotRequired
 
 
 PricesTypedDict = Union[
-    ProductPriceOneTimeFixedCreateTypedDict, ProductPriceOneTimeCustomCreateTypedDict
+    ProductPriceOneTimeFreeCreateTypedDict,
+    ProductPriceOneTimeFixedCreateTypedDict,
+    ProductPriceOneTimeCustomCreateTypedDict,
 ]
 
 
-Prices = Union[ProductPriceOneTimeFixedCreate, ProductPriceOneTimeCustomCreate]
+Prices = Union[
+    ProductPriceOneTimeFreeCreate,
+    ProductPriceOneTimeFixedCreate,
+    ProductPriceOneTimeCustomCreate,
+]
 
 
 class ProductOneTimeCreateTypedDict(TypedDict):
