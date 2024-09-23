@@ -9,6 +9,10 @@ from .productpricerecurringfixed import (
     ProductPriceRecurringFixed,
     ProductPriceRecurringFixedTypedDict,
 )
+from .productpricerecurringfree import (
+    ProductPriceRecurringFree,
+    ProductPriceRecurringFreeTypedDict,
+)
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
@@ -16,7 +20,9 @@ from typing_extensions import Annotated
 
 
 ProductPriceRecurringInputTypedDict = Union[
-    ProductPriceRecurringFixedTypedDict, ProductPriceRecurringCustomTypedDict
+    ProductPriceRecurringFreeTypedDict,
+    ProductPriceRecurringFixedTypedDict,
+    ProductPriceRecurringCustomTypedDict,
 ]
 
 
@@ -24,6 +30,7 @@ ProductPriceRecurringInput = Annotated[
     Union[
         Annotated[ProductPriceRecurringCustom, Tag("custom")],
         Annotated[ProductPriceRecurringFixed, Tag("fixed")],
+        Annotated[ProductPriceRecurringFree, Tag("free")],
     ],
     Discriminator(lambda m: get_discriminator(m, "amount_type", "amount_type")),
 ]

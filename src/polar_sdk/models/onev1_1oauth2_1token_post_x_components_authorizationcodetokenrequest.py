@@ -20,6 +20,7 @@ class Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequestTypedDict(
     client_secret: str
     code: str
     redirect_uri: str
+    grant_type: GrantType
 
 
 class Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest(BaseModel):

@@ -21,6 +21,7 @@ class BenefitLicenseKeysCreateTypedDict(TypedDict):
     description: str
     r"""The description of the benefit. Will be displayed on products having this benefit."""
     properties: BenefitLicenseKeysCreatePropertiesTypedDict
+    type: BenefitLicenseKeysCreateType
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the benefit. **Required unless you use an organization token.**"""
 

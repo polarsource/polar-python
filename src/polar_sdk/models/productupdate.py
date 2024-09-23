@@ -10,29 +10,40 @@ from .productpriceonetimefixedcreate import (
     ProductPriceOneTimeFixedCreate,
     ProductPriceOneTimeFixedCreateTypedDict,
 )
-from .productpricerecurringcreate import (
-    ProductPriceRecurringCreate,
-    ProductPriceRecurringCreateTypedDict,
+from .productpriceonetimefreecreate import (
+    ProductPriceOneTimeFreeCreate,
+    ProductPriceOneTimeFreeCreateTypedDict,
+)
+from .productpricerecurringfixedcreate import (
+    ProductPriceRecurringFixedCreate,
+    ProductPriceRecurringFixedCreateTypedDict,
+)
+from .productpricerecurringfreecreate import (
+    ProductPriceRecurringFreeCreate,
+    ProductPriceRecurringFreeCreateTypedDict,
 )
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import List, TypedDict, Union
-from typing_extensions import Annotated, NotRequired
+from typing_extensions import NotRequired
 
 
 ProductUpdatePricesTypedDict = Union[
     ExistingProductPriceTypedDict,
+    ProductPriceOneTimeFreeCreateTypedDict,
+    ProductPriceRecurringFreeCreateTypedDict,
     ProductPriceOneTimeFixedCreateTypedDict,
-    ProductPriceRecurringCreateTypedDict,
+    ProductPriceRecurringFixedCreateTypedDict,
     ProductPriceOneTimeCustomCreateTypedDict,
 ]
 
 
 ProductUpdatePrices = Union[
     ExistingProductPrice,
+    ProductPriceOneTimeFreeCreate,
+    ProductPriceRecurringFreeCreate,
     ProductPriceOneTimeFixedCreate,
-    ProductPriceRecurringCreate,
+    ProductPriceRecurringFixedCreate,
     ProductPriceOneTimeCustomCreate,
 ]
 
@@ -43,7 +54,6 @@ class ProductUpdateTypedDict(TypedDict):
     name: NotRequired[Nullable[str]]
     description: NotRequired[Nullable[str]]
     r"""The description of the product."""
-    is_highlighted: NotRequired[Nullable[bool]]
     is_archived: NotRequired[Nullable[bool]]
     r"""Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally."""
     prices: NotRequired[Nullable[List[ProductUpdatePricesTypedDict]]]
@@ -60,13 +70,6 @@ class ProductUpdate(BaseModel):
     description: OptionalNullable[str] = UNSET
     r"""The description of the product."""
 
-    is_highlighted: Annotated[
-        OptionalNullable[bool],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ] = UNSET
-
     is_archived: OptionalNullable[bool] = UNSET
     r"""Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally."""
 
@@ -78,22 +81,8 @@ class ProductUpdate(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "name",
-            "description",
-            "is_highlighted",
-            "is_archived",
-            "prices",
-            "medias",
-        ]
-        nullable_fields = [
-            "name",
-            "description",
-            "is_highlighted",
-            "is_archived",
-            "prices",
-            "medias",
-        ]
+        optional_fields = ["name", "description", "is_archived", "prices", "medias"]
+        nullable_fields = ["name", "description", "is_archived", "prices", "medias"]
         null_default_fields = []
 
         serialized = handler(self)

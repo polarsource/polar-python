@@ -30,14 +30,17 @@ class ProductPriceRecurringFixedTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the price."""
-    price_currency: str
-    r"""The currency."""
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
+    price_currency: str
+    r"""The currency."""
     price_amount: int
     r"""The price in cents."""
     recurring_interval: SubscriptionRecurringInterval
     r"""The recurring interval of the price."""
+    amount_type: AmountType
+    type: ProductPriceRecurringFixedType
+    r"""The type of the price."""
 
 
 class ProductPriceRecurringFixed(BaseModel):
@@ -52,11 +55,11 @@ class ProductPriceRecurringFixed(BaseModel):
     id: str
     r"""The ID of the price."""
 
-    price_currency: str
-    r"""The currency."""
-
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
+
+    price_currency: str
+    r"""The currency."""
 
     price_amount: int
     r"""The price in cents."""

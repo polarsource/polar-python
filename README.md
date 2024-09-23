@@ -194,8 +194,6 @@ asyncio.run(main())
 ### [subscriptions](docs/sdks/subscriptions/README.md)
 
 * [list](docs/sdks/subscriptions/README.md#list) - List Subscriptions
-* [create](docs/sdks/subscriptions/README.md#create) - Create Free Subscription
-* [import_subscriptions](docs/sdks/subscriptions/README.md#import_subscriptions) - Import Subscriptions
 * [export](docs/sdks/subscriptions/README.md#export) - Export Subscriptions
 
 ### [users](docs/sdks/users/README.md)
@@ -237,45 +235,12 @@ asyncio.run(main())
 #### [users.subscriptions](docs/sdks/polarsubscriptions/README.md)
 
 * [list](docs/sdks/polarsubscriptions/README.md#list) - List Subscriptions
-* [create](docs/sdks/polarsubscriptions/README.md#create) - Create Free Subscription
 * [get](docs/sdks/polarsubscriptions/README.md#get) - Get Subscription
 * [update](docs/sdks/polarsubscriptions/README.md#update) - Update Subscription
 * [cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
-
-<!-- Start File uploads [file-upload] -->
-## File uploads
-
-Certain SDK methods accept file objects as part of a request body or multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
-
-> [!TIP]
->
-> For endpoints that handle file uploads bytes arrays can also be used. However, using streams is recommended for large files.
->
-
-```python
-from polar_sdk import Polar
-
-s = Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
-
-res = s.subscriptions.import_subscriptions(request={
-    "file": {
-        "file_name": "example.file",
-        "content": open("example.file", "rb"),
-    },
-    "organization_id": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
-
-```
-<!-- End File uploads [file-upload] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -598,7 +563,6 @@ Read the docs at https://docs.polar.sh/api
 * [SDK Example Usage](#sdk-example-usage)
 * [Available Resources and Operations](#available-resources-and-operations)
 * [Pagination](#pagination)
-* [File uploads](#file-uploads)
 * [Retries](#retries)
 * [Error Handling](#error-handling)
 * [Server Selection](#server-selection)

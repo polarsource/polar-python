@@ -26,6 +26,7 @@ class BenefitCustomCreateTypedDict(TypedDict):
     r"""Whether the benefit is taxable."""
     properties: BenefitCustomPropertiesTypedDict
     r"""Properties for a benefit of type `custom`."""
+    type: BenefitCustomCreateType
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the benefit. **Required unless you use an organization token.**"""
 

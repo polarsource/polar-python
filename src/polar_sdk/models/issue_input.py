@@ -32,6 +32,8 @@ class IssueInputTypedDict(TypedDict):
     r"""The repository that the issue is in"""
     pledge_badge_currently_embedded: bool
     r"""If this issue currently has the Polar badge SVG embedded"""
+    platform: Platforms
+    r"""Issue platform (currently always GitHub)"""
     body: NotRequired[Nullable[str]]
     r"""GitHub issue body"""
     comments: NotRequired[Nullable[int]]

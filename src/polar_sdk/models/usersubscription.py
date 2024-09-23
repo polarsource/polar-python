@@ -32,9 +32,9 @@ class UserSubscriptionTypedDict(TypedDict):
     ended_at: Nullable[datetime]
     user_id: str
     product_id: str
-    price_id: Nullable[str]
+    price_id: str
     product: UserSubscriptionProductTypedDict
-    price: Nullable[ProductPriceOutputTypedDict]
+    price: ProductPriceOutputTypedDict
 
 
 class UserSubscription(BaseModel):
@@ -69,11 +69,11 @@ class UserSubscription(BaseModel):
 
     product_id: str
 
-    price_id: Nullable[str]
+    price_id: str
 
     product: UserSubscriptionProduct
 
-    price: Nullable[ProductPriceOutput]
+    price: ProductPriceOutput
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -85,8 +85,6 @@ class UserSubscription(BaseModel):
             "current_period_end",
             "started_at",
             "ended_at",
-            "price_id",
-            "price",
         ]
         null_default_fields = []
 

@@ -35,6 +35,7 @@ class BenefitGitHubRepositorySubscriberTypedDict(TypedDict):
     r"""The ID of the organization owning the benefit."""
     properties: BenefitGitHubRepositorySubscriberPropertiesTypedDict
     r"""Properties available to subscribers for a benefit of type `github_repository`."""
+    type: BenefitGitHubRepositorySubscriberType
 
 
 class BenefitGitHubRepositorySubscriber(BaseModel):

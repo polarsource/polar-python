@@ -17,6 +17,7 @@ Request an access token using a valid grant.
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
 s = Polar(
@@ -27,7 +28,8 @@ res = s.oauth2.token(request={
     "client_id": "<value>",
     "client_secret": "<value>",
     "code": "<value>",
-    "redirect_uri": "http://multicolored-chivalry.name",
+    "redirect_uri": "https://old-fort.name",
+    "grant_type": polar_sdk.GrantType.AUTHORIZATION_CODE,
 })
 
 if res is not None:

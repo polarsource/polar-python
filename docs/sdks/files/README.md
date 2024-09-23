@@ -65,6 +65,7 @@ Create a file.
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
 s = Polar(
@@ -74,16 +75,17 @@ s = Polar(
 res = s.files.create(request={
     "name": "<value>",
     "mime_type": "<value>",
-    "size": 489382,
+    "size": 638424,
     "upload": {
         "parts": [
             {
-                "number": 638424,
-                "chunk_start": 859213,
-                "chunk_end": 417458,
+                "number": 417458,
+                "chunk_start": 134365,
+                "chunk_end": 69025,
             },
         ],
     },
+    "service": polar_sdk.ProductMediaFileCreateService.PRODUCT_MEDIA,
 })
 
 if res is not None:

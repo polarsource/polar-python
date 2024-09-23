@@ -27,7 +27,7 @@ class UserOrderSubscriptionTypedDict(TypedDict):
     ended_at: Nullable[datetime]
     user_id: str
     product_id: str
-    price_id: Nullable[str]
+    price_id: str
 
 
 class UserOrderSubscription(BaseModel):
@@ -62,7 +62,7 @@ class UserOrderSubscription(BaseModel):
 
     product_id: str
 
-    price_id: Nullable[str]
+    price_id: str
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -74,7 +74,6 @@ class UserOrderSubscription(BaseModel):
             "current_period_end",
             "started_at",
             "ended_at",
-            "price_id",
         ]
         null_default_fields = []
 

@@ -22,6 +22,7 @@ class BenefitDiscordCreateTypedDict(TypedDict):
     r"""The description of the benefit. Will be displayed on products having this benefit."""
     properties: BenefitDiscordCreatePropertiesTypedDict
     r"""Properties to create a benefit of type `discord`."""
+    type: BenefitDiscordCreateType
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the benefit. **Required unless you use an organization token.**"""
 

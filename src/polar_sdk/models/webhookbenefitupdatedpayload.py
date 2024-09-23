@@ -54,6 +54,7 @@ class WebhookBenefitUpdatedPayloadTypedDict(TypedDict):
     """
 
     data: WebhookBenefitUpdatedPayloadBenefitTypedDict
+    type: WebhookBenefitUpdatedPayloadType
 
 
 class WebhookBenefitUpdatedPayload(BaseModel):

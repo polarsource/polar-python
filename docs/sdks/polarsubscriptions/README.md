@@ -6,7 +6,6 @@
 ### Available Operations
 
 * [list](#list) - List Subscriptions
-* [create](#create) - Create Free Subscription
 * [get](#get) - Get Subscription
 * [update](#update) - Update Subscription
 * [cancel](#cancel) - Cancel Subscription
@@ -57,52 +56,6 @@ if res is not None:
 
 | Error Object               | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4xx-5xx                    | */*                        |
-
-
-## create
-
-Create a subscription on a **free** tier.
-
-If you want to subscribe to a paid tier, you need to create a checkout session.
-
-### Example Usage
-
-```python
-from polar_sdk import Polar
-
-s = Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
-
-res = s.users.subscriptions.create(request={
-    "product_id": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
-
-```
-
-### Parameters
-
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `request`                                                                       | [models.UserFreeSubscriptionCreate](../../models/userfreesubscriptioncreate.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
-| `retries`                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                              | Configuration to override the default retry behavior of the client.             |
-
-### Response
-
-**[models.UserSubscription](../../models/usersubscription.md)**
-
-### Errors
-
-| Error Object               | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.AlreadySubscribed   | 400                        | application/json           |
-| models.ResourceNotFound    | 404                        | application/json           |
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4xx-5xx                    | */*                        |
 
@@ -185,12 +138,11 @@ if res is not None:
 
 ### Errors
 
-| Error Object                   | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| models.FreeSubscriptionUpgrade | 403                            | application/json               |
-| models.ResourceNotFound        | 404                            | application/json               |
-| models.HTTPValidationError     | 422                            | application/json               |
-| models.SDKError                | 4xx-5xx                        | */*                            |
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4xx-5xx                    | */*                        |
 
 
 ## cancel

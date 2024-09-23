@@ -8,13 +8,10 @@ from .productmediafileread_output import (
     ProductMediaFileReadOutputTypedDict,
 )
 from .productprice_output import ProductPriceOutput, ProductPriceOutputTypedDict
-from .subscriptiontiertype import SubscriptionTierType
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import List, TypedDict, Union
-from typing_extensions import Annotated
 
 
 BenefitsModelTypedDict = Union[BenefitBaseTypedDict, BenefitArticlesTypedDict]
@@ -40,8 +37,6 @@ class UserOrderProductTypedDict(TypedDict):
     r"""Whether the product is archived and no longer available."""
     organization_id: str
     r"""The ID of the organization owning the product."""
-    type: Nullable[SubscriptionTierType]
-    is_highlighted: Nullable[bool]
     prices: List[ProductPriceOutputTypedDict]
     r"""List of available prices for this product."""
     benefits: List[BenefitsModelTypedDict]
@@ -75,20 +70,6 @@ class UserOrderProduct(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the product."""
 
-    type: Annotated[
-        Nullable[SubscriptionTierType],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
-    is_highlighted: Annotated[
-        Nullable[bool],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
     prices: List[ProductPriceOutput]
     r"""List of available prices for this product."""
 
@@ -101,7 +82,7 @@ class UserOrderProduct(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
-        nullable_fields = ["modified_at", "description", "type", "is_highlighted"]
+        nullable_fields = ["modified_at", "description"]
         null_default_fields = []
 
         serialized = handler(self)

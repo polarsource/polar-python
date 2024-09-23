@@ -20,6 +20,7 @@ class WebhookOrderCreatedPayloadTypedDict(TypedDict):
     """
 
     data: OrderInputTypedDict
+    type: WebhookOrderCreatedPayloadType
 
 
 class WebhookOrderCreatedPayload(BaseModel):

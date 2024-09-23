@@ -42,6 +42,7 @@ class BenefitCustomTypedDict(TypedDict):
     r"""Properties for a benefit of type `custom`."""
     is_tax_applicable: bool
     r"""Whether the benefit is taxable."""
+    type: BenefitCustomType
 
 
 class BenefitCustom(BaseModel):

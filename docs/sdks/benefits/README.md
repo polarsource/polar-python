@@ -66,6 +66,7 @@ Create a benefit.
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
 s = Polar(
@@ -73,11 +74,12 @@ s = Polar(
 )
 
 res = s.benefits.create(request={
-    "description": "Multi-tiered motivating standardization",
+    "description": "Proactive full-range artificial intelligence",
     "properties": {
         "guild_token": "<value>",
         "role_id": "<value>",
     },
+    "type": polar_sdk.BenefitDiscordCreateType.DISCORD,
 })
 
 if res is not None:
@@ -153,13 +155,16 @@ Update a benefit.
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
 s = Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-res = s.benefits.update(id="<value>", request_body={})
+res = s.benefits.update(id="<value>", request_body={
+    "type": polar_sdk.BenefitLicenseKeysUpdateType.LICENSE_KEYS,
+})
 
 if res is not None:
     # handle response

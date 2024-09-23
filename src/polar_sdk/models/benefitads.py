@@ -37,6 +37,7 @@ class BenefitAdsTypedDict(TypedDict):
     r"""The ID of the organization owning the benefit."""
     properties: BenefitAdsPropertiesTypedDict
     r"""Properties for a benefit of type `ads`."""
+    type: BenefitAdsType
 
 
 class BenefitAds(BaseModel):

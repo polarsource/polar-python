@@ -39,6 +39,7 @@ class BenefitLicenseKeysSubscriberTypedDict(TypedDict):
     r"""The ID of the organization owning the benefit."""
     properties: BenefitLicenseKeysSubscriberPropertiesTypedDict
     grants: List[BenefitGrantLicenseKeysTypedDict]
+    type: BenefitLicenseKeysSubscriberType
 
 
 class BenefitLicenseKeysSubscriber(BaseModel):

@@ -1,0 +1,15 @@
+# ProductPriceOneTimeFree
+
+A free one-time price for a product.
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `created_at`                                                                               | [date](https://docs.python.org/3/library/datetime.html#date-objects)                       | :heavy_check_mark:                                                                         | Creation timestamp of the object.                                                          |
+| `modified_at`                                                                              | [date](https://docs.python.org/3/library/datetime.html#date-objects)                       | :heavy_check_mark:                                                                         | Last modification timestamp of the object.                                                 |
+| `id`                                                                                       | *str*                                                                                      | :heavy_check_mark:                                                                         | The ID of the price.                                                                       |
+| `is_archived`                                                                              | *bool*                                                                                     | :heavy_check_mark:                                                                         | Whether the price is archived and no longer available.                                     |
+| `amount_type`                                                                              | [models.ProductPriceOneTimeFreeAmountType](../models/productpriceonetimefreeamounttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `type`                                                                                     | [models.ProductPriceOneTimeFreeType](../models/productpriceonetimefreetype.md)             | :heavy_check_mark:                                                                         | The type of the price.                                                                     |

@@ -9,10 +9,16 @@
 value: models.ExistingProductPrice = /* values here */
 ```
 
-### `models.ProductPriceRecurringCreate`
+### `models.ProductPriceRecurringFixedCreate`
 
 ```python
-value: models.ProductPriceRecurringCreate = /* values here */
+value: models.ProductPriceRecurringFixedCreate = /* values here */
+```
+
+### `models.ProductPriceRecurringFreeCreate`
+
+```python
+value: models.ProductPriceRecurringFreeCreate = /* values here */
 ```
 
 ### `models.ProductPriceOneTimeFixedCreate`
@@ -25,5 +31,11 @@ value: models.ProductPriceOneTimeFixedCreate = /* values here */
 
 ```python
 value: models.ProductPriceOneTimeCustomCreate = /* values here */
+```
+
+### `models.ProductPriceOneTimeFreeCreate`
+
+```python
+value: models.ProductPriceOneTimeFreeCreate = /* values here */
 ```
 

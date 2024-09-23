@@ -3,19 +3,17 @@
 
 ## Values
 
-| Name                           | Value                          |
-| ------------------------------ | ------------------------------ |
-| `USER`                         | user                           |
-| `MINUS_USER`                   | -user                          |
-| `STATUS`                       | status                         |
-| `MINUS_STATUS`                 | -status                        |
-| `STARTED_AT`                   | started_at                     |
-| `MINUS_STARTED_AT`             | -started_at                    |
-| `CURRENT_PERIOD_END`           | current_period_end             |
-| `MINUS_CURRENT_PERIOD_END`     | -current_period_end            |
-| `AMOUNT`                       | amount                         |
-| `MINUS_AMOUNT`                 | -amount                        |
-| `SUBSCRIPTION_TIER_TYPE`       | subscription_tier_type         |
-| `MINUS_SUBSCRIPTION_TIER_TYPE` | -subscription_tier_type        |
-| `PRODUCT`                      | product                        |
-| `MINUS_PRODUCT`                | -product                       |
+| Name                       | Value                      |
+| -------------------------- | -------------------------- |
+| `USER`                     | user                       |
+| `MINUS_USER`               | -user                      |
+| `STATUS`                   | status                     |
+| `MINUS_STATUS`             | -status                    |
+| `STARTED_AT`               | started_at                 |
+| `MINUS_STARTED_AT`         | -started_at                |
+| `CURRENT_PERIOD_END`       | current_period_end         |
+| `MINUS_CURRENT_PERIOD_END` | -current_period_end        |
+| `AMOUNT`                   | amount                     |
+| `MINUS_AMOUNT`             | -amount                    |
+| `PRODUCT`                  | product                    |
+| `MINUS_PRODUCT`            | -product                   |

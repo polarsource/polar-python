@@ -20,6 +20,7 @@ class WebhookPledgeCreatedPayloadTypedDict(TypedDict):
     """
 
     data: PledgeInputTypedDict
+    type: WebhookPledgeCreatedPayloadType
 
 
 class WebhookPledgeCreatedPayload(BaseModel):

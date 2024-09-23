@@ -22,6 +22,7 @@ class ExternalOrganizationTypedDict(TypedDict):
     email: Nullable[str]
     twitter_username: Nullable[str]
     organization_id: Nullable[str]
+    platform: Platforms
 
 
 class ExternalOrganization(BaseModel):

@@ -34,6 +34,7 @@ class BenefitDownloadablesSubscriberTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     properties: BenefitDownloadablesSubscriberPropertiesTypedDict
+    type: BenefitDownloadablesSubscriberType
 
 
 class BenefitDownloadablesSubscriber(BaseModel):

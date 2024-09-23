@@ -21,6 +21,7 @@ class WebhookProductCreatedPayloadTypedDict(TypedDict):
 
     data: ProductInputTypedDict
     r"""A product."""
+    type: WebhookProductCreatedPayloadType
 
 
 class WebhookProductCreatedPayload(BaseModel):

@@ -19,6 +19,7 @@ class TokenResponseTypedDict(TypedDict):
     refresh_token: Nullable[str]
     scope: str
     id_token: str
+    token_type: TokenType
 
 
 class TokenResponse(BaseModel):

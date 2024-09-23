@@ -9,22 +9,28 @@ from typing import Final, Optional, TypedDict
 from typing_extensions import Annotated, NotRequired
 
 
-class ProductPriceRecurringCreateType(str, Enum):
+class ProductPriceRecurringFixedCreateType(str, Enum):
     RECURRING = "recurring"
 
 
-class ProductPriceRecurringCreateTypedDict(TypedDict):
+class ProductPriceRecurringFixedCreateAmountType(str, Enum):
+    FIXED = "fixed"
+
+
+class ProductPriceRecurringFixedCreateTypedDict(TypedDict):
     r"""Schema to create a recurring product price, i.e. a subscription."""
 
     price_amount: int
     r"""The price in cents."""
     recurring_interval: SubscriptionRecurringInterval
     r"""The recurring interval of the price."""
+    type: ProductPriceRecurringFixedCreateType
+    amount_type: ProductPriceRecurringFixedCreateAmountType
     price_currency: NotRequired[str]
     r"""The currency. Currently, only `usd` is supported."""
 
 
-class ProductPriceRecurringCreate(BaseModel):
+class ProductPriceRecurringFixedCreate(BaseModel):
     r"""Schema to create a recurring product price, i.e. a subscription."""
 
     price_amount: int
@@ -34,7 +40,11 @@ class ProductPriceRecurringCreate(BaseModel):
     r"""The recurring interval of the price."""
 
     # fmt: off
-    TYPE: Annotated[Final[ProductPriceRecurringCreateType], pydantic.Field(alias="type")] = ProductPriceRecurringCreateType.RECURRING # type: ignore
+    TYPE: Annotated[Final[ProductPriceRecurringFixedCreateType], pydantic.Field(alias="type")] = ProductPriceRecurringFixedCreateType.RECURRING # type: ignore
+    # fmt: on
+
+    # fmt: off
+    AMOUNT_TYPE: Annotated[Final[ProductPriceRecurringFixedCreateAmountType], pydantic.Field(alias="amount_type")] = ProductPriceRecurringFixedCreateAmountType.FIXED # type: ignore
     # fmt: on
 
     price_currency: Optional[str] = "usd"

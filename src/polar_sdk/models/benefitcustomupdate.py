@@ -20,6 +20,7 @@ class BenefitCustomUpdateType(str, Enum):
 class BenefitCustomUpdateTypedDict(TypedDict):
     description: NotRequired[Nullable[str]]
     r"""The description of the benefit. Will be displayed on products having this benefit."""
+    type: BenefitCustomUpdateType
     properties: NotRequired[Nullable[BenefitCustomPropertiesTypedDict]]
 
 

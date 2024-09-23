@@ -9,12 +9,20 @@ from .productpriceonetimefixed import (
     ProductPriceOneTimeFixed,
     ProductPriceOneTimeFixedTypedDict,
 )
+from .productpriceonetimefree import (
+    ProductPriceOneTimeFree,
+    ProductPriceOneTimeFreeTypedDict,
+)
 from typing import Union
 
 
 ProductPriceOneTimeTypedDict = Union[
-    ProductPriceOneTimeFixedTypedDict, ProductPriceOneTimeCustomTypedDict
+    ProductPriceOneTimeFreeTypedDict,
+    ProductPriceOneTimeFixedTypedDict,
+    ProductPriceOneTimeCustomTypedDict,
 ]
 
 
-ProductPriceOneTime = Union[ProductPriceOneTimeFixed, ProductPriceOneTimeCustom]
+ProductPriceOneTime = Union[
+    ProductPriceOneTimeFree, ProductPriceOneTimeFixed, ProductPriceOneTimeCustom
+]

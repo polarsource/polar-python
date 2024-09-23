@@ -1,4 +1,6 @@
-# ProductPriceRecurringCreateType
+# ProductPriceRecurringFreeType
+
+The type of the price.
 
 
 ## Values

@@ -34,6 +34,7 @@ class BenefitLicenseKeysOutputTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     properties: BenefitLicenseKeysPropertiesTypedDict
+    type: BenefitLicenseKeysOutputType
 
 
 class BenefitLicenseKeysOutput(BaseModel):
