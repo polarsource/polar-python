@@ -22,8 +22,6 @@ class ResourceNotFoundData(BaseModel):
 
 
 class ResourceNotFound(Exception):
-    r"""Order not found."""
-
     data: ResourceNotFoundData
 
     def __init__(self, data: ResourceNotFoundData):

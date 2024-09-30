@@ -1,7 +1,5 @@
 # ResourceNotFound
 
-Order not found.
-
 
 ## Fields
 

@@ -5,9 +5,9 @@ from polar_sdk.types import BaseModel
 from typing import TypedDict
 
 
-class BenefitGrantAdsPropertiesTypedDict(TypedDict):
-    advertisement_campaign_id: str
+class BenefitGrantArticlesPropertiesTypedDict(TypedDict):
+    pass
 
 
-class BenefitGrantAdsProperties(BaseModel):
-    advertisement_campaign_id: str
+class BenefitGrantArticlesProperties(BaseModel):
+    pass

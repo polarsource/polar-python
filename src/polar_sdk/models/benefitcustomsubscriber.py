@@ -5,7 +5,10 @@ from .benefitcustomsubscriberproperties import (
     BenefitCustomSubscriberProperties,
     BenefitCustomSubscriberPropertiesTypedDict,
 )
-from .benefitgrant import BenefitGrant, BenefitGrantTypedDict
+from .benefitgrantsubscriber import (
+    BenefitGrantSubscriber,
+    BenefitGrantSubscriberTypedDict,
+)
 from datetime import datetime
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -34,7 +37,7 @@ class BenefitCustomSubscriberTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
-    grants: List[BenefitGrantTypedDict]
+    grants: List[BenefitGrantSubscriberTypedDict]
     properties: BenefitCustomSubscriberPropertiesTypedDict
     r"""Properties available to subscribers for a benefit of type `custom`."""
     type: BenefitCustomSubscriberType
@@ -62,7 +65,7 @@ class BenefitCustomSubscriber(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
 
-    grants: List[BenefitGrant]
+    grants: List[BenefitGrantSubscriber]
 
     properties: BenefitCustomSubscriberProperties
     r"""Properties available to subscribers for a benefit of type `custom`."""

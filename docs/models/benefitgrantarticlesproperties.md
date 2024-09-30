@@ -1,6 +1,4 @@
-# BenefitGrantProperties
-
-Properties for a benefit grant.
+# BenefitGrantArticlesProperties
 
 
 ## Fields

@@ -5,9 +5,9 @@ from polar_sdk.types import BaseModel
 from typing import TypedDict
 
 
-class BenefitGrantPropertiesTypedDict(TypedDict):
-    r"""Properties for a benefit grant."""
+class BenefitGrantCustomPropertiesTypedDict(TypedDict):
+    pass
 
 
-class BenefitGrantProperties(BaseModel):
-    r"""Properties for a benefit grant."""
+class BenefitGrantCustomProperties(BaseModel):
+    pass

@@ -74,7 +74,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.benefits.create(request={\n    \"type\": polar_sdk.BenefitDiscordCreateType.DISCORD,\n    \"description\": \"Proactive full-range artificial intelligence\",\n    \"properties\": {\n        \"guild_token\": \"<value>\",\n        \"role_id\": \"<value>\",\n    },\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.benefits.create(request={\n    \"type\": polar_sdk.BenefitDiscordCreateType.DISCORD,\n    \"description\": \"delightfully fumigate convection though zowie up bulky electronics\",\n    \"properties\": {\n        \"guild_token\": \"<value>\",\n        \"role_id\": \"<id>\",\n    },\n})\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/benefits/{id}"]["delete"]
     update:
       "x-codeSamples":
@@ -194,7 +194,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "introspect_token"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.introspect(request={\n    \"token\": \"<value>\",\n    \"client_id\": \"<value>\",\n    \"client_secret\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.introspect(request={\n    \"token\": \"<value>\",\n    \"client_id\": \"<id>\",\n    \"client_secret\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/oauth2/register"]["post"]
     update:
       "x-codeSamples":
@@ -206,31 +206,31 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "delete_client"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.clients.delete(client_id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.clients.delete(client_id=\"<id>\")\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/oauth2/register/{client_id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get_client"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.clients.get(client_id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.clients.get(client_id=\"<id>\")\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/oauth2/register/{client_id}"]["put"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update_client"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.clients.update(client_id=\"<value>\", o_auth2_client_configuration_update={\n    \"redirect_uris\": [\n        \"https://grown-worth.name\",\n        \"https://worthwhile-avalanche.org/\",\n        \"https://general-digit.com/\",\n    ],\n    \"client_name\": \"<value>\",\n    \"client_id\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.clients.update(client_id=\"<id>\", o_auth2_client_configuration_update={\n    \"redirect_uris\": [\n        \"https://grown-worth.name\",\n        \"https://worthwhile-avalanche.org/\",\n        \"https://general-digit.com/\",\n    ],\n    \"client_name\": \"<value>\",\n    \"client_id\": \"<id>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/oauth2/revoke"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "revoke_token"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.revoke(request={\n    \"token\": \"<value>\",\n    \"client_id\": \"<value>\",\n    \"client_secret\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.revoke(request={\n    \"token\": \"<value>\",\n    \"client_id\": \"<id>\",\n    \"client_secret\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/oauth2/token"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "request_token"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.token(request={\n    \"grant_type\": polar_sdk.GrantType.AUTHORIZATION_CODE,\n    \"client_id\": \"<value>\",\n    \"client_secret\": \"<value>\",\n    \"code\": \"<value>\",\n    \"redirect_uri\": \"https://old-fort.name\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.token(request={\n    \"grant_type\": polar_sdk.GrantType.AUTHORIZATION_CODE,\n    \"client_id\": \"<id>\",\n    \"client_secret\": \"<value>\",\n    \"code\": \"<value>\",\n    \"redirect_uri\": \"https://old-fort.name\",\n})\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/oauth2/userinfo"]["get"]
     update:
       "x-codeSamples":

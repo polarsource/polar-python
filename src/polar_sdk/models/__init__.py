@@ -226,11 +226,41 @@ from .benefitgithubrepositoryupdate import (
     BenefitGitHubRepositoryUpdateType,
     BenefitGitHubRepositoryUpdateTypedDict,
 )
-from .benefitgrant import BenefitGrant, BenefitGrantTypedDict
+from .benefitgrant import (
+    BenefitGrant,
+    BenefitGrantTypedDict,
+    Properties,
+    PropertiesTypedDict,
+)
 from .benefitgrantads import BenefitGrantAds, BenefitGrantAdsTypedDict
 from .benefitgrantadsproperties import (
     BenefitGrantAdsProperties,
     BenefitGrantAdsPropertiesTypedDict,
+)
+from .benefitgrantadssubscriberproperties import (
+    BenefitGrantAdsSubscriberProperties,
+    BenefitGrantAdsSubscriberPropertiesTypedDict,
+)
+from .benefitgrantarticlesproperties import (
+    BenefitGrantArticlesProperties,
+    BenefitGrantArticlesPropertiesTypedDict,
+)
+from .benefitgrantcustomproperties import (
+    BenefitGrantCustomProperties,
+    BenefitGrantCustomPropertiesTypedDict,
+)
+from .benefitgrantdiscordproperties import (
+    BenefitGrantDiscordProperties,
+    BenefitGrantDiscordPropertiesTypedDict,
+)
+from .benefitgrantdownloadablesproperties import (
+    BenefitGrantDownloadablesProperties,
+    BenefitGrantDownloadablesPropertiesTypedDict,
+)
+from .benefitgrantgithubrepositoryproperties import (
+    BenefitGrantGitHubRepositoryProperties,
+    BenefitGrantGitHubRepositoryPropertiesPermission,
+    BenefitGrantGitHubRepositoryPropertiesTypedDict,
 )
 from .benefitgrantlicensekeys import (
     BenefitGrantLicenseKeys,
@@ -240,9 +270,19 @@ from .benefitgrantlicensekeysproperties import (
     BenefitGrantLicenseKeysProperties,
     BenefitGrantLicenseKeysPropertiesTypedDict,
 )
-from .benefitgrantproperties import (
-    BenefitGrantProperties,
-    BenefitGrantPropertiesTypedDict,
+from .benefitgrantsubscriber import (
+    BenefitGrantSubscriber,
+    BenefitGrantSubscriberTypedDict,
+)
+from .benefitgrantwebhook import (
+    BenefitGrantWebhook,
+    BenefitGrantWebhookBenefit,
+    BenefitGrantWebhookBenefitTypedDict,
+    BenefitGrantWebhookProperties,
+    BenefitGrantWebhookPropertiesTypedDict,
+    BenefitGrantWebhookTypedDict,
+    PreviousProperties,
+    PreviousPropertiesTypedDict,
 )
 from .benefitlicensekeyactivationproperties import (
     BenefitLicenseKeyActivationProperties,
@@ -1057,6 +1097,21 @@ from .webhookbenefitcreatedpayload import (
     WebhookBenefitCreatedPayloadType,
     WebhookBenefitCreatedPayloadTypedDict,
 )
+from .webhookbenefitgrantcreatedpayload import (
+    WebhookBenefitGrantCreatedPayload,
+    WebhookBenefitGrantCreatedPayloadType,
+    WebhookBenefitGrantCreatedPayloadTypedDict,
+)
+from .webhookbenefitgrantrevokedpayload import (
+    WebhookBenefitGrantRevokedPayload,
+    WebhookBenefitGrantRevokedPayloadType,
+    WebhookBenefitGrantRevokedPayloadTypedDict,
+)
+from .webhookbenefitgrantupdatedpayload import (
+    WebhookBenefitGrantUpdatedPayload,
+    WebhookBenefitGrantUpdatedPayloadType,
+    WebhookBenefitGrantUpdatedPayloadTypedDict,
+)
 from .webhookbenefitupdatedpayload import (
     WebhookBenefitUpdatedPayload,
     WebhookBenefitUpdatedPayloadBenefit,
@@ -1273,14 +1328,33 @@ __all__ = [
     "BenefitGrantAds",
     "BenefitGrantAdsProperties",
     "BenefitGrantAdsPropertiesTypedDict",
+    "BenefitGrantAdsSubscriberProperties",
+    "BenefitGrantAdsSubscriberPropertiesTypedDict",
     "BenefitGrantAdsTypedDict",
+    "BenefitGrantArticlesProperties",
+    "BenefitGrantArticlesPropertiesTypedDict",
+    "BenefitGrantCustomProperties",
+    "BenefitGrantCustomPropertiesTypedDict",
+    "BenefitGrantDiscordProperties",
+    "BenefitGrantDiscordPropertiesTypedDict",
+    "BenefitGrantDownloadablesProperties",
+    "BenefitGrantDownloadablesPropertiesTypedDict",
+    "BenefitGrantGitHubRepositoryProperties",
+    "BenefitGrantGitHubRepositoryPropertiesPermission",
+    "BenefitGrantGitHubRepositoryPropertiesTypedDict",
     "BenefitGrantLicenseKeys",
     "BenefitGrantLicenseKeysProperties",
     "BenefitGrantLicenseKeysPropertiesTypedDict",
     "BenefitGrantLicenseKeysTypedDict",
-    "BenefitGrantProperties",
-    "BenefitGrantPropertiesTypedDict",
+    "BenefitGrantSubscriber",
+    "BenefitGrantSubscriberTypedDict",
     "BenefitGrantTypedDict",
+    "BenefitGrantWebhook",
+    "BenefitGrantWebhookBenefit",
+    "BenefitGrantWebhookBenefitTypedDict",
+    "BenefitGrantWebhookProperties",
+    "BenefitGrantWebhookPropertiesTypedDict",
+    "BenefitGrantWebhookTypedDict",
     "BenefitIDFilter",
     "BenefitIDFilterTypedDict",
     "BenefitLicenseKeyActivationProperties",
@@ -1632,6 +1706,8 @@ __all__ = [
     "PledgeType",
     "Pledger",
     "PledgerTypedDict",
+    "PreviousProperties",
+    "PreviousPropertiesTypedDict",
     "Prices",
     "PricesTypedDict",
     "ProductBenefitsUpdate",
@@ -1734,6 +1810,8 @@ __all__ = [
     "ProductsUpdateBenefitsRequestTypedDict",
     "ProductsUpdateRequest",
     "ProductsUpdateRequestTypedDict",
+    "Properties",
+    "PropertiesTypedDict",
     "QueryParamBenefitIDFilter",
     "QueryParamBenefitIDFilterTypedDict",
     "QueryParamBenefitTypeFilter",
@@ -1931,6 +2009,15 @@ __all__ = [
     "WebhookBenefitCreatedPayloadBenefitTypedDict",
     "WebhookBenefitCreatedPayloadType",
     "WebhookBenefitCreatedPayloadTypedDict",
+    "WebhookBenefitGrantCreatedPayload",
+    "WebhookBenefitGrantCreatedPayloadType",
+    "WebhookBenefitGrantCreatedPayloadTypedDict",
+    "WebhookBenefitGrantRevokedPayload",
+    "WebhookBenefitGrantRevokedPayloadType",
+    "WebhookBenefitGrantRevokedPayloadTypedDict",
+    "WebhookBenefitGrantUpdatedPayload",
+    "WebhookBenefitGrantUpdatedPayloadType",
+    "WebhookBenefitGrantUpdatedPayloadTypedDict",
     "WebhookBenefitUpdatedPayload",
     "WebhookBenefitUpdatedPayloadBenefit",
     "WebhookBenefitUpdatedPayloadBenefitTypedDict",

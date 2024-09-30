@@ -25,7 +25,7 @@ s = Polar(
 )
 
 res = s.oauth2.token(request={
-    "client_id": "<value>",
+    "client_id": "<id>",
     "client_secret": "<value>",
     "code": "<value>",
     "redirect_uri": "https://old-fort.name",

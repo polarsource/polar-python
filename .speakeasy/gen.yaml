@@ -15,7 +15,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: true
 python:
-  version: 0.4.0
+  version: 0.4.1
   additionalDependencies:
     dev: {}
     main: {}
@@ -24,6 +24,8 @@ python:
   clientServerStatusCodesAsErrors: true
   description: Polar SDK for Python
   enumFormat: enum
+  fixFlags:
+    responseRequiredSep2024: false
   flattenGlobalSecurity: true
   flattenRequests: false
   imports:

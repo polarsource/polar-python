@@ -23,7 +23,6 @@ class BenefitGrantLicenseKeysTypedDict(TypedDict):
     r"""Whether the benefit is granted."""
     is_revoked: bool
     r"""Whether the benefit is revoked."""
-    properties: BenefitGrantLicenseKeysPropertiesTypedDict
     subscription_id: Nullable[str]
     r"""The ID of the subscription that granted this benefit."""
     order_id: Nullable[str]
@@ -32,6 +31,7 @@ class BenefitGrantLicenseKeysTypedDict(TypedDict):
     r"""The ID of the user concerned by this grant."""
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
+    properties: BenefitGrantLicenseKeysPropertiesTypedDict
     granted_at: NotRequired[Nullable[datetime]]
     r"""The timestamp when the benefit was granted. If `None`, the benefit is not granted."""
     revoked_at: NotRequired[Nullable[datetime]]
@@ -54,8 +54,6 @@ class BenefitGrantLicenseKeys(BaseModel):
     is_revoked: bool
     r"""Whether the benefit is revoked."""
 
-    properties: BenefitGrantLicenseKeysProperties
-
     subscription_id: Nullable[str]
     r"""The ID of the subscription that granted this benefit."""
 
@@ -67,6 +65,8 @@ class BenefitGrantLicenseKeys(BaseModel):
 
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
+
+    properties: BenefitGrantLicenseKeysProperties
 
     granted_at: OptionalNullable[datetime] = UNSET
     r"""The timestamp when the benefit was granted. If `None`, the benefit is not granted."""

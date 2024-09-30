@@ -74,10 +74,10 @@ s = Polar(
 )
 
 res = s.benefits.create(request={
-    "description": "Proactive full-range artificial intelligence",
+    "description": "delightfully fumigate convection though zowie up bulky electronics",
     "properties": {
         "guild_token": "<value>",
-        "role_id": "<value>",
+        "role_id": "<id>",
     },
     "type": polar_sdk.BenefitDiscordCreateType.DISCORD,
 })

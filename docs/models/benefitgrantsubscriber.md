@@ -1,4 +1,4 @@
-# BenefitGrant
+# BenefitGrantSubscriber
 
 
 ## Fields
@@ -14,6 +14,5 @@
 | `order_id`                                                                         | *Nullable[str]*                                                                    | :heavy_check_mark:                                                                 | The ID of the order that granted this benefit.                                     |
 | `user_id`                                                                          | *str*                                                                              | :heavy_check_mark:                                                                 | The ID of the user concerned by this grant.                                        |
 | `benefit_id`                                                                       | *str*                                                                              | :heavy_check_mark:                                                                 | The ID of the benefit concerned by this grant.                                     |
-| `properties`                                                                       | [models.Properties](../models/properties.md)                                       | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `granted_at`                                                                       | [date](https://docs.python.org/3/library/datetime.html#date-objects)               | :heavy_minus_sign:                                                                 | The timestamp when the benefit was granted. If `None`, the benefit is not granted. |
 | `revoked_at`                                                                       | [date](https://docs.python.org/3/library/datetime.html#date-objects)               | :heavy_minus_sign:                                                                 | The timestamp when the benefit was revoked. If `None`, the benefit is not revoked. |
