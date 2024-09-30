@@ -2,15 +2,16 @@
 
 from __future__ import annotations
 from polar_sdk.types import BaseModel
-from typing import TypedDict
+from typing import Optional, TypedDict
+from typing_extensions import NotRequired
 
 
 class BenefitGrantLicenseKeysPropertiesTypedDict(TypedDict):
-    license_key_id: str
-    display_key: str
+    license_key_id: NotRequired[str]
+    display_key: NotRequired[str]
 
 
 class BenefitGrantLicenseKeysProperties(BaseModel):
-    license_key_id: str
+    license_key_id: Optional[str] = None
 
-    display_key: str
+    display_key: Optional[str] = None

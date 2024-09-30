@@ -1,7 +1,5 @@
 # Unauthorized
 
-Not authorized to manage license key.
-
 
 ## Fields
 

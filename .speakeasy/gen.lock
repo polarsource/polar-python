@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: 2c4af22de10e6543957de6ddb476ba38
+  docChecksum: 2d641484229a829e6171b797314760ce
   docVersion: 0.1.0
-  speakeasyVersion: 1.401.2
-  generationVersion: 2.421.3
-  releaseVersion: 0.4.0
-  configChecksum: 02efbe623af54401c4ce0b8a06743b3a
+  speakeasyVersion: 1.404.5
+  generationVersion: 2.426.2
+  releaseVersion: 0.4.1
+  configChecksum: 6aea9f6f581f9755af0c0fbc99cdfcfc
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -14,7 +14,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.3
-    core: 5.5.4
+    core: 5.5.6
     defaultEnabledRetries: 0.2.0
     devContainers: 3.0.0
     enumUnions: 0.1.0
@@ -30,7 +30,7 @@ features:
     nameOverrides: 3.0.0
     nullables: 1.0.0
     pagination: 3.0.1
-    responseFormat: 1.0.0
+    responseFormat: 1.0.1
     retries: 3.0.2
     sdkHooks: 1.0.0
     serverIDs: 3.0.0
@@ -142,9 +142,19 @@ generatedFiles:
   - docs/models/benefitgrant.md
   - docs/models/benefitgrantads.md
   - docs/models/benefitgrantadsproperties.md
+  - docs/models/benefitgrantadssubscriberproperties.md
+  - docs/models/benefitgrantarticlesproperties.md
+  - docs/models/benefitgrantcustomproperties.md
+  - docs/models/benefitgrantdiscordproperties.md
+  - docs/models/benefitgrantdownloadablesproperties.md
+  - docs/models/benefitgrantgithubrepositoryproperties.md
+  - docs/models/benefitgrantgithubrepositorypropertiespermission.md
   - docs/models/benefitgrantlicensekeys.md
   - docs/models/benefitgrantlicensekeysproperties.md
-  - docs/models/benefitgrantproperties.md
+  - docs/models/benefitgrantsubscriber.md
+  - docs/models/benefitgrantwebhook.md
+  - docs/models/benefitgrantwebhookbenefit.md
+  - docs/models/benefitgrantwebhookproperties.md
   - docs/models/benefitidfilter.md
   - docs/models/benefitlicensekeyactivationproperties.md
   - docs/models/benefitlicensekeyexpirationproperties.md
@@ -337,6 +347,7 @@ generatedFiles:
   - docs/models/pledger.md
   - docs/models/pledgestate.md
   - docs/models/pledgetype.md
+  - docs/models/previousproperties.md
   - docs/models/prices.md
   - docs/models/productbenefitsupdate.md
   - docs/models/productidfilter.md
@@ -400,6 +411,7 @@ generatedFiles:
   - docs/models/productsupdaterequest.md
   - docs/models/productupdate.md
   - docs/models/productupdateprices.md
+  - docs/models/properties.md
   - docs/models/queryparambenefitidfilter.md
   - docs/models/queryparambenefittypefilter.md
   - docs/models/queryparamorganizationidfilter.md
@@ -509,6 +521,12 @@ generatedFiles:
   - docs/models/webhookbenefitcreatedpayload.md
   - docs/models/webhookbenefitcreatedpayloadbenefit.md
   - docs/models/webhookbenefitcreatedpayloadtype.md
+  - docs/models/webhookbenefitgrantcreatedpayload.md
+  - docs/models/webhookbenefitgrantcreatedpayloadtype.md
+  - docs/models/webhookbenefitgrantrevokedpayload.md
+  - docs/models/webhookbenefitgrantrevokedpayloadtype.md
+  - docs/models/webhookbenefitgrantupdatedpayload.md
+  - docs/models/webhookbenefitgrantupdatedpayloadtype.md
   - docs/models/webhookbenefitupdatedpayload.md
   - docs/models/webhookbenefitupdatedpayloadbenefit.md
   - docs/models/webhookbenefitupdatedpayloadtype.md
@@ -642,9 +660,16 @@ generatedFiles:
   - src/polar_sdk/models/benefitgrant.py
   - src/polar_sdk/models/benefitgrantads.py
   - src/polar_sdk/models/benefitgrantadsproperties.py
+  - src/polar_sdk/models/benefitgrantadssubscriberproperties.py
+  - src/polar_sdk/models/benefitgrantarticlesproperties.py
+  - src/polar_sdk/models/benefitgrantcustomproperties.py
+  - src/polar_sdk/models/benefitgrantdiscordproperties.py
+  - src/polar_sdk/models/benefitgrantdownloadablesproperties.py
+  - src/polar_sdk/models/benefitgrantgithubrepositoryproperties.py
   - src/polar_sdk/models/benefitgrantlicensekeys.py
   - src/polar_sdk/models/benefitgrantlicensekeysproperties.py
-  - src/polar_sdk/models/benefitgrantproperties.py
+  - src/polar_sdk/models/benefitgrantsubscriber.py
+  - src/polar_sdk/models/benefitgrantwebhook.py
   - src/polar_sdk/models/benefitlicensekeyactivationproperties.py
   - src/polar_sdk/models/benefitlicensekeyexpirationproperties.py
   - src/polar_sdk/models/benefitlicensekeys_input.py
@@ -876,6 +901,9 @@ generatedFiles:
   - src/polar_sdk/models/validatedlicensekey.py
   - src/polar_sdk/models/validationerror.py
   - src/polar_sdk/models/webhookbenefitcreatedpayload.py
+  - src/polar_sdk/models/webhookbenefitgrantcreatedpayload.py
+  - src/polar_sdk/models/webhookbenefitgrantrevokedpayload.py
+  - src/polar_sdk/models/webhookbenefitgrantupdatedpayload.py
   - src/polar_sdk/models/webhookbenefitupdatedpayload.py
   - src/polar_sdk/models/webhookdonationcreatedpayload.py
   - src/polar_sdk/models/webhookordercreatedpayload.py
@@ -932,7 +960,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2023-09-05T11:33:52.011Z", "modified_at": "2023-08-20T11:11:04.610Z", "id": "<value>", "description": "Open-source well-modulated hub", "selectable": true, "deletable": true, "organization_id": "<value>", "properties": {"repository_owner": "polarsource", "repository_name": "private_repo"}}
+          application/json: {"created_at": "2023-09-05T11:33:52.011Z", "modified_at": "2023-08-20T11:11:04.610Z", "id": "<value>", "description": "hundred whereas dimly unused cone restructure gadzooks", "selectable": false, "deletable": false, "organization_id": "<value>", "properties": {"repository_owner": "polarsource", "repository_name": "private_repo"}}
         "404":
           application/json: {"detail": "<value>"}
         "422": {}
@@ -1358,7 +1386,7 @@ examples:
   oauth2:request_token:
     speakeasy-default-oauth2-:request-token:
       requestBody:
-        application/x-www-form-urlencoded: {"client_id": "<value>", "client_secret": "<value>", "code": "<value>", "redirect_uri": "https://old-fort.name"}
+        application/x-www-form-urlencoded: {"client_id": "<id>", "client_secret": "<value>", "code": "<value>", "redirect_uri": "https://old-fort.name"}
       responses:
         "200":
           application/json: {"access_token": "<value>", "expires_in": 542214, "refresh_token": "<value>", "scope": "<value>", "id_token": "<value>"}
@@ -1430,10 +1458,10 @@ examples:
   benefits:create:
     speakeasy-default-benefits:create:
       requestBody:
-        application/json: {"description": "Proactive full-range artificial intelligence", "properties": {"guild_token": "<value>", "role_id": "<value>"}}
+        application/json: {"description": "delightfully fumigate convection though zowie up bulky electronics", "properties": {"guild_token": "<value>", "role_id": "<id>"}}
       responses:
         "201":
-          application/json: {"created_at": "2024-05-22T22:27:14.379Z", "modified_at": "2024-11-08T08:43:39.394Z", "id": "<value>", "description": "Adaptive client-driven approach", "selectable": false, "deletable": false, "organization_id": "<value>", "properties": {"paid_articles": false}}
+          application/json: {"created_at": "2023-07-24T05:13:02.679Z", "modified_at": "2022-12-24T06:50:18.755Z", "id": "<value>", "description": "while till lazily than clear-cut whoever", "selectable": false, "deletable": false, "organization_id": "<value>", "properties": {"repository_id": "<value>", "repository_owner": "polarsource", "repository_name": "private_repo", "permission": "admin"}}
         "422": {}
   benefits:get:
     speakeasy-default-benefits:get:
@@ -1442,7 +1470,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2023-09-05T11:33:52.011Z", "modified_at": "2023-08-20T11:11:04.610Z", "id": "<value>", "description": "Open-source well-modulated hub", "selectable": true, "deletable": true, "organization_id": "<value>", "properties": {"repository_id": "<value>", "repository_owner": "polarsource", "repository_name": "private_repo", "permission": "triage"}}
+          application/json: {"created_at": "2023-09-05T11:33:52.011Z", "modified_at": "2023-08-20T11:11:04.610Z", "id": "<value>", "description": "hundred whereas dimly unused cone restructure gadzooks", "selectable": false, "deletable": false, "organization_id": "<value>", "properties": {"repository_id": "<value>", "repository_owner": "polarsource", "repository_name": "private_repo", "permission": "admin"}}
         "404":
           application/json: {"detail": "<value>"}
         "422": {}
@@ -1453,7 +1481,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2023-01-13T16:52:57.274Z", "modified_at": "2024-12-22T15:27:45.882Z", "id": "<value>", "description": "Pre-emptive human-resource website", "selectable": true, "deletable": false, "organization_id": "<value>", "properties": {"repository_id": "<value>", "repository_owner": "polarsource", "repository_name": "private_repo", "permission": "push"}}
+          application/json: {"created_at": "2023-01-13T16:52:57.274Z", "modified_at": "2024-12-22T15:27:45.882Z", "id": "<value>", "description": "hence reconstitute amid miserable daintily certainly yak surprised", "selectable": false, "deletable": true, "organization_id": "<value>", "properties": {"repository_id": "<value>", "repository_owner": "polarsource", "repository_name": "private_repo", "permission": "maintain"}}
         "403":
           application/json: {"detail": "<value>"}
         "404":
@@ -1606,7 +1634,7 @@ examples:
         application/json: {"id": "<id>", "path": "/sys", "parts": []}
       responses:
         "200":
-          application/json: {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/usr/ports", "mime_type": "<value>", "size": 173116, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2024-09-06T20:34:00.390Z", "version": "<value>", "is_uploaded": false, "created_at": "2023-12-06T04:28:57.373Z", "size_readable": "<value>", "public_url": "<value>"}
+          application/json: {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/usr/ports", "mime_type": "<value>", "size": 173116, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2024-09-06T20:34:00.390Z", "version": "<value>", "is_uploaded": false, "created_at": "2023-12-06T04:28:57.373Z", "size_readable": "<value>", "public_url": "https://heartfelt-folklore.net/"}
         "422": {}
   files:update:
     speakeasy-default-files:update:
@@ -1615,7 +1643,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/srv", "mime_type": "<value>", "size": 344620, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2024-12-22T15:27:45.882Z", "version": "<value>", "is_uploaded": false, "created_at": "2023-06-20T18:46:17.643Z", "size_readable": "<value>", "public_url": "<value>"}
+          application/json: {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/srv", "mime_type": "<value>", "size": 344620, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2024-12-22T15:27:45.882Z", "version": "<value>", "is_uploaded": false, "created_at": "2023-06-20T18:46:17.643Z", "size_readable": "<value>", "public_url": "https://awful-technician.info"}
         "422": {}
   files:delete:
     speakeasy-default-files:delete:

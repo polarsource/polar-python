@@ -14,6 +14,8 @@ class CheckoutCreateTypedDict(TypedDict):
     r"""URL where the customer will be redirected after a successful subscription. You can add the `session_id={CHECKOUT_SESSION_ID}` query parameter to retrieve the checkout session id."""
     customer_email: NotRequired[Nullable[str]]
     r"""If you already know the email of your customer, you can set it. It'll be pre-filled on the checkout page."""
+    subscription_id: NotRequired[Nullable[str]]
+    r"""ID of the subscription to update. If not provided, a new subscription will be created."""
 
 
 class CheckoutCreate(BaseModel):
@@ -26,10 +28,13 @@ class CheckoutCreate(BaseModel):
     customer_email: OptionalNullable[str] = UNSET
     r"""If you already know the email of your customer, you can set it. It'll be pre-filled on the checkout page."""
 
+    subscription_id: OptionalNullable[str] = UNSET
+    r"""ID of the subscription to update. If not provided, a new subscription will be created."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["customer_email"]
-        nullable_fields = ["customer_email"]
+        optional_fields = ["customer_email", "subscription_id"]
+        nullable_fields = ["customer_email", "subscription_id"]
         null_default_fields = []
 
         serialized = handler(self)

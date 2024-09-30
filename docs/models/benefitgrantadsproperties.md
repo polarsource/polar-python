@@ -3,6 +3,6 @@
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `advertisement_campaign_id`                                          | *OptionalNullable[str]*                                              | :heavy_minus_sign:                                                   | The ID of the enabled advertisement campaign for this benefit grant. |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `advertisement_campaign_id` | *str*                       | :heavy_check_mark:          | N/A                         |

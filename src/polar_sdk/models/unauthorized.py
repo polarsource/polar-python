@@ -22,8 +22,6 @@ class UnauthorizedData(BaseModel):
 
 
 class Unauthorized(Exception):
-    r"""Not authorized to manage license key."""
-
     data: UnauthorizedData
 
     def __init__(self, data: UnauthorizedData):
