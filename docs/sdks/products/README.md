@@ -56,11 +56,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4xx-5xx                    | */*                        |
-
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## create
 
@@ -106,11 +105,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4xx-5xx                    | */*                        |
-
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## get
 
@@ -146,12 +144,11 @@ if res is not None:
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.ResourceNotFound    | 404                        | application/json           |
 | models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4xx-5xx                    | */*                        |
-
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## update
 
@@ -188,13 +185,12 @@ if res is not None:
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.NotPermitted        | 403                        | application/json           |
 | models.ResourceNotFound    | 404                        | application/json           |
 | models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4xx-5xx                    | */*                        |
-
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## update_benefits
 
@@ -235,9 +231,9 @@ if res is not None:
 
 ### Errors
 
-| Error Object               | Status Code                | Content Type               |
+| Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.NotPermitted        | 403                        | application/json           |
 | models.ResourceNotFound    | 404                        | application/json           |
 | models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4xx-5xx                    | */*                        |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |

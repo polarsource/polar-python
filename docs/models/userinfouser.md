@@ -3,9 +3,9 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `sub`              | *str*              | :heavy_check_mark: | N/A                |
-| `name`             | *Nullable[str]*    | :heavy_check_mark: | N/A                |
-| `email`            | *Nullable[str]*    | :heavy_check_mark: | N/A                |
-| `email_verified`   | *Nullable[bool]*   | :heavy_check_mark: | N/A                |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `sub`                    | *str*                    | :heavy_check_mark:       | N/A                      |
+| `name`                   | *OptionalNullable[str]*  | :heavy_minus_sign:       | N/A                      |
+| `email`                  | *OptionalNullable[str]*  | :heavy_minus_sign:       | N/A                      |
+| `email_verified`         | *OptionalNullable[bool]* | :heavy_minus_sign:       | N/A                      |
