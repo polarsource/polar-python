@@ -21,10 +21,10 @@ value: models.BenefitAds = /* values here */
 value: models.BenefitCustom = /* values here */
 ```
 
-### `models.BenefitDiscordOutput`
+### `models.BenefitDiscord`
 
 ```python
-value: models.BenefitDiscordOutput = /* values here */
+value: models.BenefitDiscord = /* values here */
 ```
 
 ### `models.BenefitGitHubRepository`
@@ -39,9 +39,9 @@ value: models.BenefitGitHubRepository = /* values here */
 value: models.BenefitDownloadables = /* values here */
 ```
 
-### `models.BenefitLicenseKeysOutput`
+### `models.BenefitLicenseKeys`
 
 ```python
-value: models.BenefitLicenseKeysOutput = /* values here */
+value: models.BenefitLicenseKeys = /* values here */
 ```
 

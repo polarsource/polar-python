@@ -4,7 +4,8 @@ from __future__ import annotations
 from .pagination import Pagination, PaginationTypedDict
 from .repository_output import RepositoryOutput, RepositoryOutputTypedDict
 from polar_sdk.types import BaseModel
-from typing import List, TypedDict
+from typing import List
+from typing_extensions import TypedDict
 
 
 class ListResourceRepositoryTypedDict(TypedDict):

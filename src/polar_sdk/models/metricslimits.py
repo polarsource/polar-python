@@ -7,7 +7,7 @@ from .metricsintervalslimits import (
 )
 from datetime import date
 from polar_sdk.types import BaseModel
-from typing import TypedDict
+from typing_extensions import TypedDict
 
 
 class MetricsLimitsTypedDict(TypedDict):

@@ -4,10 +4,11 @@ from __future__ import annotations
 from datetime import datetime
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Final, TypedDict
-from typing_extensions import Annotated
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, TypedDict
 
 
 class ProductPriceOneTimeFreeAmountType(str, Enum):
@@ -51,13 +52,21 @@ class ProductPriceOneTimeFree(BaseModel):
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
 
-    # fmt: off
-    AMOUNT_TYPE: Annotated[Final[ProductPriceOneTimeFreeAmountType], pydantic.Field(alias="amount_type")] = ProductPriceOneTimeFreeAmountType.FREE # type: ignore
-    # fmt: on
+    AMOUNT_TYPE: Annotated[
+        Annotated[
+            ProductPriceOneTimeFreeAmountType,
+            AfterValidator(validate_const(ProductPriceOneTimeFreeAmountType.FREE)),
+        ],
+        pydantic.Field(alias="amount_type"),
+    ] = ProductPriceOneTimeFreeAmountType.FREE
 
-    # fmt: off
-    TYPE: Annotated[Final[ProductPriceOneTimeFreeType], pydantic.Field(alias="type")] = ProductPriceOneTimeFreeType.ONE_TIME # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            ProductPriceOneTimeFreeType,
+            AfterValidator(validate_const(ProductPriceOneTimeFreeType.ONE_TIME)),
+        ],
+        pydantic.Field(alias="type"),
+    ] = ProductPriceOneTimeFreeType.ONE_TIME
     r"""The type of the price."""
 
     @model_serializer(mode="wrap")

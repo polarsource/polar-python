@@ -8,10 +8,11 @@ from .benefitdownloadablesproperties import (
 from datetime import datetime
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Final, TypedDict
-from typing_extensions import Annotated
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, TypedDict
 
 
 class BenefitDownloadablesType(str, Enum):
@@ -61,9 +62,13 @@ class BenefitDownloadables(BaseModel):
 
     properties: BenefitDownloadablesProperties
 
-    # fmt: off
-    TYPE: Annotated[Final[BenefitDownloadablesType], pydantic.Field(alias="type")] = BenefitDownloadablesType.DOWNLOADABLES # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            BenefitDownloadablesType,
+            AfterValidator(validate_const(BenefitDownloadablesType.DOWNLOADABLES)),
+        ],
+        pydantic.Field(alias="type"),
+    ] = BenefitDownloadablesType.DOWNLOADABLES
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

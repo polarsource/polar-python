@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 from polar_sdk.types import BaseModel
-from typing import Dict, List, TypedDict
+from typing import Dict, List
+from typing_extensions import TypedDict
 
 
 class BenefitDownloadablesPropertiesTypedDict(TypedDict):

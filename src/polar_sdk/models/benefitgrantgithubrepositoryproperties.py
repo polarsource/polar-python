@@ -4,8 +4,8 @@ from __future__ import annotations
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Optional, TypedDict
-from typing_extensions import NotRequired
+from typing import Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class BenefitGrantGitHubRepositoryPropertiesPermission(str, Enum):

@@ -32,8 +32,8 @@ from .benefitgrantlicensekeysproperties import (
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import TypedDict, Union
-from typing_extensions import NotRequired
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
 PropertiesTypedDict = Union[

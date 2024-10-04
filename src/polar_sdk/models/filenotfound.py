@@ -4,8 +4,9 @@ from __future__ import annotations
 from enum import Enum
 from polar_sdk import utils
 from polar_sdk.types import BaseModel
+from polar_sdk.utils import validate_const
 import pydantic
-from typing import Final
+from pydantic.functional_validators import AfterValidator
 from typing_extensions import Annotated
 
 
@@ -16,9 +17,13 @@ class FileNotFoundType(str, Enum):
 class FileNotFoundData(BaseModel):
     detail: str
 
-    # fmt: off
-    TYPE: Annotated[Final[FileNotFoundType], pydantic.Field(alias="type")] = FileNotFoundType.FILE_NOT_FOUND # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            FileNotFoundType,
+            AfterValidator(validate_const(FileNotFoundType.FILE_NOT_FOUND)),
+        ],
+        pydantic.Field(alias="type"),
+    ] = FileNotFoundType.FILE_NOT_FOUND
 
 
 class FileNotFound(Exception):

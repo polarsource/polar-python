@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 from polar_sdk.types import BaseModel
-from typing import Optional, TypedDict
-from typing_extensions import NotRequired
+from typing import Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class OrganizationFeatureSettingsTypedDict(TypedDict):

@@ -4,20 +4,17 @@ from __future__ import annotations
 from .benefitads import BenefitAds, BenefitAdsTypedDict
 from .benefitarticles import BenefitArticles, BenefitArticlesTypedDict
 from .benefitcustom import BenefitCustom, BenefitCustomTypedDict
-from .benefitdiscord_output import BenefitDiscordOutput, BenefitDiscordOutputTypedDict
+from .benefitdiscord import BenefitDiscord, BenefitDiscordTypedDict
 from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesTypedDict
 from .benefitgithubrepository import (
     BenefitGitHubRepository,
     BenefitGitHubRepositoryTypedDict,
 )
-from .benefitlicensekeys_output import (
-    BenefitLicenseKeysOutput,
-    BenefitLicenseKeysOutputTypedDict,
-)
+from .benefitlicensekeys import BenefitLicenseKeys, BenefitLicenseKeysTypedDict
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, PathParamMetadata
-from typing import TypedDict, Union
-from typing_extensions import Annotated
+from typing import Union
+from typing_extensions import Annotated, TypedDict
 
 
 class BenefitsGetRequestTypedDict(TypedDict):
@@ -33,10 +30,10 @@ class BenefitsGetRequest(BaseModel):
 BenefitsGetResponseBenefitsGetTypedDict = Union[
     BenefitArticlesTypedDict,
     BenefitAdsTypedDict,
-    BenefitDiscordOutputTypedDict,
+    BenefitDiscordTypedDict,
     BenefitGitHubRepositoryTypedDict,
     BenefitDownloadablesTypedDict,
-    BenefitLicenseKeysOutputTypedDict,
+    BenefitLicenseKeysTypedDict,
     BenefitCustomTypedDict,
 ]
 r"""Successful Response"""
@@ -45,10 +42,10 @@ r"""Successful Response"""
 BenefitsGetResponseBenefitsGet = Union[
     BenefitArticles,
     BenefitAds,
-    BenefitDiscordOutput,
+    BenefitDiscord,
     BenefitGitHubRepository,
     BenefitDownloadables,
-    BenefitLicenseKeysOutput,
+    BenefitLicenseKeys,
     BenefitCustom,
 ]
 r"""Successful Response"""

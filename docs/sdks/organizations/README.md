@@ -90,7 +90,7 @@ if res is not None:
 
 ### Response
 
-**[models.OrganizationOutput](../../models/organizationoutput.md)**
+**[models.Organization](../../models/organization.md)**
 
 ### Errors
 
@@ -129,7 +129,7 @@ if res is not None:
 
 ### Response
 
-**[models.OrganizationOutput](../../models/organizationoutput.md)**
+**[models.Organization](../../models/organization.md)**
 
 ### Errors
 
@@ -170,7 +170,7 @@ if res is not None:
 
 ### Response
 
-**[models.OrganizationOutput](../../models/organizationoutput.md)**
+**[models.Organization](../../models/organization.md)**
 
 ### Errors
 

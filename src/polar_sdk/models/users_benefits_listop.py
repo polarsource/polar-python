@@ -11,8 +11,8 @@ from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 import pydantic
 from pydantic import model_serializer
-from typing import Callable, List, Optional, TypedDict, Union
-from typing_extensions import Annotated, NotRequired
+from typing import Callable, List, Optional, Union
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 BenefitTypeFilterTypedDict = Union[BenefitType, List[BenefitType]]

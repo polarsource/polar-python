@@ -4,9 +4,10 @@ from __future__ import annotations
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from enum import Enum
 from polar_sdk.types import BaseModel
+from polar_sdk.utils import validate_const
 import pydantic
-from typing import Final, TypedDict
-from typing_extensions import Annotated
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, TypedDict
 
 
 class ProductPriceRecurringFreeCreateType(str, Enum):
@@ -32,10 +33,22 @@ class ProductPriceRecurringFreeCreate(BaseModel):
     recurring_interval: SubscriptionRecurringInterval
     r"""The recurring interval of the price."""
 
-    # fmt: off
-    TYPE: Annotated[Final[ProductPriceRecurringFreeCreateType], pydantic.Field(alias="type")] = ProductPriceRecurringFreeCreateType.RECURRING # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            ProductPriceRecurringFreeCreateType,
+            AfterValidator(
+                validate_const(ProductPriceRecurringFreeCreateType.RECURRING)
+            ),
+        ],
+        pydantic.Field(alias="type"),
+    ] = ProductPriceRecurringFreeCreateType.RECURRING
 
-    # fmt: off
-    AMOUNT_TYPE: Annotated[Final[ProductPriceRecurringFreeCreateAmountType], pydantic.Field(alias="amount_type")] = ProductPriceRecurringFreeCreateAmountType.FREE # type: ignore
-    # fmt: on
+    AMOUNT_TYPE: Annotated[
+        Annotated[
+            ProductPriceRecurringFreeCreateAmountType,
+            AfterValidator(
+                validate_const(ProductPriceRecurringFreeCreateAmountType.FREE)
+            ),
+        ],
+        pydantic.Field(alias="amount_type"),
+    ] = ProductPriceRecurringFreeCreateAmountType.FREE

@@ -3,15 +3,13 @@
 from __future__ import annotations
 from .benefitarticles import BenefitArticles, BenefitArticlesTypedDict
 from .benefitbase import BenefitBase, BenefitBaseTypedDict
-from .productmediafileread_output import (
-    ProductMediaFileReadOutput,
-    ProductMediaFileReadOutputTypedDict,
-)
-from .productprice_output import ProductPriceOutput, ProductPriceOutputTypedDict
+from .productmediafileread import ProductMediaFileRead, ProductMediaFileReadTypedDict
+from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import List, TypedDict, Union
+from typing import List, Union
+from typing_extensions import TypedDict
 
 
 BenefitsModelTypedDict = Union[BenefitBaseTypedDict, BenefitArticlesTypedDict]
@@ -37,11 +35,11 @@ class UserOrderProductTypedDict(TypedDict):
     r"""Whether the product is archived and no longer available."""
     organization_id: str
     r"""The ID of the organization owning the product."""
-    prices: List[ProductPriceOutputTypedDict]
+    prices: List[ProductPriceTypedDict]
     r"""List of available prices for this product."""
     benefits: List[BenefitsModelTypedDict]
     r"""The benefits granted by the product."""
-    medias: List[ProductMediaFileReadOutputTypedDict]
+    medias: List[ProductMediaFileReadTypedDict]
     r"""The medias associated to the product."""
 
 
@@ -70,13 +68,13 @@ class UserOrderProduct(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the product."""
 
-    prices: List[ProductPriceOutput]
+    prices: List[ProductPrice]
     r"""List of available prices for this product."""
 
     benefits: List[BenefitsModel]
     r"""The benefits granted by the product."""
 
-    medias: List[ProductMediaFileReadOutput]
+    medias: List[ProductMediaFileRead]
     r"""The medias associated to the product."""
 
     @model_serializer(mode="wrap")

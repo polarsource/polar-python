@@ -8,8 +8,8 @@ from .listresource_benefitgrant_ import (
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata
 from pydantic import model_serializer
-from typing import Callable, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Callable, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class BenefitsGrantsRequestTypedDict(TypedDict):

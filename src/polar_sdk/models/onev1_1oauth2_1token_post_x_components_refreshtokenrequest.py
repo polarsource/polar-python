@@ -3,10 +3,10 @@
 from __future__ import annotations
 from enum import Enum
 from polar_sdk.types import BaseModel
-from polar_sdk.utils import FieldMetadata
+from polar_sdk.utils import FieldMetadata, validate_const
 import pydantic
-from typing import Final, TypedDict
-from typing_extensions import Annotated
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, TypedDict
 
 
 class Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType(str, Enum):
@@ -27,6 +27,15 @@ class Onev11oauth21tokenPostXComponentsRefreshTokenRequest(BaseModel):
 
     refresh_token: Annotated[str, FieldMetadata(form=True)]
 
-    # fmt: off
-    GRANT_TYPE: Annotated[Final[Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType], pydantic.Field(alias="grant_type"), FieldMetadata(form=True)] = Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType.REFRESH_TOKEN # type: ignore
-    # fmt: on
+    GRANT_TYPE: Annotated[
+        Annotated[
+            Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType,
+            AfterValidator(
+                validate_const(
+                    Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType.REFRESH_TOKEN
+                )
+            ),
+        ],
+        pydantic.Field(alias="grant_type"),
+        FieldMetadata(form=True),
+    ] = Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType.REFRESH_TOKEN

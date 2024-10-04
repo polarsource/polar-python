@@ -4,10 +4,11 @@ from __future__ import annotations
 from .s3filecreatemultipart import S3FileCreateMultipart, S3FileCreateMultipartTypedDict
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Final, TypedDict
-from typing_extensions import Annotated, NotRequired
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class DownloadableFileCreateService(str, Enum):
@@ -42,9 +43,13 @@ class DownloadableFileCreate(BaseModel):
 
     checksum_sha256_base64: OptionalNullable[str] = UNSET
 
-    # fmt: off
-    SERVICE: Annotated[Final[DownloadableFileCreateService], pydantic.Field(alias="service")] = DownloadableFileCreateService.DOWNLOADABLE # type: ignore
-    # fmt: on
+    SERVICE: Annotated[
+        Annotated[
+            DownloadableFileCreateService,
+            AfterValidator(validate_const(DownloadableFileCreateService.DOWNLOADABLE)),
+        ],
+        pydantic.Field(alias="service"),
+    ] = DownloadableFileCreateService.DOWNLOADABLE
 
     version: OptionalNullable[str] = UNSET
 

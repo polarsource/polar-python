@@ -3,10 +3,11 @@
 from __future__ import annotations
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Final, TypedDict
-from typing_extensions import Annotated
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, TypedDict
 
 
 class TokenType(str, Enum):
@@ -33,9 +34,10 @@ class TokenResponse(BaseModel):
 
     id_token: str
 
-    # fmt: off
-    TOKEN_TYPE: Annotated[Final[TokenType], pydantic.Field(alias="token_type")] = TokenType.BEARER # type: ignore
-    # fmt: on
+    TOKEN_TYPE: Annotated[
+        Annotated[TokenType, AfterValidator(validate_const(TokenType.BEARER))],
+        pydantic.Field(alias="token_type"),
+    ] = TokenType.BEARER
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

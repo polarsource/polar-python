@@ -15,9 +15,9 @@ value: models.DownloadableFileRead = /* values here */
 value: models.OrganizationAvatarFileRead = /* values here */
 ```
 
-### `models.ProductMediaFileReadOutput`
+### `models.ProductMediaFileRead`
 
 ```python
-value: models.ProductMediaFileReadOutput = /* values here */
+value: models.ProductMediaFileRead = /* values here */
 ```
 

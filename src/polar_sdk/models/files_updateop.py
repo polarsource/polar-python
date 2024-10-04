@@ -7,10 +7,7 @@ from .organizationavatarfileread import (
     OrganizationAvatarFileRead,
     OrganizationAvatarFileReadTypedDict,
 )
-from .productmediafileread_output import (
-    ProductMediaFileReadOutput,
-    ProductMediaFileReadOutputTypedDict,
-)
+from .productmediafileread import ProductMediaFileRead, ProductMediaFileReadTypedDict
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import (
     FieldMetadata,
@@ -19,8 +16,8 @@ from polar_sdk.utils import (
     get_discriminator,
 )
 from pydantic import Discriminator, Tag
-from typing import TypedDict, Union
-from typing_extensions import Annotated
+from typing import Union
+from typing_extensions import Annotated, TypedDict
 
 
 class FilesUpdateRequestTypedDict(TypedDict):
@@ -42,7 +39,7 @@ class FilesUpdateRequest(BaseModel):
 
 FilesUpdateResponseFilesUpdateTypedDict = Union[
     DownloadableFileReadTypedDict,
-    ProductMediaFileReadOutputTypedDict,
+    ProductMediaFileReadTypedDict,
     OrganizationAvatarFileReadTypedDict,
 ]
 r"""Successful Response"""
@@ -51,7 +48,7 @@ r"""Successful Response"""
 FilesUpdateResponseFilesUpdate = Annotated[
     Union[
         Annotated[DownloadableFileRead, Tag("downloadable")],
-        Annotated[ProductMediaFileReadOutput, Tag("product_media")],
+        Annotated[ProductMediaFileRead, Tag("product_media")],
         Annotated[OrganizationAvatarFileRead, Tag("organization_avatar")],
     ],
     Discriminator(lambda m: get_discriminator(m, "service", "service")),

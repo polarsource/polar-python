@@ -7,7 +7,7 @@ from .benefitarticles import BenefitArticles, BenefitArticlesTypedDict
 from .benefitarticlesupdate import BenefitArticlesUpdate, BenefitArticlesUpdateTypedDict
 from .benefitcustom import BenefitCustom, BenefitCustomTypedDict
 from .benefitcustomupdate import BenefitCustomUpdate, BenefitCustomUpdateTypedDict
-from .benefitdiscord_output import BenefitDiscordOutput, BenefitDiscordOutputTypedDict
+from .benefitdiscord import BenefitDiscord, BenefitDiscordTypedDict
 from .benefitdiscordupdate import BenefitDiscordUpdate, BenefitDiscordUpdateTypedDict
 from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesTypedDict
 from .benefitdownloadablesupdate import (
@@ -22,18 +22,15 @@ from .benefitgithubrepositoryupdate import (
     BenefitGitHubRepositoryUpdate,
     BenefitGitHubRepositoryUpdateTypedDict,
 )
-from .benefitlicensekeys_output import (
-    BenefitLicenseKeysOutput,
-    BenefitLicenseKeysOutputTypedDict,
-)
+from .benefitlicensekeys import BenefitLicenseKeys, BenefitLicenseKeysTypedDict
 from .benefitlicensekeysupdate import (
     BenefitLicenseKeysUpdate,
     BenefitLicenseKeysUpdateTypedDict,
 )
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, PathParamMetadata, RequestMetadata
-from typing import TypedDict, Union
-from typing_extensions import Annotated
+from typing import Union
+from typing_extensions import Annotated, TypedDict
 
 
 BenefitsUpdateBenefitUpdateTypedDict = Union[
@@ -77,10 +74,10 @@ class BenefitsUpdateRequest(BaseModel):
 BenefitsUpdateResponseBenefitsUpdateTypedDict = Union[
     BenefitArticlesTypedDict,
     BenefitAdsTypedDict,
-    BenefitDiscordOutputTypedDict,
+    BenefitDiscordTypedDict,
     BenefitGitHubRepositoryTypedDict,
     BenefitDownloadablesTypedDict,
-    BenefitLicenseKeysOutputTypedDict,
+    BenefitLicenseKeysTypedDict,
     BenefitCustomTypedDict,
 ]
 r"""Benefit updated."""
@@ -89,10 +86,10 @@ r"""Benefit updated."""
 BenefitsUpdateResponseBenefitsUpdate = Union[
     BenefitArticles,
     BenefitAds,
-    BenefitDiscordOutput,
+    BenefitDiscord,
     BenefitGitHubRepository,
     BenefitDownloadables,
-    BenefitLicenseKeysOutput,
+    BenefitLicenseKeys,
     BenefitCustom,
 ]
 r"""Benefit updated."""

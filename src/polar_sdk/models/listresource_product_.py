@@ -2,17 +2,18 @@
 
 from __future__ import annotations
 from .pagination import Pagination, PaginationTypedDict
-from .product_output import ProductOutput, ProductOutputTypedDict
+from .product import Product, ProductTypedDict
 from polar_sdk.types import BaseModel
-from typing import List, TypedDict
+from typing import List
+from typing_extensions import TypedDict
 
 
 class ListResourceProductTypedDict(TypedDict):
-    items: List[ProductOutputTypedDict]
+    items: List[ProductTypedDict]
     pagination: PaginationTypedDict
 
 
 class ListResourceProduct(BaseModel):
-    items: List[ProductOutput]
+    items: List[Product]
 
     pagination: Pagination

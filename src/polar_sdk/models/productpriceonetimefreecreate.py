@@ -3,9 +3,10 @@
 from __future__ import annotations
 from enum import Enum
 from polar_sdk.types import BaseModel
+from polar_sdk.utils import validate_const
 import pydantic
-from typing import Final, TypedDict
-from typing_extensions import Annotated
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, TypedDict
 
 
 class ProductPriceOneTimeFreeCreateType(str, Enum):
@@ -26,10 +27,20 @@ class ProductPriceOneTimeFreeCreateTypedDict(TypedDict):
 class ProductPriceOneTimeFreeCreate(BaseModel):
     r"""Schema to create a free one-time product price."""
 
-    # fmt: off
-    TYPE: Annotated[Final[ProductPriceOneTimeFreeCreateType], pydantic.Field(alias="type")] = ProductPriceOneTimeFreeCreateType.ONE_TIME # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            ProductPriceOneTimeFreeCreateType,
+            AfterValidator(validate_const(ProductPriceOneTimeFreeCreateType.ONE_TIME)),
+        ],
+        pydantic.Field(alias="type"),
+    ] = ProductPriceOneTimeFreeCreateType.ONE_TIME
 
-    # fmt: off
-    AMOUNT_TYPE: Annotated[Final[ProductPriceOneTimeFreeCreateAmountType], pydantic.Field(alias="amount_type")] = ProductPriceOneTimeFreeCreateAmountType.FREE # type: ignore
-    # fmt: on
+    AMOUNT_TYPE: Annotated[
+        Annotated[
+            ProductPriceOneTimeFreeCreateAmountType,
+            AfterValidator(
+                validate_const(ProductPriceOneTimeFreeCreateAmountType.FREE)
+            ),
+        ],
+        pydantic.Field(alias="amount_type"),
+    ] = ProductPriceOneTimeFreeCreateAmountType.FREE

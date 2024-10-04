@@ -4,21 +4,20 @@ from __future__ import annotations
 from .benefitads import BenefitAds, BenefitAdsTypedDict
 from .benefitarticles import BenefitArticles, BenefitArticlesTypedDict
 from .benefitcustom import BenefitCustom, BenefitCustomTypedDict
-from .benefitdiscord_input import BenefitDiscordInput, BenefitDiscordInputTypedDict
+from .benefitdiscord import BenefitDiscordInput, BenefitDiscordInputTypedDict
 from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesTypedDict
 from .benefitgithubrepository import (
     BenefitGitHubRepository,
     BenefitGitHubRepositoryTypedDict,
 )
-from .benefitlicensekeys_input import (
-    BenefitLicenseKeysInput,
-    BenefitLicenseKeysInputTypedDict,
-)
+from .benefitlicensekeys import BenefitLicenseKeys, BenefitLicenseKeysTypedDict
 from enum import Enum
 from polar_sdk.types import BaseModel
+from polar_sdk.utils import validate_const
 import pydantic
-from typing import Final, TypedDict, Union
-from typing_extensions import Annotated
+from pydantic.functional_validators import AfterValidator
+from typing import Union
+from typing_extensions import Annotated, TypedDict
 
 
 class WebhookBenefitCreatedPayloadType(str, Enum):
@@ -31,7 +30,7 @@ WebhookBenefitCreatedPayloadBenefitTypedDict = Union[
     BenefitDiscordInputTypedDict,
     BenefitGitHubRepositoryTypedDict,
     BenefitDownloadablesTypedDict,
-    BenefitLicenseKeysInputTypedDict,
+    BenefitLicenseKeysTypedDict,
     BenefitCustomTypedDict,
 ]
 
@@ -42,7 +41,7 @@ WebhookBenefitCreatedPayloadBenefit = Union[
     BenefitDiscordInput,
     BenefitGitHubRepository,
     BenefitDownloadables,
-    BenefitLicenseKeysInput,
+    BenefitLicenseKeys,
     BenefitCustom,
 ]
 
@@ -65,6 +64,12 @@ class WebhookBenefitCreatedPayload(BaseModel):
 
     data: WebhookBenefitCreatedPayloadBenefit
 
-    # fmt: off
-    TYPE: Annotated[Final[WebhookBenefitCreatedPayloadType], pydantic.Field(alias="type")] = WebhookBenefitCreatedPayloadType.BENEFIT_CREATED # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            WebhookBenefitCreatedPayloadType,
+            AfterValidator(
+                validate_const(WebhookBenefitCreatedPayloadType.BENEFIT_CREATED)
+            ),
+        ],
+        pydantic.Field(alias="type"),
+    ] = WebhookBenefitCreatedPayloadType.BENEFIT_CREATED

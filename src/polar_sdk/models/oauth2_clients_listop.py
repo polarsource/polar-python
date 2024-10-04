@@ -7,8 +7,8 @@ from .listresource_oauth2client_ import (
 )
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
-from typing import Callable, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Callable, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class Oauth2ClientsListRequestTypedDict(TypedDict):

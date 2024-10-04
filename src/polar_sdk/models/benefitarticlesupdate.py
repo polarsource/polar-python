@@ -3,10 +3,11 @@
 from __future__ import annotations
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Final, TypedDict
-from typing_extensions import Annotated, NotRequired
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class BenefitArticlesUpdateType(str, Enum):
@@ -23,9 +24,13 @@ class BenefitArticlesUpdate(BaseModel):
     description: OptionalNullable[str] = UNSET
     r"""The description of the benefit. Will be displayed on products having this benefit."""
 
-    # fmt: off
-    TYPE: Annotated[Final[BenefitArticlesUpdateType], pydantic.Field(alias="type")] = BenefitArticlesUpdateType.ARTICLES # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            BenefitArticlesUpdateType,
+            AfterValidator(validate_const(BenefitArticlesUpdateType.ARTICLES)),
+        ],
+        pydantic.Field(alias="type"),
+    ] = BenefitArticlesUpdateType.ARTICLES
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

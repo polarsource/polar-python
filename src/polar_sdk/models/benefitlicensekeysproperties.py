@@ -11,7 +11,7 @@ from .benefitlicensekeyexpirationproperties import (
 )
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import TypedDict
+from typing_extensions import TypedDict
 
 
 class BenefitLicenseKeysPropertiesTypedDict(TypedDict):

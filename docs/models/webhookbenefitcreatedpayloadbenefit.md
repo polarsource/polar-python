@@ -39,9 +39,9 @@ value: models.BenefitGitHubRepository = /* values here */
 value: models.BenefitDownloadables = /* values here */
 ```
 
-### `models.BenefitLicenseKeysInput`
+### `models.BenefitLicenseKeys`
 
 ```python
-value: models.BenefitLicenseKeysInput = /* values here */
+value: models.BenefitLicenseKeys = /* values here */
 ```
 

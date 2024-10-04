@@ -318,7 +318,7 @@ class Orders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.OrderOutput]:
+    ) -> Optional[models.Order]:
         r"""Get Order
 
         Get an order by ID.
@@ -376,7 +376,7 @@ class Orders(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.OrderOutput])
+            return utils.unmarshal_json(http_res.text, Optional[models.Order])
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -403,7 +403,7 @@ class Orders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.OrderOutput]:
+    ) -> Optional[models.Order]:
         r"""Get Order
 
         Get an order by ID.
@@ -461,7 +461,7 @@ class Orders(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.OrderOutput])
+            return utils.unmarshal_json(http_res.text, Optional[models.Order])
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)

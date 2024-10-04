@@ -3,7 +3,7 @@
 from __future__ import annotations
 from .metricsintervallimit import MetricsIntervalLimit, MetricsIntervalLimitTypedDict
 from polar_sdk.types import BaseModel
-from typing import TypedDict
+from typing_extensions import TypedDict
 
 
 class MetricsIntervalsLimitsTypedDict(TypedDict):

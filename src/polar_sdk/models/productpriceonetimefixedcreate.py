@@ -3,9 +3,11 @@
 from __future__ import annotations
 from enum import Enum
 from polar_sdk.types import BaseModel
+from polar_sdk.utils import validate_const
 import pydantic
-from typing import Final, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from pydantic.functional_validators import AfterValidator
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class ProductPriceOneTimeFixedCreateType(str, Enum):
@@ -33,13 +35,23 @@ class ProductPriceOneTimeFixedCreate(BaseModel):
     price_amount: int
     r"""The price in cents."""
 
-    # fmt: off
-    TYPE: Annotated[Final[ProductPriceOneTimeFixedCreateType], pydantic.Field(alias="type")] = ProductPriceOneTimeFixedCreateType.ONE_TIME # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            ProductPriceOneTimeFixedCreateType,
+            AfterValidator(validate_const(ProductPriceOneTimeFixedCreateType.ONE_TIME)),
+        ],
+        pydantic.Field(alias="type"),
+    ] = ProductPriceOneTimeFixedCreateType.ONE_TIME
 
-    # fmt: off
-    AMOUNT_TYPE: Annotated[Final[ProductPriceOneTimeFixedCreateAmountType], pydantic.Field(alias="amount_type")] = ProductPriceOneTimeFixedCreateAmountType.FIXED # type: ignore
-    # fmt: on
+    AMOUNT_TYPE: Annotated[
+        Annotated[
+            ProductPriceOneTimeFixedCreateAmountType,
+            AfterValidator(
+                validate_const(ProductPriceOneTimeFixedCreateAmountType.FIXED)
+            ),
+        ],
+        pydantic.Field(alias="amount_type"),
+    ] = ProductPriceOneTimeFixedCreateAmountType.FIXED
 
     price_currency: Optional[str] = "usd"
     r"""The currency. Currently, only `usd` is supported."""
