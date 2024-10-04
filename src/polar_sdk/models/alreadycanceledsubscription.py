@@ -4,8 +4,9 @@ from __future__ import annotations
 from enum import Enum
 from polar_sdk import utils
 from polar_sdk.types import BaseModel
+from polar_sdk.utils import validate_const
 import pydantic
-from typing import Final
+from pydantic.functional_validators import AfterValidator
 from typing_extensions import Annotated
 
 
@@ -16,9 +17,17 @@ class AlreadyCanceledSubscriptionType(str, Enum):
 class AlreadyCanceledSubscriptionData(BaseModel):
     detail: str
 
-    # fmt: off
-    TYPE: Annotated[Final[AlreadyCanceledSubscriptionType], pydantic.Field(alias="type")] = AlreadyCanceledSubscriptionType.ALREADY_CANCELED_SUBSCRIPTION # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            AlreadyCanceledSubscriptionType,
+            AfterValidator(
+                validate_const(
+                    AlreadyCanceledSubscriptionType.ALREADY_CANCELED_SUBSCRIPTION
+                )
+            ),
+        ],
+        pydantic.Field(alias="type"),
+    ] = AlreadyCanceledSubscriptionType.ALREADY_CANCELED_SUBSCRIPTION
 
 
 class AlreadyCanceledSubscription(Exception):

@@ -101,7 +101,7 @@ if res is not None:
 
 ### Response
 
-**[models.ProductOutput](../../models/productoutput.md)**
+**[models.Product](../../models/product.md)**
 
 ### Errors
 
@@ -140,7 +140,7 @@ if res is not None:
 
 ### Response
 
-**[models.ProductOutput](../../models/productoutput.md)**
+**[models.Product](../../models/product.md)**
 
 ### Errors
 
@@ -181,7 +181,7 @@ if res is not None:
 
 ### Response
 
-**[models.ProductOutput](../../models/productoutput.md)**
+**[models.Product](../../models/product.md)**
 
 ### Errors
 
@@ -227,7 +227,7 @@ if res is not None:
 
 ### Response
 
-**[models.ProductOutput](../../models/productoutput.md)**
+**[models.Product](../../models/product.md)**
 
 ### Errors
 

@@ -3,7 +3,8 @@
 from __future__ import annotations
 from .s3fileuploadpart import S3FileUploadPart, S3FileUploadPartTypedDict
 from polar_sdk.types import BaseModel
-from typing import List, TypedDict
+from typing import List
+from typing_extensions import TypedDict
 
 
 class S3FileUploadMultipartTypedDict(TypedDict):

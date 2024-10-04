@@ -4,28 +4,26 @@ from __future__ import annotations
 from .benefitads import BenefitAds, BenefitAdsTypedDict
 from .benefitarticles import BenefitArticles, BenefitArticlesTypedDict
 from .benefitcustom import BenefitCustom, BenefitCustomTypedDict
-from .benefitdiscord_output import BenefitDiscordOutput, BenefitDiscordOutputTypedDict
+from .benefitdiscord import BenefitDiscord, BenefitDiscordTypedDict
 from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesTypedDict
 from .benefitgithubrepository import (
     BenefitGitHubRepository,
     BenefitGitHubRepositoryTypedDict,
 )
-from .benefitlicensekeys_output import (
-    BenefitLicenseKeysOutput,
-    BenefitLicenseKeysOutputTypedDict,
-)
+from .benefitlicensekeys import BenefitLicenseKeys, BenefitLicenseKeysTypedDict
 from .pagination import Pagination, PaginationTypedDict
 from polar_sdk.types import BaseModel
-from typing import List, TypedDict, Union
+from typing import List, Union
+from typing_extensions import TypedDict
 
 
 BenefitTypedDict = Union[
     BenefitArticlesTypedDict,
     BenefitAdsTypedDict,
-    BenefitDiscordOutputTypedDict,
+    BenefitDiscordTypedDict,
     BenefitGitHubRepositoryTypedDict,
     BenefitDownloadablesTypedDict,
-    BenefitLicenseKeysOutputTypedDict,
+    BenefitLicenseKeysTypedDict,
     BenefitCustomTypedDict,
 ]
 
@@ -33,10 +31,10 @@ BenefitTypedDict = Union[
 Benefit = Union[
     BenefitArticles,
     BenefitAds,
-    BenefitDiscordOutput,
+    BenefitDiscord,
     BenefitGitHubRepository,
     BenefitDownloadables,
-    BenefitLicenseKeysOutput,
+    BenefitLicenseKeys,
     BenefitCustom,
 ]
 

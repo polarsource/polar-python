@@ -4,10 +4,11 @@ from __future__ import annotations
 from datetime import datetime
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Final, TypedDict
-from typing_extensions import Annotated
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, TypedDict
 
 
 class DownloadableFileReadService(str, Enum):
@@ -18,6 +19,7 @@ class DownloadableFileReadTypedDict(TypedDict):
     r"""File to be associated with the downloadables benefit."""
 
     id: str
+    r"""The ID of the object."""
     organization_id: str
     name: str
     path: str
@@ -39,6 +41,7 @@ class DownloadableFileRead(BaseModel):
     r"""File to be associated with the downloadables benefit."""
 
     id: str
+    r"""The ID of the object."""
 
     organization_id: str
 
@@ -68,9 +71,13 @@ class DownloadableFileRead(BaseModel):
 
     size_readable: str
 
-    # fmt: off
-    SERVICE: Annotated[Final[DownloadableFileReadService], pydantic.Field(alias="service")] = DownloadableFileReadService.DOWNLOADABLE # type: ignore
-    # fmt: on
+    SERVICE: Annotated[
+        Annotated[
+            DownloadableFileReadService,
+            AfterValidator(validate_const(DownloadableFileReadService.DOWNLOADABLE)),
+        ],
+        pydantic.Field(alias="service"),
+    ] = DownloadableFileReadService.DOWNLOADABLE
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

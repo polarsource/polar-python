@@ -4,7 +4,7 @@ from __future__ import annotations
 from .benefitads import BenefitAds, BenefitAdsTypedDict
 from .benefitarticles import BenefitArticles, BenefitArticlesTypedDict
 from .benefitcustom import BenefitCustom, BenefitCustomTypedDict
-from .benefitdiscord_input import BenefitDiscordInput, BenefitDiscordInputTypedDict
+from .benefitdiscord import BenefitDiscordInput, BenefitDiscordInputTypedDict
 from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesTypedDict
 from .benefitgithubrepository import (
     BenefitGitHubRepository,
@@ -38,15 +38,12 @@ from .benefitgrantlicensekeysproperties import (
     BenefitGrantLicenseKeysProperties,
     BenefitGrantLicenseKeysPropertiesTypedDict,
 )
-from .benefitlicensekeys_input import (
-    BenefitLicenseKeysInput,
-    BenefitLicenseKeysInputTypedDict,
-)
+from .benefitlicensekeys import BenefitLicenseKeys, BenefitLicenseKeysTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import TypedDict, Union
-from typing_extensions import NotRequired
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
 BenefitGrantWebhookPropertiesTypedDict = Union[
@@ -77,7 +74,7 @@ BenefitGrantWebhookBenefitTypedDict = Union[
     BenefitDiscordInputTypedDict,
     BenefitGitHubRepositoryTypedDict,
     BenefitDownloadablesTypedDict,
-    BenefitLicenseKeysInputTypedDict,
+    BenefitLicenseKeysTypedDict,
     BenefitCustomTypedDict,
 ]
 
@@ -88,7 +85,7 @@ BenefitGrantWebhookBenefit = Union[
     BenefitDiscordInput,
     BenefitGitHubRepository,
     BenefitDownloadables,
-    BenefitLicenseKeysInput,
+    BenefitLicenseKeys,
     BenefitCustom,
 ]
 

@@ -1,31 +1,32 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: 731f3794df11184c4a3ac24b324ecdf6
+  docChecksum: 878a29087db8361af412356c9cfa0708
   docVersion: 0.1.0
-  speakeasyVersion: 1.405.6
-  generationVersion: 2.428.1
-  releaseVersion: 0.4.2
-  configChecksum: f27ad139c4fe9ee20fa554911db773e3
+  speakeasyVersion: 1.406.0
+  generationVersion: 2.429.0
+  releaseVersion: 0.5.0
+  configChecksum: c14c280d1e83962ee10762464ff7fce4
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
 features:
   python:
     additionalDependencies: 1.0.0
-    constsAndDefaults: 1.0.3
-    core: 5.5.7
+    constsAndDefaults: 1.0.4
+    core: 5.5.8
     defaultEnabledRetries: 0.2.0
     devContainers: 3.0.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.3.1
-    flattening: 3.0.0
+    flattening: 3.1.0
     globalSecurity: 3.0.2
     globalSecurityCallbacks: 1.0.0
     globalSecurityFlattening: 1.0.0
     globalServerURLs: 3.0.0
     groups: 3.0.0
     ignores: 3.0.0
+    inputOutputModels: 3.0.0
     methodArguments: 1.0.2
     nameOverrides: 3.0.0
     nullables: 1.0.0
@@ -41,6 +42,7 @@ generatedFiles:
   - .devcontainer/devcontainer.json
   - .devcontainer/setup.sh
   - .gitattributes
+  - .python-version
   - .vscode/settings.json
   - CONTRIBUTING.md
   - USAGE.md
@@ -102,18 +104,17 @@ generatedFiles:
   - docs/models/benefitcustomtype.md
   - docs/models/benefitcustomupdate.md
   - docs/models/benefitcustomupdatetype.md
+  - docs/models/benefitdiscord.md
   - docs/models/benefitdiscordcreate.md
   - docs/models/benefitdiscordcreateproperties.md
   - docs/models/benefitdiscordcreatetype.md
   - docs/models/benefitdiscordinput.md
-  - docs/models/benefitdiscordinputtype.md
-  - docs/models/benefitdiscordoutput.md
-  - docs/models/benefitdiscordoutputtype.md
+  - docs/models/benefitdiscordproperties.md
   - docs/models/benefitdiscordpropertiesinput.md
-  - docs/models/benefitdiscordpropertiesoutput.md
   - docs/models/benefitdiscordsubscriber.md
   - docs/models/benefitdiscordsubscriberproperties.md
   - docs/models/benefitdiscordsubscribertype.md
+  - docs/models/benefitdiscordtype.md
   - docs/models/benefitdiscordupdate.md
   - docs/models/benefitdiscordupdatetype.md
   - docs/models/benefitdownloadables.md
@@ -158,17 +159,15 @@ generatedFiles:
   - docs/models/benefitidfilter.md
   - docs/models/benefitlicensekeyactivationproperties.md
   - docs/models/benefitlicensekeyexpirationproperties.md
+  - docs/models/benefitlicensekeys.md
   - docs/models/benefitlicensekeyscreate.md
   - docs/models/benefitlicensekeyscreateproperties.md
   - docs/models/benefitlicensekeyscreatetype.md
-  - docs/models/benefitlicensekeysinput.md
-  - docs/models/benefitlicensekeysinputtype.md
-  - docs/models/benefitlicensekeysoutput.md
-  - docs/models/benefitlicensekeysoutputtype.md
   - docs/models/benefitlicensekeysproperties.md
   - docs/models/benefitlicensekeyssubscriber.md
   - docs/models/benefitlicensekeyssubscriberproperties.md
   - docs/models/benefitlicensekeyssubscribertype.md
+  - docs/models/benefitlicensekeystype.md
   - docs/models/benefitlicensekeysupdate.md
   - docs/models/benefitlicensekeysupdatetype.md
   - docs/models/benefitscreatebenefitcreate.md
@@ -193,7 +192,7 @@ generatedFiles:
   - docs/models/checkoutsgetrequest.md
   - docs/models/conditions.md
   - docs/models/currencyamount.md
-  - docs/models/donationinput.md
+  - docs/models/donation.md
   - docs/models/donationorganization.md
   - docs/models/donationuser.md
   - docs/models/donor.md
@@ -232,7 +231,7 @@ generatedFiles:
   - docs/models/interval.md
   - docs/models/introspecttokenresponse.md
   - docs/models/introspecttokenresponsetokentype.md
-  - docs/models/issueinput.md
+  - docs/models/issue.md
   - docs/models/label.md
   - docs/models/licensekeyactivate.md
   - docs/models/licensekeyactivateconditions.md
@@ -307,10 +306,9 @@ generatedFiles:
   - docs/models/onev11oauth21tokenpostxcomponentsauthorizationcodetokenrequest.md
   - docs/models/onev11oauth21tokenpostxcomponentsrefreshtokenrequest.md
   - docs/models/onev11oauth21tokenpostxcomponentsrefreshtokenrequestgranttype.md
+  - docs/models/order.md
   - docs/models/orderidfilter.md
-  - docs/models/orderinput.md
   - docs/models/orderinvoice.md
-  - docs/models/orderoutput.md
   - docs/models/orderproduct.md
   - docs/models/ordersgetrequest.md
   - docs/models/ordersinvoicerequest.md
@@ -321,6 +319,7 @@ generatedFiles:
   - docs/models/ordersortproperty.md
   - docs/models/ordersubscription.md
   - docs/models/orderuser.md
+  - docs/models/organization.md
   - docs/models/organizationavatarfilecreate.md
   - docs/models/organizationavatarfilecreateservice.md
   - docs/models/organizationavatarfileread.md
@@ -329,8 +328,6 @@ generatedFiles:
   - docs/models/organizationfeaturesettings.md
   - docs/models/organizationid.md
   - docs/models/organizationidfilter.md
-  - docs/models/organizationinput.md
-  - docs/models/organizationoutput.md
   - docs/models/organizationprofilesettings.md
   - docs/models/organizationsgetrequest.md
   - docs/models/organizationslistrequest.md
@@ -343,25 +340,23 @@ generatedFiles:
   - docs/models/permission.md
   - docs/models/platformfilter.md
   - docs/models/platforms.md
-  - docs/models/pledgeinput.md
+  - docs/models/pledge.md
   - docs/models/pledger.md
   - docs/models/pledgestate.md
   - docs/models/pledgetype.md
   - docs/models/previousproperties.md
   - docs/models/prices.md
+  - docs/models/product.md
+  - docs/models/productbenefits.md
   - docs/models/productbenefitsupdate.md
   - docs/models/productidfilter.md
   - docs/models/productinput.md
-  - docs/models/productinputbenefits.md
   - docs/models/productmediafilecreate.md
   - docs/models/productmediafilecreateservice.md
+  - docs/models/productmediafileread.md
   - docs/models/productmediafilereadinput.md
-  - docs/models/productmediafilereadinputservice.md
-  - docs/models/productmediafilereadoutput.md
   - docs/models/productonetimecreate.md
-  - docs/models/productoutput.md
-  - docs/models/productoutputbenefits.md
-  - docs/models/productpriceinput.md
+  - docs/models/productprice.md
   - docs/models/productpriceonetime.md
   - docs/models/productpriceonetimecustom.md
   - docs/models/productpriceonetimecustomamounttype.md
@@ -381,7 +376,7 @@ generatedFiles:
   - docs/models/productpriceonetimefreecreateamounttype.md
   - docs/models/productpriceonetimefreecreatetype.md
   - docs/models/productpriceonetimefreetype.md
-  - docs/models/productpriceoutput.md
+  - docs/models/productpricerecurring.md
   - docs/models/productpricerecurringcustom.md
   - docs/models/productpricerecurringcustomamounttype.md
   - docs/models/productpricerecurringcustomtype.md
@@ -396,8 +391,6 @@ generatedFiles:
   - docs/models/productpricerecurringfreecreateamounttype.md
   - docs/models/productpricerecurringfreecreatetype.md
   - docs/models/productpricerecurringfreetype.md
-  - docs/models/productpricerecurringinput.md
-  - docs/models/productpricerecurringoutput.md
   - docs/models/productpricetype.md
   - docs/models/productpricetypefilter.md
   - docs/models/productrecurringcreate.md
@@ -446,9 +439,9 @@ generatedFiles:
   - docs/models/security.md
   - docs/models/service.md
   - docs/models/state.md
+  - docs/models/subscription.md
   - docs/models/subscriptionidfilter.md
   - docs/models/subscriptioninput.md
-  - docs/models/subscriptionoutput.md
   - docs/models/subscriptionrecurringinterval.md
   - docs/models/subscriptionsexportrequest.md
   - docs/models/subscriptionslistqueryparamorganizationidfilter.md
@@ -634,12 +627,11 @@ generatedFiles:
   - src/polar_sdk/models/benefitcustomsubscriber.py
   - src/polar_sdk/models/benefitcustomsubscriberproperties.py
   - src/polar_sdk/models/benefitcustomupdate.py
-  - src/polar_sdk/models/benefitdiscord_input.py
-  - src/polar_sdk/models/benefitdiscord_output.py
+  - src/polar_sdk/models/benefitdiscord.py
   - src/polar_sdk/models/benefitdiscordcreate.py
   - src/polar_sdk/models/benefitdiscordcreateproperties.py
+  - src/polar_sdk/models/benefitdiscordproperties.py
   - src/polar_sdk/models/benefitdiscordproperties_input.py
-  - src/polar_sdk/models/benefitdiscordproperties_output.py
   - src/polar_sdk/models/benefitdiscordsubscriber.py
   - src/polar_sdk/models/benefitdiscordsubscriberproperties.py
   - src/polar_sdk/models/benefitdiscordupdate.py
@@ -672,8 +664,7 @@ generatedFiles:
   - src/polar_sdk/models/benefitgrantwebhook.py
   - src/polar_sdk/models/benefitlicensekeyactivationproperties.py
   - src/polar_sdk/models/benefitlicensekeyexpirationproperties.py
-  - src/polar_sdk/models/benefitlicensekeys_input.py
-  - src/polar_sdk/models/benefitlicensekeys_output.py
+  - src/polar_sdk/models/benefitlicensekeys.py
   - src/polar_sdk/models/benefitlicensekeyscreate.py
   - src/polar_sdk/models/benefitlicensekeyscreateproperties.py
   - src/polar_sdk/models/benefitlicensekeysproperties.py
@@ -692,7 +683,7 @@ generatedFiles:
   - src/polar_sdk/models/checkoutcreate.py
   - src/polar_sdk/models/checkouts_getop.py
   - src/polar_sdk/models/currencyamount.py
-  - src/polar_sdk/models/donation_input.py
+  - src/polar_sdk/models/donation.py
   - src/polar_sdk/models/donationorganization.py
   - src/polar_sdk/models/donationuser.py
   - src/polar_sdk/models/downloadablefilecreate.py
@@ -716,7 +707,7 @@ generatedFiles:
   - src/polar_sdk/models/funding.py
   - src/polar_sdk/models/httpvalidationerror.py
   - src/polar_sdk/models/introspecttokenresponse.py
-  - src/polar_sdk/models/issue_input.py
+  - src/polar_sdk/models/issue.py
   - src/polar_sdk/models/label.py
   - src/polar_sdk/models/license_keys_get_activationop.py
   - src/polar_sdk/models/license_keys_getop.py
@@ -771,8 +762,7 @@ generatedFiles:
   - src/polar_sdk/models/oauth2clientconfigurationupdate.py
   - src/polar_sdk/models/onev1_1oauth2_1token_post_x_components_authorizationcodetokenrequest.py
   - src/polar_sdk/models/onev1_1oauth2_1token_post_x_components_refreshtokenrequest.py
-  - src/polar_sdk/models/order_input.py
-  - src/polar_sdk/models/order_output.py
+  - src/polar_sdk/models/order.py
   - src/polar_sdk/models/orderinvoice.py
   - src/polar_sdk/models/orderproduct.py
   - src/polar_sdk/models/orders_getop.py
@@ -781,8 +771,7 @@ generatedFiles:
   - src/polar_sdk/models/ordersortproperty.py
   - src/polar_sdk/models/ordersubscription.py
   - src/polar_sdk/models/orderuser.py
-  - src/polar_sdk/models/organization_input.py
-  - src/polar_sdk/models/organization_output.py
+  - src/polar_sdk/models/organization.py
   - src/polar_sdk/models/organizationavatarfilecreate.py
   - src/polar_sdk/models/organizationavatarfileread.py
   - src/polar_sdk/models/organizationcreate.py
@@ -796,19 +785,16 @@ generatedFiles:
   - src/polar_sdk/models/organizationupdate.py
   - src/polar_sdk/models/pagination.py
   - src/polar_sdk/models/platforms.py
-  - src/polar_sdk/models/pledge_input.py
+  - src/polar_sdk/models/pledge.py
   - src/polar_sdk/models/pledger.py
   - src/polar_sdk/models/pledgestate.py
   - src/polar_sdk/models/pledgetype.py
-  - src/polar_sdk/models/product_input.py
-  - src/polar_sdk/models/product_output.py
+  - src/polar_sdk/models/product.py
   - src/polar_sdk/models/productbenefitsupdate.py
   - src/polar_sdk/models/productmediafilecreate.py
-  - src/polar_sdk/models/productmediafileread_input.py
-  - src/polar_sdk/models/productmediafileread_output.py
+  - src/polar_sdk/models/productmediafileread.py
   - src/polar_sdk/models/productonetimecreate.py
-  - src/polar_sdk/models/productprice_input.py
-  - src/polar_sdk/models/productprice_output.py
+  - src/polar_sdk/models/productprice.py
   - src/polar_sdk/models/productpriceonetime.py
   - src/polar_sdk/models/productpriceonetimecustom.py
   - src/polar_sdk/models/productpriceonetimecustomcreate.py
@@ -816,8 +802,7 @@ generatedFiles:
   - src/polar_sdk/models/productpriceonetimefixedcreate.py
   - src/polar_sdk/models/productpriceonetimefree.py
   - src/polar_sdk/models/productpriceonetimefreecreate.py
-  - src/polar_sdk/models/productpricerecurring_input.py
-  - src/polar_sdk/models/productpricerecurring_output.py
+  - src/polar_sdk/models/productpricerecurring.py
   - src/polar_sdk/models/productpricerecurringcustom.py
   - src/polar_sdk/models/productpricerecurringfixed.py
   - src/polar_sdk/models/productpricerecurringfixedcreate.py
@@ -852,8 +837,8 @@ generatedFiles:
   - src/polar_sdk/models/sdkerror.py
   - src/polar_sdk/models/security.py
   - src/polar_sdk/models/state.py
+  - src/polar_sdk/models/subscription.py
   - src/polar_sdk/models/subscription_input.py
-  - src/polar_sdk/models/subscription_output.py
   - src/polar_sdk/models/subscriptionrecurringinterval.py
   - src/polar_sdk/models/subscriptions_exportop.py
   - src/polar_sdk/models/subscriptions_listop.py
@@ -1600,7 +1585,7 @@ examples:
         application/json: {"product_price_id": "<value>", "success_url": "http://limp-pastry.org"}
       responses:
         "201":
-          application/json: {"id": "<id>", "customer_email": "<value>", "customer_name": "<value>", "product": {"created_at": "2023-04-03T12:48:32.050Z", "modified_at": "2022-11-13T02:16:42.101Z", "id": "<value>", "name": "<value>", "description": "Customer-focused regional approach", "is_recurring": false, "is_archived": false, "organization_id": "<value>", "prices": [], "benefits": [], "medias": []}, "product_price": {"created_at": "2023-04-03T12:48:32.253Z", "modified_at": "2022-05-28T06:20:22.766Z", "id": "<value>", "is_archived": true, "price_currency": "<value>", "price_amount": 796474, "recurring_interval": "year"}}
+          application/json: {"id": "<id>", "customer_email": "<value>", "customer_name": "<value>", "product": {"created_at": "2023-04-03T12:48:32.050Z", "modified_at": "2022-11-13T02:16:42.101Z", "id": "<value>", "name": "<value>", "description": "Customer-focused regional approach", "is_recurring": false, "is_archived": false, "organization_id": "<value>", "prices": [], "benefits": [], "medias": []}, "product_price": {"created_at": "2023-04-03T12:48:32.253Z", "modified_at": "2022-05-28T06:20:22.766Z", "id": "<value>", "is_archived": true, "price_currency": "<value>", "minimum_amount": 796474, "maximum_amount": 951062, "preset_amount": 86, "recurring_interval": "month"}}
         "422": {}
   checkouts:get:
     speakeasy-default-checkouts:get:

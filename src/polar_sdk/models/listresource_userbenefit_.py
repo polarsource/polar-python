@@ -30,8 +30,8 @@ from .pagination import Pagination, PaginationTypedDict
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
-from typing import List, TypedDict, Union
-from typing_extensions import Annotated
+from typing import List, Union
+from typing_extensions import Annotated, TypedDict
 
 
 UserBenefitTypedDict = Union[

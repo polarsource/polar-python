@@ -2,17 +2,18 @@
 
 from __future__ import annotations
 from .pagination import Pagination, PaginationTypedDict
-from .subscription_output import SubscriptionOutput, SubscriptionOutputTypedDict
+from .subscription import Subscription, SubscriptionTypedDict
 from polar_sdk.types import BaseModel
-from typing import List, TypedDict
+from typing import List
+from typing_extensions import TypedDict
 
 
 class ListResourceSubscriptionTypedDict(TypedDict):
-    items: List[SubscriptionOutputTypedDict]
+    items: List[SubscriptionTypedDict]
     pagination: PaginationTypedDict
 
 
 class ListResourceSubscription(BaseModel):
-    items: List[SubscriptionOutput]
+    items: List[Subscription]
 
     pagination: Pagination

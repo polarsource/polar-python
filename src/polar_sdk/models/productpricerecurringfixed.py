@@ -5,10 +5,11 @@ from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from datetime import datetime
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Final, TypedDict
-from typing_extensions import Annotated
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, TypedDict
 
 
 class AmountType(str, Enum):
@@ -67,13 +68,18 @@ class ProductPriceRecurringFixed(BaseModel):
     recurring_interval: SubscriptionRecurringInterval
     r"""The recurring interval of the price."""
 
-    # fmt: off
-    AMOUNT_TYPE: Annotated[Final[AmountType], pydantic.Field(alias="amount_type")] = AmountType.FIXED # type: ignore
-    # fmt: on
+    AMOUNT_TYPE: Annotated[
+        Annotated[AmountType, AfterValidator(validate_const(AmountType.FIXED))],
+        pydantic.Field(alias="amount_type"),
+    ] = AmountType.FIXED
 
-    # fmt: off
-    TYPE: Annotated[Final[ProductPriceRecurringFixedType], pydantic.Field(alias="type")] = ProductPriceRecurringFixedType.RECURRING # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            ProductPriceRecurringFixedType,
+            AfterValidator(validate_const(ProductPriceRecurringFixedType.RECURRING)),
+        ],
+        pydantic.Field(alias="type"),
+    ] = ProductPriceRecurringFixedType.RECURRING
     r"""The type of the price."""
 
     @model_serializer(mode="wrap")

@@ -8,10 +8,11 @@ from .benefitarticlesproperties import (
 from datetime import datetime
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Final, TypedDict
-from typing_extensions import Annotated
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, TypedDict
 
 
 class BenefitArticlesType(str, Enum):
@@ -73,9 +74,13 @@ class BenefitArticles(BaseModel):
     properties: BenefitArticlesProperties
     r"""Properties for a benefit of type `articles`."""
 
-    # fmt: off
-    TYPE: Annotated[Final[BenefitArticlesType], pydantic.Field(alias="type")] = BenefitArticlesType.ARTICLES # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            BenefitArticlesType,
+            AfterValidator(validate_const(BenefitArticlesType.ARTICLES)),
+        ],
+        pydantic.Field(alias="type"),
+    ] = BenefitArticlesType.ARTICLES
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

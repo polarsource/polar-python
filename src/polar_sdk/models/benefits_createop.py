@@ -6,7 +6,7 @@ from .benefitadscreate import BenefitAdsCreate, BenefitAdsCreateTypedDict
 from .benefitarticles import BenefitArticles, BenefitArticlesTypedDict
 from .benefitcustom import BenefitCustom, BenefitCustomTypedDict
 from .benefitcustomcreate import BenefitCustomCreate, BenefitCustomCreateTypedDict
-from .benefitdiscord_output import BenefitDiscordOutput, BenefitDiscordOutputTypedDict
+from .benefitdiscord import BenefitDiscord, BenefitDiscordTypedDict
 from .benefitdiscordcreate import BenefitDiscordCreate, BenefitDiscordCreateTypedDict
 from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesTypedDict
 from .benefitdownloadablescreate import (
@@ -21,10 +21,7 @@ from .benefitgithubrepositorycreate import (
     BenefitGitHubRepositoryCreate,
     BenefitGitHubRepositoryCreateTypedDict,
 )
-from .benefitlicensekeys_output import (
-    BenefitLicenseKeysOutput,
-    BenefitLicenseKeysOutputTypedDict,
-)
+from .benefitlicensekeys import BenefitLicenseKeys, BenefitLicenseKeysTypedDict
 from .benefitlicensekeyscreate import (
     BenefitLicenseKeysCreate,
     BenefitLicenseKeysCreateTypedDict,
@@ -61,10 +58,10 @@ BenefitsCreateBenefitCreate = Annotated[
 BenefitsCreateResponseBenefitsCreateTypedDict = Union[
     BenefitArticlesTypedDict,
     BenefitAdsTypedDict,
-    BenefitDiscordOutputTypedDict,
+    BenefitDiscordTypedDict,
     BenefitGitHubRepositoryTypedDict,
     BenefitDownloadablesTypedDict,
-    BenefitLicenseKeysOutputTypedDict,
+    BenefitLicenseKeysTypedDict,
     BenefitCustomTypedDict,
 ]
 r"""Benefit created."""
@@ -73,10 +70,10 @@ r"""Benefit created."""
 BenefitsCreateResponseBenefitsCreate = Union[
     BenefitArticles,
     BenefitAds,
-    BenefitDiscordOutput,
+    BenefitDiscord,
     BenefitGitHubRepository,
     BenefitDownloadables,
-    BenefitLicenseKeysOutput,
+    BenefitLicenseKeys,
     BenefitCustom,
 ]
 r"""Benefit created."""

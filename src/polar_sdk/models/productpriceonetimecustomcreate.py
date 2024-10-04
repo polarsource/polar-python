@@ -3,10 +3,12 @@
 from __future__ import annotations
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Final, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from pydantic.functional_validators import AfterValidator
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class ProductPriceOneTimeCustomCreateType(str, Enum):
@@ -35,13 +37,25 @@ class ProductPriceOneTimeCustomCreateTypedDict(TypedDict):
 class ProductPriceOneTimeCustomCreate(BaseModel):
     r"""Schema to create a pay-what-you-want price for a one-time product."""
 
-    # fmt: off
-    TYPE: Annotated[Final[ProductPriceOneTimeCustomCreateType], pydantic.Field(alias="type")] = ProductPriceOneTimeCustomCreateType.ONE_TIME # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            ProductPriceOneTimeCustomCreateType,
+            AfterValidator(
+                validate_const(ProductPriceOneTimeCustomCreateType.ONE_TIME)
+            ),
+        ],
+        pydantic.Field(alias="type"),
+    ] = ProductPriceOneTimeCustomCreateType.ONE_TIME
 
-    # fmt: off
-    AMOUNT_TYPE: Annotated[Final[ProductPriceOneTimeCustomCreateAmountType], pydantic.Field(alias="amount_type")] = ProductPriceOneTimeCustomCreateAmountType.CUSTOM # type: ignore
-    # fmt: on
+    AMOUNT_TYPE: Annotated[
+        Annotated[
+            ProductPriceOneTimeCustomCreateAmountType,
+            AfterValidator(
+                validate_const(ProductPriceOneTimeCustomCreateAmountType.CUSTOM)
+            ),
+        ],
+        pydantic.Field(alias="amount_type"),
+    ] = ProductPriceOneTimeCustomCreateAmountType.CUSTOM
 
     price_currency: Optional[str] = "usd"
     r"""The currency. Currently, only `usd` is supported."""

@@ -4,8 +4,7 @@ from __future__ import annotations
 from .repositoryupdate import RepositoryUpdate, RepositoryUpdateTypedDict
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, PathParamMetadata, RequestMetadata
-from typing import TypedDict
-from typing_extensions import Annotated
+from typing_extensions import Annotated, TypedDict
 
 
 class RepositoriesUpdateRequestTypedDict(TypedDict):

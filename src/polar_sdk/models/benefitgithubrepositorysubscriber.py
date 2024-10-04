@@ -8,10 +8,11 @@ from .benefitgithubrepositorysubscriberproperties import (
 from datetime import datetime
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Final, TypedDict
-from typing_extensions import Annotated
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, TypedDict
 
 
 class BenefitGitHubRepositorySubscriberType(str, Enum):
@@ -63,9 +64,15 @@ class BenefitGitHubRepositorySubscriber(BaseModel):
     properties: BenefitGitHubRepositorySubscriberProperties
     r"""Properties available to subscribers for a benefit of type `github_repository`."""
 
-    # fmt: off
-    TYPE: Annotated[Final[BenefitGitHubRepositorySubscriberType], pydantic.Field(alias="type")] = BenefitGitHubRepositorySubscriberType.GITHUB_REPOSITORY # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            BenefitGitHubRepositorySubscriberType,
+            AfterValidator(
+                validate_const(BenefitGitHubRepositorySubscriberType.GITHUB_REPOSITORY)
+            ),
+        ],
+        pydantic.Field(alias="type"),
+    ] = BenefitGitHubRepositorySubscriberType.GITHUB_REPOSITORY
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

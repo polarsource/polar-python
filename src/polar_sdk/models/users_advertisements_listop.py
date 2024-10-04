@@ -9,8 +9,8 @@ from .useradvertisementsortproperty import UserAdvertisementSortProperty
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
-from typing import Callable, List, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing import Callable, List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class UsersAdvertisementsListRequestTypedDict(TypedDict):

@@ -4,8 +4,8 @@ from __future__ import annotations
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
-from typing import List, TypedDict, Union
-from typing_extensions import Annotated, NotRequired
+from typing import List, Union
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 OrganizationIDTypedDict = Union[str, List[str]]

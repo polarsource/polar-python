@@ -6,12 +6,13 @@ from .s3fileuploadmultipart import S3FileUploadMultipart, S3FileUploadMultipartT
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Optional, TypedDict
-from typing_extensions import NotRequired
+from typing import Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class FileUploadTypedDict(TypedDict):
     id: str
+    r"""The ID of the object."""
     organization_id: str
     name: str
     path: str
@@ -31,6 +32,7 @@ class FileUploadTypedDict(TypedDict):
 
 class FileUpload(BaseModel):
     id: str
+    r"""The ID of the object."""
 
     organization_id: str
 

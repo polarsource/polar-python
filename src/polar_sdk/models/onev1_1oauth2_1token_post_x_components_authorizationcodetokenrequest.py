@@ -3,10 +3,10 @@
 from __future__ import annotations
 from enum import Enum
 from polar_sdk.types import BaseModel
-from polar_sdk.utils import FieldMetadata
+from polar_sdk.utils import FieldMetadata, validate_const
 import pydantic
-from typing import Final, TypedDict
-from typing_extensions import Annotated
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, TypedDict
 
 
 class GrantType(str, Enum):
@@ -32,6 +32,10 @@ class Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest(BaseModel):
 
     redirect_uri: Annotated[str, FieldMetadata(form=True)]
 
-    # fmt: off
-    GRANT_TYPE: Annotated[Final[GrantType], pydantic.Field(alias="grant_type"), FieldMetadata(form=True)] = GrantType.AUTHORIZATION_CODE # type: ignore
-    # fmt: on
+    GRANT_TYPE: Annotated[
+        Annotated[
+            GrantType, AfterValidator(validate_const(GrantType.AUTHORIZATION_CODE))
+        ],
+        pydantic.Field(alias="grant_type"),
+        FieldMetadata(form=True),
+    ] = GrantType.AUTHORIZATION_CODE

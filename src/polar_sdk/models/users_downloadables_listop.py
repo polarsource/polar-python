@@ -8,8 +8,8 @@ from .listresource_downloadableread_ import (
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
-from typing import Callable, List, Optional, TypedDict, Union
-from typing_extensions import Annotated, NotRequired
+from typing import Callable, List, Optional, Union
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 UsersDownloadablesListQueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]

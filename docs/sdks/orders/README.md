@@ -88,7 +88,7 @@ if res is not None:
 
 ### Response
 
-**[models.OrderOutput](../../models/orderoutput.md)**
+**[models.Order](../../models/order.md)**
 
 ### Errors
 

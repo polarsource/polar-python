@@ -3,11 +3,11 @@
 from __future__ import annotations
 from .articlevisibility import ArticleVisibility
 from .bylineprofile import BylineProfile, BylineProfileTypedDict
-from .organization_output import OrganizationOutput, OrganizationOutputTypedDict
+from .organization import Organization, OrganizationTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import TypedDict
+from typing_extensions import TypedDict
 
 
 class ArticleTypedDict(TypedDict):
@@ -19,7 +19,7 @@ class ArticleTypedDict(TypedDict):
     visibility: ArticleVisibility
     user_id: Nullable[str]
     organization_id: str
-    organization: OrganizationOutputTypedDict
+    organization: OrganizationTypedDict
     published_at: Nullable[datetime]
     paid_subscribers_only: Nullable[bool]
     paid_subscribers_only_ends_at: Nullable[datetime]
@@ -49,7 +49,7 @@ class Article(BaseModel):
 
     organization_id: str
 
-    organization: OrganizationOutput
+    organization: Organization
 
     published_at: Nullable[datetime]
 

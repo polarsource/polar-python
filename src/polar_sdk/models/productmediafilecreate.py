@@ -4,10 +4,11 @@ from __future__ import annotations
 from .s3filecreatemultipart import S3FileCreateMultipart, S3FileCreateMultipartTypedDict
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Final, TypedDict
-from typing_extensions import Annotated, NotRequired
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class ProductMediaFileCreateService(str, Enum):
@@ -46,9 +47,13 @@ class ProductMediaFileCreate(BaseModel):
 
     checksum_sha256_base64: OptionalNullable[str] = UNSET
 
-    # fmt: off
-    SERVICE: Annotated[Final[ProductMediaFileCreateService], pydantic.Field(alias="service")] = ProductMediaFileCreateService.PRODUCT_MEDIA # type: ignore
-    # fmt: on
+    SERVICE: Annotated[
+        Annotated[
+            ProductMediaFileCreateService,
+            AfterValidator(validate_const(ProductMediaFileCreateService.PRODUCT_MEDIA)),
+        ],
+        pydantic.Field(alias="service"),
+    ] = ProductMediaFileCreateService.PRODUCT_MEDIA
 
     version: OptionalNullable[str] = UNSET
 

@@ -3,7 +3,7 @@
 from __future__ import annotations
 from .metric import Metric, MetricTypedDict
 from polar_sdk.types import BaseModel
-from typing import TypedDict
+from typing_extensions import TypedDict
 
 
 class MetricsTypedDict(TypedDict):

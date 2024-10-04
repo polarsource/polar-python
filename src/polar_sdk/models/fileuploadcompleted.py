@@ -6,7 +6,8 @@ from .s3fileuploadcompletedpart import (
     S3FileUploadCompletedPartTypedDict,
 )
 from polar_sdk.types import BaseModel
-from typing import List, TypedDict
+from typing import List
+from typing_extensions import TypedDict
 
 
 class FileUploadCompletedTypedDict(TypedDict):

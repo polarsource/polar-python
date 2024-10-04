@@ -119,15 +119,12 @@ from .benefitcustomupdate import (
     BenefitCustomUpdateType,
     BenefitCustomUpdateTypedDict,
 )
-from .benefitdiscord_input import (
+from .benefitdiscord import (
+    BenefitDiscord,
     BenefitDiscordInput,
-    BenefitDiscordInputType,
     BenefitDiscordInputTypedDict,
-)
-from .benefitdiscord_output import (
-    BenefitDiscordOutput,
-    BenefitDiscordOutputType,
-    BenefitDiscordOutputTypedDict,
+    BenefitDiscordType,
+    BenefitDiscordTypedDict,
 )
 from .benefitdiscordcreate import (
     BenefitDiscordCreate,
@@ -138,13 +135,13 @@ from .benefitdiscordcreateproperties import (
     BenefitDiscordCreateProperties,
     BenefitDiscordCreatePropertiesTypedDict,
 )
+from .benefitdiscordproperties import (
+    BenefitDiscordProperties,
+    BenefitDiscordPropertiesTypedDict,
+)
 from .benefitdiscordproperties_input import (
     BenefitDiscordPropertiesInput,
     BenefitDiscordPropertiesInputTypedDict,
-)
-from .benefitdiscordproperties_output import (
-    BenefitDiscordPropertiesOutput,
-    BenefitDiscordPropertiesOutputTypedDict,
 )
 from .benefitdiscordsubscriber import (
     BenefitDiscordSubscriber,
@@ -293,15 +290,10 @@ from .benefitlicensekeyexpirationproperties import (
     BenefitLicenseKeyExpirationPropertiesTypedDict,
     Timeframe,
 )
-from .benefitlicensekeys_input import (
-    BenefitLicenseKeysInput,
-    BenefitLicenseKeysInputType,
-    BenefitLicenseKeysInputTypedDict,
-)
-from .benefitlicensekeys_output import (
-    BenefitLicenseKeysOutput,
-    BenefitLicenseKeysOutputType,
-    BenefitLicenseKeysOutputTypedDict,
+from .benefitlicensekeys import (
+    BenefitLicenseKeys,
+    BenefitLicenseKeysType,
+    BenefitLicenseKeysTypedDict,
 )
 from .benefitlicensekeyscreate import (
     BenefitLicenseKeysCreate,
@@ -373,7 +365,7 @@ from .checkout import Checkout, CheckoutTypedDict
 from .checkoutcreate import CheckoutCreate, CheckoutCreateTypedDict
 from .checkouts_getop import CheckoutsGetRequest, CheckoutsGetRequestTypedDict
 from .currencyamount import CurrencyAmount, CurrencyAmountTypedDict
-from .donation_input import DonationInput, DonationInputTypedDict, Donor, DonorTypedDict
+from .donation import Donation, DonationTypedDict, Donor, DonorTypedDict
 from .donationorganization import DonationOrganization, DonationOrganizationTypedDict
 from .donationuser import DonationUser, DonationUserTypedDict
 from .downloadablefilecreate import (
@@ -435,7 +427,7 @@ from .introspecttokenresponse import (
     IntrospectTokenResponseTokenType,
     IntrospectTokenResponseTypedDict,
 )
-from .issue_input import IssueInput, IssueInputTypedDict
+from .issue import Issue, IssueTypedDict
 from .label import Label, LabelTypedDict
 from .license_keys_get_activationop import (
     LicenseKeysGetActivationRequest,
@@ -643,8 +635,7 @@ from .onev1_1oauth2_1token_post_x_components_refreshtokenrequest import (
     Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType,
     Onev11oauth21tokenPostXComponentsRefreshTokenRequestTypedDict,
 )
-from .order_input import OrderInput, OrderInputTypedDict
-from .order_output import OrderOutput, OrderOutputTypedDict
+from .order import Order, OrderTypedDict
 from .orderinvoice import OrderInvoice, OrderInvoiceTypedDict
 from .orderproduct import OrderProduct, OrderProductTypedDict
 from .orders_getop import OrdersGetRequest, OrdersGetRequestTypedDict
@@ -666,8 +657,7 @@ from .orders_listop import (
 from .ordersortproperty import OrderSortProperty
 from .ordersubscription import OrderSubscription, OrderSubscriptionTypedDict
 from .orderuser import OrderUser, OrderUserTypedDict
-from .organization_input import OrganizationInput, OrganizationInputTypedDict
-from .organization_output import OrganizationOutput, OrganizationOutputTypedDict
+from .organization import Organization, OrganizationTypedDict
 from .organizationavatarfilecreate import (
     OrganizationAvatarFileCreate,
     OrganizationAvatarFileCreateService,
@@ -709,21 +699,17 @@ from .organizationsubscribepromotesettings import (
 from .organizationupdate import OrganizationUpdate, OrganizationUpdateTypedDict
 from .pagination import Pagination, PaginationTypedDict
 from .platforms import Platforms
-from .pledge_input import PledgeInput, PledgeInputTypedDict
+from .pledge import Pledge, PledgeTypedDict
 from .pledger import Pledger, PledgerTypedDict
 from .pledgestate import PledgeState
 from .pledgetype import PledgeType
-from .product_input import (
+from .product import (
+    Product,
+    ProductBenefits,
+    ProductBenefitsTypedDict,
     ProductInput,
-    ProductInputBenefits,
-    ProductInputBenefitsTypedDict,
     ProductInputTypedDict,
-)
-from .product_output import (
-    ProductOutput,
-    ProductOutputBenefits,
-    ProductOutputBenefitsTypedDict,
-    ProductOutputTypedDict,
+    ProductTypedDict,
 )
 from .productbenefitsupdate import ProductBenefitsUpdate, ProductBenefitsUpdateTypedDict
 from .productmediafilecreate import (
@@ -731,14 +717,11 @@ from .productmediafilecreate import (
     ProductMediaFileCreateService,
     ProductMediaFileCreateTypedDict,
 )
-from .productmediafileread_input import (
+from .productmediafileread import (
+    ProductMediaFileRead,
     ProductMediaFileReadInput,
-    ProductMediaFileReadInputService,
     ProductMediaFileReadInputTypedDict,
-)
-from .productmediafileread_output import (
-    ProductMediaFileReadOutput,
-    ProductMediaFileReadOutputTypedDict,
+    ProductMediaFileReadTypedDict,
     Service,
 )
 from .productonetimecreate import (
@@ -747,8 +730,7 @@ from .productonetimecreate import (
     ProductOneTimeCreate,
     ProductOneTimeCreateTypedDict,
 )
-from .productprice_input import ProductPriceInput, ProductPriceInputTypedDict
-from .productprice_output import ProductPriceOutput, ProductPriceOutputTypedDict
+from .productprice import ProductPrice, ProductPriceTypedDict
 from .productpriceonetime import ProductPriceOneTime, ProductPriceOneTimeTypedDict
 from .productpriceonetimecustom import (
     ProductPriceOneTimeCustom,
@@ -786,14 +768,7 @@ from .productpriceonetimefreecreate import (
     ProductPriceOneTimeFreeCreateType,
     ProductPriceOneTimeFreeCreateTypedDict,
 )
-from .productpricerecurring_input import (
-    ProductPriceRecurringInput,
-    ProductPriceRecurringInputTypedDict,
-)
-from .productpricerecurring_output import (
-    ProductPriceRecurringOutput,
-    ProductPriceRecurringOutputTypedDict,
-)
+from .productpricerecurring import ProductPriceRecurring, ProductPriceRecurringTypedDict
 from .productpricerecurringcustom import (
     ProductPriceRecurringCustom,
     ProductPriceRecurringCustomAmountType,
@@ -907,8 +882,8 @@ from .s3fileuploadpart import S3FileUploadPart, S3FileUploadPartTypedDict
 from .sdkerror import SDKError
 from .security import Security, SecurityTypedDict
 from .state import State
+from .subscription import Subscription, SubscriptionTypedDict
 from .subscription_input import SubscriptionInput, SubscriptionInputTypedDict
-from .subscription_output import SubscriptionOutput, SubscriptionOutputTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptions_exportop import (
     OrganizationID,
@@ -1264,26 +1239,25 @@ __all__ = [
     "BenefitCustomUpdate",
     "BenefitCustomUpdateType",
     "BenefitCustomUpdateTypedDict",
+    "BenefitDiscord",
     "BenefitDiscordCreate",
     "BenefitDiscordCreateProperties",
     "BenefitDiscordCreatePropertiesTypedDict",
     "BenefitDiscordCreateType",
     "BenefitDiscordCreateTypedDict",
     "BenefitDiscordInput",
-    "BenefitDiscordInputType",
     "BenefitDiscordInputTypedDict",
-    "BenefitDiscordOutput",
-    "BenefitDiscordOutputType",
-    "BenefitDiscordOutputTypedDict",
+    "BenefitDiscordProperties",
     "BenefitDiscordPropertiesInput",
     "BenefitDiscordPropertiesInputTypedDict",
-    "BenefitDiscordPropertiesOutput",
-    "BenefitDiscordPropertiesOutputTypedDict",
+    "BenefitDiscordPropertiesTypedDict",
     "BenefitDiscordSubscriber",
     "BenefitDiscordSubscriberProperties",
     "BenefitDiscordSubscriberPropertiesTypedDict",
     "BenefitDiscordSubscriberType",
     "BenefitDiscordSubscriberTypedDict",
+    "BenefitDiscordType",
+    "BenefitDiscordTypedDict",
     "BenefitDiscordUpdate",
     "BenefitDiscordUpdateType",
     "BenefitDiscordUpdateTypedDict",
@@ -1361,17 +1335,12 @@ __all__ = [
     "BenefitLicenseKeyActivationPropertiesTypedDict",
     "BenefitLicenseKeyExpirationProperties",
     "BenefitLicenseKeyExpirationPropertiesTypedDict",
+    "BenefitLicenseKeys",
     "BenefitLicenseKeysCreate",
     "BenefitLicenseKeysCreateProperties",
     "BenefitLicenseKeysCreatePropertiesTypedDict",
     "BenefitLicenseKeysCreateType",
     "BenefitLicenseKeysCreateTypedDict",
-    "BenefitLicenseKeysInput",
-    "BenefitLicenseKeysInputType",
-    "BenefitLicenseKeysInputTypedDict",
-    "BenefitLicenseKeysOutput",
-    "BenefitLicenseKeysOutputType",
-    "BenefitLicenseKeysOutputTypedDict",
     "BenefitLicenseKeysProperties",
     "BenefitLicenseKeysPropertiesTypedDict",
     "BenefitLicenseKeysSubscriber",
@@ -1379,6 +1348,8 @@ __all__ = [
     "BenefitLicenseKeysSubscriberPropertiesTypedDict",
     "BenefitLicenseKeysSubscriberType",
     "BenefitLicenseKeysSubscriberTypedDict",
+    "BenefitLicenseKeysType",
+    "BenefitLicenseKeysTypedDict",
     "BenefitLicenseKeysUpdate",
     "BenefitLicenseKeysUpdateType",
     "BenefitLicenseKeysUpdateTypedDict",
@@ -1426,10 +1397,10 @@ __all__ = [
     "ConditionsTypedDict",
     "CurrencyAmount",
     "CurrencyAmountTypedDict",
-    "DonationInput",
-    "DonationInputTypedDict",
+    "Donation",
     "DonationOrganization",
     "DonationOrganizationTypedDict",
+    "DonationTypedDict",
     "DonationUser",
     "DonationUserTypedDict",
     "Donor",
@@ -1495,8 +1466,8 @@ __all__ = [
     "IntrospectTokenResponse",
     "IntrospectTokenResponseTokenType",
     "IntrospectTokenResponseTypedDict",
-    "IssueInput",
-    "IssueInputTypedDict",
+    "Issue",
+    "IssueTypedDict",
     "Label",
     "LabelTypedDict",
     "LicenseKeyActivate",
@@ -1634,19 +1605,17 @@ __all__ = [
     "Onev11oauth21tokenPostXComponentsRefreshTokenRequest",
     "Onev11oauth21tokenPostXComponentsRefreshTokenRequestGrantType",
     "Onev11oauth21tokenPostXComponentsRefreshTokenRequestTypedDict",
+    "Order",
     "OrderIDFilter",
     "OrderIDFilterTypedDict",
-    "OrderInput",
-    "OrderInputTypedDict",
     "OrderInvoice",
     "OrderInvoiceTypedDict",
-    "OrderOutput",
-    "OrderOutputTypedDict",
     "OrderProduct",
     "OrderProductTypedDict",
     "OrderSortProperty",
     "OrderSubscription",
     "OrderSubscriptionTypedDict",
+    "OrderTypedDict",
     "OrderUser",
     "OrderUserTypedDict",
     "OrdersGetRequest",
@@ -1661,6 +1630,7 @@ __all__ = [
     "OrdersListRequestTypedDict",
     "OrdersListResponse",
     "OrdersListResponseTypedDict",
+    "Organization",
     "OrganizationAvatarFileCreate",
     "OrganizationAvatarFileCreateService",
     "OrganizationAvatarFileCreateTypedDict",
@@ -1675,15 +1645,12 @@ __all__ = [
     "OrganizationIDFilter",
     "OrganizationIDFilterTypedDict",
     "OrganizationIDTypedDict",
-    "OrganizationInput",
-    "OrganizationInputTypedDict",
-    "OrganizationOutput",
-    "OrganizationOutputTypedDict",
     "OrganizationProfileSettings",
     "OrganizationProfileSettingsTypedDict",
     "OrganizationSortProperty",
     "OrganizationSubscribePromoteSettings",
     "OrganizationSubscribePromoteSettingsTypedDict",
+    "OrganizationTypedDict",
     "OrganizationUpdate",
     "OrganizationUpdateTypedDict",
     "OrganizationsGetRequest",
@@ -1700,40 +1667,35 @@ __all__ = [
     "PlatformFilter",
     "PlatformFilterTypedDict",
     "Platforms",
-    "PledgeInput",
-    "PledgeInputTypedDict",
+    "Pledge",
     "PledgeState",
     "PledgeType",
+    "PledgeTypedDict",
     "Pledger",
     "PledgerTypedDict",
     "PreviousProperties",
     "PreviousPropertiesTypedDict",
     "Prices",
     "PricesTypedDict",
+    "Product",
+    "ProductBenefits",
+    "ProductBenefitsTypedDict",
     "ProductBenefitsUpdate",
     "ProductBenefitsUpdateTypedDict",
     "ProductIDFilter",
     "ProductIDFilterTypedDict",
     "ProductInput",
-    "ProductInputBenefits",
-    "ProductInputBenefitsTypedDict",
     "ProductInputTypedDict",
     "ProductMediaFileCreate",
     "ProductMediaFileCreateService",
     "ProductMediaFileCreateTypedDict",
+    "ProductMediaFileRead",
     "ProductMediaFileReadInput",
-    "ProductMediaFileReadInputService",
     "ProductMediaFileReadInputTypedDict",
-    "ProductMediaFileReadOutput",
-    "ProductMediaFileReadOutputTypedDict",
+    "ProductMediaFileReadTypedDict",
     "ProductOneTimeCreate",
     "ProductOneTimeCreateTypedDict",
-    "ProductOutput",
-    "ProductOutputBenefits",
-    "ProductOutputBenefitsTypedDict",
-    "ProductOutputTypedDict",
-    "ProductPriceInput",
-    "ProductPriceInputTypedDict",
+    "ProductPrice",
     "ProductPriceOneTime",
     "ProductPriceOneTimeCustom",
     "ProductPriceOneTimeCustomAmountType",
@@ -1760,8 +1722,7 @@ __all__ = [
     "ProductPriceOneTimeFreeType",
     "ProductPriceOneTimeFreeTypedDict",
     "ProductPriceOneTimeTypedDict",
-    "ProductPriceOutput",
-    "ProductPriceOutputTypedDict",
+    "ProductPriceRecurring",
     "ProductPriceRecurringCustom",
     "ProductPriceRecurringCustomAmountType",
     "ProductPriceRecurringCustomType",
@@ -1781,17 +1742,16 @@ __all__ = [
     "ProductPriceRecurringFreeCreateTypedDict",
     "ProductPriceRecurringFreeType",
     "ProductPriceRecurringFreeTypedDict",
-    "ProductPriceRecurringInput",
-    "ProductPriceRecurringInputTypedDict",
-    "ProductPriceRecurringOutput",
-    "ProductPriceRecurringOutputTypedDict",
+    "ProductPriceRecurringTypedDict",
     "ProductPriceType",
     "ProductPriceTypeFilter",
     "ProductPriceTypeFilterTypedDict",
+    "ProductPriceTypedDict",
     "ProductRecurringCreate",
     "ProductRecurringCreatePrices",
     "ProductRecurringCreatePricesTypedDict",
     "ProductRecurringCreateTypedDict",
+    "ProductTypedDict",
     "ProductUpdate",
     "ProductUpdatePrices",
     "ProductUpdatePricesTypedDict",
@@ -1877,15 +1837,15 @@ __all__ = [
     "Service",
     "State",
     "SubType",
+    "Subscription",
     "SubscriptionIDFilter",
     "SubscriptionIDFilterTypedDict",
     "SubscriptionInput",
     "SubscriptionInputTypedDict",
-    "SubscriptionOutput",
-    "SubscriptionOutputTypedDict",
     "SubscriptionRecurringInterval",
     "SubscriptionSortProperty",
     "SubscriptionStatus",
+    "SubscriptionTypedDict",
     "SubscriptionUser",
     "SubscriptionUserTypedDict",
     "SubscriptionsExportRequest",

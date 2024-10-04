@@ -4,10 +4,11 @@ from __future__ import annotations
 from datetime import datetime
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Final, TypedDict
-from typing_extensions import Annotated
+from pydantic.functional_validators import AfterValidator
+from typing_extensions import Annotated, TypedDict
 
 
 class ProductPriceOneTimeFixedAmountType(str, Enum):
@@ -61,13 +62,21 @@ class ProductPriceOneTimeFixed(BaseModel):
     price_amount: int
     r"""The price in cents."""
 
-    # fmt: off
-    AMOUNT_TYPE: Annotated[Final[ProductPriceOneTimeFixedAmountType], pydantic.Field(alias="amount_type")] = ProductPriceOneTimeFixedAmountType.FIXED # type: ignore
-    # fmt: on
+    AMOUNT_TYPE: Annotated[
+        Annotated[
+            ProductPriceOneTimeFixedAmountType,
+            AfterValidator(validate_const(ProductPriceOneTimeFixedAmountType.FIXED)),
+        ],
+        pydantic.Field(alias="amount_type"),
+    ] = ProductPriceOneTimeFixedAmountType.FIXED
 
-    # fmt: off
-    TYPE: Annotated[Final[ProductPriceOneTimeFixedType], pydantic.Field(alias="type")] = ProductPriceOneTimeFixedType.ONE_TIME # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            ProductPriceOneTimeFixedType,
+            AfterValidator(validate_const(ProductPriceOneTimeFixedType.ONE_TIME)),
+        ],
+        pydantic.Field(alias="type"),
+    ] = ProductPriceOneTimeFixedType.ONE_TIME
     r"""The type of the price."""
 
     @model_serializer(mode="wrap")

@@ -4,8 +4,9 @@ from __future__ import annotations
 from enum import Enum
 from polar_sdk import utils
 from polar_sdk.types import BaseModel
+from polar_sdk.utils import validate_const
 import pydantic
-from typing import Final
+from pydantic.functional_validators import AfterValidator
 from typing_extensions import Annotated
 
 
@@ -16,9 +17,13 @@ class NotPermittedType(str, Enum):
 class NotPermittedData(BaseModel):
     detail: str
 
-    # fmt: off
-    TYPE: Annotated[Final[NotPermittedType], pydantic.Field(alias="type")] = NotPermittedType.NOT_PERMITTED # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            NotPermittedType,
+            AfterValidator(validate_const(NotPermittedType.NOT_PERMITTED)),
+        ],
+        pydantic.Field(alias="type"),
+    ] = NotPermittedType.NOT_PERMITTED
 
 
 class NotPermitted(Exception):

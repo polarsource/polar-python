@@ -5,8 +5,7 @@ from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata
 from pydantic import model_serializer
-from typing import TypedDict
-from typing_extensions import Annotated, NotRequired
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class Oauth2IntrospectTokenTokenTypeHint(str, Enum):

@@ -7,8 +7,7 @@ from .useradvertisementcampaignenable import (
 )
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, PathParamMetadata, RequestMetadata
-from typing import TypedDict
-from typing_extensions import Annotated
+from typing_extensions import Annotated, TypedDict
 
 
 class UsersAdvertisementsEnableRequestTypedDict(TypedDict):

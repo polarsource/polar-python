@@ -4,9 +4,11 @@ from __future__ import annotations
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from enum import Enum
 from polar_sdk.types import BaseModel
+from polar_sdk.utils import validate_const
 import pydantic
-from typing import Final, Optional, TypedDict
-from typing_extensions import Annotated, NotRequired
+from pydantic.functional_validators import AfterValidator
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class ProductPriceRecurringFixedCreateType(str, Enum):
@@ -39,13 +41,25 @@ class ProductPriceRecurringFixedCreate(BaseModel):
     recurring_interval: SubscriptionRecurringInterval
     r"""The recurring interval of the price."""
 
-    # fmt: off
-    TYPE: Annotated[Final[ProductPriceRecurringFixedCreateType], pydantic.Field(alias="type")] = ProductPriceRecurringFixedCreateType.RECURRING # type: ignore
-    # fmt: on
+    TYPE: Annotated[
+        Annotated[
+            ProductPriceRecurringFixedCreateType,
+            AfterValidator(
+                validate_const(ProductPriceRecurringFixedCreateType.RECURRING)
+            ),
+        ],
+        pydantic.Field(alias="type"),
+    ] = ProductPriceRecurringFixedCreateType.RECURRING
 
-    # fmt: off
-    AMOUNT_TYPE: Annotated[Final[ProductPriceRecurringFixedCreateAmountType], pydantic.Field(alias="amount_type")] = ProductPriceRecurringFixedCreateAmountType.FIXED # type: ignore
-    # fmt: on
+    AMOUNT_TYPE: Annotated[
+        Annotated[
+            ProductPriceRecurringFixedCreateAmountType,
+            AfterValidator(
+                validate_const(ProductPriceRecurringFixedCreateAmountType.FIXED)
+            ),
+        ],
+        pydantic.Field(alias="amount_type"),
+    ] = ProductPriceRecurringFixedCreateAmountType.FIXED
 
     price_currency: Optional[str] = "usd"
     r"""The currency. Currently, only `usd` is supported."""

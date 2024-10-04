@@ -6,11 +6,12 @@ from .s3downloadurl import S3DownloadURL, S3DownloadURLTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import TypedDict
+from typing_extensions import TypedDict
 
 
 class FileDownloadTypedDict(TypedDict):
     id: str
+    r"""The ID of the object."""
     organization_id: str
     name: str
     path: str
@@ -30,6 +31,7 @@ class FileDownloadTypedDict(TypedDict):
 
 class FileDownload(BaseModel):
     id: str
+    r"""The ID of the object."""
 
     organization_id: str
 

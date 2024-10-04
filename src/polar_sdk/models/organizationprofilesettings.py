@@ -7,8 +7,8 @@ from .organizationsubscribepromotesettings import (
 )
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import List, TypedDict
-from typing_extensions import NotRequired
+from typing import List
+from typing_extensions import NotRequired, TypedDict
 
 
 class OrganizationProfileSettingsTypedDict(TypedDict):
