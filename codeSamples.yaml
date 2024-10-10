@@ -99,18 +99,48 @@ actions:
         - "lang": "python"
           "label": "grants"
           "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.benefits.grants(id=\"<value>\")\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
-  - target: $["paths"]["/v1/checkouts/"]["post"]
+  - target: $["paths"]["/v1/checkouts/custom/"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "list"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+  - target: $["paths"]["/v1/checkouts/custom/"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.create(request={\n    \"product_price_id\": \"<value>\",\n    \"success_url\": \"https://probable-heating.com/\",\n})\n\nif res is not None:\n    # handle response\n    pass"
-  - target: $["paths"]["/v1/checkouts/{id}"]["get"]
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.create(request={\n    \"payment_processor\": polar_sdk.PaymentProcessor.STRIPE,\n    \"product_price_id\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+  - target: $["paths"]["/v1/checkouts/custom/client/{client_secret}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "client_get"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.client_get(client_secret=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+  - target: $["paths"]["/v1/checkouts/custom/client/{client_secret}"]["patch"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "client_update"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.client_update(client_secret=\"<value>\", checkout_update_public={})\n\nif res is not None:\n    # handle response\n    pass"
+  - target: $["paths"]["/v1/checkouts/custom/client/{client_secret}/confirm"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "client_confirm"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.client_confirm(client_secret=\"<value>\", checkout_confirm_stripe={})\n\nif res is not None:\n    # handle response\n    pass"
+  - target: $["paths"]["/v1/checkouts/custom/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.get(id=\"<id>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+  - target: $["paths"]["/v1/checkouts/custom/{id}"]["patch"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "update"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.update(id=\"<value>\", checkout_update={})\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/external_organizations/"]["get"]
     update:
       "x-codeSamples":

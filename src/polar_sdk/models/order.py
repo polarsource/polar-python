@@ -8,6 +8,7 @@ from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
+from typing import Dict
 from typing_extensions import TypedDict
 
 
@@ -18,6 +19,7 @@ class OrderTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
+    metadata: Dict[str, str]
     amount: int
     tax_amount: int
     currency: str
@@ -25,6 +27,7 @@ class OrderTypedDict(TypedDict):
     product_id: str
     product_price_id: str
     subscription_id: Nullable[str]
+    checkout_id: Nullable[str]
     user: OrderUserTypedDict
     product: OrderProductTypedDict
     product_price: ProductPriceTypedDict
@@ -41,6 +44,8 @@ class Order(BaseModel):
     id: str
     r"""The ID of the object."""
 
+    metadata: Dict[str, str]
+
     amount: int
 
     tax_amount: int
@@ -55,6 +60,8 @@ class Order(BaseModel):
 
     subscription_id: Nullable[str]
 
+    checkout_id: Nullable[str]
+
     user: OrderUser
 
     product: OrderProduct
@@ -66,7 +73,12 @@ class Order(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
-        nullable_fields = ["modified_at", "subscription_id", "subscription"]
+        nullable_fields = [
+            "modified_at",
+            "subscription_id",
+            "checkout_id",
+            "subscription",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

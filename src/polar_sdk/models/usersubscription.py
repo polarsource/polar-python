@@ -33,6 +33,7 @@ class UserSubscriptionTypedDict(TypedDict):
     user_id: str
     product_id: str
     price_id: str
+    checkout_id: Nullable[str]
     product: UserSubscriptionProductTypedDict
     price: ProductPriceTypedDict
 
@@ -71,6 +72,8 @@ class UserSubscription(BaseModel):
 
     price_id: str
 
+    checkout_id: Nullable[str]
+
     product: UserSubscriptionProduct
 
     price: ProductPrice
@@ -85,6 +88,7 @@ class UserSubscription(BaseModel):
             "current_period_end",
             "started_at",
             "ended_at",
+            "checkout_id",
         ]
         null_default_fields = []
 

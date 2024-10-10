@@ -1,0 +1,15 @@
+# CheckoutUpdatePublic
+
+Update an existing checkout session using the client secret.
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `product_price_id`                                                                          | *OptionalNullable[str]*                                                                     | :heavy_minus_sign:                                                                          | ID of the product price to checkout. Must correspond to a price linked to the same product. |
+| `amount`                                                                                    | *OptionalNullable[int]*                                                                     | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `customer_name`                                                                             | *OptionalNullable[str]*                                                                     | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `customer_email`                                                                            | *OptionalNullable[str]*                                                                     | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `customer_billing_address`                                                                  | [OptionalNullable[models.Address]](../models/address.md)                                    | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `customer_tax_id`                                                                           | *OptionalNullable[str]*                                                                     | :heavy_minus_sign:                                                                          | N/A                                                                                         |
