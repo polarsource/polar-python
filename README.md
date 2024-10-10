@@ -121,8 +121,18 @@ asyncio.run(main())
 
 ### [checkouts](docs/sdks/checkouts/README.md)
 
-* [create](docs/sdks/checkouts/README.md#create) - Create Checkout
-* [get](docs/sdks/checkouts/README.md#get) - Get Checkout
+* [~~create~~](docs/sdks/checkouts/README.md#create) - Create Checkout :warning: **Deprecated** Use `create` instead.
+* [~~get~~](docs/sdks/checkouts/README.md#get) - Get Checkout :warning: **Deprecated**
+
+#### [checkouts.custom](docs/sdks/custom/README.md)
+
+* [list](docs/sdks/custom/README.md#list) - List Checkout Sessions
+* [create](docs/sdks/custom/README.md#create) - Create Checkout Session
+* [get](docs/sdks/custom/README.md#get) - Get Checkout Session
+* [update](docs/sdks/custom/README.md#update) - Update Checkout Session
+* [client_get](docs/sdks/custom/README.md#client_get) - Get Checkout Session from Client
+* [client_update](docs/sdks/custom/README.md#client_update) - Update Checkout Session from Client
+* [client_confirm](docs/sdks/custom/README.md#client_confirm) - Confirm Checkout Session from Client
 
 ### [external_organizations](docs/sdks/externalorganizations/README.md)
 

@@ -6,10 +6,12 @@ from .subscriptionstatus import SubscriptionStatus
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
+from typing import Dict
 from typing_extensions import TypedDict
 
 
 class OrderSubscriptionTypedDict(TypedDict):
+    metadata: Dict[str, str]
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
@@ -28,9 +30,12 @@ class OrderSubscriptionTypedDict(TypedDict):
     user_id: str
     product_id: str
     price_id: str
+    checkout_id: Nullable[str]
 
 
 class OrderSubscription(BaseModel):
+    metadata: Dict[str, str]
+
     created_at: datetime
     r"""Creation timestamp of the object."""
 
@@ -63,6 +68,8 @@ class OrderSubscription(BaseModel):
     product_id: str
 
     price_id: str
+
+    checkout_id: Nullable[str]
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -74,6 +81,7 @@ class OrderSubscription(BaseModel):
             "current_period_end",
             "started_at",
             "ended_at",
+            "checkout_id",
         ]
         null_default_fields = []
 

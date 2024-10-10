@@ -5,12 +5,14 @@
 
 ### Available Operations
 
-* [create](#create) - Create Checkout
-* [get](#get) - Get Checkout
+* [~~create~~](#create) - Create Checkout :warning: **Deprecated** Use `create` instead.
+* [~~get~~](#get) - Get Checkout :warning: **Deprecated**
 
-## create
+## ~~create~~
 
 Create a checkout session.
+
+> :warning: **DEPRECATED**: This API is deprecated. We recommend you to use the new custom checkout API, which is more flexible and powerful. Please refer to the documentation for more information.. Use `create` instead.
 
 ### Example Usage
 
@@ -34,14 +36,14 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [models.CheckoutCreate](../../models/checkoutcreate.md)             | :heavy_check_mark:                                                  | The request object to use for the request.                          |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                   | [models.PolarCheckoutLegacySchemasCheckoutCreate](../../models/polarcheckoutlegacyschemascheckoutcreate.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+| `retries`                                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                            | :heavy_minus_sign:                                                                                          | Configuration to override the default retry behavior of the client.                                         |
 
 ### Response
 
-**[models.Checkout](../../models/checkout.md)**
+**[models.PolarCheckoutLegacySchemasCheckout](../../models/polarcheckoutlegacyschemascheckout.md)**
 
 ### Errors
 
@@ -50,9 +52,11 @@ if res is not None:
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## get
+## ~~get~~
 
 Get an active checkout session by ID.
+
+> :warning: **DEPRECATED**: This API is deprecated. We recommend you to use the new custom checkout API, which is more flexible and powerful. Please refer to the documentation for more information..
 
 ### Example Usage
 
@@ -80,7 +84,7 @@ if res is not None:
 
 ### Response
 
-**[models.Checkout](../../models/checkout.md)**
+**[models.PolarCheckoutLegacySchemasCheckout](../../models/polarcheckoutlegacyschemascheckout.md)**
 
 ### Errors
 

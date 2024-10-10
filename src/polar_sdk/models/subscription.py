@@ -9,6 +9,7 @@ from .subscriptionuser import SubscriptionUser, SubscriptionUserTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
+from typing import Dict
 from typing_extensions import TypedDict
 
 
@@ -31,6 +32,8 @@ class SubscriptionTypedDict(TypedDict):
     user_id: str
     product_id: str
     price_id: str
+    checkout_id: Nullable[str]
+    metadata: Dict[str, str]
     user: SubscriptionUserTypedDict
     product: ProductTypedDict
     r"""A product."""
@@ -71,6 +74,10 @@ class Subscription(BaseModel):
 
     price_id: str
 
+    checkout_id: Nullable[str]
+
+    metadata: Dict[str, str]
+
     user: SubscriptionUser
 
     product: Product
@@ -88,6 +95,7 @@ class Subscription(BaseModel):
             "current_period_end",
             "started_at",
             "ended_at",
+            "checkout_id",
         ]
         null_default_fields = []
 

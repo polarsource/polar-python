@@ -1,4 +1,4 @@
-# Checkout
+# PolarCheckoutLegacySchemasCheckout
 
 A checkout session.
 

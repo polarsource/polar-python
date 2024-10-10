@@ -6,7 +6,7 @@ from pydantic import model_serializer
 from typing_extensions import NotRequired, TypedDict
 
 
-class CheckoutCreateTypedDict(TypedDict):
+class PolarCheckoutLegacySchemasCheckoutCreateTypedDict(TypedDict):
     product_price_id: str
     r"""ID of the product price to subscribe to."""
     success_url: str
@@ -17,7 +17,7 @@ class CheckoutCreateTypedDict(TypedDict):
     r"""ID of the subscription to update. If not provided, a new subscription will be created."""
 
 
-class CheckoutCreate(BaseModel):
+class PolarCheckoutLegacySchemasCheckoutCreate(BaseModel):
     product_price_id: str
     r"""ID of the product price to subscribe to."""
 
