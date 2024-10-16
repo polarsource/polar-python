@@ -16,7 +16,7 @@ class MetricsLimitsTypedDict(TypedDict):
     min_date: date
     r"""Minimum date to get metrics."""
     intervals: MetricsIntervalsLimitsTypedDict
-    r"""Limits for each interval."""
+    r"""Date interval limits to get metrics for each interval."""
 
 
 class MetricsLimits(BaseModel):
@@ -26,4 +26,4 @@ class MetricsLimits(BaseModel):
     r"""Minimum date to get metrics."""
 
     intervals: MetricsIntervalsLimits
-    r"""Limits for each interval."""
+    r"""Date interval limits to get metrics for each interval."""

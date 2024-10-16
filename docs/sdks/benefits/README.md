@@ -96,7 +96,7 @@ if res is not None:
 
 ### Response
 
-**[models.BenefitsCreateResponseBenefitsCreate](../../models/benefitscreateresponsebenefitscreate.md)**
+**[models.Benefit](../../models/benefit.md)**
 
 ### Errors
 
@@ -135,7 +135,7 @@ if res is not None:
 
 ### Response
 
-**[models.BenefitsGetResponseBenefitsGet](../../models/benefitsgetresponsebenefitsget.md)**
+**[models.Benefit](../../models/benefit.md)**
 
 ### Errors
 
@@ -179,7 +179,7 @@ if res is not None:
 
 ### Response
 
-**[models.BenefitsUpdateResponseBenefitsUpdate](../../models/benefitsupdateresponsebenefitsupdate.md)**
+**[models.Benefit](../../models/benefit.md)**
 
 ### Errors
 

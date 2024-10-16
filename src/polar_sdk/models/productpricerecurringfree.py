@@ -34,7 +34,6 @@ class ProductPriceRecurringFreeTypedDict(TypedDict):
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
     recurring_interval: SubscriptionRecurringInterval
-    r"""The recurring interval of the price."""
     amount_type: ProductPriceRecurringFreeAmountType
     type: ProductPriceRecurringFreeType
     r"""The type of the price."""
@@ -56,7 +55,6 @@ class ProductPriceRecurringFree(BaseModel):
     r"""Whether the price is archived and no longer available."""
 
     recurring_interval: SubscriptionRecurringInterval
-    r"""The recurring interval of the price."""
 
     AMOUNT_TYPE: Annotated[
         Annotated[

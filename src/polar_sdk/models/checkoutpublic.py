@@ -33,7 +33,6 @@ class CheckoutPublicTypedDict(TypedDict):
     id: str
     r"""The ID of the object."""
     status: CheckoutStatus
-    r"""Status of the checkout session."""
     client_secret: str
     r"""Client secret used to update and complete the checkout session from the client."""
     expires_at: datetime
@@ -65,7 +64,6 @@ class CheckoutPublicTypedDict(TypedDict):
     product_price: ProductPriceTypedDict
     url: str
     payment_processor: PolarEnumsPaymentProcessor
-    r"""Payment processor used."""
 
 
 class CheckoutPublic(BaseModel):
@@ -81,7 +79,6 @@ class CheckoutPublic(BaseModel):
     r"""The ID of the object."""
 
     status: CheckoutStatus
-    r"""Status of the checkout session."""
 
     client_secret: str
     r"""Client secret used to update and complete the checkout session from the client."""
@@ -140,7 +137,6 @@ class CheckoutPublic(BaseModel):
         ],
         pydantic.Field(alias="payment_processor"),
     ] = PolarEnumsPaymentProcessor.STRIPE
-    r"""Payment processor used."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

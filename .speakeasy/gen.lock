@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: 9f84f5107633874d45ee97fcd4c24b5f
+  docChecksum: 13369c01355ded9eb4ea3731b08266ed
   docVersion: 0.1.0
-  speakeasyVersion: 1.414.1
-  generationVersion: 2.437.1
-  releaseVersion: 0.6.0
-  configChecksum: 6a4dd2bf814de0be56e424abe3d39a74
+  speakeasyVersion: 1.418.4
+  generationVersion: 2.438.3
+  releaseVersion: 0.6.1
+  configChecksum: 15edf8d135256170dc4be09de3152847
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -60,11 +60,10 @@ generatedFiles:
   - docs/models/article.md
   - docs/models/articlebyline.md
   - docs/models/articlecreate.md
-  - docs/models/articlecreatearticlebyline.md
-  - docs/models/articlecreatearticlevisibility.md
   - docs/models/articlepreview.md
   - docs/models/articlereceivers.md
   - docs/models/articlesdeleterequest.md
+  - docs/models/articlesexportrequest.md
   - docs/models/articlesgetrequest.md
   - docs/models/articleslistqueryparamorganizationidfilter.md
   - docs/models/articleslistrequest.md
@@ -157,9 +156,9 @@ generatedFiles:
   - docs/models/benefitgrantlicensekeysproperties.md
   - docs/models/benefitgrantsubscriber.md
   - docs/models/benefitgrantwebhook.md
-  - docs/models/benefitgrantwebhookbenefit.md
   - docs/models/benefitgrantwebhookproperties.md
   - docs/models/benefitidfilter.md
+  - docs/models/benefitinput.md
   - docs/models/benefitlicensekeyactivationproperties.md
   - docs/models/benefitlicensekeyexpirationproperties.md
   - docs/models/benefitlicensekeys.md
@@ -174,10 +173,8 @@ generatedFiles:
   - docs/models/benefitlicensekeysupdate.md
   - docs/models/benefitlicensekeysupdatetype.md
   - docs/models/benefitscreatebenefitcreate.md
-  - docs/models/benefitscreateresponsebenefitscreate.md
   - docs/models/benefitsdeleterequest.md
   - docs/models/benefitsgetrequest.md
-  - docs/models/benefitsgetresponsebenefitsget.md
   - docs/models/benefitsgrantsrequest.md
   - docs/models/benefitsgrantsresponse.md
   - docs/models/benefitslistqueryparamorganizationidfilter.md
@@ -186,7 +183,6 @@ generatedFiles:
   - docs/models/benefitsmodel.md
   - docs/models/benefitsupdatebenefitupdate.md
   - docs/models/benefitsupdaterequest.md
-  - docs/models/benefitsupdateresponsebenefitsupdate.md
   - docs/models/benefittype.md
   - docs/models/benefittypefilter.md
   - docs/models/bylineprofile.md
@@ -266,6 +262,7 @@ generatedFiles:
   - docs/models/licensekeystatus.md
   - docs/models/licensekeysupdaterequest.md
   - docs/models/licensekeyupdate.md
+  - docs/models/licensekeyuser.md
   - docs/models/licensekeyvalidate.md
   - docs/models/licensekeywithactivations.md
   - docs/models/listresourcearticle.md
@@ -325,6 +322,7 @@ generatedFiles:
   - docs/models/onev11oauth21tokenpostxcomponentsrefreshtokenrequest.md
   - docs/models/onev11oauth21tokenpostxcomponentsrefreshtokenrequestgranttype.md
   - docs/models/order.md
+  - docs/models/orderbillingreason.md
   - docs/models/orderidfilter.md
   - docs/models/orderinvoice.md
   - docs/models/orderproduct.md
@@ -538,7 +536,6 @@ generatedFiles:
   - docs/models/validatedlicensekey.md
   - docs/models/validationerror.md
   - docs/models/webhookbenefitcreatedpayload.md
-  - docs/models/webhookbenefitcreatedpayloadbenefit.md
   - docs/models/webhookbenefitcreatedpayloadtype.md
   - docs/models/webhookbenefitgrantcreatedpayload.md
   - docs/models/webhookbenefitgrantcreatedpayloadtype.md
@@ -547,7 +544,6 @@ generatedFiles:
   - docs/models/webhookbenefitgrantupdatedpayload.md
   - docs/models/webhookbenefitgrantupdatedpayloadtype.md
   - docs/models/webhookbenefitupdatedpayload.md
-  - docs/models/webhookbenefitupdatedpayloadbenefit.md
   - docs/models/webhookbenefitupdatedpayloadtype.md
   - docs/models/webhookcheckoutcreatedpayload.md
   - docs/models/webhookcheckoutcreatedpayloadtype.md
@@ -567,8 +563,14 @@ generatedFiles:
   - docs/models/webhookproductcreatedpayloadtype.md
   - docs/models/webhookproductupdatedpayload.md
   - docs/models/webhookproductupdatedpayloadtype.md
+  - docs/models/webhooksubscriptionactivepayload.md
+  - docs/models/webhooksubscriptionactivepayloadtype.md
+  - docs/models/webhooksubscriptioncanceledpayload.md
+  - docs/models/webhooksubscriptioncanceledpayloadtype.md
   - docs/models/webhooksubscriptioncreatedpayload.md
   - docs/models/webhooksubscriptioncreatedpayloadtype.md
+  - docs/models/webhooksubscriptionrevokedpayload.md
+  - docs/models/webhooksubscriptionrevokedpayloadtype.md
   - docs/models/webhooksubscriptionupdatedpayload.md
   - docs/models/webhooksubscriptionupdatedpayloadtype.md
   - docs/sdks/advertisements/README.md
@@ -634,6 +636,7 @@ generatedFiles:
   - src/polar_sdk/models/articlepreview.py
   - src/polar_sdk/models/articlereceivers.py
   - src/polar_sdk/models/articles_deleteop.py
+  - src/polar_sdk/models/articles_exportop.py
   - src/polar_sdk/models/articles_getop.py
   - src/polar_sdk/models/articles_listop.py
   - src/polar_sdk/models/articles_previewop.py
@@ -644,6 +647,8 @@ generatedFiles:
   - src/polar_sdk/models/articlevisibility.py
   - src/polar_sdk/models/assignee.py
   - src/polar_sdk/models/author.py
+  - src/polar_sdk/models/benefit.py
+  - src/polar_sdk/models/benefit_input.py
   - src/polar_sdk/models/benefitads.py
   - src/polar_sdk/models/benefitadscreate.py
   - src/polar_sdk/models/benefitadsproperties.py
@@ -751,6 +756,7 @@ generatedFiles:
   - src/polar_sdk/models/fileuploadcompleted.py
   - src/polar_sdk/models/funding.py
   - src/polar_sdk/models/httpvalidationerror.py
+  - src/polar_sdk/models/interval.py
   - src/polar_sdk/models/introspecttokenresponse.py
   - src/polar_sdk/models/issue.py
   - src/polar_sdk/models/label.py
@@ -765,6 +771,7 @@ generatedFiles:
   - src/polar_sdk/models/licensekeyread.py
   - src/polar_sdk/models/licensekeystatus.py
   - src/polar_sdk/models/licensekeyupdate.py
+  - src/polar_sdk/models/licensekeyuser.py
   - src/polar_sdk/models/licensekeyvalidate.py
   - src/polar_sdk/models/licensekeywithactivations.py
   - src/polar_sdk/models/listresource_article_.py
@@ -809,6 +816,7 @@ generatedFiles:
   - src/polar_sdk/models/onev1_1oauth2_1token_post_x_components_authorizationcodetokenrequest.py
   - src/polar_sdk/models/onev1_1oauth2_1token_post_x_components_refreshtokenrequest.py
   - src/polar_sdk/models/order.py
+  - src/polar_sdk/models/orderbillingreason.py
   - src/polar_sdk/models/orderinvoice.py
   - src/polar_sdk/models/orderproduct.py
   - src/polar_sdk/models/orders_getop.py
@@ -950,7 +958,10 @@ generatedFiles:
   - src/polar_sdk/models/webhookpledgeupdatedpayload.py
   - src/polar_sdk/models/webhookproductcreatedpayload.py
   - src/polar_sdk/models/webhookproductupdatedpayload.py
+  - src/polar_sdk/models/webhooksubscriptionactivepayload.py
+  - src/polar_sdk/models/webhooksubscriptioncanceledpayload.py
   - src/polar_sdk/models/webhooksubscriptioncreatedpayload.py
+  - src/polar_sdk/models/webhooksubscriptionrevokedpayload.py
   - src/polar_sdk/models/webhooksubscriptionupdatedpayload.py
   - src/polar_sdk/oauth2.py
   - src/polar_sdk/orders.py
@@ -1177,7 +1188,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"id": "<value>", "organization_id": "<value>", "user_id": "<value>", "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "disabled", "limit_activations": 90065, "usage": 558834, "limit_usage": 844199, "validations": 544221, "last_validated_at": "2024-06-29T09:01:50.308Z", "expires_at": "2023-07-26T06:33:15.886Z", "activations": []}
+          application/json: {"id": "<value>", "organization_id": "<value>", "user_id": "<value>", "user": {"id": "<value>", "public_name": "<value>", "email": "Keeley_Lebsack@hotmail.com", "avatar_url": "https://earnest-tuber.info/"}, "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "disabled", "limit_activations": 90065, "usage": 558834, "limit_usage": 844199, "validations": 544221, "last_validated_at": "2024-06-29T09:01:50.308Z", "expires_at": "2023-07-26T06:33:15.886Z", "activations": []}
         "401":
           application/json: {"detail": "<value>"}
         "404":
@@ -1189,7 +1200,7 @@ examples:
         application/json: {"key": "<key>", "organization_id": "<value>"}
       responses:
         "200":
-          application/json: {"id": "<value>", "organization_id": "<value>", "user_id": "<value>", "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "disabled", "limit_activations": 139635, "usage": 198036, "limit_usage": 824288, "validations": 220910, "last_validated_at": "2022-11-13T06:07:19.362Z", "expires_at": "2022-09-25T18:32:26.136Z"}
+          application/json: {"id": "<value>", "organization_id": "<value>", "user_id": "<value>", "user": {"id": "<value>", "public_name": "<value>", "email": "Clotilde.Frami@hotmail.com", "avatar_url": "https://aged-soliloquy.info/"}, "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "disabled", "limit_activations": 139635, "usage": 198036, "limit_usage": 824288, "validations": 220910, "last_validated_at": "2022-11-13T06:07:19.362Z", "expires_at": "2022-09-25T18:32:26.136Z"}
         "404":
           application/json: {"detail": "<value>"}
         "422": {}
@@ -1199,7 +1210,7 @@ examples:
         application/json: {"key": "<key>", "organization_id": "<value>", "label": "<value>"}
       responses:
         "200":
-          application/json: {"id": "<value>", "license_key_id": "<value>", "label": "<value>", "created_at": "2023-08-13T13:11:06.618Z", "modified_at": "2023-03-21T09:42:16.177Z", "license_key": {"id": "<value>", "organization_id": "<value>", "user_id": "<value>", "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "granted", "limit_activations": 95145, "usage": 923318, "limit_usage": 246615, "validations": 548731, "last_validated_at": "2023-03-31T03:55:03.497Z", "expires_at": "2024-06-27T10:16:03.791Z"}}
+          application/json: {"id": "<value>", "license_key_id": "<value>", "label": "<value>", "created_at": "2023-08-13T13:11:06.618Z", "modified_at": "2023-03-21T09:42:16.177Z", "license_key": {"id": "<value>", "organization_id": "<value>", "user_id": "<value>", "user": {"id": "<value>", "public_name": "<value>", "email": "Clemens_Lowe80@yahoo.com", "avatar_url": "https://pushy-impostor.org/"}, "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "granted", "limit_activations": 95145, "usage": 923318, "limit_usage": 246615, "validations": 548731, "last_validated_at": "2023-03-31T03:55:03.497Z", "expires_at": "2024-06-27T10:16:03.791Z"}}
         "403":
           application/json: {"detail": "<value>"}
         "404":
@@ -1617,7 +1628,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2024-02-07T13:54:48.780Z", "modified_at": "2022-04-09T17:04:24.706Z", "id": "<value>", "metadata": {"key": "<value>", "key1": "<value>"}, "amount": 558834, "tax_amount": 844199, "currency": "Ouguiya", "user_id": "<value>", "product_id": "<value>", "product_price_id": "<value>", "subscription_id": "<value>", "checkout_id": "<value>", "user": {"id": "<value>", "email": "Jovanny_Block45@hotmail.com", "public_name": "<value>", "github_username": "<value>", "avatar_url": "<value>"}, "product": {"created_at": "2024-03-16T20:58:20.526Z", "modified_at": "2023-05-10T02:28:23.859Z", "id": "<value>", "name": "<value>", "description": "Inverse demand-driven superstructure", "is_recurring": true, "is_archived": true, "organization_id": "<value>"}, "product_price": {"created_at": "2023-07-26T06:33:15.810Z", "modified_at": "2024-11-29T01:50:48.954Z", "id": "<value>", "is_archived": true, "price_currency": "<value>", "minimum_amount": 450824, "maximum_amount": 262795, "preset_amount": 213457}, "subscription": {"metadata": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "created_at": "2024-12-06T14:08:11.458Z", "modified_at": "2022-08-30T01:43:46.083Z", "id": "<value>", "amount": 521235, "currency": "Bulgarian Lev", "recurring_interval": "year", "status": "trialing", "current_period_start": "2022-12-10T13:21:21.114Z", "current_period_end": "2023-09-21T05:37:11.740Z", "cancel_at_period_end": true, "started_at": "2023-01-14T09:14:56.629Z", "ended_at": "2023-08-29T15:06:35.313Z", "user_id": "<value>", "product_id": "<value>", "price_id": "<value>", "checkout_id": "<value>"}}
+          application/json: {"created_at": "2024-02-07T13:54:48.780Z", "modified_at": "2022-04-09T17:04:24.706Z", "id": "<value>", "metadata": {"key": "<value>", "key1": "<value>"}, "amount": 558834, "tax_amount": 844199, "currency": "Ouguiya", "billing_reason": "subscription_cycle", "user_id": "<value>", "product_id": "<value>", "product_price_id": "<value>", "subscription_id": "<value>", "checkout_id": "<value>", "user": {"id": "<value>", "email": "Jovanny_Block45@hotmail.com", "public_name": "<value>", "github_username": "<value>", "avatar_url": "<value>"}, "product": {"created_at": "2024-03-16T20:58:20.526Z", "modified_at": "2023-05-10T02:28:23.859Z", "id": "<value>", "name": "<value>", "description": "Inverse demand-driven superstructure", "is_recurring": true, "is_archived": true, "organization_id": "<value>"}, "product_price": {"created_at": "2023-07-26T06:33:15.810Z", "modified_at": "2024-11-29T01:50:48.954Z", "id": "<value>", "is_archived": true, "price_currency": "<value>", "minimum_amount": 450824, "maximum_amount": 262795, "preset_amount": 213457}, "subscription": {"metadata": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "created_at": "2024-12-06T14:08:11.458Z", "modified_at": "2022-08-30T01:43:46.083Z", "id": "<value>", "amount": 521235, "currency": "Bulgarian Lev", "recurring_interval": "year", "status": "trialing", "current_period_start": "2022-12-10T13:21:21.114Z", "current_period_end": "2023-09-21T05:37:11.740Z", "cancel_at_period_end": true, "started_at": "2023-01-14T09:14:56.629Z", "ended_at": "2023-08-29T15:06:35.313Z", "user_id": "<value>", "product_id": "<value>", "price_id": "<value>", "checkout_id": "<value>"}}
         "404":
           application/json: {"detail": "<value>"}
         "422": {}
@@ -1727,7 +1738,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"id": "<value>", "organization_id": "<value>", "user_id": "<value>", "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "disabled", "limit_activations": 90065, "usage": 558834, "limit_usage": 844199, "validations": 544221, "last_validated_at": "2024-06-29T09:01:50.308Z", "expires_at": "2023-07-26T06:33:15.886Z", "activations": []}
+          application/json: {"id": "<value>", "organization_id": "<value>", "user_id": "<value>", "user": {"id": "<value>", "public_name": "<value>", "email": "Keeley_Lebsack@hotmail.com", "avatar_url": "https://earnest-tuber.info/"}, "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "disabled", "limit_activations": 90065, "usage": 558834, "limit_usage": 844199, "validations": 544221, "last_validated_at": "2024-06-29T09:01:50.308Z", "expires_at": "2023-07-26T06:33:15.886Z", "activations": []}
         "401":
           application/json: {"detail": "<value>"}
         "404":
@@ -1740,7 +1751,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"id": "<value>", "organization_id": "<value>", "user_id": "<value>", "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "disabled", "limit_activations": 24555, "usage": 597129, "limit_usage": 15652, "validations": 344620, "last_validated_at": "2024-02-16T11:11:26.963Z", "expires_at": "2024-12-22T15:27:45.933Z"}
+          application/json: {"id": "<value>", "organization_id": "<value>", "user_id": "<value>", "user": {"id": "<value>", "public_name": "<value>", "email": "Lavern48@hotmail.com", "avatar_url": "https://unlucky-hydrolyze.biz/"}, "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "disabled", "limit_activations": 24555, "usage": 597129, "limit_usage": 15652, "validations": 344620, "last_validated_at": "2024-02-16T11:11:26.963Z", "expires_at": "2024-12-22T15:27:45.933Z"}
         "401":
           application/json: {"detail": "<value>"}
         "404":
@@ -1754,7 +1765,7 @@ examples:
           activation_id: "<value>"
       responses:
         "200":
-          application/json: {"id": "<value>", "license_key_id": "<value>", "label": "<value>", "created_at": "2023-12-01T08:59:23.884Z", "modified_at": "2024-08-24T19:22:44.851Z", "license_key": {"id": "<value>", "organization_id": "<value>", "user_id": "<value>", "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "revoked", "limit_activations": 291118, "usage": 806587, "limit_usage": 221587, "validations": 620000, "last_validated_at": "2022-10-02T13:06:32.609Z", "expires_at": "2022-08-12T06:04:08.773Z"}}
+          application/json: {"id": "<value>", "license_key_id": "<value>", "label": "<value>", "created_at": "2023-12-01T08:59:23.884Z", "modified_at": "2024-08-24T19:22:44.851Z", "license_key": {"id": "<value>", "organization_id": "<value>", "user_id": "<value>", "user": {"id": "<value>", "public_name": "<value>", "email": "Jammie.Mraz@yahoo.com", "avatar_url": "https://crowded-annual.info"}, "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "revoked", "limit_activations": 291118, "usage": 806587, "limit_usage": 221587, "validations": 620000, "last_validated_at": "2022-10-02T13:06:32.609Z", "expires_at": "2022-08-12T06:04:08.773Z"}}
         "401":
           application/json: {"detail": "<value>"}
         "404":
@@ -1803,7 +1814,7 @@ examples:
           client_secret: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2022-06-23T19:45:02.115Z", "modified_at": "2022-11-26T05:04:17.930Z", "id": "<value>", "status": "succeeded", "client_secret": "<value>", "expires_at": "2023-08-07T16:01:01.665Z", "success_url": "https://obedient-operating.org/", "amount": 553902, "tax_amount": 201138, "currency": "Seychelles Rupee", "total_amount": 493334, "product_id": "<value>", "product_price_id": "<value>", "is_payment_required": false, "customer_id": "<value>", "customer_name": "<value>", "customer_email": "Coleman_Rutherford@hotmail.com", "customer_ip_address": "<value>", "customer_billing_address": {"country": "Maldives"}, "customer_tax_id": "<id>", "product": {"created_at": "2022-09-10T21:17:06.373Z", "modified_at": "2024-10-11T12:01:20.600Z", "id": "<value>", "name": "<value>", "description": "of grave parade whereas wherever", "is_recurring": false, "is_archived": false, "organization_id": "<value>", "prices": [], "benefits": [{"created_at": "2024-08-05T16:21:06.140Z", "modified_at": "2022-02-17T11:15:43.137Z", "id": "<value>", "description": "dramatic old-fashioned catalog indeed save orchestrate yippee", "selectable": true, "deletable": true, "organization_id": "<value>", "properties": {"paid_articles": true}}, {"created_at": "2024-07-23T16:17:04.686Z", "modified_at": "2024-10-15T01:25:33.429Z", "id": "<value>", "type": "ads", "description": "definitive as fluffy", "selectable": false, "deletable": true, "organization_id": "<value>"}, {"created_at": "2023-05-06T11:19:10.077Z", "modified_at": "2023-11-17T04:52:10.824Z", "id": "<value>", "type": "downloadables", "description": "yum lecture against alienated meanwhile unabashedly", "selectable": true, "deletable": true, "organization_id": "<value>"}], "medias": []}, "product_price": {"created_at": "2022-12-03T08:08:37.108Z", "modified_at": "2023-06-18T22:45:32.983Z", "id": "<value>", "is_archived": true, "price_currency": "<value>", "price_amount": 916344}, "url": "https://lumpy-jellyfish.com"}
+          application/json: {"created_at": "2022-06-23T19:45:02.115Z", "modified_at": "2022-11-26T05:04:17.930Z", "id": "<value>", "status": "succeeded", "client_secret": "<value>", "expires_at": "2023-08-07T16:01:01.665Z", "success_url": "https://obedient-operating.org/", "amount": 553902, "tax_amount": 201138, "currency": "Seychelles Rupee", "total_amount": 493334, "product_id": "<value>", "product_price_id": "<value>", "is_payment_required": false, "customer_id": "<value>", "customer_name": "<value>", "customer_email": "Coleman_Rutherford@hotmail.com", "customer_ip_address": "<value>", "customer_billing_address": {"country": "Maldives"}, "customer_tax_id": "<id>", "product": {"created_at": "2022-09-10T21:17:06.373Z", "modified_at": "2024-10-11T12:01:20.600Z", "id": "<value>", "name": "<value>", "description": "of grave parade whereas wherever", "is_recurring": false, "is_archived": false, "organization_id": "<value>", "prices": [], "benefits": [{"created_at": "2022-11-26T05:04:17.930Z", "modified_at": "2024-04-14T21:02:40.457Z", "id": "<value>", "type": "discord", "description": "given impolite how astride cap", "selectable": false, "deletable": false, "organization_id": "<value>"}, {"created_at": "2024-07-23T16:17:04.686Z", "modified_at": "2024-10-15T01:25:33.429Z", "id": "<value>", "type": "ads", "description": "definitive as fluffy", "selectable": false, "deletable": true, "organization_id": "<value>"}, {"created_at": "2023-05-06T11:19:10.077Z", "modified_at": "2023-11-17T04:52:10.824Z", "id": "<value>", "type": "downloadables", "description": "yum lecture against alienated meanwhile unabashedly", "selectable": true, "deletable": true, "organization_id": "<value>"}], "medias": []}, "product_price": {"created_at": "2023-12-08T10:02:16.170Z", "modified_at": "2022-05-07T00:40:28.451Z", "id": "<value>", "is_archived": true, "price_currency": "<value>", "minimum_amount": 158060, "maximum_amount": 193250, "preset_amount": 588843, "recurring_interval": "month"}, "url": "https://lumpy-jellyfish.com"}
         "404":
           application/json: {"detail": "<value>"}
         "422": {}
@@ -1814,7 +1825,7 @@ examples:
           client_secret: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2024-10-22T20:45:21.815Z", "modified_at": "2023-07-17T23:31:05.499Z", "id": "<value>", "status": "expired", "client_secret": "<value>", "expires_at": "2023-07-14T01:44:24.320Z", "success_url": "https://passionate-understanding.com/", "amount": 573767, "tax_amount": 903274, "currency": "Sudanese Pound", "total_amount": 813143, "product_id": "<value>", "product_price_id": "<value>", "is_payment_required": true, "customer_id": "<value>", "customer_name": "<value>", "customer_email": "Leonie50@hotmail.com", "customer_ip_address": "<value>", "customer_billing_address": {"country": "Bulgaria"}, "customer_tax_id": "<id>", "product": {"created_at": "2023-09-04T23:39:15.429Z", "modified_at": "2022-06-30T18:11:17.062Z", "id": "<value>", "name": "<value>", "description": "ack notwithstanding lively into trusty", "is_recurring": true, "is_archived": true, "organization_id": "<value>", "prices": [{"created_at": "2023-05-18T03:23:17.454Z", "modified_at": "2023-05-12T02:46:47.249Z", "id": "<value>", "is_archived": false, "price_currency": "<value>", "price_amount": 397244}, {"created_at": "2024-07-17T17:12:46.256Z", "modified_at": "2022-05-05T14:10:40.215Z", "id": "<value>", "is_archived": true, "price_currency": "<value>", "price_amount": 332353, "recurring_interval": "year"}, {"created_at": "2023-07-26T03:19:06.461Z", "modified_at": "2024-12-17T05:21:34.525Z", "id": "<value>", "is_archived": false, "price_currency": "<value>", "minimum_amount": 176169, "maximum_amount": 827753, "preset_amount": 768625}], "benefits": [{"created_at": "2024-04-13T01:40:05.694Z", "modified_at": "2024-07-12T13:33:11.703Z", "id": "<value>", "type": "discord", "description": "prohibition where although negative where psst", "selectable": false, "deletable": false, "organization_id": "<value>"}, {"created_at": "2022-11-01T16:37:11.315Z", "modified_at": "2024-11-11T09:22:51.554Z", "id": "<value>", "type": "ads", "description": "anenst meanwhile little", "selectable": false, "deletable": false, "organization_id": "<value>"}, {"created_at": "2023-12-08T07:51:27.800Z", "modified_at": "2022-03-18T21:13:49.993Z", "id": "<value>", "type": "discord", "description": "long-term relative singe urgently questionably", "selectable": false, "deletable": true, "organization_id": "<value>"}], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/opt/share", "mime_type": "<value>", "size": 389948, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-01-06T16:44:49.420Z", "version": "<value>", "is_uploaded": false, "created_at": "2024-04-09T09:13:22.245Z", "size_readable": "<value>", "public_url": "https://smoggy-graffiti.net/"}, {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/usr/obj", "mime_type": "<value>", "size": 503125, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2024-06-27T13:22:35.587Z", "version": "<value>", "is_uploaded": false, "created_at": "2022-06-08T06:40:16.558Z", "size_readable": "<value>", "public_url": "https://lumbering-charlatan.biz/"}, {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/var/mail", "mime_type": "<value>", "size": 126531, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2024-10-20T22:04:15.588Z", "version": "<value>", "is_uploaded": false, "created_at": "2023-02-02T22:10:58.341Z", "size_readable": "<value>", "public_url": "https://which-entry.biz/"}]}, "product_price": {"created_at": "2024-11-26T08:39:18.244Z", "modified_at": "2022-08-06T22:52:15.498Z", "id": "<value>", "is_archived": true, "price_currency": "<value>", "minimum_amount": 859643, "maximum_amount": 413943, "preset_amount": 162847}, "url": "https://simple-flint.org/"}
+          application/json: {"created_at": "2024-10-22T20:45:21.815Z", "modified_at": "2023-07-17T23:31:05.499Z", "id": "<value>", "status": "expired", "client_secret": "<value>", "expires_at": "2023-07-14T01:44:24.320Z", "success_url": "https://passionate-understanding.com/", "amount": 573767, "tax_amount": 903274, "currency": "Sudanese Pound", "total_amount": 813143, "product_id": "<value>", "product_price_id": "<value>", "is_payment_required": true, "customer_id": "<value>", "customer_name": "<value>", "customer_email": "Leonie50@hotmail.com", "customer_ip_address": "<value>", "customer_billing_address": {"country": "Bulgaria"}, "customer_tax_id": "<id>", "product": {"created_at": "2023-09-04T23:39:15.429Z", "modified_at": "2022-06-30T18:11:17.062Z", "id": "<value>", "name": "<value>", "description": "ack notwithstanding lively into trusty", "is_recurring": true, "is_archived": true, "organization_id": "<value>", "prices": [{"created_at": "2022-11-16T20:51:18.745Z", "modified_at": "2023-07-14T01:44:24.320Z", "id": "<value>", "is_archived": true, "price_currency": "<value>", "minimum_amount": 597177, "maximum_amount": 947630, "preset_amount": 166401}, {"created_at": "2024-04-03T02:37:24.726Z", "modified_at": "2024-06-10T04:54:08.615Z", "id": "<value>", "is_archived": true}, {"created_at": "2024-07-08T15:45:04.860Z", "modified_at": "2023-09-22T09:06:50.882Z", "id": "<value>", "is_archived": true, "price_currency": "<value>", "minimum_amount": 508864, "maximum_amount": 744619, "preset_amount": 137234}], "benefits": [{"created_at": "2024-04-13T01:40:05.694Z", "modified_at": "2024-07-12T13:33:11.703Z", "id": "<value>", "type": "discord", "description": "prohibition where although negative where psst", "selectable": false, "deletable": false, "organization_id": "<value>"}, {"created_at": "2022-11-01T16:37:11.315Z", "modified_at": "2024-11-11T09:22:51.554Z", "id": "<value>", "type": "ads", "description": "anenst meanwhile little", "selectable": false, "deletable": false, "organization_id": "<value>"}, {"created_at": "2023-12-08T07:51:27.800Z", "modified_at": "2022-03-18T21:13:49.993Z", "id": "<value>", "type": "discord", "description": "long-term relative singe urgently questionably", "selectable": false, "deletable": true, "organization_id": "<value>"}], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/opt/share", "mime_type": "<value>", "size": 389948, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-01-06T16:44:49.420Z", "version": "<value>", "is_uploaded": false, "created_at": "2024-04-09T09:13:22.245Z", "size_readable": "<value>", "public_url": "https://smoggy-graffiti.net/"}, {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/usr/obj", "mime_type": "<value>", "size": 503125, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2024-06-27T13:22:35.587Z", "version": "<value>", "is_uploaded": false, "created_at": "2022-06-08T06:40:16.558Z", "size_readable": "<value>", "public_url": "https://lumbering-charlatan.biz/"}, {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/var/mail", "mime_type": "<value>", "size": 126531, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2024-10-20T22:04:15.588Z", "version": "<value>", "is_uploaded": false, "created_at": "2023-02-02T22:10:58.341Z", "size_readable": "<value>", "public_url": "https://which-entry.biz/"}]}, "product_price": {"created_at": "2022-10-09T22:41:34.766Z", "modified_at": "2024-06-14T00:54:00.547Z", "id": "<value>", "is_archived": true, "price_currency": "<value>", "price_amount": 172495}, "url": "https://simple-flint.org/"}
         "404":
           application/json: {"detail": "<value>"}
         "422": {}
@@ -1825,7 +1836,16 @@ examples:
           client_secret: "<value>"
       responses:
         "200":
-          application/json: {"created_at": "2024-09-27T22:33:04.250Z", "modified_at": "2024-07-24T02:45:26.067Z", "id": "<value>", "status": "succeeded", "client_secret": "<value>", "expires_at": "2022-07-30T06:29:51.767Z", "success_url": "https://secondary-gallery.net", "amount": 662896, "tax_amount": 131007, "currency": "Nepalese Rupee", "total_amount": 714568, "product_id": "<value>", "product_price_id": "<value>", "is_payment_required": false, "customer_id": "<value>", "customer_name": "<value>", "customer_email": "Maggie18@gmail.com", "customer_ip_address": "<value>", "customer_billing_address": {"country": "Nigeria"}, "customer_tax_id": "<id>", "product": {"created_at": "2023-01-28T03:25:59.665Z", "modified_at": "2022-01-24T16:41:51.515Z", "id": "<value>", "name": "<value>", "description": "potentially thread toady subsidy probable motionless obedience clear-cut", "is_recurring": true, "is_archived": false, "organization_id": "<value>", "prices": [{"created_at": "2024-02-24T15:04:47.497Z", "modified_at": "2023-05-29T07:44:57.350Z", "id": "<value>", "is_archived": true, "price_currency": "<value>", "minimum_amount": 374415, "maximum_amount": 368960, "preset_amount": 837753, "recurring_interval": "year"}], "benefits": [{"created_at": "2022-10-20T16:59:20.255Z", "modified_at": "2023-01-30T20:43:56.426Z", "id": "<value>", "type": "articles", "description": "editor until ah daintily oof aw tarry impanel", "selectable": false, "deletable": false, "organization_id": "<value>"}, {"created_at": "2024-07-26T21:52:00.436Z", "modified_at": "2024-03-11T23:49:19.061Z", "id": "<value>", "type": "license_keys", "description": "forenenst aw or distorted legal cycle posh off", "selectable": true, "deletable": false, "organization_id": "<value>"}, {"created_at": "2023-10-03T19:17:53.981Z", "modified_at": "2023-08-02T07:58:58.651Z", "id": "<value>", "description": "ha restfully filter", "selectable": false, "deletable": true, "organization_id": "<value>", "properties": {"paid_articles": true}}], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/mnt", "mime_type": "<value>", "size": 249646, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-06-10T13:10:48.480Z", "version": "<value>", "is_uploaded": true, "created_at": "2022-02-28T04:49:04.106Z", "size_readable": "<value>", "public_url": "https://glittering-confusion.biz/"}]}, "product_price": {"created_at": "2022-11-22T10:10:52.850Z", "modified_at": "2024-03-28T19:26:19.018Z", "id": "<value>", "is_archived": true, "recurring_interval": "month"}, "url": "https://apt-devastation.biz/"}
+          application/json: {"created_at": "2024-09-27T22:33:04.250Z", "modified_at": "2024-07-24T02:45:26.067Z", "id": "<value>", "status": "succeeded", "client_secret": "<value>", "expires_at": "2022-07-30T06:29:51.767Z", "success_url": "https://secondary-gallery.net", "amount": 662896, "tax_amount": 131007, "currency": "Nepalese Rupee", "total_amount": 714568, "product_id": "<value>", "product_price_id": "<value>", "is_payment_required": false, "customer_id": "<value>", "customer_name": "<value>", "customer_email": "Maggie18@gmail.com", "customer_ip_address": "<value>", "customer_billing_address": {"country": "Nigeria"}, "customer_tax_id": "<id>", "product": {"created_at": "2023-01-28T03:25:59.665Z", "modified_at": "2022-01-24T16:41:51.515Z", "id": "<value>", "name": "<value>", "description": "potentially thread toady subsidy probable motionless obedience clear-cut", "is_recurring": true, "is_archived": false, "organization_id": "<value>", "prices": [{"created_at": "2023-11-15T07:38:37.445Z", "modified_at": "2022-07-30T06:29:51.767Z", "id": "<value>", "is_archived": false}], "benefits": [{"created_at": "2022-10-20T16:59:20.255Z", "modified_at": "2023-01-30T20:43:56.426Z", "id": "<value>", "type": "articles", "description": "editor until ah daintily oof aw tarry impanel", "selectable": false, "deletable": false, "organization_id": "<value>"}, {"created_at": "2024-07-26T21:52:00.436Z", "modified_at": "2024-03-11T23:49:19.061Z", "id": "<value>", "type": "license_keys", "description": "forenenst aw or distorted legal cycle posh off", "selectable": true, "deletable": false, "organization_id": "<value>"}, {"created_at": "2023-02-11T02:25:13.433Z", "modified_at": "2024-01-07T19:25:42.663Z", "id": "<value>", "description": "hovel yuck absentmindedly oh anti joyous psst tender", "selectable": false, "deletable": true, "organization_id": "<value>", "properties": {"paid_articles": true}}], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/mnt", "mime_type": "<value>", "size": 249646, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-06-10T13:10:48.480Z", "version": "<value>", "is_uploaded": true, "created_at": "2022-02-28T04:49:04.106Z", "size_readable": "<value>", "public_url": "https://glittering-confusion.biz/"}]}, "product_price": {"created_at": "2023-01-06T21:00:26.752Z", "modified_at": "2022-10-07T14:51:36.263Z", "id": "<value>", "is_archived": false, "price_currency": "<value>", "minimum_amount": 638939, "maximum_amount": 942266, "preset_amount": 508098}, "url": "https://apt-devastation.biz/"}
         "404":
           application/json: {"detail": "<value>"}
+        "422": {}
+  articles:export:
+    speakeasy-default-articles:export:
+      parameters:
+        query:
+          organization_id: "cf4e3d5e-2b50-4470-a85b-8d021391fabb"
+      responses:
+        "200":
+          application/json: "<value>"
         "422": {}

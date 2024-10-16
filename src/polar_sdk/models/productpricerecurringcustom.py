@@ -42,7 +42,6 @@ class ProductPriceRecurringCustomTypedDict(TypedDict):
     preset_amount: Nullable[int]
     r"""The initial amount shown to the customer."""
     recurring_interval: SubscriptionRecurringInterval
-    r"""The recurring interval of the price."""
     amount_type: ProductPriceRecurringCustomAmountType
     type: ProductPriceRecurringCustomType
     r"""The type of the price."""
@@ -76,7 +75,6 @@ class ProductPriceRecurringCustom(BaseModel):
     r"""The initial amount shown to the customer."""
 
     recurring_interval: SubscriptionRecurringInterval
-    r"""The recurring interval of the price."""
 
     AMOUNT_TYPE: Annotated[
         Annotated[

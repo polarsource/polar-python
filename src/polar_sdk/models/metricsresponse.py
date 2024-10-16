@@ -14,7 +14,6 @@ class MetricsResponseTypedDict(TypedDict):
     periods: List[MetricPeriodTypedDict]
     r"""List of data for each timestamp."""
     metrics: MetricsTypedDict
-    r"""Information about the returned metrics."""
 
 
 class MetricsResponse(BaseModel):
@@ -24,4 +23,3 @@ class MetricsResponse(BaseModel):
     r"""List of data for each timestamp."""
 
     metrics: Metrics
-    r"""Information about the returned metrics."""

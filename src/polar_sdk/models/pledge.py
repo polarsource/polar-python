@@ -23,11 +23,8 @@ class PledgeTypedDict(TypedDict):
     r"""Amount pledged towards the issue"""
     currency: str
     state: PledgeState
-    r"""Current state of the pledge"""
     type: PledgeType
-    r"""Type of pledge"""
     issue: IssueTypedDict
-    r"""The issue that the pledge was made towards"""
     refunded_at: NotRequired[Nullable[datetime]]
     r"""If and when the pledge was refunded to the pledger"""
     scheduled_payout_at: NotRequired[Nullable[datetime]]
@@ -60,13 +57,10 @@ class Pledge(BaseModel):
     currency: str
 
     state: PledgeState
-    r"""Current state of the pledge"""
 
     type: PledgeType
-    r"""Type of pledge"""
 
     issue: Issue
-    r"""The issue that the pledge was made towards"""
 
     refunded_at: OptionalNullable[datetime] = UNSET
     r"""If and when the pledge was refunded to the pledger"""

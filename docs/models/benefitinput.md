@@ -1,4 +1,4 @@
-# WebhookBenefitCreatedPayloadBenefit
+# BenefitInput
 
 
 ## Supported Types

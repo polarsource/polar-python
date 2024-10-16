@@ -16,7 +16,6 @@ class BenefitBaseTypedDict(TypedDict):
     id: str
     r"""The ID of the benefit."""
     type: BenefitType
-    r"""The type of the benefit."""
     description: str
     r"""The description of the benefit."""
     selectable: bool
@@ -38,7 +37,6 @@ class BenefitBase(BaseModel):
     r"""The ID of the benefit."""
 
     type: BenefitType
-    r"""The type of the benefit."""
 
     description: str
     r"""The description of the benefit."""

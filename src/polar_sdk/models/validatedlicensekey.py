@@ -6,6 +6,7 @@ from .licensekeyactivationbase import (
     LicenseKeyActivationBaseTypedDict,
 )
 from .licensekeystatus import LicenseKeyStatus
+from .licensekeyuser import LicenseKeyUser, LicenseKeyUserTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -16,6 +17,7 @@ class ValidatedLicenseKeyTypedDict(TypedDict):
     id: str
     organization_id: str
     user_id: str
+    user: LicenseKeyUserTypedDict
     benefit_id: str
     r"""The benefit ID."""
     key: str
@@ -36,6 +38,8 @@ class ValidatedLicenseKey(BaseModel):
     organization_id: str
 
     user_id: str
+
+    user: LicenseKeyUser
 
     benefit_id: str
     r"""The benefit ID."""

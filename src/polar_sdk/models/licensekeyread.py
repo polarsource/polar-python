@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .licensekeystatus import LicenseKeyStatus
+from .licensekeyuser import LicenseKeyUser, LicenseKeyUserTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -12,6 +13,7 @@ class LicenseKeyReadTypedDict(TypedDict):
     id: str
     organization_id: str
     user_id: str
+    user: LicenseKeyUserTypedDict
     benefit_id: str
     r"""The benefit ID."""
     key: str
@@ -31,6 +33,8 @@ class LicenseKeyRead(BaseModel):
     organization_id: str
 
     user_id: str
+
+    user: LicenseKeyUser
 
     benefit_id: str
     r"""The benefit ID."""

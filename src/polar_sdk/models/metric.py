@@ -14,7 +14,6 @@ class MetricTypedDict(TypedDict):
     display_name: str
     r"""Human-readable name for the metric."""
     type: MetricType
-    r"""Type of the metric, useful to know the unit or format of the value."""
 
 
 class Metric(BaseModel):
@@ -27,4 +26,3 @@ class Metric(BaseModel):
     r"""Human-readable name for the metric."""
 
     type: MetricType
-    r"""Type of the metric, useful to know the unit or format of the value."""
