@@ -1,8 +1,12 @@
 # WebhookSubscriptionUpdatedPayload
 
-Sent when a new subscription is updated. This event fires if the subscription is cancelled, both immediately and if the subscription is cancelled at the end of the current period.
+Sent when a subscription is updated. This event fires for all changes to the subscription, including renewals.
 
-**Discord & Slack support:** On cancellation
+If you want more specific events, you can listen to `subscription.active`, `subscription.canceled`, and `subscription.revoked`.
+
+To listen specifically for renewals, you can listen to `order.created` events and check the `billing_reason` field.
+
+**Discord & Slack support:** On cancellation and revocation. Renewals are skipped.
 
 
 ## Fields

@@ -103,6 +103,7 @@ asyncio.run(main())
 
 * [list](docs/sdks/articles/README.md#list) - List Articles
 * [create](docs/sdks/articles/README.md#create) - Create Article
+* [export](docs/sdks/articles/README.md#export) - Export Articles
 * [get](docs/sdks/articles/README.md#get) - Get Article
 * [update](docs/sdks/articles/README.md#update) - Update Article
 * [delete](docs/sdks/articles/README.md#delete) - Delete Article

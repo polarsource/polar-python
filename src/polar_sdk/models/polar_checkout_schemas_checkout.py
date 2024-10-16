@@ -32,7 +32,6 @@ class PolarCheckoutSchemasCheckoutTypedDict(TypedDict):
     id: str
     r"""The ID of the object."""
     status: CheckoutStatus
-    r"""Status of the checkout session."""
     client_secret: str
     r"""Client secret used to update and complete the checkout session from the client."""
     expires_at: datetime
@@ -62,7 +61,6 @@ class PolarCheckoutSchemasCheckoutTypedDict(TypedDict):
     metadata: Dict[str, str]
     url: str
     payment_processor: PolarEnumsPaymentProcessor
-    r"""Payment processor used."""
 
 
 class PolarCheckoutSchemasCheckout(BaseModel):
@@ -78,7 +76,6 @@ class PolarCheckoutSchemasCheckout(BaseModel):
     r"""The ID of the object."""
 
     status: CheckoutStatus
-    r"""Status of the checkout session."""
 
     client_secret: str
     r"""Client secret used to update and complete the checkout session from the client."""
@@ -134,7 +131,6 @@ class PolarCheckoutSchemasCheckout(BaseModel):
         ],
         pydantic.Field(alias="payment_processor"),
     ] = PolarEnumsPaymentProcessor.STRIPE
-    r"""Payment processor used."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -189,7 +185,6 @@ class PolarCheckoutSchemasCheckoutInputTypedDict(TypedDict):
     id: str
     r"""The ID of the object."""
     status: CheckoutStatus
-    r"""Status of the checkout session."""
     client_secret: str
     r"""Client secret used to update and complete the checkout session from the client."""
     expires_at: datetime
@@ -218,7 +213,6 @@ class PolarCheckoutSchemasCheckoutInputTypedDict(TypedDict):
     payment_processor_metadata: PaymentProcessorMetadataTypedDict
     metadata: Dict[str, str]
     payment_processor: PolarEnumsPaymentProcessor
-    r"""Payment processor used."""
 
 
 class PolarCheckoutSchemasCheckoutInput(BaseModel):
@@ -234,7 +228,6 @@ class PolarCheckoutSchemasCheckoutInput(BaseModel):
     r"""The ID of the object."""
 
     status: CheckoutStatus
-    r"""Status of the checkout session."""
 
     client_secret: str
     r"""Client secret used to update and complete the checkout session from the client."""
@@ -288,7 +281,6 @@ class PolarCheckoutSchemasCheckoutInput(BaseModel):
         ],
         pydantic.Field(alias="payment_processor"),
     ] = PolarEnumsPaymentProcessor.STRIPE
-    r"""Payment processor used."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

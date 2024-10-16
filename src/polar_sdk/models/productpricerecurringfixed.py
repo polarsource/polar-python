@@ -38,7 +38,6 @@ class ProductPriceRecurringFixedTypedDict(TypedDict):
     price_amount: int
     r"""The price in cents."""
     recurring_interval: SubscriptionRecurringInterval
-    r"""The recurring interval of the price."""
     amount_type: AmountType
     type: ProductPriceRecurringFixedType
     r"""The type of the price."""
@@ -66,7 +65,6 @@ class ProductPriceRecurringFixed(BaseModel):
     r"""The price in cents."""
 
     recurring_interval: SubscriptionRecurringInterval
-    r"""The recurring interval of the price."""
 
     AMOUNT_TYPE: Annotated[
         Annotated[AmountType, AfterValidator(validate_const(AmountType.FIXED))],

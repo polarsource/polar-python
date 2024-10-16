@@ -1,7 +1,5 @@
 # Interval
 
-Interval between two timestamps.
-
 
 ## Values
 

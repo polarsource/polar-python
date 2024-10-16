@@ -27,6 +27,12 @@ actions:
         - "lang": "python"
           "label": "create"
           "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.articles.create(request={\n    \"title\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+  - target: $["paths"]["/v1/articles/export"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "export"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.articles.export(organization_id=\"cf4e3d5e-2b50-4470-a85b-8d021391fabb\")\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/articles/{id}"]["delete"]
     update:
       "x-codeSamples":

@@ -31,11 +31,9 @@ class IssueTypedDict(TypedDict):
     r"""If a maintainer needs to mark this issue as solved"""
     funding: FundingTypedDict
     repository: RepositoryInputTypedDict
-    r"""The repository that the issue is in"""
     pledge_badge_currently_embedded: bool
     r"""If this issue currently has the Polar badge SVG embedded"""
     platform: Platforms
-    r"""Issue platform (currently always GitHub)"""
     body: NotRequired[Nullable[str]]
     r"""GitHub issue body"""
     comments: NotRequired[Nullable[int]]
@@ -76,7 +74,6 @@ class Issue(BaseModel):
     funding: Funding
 
     repository: RepositoryInput
-    r"""The repository that the issue is in"""
 
     pledge_badge_currently_embedded: bool
     r"""If this issue currently has the Polar badge SVG embedded"""
@@ -85,7 +82,6 @@ class Issue(BaseModel):
         Annotated[Platforms, AfterValidator(validate_const(Platforms.GITHUB))],
         pydantic.Field(alias="platform"),
     ] = Platforms.GITHUB
-    r"""Issue platform (currently always GitHub)"""
 
     body: OptionalNullable[str] = UNSET
     r"""GitHub issue body"""

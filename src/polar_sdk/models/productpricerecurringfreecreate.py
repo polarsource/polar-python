@@ -22,7 +22,6 @@ class ProductPriceRecurringFreeCreateTypedDict(TypedDict):
     r"""Schema to create a free recurring product price, i.e. a subscription."""
 
     recurring_interval: SubscriptionRecurringInterval
-    r"""The recurring interval of the price."""
     type: ProductPriceRecurringFreeCreateType
     amount_type: ProductPriceRecurringFreeCreateAmountType
 
@@ -31,7 +30,6 @@ class ProductPriceRecurringFreeCreate(BaseModel):
     r"""Schema to create a free recurring product price, i.e. a subscription."""
 
     recurring_interval: SubscriptionRecurringInterval
-    r"""The recurring interval of the price."""
 
     TYPE: Annotated[
         Annotated[

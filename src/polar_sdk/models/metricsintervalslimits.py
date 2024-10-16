@@ -10,31 +10,31 @@ class MetricsIntervalsLimitsTypedDict(TypedDict):
     r"""Date interval limits to get metrics for each interval."""
 
     hour: MetricsIntervalLimitTypedDict
-    r"""Limits for the hour interval."""
+    r"""Date interval limit to get metrics for a given interval."""
     day: MetricsIntervalLimitTypedDict
-    r"""Limits for the day interval."""
+    r"""Date interval limit to get metrics for a given interval."""
     week: MetricsIntervalLimitTypedDict
-    r"""Limits for the week interval."""
+    r"""Date interval limit to get metrics for a given interval."""
     month: MetricsIntervalLimitTypedDict
-    r"""Limits for the month interval."""
+    r"""Date interval limit to get metrics for a given interval."""
     year: MetricsIntervalLimitTypedDict
-    r"""Limits for the year interval."""
+    r"""Date interval limit to get metrics for a given interval."""
 
 
 class MetricsIntervalsLimits(BaseModel):
     r"""Date interval limits to get metrics for each interval."""
 
     hour: MetricsIntervalLimit
-    r"""Limits for the hour interval."""
+    r"""Date interval limit to get metrics for a given interval."""
 
     day: MetricsIntervalLimit
-    r"""Limits for the day interval."""
+    r"""Date interval limit to get metrics for a given interval."""
 
     week: MetricsIntervalLimit
-    r"""Limits for the week interval."""
+    r"""Date interval limit to get metrics for a given interval."""
 
     month: MetricsIntervalLimit
-    r"""Limits for the month interval."""
+    r"""Date interval limit to get metrics for a given interval."""
 
     year: MetricsIntervalLimit
-    r"""Limits for the year interval."""
+    r"""Date interval limit to get metrics for a given interval."""

@@ -25,7 +25,6 @@ class ProductPriceRecurringFixedCreateTypedDict(TypedDict):
     price_amount: int
     r"""The price in cents."""
     recurring_interval: SubscriptionRecurringInterval
-    r"""The recurring interval of the price."""
     type: ProductPriceRecurringFixedCreateType
     amount_type: ProductPriceRecurringFixedCreateAmountType
     price_currency: NotRequired[str]
@@ -39,7 +38,6 @@ class ProductPriceRecurringFixedCreate(BaseModel):
     r"""The price in cents."""
 
     recurring_interval: SubscriptionRecurringInterval
-    r"""The recurring interval of the price."""
 
     TYPE: Annotated[
         Annotated[

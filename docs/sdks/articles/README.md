@@ -7,6 +7,7 @@
 
 * [list](#list) - List Articles
 * [create](#create) - Create Article
+* [export](#export) - Export Articles
 * [get](#get) - Get Article
 * [update](#update) - Update Article
 * [delete](#delete) - Delete Article
@@ -97,6 +98,45 @@ if res is not None:
 ### Response
 
 **[models.Article](../../models/article.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## export
+
+Export organization articles.
+
+### Example Usage
+
+```python
+from polar_sdk import Polar
+
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
+
+res = s.articles.export(organization_id="cf4e3d5e-2b50-4470-a85b-8d021391fabb")
+
+if res is not None:
+    # handle response
+    pass
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `organization_id`                                                   | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[Any](../../models/.md)**
 
 ### Errors
 
