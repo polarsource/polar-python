@@ -35,6 +35,8 @@ class CheckoutPublicTypedDict(TypedDict):
     status: CheckoutStatus
     client_secret: str
     r"""Client secret used to update and complete the checkout session from the client."""
+    url: str
+    r"""URL where the customer can access the checkout session."""
     expires_at: datetime
     r"""Expiration date and time of the checkout session."""
     success_url: str
@@ -62,7 +64,6 @@ class CheckoutPublicTypedDict(TypedDict):
     product: ProductTypedDict
     r"""A product."""
     product_price: ProductPriceTypedDict
-    url: str
     payment_processor: PolarEnumsPaymentProcessor
 
 
@@ -82,6 +83,9 @@ class CheckoutPublic(BaseModel):
 
     client_secret: str
     r"""Client secret used to update and complete the checkout session from the client."""
+
+    url: str
+    r"""URL where the customer can access the checkout session."""
 
     expires_at: datetime
     r"""Expiration date and time of the checkout session."""
@@ -127,8 +131,6 @@ class CheckoutPublic(BaseModel):
     r"""A product."""
 
     product_price: ProductPrice
-
-    url: str
 
     PAYMENT_PROCESSOR: Annotated[
         Annotated[

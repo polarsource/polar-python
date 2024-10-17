@@ -33,6 +33,8 @@ class ProductPriceRecurringCustomTypedDict(TypedDict):
     r"""The ID of the price."""
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
+    product_id: str
+    r"""The ID of the product owning the price."""
     price_currency: str
     r"""The currency."""
     minimum_amount: Nullable[int]
@@ -61,6 +63,9 @@ class ProductPriceRecurringCustom(BaseModel):
 
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
+
+    product_id: str
+    r"""The ID of the product owning the price."""
 
     price_currency: str
     r"""The currency."""

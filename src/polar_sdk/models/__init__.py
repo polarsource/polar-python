@@ -353,7 +353,37 @@ from .benefits_updateop import (
 )
 from .benefittype import BenefitType
 from .bylineprofile import BylineProfile, BylineProfileTypedDict
+from .checkout_links_deleteop import (
+    CheckoutLinksDeleteRequest,
+    CheckoutLinksDeleteRequestTypedDict,
+)
+from .checkout_links_getop import (
+    CheckoutLinksGetRequest,
+    CheckoutLinksGetRequestTypedDict,
+)
+from .checkout_links_listop import (
+    CheckoutLinksListQueryParamOrganizationIDFilter,
+    CheckoutLinksListQueryParamOrganizationIDFilterTypedDict,
+    CheckoutLinksListQueryParamProductIDFilter,
+    CheckoutLinksListQueryParamProductIDFilterTypedDict,
+    CheckoutLinksListRequest,
+    CheckoutLinksListRequestTypedDict,
+    CheckoutLinksListResponse,
+    CheckoutLinksListResponseTypedDict,
+)
+from .checkout_links_updateop import (
+    CheckoutLinksUpdateRequest,
+    CheckoutLinksUpdateRequestTypedDict,
+)
 from .checkoutconfirmstripe import CheckoutConfirmStripe, CheckoutConfirmStripeTypedDict
+from .checkoutlink import CheckoutLink, CheckoutLinkTypedDict
+from .checkoutlinkcreate import (
+    CheckoutLinkCreate,
+    CheckoutLinkCreatePaymentProcessor,
+    CheckoutLinkCreateTypedDict,
+)
+from .checkoutlinksortproperty import CheckoutLinkSortProperty
+from .checkoutlinkupdate import CheckoutLinkUpdate, CheckoutLinkUpdateTypedDict
 from .checkoutpublic import (
     CheckoutPublic,
     CheckoutPublicPaymentProcessorMetadata,
@@ -520,6 +550,10 @@ from .listresource_benefitgrant_ import (
     ListResourceBenefitGrantTypedDict,
 )
 from .listresource_checkout_ import ListResourceCheckout, ListResourceCheckoutTypedDict
+from .listresource_checkoutlink_ import (
+    ListResourceCheckoutLink,
+    ListResourceCheckoutLinkTypedDict,
+)
 from .listresource_downloadableread_ import (
     ListResourceDownloadableRead,
     ListResourceDownloadableReadTypedDict,
@@ -744,8 +778,6 @@ from .polar_checkout_schemas_checkout import (
     PaymentProcessorMetadata,
     PaymentProcessorMetadataTypedDict,
     PolarCheckoutSchemasCheckout,
-    PolarCheckoutSchemasCheckoutInput,
-    PolarCheckoutSchemasCheckoutInputTypedDict,
     PolarCheckoutSchemasCheckoutTypedDict,
 )
 from .polar_checkout_schemas_checkoutcreate import (
@@ -1459,6 +1491,28 @@ __all__ = [
     "BylineProfileTypedDict",
     "CheckoutConfirmStripe",
     "CheckoutConfirmStripeTypedDict",
+    "CheckoutLink",
+    "CheckoutLinkCreate",
+    "CheckoutLinkCreatePaymentProcessor",
+    "CheckoutLinkCreateTypedDict",
+    "CheckoutLinkSortProperty",
+    "CheckoutLinkTypedDict",
+    "CheckoutLinkUpdate",
+    "CheckoutLinkUpdateTypedDict",
+    "CheckoutLinksDeleteRequest",
+    "CheckoutLinksDeleteRequestTypedDict",
+    "CheckoutLinksGetRequest",
+    "CheckoutLinksGetRequestTypedDict",
+    "CheckoutLinksListQueryParamOrganizationIDFilter",
+    "CheckoutLinksListQueryParamOrganizationIDFilterTypedDict",
+    "CheckoutLinksListQueryParamProductIDFilter",
+    "CheckoutLinksListQueryParamProductIDFilterTypedDict",
+    "CheckoutLinksListRequest",
+    "CheckoutLinksListRequestTypedDict",
+    "CheckoutLinksListResponse",
+    "CheckoutLinksListResponseTypedDict",
+    "CheckoutLinksUpdateRequest",
+    "CheckoutLinksUpdateRequestTypedDict",
     "CheckoutPublic",
     "CheckoutPublicPaymentProcessorMetadata",
     "CheckoutPublicPaymentProcessorMetadataTypedDict",
@@ -1610,6 +1664,8 @@ __all__ = [
     "ListResourceBenefitGrantTypedDict",
     "ListResourceBenefitTypedDict",
     "ListResourceCheckout",
+    "ListResourceCheckoutLink",
+    "ListResourceCheckoutLinkTypedDict",
     "ListResourceCheckoutTypedDict",
     "ListResourceDownloadableRead",
     "ListResourceDownloadableReadTypedDict",
@@ -1784,8 +1840,6 @@ __all__ = [
     "PolarCheckoutSchemasCheckout",
     "PolarCheckoutSchemasCheckoutCreate",
     "PolarCheckoutSchemasCheckoutCreateTypedDict",
-    "PolarCheckoutSchemasCheckoutInput",
-    "PolarCheckoutSchemasCheckoutInputTypedDict",
     "PolarCheckoutSchemasCheckoutTypedDict",
     "PolarEnumsPaymentProcessor",
     "PreviousProperties",

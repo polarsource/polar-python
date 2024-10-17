@@ -1,0 +1,19 @@
+# CheckoutLink
+
+Checkout link data.
+
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `created_at`                                                                 | [date](https://docs.python.org/3/library/datetime.html#date-objects)         | :heavy_check_mark:                                                           | Creation timestamp of the object.                                            |
+| `modified_at`                                                                | [date](https://docs.python.org/3/library/datetime.html#date-objects)         | :heavy_check_mark:                                                           | Last modification timestamp of the object.                                   |
+| `id`                                                                         | *str*                                                                        | :heavy_check_mark:                                                           | The ID of the object.                                                        |
+| `metadata`                                                                   | Dict[str, *str*]                                                             | :heavy_check_mark:                                                           | N/A                                                                          |
+| `client_secret`                                                              | *str*                                                                        | :heavy_check_mark:                                                           | Client secret used to access the checkout link.                              |
+| `success_url`                                                                | *Nullable[str]*                                                              | :heavy_check_mark:                                                           | URL where the customer will be redirected after a successful payment.        |
+| `product_price_id`                                                           | *str*                                                                        | :heavy_check_mark:                                                           | ID of the product price to checkout.                                         |
+| `product_price`                                                              | [models.ProductPrice](../models/productprice.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |
+| `url`                                                                        | *str*                                                                        | :heavy_check_mark:                                                           | N/A                                                                          |
+| `payment_processor`                                                          | [models.PolarEnumsPaymentProcessor](../models/polarenumspaymentprocessor.md) | :heavy_check_mark:                                                           | N/A                                                                          |
