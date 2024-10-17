@@ -120,6 +120,14 @@ asyncio.run(main())
 * [delete](docs/sdks/benefits/README.md#delete) - Delete Benefit
 * [grants](docs/sdks/benefits/README.md#grants) - List Benefit Grants
 
+### [checkout_links](docs/sdks/checkoutlinks/README.md)
+
+* [list](docs/sdks/checkoutlinks/README.md#list) - List Checkout Links
+* [create](docs/sdks/checkoutlinks/README.md#create) - Create Checkout Link
+* [get](docs/sdks/checkoutlinks/README.md#get) - Get Checkout Link
+* [update](docs/sdks/checkoutlinks/README.md#update) - Update Checkout Link
+* [delete](docs/sdks/checkoutlinks/README.md#delete) - Delete Checkout Link
+
 ### [checkouts](docs/sdks/checkouts/README.md)
 
 * [~~create~~](docs/sdks/checkouts/README.md#create) - Create Checkout :warning: **Deprecated** Use `create` instead.

@@ -11,6 +11,7 @@ from polar_sdk._hooks import SDKHooks
 from polar_sdk.advertisements import Advertisements
 from polar_sdk.articles import Articles
 from polar_sdk.benefits import Benefits
+from polar_sdk.checkout_links import CheckoutLinks
 from polar_sdk.checkouts import Checkouts
 from polar_sdk.external_organizations import ExternalOrganizations
 from polar_sdk.files import Files
@@ -48,6 +49,7 @@ class Polar(BaseSDK):
     files: Files
     metrics: MetricsSDK
     license_keys: LicenseKeys
+    checkout_links: CheckoutLinks
 
     def __init__(
         self,
@@ -143,3 +145,4 @@ class Polar(BaseSDK):
         self.files = Files(self.sdk_configuration)
         self.metrics = MetricsSDK(self.sdk_configuration)
         self.license_keys = LicenseKeys(self.sdk_configuration)
+        self.checkout_links = CheckoutLinks(self.sdk_configuration)

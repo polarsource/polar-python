@@ -33,6 +33,8 @@ class ProductPriceRecurringFreeTypedDict(TypedDict):
     r"""The ID of the price."""
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
+    product_id: str
+    r"""The ID of the product owning the price."""
     recurring_interval: SubscriptionRecurringInterval
     amount_type: ProductPriceRecurringFreeAmountType
     type: ProductPriceRecurringFreeType
@@ -53,6 +55,9 @@ class ProductPriceRecurringFree(BaseModel):
 
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
+
+    product_id: str
+    r"""The ID of the product owning the price."""
 
     recurring_interval: SubscriptionRecurringInterval
 
