@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .listresource_product_ import ListResourceProduct, ListResourceProductTypedDict
+from .productsortproperty import ProductSortProperty
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
@@ -28,6 +29,8 @@ r"""Filter products granting specific benefit."""
 class ProductsListRequestTypedDict(TypedDict):
     organization_id: ProductsListQueryParamOrganizationIDFilterTypedDict
     r"""Filter by organization ID."""
+    query: NotRequired[Nullable[str]]
+    r"""Filter by product name."""
     is_archived: NotRequired[Nullable[bool]]
     r"""Filter on archived products."""
     is_recurring: NotRequired[Nullable[bool]]
@@ -38,6 +41,8 @@ class ProductsListRequestTypedDict(TypedDict):
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
     r"""Size of a page, defaults to 10. Maximum is 100."""
+    sorting: NotRequired[Nullable[List[ProductSortProperty]]]
+    r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
 
 
 class ProductsListRequest(BaseModel):
@@ -46,6 +51,12 @@ class ProductsListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ]
     r"""Filter by organization ID."""
+
+    query: Annotated[
+        OptionalNullable[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by product name."""
 
     is_archived: Annotated[
         OptionalNullable[bool],
@@ -77,10 +88,30 @@ class ProductsListRequest(BaseModel):
     ] = 10
     r"""Size of a page, defaults to 10. Maximum is 100."""
 
+    sorting: Annotated[
+        OptionalNullable[List[ProductSortProperty]],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["is_archived", "is_recurring", "benefit_id", "page", "limit"]
-        nullable_fields = ["is_archived", "is_recurring", "benefit_id"]
+        optional_fields = [
+            "query",
+            "is_archived",
+            "is_recurring",
+            "benefit_id",
+            "page",
+            "limit",
+            "sorting",
+        ]
+        nullable_fields = [
+            "query",
+            "is_archived",
+            "is_recurring",
+            "benefit_id",
+            "sorting",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

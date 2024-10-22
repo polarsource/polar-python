@@ -909,6 +909,7 @@ from .products_update_benefitsop import (
     ProductsUpdateBenefitsRequestTypedDict,
 )
 from .products_updateop import ProductsUpdateRequest, ProductsUpdateRequestTypedDict
+from .productsortproperty import ProductSortProperty
 from .productupdate import (
     ProductUpdate,
     ProductUpdatePrices,
@@ -1920,6 +1921,7 @@ __all__ = [
     "ProductRecurringCreatePrices",
     "ProductRecurringCreatePricesTypedDict",
     "ProductRecurringCreateTypedDict",
+    "ProductSortProperty",
     "ProductTypedDict",
     "ProductUpdate",
     "ProductUpdatePrices",
