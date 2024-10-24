@@ -41,6 +41,8 @@ class CheckoutPublicTypedDict(TypedDict):
     r"""Expiration date and time of the checkout session."""
     success_url: str
     r"""URL where the customer will be redirected after a successful payment."""
+    embed_origin: Nullable[str]
+    r"""When checkout is embedded, represents the Origin of the page embedding the checkout. Used as a security measure to send messages only to the embedding page."""
     amount: Nullable[int]
     tax_amount: Nullable[int]
     r"""Computed tax amount to pay in cents."""
@@ -92,6 +94,9 @@ class CheckoutPublic(BaseModel):
 
     success_url: str
     r"""URL where the customer will be redirected after a successful payment."""
+
+    embed_origin: Nullable[str]
+    r"""When checkout is embedded, represents the Origin of the page embedding the checkout. Used as a security measure to send messages only to the embedding page."""
 
     amount: Nullable[int]
 
@@ -145,6 +150,7 @@ class CheckoutPublic(BaseModel):
         optional_fields = []
         nullable_fields = [
             "modified_at",
+            "embed_origin",
             "amount",
             "tax_amount",
             "currency",
