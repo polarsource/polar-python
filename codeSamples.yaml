@@ -350,7 +350,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.products.list(organization_id=[\n    \"<value>\",\n    \"<value>\",\n])\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.products.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
   - target: $["paths"]["/v1/products/"]["post"]
     update:
       "x-codeSamples":

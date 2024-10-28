@@ -7,7 +7,7 @@ from .funding import Funding, FundingTypedDict
 from .label import Label, LabelTypedDict
 from .platforms import Platforms
 from .reactions import Reactions, ReactionsTypedDict
-from .repository_input import RepositoryInput, RepositoryInputTypedDict
+from .repository import Repository, RepositoryTypedDict
 from .state import State
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
@@ -30,7 +30,7 @@ class IssueTypedDict(TypedDict):
     needs_confirmation_solved: bool
     r"""If a maintainer needs to mark this issue as solved"""
     funding: FundingTypedDict
-    repository: RepositoryInputTypedDict
+    repository: RepositoryTypedDict
     pledge_badge_currently_embedded: bool
     r"""If this issue currently has the Polar badge SVG embedded"""
     platform: Platforms
@@ -73,7 +73,7 @@ class Issue(BaseModel):
 
     funding: Funding
 
-    repository: RepositoryInput
+    repository: Repository
 
     pledge_badge_currently_embedded: bool
     r"""If this issue currently has the Polar badge SVG embedded"""

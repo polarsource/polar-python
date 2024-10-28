@@ -11,11 +11,11 @@ from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 ProductsListQueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]
-r"""Filter by organization ID."""
+r"""Filter by organization ID. **Required unless you use an organization token.**"""
 
 
 ProductsListQueryParamOrganizationIDFilter = Union[str, List[str]]
-r"""Filter by organization ID."""
+r"""Filter by organization ID. **Required unless you use an organization token.**"""
 
 
 QueryParamBenefitIDFilterTypedDict = Union[str, List[str]]
@@ -27,8 +27,10 @@ r"""Filter products granting specific benefit."""
 
 
 class ProductsListRequestTypedDict(TypedDict):
-    organization_id: ProductsListQueryParamOrganizationIDFilterTypedDict
-    r"""Filter by organization ID."""
+    organization_id: NotRequired[
+        Nullable[ProductsListQueryParamOrganizationIDFilterTypedDict]
+    ]
+    r"""Filter by organization ID. **Required unless you use an organization token.**"""
     query: NotRequired[Nullable[str]]
     r"""Filter by product name."""
     is_archived: NotRequired[Nullable[bool]]
@@ -47,10 +49,10 @@ class ProductsListRequestTypedDict(TypedDict):
 
 class ProductsListRequest(BaseModel):
     organization_id: Annotated[
-        ProductsListQueryParamOrganizationIDFilter,
+        OptionalNullable[ProductsListQueryParamOrganizationIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ]
-    r"""Filter by organization ID."""
+    ] = UNSET
+    r"""Filter by organization ID. **Required unless you use an organization token.**"""
 
     query: Annotated[
         OptionalNullable[str],
@@ -97,6 +99,7 @@ class ProductsListRequest(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "organization_id",
             "query",
             "is_archived",
             "is_recurring",
@@ -106,6 +109,7 @@ class ProductsListRequest(BaseModel):
             "sorting",
         ]
         nullable_fields = [
+            "organization_id",
             "query",
             "is_archived",
             "is_recurring",

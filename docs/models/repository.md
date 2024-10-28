@@ -1,4 +1,4 @@
-# RepositoryInput
+# Repository
 
 
 ## Fields

@@ -778,6 +778,8 @@ from .polar_checkout_schemas_checkout import (
     PaymentProcessorMetadata,
     PaymentProcessorMetadataTypedDict,
     PolarCheckoutSchemasCheckout,
+    PolarCheckoutSchemasCheckoutInput,
+    PolarCheckoutSchemasCheckoutInputTypedDict,
     PolarCheckoutSchemasCheckoutTypedDict,
 )
 from .polar_checkout_schemas_checkoutcreate import (
@@ -936,8 +938,7 @@ from .repositories_updateop import (
     RepositoriesUpdateRequest,
     RepositoriesUpdateRequestTypedDict,
 )
-from .repository_input import RepositoryInput, RepositoryInputTypedDict
-from .repository_output import RepositoryOutput, RepositoryOutputTypedDict
+from .repository import Repository, RepositoryTypedDict
 from .repositoryprofilesettings import (
     RepositoryProfileSettings,
     RepositoryProfileSettingsTypedDict,
@@ -1841,6 +1842,8 @@ __all__ = [
     "PolarCheckoutSchemasCheckout",
     "PolarCheckoutSchemasCheckoutCreate",
     "PolarCheckoutSchemasCheckoutCreateTypedDict",
+    "PolarCheckoutSchemasCheckoutInput",
+    "PolarCheckoutSchemasCheckoutInputTypedDict",
     "PolarCheckoutSchemasCheckoutTypedDict",
     "PolarEnumsPaymentProcessor",
     "PreviousProperties",
@@ -1971,17 +1974,15 @@ __all__ = [
     "RepositoriesListResponseTypedDict",
     "RepositoriesUpdateRequest",
     "RepositoriesUpdateRequestTypedDict",
-    "RepositoryInput",
-    "RepositoryInputTypedDict",
+    "Repository",
     "RepositoryNameFilter",
     "RepositoryNameFilterTypedDict",
-    "RepositoryOutput",
-    "RepositoryOutputTypedDict",
     "RepositoryProfileSettings",
     "RepositoryProfileSettingsTypedDict",
     "RepositoryProfileSettingsUpdate",
     "RepositoryProfileSettingsUpdateTypedDict",
     "RepositorySortProperty",
+    "RepositoryTypedDict",
     "RepositoryUpdate",
     "RepositoryUpdateTypedDict",
     "ResourceNotFound",

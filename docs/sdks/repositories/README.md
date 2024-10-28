@@ -89,7 +89,7 @@ if res is not None:
 
 ### Response
 
-**[models.RepositoryOutput](../../models/repositoryoutput.md)**
+**[models.Repository](../../models/repository.md)**
 
 ### Errors
 
@@ -130,7 +130,7 @@ if res is not None:
 
 ### Response
 
-**[models.RepositoryOutput](../../models/repositoryoutput.md)**
+**[models.Repository](../../models/repository.md)**
 
 ### Errors
 
