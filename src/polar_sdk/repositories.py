@@ -336,7 +336,7 @@ class Repositories(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.RepositoryOutput]:
+    ) -> Optional[models.Repository]:
         r"""Get Repository
 
         Get a repository by ID.
@@ -394,9 +394,7 @@ class Repositories(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.RepositoryOutput]
-            )
+            return utils.unmarshal_json(http_res.text, Optional[models.Repository])
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -425,7 +423,7 @@ class Repositories(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.RepositoryOutput]:
+    ) -> Optional[models.Repository]:
         r"""Get Repository
 
         Get a repository by ID.
@@ -483,9 +481,7 @@ class Repositories(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.RepositoryOutput]
-            )
+            return utils.unmarshal_json(http_res.text, Optional[models.Repository])
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -517,7 +513,7 @@ class Repositories(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.RepositoryOutput]:
+    ) -> Optional[models.Repository]:
         r"""Update Repository
 
         Update a repository.
@@ -582,9 +578,7 @@ class Repositories(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.RepositoryOutput]
-            )
+            return utils.unmarshal_json(http_res.text, Optional[models.Repository])
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)
@@ -619,7 +613,7 @@ class Repositories(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.RepositoryOutput]:
+    ) -> Optional[models.Repository]:
         r"""Update Repository
 
         Update a repository.
@@ -684,9 +678,7 @@ class Repositories(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.RepositoryOutput]
-            )
+            return utils.unmarshal_json(http_res.text, Optional[models.Repository])
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)

@@ -15,7 +15,7 @@ from pydantic.functional_validators import AfterValidator
 from typing_extensions import Annotated, TypedDict
 
 
-class RepositoryInputTypedDict(TypedDict):
+class RepositoryTypedDict(TypedDict):
     id: str
     is_private: bool
     name: str
@@ -29,7 +29,7 @@ class RepositoryInputTypedDict(TypedDict):
     platform: Platforms
 
 
-class RepositoryInput(BaseModel):
+class Repository(BaseModel):
     id: str
 
     is_private: bool

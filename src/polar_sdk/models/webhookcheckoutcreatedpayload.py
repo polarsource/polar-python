@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 from .polar_checkout_schemas_checkout import (
-    PolarCheckoutSchemasCheckout,
-    PolarCheckoutSchemasCheckoutTypedDict,
+    PolarCheckoutSchemasCheckoutInput,
+    PolarCheckoutSchemasCheckoutInputTypedDict,
 )
 from enum import Enum
 from polar_sdk.types import BaseModel
@@ -23,7 +23,7 @@ class WebhookCheckoutCreatedPayloadTypedDict(TypedDict):
     **Discord & Slack support:** Basic
     """
 
-    data: PolarCheckoutSchemasCheckoutTypedDict
+    data: PolarCheckoutSchemasCheckoutInputTypedDict
     r"""Checkout session data retrieved using an access token."""
     type: WebhookCheckoutCreatedPayloadType
 
@@ -34,7 +34,7 @@ class WebhookCheckoutCreatedPayload(BaseModel):
     **Discord & Slack support:** Basic
     """
 
-    data: PolarCheckoutSchemasCheckout
+    data: PolarCheckoutSchemasCheckoutInput
     r"""Checkout session data retrieved using an access token."""
 
     TYPE: Annotated[

@@ -12,10 +12,12 @@ class Products(BaseSDK):
     def list(
         self,
         *,
-        organization_id: Union[
-            models.ProductsListQueryParamOrganizationIDFilter,
-            models.ProductsListQueryParamOrganizationIDFilterTypedDict,
-        ],
+        organization_id: OptionalNullable[
+            Union[
+                models.ProductsListQueryParamOrganizationIDFilter,
+                models.ProductsListQueryParamOrganizationIDFilterTypedDict,
+            ]
+        ] = UNSET,
         query: OptionalNullable[str] = UNSET,
         is_archived: OptionalNullable[bool] = UNSET,
         is_recurring: OptionalNullable[bool] = UNSET,
@@ -36,7 +38,7 @@ class Products(BaseSDK):
 
         List products.
 
-        :param organization_id: Filter by organization ID.
+        :param organization_id: Filter by organization ID. **Required unless you use an organization token.**
         :param query: Filter by product name.
         :param is_archived: Filter on archived products.
         :param is_recurring: Filter on recurring products. If `true`, only subscriptions tiers are returned. If `false`, only one-time purchase products are returned.
@@ -160,10 +162,12 @@ class Products(BaseSDK):
     async def list_async(
         self,
         *,
-        organization_id: Union[
-            models.ProductsListQueryParamOrganizationIDFilter,
-            models.ProductsListQueryParamOrganizationIDFilterTypedDict,
-        ],
+        organization_id: OptionalNullable[
+            Union[
+                models.ProductsListQueryParamOrganizationIDFilter,
+                models.ProductsListQueryParamOrganizationIDFilterTypedDict,
+            ]
+        ] = UNSET,
         query: OptionalNullable[str] = UNSET,
         is_archived: OptionalNullable[bool] = UNSET,
         is_recurring: OptionalNullable[bool] = UNSET,
@@ -184,7 +188,7 @@ class Products(BaseSDK):
 
         List products.
 
-        :param organization_id: Filter by organization ID.
+        :param organization_id: Filter by organization ID. **Required unless you use an organization token.**
         :param query: Filter by product name.
         :param is_archived: Filter on archived products.
         :param is_recurring: Filter on recurring products. If `true`, only subscriptions tiers are returned. If `false`, only one-time purchase products are returned.
