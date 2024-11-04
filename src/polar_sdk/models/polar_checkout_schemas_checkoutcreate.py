@@ -19,7 +19,11 @@ class PaymentProcessor(str, Enum):
 
 
 class PolarCheckoutSchemasCheckoutCreateTypedDict(TypedDict):
-    r"""Create a new checkout session."""
+    r"""Create a new checkout session.
+
+    Metadata set on the checkout will be copied
+    to the resulting order and/or subscription.
+    """
 
     product_price_id: str
     r"""ID of the product price to checkout."""
@@ -38,12 +42,18 @@ class PolarCheckoutSchemasCheckoutCreateTypedDict(TypedDict):
     customer_ip_address: NotRequired[Nullable[str]]
     customer_billing_address: NotRequired[Nullable[AddressTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
+    subscription_id: NotRequired[Nullable[str]]
+    r"""ID of a subscription to upgrade. It must be on a free pricing. If checkout is successful, metadata set on this checkout will be copied to the subscription, and existing keys will be overwritten."""
     success_url: NotRequired[Nullable[str]]
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
 
 
 class PolarCheckoutSchemasCheckoutCreate(BaseModel):
-    r"""Create a new checkout session."""
+    r"""Create a new checkout session.
+
+    Metadata set on the checkout will be copied
+    to the resulting order and/or subscription.
+    """
 
     product_price_id: str
     r"""ID of the product price to checkout."""
@@ -76,6 +86,9 @@ class PolarCheckoutSchemasCheckoutCreate(BaseModel):
 
     customer_tax_id: OptionalNullable[str] = UNSET
 
+    subscription_id: OptionalNullable[str] = UNSET
+    r"""ID of a subscription to upgrade. It must be on a free pricing. If checkout is successful, metadata set on this checkout will be copied to the subscription, and existing keys will be overwritten."""
+
     success_url: OptionalNullable[str] = UNSET
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
 
@@ -89,6 +102,7 @@ class PolarCheckoutSchemasCheckoutCreate(BaseModel):
             "customer_ip_address",
             "customer_billing_address",
             "customer_tax_id",
+            "subscription_id",
             "success_url",
         ]
         nullable_fields = [
@@ -98,6 +112,7 @@ class PolarCheckoutSchemasCheckoutCreate(BaseModel):
             "customer_ip_address",
             "customer_billing_address",
             "customer_tax_id",
+            "subscription_id",
             "success_url",
         ]
         null_default_fields = []

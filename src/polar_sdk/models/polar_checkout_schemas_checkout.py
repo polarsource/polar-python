@@ -68,6 +68,7 @@ class PolarCheckoutSchemasCheckoutTypedDict(TypedDict):
     product: ProductTypedDict
     r"""A product."""
     product_price: ProductPriceTypedDict
+    subscription_id: Nullable[str]
     payment_processor: PolarEnumsPaymentProcessor
 
 
@@ -141,6 +142,8 @@ class PolarCheckoutSchemasCheckout(BaseModel):
 
     product_price: ProductPrice
 
+    subscription_id: Nullable[str]
+
     PAYMENT_PROCESSOR: Annotated[
         Annotated[
             PolarEnumsPaymentProcessor,
@@ -165,6 +168,7 @@ class PolarCheckoutSchemasCheckout(BaseModel):
             "customer_ip_address",
             "customer_billing_address",
             "customer_tax_id",
+            "subscription_id",
         ]
         null_default_fields = []
 
@@ -237,6 +241,7 @@ class PolarCheckoutSchemasCheckoutInputTypedDict(TypedDict):
     product: ProductInputTypedDict
     r"""A product."""
     product_price: ProductPriceTypedDict
+    subscription_id: Nullable[str]
     payment_processor: PolarEnumsPaymentProcessor
 
 
@@ -310,6 +315,8 @@ class PolarCheckoutSchemasCheckoutInput(BaseModel):
 
     product_price: ProductPrice
 
+    subscription_id: Nullable[str]
+
     PAYMENT_PROCESSOR: Annotated[
         Annotated[
             PolarEnumsPaymentProcessor,
@@ -334,6 +341,7 @@ class PolarCheckoutSchemasCheckoutInput(BaseModel):
             "customer_ip_address",
             "customer_billing_address",
             "customer_tax_id",
+            "subscription_id",
         ]
         null_default_fields = []
 
