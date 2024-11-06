@@ -38,6 +38,8 @@ class CheckoutUpdateTypedDict(TypedDict):
     customer_ip_address: NotRequired[Nullable[str]]
     success_url: NotRequired[Nullable[str]]
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
+    embed_origin: NotRequired[Nullable[str]]
+    r"""If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page."""
 
 
 class CheckoutUpdate(BaseModel):
@@ -72,6 +74,9 @@ class CheckoutUpdate(BaseModel):
     success_url: OptionalNullable[str] = UNSET
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
 
+    embed_origin: OptionalNullable[str] = UNSET
+    r"""If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -85,6 +90,7 @@ class CheckoutUpdate(BaseModel):
             "metadata",
             "customer_ip_address",
             "success_url",
+            "embed_origin",
         ]
         nullable_fields = [
             "custom_field_data",
@@ -97,6 +103,7 @@ class CheckoutUpdate(BaseModel):
             "metadata",
             "customer_ip_address",
             "success_url",
+            "embed_origin",
         ]
         null_default_fields = []
 

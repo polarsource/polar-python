@@ -58,6 +58,8 @@ class PolarCheckoutSchemasCheckoutCreateTypedDict(TypedDict):
     r"""ID of a subscription to upgrade. It must be on a free pricing. If checkout is successful, metadata set on this checkout will be copied to the subscription, and existing keys will be overwritten."""
     success_url: NotRequired[Nullable[str]]
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
+    embed_origin: NotRequired[Nullable[str]]
+    r"""If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page."""
 
 
 class PolarCheckoutSchemasCheckoutCreate(BaseModel):
@@ -109,6 +111,9 @@ class PolarCheckoutSchemasCheckoutCreate(BaseModel):
     success_url: OptionalNullable[str] = UNSET
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
 
+    embed_origin: OptionalNullable[str] = UNSET
+    r"""If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -122,6 +127,7 @@ class PolarCheckoutSchemasCheckoutCreate(BaseModel):
             "customer_tax_id",
             "subscription_id",
             "success_url",
+            "embed_origin",
         ]
         nullable_fields = [
             "amount",
@@ -132,6 +138,7 @@ class PolarCheckoutSchemasCheckoutCreate(BaseModel):
             "customer_tax_id",
             "subscription_id",
             "success_url",
+            "embed_origin",
         ]
         null_default_fields = []
 
