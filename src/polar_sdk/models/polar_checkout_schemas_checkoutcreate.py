@@ -12,6 +12,14 @@ from typing import Dict, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
+class PolarCheckoutSchemasCheckoutCreateCustomFieldDataTypedDict(TypedDict):
+    r"""Key-value object storing custom field values."""
+
+
+class PolarCheckoutSchemasCheckoutCreateCustomFieldData(BaseModel):
+    r"""Key-value object storing custom field values."""
+
+
 class PaymentProcessor(str, Enum):
     r"""Payment processor to use. Currently only Stripe is supported."""
 
@@ -34,6 +42,10 @@ class PolarCheckoutSchemasCheckoutCreateTypedDict(TypedDict):
     The value must be a string with a maximum length of **500 characters**.
     You can store up to **50 key-value pairs**.
     """
+    custom_field_data: NotRequired[
+        PolarCheckoutSchemasCheckoutCreateCustomFieldDataTypedDict
+    ]
+    r"""Key-value object storing custom field values."""
     payment_processor: PaymentProcessor
     r"""Payment processor to use. Currently only Stripe is supported."""
     amount: NotRequired[Nullable[int]]
@@ -66,6 +78,11 @@ class PolarCheckoutSchemasCheckoutCreate(BaseModel):
     You can store up to **50 key-value pairs**.
     """
 
+    custom_field_data: Optional[PolarCheckoutSchemasCheckoutCreateCustomFieldData] = (
+        None
+    )
+    r"""Key-value object storing custom field values."""
+
     PAYMENT_PROCESSOR: Annotated[
         Annotated[
             PaymentProcessor, AfterValidator(validate_const(PaymentProcessor.STRIPE))
@@ -96,6 +113,7 @@ class PolarCheckoutSchemasCheckoutCreate(BaseModel):
     def serialize_model(self, handler):
         optional_fields = [
             "metadata",
+            "custom_field_data",
             "amount",
             "customer_name",
             "customer_email",

@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .benefitarticles import BenefitArticles, BenefitArticlesTypedDict
 from .benefitbase import BenefitBase, BenefitBaseTypedDict
+from .organization import Organization, OrganizationTypedDict
 from .productmediafileread import ProductMediaFileRead, ProductMediaFileReadTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
@@ -38,11 +39,12 @@ class UserSubscriptionProductTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the product."""
     prices: List[ProductPriceTypedDict]
-    r"""List of available prices for this product."""
+    r"""List of prices for this product."""
     benefits: List[UserSubscriptionProductBenefitsTypedDict]
-    r"""The benefits granted by the product."""
+    r"""List of benefits granted by the product."""
     medias: List[ProductMediaFileReadTypedDict]
-    r"""The medias associated to the product."""
+    r"""List of medias associated to the product."""
+    organization: OrganizationTypedDict
 
 
 class UserSubscriptionProduct(BaseModel):
@@ -71,13 +73,15 @@ class UserSubscriptionProduct(BaseModel):
     r"""The ID of the organization owning the product."""
 
     prices: List[ProductPrice]
-    r"""List of available prices for this product."""
+    r"""List of prices for this product."""
 
     benefits: List[UserSubscriptionProductBenefits]
-    r"""The benefits granted by the product."""
+    r"""List of benefits granted by the product."""
 
     medias: List[ProductMediaFileRead]
-    r"""The medias associated to the product."""
+    r"""List of medias associated to the product."""
+
+    organization: Organization
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

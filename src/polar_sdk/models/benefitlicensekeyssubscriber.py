@@ -9,6 +9,7 @@ from .benefitlicensekeyssubscriberproperties import (
     BenefitLicenseKeysSubscriberProperties,
     BenefitLicenseKeysSubscriberPropertiesTypedDict,
 )
+from .organization import Organization, OrganizationTypedDict
 from datetime import datetime
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -39,8 +40,9 @@ class BenefitLicenseKeysSubscriberTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
-    properties: BenefitLicenseKeysSubscriberPropertiesTypedDict
     grants: List[BenefitGrantLicenseKeysTypedDict]
+    organization: OrganizationTypedDict
+    properties: BenefitLicenseKeysSubscriberPropertiesTypedDict
     type: BenefitLicenseKeysSubscriberType
 
 
@@ -66,9 +68,11 @@ class BenefitLicenseKeysSubscriber(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
 
-    properties: BenefitLicenseKeysSubscriberProperties
-
     grants: List[BenefitGrantLicenseKeys]
+
+    organization: Organization
+
+    properties: BenefitLicenseKeysSubscriberProperties
 
     TYPE: Annotated[
         Annotated[

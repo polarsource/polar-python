@@ -13,7 +13,6 @@ class Organizations(BaseSDK):
         self,
         *,
         slug: OptionalNullable[str] = UNSET,
-        is_member: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.OrganizationSortProperty]] = UNSET,
@@ -26,7 +25,6 @@ class Organizations(BaseSDK):
         List organizations.
 
         :param slug: Filter by slug.
-        :param is_member: Filter by membership. If `true`, only organizations the user is a member of are returned. If `false`, only organizations the user is not a member of are returned.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -44,7 +42,6 @@ class Organizations(BaseSDK):
 
         request = models.OrganizationsListRequest(
             slug=slug,
-            is_member=is_member,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -104,7 +101,6 @@ class Organizations(BaseSDK):
 
             return self.list(
                 slug=slug,
-                is_member=is_member,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -141,7 +137,6 @@ class Organizations(BaseSDK):
         self,
         *,
         slug: OptionalNullable[str] = UNSET,
-        is_member: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.OrganizationSortProperty]] = UNSET,
@@ -154,7 +149,6 @@ class Organizations(BaseSDK):
         List organizations.
 
         :param slug: Filter by slug.
-        :param is_member: Filter by membership. If `true`, only organizations the user is a member of are returned. If `false`, only organizations the user is not a member of are returned.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -172,7 +166,6 @@ class Organizations(BaseSDK):
 
         request = models.OrganizationsListRequest(
             slug=slug,
-            is_member=is_member,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -232,7 +225,6 @@ class Organizations(BaseSDK):
 
             return self.list(
                 slug=slug,
-                is_member=is_member,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,

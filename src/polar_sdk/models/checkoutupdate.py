@@ -8,9 +8,19 @@ from typing import Dict
 from typing_extensions import NotRequired, TypedDict
 
 
+class CustomFieldDataTypedDict(TypedDict):
+    pass
+
+
+class CustomFieldData(BaseModel):
+    pass
+
+
 class CheckoutUpdateTypedDict(TypedDict):
     r"""Update an existing checkout session using an access token."""
 
+    custom_field_data: NotRequired[Nullable[CustomFieldDataTypedDict]]
+    r"""Key-value object storing custom field values."""
     product_price_id: NotRequired[Nullable[str]]
     r"""ID of the product price to checkout. Must correspond to a price linked to the same product."""
     amount: NotRequired[Nullable[int]]
@@ -32,6 +42,9 @@ class CheckoutUpdateTypedDict(TypedDict):
 
 class CheckoutUpdate(BaseModel):
     r"""Update an existing checkout session using an access token."""
+
+    custom_field_data: OptionalNullable[CustomFieldData] = UNSET
+    r"""Key-value object storing custom field values."""
 
     product_price_id: OptionalNullable[str] = UNSET
     r"""ID of the product price to checkout. Must correspond to a price linked to the same product."""
@@ -62,6 +75,7 @@ class CheckoutUpdate(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "custom_field_data",
             "product_price_id",
             "amount",
             "customer_name",
@@ -73,6 +87,7 @@ class CheckoutUpdate(BaseModel):
             "success_url",
         ]
         nullable_fields = [
+            "custom_field_data",
             "product_price_id",
             "amount",
             "customer_name",

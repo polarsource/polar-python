@@ -36,11 +36,11 @@ from typing_extensions import Annotated, TypedDict
 
 UserBenefitTypedDict = Union[
     BenefitArticlesSubscriberTypedDict,
+    BenefitAdsSubscriberTypedDict,
     BenefitDiscordSubscriberTypedDict,
+    BenefitCustomSubscriberTypedDict,
     BenefitGitHubRepositorySubscriberTypedDict,
     BenefitDownloadablesSubscriberTypedDict,
-    BenefitAdsSubscriberTypedDict,
-    BenefitCustomSubscriberTypedDict,
     BenefitLicenseKeysSubscriberTypedDict,
 ]
 

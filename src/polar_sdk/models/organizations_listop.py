@@ -16,8 +16,6 @@ from typing_extensions import Annotated, NotRequired, TypedDict
 class OrganizationsListRequestTypedDict(TypedDict):
     slug: NotRequired[Nullable[str]]
     r"""Filter by slug."""
-    is_member: NotRequired[Nullable[bool]]
-    r"""Filter by membership. If `true`, only organizations the user is a member of are returned. If `false`, only organizations the user is not a member of are returned."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -32,12 +30,6 @@ class OrganizationsListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by slug."""
-
-    is_member: Annotated[
-        OptionalNullable[bool],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = UNSET
-    r"""Filter by membership. If `true`, only organizations the user is a member of are returned. If `false`, only organizations the user is not a member of are returned."""
 
     page: Annotated[
         Optional[int],
@@ -59,8 +51,8 @@ class OrganizationsListRequest(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["slug", "is_member", "page", "limit", "sorting"]
-        nullable_fields = ["slug", "is_member", "sorting"]
+        optional_fields = ["slug", "page", "limit", "sorting"]
+        nullable_fields = ["slug", "sorting"]
         null_default_fields = []
 
         serialized = handler(self)

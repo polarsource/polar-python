@@ -177,6 +177,36 @@ actions:
         - "lang": "python"
           "label": "update"
           "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.update(id=\"<value>\", checkout_update={})\n\nif res is not None:\n    # handle response\n    pass"
+  - target: $["paths"]["/v1/custom-fields/"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "list"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.custom_fields.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+  - target: $["paths"]["/v1/custom-fields/"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "create"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.custom_fields.create(request={\n    \"type\": polar_sdk.CustomFieldCreateNumberType.NUMBER,\n    \"slug\": \"<value>\",\n    \"name\": \"<value>\",\n    \"properties\": {},\n})\n\nif res is not None:\n    # handle response\n    pass"
+  - target: $["paths"]["/v1/custom-fields/{id}"]["delete"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "delete"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\ns.custom_fields.delete(id=\"<value>\")\n\n# Use the SDK ..."
+  - target: $["paths"]["/v1/custom-fields/{id}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "get"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.custom_fields.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+  - target: $["paths"]["/v1/custom-fields/{id}"]["patch"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "update"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.custom_fields.update(id=\"<value>\", custom_field_update={\n    \"type\": polar_sdk.CustomFieldUpdateTextType.TEXT,\n})\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/external_organizations/"]["get"]
     update:
       "x-codeSamples":

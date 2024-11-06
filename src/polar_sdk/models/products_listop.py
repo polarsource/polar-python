@@ -11,11 +11,11 @@ from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 ProductsListQueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]
-r"""Filter by organization ID. **Required unless you use an organization token.**"""
+r"""Filter by organization ID."""
 
 
 ProductsListQueryParamOrganizationIDFilter = Union[str, List[str]]
-r"""Filter by organization ID. **Required unless you use an organization token.**"""
+r"""Filter by organization ID."""
 
 
 QueryParamBenefitIDFilterTypedDict = Union[str, List[str]]
@@ -30,7 +30,7 @@ class ProductsListRequestTypedDict(TypedDict):
     organization_id: NotRequired[
         Nullable[ProductsListQueryParamOrganizationIDFilterTypedDict]
     ]
-    r"""Filter by organization ID. **Required unless you use an organization token.**"""
+    r"""Filter by organization ID."""
     query: NotRequired[Nullable[str]]
     r"""Filter by product name."""
     is_archived: NotRequired[Nullable[bool]]
@@ -52,7 +52,7 @@ class ProductsListRequest(BaseModel):
         OptionalNullable[ProductsListQueryParamOrganizationIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
-    r"""Filter by organization ID. **Required unless you use an organization token.**"""
+    r"""Filter by organization ID."""
 
     query: Annotated[
         OptionalNullable[str],
