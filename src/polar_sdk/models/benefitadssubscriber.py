@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .benefitadsproperties import BenefitAdsProperties, BenefitAdsPropertiesTypedDict
 from .benefitgrantads import BenefitGrantAds, BenefitGrantAdsTypedDict
+from .organization import Organization, OrganizationTypedDict
 from datetime import datetime
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -33,9 +34,10 @@ class BenefitAdsSubscriberTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
+    grants: List[BenefitGrantAdsTypedDict]
+    organization: OrganizationTypedDict
     properties: BenefitAdsPropertiesTypedDict
     r"""Properties for a benefit of type `ads`."""
-    grants: List[BenefitGrantAdsTypedDict]
     type: BenefitAdsSubscriberType
 
 
@@ -61,10 +63,12 @@ class BenefitAdsSubscriber(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
 
+    grants: List[BenefitGrantAds]
+
+    organization: Organization
+
     properties: BenefitAdsProperties
     r"""Properties for a benefit of type `ads`."""
-
-    grants: List[BenefitGrantAds]
 
     TYPE: Annotated[
         Annotated[

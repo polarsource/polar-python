@@ -7,9 +7,21 @@ from pydantic import model_serializer
 from typing_extensions import NotRequired, TypedDict
 
 
+class CheckoutConfirmStripeCustomFieldDataTypedDict(TypedDict):
+    pass
+
+
+class CheckoutConfirmStripeCustomFieldData(BaseModel):
+    pass
+
+
 class CheckoutConfirmStripeTypedDict(TypedDict):
     r"""Confirm a checkout session using a Stripe confirmation token."""
 
+    custom_field_data: NotRequired[
+        Nullable[CheckoutConfirmStripeCustomFieldDataTypedDict]
+    ]
+    r"""Key-value object storing custom field values."""
     product_price_id: NotRequired[Nullable[str]]
     r"""ID of the product price to checkout. Must correspond to a price linked to the same product."""
     amount: NotRequired[Nullable[int]]
@@ -23,6 +35,9 @@ class CheckoutConfirmStripeTypedDict(TypedDict):
 
 class CheckoutConfirmStripe(BaseModel):
     r"""Confirm a checkout session using a Stripe confirmation token."""
+
+    custom_field_data: OptionalNullable[CheckoutConfirmStripeCustomFieldData] = UNSET
+    r"""Key-value object storing custom field values."""
 
     product_price_id: OptionalNullable[str] = UNSET
     r"""ID of the product price to checkout. Must correspond to a price linked to the same product."""
@@ -43,6 +58,7 @@ class CheckoutConfirmStripe(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "custom_field_data",
             "product_price_id",
             "amount",
             "customer_name",
@@ -52,6 +68,7 @@ class CheckoutConfirmStripe(BaseModel):
             "confirmation_token_id",
         ]
         nullable_fields = [
+            "custom_field_data",
             "product_price_id",
             "amount",
             "customer_name",

@@ -9,8 +9,16 @@ from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict
-from typing_extensions import TypedDict
+from typing import Dict, Optional
+from typing_extensions import NotRequired, TypedDict
+
+
+class OrderCustomFieldDataTypedDict(TypedDict):
+    r"""Key-value object storing custom field values."""
+
+
+class OrderCustomFieldData(BaseModel):
+    r"""Key-value object storing custom field values."""
 
 
 class OrderTypedDict(TypedDict):
@@ -34,6 +42,8 @@ class OrderTypedDict(TypedDict):
     product: OrderProductTypedDict
     product_price: ProductPriceTypedDict
     subscription: Nullable[OrderSubscriptionTypedDict]
+    custom_field_data: NotRequired[OrderCustomFieldDataTypedDict]
+    r"""Key-value object storing custom field values."""
 
 
 class Order(BaseModel):
@@ -74,9 +84,12 @@ class Order(BaseModel):
 
     subscription: Nullable[OrderSubscription]
 
+    custom_field_data: Optional[OrderCustomFieldData] = None
+    r"""Key-value object storing custom field values."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["custom_field_data"]
         nullable_fields = [
             "modified_at",
             "subscription_id",

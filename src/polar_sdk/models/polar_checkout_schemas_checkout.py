@@ -2,9 +2,15 @@
 
 from __future__ import annotations
 from .address import Address, AddressTypedDict
+from .attachedcustomfield import AttachedCustomField, AttachedCustomFieldTypedDict
+from .checkoutproduct import (
+    CheckoutProduct,
+    CheckoutProductInput,
+    CheckoutProductInputTypedDict,
+    CheckoutProductTypedDict,
+)
 from .checkoutstatus import CheckoutStatus
 from .polar_enums_paymentprocessor import PolarEnumsPaymentProcessor
-from .product import Product, ProductInput, ProductInputTypedDict, ProductTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -12,8 +18,16 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict
-from typing_extensions import Annotated, TypedDict
+from typing import Dict, List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
+
+
+class PolarCheckoutSchemasCheckoutCustomFieldDataTypedDict(TypedDict):
+    r"""Key-value object storing custom field values."""
+
+
+class PolarCheckoutSchemasCheckoutCustomFieldData(BaseModel):
+    r"""Key-value object storing custom field values."""
 
 
 class PaymentProcessorMetadataTypedDict(TypedDict):
@@ -65,10 +79,13 @@ class PolarCheckoutSchemasCheckoutTypedDict(TypedDict):
     customer_tax_id: Nullable[str]
     payment_processor_metadata: PaymentProcessorMetadataTypedDict
     metadata: Dict[str, str]
-    product: ProductTypedDict
-    r"""A product."""
+    product: CheckoutProductTypedDict
+    r"""Product data for a checkout session."""
     product_price: ProductPriceTypedDict
     subscription_id: Nullable[str]
+    attached_custom_fields: List[AttachedCustomFieldTypedDict]
+    custom_field_data: NotRequired[PolarCheckoutSchemasCheckoutCustomFieldDataTypedDict]
+    r"""Key-value object storing custom field values."""
     payment_processor: PolarEnumsPaymentProcessor
 
 
@@ -137,12 +154,17 @@ class PolarCheckoutSchemasCheckout(BaseModel):
 
     metadata: Dict[str, str]
 
-    product: Product
-    r"""A product."""
+    product: CheckoutProduct
+    r"""Product data for a checkout session."""
 
     product_price: ProductPrice
 
     subscription_id: Nullable[str]
+
+    attached_custom_fields: List[AttachedCustomField]
+
+    custom_field_data: Optional[PolarCheckoutSchemasCheckoutCustomFieldData] = None
+    r"""Key-value object storing custom field values."""
 
     PAYMENT_PROCESSOR: Annotated[
         Annotated[
@@ -154,7 +176,7 @@ class PolarCheckoutSchemasCheckout(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["custom_field_data"]
         nullable_fields = [
             "modified_at",
             "embed_origin",
@@ -238,10 +260,13 @@ class PolarCheckoutSchemasCheckoutInputTypedDict(TypedDict):
     customer_tax_id: Nullable[str]
     payment_processor_metadata: PaymentProcessorMetadataTypedDict
     metadata: Dict[str, str]
-    product: ProductInputTypedDict
-    r"""A product."""
+    product: CheckoutProductInputTypedDict
+    r"""Product data for a checkout session."""
     product_price: ProductPriceTypedDict
     subscription_id: Nullable[str]
+    attached_custom_fields: List[AttachedCustomFieldTypedDict]
+    custom_field_data: NotRequired[PolarCheckoutSchemasCheckoutCustomFieldDataTypedDict]
+    r"""Key-value object storing custom field values."""
     payment_processor: PolarEnumsPaymentProcessor
 
 
@@ -310,12 +335,17 @@ class PolarCheckoutSchemasCheckoutInput(BaseModel):
 
     metadata: Dict[str, str]
 
-    product: ProductInput
-    r"""A product."""
+    product: CheckoutProductInput
+    r"""Product data for a checkout session."""
 
     product_price: ProductPrice
 
     subscription_id: Nullable[str]
+
+    attached_custom_fields: List[AttachedCustomField]
+
+    custom_field_data: Optional[PolarCheckoutSchemasCheckoutCustomFieldData] = None
+    r"""Key-value object storing custom field values."""
 
     PAYMENT_PROCESSOR: Annotated[
         Annotated[
@@ -327,7 +357,7 @@ class PolarCheckoutSchemasCheckoutInput(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["custom_field_data"]
         nullable_fields = [
             "modified_at",
             "embed_origin",

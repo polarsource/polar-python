@@ -13,6 +13,7 @@ from polar_sdk.articles import Articles
 from polar_sdk.benefits import Benefits
 from polar_sdk.checkout_links import CheckoutLinks
 from polar_sdk.checkouts import Checkouts
+from polar_sdk.custom_fields import CustomFields
 from polar_sdk.external_organizations import ExternalOrganizations
 from polar_sdk.files import Files
 from polar_sdk.license_keys import LicenseKeys
@@ -50,6 +51,7 @@ class Polar(BaseSDK):
     metrics: MetricsSDK
     license_keys: LicenseKeys
     checkout_links: CheckoutLinks
+    custom_fields: CustomFields
 
     def __init__(
         self,
@@ -146,3 +148,4 @@ class Polar(BaseSDK):
         self.metrics = MetricsSDK(self.sdk_configuration)
         self.license_keys = LicenseKeys(self.sdk_configuration)
         self.checkout_links = CheckoutLinks(self.sdk_configuration)
+        self.custom_fields = CustomFields(self.sdk_configuration)

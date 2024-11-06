@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .externalorganization import ExternalOrganization, ExternalOrganizationTypedDict
+from .organization import Organization, OrganizationTypedDict
 from .platforms import Platforms
 from .repositoryprofilesettings import (
     RepositoryProfileSettings,
@@ -26,6 +27,7 @@ class RepositoryTypedDict(TypedDict):
     profile_settings: Nullable[RepositoryProfileSettingsTypedDict]
     r"""Settings for the repository profile"""
     organization: ExternalOrganizationTypedDict
+    internal_organization: Nullable[OrganizationTypedDict]
     platform: Platforms
 
 
@@ -49,6 +51,8 @@ class Repository(BaseModel):
 
     organization: ExternalOrganization
 
+    internal_organization: Nullable[Organization]
+
     PLATFORM: Annotated[
         Annotated[Platforms, AfterValidator(validate_const(Platforms.GITHUB))],
         pydantic.Field(alias="platform"),
@@ -63,6 +67,7 @@ class Repository(BaseModel):
             "license",
             "homepage",
             "profile_settings",
+            "internal_organization",
         ]
         null_default_fields = []
 

@@ -143,6 +143,14 @@ asyncio.run(main())
 * [client_update](docs/sdks/custom/README.md#client_update) - Update Checkout Session from Client
 * [client_confirm](docs/sdks/custom/README.md#client_confirm) - Confirm Checkout Session from Client
 
+### [custom_fields](docs/sdks/customfields/README.md)
+
+* [list](docs/sdks/customfields/README.md#list) - List Custom Fields
+* [create](docs/sdks/customfields/README.md#create) - Create Custom Field
+* [get](docs/sdks/customfields/README.md#get) - Get Custom Field
+* [update](docs/sdks/customfields/README.md#update) - Update Custom Field
+* [delete](docs/sdks/customfields/README.md#delete) - Delete Custom Field
+
 ### [external_organizations](docs/sdks/externalorganizations/README.md)
 
 * [list](docs/sdks/externalorganizations/README.md#list) - List External Organizations

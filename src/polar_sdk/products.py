@@ -38,7 +38,7 @@ class Products(BaseSDK):
 
         List products.
 
-        :param organization_id: Filter by organization ID. **Required unless you use an organization token.**
+        :param organization_id: Filter by organization ID.
         :param query: Filter by product name.
         :param is_archived: Filter on archived products.
         :param is_recurring: Filter on recurring products. If `true`, only subscriptions tiers are returned. If `false`, only one-time purchase products are returned.
@@ -188,7 +188,7 @@ class Products(BaseSDK):
 
         List products.
 
-        :param organization_id: Filter by organization ID. **Required unless you use an organization token.**
+        :param organization_id: Filter by organization ID.
         :param query: Filter by product name.
         :param is_archived: Filter on archived products.
         :param is_recurring: Filter on recurring products. If `true`, only subscriptions tiers are returned. If `false`, only one-time purchase products are returned.

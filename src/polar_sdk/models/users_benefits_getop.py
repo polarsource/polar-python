@@ -47,11 +47,11 @@ class UsersBenefitsGetRequest(BaseModel):
 
 UsersBenefitsGetResponseUsersBenefitsGetTypedDict = Union[
     BenefitArticlesSubscriberTypedDict,
+    BenefitAdsSubscriberTypedDict,
     BenefitDiscordSubscriberTypedDict,
+    BenefitCustomSubscriberTypedDict,
     BenefitGitHubRepositorySubscriberTypedDict,
     BenefitDownloadablesSubscriberTypedDict,
-    BenefitAdsSubscriberTypedDict,
-    BenefitCustomSubscriberTypedDict,
     BenefitLicenseKeysSubscriberTypedDict,
 ]
 r"""Successful Response"""

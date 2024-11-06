@@ -1,4 +1,4 @@
-# ProductBenefits
+# CheckoutProductBenefits
 
 
 ## Supported Types

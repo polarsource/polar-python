@@ -9,6 +9,7 @@ from .benefitgrantsubscriber import (
     BenefitGrantSubscriber,
     BenefitGrantSubscriberTypedDict,
 )
+from .organization import Organization, OrganizationTypedDict
 from datetime import datetime
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -40,6 +41,7 @@ class BenefitCustomSubscriberTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     grants: List[BenefitGrantSubscriberTypedDict]
+    organization: OrganizationTypedDict
     properties: BenefitCustomSubscriberPropertiesTypedDict
     r"""Properties available to subscribers for a benefit of type `custom`."""
     type: BenefitCustomSubscriberType
@@ -68,6 +70,8 @@ class BenefitCustomSubscriber(BaseModel):
     r"""The ID of the organization owning the benefit."""
 
     grants: List[BenefitGrantSubscriber]
+
+    organization: Organization
 
     properties: BenefitCustomSubscriberProperties
     r"""Properties available to subscribers for a benefit of type `custom`."""
