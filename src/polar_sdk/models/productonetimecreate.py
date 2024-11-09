@@ -19,8 +19,14 @@ from .productpriceonetimefreecreate import (
 )
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import List, Optional, Union
+from typing import Dict, List, Optional, Union
 from typing_extensions import NotRequired, TypedDict
+
+
+ProductOneTimeCreateMetadataTypedDict = Union[str, int, bool]
+
+
+ProductOneTimeCreateMetadata = Union[str, int, bool]
 
 
 PricesTypedDict = Union[
@@ -44,6 +50,17 @@ class ProductOneTimeCreateTypedDict(TypedDict):
     r"""The name of the product."""
     prices: List[PricesTypedDict]
     r"""List of available prices for this product."""
+    metadata: NotRequired[Dict[str, ProductOneTimeCreateMetadataTypedDict]]
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
     description: NotRequired[Nullable[str]]
     r"""The description of the product."""
     medias: NotRequired[Nullable[List[str]]]
@@ -63,6 +80,18 @@ class ProductOneTimeCreate(BaseModel):
     prices: List[Prices]
     r"""List of available prices for this product."""
 
+    metadata: Optional[Dict[str, ProductOneTimeCreateMetadata]] = None
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
+
     description: OptionalNullable[str] = UNSET
     r"""The description of the product."""
 
@@ -78,6 +107,7 @@ class ProductOneTimeCreate(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "metadata",
             "description",
             "medias",
             "attached_custom_fields",
