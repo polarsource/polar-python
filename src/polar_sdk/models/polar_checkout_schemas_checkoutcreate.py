@@ -8,8 +8,14 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Optional
+from typing import Dict, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
+
+
+PolarCheckoutSchemasCheckoutCreateMetadataTypedDict = Union[str, int, bool]
+
+
+PolarCheckoutSchemasCheckoutCreateMetadata = Union[str, int, bool]
 
 
 class PolarCheckoutSchemasCheckoutCreateCustomFieldDataTypedDict(TypedDict):
@@ -35,11 +41,17 @@ class PolarCheckoutSchemasCheckoutCreateTypedDict(TypedDict):
 
     product_price_id: str
     r"""ID of the product price to checkout."""
-    metadata: NotRequired[Dict[str, str]]
+    metadata: NotRequired[
+        Dict[str, PolarCheckoutSchemasCheckoutCreateMetadataTypedDict]
+    ]
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
-    The value must be a string with a maximum length of **500 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
     You can store up to **50 key-value pairs**.
     """
     custom_field_data: NotRequired[
@@ -72,11 +84,15 @@ class PolarCheckoutSchemasCheckoutCreate(BaseModel):
     product_price_id: str
     r"""ID of the product price to checkout."""
 
-    metadata: Optional[Dict[str, str]] = None
+    metadata: Optional[Dict[str, PolarCheckoutSchemasCheckoutCreateMetadata]] = None
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
-    The value must be a string with a maximum length of **500 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
     You can store up to **50 key-value pairs**.
     """
 

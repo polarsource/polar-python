@@ -9,8 +9,14 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict
+from typing import Dict, Union
 from typing_extensions import Annotated, TypedDict
+
+
+CheckoutLinkMetadataTypedDict = Union[str, int, bool]
+
+
+CheckoutLinkMetadata = Union[str, int, bool]
 
 
 class CheckoutLinkTypedDict(TypedDict):
@@ -22,7 +28,7 @@ class CheckoutLinkTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
-    metadata: Dict[str, str]
+    metadata: Dict[str, CheckoutLinkMetadataTypedDict]
     client_secret: str
     r"""Client secret used to access the checkout link."""
     success_url: Nullable[str]
@@ -46,7 +52,7 @@ class CheckoutLink(BaseModel):
     id: str
     r"""The ID of the object."""
 
-    metadata: Dict[str, str]
+    metadata: Dict[str, CheckoutLinkMetadata]
 
     client_secret: str
     r"""Client secret used to access the checkout link."""

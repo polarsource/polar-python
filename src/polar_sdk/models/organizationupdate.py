@@ -25,7 +25,6 @@ class OrganizationUpdateTypedDict(TypedDict):
     pledge_minimum_amount: NotRequired[int]
     total_monthly_spending_limit: NotRequired[Nullable[int]]
     per_user_monthly_spending_limit: NotRequired[Nullable[int]]
-    donations_enabled: NotRequired[bool]
     profile_settings: NotRequired[Nullable[OrganizationProfileSettingsTypedDict]]
     feature_settings: NotRequired[Nullable[OrganizationFeatureSettingsTypedDict]]
 
@@ -49,8 +48,6 @@ class OrganizationUpdate(BaseModel):
 
     per_user_monthly_spending_limit: OptionalNullable[int] = UNSET
 
-    donations_enabled: Optional[bool] = False
-
     profile_settings: OptionalNullable[OrganizationProfileSettings] = UNSET
 
     feature_settings: OptionalNullable[OrganizationFeatureSettings] = UNSET
@@ -67,7 +64,6 @@ class OrganizationUpdate(BaseModel):
             "pledge_minimum_amount",
             "total_monthly_spending_limit",
             "per_user_monthly_spending_limit",
-            "donations_enabled",
             "profile_settings",
             "feature_settings",
         ]

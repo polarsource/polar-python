@@ -335,10 +335,10 @@ By default, an API error will raise a models.SDKError exception, which has the f
 
 When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `list_async` method may raise the following exceptions:
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                 | Status Code | Content Type     |
+| -------------------------- | ----------- | ---------------- |
+| models.HTTPValidationError | 422         | application/json |
+| models.SDKError            | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
@@ -377,10 +377,10 @@ except models.SDKError as e:
 
 You can override the default server globally by passing a server name to the `server: str` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
 
-| Name | Server | Variables |
-| ----- | ------ | --------- |
-| `production` | `https://api.polar.sh` | None |
-| `sandbox` | `https://sandbox-api.polar.sh` | None |
+| Name         | Server                         |
+| ------------ | ------------------------------ |
+| `production` | `https://api.polar.sh`         |
+| `sandbox`    | `https://sandbox-api.polar.sh` |
 
 #### Example
 
@@ -403,7 +403,6 @@ if res is not None:
             break
 
 ```
-
 
 ### Override Server URL Per-Client
 
@@ -517,9 +516,9 @@ s = Polar(async_client=CustomClient(httpx.AsyncClient()))
 
 This SDK supports the following security scheme globally:
 
-| Name           | Type           | Scheme         |
-| -------------- | -------------- | -------------- |
-| `access_token` | http           | HTTP Bearer    |
+| Name           | Type | Scheme      |
+| -------------- | ---- | ----------- |
+| `access_token` | http | HTTP Bearer |
 
 To authenticate with the API the `access_token` parameter must be set when initializing the SDK client instance. For example:
 ```python

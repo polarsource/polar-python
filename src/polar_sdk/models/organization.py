@@ -34,8 +34,6 @@ class OrganizationTypedDict(TypedDict):
     pledge_minimum_amount: int
     pledge_badge_show_amount: bool
     default_upfront_split_to_contributors: Nullable[int]
-    donations_enabled: bool
-    r"""If this organizations accepts donations"""
     profile_settings: Nullable[OrganizationProfileSettingsTypedDict]
     r"""Settings for the organization profile"""
     feature_settings: Nullable[OrganizationFeatureSettingsTypedDict]
@@ -75,9 +73,6 @@ class Organization(BaseModel):
     pledge_badge_show_amount: bool
 
     default_upfront_split_to_contributors: Nullable[int]
-
-    donations_enabled: bool
-    r"""If this organizations accepts donations"""
 
     profile_settings: Nullable[OrganizationProfileSettings]
     r"""Settings for the organization profile"""

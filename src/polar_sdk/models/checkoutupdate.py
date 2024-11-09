@@ -4,7 +4,7 @@ from __future__ import annotations
 from .address import Address, AddressTypedDict
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict
+from typing import Dict, Union
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -14,6 +14,12 @@ class CustomFieldDataTypedDict(TypedDict):
 
 class CustomFieldData(BaseModel):
     pass
+
+
+CheckoutUpdateMetadataTypedDict = Union[str, int, bool]
+
+
+CheckoutUpdateMetadata = Union[str, int, bool]
 
 
 class CheckoutUpdateTypedDict(TypedDict):
@@ -28,11 +34,15 @@ class CheckoutUpdateTypedDict(TypedDict):
     customer_email: NotRequired[Nullable[str]]
     customer_billing_address: NotRequired[Nullable[AddressTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
-    metadata: NotRequired[Nullable[Dict[str, str]]]
+    metadata: NotRequired[Nullable[Dict[str, CheckoutUpdateMetadataTypedDict]]]
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
-    The value must be a string with a maximum length of **500 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
     You can store up to **50 key-value pairs**.
     """
     customer_ip_address: NotRequired[Nullable[str]]
@@ -61,11 +71,15 @@ class CheckoutUpdate(BaseModel):
 
     customer_tax_id: OptionalNullable[str] = UNSET
 
-    metadata: OptionalNullable[Dict[str, str]] = UNSET
+    metadata: OptionalNullable[Dict[str, CheckoutUpdateMetadata]] = UNSET
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
-    The value must be a string with a maximum length of **500 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
     You can store up to **50 key-value pairs**.
     """
 

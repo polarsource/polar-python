@@ -9,8 +9,14 @@ from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict, Optional
+from typing import Dict, Optional, Union
 from typing_extensions import NotRequired, TypedDict
+
+
+OrderMetadataTypedDict = Union[str, int, bool]
+
+
+OrderMetadata = Union[str, int, bool]
 
 
 class OrderCustomFieldDataTypedDict(TypedDict):
@@ -28,7 +34,7 @@ class OrderTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
-    metadata: Dict[str, str]
+    metadata: Dict[str, OrderMetadataTypedDict]
     amount: int
     tax_amount: int
     currency: str
@@ -56,7 +62,7 @@ class Order(BaseModel):
     id: str
     r"""The ID of the object."""
 
-    metadata: Dict[str, str]
+    metadata: Dict[str, OrderMetadata]
 
     amount: int
 

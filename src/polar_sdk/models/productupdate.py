@@ -28,8 +28,14 @@ from .productpricerecurringfreecreate import (
 )
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import List, Union
+from typing import Dict, List, Union
 from typing_extensions import NotRequired, TypedDict
+
+
+ProductUpdateMetadataTypedDict = Union[str, int, bool]
+
+
+ProductUpdateMetadata = Union[str, int, bool]
 
 
 ProductUpdatePricesTypedDict = Union[
@@ -55,6 +61,17 @@ ProductUpdatePrices = Union[
 class ProductUpdateTypedDict(TypedDict):
     r"""Schema to update a product."""
 
+    metadata: NotRequired[Nullable[Dict[str, ProductUpdateMetadataTypedDict]]]
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
     name: NotRequired[Nullable[str]]
     description: NotRequired[Nullable[str]]
     r"""The description of the product."""
@@ -71,6 +88,18 @@ class ProductUpdateTypedDict(TypedDict):
 
 class ProductUpdate(BaseModel):
     r"""Schema to update a product."""
+
+    metadata: OptionalNullable[Dict[str, ProductUpdateMetadata]] = UNSET
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
 
     name: OptionalNullable[str] = UNSET
 
@@ -91,6 +120,7 @@ class ProductUpdate(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "metadata",
             "name",
             "description",
             "is_archived",
@@ -99,6 +129,7 @@ class ProductUpdate(BaseModel):
             "attached_custom_fields",
         ]
         nullable_fields = [
+            "metadata",
             "name",
             "description",
             "is_archived",

@@ -18,7 +18,7 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
@@ -36,6 +36,12 @@ class PaymentProcessorMetadataTypedDict(TypedDict):
 
 class PaymentProcessorMetadata(BaseModel):
     pass
+
+
+PolarCheckoutSchemasCheckoutMetadataTypedDict = Union[str, int, bool]
+
+
+PolarCheckoutSchemasCheckoutMetadata = Union[str, int, bool]
 
 
 class PolarCheckoutSchemasCheckoutTypedDict(TypedDict):
@@ -78,7 +84,7 @@ class PolarCheckoutSchemasCheckoutTypedDict(TypedDict):
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
     payment_processor_metadata: PaymentProcessorMetadataTypedDict
-    metadata: Dict[str, str]
+    metadata: Dict[str, PolarCheckoutSchemasCheckoutMetadataTypedDict]
     product: CheckoutProductTypedDict
     r"""Product data for a checkout session."""
     product_price: ProductPriceTypedDict
@@ -152,7 +158,7 @@ class PolarCheckoutSchemasCheckout(BaseModel):
 
     payment_processor_metadata: PaymentProcessorMetadata
 
-    metadata: Dict[str, str]
+    metadata: Dict[str, PolarCheckoutSchemasCheckoutMetadata]
 
     product: CheckoutProduct
     r"""Product data for a checkout session."""
@@ -259,7 +265,7 @@ class PolarCheckoutSchemasCheckoutInputTypedDict(TypedDict):
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
     payment_processor_metadata: PaymentProcessorMetadataTypedDict
-    metadata: Dict[str, str]
+    metadata: Dict[str, PolarCheckoutSchemasCheckoutMetadataTypedDict]
     product: CheckoutProductInputTypedDict
     r"""Product data for a checkout session."""
     product_price: ProductPriceTypedDict
@@ -333,7 +339,7 @@ class PolarCheckoutSchemasCheckoutInput(BaseModel):
 
     payment_processor_metadata: PaymentProcessorMetadata
 
-    metadata: Dict[str, str]
+    metadata: Dict[str, PolarCheckoutSchemasCheckoutMetadata]
 
     product: CheckoutProductInput
     r"""Product data for a checkout session."""

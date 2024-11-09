@@ -7,7 +7,6 @@ from .organizationfeaturesettings import (
 )
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -15,7 +14,6 @@ class OrganizationCreateTypedDict(TypedDict):
     name: str
     slug: str
     avatar_url: NotRequired[Nullable[str]]
-    donations_enabled: NotRequired[bool]
     feature_settings: NotRequired[Nullable[OrganizationFeatureSettingsTypedDict]]
 
 
@@ -26,13 +24,11 @@ class OrganizationCreate(BaseModel):
 
     avatar_url: OptionalNullable[str] = UNSET
 
-    donations_enabled: Optional[bool] = False
-
     feature_settings: OptionalNullable[OrganizationFeatureSettings] = UNSET
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["avatar_url", "donations_enabled", "feature_settings"]
+        optional_fields = ["avatar_url", "feature_settings"]
         nullable_fields = ["avatar_url", "feature_settings"]
         null_default_fields = []
 
