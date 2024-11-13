@@ -11,8 +11,14 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Optional
+from typing import Dict, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
+
+
+CustomFieldCreateDateMetadataTypedDict = Union[str, int, bool]
+
+
+CustomFieldCreateDateMetadata = Union[str, int, bool]
 
 
 class CustomFieldCreateDateType(str, Enum):
@@ -23,15 +29,19 @@ class CustomFieldCreateDateTypedDict(TypedDict):
     r"""Schema to create a custom field of type date."""
 
     slug: str
-    r"""Identifier of the custom field. It'll be used as key when storing the value. Must be unique across the organization."""
+    r"""Identifier of the custom field. It'll be used as key when storing the value. Must be unique across the organization.It can only contain ASCII letters, numbers and hyphens."""
     name: str
     r"""Name of the custom field."""
     properties: CustomFieldDatePropertiesTypedDict
-    metadata: NotRequired[Dict[str, str]]
+    metadata: NotRequired[Dict[str, CustomFieldCreateDateMetadataTypedDict]]
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
-    The value must be a string with a maximum length of **500 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
     You can store up to **50 key-value pairs**.
     """
     type: CustomFieldCreateDateType
@@ -43,18 +53,22 @@ class CustomFieldCreateDate(BaseModel):
     r"""Schema to create a custom field of type date."""
 
     slug: str
-    r"""Identifier of the custom field. It'll be used as key when storing the value. Must be unique across the organization."""
+    r"""Identifier of the custom field. It'll be used as key when storing the value. Must be unique across the organization.It can only contain ASCII letters, numbers and hyphens."""
 
     name: str
     r"""Name of the custom field."""
 
     properties: CustomFieldDateProperties
 
-    metadata: Optional[Dict[str, str]] = None
+    metadata: Optional[Dict[str, CustomFieldCreateDateMetadata]] = None
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
-    The value must be a string with a maximum length of **500 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
     You can store up to **50 key-value pairs**.
     """
 

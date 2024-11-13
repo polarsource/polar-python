@@ -3,18 +3,28 @@
 from __future__ import annotations
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict
+from typing import Dict, Union
 from typing_extensions import NotRequired, TypedDict
+
+
+CheckoutLinkUpdateMetadataTypedDict = Union[str, int, bool]
+
+
+CheckoutLinkUpdateMetadata = Union[str, int, bool]
 
 
 class CheckoutLinkUpdateTypedDict(TypedDict):
     r"""Schema to update an existing checkout link."""
 
-    metadata: NotRequired[Nullable[Dict[str, str]]]
+    metadata: NotRequired[Nullable[Dict[str, CheckoutLinkUpdateMetadataTypedDict]]]
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
-    The value must be a string with a maximum length of **500 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
     You can store up to **50 key-value pairs**.
     """
     success_url: NotRequired[Nullable[str]]
@@ -24,11 +34,15 @@ class CheckoutLinkUpdateTypedDict(TypedDict):
 class CheckoutLinkUpdate(BaseModel):
     r"""Schema to update an existing checkout link."""
 
-    metadata: OptionalNullable[Dict[str, str]] = UNSET
+    metadata: OptionalNullable[Dict[str, CheckoutLinkUpdateMetadata]] = UNSET
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
-    The value must be a string with a maximum length of **500 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
     You can store up to **50 key-value pairs**.
     """
 

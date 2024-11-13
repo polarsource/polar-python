@@ -8,8 +8,14 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Optional
+from typing import Dict, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
+
+
+PolarCheckoutSchemasCheckoutCreateMetadataTypedDict = Union[str, int, bool]
+
+
+PolarCheckoutSchemasCheckoutCreateMetadata = Union[str, int, bool]
 
 
 class PolarCheckoutSchemasCheckoutCreateCustomFieldDataTypedDict(TypedDict):
@@ -20,7 +26,7 @@ class PolarCheckoutSchemasCheckoutCreateCustomFieldData(BaseModel):
     r"""Key-value object storing custom field values."""
 
 
-class PaymentProcessor(str, Enum):
+class PolarCheckoutSchemasCheckoutCreatePaymentProcessor(str, Enum):
     r"""Payment processor to use. Currently only Stripe is supported."""
 
     STRIPE = "stripe"
@@ -35,18 +41,24 @@ class PolarCheckoutSchemasCheckoutCreateTypedDict(TypedDict):
 
     product_price_id: str
     r"""ID of the product price to checkout."""
-    metadata: NotRequired[Dict[str, str]]
+    metadata: NotRequired[
+        Dict[str, PolarCheckoutSchemasCheckoutCreateMetadataTypedDict]
+    ]
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
-    The value must be a string with a maximum length of **500 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
     You can store up to **50 key-value pairs**.
     """
     custom_field_data: NotRequired[
         PolarCheckoutSchemasCheckoutCreateCustomFieldDataTypedDict
     ]
     r"""Key-value object storing custom field values."""
-    payment_processor: PaymentProcessor
+    payment_processor: PolarCheckoutSchemasCheckoutCreatePaymentProcessor
     r"""Payment processor to use. Currently only Stripe is supported."""
     amount: NotRequired[Nullable[int]]
     customer_name: NotRequired[Nullable[str]]
@@ -72,11 +84,15 @@ class PolarCheckoutSchemasCheckoutCreate(BaseModel):
     product_price_id: str
     r"""ID of the product price to checkout."""
 
-    metadata: Optional[Dict[str, str]] = None
+    metadata: Optional[Dict[str, PolarCheckoutSchemasCheckoutCreateMetadata]] = None
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
-    The value must be a string with a maximum length of **500 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
     You can store up to **50 key-value pairs**.
     """
 
@@ -87,10 +103,15 @@ class PolarCheckoutSchemasCheckoutCreate(BaseModel):
 
     PAYMENT_PROCESSOR: Annotated[
         Annotated[
-            PaymentProcessor, AfterValidator(validate_const(PaymentProcessor.STRIPE))
+            PolarCheckoutSchemasCheckoutCreatePaymentProcessor,
+            AfterValidator(
+                validate_const(
+                    PolarCheckoutSchemasCheckoutCreatePaymentProcessor.STRIPE
+                )
+            ),
         ],
         pydantic.Field(alias="payment_processor"),
-    ] = PaymentProcessor.STRIPE
+    ] = PolarCheckoutSchemasCheckoutCreatePaymentProcessor.STRIPE
     r"""Payment processor to use. Currently only Stripe is supported."""
 
     amount: OptionalNullable[int] = UNSET
