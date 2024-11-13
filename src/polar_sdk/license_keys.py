@@ -18,6 +18,12 @@ class LicenseKeys(BaseSDK):
                 models.LicenseKeysListQueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
+        benefit_id: OptionalNullable[
+            Union[
+                models.LicenseKeysListQueryParamBenefitIDFilter,
+                models.LicenseKeysListQueryParamBenefitIDFilterTypedDict,
+            ]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -29,6 +35,7 @@ class LicenseKeys(BaseSDK):
         Get license keys connected to the given organization & filters.
 
         :param organization_id: Filter by organization ID.
+        :param benefit_id: Filter by benefit ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -45,6 +52,7 @@ class LicenseKeys(BaseSDK):
 
         request = models.LicenseKeysListRequest(
             organization_id=organization_id,
+            benefit_id=benefit_id,
             page=page,
             limit=limit,
         )
@@ -103,6 +111,7 @@ class LicenseKeys(BaseSDK):
 
             return self.list(
                 organization_id=organization_id,
+                benefit_id=benefit_id,
                 page=next_page,
                 limit=limit,
                 retries=retries,
@@ -149,6 +158,12 @@ class LicenseKeys(BaseSDK):
                 models.LicenseKeysListQueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
+        benefit_id: OptionalNullable[
+            Union[
+                models.LicenseKeysListQueryParamBenefitIDFilter,
+                models.LicenseKeysListQueryParamBenefitIDFilterTypedDict,
+            ]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -160,6 +175,7 @@ class LicenseKeys(BaseSDK):
         Get license keys connected to the given organization & filters.
 
         :param organization_id: Filter by organization ID.
+        :param benefit_id: Filter by benefit ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -176,6 +192,7 @@ class LicenseKeys(BaseSDK):
 
         request = models.LicenseKeysListRequest(
             organization_id=organization_id,
+            benefit_id=benefit_id,
             page=page,
             limit=limit,
         )
@@ -234,6 +251,7 @@ class LicenseKeys(BaseSDK):
 
             return self.list(
                 organization_id=organization_id,
+                benefit_id=benefit_id,
                 page=next_page,
                 limit=limit,
                 retries=retries,

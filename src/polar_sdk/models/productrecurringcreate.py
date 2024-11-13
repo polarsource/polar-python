@@ -15,8 +15,14 @@ from .productpricerecurringfreecreate import (
 )
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import List, Optional, Union
+from typing import Dict, List, Optional, Union
 from typing_extensions import NotRequired, TypedDict
+
+
+ProductRecurringCreateMetadataTypedDict = Union[str, int, bool]
+
+
+ProductRecurringCreateMetadata = Union[str, int, bool]
 
 
 ProductRecurringCreatePricesTypedDict = Union[
@@ -39,6 +45,17 @@ class ProductRecurringCreateTypedDict(TypedDict):
     r"""The name of the product."""
     prices: ProductRecurringCreatePricesTypedDict
     r"""List of available prices for this product."""
+    metadata: NotRequired[Dict[str, ProductRecurringCreateMetadataTypedDict]]
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
     description: NotRequired[Nullable[str]]
     r"""The description of the product."""
     medias: NotRequired[Nullable[List[str]]]
@@ -58,6 +75,18 @@ class ProductRecurringCreate(BaseModel):
     prices: ProductRecurringCreatePrices
     r"""List of available prices for this product."""
 
+    metadata: Optional[Dict[str, ProductRecurringCreateMetadata]] = None
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
+
     description: OptionalNullable[str] = UNSET
     r"""The description of the product."""
 
@@ -73,6 +102,7 @@ class ProductRecurringCreate(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "metadata",
             "description",
             "medias",
             "attached_custom_fields",

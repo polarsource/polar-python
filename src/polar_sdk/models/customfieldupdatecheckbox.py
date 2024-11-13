@@ -11,8 +11,14 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict
+from typing import Dict, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
+
+
+CustomFieldUpdateCheckboxMetadataTypedDict = Union[str, int, bool]
+
+
+CustomFieldUpdateCheckboxMetadata = Union[str, int, bool]
 
 
 class CustomFieldUpdateCheckboxType(str, Enum):
@@ -22,11 +28,17 @@ class CustomFieldUpdateCheckboxType(str, Enum):
 class CustomFieldUpdateCheckboxTypedDict(TypedDict):
     r"""Schema to update a custom field of type checkbox."""
 
-    metadata: NotRequired[Nullable[Dict[str, str]]]
+    metadata: NotRequired[
+        Nullable[Dict[str, CustomFieldUpdateCheckboxMetadataTypedDict]]
+    ]
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
-    The value must be a string with a maximum length of **500 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
     You can store up to **50 key-value pairs**.
     """
     name: NotRequired[Nullable[str]]
@@ -38,11 +50,15 @@ class CustomFieldUpdateCheckboxTypedDict(TypedDict):
 class CustomFieldUpdateCheckbox(BaseModel):
     r"""Schema to update a custom field of type checkbox."""
 
-    metadata: OptionalNullable[Dict[str, str]] = UNSET
+    metadata: OptionalNullable[Dict[str, CustomFieldUpdateCheckboxMetadata]] = UNSET
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
-    The value must be a string with a maximum length of **500 characters**.
+    The value must be either:
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
     You can store up to **50 key-value pairs**.
     """
 

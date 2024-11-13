@@ -76,7 +76,7 @@ s = Polar(
 
 res = s.checkouts.custom.create(request={
     "product_price_id": "<value>",
-    "payment_processor": polar_sdk.PaymentProcessor.STRIPE,
+    "payment_processor": polar_sdk.PolarCheckoutSchemasCheckoutCreatePaymentProcessor.STRIPE,
 })
 
 if res is not None:

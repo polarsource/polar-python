@@ -6,7 +6,7 @@ from .attachedcustomfield import AttachedCustomField, AttachedCustomFieldTypedDi
 from .checkoutproduct import CheckoutProduct, CheckoutProductTypedDict
 from .checkoutstatus import CheckoutStatus
 from .organization import Organization, OrganizationTypedDict
-from .polar_enums_paymentprocessor import PolarEnumsPaymentProcessor
+from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -81,7 +81,7 @@ class CheckoutPublicTypedDict(TypedDict):
     attached_custom_fields: List[AttachedCustomFieldTypedDict]
     custom_field_data: NotRequired[CheckoutPublicCustomFieldDataTypedDict]
     r"""Key-value object storing custom field values."""
-    payment_processor: PolarEnumsPaymentProcessor
+    payment_processor: PaymentProcessor
 
 
 class CheckoutPublic(BaseModel):
@@ -161,11 +161,10 @@ class CheckoutPublic(BaseModel):
 
     PAYMENT_PROCESSOR: Annotated[
         Annotated[
-            PolarEnumsPaymentProcessor,
-            AfterValidator(validate_const(PolarEnumsPaymentProcessor.STRIPE)),
+            PaymentProcessor, AfterValidator(validate_const(PaymentProcessor.STRIPE))
         ],
         pydantic.Field(alias="payment_processor"),
-    ] = PolarEnumsPaymentProcessor.STRIPE
+    ] = PaymentProcessor.STRIPE
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

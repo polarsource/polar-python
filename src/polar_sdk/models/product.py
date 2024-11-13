@@ -8,8 +8,14 @@ from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import List
+from typing import Dict, List, Union
 from typing_extensions import TypedDict
+
+
+ProductMetadataTypedDict = Union[str, int, bool]
+
+
+ProductMetadata = Union[str, int, bool]
 
 
 class ProductTypedDict(TypedDict):
@@ -31,6 +37,7 @@ class ProductTypedDict(TypedDict):
     r"""Whether the product is archived and no longer available."""
     organization_id: str
     r"""The ID of the organization owning the product."""
+    metadata: Dict[str, ProductMetadataTypedDict]
     prices: List[ProductPriceTypedDict]
     r"""List of prices for this product."""
     benefits: List[BenefitTypedDict]
@@ -67,6 +74,8 @@ class Product(BaseModel):
 
     organization_id: str
     r"""The ID of the organization owning the product."""
+
+    metadata: Dict[str, ProductMetadata]
 
     prices: List[ProductPrice]
     r"""List of prices for this product."""

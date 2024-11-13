@@ -12,8 +12,14 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict
+from typing import Dict, Union
 from typing_extensions import Annotated, TypedDict
+
+
+CustomFieldTextMetadataTypedDict = Union[str, int, bool]
+
+
+CustomFieldTextMetadata = Union[str, int, bool]
 
 
 class CustomFieldTextType(str, Enum):
@@ -29,9 +35,9 @@ class CustomFieldTextTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
-    metadata: Dict[str, str]
+    metadata: Dict[str, CustomFieldTextMetadataTypedDict]
     slug: str
-    r"""Identifier of the custom field. It'll be used as key when storing the value. Must be unique across the organization."""
+    r"""Identifier of the custom field. It'll be used as key when storing the value."""
     name: str
     r"""Name of the custom field."""
     organization_id: str
@@ -52,10 +58,10 @@ class CustomFieldText(BaseModel):
     id: str
     r"""The ID of the object."""
 
-    metadata: Dict[str, str]
+    metadata: Dict[str, CustomFieldTextMetadata]
 
     slug: str
-    r"""Identifier of the custom field. It'll be used as key when storing the value. Must be unique across the organization."""
+    r"""Identifier of the custom field. It'll be used as key when storing the value."""
 
     name: str
     r"""Name of the custom field."""

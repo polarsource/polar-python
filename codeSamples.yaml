@@ -146,7 +146,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.create(request={\n    \"payment_processor\": polar_sdk.PaymentProcessor.STRIPE,\n    \"product_price_id\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.create(request={\n    \"payment_processor\": polar_sdk.PolarCheckoutSchemasCheckoutCreatePaymentProcessor.STRIPE,\n    \"product_price_id\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/checkouts/custom/client/{client_secret}"]["get"]
     update:
       "x-codeSamples":
@@ -285,6 +285,12 @@ actions:
         - "lang": "python"
           "label": "list"
           "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.clients.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+  - target: $["paths"]["/v1/oauth2/authorize"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "authorize"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.authorize()\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/oauth2/introspect"]["post"]
     update:
       "x-codeSamples":

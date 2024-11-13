@@ -5,10 +5,48 @@
 
 ### Available Operations
 
+* [authorize](#authorize) - Authorize
 * [token](#token) - Request Token
 * [revoke](#revoke) - Revoke Token
 * [introspect](#introspect) - Introspect Token
 * [userinfo](#userinfo) - Get User Info
+
+## authorize
+
+Authorize
+
+### Example Usage
+
+```python
+from polar_sdk import Polar
+
+s = Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+)
+
+res = s.oauth2.authorize()
+
+if res is not None:
+    # handle response
+    pass
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.Oauth2AuthorizeResponseOauth2Authorize](../../models/oauth2authorizeresponseoauth2authorize.md)**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## token
 

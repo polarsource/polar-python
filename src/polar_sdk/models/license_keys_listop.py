@@ -20,11 +20,21 @@ LicenseKeysListQueryParamOrganizationIDFilter = Union[str, List[str]]
 r"""Filter by organization ID."""
 
 
+LicenseKeysListQueryParamBenefitIDFilterTypedDict = Union[str, List[str]]
+r"""Filter by benefit ID."""
+
+
+LicenseKeysListQueryParamBenefitIDFilter = Union[str, List[str]]
+r"""Filter by benefit ID."""
+
+
 class LicenseKeysListRequestTypedDict(TypedDict):
     organization_id: NotRequired[
         Nullable[LicenseKeysListQueryParamOrganizationIDFilterTypedDict]
     ]
     r"""Filter by organization ID."""
+    benefit_id: NotRequired[Nullable[LicenseKeysListQueryParamBenefitIDFilterTypedDict]]
+    r"""Filter by benefit ID."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -37,6 +47,12 @@ class LicenseKeysListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by organization ID."""
+
+    benefit_id: Annotated[
+        OptionalNullable[LicenseKeysListQueryParamBenefitIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by benefit ID."""
 
     page: Annotated[
         Optional[int],
@@ -52,8 +68,8 @@ class LicenseKeysListRequest(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["organization_id", "page", "limit"]
-        nullable_fields = ["organization_id"]
+        optional_fields = ["organization_id", "benefit_id", "page", "limit"]
+        nullable_fields = ["organization_id", "benefit_id"]
         null_default_fields = []
 
         serialized = handler(self)

@@ -6,12 +6,18 @@ from .subscriptionstatus import SubscriptionStatus
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict
+from typing import Dict, Union
 from typing_extensions import TypedDict
 
 
+OrderSubscriptionMetadataTypedDict = Union[str, int, bool]
+
+
+OrderSubscriptionMetadata = Union[str, int, bool]
+
+
 class OrderSubscriptionTypedDict(TypedDict):
-    metadata: Dict[str, str]
+    metadata: Dict[str, OrderSubscriptionMetadataTypedDict]
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
@@ -34,7 +40,7 @@ class OrderSubscriptionTypedDict(TypedDict):
 
 
 class OrderSubscription(BaseModel):
-    metadata: Dict[str, str]
+    metadata: Dict[str, OrderSubscriptionMetadata]
 
     created_at: datetime
     r"""Creation timestamp of the object."""

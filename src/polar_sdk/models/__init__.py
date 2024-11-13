@@ -56,8 +56,19 @@ from .attachedcustomfieldcreate import (
     AttachedCustomFieldCreateTypedDict,
 )
 from .author import Author, AuthorTypedDict
+from .authorizeorganization import AuthorizeOrganization, AuthorizeOrganizationTypedDict
+from .authorizeresponseorganization import (
+    AuthorizeResponseOrganization,
+    AuthorizeResponseOrganizationSubType,
+    AuthorizeResponseOrganizationTypedDict,
+)
+from .authorizeresponseuser import (
+    AuthorizeResponseUser,
+    AuthorizeResponseUserSubType,
+    AuthorizeResponseUserTypedDict,
+)
+from .authorizeuser import AuthorizeUser, AuthorizeUserTypedDict
 from .benefit import Benefit, BenefitTypedDict
-from .benefit_input import BenefitInput, BenefitInputTypedDict
 from .benefitads import BenefitAds, BenefitAdsType, BenefitAdsTypedDict
 from .benefitadscreate import (
     BenefitAdsCreate,
@@ -127,13 +138,7 @@ from .benefitcustomupdate import (
     BenefitCustomUpdateType,
     BenefitCustomUpdateTypedDict,
 )
-from .benefitdiscord import (
-    BenefitDiscord,
-    BenefitDiscordInput,
-    BenefitDiscordInputTypedDict,
-    BenefitDiscordType,
-    BenefitDiscordTypedDict,
-)
+from .benefitdiscord import BenefitDiscord, BenefitDiscordType, BenefitDiscordTypedDict
 from .benefitdiscordcreate import (
     BenefitDiscordCreate,
     BenefitDiscordCreateType,
@@ -146,10 +151,6 @@ from .benefitdiscordcreateproperties import (
 from .benefitdiscordproperties import (
     BenefitDiscordProperties,
     BenefitDiscordPropertiesTypedDict,
-)
-from .benefitdiscordproperties_input import (
-    BenefitDiscordPropertiesInput,
-    BenefitDiscordPropertiesInputTypedDict,
 )
 from .benefitdiscordsubscriber import (
     BenefitDiscordSubscriber,
@@ -386,20 +387,30 @@ from .checkoutconfirmstripe import (
     CheckoutConfirmStripeCustomFieldDataTypedDict,
     CheckoutConfirmStripeTypedDict,
 )
-from .checkoutlink import CheckoutLink, CheckoutLinkTypedDict
+from .checkoutlink import (
+    CheckoutLink,
+    CheckoutLinkMetadata,
+    CheckoutLinkMetadataTypedDict,
+    CheckoutLinkTypedDict,
+)
 from .checkoutlinkcreate import (
     CheckoutLinkCreate,
+    CheckoutLinkCreateMetadata,
+    CheckoutLinkCreateMetadataTypedDict,
     CheckoutLinkCreatePaymentProcessor,
     CheckoutLinkCreateTypedDict,
 )
 from .checkoutlinksortproperty import CheckoutLinkSortProperty
-from .checkoutlinkupdate import CheckoutLinkUpdate, CheckoutLinkUpdateTypedDict
+from .checkoutlinkupdate import (
+    CheckoutLinkUpdate,
+    CheckoutLinkUpdateMetadata,
+    CheckoutLinkUpdateMetadataTypedDict,
+    CheckoutLinkUpdateTypedDict,
+)
 from .checkoutproduct import (
     CheckoutProduct,
     CheckoutProductBenefits,
     CheckoutProductBenefitsTypedDict,
-    CheckoutProductInput,
-    CheckoutProductInputTypedDict,
     CheckoutProductTypedDict,
 )
 from .checkoutpublic import (
@@ -445,6 +456,8 @@ from .checkoutsortproperty import CheckoutSortProperty
 from .checkoutstatus import CheckoutStatus
 from .checkoutupdate import (
     CheckoutUpdate,
+    CheckoutUpdateMetadata,
+    CheckoutUpdateMetadataTypedDict,
     CheckoutUpdateTypedDict,
     CustomFieldData,
     CustomFieldDataTypedDict,
@@ -478,6 +491,8 @@ from .custom_fields_updateop import (
 from .customfield import CustomField, CustomFieldTypedDict
 from .customfieldcheckbox import (
     CustomFieldCheckbox,
+    CustomFieldCheckboxMetadata,
+    CustomFieldCheckboxMetadataTypedDict,
     CustomFieldCheckboxType,
     CustomFieldCheckboxTypedDict,
 )
@@ -488,31 +503,43 @@ from .customfieldcheckboxproperties import (
 from .customfieldcreate import CustomFieldCreate, CustomFieldCreateTypedDict
 from .customfieldcreatecheckbox import (
     CustomFieldCreateCheckbox,
+    CustomFieldCreateCheckboxMetadata,
+    CustomFieldCreateCheckboxMetadataTypedDict,
     CustomFieldCreateCheckboxType,
     CustomFieldCreateCheckboxTypedDict,
 )
 from .customfieldcreatedate import (
     CustomFieldCreateDate,
+    CustomFieldCreateDateMetadata,
+    CustomFieldCreateDateMetadataTypedDict,
     CustomFieldCreateDateType,
     CustomFieldCreateDateTypedDict,
 )
 from .customfieldcreatenumber import (
     CustomFieldCreateNumber,
+    CustomFieldCreateNumberMetadata,
+    CustomFieldCreateNumberMetadataTypedDict,
     CustomFieldCreateNumberType,
     CustomFieldCreateNumberTypedDict,
 )
 from .customfieldcreateselect import (
     CustomFieldCreateSelect,
+    CustomFieldCreateSelectMetadata,
+    CustomFieldCreateSelectMetadataTypedDict,
     CustomFieldCreateSelectType,
     CustomFieldCreateSelectTypedDict,
 )
 from .customfieldcreatetext import (
     CustomFieldCreateText,
+    CustomFieldCreateTextMetadata,
+    CustomFieldCreateTextMetadataTypedDict,
     CustomFieldCreateTextType,
     CustomFieldCreateTextTypedDict,
 )
 from .customfielddate import (
     CustomFieldDate,
+    CustomFieldDateMetadata,
+    CustomFieldDateMetadataTypedDict,
     CustomFieldDateType,
     CustomFieldDateTypedDict,
 )
@@ -522,6 +549,8 @@ from .customfielddateproperties import (
 )
 from .customfieldnumber import (
     CustomFieldNumber,
+    CustomFieldNumberMetadata,
+    CustomFieldNumberMetadataTypedDict,
     CustomFieldNumberType,
     CustomFieldNumberTypedDict,
 )
@@ -531,6 +560,8 @@ from .customfieldnumberproperties import (
 )
 from .customfieldselect import (
     CustomFieldSelect,
+    CustomFieldSelectMetadata,
+    CustomFieldSelectMetadataTypedDict,
     CustomFieldSelectType,
     CustomFieldSelectTypedDict,
 )
@@ -545,6 +576,8 @@ from .customfieldselectproperties import (
 from .customfieldsortproperty import CustomFieldSortProperty
 from .customfieldtext import (
     CustomFieldText,
+    CustomFieldTextMetadata,
+    CustomFieldTextMetadataTypedDict,
     CustomFieldTextType,
     CustomFieldTextTypedDict,
 )
@@ -556,32 +589,39 @@ from .customfieldtype import CustomFieldType
 from .customfieldupdate import CustomFieldUpdate, CustomFieldUpdateTypedDict
 from .customfieldupdatecheckbox import (
     CustomFieldUpdateCheckbox,
+    CustomFieldUpdateCheckboxMetadata,
+    CustomFieldUpdateCheckboxMetadataTypedDict,
     CustomFieldUpdateCheckboxType,
     CustomFieldUpdateCheckboxTypedDict,
 )
 from .customfieldupdatedate import (
     CustomFieldUpdateDate,
+    CustomFieldUpdateDateMetadata,
+    CustomFieldUpdateDateMetadataTypedDict,
     CustomFieldUpdateDateType,
     CustomFieldUpdateDateTypedDict,
 )
 from .customfieldupdatenumber import (
     CustomFieldUpdateNumber,
+    CustomFieldUpdateNumberMetadata,
+    CustomFieldUpdateNumberMetadataTypedDict,
     CustomFieldUpdateNumberType,
     CustomFieldUpdateNumberTypedDict,
 )
 from .customfieldupdateselect import (
     CustomFieldUpdateSelect,
+    CustomFieldUpdateSelectMetadata,
+    CustomFieldUpdateSelectMetadataTypedDict,
     CustomFieldUpdateSelectType,
     CustomFieldUpdateSelectTypedDict,
 )
 from .customfieldupdatetext import (
     CustomFieldUpdateText,
+    CustomFieldUpdateTextMetadata,
+    CustomFieldUpdateTextMetadataTypedDict,
     CustomFieldUpdateTextType,
     CustomFieldUpdateTextTypedDict,
 )
-from .donation import Donation, DonationTypedDict, Donor, DonorTypedDict
-from .donationorganization import DonationOrganization, DonationOrganizationTypedDict
-from .donationuser import DonationUser, DonationUserTypedDict
 from .downloadablefilecreate import (
     DownloadableFileCreate,
     DownloadableFileCreateService,
@@ -650,6 +690,8 @@ from .license_keys_get_activationop import (
 )
 from .license_keys_getop import LicenseKeysGetRequest, LicenseKeysGetRequestTypedDict
 from .license_keys_listop import (
+    LicenseKeysListQueryParamBenefitIDFilter,
+    LicenseKeysListQueryParamBenefitIDFilterTypedDict,
     LicenseKeysListQueryParamOrganizationIDFilter,
     LicenseKeysListQueryParamOrganizationIDFilterTypedDict,
     LicenseKeysListRequest,
@@ -784,6 +826,10 @@ from .metricslimits import MetricsLimits, MetricsLimitsTypedDict
 from .metricsresponse import MetricsResponse, MetricsResponseTypedDict
 from .metrictype import MetricType
 from .notpermitted import NotPermitted, NotPermittedData, NotPermittedType
+from .oauth2_authorizeop import (
+    Oauth2AuthorizeResponseOauth2Authorize,
+    Oauth2AuthorizeResponseOauth2AuthorizeTypedDict,
+)
 from .oauth2_clients_listop import (
     Oauth2ClientsListRequest,
     Oauth2ClientsListRequestTypedDict,
@@ -841,6 +887,7 @@ from .oauth2clientconfigurationupdate import (
     OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod,
     OAuth2ClientConfigurationUpdateTypedDict,
 )
+from .oauth2clientpublic import OAuth2ClientPublic, OAuth2ClientPublicTypedDict
 from .onev1_1oauth2_1token_post_x_components_authorizationcodetokenrequest import (
     GrantType,
     Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest,
@@ -855,6 +902,8 @@ from .order import (
     Order,
     OrderCustomFieldData,
     OrderCustomFieldDataTypedDict,
+    OrderMetadata,
+    OrderMetadataTypedDict,
     OrderTypedDict,
 )
 from .orderbillingreason import OrderBillingReason
@@ -877,7 +926,12 @@ from .orders_listop import (
     UserIDFilterTypedDict,
 )
 from .ordersortproperty import OrderSortProperty
-from .ordersubscription import OrderSubscription, OrderSubscriptionTypedDict
+from .ordersubscription import (
+    OrderSubscription,
+    OrderSubscriptionMetadata,
+    OrderSubscriptionMetadataTypedDict,
+    OrderSubscriptionTypedDict,
+)
 from .orderuser import OrderUser, OrderUserTypedDict
 from .organization import Organization, OrganizationTypedDict
 from .organizationavatarfilecreate import (
@@ -920,6 +974,7 @@ from .organizationsubscribepromotesettings import (
 )
 from .organizationupdate import OrganizationUpdate, OrganizationUpdateTypedDict
 from .pagination import Pagination, PaginationTypedDict
+from .paymentprocessor import PaymentProcessor
 from .platforms import Platforms
 from .pledge import Pledge, PledgeTypedDict
 from .pledger import Pledger, PledgerTypedDict
@@ -939,20 +994,25 @@ from .polar_checkout_schemas_checkout import (
     PolarCheckoutSchemasCheckout,
     PolarCheckoutSchemasCheckoutCustomFieldData,
     PolarCheckoutSchemasCheckoutCustomFieldDataTypedDict,
-    PolarCheckoutSchemasCheckoutInput,
-    PolarCheckoutSchemasCheckoutInputTypedDict,
+    PolarCheckoutSchemasCheckoutMetadata,
+    PolarCheckoutSchemasCheckoutMetadataTypedDict,
     PolarCheckoutSchemasCheckoutTypedDict,
 )
 from .polar_checkout_schemas_checkoutcreate import (
-    PaymentProcessor,
     PolarCheckoutSchemasCheckoutCreate,
     PolarCheckoutSchemasCheckoutCreateCustomFieldData,
     PolarCheckoutSchemasCheckoutCreateCustomFieldDataTypedDict,
+    PolarCheckoutSchemasCheckoutCreateMetadata,
+    PolarCheckoutSchemasCheckoutCreateMetadataTypedDict,
+    PolarCheckoutSchemasCheckoutCreatePaymentProcessor,
     PolarCheckoutSchemasCheckoutCreateTypedDict,
 )
-from .polar_enums_paymentprocessor import PolarEnumsPaymentProcessor
-from .product import Product, ProductTypedDict
-from .product_input import ProductInput, ProductInputTypedDict
+from .product import (
+    Product,
+    ProductMetadata,
+    ProductMetadataTypedDict,
+    ProductTypedDict,
+)
 from .productbenefitsupdate import ProductBenefitsUpdate, ProductBenefitsUpdateTypedDict
 from .productmediafilecreate import (
     ProductMediaFileCreate,
@@ -961,8 +1021,6 @@ from .productmediafilecreate import (
 )
 from .productmediafileread import (
     ProductMediaFileRead,
-    ProductMediaFileReadInput,
-    ProductMediaFileReadInputTypedDict,
     ProductMediaFileReadTypedDict,
     Service,
 )
@@ -970,6 +1028,8 @@ from .productonetimecreate import (
     Prices,
     PricesTypedDict,
     ProductOneTimeCreate,
+    ProductOneTimeCreateMetadata,
+    ProductOneTimeCreateMetadataTypedDict,
     ProductOneTimeCreateTypedDict,
 )
 from .productprice import ProductPrice, ProductPriceTypedDict
@@ -1044,6 +1104,8 @@ from .productpricerecurringfreecreate import (
 from .productpricetype import ProductPriceType
 from .productrecurringcreate import (
     ProductRecurringCreate,
+    ProductRecurringCreateMetadata,
+    ProductRecurringCreateMetadataTypedDict,
     ProductRecurringCreatePrices,
     ProductRecurringCreatePricesTypedDict,
     ProductRecurringCreateTypedDict,
@@ -1071,6 +1133,8 @@ from .products_updateop import ProductsUpdateRequest, ProductsUpdateRequestTyped
 from .productsortproperty import ProductSortProperty
 from .productupdate import (
     ProductUpdate,
+    ProductUpdateMetadata,
+    ProductUpdateMetadataTypedDict,
     ProductUpdatePrices,
     ProductUpdatePricesTypedDict,
     ProductUpdateTypedDict,
@@ -1121,15 +1185,16 @@ from .s3fileuploadcompletedpart import (
 )
 from .s3fileuploadmultipart import S3FileUploadMultipart, S3FileUploadMultipartTypedDict
 from .s3fileuploadpart import S3FileUploadPart, S3FileUploadPartTypedDict
+from .scope import Scope
 from .sdkerror import SDKError
 from .security import Security, SecurityTypedDict
 from .state import State
 from .subscription import (
+    Metadata,
+    MetadataTypedDict,
     Subscription,
     SubscriptionCustomFieldData,
     SubscriptionCustomFieldDataTypedDict,
-    SubscriptionInput,
-    SubscriptionInputTypedDict,
     SubscriptionTypedDict,
 )
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
@@ -1348,11 +1413,6 @@ from .webhookcheckoutupdatedpayload import (
     WebhookCheckoutUpdatedPayloadType,
     WebhookCheckoutUpdatedPayloadTypedDict,
 )
-from .webhookdonationcreatedpayload import (
-    WebhookDonationCreatedPayload,
-    WebhookDonationCreatedPayloadType,
-    WebhookDonationCreatedPayloadTypedDict,
-)
 from .webhookordercreatedpayload import (
     WebhookOrderCreatedPayload,
     WebhookOrderCreatedPayloadType,
@@ -1469,6 +1529,16 @@ __all__ = [
     "AttachedCustomFieldTypedDict",
     "Author",
     "AuthorTypedDict",
+    "AuthorizeOrganization",
+    "AuthorizeOrganizationTypedDict",
+    "AuthorizeResponseOrganization",
+    "AuthorizeResponseOrganizationSubType",
+    "AuthorizeResponseOrganizationTypedDict",
+    "AuthorizeResponseUser",
+    "AuthorizeResponseUserSubType",
+    "AuthorizeResponseUserTypedDict",
+    "AuthorizeUser",
+    "AuthorizeUserTypedDict",
     "Benefit",
     "BenefitAds",
     "BenefitAdsCreate",
@@ -1522,11 +1592,7 @@ __all__ = [
     "BenefitDiscordCreatePropertiesTypedDict",
     "BenefitDiscordCreateType",
     "BenefitDiscordCreateTypedDict",
-    "BenefitDiscordInput",
-    "BenefitDiscordInputTypedDict",
     "BenefitDiscordProperties",
-    "BenefitDiscordPropertiesInput",
-    "BenefitDiscordPropertiesInputTypedDict",
     "BenefitDiscordPropertiesTypedDict",
     "BenefitDiscordSubscriber",
     "BenefitDiscordSubscriberProperties",
@@ -1606,8 +1672,6 @@ __all__ = [
     "BenefitGrantWebhookTypedDict",
     "BenefitIDFilter",
     "BenefitIDFilterTypedDict",
-    "BenefitInput",
-    "BenefitInputTypedDict",
     "BenefitLicenseKeyActivationProperties",
     "BenefitLicenseKeyActivationPropertiesTypedDict",
     "BenefitLicenseKeyExpirationProperties",
@@ -1664,11 +1728,17 @@ __all__ = [
     "CheckoutConfirmStripeTypedDict",
     "CheckoutLink",
     "CheckoutLinkCreate",
+    "CheckoutLinkCreateMetadata",
+    "CheckoutLinkCreateMetadataTypedDict",
     "CheckoutLinkCreatePaymentProcessor",
     "CheckoutLinkCreateTypedDict",
+    "CheckoutLinkMetadata",
+    "CheckoutLinkMetadataTypedDict",
     "CheckoutLinkSortProperty",
     "CheckoutLinkTypedDict",
     "CheckoutLinkUpdate",
+    "CheckoutLinkUpdateMetadata",
+    "CheckoutLinkUpdateMetadataTypedDict",
     "CheckoutLinkUpdateTypedDict",
     "CheckoutLinksDeleteRequest",
     "CheckoutLinksDeleteRequestTypedDict",
@@ -1687,8 +1757,6 @@ __all__ = [
     "CheckoutProduct",
     "CheckoutProductBenefits",
     "CheckoutProductBenefitsTypedDict",
-    "CheckoutProductInput",
-    "CheckoutProductInputTypedDict",
     "CheckoutProductTypedDict",
     "CheckoutPublic",
     "CheckoutPublicCustomFieldData",
@@ -1699,6 +1767,8 @@ __all__ = [
     "CheckoutSortProperty",
     "CheckoutStatus",
     "CheckoutUpdate",
+    "CheckoutUpdateMetadata",
+    "CheckoutUpdateMetadataTypedDict",
     "CheckoutUpdatePublic",
     "CheckoutUpdatePublicCustomFieldData",
     "CheckoutUpdatePublicCustomFieldDataTypedDict",
@@ -1730,40 +1800,58 @@ __all__ = [
     "CurrencyAmountTypedDict",
     "CustomField",
     "CustomFieldCheckbox",
+    "CustomFieldCheckboxMetadata",
+    "CustomFieldCheckboxMetadataTypedDict",
     "CustomFieldCheckboxProperties",
     "CustomFieldCheckboxPropertiesTypedDict",
     "CustomFieldCheckboxType",
     "CustomFieldCheckboxTypedDict",
     "CustomFieldCreate",
     "CustomFieldCreateCheckbox",
+    "CustomFieldCreateCheckboxMetadata",
+    "CustomFieldCreateCheckboxMetadataTypedDict",
     "CustomFieldCreateCheckboxType",
     "CustomFieldCreateCheckboxTypedDict",
     "CustomFieldCreateDate",
+    "CustomFieldCreateDateMetadata",
+    "CustomFieldCreateDateMetadataTypedDict",
     "CustomFieldCreateDateType",
     "CustomFieldCreateDateTypedDict",
     "CustomFieldCreateNumber",
+    "CustomFieldCreateNumberMetadata",
+    "CustomFieldCreateNumberMetadataTypedDict",
     "CustomFieldCreateNumberType",
     "CustomFieldCreateNumberTypedDict",
     "CustomFieldCreateSelect",
+    "CustomFieldCreateSelectMetadata",
+    "CustomFieldCreateSelectMetadataTypedDict",
     "CustomFieldCreateSelectType",
     "CustomFieldCreateSelectTypedDict",
     "CustomFieldCreateText",
+    "CustomFieldCreateTextMetadata",
+    "CustomFieldCreateTextMetadataTypedDict",
     "CustomFieldCreateTextType",
     "CustomFieldCreateTextTypedDict",
     "CustomFieldCreateTypedDict",
     "CustomFieldData",
     "CustomFieldDataTypedDict",
     "CustomFieldDate",
+    "CustomFieldDateMetadata",
+    "CustomFieldDateMetadataTypedDict",
     "CustomFieldDateProperties",
     "CustomFieldDatePropertiesTypedDict",
     "CustomFieldDateType",
     "CustomFieldDateTypedDict",
     "CustomFieldNumber",
+    "CustomFieldNumberMetadata",
+    "CustomFieldNumberMetadataTypedDict",
     "CustomFieldNumberProperties",
     "CustomFieldNumberPropertiesTypedDict",
     "CustomFieldNumberType",
     "CustomFieldNumberTypedDict",
     "CustomFieldSelect",
+    "CustomFieldSelectMetadata",
+    "CustomFieldSelectMetadataTypedDict",
     "CustomFieldSelectOption",
     "CustomFieldSelectOptionTypedDict",
     "CustomFieldSelectProperties",
@@ -1772,6 +1860,8 @@ __all__ = [
     "CustomFieldSelectTypedDict",
     "CustomFieldSortProperty",
     "CustomFieldText",
+    "CustomFieldTextMetadata",
+    "CustomFieldTextMetadataTypedDict",
     "CustomFieldTextProperties",
     "CustomFieldTextPropertiesTypedDict",
     "CustomFieldTextType",
@@ -1782,18 +1872,28 @@ __all__ = [
     "CustomFieldTypedDict",
     "CustomFieldUpdate",
     "CustomFieldUpdateCheckbox",
+    "CustomFieldUpdateCheckboxMetadata",
+    "CustomFieldUpdateCheckboxMetadataTypedDict",
     "CustomFieldUpdateCheckboxType",
     "CustomFieldUpdateCheckboxTypedDict",
     "CustomFieldUpdateDate",
+    "CustomFieldUpdateDateMetadata",
+    "CustomFieldUpdateDateMetadataTypedDict",
     "CustomFieldUpdateDateType",
     "CustomFieldUpdateDateTypedDict",
     "CustomFieldUpdateNumber",
+    "CustomFieldUpdateNumberMetadata",
+    "CustomFieldUpdateNumberMetadataTypedDict",
     "CustomFieldUpdateNumberType",
     "CustomFieldUpdateNumberTypedDict",
     "CustomFieldUpdateSelect",
+    "CustomFieldUpdateSelectMetadata",
+    "CustomFieldUpdateSelectMetadataTypedDict",
     "CustomFieldUpdateSelectType",
     "CustomFieldUpdateSelectTypedDict",
     "CustomFieldUpdateText",
+    "CustomFieldUpdateTextMetadata",
+    "CustomFieldUpdateTextMetadataTypedDict",
     "CustomFieldUpdateTextType",
     "CustomFieldUpdateTextTypedDict",
     "CustomFieldUpdateTypedDict",
@@ -1809,14 +1909,6 @@ __all__ = [
     "CustomFieldsListResponseTypedDict",
     "CustomFieldsUpdateRequest",
     "CustomFieldsUpdateRequestTypedDict",
-    "Donation",
-    "DonationOrganization",
-    "DonationOrganizationTypedDict",
-    "DonationTypedDict",
-    "DonationUser",
-    "DonationUserTypedDict",
-    "Donor",
-    "DonorTypedDict",
     "DownloadableFileCreate",
     "DownloadableFileCreateService",
     "DownloadableFileCreateTypedDict",
@@ -1911,6 +2003,8 @@ __all__ = [
     "LicenseKeysGetActivationRequestTypedDict",
     "LicenseKeysGetRequest",
     "LicenseKeysGetRequestTypedDict",
+    "LicenseKeysListQueryParamBenefitIDFilter",
+    "LicenseKeysListQueryParamBenefitIDFilterTypedDict",
     "LicenseKeysListQueryParamOrganizationIDFilter",
     "LicenseKeysListQueryParamOrganizationIDFilterTypedDict",
     "LicenseKeysListRequest",
@@ -1963,6 +2057,8 @@ __all__ = [
     "LocTypedDict",
     "Meta",
     "MetaTypedDict",
+    "Metadata",
+    "MetadataTypedDict",
     "Metric",
     "MetricPeriod",
     "MetricPeriodTypedDict",
@@ -2000,7 +2096,11 @@ __all__ = [
     "OAuth2ClientConfigurationUpdateResponseTypes",
     "OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod",
     "OAuth2ClientConfigurationUpdateTypedDict",
+    "OAuth2ClientPublic",
+    "OAuth2ClientPublicTypedDict",
     "OAuth2ClientTypedDict",
+    "Oauth2AuthorizeResponseOauth2Authorize",
+    "Oauth2AuthorizeResponseOauth2AuthorizeTypedDict",
     "Oauth2ClientsListRequest",
     "Oauth2ClientsListRequestTypedDict",
     "Oauth2ClientsListResponse",
@@ -2033,10 +2133,14 @@ __all__ = [
     "OrderIDFilterTypedDict",
     "OrderInvoice",
     "OrderInvoiceTypedDict",
+    "OrderMetadata",
+    "OrderMetadataTypedDict",
     "OrderProduct",
     "OrderProductTypedDict",
     "OrderSortProperty",
     "OrderSubscription",
+    "OrderSubscriptionMetadata",
+    "OrderSubscriptionMetadataTypedDict",
     "OrderSubscriptionTypedDict",
     "OrderTypedDict",
     "OrderUser",
@@ -2107,13 +2211,15 @@ __all__ = [
     "PolarCheckoutSchemasCheckoutCreate",
     "PolarCheckoutSchemasCheckoutCreateCustomFieldData",
     "PolarCheckoutSchemasCheckoutCreateCustomFieldDataTypedDict",
+    "PolarCheckoutSchemasCheckoutCreateMetadata",
+    "PolarCheckoutSchemasCheckoutCreateMetadataTypedDict",
+    "PolarCheckoutSchemasCheckoutCreatePaymentProcessor",
     "PolarCheckoutSchemasCheckoutCreateTypedDict",
     "PolarCheckoutSchemasCheckoutCustomFieldData",
     "PolarCheckoutSchemasCheckoutCustomFieldDataTypedDict",
-    "PolarCheckoutSchemasCheckoutInput",
-    "PolarCheckoutSchemasCheckoutInputTypedDict",
+    "PolarCheckoutSchemasCheckoutMetadata",
+    "PolarCheckoutSchemasCheckoutMetadataTypedDict",
     "PolarCheckoutSchemasCheckoutTypedDict",
-    "PolarEnumsPaymentProcessor",
     "PreviousProperties",
     "PreviousPropertiesTypedDict",
     "Prices",
@@ -2123,16 +2229,16 @@ __all__ = [
     "ProductBenefitsUpdateTypedDict",
     "ProductIDFilter",
     "ProductIDFilterTypedDict",
-    "ProductInput",
-    "ProductInputTypedDict",
     "ProductMediaFileCreate",
     "ProductMediaFileCreateService",
     "ProductMediaFileCreateTypedDict",
     "ProductMediaFileRead",
-    "ProductMediaFileReadInput",
-    "ProductMediaFileReadInputTypedDict",
     "ProductMediaFileReadTypedDict",
+    "ProductMetadata",
+    "ProductMetadataTypedDict",
     "ProductOneTimeCreate",
+    "ProductOneTimeCreateMetadata",
+    "ProductOneTimeCreateMetadataTypedDict",
     "ProductOneTimeCreateTypedDict",
     "ProductPrice",
     "ProductPriceOneTime",
@@ -2187,12 +2293,16 @@ __all__ = [
     "ProductPriceTypeFilterTypedDict",
     "ProductPriceTypedDict",
     "ProductRecurringCreate",
+    "ProductRecurringCreateMetadata",
+    "ProductRecurringCreateMetadataTypedDict",
     "ProductRecurringCreatePrices",
     "ProductRecurringCreatePricesTypedDict",
     "ProductRecurringCreateTypedDict",
     "ProductSortProperty",
     "ProductTypedDict",
     "ProductUpdate",
+    "ProductUpdateMetadata",
+    "ProductUpdateMetadataTypedDict",
     "ProductUpdatePrices",
     "ProductUpdatePricesTypedDict",
     "ProductUpdateTypedDict",
@@ -2270,6 +2380,7 @@ __all__ = [
     "S3FileUploadPart",
     "S3FileUploadPartTypedDict",
     "SDKError",
+    "Scope",
     "Security",
     "SecurityTypedDict",
     "Service",
@@ -2280,8 +2391,6 @@ __all__ = [
     "SubscriptionCustomFieldDataTypedDict",
     "SubscriptionIDFilter",
     "SubscriptionIDFilterTypedDict",
-    "SubscriptionInput",
-    "SubscriptionInputTypedDict",
     "SubscriptionRecurringInterval",
     "SubscriptionSortProperty",
     "SubscriptionStatus",
@@ -2425,9 +2534,6 @@ __all__ = [
     "WebhookCheckoutUpdatedPayload",
     "WebhookCheckoutUpdatedPayloadType",
     "WebhookCheckoutUpdatedPayloadTypedDict",
-    "WebhookDonationCreatedPayload",
-    "WebhookDonationCreatedPayloadType",
-    "WebhookDonationCreatedPayloadTypedDict",
     "WebhookOrderCreatedPayload",
     "WebhookOrderCreatedPayloadType",
     "WebhookOrderCreatedPayloadTypedDict",
