@@ -260,9 +260,7 @@ class Files(BaseSDK):
     def create(
         self,
         *,
-        request: Union[
-            models.FilesCreateFileCreate, models.FilesCreateFileCreateTypedDict
-        ],
+        request: Union[models.FileCreate, models.FileCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -285,8 +283,8 @@ class Files(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.FilesCreateFileCreate)
-        request = cast(models.FilesCreateFileCreate, request)
+            request = utils.unmarshal(request, models.FileCreate)
+        request = cast(models.FileCreate, request)
 
         req = self.build_request(
             method="POST",
@@ -301,7 +299,7 @@ class Files(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.FilesCreateFileCreate
+                request, False, False, "json", models.FileCreate
             ),
             timeout_ms=timeout_ms,
         )
@@ -349,9 +347,7 @@ class Files(BaseSDK):
     async def create_async(
         self,
         *,
-        request: Union[
-            models.FilesCreateFileCreate, models.FilesCreateFileCreateTypedDict
-        ],
+        request: Union[models.FileCreate, models.FileCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -374,8 +370,8 @@ class Files(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.FilesCreateFileCreate)
-        request = cast(models.FilesCreateFileCreate, request)
+            request = utils.unmarshal(request, models.FileCreate)
+        request = cast(models.FileCreate, request)
 
         req = self.build_request_async(
             method="POST",
@@ -390,7 +386,7 @@ class Files(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.FilesCreateFileCreate
+                request, False, False, "json", models.FileCreate
             ),
             timeout_ms=timeout_ms,
         )

@@ -151,6 +151,14 @@ asyncio.run(main())
 * [update](docs/sdks/customfields/README.md#update) - Update Custom Field
 * [delete](docs/sdks/customfields/README.md#delete) - Delete Custom Field
 
+### [discounts](docs/sdks/discounts/README.md)
+
+* [list](docs/sdks/discounts/README.md#list) - List Discounts
+* [create](docs/sdks/discounts/README.md#create) - Create Discount
+* [get](docs/sdks/discounts/README.md#get) - Get Discount
+* [update](docs/sdks/discounts/README.md#update) - Update Discount
+* [delete](docs/sdks/discounts/README.md#delete) - Delete Discount
+
 ### [external_organizations](docs/sdks/externalorganizations/README.md)
 
 * [list](docs/sdks/externalorganizations/README.md#list) - List External Organizations

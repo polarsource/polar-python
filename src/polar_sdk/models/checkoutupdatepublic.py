@@ -29,6 +29,8 @@ class CheckoutUpdatePublicTypedDict(TypedDict):
     customer_email: NotRequired[Nullable[str]]
     customer_billing_address: NotRequired[Nullable[AddressTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
+    discount_code: NotRequired[Nullable[str]]
+    r"""Discount code to apply to the checkout."""
 
 
 class CheckoutUpdatePublic(BaseModel):
@@ -50,6 +52,9 @@ class CheckoutUpdatePublic(BaseModel):
 
     customer_tax_id: OptionalNullable[str] = UNSET
 
+    discount_code: OptionalNullable[str] = UNSET
+    r"""Discount code to apply to the checkout."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -60,6 +65,7 @@ class CheckoutUpdatePublic(BaseModel):
             "customer_email",
             "customer_billing_address",
             "customer_tax_id",
+            "discount_code",
         ]
         nullable_fields = [
             "custom_field_data",
@@ -69,6 +75,7 @@ class CheckoutUpdatePublic(BaseModel):
             "customer_email",
             "customer_billing_address",
             "customer_tax_id",
+            "discount_code",
         ]
         null_default_fields = []
 

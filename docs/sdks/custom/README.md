@@ -75,8 +75,8 @@ s = Polar(
 )
 
 res = s.checkouts.custom.create(request={
-    "product_price_id": "<value>",
-    "payment_processor": polar_sdk.PolarCheckoutSchemasCheckoutCreatePaymentProcessor.STRIPE,
+    "product_id": "<value>",
+    "payment_processor": polar_sdk.CheckoutProductCreatePaymentProcessor.STRIPE,
 })
 
 if res is not None:
@@ -87,14 +87,14 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `request`                                                                                       | [models.PolarCheckoutSchemasCheckoutCreate](../../models/polarcheckoutschemascheckoutcreate.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
-| `retries`                                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                | :heavy_minus_sign:                                                                              | Configuration to override the default retry behavior of the client.                             |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [models.CheckoutCreate](../../models/checkoutcreate.md)             | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[models.PolarCheckoutSchemasCheckout](../../models/polarcheckoutschemascheckout.md)**
+**[models.Checkout](../../models/checkout.md)**
 
 ### Errors
 
@@ -133,7 +133,7 @@ if res is not None:
 
 ### Response
 
-**[models.PolarCheckoutSchemasCheckout](../../models/polarcheckoutschemascheckout.md)**
+**[models.Checkout](../../models/checkout.md)**
 
 ### Errors
 
@@ -174,7 +174,7 @@ if res is not None:
 
 ### Response
 
-**[models.PolarCheckoutSchemasCheckout](../../models/polarcheckoutschemascheckout.md)**
+**[models.Checkout](../../models/checkout.md)**
 
 ### Errors
 

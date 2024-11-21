@@ -36,6 +36,7 @@ class OrderSubscriptionTypedDict(TypedDict):
     user_id: str
     product_id: str
     price_id: str
+    discount_id: Nullable[str]
     checkout_id: Nullable[str]
 
 
@@ -75,6 +76,8 @@ class OrderSubscription(BaseModel):
 
     price_id: str
 
+    discount_id: Nullable[str]
+
     checkout_id: Nullable[str]
 
     @model_serializer(mode="wrap")
@@ -87,6 +90,7 @@ class OrderSubscription(BaseModel):
             "current_period_end",
             "started_at",
             "ended_at",
+            "discount_id",
             "checkout_id",
         ]
         null_default_fields = []

@@ -24,6 +24,9 @@ class Subscriptions(BaseSDK):
                 models.SubscriptionsListQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
+        discount_id: OptionalNullable[
+            Union[models.DiscountIDFilter, models.DiscountIDFilterTypedDict]
+        ] = UNSET,
         active: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -38,6 +41,7 @@ class Subscriptions(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
+        :param discount_id: Filter by discount ID.
         :param active: Filter by active or inactive subscription.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -57,6 +61,7 @@ class Subscriptions(BaseSDK):
         request = models.SubscriptionsListRequest(
             organization_id=organization_id,
             product_id=product_id,
+            discount_id=discount_id,
             active=active,
             page=page,
             limit=limit,
@@ -118,6 +123,7 @@ class Subscriptions(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 product_id=product_id,
+                discount_id=discount_id,
                 active=active,
                 page=next_page,
                 limit=limit,
@@ -166,6 +172,9 @@ class Subscriptions(BaseSDK):
                 models.SubscriptionsListQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
+        discount_id: OptionalNullable[
+            Union[models.DiscountIDFilter, models.DiscountIDFilterTypedDict]
+        ] = UNSET,
         active: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -180,6 +189,7 @@ class Subscriptions(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
+        :param discount_id: Filter by discount ID.
         :param active: Filter by active or inactive subscription.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -199,6 +209,7 @@ class Subscriptions(BaseSDK):
         request = models.SubscriptionsListRequest(
             organization_id=organization_id,
             product_id=product_id,
+            discount_id=discount_id,
             active=active,
             page=page,
             limit=limit,
@@ -260,6 +271,7 @@ class Subscriptions(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 product_id=product_id,
+                discount_id=discount_id,
                 active=active,
                 page=next_page,
                 limit=limit,

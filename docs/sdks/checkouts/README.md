@@ -36,14 +36,14 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                   | [models.PolarCheckoutLegacySchemasCheckoutCreate](../../models/polarcheckoutlegacyschemascheckoutcreate.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
-| `retries`                                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                            | :heavy_minus_sign:                                                                                          | Configuration to override the default retry behavior of the client.                                         |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [models.CheckoutLegacyCreate](../../models/checkoutlegacycreate.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
-**[models.PolarCheckoutLegacySchemasCheckout](../../models/polarcheckoutlegacyschemascheckout.md)**
+**[models.CheckoutLegacy](../../models/checkoutlegacy.md)**
 
 ### Errors
 
@@ -84,7 +84,7 @@ if res is not None:
 
 ### Response
 
-**[models.PolarCheckoutLegacySchemasCheckout](../../models/polarcheckoutlegacyschemascheckout.md)**
+**[models.CheckoutLegacy](../../models/checkoutlegacy.md)**
 
 ### Errors
 

@@ -312,10 +312,7 @@ class Products(BaseSDK):
     def create(
         self,
         *,
-        request: Union[
-            models.ProductsCreateProductCreate,
-            models.ProductsCreateProductCreateTypedDict,
-        ],
+        request: Union[models.ProductCreate, models.ProductCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -338,8 +335,8 @@ class Products(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.ProductsCreateProductCreate)
-        request = cast(models.ProductsCreateProductCreate, request)
+            request = utils.unmarshal(request, models.ProductCreate)
+        request = cast(models.ProductCreate, request)
 
         req = self.build_request(
             method="POST",
@@ -354,7 +351,7 @@ class Products(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.ProductsCreateProductCreate
+                request, False, False, "json", models.ProductCreate
             ),
             timeout_ms=timeout_ms,
         )
@@ -402,10 +399,7 @@ class Products(BaseSDK):
     async def create_async(
         self,
         *,
-        request: Union[
-            models.ProductsCreateProductCreate,
-            models.ProductsCreateProductCreateTypedDict,
-        ],
+        request: Union[models.ProductCreate, models.ProductCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -428,8 +422,8 @@ class Products(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.ProductsCreateProductCreate)
-        request = cast(models.ProductsCreateProductCreate, request)
+            request = utils.unmarshal(request, models.ProductCreate)
+        request = cast(models.ProductCreate, request)
 
         req = self.build_request_async(
             method="POST",
@@ -444,7 +438,7 @@ class Products(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.ProductsCreateProductCreate
+                request, False, False, "json", models.ProductCreate
             ),
             timeout_ms=timeout_ms,
         )

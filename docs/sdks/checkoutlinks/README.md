@@ -73,8 +73,8 @@ s = Polar(
 )
 
 res = s.checkout_links.create(request={
-    "product_price_id": "<value>",
-    "payment_processor": polar_sdk.CheckoutLinkCreatePaymentProcessor.STRIPE,
+    "product_id": "<value>",
+    "payment_processor": polar_sdk.CheckoutLinkProductCreatePaymentProcessor.STRIPE,
 })
 
 if res is not None:

@@ -17,3 +17,5 @@
 | `MINUS_AMOUNT`             | -amount                    |
 | `PRODUCT`                  | product                    |
 | `MINUS_PRODUCT`            | -product                   |
+| `DISCOUNT`                 | discount                   |
+| `MINUS_DISCOUNT`           | -discount                  |

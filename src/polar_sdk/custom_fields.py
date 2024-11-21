@@ -126,7 +126,7 @@ class CustomFields(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.CustomFieldsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResource]
+                    http_res.text, Optional[models.ListResourceCustomField]
                 ),
                 next=next_func,
             )
@@ -265,7 +265,7 @@ class CustomFields(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.CustomFieldsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResource]
+                    http_res.text, Optional[models.ListResourceCustomField]
                 ),
                 next=next_func,
             )

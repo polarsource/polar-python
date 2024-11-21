@@ -3,7 +3,7 @@
 import importlib.metadata
 
 __title__: str = "polar-sdk"
-__version__: str = "0.8.0"
+__version__: str = "0.8.1"
 
 try:
     if __package__ is not None:

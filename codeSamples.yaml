@@ -116,7 +116,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkout_links.create(request={\n    \"payment_processor\": polar_sdk.CheckoutLinkCreatePaymentProcessor.STRIPE,\n    \"product_price_id\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkout_links.create(request={\n    \"payment_processor\": polar_sdk.CheckoutLinkProductCreatePaymentProcessor.STRIPE,\n    \"product_id\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/checkout-links/{id}"]["delete"]
     update:
       "x-codeSamples":
@@ -146,7 +146,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.create(request={\n    \"payment_processor\": polar_sdk.PolarCheckoutSchemasCheckoutCreatePaymentProcessor.STRIPE,\n    \"product_price_id\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.create(request={\n    \"payment_processor\": polar_sdk.CheckoutProductCreatePaymentProcessor.STRIPE,\n    \"product_id\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/checkouts/custom/client/{client_secret}"]["get"]
     update:
       "x-codeSamples":
@@ -207,6 +207,36 @@ actions:
         - "lang": "python"
           "label": "update"
           "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.custom_fields.update(id=\"<value>\", custom_field_update={\n    \"type\": polar_sdk.CustomFieldUpdateTextType.TEXT,\n})\n\nif res is not None:\n    # handle response\n    pass"
+  - target: $["paths"]["/v1/discounts/"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "list"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.discounts.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+  - target: $["paths"]["/v1/discounts/"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "create"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.discounts.create(request={\n    \"duration\": polar_sdk.DiscountDuration.FOREVER,\n    \"duration_in_months\": 417458,\n    \"type\": polar_sdk.DiscountType.FIXED,\n    \"amount\": 69025,\n    \"name\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+  - target: $["paths"]["/v1/discounts/{id}"]["delete"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "delete"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\ns.discounts.delete(id=\"<value>\")\n\n# Use the SDK ..."
+  - target: $["paths"]["/v1/discounts/{id}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "get"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.discounts.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+  - target: $["paths"]["/v1/discounts/{id}"]["patch"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "update"
+          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.discounts.update(id=\"<value>\", discount_update={})\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/external_organizations/"]["get"]
     update:
       "x-codeSamples":
@@ -224,7 +254,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.files.create(request={\n    \"name\": \"<value>\",\n    \"mime_type\": \"<value>\",\n    \"size\": 638424,\n    \"upload\": {\n        \"parts\": [\n            {\n                \"number\": 417458,\n                \"chunk_start\": 134365,\n                \"chunk_end\": 69025,\n            },\n        ],\n    },\n    \"service\": polar_sdk.ProductMediaFileCreateService.PRODUCT_MEDIA,\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.files.create(request={\n    \"name\": \"<value>\",\n    \"mime_type\": \"<value>\",\n    \"size\": 638424,\n    \"upload\": {\n        \"parts\": [\n            {\n                \"number\": 417458,\n                \"chunk_start\": 134365,\n                \"chunk_end\": 69025,\n            },\n        ],\n    },\n    \"service\": polar_sdk.OrganizationAvatarFileCreateService.ORGANIZATION_AVATAR,\n})\n\nif res is not None:\n    # handle response\n    pass"
   - target: $["paths"]["/v1/files/{id}"]["delete"]
     update:
       "x-codeSamples":
