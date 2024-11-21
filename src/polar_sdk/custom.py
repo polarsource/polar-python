@@ -288,14 +288,11 @@ class Custom(BaseSDK):
     def create(
         self,
         *,
-        request: Union[
-            models.PolarCheckoutSchemasCheckoutCreate,
-            models.PolarCheckoutSchemasCheckoutCreateTypedDict,
-        ],
+        request: Union[models.CheckoutCreate, models.CheckoutCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.PolarCheckoutSchemasCheckout]:
+    ) -> Optional[models.Checkout]:
         r"""Create Checkout Session
 
         Create a checkout session.
@@ -314,10 +311,8 @@ class Custom(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(
-                request, models.PolarCheckoutSchemasCheckoutCreate
-            )
-        request = cast(models.PolarCheckoutSchemasCheckoutCreate, request)
+            request = utils.unmarshal(request, models.CheckoutCreate)
+        request = cast(models.CheckoutCreate, request)
 
         req = self.build_request(
             method="POST",
@@ -332,7 +327,7 @@ class Custom(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.PolarCheckoutSchemasCheckoutCreate
+                request, False, False, "json", models.CheckoutCreate
             ),
             timeout_ms=timeout_ms,
         )
@@ -358,9 +353,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.PolarCheckoutSchemasCheckout]
-            )
+            return utils.unmarshal_json(http_res.text, Optional[models.Checkout])
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -382,14 +375,11 @@ class Custom(BaseSDK):
     async def create_async(
         self,
         *,
-        request: Union[
-            models.PolarCheckoutSchemasCheckoutCreate,
-            models.PolarCheckoutSchemasCheckoutCreateTypedDict,
-        ],
+        request: Union[models.CheckoutCreate, models.CheckoutCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.PolarCheckoutSchemasCheckout]:
+    ) -> Optional[models.Checkout]:
         r"""Create Checkout Session
 
         Create a checkout session.
@@ -408,10 +398,8 @@ class Custom(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(
-                request, models.PolarCheckoutSchemasCheckoutCreate
-            )
-        request = cast(models.PolarCheckoutSchemasCheckoutCreate, request)
+            request = utils.unmarshal(request, models.CheckoutCreate)
+        request = cast(models.CheckoutCreate, request)
 
         req = self.build_request_async(
             method="POST",
@@ -426,7 +414,7 @@ class Custom(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.PolarCheckoutSchemasCheckoutCreate
+                request, False, False, "json", models.CheckoutCreate
             ),
             timeout_ms=timeout_ms,
         )
@@ -452,9 +440,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.PolarCheckoutSchemasCheckout]
-            )
+            return utils.unmarshal_json(http_res.text, Optional[models.Checkout])
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -480,7 +466,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.PolarCheckoutSchemasCheckout]:
+    ) -> Optional[models.Checkout]:
         r"""Get Checkout Session
 
         Get a checkout session by ID.
@@ -538,9 +524,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.PolarCheckoutSchemasCheckout]
-            )
+            return utils.unmarshal_json(http_res.text, Optional[models.Checkout])
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -569,7 +553,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.PolarCheckoutSchemasCheckout]:
+    ) -> Optional[models.Checkout]:
         r"""Get Checkout Session
 
         Get a checkout session by ID.
@@ -627,9 +611,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.PolarCheckoutSchemasCheckout]
-            )
+            return utils.unmarshal_json(http_res.text, Optional[models.Checkout])
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -659,7 +641,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.PolarCheckoutSchemasCheckout]:
+    ) -> Optional[models.Checkout]:
         r"""Update Checkout Session
 
         Update a checkout session.
@@ -724,9 +706,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.PolarCheckoutSchemasCheckout]
-            )
+            return utils.unmarshal_json(http_res.text, Optional[models.Checkout])
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -756,7 +736,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.PolarCheckoutSchemasCheckout]:
+    ) -> Optional[models.Checkout]:
         r"""Update Checkout Session
 
         Update a checkout session.
@@ -821,9 +801,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.PolarCheckoutSchemasCheckout]
-            )
+            return utils.unmarshal_json(http_res.text, Optional[models.Checkout])
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)

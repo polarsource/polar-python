@@ -280,10 +280,7 @@ class Benefits(BaseSDK):
     def create(
         self,
         *,
-        request: Union[
-            models.BenefitsCreateBenefitCreate,
-            models.BenefitsCreateBenefitCreateTypedDict,
-        ],
+        request: Union[models.BenefitCreate, models.BenefitCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -306,8 +303,8 @@ class Benefits(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.BenefitsCreateBenefitCreate)
-        request = cast(models.BenefitsCreateBenefitCreate, request)
+            request = utils.unmarshal(request, models.BenefitCreate)
+        request = cast(models.BenefitCreate, request)
 
         req = self.build_request(
             method="POST",
@@ -322,7 +319,7 @@ class Benefits(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.BenefitsCreateBenefitCreate
+                request, False, False, "json", models.BenefitCreate
             ),
             timeout_ms=timeout_ms,
         )
@@ -370,10 +367,7 @@ class Benefits(BaseSDK):
     async def create_async(
         self,
         *,
-        request: Union[
-            models.BenefitsCreateBenefitCreate,
-            models.BenefitsCreateBenefitCreateTypedDict,
-        ],
+        request: Union[models.BenefitCreate, models.BenefitCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -396,8 +390,8 @@ class Benefits(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.BenefitsCreateBenefitCreate)
-        request = cast(models.BenefitsCreateBenefitCreate, request)
+            request = utils.unmarshal(request, models.BenefitCreate)
+        request = cast(models.BenefitCreate, request)
 
         req = self.build_request_async(
             method="POST",
@@ -412,7 +406,7 @@ class Benefits(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.BenefitsCreateBenefitCreate
+                request, False, False, "json", models.BenefitCreate
             ),
             timeout_ms=timeout_ms,
         )

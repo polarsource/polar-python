@@ -30,6 +30,12 @@ class Orders(BaseSDK):
                 models.QueryParamProductPriceTypeFilterTypedDict,
             ]
         ] = UNSET,
+        discount_id: OptionalNullable[
+            Union[
+                models.QueryParamDiscountIDFilter,
+                models.QueryParamDiscountIDFilterTypedDict,
+            ]
+        ] = UNSET,
         user_id: OptionalNullable[
             Union[models.UserIDFilter, models.UserIDFilterTypedDict]
         ] = UNSET,
@@ -47,6 +53,7 @@ class Orders(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param product_price_type: Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
+        :param discount_id: Filter by discount ID.
         :param user_id: Filter by customer's user ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -67,6 +74,7 @@ class Orders(BaseSDK):
             organization_id=organization_id,
             product_id=product_id,
             product_price_type=product_price_type,
+            discount_id=discount_id,
             user_id=user_id,
             page=page,
             limit=limit,
@@ -129,6 +137,7 @@ class Orders(BaseSDK):
                 organization_id=organization_id,
                 product_id=product_id,
                 product_price_type=product_price_type,
+                discount_id=discount_id,
                 user_id=user_id,
                 page=next_page,
                 limit=limit,
@@ -183,6 +192,12 @@ class Orders(BaseSDK):
                 models.QueryParamProductPriceTypeFilterTypedDict,
             ]
         ] = UNSET,
+        discount_id: OptionalNullable[
+            Union[
+                models.QueryParamDiscountIDFilter,
+                models.QueryParamDiscountIDFilterTypedDict,
+            ]
+        ] = UNSET,
         user_id: OptionalNullable[
             Union[models.UserIDFilter, models.UserIDFilterTypedDict]
         ] = UNSET,
@@ -200,6 +215,7 @@ class Orders(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param product_price_type: Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
+        :param discount_id: Filter by discount ID.
         :param user_id: Filter by customer's user ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -220,6 +236,7 @@ class Orders(BaseSDK):
             organization_id=organization_id,
             product_id=product_id,
             product_price_type=product_price_type,
+            discount_id=discount_id,
             user_id=user_id,
             page=page,
             limit=limit,
@@ -282,6 +299,7 @@ class Orders(BaseSDK):
                 organization_id=organization_id,
                 product_id=product_id,
                 product_price_type=product_price_type,
+                discount_id=discount_id,
                 user_id=user_id,
                 page=next_page,
                 limit=limit,

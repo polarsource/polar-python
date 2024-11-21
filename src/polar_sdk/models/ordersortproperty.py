@@ -13,5 +13,7 @@ class OrderSortProperty(str, Enum):
     MINUS_USER = "-user"
     PRODUCT = "product"
     MINUS_PRODUCT = "-product"
+    DISCOUNT = "discount"
+    MINUS_DISCOUNT = "-discount"
     SUBSCRIPTION = "subscription"
     MINUS_SUBSCRIPTION = "-subscription"

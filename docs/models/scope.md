@@ -15,6 +15,8 @@
 | `ORGANIZATIONS_WRITE`                | organizations:write                  |
 | `CUSTOM_FIELDS_READ`                 | custom_fields:read                   |
 | `CUSTOM_FIELDS_WRITE`                | custom_fields:write                  |
+| `DISCOUNTS_READ`                     | discounts:read                       |
+| `DISCOUNTS_WRITE`                    | discounts:write                      |
 | `CHECKOUT_LINKS_READ`                | checkout_links:read                  |
 | `CHECKOUT_LINKS_WRITE`               | checkout_links:write                 |
 | `CHECKOUTS_READ`                     | checkouts:read                       |

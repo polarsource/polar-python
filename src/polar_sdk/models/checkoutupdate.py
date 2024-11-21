@@ -45,6 +45,10 @@ class CheckoutUpdateTypedDict(TypedDict):
 
     You can store up to **50 key-value pairs**.
     """
+    discount_id: NotRequired[Nullable[str]]
+    r"""ID of the discount to apply to the checkout."""
+    allow_discount_codes: NotRequired[Nullable[bool]]
+    r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
     customer_ip_address: NotRequired[Nullable[str]]
     success_url: NotRequired[Nullable[str]]
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
@@ -83,6 +87,12 @@ class CheckoutUpdate(BaseModel):
     You can store up to **50 key-value pairs**.
     """
 
+    discount_id: OptionalNullable[str] = UNSET
+    r"""ID of the discount to apply to the checkout."""
+
+    allow_discount_codes: OptionalNullable[bool] = UNSET
+    r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
+
     customer_ip_address: OptionalNullable[str] = UNSET
 
     success_url: OptionalNullable[str] = UNSET
@@ -102,6 +112,8 @@ class CheckoutUpdate(BaseModel):
             "customer_billing_address",
             "customer_tax_id",
             "metadata",
+            "discount_id",
+            "allow_discount_codes",
             "customer_ip_address",
             "success_url",
             "embed_origin",
@@ -115,6 +127,8 @@ class CheckoutUpdate(BaseModel):
             "customer_billing_address",
             "customer_tax_id",
             "metadata",
+            "discount_id",
+            "allow_discount_codes",
             "customer_ip_address",
             "success_url",
             "embed_origin",

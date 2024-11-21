@@ -3,7 +3,10 @@
 from __future__ import annotations
 from .customfieldsortproperty import CustomFieldSortProperty
 from .customfieldtype import CustomFieldType
-from .listresource_ import ListResource, ListResourceTypedDict
+from .listresource_customfield_ import (
+    ListResourceCustomField,
+    ListResourceCustomFieldTypedDict,
+)
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 import pydantic
@@ -122,10 +125,10 @@ class CustomFieldsListRequest(BaseModel):
 
 
 class CustomFieldsListResponseTypedDict(TypedDict):
-    result: ListResourceTypedDict
+    result: ListResourceCustomFieldTypedDict
 
 
 class CustomFieldsListResponse(BaseModel):
     next: Callable[[], Optional[CustomFieldsListResponse]]
 
-    result: ListResource
+    result: ListResourceCustomField

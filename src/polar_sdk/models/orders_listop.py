@@ -37,6 +37,14 @@ QueryParamProductPriceTypeFilter = Union[ProductPriceType, List[ProductPriceType
 r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
 
 
+QueryParamDiscountIDFilterTypedDict = Union[str, List[str]]
+r"""Filter by discount ID."""
+
+
+QueryParamDiscountIDFilter = Union[str, List[str]]
+r"""Filter by discount ID."""
+
+
 UserIDFilterTypedDict = Union[str, List[str]]
 r"""Filter by customer's user ID."""
 
@@ -54,6 +62,8 @@ class OrdersListRequestTypedDict(TypedDict):
     r"""Filter by product ID."""
     product_price_type: NotRequired[Nullable[QueryParamProductPriceTypeFilterTypedDict]]
     r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
+    discount_id: NotRequired[Nullable[QueryParamDiscountIDFilterTypedDict]]
+    r"""Filter by discount ID."""
     user_id: NotRequired[Nullable[UserIDFilterTypedDict]]
     r"""Filter by customer's user ID."""
     page: NotRequired[int]
@@ -82,6 +92,12 @@ class OrdersListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
+
+    discount_id: Annotated[
+        OptionalNullable[QueryParamDiscountIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by discount ID."""
 
     user_id: Annotated[
         OptionalNullable[UserIDFilter],
@@ -113,6 +129,7 @@ class OrdersListRequest(BaseModel):
             "organization_id",
             "product_id",
             "product_price_type",
+            "discount_id",
             "user_id",
             "page",
             "limit",
@@ -122,6 +139,7 @@ class OrdersListRequest(BaseModel):
             "organization_id",
             "product_id",
             "product_price_type",
+            "discount_id",
             "user_id",
             "sorting",
         ]

@@ -29,6 +29,14 @@ SubscriptionsListQueryParamProductIDFilter = Union[str, List[str]]
 r"""Filter by product ID."""
 
 
+DiscountIDFilterTypedDict = Union[str, List[str]]
+r"""Filter by discount ID."""
+
+
+DiscountIDFilter = Union[str, List[str]]
+r"""Filter by discount ID."""
+
+
 class SubscriptionsListRequestTypedDict(TypedDict):
     organization_id: NotRequired[
         Nullable[SubscriptionsListQueryParamOrganizationIDFilterTypedDict]
@@ -38,6 +46,8 @@ class SubscriptionsListRequestTypedDict(TypedDict):
         Nullable[SubscriptionsListQueryParamProductIDFilterTypedDict]
     ]
     r"""Filter by product ID."""
+    discount_id: NotRequired[Nullable[DiscountIDFilterTypedDict]]
+    r"""Filter by discount ID."""
     active: NotRequired[Nullable[bool]]
     r"""Filter by active or inactive subscription."""
     page: NotRequired[int]
@@ -60,6 +70,12 @@ class SubscriptionsListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by product ID."""
+
+    discount_id: Annotated[
+        OptionalNullable[DiscountIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by discount ID."""
 
     active: Annotated[
         OptionalNullable[bool],
@@ -90,12 +106,19 @@ class SubscriptionsListRequest(BaseModel):
         optional_fields = [
             "organization_id",
             "product_id",
+            "discount_id",
             "active",
             "page",
             "limit",
             "sorting",
         ]
-        nullable_fields = ["organization_id", "product_id", "active", "sorting"]
+        nullable_fields = [
+            "organization_id",
+            "product_id",
+            "discount_id",
+            "active",
+            "sorting",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

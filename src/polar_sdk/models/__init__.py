@@ -110,6 +110,7 @@ from .benefitarticlesupdate import (
     BenefitArticlesUpdateTypedDict,
 )
 from .benefitbase import BenefitBase, BenefitBaseTypedDict
+from .benefitcreate import BenefitCreate, BenefitCreateTypedDict
 from .benefitcustom import BenefitCustom, BenefitCustomType, BenefitCustomTypedDict
 from .benefitcustomcreate import (
     BenefitCustomCreate,
@@ -329,10 +330,6 @@ from .benefitlicensekeysupdate import (
     BenefitLicenseKeysUpdateType,
     BenefitLicenseKeysUpdateTypedDict,
 )
-from .benefits_createop import (
-    BenefitsCreateBenefitCreate,
-    BenefitsCreateBenefitCreateTypedDict,
-)
 from .benefits_deleteop import BenefitsDeleteRequest, BenefitsDeleteRequestTypedDict
 from .benefits_getop import BenefitsGetRequest, BenefitsGetRequestTypedDict
 from .benefits_grantsop import (
@@ -359,6 +356,18 @@ from .benefits_updateop import (
 )
 from .benefittype import BenefitType
 from .bylineprofile import BylineProfile, BylineProfileTypedDict
+from .checkout import (
+    Checkout,
+    CheckoutCustomFieldData,
+    CheckoutCustomFieldDataTypedDict,
+    CheckoutDiscount,
+    CheckoutDiscountTypedDict,
+    CheckoutMetadata,
+    CheckoutMetadataTypedDict,
+    CheckoutTypedDict,
+    PaymentProcessorMetadata,
+    PaymentProcessorMetadataTypedDict,
+)
 from .checkout_links_deleteop import (
     CheckoutLinksDeleteRequest,
     CheckoutLinksDeleteRequestTypedDict,
@@ -387,18 +396,53 @@ from .checkoutconfirmstripe import (
     CheckoutConfirmStripeCustomFieldDataTypedDict,
     CheckoutConfirmStripeTypedDict,
 )
+from .checkoutcreate import CheckoutCreate, CheckoutCreateTypedDict
+from .checkoutdiscountfixedonceforeverduration import (
+    CheckoutDiscountFixedOnceForeverDuration,
+    CheckoutDiscountFixedOnceForeverDurationTypedDict,
+)
+from .checkoutdiscountfixedrepeatduration import (
+    CheckoutDiscountFixedRepeatDuration,
+    CheckoutDiscountFixedRepeatDurationTypedDict,
+)
+from .checkoutdiscountpercentageonceforeverduration import (
+    CheckoutDiscountPercentageOnceForeverDuration,
+    CheckoutDiscountPercentageOnceForeverDurationTypedDict,
+)
+from .checkoutdiscountpercentagerepeatduration import (
+    CheckoutDiscountPercentageRepeatDuration,
+    CheckoutDiscountPercentageRepeatDurationTypedDict,
+)
+from .checkoutlegacy import CheckoutLegacy, CheckoutLegacyTypedDict
+from .checkoutlegacycreate import CheckoutLegacyCreate, CheckoutLegacyCreateTypedDict
 from .checkoutlink import (
     CheckoutLink,
+    CheckoutLinkDiscount,
+    CheckoutLinkDiscountTypedDict,
     CheckoutLinkMetadata,
     CheckoutLinkMetadataTypedDict,
     CheckoutLinkTypedDict,
 )
-from .checkoutlinkcreate import (
-    CheckoutLinkCreate,
-    CheckoutLinkCreateMetadata,
-    CheckoutLinkCreateMetadataTypedDict,
-    CheckoutLinkCreatePaymentProcessor,
-    CheckoutLinkCreateTypedDict,
+from .checkoutlinkcreate import CheckoutLinkCreate, CheckoutLinkCreateTypedDict
+from .checkoutlinkpricecreate import (
+    CheckoutLinkPriceCreate,
+    CheckoutLinkPriceCreateMetadata,
+    CheckoutLinkPriceCreateMetadataTypedDict,
+    CheckoutLinkPriceCreatePaymentProcessor,
+    CheckoutLinkPriceCreateTypedDict,
+)
+from .checkoutlinkproduct import (
+    CheckoutLinkProduct,
+    CheckoutLinkProductBenefits,
+    CheckoutLinkProductBenefitsTypedDict,
+    CheckoutLinkProductTypedDict,
+)
+from .checkoutlinkproductcreate import (
+    CheckoutLinkProductCreate,
+    CheckoutLinkProductCreateMetadata,
+    CheckoutLinkProductCreateMetadataTypedDict,
+    CheckoutLinkProductCreatePaymentProcessor,
+    CheckoutLinkProductCreateTypedDict,
 )
 from .checkoutlinksortproperty import CheckoutLinkSortProperty
 from .checkoutlinkupdate import (
@@ -407,16 +451,36 @@ from .checkoutlinkupdate import (
     CheckoutLinkUpdateMetadataTypedDict,
     CheckoutLinkUpdateTypedDict,
 )
+from .checkoutpricecreate import (
+    CheckoutPriceCreate,
+    CheckoutPriceCreateCustomFieldData,
+    CheckoutPriceCreateCustomFieldDataTypedDict,
+    CheckoutPriceCreateMetadata,
+    CheckoutPriceCreateMetadataTypedDict,
+    CheckoutPriceCreatePaymentProcessor,
+    CheckoutPriceCreateTypedDict,
+)
 from .checkoutproduct import (
     CheckoutProduct,
     CheckoutProductBenefits,
     CheckoutProductBenefitsTypedDict,
     CheckoutProductTypedDict,
 )
+from .checkoutproductcreate import (
+    CheckoutProductCreate,
+    CheckoutProductCreateCustomFieldData,
+    CheckoutProductCreateCustomFieldDataTypedDict,
+    CheckoutProductCreateMetadata,
+    CheckoutProductCreateMetadataTypedDict,
+    CheckoutProductCreatePaymentProcessor,
+    CheckoutProductCreateTypedDict,
+)
 from .checkoutpublic import (
     CheckoutPublic,
     CheckoutPublicCustomFieldData,
     CheckoutPublicCustomFieldDataTypedDict,
+    CheckoutPublicDiscount,
+    CheckoutPublicDiscountTypedDict,
     CheckoutPublicPaymentProcessorMetadata,
     CheckoutPublicPaymentProcessorMetadataTypedDict,
     CheckoutPublicTypedDict,
@@ -622,6 +686,101 @@ from .customfieldupdatetext import (
     CustomFieldUpdateTextType,
     CustomFieldUpdateTextTypedDict,
 )
+from .discount import Discount, DiscountTypedDict
+from .discountcreate import DiscountCreate, DiscountCreateTypedDict
+from .discountduration import DiscountDuration
+from .discountfixedonceforeverduration import (
+    DiscountFixedOnceForeverDuration,
+    DiscountFixedOnceForeverDurationMetadata,
+    DiscountFixedOnceForeverDurationMetadataTypedDict,
+    DiscountFixedOnceForeverDurationTypedDict,
+)
+from .discountfixedonceforeverdurationbase import (
+    DiscountFixedOnceForeverDurationBase,
+    DiscountFixedOnceForeverDurationBaseMetadata,
+    DiscountFixedOnceForeverDurationBaseMetadataTypedDict,
+    DiscountFixedOnceForeverDurationBaseTypedDict,
+)
+from .discountfixedonceforeverdurationcreate import (
+    DiscountFixedOnceForeverDurationCreate,
+    DiscountFixedOnceForeverDurationCreateMetadata,
+    DiscountFixedOnceForeverDurationCreateMetadataTypedDict,
+    DiscountFixedOnceForeverDurationCreateTypedDict,
+)
+from .discountfixedrepeatduration import (
+    DiscountFixedRepeatDuration,
+    DiscountFixedRepeatDurationMetadata,
+    DiscountFixedRepeatDurationMetadataTypedDict,
+    DiscountFixedRepeatDurationTypedDict,
+)
+from .discountfixedrepeatdurationbase import (
+    DiscountFixedRepeatDurationBase,
+    DiscountFixedRepeatDurationBaseMetadata,
+    DiscountFixedRepeatDurationBaseMetadataTypedDict,
+    DiscountFixedRepeatDurationBaseTypedDict,
+)
+from .discountfixedrepeatdurationcreate import (
+    DiscountFixedRepeatDurationCreate,
+    DiscountFixedRepeatDurationCreateMetadata,
+    DiscountFixedRepeatDurationCreateMetadataTypedDict,
+    DiscountFixedRepeatDurationCreateTypedDict,
+)
+from .discountpercentageonceforeverduration import (
+    DiscountPercentageOnceForeverDuration,
+    DiscountPercentageOnceForeverDurationMetadata,
+    DiscountPercentageOnceForeverDurationMetadataTypedDict,
+    DiscountPercentageOnceForeverDurationTypedDict,
+)
+from .discountpercentageonceforeverdurationbase import (
+    DiscountPercentageOnceForeverDurationBase,
+    DiscountPercentageOnceForeverDurationBaseMetadata,
+    DiscountPercentageOnceForeverDurationBaseMetadataTypedDict,
+    DiscountPercentageOnceForeverDurationBaseTypedDict,
+)
+from .discountpercentageonceforeverdurationcreate import (
+    DiscountPercentageOnceForeverDurationCreate,
+    DiscountPercentageOnceForeverDurationCreateMetadata,
+    DiscountPercentageOnceForeverDurationCreateMetadataTypedDict,
+    DiscountPercentageOnceForeverDurationCreateTypedDict,
+)
+from .discountpercentagerepeatduration import (
+    DiscountPercentageRepeatDuration,
+    DiscountPercentageRepeatDurationMetadata,
+    DiscountPercentageRepeatDurationMetadataTypedDict,
+    DiscountPercentageRepeatDurationTypedDict,
+)
+from .discountpercentagerepeatdurationbase import (
+    DiscountPercentageRepeatDurationBase,
+    DiscountPercentageRepeatDurationBaseMetadata,
+    DiscountPercentageRepeatDurationBaseMetadataTypedDict,
+    DiscountPercentageRepeatDurationBaseTypedDict,
+)
+from .discountpercentagerepeatdurationcreate import (
+    DiscountPercentageRepeatDurationCreate,
+    DiscountPercentageRepeatDurationCreateMetadata,
+    DiscountPercentageRepeatDurationCreateMetadataTypedDict,
+    DiscountPercentageRepeatDurationCreateTypedDict,
+)
+from .discountproduct import DiscountProduct, DiscountProductTypedDict
+from .discounts_deleteop import DiscountsDeleteRequest, DiscountsDeleteRequestTypedDict
+from .discounts_getop import DiscountsGetRequest, DiscountsGetRequestTypedDict
+from .discounts_listop import (
+    DiscountsListQueryParamOrganizationIDFilter,
+    DiscountsListQueryParamOrganizationIDFilterTypedDict,
+    DiscountsListRequest,
+    DiscountsListRequestTypedDict,
+    DiscountsListResponse,
+    DiscountsListResponseTypedDict,
+)
+from .discounts_updateop import DiscountsUpdateRequest, DiscountsUpdateRequestTypedDict
+from .discountsortproperty import DiscountSortProperty
+from .discounttype import DiscountType
+from .discountupdate import (
+    DiscountUpdate,
+    DiscountUpdateMetadata,
+    DiscountUpdateMetadataTypedDict,
+    DiscountUpdateTypedDict,
+)
 from .downloadablefilecreate import (
     DownloadableFileCreate,
     DownloadableFileCreateService,
@@ -648,10 +807,10 @@ from .external_organizations_listop import (
 )
 from .externalorganization import ExternalOrganization, ExternalOrganizationTypedDict
 from .externalorganizationsortproperty import ExternalOrganizationSortProperty
+from .filecreate import FileCreate, FileCreateTypedDict
 from .filedownload import FileDownload, FileDownloadTypedDict
 from .filenotfound import FileNotFound, FileNotFoundData, FileNotFoundType
 from .filepatch import FilePatch, FilePatchTypedDict
-from .files_createop import FilesCreateFileCreate, FilesCreateFileCreateTypedDict
 from .files_deleteop import FilesDeleteRequest, FilesDeleteRequestTypedDict
 from .files_listop import (
     FilesListRequest,
@@ -738,7 +897,6 @@ from .licensekeywithactivations import (
     LicenseKeyWithActivations,
     LicenseKeyWithActivationsTypedDict,
 )
-from .listresource_ import ListResource, ListResourceTypedDict
 from .listresource_article_ import ListResourceArticle, ListResourceArticleTypedDict
 from .listresource_benefit_ import ListResourceBenefit, ListResourceBenefitTypedDict
 from .listresource_benefitgrant_ import (
@@ -750,6 +908,11 @@ from .listresource_checkoutlink_ import (
     ListResourceCheckoutLink,
     ListResourceCheckoutLinkTypedDict,
 )
+from .listresource_customfield_ import (
+    ListResourceCustomField,
+    ListResourceCustomFieldTypedDict,
+)
+from .listresource_discount_ import ListResourceDiscount, ListResourceDiscountTypedDict
 from .listresource_downloadableread_ import (
     ListResourceDownloadableRead,
     ListResourceDownloadableReadTypedDict,
@@ -902,6 +1065,8 @@ from .order import (
     Order,
     OrderCustomFieldData,
     OrderCustomFieldDataTypedDict,
+    OrderDiscount,
+    OrderDiscountTypedDict,
     OrderMetadata,
     OrderMetadataTypedDict,
     OrderTypedDict,
@@ -920,6 +1085,8 @@ from .orders_listop import (
     OrdersListRequestTypedDict,
     OrdersListResponse,
     OrdersListResponseTypedDict,
+    QueryParamDiscountIDFilter,
+    QueryParamDiscountIDFilterTypedDict,
     QueryParamProductPriceTypeFilter,
     QueryParamProductPriceTypeFilterTypedDict,
     UserIDFilter,
@@ -980,33 +1147,6 @@ from .pledge import Pledge, PledgeTypedDict
 from .pledger import Pledger, PledgerTypedDict
 from .pledgestate import PledgeState
 from .pledgetype import PledgeType
-from .polar_checkout_legacy_schemas_checkout import (
-    PolarCheckoutLegacySchemasCheckout,
-    PolarCheckoutLegacySchemasCheckoutTypedDict,
-)
-from .polar_checkout_legacy_schemas_checkoutcreate import (
-    PolarCheckoutLegacySchemasCheckoutCreate,
-    PolarCheckoutLegacySchemasCheckoutCreateTypedDict,
-)
-from .polar_checkout_schemas_checkout import (
-    PaymentProcessorMetadata,
-    PaymentProcessorMetadataTypedDict,
-    PolarCheckoutSchemasCheckout,
-    PolarCheckoutSchemasCheckoutCustomFieldData,
-    PolarCheckoutSchemasCheckoutCustomFieldDataTypedDict,
-    PolarCheckoutSchemasCheckoutMetadata,
-    PolarCheckoutSchemasCheckoutMetadataTypedDict,
-    PolarCheckoutSchemasCheckoutTypedDict,
-)
-from .polar_checkout_schemas_checkoutcreate import (
-    PolarCheckoutSchemasCheckoutCreate,
-    PolarCheckoutSchemasCheckoutCreateCustomFieldData,
-    PolarCheckoutSchemasCheckoutCreateCustomFieldDataTypedDict,
-    PolarCheckoutSchemasCheckoutCreateMetadata,
-    PolarCheckoutSchemasCheckoutCreateMetadataTypedDict,
-    PolarCheckoutSchemasCheckoutCreatePaymentProcessor,
-    PolarCheckoutSchemasCheckoutCreateTypedDict,
-)
 from .product import (
     Product,
     ProductMetadata,
@@ -1014,6 +1154,7 @@ from .product import (
     ProductTypedDict,
 )
 from .productbenefitsupdate import ProductBenefitsUpdate, ProductBenefitsUpdateTypedDict
+from .productcreate import ProductCreate, ProductCreateTypedDict
 from .productmediafilecreate import (
     ProductMediaFileCreate,
     ProductMediaFileCreateService,
@@ -1110,10 +1251,6 @@ from .productrecurringcreate import (
     ProductRecurringCreatePricesTypedDict,
     ProductRecurringCreateTypedDict,
 )
-from .products_createop import (
-    ProductsCreateProductCreate,
-    ProductsCreateProductCreateTypedDict,
-)
 from .products_getop import ProductsGetRequest, ProductsGetRequestTypedDict
 from .products_listop import (
     ProductsListQueryParamOrganizationIDFilter,
@@ -1195,6 +1332,8 @@ from .subscription import (
     Subscription,
     SubscriptionCustomFieldData,
     SubscriptionCustomFieldDataTypedDict,
+    SubscriptionDiscount,
+    SubscriptionDiscountTypedDict,
     SubscriptionTypedDict,
 )
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
@@ -1205,6 +1344,8 @@ from .subscriptions_exportop import (
     SubscriptionsExportRequestTypedDict,
 )
 from .subscriptions_listop import (
+    DiscountIDFilter,
+    DiscountIDFilterTypedDict,
     SubscriptionsListQueryParamOrganizationIDFilter,
     SubscriptionsListQueryParamOrganizationIDFilterTypedDict,
     SubscriptionsListQueryParamProductIDFilter,
@@ -1568,6 +1709,8 @@ __all__ = [
     "BenefitArticlesUpdateTypedDict",
     "BenefitBase",
     "BenefitBaseTypedDict",
+    "BenefitCreate",
+    "BenefitCreateTypedDict",
     "BenefitCustom",
     "BenefitCustomCreate",
     "BenefitCustomCreateProperties",
@@ -1698,8 +1841,6 @@ __all__ = [
     "BenefitTypeFilter",
     "BenefitTypeFilterTypedDict",
     "BenefitTypedDict",
-    "BenefitsCreateBenefitCreate",
-    "BenefitsCreateBenefitCreateTypedDict",
     "BenefitsDeleteRequest",
     "BenefitsDeleteRequestTypedDict",
     "BenefitsGetRequest",
@@ -1722,18 +1863,50 @@ __all__ = [
     "BenefitsUpdateRequestTypedDict",
     "BylineProfile",
     "BylineProfileTypedDict",
+    "Checkout",
     "CheckoutConfirmStripe",
     "CheckoutConfirmStripeCustomFieldData",
     "CheckoutConfirmStripeCustomFieldDataTypedDict",
     "CheckoutConfirmStripeTypedDict",
+    "CheckoutCreate",
+    "CheckoutCreateTypedDict",
+    "CheckoutCustomFieldData",
+    "CheckoutCustomFieldDataTypedDict",
+    "CheckoutDiscount",
+    "CheckoutDiscountFixedOnceForeverDuration",
+    "CheckoutDiscountFixedOnceForeverDurationTypedDict",
+    "CheckoutDiscountFixedRepeatDuration",
+    "CheckoutDiscountFixedRepeatDurationTypedDict",
+    "CheckoutDiscountPercentageOnceForeverDuration",
+    "CheckoutDiscountPercentageOnceForeverDurationTypedDict",
+    "CheckoutDiscountPercentageRepeatDuration",
+    "CheckoutDiscountPercentageRepeatDurationTypedDict",
+    "CheckoutDiscountTypedDict",
+    "CheckoutLegacy",
+    "CheckoutLegacyCreate",
+    "CheckoutLegacyCreateTypedDict",
+    "CheckoutLegacyTypedDict",
     "CheckoutLink",
     "CheckoutLinkCreate",
-    "CheckoutLinkCreateMetadata",
-    "CheckoutLinkCreateMetadataTypedDict",
-    "CheckoutLinkCreatePaymentProcessor",
     "CheckoutLinkCreateTypedDict",
+    "CheckoutLinkDiscount",
+    "CheckoutLinkDiscountTypedDict",
     "CheckoutLinkMetadata",
     "CheckoutLinkMetadataTypedDict",
+    "CheckoutLinkPriceCreate",
+    "CheckoutLinkPriceCreateMetadata",
+    "CheckoutLinkPriceCreateMetadataTypedDict",
+    "CheckoutLinkPriceCreatePaymentProcessor",
+    "CheckoutLinkPriceCreateTypedDict",
+    "CheckoutLinkProduct",
+    "CheckoutLinkProductBenefits",
+    "CheckoutLinkProductBenefitsTypedDict",
+    "CheckoutLinkProductCreate",
+    "CheckoutLinkProductCreateMetadata",
+    "CheckoutLinkProductCreateMetadataTypedDict",
+    "CheckoutLinkProductCreatePaymentProcessor",
+    "CheckoutLinkProductCreateTypedDict",
+    "CheckoutLinkProductTypedDict",
     "CheckoutLinkSortProperty",
     "CheckoutLinkTypedDict",
     "CheckoutLinkUpdate",
@@ -1754,18 +1927,37 @@ __all__ = [
     "CheckoutLinksListResponseTypedDict",
     "CheckoutLinksUpdateRequest",
     "CheckoutLinksUpdateRequestTypedDict",
+    "CheckoutMetadata",
+    "CheckoutMetadataTypedDict",
+    "CheckoutPriceCreate",
+    "CheckoutPriceCreateCustomFieldData",
+    "CheckoutPriceCreateCustomFieldDataTypedDict",
+    "CheckoutPriceCreateMetadata",
+    "CheckoutPriceCreateMetadataTypedDict",
+    "CheckoutPriceCreatePaymentProcessor",
+    "CheckoutPriceCreateTypedDict",
     "CheckoutProduct",
     "CheckoutProductBenefits",
     "CheckoutProductBenefitsTypedDict",
+    "CheckoutProductCreate",
+    "CheckoutProductCreateCustomFieldData",
+    "CheckoutProductCreateCustomFieldDataTypedDict",
+    "CheckoutProductCreateMetadata",
+    "CheckoutProductCreateMetadataTypedDict",
+    "CheckoutProductCreatePaymentProcessor",
+    "CheckoutProductCreateTypedDict",
     "CheckoutProductTypedDict",
     "CheckoutPublic",
     "CheckoutPublicCustomFieldData",
     "CheckoutPublicCustomFieldDataTypedDict",
+    "CheckoutPublicDiscount",
+    "CheckoutPublicDiscountTypedDict",
     "CheckoutPublicPaymentProcessorMetadata",
     "CheckoutPublicPaymentProcessorMetadataTypedDict",
     "CheckoutPublicTypedDict",
     "CheckoutSortProperty",
     "CheckoutStatus",
+    "CheckoutTypedDict",
     "CheckoutUpdate",
     "CheckoutUpdateMetadata",
     "CheckoutUpdateMetadataTypedDict",
@@ -1909,6 +2101,81 @@ __all__ = [
     "CustomFieldsListResponseTypedDict",
     "CustomFieldsUpdateRequest",
     "CustomFieldsUpdateRequestTypedDict",
+    "Discount",
+    "DiscountCreate",
+    "DiscountCreateTypedDict",
+    "DiscountDuration",
+    "DiscountFixedOnceForeverDuration",
+    "DiscountFixedOnceForeverDurationBase",
+    "DiscountFixedOnceForeverDurationBaseMetadata",
+    "DiscountFixedOnceForeverDurationBaseMetadataTypedDict",
+    "DiscountFixedOnceForeverDurationBaseTypedDict",
+    "DiscountFixedOnceForeverDurationCreate",
+    "DiscountFixedOnceForeverDurationCreateMetadata",
+    "DiscountFixedOnceForeverDurationCreateMetadataTypedDict",
+    "DiscountFixedOnceForeverDurationCreateTypedDict",
+    "DiscountFixedOnceForeverDurationMetadata",
+    "DiscountFixedOnceForeverDurationMetadataTypedDict",
+    "DiscountFixedOnceForeverDurationTypedDict",
+    "DiscountFixedRepeatDuration",
+    "DiscountFixedRepeatDurationBase",
+    "DiscountFixedRepeatDurationBaseMetadata",
+    "DiscountFixedRepeatDurationBaseMetadataTypedDict",
+    "DiscountFixedRepeatDurationBaseTypedDict",
+    "DiscountFixedRepeatDurationCreate",
+    "DiscountFixedRepeatDurationCreateMetadata",
+    "DiscountFixedRepeatDurationCreateMetadataTypedDict",
+    "DiscountFixedRepeatDurationCreateTypedDict",
+    "DiscountFixedRepeatDurationMetadata",
+    "DiscountFixedRepeatDurationMetadataTypedDict",
+    "DiscountFixedRepeatDurationTypedDict",
+    "DiscountIDFilter",
+    "DiscountIDFilterTypedDict",
+    "DiscountPercentageOnceForeverDuration",
+    "DiscountPercentageOnceForeverDurationBase",
+    "DiscountPercentageOnceForeverDurationBaseMetadata",
+    "DiscountPercentageOnceForeverDurationBaseMetadataTypedDict",
+    "DiscountPercentageOnceForeverDurationBaseTypedDict",
+    "DiscountPercentageOnceForeverDurationCreate",
+    "DiscountPercentageOnceForeverDurationCreateMetadata",
+    "DiscountPercentageOnceForeverDurationCreateMetadataTypedDict",
+    "DiscountPercentageOnceForeverDurationCreateTypedDict",
+    "DiscountPercentageOnceForeverDurationMetadata",
+    "DiscountPercentageOnceForeverDurationMetadataTypedDict",
+    "DiscountPercentageOnceForeverDurationTypedDict",
+    "DiscountPercentageRepeatDuration",
+    "DiscountPercentageRepeatDurationBase",
+    "DiscountPercentageRepeatDurationBaseMetadata",
+    "DiscountPercentageRepeatDurationBaseMetadataTypedDict",
+    "DiscountPercentageRepeatDurationBaseTypedDict",
+    "DiscountPercentageRepeatDurationCreate",
+    "DiscountPercentageRepeatDurationCreateMetadata",
+    "DiscountPercentageRepeatDurationCreateMetadataTypedDict",
+    "DiscountPercentageRepeatDurationCreateTypedDict",
+    "DiscountPercentageRepeatDurationMetadata",
+    "DiscountPercentageRepeatDurationMetadataTypedDict",
+    "DiscountPercentageRepeatDurationTypedDict",
+    "DiscountProduct",
+    "DiscountProductTypedDict",
+    "DiscountSortProperty",
+    "DiscountType",
+    "DiscountTypedDict",
+    "DiscountUpdate",
+    "DiscountUpdateMetadata",
+    "DiscountUpdateMetadataTypedDict",
+    "DiscountUpdateTypedDict",
+    "DiscountsDeleteRequest",
+    "DiscountsDeleteRequestTypedDict",
+    "DiscountsGetRequest",
+    "DiscountsGetRequestTypedDict",
+    "DiscountsListQueryParamOrganizationIDFilter",
+    "DiscountsListQueryParamOrganizationIDFilterTypedDict",
+    "DiscountsListRequest",
+    "DiscountsListRequestTypedDict",
+    "DiscountsListResponse",
+    "DiscountsListResponseTypedDict",
+    "DiscountsUpdateRequest",
+    "DiscountsUpdateRequestTypedDict",
     "DownloadableFileCreate",
     "DownloadableFileCreateService",
     "DownloadableFileCreateTypedDict",
@@ -1930,6 +2197,8 @@ __all__ = [
     "ExternalOrganizationsListRequestTypedDict",
     "ExternalOrganizationsListResponse",
     "ExternalOrganizationsListResponseTypedDict",
+    "FileCreate",
+    "FileCreateTypedDict",
     "FileDownload",
     "FileDownloadTypedDict",
     "FileNotFound",
@@ -1944,8 +2213,6 @@ __all__ = [
     "FileUploadCompleted",
     "FileUploadCompletedTypedDict",
     "FileUploadTypedDict",
-    "FilesCreateFileCreate",
-    "FilesCreateFileCreateTypedDict",
     "FilesDeleteRequest",
     "FilesDeleteRequestTypedDict",
     "FilesListRequest",
@@ -2013,7 +2280,6 @@ __all__ = [
     "LicenseKeysListResponseTypedDict",
     "LicenseKeysUpdateRequest",
     "LicenseKeysUpdateRequestTypedDict",
-    "ListResource",
     "ListResourceArticle",
     "ListResourceArticleTypedDict",
     "ListResourceBenefit",
@@ -2024,6 +2290,10 @@ __all__ = [
     "ListResourceCheckoutLink",
     "ListResourceCheckoutLinkTypedDict",
     "ListResourceCheckoutTypedDict",
+    "ListResourceCustomField",
+    "ListResourceCustomFieldTypedDict",
+    "ListResourceDiscount",
+    "ListResourceDiscountTypedDict",
     "ListResourceDownloadableRead",
     "ListResourceDownloadableReadTypedDict",
     "ListResourceExternalOrganization",
@@ -2044,7 +2314,6 @@ __all__ = [
     "ListResourceRepositoryTypedDict",
     "ListResourceSubscription",
     "ListResourceSubscriptionTypedDict",
-    "ListResourceTypedDict",
     "ListResourceUserAdvertisementCampaign",
     "ListResourceUserAdvertisementCampaignTypedDict",
     "ListResourceUserBenefit",
@@ -2129,6 +2398,8 @@ __all__ = [
     "OrderBillingReason",
     "OrderCustomFieldData",
     "OrderCustomFieldDataTypedDict",
+    "OrderDiscount",
+    "OrderDiscountTypedDict",
     "OrderIDFilter",
     "OrderIDFilterTypedDict",
     "OrderInvoice",
@@ -2203,23 +2474,6 @@ __all__ = [
     "PledgeTypedDict",
     "Pledger",
     "PledgerTypedDict",
-    "PolarCheckoutLegacySchemasCheckout",
-    "PolarCheckoutLegacySchemasCheckoutCreate",
-    "PolarCheckoutLegacySchemasCheckoutCreateTypedDict",
-    "PolarCheckoutLegacySchemasCheckoutTypedDict",
-    "PolarCheckoutSchemasCheckout",
-    "PolarCheckoutSchemasCheckoutCreate",
-    "PolarCheckoutSchemasCheckoutCreateCustomFieldData",
-    "PolarCheckoutSchemasCheckoutCreateCustomFieldDataTypedDict",
-    "PolarCheckoutSchemasCheckoutCreateMetadata",
-    "PolarCheckoutSchemasCheckoutCreateMetadataTypedDict",
-    "PolarCheckoutSchemasCheckoutCreatePaymentProcessor",
-    "PolarCheckoutSchemasCheckoutCreateTypedDict",
-    "PolarCheckoutSchemasCheckoutCustomFieldData",
-    "PolarCheckoutSchemasCheckoutCustomFieldDataTypedDict",
-    "PolarCheckoutSchemasCheckoutMetadata",
-    "PolarCheckoutSchemasCheckoutMetadataTypedDict",
-    "PolarCheckoutSchemasCheckoutTypedDict",
     "PreviousProperties",
     "PreviousPropertiesTypedDict",
     "Prices",
@@ -2227,6 +2481,8 @@ __all__ = [
     "Product",
     "ProductBenefitsUpdate",
     "ProductBenefitsUpdateTypedDict",
+    "ProductCreate",
+    "ProductCreateTypedDict",
     "ProductIDFilter",
     "ProductIDFilterTypedDict",
     "ProductMediaFileCreate",
@@ -2306,8 +2562,6 @@ __all__ = [
     "ProductUpdatePrices",
     "ProductUpdatePricesTypedDict",
     "ProductUpdateTypedDict",
-    "ProductsCreateProductCreate",
-    "ProductsCreateProductCreateTypedDict",
     "ProductsGetRequest",
     "ProductsGetRequestTypedDict",
     "ProductsListQueryParamOrganizationIDFilter",
@@ -2326,6 +2580,8 @@ __all__ = [
     "QueryParamBenefitIDFilterTypedDict",
     "QueryParamBenefitTypeFilter",
     "QueryParamBenefitTypeFilterTypedDict",
+    "QueryParamDiscountIDFilter",
+    "QueryParamDiscountIDFilterTypedDict",
     "QueryParamOrganizationIDFilter",
     "QueryParamOrganizationIDFilterTypedDict",
     "QueryParamPlatformFilter",
@@ -2389,6 +2645,8 @@ __all__ = [
     "Subscription",
     "SubscriptionCustomFieldData",
     "SubscriptionCustomFieldDataTypedDict",
+    "SubscriptionDiscount",
+    "SubscriptionDiscountTypedDict",
     "SubscriptionIDFilter",
     "SubscriptionIDFilterTypedDict",
     "SubscriptionRecurringInterval",

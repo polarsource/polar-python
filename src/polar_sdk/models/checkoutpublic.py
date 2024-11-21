@@ -3,6 +3,22 @@
 from __future__ import annotations
 from .address import Address, AddressTypedDict
 from .attachedcustomfield import AttachedCustomField, AttachedCustomFieldTypedDict
+from .checkoutdiscountfixedonceforeverduration import (
+    CheckoutDiscountFixedOnceForeverDuration,
+    CheckoutDiscountFixedOnceForeverDurationTypedDict,
+)
+from .checkoutdiscountfixedrepeatduration import (
+    CheckoutDiscountFixedRepeatDuration,
+    CheckoutDiscountFixedRepeatDurationTypedDict,
+)
+from .checkoutdiscountpercentageonceforeverduration import (
+    CheckoutDiscountPercentageOnceForeverDuration,
+    CheckoutDiscountPercentageOnceForeverDurationTypedDict,
+)
+from .checkoutdiscountpercentagerepeatduration import (
+    CheckoutDiscountPercentageRepeatDuration,
+    CheckoutDiscountPercentageRepeatDurationTypedDict,
+)
 from .checkoutproduct import CheckoutProduct, CheckoutProductTypedDict
 from .checkoutstatus import CheckoutStatus
 from .organization import Organization, OrganizationTypedDict
@@ -14,7 +30,7 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import List, Optional
+from typing import List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
@@ -32,6 +48,22 @@ class CheckoutPublicPaymentProcessorMetadataTypedDict(TypedDict):
 
 class CheckoutPublicPaymentProcessorMetadata(BaseModel):
     pass
+
+
+CheckoutPublicDiscountTypedDict = Union[
+    CheckoutDiscountPercentageOnceForeverDurationTypedDict,
+    CheckoutDiscountFixedOnceForeverDurationTypedDict,
+    CheckoutDiscountPercentageRepeatDurationTypedDict,
+    CheckoutDiscountFixedRepeatDurationTypedDict,
+]
+
+
+CheckoutPublicDiscount = Union[
+    CheckoutDiscountPercentageOnceForeverDuration,
+    CheckoutDiscountFixedOnceForeverDuration,
+    CheckoutDiscountPercentageRepeatDuration,
+    CheckoutDiscountFixedRepeatDuration,
+]
 
 
 class CheckoutPublicTypedDict(TypedDict):
@@ -59,14 +91,28 @@ class CheckoutPublicTypedDict(TypedDict):
     r"""Computed tax amount to pay in cents."""
     currency: Nullable[str]
     r"""Currency code of the checkout session."""
+    subtotal_amount: Nullable[int]
+    r"""Subtotal amount in cents, including discounts and before tax."""
     total_amount: Nullable[int]
-    r"""Total amount to pay in cents."""
+    r"""Total amount to pay in cents, including discounts and after tax."""
     product_id: str
     r"""ID of the product to checkout."""
     product_price_id: str
     r"""ID of the product price to checkout."""
+    discount_id: Nullable[str]
+    r"""ID of the discount applied to the checkout."""
+    allow_discount_codes: bool
+    r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
+    is_discount_applicable: bool
+    r"""Whether the discount is applicable to the checkout. Typically, free and custom prices are not discountable."""
+    is_free_product_price: bool
+    r"""Whether the product price is free, regardless of discounts."""
     is_payment_required: bool
-    r"""Whether the checkout requires payment. Useful to detect free products."""
+    r"""Whether the checkout requires payment, e.g. in case of free products or discounts that cover the total amount."""
+    is_payment_setup_required: bool
+    r"""Whether the checkout requires setting up a payment method, regardless of the amount, e.g. subscriptions that have first free cycles."""
+    is_payment_form_required: bool
+    r"""Whether the checkout requires a payment form, whether because of a payment or payment method setup."""
     customer_id: Nullable[str]
     customer_name: Nullable[str]
     customer_email: Nullable[str]
@@ -77,6 +123,7 @@ class CheckoutPublicTypedDict(TypedDict):
     product: CheckoutProductTypedDict
     r"""Product data for a checkout session."""
     product_price: ProductPriceTypedDict
+    discount: Nullable[CheckoutPublicDiscountTypedDict]
     organization: OrganizationTypedDict
     attached_custom_fields: List[AttachedCustomFieldTypedDict]
     custom_field_data: NotRequired[CheckoutPublicCustomFieldDataTypedDict]
@@ -121,8 +168,11 @@ class CheckoutPublic(BaseModel):
     currency: Nullable[str]
     r"""Currency code of the checkout session."""
 
+    subtotal_amount: Nullable[int]
+    r"""Subtotal amount in cents, including discounts and before tax."""
+
     total_amount: Nullable[int]
-    r"""Total amount to pay in cents."""
+    r"""Total amount to pay in cents, including discounts and after tax."""
 
     product_id: str
     r"""ID of the product to checkout."""
@@ -130,8 +180,26 @@ class CheckoutPublic(BaseModel):
     product_price_id: str
     r"""ID of the product price to checkout."""
 
+    discount_id: Nullable[str]
+    r"""ID of the discount applied to the checkout."""
+
+    allow_discount_codes: bool
+    r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
+
+    is_discount_applicable: bool
+    r"""Whether the discount is applicable to the checkout. Typically, free and custom prices are not discountable."""
+
+    is_free_product_price: bool
+    r"""Whether the product price is free, regardless of discounts."""
+
     is_payment_required: bool
-    r"""Whether the checkout requires payment. Useful to detect free products."""
+    r"""Whether the checkout requires payment, e.g. in case of free products or discounts that cover the total amount."""
+
+    is_payment_setup_required: bool
+    r"""Whether the checkout requires setting up a payment method, regardless of the amount, e.g. subscriptions that have first free cycles."""
+
+    is_payment_form_required: bool
+    r"""Whether the checkout requires a payment form, whether because of a payment or payment method setup."""
 
     customer_id: Nullable[str]
 
@@ -151,6 +219,8 @@ class CheckoutPublic(BaseModel):
     r"""Product data for a checkout session."""
 
     product_price: ProductPrice
+
+    discount: Nullable[CheckoutPublicDiscount]
 
     organization: Organization
 
@@ -175,13 +245,16 @@ class CheckoutPublic(BaseModel):
             "amount",
             "tax_amount",
             "currency",
+            "subtotal_amount",
             "total_amount",
+            "discount_id",
             "customer_id",
             "customer_name",
             "customer_email",
             "customer_ip_address",
             "customer_billing_address",
             "customer_tax_id",
+            "discount",
         ]
         null_default_fields = []
 

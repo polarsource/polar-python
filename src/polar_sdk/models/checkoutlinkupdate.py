@@ -27,6 +27,12 @@ class CheckoutLinkUpdateTypedDict(TypedDict):
 
     You can store up to **50 key-value pairs**.
     """
+    label: NotRequired[Nullable[str]]
+    allow_discount_codes: NotRequired[Nullable[bool]]
+    r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
+    product_price_id: NotRequired[Nullable[str]]
+    discount_id: NotRequired[Nullable[str]]
+    r"""ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored."""
     success_url: NotRequired[Nullable[str]]
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
 
@@ -46,13 +52,37 @@ class CheckoutLinkUpdate(BaseModel):
     You can store up to **50 key-value pairs**.
     """
 
+    label: OptionalNullable[str] = UNSET
+
+    allow_discount_codes: OptionalNullable[bool] = UNSET
+    r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
+
+    product_price_id: OptionalNullable[str] = UNSET
+
+    discount_id: OptionalNullable[str] = UNSET
+    r"""ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored."""
+
     success_url: OptionalNullable[str] = UNSET
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["metadata", "success_url"]
-        nullable_fields = ["metadata", "success_url"]
+        optional_fields = [
+            "metadata",
+            "label",
+            "allow_discount_codes",
+            "product_price_id",
+            "discount_id",
+            "success_url",
+        ]
+        nullable_fields = [
+            "metadata",
+            "label",
+            "allow_discount_codes",
+            "product_price_id",
+            "discount_id",
+            "success_url",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

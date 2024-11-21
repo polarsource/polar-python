@@ -29,6 +29,8 @@ class CheckoutConfirmStripeTypedDict(TypedDict):
     customer_email: NotRequired[Nullable[str]]
     customer_billing_address: NotRequired[Nullable[AddressTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
+    discount_code: NotRequired[Nullable[str]]
+    r"""Discount code to apply to the checkout."""
     confirmation_token_id: NotRequired[Nullable[str]]
     r"""ID of the Stripe confirmation token. Required for fixed prices and custom prices."""
 
@@ -52,6 +54,9 @@ class CheckoutConfirmStripe(BaseModel):
 
     customer_tax_id: OptionalNullable[str] = UNSET
 
+    discount_code: OptionalNullable[str] = UNSET
+    r"""Discount code to apply to the checkout."""
+
     confirmation_token_id: OptionalNullable[str] = UNSET
     r"""ID of the Stripe confirmation token. Required for fixed prices and custom prices."""
 
@@ -65,6 +70,7 @@ class CheckoutConfirmStripe(BaseModel):
             "customer_email",
             "customer_billing_address",
             "customer_tax_id",
+            "discount_code",
             "confirmation_token_id",
         ]
         nullable_fields = [
@@ -75,6 +81,7 @@ class CheckoutConfirmStripe(BaseModel):
             "customer_email",
             "customer_billing_address",
             "customer_tax_id",
+            "discount_code",
             "confirmation_token_id",
         ]
         null_default_fields = []
