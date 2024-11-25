@@ -44,6 +44,7 @@ class DiscountPercentageRepeatDurationCreateTypedDict(TypedDict):
 
     The key must be a string with a maximum length of **40 characters**.
     The value must be either:
+
     * A string with a maximum length of **500 characters**
     * An integer
     * A boolean
@@ -94,6 +95,7 @@ class DiscountPercentageRepeatDurationCreate(BaseModel):
 
     The key must be a string with a maximum length of **40 characters**.
     The value must be either:
+
     * A string with a maximum length of **500 characters**
     * An integer
     * A boolean

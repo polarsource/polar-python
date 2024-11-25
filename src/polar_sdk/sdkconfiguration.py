@@ -31,9 +31,9 @@ class SDKConfiguration:
     server: Optional[str] = ""
     language: str = "python"
     openapi_doc_version: str = "0.1.0"
-    sdk_version: str = "0.8.1"
-    gen_version: str = "2.461.2"
-    user_agent: str = "speakeasy-sdk/python 0.8.1 2.461.2 0.1.0 polar-sdk"
+    sdk_version: str = "0.8.2"
+    gen_version: str = "2.461.4"
+    user_agent: str = "speakeasy-sdk/python 0.8.2 2.461.4 0.1.0 polar-sdk"
     retry_config: OptionalNullable[RetryConfig] = Field(default_factory=lambda: UNSET)
     timeout_ms: Optional[int] = None
 
