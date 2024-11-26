@@ -9,13 +9,17 @@ import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import Dict, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-CheckoutProductCreateMetadataTypedDict = Union[str, int, bool]
+CheckoutProductCreateMetadataTypedDict = TypeAliasType(
+    "CheckoutProductCreateMetadataTypedDict", Union[str, int, bool]
+)
 
 
-CheckoutProductCreateMetadata = Union[str, int, bool]
+CheckoutProductCreateMetadata = TypeAliasType(
+    "CheckoutProductCreateMetadata", Union[str, int, bool]
+)
 
 
 class CheckoutProductCreateCustomFieldDataTypedDict(TypedDict):

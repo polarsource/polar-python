@@ -7,13 +7,17 @@ from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-DiscountPercentageRepeatDurationCreateMetadataTypedDict = Union[str, int, bool]
+DiscountPercentageRepeatDurationCreateMetadataTypedDict = TypeAliasType(
+    "DiscountPercentageRepeatDurationCreateMetadataTypedDict", Union[str, int, bool]
+)
 
 
-DiscountPercentageRepeatDurationCreateMetadata = Union[str, int, bool]
+DiscountPercentageRepeatDurationCreateMetadata = TypeAliasType(
+    "DiscountPercentageRepeatDurationCreateMetadata", Union[str, int, bool]
+)
 
 
 class DiscountPercentageRepeatDurationCreateTypedDict(TypedDict):

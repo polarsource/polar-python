@@ -48,19 +48,18 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 # Synchronous Example
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.benefits.list()
 
-res = s.users.benefits.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 ```
 
 </br>
@@ -72,17 +71,18 @@ import asyncio
 from polar_sdk import Polar
 
 async def main():
-    s = Polar(
+    async with Polar(
         access_token="<YOUR_BEARER_TOKEN_HERE>",
-    )
-    res = await s.users.benefits.list_async()
-    if res is not None:
-        while True:
-            # handle items
+    ) as s:
+        res = await s.users.benefits.list_async()
 
-            res = res.next()
-            if res is None:
-                break
+        if res is not None:
+            while True:
+                # handle items
+
+                res = res.next()
+                if res is None:
+                    break
 
 asyncio.run(main())
 ```
@@ -288,20 +288,19 @@ To change the default retry strategy for a single API call, simply provide a `Re
 from polar.utils import BackoffStrategy, RetryConfig
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.benefits.list(,
+        RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-res = s.users.benefits.list(,
-    RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -310,20 +309,19 @@ If you'd like to override the default retry strategy for all operations that sup
 from polar.utils import BackoffStrategy, RetryConfig
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.benefits.list()
 
-res = s.users.benefits.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 <!-- End Retries [retries] -->
@@ -354,28 +352,27 @@ When custom error responses are specified for an operation, the SDK may also rai
 ```python
 from polar_sdk import Polar, models
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = None
+    try:
+        res = s.users.benefits.list()
 
-res = None
-try:
-    res = s.users.benefits.list()
+        if res is not None:
+            while True:
+                # handle items
 
-    if res is not None:
-        while True:
-            # handle items
+                res = res.next()
+                if res is None:
+                    break
 
-            res = res.next()
-            if res is None:
-                break
-
-except models.HTTPValidationError as e:
-    # handle e.data: models.HTTPValidationErrorData
-    raise(e)
-except models.SDKError as e:
-    # handle exception
-    raise(e)
+    except models.HTTPValidationError as e:
+        # handle e.data: models.HTTPValidationErrorData
+        raise(e)
+    except models.SDKError as e:
+        # handle exception
+        raise(e)
 ```
 <!-- End Error Handling [errors] -->
 
@@ -396,20 +393,19 @@ You can override the default server globally by passing a server name to the `se
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     server="sandbox",
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.benefits.list()
 
-res = s.users.benefits.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -419,20 +415,19 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     server_url="https://api.polar.sh",
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.benefits.list()
 
-res = s.users.benefits.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 <!-- End Server Selection [server] -->
@@ -533,19 +528,18 @@ To authenticate with the API the `access_token` parameter must be set when initi
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.benefits.list()
 
-res = s.users.benefits.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 <!-- End Authentication [security] -->
@@ -576,19 +570,18 @@ Here's an example of one such pagination call:
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.benefits.list()
 
-res = s.users.benefits.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 <!-- End Pagination [pagination] -->

@@ -20,21 +20,20 @@ List products.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.products.list(organization_id=[
+        "<value>",
+    ])
 
-res = s.products.list(organization_id=[
-    "<value>",
-])
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -73,24 +72,23 @@ Create a product.
 import polar_sdk
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.products.create(request={
+        "name": "<value>",
+        "prices": [
+            {
+                "recurring_interval": polar_sdk.SubscriptionRecurringInterval.MONTH,
+                "type": polar_sdk.ProductPriceRecurringFreeCreateType.RECURRING,
+                "amount_type": polar_sdk.ProductPriceRecurringFreeCreateAmountType.FREE,
+            },
+        ],
+    })
 
-res = s.products.create(request={
-    "name": "<value>",
-    "prices": [
-        {
-            "recurring_interval": polar_sdk.SubscriptionRecurringInterval.MONTH,
-            "type": polar_sdk.ProductPriceRecurringFreeCreateType.RECURRING,
-            "amount_type": polar_sdk.ProductPriceRecurringFreeCreateAmountType.FREE,
-        },
-    ],
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -121,15 +119,14 @@ Get a product by ID.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.products.get(id="<value>")
 
-res = s.products.get(id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -161,15 +158,14 @@ Update a product.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.products.update(id="<value>", product_update={})
 
-res = s.products.update(id="<value>", product_update={})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -203,19 +199,18 @@ Update benefits granted by a product.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.products.update_benefits(id="<value>", product_benefits_update={
+        "benefits": [
+            "<value>",
+        ],
+    })
 
-res = s.products.update_benefits(id="<value>", product_benefits_update={
-    "benefits": [
-        "<value>",
-    ],
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

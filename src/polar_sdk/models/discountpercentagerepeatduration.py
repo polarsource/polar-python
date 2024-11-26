@@ -8,13 +8,17 @@ from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Union
-from typing_extensions import TypedDict
+from typing_extensions import TypeAliasType, TypedDict
 
 
-DiscountPercentageRepeatDurationMetadataTypedDict = Union[str, int, bool]
+DiscountPercentageRepeatDurationMetadataTypedDict = TypeAliasType(
+    "DiscountPercentageRepeatDurationMetadataTypedDict", Union[str, int, bool]
+)
 
 
-DiscountPercentageRepeatDurationMetadata = Union[str, int, bool]
+DiscountPercentageRepeatDurationMetadata = TypeAliasType(
+    "DiscountPercentageRepeatDurationMetadata", Union[str, int, bool]
+)
 
 
 class DiscountPercentageRepeatDurationTypedDict(TypedDict):

@@ -20,19 +20,18 @@ List discounts.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.discounts.list()
 
-res = s.discounts.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -68,21 +67,20 @@ Create a discount.
 import polar_sdk
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.discounts.create(request={
+        "duration": polar_sdk.DiscountDuration.FOREVER,
+        "duration_in_months": 417458,
+        "type": polar_sdk.DiscountType.FIXED,
+        "amount": 69025,
+        "name": "<value>",
+    })
 
-res = s.discounts.create(request={
-    "duration": polar_sdk.DiscountDuration.FOREVER,
-    "duration_in_months": 417458,
-    "type": polar_sdk.DiscountType.FIXED,
-    "amount": 69025,
-    "name": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -113,15 +111,14 @@ Get a discount by ID.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.discounts.get(id="<value>")
 
-res = s.discounts.get(id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -153,15 +150,14 @@ Update a discount.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.discounts.update(id="<value>", discount_update={})
 
-res = s.discounts.update(id="<value>", discount_update={})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -194,13 +190,12 @@ Delete a discount.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    s.discounts.delete(id="<value>")
 
-s.discounts.delete(id="<value>")
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 

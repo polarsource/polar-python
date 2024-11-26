@@ -8,34 +8,44 @@ from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing import List, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-MetricsGetQueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]
+MetricsGetQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "MetricsGetQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-MetricsGetQueryParamOrganizationIDFilter = Union[str, List[str]]
+MetricsGetQueryParamOrganizationIDFilter = TypeAliasType(
+    "MetricsGetQueryParamOrganizationIDFilter", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-MetricsGetQueryParamProductIDFilterTypedDict = Union[str, List[str]]
+MetricsGetQueryParamProductIDFilterTypedDict = TypeAliasType(
+    "MetricsGetQueryParamProductIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by product ID."""
 
 
-MetricsGetQueryParamProductIDFilter = Union[str, List[str]]
+MetricsGetQueryParamProductIDFilter = TypeAliasType(
+    "MetricsGetQueryParamProductIDFilter", Union[str, List[str]]
+)
 r"""Filter by product ID."""
 
 
-MetricsGetQueryParamProductPriceTypeFilterTypedDict = Union[
-    ProductPriceType, List[ProductPriceType]
-]
+MetricsGetQueryParamProductPriceTypeFilterTypedDict = TypeAliasType(
+    "MetricsGetQueryParamProductPriceTypeFilterTypedDict",
+    Union[ProductPriceType, List[ProductPriceType]],
+)
 r"""Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
 
 
-MetricsGetQueryParamProductPriceTypeFilter = Union[
-    ProductPriceType, List[ProductPriceType]
-]
+MetricsGetQueryParamProductPriceTypeFilter = TypeAliasType(
+    "MetricsGetQueryParamProductPriceTypeFilter",
+    Union[ProductPriceType, List[ProductPriceType]],
+)
 r"""Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
 
 

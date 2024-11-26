@@ -12,13 +12,17 @@ import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import Dict, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-CustomFieldUpdateCheckboxMetadataTypedDict = Union[str, int, bool]
+CustomFieldUpdateCheckboxMetadataTypedDict = TypeAliasType(
+    "CustomFieldUpdateCheckboxMetadataTypedDict", Union[str, int, bool]
+)
 
 
-CustomFieldUpdateCheckboxMetadata = Union[str, int, bool]
+CustomFieldUpdateCheckboxMetadata = TypeAliasType(
+    "CustomFieldUpdateCheckboxMetadata", Union[str, int, bool]
+)
 
 
 class CustomFieldUpdateCheckboxType(str, Enum):

@@ -4,13 +4,17 @@ from __future__ import annotations
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-CheckoutLinkUpdateMetadataTypedDict = Union[str, int, bool]
+CheckoutLinkUpdateMetadataTypedDict = TypeAliasType(
+    "CheckoutLinkUpdateMetadataTypedDict", Union[str, int, bool]
+)
 
 
-CheckoutLinkUpdateMetadata = Union[str, int, bool]
+CheckoutLinkUpdateMetadata = TypeAliasType(
+    "CheckoutLinkUpdateMetadata", Union[str, int, bool]
+)
 
 
 class CheckoutLinkUpdateTypedDict(TypedDict):

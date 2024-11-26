@@ -14,15 +14,24 @@ from .productpricerecurringfree import (
     ProductPriceRecurringFreeTypedDict,
 )
 from typing import Union
+from typing_extensions import TypeAliasType
 
 
-ProductPriceRecurringTypedDict = Union[
-    ProductPriceRecurringFreeTypedDict,
-    ProductPriceRecurringFixedTypedDict,
-    ProductPriceRecurringCustomTypedDict,
-]
+ProductPriceRecurringTypedDict = TypeAliasType(
+    "ProductPriceRecurringTypedDict",
+    Union[
+        ProductPriceRecurringFreeTypedDict,
+        ProductPriceRecurringFixedTypedDict,
+        ProductPriceRecurringCustomTypedDict,
+    ],
+)
 
 
-ProductPriceRecurring = Union[
-    ProductPriceRecurringFree, ProductPriceRecurringFixed, ProductPriceRecurringCustom
-]
+ProductPriceRecurring = TypeAliasType(
+    "ProductPriceRecurring",
+    Union[
+        ProductPriceRecurringFree,
+        ProductPriceRecurringFixed,
+        ProductPriceRecurringCustom,
+    ],
+)

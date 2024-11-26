@@ -20,19 +20,18 @@ List files.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.files.list()
 
-res = s.files.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -67,29 +66,28 @@ Create a file.
 import polar_sdk
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.files.create(request={
+        "name": "<value>",
+        "mime_type": "<value>",
+        "size": 638424,
+        "upload": {
+            "parts": [
+                {
+                    "number": 417458,
+                    "chunk_start": 134365,
+                    "chunk_end": 69025,
+                },
+            ],
+        },
+        "service": polar_sdk.OrganizationAvatarFileCreateService.ORGANIZATION_AVATAR,
+    })
 
-res = s.files.create(request={
-    "name": "<value>",
-    "mime_type": "<value>",
-    "size": 638424,
-    "upload": {
-        "parts": [
-            {
-                "number": 417458,
-                "chunk_start": 134365,
-                "chunk_end": 69025,
-            },
-        ],
-    },
-    "service": polar_sdk.OrganizationAvatarFileCreateService.ORGANIZATION_AVATAR,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -120,25 +118,24 @@ Complete a file upload.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.files.uploaded(id="<value>", file_upload_completed={
+        "id": "<id>",
+        "path": "/sys",
+        "parts": [
+            {
+                "number": 606865,
+                "checksum_etag": "<value>",
+                "checksum_sha256_base64": "<value>",
+            },
+        ],
+    })
 
-res = s.files.uploaded(id="<value>", file_upload_completed={
-    "id": "<id>",
-    "path": "/sys",
-    "parts": [
-        {
-            "number": 606865,
-            "checksum_etag": "<value>",
-            "checksum_sha256_base64": "<value>",
-        },
-    ],
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -170,15 +167,14 @@ Update a file.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.files.update(id="<value>", file_patch={})
 
-res = s.files.update(id="<value>", file_patch={})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -210,13 +206,12 @@ Delete a file.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    s.files.delete(id="<value>")
 
-s.files.delete(id="<value>")
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 

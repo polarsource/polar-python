@@ -27,29 +27,37 @@ import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import Dict, Union
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
-CheckoutLinkMetadataTypedDict = Union[str, int, bool]
+CheckoutLinkMetadataTypedDict = TypeAliasType(
+    "CheckoutLinkMetadataTypedDict", Union[str, int, bool]
+)
 
 
-CheckoutLinkMetadata = Union[str, int, bool]
+CheckoutLinkMetadata = TypeAliasType("CheckoutLinkMetadata", Union[str, int, bool])
 
 
-CheckoutLinkDiscountTypedDict = Union[
-    DiscountPercentageOnceForeverDurationBaseTypedDict,
-    DiscountFixedOnceForeverDurationBaseTypedDict,
-    DiscountPercentageRepeatDurationBaseTypedDict,
-    DiscountFixedRepeatDurationBaseTypedDict,
-]
+CheckoutLinkDiscountTypedDict = TypeAliasType(
+    "CheckoutLinkDiscountTypedDict",
+    Union[
+        DiscountPercentageOnceForeverDurationBaseTypedDict,
+        DiscountFixedOnceForeverDurationBaseTypedDict,
+        DiscountPercentageRepeatDurationBaseTypedDict,
+        DiscountFixedRepeatDurationBaseTypedDict,
+    ],
+)
 
 
-CheckoutLinkDiscount = Union[
-    DiscountPercentageOnceForeverDurationBase,
-    DiscountFixedOnceForeverDurationBase,
-    DiscountPercentageRepeatDurationBase,
-    DiscountFixedRepeatDurationBase,
-]
+CheckoutLinkDiscount = TypeAliasType(
+    "CheckoutLinkDiscount",
+    Union[
+        DiscountPercentageOnceForeverDurationBase,
+        DiscountFixedOnceForeverDurationBase,
+        DiscountPercentageRepeatDurationBase,
+        DiscountFixedRepeatDurationBase,
+    ],
+)
 
 
 class CheckoutLinkTypedDict(TypedDict):

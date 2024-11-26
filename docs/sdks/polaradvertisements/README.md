@@ -21,19 +21,18 @@ List advertisement campaigns.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.advertisements.list()
 
-res = s.users.advertisements.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -66,19 +65,18 @@ Create an advertisement campaign.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.advertisements.create(request={
+        "image_url": "http://limp-pastry.org",
+        "text": "<value>",
+        "link_url": "http://flashy-cartload.net",
+    })
 
-res = s.users.advertisements.create(request={
-    "image_url": "http://limp-pastry.org",
-    "text": "<value>",
-    "link_url": "http://flashy-cartload.net",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -109,15 +107,14 @@ Get an advertisement campaign by ID.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.advertisements.get(id="<value>")
 
-res = s.users.advertisements.get(id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -149,15 +146,14 @@ Update an advertisement campaign.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.advertisements.update(id="<value>", user_advertisement_campaign_update={})
 
-res = s.users.advertisements.update(id="<value>", user_advertisement_campaign_update={})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -192,15 +188,14 @@ It'll be automatically disabled on all granted benefits.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.advertisements.delete(id="<value>")
 
-res = s.users.advertisements.delete(id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -232,15 +227,14 @@ Enable an advertisement campaign on a granted benefit.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    s.users.advertisements.enable(id="<value>", user_advertisement_campaign_enable={
+        "benefit_id": "<value>",
+    })
 
-s.users.advertisements.enable(id="<value>", user_advertisement_campaign_enable={
-    "benefit_id": "<value>",
-})
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 

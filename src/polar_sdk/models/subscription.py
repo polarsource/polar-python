@@ -26,13 +26,13 @@ from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, Optional, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-MetadataTypedDict = Union[str, int, bool]
+MetadataTypedDict = TypeAliasType("MetadataTypedDict", Union[str, int, bool])
 
 
-Metadata = Union[str, int, bool]
+Metadata = TypeAliasType("Metadata", Union[str, int, bool])
 
 
 class SubscriptionCustomFieldDataTypedDict(TypedDict):
@@ -43,20 +43,26 @@ class SubscriptionCustomFieldData(BaseModel):
     r"""Key-value object storing custom field values."""
 
 
-SubscriptionDiscountTypedDict = Union[
-    DiscountPercentageOnceForeverDurationBaseTypedDict,
-    DiscountFixedOnceForeverDurationBaseTypedDict,
-    DiscountPercentageRepeatDurationBaseTypedDict,
-    DiscountFixedRepeatDurationBaseTypedDict,
-]
+SubscriptionDiscountTypedDict = TypeAliasType(
+    "SubscriptionDiscountTypedDict",
+    Union[
+        DiscountPercentageOnceForeverDurationBaseTypedDict,
+        DiscountFixedOnceForeverDurationBaseTypedDict,
+        DiscountPercentageRepeatDurationBaseTypedDict,
+        DiscountFixedRepeatDurationBaseTypedDict,
+    ],
+)
 
 
-SubscriptionDiscount = Union[
-    DiscountPercentageOnceForeverDurationBase,
-    DiscountFixedOnceForeverDurationBase,
-    DiscountPercentageRepeatDurationBase,
-    DiscountFixedRepeatDurationBase,
-]
+SubscriptionDiscount = TypeAliasType(
+    "SubscriptionDiscount",
+    Union[
+        DiscountPercentageOnceForeverDurationBase,
+        DiscountFixedOnceForeverDurationBase,
+        DiscountPercentageRepeatDurationBase,
+        DiscountFixedRepeatDurationBase,
+    ],
+)
 
 
 class SubscriptionTypedDict(TypedDict):

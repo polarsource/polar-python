@@ -9,22 +9,29 @@ from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing import Callable, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-UsersDownloadablesListQueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]
+UsersDownloadablesListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "UsersDownloadablesListQueryParamOrganizationIDFilterTypedDict",
+    Union[str, List[str]],
+)
 r"""Filter by organization ID."""
 
 
-UsersDownloadablesListQueryParamOrganizationIDFilter = Union[str, List[str]]
+UsersDownloadablesListQueryParamOrganizationIDFilter = TypeAliasType(
+    "UsersDownloadablesListQueryParamOrganizationIDFilter", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-BenefitIDFilterTypedDict = Union[str, List[str]]
+BenefitIDFilterTypedDict = TypeAliasType(
+    "BenefitIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by given benefit ID."""
 
 
-BenefitIDFilter = Union[str, List[str]]
+BenefitIDFilter = TypeAliasType("BenefitIDFilter", Union[str, List[str]])
 r"""Filter by given benefit ID."""
 
 

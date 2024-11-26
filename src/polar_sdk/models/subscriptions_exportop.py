@@ -5,14 +5,16 @@ from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing import List, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-OrganizationIDTypedDict = Union[str, List[str]]
+OrganizationIDTypedDict = TypeAliasType(
+    "OrganizationIDTypedDict", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-OrganizationID = Union[str, List[str]]
+OrganizationID = TypeAliasType("OrganizationID", Union[str, List[str]])
 r"""Filter by organization ID."""
 
 

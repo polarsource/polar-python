@@ -20,15 +20,14 @@ Authorize
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.oauth2.authorize()
 
-res = s.oauth2.authorize()
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -58,21 +57,20 @@ Request an access token using a valid grant.
 import polar_sdk
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.oauth2.token(request={
+        "client_id": "<id>",
+        "client_secret": "<value>",
+        "code": "<value>",
+        "redirect_uri": "https://old-fort.name",
+        "grant_type": polar_sdk.GrantType.AUTHORIZATION_CODE,
+    })
 
-res = s.oauth2.token(request={
-    "client_id": "<id>",
-    "client_secret": "<value>",
-    "code": "<value>",
-    "redirect_uri": "https://old-fort.name",
-    "grant_type": polar_sdk.GrantType.AUTHORIZATION_CODE,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -102,19 +100,18 @@ Revoke an access token or a refresh token.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.oauth2.revoke(request={
+        "token": "<value>",
+        "client_id": "<value>",
+        "client_secret": "<value>",
+    })
 
-res = s.oauth2.revoke(request={
-    "token": "<value>",
-    "client_id": "<value>",
-    "client_secret": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -144,19 +141,18 @@ Get information about an access token.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.oauth2.introspect(request={
+        "token": "<value>",
+        "client_id": "<value>",
+        "client_secret": "<value>",
+    })
 
-res = s.oauth2.introspect(request={
-    "token": "<value>",
-    "client_id": "<value>",
-    "client_secret": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -186,15 +182,14 @@ Get information about the authenticated user.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.oauth2.userinfo()
 
-res = s.oauth2.userinfo()
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

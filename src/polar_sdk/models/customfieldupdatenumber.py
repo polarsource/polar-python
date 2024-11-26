@@ -12,13 +12,17 @@ import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import Dict, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-CustomFieldUpdateNumberMetadataTypedDict = Union[str, int, bool]
+CustomFieldUpdateNumberMetadataTypedDict = TypeAliasType(
+    "CustomFieldUpdateNumberMetadataTypedDict", Union[str, int, bool]
+)
 
 
-CustomFieldUpdateNumberMetadata = Union[str, int, bool]
+CustomFieldUpdateNumberMetadata = TypeAliasType(
+    "CustomFieldUpdateNumberMetadata", Union[str, int, bool]
+)
 
 
 class CustomFieldUpdateNumberType(str, Enum):

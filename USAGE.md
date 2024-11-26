@@ -3,19 +3,18 @@
 # Synchronous Example
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.benefits.list()
 
-res = s.users.benefits.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 ```
 
 </br>
@@ -27,17 +26,18 @@ import asyncio
 from polar_sdk import Polar
 
 async def main():
-    s = Polar(
+    async with Polar(
         access_token="<YOUR_BEARER_TOKEN_HERE>",
-    )
-    res = await s.users.benefits.list_async()
-    if res is not None:
-        while True:
-            # handle items
+    ) as s:
+        res = await s.users.benefits.list_async()
 
-            res = res.next()
-            if res is None:
-                break
+        if res is not None:
+            while True:
+                # handle items
+
+                res = res.next()
+                if res is None:
+                    break
 
 asyncio.run(main())
 ```

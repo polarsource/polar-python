@@ -7,22 +7,31 @@ from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing import Callable, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-ArticlesListQueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]
+ArticlesListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "ArticlesListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-ArticlesListQueryParamOrganizationIDFilter = Union[str, List[str]]
+ArticlesListQueryParamOrganizationIDFilter = TypeAliasType(
+    "ArticlesListQueryParamOrganizationIDFilter", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-ArticleVisibilityFilterTypedDict = Union[ArticleVisibility, List[ArticleVisibility]]
+ArticleVisibilityFilterTypedDict = TypeAliasType(
+    "ArticleVisibilityFilterTypedDict",
+    Union[ArticleVisibility, List[ArticleVisibility]],
+)
 r"""Filter by visibility."""
 
 
-ArticleVisibilityFilter = Union[ArticleVisibility, List[ArticleVisibility]]
+ArticleVisibilityFilter = TypeAliasType(
+    "ArticleVisibilityFilter", Union[ArticleVisibility, List[ArticleVisibility]]
+)
 r"""Filter by visibility."""
 
 

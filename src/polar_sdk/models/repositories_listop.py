@@ -11,38 +11,54 @@ from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing import Callable, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-QueryParamPlatformFilterTypedDict = Union[Platforms, List[Platforms]]
+QueryParamPlatformFilterTypedDict = TypeAliasType(
+    "QueryParamPlatformFilterTypedDict", Union[Platforms, List[Platforms]]
+)
 r"""Filter by platform."""
 
 
-QueryParamPlatformFilter = Union[Platforms, List[Platforms]]
+QueryParamPlatformFilter = TypeAliasType(
+    "QueryParamPlatformFilter", Union[Platforms, List[Platforms]]
+)
 r"""Filter by platform."""
 
 
-QueryParamRepositoryNameFilterTypedDict = Union[str, List[str]]
+QueryParamRepositoryNameFilterTypedDict = TypeAliasType(
+    "QueryParamRepositoryNameFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by name."""
 
 
-QueryParamRepositoryNameFilter = Union[str, List[str]]
+QueryParamRepositoryNameFilter = TypeAliasType(
+    "QueryParamRepositoryNameFilter", Union[str, List[str]]
+)
 r"""Filter by name."""
 
 
-ExternalOrganizationNameFilterTypedDict = Union[str, List[str]]
+ExternalOrganizationNameFilterTypedDict = TypeAliasType(
+    "ExternalOrganizationNameFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by external organization name."""
 
 
-ExternalOrganizationNameFilter = Union[str, List[str]]
+ExternalOrganizationNameFilter = TypeAliasType(
+    "ExternalOrganizationNameFilter", Union[str, List[str]]
+)
 r"""Filter by external organization name."""
 
 
-RepositoriesListQueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]
+RepositoriesListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "RepositoriesListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-RepositoriesListQueryParamOrganizationIDFilter = Union[str, List[str]]
+RepositoriesListQueryParamOrganizationIDFilter = TypeAliasType(
+    "RepositoriesListQueryParamOrganizationIDFilter", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 

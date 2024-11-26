@@ -20,19 +20,18 @@ List custom fields.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.custom_fields.list()
 
-res = s.custom_fields.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -69,20 +68,19 @@ Create a custom field.
 import polar_sdk
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.custom_fields.create(request={
+        "slug": "<value>",
+        "name": "<value>",
+        "properties": {},
+        "type": polar_sdk.CustomFieldCreateNumberType.NUMBER,
+    })
 
-res = s.custom_fields.create(request={
-    "slug": "<value>",
-    "name": "<value>",
-    "properties": {},
-    "type": polar_sdk.CustomFieldCreateNumberType.NUMBER,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -113,15 +111,14 @@ Get a custom field by ID.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.custom_fields.get(id="<value>")
 
-res = s.custom_fields.get(id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -154,17 +151,16 @@ Update a custom field.
 import polar_sdk
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.custom_fields.update(id="<value>", custom_field_update={
+        "type": polar_sdk.CustomFieldUpdateTextType.TEXT,
+    })
 
-res = s.custom_fields.update(id="<value>", custom_field_update={
-    "type": polar_sdk.CustomFieldUpdateTextType.TEXT,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -197,13 +193,12 @@ Delete a custom field.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    s.custom_fields.delete(id="<value>")
 
-s.custom_fields.delete(id="<value>")
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 

@@ -19,17 +19,20 @@ from .benefitlicensekeyscreate import (
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
-from typing_extensions import Annotated
+from typing_extensions import Annotated, TypeAliasType
 
 
-BenefitCreateTypedDict = Union[
-    BenefitAdsCreateTypedDict,
-    BenefitDiscordCreateTypedDict,
-    BenefitGitHubRepositoryCreateTypedDict,
-    BenefitDownloadablesCreateTypedDict,
-    BenefitLicenseKeysCreateTypedDict,
-    BenefitCustomCreateTypedDict,
-]
+BenefitCreateTypedDict = TypeAliasType(
+    "BenefitCreateTypedDict",
+    Union[
+        BenefitAdsCreateTypedDict,
+        BenefitDiscordCreateTypedDict,
+        BenefitGitHubRepositoryCreateTypedDict,
+        BenefitDownloadablesCreateTypedDict,
+        BenefitLicenseKeysCreateTypedDict,
+        BenefitCustomCreateTypedDict,
+    ],
+)
 
 
 BenefitCreate = Annotated[

@@ -20,29 +20,35 @@ from .benefitlicensekeysupdate import (
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, PathParamMetadata, RequestMetadata
 from typing import Union
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
-BenefitsUpdateBenefitUpdateTypedDict = Union[
-    BenefitArticlesUpdateTypedDict,
-    BenefitAdsUpdateTypedDict,
-    BenefitCustomUpdateTypedDict,
-    BenefitDiscordUpdateTypedDict,
-    BenefitGitHubRepositoryUpdateTypedDict,
-    BenefitDownloadablesUpdateTypedDict,
-    BenefitLicenseKeysUpdateTypedDict,
-]
+BenefitsUpdateBenefitUpdateTypedDict = TypeAliasType(
+    "BenefitsUpdateBenefitUpdateTypedDict",
+    Union[
+        BenefitArticlesUpdateTypedDict,
+        BenefitAdsUpdateTypedDict,
+        BenefitCustomUpdateTypedDict,
+        BenefitDiscordUpdateTypedDict,
+        BenefitGitHubRepositoryUpdateTypedDict,
+        BenefitDownloadablesUpdateTypedDict,
+        BenefitLicenseKeysUpdateTypedDict,
+    ],
+)
 
 
-BenefitsUpdateBenefitUpdate = Union[
-    BenefitArticlesUpdate,
-    BenefitAdsUpdate,
-    BenefitCustomUpdate,
-    BenefitDiscordUpdate,
-    BenefitGitHubRepositoryUpdate,
-    BenefitDownloadablesUpdate,
-    BenefitLicenseKeysUpdate,
-]
+BenefitsUpdateBenefitUpdate = TypeAliasType(
+    "BenefitsUpdateBenefitUpdate",
+    Union[
+        BenefitArticlesUpdate,
+        BenefitAdsUpdate,
+        BenefitCustomUpdate,
+        BenefitDiscordUpdate,
+        BenefitGitHubRepositoryUpdate,
+        BenefitDownloadablesUpdate,
+        BenefitLicenseKeysUpdate,
+    ],
+)
 
 
 class BenefitsUpdateRequestTypedDict(TypedDict):

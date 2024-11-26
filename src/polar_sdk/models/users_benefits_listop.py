@@ -12,38 +12,46 @@ from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 import pydantic
 from pydantic import model_serializer
 from typing import Callable, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-BenefitTypeFilterTypedDict = Union[BenefitType, List[BenefitType]]
+BenefitTypeFilterTypedDict = TypeAliasType(
+    "BenefitTypeFilterTypedDict", Union[BenefitType, List[BenefitType]]
+)
 r"""Filter by benefit type."""
 
 
-BenefitTypeFilter = Union[BenefitType, List[BenefitType]]
+BenefitTypeFilter = TypeAliasType(
+    "BenefitTypeFilter", Union[BenefitType, List[BenefitType]]
+)
 r"""Filter by benefit type."""
 
 
-OrganizationIDFilterTypedDict = Union[str, List[str]]
+OrganizationIDFilterTypedDict = TypeAliasType(
+    "OrganizationIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-OrganizationIDFilter = Union[str, List[str]]
+OrganizationIDFilter = TypeAliasType("OrganizationIDFilter", Union[str, List[str]])
 r"""Filter by organization ID."""
 
 
-OrderIDFilterTypedDict = Union[str, List[str]]
+OrderIDFilterTypedDict = TypeAliasType("OrderIDFilterTypedDict", Union[str, List[str]])
 r"""Filter by order ID."""
 
 
-OrderIDFilter = Union[str, List[str]]
+OrderIDFilter = TypeAliasType("OrderIDFilter", Union[str, List[str]])
 r"""Filter by order ID."""
 
 
-SubscriptionIDFilterTypedDict = Union[str, List[str]]
+SubscriptionIDFilterTypedDict = TypeAliasType(
+    "SubscriptionIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by subscription ID."""
 
 
-SubscriptionIDFilter = Union[str, List[str]]
+SubscriptionIDFilter = TypeAliasType("SubscriptionIDFilter", Union[str, List[str]])
 r"""Filter by subscription ID."""
 
 

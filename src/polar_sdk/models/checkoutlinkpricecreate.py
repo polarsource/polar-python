@@ -8,13 +8,17 @@ import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import Dict, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-CheckoutLinkPriceCreateMetadataTypedDict = Union[str, int, bool]
+CheckoutLinkPriceCreateMetadataTypedDict = TypeAliasType(
+    "CheckoutLinkPriceCreateMetadataTypedDict", Union[str, int, bool]
+)
 
 
-CheckoutLinkPriceCreateMetadata = Union[str, int, bool]
+CheckoutLinkPriceCreateMetadata = TypeAliasType(
+    "CheckoutLinkPriceCreateMetadata", Union[str, int, bool]
+)
 
 
 class CheckoutLinkPriceCreatePaymentProcessor(str, Enum):

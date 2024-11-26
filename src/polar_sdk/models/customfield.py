@@ -9,16 +9,19 @@ from .customfieldtext import CustomFieldText, CustomFieldTextTypedDict
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
-from typing_extensions import Annotated
+from typing_extensions import Annotated, TypeAliasType
 
 
-CustomFieldTypedDict = Union[
-    CustomFieldTextTypedDict,
-    CustomFieldNumberTypedDict,
-    CustomFieldDateTypedDict,
-    CustomFieldCheckboxTypedDict,
-    CustomFieldSelectTypedDict,
-]
+CustomFieldTypedDict = TypeAliasType(
+    "CustomFieldTypedDict",
+    Union[
+        CustomFieldTextTypedDict,
+        CustomFieldNumberTypedDict,
+        CustomFieldDateTypedDict,
+        CustomFieldCheckboxTypedDict,
+        CustomFieldSelectTypedDict,
+    ],
+)
 
 
 CustomField = Annotated[

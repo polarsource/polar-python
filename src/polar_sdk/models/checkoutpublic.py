@@ -31,7 +31,7 @@ import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 class CheckoutPublicCustomFieldDataTypedDict(TypedDict):
@@ -50,20 +50,26 @@ class CheckoutPublicPaymentProcessorMetadata(BaseModel):
     pass
 
 
-CheckoutPublicDiscountTypedDict = Union[
-    CheckoutDiscountPercentageOnceForeverDurationTypedDict,
-    CheckoutDiscountFixedOnceForeverDurationTypedDict,
-    CheckoutDiscountPercentageRepeatDurationTypedDict,
-    CheckoutDiscountFixedRepeatDurationTypedDict,
-]
+CheckoutPublicDiscountTypedDict = TypeAliasType(
+    "CheckoutPublicDiscountTypedDict",
+    Union[
+        CheckoutDiscountPercentageOnceForeverDurationTypedDict,
+        CheckoutDiscountFixedOnceForeverDurationTypedDict,
+        CheckoutDiscountPercentageRepeatDurationTypedDict,
+        CheckoutDiscountFixedRepeatDurationTypedDict,
+    ],
+)
 
 
-CheckoutPublicDiscount = Union[
-    CheckoutDiscountPercentageOnceForeverDuration,
-    CheckoutDiscountFixedOnceForeverDuration,
-    CheckoutDiscountPercentageRepeatDuration,
-    CheckoutDiscountFixedRepeatDuration,
-]
+CheckoutPublicDiscount = TypeAliasType(
+    "CheckoutPublicDiscount",
+    Union[
+        CheckoutDiscountPercentageOnceForeverDuration,
+        CheckoutDiscountFixedOnceForeverDuration,
+        CheckoutDiscountPercentageRepeatDuration,
+        CheckoutDiscountFixedRepeatDuration,
+    ],
+)
 
 
 class CheckoutPublicTypedDict(TypedDict):

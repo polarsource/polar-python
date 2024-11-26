@@ -19,15 +19,14 @@ import dateutil.parser
 import polar_sdk
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.metrics.get(start_date=dateutil.parser.parse("2024-02-07").date(), end_date=dateutil.parser.parse("2022-04-09").date(), interval=polar_sdk.Interval.WEEK)
 
-res = s.metrics.get(start_date=dateutil.parser.parse("2024-02-07").date(), end_date=dateutil.parser.parse("2022-04-09").date(), interval=polar_sdk.Interval.WEEK)
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -63,15 +62,14 @@ Get the interval limits for the metrics endpoint.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.metrics.limits()
 
-res = s.metrics.limits()
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

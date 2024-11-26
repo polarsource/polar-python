@@ -24,19 +24,18 @@ List articles.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.articles.list()
 
-res = s.articles.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -74,17 +73,16 @@ Create an article.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.articles.create(request={
+        "title": "<value>",
+    })
 
-res = s.articles.create(request={
-    "title": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -115,15 +113,14 @@ Export organization articles.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.articles.export(organization_id="cf4e3d5e-2b50-4470-a85b-8d021391fabb")
 
-res = s.articles.export(organization_id="cf4e3d5e-2b50-4470-a85b-8d021391fabb")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -154,15 +151,14 @@ Get an article by ID.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.articles.get(id="<value>")
 
-res = s.articles.get(id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -194,15 +190,14 @@ Update an article.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.articles.update(id="<value>", article_update={})
 
-res = s.articles.update(id="<value>", article_update={})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -236,13 +231,12 @@ Delete an article.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    s.articles.delete(id="<value>")
 
-s.articles.delete(id="<value>")
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 
@@ -271,15 +265,14 @@ Get number of potential receivers for an article.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.articles.receivers(id="<value>")
 
-res = s.articles.receivers(id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -310,17 +303,16 @@ Send an article preview by email.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.articles.preview(id="<value>", article_preview={
+        "email": "Eileen56@yahoo.com",
+    })
 
-res = s.articles.preview(id="<value>", article_preview={
-    "email": "Eileen56@yahoo.com",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -354,15 +346,14 @@ Send an article by email to all subscribers.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.articles.send(id="<value>")
 
-res = s.articles.send(id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

@@ -19,18 +19,17 @@ Create a checkout session.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.checkouts.create(request={
+        "product_price_id": "<value>",
+        "success_url": "http://limp-pastry.org",
+    })
 
-res = s.checkouts.create(request={
-    "product_price_id": "<value>",
-    "success_url": "http://limp-pastry.org",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -63,15 +62,14 @@ Get an active checkout session by ID.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.checkouts.get(id="<id>")
 
-res = s.checkouts.get(id="<id>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

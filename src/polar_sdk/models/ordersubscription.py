@@ -7,13 +7,17 @@ from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, Union
-from typing_extensions import TypedDict
+from typing_extensions import TypeAliasType, TypedDict
 
 
-OrderSubscriptionMetadataTypedDict = Union[str, int, bool]
+OrderSubscriptionMetadataTypedDict = TypeAliasType(
+    "OrderSubscriptionMetadataTypedDict", Union[str, int, bool]
+)
 
 
-OrderSubscriptionMetadata = Union[str, int, bool]
+OrderSubscriptionMetadata = TypeAliasType(
+    "OrderSubscriptionMetadata", Union[str, int, bool]
+)
 
 
 class OrderSubscriptionTypedDict(TypedDict):

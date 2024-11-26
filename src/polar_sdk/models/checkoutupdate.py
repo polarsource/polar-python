@@ -5,7 +5,7 @@ from .address import Address, AddressTypedDict
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 class CustomFieldDataTypedDict(TypedDict):
@@ -16,10 +16,12 @@ class CustomFieldData(BaseModel):
     pass
 
 
-CheckoutUpdateMetadataTypedDict = Union[str, int, bool]
+CheckoutUpdateMetadataTypedDict = TypeAliasType(
+    "CheckoutUpdateMetadataTypedDict", Union[str, int, bool]
+)
 
 
-CheckoutUpdateMetadata = Union[str, int, bool]
+CheckoutUpdateMetadata = TypeAliasType("CheckoutUpdateMetadata", Union[str, int, bool])
 
 
 class CheckoutUpdateTypedDict(TypedDict):

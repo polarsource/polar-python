@@ -11,30 +11,39 @@ from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing import Callable, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-PlatformFilterTypedDict = Union[Platforms, List[Platforms]]
+PlatformFilterTypedDict = TypeAliasType(
+    "PlatformFilterTypedDict", Union[Platforms, List[Platforms]]
+)
 r"""Filter by platform."""
 
 
-PlatformFilter = Union[Platforms, List[Platforms]]
+PlatformFilter = TypeAliasType("PlatformFilter", Union[Platforms, List[Platforms]])
 r"""Filter by platform."""
 
 
-RepositoryNameFilterTypedDict = Union[str, List[str]]
+RepositoryNameFilterTypedDict = TypeAliasType(
+    "RepositoryNameFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by name."""
 
 
-RepositoryNameFilter = Union[str, List[str]]
+RepositoryNameFilter = TypeAliasType("RepositoryNameFilter", Union[str, List[str]])
 r"""Filter by name."""
 
 
-ExternalOrganizationsListQueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]
+ExternalOrganizationsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "ExternalOrganizationsListQueryParamOrganizationIDFilterTypedDict",
+    Union[str, List[str]],
+)
 r"""Filter by organization ID."""
 
 
-ExternalOrganizationsListQueryParamOrganizationIDFilter = Union[str, List[str]]
+ExternalOrganizationsListQueryParamOrganizationIDFilter = TypeAliasType(
+    "ExternalOrganizationsListQueryParamOrganizationIDFilter", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 

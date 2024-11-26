@@ -22,19 +22,18 @@ List checkout sessions.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.checkouts.custom.list()
 
-res = s.checkouts.custom.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -70,18 +69,17 @@ Create a checkout session.
 import polar_sdk
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.checkouts.custom.create(request={
+        "product_id": "<value>",
+        "payment_processor": polar_sdk.CheckoutProductCreatePaymentProcessor.STRIPE,
+    })
 
-res = s.checkouts.custom.create(request={
-    "product_id": "<value>",
-    "payment_processor": polar_sdk.CheckoutProductCreatePaymentProcessor.STRIPE,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -112,15 +110,14 @@ Get a checkout session by ID.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.checkouts.custom.get(id="<value>")
 
-res = s.checkouts.custom.get(id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -152,15 +149,14 @@ Update a checkout session.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.checkouts.custom.update(id="<value>", checkout_update={})
 
-res = s.checkouts.custom.update(id="<value>", checkout_update={})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -193,15 +189,14 @@ Get a checkout session by client secret.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.checkouts.custom.client_get(client_secret="<value>")
 
-res = s.checkouts.custom.client_get(client_secret="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -233,15 +228,14 @@ Update a checkout session by client secret.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.checkouts.custom.client_update(client_secret="<value>", checkout_update_public={})
 
-res = s.checkouts.custom.client_update(client_secret="<value>", checkout_update_public={})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -276,15 +270,14 @@ Orders and subscriptions will be processed.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.checkouts.custom.client_confirm(client_secret="<value>", checkout_confirm_stripe={})
 
-res = s.checkouts.custom.client_confirm(client_secret="<value>", checkout_confirm_stripe={})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
