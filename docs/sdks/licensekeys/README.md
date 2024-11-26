@@ -19,19 +19,18 @@ Get license keys connected to the given organization & filters.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.license_keys.list()
 
-res = s.license_keys.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -67,15 +66,14 @@ Get a license key.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.license_keys.get(id="<value>")
 
-res = s.license_keys.get(id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -108,15 +106,14 @@ Update a license key.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.license_keys.update(id="<value>", license_key_update={})
 
-res = s.license_keys.update(id="<value>", license_key_update={})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -150,15 +147,14 @@ Get a license key activation.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.license_keys.get_activation(id="<value>", activation_id="<value>")
 
-res = s.license_keys.get_activation(id="<value>", activation_id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

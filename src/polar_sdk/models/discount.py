@@ -18,19 +18,26 @@ from .discountpercentagerepeatduration import (
     DiscountPercentageRepeatDurationTypedDict,
 )
 from typing import Union
+from typing_extensions import TypeAliasType
 
 
-DiscountTypedDict = Union[
-    DiscountPercentageOnceForeverDurationTypedDict,
-    DiscountFixedOnceForeverDurationTypedDict,
-    DiscountPercentageRepeatDurationTypedDict,
-    DiscountFixedRepeatDurationTypedDict,
-]
+DiscountTypedDict = TypeAliasType(
+    "DiscountTypedDict",
+    Union[
+        DiscountPercentageOnceForeverDurationTypedDict,
+        DiscountFixedOnceForeverDurationTypedDict,
+        DiscountPercentageRepeatDurationTypedDict,
+        DiscountFixedRepeatDurationTypedDict,
+    ],
+)
 
 
-Discount = Union[
-    DiscountPercentageOnceForeverDuration,
-    DiscountFixedOnceForeverDuration,
-    DiscountPercentageRepeatDuration,
-    DiscountFixedRepeatDuration,
-]
+Discount = TypeAliasType(
+    "Discount",
+    Union[
+        DiscountPercentageOnceForeverDuration,
+        DiscountFixedOnceForeverDuration,
+        DiscountPercentageRepeatDuration,
+        DiscountFixedRepeatDuration,
+    ],
+)

@@ -11,38 +11,52 @@ from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing import Callable, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-QueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]
+QueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "QueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-QueryParamOrganizationIDFilter = Union[str, List[str]]
+QueryParamOrganizationIDFilter = TypeAliasType(
+    "QueryParamOrganizationIDFilter", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-ProductIDFilterTypedDict = Union[str, List[str]]
+ProductIDFilterTypedDict = TypeAliasType(
+    "ProductIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by product ID."""
 
 
-ProductIDFilter = Union[str, List[str]]
+ProductIDFilter = TypeAliasType("ProductIDFilter", Union[str, List[str]])
 r"""Filter by product ID."""
 
 
-ProductPriceTypeFilterTypedDict = Union[ProductPriceType, List[ProductPriceType]]
+ProductPriceTypeFilterTypedDict = TypeAliasType(
+    "ProductPriceTypeFilterTypedDict", Union[ProductPriceType, List[ProductPriceType]]
+)
 r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
 
 
-ProductPriceTypeFilter = Union[ProductPriceType, List[ProductPriceType]]
+ProductPriceTypeFilter = TypeAliasType(
+    "ProductPriceTypeFilter", Union[ProductPriceType, List[ProductPriceType]]
+)
 r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
 
 
-QueryParamSubscriptionIDFilterTypedDict = Union[str, List[str]]
+QueryParamSubscriptionIDFilterTypedDict = TypeAliasType(
+    "QueryParamSubscriptionIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by subscription ID."""
 
 
-QueryParamSubscriptionIDFilter = Union[str, List[str]]
+QueryParamSubscriptionIDFilter = TypeAliasType(
+    "QueryParamSubscriptionIDFilter", Union[str, List[str]]
+)
 r"""Filter by subscription ID."""
 
 

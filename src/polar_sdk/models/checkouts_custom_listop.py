@@ -7,22 +7,30 @@ from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing import Callable, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-CheckoutsCustomListQueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]
+CheckoutsCustomListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "CheckoutsCustomListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-CheckoutsCustomListQueryParamOrganizationIDFilter = Union[str, List[str]]
+CheckoutsCustomListQueryParamOrganizationIDFilter = TypeAliasType(
+    "CheckoutsCustomListQueryParamOrganizationIDFilter", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-CheckoutsCustomListQueryParamProductIDFilterTypedDict = Union[str, List[str]]
+CheckoutsCustomListQueryParamProductIDFilterTypedDict = TypeAliasType(
+    "CheckoutsCustomListQueryParamProductIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by product ID."""
 
 
-CheckoutsCustomListQueryParamProductIDFilter = Union[str, List[str]]
+CheckoutsCustomListQueryParamProductIDFilter = TypeAliasType(
+    "CheckoutsCustomListQueryParamProductIDFilter", Union[str, List[str]]
+)
 r"""Filter by product ID."""
 
 

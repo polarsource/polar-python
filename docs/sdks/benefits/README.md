@@ -21,19 +21,18 @@ List benefits.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.benefits.list()
 
-res = s.benefits.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -68,22 +67,21 @@ Create a benefit.
 import polar_sdk
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.benefits.create(request={
+        "description": "delightfully fumigate convection though zowie up bulky electronics",
+        "properties": {
+            "guild_token": "<value>",
+            "role_id": "<id>",
+        },
+        "type": polar_sdk.BenefitDiscordCreateType.DISCORD,
+    })
 
-res = s.benefits.create(request={
-    "description": "delightfully fumigate convection though zowie up bulky electronics",
-    "properties": {
-        "guild_token": "<value>",
-        "role_id": "<id>",
-    },
-    "type": polar_sdk.BenefitDiscordCreateType.DISCORD,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -114,15 +112,14 @@ Get a benefit by ID.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.benefits.get(id="<value>")
 
-res = s.benefits.get(id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -155,17 +152,16 @@ Update a benefit.
 import polar_sdk
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.benefits.update(id="<value>", request_body={
+        "type": polar_sdk.BenefitLicenseKeysUpdateType.LICENSE_KEYS,
+    })
 
-res = s.benefits.update(id="<value>", request_body={
-    "type": polar_sdk.BenefitLicenseKeysUpdateType.LICENSE_KEYS,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -203,13 +199,12 @@ Delete a benefit.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    s.benefits.delete(id="<value>")
 
-s.benefits.delete(id="<value>")
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 
@@ -240,19 +235,18 @@ It's especially useful to check if a user has been granted a benefit.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.benefits.grants(id="<value>")
 
-res = s.benefits.grants(id="<value>")
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 

@@ -8,598 +8,598 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.advertisements.list(benefit_id=\"<value>\")\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.advertisements.list(benefit_id=\"<value>\")\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/advertisements/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.advertisements.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.advertisements.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/articles/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.articles.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.articles.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/articles/"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.articles.create(request={\n    \"title\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.articles.create(request={\n        \"title\": \"<value>\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/articles/export"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "export"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.articles.export(organization_id=\"cf4e3d5e-2b50-4470-a85b-8d021391fabb\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.articles.export(organization_id=\"cf4e3d5e-2b50-4470-a85b-8d021391fabb\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/articles/{id}"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "delete"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\ns.articles.delete(id=\"<value>\")\n\n# Use the SDK ..."
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    s.articles.delete(id=\"<value>\")\n\n    # Use the SDK ..."
   - target: $["paths"]["/v1/articles/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.articles.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.articles.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/articles/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.articles.update(id=\"<value>\", article_update={})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.articles.update(id=\"<value>\", article_update={})\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/articles/{id}/preview"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "preview"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.articles.preview(id=\"<value>\", article_preview={\n    \"email\": \"Carmine84@yahoo.com\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.articles.preview(id=\"<value>\", article_preview={\n        \"email\": \"Carmine84@yahoo.com\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/articles/{id}/receivers"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "receivers"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.articles.receivers(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.articles.receivers(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/articles/{id}/send"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "send"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.articles.send(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.articles.send(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/benefits/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.benefits.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.benefits.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/benefits/"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.benefits.create(request={\n    \"type\": polar_sdk.BenefitDiscordCreateType.DISCORD,\n    \"description\": \"delightfully fumigate convection though zowie up bulky electronics\",\n    \"properties\": {\n        \"guild_token\": \"<value>\",\n        \"role_id\": \"<id>\",\n    },\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.benefits.create(request={\n        \"type\": polar_sdk.BenefitDiscordCreateType.DISCORD,\n        \"description\": \"delightfully fumigate convection though zowie up bulky electronics\",\n        \"properties\": {\n            \"guild_token\": \"<value>\",\n            \"role_id\": \"<id>\",\n        },\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/benefits/{id}"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "delete"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\ns.benefits.delete(id=\"<value>\")\n\n# Use the SDK ..."
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    s.benefits.delete(id=\"<value>\")\n\n    # Use the SDK ..."
   - target: $["paths"]["/v1/benefits/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.benefits.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.benefits.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/benefits/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.benefits.update(id=\"<value>\", request_body={\n    \"type\": polar_sdk.BenefitLicenseKeysUpdateType.LICENSE_KEYS,\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.benefits.update(id=\"<value>\", request_body={\n        \"type\": polar_sdk.BenefitLicenseKeysUpdateType.LICENSE_KEYS,\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/benefits/{id}/grants"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "grants"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.benefits.grants(id=\"<value>\")\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.benefits.grants(id=\"<value>\")\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/checkout-links/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkout_links.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.checkout_links.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/checkout-links/"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkout_links.create(request={\n    \"payment_processor\": polar_sdk.CheckoutLinkProductCreatePaymentProcessor.STRIPE,\n    \"product_id\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.checkout_links.create(request={\n        \"payment_processor\": polar_sdk.CheckoutLinkProductCreatePaymentProcessor.STRIPE,\n        \"product_id\": \"<value>\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/checkout-links/{id}"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "delete"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\ns.checkout_links.delete(id=\"<value>\")\n\n# Use the SDK ..."
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    s.checkout_links.delete(id=\"<value>\")\n\n    # Use the SDK ..."
   - target: $["paths"]["/v1/checkout-links/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkout_links.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.checkout_links.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/checkout-links/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkout_links.update(id=\"<value>\", checkout_link_update={})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.checkout_links.update(id=\"<value>\", checkout_link_update={})\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/checkouts/custom/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.checkouts.custom.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/checkouts/custom/"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.create(request={\n    \"payment_processor\": polar_sdk.CheckoutProductCreatePaymentProcessor.STRIPE,\n    \"product_id\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.checkouts.custom.create(request={\n        \"payment_processor\": polar_sdk.CheckoutProductCreatePaymentProcessor.STRIPE,\n        \"product_id\": \"<value>\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/checkouts/custom/client/{client_secret}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "client_get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.client_get(client_secret=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.checkouts.custom.client_get(client_secret=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/checkouts/custom/client/{client_secret}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "client_update"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.client_update(client_secret=\"<value>\", checkout_update_public={})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.checkouts.custom.client_update(client_secret=\"<value>\", checkout_update_public={})\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/checkouts/custom/client/{client_secret}/confirm"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "client_confirm"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.client_confirm(client_secret=\"<value>\", checkout_confirm_stripe={})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.checkouts.custom.client_confirm(client_secret=\"<value>\", checkout_confirm_stripe={})\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/checkouts/custom/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.checkouts.custom.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/checkouts/custom/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.checkouts.custom.update(id=\"<value>\", checkout_update={})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.checkouts.custom.update(id=\"<value>\", checkout_update={})\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/custom-fields/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.custom_fields.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.custom_fields.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/custom-fields/"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.custom_fields.create(request={\n    \"type\": polar_sdk.CustomFieldCreateNumberType.NUMBER,\n    \"slug\": \"<value>\",\n    \"name\": \"<value>\",\n    \"properties\": {},\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.custom_fields.create(request={\n        \"type\": polar_sdk.CustomFieldCreateNumberType.NUMBER,\n        \"slug\": \"<value>\",\n        \"name\": \"<value>\",\n        \"properties\": {},\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/custom-fields/{id}"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "delete"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\ns.custom_fields.delete(id=\"<value>\")\n\n# Use the SDK ..."
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    s.custom_fields.delete(id=\"<value>\")\n\n    # Use the SDK ..."
   - target: $["paths"]["/v1/custom-fields/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.custom_fields.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.custom_fields.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/custom-fields/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.custom_fields.update(id=\"<value>\", custom_field_update={\n    \"type\": polar_sdk.CustomFieldUpdateTextType.TEXT,\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.custom_fields.update(id=\"<value>\", custom_field_update={\n        \"type\": polar_sdk.CustomFieldUpdateTextType.TEXT,\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/discounts/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.discounts.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.discounts.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/discounts/"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.discounts.create(request={\n    \"duration\": polar_sdk.DiscountDuration.FOREVER,\n    \"duration_in_months\": 417458,\n    \"type\": polar_sdk.DiscountType.FIXED,\n    \"amount\": 69025,\n    \"name\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.discounts.create(request={\n        \"duration\": polar_sdk.DiscountDuration.FOREVER,\n        \"duration_in_months\": 417458,\n        \"type\": polar_sdk.DiscountType.FIXED,\n        \"amount\": 69025,\n        \"name\": \"<value>\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/discounts/{id}"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "delete"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\ns.discounts.delete(id=\"<value>\")\n\n# Use the SDK ..."
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    s.discounts.delete(id=\"<value>\")\n\n    # Use the SDK ..."
   - target: $["paths"]["/v1/discounts/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.discounts.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.discounts.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/discounts/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.discounts.update(id=\"<value>\", discount_update={})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.discounts.update(id=\"<value>\", discount_update={})\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/external_organizations/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.external_organizations.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.external_organizations.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/files/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.files.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.files.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/files/"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.files.create(request={\n    \"name\": \"<value>\",\n    \"mime_type\": \"<value>\",\n    \"size\": 638424,\n    \"upload\": {\n        \"parts\": [\n            {\n                \"number\": 417458,\n                \"chunk_start\": 134365,\n                \"chunk_end\": 69025,\n            },\n        ],\n    },\n    \"service\": polar_sdk.OrganizationAvatarFileCreateService.ORGANIZATION_AVATAR,\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.files.create(request={\n        \"name\": \"<value>\",\n        \"mime_type\": \"<value>\",\n        \"size\": 638424,\n        \"upload\": {\n            \"parts\": [\n                {\n                    \"number\": 417458,\n                    \"chunk_start\": 134365,\n                    \"chunk_end\": 69025,\n                },\n            ],\n        },\n        \"service\": polar_sdk.OrganizationAvatarFileCreateService.ORGANIZATION_AVATAR,\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/files/{id}"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "delete"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\ns.files.delete(id=\"<value>\")\n\n# Use the SDK ..."
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    s.files.delete(id=\"<value>\")\n\n    # Use the SDK ..."
   - target: $["paths"]["/v1/files/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.files.update(id=\"<value>\", file_patch={})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.files.update(id=\"<value>\", file_patch={})\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/files/{id}/uploaded"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "uploaded"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.files.uploaded(id=\"<value>\", file_upload_completed={\n    \"id\": \"<id>\",\n    \"path\": \"/sys\",\n    \"parts\": [\n        {\n            \"number\": 173116,\n            \"checksum_etag\": \"<value>\",\n            \"checksum_sha256_base64\": \"<value>\",\n        },\n        {\n            \"number\": 894030,\n            \"checksum_etag\": \"<value>\",\n            \"checksum_sha256_base64\": \"<value>\",\n        },\n        {\n            \"number\": 673715,\n            \"checksum_etag\": \"<value>\",\n            \"checksum_sha256_base64\": \"<value>\",\n        },\n    ],\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.files.uploaded(id=\"<value>\", file_upload_completed={\n        \"id\": \"<id>\",\n        \"path\": \"/sys\",\n        \"parts\": [\n            {\n                \"number\": 173116,\n                \"checksum_etag\": \"<value>\",\n                \"checksum_sha256_base64\": \"<value>\",\n            },\n            {\n                \"number\": 894030,\n                \"checksum_etag\": \"<value>\",\n                \"checksum_sha256_base64\": \"<value>\",\n            },\n            {\n                \"number\": 673715,\n                \"checksum_etag\": \"<value>\",\n                \"checksum_sha256_base64\": \"<value>\",\n            },\n        ],\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/license-keys"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.license_keys.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.license_keys.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/license-keys/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.license_keys.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.license_keys.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/license-keys/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.license_keys.update(id=\"<value>\", license_key_update={})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.license_keys.update(id=\"<value>\", license_key_update={})\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/license-keys/{id}/activations/{activation_id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get_activation"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.license_keys.get_activation(id=\"<value>\", activation_id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.license_keys.get_activation(id=\"<value>\", activation_id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/metrics/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "import dateutil.parser\nimport polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.metrics.get(start_date=dateutil.parser.parse(\"2024-02-07\").date(), end_date=dateutil.parser.parse(\"2023-09-05\").date(), interval=polar_sdk.Interval.WEEK)\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import dateutil.parser\nimport polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.metrics.get(start_date=dateutil.parser.parse(\"2024-02-07\").date(), end_date=dateutil.parser.parse(\"2023-09-05\").date(), interval=polar_sdk.Interval.WEEK)\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/metrics/limits"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "limits"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.metrics.limits()\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.metrics.limits()\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/oauth2/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.clients.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.oauth2.clients.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/oauth2/authorize"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "authorize"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.authorize()\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.oauth2.authorize()\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/oauth2/introspect"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "introspect_token"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.introspect(request={\n    \"token\": \"<value>\",\n    \"client_id\": \"<id>\",\n    \"client_secret\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.oauth2.introspect(request={\n        \"token\": \"<value>\",\n        \"client_id\": \"<id>\",\n        \"client_secret\": \"<value>\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/oauth2/register"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "create_client"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.clients.create(request={\n    \"redirect_uris\": [\n        \"https://inferior-chainstay.com\",\n    ],\n    \"client_name\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.oauth2.clients.create(request={\n        \"redirect_uris\": [\n            \"https://inferior-chainstay.com\",\n        ],\n        \"client_name\": \"<value>\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/oauth2/register/{client_id}"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "delete_client"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.clients.delete(client_id=\"<id>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.oauth2.clients.delete(client_id=\"<id>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/oauth2/register/{client_id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get_client"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.clients.get(client_id=\"<id>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.oauth2.clients.get(client_id=\"<id>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/oauth2/register/{client_id}"]["put"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update_client"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.clients.update(client_id=\"<id>\", o_auth2_client_configuration_update={\n    \"redirect_uris\": [\n        \"https://grown-worth.name\",\n        \"https://worthwhile-avalanche.org/\",\n        \"https://general-digit.com/\",\n    ],\n    \"client_name\": \"<value>\",\n    \"client_id\": \"<id>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.oauth2.clients.update(client_id=\"<id>\", o_auth2_client_configuration_update={\n        \"redirect_uris\": [\n            \"https://grown-worth.name\",\n            \"https://worthwhile-avalanche.org/\",\n            \"https://general-digit.com/\",\n        ],\n        \"client_name\": \"<value>\",\n        \"client_id\": \"<id>\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/oauth2/revoke"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "revoke_token"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.revoke(request={\n    \"token\": \"<value>\",\n    \"client_id\": \"<id>\",\n    \"client_secret\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.oauth2.revoke(request={\n        \"token\": \"<value>\",\n        \"client_id\": \"<id>\",\n        \"client_secret\": \"<value>\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/oauth2/token"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "request_token"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.token(request={\n    \"grant_type\": polar_sdk.GrantType.AUTHORIZATION_CODE,\n    \"client_id\": \"<id>\",\n    \"client_secret\": \"<value>\",\n    \"code\": \"<value>\",\n    \"redirect_uri\": \"https://old-fort.name\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.oauth2.token(request={\n        \"grant_type\": polar_sdk.GrantType.AUTHORIZATION_CODE,\n        \"client_id\": \"<id>\",\n        \"client_secret\": \"<value>\",\n        \"code\": \"<value>\",\n        \"redirect_uri\": \"https://old-fort.name\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/oauth2/userinfo"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "userinfo"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.oauth2.userinfo()\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.oauth2.userinfo()\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/orders/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.orders.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.orders.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/orders/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.orders.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.orders.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/orders/{id}/invoice"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "invoice"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.orders.invoice(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.orders.invoice(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/organizations/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.organizations.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.organizations.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/organizations/"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.organizations.create(request={\n    \"name\": \"<value>\",\n    \"slug\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.organizations.create(request={\n        \"name\": \"<value>\",\n        \"slug\": \"<value>\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/organizations/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.organizations.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.organizations.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/organizations/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.organizations.update(id=\"<value>\", organization_update={})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.organizations.update(id=\"<value>\", organization_update={})\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/products/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.products.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.products.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/products/"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.products.create(request={\n    \"name\": \"<value>\",\n    \"prices\": [\n        {\n            \"type\": polar_sdk.ProductPriceRecurringFreeCreateType.RECURRING,\n            \"amount_type\": polar_sdk.ProductPriceRecurringFreeCreateAmountType.FREE,\n            \"recurring_interval\": polar_sdk.SubscriptionRecurringInterval.MONTH,\n        },\n    ],\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.products.create(request={\n        \"name\": \"<value>\",\n        \"prices\": [\n            {\n                \"type\": polar_sdk.ProductPriceRecurringFreeCreateType.RECURRING,\n                \"amount_type\": polar_sdk.ProductPriceRecurringFreeCreateAmountType.FREE,\n                \"recurring_interval\": polar_sdk.SubscriptionRecurringInterval.MONTH,\n            },\n        ],\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/products/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.products.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.products.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/products/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.products.update(id=\"<value>\", product_update={})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.products.update(id=\"<value>\", product_update={})\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/products/{id}/benefits"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update_benefits"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.products.update_benefits(id=\"<value>\", product_benefits_update={\n    \"benefits\": [\n        \"<value>\",\n    ],\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.products.update_benefits(id=\"<value>\", product_benefits_update={\n        \"benefits\": [\n            \"<value>\",\n        ],\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/repositories/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.repositories.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.repositories.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/repositories/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.repositories.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.repositories.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/repositories/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.repositories.update(id=\"<value>\", repository_update={})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.repositories.update(id=\"<value>\", repository_update={})\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/subscriptions/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.subscriptions.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.subscriptions.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/subscriptions/export"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "export"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.subscriptions.export()\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.subscriptions.export()\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/users/advertisements/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.advertisements.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.advertisements.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/users/advertisements/"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "create"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.advertisements.create(request={\n    \"image_url\": \"https://probable-heating.com/\",\n    \"text\": \"<value>\",\n    \"link_url\": \"https://standard-utilization.com/\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.advertisements.create(request={\n        \"image_url\": \"https://probable-heating.com/\",\n        \"text\": \"<value>\",\n        \"link_url\": \"https://standard-utilization.com/\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/users/advertisements/{id}"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "delete"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.advertisements.delete(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.advertisements.delete(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/users/advertisements/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.advertisements.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.advertisements.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/users/advertisements/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.advertisements.update(id=\"<value>\", user_advertisement_campaign_update={})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.advertisements.update(id=\"<value>\", user_advertisement_campaign_update={})\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/users/advertisements/{id}/enable"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "enable"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\ns.users.advertisements.enable(id=\"<value>\", user_advertisement_campaign_enable={\n    \"benefit_id\": \"<value>\",\n})\n\n# Use the SDK ..."
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    s.users.advertisements.enable(id=\"<value>\", user_advertisement_campaign_enable={\n        \"benefit_id\": \"<value>\",\n    })\n\n    # Use the SDK ..."
   - target: $["paths"]["/v1/users/benefits/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.benefits.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.benefits.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/users/benefits/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.benefits.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.benefits.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/users/downloadables/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.downloadables.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.downloadables.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/users/downloadables/{token}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.downloadables.get(token=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.downloadables.get(token=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/users/license-keys/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.license_keys.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.license_keys.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/users/license-keys/activate"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "activate"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.license_keys.activate(request={\n    \"key\": \"<key>\",\n    \"organization_id\": \"<value>\",\n    \"label\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.license_keys.activate(request={\n        \"key\": \"<key>\",\n        \"organization_id\": \"<value>\",\n        \"label\": \"<value>\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/users/license-keys/deactivate"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "deactivate"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\ns.users.license_keys.deactivate(request={\n    \"key\": \"<key>\",\n    \"organization_id\": \"<value>\",\n    \"activation_id\": \"<value>\",\n})\n\n# Use the SDK ..."
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    s.users.license_keys.deactivate(request={\n        \"key\": \"<key>\",\n        \"organization_id\": \"<value>\",\n        \"activation_id\": \"<value>\",\n    })\n\n    # Use the SDK ..."
   - target: $["paths"]["/v1/users/license-keys/validate"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "validate"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.license_keys.validate(request={\n    \"key\": \"<key>\",\n    \"organization_id\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.license_keys.validate(request={\n        \"key\": \"<key>\",\n        \"organization_id\": \"<value>\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/users/license-keys/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.license_keys.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.license_keys.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/users/orders/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.orders.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.orders.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/users/orders/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.orders.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.orders.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/users/orders/{id}/invoice"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "invoice"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.orders.invoice(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.orders.invoice(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/users/subscriptions/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "list"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.subscriptions.list()\n\nif res is not None:\n    while True:\n        # handle items\n\n        res = res.next()\n        if res is None:\n            break"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.subscriptions.list()\n\n    if res is not None:\n        while True:\n            # handle items\n\n            res = res.next()\n            if res is None:\n                break"
   - target: $["paths"]["/v1/users/subscriptions/{id}"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "cancel"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.subscriptions.cancel(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.subscriptions.cancel(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/users/subscriptions/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "get"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.subscriptions.get(id=\"<value>\")\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.subscriptions.get(id=\"<value>\")\n\n    if res is not None:\n        # handle response\n        pass"
   - target: $["paths"]["/v1/users/subscriptions/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "update"
-          "source": "from polar_sdk import Polar\n\ns = Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n)\n\nres = s.users.subscriptions.update(id=\"<value>\", user_subscription_update={\n    \"product_price_id\": \"<value>\",\n})\n\nif res is not None:\n    # handle response\n    pass"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as s:\n    res = s.users.subscriptions.update(id=\"<value>\", user_subscription_update={\n        \"product_price_id\": \"<value>\",\n    })\n\n    if res is not None:\n        # handle response\n        pass"

@@ -9,13 +9,15 @@ from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Union
-from typing_extensions import TypedDict
+from typing_extensions import TypeAliasType, TypedDict
 
 
-ProductMetadataTypedDict = Union[str, int, bool]
+ProductMetadataTypedDict = TypeAliasType(
+    "ProductMetadataTypedDict", Union[str, int, bool]
+)
 
 
-ProductMetadata = Union[str, int, bool]
+ProductMetadata = TypeAliasType("ProductMetadata", Union[str, int, bool])
 
 
 class ProductTypedDict(TypedDict):

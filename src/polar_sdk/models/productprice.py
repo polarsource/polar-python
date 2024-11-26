@@ -4,11 +4,15 @@ from __future__ import annotations
 from .productpriceonetime import ProductPriceOneTime, ProductPriceOneTimeTypedDict
 from .productpricerecurring import ProductPriceRecurring, ProductPriceRecurringTypedDict
 from typing import Union
+from typing_extensions import TypeAliasType
 
 
-ProductPriceTypedDict = Union[
-    ProductPriceRecurringTypedDict, ProductPriceOneTimeTypedDict
-]
+ProductPriceTypedDict = TypeAliasType(
+    "ProductPriceTypedDict",
+    Union[ProductPriceRecurringTypedDict, ProductPriceOneTimeTypedDict],
+)
 
 
-ProductPrice = Union[ProductPriceRecurring, ProductPriceOneTime]
+ProductPrice = TypeAliasType(
+    "ProductPrice", Union[ProductPriceRecurring, ProductPriceOneTime]
+)

@@ -12,13 +12,16 @@ from .onev1_1oauth2_1token_post_x_components_refreshtokenrequest import (
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
-from typing_extensions import Annotated
+from typing_extensions import Annotated, TypeAliasType
 
 
-Oauth2RequestTokenRequestBodyTypedDict = Union[
-    Onev11oauth21tokenPostXComponentsRefreshTokenRequestTypedDict,
-    Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequestTypedDict,
-]
+Oauth2RequestTokenRequestBodyTypedDict = TypeAliasType(
+    "Oauth2RequestTokenRequestBodyTypedDict",
+    Union[
+        Onev11oauth21tokenPostXComponentsRefreshTokenRequestTypedDict,
+        Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequestTypedDict,
+    ],
+)
 
 
 Oauth2RequestTokenRequestBody = Annotated[

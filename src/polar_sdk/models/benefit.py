@@ -12,25 +12,32 @@ from .benefitgithubrepository import (
 )
 from .benefitlicensekeys import BenefitLicenseKeys, BenefitLicenseKeysTypedDict
 from typing import Union
+from typing_extensions import TypeAliasType
 
 
-BenefitTypedDict = Union[
-    BenefitArticlesTypedDict,
-    BenefitAdsTypedDict,
-    BenefitDiscordTypedDict,
-    BenefitGitHubRepositoryTypedDict,
-    BenefitDownloadablesTypedDict,
-    BenefitLicenseKeysTypedDict,
-    BenefitCustomTypedDict,
-]
+BenefitTypedDict = TypeAliasType(
+    "BenefitTypedDict",
+    Union[
+        BenefitArticlesTypedDict,
+        BenefitAdsTypedDict,
+        BenefitDiscordTypedDict,
+        BenefitGitHubRepositoryTypedDict,
+        BenefitDownloadablesTypedDict,
+        BenefitLicenseKeysTypedDict,
+        BenefitCustomTypedDict,
+    ],
+)
 
 
-Benefit = Union[
-    BenefitArticles,
-    BenefitAds,
-    BenefitDiscord,
-    BenefitGitHubRepository,
-    BenefitDownloadables,
-    BenefitLicenseKeys,
-    BenefitCustom,
-]
+Benefit = TypeAliasType(
+    "Benefit",
+    Union[
+        BenefitArticles,
+        BenefitAds,
+        BenefitDiscord,
+        BenefitGitHubRepository,
+        BenefitDownloadables,
+        BenefitLicenseKeys,
+        BenefitCustom,
+    ],
+)

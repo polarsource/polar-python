@@ -10,30 +10,40 @@ from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
 from typing import Callable, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-SubscriptionsListQueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]
+SubscriptionsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "SubscriptionsListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-SubscriptionsListQueryParamOrganizationIDFilter = Union[str, List[str]]
+SubscriptionsListQueryParamOrganizationIDFilter = TypeAliasType(
+    "SubscriptionsListQueryParamOrganizationIDFilter", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-SubscriptionsListQueryParamProductIDFilterTypedDict = Union[str, List[str]]
+SubscriptionsListQueryParamProductIDFilterTypedDict = TypeAliasType(
+    "SubscriptionsListQueryParamProductIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by product ID."""
 
 
-SubscriptionsListQueryParamProductIDFilter = Union[str, List[str]]
+SubscriptionsListQueryParamProductIDFilter = TypeAliasType(
+    "SubscriptionsListQueryParamProductIDFilter", Union[str, List[str]]
+)
 r"""Filter by product ID."""
 
 
-DiscountIDFilterTypedDict = Union[str, List[str]]
+DiscountIDFilterTypedDict = TypeAliasType(
+    "DiscountIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by discount ID."""
 
 
-DiscountIDFilter = Union[str, List[str]]
+DiscountIDFilter = TypeAliasType("DiscountIDFilter", Union[str, List[str]])
 r"""Filter by discount ID."""
 
 

@@ -13,13 +13,17 @@ import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import Dict, Union
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
-CustomFieldDateMetadataTypedDict = Union[str, int, bool]
+CustomFieldDateMetadataTypedDict = TypeAliasType(
+    "CustomFieldDateMetadataTypedDict", Union[str, int, bool]
+)
 
 
-CustomFieldDateMetadata = Union[str, int, bool]
+CustomFieldDateMetadata = TypeAliasType(
+    "CustomFieldDateMetadata", Union[str, int, bool]
+)
 
 
 class CustomFieldDateType(str, Enum):

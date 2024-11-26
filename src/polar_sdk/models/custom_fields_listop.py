@@ -12,22 +12,30 @@ from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 import pydantic
 from pydantic import model_serializer
 from typing import Callable, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-CustomFieldsListQueryParamOrganizationIDFilterTypedDict = Union[str, List[str]]
+CustomFieldsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "CustomFieldsListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-CustomFieldsListQueryParamOrganizationIDFilter = Union[str, List[str]]
+CustomFieldsListQueryParamOrganizationIDFilter = TypeAliasType(
+    "CustomFieldsListQueryParamOrganizationIDFilter", Union[str, List[str]]
+)
 r"""Filter by organization ID."""
 
 
-CustomFieldTypeFilterTypedDict = Union[CustomFieldType, List[CustomFieldType]]
+CustomFieldTypeFilterTypedDict = TypeAliasType(
+    "CustomFieldTypeFilterTypedDict", Union[CustomFieldType, List[CustomFieldType]]
+)
 r"""Filter by custom field type."""
 
 
-CustomFieldTypeFilter = Union[CustomFieldType, List[CustomFieldType]]
+CustomFieldTypeFilter = TypeAliasType(
+    "CustomFieldTypeFilter", Union[CustomFieldType, List[CustomFieldType]]
+)
 r"""Filter by custom field type."""
 
 

@@ -20,19 +20,18 @@ List checkout links.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.checkout_links.list()
 
-res = s.checkout_links.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -68,18 +67,17 @@ Create a checkout link.
 import polar_sdk
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.checkout_links.create(request={
+        "product_id": "<value>",
+        "payment_processor": polar_sdk.CheckoutLinkProductCreatePaymentProcessor.STRIPE,
+    })
 
-res = s.checkout_links.create(request={
-    "product_id": "<value>",
-    "payment_processor": polar_sdk.CheckoutLinkProductCreatePaymentProcessor.STRIPE,
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -110,15 +108,14 @@ Get a checkout link by ID.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.checkout_links.get(id="<value>")
 
-res = s.checkout_links.get(id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -150,15 +147,14 @@ Update a checkout link.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.checkout_links.update(id="<value>", checkout_link_update={})
 
-res = s.checkout_links.update(id="<value>", checkout_link_update={})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -191,13 +187,12 @@ Delete a checkout link.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    s.checkout_links.delete(id="<value>")
 
-s.checkout_links.delete(id="<value>")
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 

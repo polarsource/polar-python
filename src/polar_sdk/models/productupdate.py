@@ -29,33 +29,41 @@ from .productpricerecurringfreecreate import (
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-ProductUpdateMetadataTypedDict = Union[str, int, bool]
+ProductUpdateMetadataTypedDict = TypeAliasType(
+    "ProductUpdateMetadataTypedDict", Union[str, int, bool]
+)
 
 
-ProductUpdateMetadata = Union[str, int, bool]
+ProductUpdateMetadata = TypeAliasType("ProductUpdateMetadata", Union[str, int, bool])
 
 
-ProductUpdatePricesTypedDict = Union[
-    ExistingProductPriceTypedDict,
-    ProductPriceOneTimeFreeCreateTypedDict,
-    ProductPriceRecurringFreeCreateTypedDict,
-    ProductPriceOneTimeFixedCreateTypedDict,
-    ProductPriceRecurringFixedCreateTypedDict,
-    ProductPriceOneTimeCustomCreateTypedDict,
-]
+ProductUpdatePricesTypedDict = TypeAliasType(
+    "ProductUpdatePricesTypedDict",
+    Union[
+        ExistingProductPriceTypedDict,
+        ProductPriceOneTimeFreeCreateTypedDict,
+        ProductPriceRecurringFreeCreateTypedDict,
+        ProductPriceOneTimeFixedCreateTypedDict,
+        ProductPriceRecurringFixedCreateTypedDict,
+        ProductPriceOneTimeCustomCreateTypedDict,
+    ],
+)
 
 
-ProductUpdatePrices = Union[
-    ExistingProductPrice,
-    ProductPriceOneTimeFreeCreate,
-    ProductPriceRecurringFreeCreate,
-    ProductPriceOneTimeFixedCreate,
-    ProductPriceRecurringFixedCreate,
-    ProductPriceOneTimeCustomCreate,
-]
+ProductUpdatePrices = TypeAliasType(
+    "ProductUpdatePrices",
+    Union[
+        ExistingProductPrice,
+        ProductPriceOneTimeFreeCreate,
+        ProductPriceRecurringFreeCreate,
+        ProductPriceOneTimeFixedCreate,
+        ProductPriceRecurringFixedCreate,
+        ProductPriceOneTimeCustomCreate,
+    ],
+)
 
 
 class ProductUpdateTypedDict(TypedDict):

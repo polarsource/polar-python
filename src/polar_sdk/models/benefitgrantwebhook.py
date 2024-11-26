@@ -34,51 +34,63 @@ from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-BenefitGrantWebhookPropertiesTypedDict = Union[
-    BenefitGrantCustomPropertiesTypedDict,
-    BenefitGrantArticlesPropertiesTypedDict,
-    BenefitGrantDownloadablesPropertiesTypedDict,
-    BenefitGrantAdsPropertiesTypedDict,
-    BenefitGrantLicenseKeysPropertiesTypedDict,
-    BenefitGrantDiscordPropertiesTypedDict,
-    BenefitGrantGitHubRepositoryPropertiesTypedDict,
-]
+BenefitGrantWebhookPropertiesTypedDict = TypeAliasType(
+    "BenefitGrantWebhookPropertiesTypedDict",
+    Union[
+        BenefitGrantCustomPropertiesTypedDict,
+        BenefitGrantArticlesPropertiesTypedDict,
+        BenefitGrantDownloadablesPropertiesTypedDict,
+        BenefitGrantAdsPropertiesTypedDict,
+        BenefitGrantLicenseKeysPropertiesTypedDict,
+        BenefitGrantDiscordPropertiesTypedDict,
+        BenefitGrantGitHubRepositoryPropertiesTypedDict,
+    ],
+)
 
 
-BenefitGrantWebhookProperties = Union[
-    BenefitGrantCustomProperties,
-    BenefitGrantArticlesProperties,
-    BenefitGrantDownloadablesProperties,
-    BenefitGrantAdsProperties,
-    BenefitGrantLicenseKeysProperties,
-    BenefitGrantDiscordProperties,
-    BenefitGrantGitHubRepositoryProperties,
-]
+BenefitGrantWebhookProperties = TypeAliasType(
+    "BenefitGrantWebhookProperties",
+    Union[
+        BenefitGrantCustomProperties,
+        BenefitGrantArticlesProperties,
+        BenefitGrantDownloadablesProperties,
+        BenefitGrantAdsProperties,
+        BenefitGrantLicenseKeysProperties,
+        BenefitGrantDiscordProperties,
+        BenefitGrantGitHubRepositoryProperties,
+    ],
+)
 
 
-PreviousPropertiesTypedDict = Union[
-    BenefitGrantCustomPropertiesTypedDict,
-    BenefitGrantArticlesPropertiesTypedDict,
-    BenefitGrantDownloadablesPropertiesTypedDict,
-    BenefitGrantAdsPropertiesTypedDict,
-    BenefitGrantLicenseKeysPropertiesTypedDict,
-    BenefitGrantDiscordPropertiesTypedDict,
-    BenefitGrantGitHubRepositoryPropertiesTypedDict,
-]
+PreviousPropertiesTypedDict = TypeAliasType(
+    "PreviousPropertiesTypedDict",
+    Union[
+        BenefitGrantCustomPropertiesTypedDict,
+        BenefitGrantArticlesPropertiesTypedDict,
+        BenefitGrantDownloadablesPropertiesTypedDict,
+        BenefitGrantAdsPropertiesTypedDict,
+        BenefitGrantLicenseKeysPropertiesTypedDict,
+        BenefitGrantDiscordPropertiesTypedDict,
+        BenefitGrantGitHubRepositoryPropertiesTypedDict,
+    ],
+)
 
 
-PreviousProperties = Union[
-    BenefitGrantCustomProperties,
-    BenefitGrantArticlesProperties,
-    BenefitGrantDownloadablesProperties,
-    BenefitGrantAdsProperties,
-    BenefitGrantLicenseKeysProperties,
-    BenefitGrantDiscordProperties,
-    BenefitGrantGitHubRepositoryProperties,
-]
+PreviousProperties = TypeAliasType(
+    "PreviousProperties",
+    Union[
+        BenefitGrantCustomProperties,
+        BenefitGrantArticlesProperties,
+        BenefitGrantDownloadablesProperties,
+        BenefitGrantAdsProperties,
+        BenefitGrantLicenseKeysProperties,
+        BenefitGrantDiscordProperties,
+        BenefitGrantGitHubRepositoryProperties,
+    ],
+)
 
 
 class BenefitGrantWebhookTypedDict(TypedDict):

@@ -7,11 +7,15 @@ from .productrecurringcreate import (
     ProductRecurringCreateTypedDict,
 )
 from typing import Union
+from typing_extensions import TypeAliasType
 
 
-ProductCreateTypedDict = Union[
-    ProductRecurringCreateTypedDict, ProductOneTimeCreateTypedDict
-]
+ProductCreateTypedDict = TypeAliasType(
+    "ProductCreateTypedDict",
+    Union[ProductRecurringCreateTypedDict, ProductOneTimeCreateTypedDict],
+)
 
 
-ProductCreate = Union[ProductRecurringCreate, ProductOneTimeCreate]
+ProductCreate = TypeAliasType(
+    "ProductCreate", Union[ProductRecurringCreate, ProductOneTimeCreate]
+)

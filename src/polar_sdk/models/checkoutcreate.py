@@ -4,11 +4,15 @@ from __future__ import annotations
 from .checkoutpricecreate import CheckoutPriceCreate, CheckoutPriceCreateTypedDict
 from .checkoutproductcreate import CheckoutProductCreate, CheckoutProductCreateTypedDict
 from typing import Union
+from typing_extensions import TypeAliasType
 
 
-CheckoutCreateTypedDict = Union[
-    CheckoutProductCreateTypedDict, CheckoutPriceCreateTypedDict
-]
+CheckoutCreateTypedDict = TypeAliasType(
+    "CheckoutCreateTypedDict",
+    Union[CheckoutProductCreateTypedDict, CheckoutPriceCreateTypedDict],
+)
 
 
-CheckoutCreate = Union[CheckoutProductCreate, CheckoutPriceCreate]
+CheckoutCreate = TypeAliasType(
+    "CheckoutCreate", Union[CheckoutProductCreate, CheckoutPriceCreate]
+)

@@ -20,19 +20,18 @@ List License Keys
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.license_keys.list()
 
-res = s.users.license_keys.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -68,15 +67,14 @@ Get a license key.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.license_keys.get(id="<value>")
 
-res = s.users.license_keys.get(id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -109,18 +107,17 @@ Validate a license key.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.license_keys.validate(request={
+        "key": "<key>",
+        "organization_id": "<value>",
+    })
 
-res = s.users.license_keys.validate(request={
-    "key": "<key>",
-    "organization_id": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -152,19 +149,18 @@ Activate a license key instance.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.users.license_keys.activate(request={
+        "key": "<key>",
+        "organization_id": "<value>",
+        "label": "<value>",
+    })
 
-res = s.users.license_keys.activate(request={
-    "key": "<key>",
-    "organization_id": "<value>",
-    "label": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -197,17 +193,16 @@ Deactivate a license key instance.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    s.users.license_keys.deactivate(request={
+        "key": "<key>",
+        "organization_id": "<value>",
+        "activation_id": "<value>",
+    })
 
-s.users.license_keys.deactivate(request={
-    "key": "<key>",
-    "organization_id": "<value>",
-    "activation_id": "<value>",
-})
-
-# Use the SDK ...
+    # Use the SDK ...
 
 ```
 

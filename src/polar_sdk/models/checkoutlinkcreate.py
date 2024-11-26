@@ -10,11 +10,15 @@ from .checkoutlinkproductcreate import (
     CheckoutLinkProductCreateTypedDict,
 )
 from typing import Union
+from typing_extensions import TypeAliasType
 
 
-CheckoutLinkCreateTypedDict = Union[
-    CheckoutLinkProductCreateTypedDict, CheckoutLinkPriceCreateTypedDict
-]
+CheckoutLinkCreateTypedDict = TypeAliasType(
+    "CheckoutLinkCreateTypedDict",
+    Union[CheckoutLinkProductCreateTypedDict, CheckoutLinkPriceCreateTypedDict],
+)
 
 
-CheckoutLinkCreate = Union[CheckoutLinkProductCreate, CheckoutLinkPriceCreate]
+CheckoutLinkCreate = TypeAliasType(
+    "CheckoutLinkCreate", Union[CheckoutLinkProductCreate, CheckoutLinkPriceCreate]
+)

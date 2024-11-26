@@ -31,18 +31,21 @@ from polar_sdk.types import BaseModel
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import List, Union
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
-UserBenefitTypedDict = Union[
-    BenefitArticlesSubscriberTypedDict,
-    BenefitAdsSubscriberTypedDict,
-    BenefitDiscordSubscriberTypedDict,
-    BenefitCustomSubscriberTypedDict,
-    BenefitGitHubRepositorySubscriberTypedDict,
-    BenefitDownloadablesSubscriberTypedDict,
-    BenefitLicenseKeysSubscriberTypedDict,
-]
+UserBenefitTypedDict = TypeAliasType(
+    "UserBenefitTypedDict",
+    Union[
+        BenefitArticlesSubscriberTypedDict,
+        BenefitAdsSubscriberTypedDict,
+        BenefitDiscordSubscriberTypedDict,
+        BenefitCustomSubscriberTypedDict,
+        BenefitGitHubRepositorySubscriberTypedDict,
+        BenefitDownloadablesSubscriberTypedDict,
+        BenefitLicenseKeysSubscriberTypedDict,
+    ],
+)
 
 
 UserBenefit = Annotated[

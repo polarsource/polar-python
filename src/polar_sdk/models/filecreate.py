@@ -16,14 +16,17 @@ from .productmediafilecreate import (
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
-from typing_extensions import Annotated
+from typing_extensions import Annotated, TypeAliasType
 
 
-FileCreateTypedDict = Union[
-    DownloadableFileCreateTypedDict,
-    ProductMediaFileCreateTypedDict,
-    OrganizationAvatarFileCreateTypedDict,
-]
+FileCreateTypedDict = TypeAliasType(
+    "FileCreateTypedDict",
+    Union[
+        DownloadableFileCreateTypedDict,
+        ProductMediaFileCreateTypedDict,
+        OrganizationAvatarFileCreateTypedDict,
+    ],
+)
 
 
 FileCreate = Annotated[

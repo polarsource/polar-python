@@ -18,19 +18,18 @@ List repositories.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.repositories.list()
 
-res = s.repositories.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -68,15 +67,14 @@ Get a repository by ID.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.repositories.get(id="<value>")
 
-res = s.repositories.get(id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -108,15 +106,14 @@ Update a repository.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.repositories.update(id="<value>", repository_update={})
 
-res = s.repositories.update(id="<value>", repository_update={})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 

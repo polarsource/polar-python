@@ -33,29 +33,35 @@ from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-PropertiesTypedDict = Union[
-    BenefitGrantCustomPropertiesTypedDict,
-    BenefitGrantArticlesPropertiesTypedDict,
-    BenefitGrantDownloadablesPropertiesTypedDict,
-    BenefitGrantAdsPropertiesTypedDict,
-    BenefitGrantLicenseKeysPropertiesTypedDict,
-    BenefitGrantDiscordPropertiesTypedDict,
-    BenefitGrantGitHubRepositoryPropertiesTypedDict,
-]
+PropertiesTypedDict = TypeAliasType(
+    "PropertiesTypedDict",
+    Union[
+        BenefitGrantCustomPropertiesTypedDict,
+        BenefitGrantArticlesPropertiesTypedDict,
+        BenefitGrantDownloadablesPropertiesTypedDict,
+        BenefitGrantAdsPropertiesTypedDict,
+        BenefitGrantLicenseKeysPropertiesTypedDict,
+        BenefitGrantDiscordPropertiesTypedDict,
+        BenefitGrantGitHubRepositoryPropertiesTypedDict,
+    ],
+)
 
 
-Properties = Union[
-    BenefitGrantCustomProperties,
-    BenefitGrantArticlesProperties,
-    BenefitGrantDownloadablesProperties,
-    BenefitGrantAdsProperties,
-    BenefitGrantLicenseKeysProperties,
-    BenefitGrantDiscordProperties,
-    BenefitGrantGitHubRepositoryProperties,
-]
+Properties = TypeAliasType(
+    "Properties",
+    Union[
+        BenefitGrantCustomProperties,
+        BenefitGrantArticlesProperties,
+        BenefitGrantDownloadablesProperties,
+        BenefitGrantAdsProperties,
+        BenefitGrantLicenseKeysProperties,
+        BenefitGrantDiscordProperties,
+        BenefitGrantGitHubRepositoryProperties,
+    ],
+)
 
 
 class BenefitGrantTypedDict(TypedDict):

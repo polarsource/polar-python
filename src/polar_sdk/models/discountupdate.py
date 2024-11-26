@@ -7,13 +7,15 @@ from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-DiscountUpdateMetadataTypedDict = Union[str, int, bool]
+DiscountUpdateMetadataTypedDict = TypeAliasType(
+    "DiscountUpdateMetadataTypedDict", Union[str, int, bool]
+)
 
 
-DiscountUpdateMetadata = Union[str, int, bool]
+DiscountUpdateMetadata = TypeAliasType("DiscountUpdateMetadata", Union[str, int, bool])
 
 
 class DiscountUpdateTypedDict(TypedDict):

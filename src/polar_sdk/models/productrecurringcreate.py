@@ -16,25 +16,35 @@ from .productpricerecurringfreecreate import (
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-ProductRecurringCreateMetadataTypedDict = Union[str, int, bool]
+ProductRecurringCreateMetadataTypedDict = TypeAliasType(
+    "ProductRecurringCreateMetadataTypedDict", Union[str, int, bool]
+)
 
 
-ProductRecurringCreateMetadata = Union[str, int, bool]
+ProductRecurringCreateMetadata = TypeAliasType(
+    "ProductRecurringCreateMetadata", Union[str, int, bool]
+)
 
 
-ProductRecurringCreatePricesTypedDict = Union[
-    List[ProductPriceRecurringFixedCreateTypedDict],
-    List[ProductPriceRecurringFreeCreateTypedDict],
-]
+ProductRecurringCreatePricesTypedDict = TypeAliasType(
+    "ProductRecurringCreatePricesTypedDict",
+    Union[
+        List[ProductPriceRecurringFixedCreateTypedDict],
+        List[ProductPriceRecurringFreeCreateTypedDict],
+    ],
+)
 r"""List of available prices for this product."""
 
 
-ProductRecurringCreatePrices = Union[
-    List[ProductPriceRecurringFixedCreate], List[ProductPriceRecurringFreeCreate]
-]
+ProductRecurringCreatePrices = TypeAliasType(
+    "ProductRecurringCreatePrices",
+    Union[
+        List[ProductPriceRecurringFixedCreate], List[ProductPriceRecurringFreeCreate]
+    ],
+)
 r"""List of available prices for this product."""
 
 

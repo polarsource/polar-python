@@ -17,7 +17,7 @@ from polar_sdk.utils import (
 )
 from pydantic import Discriminator, Tag
 from typing import Union
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
 class FilesUploadedRequestTypedDict(TypedDict):
@@ -38,11 +38,14 @@ class FilesUploadedRequest(BaseModel):
     ]
 
 
-FilesUploadedResponseFilesUploadedTypedDict = Union[
-    DownloadableFileReadTypedDict,
-    ProductMediaFileReadTypedDict,
-    OrganizationAvatarFileReadTypedDict,
-]
+FilesUploadedResponseFilesUploadedTypedDict = TypeAliasType(
+    "FilesUploadedResponseFilesUploadedTypedDict",
+    Union[
+        DownloadableFileReadTypedDict,
+        ProductMediaFileReadTypedDict,
+        OrganizationAvatarFileReadTypedDict,
+    ],
+)
 r"""Successful Response"""
 
 

@@ -4,13 +4,17 @@ from __future__ import annotations
 from .userinfoorganization import UserInfoOrganization, UserInfoOrganizationTypedDict
 from .userinfouser import UserInfoUser, UserInfoUserTypedDict
 from typing import Union
+from typing_extensions import TypeAliasType
 
 
-Oauth2UserinfoResponseOauth2UserinfoTypedDict = Union[
-    UserInfoOrganizationTypedDict, UserInfoUserTypedDict
-]
+Oauth2UserinfoResponseOauth2UserinfoTypedDict = TypeAliasType(
+    "Oauth2UserinfoResponseOauth2UserinfoTypedDict",
+    Union[UserInfoOrganizationTypedDict, UserInfoUserTypedDict],
+)
 r"""Successful Response"""
 
 
-Oauth2UserinfoResponseOauth2Userinfo = Union[UserInfoOrganization, UserInfoUser]
+Oauth2UserinfoResponseOauth2Userinfo = TypeAliasType(
+    "Oauth2UserinfoResponseOauth2Userinfo", Union[UserInfoOrganization, UserInfoUser]
+)
 r"""Successful Response"""

@@ -20,27 +20,37 @@ from .productpriceonetimefreecreate import (
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-ProductOneTimeCreateMetadataTypedDict = Union[str, int, bool]
+ProductOneTimeCreateMetadataTypedDict = TypeAliasType(
+    "ProductOneTimeCreateMetadataTypedDict", Union[str, int, bool]
+)
 
 
-ProductOneTimeCreateMetadata = Union[str, int, bool]
+ProductOneTimeCreateMetadata = TypeAliasType(
+    "ProductOneTimeCreateMetadata", Union[str, int, bool]
+)
 
 
-PricesTypedDict = Union[
-    ProductPriceOneTimeFreeCreateTypedDict,
-    ProductPriceOneTimeFixedCreateTypedDict,
-    ProductPriceOneTimeCustomCreateTypedDict,
-]
+PricesTypedDict = TypeAliasType(
+    "PricesTypedDict",
+    Union[
+        ProductPriceOneTimeFreeCreateTypedDict,
+        ProductPriceOneTimeFixedCreateTypedDict,
+        ProductPriceOneTimeCustomCreateTypedDict,
+    ],
+)
 
 
-Prices = Union[
-    ProductPriceOneTimeFreeCreate,
-    ProductPriceOneTimeFixedCreate,
-    ProductPriceOneTimeCustomCreate,
-]
+Prices = TypeAliasType(
+    "Prices",
+    Union[
+        ProductPriceOneTimeFreeCreate,
+        ProductPriceOneTimeFixedCreate,
+        ProductPriceOneTimeCustomCreate,
+    ],
+)
 
 
 class ProductOneTimeCreateTypedDict(TypedDict):

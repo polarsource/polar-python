@@ -30,7 +30,7 @@ from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, PathParamMetadata, get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
 class UsersBenefitsGetRequestTypedDict(TypedDict):
@@ -45,15 +45,18 @@ class UsersBenefitsGetRequest(BaseModel):
     r"""The benefit ID."""
 
 
-UsersBenefitsGetResponseUsersBenefitsGetTypedDict = Union[
-    BenefitArticlesSubscriberTypedDict,
-    BenefitAdsSubscriberTypedDict,
-    BenefitDiscordSubscriberTypedDict,
-    BenefitCustomSubscriberTypedDict,
-    BenefitGitHubRepositorySubscriberTypedDict,
-    BenefitDownloadablesSubscriberTypedDict,
-    BenefitLicenseKeysSubscriberTypedDict,
-]
+UsersBenefitsGetResponseUsersBenefitsGetTypedDict = TypeAliasType(
+    "UsersBenefitsGetResponseUsersBenefitsGetTypedDict",
+    Union[
+        BenefitArticlesSubscriberTypedDict,
+        BenefitAdsSubscriberTypedDict,
+        BenefitDiscordSubscriberTypedDict,
+        BenefitCustomSubscriberTypedDict,
+        BenefitGitHubRepositorySubscriberTypedDict,
+        BenefitDownloadablesSubscriberTypedDict,
+        BenefitLicenseKeysSubscriberTypedDict,
+    ],
+)
 r"""Successful Response"""
 
 

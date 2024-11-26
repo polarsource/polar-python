@@ -14,15 +14,20 @@ from .productpriceonetimefree import (
     ProductPriceOneTimeFreeTypedDict,
 )
 from typing import Union
+from typing_extensions import TypeAliasType
 
 
-ProductPriceOneTimeTypedDict = Union[
-    ProductPriceOneTimeFreeTypedDict,
-    ProductPriceOneTimeFixedTypedDict,
-    ProductPriceOneTimeCustomTypedDict,
-]
+ProductPriceOneTimeTypedDict = TypeAliasType(
+    "ProductPriceOneTimeTypedDict",
+    Union[
+        ProductPriceOneTimeFreeTypedDict,
+        ProductPriceOneTimeFixedTypedDict,
+        ProductPriceOneTimeCustomTypedDict,
+    ],
+)
 
 
-ProductPriceOneTime = Union[
-    ProductPriceOneTimeFree, ProductPriceOneTimeFixed, ProductPriceOneTimeCustom
-]
+ProductPriceOneTime = TypeAliasType(
+    "ProductPriceOneTime",
+    Union[ProductPriceOneTimeFree, ProductPriceOneTimeFixed, ProductPriceOneTimeCustom],
+)

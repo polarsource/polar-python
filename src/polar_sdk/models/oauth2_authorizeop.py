@@ -9,12 +9,13 @@ from .authorizeresponseuser import AuthorizeResponseUser, AuthorizeResponseUserT
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
-from typing_extensions import Annotated
+from typing_extensions import Annotated, TypeAliasType
 
 
-Oauth2AuthorizeResponseOauth2AuthorizeTypedDict = Union[
-    AuthorizeResponseUserTypedDict, AuthorizeResponseOrganizationTypedDict
-]
+Oauth2AuthorizeResponseOauth2AuthorizeTypedDict = TypeAliasType(
+    "Oauth2AuthorizeResponseOauth2AuthorizeTypedDict",
+    Union[AuthorizeResponseUserTypedDict, AuthorizeResponseOrganizationTypedDict],
+)
 r"""Successful Response"""
 
 

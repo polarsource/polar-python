@@ -20,19 +20,18 @@ List OAuth2 clients.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.oauth2.clients.list()
 
-res = s.oauth2.clients.list()
+    if res is not None:
+        while True:
+            # handle items
 
-if res is not None:
-    while True:
-        # handle items
-
-        res = res.next()
-        if res is None:
-            break
+            res = res.next()
+            if res is None:
+                break
 
 ```
 
@@ -64,20 +63,19 @@ Create an OAuth2 client.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.oauth2.clients.create(request={
+        "redirect_uris": [
+            "https://probable-heating.com/",
+        ],
+        "client_name": "<value>",
+    })
 
-res = s.oauth2.clients.create(request={
-    "redirect_uris": [
-        "https://probable-heating.com/",
-    ],
-    "client_name": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -108,15 +106,14 @@ Get an OAuth2 client by Client ID.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.oauth2.clients.get(client_id="<value>")
 
-res = s.oauth2.clients.get(client_id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -147,21 +144,20 @@ Update an OAuth2 client.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.oauth2.clients.update(client_id="<value>", o_auth2_client_configuration_update={
+        "redirect_uris": [
+            "https://passionate-flu.org",
+        ],
+        "client_name": "<value>",
+        "client_id": "<value>",
+    })
 
-res = s.oauth2.clients.update(client_id="<value>", o_auth2_client_configuration_update={
-    "redirect_uris": [
-        "https://passionate-flu.org",
-    ],
-    "client_name": "<value>",
-    "client_id": "<value>",
-})
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
@@ -193,15 +189,14 @@ Delete an OAuth2 client.
 ```python
 from polar_sdk import Polar
 
-s = Polar(
+with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-)
+) as s:
+    res = s.oauth2.clients.delete(client_id="<value>")
 
-res = s.oauth2.clients.delete(client_id="<value>")
-
-if res is not None:
-    # handle response
-    pass
+    if res is not None:
+        # handle response
+        pass
 
 ```
 
