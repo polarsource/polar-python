@@ -153,3 +153,10 @@ def validate_event(
         raise WebhookVerificationError(str(e)) from e
 
     return WebhookPayloadAdapter.validate_python(data)
+
+
+__all__ = [
+    "WebhookVerificationError",
+    "WebhoookPayload",
+    "validate_event",
+]

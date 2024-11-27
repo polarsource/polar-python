@@ -88,6 +88,32 @@ asyncio.run(main())
 ```
 <!-- End SDK Example Usage [usage] -->
 
+## Webhook support
+
+The SDK has built-in support to validate webhook events. Here is an example with Flask:
+
+```py
+from flask import Flask, request
+from polar_sdk.webhooks import validate_event, WebhookVerificationError
+
+app = Flask(__name__)
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    try:
+        event = validate_event(
+            payload=request.data,
+            headers=request.headers,
+            secret='<YOUR_WEBHOOK_SECRET>',
+        )
+
+        # Process the event
+
+        return "", 202
+    except WebhookVerificationError as e:
+        return "", 403
+```
+
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
