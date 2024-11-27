@@ -19,10 +19,10 @@ python:
   version: 0.9.0
   additionalDependencies:
     dev:
-      - "ruff>=0.8.0"
-      - "pytest>=8.3.3"
+      pytest: ^8.3.3
+      ruff: ^0.8.0
     main:
-      - "standardwebhooks>=1.0.0,<2"
+      standardwebhooks: ^1.0.0
   authors:
     - Polar
   clientServerStatusCodesAsErrors: true
