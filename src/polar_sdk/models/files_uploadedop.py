@@ -46,7 +46,7 @@ FilesUploadedResponseFilesUploadedTypedDict = TypeAliasType(
         OrganizationAvatarFileReadTypedDict,
     ],
 )
-r"""Successful Response"""
+r"""File upload completed."""
 
 
 FilesUploadedResponseFilesUploaded = Annotated[
@@ -57,4 +57,4 @@ FilesUploadedResponseFilesUploaded = Annotated[
     ],
     Discriminator(lambda m: get_discriminator(m, "service", "service")),
 ]
-r"""Successful Response"""
+r"""File upload completed."""

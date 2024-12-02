@@ -1,4 +1,4 @@
-# AlreadyCanceledSubscriptionType
+# AlreadyCanceledSubscriptionError
 
 
 ## Values

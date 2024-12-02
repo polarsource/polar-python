@@ -324,7 +324,7 @@ class Files(BaseSDK):
         )
 
         data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
+        if utils.match_response(http_res, "201", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.FileUpload])
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
@@ -411,7 +411,7 @@ class Files(BaseSDK):
         )
 
         data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
+        if utils.match_response(http_res, "201", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.FileUpload])
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
@@ -504,7 +504,7 @@ class Files(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -513,6 +513,12 @@ class Files(BaseSDK):
             return utils.unmarshal_json(
                 http_res.text, Optional[models.FilesUploadedResponseFilesUploaded]
             )
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
+            raise models.NotPermitted(data=data)
+        if utils.match_response(http_res, "404", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
+            raise models.ResourceNotFound(data=data)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -604,7 +610,7 @@ class Files(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -613,6 +619,12 @@ class Files(BaseSDK):
             return utils.unmarshal_json(
                 http_res.text, Optional[models.FilesUploadedResponseFilesUploaded]
             )
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
+            raise models.NotPermitted(data=data)
+        if utils.match_response(http_res, "404", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
+            raise models.ResourceNotFound(data=data)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -696,7 +708,7 @@ class Files(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -705,6 +717,12 @@ class Files(BaseSDK):
             return utils.unmarshal_json(
                 http_res.text, Optional[models.FilesUpdateResponseFilesUpdate]
             )
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
+            raise models.NotPermitted(data=data)
+        if utils.match_response(http_res, "404", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
+            raise models.ResourceNotFound(data=data)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -788,7 +806,7 @@ class Files(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -797,6 +815,12 @@ class Files(BaseSDK):
             return utils.unmarshal_json(
                 http_res.text, Optional[models.FilesUpdateResponseFilesUpdate]
             )
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
+            raise models.NotPermitted(data=data)
+        if utils.match_response(http_res, "404", "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
+            raise models.ResourceNotFound(data=data)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -885,8 +909,8 @@ class Files(BaseSDK):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)
         if utils.match_response(http_res, "404", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.FileNotFoundData)
-            raise models.FileNotFound(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
+            raise models.ResourceNotFound(data=data)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -975,8 +999,8 @@ class Files(BaseSDK):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)
         if utils.match_response(http_res, "404", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.FileNotFoundData)
-            raise models.FileNotFound(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
+            raise models.ResourceNotFound(data=data)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)

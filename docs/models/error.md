@@ -1,4 +1,4 @@
-# ResourceNotFoundType
+# Error
 
 
 ## Values

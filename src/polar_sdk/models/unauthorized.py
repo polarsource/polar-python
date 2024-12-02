@@ -10,20 +10,20 @@ from pydantic.functional_validators import AfterValidator
 from typing_extensions import Annotated
 
 
-class UnauthorizedType(str, Enum):
+class UnauthorizedError(str, Enum):
     UNAUTHORIZED = "Unauthorized"
 
 
 class UnauthorizedData(BaseModel):
     detail: str
 
-    TYPE: Annotated[
+    ERROR: Annotated[
         Annotated[
-            UnauthorizedType,
-            AfterValidator(validate_const(UnauthorizedType.UNAUTHORIZED)),
+            UnauthorizedError,
+            AfterValidator(validate_const(UnauthorizedError.UNAUTHORIZED)),
         ],
-        pydantic.Field(alias="type"),
-    ] = UnauthorizedType.UNAUTHORIZED
+        pydantic.Field(alias="error"),
+    ] = UnauthorizedError.UNAUTHORIZED
 
 
 class Unauthorized(Exception):

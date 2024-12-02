@@ -10,20 +10,20 @@ from pydantic.functional_validators import AfterValidator
 from typing_extensions import Annotated
 
 
-class NotPermittedType(str, Enum):
+class NotPermittedError(str, Enum):
     NOT_PERMITTED = "NotPermitted"
 
 
 class NotPermittedData(BaseModel):
     detail: str
 
-    TYPE: Annotated[
+    ERROR: Annotated[
         Annotated[
-            NotPermittedType,
-            AfterValidator(validate_const(NotPermittedType.NOT_PERMITTED)),
+            NotPermittedError,
+            AfterValidator(validate_const(NotPermittedError.NOT_PERMITTED)),
         ],
-        pydantic.Field(alias="type"),
-    ] = NotPermittedType.NOT_PERMITTED
+        pydantic.Field(alias="error"),
+    ] = NotPermittedError.NOT_PERMITTED
 
 
 class NotPermitted(Exception):

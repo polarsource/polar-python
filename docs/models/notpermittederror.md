@@ -1,4 +1,4 @@
-# NotPermittedType
+# NotPermittedError
 
 
 ## Values
