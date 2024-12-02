@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `detail`                                                 | *str*                                                    | :heavy_check_mark:                                       | N/A                                                      |
-| `type`                                                   | [models.NotPermittedType](../models/notpermittedtype.md) | :heavy_check_mark:                                       | N/A                                                      |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `detail`                                                   | *str*                                                      | :heavy_check_mark:                                         | N/A                                                        |
+| `error`                                                    | [models.NotPermittedError](../models/notpermittederror.md) | :heavy_check_mark:                                         | N/A                                                        |

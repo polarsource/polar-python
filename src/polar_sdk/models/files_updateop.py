@@ -45,7 +45,7 @@ FilesUpdateResponseFilesUpdateTypedDict = TypeAliasType(
         OrganizationAvatarFileReadTypedDict,
     ],
 )
-r"""Successful Response"""
+r"""File updated."""
 
 
 FilesUpdateResponseFilesUpdate = Annotated[
@@ -56,4 +56,4 @@ FilesUpdateResponseFilesUpdate = Annotated[
     ],
     Discriminator(lambda m: get_discriminator(m, "service", "service")),
 ]
-r"""Successful Response"""
+r"""File updated."""

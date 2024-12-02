@@ -10,24 +10,24 @@ from pydantic.functional_validators import AfterValidator
 from typing_extensions import Annotated
 
 
-class AlreadyCanceledSubscriptionType(str, Enum):
+class AlreadyCanceledSubscriptionError(str, Enum):
     ALREADY_CANCELED_SUBSCRIPTION = "AlreadyCanceledSubscription"
 
 
 class AlreadyCanceledSubscriptionData(BaseModel):
     detail: str
 
-    TYPE: Annotated[
+    ERROR: Annotated[
         Annotated[
-            AlreadyCanceledSubscriptionType,
+            AlreadyCanceledSubscriptionError,
             AfterValidator(
                 validate_const(
-                    AlreadyCanceledSubscriptionType.ALREADY_CANCELED_SUBSCRIPTION
+                    AlreadyCanceledSubscriptionError.ALREADY_CANCELED_SUBSCRIPTION
                 )
             ),
         ],
-        pydantic.Field(alias="type"),
-    ] = AlreadyCanceledSubscriptionType.ALREADY_CANCELED_SUBSCRIPTION
+        pydantic.Field(alias="error"),
+    ] = AlreadyCanceledSubscriptionError.ALREADY_CANCELED_SUBSCRIPTION
 
 
 class AlreadyCanceledSubscription(Exception):

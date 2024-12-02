@@ -20,7 +20,7 @@ from .advertisementsortproperty import AdvertisementSortProperty
 from .alreadycanceledsubscription import (
     AlreadyCanceledSubscription,
     AlreadyCanceledSubscriptionData,
-    AlreadyCanceledSubscriptionType,
+    AlreadyCanceledSubscriptionError,
 )
 from .article import Article, ArticleTypedDict
 from .articlebyline import ArticleByline
@@ -809,7 +809,6 @@ from .externalorganization import ExternalOrganization, ExternalOrganizationType
 from .externalorganizationsortproperty import ExternalOrganizationSortProperty
 from .filecreate import FileCreate, FileCreateTypedDict
 from .filedownload import FileDownload, FileDownloadTypedDict
-from .filenotfound import FileNotFound, FileNotFoundData, FileNotFoundType
 from .filepatch import FilePatch, FilePatchTypedDict
 from .files_deleteop import FilesDeleteRequest, FilesDeleteRequestTypedDict
 from .files_listop import (
@@ -988,7 +987,7 @@ from .metricsintervalslimits import (
 from .metricslimits import MetricsLimits, MetricsLimitsTypedDict
 from .metricsresponse import MetricsResponse, MetricsResponseTypedDict
 from .metrictype import MetricType
-from .notpermitted import NotPermitted, NotPermittedData, NotPermittedType
+from .notpermitted import NotPermitted, NotPermittedData, NotPermittedError
 from .oauth2_authorizeop import (
     Oauth2AuthorizeResponseOauth2Authorize,
     Oauth2AuthorizeResponseOauth2AuthorizeTypedDict,
@@ -1307,11 +1306,7 @@ from .repositoryprofilesettingsupdate import (
 )
 from .repositorysortproperty import RepositorySortProperty
 from .repositoryupdate import RepositoryUpdate, RepositoryUpdateTypedDict
-from .resourcenotfound import (
-    ResourceNotFound,
-    ResourceNotFoundData,
-    ResourceNotFoundType,
-)
+from .resourcenotfound import Error, ResourceNotFound, ResourceNotFoundData
 from .revoketokenresponse import RevokeTokenResponse, RevokeTokenResponseTypedDict
 from .s3downloadurl import S3DownloadURL, S3DownloadURLTypedDict
 from .s3filecreatemultipart import S3FileCreateMultipart, S3FileCreateMultipartTypedDict
@@ -1360,7 +1355,7 @@ from .subscriptionstatus import SubscriptionStatus
 from .subscriptionuser import SubscriptionUser, SubscriptionUserTypedDict
 from .subtype import SubType
 from .tokenresponse import TokenResponse, TokenResponseTypedDict, TokenType
-from .unauthorized import Unauthorized, UnauthorizedData, UnauthorizedType
+from .unauthorized import Unauthorized, UnauthorizedData, UnauthorizedError
 from .useradvertisementcampaign import (
     UserAdvertisementCampaign,
     UserAdvertisementCampaignTypedDict,
@@ -1626,7 +1621,7 @@ __all__ = [
     "AdvertisementsListResponseTypedDict",
     "AlreadyCanceledSubscription",
     "AlreadyCanceledSubscriptionData",
-    "AlreadyCanceledSubscriptionType",
+    "AlreadyCanceledSubscriptionError",
     "AmountType",
     "Article",
     "ArticleByline",
@@ -2184,6 +2179,7 @@ __all__ = [
     "DownloadableFileReadTypedDict",
     "DownloadableRead",
     "DownloadableReadTypedDict",
+    "Error",
     "ExistingProductPrice",
     "ExistingProductPriceTypedDict",
     "ExternalOrganization",
@@ -2201,9 +2197,6 @@ __all__ = [
     "FileCreateTypedDict",
     "FileDownload",
     "FileDownloadTypedDict",
-    "FileNotFound",
-    "FileNotFoundData",
-    "FileNotFoundType",
     "FilePatch",
     "FilePatchTypedDict",
     "FileRead",
@@ -2353,7 +2346,7 @@ __all__ = [
     "MetricsTypedDict",
     "NotPermitted",
     "NotPermittedData",
-    "NotPermittedType",
+    "NotPermittedError",
     "OAuth2Client",
     "OAuth2ClientConfiguration",
     "OAuth2ClientConfigurationGrantTypes",
@@ -2619,7 +2612,6 @@ __all__ = [
     "RepositoryUpdateTypedDict",
     "ResourceNotFound",
     "ResourceNotFoundData",
-    "ResourceNotFoundType",
     "ResponseTypes",
     "RevokeTokenResponse",
     "RevokeTokenResponseTypedDict",
@@ -2674,7 +2666,7 @@ __all__ = [
     "Type",
     "Unauthorized",
     "UnauthorizedData",
-    "UnauthorizedType",
+    "UnauthorizedError",
     "UserAdvertisementCampaign",
     "UserAdvertisementCampaignCreate",
     "UserAdvertisementCampaignCreateTypedDict",

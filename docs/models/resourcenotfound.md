@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `detail`                                                         | *str*                                                            | :heavy_check_mark:                                               | N/A                                                              |
-| `type`                                                           | [models.ResourceNotFoundType](../models/resourcenotfoundtype.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `detail`                           | *str*                              | :heavy_check_mark:                 | N/A                                |
+| `error`                            | [models.Error](../models/error.md) | :heavy_check_mark:                 | N/A                                |

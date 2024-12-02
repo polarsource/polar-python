@@ -10,20 +10,17 @@ from pydantic.functional_validators import AfterValidator
 from typing_extensions import Annotated
 
 
-class ResourceNotFoundType(str, Enum):
+class Error(str, Enum):
     RESOURCE_NOT_FOUND = "ResourceNotFound"
 
 
 class ResourceNotFoundData(BaseModel):
     detail: str
 
-    TYPE: Annotated[
-        Annotated[
-            ResourceNotFoundType,
-            AfterValidator(validate_const(ResourceNotFoundType.RESOURCE_NOT_FOUND)),
-        ],
-        pydantic.Field(alias="type"),
-    ] = ResourceNotFoundType.RESOURCE_NOT_FOUND
+    ERROR: Annotated[
+        Annotated[Error, AfterValidator(validate_const(Error.RESOURCE_NOT_FOUND))],
+        pydantic.Field(alias="error"),
+    ] = Error.RESOURCE_NOT_FOUND
 
 
 class ResourceNotFound(Exception):
