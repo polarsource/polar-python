@@ -31,8 +31,6 @@ class Scope(str, Enum):
     SUBSCRIPTIONS_WRITE = "subscriptions:write"
     ORDERS_READ = "orders:read"
     METRICS_READ = "metrics:read"
-    ARTICLES_READ = "articles:read"
-    ARTICLES_WRITE = "articles:write"
     WEBHOOKS_READ = "webhooks:read"
     WEBHOOKS_WRITE = "webhooks:write"
     EXTERNAL_ORGANIZATIONS_READ = "external_organizations:read"

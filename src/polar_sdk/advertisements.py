@@ -111,7 +111,7 @@ class Advertisements(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.AdvertisementsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.AdvertisementCampaignListResource]
+                    http_res.text, models.AdvertisementCampaignListResource
                 ),
                 next=next_func,
             )
@@ -235,7 +235,7 @@ class Advertisements(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.AdvertisementsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.AdvertisementCampaignListResource]
+                    http_res.text, models.AdvertisementCampaignListResource
                 ),
                 next=next_func,
             )
@@ -264,7 +264,7 @@ class Advertisements(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.AdvertisementCampaign]:
+    ) -> models.AdvertisementCampaign:
         r"""Get Campaign
 
         Get an advertisement campaign by ID.
@@ -322,9 +322,7 @@ class Advertisements(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.AdvertisementCampaign]
-            )
+            return utils.unmarshal_json(http_res.text, models.AdvertisementCampaign)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -353,7 +351,7 @@ class Advertisements(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.AdvertisementCampaign]:
+    ) -> models.AdvertisementCampaign:
         r"""Get Campaign
 
         Get an advertisement campaign by ID.
@@ -411,9 +409,7 @@ class Advertisements(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.AdvertisementCampaign]
-            )
+            return utils.unmarshal_json(http_res.text, models.AdvertisementCampaign)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)

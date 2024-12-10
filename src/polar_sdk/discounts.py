@@ -119,9 +119,7 @@ class Discounts(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.DiscountsListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceDiscount]
-                ),
+                result=utils.unmarshal_json(http_res.text, models.ListResourceDiscount),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -252,9 +250,7 @@ class Discounts(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.DiscountsListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceDiscount]
-                ),
+                result=utils.unmarshal_json(http_res.text, models.ListResourceDiscount),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -282,7 +278,7 @@ class Discounts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Discount]:
+    ) -> models.Discount:
         r"""Create Discount
 
         Create a discount.
@@ -343,7 +339,7 @@ class Discounts(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Discount])
+            return utils.unmarshal_json(http_res.text, models.Discount)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -369,7 +365,7 @@ class Discounts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Discount]:
+    ) -> models.Discount:
         r"""Create Discount
 
         Create a discount.
@@ -430,7 +426,7 @@ class Discounts(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Discount])
+            return utils.unmarshal_json(http_res.text, models.Discount)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -456,7 +452,7 @@ class Discounts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Discount]:
+    ) -> models.Discount:
         r"""Get Discount
 
         Get a discount by ID.
@@ -514,7 +510,7 @@ class Discounts(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Discount])
+            return utils.unmarshal_json(http_res.text, models.Discount)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -543,7 +539,7 @@ class Discounts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Discount]:
+    ) -> models.Discount:
         r"""Get Discount
 
         Get a discount by ID.
@@ -601,7 +597,7 @@ class Discounts(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Discount])
+            return utils.unmarshal_json(http_res.text, models.Discount)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -631,7 +627,7 @@ class Discounts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Discount]:
+    ) -> models.Discount:
         r"""Update Discount
 
         Update a discount.
@@ -696,7 +692,7 @@ class Discounts(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Discount])
+            return utils.unmarshal_json(http_res.text, models.Discount)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -726,7 +722,7 @@ class Discounts(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Discount]:
+    ) -> models.Discount:
         r"""Update Discount
 
         Update a discount.
@@ -791,7 +787,7 @@ class Discounts(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Discount])
+            return utils.unmarshal_json(http_res.text, models.Discount)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)

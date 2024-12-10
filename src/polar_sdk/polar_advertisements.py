@@ -107,8 +107,7 @@ class PolarAdvertisements(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.UsersAdvertisementsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text,
-                    Optional[models.ListResourceUserAdvertisementCampaign],
+                    http_res.text, models.ListResourceUserAdvertisementCampaign
                 ),
                 next=next_func,
             )
@@ -228,8 +227,7 @@ class PolarAdvertisements(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.UsersAdvertisementsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text,
-                    Optional[models.ListResourceUserAdvertisementCampaign],
+                    http_res.text, models.ListResourceUserAdvertisementCampaign
                 ),
                 next=next_func,
             )
@@ -261,7 +259,7 @@ class PolarAdvertisements(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserAdvertisementCampaign]:
+    ) -> models.UserAdvertisementCampaign:
         r"""Create Advertisement
 
         Create an advertisement campaign.
@@ -322,9 +320,7 @@ class PolarAdvertisements(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.UserAdvertisementCampaign]
-            )
+            return utils.unmarshal_json(http_res.text, models.UserAdvertisementCampaign)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -353,7 +349,7 @@ class PolarAdvertisements(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserAdvertisementCampaign]:
+    ) -> models.UserAdvertisementCampaign:
         r"""Create Advertisement
 
         Create an advertisement campaign.
@@ -414,9 +410,7 @@ class PolarAdvertisements(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.UserAdvertisementCampaign]
-            )
+            return utils.unmarshal_json(http_res.text, models.UserAdvertisementCampaign)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -442,7 +436,7 @@ class PolarAdvertisements(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserAdvertisementCampaign]:
+    ) -> models.UserAdvertisementCampaign:
         r"""Get Advertisement
 
         Get an advertisement campaign by ID.
@@ -500,9 +494,7 @@ class PolarAdvertisements(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.UserAdvertisementCampaign]
-            )
+            return utils.unmarshal_json(http_res.text, models.UserAdvertisementCampaign)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -531,7 +523,7 @@ class PolarAdvertisements(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserAdvertisementCampaign]:
+    ) -> models.UserAdvertisementCampaign:
         r"""Get Advertisement
 
         Get an advertisement campaign by ID.
@@ -589,9 +581,7 @@ class PolarAdvertisements(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.UserAdvertisementCampaign]
-            )
+            return utils.unmarshal_json(http_res.text, models.UserAdvertisementCampaign)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -624,7 +614,7 @@ class PolarAdvertisements(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserAdvertisementCampaign]:
+    ) -> models.UserAdvertisementCampaign:
         r"""Update Advertisement
 
         Update an advertisement campaign.
@@ -694,9 +684,7 @@ class PolarAdvertisements(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.UserAdvertisementCampaign]
-            )
+            return utils.unmarshal_json(http_res.text, models.UserAdvertisementCampaign)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -729,7 +717,7 @@ class PolarAdvertisements(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserAdvertisementCampaign]:
+    ) -> models.UserAdvertisementCampaign:
         r"""Update Advertisement
 
         Update an advertisement campaign.
@@ -799,9 +787,7 @@ class PolarAdvertisements(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.UserAdvertisementCampaign]
-            )
+            return utils.unmarshal_json(http_res.text, models.UserAdvertisementCampaign)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -890,7 +876,7 @@ class PolarAdvertisements(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[Any])
+            return utils.unmarshal_json(http_res.text, Any)
         if utils.match_response(http_res, "204", "*"):
             return None
         if utils.match_response(http_res, "404", "application/json"):
@@ -981,7 +967,7 @@ class PolarAdvertisements(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[Any])
+            return utils.unmarshal_json(http_res.text, Any)
         if utils.match_response(http_res, "204", "*"):
             return None
         if utils.match_response(http_res, "404", "application/json"):

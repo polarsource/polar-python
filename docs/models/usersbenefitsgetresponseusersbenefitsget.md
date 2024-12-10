@@ -5,12 +5,6 @@ Successful Response
 
 ## Supported Types
 
-### `models.BenefitArticlesSubscriber`
-
-```python
-value: models.BenefitArticlesSubscriber = /* values here */
-```
-
 ### `models.BenefitAdsSubscriber`
 
 ```python

@@ -121,7 +121,7 @@ class LicenseKeys(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.LicenseKeysListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceLicenseKeyRead]
+                    http_res.text, models.ListResourceLicenseKeyRead
                 ),
                 next=next_func,
             )
@@ -261,7 +261,7 @@ class LicenseKeys(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.LicenseKeysListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceLicenseKeyRead]
+                    http_res.text, models.ListResourceLicenseKeyRead
                 ),
                 next=next_func,
             )
@@ -296,7 +296,7 @@ class LicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.LicenseKeyWithActivations]:
+    ) -> models.LicenseKeyWithActivations:
         r"""Get License Key
 
         Get a license key.
@@ -354,9 +354,7 @@ class LicenseKeys(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.LicenseKeyWithActivations]
-            )
+            return utils.unmarshal_json(http_res.text, models.LicenseKeyWithActivations)
         if utils.match_response(http_res, "401", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.UnauthorizedData)
             raise models.Unauthorized(data=data)
@@ -388,7 +386,7 @@ class LicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.LicenseKeyWithActivations]:
+    ) -> models.LicenseKeyWithActivations:
         r"""Get License Key
 
         Get a license key.
@@ -446,9 +444,7 @@ class LicenseKeys(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.LicenseKeyWithActivations]
-            )
+            return utils.unmarshal_json(http_res.text, models.LicenseKeyWithActivations)
         if utils.match_response(http_res, "401", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.UnauthorizedData)
             raise models.Unauthorized(data=data)
@@ -483,7 +479,7 @@ class LicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.LicenseKeyRead]:
+    ) -> models.LicenseKeyRead:
         r"""Update License Key
 
         Update a license key.
@@ -552,7 +548,7 @@ class LicenseKeys(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.LicenseKeyRead])
+            return utils.unmarshal_json(http_res.text, models.LicenseKeyRead)
         if utils.match_response(http_res, "401", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.UnauthorizedData)
             raise models.Unauthorized(data=data)
@@ -587,7 +583,7 @@ class LicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.LicenseKeyRead]:
+    ) -> models.LicenseKeyRead:
         r"""Update License Key
 
         Update a license key.
@@ -656,7 +652,7 @@ class LicenseKeys(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.LicenseKeyRead])
+            return utils.unmarshal_json(http_res.text, models.LicenseKeyRead)
         if utils.match_response(http_res, "401", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.UnauthorizedData)
             raise models.Unauthorized(data=data)
@@ -689,7 +685,7 @@ class LicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.LicenseKeyActivationRead]:
+    ) -> models.LicenseKeyActivationRead:
         r"""Get Activation
 
         Get a license key activation.
@@ -749,9 +745,7 @@ class LicenseKeys(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.LicenseKeyActivationRead]
-            )
+            return utils.unmarshal_json(http_res.text, models.LicenseKeyActivationRead)
         if utils.match_response(http_res, "401", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.UnauthorizedData)
             raise models.Unauthorized(data=data)
@@ -784,7 +778,7 @@ class LicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.LicenseKeyActivationRead]:
+    ) -> models.LicenseKeyActivationRead:
         r"""Get Activation
 
         Get a license key activation.
@@ -844,9 +838,7 @@ class LicenseKeys(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.LicenseKeyActivationRead]
-            )
+            return utils.unmarshal_json(http_res.text, models.LicenseKeyActivationRead)
         if utils.match_response(http_res, "401", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.UnauthorizedData)
             raise models.Unauthorized(data=data)

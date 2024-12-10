@@ -126,7 +126,7 @@ class CustomFields(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.CustomFieldsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceCustomField]
+                    http_res.text, models.ListResourceCustomField
                 ),
                 next=next_func,
             )
@@ -265,7 +265,7 @@ class CustomFields(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.CustomFieldsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceCustomField]
+                    http_res.text, models.ListResourceCustomField
                 ),
                 next=next_func,
             )
@@ -294,7 +294,7 @@ class CustomFields(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CustomField]:
+    ) -> models.CustomField:
         r"""Create Custom Field
 
         Create a custom field.
@@ -355,7 +355,7 @@ class CustomFields(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CustomField])
+            return utils.unmarshal_json(http_res.text, models.CustomField)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -381,7 +381,7 @@ class CustomFields(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CustomField]:
+    ) -> models.CustomField:
         r"""Create Custom Field
 
         Create a custom field.
@@ -442,7 +442,7 @@ class CustomFields(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CustomField])
+            return utils.unmarshal_json(http_res.text, models.CustomField)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -468,7 +468,7 @@ class CustomFields(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CustomField]:
+    ) -> models.CustomField:
         r"""Get Custom Field
 
         Get a custom field by ID.
@@ -526,7 +526,7 @@ class CustomFields(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CustomField])
+            return utils.unmarshal_json(http_res.text, models.CustomField)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -555,7 +555,7 @@ class CustomFields(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CustomField]:
+    ) -> models.CustomField:
         r"""Get Custom Field
 
         Get a custom field by ID.
@@ -613,7 +613,7 @@ class CustomFields(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CustomField])
+            return utils.unmarshal_json(http_res.text, models.CustomField)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -645,7 +645,7 @@ class CustomFields(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CustomField]:
+    ) -> models.CustomField:
         r"""Update Custom Field
 
         Update a custom field.
@@ -714,7 +714,7 @@ class CustomFields(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CustomField])
+            return utils.unmarshal_json(http_res.text, models.CustomField)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -746,7 +746,7 @@ class CustomFields(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CustomField]:
+    ) -> models.CustomField:
         r"""Update Custom Field
 
         Update a custom field.
@@ -815,7 +815,7 @@ class CustomFields(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CustomField])
+            return utils.unmarshal_json(http_res.text, models.CustomField)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)

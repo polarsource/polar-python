@@ -22,8 +22,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.license_keys.list()
+) as polar:
+    res = polar.users.license_keys.list()
 
     if res is not None:
         while True:
@@ -69,8 +69,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.license_keys.get(id="<value>")
+) as polar:
+    res = polar.users.license_keys.get(id="<value>")
 
     if res is not None:
         # handle response
@@ -109,8 +109,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.license_keys.validate(request={
+) as polar:
+    res = polar.users.license_keys.validate(request={
         "key": "<key>",
         "organization_id": "<value>",
     })
@@ -151,8 +151,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.license_keys.activate(request={
+) as polar:
+    res = polar.users.license_keys.activate(request={
         "key": "<key>",
         "organization_id": "<value>",
         "label": "<value>",
@@ -195,8 +195,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    s.users.license_keys.deactivate(request={
+) as polar:
+    polar.users.license_keys.deactivate(request={
         "key": "<key>",
         "organization_id": "<value>",
         "activation_id": "<value>",

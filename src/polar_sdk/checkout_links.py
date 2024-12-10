@@ -125,7 +125,7 @@ class CheckoutLinks(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.CheckoutLinksListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceCheckoutLink]
+                    http_res.text, models.ListResourceCheckoutLink
                 ),
                 next=next_func,
             )
@@ -263,7 +263,7 @@ class CheckoutLinks(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.CheckoutLinksListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceCheckoutLink]
+                    http_res.text, models.ListResourceCheckoutLink
                 ),
                 next=next_func,
             )
@@ -292,7 +292,7 @@ class CheckoutLinks(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CheckoutLink]:
+    ) -> models.CheckoutLink:
         r"""Create Checkout Link
 
         Create a checkout link.
@@ -353,7 +353,7 @@ class CheckoutLinks(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CheckoutLink])
+            return utils.unmarshal_json(http_res.text, models.CheckoutLink)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -379,7 +379,7 @@ class CheckoutLinks(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CheckoutLink]:
+    ) -> models.CheckoutLink:
         r"""Create Checkout Link
 
         Create a checkout link.
@@ -440,7 +440,7 @@ class CheckoutLinks(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CheckoutLink])
+            return utils.unmarshal_json(http_res.text, models.CheckoutLink)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -466,7 +466,7 @@ class CheckoutLinks(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CheckoutLink]:
+    ) -> models.CheckoutLink:
         r"""Get Checkout Link
 
         Get a checkout link by ID.
@@ -524,7 +524,7 @@ class CheckoutLinks(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CheckoutLink])
+            return utils.unmarshal_json(http_res.text, models.CheckoutLink)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -553,7 +553,7 @@ class CheckoutLinks(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CheckoutLink]:
+    ) -> models.CheckoutLink:
         r"""Get Checkout Link
 
         Get a checkout link by ID.
@@ -611,7 +611,7 @@ class CheckoutLinks(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CheckoutLink])
+            return utils.unmarshal_json(http_res.text, models.CheckoutLink)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -643,7 +643,7 @@ class CheckoutLinks(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CheckoutLink]:
+    ) -> models.CheckoutLink:
         r"""Update Checkout Link
 
         Update a checkout link.
@@ -712,7 +712,7 @@ class CheckoutLinks(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CheckoutLink])
+            return utils.unmarshal_json(http_res.text, models.CheckoutLink)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -744,7 +744,7 @@ class CheckoutLinks(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CheckoutLink]:
+    ) -> models.CheckoutLink:
         r"""Update Checkout Link
 
         Update a checkout link.
@@ -813,7 +813,7 @@ class CheckoutLinks(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CheckoutLink])
+            return utils.unmarshal_json(http_res.text, models.CheckoutLink)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)

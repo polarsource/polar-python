@@ -120,9 +120,7 @@ class Benefits(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.BenefitsListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceBenefit]
-                ),
+                result=utils.unmarshal_json(http_res.text, models.ListResourceBenefit),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -254,9 +252,7 @@ class Benefits(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.BenefitsListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceBenefit]
-                ),
+                result=utils.unmarshal_json(http_res.text, models.ListResourceBenefit),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -284,7 +280,7 @@ class Benefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Benefit]:
+    ) -> models.Benefit:
         r"""Create Benefit
 
         Create a benefit.
@@ -345,7 +341,7 @@ class Benefits(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Benefit])
+            return utils.unmarshal_json(http_res.text, models.Benefit)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -371,7 +367,7 @@ class Benefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Benefit]:
+    ) -> models.Benefit:
         r"""Create Benefit
 
         Create a benefit.
@@ -432,7 +428,7 @@ class Benefits(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Benefit])
+            return utils.unmarshal_json(http_res.text, models.Benefit)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -458,7 +454,7 @@ class Benefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Benefit]:
+    ) -> models.Benefit:
         r"""Get Benefit
 
         Get a benefit by ID.
@@ -516,7 +512,7 @@ class Benefits(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Benefit])
+            return utils.unmarshal_json(http_res.text, models.Benefit)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -545,7 +541,7 @@ class Benefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Benefit]:
+    ) -> models.Benefit:
         r"""Get Benefit
 
         Get a benefit by ID.
@@ -603,7 +599,7 @@ class Benefits(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Benefit])
+            return utils.unmarshal_json(http_res.text, models.Benefit)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -636,7 +632,7 @@ class Benefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Benefit]:
+    ) -> models.Benefit:
         r"""Update Benefit
 
         Update a benefit.
@@ -705,7 +701,7 @@ class Benefits(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Benefit])
+            return utils.unmarshal_json(http_res.text, models.Benefit)
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)
@@ -741,7 +737,7 @@ class Benefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Benefit]:
+    ) -> models.Benefit:
         r"""Update Benefit
 
         Update a benefit.
@@ -810,7 +806,7 @@ class Benefits(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Benefit])
+            return utils.unmarshal_json(http_res.text, models.Benefit)
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)
@@ -1135,7 +1131,7 @@ class Benefits(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.BenefitsGrantsResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceBenefitGrant]
+                    http_res.text, models.ListResourceBenefitGrant
                 ),
                 next=next_func,
             )
@@ -1272,7 +1268,7 @@ class Benefits(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.BenefitsGrantsResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceBenefitGrant]
+                    http_res.text, models.ListResourceBenefitGrant
                 ),
                 next=next_func,
             )

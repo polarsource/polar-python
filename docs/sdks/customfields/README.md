@@ -22,8 +22,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.custom_fields.list()
+) as polar:
+    res = polar.custom_fields.list()
 
     if res is not None:
         while True:
@@ -70,8 +70,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.custom_fields.create(request={
+) as polar:
+    res = polar.custom_fields.create(request={
         "slug": "<value>",
         "name": "<value>",
         "properties": {},
@@ -113,8 +113,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.custom_fields.get(id="<value>")
+) as polar:
+    res = polar.custom_fields.get(id="<value>")
 
     if res is not None:
         # handle response
@@ -153,8 +153,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.custom_fields.update(id="<value>", custom_field_update={
+) as polar:
+    res = polar.custom_fields.update(id="<value>", custom_field_update={
         "type": polar_sdk.CustomFieldUpdateTextType.TEXT,
     })
 
@@ -195,8 +195,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    s.custom_fields.delete(id="<value>")
+) as polar:
+    polar.custom_fields.delete(id="<value>")
 
     # Use the SDK ...
 

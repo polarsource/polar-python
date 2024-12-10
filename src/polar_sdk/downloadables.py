@@ -116,7 +116,7 @@ class Downloadables(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.UsersDownloadablesListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceDownloadableRead]
+                    http_res.text, models.ListResourceDownloadableRead
                 ),
                 next=next_func,
             )
@@ -245,7 +245,7 @@ class Downloadables(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.UsersDownloadablesListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceDownloadableRead]
+                    http_res.text, models.ListResourceDownloadableRead
                 ),
                 next=next_func,
             )
@@ -330,7 +330,7 @@ class Downloadables(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[Any])
+            return utils.unmarshal_json(http_res.text, Any)
         if utils.match_response(http_res, "302", "*"):
             return None
         if utils.match_response(http_res, ["400", "404", "410", "4XX", "5XX"], "*"):
@@ -414,7 +414,7 @@ class Downloadables(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[Any])
+            return utils.unmarshal_json(http_res.text, Any)
         if utils.match_response(http_res, "302", "*"):
             return None
         if utils.match_response(http_res, ["400", "404", "410", "4XX", "5XX"], "*"):

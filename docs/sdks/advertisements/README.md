@@ -19,8 +19,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.advertisements.list(benefit_id="<value>")
+) as polar:
+    res = polar.advertisements.list(benefit_id="<value>")
 
     if res is not None:
         while True:
@@ -64,8 +64,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.advertisements.get(id="<value>")
+) as polar:
+    res = polar.advertisements.get(id="<value>")
 
     if res is not None:
         # handle response
