@@ -22,8 +22,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.oauth2.authorize()
+) as polar:
+    res = polar.oauth2.authorize()
 
     if res is not None:
         # handle response
@@ -59,8 +59,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.oauth2.token(request={
+) as polar:
+    res = polar.oauth2.token(request={
         "client_id": "<id>",
         "client_secret": "<value>",
         "code": "<value>",
@@ -102,8 +102,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.oauth2.revoke(request={
+) as polar:
+    res = polar.oauth2.revoke(request={
         "token": "<value>",
         "client_id": "<value>",
         "client_secret": "<value>",
@@ -143,8 +143,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.oauth2.introspect(request={
+) as polar:
+    res = polar.oauth2.introspect(request={
         "token": "<value>",
         "client_id": "<value>",
         "client_secret": "<value>",
@@ -184,8 +184,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.oauth2.userinfo()
+) as polar:
+    res = polar.oauth2.userinfo()
 
     if res is not None:
         # handle response

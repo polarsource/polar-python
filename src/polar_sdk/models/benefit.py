@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 from .benefitads import BenefitAds, BenefitAdsTypedDict
-from .benefitarticles import BenefitArticles, BenefitArticlesTypedDict
 from .benefitcustom import BenefitCustom, BenefitCustomTypedDict
 from .benefitdiscord import BenefitDiscord, BenefitDiscordTypedDict
 from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesTypedDict
@@ -18,7 +17,6 @@ from typing_extensions import TypeAliasType
 BenefitTypedDict = TypeAliasType(
     "BenefitTypedDict",
     Union[
-        BenefitArticlesTypedDict,
         BenefitAdsTypedDict,
         BenefitDiscordTypedDict,
         BenefitGitHubRepositoryTypedDict,
@@ -32,7 +30,6 @@ BenefitTypedDict = TypeAliasType(
 Benefit = TypeAliasType(
     "Benefit",
     Union[
-        BenefitArticles,
         BenefitAds,
         BenefitDiscord,
         BenefitGitHubRepository,

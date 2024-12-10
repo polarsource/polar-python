@@ -22,8 +22,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.files.list()
+) as polar:
+    res = polar.files.list()
 
     if res is not None:
         while True:
@@ -68,8 +68,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.files.create(request={
+) as polar:
+    res = polar.files.create(request={
         "name": "<value>",
         "mime_type": "<value>",
         "size": 638424,
@@ -120,8 +120,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.files.uploaded(id="<value>", file_upload_completed={
+) as polar:
+    res = polar.files.uploaded(id="<value>", file_upload_completed={
         "id": "<id>",
         "path": "/sys",
         "parts": [
@@ -171,8 +171,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.files.update(id="<value>", file_patch={})
+) as polar:
+    res = polar.files.update(id="<value>", file_patch={})
 
     if res is not None:
         # handle response
@@ -212,8 +212,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    s.files.delete(id="<value>")
+) as polar:
+    polar.files.delete(id="<value>")
 
     # Use the SDK ...
 

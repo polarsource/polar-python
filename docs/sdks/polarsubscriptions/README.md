@@ -21,8 +21,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.subscriptions.list()
+) as polar:
+    res = polar.users.subscriptions.list()
 
     if res is not None:
         while True:
@@ -69,8 +69,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.subscriptions.get(id="<value>")
+) as polar:
+    res = polar.users.subscriptions.get(id="<value>")
 
     if res is not None:
         # handle response
@@ -108,8 +108,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.subscriptions.update(id="<value>", user_subscription_update={
+) as polar:
+    res = polar.users.subscriptions.update(id="<value>", user_subscription_update={
         "product_price_id": "<value>",
     })
 
@@ -150,8 +150,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.subscriptions.cancel(id="<value>")
+) as polar:
+    res = polar.users.subscriptions.cancel(id="<value>")
 
     if res is not None:
         # handle response

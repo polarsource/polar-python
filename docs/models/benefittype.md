@@ -6,7 +6,6 @@
 | Name                | Value               |
 | ------------------- | ------------------- |
 | `CUSTOM`            | custom              |
-| `ARTICLES`          | articles            |
 | `ADS`               | ads                 |
 | `DISCORD`           | discord             |
 | `GITHUB_REPOSITORY` | github_repository   |

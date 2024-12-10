@@ -39,9 +39,3 @@ value: models.BenefitGrantAdsProperties = /* values here */
 value: models.BenefitGrantCustomProperties = /* values here */
 ```
 
-### `models.BenefitGrantArticlesProperties`
-
-```python
-value: models.BenefitGrantArticlesProperties = /* values here */
-```
-

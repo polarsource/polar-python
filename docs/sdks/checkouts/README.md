@@ -5,7 +5,7 @@
 
 ### Available Operations
 
-* [~~create~~](#create) - Create Checkout :warning: **Deprecated** Use `create` instead.
+* [~~create~~](#create) - Create Checkout :warning: **Deprecated** Use [create](docs/sdks/custom/README.md#create) instead.
 * [~~get~~](#get) - Get Checkout :warning: **Deprecated**
 
 ## ~~create~~
@@ -21,8 +21,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.checkouts.create(request={
+) as polar:
+    res = polar.checkouts.create(request={
         "product_price_id": "<value>",
         "success_url": "http://limp-pastry.org",
     })
@@ -64,8 +64,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.checkouts.get(id="<id>")
+) as polar:
+    res = polar.checkouts.get(id="<id>")
 
     if res is not None:
         # handle response

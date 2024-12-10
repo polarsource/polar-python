@@ -22,8 +22,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.products.list(organization_id=[
+) as polar:
+    res = polar.products.list(organization_id=[
         "<value>",
     ])
 
@@ -74,8 +74,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.products.create(request={
+) as polar:
+    res = polar.products.create(request={
         "name": "<value>",
         "prices": [
             {
@@ -121,8 +121,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.products.get(id="<value>")
+) as polar:
+    res = polar.products.get(id="<value>")
 
     if res is not None:
         # handle response
@@ -160,8 +160,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.products.update(id="<value>", product_update={})
+) as polar:
+    res = polar.products.update(id="<value>", product_update={})
 
     if res is not None:
         # handle response
@@ -201,8 +201,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.products.update_benefits(id="<value>", product_benefits_update={
+) as polar:
+    res = polar.products.update_benefits(id="<value>", product_benefits_update={
         "benefits": [
             "<value>",
         ],
