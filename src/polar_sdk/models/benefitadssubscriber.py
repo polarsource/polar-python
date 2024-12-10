@@ -15,7 +15,7 @@ from typing import List
 from typing_extensions import Annotated, TypedDict
 
 
-class BenefitAdsSubscriberType(str, Enum):
+class Type(str, Enum):
     ADS = "ads"
 
 
@@ -38,7 +38,7 @@ class BenefitAdsSubscriberTypedDict(TypedDict):
     organization: OrganizationTypedDict
     properties: BenefitAdsPropertiesTypedDict
     r"""Properties for a benefit of type `ads`."""
-    type: BenefitAdsSubscriberType
+    type: Type
 
 
 class BenefitAdsSubscriber(BaseModel):
@@ -71,12 +71,9 @@ class BenefitAdsSubscriber(BaseModel):
     r"""Properties for a benefit of type `ads`."""
 
     TYPE: Annotated[
-        Annotated[
-            BenefitAdsSubscriberType,
-            AfterValidator(validate_const(BenefitAdsSubscriberType.ADS)),
-        ],
+        Annotated[Type, AfterValidator(validate_const(Type.ADS))],
         pydantic.Field(alias="type"),
-    ] = BenefitAdsSubscriberType.ADS
+    ] = Type.ADS
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

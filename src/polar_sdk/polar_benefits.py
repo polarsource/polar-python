@@ -131,7 +131,7 @@ class PolarBenefits(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.UsersBenefitsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceUserBenefit]
+                    http_res.text, models.ListResourceUserBenefit
                 ),
                 next=next_func,
             )
@@ -275,7 +275,7 @@ class PolarBenefits(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.UsersBenefitsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceUserBenefit]
+                    http_res.text, models.ListResourceUserBenefit
                 ),
                 next=next_func,
             )
@@ -304,7 +304,7 @@ class PolarBenefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UsersBenefitsGetResponseUsersBenefitsGet]:
+    ) -> models.UsersBenefitsGetResponseUsersBenefitsGet:
         r"""Get Benefit
 
         Get a granted benefit by ID.
@@ -363,7 +363,7 @@ class PolarBenefits(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
-                http_res.text, Optional[models.UsersBenefitsGetResponseUsersBenefitsGet]
+                http_res.text, models.UsersBenefitsGetResponseUsersBenefitsGet
             )
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
@@ -393,7 +393,7 @@ class PolarBenefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UsersBenefitsGetResponseUsersBenefitsGet]:
+    ) -> models.UsersBenefitsGetResponseUsersBenefitsGet:
         r"""Get Benefit
 
         Get a granted benefit by ID.
@@ -452,7 +452,7 @@ class PolarBenefits(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
-                http_res.text, Optional[models.UsersBenefitsGetResponseUsersBenefitsGet]
+                http_res.text, models.UsersBenefitsGetResponseUsersBenefitsGet
             )
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)

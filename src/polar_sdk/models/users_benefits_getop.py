@@ -2,10 +2,6 @@
 
 from __future__ import annotations
 from .benefitadssubscriber import BenefitAdsSubscriber, BenefitAdsSubscriberTypedDict
-from .benefitarticlessubscriber import (
-    BenefitArticlesSubscriber,
-    BenefitArticlesSubscriberTypedDict,
-)
 from .benefitcustomsubscriber import (
     BenefitCustomSubscriber,
     BenefitCustomSubscriberTypedDict,
@@ -48,7 +44,6 @@ class UsersBenefitsGetRequest(BaseModel):
 UsersBenefitsGetResponseUsersBenefitsGetTypedDict = TypeAliasType(
     "UsersBenefitsGetResponseUsersBenefitsGetTypedDict",
     Union[
-        BenefitArticlesSubscriberTypedDict,
         BenefitAdsSubscriberTypedDict,
         BenefitDiscordSubscriberTypedDict,
         BenefitCustomSubscriberTypedDict,
@@ -62,7 +57,6 @@ r"""Successful Response"""
 
 UsersBenefitsGetResponseUsersBenefitsGet = Annotated[
     Union[
-        Annotated[BenefitArticlesSubscriber, Tag("articles")],
         Annotated[BenefitAdsSubscriber, Tag("ads")],
         Annotated[BenefitDiscordSubscriber, Tag("discord")],
         Annotated[BenefitCustomSubscriber, Tag("custom")],

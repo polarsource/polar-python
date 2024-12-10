@@ -136,9 +136,7 @@ class Products(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.ProductsListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceProduct]
-                ),
+                result=utils.unmarshal_json(http_res.text, models.ListResourceProduct),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -286,9 +284,7 @@ class Products(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.ProductsListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceProduct]
-                ),
+                result=utils.unmarshal_json(http_res.text, models.ListResourceProduct),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -316,7 +312,7 @@ class Products(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Product]:
+    ) -> models.Product:
         r"""Create Product
 
         Create a product.
@@ -377,7 +373,7 @@ class Products(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Product])
+            return utils.unmarshal_json(http_res.text, models.Product)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -403,7 +399,7 @@ class Products(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Product]:
+    ) -> models.Product:
         r"""Create Product
 
         Create a product.
@@ -464,7 +460,7 @@ class Products(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Product])
+            return utils.unmarshal_json(http_res.text, models.Product)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -490,7 +486,7 @@ class Products(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Product]:
+    ) -> models.Product:
         r"""Get Product
 
         Get a product by ID.
@@ -548,7 +544,7 @@ class Products(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Product])
+            return utils.unmarshal_json(http_res.text, models.Product)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -577,7 +573,7 @@ class Products(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Product]:
+    ) -> models.Product:
         r"""Get Product
 
         Get a product by ID.
@@ -635,7 +631,7 @@ class Products(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Product])
+            return utils.unmarshal_json(http_res.text, models.Product)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -665,7 +661,7 @@ class Products(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Product]:
+    ) -> models.Product:
         r"""Update Product
 
         Update a product.
@@ -730,7 +726,7 @@ class Products(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Product])
+            return utils.unmarshal_json(http_res.text, models.Product)
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)
@@ -763,7 +759,7 @@ class Products(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Product]:
+    ) -> models.Product:
         r"""Update Product
 
         Update a product.
@@ -828,7 +824,7 @@ class Products(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Product])
+            return utils.unmarshal_json(http_res.text, models.Product)
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)
@@ -863,7 +859,7 @@ class Products(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Product]:
+    ) -> models.Product:
         r"""Update Product Benefits
 
         Update benefits granted by a product.
@@ -932,7 +928,7 @@ class Products(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Product])
+            return utils.unmarshal_json(http_res.text, models.Product)
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)
@@ -967,7 +963,7 @@ class Products(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Product]:
+    ) -> models.Product:
         r"""Update Product Benefits
 
         Update benefits granted by a product.
@@ -1036,7 +1032,7 @@ class Products(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Product])
+            return utils.unmarshal_json(http_res.text, models.Product)
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)

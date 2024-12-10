@@ -9,12 +9,6 @@
 value: models.BenefitAdsSubscriber = /* values here */
 ```
 
-### `models.BenefitArticlesSubscriber`
-
-```python
-value: models.BenefitArticlesSubscriber = /* values here */
-```
-
 ### `models.BenefitCustomSubscriber`
 
 ```python

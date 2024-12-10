@@ -21,8 +21,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.license_keys.list()
+) as polar:
+    res = polar.license_keys.list()
 
     if res is not None:
         while True:
@@ -68,8 +68,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.license_keys.get(id="<value>")
+) as polar:
+    res = polar.license_keys.get(id="<value>")
 
     if res is not None:
         # handle response
@@ -108,8 +108,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.license_keys.update(id="<value>", license_key_update={})
+) as polar:
+    res = polar.license_keys.update(id="<value>", license_key_update={})
 
     if res is not None:
         # handle response
@@ -149,8 +149,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.license_keys.get_activation(id="<value>", activation_id="<value>")
+) as polar:
+    res = polar.license_keys.get_activation(id="<value>", activation_id="<value>")
 
     if res is not None:
         # handle response

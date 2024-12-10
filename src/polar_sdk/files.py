@@ -110,9 +110,7 @@ class Files(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.FilesListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceFileRead]
-                ),
+                result=utils.unmarshal_json(http_res.text, models.ListResourceFileRead),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -234,9 +232,7 @@ class Files(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.FilesListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceFileRead]
-                ),
+                result=utils.unmarshal_json(http_res.text, models.ListResourceFileRead),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -264,7 +260,7 @@ class Files(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.FileUpload]:
+    ) -> models.FileUpload:
         r"""Create File
 
         Create a file.
@@ -325,7 +321,7 @@ class Files(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.FileUpload])
+            return utils.unmarshal_json(http_res.text, models.FileUpload)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -351,7 +347,7 @@ class Files(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.FileUpload]:
+    ) -> models.FileUpload:
         r"""Create File
 
         Create a file.
@@ -412,7 +408,7 @@ class Files(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.FileUpload])
+            return utils.unmarshal_json(http_res.text, models.FileUpload)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -441,7 +437,7 @@ class Files(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.FilesUploadedResponseFilesUploaded]:
+    ) -> models.FilesUploadedResponseFilesUploaded:
         r"""Complete File Upload
 
         Complete a file upload.
@@ -511,7 +507,7 @@ class Files(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
-                http_res.text, Optional[models.FilesUploadedResponseFilesUploaded]
+                http_res.text, models.FilesUploadedResponseFilesUploaded
             )
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
@@ -547,7 +543,7 @@ class Files(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.FilesUploadedResponseFilesUploaded]:
+    ) -> models.FilesUploadedResponseFilesUploaded:
         r"""Complete File Upload
 
         Complete a file upload.
@@ -617,7 +613,7 @@ class Files(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
-                http_res.text, Optional[models.FilesUploadedResponseFilesUploaded]
+                http_res.text, models.FilesUploadedResponseFilesUploaded
             )
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
@@ -651,7 +647,7 @@ class Files(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.FilesUpdateResponseFilesUpdate]:
+    ) -> models.FilesUpdateResponseFilesUpdate:
         r"""Update File
 
         Update a file.
@@ -715,7 +711,7 @@ class Files(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
-                http_res.text, Optional[models.FilesUpdateResponseFilesUpdate]
+                http_res.text, models.FilesUpdateResponseFilesUpdate
             )
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
@@ -749,7 +745,7 @@ class Files(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.FilesUpdateResponseFilesUpdate]:
+    ) -> models.FilesUpdateResponseFilesUpdate:
         r"""Update File
 
         Update a file.
@@ -813,7 +809,7 @@ class Files(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
-                http_res.text, Optional[models.FilesUpdateResponseFilesUpdate]
+                http_res.text, models.FilesUpdateResponseFilesUpdate
             )
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)

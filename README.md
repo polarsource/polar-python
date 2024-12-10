@@ -46,20 +46,201 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 
 ```python
 # Synchronous Example
+import dateutil.parser
+import polar_sdk
 from polar_sdk import Polar
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.benefits.list()
+with Polar() as polar:
+    res = polar.endpointcheckout_created_post(request={
+        "data": {
+            "created_at": dateutil.parser.isoparse("2024-11-12T14:26:42.882Z"),
+            "modified_at": dateutil.parser.isoparse("2023-05-28T05:08:06.235Z"),
+            "id": "<value>",
+            "status": polar_sdk.CheckoutStatus.FAILED,
+            "client_secret": "<value>",
+            "url": "https://heavy-beret.com/",
+            "expires_at": dateutil.parser.isoparse("2022-02-25T02:26:48.460Z"),
+            "success_url": "https://sardonic-final.info/",
+            "embed_origin": "<value>",
+            "amount": 962818,
+            "tax_amount": 6400,
+            "currency": "Yen",
+            "subtotal_amount": 648726,
+            "total_amount": 210702,
+            "product_id": "<value>",
+            "product_price_id": "<value>",
+            "discount_id": "<value>",
+            "allow_discount_codes": True,
+            "is_discount_applicable": False,
+            "is_free_product_price": False,
+            "is_payment_required": False,
+            "is_payment_setup_required": False,
+            "is_payment_form_required": False,
+            "customer_id": "<value>",
+            "customer_name": "<value>",
+            "customer_email": "Ryley_Erdman@hotmail.com",
+            "customer_ip_address": "<value>",
+            "customer_billing_address": {
+                "country": "South Africa",
+            },
+            "customer_tax_id": "<id>",
+            "payment_processor_metadata": {},
+            "metadata": {
+                "key": 18677,
+                "key1": 95370,
+            },
+            "product": {
+                "created_at": dateutil.parser.isoparse("2022-04-02T00:05:42.586Z"),
+                "modified_at": dateutil.parser.isoparse("2023-12-16T03:02:38.803Z"),
+                "id": "<value>",
+                "name": "<value>",
+                "description": "for embarrassment untidy long-term near honestly separate yet",
+                "is_recurring": True,
+                "is_archived": False,
+                "organization_id": "<value>",
+                "prices": [
+                    {
+                        "created_at": dateutil.parser.isoparse("2024-11-19T15:59:15.588Z"),
+                        "modified_at": dateutil.parser.isoparse("2022-11-17T00:11:23.972Z"),
+                        "id": "<value>",
+                        "is_archived": False,
+                        "product_id": "<value>",
+                        "price_currency": "<value>",
+                        "minimum_amount": 363560,
+                        "maximum_amount": 75876,
+                        "preset_amount": 82334,
+                        "amount_type": polar_sdk.ProductPriceOneTimeCustomAmountType.CUSTOM,
+                        "type": polar_sdk.ProductPriceOneTimeCustomType.ONE_TIME,
+                    },
+                ],
+                "benefits": [
+                    {
+                        "created_at": dateutil.parser.isoparse("2023-08-22T00:47:02.059Z"),
+                        "modified_at": dateutil.parser.isoparse("2023-06-04T10:32:44.101Z"),
+                        "id": "<value>",
+                        "type": polar_sdk.BenefitType.LICENSE_KEYS,
+                        "description": "within jacket unless",
+                        "selectable": False,
+                        "deletable": False,
+                        "organization_id": "<value>",
+                    },
+                ],
+                "medias": [
+                    {
+                        "id": "<value>",
+                        "organization_id": "<value>",
+                        "name": "<value>",
+                        "path": "/private/var",
+                        "mime_type": "<value>",
+                        "size": 245189,
+                        "storage_version": "<value>",
+                        "checksum_etag": "<value>",
+                        "checksum_sha256_base64": "<value>",
+                        "checksum_sha256_hex": "<value>",
+                        "last_modified_at": dateutil.parser.isoparse("2022-11-03T15:00:03.276Z"),
+                        "version": "<value>",
+                        "is_uploaded": False,
+                        "created_at": dateutil.parser.isoparse("2024-06-07T13:47:02.365Z"),
+                        "size_readable": "<value>",
+                        "public_url": "https://webbed-experience.name/",
+                        "service": polar_sdk.Service.PRODUCT_MEDIA,
+                    },
+                ],
+            },
+            "product_price": {
+                "created_at": dateutil.parser.isoparse("2024-02-15T09:22:19.644Z"),
+                "modified_at": dateutil.parser.isoparse("2022-12-28T20:59:29.904Z"),
+                "id": "<value>",
+                "is_archived": False,
+                "product_id": "<value>",
+                "price_currency": "<value>",
+                "minimum_amount": 417896,
+                "maximum_amount": 962818,
+                "preset_amount": 6400,
+                "recurring_interval": polar_sdk.SubscriptionRecurringInterval.MONTH,
+                "amount_type": polar_sdk.ProductPriceRecurringCustomAmountType.CUSTOM,
+                "type": polar_sdk.ProductPriceRecurringCustomType.RECURRING,
+            },
+            "discount": {
+                "duration": polar_sdk.DiscountDuration.REPEATING,
+                "type": polar_sdk.DiscountType.FIXED,
+                "basis_points": 341163,
+                "id": "<value>",
+                "name": "<value>",
+                "code": "<value>",
+            },
+            "subscription_id": "<value>",
+            "attached_custom_fields": [
+                {
+                    "custom_field_id": "<value>",
+                    "custom_field": {
+                        "created_at": dateutil.parser.isoparse("2022-08-19T22:18:44.316Z"),
+                        "modified_at": dateutil.parser.isoparse("2023-04-29T23:39:10.699Z"),
+                        "id": "<value>",
+                        "metadata": {
+                            "key": False,
+                        },
+                        "slug": "<value>",
+                        "name": "<value>",
+                        "organization_id": "<value>",
+                        "properties": {
+                            "options": [
+                                {
+                                    "value": "<value>",
+                                    "label": "<value>",
+                                },
+                            ],
+                        },
+                        "type": polar_sdk.CustomFieldSelectType.SELECT,
+                    },
+                    "order": 996863,
+                    "required": False,
+                },
+                {
+                    "custom_field_id": "<value>",
+                    "custom_field": {
+                        "created_at": dateutil.parser.isoparse("2023-07-03T09:46:29.338Z"),
+                        "modified_at": dateutil.parser.isoparse("2024-01-25T18:08:49.597Z"),
+                        "id": "<value>",
+                        "metadata": {
+                            "key": False,
+                        },
+                        "slug": "<value>",
+                        "name": "<value>",
+                        "organization_id": "<value>",
+                        "properties": {},
+                        "type": polar_sdk.CustomFieldNumberType.NUMBER,
+                    },
+                    "order": 72589,
+                    "required": True,
+                },
+                {
+                    "custom_field_id": "<value>",
+                    "custom_field": {
+                        "created_at": dateutil.parser.isoparse("2024-07-31T13:25:31.669Z"),
+                        "modified_at": dateutil.parser.isoparse("2022-11-12T09:40:10.044Z"),
+                        "id": "<value>",
+                        "metadata": {
+                            "key": "<value>",
+                        },
+                        "slug": "<value>",
+                        "name": "<value>",
+                        "organization_id": "<value>",
+                        "properties": {},
+                        "type": polar_sdk.CustomFieldTextType.TEXT,
+                    },
+                    "order": 161325,
+                    "required": True,
+                },
+            ],
+            "payment_processor": polar_sdk.PaymentProcessor.STRIPE,
+        },
+        "type": polar_sdk.WebhookCheckoutCreatedPayloadType.CHECKOUT_CREATED,
+    })
 
     if res is not None:
-        while True:
-            # handle items
-
-            res = res.next()
-            if res is None:
-                break
+        # handle response
+        pass
 ```
 
 </br>
@@ -68,21 +249,199 @@ The same SDK client can also be used to make asychronous requests by importing a
 ```python
 # Asynchronous Example
 import asyncio
+import dateutil.parser
+import polar_sdk
 from polar_sdk import Polar
 
 async def main():
-    async with Polar(
-        access_token="<YOUR_BEARER_TOKEN_HERE>",
-    ) as s:
-        res = await s.users.benefits.list_async()
+    async with Polar() as polar:
+        res = await polar.endpointcheckout_created_post_async(request={
+            "data": {
+                "created_at": dateutil.parser.isoparse("2024-11-12T14:26:42.882Z"),
+                "modified_at": dateutil.parser.isoparse("2023-05-28T05:08:06.235Z"),
+                "id": "<value>",
+                "status": polar_sdk.CheckoutStatus.FAILED,
+                "client_secret": "<value>",
+                "url": "https://heavy-beret.com/",
+                "expires_at": dateutil.parser.isoparse("2022-02-25T02:26:48.460Z"),
+                "success_url": "https://sardonic-final.info/",
+                "embed_origin": "<value>",
+                "amount": 962818,
+                "tax_amount": 6400,
+                "currency": "Yen",
+                "subtotal_amount": 648726,
+                "total_amount": 210702,
+                "product_id": "<value>",
+                "product_price_id": "<value>",
+                "discount_id": "<value>",
+                "allow_discount_codes": True,
+                "is_discount_applicable": False,
+                "is_free_product_price": False,
+                "is_payment_required": False,
+                "is_payment_setup_required": False,
+                "is_payment_form_required": False,
+                "customer_id": "<value>",
+                "customer_name": "<value>",
+                "customer_email": "Ryley_Erdman@hotmail.com",
+                "customer_ip_address": "<value>",
+                "customer_billing_address": {
+                    "country": "South Africa",
+                },
+                "customer_tax_id": "<id>",
+                "payment_processor_metadata": {},
+                "metadata": {
+                    "key": 18677,
+                    "key1": 95370,
+                },
+                "product": {
+                    "created_at": dateutil.parser.isoparse("2022-04-02T00:05:42.586Z"),
+                    "modified_at": dateutil.parser.isoparse("2023-12-16T03:02:38.803Z"),
+                    "id": "<value>",
+                    "name": "<value>",
+                    "description": "for embarrassment untidy long-term near honestly separate yet",
+                    "is_recurring": True,
+                    "is_archived": False,
+                    "organization_id": "<value>",
+                    "prices": [
+                        {
+                            "created_at": dateutil.parser.isoparse("2023-02-07T04:30:48.802Z"),
+                            "modified_at": dateutil.parser.isoparse("2024-06-25T22:47:14.264Z"),
+                            "id": "<value>",
+                            "is_archived": False,
+                            "product_id": "<value>",
+                            "price_currency": "<value>",
+                            "minimum_amount": 691423,
+                            "maximum_amount": 499526,
+                            "preset_amount": 18677,
+                            "amount_type": polar_sdk.ProductPriceOneTimeCustomAmountType.CUSTOM,
+                            "type": polar_sdk.ProductPriceOneTimeCustomType.ONE_TIME,
+                        },
+                    ],
+                    "benefits": [
+                        {
+                            "created_at": dateutil.parser.isoparse("2023-08-22T00:47:02.059Z"),
+                            "modified_at": dateutil.parser.isoparse("2023-06-04T10:32:44.101Z"),
+                            "id": "<value>",
+                            "type": polar_sdk.BenefitType.LICENSE_KEYS,
+                            "description": "within jacket unless",
+                            "selectable": False,
+                            "deletable": False,
+                            "organization_id": "<value>",
+                        },
+                    ],
+                    "medias": [
+                        {
+                            "id": "<value>",
+                            "organization_id": "<value>",
+                            "name": "<value>",
+                            "path": "/private/var",
+                            "mime_type": "<value>",
+                            "size": 245189,
+                            "storage_version": "<value>",
+                            "checksum_etag": "<value>",
+                            "checksum_sha256_base64": "<value>",
+                            "checksum_sha256_hex": "<value>",
+                            "last_modified_at": dateutil.parser.isoparse("2022-11-03T15:00:03.276Z"),
+                            "version": "<value>",
+                            "is_uploaded": False,
+                            "created_at": dateutil.parser.isoparse("2024-06-07T13:47:02.365Z"),
+                            "size_readable": "<value>",
+                            "public_url": "https://webbed-experience.name/",
+                            "service": polar_sdk.Service.PRODUCT_MEDIA,
+                        },
+                    ],
+                },
+                "product_price": {
+                    "created_at": dateutil.parser.isoparse("2022-04-02T00:05:42.586Z"),
+                    "modified_at": dateutil.parser.isoparse("2023-12-16T03:02:38.803Z"),
+                    "id": "<value>",
+                    "is_archived": False,
+                    "product_id": "<value>",
+                    "price_currency": "<value>",
+                    "price_amount": 740296,
+                    "amount_type": polar_sdk.ProductPriceOneTimeFixedAmountType.FIXED,
+                    "type": polar_sdk.ProductPriceOneTimeFixedType.ONE_TIME,
+                },
+                "discount": {
+                    "duration": polar_sdk.DiscountDuration.REPEATING,
+                    "type": polar_sdk.DiscountType.FIXED,
+                    "basis_points": 341163,
+                    "id": "<value>",
+                    "name": "<value>",
+                    "code": "<value>",
+                },
+                "subscription_id": "<value>",
+                "attached_custom_fields": [
+                    {
+                        "custom_field_id": "<value>",
+                        "custom_field": {
+                            "created_at": dateutil.parser.isoparse("2024-06-23T16:57:50.081Z"),
+                            "modified_at": dateutil.parser.isoparse("2023-12-14T18:25:33.693Z"),
+                            "id": "<value>",
+                            "metadata": {
+                                "key": "<value>",
+                            },
+                            "slug": "<value>",
+                            "name": "<value>",
+                            "organization_id": "<value>",
+                            "properties": {},
+                            "type": polar_sdk.CustomFieldNumberType.NUMBER,
+                        },
+                        "order": 996863,
+                        "required": False,
+                    },
+                    {
+                        "custom_field_id": "<value>",
+                        "custom_field": {
+                            "created_at": dateutil.parser.isoparse("2022-04-26T22:34:57.487Z"),
+                            "modified_at": dateutil.parser.isoparse("2022-08-07T19:57:51.694Z"),
+                            "id": "<value>",
+                            "metadata": {
+                                "key": 856200,
+                            },
+                            "slug": "<value>",
+                            "name": "<value>",
+                            "organization_id": "<value>",
+                            "properties": {
+                                "options": [
+                                    {
+                                        "value": "<value>",
+                                        "label": "<value>",
+                                    },
+                                ],
+                            },
+                            "type": polar_sdk.CustomFieldSelectType.SELECT,
+                        },
+                        "order": 72589,
+                        "required": True,
+                    },
+                    {
+                        "custom_field_id": "<value>",
+                        "custom_field": {
+                            "created_at": dateutil.parser.isoparse("2024-05-25T15:20:50.694Z"),
+                            "modified_at": dateutil.parser.isoparse("2023-11-28T14:29:40.329Z"),
+                            "id": "<value>",
+                            "metadata": {
+                                "key": False,
+                            },
+                            "slug": "<value>",
+                            "name": "<value>",
+                            "organization_id": "<value>",
+                            "properties": {},
+                            "type": polar_sdk.CustomFieldCheckboxType.CHECKBOX,
+                        },
+                        "order": 161325,
+                        "required": True,
+                    },
+                ],
+                "payment_processor": polar_sdk.PaymentProcessor.STRIPE,
+            },
+            "type": polar_sdk.WebhookCheckoutCreatedPayloadType.CHECKOUT_CREATED,
+        })
 
         if res is not None:
-            while True:
-                # handle items
-
-                res = res.next()
-                if res is None:
-                    break
+            # handle response
+            pass
 
 asyncio.run(main())
 ```
@@ -125,18 +484,6 @@ def webhook():
 * [list](docs/sdks/advertisements/README.md#list) - List Campaigns
 * [get](docs/sdks/advertisements/README.md#get) - Get Campaign
 
-### [articles](docs/sdks/articles/README.md)
-
-* [list](docs/sdks/articles/README.md#list) - List Articles
-* [create](docs/sdks/articles/README.md#create) - Create Article
-* [export](docs/sdks/articles/README.md#export) - Export Articles
-* [get](docs/sdks/articles/README.md#get) - Get Article
-* [update](docs/sdks/articles/README.md#update) - Update Article
-* [delete](docs/sdks/articles/README.md#delete) - Delete Article
-* [receivers](docs/sdks/articles/README.md#receivers) - Get Article Receivers Count
-* [preview](docs/sdks/articles/README.md#preview) - Send Article Preview
-* [send](docs/sdks/articles/README.md#send) - Send Article
-
 ### [benefits](docs/sdks/benefits/README.md)
 
 * [list](docs/sdks/benefits/README.md#list) - List Benefits
@@ -156,7 +503,7 @@ def webhook():
 
 ### [checkouts](docs/sdks/checkouts/README.md)
 
-* [~~create~~](docs/sdks/checkouts/README.md#create) - Create Checkout :warning: **Deprecated** Use `create` instead.
+* [~~create~~](docs/sdks/checkouts/README.md#create) - Create Checkout :warning: **Deprecated** Use [create](docs/sdks/custom/README.md#create) instead.
 * [~~get~~](docs/sdks/checkouts/README.md#get) - Get Checkout :warning: **Deprecated**
 
 #### [checkouts.custom](docs/sdks/custom/README.md)
@@ -311,13 +658,13 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 
 To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
-from polar.utils import BackoffStrategy, RetryConfig
 from polar_sdk import Polar
+from polar_sdk.utils import BackoffStrategy, RetryConfig
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.benefits.list(,
+) as polar:
+    res = polar.users.benefits.list(,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     if res is not None:
@@ -332,14 +679,14 @@ with Polar(
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
-from polar.utils import BackoffStrategy, RetryConfig
 from polar_sdk import Polar
+from polar_sdk.utils import BackoffStrategy, RetryConfig
 
 with Polar(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.benefits.list()
+) as polar:
+    res = polar.users.benefits.list()
 
     if res is not None:
         while True:
@@ -380,10 +727,10 @@ from polar_sdk import Polar, models
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
+) as polar:
     res = None
     try:
-        res = s.users.benefits.list()
+        res = polar.users.benefits.list()
 
         if res is not None:
             while True:
@@ -422,8 +769,8 @@ from polar_sdk import Polar
 with Polar(
     server="sandbox",
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.benefits.list()
+) as polar:
+    res = polar.users.benefits.list()
 
     if res is not None:
         while True:
@@ -444,8 +791,8 @@ from polar_sdk import Polar
 with Polar(
     server_url="https://api.polar.sh",
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.benefits.list()
+) as polar:
+    res = polar.users.benefits.list()
 
     if res is not None:
         while True:
@@ -556,8 +903,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.benefits.list()
+) as polar:
+    res = polar.users.benefits.list()
 
     if res is not None:
         while True:
@@ -598,8 +945,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.benefits.list()
+) as polar:
+    res = polar.users.benefits.list()
 
     if res is not None:
         while True:

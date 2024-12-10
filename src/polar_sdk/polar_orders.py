@@ -141,7 +141,7 @@ class PolarOrders(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.UsersOrdersListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceUserOrder]
+                    http_res.text, models.ListResourceUserOrder
                 ),
                 next=next_func,
             )
@@ -295,7 +295,7 @@ class PolarOrders(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.UsersOrdersListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceUserOrder]
+                    http_res.text, models.ListResourceUserOrder
                 ),
                 next=next_func,
             )
@@ -324,7 +324,7 @@ class PolarOrders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserOrder]:
+    ) -> models.UserOrder:
         r"""Get Order
 
         Get an order by ID.
@@ -382,7 +382,7 @@ class PolarOrders(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.UserOrder])
+            return utils.unmarshal_json(http_res.text, models.UserOrder)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -411,7 +411,7 @@ class PolarOrders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserOrder]:
+    ) -> models.UserOrder:
         r"""Get Order
 
         Get an order by ID.
@@ -469,7 +469,7 @@ class PolarOrders(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.UserOrder])
+            return utils.unmarshal_json(http_res.text, models.UserOrder)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -498,7 +498,7 @@ class PolarOrders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserOrderInvoice]:
+    ) -> models.UserOrderInvoice:
         r"""Get Order Invoice
 
         Get an order's invoice data.
@@ -556,9 +556,7 @@ class PolarOrders(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.UserOrderInvoice]
-            )
+            return utils.unmarshal_json(http_res.text, models.UserOrderInvoice)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -587,7 +585,7 @@ class PolarOrders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserOrderInvoice]:
+    ) -> models.UserOrderInvoice:
         r"""Get Order Invoice
 
         Get an order's invoice data.
@@ -645,9 +643,7 @@ class PolarOrders(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.UserOrderInvoice]
-            )
+            return utils.unmarshal_json(http_res.text, models.UserOrderInvoice)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)

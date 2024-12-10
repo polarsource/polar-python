@@ -103,7 +103,7 @@ class Clients(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.Oauth2ClientsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceOAuth2Client]
+                    http_res.text, models.ListResourceOAuth2Client
                 ),
                 next=next_func,
             )
@@ -219,7 +219,7 @@ class Clients(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.Oauth2ClientsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceOAuth2Client]
+                    http_res.text, models.ListResourceOAuth2Client
                 ),
                 next=next_func,
             )
@@ -250,7 +250,7 @@ class Clients(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[Any]:
+    ) -> Any:
         r"""Create Client
 
         Create an OAuth2 client.
@@ -311,7 +311,7 @@ class Clients(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[Any])
+            return utils.unmarshal_json(http_res.text, Any)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -339,7 +339,7 @@ class Clients(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[Any]:
+    ) -> Any:
         r"""Create Client
 
         Create an OAuth2 client.
@@ -400,7 +400,7 @@ class Clients(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[Any])
+            return utils.unmarshal_json(http_res.text, Any)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -426,7 +426,7 @@ class Clients(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[Any]:
+    ) -> Any:
         r"""Get Client
 
         Get an OAuth2 client by Client ID.
@@ -484,7 +484,7 @@ class Clients(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[Any])
+            return utils.unmarshal_json(http_res.text, Any)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -510,7 +510,7 @@ class Clients(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[Any]:
+    ) -> Any:
         r"""Get Client
 
         Get an OAuth2 client by Client ID.
@@ -568,7 +568,7 @@ class Clients(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[Any])
+            return utils.unmarshal_json(http_res.text, Any)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -598,7 +598,7 @@ class Clients(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[Any]:
+    ) -> Any:
         r"""Update Client
 
         Update an OAuth2 client.
@@ -668,7 +668,7 @@ class Clients(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[Any])
+            return utils.unmarshal_json(http_res.text, Any)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -698,7 +698,7 @@ class Clients(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[Any]:
+    ) -> Any:
         r"""Update Client
 
         Update an OAuth2 client.
@@ -768,7 +768,7 @@ class Clients(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[Any])
+            return utils.unmarshal_json(http_res.text, Any)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -794,7 +794,7 @@ class Clients(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[Any]:
+    ) -> Any:
         r"""Delete Client
 
         Delete an OAuth2 client.
@@ -852,7 +852,7 @@ class Clients(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[Any])
+            return utils.unmarshal_json(http_res.text, Any)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -878,7 +878,7 @@ class Clients(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[Any]:
+    ) -> Any:
         r"""Delete Client
 
         Delete an OAuth2 client.
@@ -936,7 +936,7 @@ class Clients(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[Any])
+            return utils.unmarshal_json(http_res.text, Any)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)

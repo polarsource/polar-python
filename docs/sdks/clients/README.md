@@ -22,8 +22,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.oauth2.clients.list()
+) as polar:
+    res = polar.oauth2.clients.list()
 
     if res is not None:
         while True:
@@ -65,8 +65,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.oauth2.clients.create(request={
+) as polar:
+    res = polar.oauth2.clients.create(request={
         "redirect_uris": [
             "https://probable-heating.com/",
         ],
@@ -108,8 +108,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.oauth2.clients.get(client_id="<value>")
+) as polar:
+    res = polar.oauth2.clients.get(client_id="<value>")
 
     if res is not None:
         # handle response
@@ -146,8 +146,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.oauth2.clients.update(client_id="<value>", o_auth2_client_configuration_update={
+) as polar:
+    res = polar.oauth2.clients.update(client_id="<value>", o_auth2_client_configuration_update={
         "redirect_uris": [
             "https://passionate-flu.org",
         ],
@@ -191,8 +191,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.oauth2.clients.delete(client_id="<value>")
+) as polar:
+    res = polar.oauth2.clients.delete(client_id="<value>")
 
     if res is not None:
         # handle response

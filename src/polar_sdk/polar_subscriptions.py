@@ -133,7 +133,7 @@ class PolarSubscriptions(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.UsersSubscriptionsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceUserSubscription]
+                    http_res.text, models.ListResourceUserSubscription
                 ),
                 next=next_func,
             )
@@ -279,7 +279,7 @@ class PolarSubscriptions(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.UsersSubscriptionsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceUserSubscription]
+                    http_res.text, models.ListResourceUserSubscription
                 ),
                 next=next_func,
             )
@@ -308,7 +308,7 @@ class PolarSubscriptions(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserSubscription]:
+    ) -> models.UserSubscription:
         r"""Get Subscription
 
         Get a subscription by ID.
@@ -366,9 +366,7 @@ class PolarSubscriptions(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.UserSubscription]
-            )
+            return utils.unmarshal_json(http_res.text, models.UserSubscription)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -397,7 +395,7 @@ class PolarSubscriptions(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserSubscription]:
+    ) -> models.UserSubscription:
         r"""Get Subscription
 
         Get a subscription by ID.
@@ -455,9 +453,7 @@ class PolarSubscriptions(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.UserSubscription]
-            )
+            return utils.unmarshal_json(http_res.text, models.UserSubscription)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -489,7 +485,7 @@ class PolarSubscriptions(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserSubscription]:
+    ) -> models.UserSubscription:
         r"""Update Subscription
 
         Update a subscription.
@@ -558,9 +554,7 @@ class PolarSubscriptions(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.UserSubscription]
-            )
+            return utils.unmarshal_json(http_res.text, models.UserSubscription)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -592,7 +586,7 @@ class PolarSubscriptions(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserSubscription]:
+    ) -> models.UserSubscription:
         r"""Update Subscription
 
         Update a subscription.
@@ -661,9 +655,7 @@ class PolarSubscriptions(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.UserSubscription]
-            )
+            return utils.unmarshal_json(http_res.text, models.UserSubscription)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -692,7 +684,7 @@ class PolarSubscriptions(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserSubscription]:
+    ) -> models.UserSubscription:
         r"""Cancel Subscription
 
         Cancel a subscription.
@@ -750,9 +742,7 @@ class PolarSubscriptions(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.UserSubscription]
-            )
+            return utils.unmarshal_json(http_res.text, models.UserSubscription)
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(
                 http_res.text, models.AlreadyCanceledSubscriptionData
@@ -786,7 +776,7 @@ class PolarSubscriptions(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UserSubscription]:
+    ) -> models.UserSubscription:
         r"""Cancel Subscription
 
         Cancel a subscription.
@@ -844,9 +834,7 @@ class PolarSubscriptions(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.UserSubscription]
-            )
+            return utils.unmarshal_json(http_res.text, models.UserSubscription)
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(
                 http_res.text, models.AlreadyCanceledSubscriptionData

@@ -124,9 +124,7 @@ class Custom(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.CheckoutsCustomListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceCheckout]
-                ),
+                result=utils.unmarshal_json(http_res.text, models.ListResourceCheckout),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -262,9 +260,7 @@ class Custom(BaseSDK):
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.CheckoutsCustomListResponse(
-                result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceCheckout]
-                ),
+                result=utils.unmarshal_json(http_res.text, models.ListResourceCheckout),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -292,7 +288,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Checkout]:
+    ) -> models.Checkout:
         r"""Create Checkout Session
 
         Create a checkout session.
@@ -353,7 +349,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Checkout])
+            return utils.unmarshal_json(http_res.text, models.Checkout)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -379,7 +375,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Checkout]:
+    ) -> models.Checkout:
         r"""Create Checkout Session
 
         Create a checkout session.
@@ -440,7 +436,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Checkout])
+            return utils.unmarshal_json(http_res.text, models.Checkout)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -466,7 +462,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Checkout]:
+    ) -> models.Checkout:
         r"""Get Checkout Session
 
         Get a checkout session by ID.
@@ -524,7 +520,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Checkout])
+            return utils.unmarshal_json(http_res.text, models.Checkout)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -553,7 +549,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Checkout]:
+    ) -> models.Checkout:
         r"""Get Checkout Session
 
         Get a checkout session by ID.
@@ -611,7 +607,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Checkout])
+            return utils.unmarshal_json(http_res.text, models.Checkout)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -641,7 +637,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Checkout]:
+    ) -> models.Checkout:
         r"""Update Checkout Session
 
         Update a checkout session.
@@ -706,7 +702,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Checkout])
+            return utils.unmarshal_json(http_res.text, models.Checkout)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -736,7 +732,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Checkout]:
+    ) -> models.Checkout:
         r"""Update Checkout Session
 
         Update a checkout session.
@@ -801,7 +797,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Checkout])
+            return utils.unmarshal_json(http_res.text, models.Checkout)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -830,7 +826,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CheckoutPublic]:
+    ) -> models.CheckoutPublic:
         r"""Get Checkout Session from Client
 
         Get a checkout session by client secret.
@@ -888,7 +884,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CheckoutPublic])
+            return utils.unmarshal_json(http_res.text, models.CheckoutPublic)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -917,7 +913,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CheckoutPublic]:
+    ) -> models.CheckoutPublic:
         r"""Get Checkout Session from Client
 
         Get a checkout session by client secret.
@@ -975,7 +971,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CheckoutPublic])
+            return utils.unmarshal_json(http_res.text, models.CheckoutPublic)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -1007,7 +1003,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CheckoutPublic]:
+    ) -> models.CheckoutPublic:
         r"""Update Checkout Session from Client
 
         Update a checkout session by client secret.
@@ -1076,7 +1072,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CheckoutPublic])
+            return utils.unmarshal_json(http_res.text, models.CheckoutPublic)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -1108,7 +1104,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CheckoutPublic]:
+    ) -> models.CheckoutPublic:
         r"""Update Checkout Session from Client
 
         Update a checkout session by client secret.
@@ -1177,7 +1173,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CheckoutPublic])
+            return utils.unmarshal_json(http_res.text, models.CheckoutPublic)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -1209,7 +1205,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CheckoutPublic]:
+    ) -> models.CheckoutPublic:
         r"""Confirm Checkout Session from Client
 
         Confirm a checkout session by client secret.
@@ -1280,7 +1276,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CheckoutPublic])
+            return utils.unmarshal_json(http_res.text, models.CheckoutPublic)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -1312,7 +1308,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.CheckoutPublic]:
+    ) -> models.CheckoutPublic:
         r"""Confirm Checkout Session from Client
 
         Confirm a checkout session by client secret.
@@ -1383,7 +1379,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.CheckoutPublic])
+            return utils.unmarshal_json(http_res.text, models.CheckoutPublic)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)

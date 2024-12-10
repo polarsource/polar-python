@@ -26,7 +26,7 @@ class Oauth2(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Oauth2AuthorizeResponseOauth2Authorize]:
+    ) -> models.Oauth2AuthorizeResponseOauth2Authorize:
         r"""Authorize
 
         :param retries: Override the default retry configuration for this method
@@ -76,7 +76,7 @@ class Oauth2(BaseSDK):
 
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
-                http_res.text, Optional[models.Oauth2AuthorizeResponseOauth2Authorize]
+                http_res.text, models.Oauth2AuthorizeResponseOauth2Authorize
             )
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
@@ -99,7 +99,7 @@ class Oauth2(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Oauth2AuthorizeResponseOauth2Authorize]:
+    ) -> models.Oauth2AuthorizeResponseOauth2Authorize:
         r"""Authorize
 
         :param retries: Override the default retry configuration for this method
@@ -149,7 +149,7 @@ class Oauth2(BaseSDK):
 
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
-                http_res.text, Optional[models.Oauth2AuthorizeResponseOauth2Authorize]
+                http_res.text, models.Oauth2AuthorizeResponseOauth2Authorize
             )
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
@@ -176,7 +176,7 @@ class Oauth2(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.TokenResponse]:
+    ) -> models.TokenResponse:
         r"""Request Token
 
         Request an access token using a valid grant.
@@ -236,7 +236,7 @@ class Oauth2(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.TokenResponse])
+            return utils.unmarshal_json(http_res.text, models.TokenResponse)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.SDKError(
@@ -262,7 +262,7 @@ class Oauth2(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.TokenResponse]:
+    ) -> models.TokenResponse:
         r"""Request Token
 
         Request an access token using a valid grant.
@@ -322,7 +322,7 @@ class Oauth2(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.TokenResponse])
+            return utils.unmarshal_json(http_res.text, models.TokenResponse)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.SDKError(
@@ -348,7 +348,7 @@ class Oauth2(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.RevokeTokenResponse]:
+    ) -> models.RevokeTokenResponse:
         r"""Revoke Token
 
         Revoke an access token or a refresh token.
@@ -414,9 +414,7 @@ class Oauth2(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.RevokeTokenResponse]
-            )
+            return utils.unmarshal_json(http_res.text, models.RevokeTokenResponse)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.SDKError(
@@ -442,7 +440,7 @@ class Oauth2(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.RevokeTokenResponse]:
+    ) -> models.RevokeTokenResponse:
         r"""Revoke Token
 
         Revoke an access token or a refresh token.
@@ -508,9 +506,7 @@ class Oauth2(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.RevokeTokenResponse]
-            )
+            return utils.unmarshal_json(http_res.text, models.RevokeTokenResponse)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.SDKError(
@@ -536,7 +532,7 @@ class Oauth2(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.IntrospectTokenResponse]:
+    ) -> models.IntrospectTokenResponse:
         r"""Introspect Token
 
         Get information about an access token.
@@ -602,9 +598,7 @@ class Oauth2(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.IntrospectTokenResponse]
-            )
+            return utils.unmarshal_json(http_res.text, models.IntrospectTokenResponse)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.SDKError(
@@ -630,7 +624,7 @@ class Oauth2(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.IntrospectTokenResponse]:
+    ) -> models.IntrospectTokenResponse:
         r"""Introspect Token
 
         Get information about an access token.
@@ -696,9 +690,7 @@ class Oauth2(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text, Optional[models.IntrospectTokenResponse]
-            )
+            return utils.unmarshal_json(http_res.text, models.IntrospectTokenResponse)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.SDKError(
@@ -720,7 +712,7 @@ class Oauth2(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Oauth2UserinfoResponseOauth2Userinfo]:
+    ) -> models.Oauth2UserinfoResponseOauth2Userinfo:
         r"""Get User Info
 
         Get information about the authenticated user.
@@ -772,7 +764,7 @@ class Oauth2(BaseSDK):
 
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
-                http_res.text, Optional[models.Oauth2UserinfoResponseOauth2Userinfo]
+                http_res.text, models.Oauth2UserinfoResponseOauth2Userinfo
             )
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
@@ -795,7 +787,7 @@ class Oauth2(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Oauth2UserinfoResponseOauth2Userinfo]:
+    ) -> models.Oauth2UserinfoResponseOauth2Userinfo:
         r"""Get User Info
 
         Get information about the authenticated user.
@@ -847,7 +839,7 @@ class Oauth2(BaseSDK):
 
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(
-                http_res.text, Optional[models.Oauth2UserinfoResponseOauth2Userinfo]
+                http_res.text, models.Oauth2UserinfoResponseOauth2Userinfo
             )
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)

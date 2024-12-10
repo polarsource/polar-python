@@ -130,7 +130,7 @@ class ExternalOrganizations(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.ExternalOrganizationsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceExternalOrganization]
+                    http_res.text, models.ListResourceExternalOrganization
                 ),
                 next=next_func,
             )
@@ -273,7 +273,7 @@ class ExternalOrganizations(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.ExternalOrganizationsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceExternalOrganization]
+                    http_res.text, models.ListResourceExternalOrganization
                 ),
                 next=next_func,
             )

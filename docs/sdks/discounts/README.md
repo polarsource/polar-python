@@ -22,8 +22,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.discounts.list()
+) as polar:
+    res = polar.discounts.list()
 
     if res is not None:
         while True:
@@ -69,8 +69,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.discounts.create(request={
+) as polar:
+    res = polar.discounts.create(request={
         "duration": polar_sdk.DiscountDuration.FOREVER,
         "duration_in_months": 417458,
         "type": polar_sdk.DiscountType.FIXED,
@@ -113,8 +113,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.discounts.get(id="<value>")
+) as polar:
+    res = polar.discounts.get(id="<value>")
 
     if res is not None:
         # handle response
@@ -152,8 +152,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.discounts.update(id="<value>", discount_update={})
+) as polar:
+    res = polar.discounts.update(id="<value>", discount_update={})
 
     if res is not None:
         # handle response
@@ -192,8 +192,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    s.discounts.delete(id="<value>")
+) as polar:
+    polar.discounts.delete(id="<value>")
 
     # Use the SDK ...
 

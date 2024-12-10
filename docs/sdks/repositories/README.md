@@ -20,8 +20,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.repositories.list()
+) as polar:
+    res = polar.repositories.list()
 
     if res is not None:
         while True:
@@ -69,8 +69,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.repositories.get(id="<value>")
+) as polar:
+    res = polar.repositories.get(id="<value>")
 
     if res is not None:
         # handle response
@@ -108,8 +108,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.repositories.update(id="<value>", repository_update={})
+) as polar:
+    res = polar.repositories.update(id="<value>", repository_update={})
 
     if res is not None:
         # handle response

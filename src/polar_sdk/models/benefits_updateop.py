@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 from .benefitadsupdate import BenefitAdsUpdate, BenefitAdsUpdateTypedDict
-from .benefitarticlesupdate import BenefitArticlesUpdate, BenefitArticlesUpdateTypedDict
 from .benefitcustomupdate import BenefitCustomUpdate, BenefitCustomUpdateTypedDict
 from .benefitdiscordupdate import BenefitDiscordUpdate, BenefitDiscordUpdateTypedDict
 from .benefitdownloadablesupdate import (
@@ -26,7 +25,6 @@ from typing_extensions import Annotated, TypeAliasType, TypedDict
 BenefitsUpdateBenefitUpdateTypedDict = TypeAliasType(
     "BenefitsUpdateBenefitUpdateTypedDict",
     Union[
-        BenefitArticlesUpdateTypedDict,
         BenefitAdsUpdateTypedDict,
         BenefitCustomUpdateTypedDict,
         BenefitDiscordUpdateTypedDict,
@@ -40,7 +38,6 @@ BenefitsUpdateBenefitUpdateTypedDict = TypeAliasType(
 BenefitsUpdateBenefitUpdate = TypeAliasType(
     "BenefitsUpdateBenefitUpdate",
     Union[
-        BenefitArticlesUpdate,
         BenefitAdsUpdate,
         BenefitCustomUpdate,
         BenefitDiscordUpdate,

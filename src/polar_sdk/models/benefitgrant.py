@@ -5,10 +5,6 @@ from .benefitgrantadsproperties import (
     BenefitGrantAdsProperties,
     BenefitGrantAdsPropertiesTypedDict,
 )
-from .benefitgrantarticlesproperties import (
-    BenefitGrantArticlesProperties,
-    BenefitGrantArticlesPropertiesTypedDict,
-)
 from .benefitgrantcustomproperties import (
     BenefitGrantCustomProperties,
     BenefitGrantCustomPropertiesTypedDict,
@@ -40,7 +36,6 @@ PropertiesTypedDict = TypeAliasType(
     "PropertiesTypedDict",
     Union[
         BenefitGrantCustomPropertiesTypedDict,
-        BenefitGrantArticlesPropertiesTypedDict,
         BenefitGrantDownloadablesPropertiesTypedDict,
         BenefitGrantAdsPropertiesTypedDict,
         BenefitGrantLicenseKeysPropertiesTypedDict,
@@ -54,7 +49,6 @@ Properties = TypeAliasType(
     "Properties",
     Union[
         BenefitGrantCustomProperties,
-        BenefitGrantArticlesProperties,
         BenefitGrantDownloadablesProperties,
         BenefitGrantAdsProperties,
         BenefitGrantLicenseKeysProperties,

@@ -36,7 +36,7 @@ class MetricsSDK(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.MetricsResponse]:
+    ) -> models.MetricsResponse:
         r"""Get Metrics
 
         Get metrics about your orders and subscriptions.
@@ -104,7 +104,7 @@ class MetricsSDK(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.MetricsResponse])
+            return utils.unmarshal_json(http_res.text, models.MetricsResponse)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -150,7 +150,7 @@ class MetricsSDK(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.MetricsResponse]:
+    ) -> models.MetricsResponse:
         r"""Get Metrics
 
         Get metrics about your orders and subscriptions.
@@ -218,7 +218,7 @@ class MetricsSDK(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.MetricsResponse])
+            return utils.unmarshal_json(http_res.text, models.MetricsResponse)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -243,7 +243,7 @@ class MetricsSDK(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.MetricsLimits]:
+    ) -> models.MetricsLimits:
         r"""Get Metrics Limits
 
         Get the interval limits for the metrics endpoint.
@@ -294,7 +294,7 @@ class MetricsSDK(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.MetricsLimits])
+            return utils.unmarshal_json(http_res.text, models.MetricsLimits)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.SDKError(
@@ -316,7 +316,7 @@ class MetricsSDK(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.MetricsLimits]:
+    ) -> models.MetricsLimits:
         r"""Get Metrics Limits
 
         Get the interval limits for the metrics endpoint.
@@ -367,7 +367,7 @@ class MetricsSDK(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.MetricsLimits])
+            return utils.unmarshal_json(http_res.text, models.MetricsLimits)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.SDKError(

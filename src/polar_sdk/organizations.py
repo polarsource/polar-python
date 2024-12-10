@@ -111,7 +111,7 @@ class Organizations(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.OrganizationsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceOrganization]
+                    http_res.text, models.ListResourceOrganization
                 ),
                 next=next_func,
             )
@@ -235,7 +235,7 @@ class Organizations(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.OrganizationsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, Optional[models.ListResourceOrganization]
+                    http_res.text, models.ListResourceOrganization
                 ),
                 next=next_func,
             )
@@ -264,7 +264,7 @@ class Organizations(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Organization]:
+    ) -> models.Organization:
         r"""Create Organization
 
         Create an organization.
@@ -325,7 +325,7 @@ class Organizations(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Organization])
+            return utils.unmarshal_json(http_res.text, models.Organization)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -351,7 +351,7 @@ class Organizations(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Organization]:
+    ) -> models.Organization:
         r"""Create Organization
 
         Create an organization.
@@ -412,7 +412,7 @@ class Organizations(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Organization])
+            return utils.unmarshal_json(http_res.text, models.Organization)
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
@@ -438,7 +438,7 @@ class Organizations(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Organization]:
+    ) -> models.Organization:
         r"""Get Organization
 
         Get an organization by ID.
@@ -496,7 +496,7 @@ class Organizations(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Organization])
+            return utils.unmarshal_json(http_res.text, models.Organization)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -525,7 +525,7 @@ class Organizations(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Organization]:
+    ) -> models.Organization:
         r"""Get Organization
 
         Get an organization by ID.
@@ -583,7 +583,7 @@ class Organizations(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Organization])
+            return utils.unmarshal_json(http_res.text, models.Organization)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -615,7 +615,7 @@ class Organizations(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Organization]:
+    ) -> models.Organization:
         r"""Update Organization
 
         Update an organization.
@@ -684,7 +684,7 @@ class Organizations(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Organization])
+            return utils.unmarshal_json(http_res.text, models.Organization)
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)
@@ -719,7 +719,7 @@ class Organizations(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.Organization]:
+    ) -> models.Organization:
         r"""Update Organization
 
         Update an organization.
@@ -788,7 +788,7 @@ class Organizations(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[models.Organization])
+            return utils.unmarshal_json(http_res.text, models.Organization)
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.NotPermittedData)
             raise models.NotPermitted(data=data)

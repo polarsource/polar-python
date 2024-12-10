@@ -23,8 +23,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.advertisements.list()
+) as polar:
+    res = polar.users.advertisements.list()
 
     if res is not None:
         while True:
@@ -67,8 +67,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.advertisements.create(request={
+) as polar:
+    res = polar.users.advertisements.create(request={
         "image_url": "http://limp-pastry.org",
         "text": "<value>",
         "link_url": "http://flashy-cartload.net",
@@ -109,8 +109,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.advertisements.get(id="<value>")
+) as polar:
+    res = polar.users.advertisements.get(id="<value>")
 
     if res is not None:
         # handle response
@@ -148,8 +148,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.advertisements.update(id="<value>", user_advertisement_campaign_update={})
+) as polar:
+    res = polar.users.advertisements.update(id="<value>", user_advertisement_campaign_update={})
 
     if res is not None:
         # handle response
@@ -190,8 +190,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.advertisements.delete(id="<value>")
+) as polar:
+    res = polar.users.advertisements.delete(id="<value>")
 
     if res is not None:
         # handle response
@@ -229,8 +229,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    s.users.advertisements.enable(id="<value>", user_advertisement_campaign_enable={
+) as polar:
+    polar.users.advertisements.enable(id="<value>", user_advertisement_campaign_enable={
         "benefit_id": "<value>",
     })
 

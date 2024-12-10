@@ -24,8 +24,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.checkouts.custom.list()
+) as polar:
+    res = polar.checkouts.custom.list()
 
     if res is not None:
         while True:
@@ -71,8 +71,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.checkouts.custom.create(request={
+) as polar:
+    res = polar.checkouts.custom.create(request={
         "product_id": "<value>",
         "payment_processor": polar_sdk.CheckoutProductCreatePaymentProcessor.STRIPE,
     })
@@ -112,8 +112,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.checkouts.custom.get(id="<value>")
+) as polar:
+    res = polar.checkouts.custom.get(id="<value>")
 
     if res is not None:
         # handle response
@@ -151,8 +151,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.checkouts.custom.update(id="<value>", checkout_update={})
+) as polar:
+    res = polar.checkouts.custom.update(id="<value>", checkout_update={})
 
     if res is not None:
         # handle response
@@ -191,8 +191,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.checkouts.custom.client_get(client_secret="<value>")
+) as polar:
+    res = polar.checkouts.custom.client_get(client_secret="<value>")
 
     if res is not None:
         # handle response
@@ -230,8 +230,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.checkouts.custom.client_update(client_secret="<value>", checkout_update_public={})
+) as polar:
+    res = polar.checkouts.custom.client_update(client_secret="<value>", checkout_update_public={})
 
     if res is not None:
         # handle response
@@ -272,8 +272,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.checkouts.custom.client_confirm(client_secret="<value>", checkout_confirm_stripe={})
+) as polar:
+    res = polar.checkouts.custom.client_confirm(client_secret="<value>", checkout_confirm_stripe={})
 
     if res is not None:
         # handle response
