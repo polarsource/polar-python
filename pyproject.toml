@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "polar-sdk"
-version = "0.9.3"
+version = "0.9.4"
 description = "Polar SDK for Python"
 authors = ["Polar",]
 readme = "README-PYPI.md"
@@ -19,9 +19,9 @@ in-project = true
 [tool.poetry.dependencies]
 python = "^3.8"
 eval-type-backport = "^0.2.0"
-httpx = "^0.27.0"
+httpx = "^0.28.1"
 jsonpath-python = "^1.0.6"
-pydantic = "~2.9.2"
+pydantic = "~2.10.3"
 python-dateutil = "^2.8.2"
 standardwebhooks = "^1.0.0"
 typing-inspect = "^0.9.0"

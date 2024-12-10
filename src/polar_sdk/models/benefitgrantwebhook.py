@@ -6,10 +6,6 @@ from .benefitgrantadsproperties import (
     BenefitGrantAdsProperties,
     BenefitGrantAdsPropertiesTypedDict,
 )
-from .benefitgrantarticlesproperties import (
-    BenefitGrantArticlesProperties,
-    BenefitGrantArticlesPropertiesTypedDict,
-)
 from .benefitgrantcustomproperties import (
     BenefitGrantCustomProperties,
     BenefitGrantCustomPropertiesTypedDict,
@@ -41,7 +37,6 @@ BenefitGrantWebhookPropertiesTypedDict = TypeAliasType(
     "BenefitGrantWebhookPropertiesTypedDict",
     Union[
         BenefitGrantCustomPropertiesTypedDict,
-        BenefitGrantArticlesPropertiesTypedDict,
         BenefitGrantDownloadablesPropertiesTypedDict,
         BenefitGrantAdsPropertiesTypedDict,
         BenefitGrantLicenseKeysPropertiesTypedDict,
@@ -55,7 +50,6 @@ BenefitGrantWebhookProperties = TypeAliasType(
     "BenefitGrantWebhookProperties",
     Union[
         BenefitGrantCustomProperties,
-        BenefitGrantArticlesProperties,
         BenefitGrantDownloadablesProperties,
         BenefitGrantAdsProperties,
         BenefitGrantLicenseKeysProperties,
@@ -69,7 +63,6 @@ PreviousPropertiesTypedDict = TypeAliasType(
     "PreviousPropertiesTypedDict",
     Union[
         BenefitGrantCustomPropertiesTypedDict,
-        BenefitGrantArticlesPropertiesTypedDict,
         BenefitGrantDownloadablesPropertiesTypedDict,
         BenefitGrantAdsPropertiesTypedDict,
         BenefitGrantLicenseKeysPropertiesTypedDict,
@@ -83,7 +76,6 @@ PreviousProperties = TypeAliasType(
     "PreviousProperties",
     Union[
         BenefitGrantCustomProperties,
-        BenefitGrantArticlesProperties,
         BenefitGrantDownloadablesProperties,
         BenefitGrantAdsProperties,
         BenefitGrantLicenseKeysProperties,

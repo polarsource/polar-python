@@ -23,8 +23,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.benefits.list()
+) as polar:
+    res = polar.benefits.list()
 
     if res is not None:
         while True:
@@ -69,8 +69,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.benefits.create(request={
+) as polar:
+    res = polar.benefits.create(request={
         "description": "delightfully fumigate convection though zowie up bulky electronics",
         "properties": {
             "guild_token": "<value>",
@@ -114,8 +114,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.benefits.get(id="<value>")
+) as polar:
+    res = polar.benefits.get(id="<value>")
 
     if res is not None:
         # handle response
@@ -154,8 +154,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.benefits.update(id="<value>", request_body={
+) as polar:
+    res = polar.benefits.update(id="<value>", request_body={
         "type": polar_sdk.BenefitLicenseKeysUpdateType.LICENSE_KEYS,
     })
 
@@ -201,8 +201,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    s.benefits.delete(id="<value>")
+) as polar:
+    polar.benefits.delete(id="<value>")
 
     # Use the SDK ...
 
@@ -237,8 +237,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.benefits.grants(id="<value>")
+) as polar:
+    res = polar.benefits.grants(id="<value>")
 
     if res is not None:
         while True:

@@ -21,8 +21,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.organizations.list()
+) as polar:
+    res = polar.organizations.list()
 
     if res is not None:
         while True:
@@ -66,8 +66,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.organizations.create(request={
+) as polar:
+    res = polar.organizations.create(request={
         "name": "<value>",
         "slug": "<value>",
     })
@@ -107,8 +107,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.organizations.get(id="<value>")
+) as polar:
+    res = polar.organizations.get(id="<value>")
 
     if res is not None:
         # handle response
@@ -146,8 +146,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.organizations.update(id="<value>", organization_update={})
+) as polar:
+    res = polar.organizations.update(id="<value>", organization_update={})
 
     if res is not None:
         # handle response

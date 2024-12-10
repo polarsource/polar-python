@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `ARTICLES` | articles   |
+| Name  | Value |
+| ----- | ----- |
+| `ADS` | ads   |

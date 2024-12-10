@@ -22,8 +22,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.checkout_links.list()
+) as polar:
+    res = polar.checkout_links.list()
 
     if res is not None:
         while True:
@@ -69,8 +69,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.checkout_links.create(request={
+) as polar:
+    res = polar.checkout_links.create(request={
         "product_id": "<value>",
         "payment_processor": polar_sdk.CheckoutLinkProductCreatePaymentProcessor.STRIPE,
     })
@@ -110,8 +110,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.checkout_links.get(id="<value>")
+) as polar:
+    res = polar.checkout_links.get(id="<value>")
 
     if res is not None:
         # handle response
@@ -149,8 +149,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.checkout_links.update(id="<value>", checkout_link_update={})
+) as polar:
+    res = polar.checkout_links.update(id="<value>", checkout_link_update={})
 
     if res is not None:
         # handle response
@@ -189,8 +189,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    s.checkout_links.delete(id="<value>")
+) as polar:
+    polar.checkout_links.delete(id="<value>")
 
     # Use the SDK ...
 

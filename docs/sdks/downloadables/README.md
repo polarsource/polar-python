@@ -19,8 +19,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.downloadables.list()
+) as polar:
+    res = polar.users.downloadables.list()
 
     if res is not None:
         while True:
@@ -64,8 +64,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.downloadables.get(token="<value>")
+) as polar:
+    res = polar.users.downloadables.get(token="<value>")
 
     if res is not None:
         # handle response

@@ -18,8 +18,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.external_organizations.list()
+) as polar:
+    res = polar.external_organizations.list()
 
     if res is not None:
         while True:

@@ -7,15 +7,10 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class OrganizationFeatureSettingsTypedDict(TypedDict):
-    articles_enabled: NotRequired[bool]
-    r"""If this organization has articles enabled"""
     issue_funding_enabled: NotRequired[bool]
     r"""If this organization has issue funding enabled"""
 
 
 class OrganizationFeatureSettings(BaseModel):
-    articles_enabled: Optional[bool] = False
-    r"""If this organization has articles enabled"""
-
     issue_funding_enabled: Optional[bool] = False
     r"""If this organization has issue funding enabled"""

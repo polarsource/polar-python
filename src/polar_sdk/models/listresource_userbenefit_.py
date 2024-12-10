@@ -2,10 +2,6 @@
 
 from __future__ import annotations
 from .benefitadssubscriber import BenefitAdsSubscriber, BenefitAdsSubscriberTypedDict
-from .benefitarticlessubscriber import (
-    BenefitArticlesSubscriber,
-    BenefitArticlesSubscriberTypedDict,
-)
 from .benefitcustomsubscriber import (
     BenefitCustomSubscriber,
     BenefitCustomSubscriberTypedDict,
@@ -37,7 +33,6 @@ from typing_extensions import Annotated, TypeAliasType, TypedDict
 UserBenefitTypedDict = TypeAliasType(
     "UserBenefitTypedDict",
     Union[
-        BenefitArticlesSubscriberTypedDict,
         BenefitAdsSubscriberTypedDict,
         BenefitDiscordSubscriberTypedDict,
         BenefitCustomSubscriberTypedDict,
@@ -51,7 +46,6 @@ UserBenefitTypedDict = TypeAliasType(
 UserBenefit = Annotated[
     Union[
         Annotated[BenefitAdsSubscriber, Tag("ads")],
-        Annotated[BenefitArticlesSubscriber, Tag("articles")],
         Annotated[BenefitCustomSubscriber, Tag("custom")],
         Annotated[BenefitDiscordSubscriber, Tag("discord")],
         Annotated[BenefitDownloadablesSubscriber, Tag("downloadables")],

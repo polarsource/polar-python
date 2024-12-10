@@ -20,8 +20,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.orders.list()
+) as polar:
+    res = polar.orders.list()
 
     if res is not None:
         while True:
@@ -69,8 +69,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.orders.get(id="<value>")
+) as polar:
+    res = polar.orders.get(id="<value>")
 
     if res is not None:
         # handle response
@@ -108,8 +108,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.orders.invoice(id="<value>")
+) as polar:
+    res = polar.orders.invoice(id="<value>")
 
     if res is not None:
         # handle response

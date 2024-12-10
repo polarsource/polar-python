@@ -22,33 +22,6 @@ from .alreadycanceledsubscription import (
     AlreadyCanceledSubscriptionData,
     AlreadyCanceledSubscriptionError,
 )
-from .article import Article, ArticleTypedDict
-from .articlebyline import ArticleByline
-from .articlecreate import ArticleCreate, ArticleCreateTypedDict
-from .articlepreview import ArticlePreview, ArticlePreviewTypedDict
-from .articlereceivers import ArticleReceivers, ArticleReceiversTypedDict
-from .articles_deleteop import ArticlesDeleteRequest, ArticlesDeleteRequestTypedDict
-from .articles_exportop import ArticlesExportRequest, ArticlesExportRequestTypedDict
-from .articles_getop import ArticlesGetRequest, ArticlesGetRequestTypedDict
-from .articles_listop import (
-    ArticleVisibilityFilter,
-    ArticleVisibilityFilterTypedDict,
-    ArticlesListQueryParamOrganizationIDFilter,
-    ArticlesListQueryParamOrganizationIDFilterTypedDict,
-    ArticlesListRequest,
-    ArticlesListRequestTypedDict,
-    ArticlesListResponse,
-    ArticlesListResponseTypedDict,
-)
-from .articles_previewop import ArticlesPreviewRequest, ArticlesPreviewRequestTypedDict
-from .articles_receiversop import (
-    ArticlesReceiversRequest,
-    ArticlesReceiversRequestTypedDict,
-)
-from .articles_sendop import ArticlesSendRequest, ArticlesSendRequestTypedDict
-from .articles_updateop import ArticlesUpdateRequest, ArticlesUpdateRequestTypedDict
-from .articleupdate import ArticleUpdate, ArticleUpdateTypedDict
-from .articlevisibility import ArticleVisibility
 from .assignee import Assignee, AssigneeTypedDict
 from .attachedcustomfield import AttachedCustomField, AttachedCustomFieldTypedDict
 from .attachedcustomfieldcreate import (
@@ -78,36 +51,13 @@ from .benefitadscreate import (
 from .benefitadsproperties import BenefitAdsProperties, BenefitAdsPropertiesTypedDict
 from .benefitadssubscriber import (
     BenefitAdsSubscriber,
-    BenefitAdsSubscriberType,
     BenefitAdsSubscriberTypedDict,
+    Type,
 )
 from .benefitadsupdate import (
     BenefitAdsUpdate,
     BenefitAdsUpdateType,
     BenefitAdsUpdateTypedDict,
-)
-from .benefitarticles import (
-    BenefitArticles,
-    BenefitArticlesType,
-    BenefitArticlesTypedDict,
-)
-from .benefitarticlesproperties import (
-    BenefitArticlesProperties,
-    BenefitArticlesPropertiesTypedDict,
-)
-from .benefitarticlessubscriber import (
-    BenefitArticlesSubscriber,
-    BenefitArticlesSubscriberTypedDict,
-    Type,
-)
-from .benefitarticlessubscriberproperties import (
-    BenefitArticlesSubscriberProperties,
-    BenefitArticlesSubscriberPropertiesTypedDict,
-)
-from .benefitarticlesupdate import (
-    BenefitArticlesUpdate,
-    BenefitArticlesUpdateType,
-    BenefitArticlesUpdateTypedDict,
 )
 from .benefitbase import BenefitBase, BenefitBaseTypedDict
 from .benefitcreate import BenefitCreate, BenefitCreateTypedDict
@@ -248,10 +198,6 @@ from .benefitgrantadssubscriberproperties import (
     BenefitGrantAdsSubscriberProperties,
     BenefitGrantAdsSubscriberPropertiesTypedDict,
 )
-from .benefitgrantarticlesproperties import (
-    BenefitGrantArticlesProperties,
-    BenefitGrantArticlesPropertiesTypedDict,
-)
 from .benefitgrantcustomproperties import (
     BenefitGrantCustomProperties,
     BenefitGrantCustomPropertiesTypedDict,
@@ -355,7 +301,6 @@ from .benefits_updateop import (
     BenefitsUpdateRequestTypedDict,
 )
 from .benefittype import BenefitType
-from .bylineprofile import BylineProfile, BylineProfileTypedDict
 from .checkout import (
     Checkout,
     CheckoutCustomFieldData,
@@ -431,12 +376,7 @@ from .checkoutlinkpricecreate import (
     CheckoutLinkPriceCreatePaymentProcessor,
     CheckoutLinkPriceCreateTypedDict,
 )
-from .checkoutlinkproduct import (
-    CheckoutLinkProduct,
-    CheckoutLinkProductBenefits,
-    CheckoutLinkProductBenefitsTypedDict,
-    CheckoutLinkProductTypedDict,
-)
+from .checkoutlinkproduct import CheckoutLinkProduct, CheckoutLinkProductTypedDict
 from .checkoutlinkproductcreate import (
     CheckoutLinkProductCreate,
     CheckoutLinkProductCreateMetadata,
@@ -460,12 +400,7 @@ from .checkoutpricecreate import (
     CheckoutPriceCreatePaymentProcessor,
     CheckoutPriceCreateTypedDict,
 )
-from .checkoutproduct import (
-    CheckoutProduct,
-    CheckoutProductBenefits,
-    CheckoutProductBenefitsTypedDict,
-    CheckoutProductTypedDict,
-)
+from .checkoutproduct import CheckoutProduct, CheckoutProductTypedDict
 from .checkoutproductcreate import (
     CheckoutProductCreate,
     CheckoutProductCreateCustomFieldData,
@@ -896,7 +831,6 @@ from .licensekeywithactivations import (
     LicenseKeyWithActivations,
     LicenseKeyWithActivationsTypedDict,
 )
-from .listresource_article_ import ListResourceArticle, ListResourceArticleTypedDict
 from .listresource_benefit_ import ListResourceBenefit, ListResourceBenefitTypedDict
 from .listresource_benefitgrant_ import (
     ListResourceBenefitGrant,
@@ -1378,12 +1312,7 @@ from .userinfoorganization import UserInfoOrganization, UserInfoOrganizationType
 from .userinfouser import UserInfoUser, UserInfoUserTypedDict
 from .userorder import UserOrder, UserOrderTypedDict
 from .userorderinvoice import UserOrderInvoice, UserOrderInvoiceTypedDict
-from .userorderproduct import (
-    BenefitsModel,
-    BenefitsModelTypedDict,
-    UserOrderProduct,
-    UserOrderProductTypedDict,
-)
+from .userorderproduct import UserOrderProduct, UserOrderProductTypedDict
 from .userordersortproperty import UserOrderSortProperty
 from .userordersubscription import UserOrderSubscription, UserOrderSubscriptionTypedDict
 from .users_advertisements_deleteop import (
@@ -1498,8 +1427,6 @@ from .users_subscriptions_updateop import (
 from .usersubscription import UserSubscription, UserSubscriptionTypedDict
 from .usersubscriptionproduct import (
     UserSubscriptionProduct,
-    UserSubscriptionProductBenefits,
-    UserSubscriptionProductBenefitsTypedDict,
     UserSubscriptionProductTypedDict,
 )
 from .usersubscriptionsortproperty import UserSubscriptionSortProperty
@@ -1623,40 +1550,6 @@ __all__ = [
     "AlreadyCanceledSubscriptionData",
     "AlreadyCanceledSubscriptionError",
     "AmountType",
-    "Article",
-    "ArticleByline",
-    "ArticleCreate",
-    "ArticleCreateTypedDict",
-    "ArticlePreview",
-    "ArticlePreviewTypedDict",
-    "ArticleReceivers",
-    "ArticleReceiversTypedDict",
-    "ArticleTypedDict",
-    "ArticleUpdate",
-    "ArticleUpdateTypedDict",
-    "ArticleVisibility",
-    "ArticleVisibilityFilter",
-    "ArticleVisibilityFilterTypedDict",
-    "ArticlesDeleteRequest",
-    "ArticlesDeleteRequestTypedDict",
-    "ArticlesExportRequest",
-    "ArticlesExportRequestTypedDict",
-    "ArticlesGetRequest",
-    "ArticlesGetRequestTypedDict",
-    "ArticlesListQueryParamOrganizationIDFilter",
-    "ArticlesListQueryParamOrganizationIDFilterTypedDict",
-    "ArticlesListRequest",
-    "ArticlesListRequestTypedDict",
-    "ArticlesListResponse",
-    "ArticlesListResponseTypedDict",
-    "ArticlesPreviewRequest",
-    "ArticlesPreviewRequestTypedDict",
-    "ArticlesReceiversRequest",
-    "ArticlesReceiversRequestTypedDict",
-    "ArticlesSendRequest",
-    "ArticlesSendRequestTypedDict",
-    "ArticlesUpdateRequest",
-    "ArticlesUpdateRequestTypedDict",
     "Assignee",
     "AssigneeTypedDict",
     "AttachedCustomField",
@@ -1683,25 +1576,12 @@ __all__ = [
     "BenefitAdsProperties",
     "BenefitAdsPropertiesTypedDict",
     "BenefitAdsSubscriber",
-    "BenefitAdsSubscriberType",
     "BenefitAdsSubscriberTypedDict",
     "BenefitAdsType",
     "BenefitAdsTypedDict",
     "BenefitAdsUpdate",
     "BenefitAdsUpdateType",
     "BenefitAdsUpdateTypedDict",
-    "BenefitArticles",
-    "BenefitArticlesProperties",
-    "BenefitArticlesPropertiesTypedDict",
-    "BenefitArticlesSubscriber",
-    "BenefitArticlesSubscriberProperties",
-    "BenefitArticlesSubscriberPropertiesTypedDict",
-    "BenefitArticlesSubscriberTypedDict",
-    "BenefitArticlesType",
-    "BenefitArticlesTypedDict",
-    "BenefitArticlesUpdate",
-    "BenefitArticlesUpdateType",
-    "BenefitArticlesUpdateTypedDict",
     "BenefitBase",
     "BenefitBaseTypedDict",
     "BenefitCreate",
@@ -1786,8 +1666,6 @@ __all__ = [
     "BenefitGrantAdsSubscriberProperties",
     "BenefitGrantAdsSubscriberPropertiesTypedDict",
     "BenefitGrantAdsTypedDict",
-    "BenefitGrantArticlesProperties",
-    "BenefitGrantArticlesPropertiesTypedDict",
     "BenefitGrantCustomProperties",
     "BenefitGrantCustomPropertiesTypedDict",
     "BenefitGrantDiscordProperties",
@@ -1850,14 +1728,10 @@ __all__ = [
     "BenefitsListRequestTypedDict",
     "BenefitsListResponse",
     "BenefitsListResponseTypedDict",
-    "BenefitsModel",
-    "BenefitsModelTypedDict",
     "BenefitsUpdateBenefitUpdate",
     "BenefitsUpdateBenefitUpdateTypedDict",
     "BenefitsUpdateRequest",
     "BenefitsUpdateRequestTypedDict",
-    "BylineProfile",
-    "BylineProfileTypedDict",
     "Checkout",
     "CheckoutConfirmStripe",
     "CheckoutConfirmStripeCustomFieldData",
@@ -1894,8 +1768,6 @@ __all__ = [
     "CheckoutLinkPriceCreatePaymentProcessor",
     "CheckoutLinkPriceCreateTypedDict",
     "CheckoutLinkProduct",
-    "CheckoutLinkProductBenefits",
-    "CheckoutLinkProductBenefitsTypedDict",
     "CheckoutLinkProductCreate",
     "CheckoutLinkProductCreateMetadata",
     "CheckoutLinkProductCreateMetadataTypedDict",
@@ -1932,8 +1804,6 @@ __all__ = [
     "CheckoutPriceCreatePaymentProcessor",
     "CheckoutPriceCreateTypedDict",
     "CheckoutProduct",
-    "CheckoutProductBenefits",
-    "CheckoutProductBenefitsTypedDict",
     "CheckoutProductCreate",
     "CheckoutProductCreateCustomFieldData",
     "CheckoutProductCreateCustomFieldDataTypedDict",
@@ -2273,8 +2143,6 @@ __all__ = [
     "LicenseKeysListResponseTypedDict",
     "LicenseKeysUpdateRequest",
     "LicenseKeysUpdateRequestTypedDict",
-    "ListResourceArticle",
-    "ListResourceArticleTypedDict",
     "ListResourceBenefit",
     "ListResourceBenefitGrant",
     "ListResourceBenefitGrantTypedDict",
@@ -2696,8 +2564,6 @@ __all__ = [
     "UserOrderTypedDict",
     "UserSubscription",
     "UserSubscriptionProduct",
-    "UserSubscriptionProductBenefits",
-    "UserSubscriptionProductBenefitsTypedDict",
     "UserSubscriptionProductTypedDict",
     "UserSubscriptionSortProperty",
     "UserSubscriptionTypedDict",

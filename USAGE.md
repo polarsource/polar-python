@@ -5,8 +5,8 @@ from polar_sdk import Polar
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as s:
-    res = s.users.benefits.list()
+) as polar:
+    res = polar.users.benefits.list()
 
     if res is not None:
         while True:
@@ -28,8 +28,8 @@ from polar_sdk import Polar
 async def main():
     async with Polar(
         access_token="<YOUR_BEARER_TOKEN_HERE>",
-    ) as s:
-        res = await s.users.benefits.list_async()
+    ) as polar:
+        res = await polar.users.benefits.list_async()
 
         if res is not None:
             while True:
