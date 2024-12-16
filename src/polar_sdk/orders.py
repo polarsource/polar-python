@@ -5,7 +5,7 @@ from jsonpath import JSONPath
 from polar_sdk import models, utils
 from polar_sdk._hooks import HookContext
 from polar_sdk.types import OptionalNullable, UNSET
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Mapping, Optional, Union
 
 
 class Orders(BaseSDK):
@@ -20,15 +20,12 @@ class Orders(BaseSDK):
         ] = UNSET,
         product_id: OptionalNullable[
             Union[
-                models.OrdersListQueryParamProductIDFilter,
-                models.OrdersListQueryParamProductIDFilterTypedDict,
+                models.QueryParamProductIDFilter,
+                models.QueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
         product_price_type: OptionalNullable[
-            Union[
-                models.QueryParamProductPriceTypeFilter,
-                models.QueryParamProductPriceTypeFilterTypedDict,
-            ]
+            Union[models.ProductPriceTypeFilter, models.ProductPriceTypeFilterTypedDict]
         ] = UNSET,
         discount_id: OptionalNullable[
             Union[
@@ -36,8 +33,11 @@ class Orders(BaseSDK):
                 models.QueryParamDiscountIDFilterTypedDict,
             ]
         ] = UNSET,
-        user_id: OptionalNullable[
-            Union[models.UserIDFilter, models.UserIDFilterTypedDict]
+        customer_id: OptionalNullable[
+            Union[
+                models.OrdersListQueryParamCustomerIDFilter,
+                models.OrdersListQueryParamCustomerIDFilterTypedDict,
+            ]
         ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -45,6 +45,7 @@ class Orders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[models.OrdersListResponse]:
         r"""List Orders
 
@@ -54,13 +55,14 @@ class Orders(BaseSDK):
         :param product_id: Filter by product ID.
         :param product_price_type: Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
         :param discount_id: Filter by discount ID.
-        :param user_id: Filter by customer's user ID.
+        :param customer_id: Filter by customer ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -75,7 +77,7 @@ class Orders(BaseSDK):
             product_id=product_id,
             product_price_type=product_price_type,
             discount_id=discount_id,
-            user_id=user_id,
+            customer_id=customer_id,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -92,6 +94,7 @@ class Orders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -138,7 +141,7 @@ class Orders(BaseSDK):
                 product_id=product_id,
                 product_price_type=product_price_type,
                 discount_id=discount_id,
-                user_id=user_id,
+                customer_id=customer_id,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -180,15 +183,12 @@ class Orders(BaseSDK):
         ] = UNSET,
         product_id: OptionalNullable[
             Union[
-                models.OrdersListQueryParamProductIDFilter,
-                models.OrdersListQueryParamProductIDFilterTypedDict,
+                models.QueryParamProductIDFilter,
+                models.QueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
         product_price_type: OptionalNullable[
-            Union[
-                models.QueryParamProductPriceTypeFilter,
-                models.QueryParamProductPriceTypeFilterTypedDict,
-            ]
+            Union[models.ProductPriceTypeFilter, models.ProductPriceTypeFilterTypedDict]
         ] = UNSET,
         discount_id: OptionalNullable[
             Union[
@@ -196,8 +196,11 @@ class Orders(BaseSDK):
                 models.QueryParamDiscountIDFilterTypedDict,
             ]
         ] = UNSET,
-        user_id: OptionalNullable[
-            Union[models.UserIDFilter, models.UserIDFilterTypedDict]
+        customer_id: OptionalNullable[
+            Union[
+                models.OrdersListQueryParamCustomerIDFilter,
+                models.OrdersListQueryParamCustomerIDFilterTypedDict,
+            ]
         ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -205,6 +208,7 @@ class Orders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[models.OrdersListResponse]:
         r"""List Orders
 
@@ -214,13 +218,14 @@ class Orders(BaseSDK):
         :param product_id: Filter by product ID.
         :param product_price_type: Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
         :param discount_id: Filter by discount ID.
-        :param user_id: Filter by customer's user ID.
+        :param customer_id: Filter by customer ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -235,7 +240,7 @@ class Orders(BaseSDK):
             product_id=product_id,
             product_price_type=product_price_type,
             discount_id=discount_id,
-            user_id=user_id,
+            customer_id=customer_id,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -252,6 +257,7 @@ class Orders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -298,7 +304,7 @@ class Orders(BaseSDK):
                 product_id=product_id,
                 product_price_type=product_price_type,
                 discount_id=discount_id,
-                user_id=user_id,
+                customer_id=customer_id,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -336,6 +342,7 @@ class Orders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Order:
         r"""Get Order
 
@@ -345,6 +352,7 @@ class Orders(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -369,6 +377,7 @@ class Orders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -423,6 +432,7 @@ class Orders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Order:
         r"""Get Order
 
@@ -432,6 +442,7 @@ class Orders(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -456,6 +467,7 @@ class Orders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -510,6 +522,7 @@ class Orders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.OrderInvoice:
         r"""Get Order Invoice
 
@@ -519,6 +532,7 @@ class Orders(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -543,6 +557,7 @@ class Orders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -597,6 +612,7 @@ class Orders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.OrderInvoice:
         r"""Get Order Invoice
 
@@ -606,6 +622,7 @@ class Orders(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -630,6 +647,7 @@ class Orders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )

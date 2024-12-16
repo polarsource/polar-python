@@ -7,10 +7,10 @@ from typing_extensions import TypedDict
 
 class BenefitLicenseKeyActivationPropertiesTypedDict(TypedDict):
     limit: int
-    enable_user_admin: bool
+    enable_customer_admin: bool
 
 
 class BenefitLicenseKeyActivationProperties(BaseModel):
     limit: int
 
-    enable_user_admin: bool
+    enable_customer_admin: bool

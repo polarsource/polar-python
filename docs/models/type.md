@@ -1,8 +1,10 @@
 # Type
 
+The type of the price.
+
 
 ## Values
 
-| Name  | Value |
-| ----- | ----- |
-| `ADS` | ads   |
+| Name        | Value       |
+| ----------- | ----------- |
+| `RECURRING` | recurring   |

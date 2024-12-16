@@ -51,8 +51,8 @@ from .benefitadscreate import (
 from .benefitadsproperties import BenefitAdsProperties, BenefitAdsPropertiesTypedDict
 from .benefitadssubscriber import (
     BenefitAdsSubscriber,
+    BenefitAdsSubscriberType,
     BenefitAdsSubscriberTypedDict,
-    Type,
 )
 from .benefitadsupdate import (
     BenefitAdsUpdate,
@@ -189,14 +189,9 @@ from .benefitgrant import (
     Properties,
     PropertiesTypedDict,
 )
-from .benefitgrantads import BenefitGrantAds, BenefitGrantAdsTypedDict
 from .benefitgrantadsproperties import (
     BenefitGrantAdsProperties,
     BenefitGrantAdsPropertiesTypedDict,
-)
-from .benefitgrantadssubscriberproperties import (
-    BenefitGrantAdsSubscriberProperties,
-    BenefitGrantAdsSubscriberPropertiesTypedDict,
 )
 from .benefitgrantcustomproperties import (
     BenefitGrantCustomProperties,
@@ -215,17 +210,9 @@ from .benefitgrantgithubrepositoryproperties import (
     BenefitGrantGitHubRepositoryPropertiesPermission,
     BenefitGrantGitHubRepositoryPropertiesTypedDict,
 )
-from .benefitgrantlicensekeys import (
-    BenefitGrantLicenseKeys,
-    BenefitGrantLicenseKeysTypedDict,
-)
 from .benefitgrantlicensekeysproperties import (
     BenefitGrantLicenseKeysProperties,
     BenefitGrantLicenseKeysPropertiesTypedDict,
-)
-from .benefitgrantsubscriber import (
-    BenefitGrantSubscriber,
-    BenefitGrantSubscriberTypedDict,
 )
 from .benefitgrantwebhook import (
     BenefitGrantWebhook,
@@ -283,16 +270,18 @@ from .benefits_grantsop import (
     BenefitsGrantsRequestTypedDict,
     BenefitsGrantsResponse,
     BenefitsGrantsResponseTypedDict,
+    QueryParamCustomerIDFilter,
+    QueryParamCustomerIDFilterTypedDict,
 )
 from .benefits_listop import (
+    BenefitTypeFilter,
+    BenefitTypeFilterTypedDict,
     BenefitsListQueryParamOrganizationIDFilter,
     BenefitsListQueryParamOrganizationIDFilterTypedDict,
     BenefitsListRequest,
     BenefitsListRequestTypedDict,
     BenefitsListResponse,
     BenefitsListResponseTypedDict,
-    QueryParamBenefitTypeFilter,
-    QueryParamBenefitTypeFilterTypedDict,
 )
 from .benefits_updateop import (
     BenefitsUpdateBenefitUpdate,
@@ -420,6 +409,17 @@ from .checkoutpublic import (
     CheckoutPublicPaymentProcessorMetadataTypedDict,
     CheckoutPublicTypedDict,
 )
+from .checkoutpublicconfirmed import (
+    CheckoutPublicConfirmed,
+    CheckoutPublicConfirmedCustomFieldData,
+    CheckoutPublicConfirmedCustomFieldDataTypedDict,
+    CheckoutPublicConfirmedDiscount,
+    CheckoutPublicConfirmedDiscountTypedDict,
+    CheckoutPublicConfirmedPaymentProcessorMetadata,
+    CheckoutPublicConfirmedPaymentProcessorMetadataTypedDict,
+    CheckoutPublicConfirmedTypedDict,
+    Status,
+)
 from .checkouts_custom_client_confirmop import (
     CheckoutsCustomClientConfirmRequest,
     CheckoutsCustomClientConfirmRequestTypedDict,
@@ -486,6 +486,238 @@ from .custom_fields_listop import (
 from .custom_fields_updateop import (
     CustomFieldsUpdateRequest,
     CustomFieldsUpdateRequestTypedDict,
+)
+from .customer import (
+    Customer,
+    CustomerMetadata,
+    CustomerMetadataTypedDict,
+    CustomerTaxID,
+    CustomerTaxIDTypedDict,
+    CustomerTypedDict,
+)
+from .customer_portal_benefit_grants_getop import (
+    CustomerPortalBenefitGrantsGetRequest,
+    CustomerPortalBenefitGrantsGetRequestTypedDict,
+)
+from .customer_portal_benefit_grants_listop import (
+    CheckoutIDFilter,
+    CheckoutIDFilterTypedDict,
+    CustomerPortalBenefitGrantsListQueryParamBenefitIDFilter,
+    CustomerPortalBenefitGrantsListQueryParamBenefitIDFilterTypedDict,
+    CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilter,
+    CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilterTypedDict,
+    CustomerPortalBenefitGrantsListRequest,
+    CustomerPortalBenefitGrantsListRequestTypedDict,
+    CustomerPortalBenefitGrantsListResponse,
+    CustomerPortalBenefitGrantsListResponseTypedDict,
+    OrderIDFilter,
+    OrderIDFilterTypedDict,
+    QueryParamBenefitTypeFilter,
+    QueryParamBenefitTypeFilterTypedDict,
+    SubscriptionIDFilter,
+    SubscriptionIDFilterTypedDict,
+)
+from .customer_portal_benefit_grants_updateop import (
+    CustomerPortalBenefitGrantsUpdateRequest,
+    CustomerPortalBenefitGrantsUpdateRequestTypedDict,
+)
+from .customer_portal_customers_getop import (
+    CustomerPortalCustomersGetRequest,
+    CustomerPortalCustomersGetRequestTypedDict,
+)
+from .customer_portal_downloadables_customer_portal_downloadables_getop import (
+    CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest,
+    CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequestTypedDict,
+)
+from .customer_portal_downloadables_listop import (
+    CustomerPortalDownloadablesListQueryParamBenefitIDFilter,
+    CustomerPortalDownloadablesListQueryParamBenefitIDFilterTypedDict,
+    CustomerPortalDownloadablesListQueryParamOrganizationIDFilter,
+    CustomerPortalDownloadablesListQueryParamOrganizationIDFilterTypedDict,
+    CustomerPortalDownloadablesListRequest,
+    CustomerPortalDownloadablesListRequestTypedDict,
+    CustomerPortalDownloadablesListResponse,
+    CustomerPortalDownloadablesListResponseTypedDict,
+)
+from .customer_portal_license_keys_getop import (
+    CustomerPortalLicenseKeysGetRequest,
+    CustomerPortalLicenseKeysGetRequestTypedDict,
+)
+from .customer_portal_license_keys_listop import (
+    CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter,
+    CustomerPortalLicenseKeysListQueryParamOrganizationIDFilterTypedDict,
+    CustomerPortalLicenseKeysListRequest,
+    CustomerPortalLicenseKeysListRequestTypedDict,
+    CustomerPortalLicenseKeysListResponse,
+    CustomerPortalLicenseKeysListResponseTypedDict,
+)
+from .customer_portal_orders_getop import (
+    CustomerPortalOrdersGetRequest,
+    CustomerPortalOrdersGetRequestTypedDict,
+)
+from .customer_portal_orders_invoiceop import (
+    CustomerPortalOrdersInvoiceRequest,
+    CustomerPortalOrdersInvoiceRequestTypedDict,
+)
+from .customer_portal_orders_listop import (
+    CustomerPortalOrdersListQueryParamOrganizationIDFilter,
+    CustomerPortalOrdersListQueryParamOrganizationIDFilterTypedDict,
+    CustomerPortalOrdersListQueryParamProductIDFilter,
+    CustomerPortalOrdersListQueryParamProductIDFilterTypedDict,
+    CustomerPortalOrdersListQueryParamProductPriceTypeFilter,
+    CustomerPortalOrdersListQueryParamProductPriceTypeFilterTypedDict,
+    CustomerPortalOrdersListRequest,
+    CustomerPortalOrdersListRequestTypedDict,
+    CustomerPortalOrdersListResponse,
+    CustomerPortalOrdersListResponseTypedDict,
+    QueryParamSubscriptionIDFilter,
+    QueryParamSubscriptionIDFilterTypedDict,
+)
+from .customer_portal_organizations_getop import (
+    CustomerPortalOrganizationsGetRequest,
+    CustomerPortalOrganizationsGetRequestTypedDict,
+)
+from .customer_portal_subscriptions_cancelop import (
+    CustomerPortalSubscriptionsCancelRequest,
+    CustomerPortalSubscriptionsCancelRequestTypedDict,
+)
+from .customer_portal_subscriptions_getop import (
+    CustomerPortalSubscriptionsGetRequest,
+    CustomerPortalSubscriptionsGetRequestTypedDict,
+)
+from .customer_portal_subscriptions_listop import (
+    CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter,
+    CustomerPortalSubscriptionsListQueryParamOrganizationIDFilterTypedDict,
+    CustomerPortalSubscriptionsListQueryParamProductIDFilter,
+    CustomerPortalSubscriptionsListQueryParamProductIDFilterTypedDict,
+    CustomerPortalSubscriptionsListRequest,
+    CustomerPortalSubscriptionsListRequestTypedDict,
+    CustomerPortalSubscriptionsListResponse,
+    CustomerPortalSubscriptionsListResponseTypedDict,
+)
+from .customer_portal_subscriptions_updateop import (
+    CustomerPortalSubscriptionsUpdateRequest,
+    CustomerPortalSubscriptionsUpdateRequestTypedDict,
+)
+from .customerbenefitgrant import CustomerBenefitGrant, CustomerBenefitGrantTypedDict
+from .customerbenefitgrantads import (
+    CustomerBenefitGrantAds,
+    CustomerBenefitGrantAdsTypedDict,
+)
+from .customerbenefitgrantadsupdate import (
+    CustomerBenefitGrantAdsUpdate,
+    CustomerBenefitGrantAdsUpdateBenefitType,
+    CustomerBenefitGrantAdsUpdateTypedDict,
+)
+from .customerbenefitgrantcustom import (
+    CustomerBenefitGrantCustom,
+    CustomerBenefitGrantCustomTypedDict,
+)
+from .customerbenefitgrantcustomupdate import (
+    CustomerBenefitGrantCustomUpdate,
+    CustomerBenefitGrantCustomUpdateBenefitType,
+    CustomerBenefitGrantCustomUpdateTypedDict,
+)
+from .customerbenefitgrantdiscord import (
+    CustomerBenefitGrantDiscord,
+    CustomerBenefitGrantDiscordTypedDict,
+)
+from .customerbenefitgrantdiscordpropertiesupdate import (
+    CustomerBenefitGrantDiscordPropertiesUpdate,
+    CustomerBenefitGrantDiscordPropertiesUpdateTypedDict,
+)
+from .customerbenefitgrantdiscordupdate import (
+    CustomerBenefitGrantDiscordUpdate,
+    CustomerBenefitGrantDiscordUpdateBenefitType,
+    CustomerBenefitGrantDiscordUpdateTypedDict,
+)
+from .customerbenefitgrantdownloadables import (
+    CustomerBenefitGrantDownloadables,
+    CustomerBenefitGrantDownloadablesTypedDict,
+)
+from .customerbenefitgrantdownloadablesupdate import (
+    CustomerBenefitGrantDownloadablesUpdate,
+    CustomerBenefitGrantDownloadablesUpdateBenefitType,
+    CustomerBenefitGrantDownloadablesUpdateTypedDict,
+)
+from .customerbenefitgrantgithubrepository import (
+    CustomerBenefitGrantGitHubRepository,
+    CustomerBenefitGrantGitHubRepositoryTypedDict,
+)
+from .customerbenefitgrantgithubrepositorypropertiesupdate import (
+    CustomerBenefitGrantGitHubRepositoryPropertiesUpdate,
+    CustomerBenefitGrantGitHubRepositoryPropertiesUpdateTypedDict,
+)
+from .customerbenefitgrantgithubrepositoryupdate import (
+    CustomerBenefitGrantGitHubRepositoryUpdate,
+    CustomerBenefitGrantGitHubRepositoryUpdateBenefitType,
+    CustomerBenefitGrantGitHubRepositoryUpdateTypedDict,
+)
+from .customerbenefitgrantlicensekeys import (
+    CustomerBenefitGrantLicenseKeys,
+    CustomerBenefitGrantLicenseKeysTypedDict,
+)
+from .customerbenefitgrantlicensekeysupdate import (
+    CustomerBenefitGrantLicenseKeysUpdate,
+    CustomerBenefitGrantLicenseKeysUpdateBenefitType,
+    CustomerBenefitGrantLicenseKeysUpdateTypedDict,
+)
+from .customerbenefitgrantsortproperty import CustomerBenefitGrantSortProperty
+from .customerbenefitgrantupdate import (
+    CustomerBenefitGrantUpdate,
+    CustomerBenefitGrantUpdateTypedDict,
+)
+from .customercreate import (
+    CustomerCreate,
+    CustomerCreateTaxID,
+    CustomerCreateTaxIDTypedDict,
+    CustomerCreateTypedDict,
+)
+from .customerorder import CustomerOrder, CustomerOrderTypedDict
+from .customerorderinvoice import CustomerOrderInvoice, CustomerOrderInvoiceTypedDict
+from .customerorderproduct import CustomerOrderProduct, CustomerOrderProductTypedDict
+from .customerordersortproperty import CustomerOrderSortProperty
+from .customerordersubscription import (
+    CustomerOrderSubscription,
+    CustomerOrderSubscriptionTypedDict,
+)
+from .customerportalcustomer import (
+    CustomerPortalCustomer,
+    CustomerPortalCustomerTaxID,
+    CustomerPortalCustomerTaxIDTypedDict,
+    CustomerPortalCustomerTypedDict,
+)
+from .customerportaloauthaccount import (
+    CustomerPortalOAuthAccount,
+    CustomerPortalOAuthAccountTypedDict,
+)
+from .customers_deleteop import CustomersDeleteRequest, CustomersDeleteRequestTypedDict
+from .customers_getop import CustomersGetRequest, CustomersGetRequestTypedDict
+from .customers_listop import (
+    CustomersListQueryParamOrganizationIDFilter,
+    CustomersListQueryParamOrganizationIDFilterTypedDict,
+    CustomersListRequest,
+    CustomersListRequestTypedDict,
+    CustomersListResponse,
+    CustomersListResponseTypedDict,
+)
+from .customers_updateop import CustomersUpdateRequest, CustomersUpdateRequestTypedDict
+from .customersortproperty import CustomerSortProperty
+from .customersubscription import CustomerSubscription, CustomerSubscriptionTypedDict
+from .customersubscriptionproduct import (
+    CustomerSubscriptionProduct,
+    CustomerSubscriptionProductTypedDict,
+)
+from .customersubscriptionsortproperty import CustomerSubscriptionSortProperty
+from .customersubscriptionupdate import (
+    CustomerSubscriptionUpdate,
+    CustomerSubscriptionUpdateTypedDict,
+)
+from .customerupdate import (
+    CustomerUpdate,
+    CustomerUpdateTaxID,
+    CustomerUpdateTaxIDTypedDict,
+    CustomerUpdateTypedDict,
 )
 from .customfield import CustomField, CustomFieldTypedDict
 from .customfieldcheckbox import (
@@ -729,12 +961,12 @@ from .downloadablefileread import (
 from .downloadableread import DownloadableRead, DownloadableReadTypedDict
 from .existingproductprice import ExistingProductPrice, ExistingProductPriceTypedDict
 from .external_organizations_listop import (
-    ExternalOrganizationsListQueryParamOrganizationIDFilter,
-    ExternalOrganizationsListQueryParamOrganizationIDFilterTypedDict,
     ExternalOrganizationsListRequest,
     ExternalOrganizationsListRequestTypedDict,
     ExternalOrganizationsListResponse,
     ExternalOrganizationsListResponseTypedDict,
+    OrganizationIDFilter,
+    OrganizationIDFilterTypedDict,
     PlatformFilter,
     PlatformFilterTypedDict,
     RepositoryNameFilter,
@@ -783,14 +1015,14 @@ from .license_keys_get_activationop import (
 )
 from .license_keys_getop import LicenseKeysGetRequest, LicenseKeysGetRequestTypedDict
 from .license_keys_listop import (
-    LicenseKeysListQueryParamBenefitIDFilter,
-    LicenseKeysListQueryParamBenefitIDFilterTypedDict,
     LicenseKeysListQueryParamOrganizationIDFilter,
     LicenseKeysListQueryParamOrganizationIDFilterTypedDict,
     LicenseKeysListRequest,
     LicenseKeysListRequestTypedDict,
     LicenseKeysListResponse,
     LicenseKeysListResponseTypedDict,
+    QueryParamBenefitIDFilter,
+    QueryParamBenefitIDFilterTypedDict,
 )
 from .license_keys_updateop import (
     LicenseKeysUpdateRequest,
@@ -816,6 +1048,14 @@ from .licensekeyactivationread import (
     LicenseKeyActivationReadMetaTypedDict,
     LicenseKeyActivationReadTypedDict,
 )
+from .licensekeycustomer import (
+    LicenseKeyCustomer,
+    LicenseKeyCustomerMetadata,
+    LicenseKeyCustomerMetadataTypedDict,
+    LicenseKeyCustomerTaxID,
+    LicenseKeyCustomerTaxIDTypedDict,
+    LicenseKeyCustomerTypedDict,
+)
 from .licensekeydeactivate import LicenseKeyDeactivate, LicenseKeyDeactivateTypedDict
 from .licensekeyread import LicenseKeyRead, LicenseKeyReadTypedDict
 from .licensekeystatus import LicenseKeyStatus
@@ -840,6 +1080,19 @@ from .listresource_checkout_ import ListResourceCheckout, ListResourceCheckoutTy
 from .listresource_checkoutlink_ import (
     ListResourceCheckoutLink,
     ListResourceCheckoutLinkTypedDict,
+)
+from .listresource_customer_ import ListResourceCustomer, ListResourceCustomerTypedDict
+from .listresource_customerbenefitgrant_ import (
+    ListResourceCustomerBenefitGrant,
+    ListResourceCustomerBenefitGrantTypedDict,
+)
+from .listresource_customerorder_ import (
+    ListResourceCustomerOrder,
+    ListResourceCustomerOrderTypedDict,
+)
+from .listresource_customersubscription_ import (
+    ListResourceCustomerSubscription,
+    ListResourceCustomerSubscriptionTypedDict,
 )
 from .listresource_customfield_ import (
     ListResourceCustomField,
@@ -882,24 +1135,6 @@ from .listresource_subscription_ import (
     ListResourceSubscription,
     ListResourceSubscriptionTypedDict,
 )
-from .listresource_useradvertisementcampaign_ import (
-    ListResourceUserAdvertisementCampaign,
-    ListResourceUserAdvertisementCampaignTypedDict,
-)
-from .listresource_userbenefit_ import (
-    ListResourceUserBenefit,
-    ListResourceUserBenefitTypedDict,
-    UserBenefit,
-    UserBenefitTypedDict,
-)
-from .listresource_userorder_ import (
-    ListResourceUserOrder,
-    ListResourceUserOrderTypedDict,
-)
-from .listresource_usersubscription_ import (
-    ListResourceUserSubscription,
-    ListResourceUserSubscriptionTypedDict,
-)
 from .metric import Metric, MetricTypedDict
 from .metricperiod import MetricPeriod, MetricPeriodTypedDict
 from .metrics import Metrics, MetricsTypedDict
@@ -908,10 +1143,10 @@ from .metrics_getop import (
     MetricsGetQueryParamOrganizationIDFilterTypedDict,
     MetricsGetQueryParamProductIDFilter,
     MetricsGetQueryParamProductIDFilterTypedDict,
-    MetricsGetQueryParamProductPriceTypeFilter,
-    MetricsGetQueryParamProductPriceTypeFilterTypedDict,
     MetricsGetRequest,
     MetricsGetRequestTypedDict,
+    QueryParamProductPriceTypeFilter,
+    QueryParamProductPriceTypeFilterTypedDict,
 )
 from .metricsintervallimit import MetricsIntervalLimit, MetricsIntervalLimitTypedDict
 from .metricsintervalslimits import (
@@ -1005,25 +1240,33 @@ from .order import (
     OrderTypedDict,
 )
 from .orderbillingreason import OrderBillingReason
+from .ordercustomer import (
+    OrderCustomer,
+    OrderCustomerMetadata,
+    OrderCustomerMetadataTypedDict,
+    OrderCustomerTaxID,
+    OrderCustomerTaxIDTypedDict,
+    OrderCustomerTypedDict,
+)
 from .orderinvoice import OrderInvoice, OrderInvoiceTypedDict
 from .orderproduct import OrderProduct, OrderProductTypedDict
 from .orders_getop import OrdersGetRequest, OrdersGetRequestTypedDict
 from .orders_invoiceop import OrdersInvoiceRequest, OrdersInvoiceRequestTypedDict
 from .orders_listop import (
+    OrdersListQueryParamCustomerIDFilter,
+    OrdersListQueryParamCustomerIDFilterTypedDict,
     OrdersListQueryParamOrganizationIDFilter,
     OrdersListQueryParamOrganizationIDFilterTypedDict,
-    OrdersListQueryParamProductIDFilter,
-    OrdersListQueryParamProductIDFilterTypedDict,
     OrdersListRequest,
     OrdersListRequestTypedDict,
     OrdersListResponse,
     OrdersListResponseTypedDict,
+    ProductPriceTypeFilter,
+    ProductPriceTypeFilterTypedDict,
     QueryParamDiscountIDFilter,
     QueryParamDiscountIDFilterTypedDict,
-    QueryParamProductPriceTypeFilter,
-    QueryParamProductPriceTypeFilterTypedDict,
-    UserIDFilter,
-    UserIDFilterTypedDict,
+    QueryParamProductIDFilter,
+    QueryParamProductIDFilterTypedDict,
 )
 from .ordersortproperty import OrderSortProperty
 from .ordersubscription import (
@@ -1154,8 +1397,8 @@ from .productpricerecurringcustom import (
 from .productpricerecurringfixed import (
     AmountType,
     ProductPriceRecurringFixed,
-    ProductPriceRecurringFixedType,
     ProductPriceRecurringFixedTypedDict,
+    Type,
 )
 from .productpricerecurringfixedcreate import (
     ProductPriceRecurringFixedCreate,
@@ -1186,14 +1429,14 @@ from .productrecurringcreate import (
 )
 from .products_getop import ProductsGetRequest, ProductsGetRequestTypedDict
 from .products_listop import (
+    BenefitIDFilter,
+    BenefitIDFilterTypedDict,
     ProductsListQueryParamOrganizationIDFilter,
     ProductsListQueryParamOrganizationIDFilterTypedDict,
     ProductsListRequest,
     ProductsListRequestTypedDict,
     ProductsListResponse,
     ProductsListResponseTypedDict,
-    QueryParamBenefitIDFilter,
-    QueryParamBenefitIDFilterTypedDict,
 )
 from .products_update_benefitsop import (
     ProductsUpdateBenefitsRequest,
@@ -1214,12 +1457,12 @@ from .repositories_getop import RepositoriesGetRequest, RepositoriesGetRequestTy
 from .repositories_listop import (
     ExternalOrganizationNameFilter,
     ExternalOrganizationNameFilterTypedDict,
+    QueryParamOrganizationIDFilter,
+    QueryParamOrganizationIDFilterTypedDict,
     QueryParamPlatformFilter,
     QueryParamPlatformFilterTypedDict,
     QueryParamRepositoryNameFilter,
     QueryParamRepositoryNameFilterTypedDict,
-    RepositoriesListQueryParamOrganizationIDFilter,
-    RepositoriesListQueryParamOrganizationIDFilterTypedDict,
     RepositoriesListRequest,
     RepositoriesListRequestTypedDict,
     RepositoriesListResponse,
@@ -1265,6 +1508,14 @@ from .subscription import (
     SubscriptionDiscountTypedDict,
     SubscriptionTypedDict,
 )
+from .subscriptioncustomer import (
+    SubscriptionCustomer,
+    SubscriptionCustomerMetadata,
+    SubscriptionCustomerMetadataTypedDict,
+    SubscriptionCustomerTypedDict,
+    TaxID,
+    TaxIDTypedDict,
+)
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptions_exportop import (
     OrganizationID,
@@ -1273,12 +1524,14 @@ from .subscriptions_exportop import (
     SubscriptionsExportRequestTypedDict,
 )
 from .subscriptions_listop import (
+    CustomerIDFilter,
+    CustomerIDFilterTypedDict,
     DiscountIDFilter,
     DiscountIDFilterTypedDict,
+    ProductIDFilter,
+    ProductIDFilterTypedDict,
     SubscriptionsListQueryParamOrganizationIDFilter,
     SubscriptionsListQueryParamOrganizationIDFilterTypedDict,
-    SubscriptionsListQueryParamProductIDFilter,
-    SubscriptionsListQueryParamProductIDFilterTypedDict,
     SubscriptionsListRequest,
     SubscriptionsListRequestTypedDict,
     SubscriptionsListResponse,
@@ -1288,152 +1541,11 @@ from .subscriptionsortproperty import SubscriptionSortProperty
 from .subscriptionstatus import SubscriptionStatus
 from .subscriptionuser import SubscriptionUser, SubscriptionUserTypedDict
 from .subtype import SubType
+from .taxidformat import TaxIDFormat
 from .tokenresponse import TokenResponse, TokenResponseTypedDict, TokenType
 from .unauthorized import Unauthorized, UnauthorizedData, UnauthorizedError
-from .useradvertisementcampaign import (
-    UserAdvertisementCampaign,
-    UserAdvertisementCampaignTypedDict,
-)
-from .useradvertisementcampaigncreate import (
-    UserAdvertisementCampaignCreate,
-    UserAdvertisementCampaignCreateTypedDict,
-)
-from .useradvertisementcampaignenable import (
-    UserAdvertisementCampaignEnable,
-    UserAdvertisementCampaignEnableTypedDict,
-)
-from .useradvertisementcampaignupdate import (
-    UserAdvertisementCampaignUpdate,
-    UserAdvertisementCampaignUpdateTypedDict,
-)
-from .useradvertisementsortproperty import UserAdvertisementSortProperty
-from .userbenefitsortproperty import UserBenefitSortProperty
 from .userinfoorganization import UserInfoOrganization, UserInfoOrganizationTypedDict
 from .userinfouser import UserInfoUser, UserInfoUserTypedDict
-from .userorder import UserOrder, UserOrderTypedDict
-from .userorderinvoice import UserOrderInvoice, UserOrderInvoiceTypedDict
-from .userorderproduct import UserOrderProduct, UserOrderProductTypedDict
-from .userordersortproperty import UserOrderSortProperty
-from .userordersubscription import UserOrderSubscription, UserOrderSubscriptionTypedDict
-from .users_advertisements_deleteop import (
-    UsersAdvertisementsDeleteRequest,
-    UsersAdvertisementsDeleteRequestTypedDict,
-)
-from .users_advertisements_enableop import (
-    UsersAdvertisementsEnableRequest,
-    UsersAdvertisementsEnableRequestTypedDict,
-)
-from .users_advertisements_getop import (
-    UsersAdvertisementsGetRequest,
-    UsersAdvertisementsGetRequestTypedDict,
-)
-from .users_advertisements_listop import (
-    UsersAdvertisementsListRequest,
-    UsersAdvertisementsListRequestTypedDict,
-    UsersAdvertisementsListResponse,
-    UsersAdvertisementsListResponseTypedDict,
-)
-from .users_advertisements_updateop import (
-    UsersAdvertisementsUpdateRequest,
-    UsersAdvertisementsUpdateRequestTypedDict,
-)
-from .users_benefits_getop import (
-    UsersBenefitsGetRequest,
-    UsersBenefitsGetRequestTypedDict,
-    UsersBenefitsGetResponseUsersBenefitsGet,
-    UsersBenefitsGetResponseUsersBenefitsGetTypedDict,
-)
-from .users_benefits_listop import (
-    BenefitTypeFilter,
-    BenefitTypeFilterTypedDict,
-    OrderIDFilter,
-    OrderIDFilterTypedDict,
-    OrganizationIDFilter,
-    OrganizationIDFilterTypedDict,
-    SubscriptionIDFilter,
-    SubscriptionIDFilterTypedDict,
-    UsersBenefitsListRequest,
-    UsersBenefitsListRequestTypedDict,
-    UsersBenefitsListResponse,
-    UsersBenefitsListResponseTypedDict,
-)
-from .users_downloadables_getop import (
-    UsersDownloadablesGetRequest,
-    UsersDownloadablesGetRequestTypedDict,
-)
-from .users_downloadables_listop import (
-    BenefitIDFilter,
-    BenefitIDFilterTypedDict,
-    UsersDownloadablesListQueryParamOrganizationIDFilter,
-    UsersDownloadablesListQueryParamOrganizationIDFilterTypedDict,
-    UsersDownloadablesListRequest,
-    UsersDownloadablesListRequestTypedDict,
-    UsersDownloadablesListResponse,
-    UsersDownloadablesListResponseTypedDict,
-)
-from .users_license_keys_getop import (
-    UsersLicenseKeysGetRequest,
-    UsersLicenseKeysGetRequestTypedDict,
-)
-from .users_license_keys_listop import (
-    UsersLicenseKeysListQueryParamOrganizationIDFilter,
-    UsersLicenseKeysListQueryParamOrganizationIDFilterTypedDict,
-    UsersLicenseKeysListRequest,
-    UsersLicenseKeysListRequestTypedDict,
-    UsersLicenseKeysListResponse,
-    UsersLicenseKeysListResponseTypedDict,
-)
-from .users_orders_getop import UsersOrdersGetRequest, UsersOrdersGetRequestTypedDict
-from .users_orders_invoiceop import (
-    UsersOrdersInvoiceRequest,
-    UsersOrdersInvoiceRequestTypedDict,
-)
-from .users_orders_listop import (
-    ProductIDFilter,
-    ProductIDFilterTypedDict,
-    ProductPriceTypeFilter,
-    ProductPriceTypeFilterTypedDict,
-    QueryParamOrganizationIDFilter,
-    QueryParamOrganizationIDFilterTypedDict,
-    QueryParamSubscriptionIDFilter,
-    QueryParamSubscriptionIDFilterTypedDict,
-    UsersOrdersListRequest,
-    UsersOrdersListRequestTypedDict,
-    UsersOrdersListResponse,
-    UsersOrdersListResponseTypedDict,
-)
-from .users_subscriptions_cancelop import (
-    UsersSubscriptionsCancelRequest,
-    UsersSubscriptionsCancelRequestTypedDict,
-)
-from .users_subscriptions_getop import (
-    UsersSubscriptionsGetRequest,
-    UsersSubscriptionsGetRequestTypedDict,
-)
-from .users_subscriptions_listop import (
-    QueryParamProductIDFilter,
-    QueryParamProductIDFilterTypedDict,
-    UsersSubscriptionsListQueryParamOrganizationIDFilter,
-    UsersSubscriptionsListQueryParamOrganizationIDFilterTypedDict,
-    UsersSubscriptionsListRequest,
-    UsersSubscriptionsListRequestTypedDict,
-    UsersSubscriptionsListResponse,
-    UsersSubscriptionsListResponseTypedDict,
-)
-from .users_subscriptions_updateop import (
-    UsersSubscriptionsUpdateRequest,
-    UsersSubscriptionsUpdateRequestTypedDict,
-)
-from .usersubscription import UserSubscription, UserSubscriptionTypedDict
-from .usersubscriptionproduct import (
-    UserSubscriptionProduct,
-    UserSubscriptionProductTypedDict,
-)
-from .usersubscriptionsortproperty import UserSubscriptionSortProperty
-from .usersubscriptionupdate import (
-    UserSubscriptionUpdate,
-    UserSubscriptionUpdateTypedDict,
-)
 from .validatedlicensekey import ValidatedLicenseKey, ValidatedLicenseKeyTypedDict
 from .validationerror import (
     Loc,
@@ -1576,6 +1688,7 @@ __all__ = [
     "BenefitAdsProperties",
     "BenefitAdsPropertiesTypedDict",
     "BenefitAdsSubscriber",
+    "BenefitAdsSubscriberType",
     "BenefitAdsSubscriberTypedDict",
     "BenefitAdsType",
     "BenefitAdsTypedDict",
@@ -1660,12 +1773,8 @@ __all__ = [
     "BenefitGitHubRepositoryUpdateType",
     "BenefitGitHubRepositoryUpdateTypedDict",
     "BenefitGrant",
-    "BenefitGrantAds",
     "BenefitGrantAdsProperties",
     "BenefitGrantAdsPropertiesTypedDict",
-    "BenefitGrantAdsSubscriberProperties",
-    "BenefitGrantAdsSubscriberPropertiesTypedDict",
-    "BenefitGrantAdsTypedDict",
     "BenefitGrantCustomProperties",
     "BenefitGrantCustomPropertiesTypedDict",
     "BenefitGrantDiscordProperties",
@@ -1675,12 +1784,8 @@ __all__ = [
     "BenefitGrantGitHubRepositoryProperties",
     "BenefitGrantGitHubRepositoryPropertiesPermission",
     "BenefitGrantGitHubRepositoryPropertiesTypedDict",
-    "BenefitGrantLicenseKeys",
     "BenefitGrantLicenseKeysProperties",
     "BenefitGrantLicenseKeysPropertiesTypedDict",
-    "BenefitGrantLicenseKeysTypedDict",
-    "BenefitGrantSubscriber",
-    "BenefitGrantSubscriberTypedDict",
     "BenefitGrantTypedDict",
     "BenefitGrantWebhook",
     "BenefitGrantWebhookProperties",
@@ -1751,6 +1856,8 @@ __all__ = [
     "CheckoutDiscountPercentageRepeatDuration",
     "CheckoutDiscountPercentageRepeatDurationTypedDict",
     "CheckoutDiscountTypedDict",
+    "CheckoutIDFilter",
+    "CheckoutIDFilterTypedDict",
     "CheckoutLegacy",
     "CheckoutLegacyCreate",
     "CheckoutLegacyCreateTypedDict",
@@ -1813,6 +1920,14 @@ __all__ = [
     "CheckoutProductCreateTypedDict",
     "CheckoutProductTypedDict",
     "CheckoutPublic",
+    "CheckoutPublicConfirmed",
+    "CheckoutPublicConfirmedCustomFieldData",
+    "CheckoutPublicConfirmedCustomFieldDataTypedDict",
+    "CheckoutPublicConfirmedDiscount",
+    "CheckoutPublicConfirmedDiscountTypedDict",
+    "CheckoutPublicConfirmedPaymentProcessorMetadata",
+    "CheckoutPublicConfirmedPaymentProcessorMetadataTypedDict",
+    "CheckoutPublicConfirmedTypedDict",
     "CheckoutPublicCustomFieldData",
     "CheckoutPublicCustomFieldDataTypedDict",
     "CheckoutPublicDiscount",
@@ -1966,6 +2081,158 @@ __all__ = [
     "CustomFieldsListResponseTypedDict",
     "CustomFieldsUpdateRequest",
     "CustomFieldsUpdateRequestTypedDict",
+    "Customer",
+    "CustomerBenefitGrant",
+    "CustomerBenefitGrantAds",
+    "CustomerBenefitGrantAdsTypedDict",
+    "CustomerBenefitGrantAdsUpdate",
+    "CustomerBenefitGrantAdsUpdateBenefitType",
+    "CustomerBenefitGrantAdsUpdateTypedDict",
+    "CustomerBenefitGrantCustom",
+    "CustomerBenefitGrantCustomTypedDict",
+    "CustomerBenefitGrantCustomUpdate",
+    "CustomerBenefitGrantCustomUpdateBenefitType",
+    "CustomerBenefitGrantCustomUpdateTypedDict",
+    "CustomerBenefitGrantDiscord",
+    "CustomerBenefitGrantDiscordPropertiesUpdate",
+    "CustomerBenefitGrantDiscordPropertiesUpdateTypedDict",
+    "CustomerBenefitGrantDiscordTypedDict",
+    "CustomerBenefitGrantDiscordUpdate",
+    "CustomerBenefitGrantDiscordUpdateBenefitType",
+    "CustomerBenefitGrantDiscordUpdateTypedDict",
+    "CustomerBenefitGrantDownloadables",
+    "CustomerBenefitGrantDownloadablesTypedDict",
+    "CustomerBenefitGrantDownloadablesUpdate",
+    "CustomerBenefitGrantDownloadablesUpdateBenefitType",
+    "CustomerBenefitGrantDownloadablesUpdateTypedDict",
+    "CustomerBenefitGrantGitHubRepository",
+    "CustomerBenefitGrantGitHubRepositoryPropertiesUpdate",
+    "CustomerBenefitGrantGitHubRepositoryPropertiesUpdateTypedDict",
+    "CustomerBenefitGrantGitHubRepositoryTypedDict",
+    "CustomerBenefitGrantGitHubRepositoryUpdate",
+    "CustomerBenefitGrantGitHubRepositoryUpdateBenefitType",
+    "CustomerBenefitGrantGitHubRepositoryUpdateTypedDict",
+    "CustomerBenefitGrantLicenseKeys",
+    "CustomerBenefitGrantLicenseKeysTypedDict",
+    "CustomerBenefitGrantLicenseKeysUpdate",
+    "CustomerBenefitGrantLicenseKeysUpdateBenefitType",
+    "CustomerBenefitGrantLicenseKeysUpdateTypedDict",
+    "CustomerBenefitGrantSortProperty",
+    "CustomerBenefitGrantTypedDict",
+    "CustomerBenefitGrantUpdate",
+    "CustomerBenefitGrantUpdateTypedDict",
+    "CustomerCreate",
+    "CustomerCreateTaxID",
+    "CustomerCreateTaxIDTypedDict",
+    "CustomerCreateTypedDict",
+    "CustomerIDFilter",
+    "CustomerIDFilterTypedDict",
+    "CustomerMetadata",
+    "CustomerMetadataTypedDict",
+    "CustomerOrder",
+    "CustomerOrderInvoice",
+    "CustomerOrderInvoiceTypedDict",
+    "CustomerOrderProduct",
+    "CustomerOrderProductTypedDict",
+    "CustomerOrderSortProperty",
+    "CustomerOrderSubscription",
+    "CustomerOrderSubscriptionTypedDict",
+    "CustomerOrderTypedDict",
+    "CustomerPortalBenefitGrantsGetRequest",
+    "CustomerPortalBenefitGrantsGetRequestTypedDict",
+    "CustomerPortalBenefitGrantsListQueryParamBenefitIDFilter",
+    "CustomerPortalBenefitGrantsListQueryParamBenefitIDFilterTypedDict",
+    "CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilter",
+    "CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilterTypedDict",
+    "CustomerPortalBenefitGrantsListRequest",
+    "CustomerPortalBenefitGrantsListRequestTypedDict",
+    "CustomerPortalBenefitGrantsListResponse",
+    "CustomerPortalBenefitGrantsListResponseTypedDict",
+    "CustomerPortalBenefitGrantsUpdateRequest",
+    "CustomerPortalBenefitGrantsUpdateRequestTypedDict",
+    "CustomerPortalCustomer",
+    "CustomerPortalCustomerTaxID",
+    "CustomerPortalCustomerTaxIDTypedDict",
+    "CustomerPortalCustomerTypedDict",
+    "CustomerPortalCustomersGetRequest",
+    "CustomerPortalCustomersGetRequestTypedDict",
+    "CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest",
+    "CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequestTypedDict",
+    "CustomerPortalDownloadablesListQueryParamBenefitIDFilter",
+    "CustomerPortalDownloadablesListQueryParamBenefitIDFilterTypedDict",
+    "CustomerPortalDownloadablesListQueryParamOrganizationIDFilter",
+    "CustomerPortalDownloadablesListQueryParamOrganizationIDFilterTypedDict",
+    "CustomerPortalDownloadablesListRequest",
+    "CustomerPortalDownloadablesListRequestTypedDict",
+    "CustomerPortalDownloadablesListResponse",
+    "CustomerPortalDownloadablesListResponseTypedDict",
+    "CustomerPortalLicenseKeysGetRequest",
+    "CustomerPortalLicenseKeysGetRequestTypedDict",
+    "CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter",
+    "CustomerPortalLicenseKeysListQueryParamOrganizationIDFilterTypedDict",
+    "CustomerPortalLicenseKeysListRequest",
+    "CustomerPortalLicenseKeysListRequestTypedDict",
+    "CustomerPortalLicenseKeysListResponse",
+    "CustomerPortalLicenseKeysListResponseTypedDict",
+    "CustomerPortalOAuthAccount",
+    "CustomerPortalOAuthAccountTypedDict",
+    "CustomerPortalOrdersGetRequest",
+    "CustomerPortalOrdersGetRequestTypedDict",
+    "CustomerPortalOrdersInvoiceRequest",
+    "CustomerPortalOrdersInvoiceRequestTypedDict",
+    "CustomerPortalOrdersListQueryParamOrganizationIDFilter",
+    "CustomerPortalOrdersListQueryParamOrganizationIDFilterTypedDict",
+    "CustomerPortalOrdersListQueryParamProductIDFilter",
+    "CustomerPortalOrdersListQueryParamProductIDFilterTypedDict",
+    "CustomerPortalOrdersListQueryParamProductPriceTypeFilter",
+    "CustomerPortalOrdersListQueryParamProductPriceTypeFilterTypedDict",
+    "CustomerPortalOrdersListRequest",
+    "CustomerPortalOrdersListRequestTypedDict",
+    "CustomerPortalOrdersListResponse",
+    "CustomerPortalOrdersListResponseTypedDict",
+    "CustomerPortalOrganizationsGetRequest",
+    "CustomerPortalOrganizationsGetRequestTypedDict",
+    "CustomerPortalSubscriptionsCancelRequest",
+    "CustomerPortalSubscriptionsCancelRequestTypedDict",
+    "CustomerPortalSubscriptionsGetRequest",
+    "CustomerPortalSubscriptionsGetRequestTypedDict",
+    "CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter",
+    "CustomerPortalSubscriptionsListQueryParamOrganizationIDFilterTypedDict",
+    "CustomerPortalSubscriptionsListQueryParamProductIDFilter",
+    "CustomerPortalSubscriptionsListQueryParamProductIDFilterTypedDict",
+    "CustomerPortalSubscriptionsListRequest",
+    "CustomerPortalSubscriptionsListRequestTypedDict",
+    "CustomerPortalSubscriptionsListResponse",
+    "CustomerPortalSubscriptionsListResponseTypedDict",
+    "CustomerPortalSubscriptionsUpdateRequest",
+    "CustomerPortalSubscriptionsUpdateRequestTypedDict",
+    "CustomerSortProperty",
+    "CustomerSubscription",
+    "CustomerSubscriptionProduct",
+    "CustomerSubscriptionProductTypedDict",
+    "CustomerSubscriptionSortProperty",
+    "CustomerSubscriptionTypedDict",
+    "CustomerSubscriptionUpdate",
+    "CustomerSubscriptionUpdateTypedDict",
+    "CustomerTaxID",
+    "CustomerTaxIDTypedDict",
+    "CustomerTypedDict",
+    "CustomerUpdate",
+    "CustomerUpdateTaxID",
+    "CustomerUpdateTaxIDTypedDict",
+    "CustomerUpdateTypedDict",
+    "CustomersDeleteRequest",
+    "CustomersDeleteRequestTypedDict",
+    "CustomersGetRequest",
+    "CustomersGetRequestTypedDict",
+    "CustomersListQueryParamOrganizationIDFilter",
+    "CustomersListQueryParamOrganizationIDFilterTypedDict",
+    "CustomersListRequest",
+    "CustomersListRequestTypedDict",
+    "CustomersListResponse",
+    "CustomersListResponseTypedDict",
+    "CustomersUpdateRequest",
+    "CustomersUpdateRequestTypedDict",
     "Discount",
     "DiscountCreate",
     "DiscountCreateTypedDict",
@@ -2057,8 +2324,6 @@ __all__ = [
     "ExternalOrganizationNameFilterTypedDict",
     "ExternalOrganizationSortProperty",
     "ExternalOrganizationTypedDict",
-    "ExternalOrganizationsListQueryParamOrganizationIDFilter",
-    "ExternalOrganizationsListQueryParamOrganizationIDFilterTypedDict",
     "ExternalOrganizationsListRequest",
     "ExternalOrganizationsListRequestTypedDict",
     "ExternalOrganizationsListResponse",
@@ -2116,6 +2381,12 @@ __all__ = [
     "LicenseKeyActivationReadMeta",
     "LicenseKeyActivationReadMetaTypedDict",
     "LicenseKeyActivationReadTypedDict",
+    "LicenseKeyCustomer",
+    "LicenseKeyCustomerMetadata",
+    "LicenseKeyCustomerMetadataTypedDict",
+    "LicenseKeyCustomerTaxID",
+    "LicenseKeyCustomerTaxIDTypedDict",
+    "LicenseKeyCustomerTypedDict",
     "LicenseKeyDeactivate",
     "LicenseKeyDeactivateTypedDict",
     "LicenseKeyRead",
@@ -2133,8 +2404,6 @@ __all__ = [
     "LicenseKeysGetActivationRequestTypedDict",
     "LicenseKeysGetRequest",
     "LicenseKeysGetRequestTypedDict",
-    "LicenseKeysListQueryParamBenefitIDFilter",
-    "LicenseKeysListQueryParamBenefitIDFilterTypedDict",
     "LicenseKeysListQueryParamOrganizationIDFilter",
     "LicenseKeysListQueryParamOrganizationIDFilterTypedDict",
     "LicenseKeysListRequest",
@@ -2153,6 +2422,14 @@ __all__ = [
     "ListResourceCheckoutTypedDict",
     "ListResourceCustomField",
     "ListResourceCustomFieldTypedDict",
+    "ListResourceCustomer",
+    "ListResourceCustomerBenefitGrant",
+    "ListResourceCustomerBenefitGrantTypedDict",
+    "ListResourceCustomerOrder",
+    "ListResourceCustomerOrderTypedDict",
+    "ListResourceCustomerSubscription",
+    "ListResourceCustomerSubscriptionTypedDict",
+    "ListResourceCustomerTypedDict",
     "ListResourceDiscount",
     "ListResourceDiscountTypedDict",
     "ListResourceDownloadableRead",
@@ -2175,14 +2452,6 @@ __all__ = [
     "ListResourceRepositoryTypedDict",
     "ListResourceSubscription",
     "ListResourceSubscriptionTypedDict",
-    "ListResourceUserAdvertisementCampaign",
-    "ListResourceUserAdvertisementCampaignTypedDict",
-    "ListResourceUserBenefit",
-    "ListResourceUserBenefitTypedDict",
-    "ListResourceUserOrder",
-    "ListResourceUserOrderTypedDict",
-    "ListResourceUserSubscription",
-    "ListResourceUserSubscriptionTypedDict",
     "Loc",
     "LocTypedDict",
     "Meta",
@@ -2199,8 +2468,6 @@ __all__ = [
     "MetricsGetQueryParamOrganizationIDFilterTypedDict",
     "MetricsGetQueryParamProductIDFilter",
     "MetricsGetQueryParamProductIDFilterTypedDict",
-    "MetricsGetQueryParamProductPriceTypeFilter",
-    "MetricsGetQueryParamProductPriceTypeFilterTypedDict",
     "MetricsGetRequest",
     "MetricsGetRequestTypedDict",
     "MetricsIntervalLimit",
@@ -2259,6 +2526,12 @@ __all__ = [
     "OrderBillingReason",
     "OrderCustomFieldData",
     "OrderCustomFieldDataTypedDict",
+    "OrderCustomer",
+    "OrderCustomerMetadata",
+    "OrderCustomerMetadataTypedDict",
+    "OrderCustomerTaxID",
+    "OrderCustomerTaxIDTypedDict",
+    "OrderCustomerTypedDict",
     "OrderDiscount",
     "OrderDiscountTypedDict",
     "OrderIDFilter",
@@ -2281,10 +2554,10 @@ __all__ = [
     "OrdersGetRequestTypedDict",
     "OrdersInvoiceRequest",
     "OrdersInvoiceRequestTypedDict",
+    "OrdersListQueryParamCustomerIDFilter",
+    "OrdersListQueryParamCustomerIDFilterTypedDict",
     "OrdersListQueryParamOrganizationIDFilter",
     "OrdersListQueryParamOrganizationIDFilterTypedDict",
-    "OrdersListQueryParamProductIDFilter",
-    "OrdersListQueryParamProductIDFilterTypedDict",
     "OrdersListRequest",
     "OrdersListRequestTypedDict",
     "OrdersListResponse",
@@ -2394,7 +2667,6 @@ __all__ = [
     "ProductPriceRecurringFixedCreateAmountType",
     "ProductPriceRecurringFixedCreateType",
     "ProductPriceRecurringFixedCreateTypedDict",
-    "ProductPriceRecurringFixedType",
     "ProductPriceRecurringFixedTypedDict",
     "ProductPriceRecurringFree",
     "ProductPriceRecurringFreeAmountType",
@@ -2441,6 +2713,8 @@ __all__ = [
     "QueryParamBenefitIDFilterTypedDict",
     "QueryParamBenefitTypeFilter",
     "QueryParamBenefitTypeFilterTypedDict",
+    "QueryParamCustomerIDFilter",
+    "QueryParamCustomerIDFilterTypedDict",
     "QueryParamDiscountIDFilter",
     "QueryParamDiscountIDFilterTypedDict",
     "QueryParamOrganizationIDFilter",
@@ -2459,8 +2733,6 @@ __all__ = [
     "ReactionsTypedDict",
     "RepositoriesGetRequest",
     "RepositoriesGetRequestTypedDict",
-    "RepositoriesListQueryParamOrganizationIDFilter",
-    "RepositoriesListQueryParamOrganizationIDFilterTypedDict",
     "RepositoriesListRequest",
     "RepositoriesListRequestTypedDict",
     "RepositoriesListResponse",
@@ -2501,10 +2773,15 @@ __all__ = [
     "SecurityTypedDict",
     "Service",
     "State",
+    "Status",
     "SubType",
     "Subscription",
     "SubscriptionCustomFieldData",
     "SubscriptionCustomFieldDataTypedDict",
+    "SubscriptionCustomer",
+    "SubscriptionCustomerMetadata",
+    "SubscriptionCustomerMetadataTypedDict",
+    "SubscriptionCustomerTypedDict",
     "SubscriptionDiscount",
     "SubscriptionDiscountTypedDict",
     "SubscriptionIDFilter",
@@ -2519,12 +2796,13 @@ __all__ = [
     "SubscriptionsExportRequestTypedDict",
     "SubscriptionsListQueryParamOrganizationIDFilter",
     "SubscriptionsListQueryParamOrganizationIDFilterTypedDict",
-    "SubscriptionsListQueryParamProductIDFilter",
-    "SubscriptionsListQueryParamProductIDFilterTypedDict",
     "SubscriptionsListRequest",
     "SubscriptionsListRequestTypedDict",
     "SubscriptionsListResponse",
     "SubscriptionsListResponseTypedDict",
+    "TaxID",
+    "TaxIDFormat",
+    "TaxIDTypedDict",
     "Timeframe",
     "TokenEndpointAuthMethod",
     "TokenResponse",
@@ -2535,96 +2813,10 @@ __all__ = [
     "Unauthorized",
     "UnauthorizedData",
     "UnauthorizedError",
-    "UserAdvertisementCampaign",
-    "UserAdvertisementCampaignCreate",
-    "UserAdvertisementCampaignCreateTypedDict",
-    "UserAdvertisementCampaignEnable",
-    "UserAdvertisementCampaignEnableTypedDict",
-    "UserAdvertisementCampaignTypedDict",
-    "UserAdvertisementCampaignUpdate",
-    "UserAdvertisementCampaignUpdateTypedDict",
-    "UserAdvertisementSortProperty",
-    "UserBenefit",
-    "UserBenefitSortProperty",
-    "UserBenefitTypedDict",
-    "UserIDFilter",
-    "UserIDFilterTypedDict",
     "UserInfoOrganization",
     "UserInfoOrganizationTypedDict",
     "UserInfoUser",
     "UserInfoUserTypedDict",
-    "UserOrder",
-    "UserOrderInvoice",
-    "UserOrderInvoiceTypedDict",
-    "UserOrderProduct",
-    "UserOrderProductTypedDict",
-    "UserOrderSortProperty",
-    "UserOrderSubscription",
-    "UserOrderSubscriptionTypedDict",
-    "UserOrderTypedDict",
-    "UserSubscription",
-    "UserSubscriptionProduct",
-    "UserSubscriptionProductTypedDict",
-    "UserSubscriptionSortProperty",
-    "UserSubscriptionTypedDict",
-    "UserSubscriptionUpdate",
-    "UserSubscriptionUpdateTypedDict",
-    "UsersAdvertisementsDeleteRequest",
-    "UsersAdvertisementsDeleteRequestTypedDict",
-    "UsersAdvertisementsEnableRequest",
-    "UsersAdvertisementsEnableRequestTypedDict",
-    "UsersAdvertisementsGetRequest",
-    "UsersAdvertisementsGetRequestTypedDict",
-    "UsersAdvertisementsListRequest",
-    "UsersAdvertisementsListRequestTypedDict",
-    "UsersAdvertisementsListResponse",
-    "UsersAdvertisementsListResponseTypedDict",
-    "UsersAdvertisementsUpdateRequest",
-    "UsersAdvertisementsUpdateRequestTypedDict",
-    "UsersBenefitsGetRequest",
-    "UsersBenefitsGetRequestTypedDict",
-    "UsersBenefitsGetResponseUsersBenefitsGet",
-    "UsersBenefitsGetResponseUsersBenefitsGetTypedDict",
-    "UsersBenefitsListRequest",
-    "UsersBenefitsListRequestTypedDict",
-    "UsersBenefitsListResponse",
-    "UsersBenefitsListResponseTypedDict",
-    "UsersDownloadablesGetRequest",
-    "UsersDownloadablesGetRequestTypedDict",
-    "UsersDownloadablesListQueryParamOrganizationIDFilter",
-    "UsersDownloadablesListQueryParamOrganizationIDFilterTypedDict",
-    "UsersDownloadablesListRequest",
-    "UsersDownloadablesListRequestTypedDict",
-    "UsersDownloadablesListResponse",
-    "UsersDownloadablesListResponseTypedDict",
-    "UsersLicenseKeysGetRequest",
-    "UsersLicenseKeysGetRequestTypedDict",
-    "UsersLicenseKeysListQueryParamOrganizationIDFilter",
-    "UsersLicenseKeysListQueryParamOrganizationIDFilterTypedDict",
-    "UsersLicenseKeysListRequest",
-    "UsersLicenseKeysListRequestTypedDict",
-    "UsersLicenseKeysListResponse",
-    "UsersLicenseKeysListResponseTypedDict",
-    "UsersOrdersGetRequest",
-    "UsersOrdersGetRequestTypedDict",
-    "UsersOrdersInvoiceRequest",
-    "UsersOrdersInvoiceRequestTypedDict",
-    "UsersOrdersListRequest",
-    "UsersOrdersListRequestTypedDict",
-    "UsersOrdersListResponse",
-    "UsersOrdersListResponseTypedDict",
-    "UsersSubscriptionsCancelRequest",
-    "UsersSubscriptionsCancelRequestTypedDict",
-    "UsersSubscriptionsGetRequest",
-    "UsersSubscriptionsGetRequestTypedDict",
-    "UsersSubscriptionsListQueryParamOrganizationIDFilter",
-    "UsersSubscriptionsListQueryParamOrganizationIDFilterTypedDict",
-    "UsersSubscriptionsListRequest",
-    "UsersSubscriptionsListRequestTypedDict",
-    "UsersSubscriptionsListResponse",
-    "UsersSubscriptionsListResponseTypedDict",
-    "UsersSubscriptionsUpdateRequest",
-    "UsersSubscriptionsUpdateRequestTypedDict",
     "ValidatedLicenseKey",
     "ValidatedLicenseKeyTypedDict",
     "ValidationError",

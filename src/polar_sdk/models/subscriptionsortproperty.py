@@ -5,8 +5,8 @@ from enum import Enum
 
 
 class SubscriptionSortProperty(str, Enum):
-    USER = "user"
-    MINUS_USER = "-user"
+    CUSTOMER = "customer"
+    MINUS_CUSTOMER = "-customer"
     STATUS = "status"
     MINUS_STATUS = "-status"
     STARTED_AT = "started_at"

@@ -37,7 +37,7 @@ class OrderSubscriptionTypedDict(TypedDict):
     cancel_at_period_end: bool
     started_at: Nullable[datetime]
     ended_at: Nullable[datetime]
-    user_id: str
+    customer_id: str
     product_id: str
     price_id: str
     discount_id: Nullable[str]
@@ -74,7 +74,7 @@ class OrderSubscription(BaseModel):
 
     ended_at: Nullable[datetime]
 
-    user_id: str
+    customer_id: str
 
     product_id: str
 

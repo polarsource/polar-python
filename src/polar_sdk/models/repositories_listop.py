@@ -50,14 +50,14 @@ ExternalOrganizationNameFilter = TypeAliasType(
 r"""Filter by external organization name."""
 
 
-RepositoriesListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
-    "RepositoriesListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
+QueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "QueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by organization ID."""
 
 
-RepositoriesListQueryParamOrganizationIDFilter = TypeAliasType(
-    "RepositoriesListQueryParamOrganizationIDFilter", Union[str, List[str]]
+QueryParamOrganizationIDFilter = TypeAliasType(
+    "QueryParamOrganizationIDFilter", Union[str, List[str]]
 )
 r"""Filter by organization ID."""
 
@@ -73,9 +73,7 @@ class RepositoriesListRequestTypedDict(TypedDict):
     r"""Filter by external organization name."""
     is_private: NotRequired[Nullable[bool]]
     r"""Filter by private status."""
-    organization_id: NotRequired[
-        Nullable[RepositoriesListQueryParamOrganizationIDFilterTypedDict]
-    ]
+    organization_id: NotRequired[Nullable[QueryParamOrganizationIDFilterTypedDict]]
     r"""Filter by organization ID."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
@@ -111,7 +109,7 @@ class RepositoriesListRequest(BaseModel):
     r"""Filter by private status."""
 
     organization_id: Annotated[
-        OptionalNullable[RepositoriesListQueryParamOrganizationIDFilter],
+        OptionalNullable[QueryParamOrganizationIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by organization ID."""

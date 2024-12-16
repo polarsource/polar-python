@@ -23,15 +23,13 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.files.list()
 
-    if res is not None:
-        while True:
-            # handle items
+    while res is not None:
+        # Handle items
 
-            res = res.next()
-            if res is None:
-                break
+        res = res.next()
 
 ```
 
@@ -69,6 +67,7 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.files.create(request={
         "name": "<value>",
         "mime_type": "<value>",
@@ -85,9 +84,8 @@ with Polar(
         "service": polar_sdk.OrganizationAvatarFileCreateService.ORGANIZATION_AVATAR,
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -121,6 +119,7 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.files.uploaded(id="<value>", file_upload_completed={
         "id": "<id>",
         "path": "/sys",
@@ -133,9 +132,8 @@ with Polar(
         ],
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -172,11 +170,11 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.files.update(id="<value>", file_patch={})
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -213,6 +211,7 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     polar.files.delete(id="<value>")
 
     # Use the SDK ...

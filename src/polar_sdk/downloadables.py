@@ -5,7 +5,7 @@ from jsonpath import JSONPath
 from polar_sdk import models, utils
 from polar_sdk._hooks import HookContext
 from polar_sdk.types import OptionalNullable, UNSET
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, Mapping, Optional, Union
 
 
 class Downloadables(BaseSDK):
@@ -14,28 +14,33 @@ class Downloadables(BaseSDK):
         *,
         organization_id: OptionalNullable[
             Union[
-                models.UsersDownloadablesListQueryParamOrganizationIDFilter,
-                models.UsersDownloadablesListQueryParamOrganizationIDFilterTypedDict,
+                models.CustomerPortalDownloadablesListQueryParamOrganizationIDFilter,
+                models.CustomerPortalDownloadablesListQueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
         benefit_id: OptionalNullable[
-            Union[models.BenefitIDFilter, models.BenefitIDFilterTypedDict]
+            Union[
+                models.CustomerPortalDownloadablesListQueryParamBenefitIDFilter,
+                models.CustomerPortalDownloadablesListQueryParamBenefitIDFilterTypedDict,
+            ]
         ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UsersDownloadablesListResponse]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.CustomerPortalDownloadablesListResponse]:
         r"""List Downloadables
 
         :param organization_id: Filter by organization ID.
-        :param benefit_id: Filter by given benefit ID.
+        :param benefit_id: Filter by benefit ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -45,7 +50,7 @@ class Downloadables(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersDownloadablesListRequest(
+        request = models.CustomerPortalDownloadablesListRequest(
             organization_id=organization_id,
             benefit_id=benefit_id,
             page=page,
@@ -54,7 +59,7 @@ class Downloadables(BaseSDK):
 
         req = self.build_request(
             method="GET",
-            path="/v1/users/downloadables/",
+            path="/v1/customer-portal/downloadables/",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -63,6 +68,7 @@ class Downloadables(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -77,7 +83,7 @@ class Downloadables(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="users:downloadables:list",
+                operation_id="customer_portal:downloadables:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -86,7 +92,7 @@ class Downloadables(BaseSDK):
             retry_config=retry_config,
         )
 
-        def next_func() -> Optional[models.UsersDownloadablesListResponse]:
+        def next_func() -> Optional[models.CustomerPortalDownloadablesListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
@@ -114,7 +120,7 @@ class Downloadables(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.UsersDownloadablesListResponse(
+            return models.CustomerPortalDownloadablesListResponse(
                 result=utils.unmarshal_json(
                     http_res.text, models.ListResourceDownloadableRead
                 ),
@@ -143,28 +149,33 @@ class Downloadables(BaseSDK):
         *,
         organization_id: OptionalNullable[
             Union[
-                models.UsersDownloadablesListQueryParamOrganizationIDFilter,
-                models.UsersDownloadablesListQueryParamOrganizationIDFilterTypedDict,
+                models.CustomerPortalDownloadablesListQueryParamOrganizationIDFilter,
+                models.CustomerPortalDownloadablesListQueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
         benefit_id: OptionalNullable[
-            Union[models.BenefitIDFilter, models.BenefitIDFilterTypedDict]
+            Union[
+                models.CustomerPortalDownloadablesListQueryParamBenefitIDFilter,
+                models.CustomerPortalDownloadablesListQueryParamBenefitIDFilterTypedDict,
+            ]
         ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UsersDownloadablesListResponse]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.CustomerPortalDownloadablesListResponse]:
         r"""List Downloadables
 
         :param organization_id: Filter by organization ID.
-        :param benefit_id: Filter by given benefit ID.
+        :param benefit_id: Filter by benefit ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -174,7 +185,7 @@ class Downloadables(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersDownloadablesListRequest(
+        request = models.CustomerPortalDownloadablesListRequest(
             organization_id=organization_id,
             benefit_id=benefit_id,
             page=page,
@@ -183,7 +194,7 @@ class Downloadables(BaseSDK):
 
         req = self.build_request_async(
             method="GET",
-            path="/v1/users/downloadables/",
+            path="/v1/customer-portal/downloadables/",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -192,6 +203,7 @@ class Downloadables(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -206,7 +218,7 @@ class Downloadables(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="users:downloadables:list",
+                operation_id="customer_portal:downloadables:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -215,7 +227,7 @@ class Downloadables(BaseSDK):
             retry_config=retry_config,
         )
 
-        def next_func() -> Optional[models.UsersDownloadablesListResponse]:
+        def next_func() -> Optional[models.CustomerPortalDownloadablesListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
@@ -243,7 +255,7 @@ class Downloadables(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.UsersDownloadablesListResponse(
+            return models.CustomerPortalDownloadablesListResponse(
                 result=utils.unmarshal_json(
                     http_res.text, models.ListResourceDownloadableRead
                 ),
@@ -274,6 +286,7 @@ class Downloadables(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[Any]:
         r"""Get Downloadable
 
@@ -281,6 +294,7 @@ class Downloadables(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -290,13 +304,15 @@ class Downloadables(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersDownloadablesGetRequest(
-            token=token,
+        request = (
+            models.CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest(
+                token=token,
+            )
         )
 
         req = self.build_request(
             method="GET",
-            path="/v1/users/downloadables/{token}",
+            path="/v1/customer-portal/downloadables/{token}",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -305,6 +321,7 @@ class Downloadables(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -319,7 +336,7 @@ class Downloadables(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="users:downloadables:get",
+                operation_id="customer_portal:downloadables:customer_portal.downloadables.get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -358,6 +375,7 @@ class Downloadables(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[Any]:
         r"""Get Downloadable
 
@@ -365,6 +383,7 @@ class Downloadables(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -374,13 +393,15 @@ class Downloadables(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersDownloadablesGetRequest(
-            token=token,
+        request = (
+            models.CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest(
+                token=token,
+            )
         )
 
         req = self.build_request_async(
             method="GET",
-            path="/v1/users/downloadables/{token}",
+            path="/v1/customer-portal/downloadables/{token}",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -389,6 +410,7 @@ class Downloadables(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -403,7 +425,7 @@ class Downloadables(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="users:downloadables:get",
+                operation_id="customer_portal:downloadables:customer_portal.downloadables.get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),

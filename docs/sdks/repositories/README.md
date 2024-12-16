@@ -21,15 +21,13 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.repositories.list()
 
-    if res is not None:
-        while True:
-            # handle items
+    while res is not None:
+        # Handle items
 
-            res = res.next()
-            if res is None:
-                break
+        res = res.next()
 
 ```
 
@@ -41,7 +39,7 @@ with Polar(
 | `name`                                                                                                                                                                  | [OptionalNullable[models.QueryParamRepositoryNameFilter]](../../models/queryparamrepositorynamefilter.md)                                                               | :heavy_minus_sign:                                                                                                                                                      | Filter by name.                                                                                                                                                         |
 | `external_organization_name`                                                                                                                                            | [OptionalNullable[models.ExternalOrganizationNameFilter]](../../models/externalorganizationnamefilter.md)                                                               | :heavy_minus_sign:                                                                                                                                                      | Filter by external organization name.                                                                                                                                   |
 | `is_private`                                                                                                                                                            | *OptionalNullable[bool]*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                      | Filter by private status.                                                                                                                                               |
-| `organization_id`                                                                                                                                                       | [OptionalNullable[models.RepositoriesListQueryParamOrganizationIDFilter]](../../models/repositorieslistqueryparamorganizationidfilter.md)                               | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
+| `organization_id`                                                                                                                                                       | [OptionalNullable[models.QueryParamOrganizationIDFilter]](../../models/queryparamorganizationidfilter.md)                                                               | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
 | `page`                                                                                                                                                                  | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |
 | `limit`                                                                                                                                                                 | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Size of a page, defaults to 10. Maximum is 100.                                                                                                                         |
 | `sorting`                                                                                                                                                               | List[[models.RepositorySortProperty](../../models/repositorysortproperty.md)]                                                                                           | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
@@ -70,11 +68,11 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.repositories.get(id="<value>")
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -109,11 +107,11 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.repositories.update(id="<value>", repository_update={})
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 

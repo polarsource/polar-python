@@ -22,15 +22,13 @@ ProductsListQueryParamOrganizationIDFilter = TypeAliasType(
 r"""Filter by organization ID."""
 
 
-QueryParamBenefitIDFilterTypedDict = TypeAliasType(
-    "QueryParamBenefitIDFilterTypedDict", Union[str, List[str]]
+BenefitIDFilterTypedDict = TypeAliasType(
+    "BenefitIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter products granting specific benefit."""
 
 
-QueryParamBenefitIDFilter = TypeAliasType(
-    "QueryParamBenefitIDFilter", Union[str, List[str]]
-)
+BenefitIDFilter = TypeAliasType("BenefitIDFilter", Union[str, List[str]])
 r"""Filter products granting specific benefit."""
 
 
@@ -45,7 +43,7 @@ class ProductsListRequestTypedDict(TypedDict):
     r"""Filter on archived products."""
     is_recurring: NotRequired[Nullable[bool]]
     r"""Filter on recurring products. If `true`, only subscriptions tiers are returned. If `false`, only one-time purchase products are returned."""
-    benefit_id: NotRequired[Nullable[QueryParamBenefitIDFilterTypedDict]]
+    benefit_id: NotRequired[Nullable[BenefitIDFilterTypedDict]]
     r"""Filter products granting specific benefit."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
@@ -81,7 +79,7 @@ class ProductsListRequest(BaseModel):
     r"""Filter on recurring products. If `true`, only subscriptions tiers are returned. If `false`, only one-time purchase products are returned."""
 
     benefit_id: Annotated[
-        OptionalNullable[QueryParamBenefitIDFilter],
+        OptionalNullable[BenefitIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter products granting specific benefit."""

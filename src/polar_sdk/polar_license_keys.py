@@ -5,7 +5,7 @@ from jsonpath import JSONPath
 from polar_sdk import models, utils
 from polar_sdk._hooks import HookContext
 from polar_sdk.types import BaseModel, OptionalNullable, UNSET
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Dict, Mapping, Optional, Union, cast
 
 
 class PolarLicenseKeys(BaseSDK):
@@ -14,8 +14,8 @@ class PolarLicenseKeys(BaseSDK):
         *,
         organization_id: OptionalNullable[
             Union[
-                models.UsersLicenseKeysListQueryParamOrganizationIDFilter,
-                models.UsersLicenseKeysListQueryParamOrganizationIDFilterTypedDict,
+                models.CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter,
+                models.CustomerPortalLicenseKeysListQueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
         benefit_id: OptionalNullable[str] = UNSET,
@@ -24,7 +24,8 @@ class PolarLicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UsersLicenseKeysListResponse]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.CustomerPortalLicenseKeysListResponse]:
         r"""List License Keys
 
         :param organization_id: Filter by organization ID.
@@ -34,6 +35,7 @@ class PolarLicenseKeys(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -43,7 +45,7 @@ class PolarLicenseKeys(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersLicenseKeysListRequest(
+        request = models.CustomerPortalLicenseKeysListRequest(
             organization_id=organization_id,
             benefit_id=benefit_id,
             page=page,
@@ -52,7 +54,7 @@ class PolarLicenseKeys(BaseSDK):
 
         req = self.build_request(
             method="GET",
-            path="/v1/users/license-keys/",
+            path="/v1/customer-portal/license-keys/",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -61,6 +63,7 @@ class PolarLicenseKeys(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -75,7 +78,7 @@ class PolarLicenseKeys(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="users:license_keys:list",
+                operation_id="customer_portal:license_keys:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -84,7 +87,7 @@ class PolarLicenseKeys(BaseSDK):
             retry_config=retry_config,
         )
 
-        def next_func() -> Optional[models.UsersLicenseKeysListResponse]:
+        def next_func() -> Optional[models.CustomerPortalLicenseKeysListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
@@ -112,7 +115,7 @@ class PolarLicenseKeys(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.UsersLicenseKeysListResponse(
+            return models.CustomerPortalLicenseKeysListResponse(
                 result=utils.unmarshal_json(
                     http_res.text, models.ListResourceLicenseKeyRead
                 ),
@@ -147,8 +150,8 @@ class PolarLicenseKeys(BaseSDK):
         *,
         organization_id: OptionalNullable[
             Union[
-                models.UsersLicenseKeysListQueryParamOrganizationIDFilter,
-                models.UsersLicenseKeysListQueryParamOrganizationIDFilterTypedDict,
+                models.CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter,
+                models.CustomerPortalLicenseKeysListQueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
         benefit_id: OptionalNullable[str] = UNSET,
@@ -157,7 +160,8 @@ class PolarLicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UsersLicenseKeysListResponse]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.CustomerPortalLicenseKeysListResponse]:
         r"""List License Keys
 
         :param organization_id: Filter by organization ID.
@@ -167,6 +171,7 @@ class PolarLicenseKeys(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -176,7 +181,7 @@ class PolarLicenseKeys(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersLicenseKeysListRequest(
+        request = models.CustomerPortalLicenseKeysListRequest(
             organization_id=organization_id,
             benefit_id=benefit_id,
             page=page,
@@ -185,7 +190,7 @@ class PolarLicenseKeys(BaseSDK):
 
         req = self.build_request_async(
             method="GET",
-            path="/v1/users/license-keys/",
+            path="/v1/customer-portal/license-keys/",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -194,6 +199,7 @@ class PolarLicenseKeys(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -208,7 +214,7 @@ class PolarLicenseKeys(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="users:license_keys:list",
+                operation_id="customer_portal:license_keys:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -217,7 +223,7 @@ class PolarLicenseKeys(BaseSDK):
             retry_config=retry_config,
         )
 
-        def next_func() -> Optional[models.UsersLicenseKeysListResponse]:
+        def next_func() -> Optional[models.CustomerPortalLicenseKeysListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
@@ -245,7 +251,7 @@ class PolarLicenseKeys(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.UsersLicenseKeysListResponse(
+            return models.CustomerPortalLicenseKeysListResponse(
                 result=utils.unmarshal_json(
                     http_res.text, models.ListResourceLicenseKeyRead
                 ),
@@ -282,6 +288,7 @@ class PolarLicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.LicenseKeyWithActivations:
         r"""Get License Key
 
@@ -291,6 +298,7 @@ class PolarLicenseKeys(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -300,13 +308,13 @@ class PolarLicenseKeys(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersLicenseKeysGetRequest(
+        request = models.CustomerPortalLicenseKeysGetRequest(
             id=id,
         )
 
         req = self.build_request(
             method="GET",
-            path="/v1/users/license-keys/{id}",
+            path="/v1/customer-portal/license-keys/{id}",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -315,6 +323,7 @@ class PolarLicenseKeys(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -329,21 +338,18 @@ class PolarLicenseKeys(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="users:license_keys:get",
+                operation_id="customer_portal:license_keys:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "404", "422", "4XX", "5XX"],
+            error_status_codes=["404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.LicenseKeyWithActivations)
-        if utils.match_response(http_res, "401", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.UnauthorizedData)
-            raise models.Unauthorized(data=data)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -372,6 +378,7 @@ class PolarLicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.LicenseKeyWithActivations:
         r"""Get License Key
 
@@ -381,6 +388,7 @@ class PolarLicenseKeys(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -390,13 +398,13 @@ class PolarLicenseKeys(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersLicenseKeysGetRequest(
+        request = models.CustomerPortalLicenseKeysGetRequest(
             id=id,
         )
 
         req = self.build_request_async(
             method="GET",
-            path="/v1/users/license-keys/{id}",
+            path="/v1/customer-portal/license-keys/{id}",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -405,6 +413,7 @@ class PolarLicenseKeys(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -419,21 +428,18 @@ class PolarLicenseKeys(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="users:license_keys:get",
+                operation_id="customer_portal:license_keys:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["401", "404", "422", "4XX", "5XX"],
+            error_status_codes=["404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.LicenseKeyWithActivations)
-        if utils.match_response(http_res, "401", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.UnauthorizedData)
-            raise models.Unauthorized(data=data)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -462,6 +468,7 @@ class PolarLicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.ValidatedLicenseKey:
         r"""Validate License Key
 
@@ -471,6 +478,7 @@ class PolarLicenseKeys(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -486,7 +494,7 @@ class PolarLicenseKeys(BaseSDK):
 
         req = self.build_request(
             method="POST",
-            path="/v1/users/license-keys/validate",
+            path="/v1/customer-portal/license-keys/validate",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -495,6 +503,7 @@ class PolarLicenseKeys(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.LicenseKeyValidate
@@ -512,7 +521,7 @@ class PolarLicenseKeys(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="users:license_keys:validate",
+                operation_id="customer_portal:license_keys:validate",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -552,6 +561,7 @@ class PolarLicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.ValidatedLicenseKey:
         r"""Validate License Key
 
@@ -561,6 +571,7 @@ class PolarLicenseKeys(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -576,7 +587,7 @@ class PolarLicenseKeys(BaseSDK):
 
         req = self.build_request_async(
             method="POST",
-            path="/v1/users/license-keys/validate",
+            path="/v1/customer-portal/license-keys/validate",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -585,6 +596,7 @@ class PolarLicenseKeys(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.LicenseKeyValidate
@@ -602,7 +614,7 @@ class PolarLicenseKeys(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="users:license_keys:validate",
+                operation_id="customer_portal:license_keys:validate",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -642,6 +654,7 @@ class PolarLicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.LicenseKeyActivationRead:
         r"""Activate License Key
 
@@ -651,6 +664,7 @@ class PolarLicenseKeys(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -666,7 +680,7 @@ class PolarLicenseKeys(BaseSDK):
 
         req = self.build_request(
             method="POST",
-            path="/v1/users/license-keys/activate",
+            path="/v1/customer-portal/license-keys/activate",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -675,6 +689,7 @@ class PolarLicenseKeys(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.LicenseKeyActivate
@@ -692,7 +707,7 @@ class PolarLicenseKeys(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="users:license_keys:activate",
+                operation_id="customer_portal:license_keys:activate",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -735,6 +750,7 @@ class PolarLicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.LicenseKeyActivationRead:
         r"""Activate License Key
 
@@ -744,6 +760,7 @@ class PolarLicenseKeys(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -759,7 +776,7 @@ class PolarLicenseKeys(BaseSDK):
 
         req = self.build_request_async(
             method="POST",
-            path="/v1/users/license-keys/activate",
+            path="/v1/customer-portal/license-keys/activate",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -768,6 +785,7 @@ class PolarLicenseKeys(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.LicenseKeyActivate
@@ -785,7 +803,7 @@ class PolarLicenseKeys(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="users:license_keys:activate",
+                operation_id="customer_portal:license_keys:activate",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -830,6 +848,7 @@ class PolarLicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ):
         r"""Deactivate License Key
 
@@ -839,6 +858,7 @@ class PolarLicenseKeys(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -854,7 +874,7 @@ class PolarLicenseKeys(BaseSDK):
 
         req = self.build_request(
             method="POST",
-            path="/v1/users/license-keys/deactivate",
+            path="/v1/customer-portal/license-keys/deactivate",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -863,6 +883,7 @@ class PolarLicenseKeys(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.LicenseKeyDeactivate
@@ -880,7 +901,7 @@ class PolarLicenseKeys(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="users:license_keys:deactivate",
+                operation_id="customer_portal:license_keys:deactivate",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -922,6 +943,7 @@ class PolarLicenseKeys(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ):
         r"""Deactivate License Key
 
@@ -931,6 +953,7 @@ class PolarLicenseKeys(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -946,7 +969,7 @@ class PolarLicenseKeys(BaseSDK):
 
         req = self.build_request_async(
             method="POST",
-            path="/v1/users/license-keys/deactivate",
+            path="/v1/customer-portal/license-keys/deactivate",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -955,6 +978,7 @@ class PolarLicenseKeys(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.LicenseKeyDeactivate
@@ -972,7 +996,7 @@ class PolarLicenseKeys(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="users:license_keys:deactivate",
+                operation_id="customer_portal:license_keys:deactivate",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),

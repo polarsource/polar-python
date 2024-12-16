@@ -35,16 +35,15 @@ MetricsGetQueryParamProductIDFilter = TypeAliasType(
 r"""Filter by product ID."""
 
 
-MetricsGetQueryParamProductPriceTypeFilterTypedDict = TypeAliasType(
-    "MetricsGetQueryParamProductPriceTypeFilterTypedDict",
+QueryParamProductPriceTypeFilterTypedDict = TypeAliasType(
+    "QueryParamProductPriceTypeFilterTypedDict",
     Union[ProductPriceType, List[ProductPriceType]],
 )
 r"""Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
 
 
-MetricsGetQueryParamProductPriceTypeFilter = TypeAliasType(
-    "MetricsGetQueryParamProductPriceTypeFilter",
-    Union[ProductPriceType, List[ProductPriceType]],
+QueryParamProductPriceTypeFilter = TypeAliasType(
+    "QueryParamProductPriceTypeFilter", Union[ProductPriceType, List[ProductPriceType]]
 )
 r"""Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
 
@@ -62,9 +61,7 @@ class MetricsGetRequestTypedDict(TypedDict):
     r"""Filter by organization ID."""
     product_id: NotRequired[Nullable[MetricsGetQueryParamProductIDFilterTypedDict]]
     r"""Filter by product ID."""
-    product_price_type: NotRequired[
-        Nullable[MetricsGetQueryParamProductPriceTypeFilterTypedDict]
-    ]
+    product_price_type: NotRequired[Nullable[QueryParamProductPriceTypeFilterTypedDict]]
     r"""Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
 
 
@@ -97,7 +94,7 @@ class MetricsGetRequest(BaseModel):
     r"""Filter by product ID."""
 
     product_price_type: Annotated[
-        OptionalNullable[MetricsGetQueryParamProductPriceTypeFilter],
+        OptionalNullable[QueryParamProductPriceTypeFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""

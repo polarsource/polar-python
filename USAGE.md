@@ -6,15 +6,13 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.benefits.list()
 
-    if res is not None:
-        while True:
-            # handle items
+    res = polar.external_organizations.list()
 
-            res = res.next()
-            if res is None:
-                break
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 ```
 
 </br>
@@ -29,15 +27,13 @@ async def main():
     async with Polar(
         access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as polar:
-        res = await polar.users.benefits.list_async()
 
-        if res is not None:
-            while True:
-                # handle items
+        res = await polar.external_organizations.list_async()
 
-                res = res.next()
-                if res is None:
-                    break
+        while res is not None:
+            # Handle items
+
+            res = res.next()
 
 asyncio.run(main())
 ```

@@ -5,19 +5,23 @@ from .licensekeyactivationbase import (
     LicenseKeyActivationBase,
     LicenseKeyActivationBaseTypedDict,
 )
+from .licensekeycustomer import LicenseKeyCustomer, LicenseKeyCustomerTypedDict
 from .licensekeystatus import LicenseKeyStatus
 from .licensekeyuser import LicenseKeyUser, LicenseKeyUserTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class ValidatedLicenseKeyTypedDict(TypedDict):
     id: str
     organization_id: str
     user_id: str
+    customer_id: str
     user: LicenseKeyUserTypedDict
+    customer: LicenseKeyCustomerTypedDict
     benefit_id: str
     r"""The benefit ID."""
     key: str
@@ -37,9 +41,18 @@ class ValidatedLicenseKey(BaseModel):
 
     organization_id: str
 
-    user_id: str
+    user_id: Annotated[
+        str,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    customer_id: str
 
     user: LicenseKeyUser
+
+    customer: LicenseKeyCustomer
 
     benefit_id: str
     r"""The benefit ID."""

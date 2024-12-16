@@ -66,6 +66,8 @@ class CheckoutProductCreateTypedDict(TypedDict):
     allow_discount_codes: NotRequired[bool]
     r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
     amount: NotRequired[Nullable[int]]
+    customer_id: NotRequired[Nullable[str]]
+    r"""ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer."""
     customer_name: NotRequired[Nullable[str]]
     customer_email: NotRequired[Nullable[str]]
     customer_ip_address: NotRequired[Nullable[str]]
@@ -124,6 +126,9 @@ class CheckoutProductCreate(BaseModel):
 
     amount: OptionalNullable[int] = UNSET
 
+    customer_id: OptionalNullable[str] = UNSET
+    r"""ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer."""
+
     customer_name: OptionalNullable[str] = UNSET
 
     customer_email: OptionalNullable[str] = UNSET
@@ -151,6 +156,7 @@ class CheckoutProductCreate(BaseModel):
             "discount_id",
             "allow_discount_codes",
             "amount",
+            "customer_id",
             "customer_name",
             "customer_email",
             "customer_ip_address",
@@ -163,6 +169,7 @@ class CheckoutProductCreate(BaseModel):
         nullable_fields = [
             "discount_id",
             "amount",
+            "customer_id",
             "customer_name",
             "customer_email",
             "customer_ip_address",

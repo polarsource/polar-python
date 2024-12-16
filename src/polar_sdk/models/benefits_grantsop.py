@@ -8,18 +8,28 @@ from .listresource_benefitgrant_ import (
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata
 from pydantic import model_serializer
-from typing import Callable, Optional
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing import Callable, List, Optional, Union
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+
+
+QueryParamCustomerIDFilterTypedDict = TypeAliasType(
+    "QueryParamCustomerIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by customer."""
+
+
+QueryParamCustomerIDFilter = TypeAliasType(
+    "QueryParamCustomerIDFilter", Union[str, List[str]]
+)
+r"""Filter by customer."""
 
 
 class BenefitsGrantsRequestTypedDict(TypedDict):
     id: str
     is_granted: NotRequired[Nullable[bool]]
     r"""Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned."""
-    user_id: NotRequired[Nullable[str]]
-    r"""Filter by user ID."""
-    github_user_id: NotRequired[Nullable[int]]
-    r"""Filter by GitHub user ID. Only available for users who have linked their GitHub account on Polar."""
+    customer_id: NotRequired[Nullable[QueryParamCustomerIDFilterTypedDict]]
+    r"""Filter by customer."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -37,17 +47,11 @@ class BenefitsGrantsRequest(BaseModel):
     ] = UNSET
     r"""Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned."""
 
-    user_id: Annotated[
-        OptionalNullable[str],
+    customer_id: Annotated[
+        OptionalNullable[QueryParamCustomerIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
-    r"""Filter by user ID."""
-
-    github_user_id: Annotated[
-        OptionalNullable[int],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = UNSET
-    r"""Filter by GitHub user ID. Only available for users who have linked their GitHub account on Polar."""
+    r"""Filter by customer."""
 
     page: Annotated[
         Optional[int],
@@ -63,8 +67,8 @@ class BenefitsGrantsRequest(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["is_granted", "user_id", "github_user_id", "page", "limit"]
-        nullable_fields = ["is_granted", "user_id", "github_user_id"]
+        optional_fields = ["is_granted", "customer_id", "page", "limit"]
+        nullable_fields = ["is_granted", "customer_id"]
         null_default_fields = []
 
         serialized = handler(self)

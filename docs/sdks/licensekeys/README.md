@@ -22,15 +22,13 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.license_keys.list()
 
-    if res is not None:
-        while True:
-            # handle items
+    while res is not None:
+        # Handle items
 
-            res = res.next()
-            if res is None:
-                break
+        res = res.next()
 
 ```
 
@@ -39,7 +37,7 @@ with Polar(
 | Parameter                                                                                                                               | Type                                                                                                                                    | Required                                                                                                                                | Description                                                                                                                             |
 | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `organization_id`                                                                                                                       | [OptionalNullable[models.LicenseKeysListQueryParamOrganizationIDFilter]](../../models/licensekeyslistqueryparamorganizationidfilter.md) | :heavy_minus_sign:                                                                                                                      | Filter by organization ID.                                                                                                              |
-| `benefit_id`                                                                                                                            | [OptionalNullable[models.LicenseKeysListQueryParamBenefitIDFilter]](../../models/licensekeyslistqueryparambenefitidfilter.md)           | :heavy_minus_sign:                                                                                                                      | Filter by benefit ID.                                                                                                                   |
+| `benefit_id`                                                                                                                            | [OptionalNullable[models.QueryParamBenefitIDFilter]](../../models/queryparambenefitidfilter.md)                                         | :heavy_minus_sign:                                                                                                                      | Filter by benefit ID.                                                                                                                   |
 | `page`                                                                                                                                  | *Optional[int]*                                                                                                                         | :heavy_minus_sign:                                                                                                                      | Page number, defaults to 1.                                                                                                             |
 | `limit`                                                                                                                                 | *Optional[int]*                                                                                                                         | :heavy_minus_sign:                                                                                                                      | Size of a page, defaults to 10. Maximum is 100.                                                                                         |
 | `retries`                                                                                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                        | :heavy_minus_sign:                                                                                                                      | Configuration to override the default retry behavior of the client.                                                                     |
@@ -69,11 +67,11 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.license_keys.get(id="<value>")
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -109,11 +107,11 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.license_keys.update(id="<value>", license_key_update={})
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -150,11 +148,11 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.license_keys.get_activation(id="<value>", activation_id="<value>")
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 

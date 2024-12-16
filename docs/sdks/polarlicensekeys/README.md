@@ -1,5 +1,5 @@
 # PolarLicenseKeys
-(*users.license_keys*)
+(*customer_portal.license_keys*)
 
 ## Overview
 
@@ -23,31 +23,29 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.license_keys.list()
 
-    if res is not None:
-        while True:
-            # handle items
+    res = polar.customer_portal.license_keys.list()
 
-            res = res.next()
-            if res is None:
-                break
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                         | Type                                                                                                                                              | Required                                                                                                                                          | Description                                                                                                                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `organization_id`                                                                                                                                 | [OptionalNullable[models.UsersLicenseKeysListQueryParamOrganizationIDFilter]](../../models/userslicensekeyslistqueryparamorganizationidfilter.md) | :heavy_minus_sign:                                                                                                                                | Filter by organization ID.                                                                                                                        |
-| `benefit_id`                                                                                                                                      | *OptionalNullable[str]*                                                                                                                           | :heavy_minus_sign:                                                                                                                                | Filter by a specific benefit                                                                                                                      |
-| `page`                                                                                                                                            | *Optional[int]*                                                                                                                                   | :heavy_minus_sign:                                                                                                                                | Page number, defaults to 1.                                                                                                                       |
-| `limit`                                                                                                                                           | *Optional[int]*                                                                                                                                   | :heavy_minus_sign:                                                                                                                                | Size of a page, defaults to 10. Maximum is 100.                                                                                                   |
-| `retries`                                                                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                  | :heavy_minus_sign:                                                                                                                                | Configuration to override the default retry behavior of the client.                                                                               |
+| Parameter                                                                                                                                                           | Type                                                                                                                                                                | Required                                                                                                                                                            | Description                                                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `organization_id`                                                                                                                                                   | [OptionalNullable[models.CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter]](../../models/customerportallicensekeyslistqueryparamorganizationidfilter.md) | :heavy_minus_sign:                                                                                                                                                  | Filter by organization ID.                                                                                                                                          |
+| `benefit_id`                                                                                                                                                        | *OptionalNullable[str]*                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                  | Filter by a specific benefit                                                                                                                                        |
+| `page`                                                                                                                                                              | *Optional[int]*                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                  | Page number, defaults to 1.                                                                                                                                         |
+| `limit`                                                                                                                                                             | *Optional[int]*                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                  | Size of a page, defaults to 10. Maximum is 100.                                                                                                                     |
+| `retries`                                                                                                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                    | :heavy_minus_sign:                                                                                                                                                  | Configuration to override the default retry behavior of the client.                                                                                                 |
 
 ### Response
 
-**[models.UsersLicenseKeysListResponse](../../models/userslicensekeyslistresponse.md)**
+**[models.CustomerPortalLicenseKeysListResponse](../../models/customerportallicensekeyslistresponse.md)**
 
 ### Errors
 
@@ -70,11 +68,11 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.license_keys.get(id="<value>")
 
-    if res is not None:
-        # handle response
-        pass
+    res = polar.customer_portal.license_keys.get(id="<value>")
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -93,7 +91,6 @@ with Polar(
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
-| models.Unauthorized        | 401                        | application/json           |
 | models.ResourceNotFound    | 404                        | application/json           |
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
@@ -110,14 +107,14 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.license_keys.validate(request={
+
+    res = polar.customer_portal.license_keys.validate(request={
         "key": "<key>",
         "organization_id": "<value>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -152,15 +149,15 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.license_keys.activate(request={
+
+    res = polar.customer_portal.license_keys.activate(request={
         "key": "<key>",
         "organization_id": "<value>",
         "label": "<value>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -196,7 +193,8 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    polar.users.license_keys.deactivate(request={
+
+    polar.customer_portal.license_keys.deactivate(request={
         "key": "<key>",
         "organization_id": "<value>",
         "activation_id": "<value>",

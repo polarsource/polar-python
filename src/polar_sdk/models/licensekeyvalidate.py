@@ -20,7 +20,7 @@ class LicenseKeyValidateTypedDict(TypedDict):
     organization_id: str
     activation_id: NotRequired[Nullable[str]]
     benefit_id: NotRequired[Nullable[str]]
-    user_id: NotRequired[Nullable[str]]
+    customer_id: NotRequired[Nullable[str]]
     increment_usage: NotRequired[Nullable[int]]
     conditions: NotRequired[ConditionsTypedDict]
 
@@ -34,7 +34,7 @@ class LicenseKeyValidate(BaseModel):
 
     benefit_id: OptionalNullable[str] = UNSET
 
-    user_id: OptionalNullable[str] = UNSET
+    customer_id: OptionalNullable[str] = UNSET
 
     increment_usage: OptionalNullable[int] = UNSET
 
@@ -45,11 +45,16 @@ class LicenseKeyValidate(BaseModel):
         optional_fields = [
             "activation_id",
             "benefit_id",
-            "user_id",
+            "customer_id",
             "increment_usage",
             "conditions",
         ]
-        nullable_fields = ["activation_id", "benefit_id", "user_id", "increment_usage"]
+        nullable_fields = [
+            "activation_id",
+            "benefit_id",
+            "customer_id",
+            "increment_usage",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

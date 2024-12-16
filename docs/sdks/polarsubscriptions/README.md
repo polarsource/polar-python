@@ -1,5 +1,5 @@
 # PolarSubscriptions
-(*users.subscriptions*)
+(*customer_portal.subscriptions*)
 
 ## Overview
 
@@ -12,7 +12,7 @@
 
 ## list
 
-List my subscriptions.
+List subscriptions of the authenticated customer or user.
 
 ### Example Usage
 
@@ -22,15 +22,13 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.subscriptions.list()
 
-    if res is not None:
-        while True:
-            # handle items
+    res = polar.customer_portal.subscriptions.list()
 
-            res = res.next()
-            if res is None:
-                break
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 
@@ -38,18 +36,18 @@ with Polar(
 
 | Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `organization_id`                                                                                                                                                       | [OptionalNullable[models.UsersSubscriptionsListQueryParamOrganizationIDFilter]](../../models/userssubscriptionslistqueryparamorganizationidfilter.md)                   | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
-| `product_id`                                                                                                                                                            | [OptionalNullable[models.QueryParamProductIDFilter]](../../models/queryparamproductidfilter.md)                                                                         | :heavy_minus_sign:                                                                                                                                                      | Filter by product ID.                                                                                                                                                   |
+| `organization_id`                                                                                                                                                       | [OptionalNullable[models.CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter]](../../models/customerportalsubscriptionslistqueryparamorganizationidfilter.md) | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
+| `product_id`                                                                                                                                                            | [OptionalNullable[models.CustomerPortalSubscriptionsListQueryParamProductIDFilter]](../../models/customerportalsubscriptionslistqueryparamproductidfilter.md)           | :heavy_minus_sign:                                                                                                                                                      | Filter by product ID.                                                                                                                                                   |
 | `active`                                                                                                                                                                | *OptionalNullable[bool]*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                      | Filter by active or cancelled subscription.                                                                                                                             |
 | `query`                                                                                                                                                                 | *OptionalNullable[str]*                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                      | Search by product or organization name.                                                                                                                                 |
 | `page`                                                                                                                                                                  | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |
 | `limit`                                                                                                                                                                 | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Size of a page, defaults to 10. Maximum is 100.                                                                                                                         |
-| `sorting`                                                                                                                                                               | List[[models.UserSubscriptionSortProperty](../../models/usersubscriptionsortproperty.md)]                                                                               | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
+| `sorting`                                                                                                                                                               | List[[models.CustomerSubscriptionSortProperty](../../models/customersubscriptionsortproperty.md)]                                                                       | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
 | `retries`                                                                                                                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                        | :heavy_minus_sign:                                                                                                                                                      | Configuration to override the default retry behavior of the client.                                                                                                     |
 
 ### Response
 
-**[models.UsersSubscriptionsListResponse](../../models/userssubscriptionslistresponse.md)**
+**[models.CustomerPortalSubscriptionsListResponse](../../models/customerportalsubscriptionslistresponse.md)**
 
 ### Errors
 
@@ -60,7 +58,7 @@ with Polar(
 
 ## get
 
-Get a subscription by ID.
+Get a subscription for the authenticated customer or user.
 
 ### Example Usage
 
@@ -70,11 +68,11 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.subscriptions.get(id="<value>")
 
-    if res is not None:
-        # handle response
-        pass
+    res = polar.customer_portal.subscriptions.get(id="<value>")
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -87,7 +85,7 @@ with Polar(
 
 ### Response
 
-**[models.UserSubscription](../../models/usersubscription.md)**
+**[models.CustomerSubscription](../../models/customersubscription.md)**
 
 ### Errors
 
@@ -99,7 +97,7 @@ with Polar(
 
 ## update
 
-Update a subscription.
+Update a subscription of the authenticated customer or user.
 
 ### Example Usage
 
@@ -109,27 +107,27 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.subscriptions.update(id="<value>", user_subscription_update={
+
+    res = polar.customer_portal.subscriptions.update(id="<value>", customer_subscription_update={
         "product_price_id": "<value>",
     })
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
 ### Parameters
 
-| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `id`                                                                    | *str*                                                                   | :heavy_check_mark:                                                      | The subscription ID.                                                    |
-| `user_subscription_update`                                              | [models.UserSubscriptionUpdate](../../models/usersubscriptionupdate.md) | :heavy_check_mark:                                                      | N/A                                                                     |
-| `retries`                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)        | :heavy_minus_sign:                                                      | Configuration to override the default retry behavior of the client.     |
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `id`                                                                            | *str*                                                                           | :heavy_check_mark:                                                              | The subscription ID.                                                            |
+| `customer_subscription_update`                                                  | [models.CustomerSubscriptionUpdate](../../models/customersubscriptionupdate.md) | :heavy_check_mark:                                                              | N/A                                                                             |
+| `retries`                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                              | Configuration to override the default retry behavior of the client.             |
 
 ### Response
 
-**[models.UserSubscription](../../models/usersubscription.md)**
+**[models.CustomerSubscription](../../models/customersubscription.md)**
 
 ### Errors
 
@@ -141,7 +139,7 @@ with Polar(
 
 ## cancel
 
-Cancel a subscription.
+Cancel a subscription of the authenticated customer or user.
 
 ### Example Usage
 
@@ -151,11 +149,11 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.subscriptions.cancel(id="<value>")
 
-    if res is not None:
-        # handle response
-        pass
+    res = polar.customer_portal.subscriptions.cancel(id="<value>")
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -168,7 +166,7 @@ with Polar(
 
 ### Response
 
-**[models.UserSubscription](../../models/usersubscription.md)**
+**[models.CustomerSubscription](../../models/customersubscription.md)**
 
 ### Errors
 

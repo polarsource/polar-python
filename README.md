@@ -51,45 +51,46 @@ import polar_sdk
 from polar_sdk import Polar
 
 with Polar() as polar:
-    res = polar.endpointcheckout_created_post(request={
-        "data": {
-            "created_at": dateutil.parser.isoparse("2024-11-12T14:26:42.882Z"),
-            "modified_at": dateutil.parser.isoparse("2023-05-28T05:08:06.235Z"),
-            "id": "<value>",
-            "status": polar_sdk.CheckoutStatus.FAILED,
-            "client_secret": "<value>",
-            "url": "https://heavy-beret.com/",
-            "expires_at": dateutil.parser.isoparse("2022-02-25T02:26:48.460Z"),
-            "success_url": "https://sardonic-final.info/",
-            "embed_origin": "<value>",
-            "amount": 962818,
-            "tax_amount": 6400,
-            "currency": "Yen",
-            "subtotal_amount": 648726,
-            "total_amount": 210702,
-            "product_id": "<value>",
-            "product_price_id": "<value>",
-            "discount_id": "<value>",
-            "allow_discount_codes": True,
-            "is_discount_applicable": False,
-            "is_free_product_price": False,
-            "is_payment_required": False,
-            "is_payment_setup_required": False,
-            "is_payment_form_required": False,
-            "customer_id": "<value>",
-            "customer_name": "<value>",
-            "customer_email": "Ryley_Erdman@hotmail.com",
-            "customer_ip_address": "<value>",
-            "customer_billing_address": {
+
+    res = polar.endpointcheckout_created_post(request=polar_sdk.WebhookCheckoutCreatedPayload(
+        data=polar_sdk.Checkout(
+            created_at=dateutil.parser.isoparse("2024-11-12T14:26:42.882Z"),
+            modified_at=dateutil.parser.isoparse("2023-05-28T05:08:06.235Z"),
+            id="<value>",
+            status=polar_sdk.CheckoutStatus.FAILED,
+            client_secret="<value>",
+            url="https://heavy-beret.com/",
+            expires_at=dateutil.parser.isoparse("2022-02-25T02:26:48.460Z"),
+            success_url="https://sardonic-final.info/",
+            embed_origin="<value>",
+            amount=962818,
+            tax_amount=6400,
+            currency="Yen",
+            subtotal_amount=648726,
+            total_amount=210702,
+            product_id="<value>",
+            product_price_id="<value>",
+            discount_id="<value>",
+            allow_discount_codes=True,
+            is_discount_applicable=False,
+            is_free_product_price=False,
+            is_payment_required=False,
+            is_payment_setup_required=False,
+            is_payment_form_required=False,
+            customer_id="<value>",
+            customer_name="<value>",
+            customer_email="Ryley_Erdman@hotmail.com",
+            customer_ip_address="<value>",
+            customer_billing_address={
                 "country": "South Africa",
             },
-            "customer_tax_id": "<id>",
-            "payment_processor_metadata": {},
-            "metadata": {
+            customer_tax_id="<id>",
+            payment_processor_metadata={},
+            metadata={
                 "key": 18677,
                 "key1": 95370,
             },
-            "product": {
+            product={
                 "created_at": dateutil.parser.isoparse("2022-04-02T00:05:42.586Z"),
                 "modified_at": dateutil.parser.isoparse("2023-12-16T03:02:38.803Z"),
                 "id": "<value>",
@@ -147,7 +148,7 @@ with Polar() as polar:
                     },
                 ],
             },
-            "product_price": {
+            product_price={
                 "created_at": dateutil.parser.isoparse("2024-02-15T09:22:19.644Z"),
                 "modified_at": dateutil.parser.isoparse("2022-12-28T20:59:29.904Z"),
                 "id": "<value>",
@@ -161,7 +162,7 @@ with Polar() as polar:
                 "amount_type": polar_sdk.ProductPriceRecurringCustomAmountType.CUSTOM,
                 "type": polar_sdk.ProductPriceRecurringCustomType.RECURRING,
             },
-            "discount": {
+            discount={
                 "duration": polar_sdk.DiscountDuration.REPEATING,
                 "type": polar_sdk.DiscountType.FIXED,
                 "basis_points": 341163,
@@ -169,8 +170,8 @@ with Polar() as polar:
                 "name": "<value>",
                 "code": "<value>",
             },
-            "subscription_id": "<value>",
-            "attached_custom_fields": [
+            subscription_id="<value>",
+            attached_custom_fields=[
                 {
                     "custom_field_id": "<value>",
                     "custom_field": {
@@ -233,14 +234,13 @@ with Polar() as polar:
                     "required": True,
                 },
             ],
-            "payment_processor": polar_sdk.PaymentProcessor.STRIPE,
-        },
-        "type": polar_sdk.WebhookCheckoutCreatedPayloadType.CHECKOUT_CREATED,
-    })
+            payment_processor=polar_sdk.PaymentProcessor.STRIPE,
+        ),
+        type=polar_sdk.WebhookCheckoutCreatedPayloadType.CHECKOUT_CREATED,
+    ))
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 ```
 
 </br>
@@ -255,45 +255,46 @@ from polar_sdk import Polar
 
 async def main():
     async with Polar() as polar:
-        res = await polar.endpointcheckout_created_post_async(request={
-            "data": {
-                "created_at": dateutil.parser.isoparse("2024-11-12T14:26:42.882Z"),
-                "modified_at": dateutil.parser.isoparse("2023-05-28T05:08:06.235Z"),
-                "id": "<value>",
-                "status": polar_sdk.CheckoutStatus.FAILED,
-                "client_secret": "<value>",
-                "url": "https://heavy-beret.com/",
-                "expires_at": dateutil.parser.isoparse("2022-02-25T02:26:48.460Z"),
-                "success_url": "https://sardonic-final.info/",
-                "embed_origin": "<value>",
-                "amount": 962818,
-                "tax_amount": 6400,
-                "currency": "Yen",
-                "subtotal_amount": 648726,
-                "total_amount": 210702,
-                "product_id": "<value>",
-                "product_price_id": "<value>",
-                "discount_id": "<value>",
-                "allow_discount_codes": True,
-                "is_discount_applicable": False,
-                "is_free_product_price": False,
-                "is_payment_required": False,
-                "is_payment_setup_required": False,
-                "is_payment_form_required": False,
-                "customer_id": "<value>",
-                "customer_name": "<value>",
-                "customer_email": "Ryley_Erdman@hotmail.com",
-                "customer_ip_address": "<value>",
-                "customer_billing_address": {
+
+        res = await polar.endpointcheckout_created_post_async(request=polar_sdk.WebhookCheckoutCreatedPayload(
+            data=polar_sdk.Checkout(
+                created_at=dateutil.parser.isoparse("2024-11-12T14:26:42.882Z"),
+                modified_at=dateutil.parser.isoparse("2023-05-28T05:08:06.235Z"),
+                id="<value>",
+                status=polar_sdk.CheckoutStatus.FAILED,
+                client_secret="<value>",
+                url="https://heavy-beret.com/",
+                expires_at=dateutil.parser.isoparse("2022-02-25T02:26:48.460Z"),
+                success_url="https://sardonic-final.info/",
+                embed_origin="<value>",
+                amount=962818,
+                tax_amount=6400,
+                currency="Yen",
+                subtotal_amount=648726,
+                total_amount=210702,
+                product_id="<value>",
+                product_price_id="<value>",
+                discount_id="<value>",
+                allow_discount_codes=True,
+                is_discount_applicable=False,
+                is_free_product_price=False,
+                is_payment_required=False,
+                is_payment_setup_required=False,
+                is_payment_form_required=False,
+                customer_id="<value>",
+                customer_name="<value>",
+                customer_email="Ryley_Erdman@hotmail.com",
+                customer_ip_address="<value>",
+                customer_billing_address={
                     "country": "South Africa",
                 },
-                "customer_tax_id": "<id>",
-                "payment_processor_metadata": {},
-                "metadata": {
+                customer_tax_id="<id>",
+                payment_processor_metadata={},
+                metadata={
                     "key": 18677,
                     "key1": 95370,
                 },
-                "product": {
+                product={
                     "created_at": dateutil.parser.isoparse("2022-04-02T00:05:42.586Z"),
                     "modified_at": dateutil.parser.isoparse("2023-12-16T03:02:38.803Z"),
                     "id": "<value>",
@@ -351,7 +352,7 @@ async def main():
                         },
                     ],
                 },
-                "product_price": {
+                product_price={
                     "created_at": dateutil.parser.isoparse("2022-04-02T00:05:42.586Z"),
                     "modified_at": dateutil.parser.isoparse("2023-12-16T03:02:38.803Z"),
                     "id": "<value>",
@@ -362,7 +363,7 @@ async def main():
                     "amount_type": polar_sdk.ProductPriceOneTimeFixedAmountType.FIXED,
                     "type": polar_sdk.ProductPriceOneTimeFixedType.ONE_TIME,
                 },
-                "discount": {
+                discount={
                     "duration": polar_sdk.DiscountDuration.REPEATING,
                     "type": polar_sdk.DiscountType.FIXED,
                     "basis_points": 341163,
@@ -370,8 +371,8 @@ async def main():
                     "name": "<value>",
                     "code": "<value>",
                 },
-                "subscription_id": "<value>",
-                "attached_custom_fields": [
+                subscription_id="<value>",
+                attached_custom_fields=[
                     {
                         "custom_field_id": "<value>",
                         "custom_field": {
@@ -434,14 +435,13 @@ async def main():
                         "required": True,
                     },
                 ],
-                "payment_processor": polar_sdk.PaymentProcessor.STRIPE,
-            },
-            "type": polar_sdk.WebhookCheckoutCreatedPayloadType.CHECKOUT_CREATED,
-        })
+                payment_processor=polar_sdk.PaymentProcessor.STRIPE,
+            ),
+            type=polar_sdk.WebhookCheckoutCreatedPayloadType.CHECKOUT_CREATED,
+        ))
 
-        if res is not None:
-            # handle response
-            pass
+        # Handle response
+        print(res)
 
 asyncio.run(main())
 ```
@@ -524,6 +524,57 @@ def webhook():
 * [update](docs/sdks/customfields/README.md#update) - Update Custom Field
 * [delete](docs/sdks/customfields/README.md#delete) - Delete Custom Field
 
+### [customer_portal](docs/sdks/customerportal/README.md)
+
+
+#### [customer_portal.benefit_grants](docs/sdks/benefitgrants/README.md)
+
+* [list](docs/sdks/benefitgrants/README.md#list) - List Benefit Grants
+* [get](docs/sdks/benefitgrants/README.md#get) - Get Benefit Grant
+* [update](docs/sdks/benefitgrants/README.md#update) - Update Benefit Grant
+
+#### [customer_portal.customers](docs/sdks/polarcustomers/README.md)
+
+* [get](docs/sdks/polarcustomers/README.md#get) - Get Customer
+
+#### [customer_portal.downloadables](docs/sdks/downloadables/README.md)
+
+* [list](docs/sdks/downloadables/README.md#list) - List Downloadables
+* [get](docs/sdks/downloadables/README.md#get) - Get Downloadable
+
+#### [customer_portal.license_keys](docs/sdks/polarlicensekeys/README.md)
+
+* [list](docs/sdks/polarlicensekeys/README.md#list) - List License Keys
+* [get](docs/sdks/polarlicensekeys/README.md#get) - Get License Key
+* [validate](docs/sdks/polarlicensekeys/README.md#validate) - Validate License Key
+* [activate](docs/sdks/polarlicensekeys/README.md#activate) - Activate License Key
+* [deactivate](docs/sdks/polarlicensekeys/README.md#deactivate) - Deactivate License Key
+
+#### [customer_portal.orders](docs/sdks/polarorders/README.md)
+
+* [list](docs/sdks/polarorders/README.md#list) - List Orders
+* [get](docs/sdks/polarorders/README.md#get) - Get Order
+* [invoice](docs/sdks/polarorders/README.md#invoice) - Get Order Invoice
+
+#### [customer_portal.organizations](docs/sdks/polarorganizations/README.md)
+
+* [get](docs/sdks/polarorganizations/README.md#get) - Get Organization
+
+#### [customer_portal.subscriptions](docs/sdks/polarsubscriptions/README.md)
+
+* [list](docs/sdks/polarsubscriptions/README.md#list) - List Subscriptions
+* [get](docs/sdks/polarsubscriptions/README.md#get) - Get Subscription
+* [update](docs/sdks/polarsubscriptions/README.md#update) - Update Subscription
+* [cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
+
+### [customers](docs/sdks/customers/README.md)
+
+* [list](docs/sdks/customers/README.md#list) - List Customers
+* [create](docs/sdks/customers/README.md#create) - Create Customer
+* [get](docs/sdks/customers/README.md#get) - Get Customer
+* [update](docs/sdks/customers/README.md#update) - Update Customer
+* [delete](docs/sdks/customers/README.md#delete) - Delete Customer
+
 ### [discounts](docs/sdks/discounts/README.md)
 
 * [list](docs/sdks/discounts/README.md#list) - List Discounts
@@ -605,49 +656,6 @@ def webhook():
 * [list](docs/sdks/subscriptions/README.md#list) - List Subscriptions
 * [export](docs/sdks/subscriptions/README.md#export) - Export Subscriptions
 
-### [users](docs/sdks/users/README.md)
-
-
-#### [users.advertisements](docs/sdks/polaradvertisements/README.md)
-
-* [list](docs/sdks/polaradvertisements/README.md#list) - List Advertisements
-* [create](docs/sdks/polaradvertisements/README.md#create) - Create Advertisement
-* [get](docs/sdks/polaradvertisements/README.md#get) - Get Advertisement
-* [update](docs/sdks/polaradvertisements/README.md#update) - Update Advertisement
-* [delete](docs/sdks/polaradvertisements/README.md#delete) - Delete Advertisement
-* [enable](docs/sdks/polaradvertisements/README.md#enable) - Enable Advertisement
-
-#### [users.benefits](docs/sdks/polarbenefits/README.md)
-
-* [list](docs/sdks/polarbenefits/README.md#list) - List Benefits
-* [get](docs/sdks/polarbenefits/README.md#get) - Get Benefit
-
-#### [users.downloadables](docs/sdks/downloadables/README.md)
-
-* [list](docs/sdks/downloadables/README.md#list) - List Downloadables
-* [get](docs/sdks/downloadables/README.md#get) - Get Downloadable
-
-#### [users.license_keys](docs/sdks/polarlicensekeys/README.md)
-
-* [list](docs/sdks/polarlicensekeys/README.md#list) - List License Keys
-* [get](docs/sdks/polarlicensekeys/README.md#get) - Get License Key
-* [validate](docs/sdks/polarlicensekeys/README.md#validate) - Validate License Key
-* [activate](docs/sdks/polarlicensekeys/README.md#activate) - Activate License Key
-* [deactivate](docs/sdks/polarlicensekeys/README.md#deactivate) - Deactivate License Key
-
-#### [users.orders](docs/sdks/polarorders/README.md)
-
-* [list](docs/sdks/polarorders/README.md#list) - List Orders
-* [get](docs/sdks/polarorders/README.md#get) - Get Order
-* [invoice](docs/sdks/polarorders/README.md#invoice) - Get Order Invoice
-
-#### [users.subscriptions](docs/sdks/polarsubscriptions/README.md)
-
-* [list](docs/sdks/polarsubscriptions/README.md#list) - List Subscriptions
-* [get](docs/sdks/polarsubscriptions/README.md#get) - Get Subscription
-* [update](docs/sdks/polarsubscriptions/README.md#update) - Update Subscription
-* [cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
-
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
@@ -664,16 +672,14 @@ from polar_sdk.utils import BackoffStrategy, RetryConfig
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.benefits.list(,
+
+    res = polar.external_organizations.list(,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-    if res is not None:
-        while True:
-            # handle items
+    while res is not None:
+        # Handle items
 
-            res = res.next()
-            if res is None:
-                break
+        res = res.next()
 
 ```
 
@@ -686,15 +692,13 @@ with Polar(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.benefits.list()
 
-    if res is not None:
-        while True:
-            # handle items
+    res = polar.external_organizations.list()
 
-            res = res.next()
-            if res is None:
-                break
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 <!-- End Retries [retries] -->
@@ -730,15 +734,13 @@ with Polar(
 ) as polar:
     res = None
     try:
-        res = polar.users.benefits.list()
 
-        if res is not None:
-            while True:
-                # handle items
+        res = polar.external_organizations.list()
 
-                res = res.next()
-                if res is None:
-                    break
+        while res is not None:
+            # Handle items
+
+            res = res.next()
 
     except models.HTTPValidationError as e:
         # handle e.data: models.HTTPValidationErrorData
@@ -770,15 +772,13 @@ with Polar(
     server="sandbox",
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.benefits.list()
 
-    if res is not None:
-        while True:
-            # handle items
+    res = polar.external_organizations.list()
 
-            res = res.next()
-            if res is None:
-                break
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 
@@ -792,15 +792,13 @@ with Polar(
     server_url="https://api.polar.sh",
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.benefits.list()
 
-    if res is not None:
-        while True:
-            # handle items
+    res = polar.external_organizations.list()
 
-            res = res.next()
-            if res is None:
-                break
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 <!-- End Server Selection [server] -->
@@ -904,15 +902,13 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.benefits.list()
 
-    if res is not None:
-        while True:
-            # handle items
+    res = polar.external_organizations.list()
 
-            res = res.next()
-            if res is None:
-                break
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 <!-- End Authentication [security] -->
@@ -946,15 +942,13 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
-    res = polar.users.benefits.list()
 
-    if res is not None:
-        while True:
-            # handle items
+    res = polar.external_organizations.list()
 
-            res = res.next()
-            if res is None:
-                break
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 <!-- End Pagination [pagination] -->
