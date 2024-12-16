@@ -5,7 +5,7 @@ from jsonpath import JSONPath
 from polar_sdk import models, utils
 from polar_sdk._hooks import HookContext
 from polar_sdk.types import BaseModel, OptionalNullable, UNSET
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict, List, Mapping, Optional, Union, cast
 
 
 class Custom(BaseSDK):
@@ -30,6 +30,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[models.CheckoutsCustomListResponse]:
         r"""List Checkout Sessions
 
@@ -43,6 +44,7 @@ class Custom(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -71,6 +73,7 @@ class Custom(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -166,6 +169,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[models.CheckoutsCustomListResponse]:
         r"""List Checkout Sessions
 
@@ -179,6 +183,7 @@ class Custom(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -207,6 +212,7 @@ class Custom(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -288,6 +294,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Checkout:
         r"""Create Checkout Session
 
@@ -297,6 +304,7 @@ class Custom(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -321,6 +329,7 @@ class Custom(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.CheckoutCreate
@@ -375,6 +384,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Checkout:
         r"""Create Checkout Session
 
@@ -384,6 +394,7 @@ class Custom(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -408,6 +419,7 @@ class Custom(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.CheckoutCreate
@@ -462,6 +474,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Checkout:
         r"""Get Checkout Session
 
@@ -471,6 +484,7 @@ class Custom(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -495,6 +509,7 @@ class Custom(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -549,6 +564,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Checkout:
         r"""Get Checkout Session
 
@@ -558,6 +574,7 @@ class Custom(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -582,6 +599,7 @@ class Custom(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -637,6 +655,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Checkout:
         r"""Update Checkout Session
 
@@ -647,6 +666,7 @@ class Custom(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -674,6 +694,7 @@ class Custom(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.checkout_update, False, False, "json", models.CheckoutUpdate
@@ -732,6 +753,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Checkout:
         r"""Update Checkout Session
 
@@ -742,6 +764,7 @@ class Custom(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -769,6 +792,7 @@ class Custom(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.checkout_update, False, False, "json", models.CheckoutUpdate
@@ -826,6 +850,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.CheckoutPublic:
         r"""Get Checkout Session from Client
 
@@ -835,6 +860,7 @@ class Custom(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -859,6 +885,7 @@ class Custom(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -913,6 +940,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.CheckoutPublic:
         r"""Get Checkout Session from Client
 
@@ -922,6 +950,7 @@ class Custom(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -946,6 +975,7 @@ class Custom(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -1003,6 +1033,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.CheckoutPublic:
         r"""Update Checkout Session from Client
 
@@ -1013,6 +1044,7 @@ class Custom(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1040,6 +1072,7 @@ class Custom(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.checkout_update_public,
@@ -1104,6 +1137,7 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.CheckoutPublic:
         r"""Update Checkout Session from Client
 
@@ -1114,6 +1148,7 @@ class Custom(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1141,6 +1176,7 @@ class Custom(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.checkout_update_public,
@@ -1205,7 +1241,8 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.CheckoutPublic:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.CheckoutPublicConfirmed:
         r"""Confirm Checkout Session from Client
 
         Confirm a checkout session by client secret.
@@ -1217,6 +1254,7 @@ class Custom(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1244,6 +1282,7 @@ class Custom(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.checkout_confirm_stripe,
@@ -1276,7 +1315,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.CheckoutPublic)
+            return utils.unmarshal_json(http_res.text, models.CheckoutPublicConfirmed)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -1308,7 +1347,8 @@ class Custom(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.CheckoutPublic:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.CheckoutPublicConfirmed:
         r"""Confirm Checkout Session from Client
 
         Confirm a checkout session by client secret.
@@ -1320,6 +1360,7 @@ class Custom(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1347,6 +1388,7 @@ class Custom(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.checkout_confirm_stripe,
@@ -1379,7 +1421,7 @@ class Custom(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.CheckoutPublic)
+            return utils.unmarshal_json(http_res.text, models.CheckoutPublicConfirmed)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)

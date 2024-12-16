@@ -19,14 +19,16 @@ from .discountpercentagerepeatdurationbase import (
 )
 from .product import Product, ProductTypedDict
 from .productpricerecurring import ProductPriceRecurring, ProductPriceRecurringTypedDict
+from .subscriptioncustomer import SubscriptionCustomer, SubscriptionCustomerTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptionstatus import SubscriptionStatus
 from .subscriptionuser import SubscriptionUser, SubscriptionUserTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
 from typing import Dict, Optional, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 MetadataTypedDict = TypeAliasType("MetadataTypedDict", Union[str, int, bool])
@@ -81,12 +83,14 @@ class SubscriptionTypedDict(TypedDict):
     cancel_at_period_end: bool
     started_at: Nullable[datetime]
     ended_at: Nullable[datetime]
-    user_id: str
+    customer_id: str
     product_id: str
     price_id: str
     discount_id: Nullable[str]
     checkout_id: Nullable[str]
     metadata: Dict[str, MetadataTypedDict]
+    customer: SubscriptionCustomerTypedDict
+    user_id: str
     user: SubscriptionUserTypedDict
     product: ProductTypedDict
     r"""A product."""
@@ -124,7 +128,7 @@ class Subscription(BaseModel):
 
     ended_at: Nullable[datetime]
 
-    user_id: str
+    customer_id: str
 
     product_id: str
 
@@ -135,6 +139,15 @@ class Subscription(BaseModel):
     checkout_id: Nullable[str]
 
     metadata: Dict[str, Metadata]
+
+    customer: SubscriptionCustomer
+
+    user_id: Annotated[
+        str,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
 
     user: SubscriptionUser
 

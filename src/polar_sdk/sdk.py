@@ -13,6 +13,8 @@ from polar_sdk.benefits import Benefits
 from polar_sdk.checkout_links import CheckoutLinks
 from polar_sdk.checkouts import Checkouts
 from polar_sdk.custom_fields import CustomFields
+from polar_sdk.customer_portal import CustomerPortal
+from polar_sdk.customers import Customers
 from polar_sdk.discounts import Discounts
 from polar_sdk.external_organizations import ExternalOrganizations
 from polar_sdk.files import Files
@@ -25,7 +27,6 @@ from polar_sdk.products import Products
 from polar_sdk.repositories import Repositories
 from polar_sdk.subscriptions import Subscriptions
 from polar_sdk.types import OptionalNullable, UNSET
-from polar_sdk.users import Users
 from typing import Any, Callable, Dict, Optional, Union
 
 
@@ -35,7 +36,6 @@ class Polar(BaseSDK):
     Read the docs at https://docs.polar.sh/api
     """
 
-    users: Users
     external_organizations: ExternalOrganizations
     repositories: Repositories
     organizations: Organizations
@@ -52,6 +52,8 @@ class Polar(BaseSDK):
     checkout_links: CheckoutLinks
     custom_fields: CustomFields
     discounts: Discounts
+    customers: Customers
+    customer_portal: CustomerPortal
 
     def __init__(
         self,
@@ -132,7 +134,6 @@ class Polar(BaseSDK):
         self._init_sdks()
 
     def _init_sdks(self):
-        self.users = Users(self.sdk_configuration)
         self.external_organizations = ExternalOrganizations(self.sdk_configuration)
         self.repositories = Repositories(self.sdk_configuration)
         self.organizations = Organizations(self.sdk_configuration)
@@ -149,6 +150,8 @@ class Polar(BaseSDK):
         self.checkout_links = CheckoutLinks(self.sdk_configuration)
         self.custom_fields = CustomFields(self.sdk_configuration)
         self.discounts = Discounts(self.sdk_configuration)
+        self.customers = Customers(self.sdk_configuration)
+        self.customer_portal = CustomerPortal(self.sdk_configuration)
 
     def __enter__(self):
         return self

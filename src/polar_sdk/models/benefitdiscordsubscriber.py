@@ -5,10 +5,6 @@ from .benefitdiscordsubscriberproperties import (
     BenefitDiscordSubscriberProperties,
     BenefitDiscordSubscriberPropertiesTypedDict,
 )
-from .benefitgrantsubscriber import (
-    BenefitGrantSubscriber,
-    BenefitGrantSubscriberTypedDict,
-)
 from .organization import Organization, OrganizationTypedDict
 from datetime import datetime
 from enum import Enum
@@ -17,7 +13,6 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import List
 from typing_extensions import Annotated, TypedDict
 
 
@@ -40,7 +35,6 @@ class BenefitDiscordSubscriberTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
-    grants: List[BenefitGrantSubscriberTypedDict]
     organization: OrganizationTypedDict
     properties: BenefitDiscordSubscriberPropertiesTypedDict
     r"""Properties available to subscribers for a benefit of type `discord`."""
@@ -68,8 +62,6 @@ class BenefitDiscordSubscriber(BaseModel):
 
     organization_id: str
     r"""The ID of the organization owning the benefit."""
-
-    grants: List[BenefitGrantSubscriber]
 
     organization: Organization
 

@@ -5,7 +5,7 @@ from jsonpath import JSONPath
 from polar_sdk import models, utils
 from polar_sdk._hooks import HookContext
 from polar_sdk.types import OptionalNullable, UNSET
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Mapping, Optional, Union
 
 
 class PolarOrders(BaseSDK):
@@ -14,15 +14,21 @@ class PolarOrders(BaseSDK):
         *,
         organization_id: OptionalNullable[
             Union[
-                models.QueryParamOrganizationIDFilter,
-                models.QueryParamOrganizationIDFilterTypedDict,
+                models.CustomerPortalOrdersListQueryParamOrganizationIDFilter,
+                models.CustomerPortalOrdersListQueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
         product_id: OptionalNullable[
-            Union[models.ProductIDFilter, models.ProductIDFilterTypedDict]
+            Union[
+                models.CustomerPortalOrdersListQueryParamProductIDFilter,
+                models.CustomerPortalOrdersListQueryParamProductIDFilterTypedDict,
+            ]
         ] = UNSET,
         product_price_type: OptionalNullable[
-            Union[models.ProductPriceTypeFilter, models.ProductPriceTypeFilterTypedDict]
+            Union[
+                models.CustomerPortalOrdersListQueryParamProductPriceTypeFilter,
+                models.CustomerPortalOrdersListQueryParamProductPriceTypeFilterTypedDict,
+            ]
         ] = UNSET,
         subscription_id: OptionalNullable[
             Union[
@@ -33,14 +39,15 @@ class PolarOrders(BaseSDK):
         query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
-        sorting: OptionalNullable[List[models.UserOrderSortProperty]] = UNSET,
+        sorting: OptionalNullable[List[models.CustomerOrderSortProperty]] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UsersOrdersListResponse]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.CustomerPortalOrdersListResponse]:
         r"""List Orders
 
-        List my orders.
+        List orders of the authenticated customer or user.
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
@@ -53,6 +60,7 @@ class PolarOrders(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -62,7 +70,7 @@ class PolarOrders(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersOrdersListRequest(
+        request = models.CustomerPortalOrdersListRequest(
             organization_id=organization_id,
             product_id=product_id,
             product_price_type=product_price_type,
@@ -75,7 +83,7 @@ class PolarOrders(BaseSDK):
 
         req = self.build_request(
             method="GET",
-            path="/v1/users/orders/",
+            path="/v1/customer-portal/orders/",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -84,6 +92,7 @@ class PolarOrders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -98,7 +107,7 @@ class PolarOrders(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="users:orders:list",
+                operation_id="customer_portal:orders:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -107,7 +116,7 @@ class PolarOrders(BaseSDK):
             retry_config=retry_config,
         )
 
-        def next_func() -> Optional[models.UsersOrdersListResponse]:
+        def next_func() -> Optional[models.CustomerPortalOrdersListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
@@ -139,9 +148,9 @@ class PolarOrders(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.UsersOrdersListResponse(
+            return models.CustomerPortalOrdersListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, models.ListResourceUserOrder
+                    http_res.text, models.ListResourceCustomerOrder
                 ),
                 next=next_func,
             )
@@ -168,15 +177,21 @@ class PolarOrders(BaseSDK):
         *,
         organization_id: OptionalNullable[
             Union[
-                models.QueryParamOrganizationIDFilter,
-                models.QueryParamOrganizationIDFilterTypedDict,
+                models.CustomerPortalOrdersListQueryParamOrganizationIDFilter,
+                models.CustomerPortalOrdersListQueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
         product_id: OptionalNullable[
-            Union[models.ProductIDFilter, models.ProductIDFilterTypedDict]
+            Union[
+                models.CustomerPortalOrdersListQueryParamProductIDFilter,
+                models.CustomerPortalOrdersListQueryParamProductIDFilterTypedDict,
+            ]
         ] = UNSET,
         product_price_type: OptionalNullable[
-            Union[models.ProductPriceTypeFilter, models.ProductPriceTypeFilterTypedDict]
+            Union[
+                models.CustomerPortalOrdersListQueryParamProductPriceTypeFilter,
+                models.CustomerPortalOrdersListQueryParamProductPriceTypeFilterTypedDict,
+            ]
         ] = UNSET,
         subscription_id: OptionalNullable[
             Union[
@@ -187,14 +202,15 @@ class PolarOrders(BaseSDK):
         query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
-        sorting: OptionalNullable[List[models.UserOrderSortProperty]] = UNSET,
+        sorting: OptionalNullable[List[models.CustomerOrderSortProperty]] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UsersOrdersListResponse]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.CustomerPortalOrdersListResponse]:
         r"""List Orders
 
-        List my orders.
+        List orders of the authenticated customer or user.
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
@@ -207,6 +223,7 @@ class PolarOrders(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -216,7 +233,7 @@ class PolarOrders(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersOrdersListRequest(
+        request = models.CustomerPortalOrdersListRequest(
             organization_id=organization_id,
             product_id=product_id,
             product_price_type=product_price_type,
@@ -229,7 +246,7 @@ class PolarOrders(BaseSDK):
 
         req = self.build_request_async(
             method="GET",
-            path="/v1/users/orders/",
+            path="/v1/customer-portal/orders/",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -238,6 +255,7 @@ class PolarOrders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -252,7 +270,7 @@ class PolarOrders(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="users:orders:list",
+                operation_id="customer_portal:orders:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -261,7 +279,7 @@ class PolarOrders(BaseSDK):
             retry_config=retry_config,
         )
 
-        def next_func() -> Optional[models.UsersOrdersListResponse]:
+        def next_func() -> Optional[models.CustomerPortalOrdersListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
@@ -293,9 +311,9 @@ class PolarOrders(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.UsersOrdersListResponse(
+            return models.CustomerPortalOrdersListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, models.ListResourceUserOrder
+                    http_res.text, models.ListResourceCustomerOrder
                 ),
                 next=next_func,
             )
@@ -324,15 +342,17 @@ class PolarOrders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.UserOrder:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.CustomerOrder:
         r"""Get Order
 
-        Get an order by ID.
+        Get an order by ID for the authenticated customer or user.
 
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -342,13 +362,13 @@ class PolarOrders(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersOrdersGetRequest(
+        request = models.CustomerPortalOrdersGetRequest(
             id=id,
         )
 
         req = self.build_request(
             method="GET",
-            path="/v1/users/orders/{id}",
+            path="/v1/customer-portal/orders/{id}",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -357,6 +377,7 @@ class PolarOrders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -371,7 +392,7 @@ class PolarOrders(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="users:orders:get",
+                operation_id="customer_portal:orders:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -382,7 +403,7 @@ class PolarOrders(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.UserOrder)
+            return utils.unmarshal_json(http_res.text, models.CustomerOrder)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -411,15 +432,17 @@ class PolarOrders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.UserOrder:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.CustomerOrder:
         r"""Get Order
 
-        Get an order by ID.
+        Get an order by ID for the authenticated customer or user.
 
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -429,13 +452,13 @@ class PolarOrders(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersOrdersGetRequest(
+        request = models.CustomerPortalOrdersGetRequest(
             id=id,
         )
 
         req = self.build_request_async(
             method="GET",
-            path="/v1/users/orders/{id}",
+            path="/v1/customer-portal/orders/{id}",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -444,6 +467,7 @@ class PolarOrders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -458,7 +482,7 @@ class PolarOrders(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="users:orders:get",
+                operation_id="customer_portal:orders:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -469,7 +493,7 @@ class PolarOrders(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.UserOrder)
+            return utils.unmarshal_json(http_res.text, models.CustomerOrder)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -498,7 +522,8 @@ class PolarOrders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.UserOrderInvoice:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.CustomerOrderInvoice:
         r"""Get Order Invoice
 
         Get an order's invoice data.
@@ -507,6 +532,7 @@ class PolarOrders(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -516,13 +542,13 @@ class PolarOrders(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersOrdersInvoiceRequest(
+        request = models.CustomerPortalOrdersInvoiceRequest(
             id=id,
         )
 
         req = self.build_request(
             method="GET",
-            path="/v1/users/orders/{id}/invoice",
+            path="/v1/customer-portal/orders/{id}/invoice",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -531,6 +557,7 @@ class PolarOrders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -545,7 +572,7 @@ class PolarOrders(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="users:orders:invoice",
+                operation_id="customer_portal:orders:invoice",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -556,7 +583,7 @@ class PolarOrders(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.UserOrderInvoice)
+            return utils.unmarshal_json(http_res.text, models.CustomerOrderInvoice)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -585,7 +612,8 @@ class PolarOrders(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.UserOrderInvoice:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.CustomerOrderInvoice:
         r"""Get Order Invoice
 
         Get an order's invoice data.
@@ -594,6 +622,7 @@ class PolarOrders(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -603,13 +632,13 @@ class PolarOrders(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersOrdersInvoiceRequest(
+        request = models.CustomerPortalOrdersInvoiceRequest(
             id=id,
         )
 
         req = self.build_request_async(
             method="GET",
-            path="/v1/users/orders/{id}/invoice",
+            path="/v1/customer-portal/orders/{id}/invoice",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -618,6 +647,7 @@ class PolarOrders(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -632,7 +662,7 @@ class PolarOrders(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="users:orders:invoice",
+                operation_id="customer_portal:orders:invoice",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -643,7 +673,7 @@ class PolarOrders(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.UserOrderInvoice)
+            return utils.unmarshal_json(http_res.text, models.CustomerOrderInvoice)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)

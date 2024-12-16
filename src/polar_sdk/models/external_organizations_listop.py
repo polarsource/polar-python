@@ -34,16 +34,13 @@ RepositoryNameFilter = TypeAliasType("RepositoryNameFilter", Union[str, List[str
 r"""Filter by name."""
 
 
-ExternalOrganizationsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
-    "ExternalOrganizationsListQueryParamOrganizationIDFilterTypedDict",
-    Union[str, List[str]],
+OrganizationIDFilterTypedDict = TypeAliasType(
+    "OrganizationIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by organization ID."""
 
 
-ExternalOrganizationsListQueryParamOrganizationIDFilter = TypeAliasType(
-    "ExternalOrganizationsListQueryParamOrganizationIDFilter", Union[str, List[str]]
-)
+OrganizationIDFilter = TypeAliasType("OrganizationIDFilter", Union[str, List[str]])
 r"""Filter by organization ID."""
 
 
@@ -52,9 +49,7 @@ class ExternalOrganizationsListRequestTypedDict(TypedDict):
     r"""Filter by platform."""
     name: NotRequired[Nullable[RepositoryNameFilterTypedDict]]
     r"""Filter by name."""
-    organization_id: NotRequired[
-        Nullable[ExternalOrganizationsListQueryParamOrganizationIDFilterTypedDict]
-    ]
+    organization_id: NotRequired[Nullable[OrganizationIDFilterTypedDict]]
     r"""Filter by organization ID."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
@@ -78,7 +73,7 @@ class ExternalOrganizationsListRequest(BaseModel):
     r"""Filter by name."""
 
     organization_id: Annotated[
-        OptionalNullable[ExternalOrganizationsListQueryParamOrganizationIDFilter],
+        OptionalNullable[OrganizationIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by organization ID."""

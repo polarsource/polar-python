@@ -7,14 +7,14 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class BenefitGrantDiscordPropertiesTypedDict(TypedDict):
+    account_id: NotRequired[str]
     guild_id: NotRequired[str]
     role_id: NotRequired[str]
-    account_id: NotRequired[str]
 
 
 class BenefitGrantDiscordProperties(BaseModel):
+    account_id: Optional[str] = None
+
     guild_id: Optional[str] = None
 
     role_id: Optional[str] = None
-
-    account_id: Optional[str] = None

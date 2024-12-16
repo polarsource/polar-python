@@ -23,14 +23,14 @@ BenefitsListQueryParamOrganizationIDFilter = TypeAliasType(
 r"""Filter by organization ID."""
 
 
-QueryParamBenefitTypeFilterTypedDict = TypeAliasType(
-    "QueryParamBenefitTypeFilterTypedDict", Union[BenefitType, List[BenefitType]]
+BenefitTypeFilterTypedDict = TypeAliasType(
+    "BenefitTypeFilterTypedDict", Union[BenefitType, List[BenefitType]]
 )
 r"""Filter by benefit type."""
 
 
-QueryParamBenefitTypeFilter = TypeAliasType(
-    "QueryParamBenefitTypeFilter", Union[BenefitType, List[BenefitType]]
+BenefitTypeFilter = TypeAliasType(
+    "BenefitTypeFilter", Union[BenefitType, List[BenefitType]]
 )
 r"""Filter by benefit type."""
 
@@ -40,7 +40,7 @@ class BenefitsListRequestTypedDict(TypedDict):
         Nullable[BenefitsListQueryParamOrganizationIDFilterTypedDict]
     ]
     r"""Filter by organization ID."""
-    type_filter: NotRequired[Nullable[QueryParamBenefitTypeFilterTypedDict]]
+    type_filter: NotRequired[Nullable[BenefitTypeFilterTypedDict]]
     r"""Filter by benefit type."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
@@ -56,7 +56,7 @@ class BenefitsListRequest(BaseModel):
     r"""Filter by organization ID."""
 
     type_filter: Annotated[
-        OptionalNullable[QueryParamBenefitTypeFilter],
+        OptionalNullable[BenefitTypeFilter],
         pydantic.Field(alias="type"),
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET

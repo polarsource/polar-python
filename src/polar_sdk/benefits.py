@@ -5,7 +5,7 @@ from jsonpath import JSONPath
 from polar_sdk import models, utils
 from polar_sdk._hooks import HookContext
 from polar_sdk.types import BaseModel, OptionalNullable, UNSET
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Dict, Mapping, Optional, Union, cast
 
 
 class Benefits(BaseSDK):
@@ -19,16 +19,14 @@ class Benefits(BaseSDK):
             ]
         ] = UNSET,
         type_filter: OptionalNullable[
-            Union[
-                models.QueryParamBenefitTypeFilter,
-                models.QueryParamBenefitTypeFilterTypedDict,
-            ]
+            Union[models.BenefitTypeFilter, models.BenefitTypeFilterTypedDict]
         ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[models.BenefitsListResponse]:
         r"""List Benefits
 
@@ -41,6 +39,7 @@ class Benefits(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -68,6 +67,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -151,16 +151,14 @@ class Benefits(BaseSDK):
             ]
         ] = UNSET,
         type_filter: OptionalNullable[
-            Union[
-                models.QueryParamBenefitTypeFilter,
-                models.QueryParamBenefitTypeFilterTypedDict,
-            ]
+            Union[models.BenefitTypeFilter, models.BenefitTypeFilterTypedDict]
         ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[models.BenefitsListResponse]:
         r"""List Benefits
 
@@ -173,6 +171,7 @@ class Benefits(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -200,6 +199,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -280,6 +280,7 @@ class Benefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Benefit:
         r"""Create Benefit
 
@@ -289,6 +290,7 @@ class Benefits(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -313,6 +315,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.BenefitCreate
@@ -367,6 +370,7 @@ class Benefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Benefit:
         r"""Create Benefit
 
@@ -376,6 +380,7 @@ class Benefits(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -400,6 +405,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request, False, False, "json", models.BenefitCreate
@@ -454,6 +460,7 @@ class Benefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Benefit:
         r"""Get Benefit
 
@@ -463,6 +470,7 @@ class Benefits(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -487,6 +495,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -541,6 +550,7 @@ class Benefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Benefit:
         r"""Get Benefit
 
@@ -550,6 +560,7 @@ class Benefits(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -574,6 +585,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -632,6 +644,7 @@ class Benefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Benefit:
         r"""Update Benefit
 
@@ -642,6 +655,7 @@ class Benefits(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -669,6 +683,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.request_body,
@@ -737,6 +752,7 @@ class Benefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Benefit:
         r"""Update Benefit
 
@@ -747,6 +763,7 @@ class Benefits(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -774,6 +791,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.request_body,
@@ -838,6 +856,7 @@ class Benefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ):
         r"""Delete Benefit
 
@@ -851,6 +870,7 @@ class Benefits(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -875,6 +895,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -932,6 +953,7 @@ class Benefits(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ):
         r"""Delete Benefit
 
@@ -945,6 +967,7 @@ class Benefits(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -969,6 +992,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -1024,13 +1048,18 @@ class Benefits(BaseSDK):
         *,
         id: str,
         is_granted: OptionalNullable[bool] = UNSET,
-        user_id: OptionalNullable[str] = UNSET,
-        github_user_id: OptionalNullable[int] = UNSET,
+        customer_id: OptionalNullable[
+            Union[
+                models.QueryParamCustomerIDFilter,
+                models.QueryParamCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[models.BenefitsGrantsResponse]:
         r"""List Benefit Grants
 
@@ -1040,13 +1069,13 @@ class Benefits(BaseSDK):
 
         :param id:
         :param is_granted: Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned.
-        :param user_id: Filter by user ID.
-        :param github_user_id: Filter by GitHub user ID. Only available for users who have linked their GitHub account on Polar.
+        :param customer_id: Filter by customer.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1059,8 +1088,7 @@ class Benefits(BaseSDK):
         request = models.BenefitsGrantsRequest(
             id=id,
             is_granted=is_granted,
-            user_id=user_id,
-            github_user_id=github_user_id,
+            customer_id=customer_id,
             page=page,
             limit=limit,
         )
@@ -1076,6 +1104,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -1120,8 +1149,7 @@ class Benefits(BaseSDK):
             return self.grants(
                 id=id,
                 is_granted=is_granted,
-                user_id=user_id,
-                github_user_id=github_user_id,
+                customer_id=customer_id,
                 page=next_page,
                 limit=limit,
                 retries=retries,
@@ -1161,13 +1189,18 @@ class Benefits(BaseSDK):
         *,
         id: str,
         is_granted: OptionalNullable[bool] = UNSET,
-        user_id: OptionalNullable[str] = UNSET,
-        github_user_id: OptionalNullable[int] = UNSET,
+        customer_id: OptionalNullable[
+            Union[
+                models.QueryParamCustomerIDFilter,
+                models.QueryParamCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[models.BenefitsGrantsResponse]:
         r"""List Benefit Grants
 
@@ -1177,13 +1210,13 @@ class Benefits(BaseSDK):
 
         :param id:
         :param is_granted: Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned.
-        :param user_id: Filter by user ID.
-        :param github_user_id: Filter by GitHub user ID. Only available for users who have linked their GitHub account on Polar.
+        :param customer_id: Filter by customer.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -1196,8 +1229,7 @@ class Benefits(BaseSDK):
         request = models.BenefitsGrantsRequest(
             id=id,
             is_granted=is_granted,
-            user_id=user_id,
-            github_user_id=github_user_id,
+            customer_id=customer_id,
             page=page,
             limit=limit,
         )
@@ -1213,6 +1245,7 @@ class Benefits(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -1257,8 +1290,7 @@ class Benefits(BaseSDK):
             return self.grants(
                 id=id,
                 is_granted=is_granted,
-                user_id=user_id,
-                github_user_id=github_user_id,
+                customer_id=customer_id,
                 page=next_page,
                 limit=limit,
                 retries=retries,

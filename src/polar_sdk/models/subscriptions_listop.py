@@ -25,16 +25,24 @@ SubscriptionsListQueryParamOrganizationIDFilter = TypeAliasType(
 r"""Filter by organization ID."""
 
 
-SubscriptionsListQueryParamProductIDFilterTypedDict = TypeAliasType(
-    "SubscriptionsListQueryParamProductIDFilterTypedDict", Union[str, List[str]]
+ProductIDFilterTypedDict = TypeAliasType(
+    "ProductIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by product ID."""
 
 
-SubscriptionsListQueryParamProductIDFilter = TypeAliasType(
-    "SubscriptionsListQueryParamProductIDFilter", Union[str, List[str]]
-)
+ProductIDFilter = TypeAliasType("ProductIDFilter", Union[str, List[str]])
 r"""Filter by product ID."""
+
+
+CustomerIDFilterTypedDict = TypeAliasType(
+    "CustomerIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by customer ID."""
+
+
+CustomerIDFilter = TypeAliasType("CustomerIDFilter", Union[str, List[str]])
+r"""Filter by customer ID."""
 
 
 DiscountIDFilterTypedDict = TypeAliasType(
@@ -52,10 +60,10 @@ class SubscriptionsListRequestTypedDict(TypedDict):
         Nullable[SubscriptionsListQueryParamOrganizationIDFilterTypedDict]
     ]
     r"""Filter by organization ID."""
-    product_id: NotRequired[
-        Nullable[SubscriptionsListQueryParamProductIDFilterTypedDict]
-    ]
+    product_id: NotRequired[Nullable[ProductIDFilterTypedDict]]
     r"""Filter by product ID."""
+    customer_id: NotRequired[Nullable[CustomerIDFilterTypedDict]]
+    r"""Filter by customer ID."""
     discount_id: NotRequired[Nullable[DiscountIDFilterTypedDict]]
     r"""Filter by discount ID."""
     active: NotRequired[Nullable[bool]]
@@ -76,10 +84,16 @@ class SubscriptionsListRequest(BaseModel):
     r"""Filter by organization ID."""
 
     product_id: Annotated[
-        OptionalNullable[SubscriptionsListQueryParamProductIDFilter],
+        OptionalNullable[ProductIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by product ID."""
+
+    customer_id: Annotated[
+        OptionalNullable[CustomerIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by customer ID."""
 
     discount_id: Annotated[
         OptionalNullable[DiscountIDFilter],
@@ -116,6 +130,7 @@ class SubscriptionsListRequest(BaseModel):
         optional_fields = [
             "organization_id",
             "product_id",
+            "customer_id",
             "discount_id",
             "active",
             "page",
@@ -125,6 +140,7 @@ class SubscriptionsListRequest(BaseModel):
         nullable_fields = [
             "organization_id",
             "product_id",
+            "customer_id",
             "discount_id",
             "active",
             "sorting",

@@ -24,14 +24,14 @@ LicenseKeysListQueryParamOrganizationIDFilter = TypeAliasType(
 r"""Filter by organization ID."""
 
 
-LicenseKeysListQueryParamBenefitIDFilterTypedDict = TypeAliasType(
-    "LicenseKeysListQueryParamBenefitIDFilterTypedDict", Union[str, List[str]]
+QueryParamBenefitIDFilterTypedDict = TypeAliasType(
+    "QueryParamBenefitIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by benefit ID."""
 
 
-LicenseKeysListQueryParamBenefitIDFilter = TypeAliasType(
-    "LicenseKeysListQueryParamBenefitIDFilter", Union[str, List[str]]
+QueryParamBenefitIDFilter = TypeAliasType(
+    "QueryParamBenefitIDFilter", Union[str, List[str]]
 )
 r"""Filter by benefit ID."""
 
@@ -41,7 +41,7 @@ class LicenseKeysListRequestTypedDict(TypedDict):
         Nullable[LicenseKeysListQueryParamOrganizationIDFilterTypedDict]
     ]
     r"""Filter by organization ID."""
-    benefit_id: NotRequired[Nullable[LicenseKeysListQueryParamBenefitIDFilterTypedDict]]
+    benefit_id: NotRequired[Nullable[QueryParamBenefitIDFilterTypedDict]]
     r"""Filter by benefit ID."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
@@ -57,7 +57,7 @@ class LicenseKeysListRequest(BaseModel):
     r"""Filter by organization ID."""
 
     benefit_id: Annotated[
-        OptionalNullable[LicenseKeysListQueryParamBenefitIDFilter],
+        OptionalNullable[QueryParamBenefitIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by benefit ID."""

@@ -19,15 +19,17 @@ from .discountpercentagerepeatdurationbase import (
     DiscountPercentageRepeatDurationBaseTypedDict,
 )
 from .orderbillingreason import OrderBillingReason
+from .ordercustomer import OrderCustomer, OrderCustomerTypedDict
 from .orderproduct import OrderProduct, OrderProductTypedDict
 from .ordersubscription import OrderSubscription, OrderSubscriptionTypedDict
 from .orderuser import OrderUser, OrderUserTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
 from typing import Dict, Optional, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 OrderMetadataTypedDict = TypeAliasType("OrderMetadataTypedDict", Union[str, int, bool])
@@ -79,12 +81,14 @@ class OrderTypedDict(TypedDict):
     currency: str
     billing_reason: OrderBillingReason
     billing_address: Nullable[AddressTypedDict]
-    user_id: str
+    customer_id: str
     product_id: str
     product_price_id: str
     discount_id: Nullable[str]
     subscription_id: Nullable[str]
     checkout_id: Nullable[str]
+    customer: OrderCustomerTypedDict
+    user_id: str
     user: OrderUserTypedDict
     product: OrderProductTypedDict
     product_price: ProductPriceTypedDict
@@ -116,7 +120,7 @@ class Order(BaseModel):
 
     billing_address: Nullable[Address]
 
-    user_id: str
+    customer_id: str
 
     product_id: str
 
@@ -127,6 +131,15 @@ class Order(BaseModel):
     subscription_id: Nullable[str]
 
     checkout_id: Nullable[str]
+
+    customer: OrderCustomer
+
+    user_id: Annotated[
+        str,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
 
     user: OrderUser
 

@@ -28,9 +28,10 @@ from .benefitgrantlicensekeysproperties import (
 )
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
 from typing import Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 BenefitGrantWebhookPropertiesTypedDict = TypeAliasType(
@@ -100,8 +101,9 @@ class BenefitGrantWebhookTypedDict(TypedDict):
     r"""The ID of the subscription that granted this benefit."""
     order_id: Nullable[str]
     r"""The ID of the order that granted this benefit."""
+    customer_id: str
+    r"""The ID of the customer concerned by this grant."""
     user_id: str
-    r"""The ID of the user concerned by this grant."""
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
     properties: BenefitGrantWebhookPropertiesTypedDict
@@ -135,8 +137,15 @@ class BenefitGrantWebhook(BaseModel):
     order_id: Nullable[str]
     r"""The ID of the order that granted this benefit."""
 
-    user_id: str
-    r"""The ID of the user concerned by this grant."""
+    customer_id: str
+    r"""The ID of the customer concerned by this grant."""
+
+    user_id: Annotated[
+        str,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
 
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""

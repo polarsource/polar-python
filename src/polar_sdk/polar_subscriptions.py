@@ -5,7 +5,7 @@ from jsonpath import JSONPath
 from polar_sdk import models, utils
 from polar_sdk._hooks import HookContext
 from polar_sdk.types import OptionalNullable, UNSET
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Mapping, Optional, Union
 
 
 class PolarSubscriptions(BaseSDK):
@@ -14,28 +14,31 @@ class PolarSubscriptions(BaseSDK):
         *,
         organization_id: OptionalNullable[
             Union[
-                models.UsersSubscriptionsListQueryParamOrganizationIDFilter,
-                models.UsersSubscriptionsListQueryParamOrganizationIDFilterTypedDict,
+                models.CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter,
+                models.CustomerPortalSubscriptionsListQueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
         product_id: OptionalNullable[
             Union[
-                models.QueryParamProductIDFilter,
-                models.QueryParamProductIDFilterTypedDict,
+                models.CustomerPortalSubscriptionsListQueryParamProductIDFilter,
+                models.CustomerPortalSubscriptionsListQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
         active: OptionalNullable[bool] = UNSET,
         query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
-        sorting: OptionalNullable[List[models.UserSubscriptionSortProperty]] = UNSET,
+        sorting: OptionalNullable[
+            List[models.CustomerSubscriptionSortProperty]
+        ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UsersSubscriptionsListResponse]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.CustomerPortalSubscriptionsListResponse]:
         r"""List Subscriptions
 
-        List my subscriptions.
+        List subscriptions of the authenticated customer or user.
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
@@ -47,6 +50,7 @@ class PolarSubscriptions(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -56,7 +60,7 @@ class PolarSubscriptions(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersSubscriptionsListRequest(
+        request = models.CustomerPortalSubscriptionsListRequest(
             organization_id=organization_id,
             product_id=product_id,
             active=active,
@@ -68,7 +72,7 @@ class PolarSubscriptions(BaseSDK):
 
         req = self.build_request(
             method="GET",
-            path="/v1/users/subscriptions/",
+            path="/v1/customer-portal/subscriptions/",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -77,6 +81,7 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -91,7 +96,7 @@ class PolarSubscriptions(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="users:subscriptions:list",
+                operation_id="customer_portal:subscriptions:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -100,7 +105,7 @@ class PolarSubscriptions(BaseSDK):
             retry_config=retry_config,
         )
 
-        def next_func() -> Optional[models.UsersSubscriptionsListResponse]:
+        def next_func() -> Optional[models.CustomerPortalSubscriptionsListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
@@ -131,9 +136,9 @@ class PolarSubscriptions(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.UsersSubscriptionsListResponse(
+            return models.CustomerPortalSubscriptionsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, models.ListResourceUserSubscription
+                    http_res.text, models.ListResourceCustomerSubscription
                 ),
                 next=next_func,
             )
@@ -160,28 +165,31 @@ class PolarSubscriptions(BaseSDK):
         *,
         organization_id: OptionalNullable[
             Union[
-                models.UsersSubscriptionsListQueryParamOrganizationIDFilter,
-                models.UsersSubscriptionsListQueryParamOrganizationIDFilterTypedDict,
+                models.CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter,
+                models.CustomerPortalSubscriptionsListQueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
         product_id: OptionalNullable[
             Union[
-                models.QueryParamProductIDFilter,
-                models.QueryParamProductIDFilterTypedDict,
+                models.CustomerPortalSubscriptionsListQueryParamProductIDFilter,
+                models.CustomerPortalSubscriptionsListQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
         active: OptionalNullable[bool] = UNSET,
         query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
-        sorting: OptionalNullable[List[models.UserSubscriptionSortProperty]] = UNSET,
+        sorting: OptionalNullable[
+            List[models.CustomerSubscriptionSortProperty]
+        ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> Optional[models.UsersSubscriptionsListResponse]:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.CustomerPortalSubscriptionsListResponse]:
         r"""List Subscriptions
 
-        List my subscriptions.
+        List subscriptions of the authenticated customer or user.
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
@@ -193,6 +201,7 @@ class PolarSubscriptions(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -202,7 +211,7 @@ class PolarSubscriptions(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersSubscriptionsListRequest(
+        request = models.CustomerPortalSubscriptionsListRequest(
             organization_id=organization_id,
             product_id=product_id,
             active=active,
@@ -214,7 +223,7 @@ class PolarSubscriptions(BaseSDK):
 
         req = self.build_request_async(
             method="GET",
-            path="/v1/users/subscriptions/",
+            path="/v1/customer-portal/subscriptions/",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -223,6 +232,7 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -237,7 +247,7 @@ class PolarSubscriptions(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="users:subscriptions:list",
+                operation_id="customer_portal:subscriptions:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -246,7 +256,7 @@ class PolarSubscriptions(BaseSDK):
             retry_config=retry_config,
         )
 
-        def next_func() -> Optional[models.UsersSubscriptionsListResponse]:
+        def next_func() -> Optional[models.CustomerPortalSubscriptionsListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
             page = request.page if not request.page is None else 0
             next_page = page + 1
@@ -277,9 +287,9 @@ class PolarSubscriptions(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.UsersSubscriptionsListResponse(
+            return models.CustomerPortalSubscriptionsListResponse(
                 result=utils.unmarshal_json(
-                    http_res.text, models.ListResourceUserSubscription
+                    http_res.text, models.ListResourceCustomerSubscription
                 ),
                 next=next_func,
             )
@@ -308,15 +318,17 @@ class PolarSubscriptions(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.UserSubscription:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.CustomerSubscription:
         r"""Get Subscription
 
-        Get a subscription by ID.
+        Get a subscription for the authenticated customer or user.
 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -326,13 +338,13 @@ class PolarSubscriptions(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersSubscriptionsGetRequest(
+        request = models.CustomerPortalSubscriptionsGetRequest(
             id=id,
         )
 
         req = self.build_request(
             method="GET",
-            path="/v1/users/subscriptions/{id}",
+            path="/v1/customer-portal/subscriptions/{id}",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -341,6 +353,7 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -355,7 +368,7 @@ class PolarSubscriptions(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="users:subscriptions:get",
+                operation_id="customer_portal:subscriptions:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -366,7 +379,7 @@ class PolarSubscriptions(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.UserSubscription)
+            return utils.unmarshal_json(http_res.text, models.CustomerSubscription)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -395,15 +408,17 @@ class PolarSubscriptions(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.UserSubscription:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.CustomerSubscription:
         r"""Get Subscription
 
-        Get a subscription by ID.
+        Get a subscription for the authenticated customer or user.
 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -413,13 +428,13 @@ class PolarSubscriptions(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersSubscriptionsGetRequest(
+        request = models.CustomerPortalSubscriptionsGetRequest(
             id=id,
         )
 
         req = self.build_request_async(
             method="GET",
-            path="/v1/users/subscriptions/{id}",
+            path="/v1/customer-portal/subscriptions/{id}",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -428,6 +443,7 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -442,7 +458,7 @@ class PolarSubscriptions(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="users:subscriptions:get",
+                operation_id="customer_portal:subscriptions:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -453,7 +469,7 @@ class PolarSubscriptions(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.UserSubscription)
+            return utils.unmarshal_json(http_res.text, models.CustomerSubscription)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -479,22 +495,25 @@ class PolarSubscriptions(BaseSDK):
         self,
         *,
         id: str,
-        user_subscription_update: Union[
-            models.UserSubscriptionUpdate, models.UserSubscriptionUpdateTypedDict
+        customer_subscription_update: Union[
+            models.CustomerSubscriptionUpdate,
+            models.CustomerSubscriptionUpdateTypedDict,
         ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.UserSubscription:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.CustomerSubscription:
         r"""Update Subscription
 
-        Update a subscription.
+        Update a subscription of the authenticated customer or user.
 
         :param id: The subscription ID.
-        :param user_subscription_update:
+        :param customer_subscription_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -504,16 +523,16 @@ class PolarSubscriptions(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersSubscriptionsUpdateRequest(
+        request = models.CustomerPortalSubscriptionsUpdateRequest(
             id=id,
-            user_subscription_update=utils.get_pydantic_model(
-                user_subscription_update, models.UserSubscriptionUpdate
+            customer_subscription_update=utils.get_pydantic_model(
+                customer_subscription_update, models.CustomerSubscriptionUpdate
             ),
         )
 
         req = self.build_request(
             method="PATCH",
-            path="/v1/users/subscriptions/{id}",
+            path="/v1/customer-portal/subscriptions/{id}",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -522,13 +541,14 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.user_subscription_update,
+                request.customer_subscription_update,
                 False,
                 False,
                 "json",
-                models.UserSubscriptionUpdate,
+                models.CustomerSubscriptionUpdate,
             ),
             timeout_ms=timeout_ms,
         )
@@ -543,7 +563,7 @@ class PolarSubscriptions(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="users:subscriptions:update",
+                operation_id="customer_portal:subscriptions:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -554,7 +574,7 @@ class PolarSubscriptions(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.UserSubscription)
+            return utils.unmarshal_json(http_res.text, models.CustomerSubscription)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -580,22 +600,25 @@ class PolarSubscriptions(BaseSDK):
         self,
         *,
         id: str,
-        user_subscription_update: Union[
-            models.UserSubscriptionUpdate, models.UserSubscriptionUpdateTypedDict
+        customer_subscription_update: Union[
+            models.CustomerSubscriptionUpdate,
+            models.CustomerSubscriptionUpdateTypedDict,
         ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.UserSubscription:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.CustomerSubscription:
         r"""Update Subscription
 
-        Update a subscription.
+        Update a subscription of the authenticated customer or user.
 
         :param id: The subscription ID.
-        :param user_subscription_update:
+        :param customer_subscription_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -605,16 +628,16 @@ class PolarSubscriptions(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersSubscriptionsUpdateRequest(
+        request = models.CustomerPortalSubscriptionsUpdateRequest(
             id=id,
-            user_subscription_update=utils.get_pydantic_model(
-                user_subscription_update, models.UserSubscriptionUpdate
+            customer_subscription_update=utils.get_pydantic_model(
+                customer_subscription_update, models.CustomerSubscriptionUpdate
             ),
         )
 
         req = self.build_request_async(
             method="PATCH",
-            path="/v1/users/subscriptions/{id}",
+            path="/v1/customer-portal/subscriptions/{id}",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -623,13 +646,14 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.user_subscription_update,
+                request.customer_subscription_update,
                 False,
                 False,
                 "json",
-                models.UserSubscriptionUpdate,
+                models.CustomerSubscriptionUpdate,
             ),
             timeout_ms=timeout_ms,
         )
@@ -644,7 +668,7 @@ class PolarSubscriptions(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="users:subscriptions:update",
+                operation_id="customer_portal:subscriptions:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -655,7 +679,7 @@ class PolarSubscriptions(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.UserSubscription)
+            return utils.unmarshal_json(http_res.text, models.CustomerSubscription)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -684,15 +708,17 @@ class PolarSubscriptions(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.UserSubscription:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.CustomerSubscription:
         r"""Cancel Subscription
 
-        Cancel a subscription.
+        Cancel a subscription of the authenticated customer or user.
 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -702,13 +728,13 @@ class PolarSubscriptions(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersSubscriptionsCancelRequest(
+        request = models.CustomerPortalSubscriptionsCancelRequest(
             id=id,
         )
 
         req = self.build_request(
             method="DELETE",
-            path="/v1/users/subscriptions/{id}",
+            path="/v1/customer-portal/subscriptions/{id}",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -717,6 +743,7 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -731,7 +758,7 @@ class PolarSubscriptions(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
-                operation_id="users:subscriptions:cancel",
+                operation_id="customer_portal:subscriptions:cancel",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -742,7 +769,7 @@ class PolarSubscriptions(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.UserSubscription)
+            return utils.unmarshal_json(http_res.text, models.CustomerSubscription)
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(
                 http_res.text, models.AlreadyCanceledSubscriptionData
@@ -776,15 +803,17 @@ class PolarSubscriptions(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-    ) -> models.UserSubscription:
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.CustomerSubscription:
         r"""Cancel Subscription
 
-        Cancel a subscription.
+        Cancel a subscription of the authenticated customer or user.
 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -794,13 +823,13 @@ class PolarSubscriptions(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.UsersSubscriptionsCancelRequest(
+        request = models.CustomerPortalSubscriptionsCancelRequest(
             id=id,
         )
 
         req = self.build_request_async(
             method="DELETE",
-            path="/v1/users/subscriptions/{id}",
+            path="/v1/customer-portal/subscriptions/{id}",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -809,6 +838,7 @@ class PolarSubscriptions(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -823,7 +853,7 @@ class PolarSubscriptions(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
-                operation_id="users:subscriptions:cancel",
+                operation_id="customer_portal:subscriptions:cancel",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
@@ -834,7 +864,7 @@ class PolarSubscriptions(BaseSDK):
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.UserSubscription)
+            return utils.unmarshal_json(http_res.text, models.CustomerSubscription)
         if utils.match_response(http_res, "403", "application/json"):
             data = utils.unmarshal_json(
                 http_res.text, models.AlreadyCanceledSubscriptionData

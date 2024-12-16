@@ -16,7 +16,7 @@ class AmountType(str, Enum):
     FIXED = "fixed"
 
 
-class ProductPriceRecurringFixedType(str, Enum):
+class Type(str, Enum):
     r"""The type of the price."""
 
     RECURRING = "recurring"
@@ -41,7 +41,7 @@ class ProductPriceRecurringFixedTypedDict(TypedDict):
     r"""The price in cents."""
     recurring_interval: SubscriptionRecurringInterval
     amount_type: AmountType
-    type: ProductPriceRecurringFixedType
+    type: Type
     r"""The type of the price."""
 
 
@@ -77,12 +77,9 @@ class ProductPriceRecurringFixed(BaseModel):
     ] = AmountType.FIXED
 
     TYPE: Annotated[
-        Annotated[
-            ProductPriceRecurringFixedType,
-            AfterValidator(validate_const(ProductPriceRecurringFixedType.RECURRING)),
-        ],
+        Annotated[Type, AfterValidator(validate_const(Type.RECURRING))],
         pydantic.Field(alias="type"),
-    ] = ProductPriceRecurringFixedType.RECURRING
+    ] = Type.RECURRING
     r"""The type of the price."""
 
     @model_serializer(mode="wrap")

@@ -5,7 +5,7 @@ from jsonpath import JSONPath
 from polar_sdk import models, utils
 from polar_sdk._hooks import HookContext
 from polar_sdk.types import OptionalNullable, UNSET
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Mapping, Optional, Union
 
 
 class Repositories(BaseSDK):
@@ -33,8 +33,8 @@ class Repositories(BaseSDK):
         is_private: OptionalNullable[bool] = UNSET,
         organization_id: OptionalNullable[
             Union[
-                models.RepositoriesListQueryParamOrganizationIDFilter,
-                models.RepositoriesListQueryParamOrganizationIDFilterTypedDict,
+                models.QueryParamOrganizationIDFilter,
+                models.QueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
         page: Optional[int] = 1,
@@ -43,6 +43,7 @@ class Repositories(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[models.RepositoriesListResponse]:
         r"""List Repositories
 
@@ -59,6 +60,7 @@ class Repositories(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -90,6 +92,7 @@ class Repositories(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -193,8 +196,8 @@ class Repositories(BaseSDK):
         is_private: OptionalNullable[bool] = UNSET,
         organization_id: OptionalNullable[
             Union[
-                models.RepositoriesListQueryParamOrganizationIDFilter,
-                models.RepositoriesListQueryParamOrganizationIDFilterTypedDict,
+                models.QueryParamOrganizationIDFilter,
+                models.QueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
         page: Optional[int] = 1,
@@ -203,6 +206,7 @@ class Repositories(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> Optional[models.RepositoriesListResponse]:
         r"""List Repositories
 
@@ -219,6 +223,7 @@ class Repositories(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -250,6 +255,7 @@ class Repositories(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -336,6 +342,7 @@ class Repositories(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Repository:
         r"""Get Repository
 
@@ -345,6 +352,7 @@ class Repositories(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -369,6 +377,7 @@ class Repositories(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -423,6 +432,7 @@ class Repositories(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Repository:
         r"""Get Repository
 
@@ -432,6 +442,7 @@ class Repositories(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -456,6 +467,7 @@ class Repositories(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
@@ -513,6 +525,7 @@ class Repositories(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Repository:
         r"""Update Repository
 
@@ -523,6 +536,7 @@ class Repositories(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -550,6 +564,7 @@ class Repositories(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.repository_update, False, False, "json", models.RepositoryUpdate
@@ -613,6 +628,7 @@ class Repositories(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Repository:
         r"""Update Repository
 
@@ -623,6 +639,7 @@ class Repositories(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
         url_variables = None
@@ -650,6 +667,7 @@ class Repositories(BaseSDK):
             request_has_query_params=True,
             user_agent_header="user-agent",
             accept_header_value="application/json",
+            http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.repository_update, False, False, "json", models.RepositoryUpdate

@@ -22,11 +22,11 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.metrics.get(start_date=dateutil.parser.parse("2024-02-07").date(), end_date=dateutil.parser.parse("2022-04-09").date(), interval=polar_sdk.Interval.WEEK)
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -39,7 +39,7 @@ with Polar(
 | `interval`                                                                                                                                                                        | [models.Interval](../../models/interval.md)                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                | Interval between two timestamps.                                                                                                                                                  |
 | `organization_id`                                                                                                                                                                 | [OptionalNullable[models.MetricsGetQueryParamOrganizationIDFilter]](../../models/metricsgetqueryparamorganizationidfilter.md)                                                     | :heavy_minus_sign:                                                                                                                                                                | Filter by organization ID.                                                                                                                                                        |
 | `product_id`                                                                                                                                                                      | [OptionalNullable[models.MetricsGetQueryParamProductIDFilter]](../../models/metricsgetqueryparamproductidfilter.md)                                                               | :heavy_minus_sign:                                                                                                                                                                | Filter by product ID.                                                                                                                                                             |
-| `product_price_type`                                                                                                                                                              | [OptionalNullable[models.MetricsGetQueryParamProductPriceTypeFilter]](../../models/metricsgetqueryparamproductpricetypefilter.md)                                                 | :heavy_minus_sign:                                                                                                                                                                | Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases. |
+| `product_price_type`                                                                                                                                                              | [OptionalNullable[models.QueryParamProductPriceTypeFilter]](../../models/queryparamproductpricetypefilter.md)                                                                     | :heavy_minus_sign:                                                                                                                                                                | Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases. |
 | `retries`                                                                                                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                | Configuration to override the default retry behavior of the client.                                                                                                               |
 
 ### Response
@@ -65,11 +65,11 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.metrics.limits()
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 

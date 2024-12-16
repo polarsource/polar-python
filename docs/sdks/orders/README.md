@@ -21,15 +21,13 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.orders.list()
 
-    if res is not None:
-        while True:
-            # handle items
+    while res is not None:
+        # Handle items
 
-            res = res.next()
-            if res is None:
-                break
+        res = res.next()
 
 ```
 
@@ -38,10 +36,10 @@ with Polar(
 | Parameter                                                                                                                                                                             | Type                                                                                                                                                                                  | Required                                                                                                                                                                              | Description                                                                                                                                                                           |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `organization_id`                                                                                                                                                                     | [OptionalNullable[models.OrdersListQueryParamOrganizationIDFilter]](../../models/orderslistqueryparamorganizationidfilter.md)                                                         | :heavy_minus_sign:                                                                                                                                                                    | Filter by organization ID.                                                                                                                                                            |
-| `product_id`                                                                                                                                                                          | [OptionalNullable[models.OrdersListQueryParamProductIDFilter]](../../models/orderslistqueryparamproductidfilter.md)                                                                   | :heavy_minus_sign:                                                                                                                                                                    | Filter by product ID.                                                                                                                                                                 |
-| `product_price_type`                                                                                                                                                                  | [OptionalNullable[models.QueryParamProductPriceTypeFilter]](../../models/queryparamproductpricetypefilter.md)                                                                         | :heavy_minus_sign:                                                                                                                                                                    | Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases. |
+| `product_id`                                                                                                                                                                          | [OptionalNullable[models.QueryParamProductIDFilter]](../../models/queryparamproductidfilter.md)                                                                                       | :heavy_minus_sign:                                                                                                                                                                    | Filter by product ID.                                                                                                                                                                 |
+| `product_price_type`                                                                                                                                                                  | [OptionalNullable[models.ProductPriceTypeFilter]](../../models/productpricetypefilter.md)                                                                                             | :heavy_minus_sign:                                                                                                                                                                    | Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases. |
 | `discount_id`                                                                                                                                                                         | [OptionalNullable[models.QueryParamDiscountIDFilter]](../../models/queryparamdiscountidfilter.md)                                                                                     | :heavy_minus_sign:                                                                                                                                                                    | Filter by discount ID.                                                                                                                                                                |
-| `user_id`                                                                                                                                                                             | [OptionalNullable[models.UserIDFilter]](../../models/useridfilter.md)                                                                                                                 | :heavy_minus_sign:                                                                                                                                                                    | Filter by customer's user ID.                                                                                                                                                         |
+| `customer_id`                                                                                                                                                                         | [OptionalNullable[models.OrdersListQueryParamCustomerIDFilter]](../../models/orderslistqueryparamcustomeridfilter.md)                                                                 | :heavy_minus_sign:                                                                                                                                                                    | Filter by customer ID.                                                                                                                                                                |
 | `page`                                                                                                                                                                                | *Optional[int]*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                    | Page number, defaults to 1.                                                                                                                                                           |
 | `limit`                                                                                                                                                                               | *Optional[int]*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                    | Size of a page, defaults to 10. Maximum is 100.                                                                                                                                       |
 | `sorting`                                                                                                                                                                             | List[[models.OrderSortProperty](../../models/ordersortproperty.md)]                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                    | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.               |
@@ -70,11 +68,11 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.orders.get(id="<value>")
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
@@ -109,11 +107,11 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.orders.invoice(id="<value>")
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 

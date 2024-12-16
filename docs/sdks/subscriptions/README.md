@@ -20,15 +20,13 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.subscriptions.list()
 
-    if res is not None:
-        while True:
-            # handle items
+    while res is not None:
+        # Handle items
 
-            res = res.next()
-            if res is None:
-                break
+        res = res.next()
 
 ```
 
@@ -37,7 +35,8 @@ with Polar(
 | Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `organization_id`                                                                                                                                                       | [OptionalNullable[models.SubscriptionsListQueryParamOrganizationIDFilter]](../../models/subscriptionslistqueryparamorganizationidfilter.md)                             | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
-| `product_id`                                                                                                                                                            | [OptionalNullable[models.SubscriptionsListQueryParamProductIDFilter]](../../models/subscriptionslistqueryparamproductidfilter.md)                                       | :heavy_minus_sign:                                                                                                                                                      | Filter by product ID.                                                                                                                                                   |
+| `product_id`                                                                                                                                                            | [OptionalNullable[models.ProductIDFilter]](../../models/productidfilter.md)                                                                                             | :heavy_minus_sign:                                                                                                                                                      | Filter by product ID.                                                                                                                                                   |
+| `customer_id`                                                                                                                                                           | [OptionalNullable[models.CustomerIDFilter]](../../models/customeridfilter.md)                                                                                           | :heavy_minus_sign:                                                                                                                                                      | Filter by customer ID.                                                                                                                                                  |
 | `discount_id`                                                                                                                                                           | [OptionalNullable[models.DiscountIDFilter]](../../models/discountidfilter.md)                                                                                           | :heavy_minus_sign:                                                                                                                                                      | Filter by discount ID.                                                                                                                                                  |
 | `active`                                                                                                                                                                | *OptionalNullable[bool]*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                      | Filter by active or inactive subscription.                                                                                                                              |
 | `page`                                                                                                                                                                  | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |
@@ -68,11 +67,11 @@ from polar_sdk import Polar
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
+
     res = polar.subscriptions.export()
 
-    if res is not None:
-        # handle response
-        pass
+    # Handle response
+    print(res)
 
 ```
 
