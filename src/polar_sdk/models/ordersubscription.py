@@ -5,9 +5,10 @@ from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptionstatus import SubscriptionStatus
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
 from typing import Dict, Union
-from typing_extensions import TypeAliasType, TypedDict
+from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
 OrderSubscriptionMetadataTypedDict = TypeAliasType(
@@ -42,6 +43,7 @@ class OrderSubscriptionTypedDict(TypedDict):
     price_id: str
     discount_id: Nullable[str]
     checkout_id: Nullable[str]
+    user_id: str
 
 
 class OrderSubscription(BaseModel):
@@ -83,6 +85,13 @@ class OrderSubscription(BaseModel):
     discount_id: Nullable[str]
 
     checkout_id: Nullable[str]
+
+    user_id: Annotated[
+        str,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

@@ -36,6 +36,16 @@ class CheckoutProductCreatePaymentProcessor(str, Enum):
     STRIPE = "stripe"
 
 
+CheckoutProductCreateCustomerMetadataTypedDict = TypeAliasType(
+    "CheckoutProductCreateCustomerMetadataTypedDict", Union[str, int, bool]
+)
+
+
+CheckoutProductCreateCustomerMetadata = TypeAliasType(
+    "CheckoutProductCreateCustomerMetadata", Union[str, int, bool]
+)
+
+
 class CheckoutProductCreateTypedDict(TypedDict):
     r"""Create a new checkout session from a product.
 
@@ -73,6 +83,20 @@ class CheckoutProductCreateTypedDict(TypedDict):
     customer_ip_address: NotRequired[Nullable[str]]
     customer_billing_address: NotRequired[Nullable[AddressTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
+    customer_metadata: NotRequired[
+        Dict[str, CheckoutProductCreateCustomerMetadataTypedDict]
+    ]
+    r"""Key-value object allowing you to store additional information that'll be copied to the created customer.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
     subscription_id: NotRequired[Nullable[str]]
     r"""ID of a subscription to upgrade. It must be on a free pricing. If checkout is successful, metadata set on this checkout will be copied to the subscription, and existing keys will be overwritten."""
     success_url: NotRequired[Nullable[str]]
@@ -139,6 +163,19 @@ class CheckoutProductCreate(BaseModel):
 
     customer_tax_id: OptionalNullable[str] = UNSET
 
+    customer_metadata: Optional[Dict[str, CheckoutProductCreateCustomerMetadata]] = None
+    r"""Key-value object allowing you to store additional information that'll be copied to the created customer.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
+
     subscription_id: OptionalNullable[str] = UNSET
     r"""ID of a subscription to upgrade. It must be on a free pricing. If checkout is successful, metadata set on this checkout will be copied to the subscription, and existing keys will be overwritten."""
 
@@ -162,6 +199,7 @@ class CheckoutProductCreate(BaseModel):
             "customer_ip_address",
             "customer_billing_address",
             "customer_tax_id",
+            "customer_metadata",
             "subscription_id",
             "success_url",
             "embed_origin",

@@ -24,6 +24,16 @@ CheckoutUpdateMetadataTypedDict = TypeAliasType(
 CheckoutUpdateMetadata = TypeAliasType("CheckoutUpdateMetadata", Union[str, int, bool])
 
 
+CheckoutUpdateCustomerMetadataTypedDict = TypeAliasType(
+    "CheckoutUpdateCustomerMetadataTypedDict", Union[str, int, bool]
+)
+
+
+CheckoutUpdateCustomerMetadata = TypeAliasType(
+    "CheckoutUpdateCustomerMetadata", Union[str, int, bool]
+)
+
+
 class CheckoutUpdateTypedDict(TypedDict):
     r"""Update an existing checkout session using an access token."""
 
@@ -37,7 +47,15 @@ class CheckoutUpdateTypedDict(TypedDict):
     customer_billing_address: NotRequired[Nullable[AddressTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
     metadata: NotRequired[Nullable[Dict[str, CheckoutUpdateMetadataTypedDict]]]
-    r"""Key-value object allowing you to store additional information.
+    discount_id: NotRequired[Nullable[str]]
+    r"""ID of the discount to apply to the checkout."""
+    allow_discount_codes: NotRequired[Nullable[bool]]
+    r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
+    customer_ip_address: NotRequired[Nullable[str]]
+    customer_metadata: NotRequired[
+        Nullable[Dict[str, CheckoutUpdateCustomerMetadataTypedDict]]
+    ]
+    r"""Key-value object allowing you to store additional information that'll be copied to the created customer.
 
     The key must be a string with a maximum length of **40 characters**.
     The value must be either:
@@ -48,11 +66,6 @@ class CheckoutUpdateTypedDict(TypedDict):
 
     You can store up to **50 key-value pairs**.
     """
-    discount_id: NotRequired[Nullable[str]]
-    r"""ID of the discount to apply to the checkout."""
-    allow_discount_codes: NotRequired[Nullable[bool]]
-    r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
-    customer_ip_address: NotRequired[Nullable[str]]
     success_url: NotRequired[Nullable[str]]
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
     embed_origin: NotRequired[Nullable[str]]
@@ -79,7 +92,19 @@ class CheckoutUpdate(BaseModel):
     customer_tax_id: OptionalNullable[str] = UNSET
 
     metadata: OptionalNullable[Dict[str, CheckoutUpdateMetadata]] = UNSET
-    r"""Key-value object allowing you to store additional information.
+
+    discount_id: OptionalNullable[str] = UNSET
+    r"""ID of the discount to apply to the checkout."""
+
+    allow_discount_codes: OptionalNullable[bool] = UNSET
+    r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
+
+    customer_ip_address: OptionalNullable[str] = UNSET
+
+    customer_metadata: OptionalNullable[Dict[str, CheckoutUpdateCustomerMetadata]] = (
+        UNSET
+    )
+    r"""Key-value object allowing you to store additional information that'll be copied to the created customer.
 
     The key must be a string with a maximum length of **40 characters**.
     The value must be either:
@@ -90,14 +115,6 @@ class CheckoutUpdate(BaseModel):
 
     You can store up to **50 key-value pairs**.
     """
-
-    discount_id: OptionalNullable[str] = UNSET
-    r"""ID of the discount to apply to the checkout."""
-
-    allow_discount_codes: OptionalNullable[bool] = UNSET
-    r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
-
-    customer_ip_address: OptionalNullable[str] = UNSET
 
     success_url: OptionalNullable[str] = UNSET
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
@@ -119,6 +136,7 @@ class CheckoutUpdate(BaseModel):
             "discount_id",
             "allow_discount_codes",
             "customer_ip_address",
+            "customer_metadata",
             "success_url",
             "embed_origin",
         ]
@@ -134,6 +152,7 @@ class CheckoutUpdate(BaseModel):
             "discount_id",
             "allow_discount_codes",
             "customer_ip_address",
+            "customer_metadata",
             "success_url",
             "embed_origin",
         ]

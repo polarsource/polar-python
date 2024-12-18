@@ -79,6 +79,14 @@ CheckoutDiscount = TypeAliasType(
 )
 
 
+CustomerMetadataTypedDict = TypeAliasType(
+    "CustomerMetadataTypedDict", Union[str, int, bool]
+)
+
+
+CustomerMetadata = TypeAliasType("CustomerMetadata", Union[str, int, bool])
+
+
 class CheckoutTypedDict(TypedDict):
     r"""Checkout session data retrieved using an access token."""
 
@@ -140,6 +148,7 @@ class CheckoutTypedDict(TypedDict):
     discount: Nullable[CheckoutDiscountTypedDict]
     subscription_id: Nullable[str]
     attached_custom_fields: List[AttachedCustomFieldTypedDict]
+    customer_metadata: Dict[str, CustomerMetadataTypedDict]
     custom_field_data: NotRequired[CheckoutCustomFieldDataTypedDict]
     r"""Key-value object storing custom field values."""
     payment_processor: PaymentProcessor
@@ -241,6 +250,8 @@ class Checkout(BaseModel):
     subscription_id: Nullable[str]
 
     attached_custom_fields: List[AttachedCustomField]
+
+    customer_metadata: Dict[str, CustomerMetadata]
 
     custom_field_data: Optional[CheckoutCustomFieldData] = None
     r"""Key-value object storing custom field values."""

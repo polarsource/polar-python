@@ -42,7 +42,6 @@ class BenefitCustomTypedDict(TypedDict):
     properties: BenefitCustomPropertiesTypedDict
     r"""Properties for a benefit of type `custom`."""
     is_tax_applicable: bool
-    r"""Whether the benefit is taxable."""
     type: BenefitCustomType
 
 
@@ -76,8 +75,12 @@ class BenefitCustom(BaseModel):
     properties: BenefitCustomProperties
     r"""Properties for a benefit of type `custom`."""
 
-    is_tax_applicable: bool
-    r"""Whether the benefit is taxable."""
+    is_tax_applicable: Annotated[
+        bool,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
 
     TYPE: Annotated[
         Annotated[

@@ -25,12 +25,12 @@ from typing_extensions import Annotated, TypeAliasType
 BenefitCreateTypedDict = TypeAliasType(
     "BenefitCreateTypedDict",
     Union[
+        BenefitCustomCreateTypedDict,
         BenefitAdsCreateTypedDict,
         BenefitDiscordCreateTypedDict,
         BenefitGitHubRepositoryCreateTypedDict,
         BenefitDownloadablesCreateTypedDict,
         BenefitLicenseKeysCreateTypedDict,
-        BenefitCustomCreateTypedDict,
     ],
 )
 

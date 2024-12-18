@@ -33,17 +33,6 @@ class CustomFieldUpdateTextTypedDict(TypedDict):
     r"""Schema to update a custom field of type text."""
 
     metadata: NotRequired[Nullable[Dict[str, CustomFieldUpdateTextMetadataTypedDict]]]
-    r"""Key-value object allowing you to store additional information.
-
-    The key must be a string with a maximum length of **40 characters**.
-    The value must be either:
-
-    * A string with a maximum length of **500 characters**
-    * An integer
-    * A boolean
-
-    You can store up to **50 key-value pairs**.
-    """
     name: NotRequired[Nullable[str]]
     slug: NotRequired[Nullable[str]]
     type: CustomFieldUpdateTextType
@@ -54,17 +43,6 @@ class CustomFieldUpdateText(BaseModel):
     r"""Schema to update a custom field of type text."""
 
     metadata: OptionalNullable[Dict[str, CustomFieldUpdateTextMetadata]] = UNSET
-    r"""Key-value object allowing you to store additional information.
-
-    The key must be a string with a maximum length of **40 characters**.
-    The value must be either:
-
-    * A string with a maximum length of **500 characters**
-    * An integer
-    * A boolean
-
-    You can store up to **50 key-value pairs**.
-    """
 
     name: OptionalNullable[str] = UNSET
 
