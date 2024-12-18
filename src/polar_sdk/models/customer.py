@@ -10,12 +10,12 @@ from typing import Dict, List, Union
 from typing_extensions import TypeAliasType, TypedDict
 
 
-CustomerMetadataTypedDict = TypeAliasType(
-    "CustomerMetadataTypedDict", Union[str, int, bool]
+CustomerMetadata1TypedDict = TypeAliasType(
+    "CustomerMetadata1TypedDict", Union[str, int, bool]
 )
 
 
-CustomerMetadata = TypeAliasType("CustomerMetadata", Union[str, int, bool])
+CustomerMetadata1 = TypeAliasType("CustomerMetadata1", Union[str, int, bool])
 
 
 CustomerTaxIDTypedDict = TypeAliasType(
@@ -35,7 +35,7 @@ class CustomerTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
-    metadata: Dict[str, CustomerMetadataTypedDict]
+    metadata: Dict[str, CustomerMetadata1TypedDict]
     email: str
     email_verified: bool
     name: Nullable[str]
@@ -57,7 +57,7 @@ class Customer(BaseModel):
     id: str
     r"""The ID of the object."""
 
-    metadata: Dict[str, CustomerMetadata]
+    metadata: Dict[str, CustomerMetadata1]
 
     email: str
 

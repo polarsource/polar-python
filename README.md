@@ -234,6 +234,10 @@ with Polar() as polar:
                     "required": True,
                 },
             ],
+            customer_metadata={
+                "key": "<value>",
+                "key1": "<value>",
+            },
             payment_processor=polar_sdk.PaymentProcessor.STRIPE,
         ),
         type=polar_sdk.WebhookCheckoutCreatedPayloadType.CHECKOUT_CREATED,
@@ -435,6 +439,10 @@ async def main():
                         "required": True,
                     },
                 ],
+                customer_metadata={
+                    "key": "<value>",
+                    "key1": "<value>",
+                },
                 payment_processor=polar_sdk.PaymentProcessor.STRIPE,
             ),
             type=polar_sdk.WebhookCheckoutCreatedPayloadType.CHECKOUT_CREATED,

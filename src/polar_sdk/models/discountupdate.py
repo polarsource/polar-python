@@ -22,17 +22,6 @@ class DiscountUpdateTypedDict(TypedDict):
     r"""Schema to update a discount."""
 
     metadata: NotRequired[Nullable[Dict[str, DiscountUpdateMetadataTypedDict]]]
-    r"""Key-value object allowing you to store additional information.
-
-    The key must be a string with a maximum length of **40 characters**.
-    The value must be either:
-
-    * A string with a maximum length of **500 characters**
-    * An integer
-    * A boolean
-
-    You can store up to **50 key-value pairs**.
-    """
     name: NotRequired[Nullable[str]]
     code: NotRequired[Nullable[str]]
     starts_at: NotRequired[Nullable[datetime]]
@@ -51,17 +40,6 @@ class DiscountUpdate(BaseModel):
     r"""Schema to update a discount."""
 
     metadata: OptionalNullable[Dict[str, DiscountUpdateMetadata]] = UNSET
-    r"""Key-value object allowing you to store additional information.
-
-    The key must be a string with a maximum length of **40 characters**.
-    The value must be either:
-
-    * A string with a maximum length of **500 characters**
-    * An integer
-    * A boolean
-
-    You can store up to **50 key-value pairs**.
-    """
 
     name: OptionalNullable[str] = UNSET
 

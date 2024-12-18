@@ -23,8 +23,6 @@ class BenefitCustomCreateTypedDict(TypedDict):
 
     description: str
     r"""The description of the benefit. Will be displayed on products having this benefit."""
-    is_tax_applicable: bool
-    r"""Whether the benefit is taxable."""
     properties: BenefitCustomCreatePropertiesTypedDict
     r"""Properties for creating a benefit of type `custom`."""
     type: BenefitCustomCreateType
@@ -37,9 +35,6 @@ class BenefitCustomCreate(BaseModel):
 
     description: str
     r"""The description of the benefit. Will be displayed on products having this benefit."""
-
-    is_tax_applicable: bool
-    r"""Whether the benefit is taxable."""
 
     properties: BenefitCustomCreateProperties
     r"""Properties for creating a benefit of type `custom`."""
