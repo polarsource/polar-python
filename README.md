@@ -575,6 +575,10 @@ def webhook():
 * [update](docs/sdks/polarsubscriptions/README.md#update) - Update Subscription
 * [cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
 
+### [customer_sessions](docs/sdks/customersessions/README.md)
+
+* [create](docs/sdks/customersessions/README.md#create) - Create Customer Session
+
 ### [customers](docs/sdks/customers/README.md)
 
 * [list](docs/sdks/customers/README.md#list) - List Customers

@@ -710,6 +710,8 @@ from .customers_listop import (
     CustomersListResponseTypedDict,
 )
 from .customers_updateop import CustomersUpdateRequest, CustomersUpdateRequestTypedDict
+from .customersession import CustomerSession, CustomerSessionTypedDict
+from .customersessioncreate import CustomerSessionCreate, CustomerSessionCreateTypedDict
 from .customersortproperty import CustomerSortProperty
 from .customersubscription import CustomerSubscription, CustomerSubscriptionTypedDict
 from .customersubscriptionproduct import (
@@ -2222,6 +2224,10 @@ __all__ = [
     "CustomerPortalSubscriptionsListResponseTypedDict",
     "CustomerPortalSubscriptionsUpdateRequest",
     "CustomerPortalSubscriptionsUpdateRequestTypedDict",
+    "CustomerSession",
+    "CustomerSessionCreate",
+    "CustomerSessionCreateTypedDict",
+    "CustomerSessionTypedDict",
     "CustomerSortProperty",
     "CustomerSubscription",
     "CustomerSubscriptionProduct",
