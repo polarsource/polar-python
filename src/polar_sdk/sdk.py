@@ -14,6 +14,7 @@ from polar_sdk.checkout_links import CheckoutLinks
 from polar_sdk.checkouts import Checkouts
 from polar_sdk.custom_fields import CustomFields
 from polar_sdk.customer_portal import CustomerPortal
+from polar_sdk.customer_sessions import CustomerSessions
 from polar_sdk.customers import Customers
 from polar_sdk.discounts import Discounts
 from polar_sdk.external_organizations import ExternalOrganizations
@@ -54,6 +55,7 @@ class Polar(BaseSDK):
     discounts: Discounts
     customers: Customers
     customer_portal: CustomerPortal
+    customer_sessions: CustomerSessions
 
     def __init__(
         self,
@@ -152,6 +154,7 @@ class Polar(BaseSDK):
         self.discounts = Discounts(self.sdk_configuration)
         self.customers = Customers(self.sdk_configuration)
         self.customer_portal = CustomerPortal(self.sdk_configuration)
+        self.customer_sessions = CustomerSessions(self.sdk_configuration)
 
     def __enter__(self):
         return self

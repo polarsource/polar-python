@@ -267,6 +267,12 @@ actions:
         - "lang": "python"
           "label": "update"
           "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.subscriptions.update(id=\"<value>\", customer_subscription_update={\n        \"product_price_id\": \"<value>\",\n    })\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/customer-sessions/"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "create"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_sessions.create(request={\n        \"customer_id\": \"<value>\",\n    })\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customers/"]["get"]
     update:
       "x-codeSamples":
