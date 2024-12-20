@@ -20,5 +20,7 @@ targets:
                 token: $pypi_token
         codeSamples:
             output: codeSamples.yaml
+            labelOverride:
+                fixedValue: Python (SDK)
             registry:
-                location: registry.speakeasyapi.dev/polar/polar/polar-oas-code-samples
+                location: registry.speakeasyapi.dev/polar/polar/polar-oas-py-code-samples
