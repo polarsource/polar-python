@@ -2,16 +2,12 @@
 
 from __future__ import annotations
 from .pledge import Pledge, PledgeTypedDict
-from enum import Enum
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class WebhookPledgeUpdatedPayloadType(str, Enum):
-    PLEDGE_UPDATED = "pledge.updated"
 
 
 class WebhookPledgeUpdatedPayloadTypedDict(TypedDict):
@@ -21,7 +17,7 @@ class WebhookPledgeUpdatedPayloadTypedDict(TypedDict):
     """
 
     data: PledgeTypedDict
-    type: WebhookPledgeUpdatedPayloadType
+    type: Literal["pledge.updated"]
 
 
 class WebhookPledgeUpdatedPayload(BaseModel):
@@ -34,10 +30,7 @@ class WebhookPledgeUpdatedPayload(BaseModel):
 
     TYPE: Annotated[
         Annotated[
-            WebhookPledgeUpdatedPayloadType,
-            AfterValidator(
-                validate_const(WebhookPledgeUpdatedPayloadType.PLEDGE_UPDATED)
-            ),
+            Literal["pledge.updated"], AfterValidator(validate_const("pledge.updated"))
         ],
         pydantic.Field(alias="type"),
-    ] = WebhookPledgeUpdatedPayloadType.PLEDGE_UPDATED
+    ] = "pledge.updated"

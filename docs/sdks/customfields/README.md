@@ -63,7 +63,6 @@ Create a custom field.
 ### Example Usage
 
 ```python
-import polar_sdk
 from polar_sdk import Polar
 
 with Polar(
@@ -74,7 +73,7 @@ with Polar(
         "slug": "<value>",
         "name": "<value>",
         "properties": {},
-        "type": polar_sdk.CustomFieldCreateNumberType.NUMBER,
+        "type": "number",
     })
 
     # Handle response
@@ -146,7 +145,6 @@ Update a custom field.
 ### Example Usage
 
 ```python
-import polar_sdk
 from polar_sdk import Polar
 
 with Polar(
@@ -154,7 +152,7 @@ with Polar(
 ) as polar:
 
     res = polar.custom_fields.update(id="<value>", custom_field_update={
-        "type": polar_sdk.CustomFieldUpdateTextType.TEXT,
+        "type": "text",
     })
 
     # Handle response

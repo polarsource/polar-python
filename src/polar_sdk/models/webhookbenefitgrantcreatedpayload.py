@@ -2,16 +2,12 @@
 
 from __future__ import annotations
 from .benefitgrantwebhook import BenefitGrantWebhook, BenefitGrantWebhookTypedDict
-from enum import Enum
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class WebhookBenefitGrantCreatedPayloadType(str, Enum):
-    BENEFIT_GRANT_CREATED = "benefit_grant.created"
 
 
 class WebhookBenefitGrantCreatedPayloadTypedDict(TypedDict):
@@ -21,7 +17,7 @@ class WebhookBenefitGrantCreatedPayloadTypedDict(TypedDict):
     """
 
     data: BenefitGrantWebhookTypedDict
-    type: WebhookBenefitGrantCreatedPayloadType
+    type: Literal["benefit_grant.created"]
 
 
 class WebhookBenefitGrantCreatedPayload(BaseModel):
@@ -34,12 +30,8 @@ class WebhookBenefitGrantCreatedPayload(BaseModel):
 
     TYPE: Annotated[
         Annotated[
-            WebhookBenefitGrantCreatedPayloadType,
-            AfterValidator(
-                validate_const(
-                    WebhookBenefitGrantCreatedPayloadType.BENEFIT_GRANT_CREATED
-                )
-            ),
+            Literal["benefit_grant.created"],
+            AfterValidator(validate_const("benefit_grant.created")),
         ],
         pydantic.Field(alias="type"),
-    ] = WebhookBenefitGrantCreatedPayloadType.BENEFIT_GRANT_CREATED
+    ] = "benefit_grant.created"

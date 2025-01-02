@@ -2,17 +2,13 @@
 
 from __future__ import annotations
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class Service(str, Enum):
-    PRODUCT_MEDIA = "product_media"
 
 
 class ProductMediaFileReadTypedDict(TypedDict):
@@ -35,7 +31,7 @@ class ProductMediaFileReadTypedDict(TypedDict):
     created_at: datetime
     size_readable: str
     public_url: str
-    service: Service
+    service: Literal["product_media"]
 
 
 class ProductMediaFileRead(BaseModel):
@@ -75,9 +71,11 @@ class ProductMediaFileRead(BaseModel):
     public_url: str
 
     SERVICE: Annotated[
-        Annotated[Service, AfterValidator(validate_const(Service.PRODUCT_MEDIA))],
+        Annotated[
+            Literal["product_media"], AfterValidator(validate_const("product_media"))
+        ],
         pydantic.Field(alias="service"),
-    ] = Service.PRODUCT_MEDIA
+    ] = "product_media"
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

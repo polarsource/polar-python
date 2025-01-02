@@ -5,13 +5,12 @@ from .customfieldcheckboxproperties import (
     CustomFieldCheckboxProperties,
     CustomFieldCheckboxPropertiesTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Union
+from typing import Dict, Literal, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -25,10 +24,6 @@ CustomFieldUpdateCheckboxMetadata = TypeAliasType(
 )
 
 
-class CustomFieldUpdateCheckboxType(str, Enum):
-    CHECKBOX = "checkbox"
-
-
 class CustomFieldUpdateCheckboxTypedDict(TypedDict):
     r"""Schema to update a custom field of type checkbox."""
 
@@ -37,7 +32,7 @@ class CustomFieldUpdateCheckboxTypedDict(TypedDict):
     ]
     name: NotRequired[Nullable[str]]
     slug: NotRequired[Nullable[str]]
-    type: CustomFieldUpdateCheckboxType
+    type: Literal["checkbox"]
     properties: NotRequired[Nullable[CustomFieldCheckboxPropertiesTypedDict]]
 
 
@@ -51,12 +46,9 @@ class CustomFieldUpdateCheckbox(BaseModel):
     slug: OptionalNullable[str] = UNSET
 
     TYPE: Annotated[
-        Annotated[
-            CustomFieldUpdateCheckboxType,
-            AfterValidator(validate_const(CustomFieldUpdateCheckboxType.CHECKBOX)),
-        ],
+        Annotated[Literal["checkbox"], AfterValidator(validate_const("checkbox"))],
         pydantic.Field(alias="type"),
-    ] = CustomFieldUpdateCheckboxType.CHECKBOX
+    ] = "checkbox"
 
     properties: OptionalNullable[CustomFieldCheckboxProperties] = UNSET
 

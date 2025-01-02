@@ -6,17 +6,13 @@ from .benefitcustomproperties import (
     BenefitCustomPropertiesTypedDict,
 )
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class BenefitCustomType(str, Enum):
-    CUSTOM = "custom"
 
 
 class BenefitCustomTypedDict(TypedDict):
@@ -42,7 +38,7 @@ class BenefitCustomTypedDict(TypedDict):
     properties: BenefitCustomPropertiesTypedDict
     r"""Properties for a benefit of type `custom`."""
     is_tax_applicable: bool
-    type: BenefitCustomType
+    type: Literal["custom"]
 
 
 class BenefitCustom(BaseModel):
@@ -83,11 +79,9 @@ class BenefitCustom(BaseModel):
     ]
 
     TYPE: Annotated[
-        Annotated[
-            BenefitCustomType, AfterValidator(validate_const(BenefitCustomType.CUSTOM))
-        ],
+        Annotated[Literal["custom"], AfterValidator(validate_const("custom"))],
         pydantic.Field(alias="type"),
-    ] = BenefitCustomType.CUSTOM
+    ] = "custom"
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

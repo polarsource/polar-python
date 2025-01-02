@@ -5,23 +5,19 @@ from .benefitlicensekeyscreateproperties import (
     BenefitLicenseKeysCreateProperties,
     BenefitLicenseKeysCreatePropertiesTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, NotRequired, TypedDict
-
-
-class BenefitLicenseKeysUpdateType(str, Enum):
-    LICENSE_KEYS = "license_keys"
 
 
 class BenefitLicenseKeysUpdateTypedDict(TypedDict):
     description: NotRequired[Nullable[str]]
     r"""The description of the benefit. Will be displayed on products having this benefit."""
-    type: BenefitLicenseKeysUpdateType
+    type: Literal["license_keys"]
     properties: NotRequired[Nullable[BenefitLicenseKeysCreatePropertiesTypedDict]]
 
 
@@ -31,11 +27,10 @@ class BenefitLicenseKeysUpdate(BaseModel):
 
     TYPE: Annotated[
         Annotated[
-            BenefitLicenseKeysUpdateType,
-            AfterValidator(validate_const(BenefitLicenseKeysUpdateType.LICENSE_KEYS)),
+            Literal["license_keys"], AfterValidator(validate_const("license_keys"))
         ],
         pydantic.Field(alias="type"),
-    ] = BenefitLicenseKeysUpdateType.LICENSE_KEYS
+    ] = "license_keys"
 
     properties: OptionalNullable[BenefitLicenseKeysCreateProperties] = UNSET
 

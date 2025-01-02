@@ -2,14 +2,10 @@
 
 from __future__ import annotations
 from .address import Address, AddressTypedDict
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from polar_sdk.utils import validate_const
-import pydantic
 from pydantic import model_serializer
-from pydantic.functional_validators import AfterValidator
 from typing import Dict, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 CheckoutProductCreateMetadataTypedDict = TypeAliasType(
@@ -28,12 +24,6 @@ class CheckoutProductCreateCustomFieldDataTypedDict(TypedDict):
 
 class CheckoutProductCreateCustomFieldData(BaseModel):
     r"""Key-value object storing custom field values."""
-
-
-class CheckoutProductCreatePaymentProcessor(str, Enum):
-    r"""Payment processor to use. Currently only Stripe is supported."""
-
-    STRIPE = "stripe"
 
 
 CheckoutProductCreateCustomerMetadataTypedDict = TypeAliasType(
@@ -69,8 +59,6 @@ class CheckoutProductCreateTypedDict(TypedDict):
     """
     custom_field_data: NotRequired[CheckoutProductCreateCustomFieldDataTypedDict]
     r"""Key-value object storing custom field values."""
-    payment_processor: CheckoutProductCreatePaymentProcessor
-    r"""Payment processor to use. Currently only Stripe is supported."""
     discount_id: NotRequired[Nullable[str]]
     r"""ID of the discount to apply to the checkout."""
     allow_discount_codes: NotRequired[bool]
@@ -130,17 +118,6 @@ class CheckoutProductCreate(BaseModel):
 
     custom_field_data: Optional[CheckoutProductCreateCustomFieldData] = None
     r"""Key-value object storing custom field values."""
-
-    PAYMENT_PROCESSOR: Annotated[
-        Annotated[
-            CheckoutProductCreatePaymentProcessor,
-            AfterValidator(
-                validate_const(CheckoutProductCreatePaymentProcessor.STRIPE)
-            ),
-        ],
-        pydantic.Field(alias="payment_processor"),
-    ] = CheckoutProductCreatePaymentProcessor.STRIPE
-    r"""Payment processor to use. Currently only Stripe is supported."""
 
     discount_id: OptionalNullable[str] = UNSET
     r"""ID of the discount to apply to the checkout."""

@@ -2,17 +2,13 @@
 
 from __future__ import annotations
 from .s3filecreatemultipart import S3FileCreateMultipart, S3FileCreateMultipartTypedDict
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, NotRequired, TypedDict
-
-
-class ProductMediaFileCreateService(str, Enum):
-    PRODUCT_MEDIA = "product_media"
 
 
 class ProductMediaFileCreateTypedDict(TypedDict):
@@ -26,7 +22,7 @@ class ProductMediaFileCreateTypedDict(TypedDict):
     upload: S3FileCreateMultipartTypedDict
     organization_id: NotRequired[Nullable[str]]
     checksum_sha256_base64: NotRequired[Nullable[str]]
-    service: ProductMediaFileCreateService
+    service: Literal["product_media"]
     version: NotRequired[Nullable[str]]
 
 
@@ -49,11 +45,10 @@ class ProductMediaFileCreate(BaseModel):
 
     SERVICE: Annotated[
         Annotated[
-            ProductMediaFileCreateService,
-            AfterValidator(validate_const(ProductMediaFileCreateService.PRODUCT_MEDIA)),
+            Literal["product_media"], AfterValidator(validate_const("product_media"))
         ],
         pydantic.Field(alias="service"),
-    ] = ProductMediaFileCreateService.PRODUCT_MEDIA
+    ] = "product_media"
 
     version: OptionalNullable[str] = UNSET
 

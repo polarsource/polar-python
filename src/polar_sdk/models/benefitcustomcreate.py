@@ -5,17 +5,13 @@ from .benefitcustomcreateproperties import (
     BenefitCustomCreateProperties,
     BenefitCustomCreatePropertiesTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, NotRequired, TypedDict
-
-
-class BenefitCustomCreateType(str, Enum):
-    CUSTOM = "custom"
 
 
 class BenefitCustomCreateTypedDict(TypedDict):
@@ -25,7 +21,7 @@ class BenefitCustomCreateTypedDict(TypedDict):
     r"""The description of the benefit. Will be displayed on products having this benefit."""
     properties: BenefitCustomCreatePropertiesTypedDict
     r"""Properties for creating a benefit of type `custom`."""
-    type: BenefitCustomCreateType
+    type: Literal["custom"]
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the benefit. **Required unless you use an organization token.**"""
 
@@ -40,12 +36,9 @@ class BenefitCustomCreate(BaseModel):
     r"""Properties for creating a benefit of type `custom`."""
 
     TYPE: Annotated[
-        Annotated[
-            BenefitCustomCreateType,
-            AfterValidator(validate_const(BenefitCustomCreateType.CUSTOM)),
-        ],
+        Annotated[Literal["custom"], AfterValidator(validate_const("custom"))],
         pydantic.Field(alias="type"),
-    ] = BenefitCustomCreateType.CUSTOM
+    ] = "custom"
 
     organization_id: OptionalNullable[str] = UNSET
     r"""The ID of the organization owning the benefit. **Required unless you use an organization token.**"""

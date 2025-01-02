@@ -64,7 +64,6 @@ Create a checkout session.
 ### Example Usage
 
 ```python
-import polar_sdk
 from polar_sdk import Polar
 
 with Polar(
@@ -73,7 +72,6 @@ with Polar(
 
     res = polar.checkouts.custom.create(request={
         "product_id": "<value>",
-        "payment_processor": polar_sdk.CheckoutProductCreatePaymentProcessor.STRIPE,
     })
 
     # Handle response

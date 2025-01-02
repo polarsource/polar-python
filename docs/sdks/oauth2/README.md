@@ -54,7 +54,6 @@ Request an access token using a valid grant.
 ### Example Usage
 
 ```python
-import polar_sdk
 from polar_sdk import Polar
 
 with Polar(
@@ -66,7 +65,7 @@ with Polar(
         "client_secret": "<value>",
         "code": "<value>",
         "redirect_uri": "https://old-fort.name",
-        "grant_type": polar_sdk.GrantType.AUTHORIZATION_CODE,
+        "grant_type": "authorization_code",
     })
 
     # Handle response

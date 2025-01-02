@@ -3,23 +3,13 @@
 from __future__ import annotations
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class ProductPriceRecurringCustomAmountType(str, Enum):
-    CUSTOM = "custom"
-
-
-class ProductPriceRecurringCustomType(str, Enum):
-    r"""The type of the price."""
-
-    RECURRING = "recurring"
 
 
 class ProductPriceRecurringCustomTypedDict(TypedDict):
@@ -44,8 +34,8 @@ class ProductPriceRecurringCustomTypedDict(TypedDict):
     preset_amount: Nullable[int]
     r"""The initial amount shown to the customer."""
     recurring_interval: SubscriptionRecurringInterval
-    amount_type: ProductPriceRecurringCustomAmountType
-    type: ProductPriceRecurringCustomType
+    amount_type: Literal["custom"]
+    type: Literal["recurring"]
     r"""The type of the price."""
 
 
@@ -82,22 +72,14 @@ class ProductPriceRecurringCustom(BaseModel):
     recurring_interval: SubscriptionRecurringInterval
 
     AMOUNT_TYPE: Annotated[
-        Annotated[
-            ProductPriceRecurringCustomAmountType,
-            AfterValidator(
-                validate_const(ProductPriceRecurringCustomAmountType.CUSTOM)
-            ),
-        ],
+        Annotated[Literal["custom"], AfterValidator(validate_const("custom"))],
         pydantic.Field(alias="amount_type"),
-    ] = ProductPriceRecurringCustomAmountType.CUSTOM
+    ] = "custom"
 
     TYPE: Annotated[
-        Annotated[
-            ProductPriceRecurringCustomType,
-            AfterValidator(validate_const(ProductPriceRecurringCustomType.RECURRING)),
-        ],
+        Annotated[Literal["recurring"], AfterValidator(validate_const("recurring"))],
         pydantic.Field(alias="type"),
-    ] = ProductPriceRecurringCustomType.RECURRING
+    ] = "recurring"
     r"""The type of the price."""
 
     @model_serializer(mode="wrap")

@@ -2,16 +2,12 @@
 
 from __future__ import annotations
 from .subscription import Subscription, SubscriptionTypedDict
-from enum import Enum
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class WebhookSubscriptionRevokedPayloadType(str, Enum):
-    SUBSCRIPTION_REVOKED = "subscription.revoked"
 
 
 class WebhookSubscriptionRevokedPayloadTypedDict(TypedDict):
@@ -22,7 +18,7 @@ class WebhookSubscriptionRevokedPayloadTypedDict(TypedDict):
     """
 
     data: SubscriptionTypedDict
-    type: WebhookSubscriptionRevokedPayloadType
+    type: Literal["subscription.revoked"]
 
 
 class WebhookSubscriptionRevokedPayload(BaseModel):
@@ -36,12 +32,8 @@ class WebhookSubscriptionRevokedPayload(BaseModel):
 
     TYPE: Annotated[
         Annotated[
-            WebhookSubscriptionRevokedPayloadType,
-            AfterValidator(
-                validate_const(
-                    WebhookSubscriptionRevokedPayloadType.SUBSCRIPTION_REVOKED
-                )
-            ),
+            Literal["subscription.revoked"],
+            AfterValidator(validate_const("subscription.revoked")),
         ],
         pydantic.Field(alias="type"),
-    ] = WebhookSubscriptionRevokedPayloadType.SUBSCRIPTION_REVOKED
+    ] = "subscription.revoked"

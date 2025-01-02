@@ -6,13 +6,12 @@ from .customfieldcheckboxproperties import (
     CustomFieldCheckboxPropertiesTypedDict,
 )
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Union
+from typing import Dict, Literal, Union
 from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
@@ -24,10 +23,6 @@ CustomFieldCheckboxMetadataTypedDict = TypeAliasType(
 CustomFieldCheckboxMetadata = TypeAliasType(
     "CustomFieldCheckboxMetadata", Union[str, int, bool]
 )
-
-
-class CustomFieldCheckboxType(str, Enum):
-    CHECKBOX = "checkbox"
 
 
 class CustomFieldCheckboxTypedDict(TypedDict):
@@ -47,7 +42,7 @@ class CustomFieldCheckboxTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the custom field."""
     properties: CustomFieldCheckboxPropertiesTypedDict
-    type: CustomFieldCheckboxType
+    type: Literal["checkbox"]
 
 
 class CustomFieldCheckbox(BaseModel):
@@ -76,12 +71,9 @@ class CustomFieldCheckbox(BaseModel):
     properties: CustomFieldCheckboxProperties
 
     TYPE: Annotated[
-        Annotated[
-            CustomFieldCheckboxType,
-            AfterValidator(validate_const(CustomFieldCheckboxType.CHECKBOX)),
-        ],
+        Annotated[Literal["checkbox"], AfterValidator(validate_const("checkbox"))],
         pydantic.Field(alias="type"),
-    ] = CustomFieldCheckboxType.CHECKBOX
+    ] = "checkbox"
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

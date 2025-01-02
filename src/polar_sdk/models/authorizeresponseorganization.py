@@ -4,18 +4,13 @@ from __future__ import annotations
 from .authorizeorganization import AuthorizeOrganization, AuthorizeOrganizationTypedDict
 from .oauth2clientpublic import OAuth2ClientPublic, OAuth2ClientPublicTypedDict
 from .scope import Scope
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import List
+from typing import List, Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class AuthorizeResponseOrganizationSubType(str, Enum):
-    ORGANIZATION = "organization"
 
 
 class AuthorizeResponseOrganizationTypedDict(TypedDict):
@@ -23,7 +18,7 @@ class AuthorizeResponseOrganizationTypedDict(TypedDict):
     sub: Nullable[AuthorizeOrganizationTypedDict]
     scopes: List[Scope]
     organizations: List[AuthorizeOrganizationTypedDict]
-    sub_type: AuthorizeResponseOrganizationSubType
+    sub_type: Literal["organization"]
 
 
 class AuthorizeResponseOrganization(BaseModel):
@@ -37,13 +32,10 @@ class AuthorizeResponseOrganization(BaseModel):
 
     SUB_TYPE: Annotated[
         Annotated[
-            AuthorizeResponseOrganizationSubType,
-            AfterValidator(
-                validate_const(AuthorizeResponseOrganizationSubType.ORGANIZATION)
-            ),
+            Literal["organization"], AfterValidator(validate_const("organization"))
         ],
         pydantic.Field(alias="sub_type"),
-    ] = AuthorizeResponseOrganizationSubType.ORGANIZATION
+    ] = "organization"
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

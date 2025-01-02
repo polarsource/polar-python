@@ -26,6 +26,7 @@ from .benefitgrantlicensekeysproperties import (
     BenefitGrantLicenseKeysProperties,
     BenefitGrantLicenseKeysPropertiesTypedDict,
 )
+from .customer import Customer, CustomerTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 import pydantic
@@ -106,6 +107,8 @@ class BenefitGrantWebhookTypedDict(TypedDict):
     user_id: str
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
+    customer: CustomerTypedDict
+    r"""A customer in an organization."""
     properties: BenefitGrantWebhookPropertiesTypedDict
     benefit: BenefitTypedDict
     granted_at: NotRequired[Nullable[datetime]]
@@ -149,6 +152,9 @@ class BenefitGrantWebhook(BaseModel):
 
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
+
+    customer: Customer
+    r"""A customer in an organization."""
 
     properties: BenefitGrantWebhookProperties
 

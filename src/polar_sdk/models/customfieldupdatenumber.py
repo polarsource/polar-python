@@ -5,13 +5,12 @@ from .customfieldnumberproperties import (
     CustomFieldNumberProperties,
     CustomFieldNumberPropertiesTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Union
+from typing import Dict, Literal, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -25,17 +24,13 @@ CustomFieldUpdateNumberMetadata = TypeAliasType(
 )
 
 
-class CustomFieldUpdateNumberType(str, Enum):
-    NUMBER = "number"
-
-
 class CustomFieldUpdateNumberTypedDict(TypedDict):
     r"""Schema to update a custom field of type number."""
 
     metadata: NotRequired[Nullable[Dict[str, CustomFieldUpdateNumberMetadataTypedDict]]]
     name: NotRequired[Nullable[str]]
     slug: NotRequired[Nullable[str]]
-    type: CustomFieldUpdateNumberType
+    type: Literal["number"]
     properties: NotRequired[Nullable[CustomFieldNumberPropertiesTypedDict]]
 
 
@@ -49,12 +44,9 @@ class CustomFieldUpdateNumber(BaseModel):
     slug: OptionalNullable[str] = UNSET
 
     TYPE: Annotated[
-        Annotated[
-            CustomFieldUpdateNumberType,
-            AfterValidator(validate_const(CustomFieldUpdateNumberType.NUMBER)),
-        ],
+        Annotated[Literal["number"], AfterValidator(validate_const("number"))],
         pydantic.Field(alias="type"),
-    ] = CustomFieldUpdateNumberType.NUMBER
+    ] = "number"
 
     properties: OptionalNullable[CustomFieldNumberProperties] = UNSET
 

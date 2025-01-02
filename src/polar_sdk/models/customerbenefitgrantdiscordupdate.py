@@ -5,32 +5,23 @@ from .customerbenefitgrantdiscordpropertiesupdate import (
     CustomerBenefitGrantDiscordPropertiesUpdate,
     CustomerBenefitGrantDiscordPropertiesUpdateTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class CustomerBenefitGrantDiscordUpdateBenefitType(str, Enum):
-    DISCORD = "discord"
 
 
 class CustomerBenefitGrantDiscordUpdateTypedDict(TypedDict):
     properties: CustomerBenefitGrantDiscordPropertiesUpdateTypedDict
-    benefit_type: CustomerBenefitGrantDiscordUpdateBenefitType
+    benefit_type: Literal["discord"]
 
 
 class CustomerBenefitGrantDiscordUpdate(BaseModel):
     properties: CustomerBenefitGrantDiscordPropertiesUpdate
 
     BENEFIT_TYPE: Annotated[
-        Annotated[
-            CustomerBenefitGrantDiscordUpdateBenefitType,
-            AfterValidator(
-                validate_const(CustomerBenefitGrantDiscordUpdateBenefitType.DISCORD)
-            ),
-        ],
+        Annotated[Literal["discord"], AfterValidator(validate_const("discord"))],
         pydantic.Field(alias="benefit_type"),
-    ] = CustomerBenefitGrantDiscordUpdateBenefitType.DISCORD
+    ] = "discord"

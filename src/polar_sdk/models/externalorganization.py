@@ -3,15 +3,13 @@
 from __future__ import annotations
 from .platforms import Platforms
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
-from polar_sdk.utils import validate_const
-import pydantic
 from pydantic import model_serializer
-from pydantic.functional_validators import AfterValidator
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import TypedDict
 
 
 class ExternalOrganizationTypedDict(TypedDict):
     id: str
+    platform: Platforms
     name: str
     avatar_url: str
     is_personal: bool
@@ -23,12 +21,13 @@ class ExternalOrganizationTypedDict(TypedDict):
     email: Nullable[str]
     twitter_username: Nullable[str]
     organization_id: Nullable[str]
-    platform: Platforms
 
 
 class ExternalOrganization(BaseModel):
     id: str
 
+    platform: Platforms
+
     name: str
 
     avatar_url: str
@@ -50,11 +49,6 @@ class ExternalOrganization(BaseModel):
     twitter_username: Nullable[str]
 
     organization_id: Nullable[str]
-
-    PLATFORM: Annotated[
-        Annotated[Platforms, AfterValidator(validate_const(Platforms.GITHUB))],
-        pydantic.Field(alias="platform"),
-    ] = Platforms.GITHUB
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

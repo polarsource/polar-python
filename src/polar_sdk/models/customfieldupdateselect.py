@@ -5,13 +5,12 @@ from .customfieldselectproperties import (
     CustomFieldSelectProperties,
     CustomFieldSelectPropertiesTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Union
+from typing import Dict, Literal, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -25,17 +24,13 @@ CustomFieldUpdateSelectMetadata = TypeAliasType(
 )
 
 
-class CustomFieldUpdateSelectType(str, Enum):
-    SELECT = "select"
-
-
 class CustomFieldUpdateSelectTypedDict(TypedDict):
     r"""Schema to update a custom field of type select."""
 
     metadata: NotRequired[Nullable[Dict[str, CustomFieldUpdateSelectMetadataTypedDict]]]
     name: NotRequired[Nullable[str]]
     slug: NotRequired[Nullable[str]]
-    type: CustomFieldUpdateSelectType
+    type: Literal["select"]
     properties: NotRequired[Nullable[CustomFieldSelectPropertiesTypedDict]]
 
 
@@ -49,12 +44,9 @@ class CustomFieldUpdateSelect(BaseModel):
     slug: OptionalNullable[str] = UNSET
 
     TYPE: Annotated[
-        Annotated[
-            CustomFieldUpdateSelectType,
-            AfterValidator(validate_const(CustomFieldUpdateSelectType.SELECT)),
-        ],
+        Annotated[Literal["select"], AfterValidator(validate_const("select"))],
         pydantic.Field(alias="type"),
-    ] = CustomFieldUpdateSelectType.SELECT
+    ] = "select"
 
     properties: OptionalNullable[CustomFieldSelectProperties] = UNSET
 

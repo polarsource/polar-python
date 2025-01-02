@@ -2,16 +2,12 @@
 
 from __future__ import annotations
 from .product import Product, ProductTypedDict
-from enum import Enum
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class WebhookProductUpdatedPayloadType(str, Enum):
-    PRODUCT_UPDATED = "product.updated"
 
 
 class WebhookProductUpdatedPayloadTypedDict(TypedDict):
@@ -22,7 +18,7 @@ class WebhookProductUpdatedPayloadTypedDict(TypedDict):
 
     data: ProductTypedDict
     r"""A product."""
-    type: WebhookProductUpdatedPayloadType
+    type: Literal["product.updated"]
 
 
 class WebhookProductUpdatedPayload(BaseModel):
@@ -36,10 +32,8 @@ class WebhookProductUpdatedPayload(BaseModel):
 
     TYPE: Annotated[
         Annotated[
-            WebhookProductUpdatedPayloadType,
-            AfterValidator(
-                validate_const(WebhookProductUpdatedPayloadType.PRODUCT_UPDATED)
-            ),
+            Literal["product.updated"],
+            AfterValidator(validate_const("product.updated")),
         ],
         pydantic.Field(alias="type"),
-    ] = WebhookProductUpdatedPayloadType.PRODUCT_UPDATED
+    ] = "product.updated"

@@ -5,13 +5,12 @@ from .customfielddateproperties import (
     CustomFieldDateProperties,
     CustomFieldDatePropertiesTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Union
+from typing import Dict, Literal, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -25,17 +24,13 @@ CustomFieldUpdateDateMetadata = TypeAliasType(
 )
 
 
-class CustomFieldUpdateDateType(str, Enum):
-    DATE = "date"
-
-
 class CustomFieldUpdateDateTypedDict(TypedDict):
     r"""Schema to update a custom field of type date."""
 
     metadata: NotRequired[Nullable[Dict[str, CustomFieldUpdateDateMetadataTypedDict]]]
     name: NotRequired[Nullable[str]]
     slug: NotRequired[Nullable[str]]
-    type: CustomFieldUpdateDateType
+    type: Literal["date"]
     properties: NotRequired[Nullable[CustomFieldDatePropertiesTypedDict]]
 
 
@@ -49,12 +44,9 @@ class CustomFieldUpdateDate(BaseModel):
     slug: OptionalNullable[str] = UNSET
 
     TYPE: Annotated[
-        Annotated[
-            CustomFieldUpdateDateType,
-            AfterValidator(validate_const(CustomFieldUpdateDateType.DATE)),
-        ],
+        Annotated[Literal["date"], AfterValidator(validate_const("date"))],
         pydantic.Field(alias="type"),
-    ] = CustomFieldUpdateDateType.DATE
+    ] = "date"
 
     properties: OptionalNullable[CustomFieldDateProperties] = UNSET
 

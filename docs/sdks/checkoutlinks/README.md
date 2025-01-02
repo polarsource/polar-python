@@ -62,7 +62,6 @@ Create a checkout link.
 ### Example Usage
 
 ```python
-import polar_sdk
 from polar_sdk import Polar
 
 with Polar(
@@ -71,7 +70,7 @@ with Polar(
 
     res = polar.checkout_links.create(request={
         "product_id": "<value>",
-        "payment_processor": polar_sdk.CheckoutLinkProductCreatePaymentProcessor.STRIPE,
+        "payment_processor": "stripe",
     })
 
     # Handle response

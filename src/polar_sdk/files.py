@@ -49,7 +49,7 @@ class Files(BaseSDK):
             limit=limit,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/files/",
             base_url=base_url,
@@ -86,7 +86,7 @@ class Files(BaseSDK):
 
         def next_func() -> Optional[models.FilesListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
-            page = request.page if not request.page is None else 0
+            page = request.page if not request.page is None else 1
             next_page = page + 1
 
             num_pages = JSONPath("$.pagination.max_page").parse(body)
@@ -98,7 +98,7 @@ class Files(BaseSDK):
             results = JSONPath("$.items").parse(body)
             if len(results) == 0 or len(results[0]) == 0:
                 return None
-            limit = request.limit if not request.limit is None else 0
+            limit = request.limit if not request.limit is None else 10
             if len(results[0]) < limit:
                 return None
 
@@ -174,7 +174,7 @@ class Files(BaseSDK):
             limit=limit,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/files/",
             base_url=base_url,
@@ -211,7 +211,7 @@ class Files(BaseSDK):
 
         def next_func() -> Optional[models.FilesListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
-            page = request.page if not request.page is None else 0
+            page = request.page if not request.page is None else 1
             next_page = page + 1
 
             num_pages = JSONPath("$.pagination.max_page").parse(body)
@@ -223,7 +223,7 @@ class Files(BaseSDK):
             results = JSONPath("$.items").parse(body)
             if len(results) == 0 or len(results[0]) == 0:
                 return None
-            limit = request.limit if not request.limit is None else 0
+            limit = request.limit if not request.limit is None else 10
             if len(results[0]) < limit:
                 return None
 
@@ -290,7 +290,7 @@ class Files(BaseSDK):
             request = utils.unmarshal(request, models.FileCreate)
         request = cast(models.FileCreate, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/v1/files/",
             base_url=base_url,
@@ -380,7 +380,7 @@ class Files(BaseSDK):
             request = utils.unmarshal(request, models.FileCreate)
         request = cast(models.FileCreate, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/v1/files/",
             base_url=base_url,
@@ -477,7 +477,7 @@ class Files(BaseSDK):
             ),
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/v1/files/{id}/uploaded",
             base_url=base_url,
@@ -586,7 +586,7 @@ class Files(BaseSDK):
             ),
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/v1/files/{id}/uploaded",
             base_url=base_url,
@@ -691,7 +691,7 @@ class Files(BaseSDK):
             file_patch=utils.get_pydantic_model(file_patch, models.FilePatch),
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="PATCH",
             path="/v1/files/{id}",
             base_url=base_url,
@@ -792,7 +792,7 @@ class Files(BaseSDK):
             file_patch=utils.get_pydantic_model(file_patch, models.FilePatch),
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="PATCH",
             path="/v1/files/{id}",
             base_url=base_url,
@@ -890,7 +890,7 @@ class Files(BaseSDK):
             id=id,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="DELETE",
             path="/v1/files/{id}",
             base_url=base_url,
@@ -983,7 +983,7 @@ class Files(BaseSDK):
             id=id,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="DELETE",
             path="/v1/files/{id}",
             base_url=base_url,

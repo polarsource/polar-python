@@ -9,6 +9,10 @@ from .benefitlicensekeyssubscriber import (
     BenefitLicenseKeysSubscriber,
     BenefitLicenseKeysSubscriberTypedDict,
 )
+from .customerportalcustomer import (
+    CustomerPortalCustomer,
+    CustomerPortalCustomerTypedDict,
+)
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -30,6 +34,7 @@ class CustomerBenefitGrantLicenseKeysTypedDict(TypedDict):
     order_id: Nullable[str]
     is_granted: bool
     is_revoked: bool
+    customer: CustomerPortalCustomerTypedDict
     benefit: BenefitLicenseKeysSubscriberTypedDict
     properties: BenefitGrantLicenseKeysPropertiesTypedDict
 
@@ -59,6 +64,8 @@ class CustomerBenefitGrantLicenseKeys(BaseModel):
     is_granted: bool
 
     is_revoked: bool
+
+    customer: CustomerPortalCustomer
 
     benefit: BenefitLicenseKeysSubscriber
 

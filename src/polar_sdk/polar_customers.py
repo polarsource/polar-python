@@ -39,7 +39,7 @@ class PolarCustomers(BaseSDK):
             id=id,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/customer-portal/customers/{id}",
             base_url=base_url,
@@ -129,7 +129,7 @@ class PolarCustomers(BaseSDK):
             id=id,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/customer-portal/customers/{id}",
             base_url=base_url,

@@ -4,17 +4,13 @@ from __future__ import annotations
 from .benefitadsproperties import BenefitAdsProperties, BenefitAdsPropertiesTypedDict
 from .organization import Organization, OrganizationTypedDict
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class BenefitAdsSubscriberType(str, Enum):
-    ADS = "ads"
 
 
 class BenefitAdsSubscriberTypedDict(TypedDict):
@@ -35,7 +31,7 @@ class BenefitAdsSubscriberTypedDict(TypedDict):
     organization: OrganizationTypedDict
     properties: BenefitAdsPropertiesTypedDict
     r"""Properties for a benefit of type `ads`."""
-    type: BenefitAdsSubscriberType
+    type: Literal["ads"]
 
 
 class BenefitAdsSubscriber(BaseModel):
@@ -66,12 +62,9 @@ class BenefitAdsSubscriber(BaseModel):
     r"""Properties for a benefit of type `ads`."""
 
     TYPE: Annotated[
-        Annotated[
-            BenefitAdsSubscriberType,
-            AfterValidator(validate_const(BenefitAdsSubscriberType.ADS)),
-        ],
+        Annotated[Literal["ads"], AfterValidator(validate_const("ads"))],
         pydantic.Field(alias="type"),
-    ] = BenefitAdsSubscriberType.ADS
+    ] = "ads"
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

@@ -5,13 +5,12 @@ from .customfielddateproperties import (
     CustomFieldDateProperties,
     CustomFieldDatePropertiesTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Optional, Union
+from typing import Dict, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -23,10 +22,6 @@ CustomFieldCreateDateMetadataTypedDict = TypeAliasType(
 CustomFieldCreateDateMetadata = TypeAliasType(
     "CustomFieldCreateDateMetadata", Union[str, int, bool]
 )
-
-
-class CustomFieldCreateDateType(str, Enum):
-    DATE = "date"
 
 
 class CustomFieldCreateDateTypedDict(TypedDict):
@@ -49,7 +44,7 @@ class CustomFieldCreateDateTypedDict(TypedDict):
 
     You can store up to **50 key-value pairs**.
     """
-    type: CustomFieldCreateDateType
+    type: Literal["date"]
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the custom field. **Required unless you use an organization token.**"""
 
@@ -79,12 +74,9 @@ class CustomFieldCreateDate(BaseModel):
     """
 
     TYPE: Annotated[
-        Annotated[
-            CustomFieldCreateDateType,
-            AfterValidator(validate_const(CustomFieldCreateDateType.DATE)),
-        ],
+        Annotated[Literal["date"], AfterValidator(validate_const("date"))],
         pydantic.Field(alias="type"),
-    ] = CustomFieldCreateDateType.DATE
+    ] = "date"
 
     organization_id: OptionalNullable[str] = UNSET
     r"""The ID of the organization owning the custom field. **Required unless you use an organization token.**"""

@@ -7,17 +7,13 @@ from .benefitdownloadablessubscriberproperties import (
 )
 from .organization import Organization, OrganizationTypedDict
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class BenefitDownloadablesSubscriberType(str, Enum):
-    DOWNLOADABLES = "downloadables"
 
 
 class BenefitDownloadablesSubscriberTypedDict(TypedDict):
@@ -37,7 +33,7 @@ class BenefitDownloadablesSubscriberTypedDict(TypedDict):
     r"""The ID of the organization owning the benefit."""
     organization: OrganizationTypedDict
     properties: BenefitDownloadablesSubscriberPropertiesTypedDict
-    type: BenefitDownloadablesSubscriberType
+    type: Literal["downloadables"]
 
 
 class BenefitDownloadablesSubscriber(BaseModel):
@@ -68,13 +64,10 @@ class BenefitDownloadablesSubscriber(BaseModel):
 
     TYPE: Annotated[
         Annotated[
-            BenefitDownloadablesSubscriberType,
-            AfterValidator(
-                validate_const(BenefitDownloadablesSubscriberType.DOWNLOADABLES)
-            ),
+            Literal["downloadables"], AfterValidator(validate_const("downloadables"))
         ],
         pydantic.Field(alias="type"),
-    ] = BenefitDownloadablesSubscriberType.DOWNLOADABLES
+    ] = "downloadables"
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

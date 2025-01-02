@@ -5,13 +5,12 @@ from .customfieldcheckboxproperties import (
     CustomFieldCheckboxProperties,
     CustomFieldCheckboxPropertiesTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Optional, Union
+from typing import Dict, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -23,10 +22,6 @@ CustomFieldCreateCheckboxMetadataTypedDict = TypeAliasType(
 CustomFieldCreateCheckboxMetadata = TypeAliasType(
     "CustomFieldCreateCheckboxMetadata", Union[str, int, bool]
 )
-
-
-class CustomFieldCreateCheckboxType(str, Enum):
-    CHECKBOX = "checkbox"
 
 
 class CustomFieldCreateCheckboxTypedDict(TypedDict):
@@ -49,7 +44,7 @@ class CustomFieldCreateCheckboxTypedDict(TypedDict):
 
     You can store up to **50 key-value pairs**.
     """
-    type: CustomFieldCreateCheckboxType
+    type: Literal["checkbox"]
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the custom field. **Required unless you use an organization token.**"""
 
@@ -79,12 +74,9 @@ class CustomFieldCreateCheckbox(BaseModel):
     """
 
     TYPE: Annotated[
-        Annotated[
-            CustomFieldCreateCheckboxType,
-            AfterValidator(validate_const(CustomFieldCreateCheckboxType.CHECKBOX)),
-        ],
+        Annotated[Literal["checkbox"], AfterValidator(validate_const("checkbox"))],
         pydantic.Field(alias="type"),
-    ] = CustomFieldCreateCheckboxType.CHECKBOX
+    ] = "checkbox"
 
     organization_id: OptionalNullable[str] = UNSET
     r"""The ID of the organization owning the custom field. **Required unless you use an organization token.**"""

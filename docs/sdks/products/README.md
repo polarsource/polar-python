@@ -79,8 +79,8 @@ with Polar(
         "prices": [
             {
                 "recurring_interval": polar_sdk.SubscriptionRecurringInterval.MONTH,
-                "type": polar_sdk.ProductPriceRecurringFreeCreateType.RECURRING,
-                "amount_type": polar_sdk.ProductPriceRecurringFreeCreateAmountType.FREE,
+                "type": "recurring",
+                "amount_type": "free",
             },
         ],
     })

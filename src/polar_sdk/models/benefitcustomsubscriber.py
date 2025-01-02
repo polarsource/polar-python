@@ -7,17 +7,13 @@ from .benefitcustomsubscriberproperties import (
 )
 from .organization import Organization, OrganizationTypedDict
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class BenefitCustomSubscriberType(str, Enum):
-    CUSTOM = "custom"
 
 
 class BenefitCustomSubscriberTypedDict(TypedDict):
@@ -38,7 +34,7 @@ class BenefitCustomSubscriberTypedDict(TypedDict):
     organization: OrganizationTypedDict
     properties: BenefitCustomSubscriberPropertiesTypedDict
     r"""Properties available to subscribers for a benefit of type `custom`."""
-    type: BenefitCustomSubscriberType
+    type: Literal["custom"]
 
 
 class BenefitCustomSubscriber(BaseModel):
@@ -69,12 +65,9 @@ class BenefitCustomSubscriber(BaseModel):
     r"""Properties available to subscribers for a benefit of type `custom`."""
 
     TYPE: Annotated[
-        Annotated[
-            BenefitCustomSubscriberType,
-            AfterValidator(validate_const(BenefitCustomSubscriberType.CUSTOM)),
-        ],
+        Annotated[Literal["custom"], AfterValidator(validate_const("custom"))],
         pydantic.Field(alias="type"),
-    ] = BenefitCustomSubscriberType.CUSTOM
+    ] = "custom"
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

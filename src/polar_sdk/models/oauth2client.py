@@ -20,10 +20,6 @@ class GrantTypes(str, Enum):
     REFRESH_TOKEN = "refresh_token"
 
 
-class ResponseTypes(str, Enum):
-    CODE = "code"
-
-
 class OAuth2ClientTypedDict(TypedDict):
     redirect_uris: List[str]
     client_name: str
@@ -37,7 +33,7 @@ class OAuth2ClientTypedDict(TypedDict):
     client_secret_expires_at: int
     token_endpoint_auth_method: NotRequired[TokenEndpointAuthMethod]
     grant_types: NotRequired[List[GrantTypes]]
-    response_types: NotRequired[List[ResponseTypes]]
+    response_types: NotRequired[List[str]]
     scope: NotRequired[str]
     client_uri: NotRequired[Nullable[str]]
     logo_uri: NotRequired[Nullable[str]]
@@ -70,7 +66,7 @@ class OAuth2Client(BaseModel):
 
     grant_types: Optional[List[GrantTypes]] = None
 
-    response_types: Optional[List[ResponseTypes]] = None
+    response_types: Optional[List[str]] = None
 
     scope: Optional[str] = (
         "openid profile email user:read organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write products:read products:write benefits:read benefits:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write customer_sessions:write orders:read metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write"

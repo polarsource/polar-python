@@ -103,7 +103,6 @@ Update a benefit grant for the authenticated customer or user.
 ### Example Usage
 
 ```python
-import polar_sdk
 from polar_sdk import Polar
 
 with Polar(
@@ -111,7 +110,7 @@ with Polar(
 ) as polar:
 
     res = polar.customer_portal.benefit_grants.update(id="<value>", customer_benefit_grant_update={
-        "benefit_type": polar_sdk.CustomerBenefitGrantLicenseKeysUpdateBenefitType.LICENSE_KEYS,
+        "benefit_type": "license_keys",
     })
 
     # Handle response

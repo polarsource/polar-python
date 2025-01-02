@@ -25,12 +25,9 @@ from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
-from polar_sdk.utils import validate_const
-import pydantic
 from pydantic import model_serializer
-from pydantic.functional_validators import AfterValidator
 from typing import Dict, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 class CheckoutCustomFieldDataTypedDict(TypedDict):
@@ -96,6 +93,7 @@ class CheckoutTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
+    payment_processor: PaymentProcessor
     status: CheckoutStatus
     client_secret: str
     r"""Client secret used to update and complete the checkout session from the client."""
@@ -151,7 +149,6 @@ class CheckoutTypedDict(TypedDict):
     customer_metadata: Dict[str, CustomerMetadataTypedDict]
     custom_field_data: NotRequired[CheckoutCustomFieldDataTypedDict]
     r"""Key-value object storing custom field values."""
-    payment_processor: PaymentProcessor
 
 
 class Checkout(BaseModel):
@@ -165,6 +162,8 @@ class Checkout(BaseModel):
 
     id: str
     r"""The ID of the object."""
+
+    payment_processor: PaymentProcessor
 
     status: CheckoutStatus
 
@@ -255,13 +254,6 @@ class Checkout(BaseModel):
 
     custom_field_data: Optional[CheckoutCustomFieldData] = None
     r"""Key-value object storing custom field values."""
-
-    PAYMENT_PROCESSOR: Annotated[
-        Annotated[
-            PaymentProcessor, AfterValidator(validate_const(PaymentProcessor.STRIPE))
-        ],
-        pydantic.Field(alias="payment_processor"),
-    ] = PaymentProcessor.STRIPE
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
