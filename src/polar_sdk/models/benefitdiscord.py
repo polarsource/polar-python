@@ -6,17 +6,13 @@ from .benefitdiscordproperties import (
     BenefitDiscordPropertiesTypedDict,
 )
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class BenefitDiscordType(str, Enum):
-    DISCORD = "discord"
 
 
 class BenefitDiscordTypedDict(TypedDict):
@@ -41,7 +37,7 @@ class BenefitDiscordTypedDict(TypedDict):
     r"""The ID of the organization owning the benefit."""
     properties: BenefitDiscordPropertiesTypedDict
     r"""Properties for a benefit of type `discord`."""
-    type: BenefitDiscordType
+    type: Literal["discord"]
 
 
 class BenefitDiscord(BaseModel):
@@ -75,12 +71,9 @@ class BenefitDiscord(BaseModel):
     r"""Properties for a benefit of type `discord`."""
 
     TYPE: Annotated[
-        Annotated[
-            BenefitDiscordType,
-            AfterValidator(validate_const(BenefitDiscordType.DISCORD)),
-        ],
+        Annotated[Literal["discord"], AfterValidator(validate_const("discord"))],
         pydantic.Field(alias="type"),
-    ] = BenefitDiscordType.DISCORD
+    ] = "discord"
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

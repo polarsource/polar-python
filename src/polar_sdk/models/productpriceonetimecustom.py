@@ -2,23 +2,13 @@
 
 from __future__ import annotations
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class ProductPriceOneTimeCustomAmountType(str, Enum):
-    CUSTOM = "custom"
-
-
-class ProductPriceOneTimeCustomType(str, Enum):
-    r"""The type of the price."""
-
-    ONE_TIME = "one_time"
 
 
 class ProductPriceOneTimeCustomTypedDict(TypedDict):
@@ -42,8 +32,8 @@ class ProductPriceOneTimeCustomTypedDict(TypedDict):
     r"""The maximum amount the customer can pay."""
     preset_amount: Nullable[int]
     r"""The initial amount shown to the customer."""
-    amount_type: ProductPriceOneTimeCustomAmountType
-    type: ProductPriceOneTimeCustomType
+    amount_type: Literal["custom"]
+    type: Literal["one_time"]
     r"""The type of the price."""
 
 
@@ -78,20 +68,14 @@ class ProductPriceOneTimeCustom(BaseModel):
     r"""The initial amount shown to the customer."""
 
     AMOUNT_TYPE: Annotated[
-        Annotated[
-            ProductPriceOneTimeCustomAmountType,
-            AfterValidator(validate_const(ProductPriceOneTimeCustomAmountType.CUSTOM)),
-        ],
+        Annotated[Literal["custom"], AfterValidator(validate_const("custom"))],
         pydantic.Field(alias="amount_type"),
-    ] = ProductPriceOneTimeCustomAmountType.CUSTOM
+    ] = "custom"
 
     TYPE: Annotated[
-        Annotated[
-            ProductPriceOneTimeCustomType,
-            AfterValidator(validate_const(ProductPriceOneTimeCustomType.ONE_TIME)),
-        ],
+        Annotated[Literal["one_time"], AfterValidator(validate_const("one_time"))],
         pydantic.Field(alias="type"),
-    ] = ProductPriceOneTimeCustomType.ONE_TIME
+    ] = "one_time"
     r"""The type of the price."""
 
     @model_serializer(mode="wrap")

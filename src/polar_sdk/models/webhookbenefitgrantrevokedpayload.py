@@ -2,16 +2,12 @@
 
 from __future__ import annotations
 from .benefitgrantwebhook import BenefitGrantWebhook, BenefitGrantWebhookTypedDict
-from enum import Enum
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class WebhookBenefitGrantRevokedPayloadType(str, Enum):
-    BENEFIT_GRANT_REVOKED = "benefit_grant.revoked"
 
 
 class WebhookBenefitGrantRevokedPayloadTypedDict(TypedDict):
@@ -21,7 +17,7 @@ class WebhookBenefitGrantRevokedPayloadTypedDict(TypedDict):
     """
 
     data: BenefitGrantWebhookTypedDict
-    type: WebhookBenefitGrantRevokedPayloadType
+    type: Literal["benefit_grant.revoked"]
 
 
 class WebhookBenefitGrantRevokedPayload(BaseModel):
@@ -34,12 +30,8 @@ class WebhookBenefitGrantRevokedPayload(BaseModel):
 
     TYPE: Annotated[
         Annotated[
-            WebhookBenefitGrantRevokedPayloadType,
-            AfterValidator(
-                validate_const(
-                    WebhookBenefitGrantRevokedPayloadType.BENEFIT_GRANT_REVOKED
-                )
-            ),
+            Literal["benefit_grant.revoked"],
+            AfterValidator(validate_const("benefit_grant.revoked")),
         ],
         pydantic.Field(alias="type"),
-    ] = WebhookBenefitGrantRevokedPayloadType.BENEFIT_GRANT_REVOKED
+    ] = "benefit_grant.revoked"

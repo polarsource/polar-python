@@ -6,13 +6,12 @@ from .customfieldselectproperties import (
     CustomFieldSelectPropertiesTypedDict,
 )
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Union
+from typing import Dict, Literal, Union
 from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
@@ -24,10 +23,6 @@ CustomFieldSelectMetadataTypedDict = TypeAliasType(
 CustomFieldSelectMetadata = TypeAliasType(
     "CustomFieldSelectMetadata", Union[str, int, bool]
 )
-
-
-class CustomFieldSelectType(str, Enum):
-    SELECT = "select"
 
 
 class CustomFieldSelectTypedDict(TypedDict):
@@ -47,7 +42,7 @@ class CustomFieldSelectTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the custom field."""
     properties: CustomFieldSelectPropertiesTypedDict
-    type: CustomFieldSelectType
+    type: Literal["select"]
 
 
 class CustomFieldSelect(BaseModel):
@@ -76,12 +71,9 @@ class CustomFieldSelect(BaseModel):
     properties: CustomFieldSelectProperties
 
     TYPE: Annotated[
-        Annotated[
-            CustomFieldSelectType,
-            AfterValidator(validate_const(CustomFieldSelectType.SELECT)),
-        ],
+        Annotated[Literal["select"], AfterValidator(validate_const("select"))],
         pydantic.Field(alias="type"),
-    ] = CustomFieldSelectType.SELECT
+    ] = "select"
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

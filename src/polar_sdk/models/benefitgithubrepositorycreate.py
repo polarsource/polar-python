@@ -5,17 +5,13 @@ from .benefitgithubrepositorycreateproperties import (
     BenefitGitHubRepositoryCreateProperties,
     BenefitGitHubRepositoryCreatePropertiesTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, NotRequired, TypedDict
-
-
-class BenefitGitHubRepositoryCreateType(str, Enum):
-    GITHUB_REPOSITORY = "github_repository"
 
 
 class BenefitGitHubRepositoryCreateTypedDict(TypedDict):
@@ -23,7 +19,7 @@ class BenefitGitHubRepositoryCreateTypedDict(TypedDict):
     r"""The description of the benefit. Will be displayed on products having this benefit."""
     properties: BenefitGitHubRepositoryCreatePropertiesTypedDict
     r"""Properties to create a benefit of type `github_repository`."""
-    type: BenefitGitHubRepositoryCreateType
+    type: Literal["github_repository"]
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the benefit. **Required unless you use an organization token.**"""
 
@@ -37,13 +33,11 @@ class BenefitGitHubRepositoryCreate(BaseModel):
 
     TYPE: Annotated[
         Annotated[
-            BenefitGitHubRepositoryCreateType,
-            AfterValidator(
-                validate_const(BenefitGitHubRepositoryCreateType.GITHUB_REPOSITORY)
-            ),
+            Literal["github_repository"],
+            AfterValidator(validate_const("github_repository")),
         ],
         pydantic.Field(alias="type"),
-    ] = BenefitGitHubRepositoryCreateType.GITHUB_REPOSITORY
+    ] = "github_repository"
 
     organization_id: OptionalNullable[str] = UNSET
     r"""The ID of the organization owning the benefit. **Required unless you use an organization token.**"""

@@ -57,7 +57,7 @@ class Checkouts(BaseSDK):
             request = utils.unmarshal(request, models.CheckoutLegacyCreate)
         request = cast(models.CheckoutLegacyCreate, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/v1/checkouts/",
             base_url=base_url,
@@ -152,7 +152,7 @@ class Checkouts(BaseSDK):
             request = utils.unmarshal(request, models.CheckoutLegacyCreate)
         request = cast(models.CheckoutLegacyCreate, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/v1/checkouts/",
             base_url=base_url,
@@ -245,7 +245,7 @@ class Checkouts(BaseSDK):
             id=id,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/checkouts/{id}",
             base_url=base_url,
@@ -335,7 +335,7 @@ class Checkouts(BaseSDK):
             id=id,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/checkouts/{id}",
             base_url=base_url,

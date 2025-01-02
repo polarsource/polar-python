@@ -3,23 +3,13 @@
 from __future__ import annotations
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class ProductPriceRecurringFreeAmountType(str, Enum):
-    FREE = "free"
-
-
-class ProductPriceRecurringFreeType(str, Enum):
-    r"""The type of the price."""
-
-    RECURRING = "recurring"
 
 
 class ProductPriceRecurringFreeTypedDict(TypedDict):
@@ -36,8 +26,8 @@ class ProductPriceRecurringFreeTypedDict(TypedDict):
     product_id: str
     r"""The ID of the product owning the price."""
     recurring_interval: SubscriptionRecurringInterval
-    amount_type: ProductPriceRecurringFreeAmountType
-    type: ProductPriceRecurringFreeType
+    amount_type: Literal["free"]
+    type: Literal["recurring"]
     r"""The type of the price."""
 
 
@@ -62,20 +52,14 @@ class ProductPriceRecurringFree(BaseModel):
     recurring_interval: SubscriptionRecurringInterval
 
     AMOUNT_TYPE: Annotated[
-        Annotated[
-            ProductPriceRecurringFreeAmountType,
-            AfterValidator(validate_const(ProductPriceRecurringFreeAmountType.FREE)),
-        ],
+        Annotated[Literal["free"], AfterValidator(validate_const("free"))],
         pydantic.Field(alias="amount_type"),
-    ] = ProductPriceRecurringFreeAmountType.FREE
+    ] = "free"
 
     TYPE: Annotated[
-        Annotated[
-            ProductPriceRecurringFreeType,
-            AfterValidator(validate_const(ProductPriceRecurringFreeType.RECURRING)),
-        ],
+        Annotated[Literal["recurring"], AfterValidator(validate_const("recurring"))],
         pydantic.Field(alias="type"),
-    ] = ProductPriceRecurringFreeType.RECURRING
+    ] = "recurring"
     r"""The type of the price."""
 
     @model_serializer(mode="wrap")

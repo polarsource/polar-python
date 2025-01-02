@@ -2,16 +2,12 @@
 
 from __future__ import annotations
 from .order import Order, OrderTypedDict
-from enum import Enum
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class WebhookOrderCreatedPayloadType(str, Enum):
-    ORDER_CREATED = "order.created"
 
 
 class WebhookOrderCreatedPayloadTypedDict(TypedDict):
@@ -21,7 +17,7 @@ class WebhookOrderCreatedPayloadTypedDict(TypedDict):
     """
 
     data: OrderTypedDict
-    type: WebhookOrderCreatedPayloadType
+    type: Literal["order.created"]
 
 
 class WebhookOrderCreatedPayload(BaseModel):
@@ -34,10 +30,7 @@ class WebhookOrderCreatedPayload(BaseModel):
 
     TYPE: Annotated[
         Annotated[
-            WebhookOrderCreatedPayloadType,
-            AfterValidator(
-                validate_const(WebhookOrderCreatedPayloadType.ORDER_CREATED)
-            ),
+            Literal["order.created"], AfterValidator(validate_const("order.created"))
         ],
         pydantic.Field(alias="type"),
-    ] = WebhookOrderCreatedPayloadType.ORDER_CREATED
+    ] = "order.created"

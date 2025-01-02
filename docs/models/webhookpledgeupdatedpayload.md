@@ -7,7 +7,7 @@ Sent when a pledge is updated.
 
 ## Fields
 
-| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `data`                                                                                 | [models.Pledge](../models/pledge.md)                                                   | :heavy_check_mark:                                                                     | N/A                                                                                    |
-| `type`                                                                                 | [models.WebhookPledgeUpdatedPayloadType](../models/webhookpledgeupdatedpayloadtype.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `data`                               | [models.Pledge](../models/pledge.md) | :heavy_check_mark:                   | N/A                                  |
+| `type`                               | *Literal["pledge.updated"]*          | :heavy_check_mark:                   | N/A                                  |

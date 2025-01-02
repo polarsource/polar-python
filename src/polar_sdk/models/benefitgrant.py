@@ -25,6 +25,7 @@ from .benefitgrantlicensekeysproperties import (
     BenefitGrantLicenseKeysProperties,
     BenefitGrantLicenseKeysPropertiesTypedDict,
 )
+from .customer import Customer, CustomerTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 import pydantic
@@ -79,6 +80,8 @@ class BenefitGrantTypedDict(TypedDict):
     user_id: str
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
+    customer: CustomerTypedDict
+    r"""A customer in an organization."""
     properties: PropertiesTypedDict
     granted_at: NotRequired[Nullable[datetime]]
     r"""The timestamp when the benefit was granted. If `None`, the benefit is not granted."""
@@ -120,6 +123,9 @@ class BenefitGrant(BaseModel):
 
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
+
+    customer: Customer
+    r"""A customer in an organization."""
 
     properties: Properties
 

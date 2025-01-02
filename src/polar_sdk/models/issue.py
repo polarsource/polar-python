@@ -11,16 +11,14 @@ from .repository import Repository, RepositoryTypedDict
 from .state import State
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from polar_sdk.utils import validate_const
-import pydantic
 from pydantic import model_serializer
-from pydantic.functional_validators import AfterValidator
 from typing import List, Optional
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
 class IssueTypedDict(TypedDict):
     id: str
+    platform: Platforms
     number: int
     r"""GitHub #number"""
     title: str
@@ -33,7 +31,6 @@ class IssueTypedDict(TypedDict):
     repository: RepositoryTypedDict
     pledge_badge_currently_embedded: bool
     r"""If this issue currently has the Polar badge SVG embedded"""
-    platform: Platforms
     body: NotRequired[Nullable[str]]
     r"""GitHub issue body"""
     comments: NotRequired[Nullable[int]]
@@ -58,6 +55,8 @@ class IssueTypedDict(TypedDict):
 class Issue(BaseModel):
     id: str
 
+    platform: Platforms
+
     number: int
     r"""GitHub #number"""
 
@@ -77,11 +76,6 @@ class Issue(BaseModel):
 
     pledge_badge_currently_embedded: bool
     r"""If this issue currently has the Polar badge SVG embedded"""
-
-    PLATFORM: Annotated[
-        Annotated[Platforms, AfterValidator(validate_const(Platforms.GITHUB))],
-        pydantic.Field(alias="platform"),
-    ] = Platforms.GITHUB
 
     body: OptionalNullable[str] = UNSET
     r"""GitHub issue body"""

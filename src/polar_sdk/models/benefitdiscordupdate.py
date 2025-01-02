@@ -5,23 +5,19 @@ from .benefitdiscordcreateproperties import (
     BenefitDiscordCreateProperties,
     BenefitDiscordCreatePropertiesTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, NotRequired, TypedDict
-
-
-class BenefitDiscordUpdateType(str, Enum):
-    DISCORD = "discord"
 
 
 class BenefitDiscordUpdateTypedDict(TypedDict):
     description: NotRequired[Nullable[str]]
     r"""The description of the benefit. Will be displayed on products having this benefit."""
-    type: BenefitDiscordUpdateType
+    type: Literal["discord"]
     properties: NotRequired[Nullable[BenefitDiscordCreatePropertiesTypedDict]]
 
 
@@ -30,12 +26,9 @@ class BenefitDiscordUpdate(BaseModel):
     r"""The description of the benefit. Will be displayed on products having this benefit."""
 
     TYPE: Annotated[
-        Annotated[
-            BenefitDiscordUpdateType,
-            AfterValidator(validate_const(BenefitDiscordUpdateType.DISCORD)),
-        ],
+        Annotated[Literal["discord"], AfterValidator(validate_const("discord"))],
         pydantic.Field(alias="type"),
-    ] = BenefitDiscordUpdateType.DISCORD
+    ] = "discord"
 
     properties: OptionalNullable[BenefitDiscordCreateProperties] = UNSET
 

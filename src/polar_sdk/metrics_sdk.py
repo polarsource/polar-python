@@ -70,7 +70,7 @@ class MetricsSDK(BaseSDK):
             product_price_type=product_price_type,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/metrics/",
             base_url=base_url,
@@ -187,7 +187,7 @@ class MetricsSDK(BaseSDK):
             product_price_type=product_price_type,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/metrics/",
             base_url=base_url,
@@ -267,7 +267,7 @@ class MetricsSDK(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/metrics/limits",
             base_url=base_url,
@@ -343,7 +343,7 @@ class MetricsSDK(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/metrics/limits",
             base_url=base_url,

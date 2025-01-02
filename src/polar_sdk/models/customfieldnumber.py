@@ -6,13 +6,12 @@ from .customfieldnumberproperties import (
     CustomFieldNumberPropertiesTypedDict,
 )
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Union
+from typing import Dict, Literal, Union
 from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
@@ -24,10 +23,6 @@ CustomFieldNumberMetadataTypedDict = TypeAliasType(
 CustomFieldNumberMetadata = TypeAliasType(
     "CustomFieldNumberMetadata", Union[str, int, bool]
 )
-
-
-class CustomFieldNumberType(str, Enum):
-    NUMBER = "number"
 
 
 class CustomFieldNumberTypedDict(TypedDict):
@@ -47,7 +42,7 @@ class CustomFieldNumberTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the custom field."""
     properties: CustomFieldNumberPropertiesTypedDict
-    type: CustomFieldNumberType
+    type: Literal["number"]
 
 
 class CustomFieldNumber(BaseModel):
@@ -76,12 +71,9 @@ class CustomFieldNumber(BaseModel):
     properties: CustomFieldNumberProperties
 
     TYPE: Annotated[
-        Annotated[
-            CustomFieldNumberType,
-            AfterValidator(validate_const(CustomFieldNumberType.NUMBER)),
-        ],
+        Annotated[Literal["number"], AfterValidator(validate_const("number"))],
         pydantic.Field(alias="type"),
-    ] = CustomFieldNumberType.NUMBER
+    ] = "number"
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

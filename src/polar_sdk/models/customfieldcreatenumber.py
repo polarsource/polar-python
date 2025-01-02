@@ -5,13 +5,12 @@ from .customfieldnumberproperties import (
     CustomFieldNumberProperties,
     CustomFieldNumberPropertiesTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Optional, Union
+from typing import Dict, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -23,10 +22,6 @@ CustomFieldCreateNumberMetadataTypedDict = TypeAliasType(
 CustomFieldCreateNumberMetadata = TypeAliasType(
     "CustomFieldCreateNumberMetadata", Union[str, int, bool]
 )
-
-
-class CustomFieldCreateNumberType(str, Enum):
-    NUMBER = "number"
 
 
 class CustomFieldCreateNumberTypedDict(TypedDict):
@@ -49,7 +44,7 @@ class CustomFieldCreateNumberTypedDict(TypedDict):
 
     You can store up to **50 key-value pairs**.
     """
-    type: CustomFieldCreateNumberType
+    type: Literal["number"]
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the custom field. **Required unless you use an organization token.**"""
 
@@ -79,12 +74,9 @@ class CustomFieldCreateNumber(BaseModel):
     """
 
     TYPE: Annotated[
-        Annotated[
-            CustomFieldCreateNumberType,
-            AfterValidator(validate_const(CustomFieldCreateNumberType.NUMBER)),
-        ],
+        Annotated[Literal["number"], AfterValidator(validate_const("number"))],
         pydantic.Field(alias="type"),
-    ] = CustomFieldCreateNumberType.NUMBER
+    ] = "number"
 
     organization_id: OptionalNullable[str] = UNSET
     r"""The ID of the organization owning the custom field. **Required unless you use an organization token.**"""

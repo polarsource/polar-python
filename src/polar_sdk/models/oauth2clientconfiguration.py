@@ -19,10 +19,6 @@ class OAuth2ClientConfigurationGrantTypes(str, Enum):
     REFRESH_TOKEN = "refresh_token"
 
 
-class OAuth2ClientConfigurationResponseTypes(str, Enum):
-    CODE = "code"
-
-
 class OAuth2ClientConfigurationTypedDict(TypedDict):
     redirect_uris: List[str]
     client_name: str
@@ -30,7 +26,7 @@ class OAuth2ClientConfigurationTypedDict(TypedDict):
         OAuth2ClientConfigurationTokenEndpointAuthMethod
     ]
     grant_types: NotRequired[List[OAuth2ClientConfigurationGrantTypes]]
-    response_types: NotRequired[List[OAuth2ClientConfigurationResponseTypes]]
+    response_types: NotRequired[List[str]]
     scope: NotRequired[str]
     client_uri: NotRequired[Nullable[str]]
     logo_uri: NotRequired[Nullable[str]]
@@ -49,7 +45,7 @@ class OAuth2ClientConfiguration(BaseModel):
 
     grant_types: Optional[List[OAuth2ClientConfigurationGrantTypes]] = None
 
-    response_types: Optional[List[OAuth2ClientConfigurationResponseTypes]] = None
+    response_types: Optional[List[str]] = None
 
     scope: Optional[str] = (
         "openid profile email user:read organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write products:read products:write benefits:read benefits:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write customer_sessions:write orders:read metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write"

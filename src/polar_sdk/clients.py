@@ -43,7 +43,7 @@ class Clients(BaseSDK):
             limit=limit,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/oauth2/",
             base_url=base_url,
@@ -80,7 +80,7 @@ class Clients(BaseSDK):
 
         def next_func() -> Optional[models.Oauth2ClientsListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
-            page = request.page if not request.page is None else 0
+            page = request.page if not request.page is None else 1
             next_page = page + 1
 
             num_pages = JSONPath("$.pagination.max_page").parse(body)
@@ -92,7 +92,7 @@ class Clients(BaseSDK):
             results = JSONPath("$.items").parse(body)
             if len(results) == 0 or len(results[0]) == 0:
                 return None
-            limit = request.limit if not request.limit is None else 0
+            limit = request.limit if not request.limit is None else 10
             if len(results[0]) < limit:
                 return None
 
@@ -162,7 +162,7 @@ class Clients(BaseSDK):
             limit=limit,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/oauth2/",
             base_url=base_url,
@@ -199,7 +199,7 @@ class Clients(BaseSDK):
 
         def next_func() -> Optional[models.Oauth2ClientsListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
-            page = request.page if not request.page is None else 0
+            page = request.page if not request.page is None else 1
             next_page = page + 1
 
             num_pages = JSONPath("$.pagination.max_page").parse(body)
@@ -211,7 +211,7 @@ class Clients(BaseSDK):
             results = JSONPath("$.items").parse(body)
             if len(results) == 0 or len(results[0]) == 0:
                 return None
-            limit = request.limit if not request.limit is None else 0
+            limit = request.limit if not request.limit is None else 10
             if len(results[0]) < limit:
                 return None
 
@@ -280,7 +280,7 @@ class Clients(BaseSDK):
             request = utils.unmarshal(request, models.OAuth2ClientConfiguration)
         request = cast(models.OAuth2ClientConfiguration, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/v1/oauth2/register",
             base_url=base_url,
@@ -372,7 +372,7 @@ class Clients(BaseSDK):
             request = utils.unmarshal(request, models.OAuth2ClientConfiguration)
         request = cast(models.OAuth2ClientConfiguration, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/v1/oauth2/register",
             base_url=base_url,
@@ -462,7 +462,7 @@ class Clients(BaseSDK):
             client_id=client_id,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/oauth2/register/{client_id}",
             base_url=base_url,
@@ -549,7 +549,7 @@ class Clients(BaseSDK):
             client_id=client_id,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/oauth2/register/{client_id}",
             base_url=base_url,
@@ -645,7 +645,7 @@ class Clients(BaseSDK):
             ),
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="PUT",
             path="/v1/oauth2/register/{client_id}",
             base_url=base_url,
@@ -748,7 +748,7 @@ class Clients(BaseSDK):
             ),
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="PUT",
             path="/v1/oauth2/register/{client_id}",
             base_url=base_url,
@@ -842,7 +842,7 @@ class Clients(BaseSDK):
             client_id=client_id,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="DELETE",
             path="/v1/oauth2/register/{client_id}",
             base_url=base_url,
@@ -929,7 +929,7 @@ class Clients(BaseSDK):
             client_id=client_id,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="DELETE",
             path="/v1/oauth2/register/{client_id}",
             base_url=base_url,

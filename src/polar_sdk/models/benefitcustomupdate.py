@@ -5,23 +5,19 @@ from .benefitcustomproperties import (
     BenefitCustomProperties,
     BenefitCustomPropertiesTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, NotRequired, TypedDict
-
-
-class BenefitCustomUpdateType(str, Enum):
-    CUSTOM = "custom"
 
 
 class BenefitCustomUpdateTypedDict(TypedDict):
     description: NotRequired[Nullable[str]]
     r"""The description of the benefit. Will be displayed on products having this benefit."""
-    type: BenefitCustomUpdateType
+    type: Literal["custom"]
     properties: NotRequired[Nullable[BenefitCustomPropertiesTypedDict]]
 
 
@@ -30,12 +26,9 @@ class BenefitCustomUpdate(BaseModel):
     r"""The description of the benefit. Will be displayed on products having this benefit."""
 
     TYPE: Annotated[
-        Annotated[
-            BenefitCustomUpdateType,
-            AfterValidator(validate_const(BenefitCustomUpdateType.CUSTOM)),
-        ],
+        Annotated[Literal["custom"], AfterValidator(validate_const("custom"))],
         pydantic.Field(alias="type"),
-    ] = BenefitCustomUpdateType.CUSTOM
+    ] = "custom"
 
     properties: OptionalNullable[BenefitCustomProperties] = UNSET
 

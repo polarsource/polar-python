@@ -5,13 +5,12 @@ from .customfieldselectproperties import (
     CustomFieldSelectProperties,
     CustomFieldSelectPropertiesTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Optional, Union
+from typing import Dict, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -23,10 +22,6 @@ CustomFieldCreateSelectMetadataTypedDict = TypeAliasType(
 CustomFieldCreateSelectMetadata = TypeAliasType(
     "CustomFieldCreateSelectMetadata", Union[str, int, bool]
 )
-
-
-class CustomFieldCreateSelectType(str, Enum):
-    SELECT = "select"
 
 
 class CustomFieldCreateSelectTypedDict(TypedDict):
@@ -49,7 +44,7 @@ class CustomFieldCreateSelectTypedDict(TypedDict):
 
     You can store up to **50 key-value pairs**.
     """
-    type: CustomFieldCreateSelectType
+    type: Literal["select"]
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the custom field. **Required unless you use an organization token.**"""
 
@@ -79,12 +74,9 @@ class CustomFieldCreateSelect(BaseModel):
     """
 
     TYPE: Annotated[
-        Annotated[
-            CustomFieldCreateSelectType,
-            AfterValidator(validate_const(CustomFieldCreateSelectType.SELECT)),
-        ],
+        Annotated[Literal["select"], AfterValidator(validate_const("select"))],
         pydantic.Field(alias="type"),
-    ] = CustomFieldCreateSelectType.SELECT
+    ] = "select"
 
     organization_id: OptionalNullable[str] = UNSET
     r"""The ID of the organization owning the custom field. **Required unless you use an organization token.**"""

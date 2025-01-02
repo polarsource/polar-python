@@ -19,6 +19,7 @@ class CustomerSessionTypedDict(TypedDict):
     r"""The ID of the object."""
     token: str
     expires_at: datetime
+    customer_portal_url: str
     customer_id: str
     customer: CustomerTypedDict
     r"""A customer in an organization."""
@@ -39,6 +40,8 @@ class CustomerSession(BaseModel):
     token: str
 
     expires_at: datetime
+
+    customer_portal_url: str
 
     customer_id: str
 

@@ -61,7 +61,6 @@ Create a file.
 ### Example Usage
 
 ```python
-import polar_sdk
 from polar_sdk import Polar
 
 with Polar(
@@ -81,7 +80,7 @@ with Polar(
                 },
             ],
         },
-        "service": polar_sdk.OrganizationAvatarFileCreateService.ORGANIZATION_AVATAR,
+        "service": "organization_avatar",
     })
 
     # Handle response

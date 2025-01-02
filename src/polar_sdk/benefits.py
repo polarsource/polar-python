@@ -56,7 +56,7 @@ class Benefits(BaseSDK):
             limit=limit,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/benefits/",
             base_url=base_url,
@@ -93,7 +93,7 @@ class Benefits(BaseSDK):
 
         def next_func() -> Optional[models.BenefitsListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
-            page = request.page if not request.page is None else 0
+            page = request.page if not request.page is None else 1
             next_page = page + 1
 
             num_pages = JSONPath("$.pagination.max_page").parse(body)
@@ -105,7 +105,7 @@ class Benefits(BaseSDK):
             results = JSONPath("$.items").parse(body)
             if len(results) == 0 or len(results[0]) == 0:
                 return None
-            limit = request.limit if not request.limit is None else 0
+            limit = request.limit if not request.limit is None else 10
             if len(results[0]) < limit:
                 return None
 
@@ -188,7 +188,7 @@ class Benefits(BaseSDK):
             limit=limit,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/benefits/",
             base_url=base_url,
@@ -225,7 +225,7 @@ class Benefits(BaseSDK):
 
         def next_func() -> Optional[models.BenefitsListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
-            page = request.page if not request.page is None else 0
+            page = request.page if not request.page is None else 1
             next_page = page + 1
 
             num_pages = JSONPath("$.pagination.max_page").parse(body)
@@ -237,7 +237,7 @@ class Benefits(BaseSDK):
             results = JSONPath("$.items").parse(body)
             if len(results) == 0 or len(results[0]) == 0:
                 return None
-            limit = request.limit if not request.limit is None else 0
+            limit = request.limit if not request.limit is None else 10
             if len(results[0]) < limit:
                 return None
 
@@ -304,7 +304,7 @@ class Benefits(BaseSDK):
             request = utils.unmarshal(request, models.BenefitCreate)
         request = cast(models.BenefitCreate, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/v1/benefits/",
             base_url=base_url,
@@ -394,7 +394,7 @@ class Benefits(BaseSDK):
             request = utils.unmarshal(request, models.BenefitCreate)
         request = cast(models.BenefitCreate, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/v1/benefits/",
             base_url=base_url,
@@ -484,7 +484,7 @@ class Benefits(BaseSDK):
             id=id,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/benefits/{id}",
             base_url=base_url,
@@ -574,7 +574,7 @@ class Benefits(BaseSDK):
             id=id,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/benefits/{id}",
             base_url=base_url,
@@ -672,7 +672,7 @@ class Benefits(BaseSDK):
             ),
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="PATCH",
             path="/v1/benefits/{id}",
             base_url=base_url,
@@ -780,7 +780,7 @@ class Benefits(BaseSDK):
             ),
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="PATCH",
             path="/v1/benefits/{id}",
             base_url=base_url,
@@ -884,7 +884,7 @@ class Benefits(BaseSDK):
             id=id,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="DELETE",
             path="/v1/benefits/{id}",
             base_url=base_url,
@@ -981,7 +981,7 @@ class Benefits(BaseSDK):
             id=id,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="DELETE",
             path="/v1/benefits/{id}",
             base_url=base_url,
@@ -1093,7 +1093,7 @@ class Benefits(BaseSDK):
             limit=limit,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/benefits/{id}/grants",
             base_url=base_url,
@@ -1130,7 +1130,7 @@ class Benefits(BaseSDK):
 
         def next_func() -> Optional[models.BenefitsGrantsResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
-            page = request.page if not request.page is None else 0
+            page = request.page if not request.page is None else 1
             next_page = page + 1
 
             num_pages = JSONPath("$.pagination.max_page").parse(body)
@@ -1142,7 +1142,7 @@ class Benefits(BaseSDK):
             results = JSONPath("$.items").parse(body)
             if len(results) == 0 or len(results[0]) == 0:
                 return None
-            limit = request.limit if not request.limit is None else 0
+            limit = request.limit if not request.limit is None else 10
             if len(results[0]) < limit:
                 return None
 
@@ -1234,7 +1234,7 @@ class Benefits(BaseSDK):
             limit=limit,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/benefits/{id}/grants",
             base_url=base_url,
@@ -1271,7 +1271,7 @@ class Benefits(BaseSDK):
 
         def next_func() -> Optional[models.BenefitsGrantsResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
-            page = request.page if not request.page is None else 0
+            page = request.page if not request.page is None else 1
             next_page = page + 1
 
             num_pages = JSONPath("$.pagination.max_page").parse(body)
@@ -1283,7 +1283,7 @@ class Benefits(BaseSDK):
             results = JSONPath("$.items").parse(body)
             if len(results) == 0 or len(results[0]) == 0:
                 return None
-            limit = request.limit if not request.limit is None else 0
+            limit = request.limit if not request.limit is None else 10
             if len(results[0]) < limit:
                 return None
 

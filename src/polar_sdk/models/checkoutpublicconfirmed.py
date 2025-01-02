@@ -24,13 +24,12 @@ from .organization import Organization, OrganizationTypedDict
 from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import List, Optional, Union
+from typing import List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -40,10 +39,6 @@ class CheckoutPublicConfirmedCustomFieldDataTypedDict(TypedDict):
 
 class CheckoutPublicConfirmedCustomFieldData(BaseModel):
     r"""Key-value object storing custom field values."""
-
-
-class Status(str, Enum):
-    CONFIRMED = "confirmed"
 
 
 class CheckoutPublicConfirmedPaymentProcessorMetadataTypedDict(TypedDict):
@@ -89,6 +84,7 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
+    payment_processor: PaymentProcessor
     client_secret: str
     r"""Client secret used to update and complete the checkout session from the client."""
     url: str
@@ -142,8 +138,7 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     customer_session_token: str
     custom_field_data: NotRequired[CheckoutPublicConfirmedCustomFieldDataTypedDict]
     r"""Key-value object storing custom field values."""
-    payment_processor: PaymentProcessor
-    status: Status
+    status: Literal["confirmed"]
 
 
 class CheckoutPublicConfirmed(BaseModel):
@@ -161,6 +156,8 @@ class CheckoutPublicConfirmed(BaseModel):
 
     id: str
     r"""The ID of the object."""
+
+    payment_processor: PaymentProcessor
 
     client_secret: str
     r"""Client secret used to update and complete the checkout session from the client."""
@@ -248,17 +245,10 @@ class CheckoutPublicConfirmed(BaseModel):
     custom_field_data: Optional[CheckoutPublicConfirmedCustomFieldData] = None
     r"""Key-value object storing custom field values."""
 
-    PAYMENT_PROCESSOR: Annotated[
-        Annotated[
-            PaymentProcessor, AfterValidator(validate_const(PaymentProcessor.STRIPE))
-        ],
-        pydantic.Field(alias="payment_processor"),
-    ] = PaymentProcessor.STRIPE
-
     STATUS: Annotated[
-        Annotated[Status, AfterValidator(validate_const(Status.CONFIRMED))],
+        Annotated[Literal["confirmed"], AfterValidator(validate_const("confirmed"))],
         pydantic.Field(alias="status"),
-    ] = Status.CONFIRMED
+    ] = "confirmed"
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

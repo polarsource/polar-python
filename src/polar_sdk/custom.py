@@ -62,7 +62,7 @@ class Custom(BaseSDK):
             sorting=sorting,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/checkouts/custom/",
             base_url=base_url,
@@ -99,7 +99,7 @@ class Custom(BaseSDK):
 
         def next_func() -> Optional[models.CheckoutsCustomListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
-            page = request.page if not request.page is None else 0
+            page = request.page if not request.page is None else 1
             next_page = page + 1
 
             num_pages = JSONPath("$.pagination.max_page").parse(body)
@@ -111,7 +111,7 @@ class Custom(BaseSDK):
             results = JSONPath("$.items").parse(body)
             if len(results) == 0 or len(results[0]) == 0:
                 return None
-            limit = request.limit if not request.limit is None else 0
+            limit = request.limit if not request.limit is None else 10
             if len(results[0]) < limit:
                 return None
 
@@ -201,7 +201,7 @@ class Custom(BaseSDK):
             sorting=sorting,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/checkouts/custom/",
             base_url=base_url,
@@ -238,7 +238,7 @@ class Custom(BaseSDK):
 
         def next_func() -> Optional[models.CheckoutsCustomListResponse]:
             body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
-            page = request.page if not request.page is None else 0
+            page = request.page if not request.page is None else 1
             next_page = page + 1
 
             num_pages = JSONPath("$.pagination.max_page").parse(body)
@@ -250,7 +250,7 @@ class Custom(BaseSDK):
             results = JSONPath("$.items").parse(body)
             if len(results) == 0 or len(results[0]) == 0:
                 return None
-            limit = request.limit if not request.limit is None else 0
+            limit = request.limit if not request.limit is None else 10
             if len(results[0]) < limit:
                 return None
 
@@ -318,7 +318,7 @@ class Custom(BaseSDK):
             request = utils.unmarshal(request, models.CheckoutCreate)
         request = cast(models.CheckoutCreate, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/v1/checkouts/custom/",
             base_url=base_url,
@@ -408,7 +408,7 @@ class Custom(BaseSDK):
             request = utils.unmarshal(request, models.CheckoutCreate)
         request = cast(models.CheckoutCreate, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/v1/checkouts/custom/",
             base_url=base_url,
@@ -498,7 +498,7 @@ class Custom(BaseSDK):
             id=id,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/checkouts/custom/{id}",
             base_url=base_url,
@@ -588,7 +588,7 @@ class Custom(BaseSDK):
             id=id,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/checkouts/custom/{id}",
             base_url=base_url,
@@ -683,7 +683,7 @@ class Custom(BaseSDK):
             ),
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="PATCH",
             path="/v1/checkouts/custom/{id}",
             base_url=base_url,
@@ -781,7 +781,7 @@ class Custom(BaseSDK):
             ),
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="PATCH",
             path="/v1/checkouts/custom/{id}",
             base_url=base_url,
@@ -874,7 +874,7 @@ class Custom(BaseSDK):
             client_secret=client_secret,
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/checkouts/custom/client/{client_secret}",
             base_url=base_url,
@@ -964,7 +964,7 @@ class Custom(BaseSDK):
             client_secret=client_secret,
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/checkouts/custom/client/{client_secret}",
             base_url=base_url,
@@ -1061,7 +1061,7 @@ class Custom(BaseSDK):
             ),
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="PATCH",
             path="/v1/checkouts/custom/client/{client_secret}",
             base_url=base_url,
@@ -1165,7 +1165,7 @@ class Custom(BaseSDK):
             ),
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="PATCH",
             path="/v1/checkouts/custom/client/{client_secret}",
             base_url=base_url,
@@ -1271,7 +1271,7 @@ class Custom(BaseSDK):
             ),
         )
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/v1/checkouts/custom/client/{client_secret}/confirm",
             base_url=base_url,
@@ -1377,7 +1377,7 @@ class Custom(BaseSDK):
             ),
         )
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/v1/checkouts/custom/client/{client_secret}/confirm",
             base_url=base_url,

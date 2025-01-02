@@ -2,17 +2,13 @@
 
 from __future__ import annotations
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class OrganizationAvatarFileReadService(str, Enum):
-    ORGANIZATION_AVATAR = "organization_avatar"
 
 
 class OrganizationAvatarFileReadTypedDict(TypedDict):
@@ -35,7 +31,7 @@ class OrganizationAvatarFileReadTypedDict(TypedDict):
     created_at: datetime
     size_readable: str
     public_url: str
-    service: OrganizationAvatarFileReadService
+    service: Literal["organization_avatar"]
 
 
 class OrganizationAvatarFileRead(BaseModel):
@@ -76,13 +72,11 @@ class OrganizationAvatarFileRead(BaseModel):
 
     SERVICE: Annotated[
         Annotated[
-            OrganizationAvatarFileReadService,
-            AfterValidator(
-                validate_const(OrganizationAvatarFileReadService.ORGANIZATION_AVATAR)
-            ),
+            Literal["organization_avatar"],
+            AfterValidator(validate_const("organization_avatar")),
         ],
         pydantic.Field(alias="service"),
-    ] = OrganizationAvatarFileReadService.ORGANIZATION_AVATAR
+    ] = "organization_avatar"
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

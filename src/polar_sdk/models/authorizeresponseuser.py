@@ -4,25 +4,20 @@ from __future__ import annotations
 from .authorizeuser import AuthorizeUser, AuthorizeUserTypedDict
 from .oauth2clientpublic import OAuth2ClientPublic, OAuth2ClientPublicTypedDict
 from .scope import Scope
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import List
+from typing import List, Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class AuthorizeResponseUserSubType(str, Enum):
-    USER = "user"
 
 
 class AuthorizeResponseUserTypedDict(TypedDict):
     client: OAuth2ClientPublicTypedDict
     sub: Nullable[AuthorizeUserTypedDict]
     scopes: List[Scope]
-    sub_type: AuthorizeResponseUserSubType
+    sub_type: Literal["user"]
 
 
 class AuthorizeResponseUser(BaseModel):
@@ -33,12 +28,9 @@ class AuthorizeResponseUser(BaseModel):
     scopes: List[Scope]
 
     SUB_TYPE: Annotated[
-        Annotated[
-            AuthorizeResponseUserSubType,
-            AfterValidator(validate_const(AuthorizeResponseUserSubType.USER)),
-        ],
+        Annotated[Literal["user"], AfterValidator(validate_const("user"))],
         pydantic.Field(alias="sub_type"),
-    ] = AuthorizeResponseUserSubType.USER
+    ] = "user"
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

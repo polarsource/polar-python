@@ -22,12 +22,9 @@ from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
-from polar_sdk.utils import validate_const
-import pydantic
 from pydantic import model_serializer
-from pydantic.functional_validators import AfterValidator
 from typing import Dict, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
+from typing_extensions import TypeAliasType, TypedDict
 
 
 CheckoutLinkMetadataTypedDict = TypeAliasType(
@@ -70,6 +67,7 @@ class CheckoutLinkTypedDict(TypedDict):
     id: str
     r"""The ID of the object."""
     metadata: Dict[str, CheckoutLinkMetadataTypedDict]
+    payment_processor: PaymentProcessor
     client_secret: str
     r"""Client secret used to access the checkout link."""
     success_url: Nullable[str]
@@ -89,7 +87,6 @@ class CheckoutLinkTypedDict(TypedDict):
     product_price: Nullable[ProductPriceTypedDict]
     discount: Nullable[CheckoutLinkDiscountTypedDict]
     url: str
-    payment_processor: PaymentProcessor
 
 
 class CheckoutLink(BaseModel):
@@ -105,6 +102,8 @@ class CheckoutLink(BaseModel):
     r"""The ID of the object."""
 
     metadata: Dict[str, CheckoutLinkMetadata]
+
+    payment_processor: PaymentProcessor
 
     client_secret: str
     r"""Client secret used to access the checkout link."""
@@ -135,13 +134,6 @@ class CheckoutLink(BaseModel):
     discount: Nullable[CheckoutLinkDiscount]
 
     url: str
-
-    PAYMENT_PROCESSOR: Annotated[
-        Annotated[
-            PaymentProcessor, AfterValidator(validate_const(PaymentProcessor.STRIPE))
-        ],
-        pydantic.Field(alias="payment_processor"),
-    ] = PaymentProcessor.STRIPE
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

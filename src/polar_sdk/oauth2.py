@@ -42,7 +42,7 @@ class Oauth2(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/oauth2/authorize",
             base_url=base_url,
@@ -118,7 +118,7 @@ class Oauth2(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/oauth2/authorize",
             base_url=base_url,
@@ -206,7 +206,7 @@ class Oauth2(BaseSDK):
             request = utils.unmarshal(request, models.Oauth2RequestTokenRequestBody)
         request = cast(models.Oauth2RequestTokenRequestBody, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/v1/oauth2/token",
             base_url=base_url,
@@ -295,7 +295,7 @@ class Oauth2(BaseSDK):
             request = utils.unmarshal(request, models.Oauth2RequestTokenRequestBody)
         request = cast(models.Oauth2RequestTokenRequestBody, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/v1/oauth2/token",
             base_url=base_url,
@@ -386,7 +386,7 @@ class Oauth2(BaseSDK):
             )
         request = cast(models.Oauth2RevokeTokenRevokeTokenRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/v1/oauth2/revoke",
             base_url=base_url,
@@ -481,7 +481,7 @@ class Oauth2(BaseSDK):
             )
         request = cast(models.Oauth2RevokeTokenRevokeTokenRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/v1/oauth2/revoke",
             base_url=base_url,
@@ -576,7 +576,7 @@ class Oauth2(BaseSDK):
             )
         request = cast(models.Oauth2IntrospectTokenIntrospectTokenRequest, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/v1/oauth2/introspect",
             base_url=base_url,
@@ -671,7 +671,7 @@ class Oauth2(BaseSDK):
             )
         request = cast(models.Oauth2IntrospectTokenIntrospectTokenRequest, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/v1/oauth2/introspect",
             base_url=base_url,
@@ -754,7 +754,7 @@ class Oauth2(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request(
+        req = self._build_request(
             method="GET",
             path="/v1/oauth2/userinfo",
             base_url=base_url,
@@ -832,7 +832,7 @@ class Oauth2(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="GET",
             path="/v1/oauth2/userinfo",
             base_url=base_url,

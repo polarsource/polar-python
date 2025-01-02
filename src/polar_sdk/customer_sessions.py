@@ -41,7 +41,7 @@ class CustomerSessions(BaseSDK):
             request = utils.unmarshal(request, models.CustomerSessionCreate)
         request = cast(models.CustomerSessionCreate, request)
 
-        req = self.build_request(
+        req = self._build_request(
             method="POST",
             path="/v1/customer-sessions/",
             base_url=base_url,
@@ -133,7 +133,7 @@ class CustomerSessions(BaseSDK):
             request = utils.unmarshal(request, models.CustomerSessionCreate)
         request = cast(models.CustomerSessionCreate, request)
 
-        req = self.build_request_async(
+        req = self._build_request_async(
             method="POST",
             path="/v1/customer-sessions/",
             base_url=base_url,

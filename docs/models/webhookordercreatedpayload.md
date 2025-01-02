@@ -7,7 +7,7 @@ Sent when a new order is created.
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `data`                                                                               | [models.Order](../models/order.md)                                                   | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `type`                                                                               | [models.WebhookOrderCreatedPayloadType](../models/webhookordercreatedpayloadtype.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `data`                             | [models.Order](../models/order.md) | :heavy_check_mark:                 | N/A                                |
+| `type`                             | *Literal["order.created"]*         | :heavy_check_mark:                 | N/A                                |

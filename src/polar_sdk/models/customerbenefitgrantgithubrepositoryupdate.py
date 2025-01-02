@@ -5,21 +5,17 @@ from .customerbenefitgrantgithubrepositorypropertiesupdate import (
     CustomerBenefitGrantGitHubRepositoryPropertiesUpdate,
     CustomerBenefitGrantGitHubRepositoryPropertiesUpdateTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class CustomerBenefitGrantGitHubRepositoryUpdateBenefitType(str, Enum):
-    GITHUB_REPOSITORY = "github_repository"
 
 
 class CustomerBenefitGrantGitHubRepositoryUpdateTypedDict(TypedDict):
     properties: CustomerBenefitGrantGitHubRepositoryPropertiesUpdateTypedDict
-    benefit_type: CustomerBenefitGrantGitHubRepositoryUpdateBenefitType
+    benefit_type: Literal["github_repository"]
 
 
 class CustomerBenefitGrantGitHubRepositoryUpdate(BaseModel):
@@ -27,12 +23,8 @@ class CustomerBenefitGrantGitHubRepositoryUpdate(BaseModel):
 
     BENEFIT_TYPE: Annotated[
         Annotated[
-            CustomerBenefitGrantGitHubRepositoryUpdateBenefitType,
-            AfterValidator(
-                validate_const(
-                    CustomerBenefitGrantGitHubRepositoryUpdateBenefitType.GITHUB_REPOSITORY
-                )
-            ),
+            Literal["github_repository"],
+            AfterValidator(validate_const("github_repository")),
         ],
         pydantic.Field(alias="benefit_type"),
-    ] = CustomerBenefitGrantGitHubRepositoryUpdateBenefitType.GITHUB_REPOSITORY
+    ] = "github_repository"

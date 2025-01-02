@@ -2,16 +2,12 @@
 
 from __future__ import annotations
 from .checkout import Checkout, CheckoutTypedDict
-from enum import Enum
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class WebhookCheckoutUpdatedPayloadType(str, Enum):
-    CHECKOUT_UPDATED = "checkout.updated"
 
 
 class WebhookCheckoutUpdatedPayloadTypedDict(TypedDict):
@@ -22,7 +18,7 @@ class WebhookCheckoutUpdatedPayloadTypedDict(TypedDict):
 
     data: CheckoutTypedDict
     r"""Checkout session data retrieved using an access token."""
-    type: WebhookCheckoutUpdatedPayloadType
+    type: Literal["checkout.updated"]
 
 
 class WebhookCheckoutUpdatedPayload(BaseModel):
@@ -36,10 +32,8 @@ class WebhookCheckoutUpdatedPayload(BaseModel):
 
     TYPE: Annotated[
         Annotated[
-            WebhookCheckoutUpdatedPayloadType,
-            AfterValidator(
-                validate_const(WebhookCheckoutUpdatedPayloadType.CHECKOUT_UPDATED)
-            ),
+            Literal["checkout.updated"],
+            AfterValidator(validate_const("checkout.updated")),
         ],
         pydantic.Field(alias="type"),
-    ] = WebhookCheckoutUpdatedPayloadType.CHECKOUT_UPDATED
+    ] = "checkout.updated"

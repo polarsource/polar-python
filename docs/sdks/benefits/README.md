@@ -62,7 +62,6 @@ Create a benefit.
 ### Example Usage
 
 ```python
-import polar_sdk
 from polar_sdk import Polar
 
 with Polar(
@@ -75,7 +74,7 @@ with Polar(
             "guild_token": "<value>",
             "role_id": "<id>",
         },
-        "type": polar_sdk.BenefitDiscordCreateType.DISCORD,
+        "type": "discord",
     })
 
     # Handle response
@@ -147,7 +146,6 @@ Update a benefit.
 ### Example Usage
 
 ```python
-import polar_sdk
 from polar_sdk import Polar
 
 with Polar(
@@ -155,7 +153,7 @@ with Polar(
 ) as polar:
 
     res = polar.benefits.update(id="<value>", request_body={
-        "type": polar_sdk.BenefitLicenseKeysUpdateType.LICENSE_KEYS,
+        "type": "license_keys",
     })
 
     # Handle response

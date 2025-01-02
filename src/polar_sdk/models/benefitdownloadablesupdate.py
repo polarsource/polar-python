@@ -5,23 +5,19 @@ from .benefitdownloadablescreateproperties import (
     BenefitDownloadablesCreateProperties,
     BenefitDownloadablesCreatePropertiesTypedDict,
 )
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, NotRequired, TypedDict
-
-
-class BenefitDownloadablesUpdateType(str, Enum):
-    DOWNLOADABLES = "downloadables"
 
 
 class BenefitDownloadablesUpdateTypedDict(TypedDict):
     description: NotRequired[Nullable[str]]
     r"""The description of the benefit. Will be displayed on products having this benefit."""
-    type: BenefitDownloadablesUpdateType
+    type: Literal["downloadables"]
     properties: NotRequired[Nullable[BenefitDownloadablesCreatePropertiesTypedDict]]
 
 
@@ -31,13 +27,10 @@ class BenefitDownloadablesUpdate(BaseModel):
 
     TYPE: Annotated[
         Annotated[
-            BenefitDownloadablesUpdateType,
-            AfterValidator(
-                validate_const(BenefitDownloadablesUpdateType.DOWNLOADABLES)
-            ),
+            Literal["downloadables"], AfterValidator(validate_const("downloadables"))
         ],
         pydantic.Field(alias="type"),
-    ] = BenefitDownloadablesUpdateType.DOWNLOADABLES
+    ] = "downloadables"
 
     properties: OptionalNullable[BenefitDownloadablesCreateProperties] = UNSET
 

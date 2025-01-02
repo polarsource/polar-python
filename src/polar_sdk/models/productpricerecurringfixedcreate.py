@@ -2,21 +2,12 @@
 
 from __future__ import annotations
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
-from enum import Enum
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic.functional_validators import AfterValidator
-from typing import Optional
+from typing import Literal, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
-
-
-class ProductPriceRecurringFixedCreateType(str, Enum):
-    RECURRING = "recurring"
-
-
-class ProductPriceRecurringFixedCreateAmountType(str, Enum):
-    FIXED = "fixed"
 
 
 class ProductPriceRecurringFixedCreateTypedDict(TypedDict):
@@ -25,8 +16,8 @@ class ProductPriceRecurringFixedCreateTypedDict(TypedDict):
     price_amount: int
     r"""The price in cents."""
     recurring_interval: SubscriptionRecurringInterval
-    type: ProductPriceRecurringFixedCreateType
-    amount_type: ProductPriceRecurringFixedCreateAmountType
+    type: Literal["recurring"]
+    amount_type: Literal["fixed"]
     price_currency: NotRequired[str]
     r"""The currency. Currently, only `usd` is supported."""
 
@@ -40,24 +31,14 @@ class ProductPriceRecurringFixedCreate(BaseModel):
     recurring_interval: SubscriptionRecurringInterval
 
     TYPE: Annotated[
-        Annotated[
-            ProductPriceRecurringFixedCreateType,
-            AfterValidator(
-                validate_const(ProductPriceRecurringFixedCreateType.RECURRING)
-            ),
-        ],
+        Annotated[Literal["recurring"], AfterValidator(validate_const("recurring"))],
         pydantic.Field(alias="type"),
-    ] = ProductPriceRecurringFixedCreateType.RECURRING
+    ] = "recurring"
 
     AMOUNT_TYPE: Annotated[
-        Annotated[
-            ProductPriceRecurringFixedCreateAmountType,
-            AfterValidator(
-                validate_const(ProductPriceRecurringFixedCreateAmountType.FIXED)
-            ),
-        ],
+        Annotated[Literal["fixed"], AfterValidator(validate_const("fixed"))],
         pydantic.Field(alias="amount_type"),
-    ] = ProductPriceRecurringFixedCreateAmountType.FIXED
+    ] = "fixed"
 
     price_currency: Optional[str] = "usd"
     r"""The currency. Currently, only `usd` is supported."""

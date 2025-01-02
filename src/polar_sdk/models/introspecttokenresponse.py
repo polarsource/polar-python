@@ -7,7 +7,7 @@ from polar_sdk.types import BaseModel
 from typing_extensions import TypedDict
 
 
-class IntrospectTokenResponseTokenType(str, Enum):
+class TokenType(str, Enum):
     ACCESS_TOKEN = "access_token"
     REFRESH_TOKEN = "refresh_token"
 
@@ -15,7 +15,7 @@ class IntrospectTokenResponseTokenType(str, Enum):
 class IntrospectTokenResponseTypedDict(TypedDict):
     active: bool
     client_id: str
-    token_type: IntrospectTokenResponseTokenType
+    token_type: TokenType
     scope: str
     sub_type: SubType
     sub: str
@@ -30,7 +30,7 @@ class IntrospectTokenResponse(BaseModel):
 
     client_id: str
 
-    token_type: IntrospectTokenResponseTokenType
+    token_type: TokenType
 
     scope: str
 

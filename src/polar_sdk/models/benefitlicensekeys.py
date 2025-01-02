@@ -6,17 +6,13 @@ from .benefitlicensekeysproperties import (
     BenefitLicenseKeysPropertiesTypedDict,
 )
 from datetime import datetime
-from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
+from typing import Literal
 from typing_extensions import Annotated, TypedDict
-
-
-class BenefitLicenseKeysType(str, Enum):
-    LICENSE_KEYS = "license_keys"
 
 
 class BenefitLicenseKeysTypedDict(TypedDict):
@@ -35,7 +31,7 @@ class BenefitLicenseKeysTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     properties: BenefitLicenseKeysPropertiesTypedDict
-    type: BenefitLicenseKeysType
+    type: Literal["license_keys"]
 
 
 class BenefitLicenseKeys(BaseModel):
@@ -64,11 +60,10 @@ class BenefitLicenseKeys(BaseModel):
 
     TYPE: Annotated[
         Annotated[
-            BenefitLicenseKeysType,
-            AfterValidator(validate_const(BenefitLicenseKeysType.LICENSE_KEYS)),
+            Literal["license_keys"], AfterValidator(validate_const("license_keys"))
         ],
         pydantic.Field(alias="type"),
-    ] = BenefitLicenseKeysType.LICENSE_KEYS
+    ] = "license_keys"
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
