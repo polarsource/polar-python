@@ -14,10 +14,7 @@ from polar_sdk.models import (
     PaymentProcessor,
     PaymentProcessorMetadata,
     ProductPriceOneTimeFixed,
-    ProductPriceOneTimeFixedAmountType,
-    ProductPriceOneTimeFixedType,
-    WebhookCheckoutCreatedPayload,
-    WebhookCheckoutCreatedPayloadType,
+    WebhookCheckoutCreatedPayload
 )
 from polar_sdk.webhooks import WebhookVerificationError, validate_event
 
@@ -33,8 +30,8 @@ price = ProductPriceOneTimeFixed(
     product_id=PRODUCT_ID,
     price_currency="usd",
     price_amount=1000,
-    TYPE=ProductPriceOneTimeFixedType.ONE_TIME,
-    AMOUNT_TYPE=ProductPriceOneTimeFixedAmountType.FIXED,
+    TYPE="one_time",
+    AMOUNT_TYPE="fixed"
 )
 
 product = CheckoutProduct(
@@ -52,7 +49,7 @@ product = CheckoutProduct(
 )
 
 checkout_created = WebhookCheckoutCreatedPayload(
-    TYPE=WebhookCheckoutCreatedPayloadType.CHECKOUT_CREATED,
+    TYPE="checkout.created",
     data=Checkout(
         id=str(uuid.uuid4()),
         created_at=datetime.datetime.now(datetime.timezone.utc),
@@ -92,7 +89,8 @@ checkout_created = WebhookCheckoutCreatedPayload(
         subscription_id=None,
         attached_custom_fields=[],
         custom_field_data=None,
-        PAYMENT_PROCESSOR=PaymentProcessor.STRIPE,
+        payment_processor=PaymentProcessor.STRIPE,
+        customer_metadata={},
     ),
 )
 
