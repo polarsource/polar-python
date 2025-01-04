@@ -667,6 +667,8 @@ def webhook():
 
 * [list](docs/sdks/subscriptions/README.md#list) - List Subscriptions
 * [export](docs/sdks/subscriptions/README.md#export) - Export Subscriptions
+* [update](docs/sdks/subscriptions/README.md#update) - Update Subscription
+* [revoke](docs/sdks/subscriptions/README.md#revoke) - Revoke Subscription
 
 </details>
 <!-- End Available Resources and Operations [operations] -->

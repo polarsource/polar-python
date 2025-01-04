@@ -610,6 +610,7 @@ from .customerbenefitgrantupdate import (
     CustomerBenefitGrantUpdate,
     CustomerBenefitGrantUpdateTypedDict,
 )
+from .customercancellationreason import CustomerCancellationReason
 from .customercreate import (
     CustomerCreate,
     CustomerCreateTaxID,
@@ -649,6 +650,10 @@ from .customersession import CustomerSession, CustomerSessionTypedDict
 from .customersessioncreate import CustomerSessionCreate, CustomerSessionCreateTypedDict
 from .customersortproperty import CustomerSortProperty
 from .customersubscription import CustomerSubscription, CustomerSubscriptionTypedDict
+from .customersubscriptioncancel import (
+    CustomerSubscriptionCancel,
+    CustomerSubscriptionCancelTypedDict,
+)
 from .customersubscriptionproduct import (
     CustomerSubscriptionProduct,
     CustomerSubscriptionProductTypedDict,
@@ -657,6 +662,10 @@ from .customersubscriptionsortproperty import CustomerSubscriptionSortProperty
 from .customersubscriptionupdate import (
     CustomerSubscriptionUpdate,
     CustomerSubscriptionUpdateTypedDict,
+)
+from .customersubscriptionupdateprice import (
+    CustomerSubscriptionUpdatePrice,
+    CustomerSubscriptionUpdatePriceTypedDict,
 )
 from .customerupdate import (
     CustomerUpdate,
@@ -1399,6 +1408,7 @@ from .subscription import (
     SubscriptionDiscountTypedDict,
     SubscriptionTypedDict,
 )
+from .subscriptioncancel import SubscriptionCancel, SubscriptionCancelTypedDict
 from .subscriptioncustomer import (
     SubscriptionCustomer,
     SubscriptionCustomerMetadata,
@@ -1428,8 +1438,21 @@ from .subscriptions_listop import (
     SubscriptionsListResponse,
     SubscriptionsListResponseTypedDict,
 )
+from .subscriptions_revokeop import (
+    SubscriptionsRevokeRequest,
+    SubscriptionsRevokeRequestTypedDict,
+)
+from .subscriptions_updateop import (
+    SubscriptionsUpdateRequest,
+    SubscriptionsUpdateRequestTypedDict,
+)
 from .subscriptionsortproperty import SubscriptionSortProperty
 from .subscriptionstatus import SubscriptionStatus
+from .subscriptionupdate import SubscriptionUpdate, SubscriptionUpdateTypedDict
+from .subscriptionupdateprice import (
+    SubscriptionUpdatePrice,
+    SubscriptionUpdatePriceTypedDict,
+)
 from .subscriptionuser import SubscriptionUser, SubscriptionUserTypedDict
 from .subtype import SubType
 from .taxidformat import TaxIDFormat
@@ -1511,6 +1534,10 @@ from .webhooksubscriptioncreatedpayload import (
 from .webhooksubscriptionrevokedpayload import (
     WebhookSubscriptionRevokedPayload,
     WebhookSubscriptionRevokedPayloadTypedDict,
+)
+from .webhooksubscriptionuncanceledpayload import (
+    WebhookSubscriptionUncanceledPayload,
+    WebhookSubscriptionUncanceledPayloadTypedDict,
 )
 from .webhooksubscriptionupdatedpayload import (
     WebhookSubscriptionUpdatedPayload,
@@ -1947,6 +1974,7 @@ __all__ = [
     "CustomerBenefitGrantTypedDict",
     "CustomerBenefitGrantUpdate",
     "CustomerBenefitGrantUpdateTypedDict",
+    "CustomerCancellationReason",
     "CustomerCreate",
     "CustomerCreateTaxID",
     "CustomerCreateTaxIDTypedDict",
@@ -2040,11 +2068,15 @@ __all__ = [
     "CustomerSessionTypedDict",
     "CustomerSortProperty",
     "CustomerSubscription",
+    "CustomerSubscriptionCancel",
+    "CustomerSubscriptionCancelTypedDict",
     "CustomerSubscriptionProduct",
     "CustomerSubscriptionProductTypedDict",
     "CustomerSubscriptionSortProperty",
     "CustomerSubscriptionTypedDict",
     "CustomerSubscriptionUpdate",
+    "CustomerSubscriptionUpdatePrice",
+    "CustomerSubscriptionUpdatePriceTypedDict",
     "CustomerSubscriptionUpdateTypedDict",
     "CustomerTaxID",
     "CustomerTaxIDTypedDict",
@@ -2573,6 +2605,8 @@ __all__ = [
     "State",
     "SubType",
     "Subscription",
+    "SubscriptionCancel",
+    "SubscriptionCancelTypedDict",
     "SubscriptionCustomFieldData",
     "SubscriptionCustomFieldDataTypedDict",
     "SubscriptionCustomer",
@@ -2587,6 +2621,10 @@ __all__ = [
     "SubscriptionSortProperty",
     "SubscriptionStatus",
     "SubscriptionTypedDict",
+    "SubscriptionUpdate",
+    "SubscriptionUpdatePrice",
+    "SubscriptionUpdatePriceTypedDict",
+    "SubscriptionUpdateTypedDict",
     "SubscriptionUser",
     "SubscriptionUserTypedDict",
     "SubscriptionsExportRequest",
@@ -2597,6 +2635,10 @@ __all__ = [
     "SubscriptionsListRequestTypedDict",
     "SubscriptionsListResponse",
     "SubscriptionsListResponseTypedDict",
+    "SubscriptionsRevokeRequest",
+    "SubscriptionsRevokeRequestTypedDict",
+    "SubscriptionsUpdateRequest",
+    "SubscriptionsUpdateRequestTypedDict",
     "TaxID",
     "TaxIDFormat",
     "TaxIDTypedDict",
@@ -2650,6 +2692,8 @@ __all__ = [
     "WebhookSubscriptionCreatedPayloadTypedDict",
     "WebhookSubscriptionRevokedPayload",
     "WebhookSubscriptionRevokedPayloadTypedDict",
+    "WebhookSubscriptionUncanceledPayload",
+    "WebhookSubscriptionUncanceledPayloadTypedDict",
     "WebhookSubscriptionUpdatedPayload",
     "WebhookSubscriptionUpdatedPayloadTypedDict",
 ]

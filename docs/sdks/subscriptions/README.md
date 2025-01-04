@@ -7,6 +7,8 @@
 
 * [list](#list) - List Subscriptions
 * [export](#export) - Export Subscriptions
+* [update](#update) - Update Subscription
+* [revoke](#revoke) - Revoke Subscription
 
 ## list
 
@@ -92,3 +94,86 @@ with Polar(
 | -------------------------- | -------------------------- | -------------------------- |
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## update
+
+Update a subscription.
+
+### Example Usage
+
+```python
+from polar_sdk import Polar
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.subscriptions.update(id="<value>", subscription_update={
+        "revoke": True,
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The subscription ID.                                                |
+| `subscription_update`                                               | [models.SubscriptionUpdate](../../models/subscriptionupdate.md)     | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.Subscription](../../models/subscription.md)**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| models.AlreadyCanceledSubscription | 403                                | application/json                   |
+| models.ResourceNotFound            | 404                                | application/json                   |
+| models.HTTPValidationError         | 422                                | application/json                   |
+| models.SDKError                    | 4XX, 5XX                           | \*/\*                              |
+
+## revoke
+
+Revoke a subscription, i.e cancel immediately.
+
+### Example Usage
+
+```python
+from polar_sdk import Polar
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.subscriptions.revoke(id="<value>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The subscription ID.                                                |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.Subscription](../../models/subscription.md)**
+
+### Errors
+
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| models.AlreadyCanceledSubscription | 403                                | application/json                   |
+| models.ResourceNotFound            | 404                                | application/json                   |
+| models.HTTPValidationError         | 422                                | application/json                   |
+| models.SDKError                    | 4XX, 5XX                           | \*/\*                              |
