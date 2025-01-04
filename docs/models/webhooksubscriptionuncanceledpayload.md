@@ -1,7 +1,6 @@
-# WebhookSubscriptionCanceledPayload
+# WebhookSubscriptionUncanceledPayload
 
-Sent when a subscription is canceled.
-Customers might still have access until the end of the current period.
+Sent when a subscription is uncanceled.
 
 **Discord & Slack support:** Full
 
@@ -11,4 +10,4 @@ Customers might still have access until the end of the current period.
 | Field                                            | Type                                             | Required                                         | Description                                      |
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
 | `data`                                           | [models.Subscription](../models/subscription.md) | :heavy_check_mark:                               | N/A                                              |
-| `type`                                           | *Literal["subscription.canceled"]*               | :heavy_check_mark:                               | N/A                                              |
+| `type`                                           | *Literal["subscription.uncanceled"]*             | :heavy_check_mark:                               | N/A                                              |

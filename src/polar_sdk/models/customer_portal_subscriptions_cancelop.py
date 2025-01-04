@@ -8,11 +8,11 @@ from typing_extensions import Annotated, TypedDict
 
 class CustomerPortalSubscriptionsCancelRequestTypedDict(TypedDict):
     id: str
-    r"""The subscription ID."""
+    r"""Customer subscription ID."""
 
 
 class CustomerPortalSubscriptionsCancelRequest(BaseModel):
     id: Annotated[
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
-    r"""The subscription ID."""
+    r"""Customer subscription ID."""
