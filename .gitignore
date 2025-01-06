@@ -1,3 +1,4 @@
+.speakeasy/reports
 .venv/
 venv/
 src/*.egg-info/

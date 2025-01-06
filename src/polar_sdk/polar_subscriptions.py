@@ -324,7 +324,7 @@ class PolarSubscriptions(BaseSDK):
 
         Get a subscription for the authenticated customer or user.
 
-        :param id: The subscription ID.
+        :param id: Customer subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -414,7 +414,7 @@ class PolarSubscriptions(BaseSDK):
 
         Get a subscription for the authenticated customer or user.
 
-        :param id: The subscription ID.
+        :param id: Customer subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -508,7 +508,7 @@ class PolarSubscriptions(BaseSDK):
 
         Update a subscription of the authenticated customer or user.
 
-        :param id: The subscription ID.
+        :param id: Customer subscription ID.
         :param customer_subscription_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -568,13 +568,18 @@ class PolarSubscriptions(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.CustomerSubscription)
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(
+                http_res.text, models.AlreadyCanceledSubscriptionData
+            )
+            raise models.AlreadyCanceledSubscription(data=data)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -613,7 +618,7 @@ class PolarSubscriptions(BaseSDK):
 
         Update a subscription of the authenticated customer or user.
 
-        :param id: The subscription ID.
+        :param id: Customer subscription ID.
         :param customer_subscription_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -673,13 +678,18 @@ class PolarSubscriptions(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.CustomerSubscription)
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(
+                http_res.text, models.AlreadyCanceledSubscriptionData
+            )
+            raise models.AlreadyCanceledSubscription(data=data)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -714,7 +724,7 @@ class PolarSubscriptions(BaseSDK):
 
         Cancel a subscription of the authenticated customer or user.
 
-        :param id: The subscription ID.
+        :param id: Customer subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -809,7 +819,7 @@ class PolarSubscriptions(BaseSDK):
 
         Cancel a subscription of the authenticated customer or user.
 
-        :param id: The subscription ID.
+        :param id: Customer subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
