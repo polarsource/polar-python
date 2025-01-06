@@ -1,8 +1,17 @@
 # CustomerSubscriptionUpdate
 
 
-## Fields
+## Supported Types
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `product_price_id` | *str*              | :heavy_check_mark: | N/A                |
+### `models.CustomerSubscriptionUpdatePrice`
+
+```python
+value: models.CustomerSubscriptionUpdatePrice = /* values here */
+```
+
+### `models.CustomerSubscriptionCancel`
+
+```python
+value: models.CustomerSubscriptionCancel = /* values here */
+```
+

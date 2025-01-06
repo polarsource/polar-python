@@ -10,20 +10,18 @@ from typing import Literal
 from typing_extensions import Annotated, TypedDict
 
 
-class WebhookSubscriptionCanceledPayloadTypedDict(TypedDict):
-    r"""Sent when a subscription is canceled.
-    Customers might still have access until the end of the current period.
+class WebhookSubscriptionUncanceledPayloadTypedDict(TypedDict):
+    r"""Sent when a subscription is uncanceled.
 
     **Discord & Slack support:** Full
     """
 
     data: SubscriptionTypedDict
-    type: Literal["subscription.canceled"]
+    type: Literal["subscription.uncanceled"]
 
 
-class WebhookSubscriptionCanceledPayload(BaseModel):
-    r"""Sent when a subscription is canceled.
-    Customers might still have access until the end of the current period.
+class WebhookSubscriptionUncanceledPayload(BaseModel):
+    r"""Sent when a subscription is uncanceled.
 
     **Discord & Slack support:** Full
     """
@@ -32,8 +30,8 @@ class WebhookSubscriptionCanceledPayload(BaseModel):
 
     TYPE: Annotated[
         Annotated[
-            Literal["subscription.canceled"],
-            AfterValidator(validate_const("subscription.canceled")),
+            Literal["subscription.uncanceled"],
+            AfterValidator(validate_const("subscription.uncanceled")),
         ],
         pydantic.Field(alias="type"),
-    ] = "subscription.canceled"
+    ] = "subscription.uncanceled"

@@ -80,7 +80,7 @@ with Polar(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The subscription ID.                                                |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | Customer subscription ID.                                           |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -121,7 +121,7 @@ with Polar(
 
 | Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `id`                                                                            | *str*                                                                           | :heavy_check_mark:                                                              | The subscription ID.                                                            |
+| `id`                                                                            | *str*                                                                           | :heavy_check_mark:                                                              | Customer subscription ID.                                                       |
 | `customer_subscription_update`                                                  | [models.CustomerSubscriptionUpdate](../../models/customersubscriptionupdate.md) | :heavy_check_mark:                                                              | N/A                                                                             |
 | `retries`                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                              | Configuration to override the default retry behavior of the client.             |
 
@@ -131,11 +131,12 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| models.AlreadyCanceledSubscription | 403                                | application/json                   |
+| models.ResourceNotFound            | 404                                | application/json                   |
+| models.HTTPValidationError         | 422                                | application/json                   |
+| models.SDKError                    | 4XX, 5XX                           | \*/\*                              |
 
 ## cancel
 
@@ -161,7 +162,7 @@ with Polar(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The subscription ID.                                                |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | Customer subscription ID.                                           |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
