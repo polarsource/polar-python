@@ -20,8 +20,8 @@ class Orders(BaseSDK):
         ] = UNSET,
         product_id: OptionalNullable[
             Union[
-                models.QueryParamProductIDFilter,
-                models.QueryParamProductIDFilterTypedDict,
+                models.OrdersListQueryParamProductIDFilter,
+                models.OrdersListQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
         product_price_type: OptionalNullable[
@@ -183,8 +183,8 @@ class Orders(BaseSDK):
         ] = UNSET,
         product_id: OptionalNullable[
             Union[
-                models.QueryParamProductIDFilter,
-                models.QueryParamProductIDFilterTypedDict,
+                models.OrdersListQueryParamProductIDFilter,
+                models.OrdersListQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
         product_price_type: OptionalNullable[

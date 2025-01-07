@@ -12,6 +12,12 @@ class Products(BaseSDK):
     def list(
         self,
         *,
+        id: OptionalNullable[
+            Union[
+                models.QueryParamProductIDFilter,
+                models.QueryParamProductIDFilterTypedDict,
+            ]
+        ] = UNSET,
         organization_id: OptionalNullable[
             Union[
                 models.ProductsListQueryParamOrganizationIDFilter,
@@ -36,6 +42,7 @@ class Products(BaseSDK):
 
         List products.
 
+        :param id: Filter by product ID.
         :param organization_id: Filter by organization ID.
         :param query: Filter by product name.
         :param is_archived: Filter on archived products.
@@ -58,6 +65,7 @@ class Products(BaseSDK):
             base_url = server_url
 
         request = models.ProductsListRequest(
+            id=id,
             organization_id=organization_id,
             query=query,
             is_archived=is_archived,
@@ -122,6 +130,7 @@ class Products(BaseSDK):
                 return None
 
             return self.list(
+                id=id,
                 organization_id=organization_id,
                 query=query,
                 is_archived=is_archived,
@@ -160,6 +169,12 @@ class Products(BaseSDK):
     async def list_async(
         self,
         *,
+        id: OptionalNullable[
+            Union[
+                models.QueryParamProductIDFilter,
+                models.QueryParamProductIDFilterTypedDict,
+            ]
+        ] = UNSET,
         organization_id: OptionalNullable[
             Union[
                 models.ProductsListQueryParamOrganizationIDFilter,
@@ -184,6 +199,7 @@ class Products(BaseSDK):
 
         List products.
 
+        :param id: Filter by product ID.
         :param organization_id: Filter by organization ID.
         :param query: Filter by product name.
         :param is_archived: Filter on archived products.
@@ -206,6 +222,7 @@ class Products(BaseSDK):
             base_url = server_url
 
         request = models.ProductsListRequest(
+            id=id,
             organization_id=organization_id,
             query=query,
             is_archived=is_archived,
@@ -270,6 +287,7 @@ class Products(BaseSDK):
                 return None
 
             return self.list(
+                id=id,
                 organization_id=organization_id,
                 query=query,
                 is_archived=is_archived,

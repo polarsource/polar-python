@@ -23,14 +23,14 @@ OrdersListQueryParamOrganizationIDFilter = TypeAliasType(
 r"""Filter by organization ID."""
 
 
-QueryParamProductIDFilterTypedDict = TypeAliasType(
-    "QueryParamProductIDFilterTypedDict", Union[str, List[str]]
+OrdersListQueryParamProductIDFilterTypedDict = TypeAliasType(
+    "OrdersListQueryParamProductIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by product ID."""
 
 
-QueryParamProductIDFilter = TypeAliasType(
-    "QueryParamProductIDFilter", Union[str, List[str]]
+OrdersListQueryParamProductIDFilter = TypeAliasType(
+    "OrdersListQueryParamProductIDFilter", Union[str, List[str]]
 )
 r"""Filter by product ID."""
 
@@ -76,7 +76,7 @@ class OrdersListRequestTypedDict(TypedDict):
         Nullable[OrdersListQueryParamOrganizationIDFilterTypedDict]
     ]
     r"""Filter by organization ID."""
-    product_id: NotRequired[Nullable[QueryParamProductIDFilterTypedDict]]
+    product_id: NotRequired[Nullable[OrdersListQueryParamProductIDFilterTypedDict]]
     r"""Filter by product ID."""
     product_price_type: NotRequired[Nullable[ProductPriceTypeFilterTypedDict]]
     r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
@@ -100,7 +100,7 @@ class OrdersListRequest(BaseModel):
     r"""Filter by organization ID."""
 
     product_id: Annotated[
-        OptionalNullable[QueryParamProductIDFilter],
+        OptionalNullable[OrdersListQueryParamProductIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by product ID."""
