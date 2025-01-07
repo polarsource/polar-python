@@ -1186,6 +1186,8 @@ from .orders_listop import (
     OrdersListQueryParamCustomerIDFilterTypedDict,
     OrdersListQueryParamOrganizationIDFilter,
     OrdersListQueryParamOrganizationIDFilterTypedDict,
+    OrdersListQueryParamProductIDFilter,
+    OrdersListQueryParamProductIDFilterTypedDict,
     OrdersListRequest,
     OrdersListRequestTypedDict,
     OrdersListResponse,
@@ -1194,8 +1196,6 @@ from .orders_listop import (
     ProductPriceTypeFilterTypedDict,
     QueryParamDiscountIDFilter,
     QueryParamDiscountIDFilterTypedDict,
-    QueryParamProductIDFilter,
-    QueryParamProductIDFilterTypedDict,
 )
 from .ordersortproperty import OrderSortProperty
 from .ordersubscription import (
@@ -1337,6 +1337,8 @@ from .products_listop import (
     ProductsListRequestTypedDict,
     ProductsListResponse,
     ProductsListResponseTypedDict,
+    QueryParamProductIDFilter,
+    QueryParamProductIDFilterTypedDict,
 )
 from .products_update_benefitsop import (
     ProductsUpdateBenefitsRequest,
@@ -2413,6 +2415,8 @@ __all__ = [
     "OrdersListQueryParamCustomerIDFilterTypedDict",
     "OrdersListQueryParamOrganizationIDFilter",
     "OrdersListQueryParamOrganizationIDFilterTypedDict",
+    "OrdersListQueryParamProductIDFilter",
+    "OrdersListQueryParamProductIDFilterTypedDict",
     "OrdersListRequest",
     "OrdersListRequestTypedDict",
     "OrdersListResponse",

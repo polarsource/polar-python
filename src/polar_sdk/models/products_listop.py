@@ -10,6 +10,18 @@ from typing import Callable, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
+QueryParamProductIDFilterTypedDict = TypeAliasType(
+    "QueryParamProductIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by product ID."""
+
+
+QueryParamProductIDFilter = TypeAliasType(
+    "QueryParamProductIDFilter", Union[str, List[str]]
+)
+r"""Filter by product ID."""
+
+
 ProductsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
     "ProductsListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
 )
@@ -33,6 +45,8 @@ r"""Filter products granting specific benefit."""
 
 
 class ProductsListRequestTypedDict(TypedDict):
+    id: NotRequired[Nullable[QueryParamProductIDFilterTypedDict]]
+    r"""Filter by product ID."""
     organization_id: NotRequired[
         Nullable[ProductsListQueryParamOrganizationIDFilterTypedDict]
     ]
@@ -54,6 +68,12 @@ class ProductsListRequestTypedDict(TypedDict):
 
 
 class ProductsListRequest(BaseModel):
+    id: Annotated[
+        OptionalNullable[QueryParamProductIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by product ID."""
+
     organization_id: Annotated[
         OptionalNullable[ProductsListQueryParamOrganizationIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -105,6 +125,7 @@ class ProductsListRequest(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "id",
             "organization_id",
             "query",
             "is_archived",
@@ -115,6 +136,7 @@ class ProductsListRequest(BaseModel):
             "sorting",
         ]
         nullable_fields = [
+            "id",
             "organization_id",
             "query",
             "is_archived",
