@@ -16,7 +16,7 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
 python:
-  version: 0.12.3
+  version: 0.13.0
   additionalDependencies:
     dev:
       pytest: ^8.3.3

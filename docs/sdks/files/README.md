@@ -123,11 +123,7 @@ with Polar(
         "id": "<id>",
         "path": "/sys",
         "parts": [
-            {
-                "number": 606865,
-                "checksum_etag": "<value>",
-                "checksum_sha256_base64": "<value>",
-            },
+
         ],
     })
 
