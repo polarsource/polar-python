@@ -34,7 +34,7 @@ from typing import Any, Callable, Dict, Optional, Union
 class Polar(BaseSDK):
     r"""Polar API: Polar HTTP and Webhooks API
 
-    Read the docs at https://docs.polar.sh/api
+    Read the docs at https://docs.polar.sh/api-reference
     """
 
     external_organizations: ExternalOrganizations
@@ -99,7 +99,8 @@ class Polar(BaseSDK):
 
         security: Any = None
         if callable(access_token):
-            security = lambda: models.Security(access_token=access_token())  # pylint: disable=unnecessary-lambda-assignment
+            # pylint: disable=unnecessary-lambda-assignment
+            security = lambda: models.Security(access_token=access_token())
         else:
             security = models.Security(access_token=access_token)
 

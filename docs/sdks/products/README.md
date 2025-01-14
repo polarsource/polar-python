@@ -25,7 +25,7 @@ with Polar(
 ) as polar:
 
     res = polar.products.list(organization_id=[
-        "<value>",
+
     ])
 
     while res is not None:
@@ -204,7 +204,7 @@ with Polar(
 
     res = polar.products.update_benefits(id="<value>", product_benefits_update={
         "benefits": [
-            "<value>",
+
         ],
     })
 

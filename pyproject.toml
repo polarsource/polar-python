@@ -1,9 +1,21 @@
-[tool.poetry]
+[project]
 name = "polar-sdk"
-version = "0.12.3"
+version = "0.13.0"
 description = "Polar SDK for Python"
-authors = ["Polar",]
+authors = [{ name = "Polar" },]
 readme = "README-PYPI.md"
+requires-python = ">=3.9"
+dependencies = [
+    "eval-type-backport (>=0.2.0,<0.3.0)",
+    "httpx (>=0.28.1,<0.29.0)",
+    "jsonpath-python (>=1.0.6,<2.0.0)",
+    "pydantic (>=2.10.3,<2.11.0)",
+    "python-dateutil (>=2.8.2,<3.0.0)",
+    "standardwebhooks (>=1.0.0,<2.0.0)",
+    "typing-inspect (>=0.9.0,<0.10.0)",
+]
+
+[tool.poetry]
 repository = "https://github.com/polarsource/polar-python.git"
 packages = [
     { include = "polar_sdk", from = "src" }
@@ -16,18 +28,8 @@ include = ["py.typed", "src/polar_sdk/py.typed"]
 [virtualenvs]
 in-project = true
 
-[tool.poetry.dependencies]
-python = "^3.8"
-eval-type-backport = "^0.2.0"
-httpx = "^0.28.1"
-jsonpath-python = "^1.0.6"
-pydantic = "~2.10.3"
-python-dateutil = "^2.8.2"
-standardwebhooks = "^1.0.0"
-typing-inspect = "^0.9.0"
-
 [tool.poetry.group.dev.dependencies]
-mypy = "==1.13.0"
+mypy = "==1.14.1"
 pylint = "==3.2.3"
 pytest = "^8.3.3"
 ruff = "^0.8.0"
