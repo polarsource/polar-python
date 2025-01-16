@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: f5e9732d587dbc19a0c42ad39ee6be30
+  docChecksum: a763dedc54f07ecb9fdc984eedcc8bad
   docVersion: 0.1.0
-  speakeasyVersion: 1.468.5
-  generationVersion: 2.493.11
-  releaseVersion: 0.13.0
-  configChecksum: d1d5a7881a4326f89e3218786c15849a
+  speakeasyVersion: 1.468.8
+  generationVersion: 2.493.19
+  releaseVersion: 0.13.1
+  configChecksum: 2d3aac8610e55db535f5446188d81319
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -14,7 +14,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.10.1
+    core: 5.10.2
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.2
     devContainers: 3.0.0
@@ -441,6 +441,7 @@ generatedFiles:
   - docs/models/loc.md
   - docs/models/meta.md
   - docs/models/metadata.md
+  - docs/models/metadataquery.md
   - docs/models/metric.md
   - docs/models/metricperiod.md
   - docs/models/metrics.md
