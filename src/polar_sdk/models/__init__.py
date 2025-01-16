@@ -644,6 +644,8 @@ from .customers_listop import (
     CustomersListRequestTypedDict,
     CustomersListResponse,
     CustomersListResponseTypedDict,
+    MetadataQuery,
+    MetadataQueryTypedDict,
 )
 from .customers_updateop import CustomersUpdateRequest, CustomersUpdateRequestTypedDict
 from .customersession import CustomerSession, CustomerSessionTypedDict
@@ -2319,6 +2321,8 @@ __all__ = [
     "Meta",
     "MetaTypedDict",
     "Metadata",
+    "MetadataQuery",
+    "MetadataQueryTypedDict",
     "MetadataTypedDict",
     "Metric",
     "MetricPeriod",

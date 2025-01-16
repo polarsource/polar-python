@@ -6,7 +6,7 @@ from .listresource_customer_ import ListResourceCustomer, ListResourceCustomerTy
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
-from typing import Callable, List, Optional, Union
+from typing import Callable, Dict, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -22,11 +22,23 @@ CustomersListQueryParamOrganizationIDFilter = TypeAliasType(
 r"""Filter by organization ID."""
 
 
+MetadataQueryTypedDict = TypeAliasType(
+    "MetadataQueryTypedDict", Union[str, int, bool, List[str], List[int], List[bool]]
+)
+
+
+MetadataQuery = TypeAliasType(
+    "MetadataQuery", Union[str, int, bool, List[str], List[int], List[bool]]
+)
+
+
 class CustomersListRequestTypedDict(TypedDict):
     organization_id: NotRequired[
         Nullable[CustomersListQueryParamOrganizationIDFilterTypedDict]
     ]
     r"""Filter by organization ID."""
+    email: NotRequired[Nullable[str]]
+    r"""Filter by exact email."""
     query: NotRequired[Nullable[str]]
     r"""Filter by name or email."""
     page: NotRequired[int]
@@ -35,6 +47,8 @@ class CustomersListRequestTypedDict(TypedDict):
     r"""Size of a page, defaults to 10. Maximum is 100."""
     sorting: NotRequired[Nullable[List[CustomerSortProperty]]]
     r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
+    metadata: NotRequired[Nullable[Dict[str, MetadataQueryTypedDict]]]
+    r"""Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`."""
 
 
 class CustomersListRequest(BaseModel):
@@ -43,6 +57,12 @@ class CustomersListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by organization ID."""
+
+    email: Annotated[
+        OptionalNullable[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by exact email."""
 
     query: Annotated[
         OptionalNullable[str],
@@ -68,10 +88,24 @@ class CustomersListRequest(BaseModel):
     ] = UNSET
     r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
 
+    metadata: Annotated[
+        OptionalNullable[Dict[str, MetadataQuery]],
+        FieldMetadata(query=QueryParamMetadata(style="deepObject", explode=True)),
+    ] = UNSET
+    r"""Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["organization_id", "query", "page", "limit", "sorting"]
-        nullable_fields = ["organization_id", "query", "sorting"]
+        optional_fields = [
+            "organization_id",
+            "email",
+            "query",
+            "page",
+            "limit",
+            "sorting",
+            "metadata",
+        ]
+        nullable_fields = ["organization_id", "email", "query", "sorting", "metadata"]
         null_default_fields = []
 
         serialized = handler(self)

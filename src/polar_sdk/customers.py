@@ -18,10 +18,17 @@ class Customers(BaseSDK):
                 models.CustomersListQueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
+        email: OptionalNullable[str] = UNSET,
         query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.CustomerSortProperty]] = UNSET,
+        metadata: OptionalNullable[
+            Union[
+                Dict[str, models.MetadataQuery],
+                Dict[str, models.MetadataQueryTypedDict],
+            ]
+        ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -32,10 +39,12 @@ class Customers(BaseSDK):
         List customers.
 
         :param organization_id: Filter by organization ID.
+        :param email: Filter by exact email.
         :param query: Filter by name or email.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
+        :param metadata: Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -51,10 +60,12 @@ class Customers(BaseSDK):
 
         request = models.CustomersListRequest(
             organization_id=organization_id,
+            email=email,
             query=query,
             page=page,
             limit=limit,
             sorting=sorting,
+            metadata=metadata,
         )
 
         req = self._build_request(
@@ -112,10 +123,12 @@ class Customers(BaseSDK):
 
             return self.list(
                 organization_id=organization_id,
+                email=email,
                 query=query,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
+                metadata=metadata,
                 retries=retries,
             )
 
@@ -128,7 +141,12 @@ class Customers(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -152,10 +170,17 @@ class Customers(BaseSDK):
                 models.CustomersListQueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
+        email: OptionalNullable[str] = UNSET,
         query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.CustomerSortProperty]] = UNSET,
+        metadata: OptionalNullable[
+            Union[
+                Dict[str, models.MetadataQuery],
+                Dict[str, models.MetadataQueryTypedDict],
+            ]
+        ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -166,10 +191,12 @@ class Customers(BaseSDK):
         List customers.
 
         :param organization_id: Filter by organization ID.
+        :param email: Filter by exact email.
         :param query: Filter by name or email.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
+        :param metadata: Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -185,10 +212,12 @@ class Customers(BaseSDK):
 
         request = models.CustomersListRequest(
             organization_id=organization_id,
+            email=email,
             query=query,
             page=page,
             limit=limit,
             sorting=sorting,
+            metadata=metadata,
         )
 
         req = self._build_request_async(
@@ -246,10 +275,12 @@ class Customers(BaseSDK):
 
             return self.list(
                 organization_id=organization_id,
+                email=email,
                 query=query,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
+                metadata=metadata,
                 retries=retries,
             )
 
@@ -262,7 +293,12 @@ class Customers(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -352,7 +388,12 @@ class Customers(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -442,7 +483,12 @@ class Customers(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -532,7 +578,12 @@ class Customers(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -622,7 +673,12 @@ class Customers(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -720,7 +776,12 @@ class Customers(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -818,7 +879,12 @@ class Customers(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -910,7 +976,12 @@ class Customers(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res
@@ -1002,7 +1073,12 @@ class Customers(BaseSDK):
         if utils.match_response(http_res, "422", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
             raise models.HTTPValidationError(data=data)
-        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+        if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res_text, http_res

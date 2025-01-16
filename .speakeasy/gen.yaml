@@ -16,7 +16,7 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
 python:
-  version: 0.13.0
+  version: 0.13.1
   additionalDependencies:
     dev:
       pytest: ^8.3.3
@@ -28,6 +28,7 @@ python:
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
   description: Polar SDK for Python
+  enableCustomCodeRegions: false
   enumFormat: enum
   fixFlags:
     responseRequiredSep2024: true
