@@ -334,7 +334,7 @@ class PolarSubscriptions(BaseSDK):
 
         Get a subscription for the authenticated customer or user.
 
-        :param id: Customer subscription ID.
+        :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -429,7 +429,7 @@ class PolarSubscriptions(BaseSDK):
 
         Get a subscription for the authenticated customer or user.
 
-        :param id: Customer subscription ID.
+        :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -528,7 +528,7 @@ class PolarSubscriptions(BaseSDK):
 
         Update a subscription of the authenticated customer or user.
 
-        :param id: Customer subscription ID.
+        :param id: The subscription ID.
         :param customer_subscription_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -643,7 +643,7 @@ class PolarSubscriptions(BaseSDK):
 
         Update a subscription of the authenticated customer or user.
 
-        :param id: Customer subscription ID.
+        :param id: The subscription ID.
         :param customer_subscription_update:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -754,7 +754,7 @@ class PolarSubscriptions(BaseSDK):
 
         Cancel a subscription of the authenticated customer or user.
 
-        :param id: Customer subscription ID.
+        :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -854,7 +854,7 @@ class PolarSubscriptions(BaseSDK):
 
         Cancel a subscription of the authenticated customer or user.
 
-        :param id: Customer subscription ID.
+        :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds

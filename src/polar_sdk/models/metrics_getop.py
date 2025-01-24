@@ -48,6 +48,18 @@ QueryParamProductPriceTypeFilter = TypeAliasType(
 r"""Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
 
 
+MetricsGetQueryParamCustomerIDFilterTypedDict = TypeAliasType(
+    "MetricsGetQueryParamCustomerIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by customer ID."""
+
+
+MetricsGetQueryParamCustomerIDFilter = TypeAliasType(
+    "MetricsGetQueryParamCustomerIDFilter", Union[str, List[str]]
+)
+r"""Filter by customer ID."""
+
+
 class MetricsGetRequestTypedDict(TypedDict):
     start_date: date
     r"""Start date."""
@@ -63,6 +75,8 @@ class MetricsGetRequestTypedDict(TypedDict):
     r"""Filter by product ID."""
     product_price_type: NotRequired[Nullable[QueryParamProductPriceTypeFilterTypedDict]]
     r"""Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
+    customer_id: NotRequired[Nullable[MetricsGetQueryParamCustomerIDFilterTypedDict]]
+    r"""Filter by customer ID."""
 
 
 class MetricsGetRequest(BaseModel):
@@ -99,10 +113,26 @@ class MetricsGetRequest(BaseModel):
     ] = UNSET
     r"""Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
 
+    customer_id: Annotated[
+        OptionalNullable[MetricsGetQueryParamCustomerIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by customer ID."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["organization_id", "product_id", "product_price_type"]
-        nullable_fields = ["organization_id", "product_id", "product_price_type"]
+        optional_fields = [
+            "organization_id",
+            "product_id",
+            "product_price_type",
+            "customer_id",
+        ]
+        nullable_fields = [
+            "organization_id",
+            "product_id",
+            "product_price_type",
+            "customer_id",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

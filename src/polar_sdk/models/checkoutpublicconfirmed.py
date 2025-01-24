@@ -29,24 +29,18 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import List, Literal, Optional, Union
+from typing import Dict, List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-class CheckoutPublicConfirmedCustomFieldDataTypedDict(TypedDict):
-    r"""Key-value object storing custom field values."""
+CheckoutPublicConfirmedCustomFieldDataTypedDict = TypeAliasType(
+    "CheckoutPublicConfirmedCustomFieldDataTypedDict", Union[str, int, bool, datetime]
+)
 
 
-class CheckoutPublicConfirmedCustomFieldData(BaseModel):
-    r"""Key-value object storing custom field values."""
-
-
-class CheckoutPublicConfirmedPaymentProcessorMetadataTypedDict(TypedDict):
-    pass
-
-
-class CheckoutPublicConfirmedPaymentProcessorMetadata(BaseModel):
-    pass
+CheckoutPublicConfirmedCustomFieldData = TypeAliasType(
+    "CheckoutPublicConfirmedCustomFieldData", Union[str, int, bool, datetime]
+)
 
 
 CheckoutPublicConfirmedDiscountTypedDict = TypeAliasType(
@@ -124,11 +118,13 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     r"""Whether the checkout requires a payment form, whether because of a payment or payment method setup."""
     customer_id: Nullable[str]
     customer_name: Nullable[str]
+    r"""Name of the customer."""
     customer_email: Nullable[str]
+    r"""Email address of the customer."""
     customer_ip_address: Nullable[str]
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
-    payment_processor_metadata: CheckoutPublicConfirmedPaymentProcessorMetadataTypedDict
+    payment_processor_metadata: Dict[str, str]
     product: CheckoutProductTypedDict
     r"""Product data for a checkout session."""
     product_price: ProductPriceTypedDict
@@ -136,7 +132,9 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     organization: OrganizationTypedDict
     attached_custom_fields: List[AttachedCustomFieldTypedDict]
     customer_session_token: str
-    custom_field_data: NotRequired[CheckoutPublicConfirmedCustomFieldDataTypedDict]
+    custom_field_data: NotRequired[
+        Dict[str, CheckoutPublicConfirmedCustomFieldDataTypedDict]
+    ]
     r"""Key-value object storing custom field values."""
     status: Literal["confirmed"]
 
@@ -218,8 +216,10 @@ class CheckoutPublicConfirmed(BaseModel):
     customer_id: Nullable[str]
 
     customer_name: Nullable[str]
+    r"""Name of the customer."""
 
     customer_email: Nullable[str]
+    r"""Email address of the customer."""
 
     customer_ip_address: Nullable[str]
 
@@ -227,7 +227,7 @@ class CheckoutPublicConfirmed(BaseModel):
 
     customer_tax_id: Nullable[str]
 
-    payment_processor_metadata: CheckoutPublicConfirmedPaymentProcessorMetadata
+    payment_processor_metadata: Dict[str, str]
 
     product: CheckoutProduct
     r"""Product data for a checkout session."""
@@ -242,7 +242,9 @@ class CheckoutPublicConfirmed(BaseModel):
 
     customer_session_token: str
 
-    custom_field_data: Optional[CheckoutPublicConfirmedCustomFieldData] = None
+    custom_field_data: Optional[Dict[str, CheckoutPublicConfirmedCustomFieldData]] = (
+        None
+    )
     r"""Key-value object storing custom field values."""
 
     STATUS: Annotated[

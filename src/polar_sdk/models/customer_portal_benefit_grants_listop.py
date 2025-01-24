@@ -64,21 +64,27 @@ CheckoutIDFilter = TypeAliasType("CheckoutIDFilter", Union[str, List[str]])
 r"""Filter by checkout ID."""
 
 
-OrderIDFilterTypedDict = TypeAliasType("OrderIDFilterTypedDict", Union[str, List[str]])
+QueryParamOrderIDFilterTypedDict = TypeAliasType(
+    "QueryParamOrderIDFilterTypedDict", Union[str, List[str]]
+)
 r"""Filter by order ID."""
 
 
-OrderIDFilter = TypeAliasType("OrderIDFilter", Union[str, List[str]])
+QueryParamOrderIDFilter = TypeAliasType(
+    "QueryParamOrderIDFilter", Union[str, List[str]]
+)
 r"""Filter by order ID."""
 
 
-SubscriptionIDFilterTypedDict = TypeAliasType(
-    "SubscriptionIDFilterTypedDict", Union[str, List[str]]
+QueryParamSubscriptionIDFilterTypedDict = TypeAliasType(
+    "QueryParamSubscriptionIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by subscription ID."""
 
 
-SubscriptionIDFilter = TypeAliasType("SubscriptionIDFilter", Union[str, List[str]])
+QueryParamSubscriptionIDFilter = TypeAliasType(
+    "QueryParamSubscriptionIDFilter", Union[str, List[str]]
+)
 r"""Filter by subscription ID."""
 
 
@@ -95,9 +101,9 @@ class CustomerPortalBenefitGrantsListRequestTypedDict(TypedDict):
     r"""Filter by organization ID."""
     checkout_id: NotRequired[Nullable[CheckoutIDFilterTypedDict]]
     r"""Filter by checkout ID."""
-    order_id: NotRequired[Nullable[OrderIDFilterTypedDict]]
+    order_id: NotRequired[Nullable[QueryParamOrderIDFilterTypedDict]]
     r"""Filter by order ID."""
-    subscription_id: NotRequired[Nullable[SubscriptionIDFilterTypedDict]]
+    subscription_id: NotRequired[Nullable[QueryParamSubscriptionIDFilterTypedDict]]
     r"""Filter by subscription ID."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
@@ -134,13 +140,13 @@ class CustomerPortalBenefitGrantsListRequest(BaseModel):
     r"""Filter by checkout ID."""
 
     order_id: Annotated[
-        OptionalNullable[OrderIDFilter],
+        OptionalNullable[QueryParamOrderIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by order ID."""
 
     subscription_id: Annotated[
-        OptionalNullable[SubscriptionIDFilter],
+        OptionalNullable[QueryParamSubscriptionIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by subscription ID."""

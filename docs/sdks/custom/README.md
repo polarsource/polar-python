@@ -26,7 +26,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.checkouts.custom.list()
+    res = polar.checkouts.custom.list(page=1, limit=10)
 
     while res is not None:
         # Handle items
@@ -72,6 +72,7 @@ with Polar(
 
     res = polar.checkouts.custom.create(request={
         "product_id": "<value>",
+        "allow_discount_codes": True,
     })
 
     # Handle response

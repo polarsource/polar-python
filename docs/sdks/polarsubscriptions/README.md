@@ -23,7 +23,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.customer_portal.subscriptions.list()
+    res = polar.customer_portal.subscriptions.list(page=1, limit=10)
 
     while res is not None:
         # Handle items
@@ -80,7 +80,7 @@ with Polar(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | Customer subscription ID.                                           |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The subscription ID.                                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -108,9 +108,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.customer_portal.subscriptions.update(id="<value>", customer_subscription_update={
-        "product_price_id": "<value>",
-    })
+    res = polar.customer_portal.subscriptions.update(id="<value>", customer_subscription_update={})
 
     # Handle response
     print(res)
@@ -121,7 +119,7 @@ with Polar(
 
 | Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `id`                                                                            | *str*                                                                           | :heavy_check_mark:                                                              | Customer subscription ID.                                                       |
+| `id`                                                                            | *str*                                                                           | :heavy_check_mark:                                                              | The subscription ID.                                                            |
 | `customer_subscription_update`                                                  | [models.CustomerSubscriptionUpdate](../../models/customersubscriptionupdate.md) | :heavy_check_mark:                                                              | N/A                                                                             |
 | `retries`                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                              | Configuration to override the default retry behavior of the client.             |
 
@@ -162,7 +160,7 @@ with Polar(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | Customer subscription ID.                                           |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The subscription ID.                                                |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response

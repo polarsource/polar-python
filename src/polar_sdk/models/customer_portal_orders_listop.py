@@ -53,14 +53,15 @@ CustomerPortalOrdersListQueryParamProductPriceTypeFilter = TypeAliasType(
 r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
 
 
-QueryParamSubscriptionIDFilterTypedDict = TypeAliasType(
-    "QueryParamSubscriptionIDFilterTypedDict", Union[str, List[str]]
+CustomerPortalOrdersListQueryParamSubscriptionIDFilterTypedDict = TypeAliasType(
+    "CustomerPortalOrdersListQueryParamSubscriptionIDFilterTypedDict",
+    Union[str, List[str]],
 )
 r"""Filter by subscription ID."""
 
 
-QueryParamSubscriptionIDFilter = TypeAliasType(
-    "QueryParamSubscriptionIDFilter", Union[str, List[str]]
+CustomerPortalOrdersListQueryParamSubscriptionIDFilter = TypeAliasType(
+    "CustomerPortalOrdersListQueryParamSubscriptionIDFilter", Union[str, List[str]]
 )
 r"""Filter by subscription ID."""
 
@@ -78,7 +79,9 @@ class CustomerPortalOrdersListRequestTypedDict(TypedDict):
         Nullable[CustomerPortalOrdersListQueryParamProductPriceTypeFilterTypedDict]
     ]
     r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
-    subscription_id: NotRequired[Nullable[QueryParamSubscriptionIDFilterTypedDict]]
+    subscription_id: NotRequired[
+        Nullable[CustomerPortalOrdersListQueryParamSubscriptionIDFilterTypedDict]
+    ]
     r"""Filter by subscription ID."""
     query: NotRequired[Nullable[str]]
     r"""Search by product or organization name."""
@@ -110,7 +113,7 @@ class CustomerPortalOrdersListRequest(BaseModel):
     r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
 
     subscription_id: Annotated[
-        OptionalNullable[QueryParamSubscriptionIDFilter],
+        OptionalNullable[CustomerPortalOrdersListQueryParamSubscriptionIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by subscription ID."""

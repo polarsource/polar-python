@@ -247,8 +247,6 @@ from .checkout import (
     CheckoutTypedDict,
     CustomerMetadata,
     CustomerMetadataTypedDict,
-    PaymentProcessorMetadata,
-    PaymentProcessorMetadataTypedDict,
 )
 from .checkout_links_deleteop import (
     CheckoutLinksDeleteRequest,
@@ -353,8 +351,6 @@ from .checkoutpublic import (
     CheckoutPublicCustomFieldDataTypedDict,
     CheckoutPublicDiscount,
     CheckoutPublicDiscountTypedDict,
-    CheckoutPublicPaymentProcessorMetadata,
-    CheckoutPublicPaymentProcessorMetadataTypedDict,
     CheckoutPublicTypedDict,
 )
 from .checkoutpublicconfirmed import (
@@ -363,8 +359,6 @@ from .checkoutpublicconfirmed import (
     CheckoutPublicConfirmedCustomFieldDataTypedDict,
     CheckoutPublicConfirmedDiscount,
     CheckoutPublicConfirmedDiscountTypedDict,
-    CheckoutPublicConfirmedPaymentProcessorMetadata,
-    CheckoutPublicConfirmedPaymentProcessorMetadataTypedDict,
     CheckoutPublicConfirmedTypedDict,
 )
 from .checkouts_custom_client_confirmop import (
@@ -402,13 +396,13 @@ from .checkoutsortproperty import CheckoutSortProperty
 from .checkoutstatus import CheckoutStatus
 from .checkoutupdate import (
     CheckoutUpdate,
+    CheckoutUpdateCustomFieldData,
+    CheckoutUpdateCustomFieldDataTypedDict,
     CheckoutUpdateCustomerMetadata,
     CheckoutUpdateCustomerMetadataTypedDict,
     CheckoutUpdateMetadata,
     CheckoutUpdateMetadataTypedDict,
     CheckoutUpdateTypedDict,
-    CustomFieldData,
-    CustomFieldDataTypedDict,
 )
 from .checkoutupdatepublic import (
     CheckoutUpdatePublic,
@@ -459,12 +453,12 @@ from .customer_portal_benefit_grants_listop import (
     CustomerPortalBenefitGrantsListRequestTypedDict,
     CustomerPortalBenefitGrantsListResponse,
     CustomerPortalBenefitGrantsListResponseTypedDict,
-    OrderIDFilter,
-    OrderIDFilterTypedDict,
     QueryParamBenefitTypeFilter,
     QueryParamBenefitTypeFilterTypedDict,
-    SubscriptionIDFilter,
-    SubscriptionIDFilterTypedDict,
+    QueryParamOrderIDFilter,
+    QueryParamOrderIDFilterTypedDict,
+    QueryParamSubscriptionIDFilter,
+    QueryParamSubscriptionIDFilterTypedDict,
 )
 from .customer_portal_benefit_grants_updateop import (
     CustomerPortalBenefitGrantsUpdateRequest,
@@ -515,12 +509,12 @@ from .customer_portal_orders_listop import (
     CustomerPortalOrdersListQueryParamProductIDFilterTypedDict,
     CustomerPortalOrdersListQueryParamProductPriceTypeFilter,
     CustomerPortalOrdersListQueryParamProductPriceTypeFilterTypedDict,
+    CustomerPortalOrdersListQueryParamSubscriptionIDFilter,
+    CustomerPortalOrdersListQueryParamSubscriptionIDFilterTypedDict,
     CustomerPortalOrdersListRequest,
     CustomerPortalOrdersListRequestTypedDict,
     CustomerPortalOrdersListResponse,
     CustomerPortalOrdersListResponseTypedDict,
-    QueryParamSubscriptionIDFilter,
-    QueryParamSubscriptionIDFilterTypedDict,
 )
 from .customer_portal_organizations_getop import (
     CustomerPortalOrganizationsGetRequest,
@@ -613,6 +607,8 @@ from .customerbenefitgrantupdate import (
 from .customercancellationreason import CustomerCancellationReason
 from .customercreate import (
     CustomerCreate,
+    CustomerCreateMetadata,
+    CustomerCreateMetadataTypedDict,
     CustomerCreateTaxID,
     CustomerCreateTaxIDTypedDict,
     CustomerCreateTypedDict,
@@ -671,6 +667,8 @@ from .customersubscriptionupdateprice import (
 )
 from .customerupdate import (
     CustomerUpdate,
+    CustomerUpdateMetadata,
+    CustomerUpdateMetadataTypedDict,
     CustomerUpdateTaxID,
     CustomerUpdateTaxIDTypedDict,
     CustomerUpdateTypedDict,
@@ -1063,6 +1061,7 @@ from .listresource_organization_ import (
     ListResourceOrganizationTypedDict,
 )
 from .listresource_product_ import ListResourceProduct, ListResourceProductTypedDict
+from .listresource_refund_ import ListResourceRefund, ListResourceRefundTypedDict
 from .listresource_repository_ import (
     ListResourceRepository,
     ListResourceRepositoryTypedDict,
@@ -1075,6 +1074,8 @@ from .metric import Metric, MetricTypedDict
 from .metricperiod import MetricPeriod, MetricPeriodTypedDict
 from .metrics import Metrics, MetricsTypedDict
 from .metrics_getop import (
+    MetricsGetQueryParamCustomerIDFilter,
+    MetricsGetQueryParamCustomerIDFilterTypedDict,
     MetricsGetQueryParamOrganizationIDFilter,
     MetricsGetQueryParamOrganizationIDFilterTypedDict,
     MetricsGetQueryParamProductIDFilter,
@@ -1357,6 +1358,34 @@ from .productupdate import (
     ProductUpdateTypedDict,
 )
 from .reactions import Reactions, ReactionsTypedDict
+from .refund import Refund, RefundMetadata, RefundMetadataTypedDict, RefundTypedDict
+from .refundamounttoohigh import RefundAmountTooHigh, RefundAmountTooHighData
+from .refundcreate import (
+    RefundCreate,
+    RefundCreateMetadata,
+    RefundCreateMetadataTypedDict,
+    RefundCreateTypedDict,
+)
+from .refundedalready import RefundedAlready, RefundedAlreadyData
+from .refundreason import RefundReason
+from .refunds_listop import (
+    OrderIDFilter,
+    OrderIDFilterTypedDict,
+    RefundIDFilter,
+    RefundIDFilterTypedDict,
+    RefundsListQueryParamCustomerIDFilter,
+    RefundsListQueryParamCustomerIDFilterTypedDict,
+    RefundsListQueryParamOrganizationIDFilter,
+    RefundsListQueryParamOrganizationIDFilterTypedDict,
+    RefundsListRequest,
+    RefundsListRequestTypedDict,
+    RefundsListResponse,
+    RefundsListResponseTypedDict,
+    SubscriptionIDFilter,
+    SubscriptionIDFilterTypedDict,
+)
+from .refundsortproperty import RefundSortProperty
+from .refundstatus import RefundStatus
 from .repositories_getop import RepositoriesGetRequest, RepositoriesGetRequestTypedDict
 from .repositories_listop import (
     ExternalOrganizationNameFilter,
@@ -1403,11 +1432,11 @@ from .sdkerror import SDKError
 from .security import Security, SecurityTypedDict
 from .state import State
 from .subscription import (
+    CustomFieldData,
+    CustomFieldDataTypedDict,
     Metadata,
     MetadataTypedDict,
     Subscription,
-    SubscriptionCustomFieldData,
-    SubscriptionCustomFieldDataTypedDict,
     SubscriptionDiscount,
     SubscriptionDiscountTypedDict,
     SubscriptionTypedDict,
@@ -1503,6 +1532,10 @@ from .webhookordercreatedpayload import (
     WebhookOrderCreatedPayload,
     WebhookOrderCreatedPayloadTypedDict,
 )
+from .webhookorderrefundedpayload import (
+    WebhookOrderRefundedPayload,
+    WebhookOrderRefundedPayloadTypedDict,
+)
 from .webhookorganizationupdatedpayload import (
     WebhookOrganizationUpdatedPayload,
     WebhookOrganizationUpdatedPayloadTypedDict,
@@ -1522,6 +1555,14 @@ from .webhookproductcreatedpayload import (
 from .webhookproductupdatedpayload import (
     WebhookProductUpdatedPayload,
     WebhookProductUpdatedPayloadTypedDict,
+)
+from .webhookrefundcreatedpayload import (
+    WebhookRefundCreatedPayload,
+    WebhookRefundCreatedPayloadTypedDict,
+)
+from .webhookrefundupdatedpayload import (
+    WebhookRefundUpdatedPayload,
+    WebhookRefundUpdatedPayloadTypedDict,
 )
 from .webhooksubscriptionactivepayload import (
     WebhookSubscriptionActivePayload,
@@ -1802,20 +1843,18 @@ __all__ = [
     "CheckoutPublicConfirmedCustomFieldDataTypedDict",
     "CheckoutPublicConfirmedDiscount",
     "CheckoutPublicConfirmedDiscountTypedDict",
-    "CheckoutPublicConfirmedPaymentProcessorMetadata",
-    "CheckoutPublicConfirmedPaymentProcessorMetadataTypedDict",
     "CheckoutPublicConfirmedTypedDict",
     "CheckoutPublicCustomFieldData",
     "CheckoutPublicCustomFieldDataTypedDict",
     "CheckoutPublicDiscount",
     "CheckoutPublicDiscountTypedDict",
-    "CheckoutPublicPaymentProcessorMetadata",
-    "CheckoutPublicPaymentProcessorMetadataTypedDict",
     "CheckoutPublicTypedDict",
     "CheckoutSortProperty",
     "CheckoutStatus",
     "CheckoutTypedDict",
     "CheckoutUpdate",
+    "CheckoutUpdateCustomFieldData",
+    "CheckoutUpdateCustomFieldDataTypedDict",
     "CheckoutUpdateCustomerMetadata",
     "CheckoutUpdateCustomerMetadataTypedDict",
     "CheckoutUpdateMetadata",
@@ -1981,6 +2020,8 @@ __all__ = [
     "CustomerBenefitGrantUpdateTypedDict",
     "CustomerCancellationReason",
     "CustomerCreate",
+    "CustomerCreateMetadata",
+    "CustomerCreateMetadataTypedDict",
     "CustomerCreateTaxID",
     "CustomerCreateTaxIDTypedDict",
     "CustomerCreateTypedDict",
@@ -2047,6 +2088,8 @@ __all__ = [
     "CustomerPortalOrdersListQueryParamProductIDFilterTypedDict",
     "CustomerPortalOrdersListQueryParamProductPriceTypeFilter",
     "CustomerPortalOrdersListQueryParamProductPriceTypeFilterTypedDict",
+    "CustomerPortalOrdersListQueryParamSubscriptionIDFilter",
+    "CustomerPortalOrdersListQueryParamSubscriptionIDFilterTypedDict",
     "CustomerPortalOrdersListRequest",
     "CustomerPortalOrdersListRequestTypedDict",
     "CustomerPortalOrdersListResponse",
@@ -2087,6 +2130,8 @@ __all__ = [
     "CustomerTaxIDTypedDict",
     "CustomerTypedDict",
     "CustomerUpdate",
+    "CustomerUpdateMetadata",
+    "CustomerUpdateMetadataTypedDict",
     "CustomerUpdateTaxID",
     "CustomerUpdateTaxIDTypedDict",
     "CustomerUpdateTypedDict",
@@ -2312,6 +2357,8 @@ __all__ = [
     "ListResourceOrganizationTypedDict",
     "ListResourceProduct",
     "ListResourceProductTypedDict",
+    "ListResourceRefund",
+    "ListResourceRefundTypedDict",
     "ListResourceRepository",
     "ListResourceRepositoryTypedDict",
     "ListResourceSubscription",
@@ -2330,6 +2377,8 @@ __all__ = [
     "MetricType",
     "MetricTypedDict",
     "Metrics",
+    "MetricsGetQueryParamCustomerIDFilter",
+    "MetricsGetQueryParamCustomerIDFilterTypedDict",
     "MetricsGetQueryParamOrganizationIDFilter",
     "MetricsGetQueryParamOrganizationIDFilterTypedDict",
     "MetricsGetQueryParamProductIDFilter",
@@ -2458,8 +2507,6 @@ __all__ = [
     "Pagination",
     "PaginationTypedDict",
     "PaymentProcessor",
-    "PaymentProcessorMetadata",
-    "PaymentProcessorMetadataTypedDict",
     "Permission",
     "PlatformFilter",
     "PlatformFilterTypedDict",
@@ -2558,6 +2605,8 @@ __all__ = [
     "QueryParamCustomerIDFilterTypedDict",
     "QueryParamDiscountIDFilter",
     "QueryParamDiscountIDFilterTypedDict",
+    "QueryParamOrderIDFilter",
+    "QueryParamOrderIDFilterTypedDict",
     "QueryParamOrganizationIDFilter",
     "QueryParamOrganizationIDFilterTypedDict",
     "QueryParamPlatformFilter",
@@ -2572,6 +2621,31 @@ __all__ = [
     "QueryParamSubscriptionIDFilterTypedDict",
     "Reactions",
     "ReactionsTypedDict",
+    "Refund",
+    "RefundAmountTooHigh",
+    "RefundAmountTooHighData",
+    "RefundCreate",
+    "RefundCreateMetadata",
+    "RefundCreateMetadataTypedDict",
+    "RefundCreateTypedDict",
+    "RefundIDFilter",
+    "RefundIDFilterTypedDict",
+    "RefundMetadata",
+    "RefundMetadataTypedDict",
+    "RefundReason",
+    "RefundSortProperty",
+    "RefundStatus",
+    "RefundTypedDict",
+    "RefundedAlready",
+    "RefundedAlreadyData",
+    "RefundsListQueryParamCustomerIDFilter",
+    "RefundsListQueryParamCustomerIDFilterTypedDict",
+    "RefundsListQueryParamOrganizationIDFilter",
+    "RefundsListQueryParamOrganizationIDFilterTypedDict",
+    "RefundsListRequest",
+    "RefundsListRequestTypedDict",
+    "RefundsListResponse",
+    "RefundsListResponseTypedDict",
     "RepositoriesGetRequest",
     "RepositoriesGetRequestTypedDict",
     "RepositoriesListRequest",
@@ -2616,8 +2690,6 @@ __all__ = [
     "Subscription",
     "SubscriptionCancel",
     "SubscriptionCancelTypedDict",
-    "SubscriptionCustomFieldData",
-    "SubscriptionCustomFieldDataTypedDict",
     "SubscriptionCustomer",
     "SubscriptionCustomerMetadata",
     "SubscriptionCustomerMetadataTypedDict",
@@ -2683,6 +2755,8 @@ __all__ = [
     "WebhookCheckoutUpdatedPayloadTypedDict",
     "WebhookOrderCreatedPayload",
     "WebhookOrderCreatedPayloadTypedDict",
+    "WebhookOrderRefundedPayload",
+    "WebhookOrderRefundedPayloadTypedDict",
     "WebhookOrganizationUpdatedPayload",
     "WebhookOrganizationUpdatedPayloadTypedDict",
     "WebhookPledgeCreatedPayload",
@@ -2693,6 +2767,10 @@ __all__ = [
     "WebhookProductCreatedPayloadTypedDict",
     "WebhookProductUpdatedPayload",
     "WebhookProductUpdatedPayloadTypedDict",
+    "WebhookRefundCreatedPayload",
+    "WebhookRefundCreatedPayloadTypedDict",
+    "WebhookRefundUpdatedPayload",
+    "WebhookRefundUpdatedPayloadTypedDict",
     "WebhookSubscriptionActivePayload",
     "WebhookSubscriptionActivePayloadTypedDict",
     "WebhookSubscriptionCanceledPayload",

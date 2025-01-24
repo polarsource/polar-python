@@ -33,6 +33,12 @@ class MetricsSDK(BaseSDK):
                 models.QueryParamProductPriceTypeFilterTypedDict,
             ]
         ] = UNSET,
+        customer_id: OptionalNullable[
+            Union[
+                models.MetricsGetQueryParamCustomerIDFilter,
+                models.MetricsGetQueryParamCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -48,6 +54,7 @@ class MetricsSDK(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param product_price_type: Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
+        :param customer_id: Filter by customer ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -68,6 +75,7 @@ class MetricsSDK(BaseSDK):
             organization_id=organization_id,
             product_id=product_id,
             product_price_type=product_price_type,
+            customer_id=customer_id,
         )
 
         req = self._build_request(
@@ -155,6 +163,12 @@ class MetricsSDK(BaseSDK):
                 models.QueryParamProductPriceTypeFilterTypedDict,
             ]
         ] = UNSET,
+        customer_id: OptionalNullable[
+            Union[
+                models.MetricsGetQueryParamCustomerIDFilter,
+                models.MetricsGetQueryParamCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -170,6 +184,7 @@ class MetricsSDK(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param product_price_type: Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
+        :param customer_id: Filter by customer ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -190,6 +205,7 @@ class MetricsSDK(BaseSDK):
             organization_id=organization_id,
             product_id=product_id,
             product_price_type=product_price_type,
+            customer_id=customer_id,
         )
 
         req = self._build_request_async(

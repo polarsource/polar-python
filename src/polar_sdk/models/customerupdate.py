@@ -5,8 +5,16 @@ from .address import Address, AddressTypedDict
 from .taxidformat import TaxIDFormat
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import List, Union
+from typing import Dict, List, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
+
+
+CustomerUpdateMetadataTypedDict = TypeAliasType(
+    "CustomerUpdateMetadataTypedDict", Union[str, int, bool]
+)
+
+
+CustomerUpdateMetadata = TypeAliasType("CustomerUpdateMetadata", Union[str, int, bool])
 
 
 CustomerUpdateTaxIDTypedDict = TypeAliasType(
@@ -18,6 +26,7 @@ CustomerUpdateTaxID = TypeAliasType("CustomerUpdateTaxID", Union[str, TaxIDForma
 
 
 class CustomerUpdateTypedDict(TypedDict):
+    metadata: NotRequired[Nullable[Dict[str, CustomerUpdateMetadataTypedDict]]]
     email: NotRequired[Nullable[str]]
     name: NotRequired[Nullable[str]]
     billing_address: NotRequired[Nullable[AddressTypedDict]]
@@ -25,6 +34,8 @@ class CustomerUpdateTypedDict(TypedDict):
 
 
 class CustomerUpdate(BaseModel):
+    metadata: OptionalNullable[Dict[str, CustomerUpdateMetadata]] = UNSET
+
     email: OptionalNullable[str] = UNSET
 
     name: OptionalNullable[str] = UNSET
@@ -35,8 +46,8 @@ class CustomerUpdate(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["email", "name", "billing_address", "tax_id"]
-        nullable_fields = ["email", "name", "billing_address", "tax_id"]
+        optional_fields = ["metadata", "email", "name", "billing_address", "tax_id"]
+        nullable_fields = ["metadata", "email", "name", "billing_address", "tax_id"]
         null_default_fields = []
 
         serialized = handler(self)

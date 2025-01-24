@@ -12,7 +12,7 @@ from typing_extensions import Annotated, TypedDict
 
 class CustomerPortalSubscriptionsUpdateRequestTypedDict(TypedDict):
     id: str
-    r"""Customer subscription ID."""
+    r"""The subscription ID."""
     customer_subscription_update: CustomerSubscriptionUpdateTypedDict
 
 
@@ -20,7 +20,7 @@ class CustomerPortalSubscriptionsUpdateRequest(BaseModel):
     id: Annotated[
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
-    r"""Customer subscription ID."""
+    r"""The subscription ID."""
 
     customer_subscription_update: Annotated[
         CustomerSubscriptionUpdate,

@@ -38,12 +38,12 @@ MetadataTypedDict = TypeAliasType("MetadataTypedDict", Union[str, int, bool])
 Metadata = TypeAliasType("Metadata", Union[str, int, bool])
 
 
-class SubscriptionCustomFieldDataTypedDict(TypedDict):
-    r"""Key-value object storing custom field values."""
+CustomFieldDataTypedDict = TypeAliasType(
+    "CustomFieldDataTypedDict", Union[str, int, bool, datetime]
+)
 
 
-class SubscriptionCustomFieldData(BaseModel):
-    r"""Key-value object storing custom field values."""
+CustomFieldData = TypeAliasType("CustomFieldData", Union[str, int, bool, datetime])
 
 
 SubscriptionDiscountTypedDict = TypeAliasType(
@@ -101,7 +101,7 @@ class SubscriptionTypedDict(TypedDict):
     r"""A product."""
     price: ProductPriceRecurringTypedDict
     discount: Nullable[SubscriptionDiscountTypedDict]
-    custom_field_data: NotRequired[SubscriptionCustomFieldDataTypedDict]
+    custom_field_data: NotRequired[Dict[str, CustomFieldDataTypedDict]]
     r"""Key-value object storing custom field values."""
 
 
@@ -171,7 +171,7 @@ class Subscription(BaseModel):
 
     discount: Nullable[SubscriptionDiscount]
 
-    custom_field_data: Optional[SubscriptionCustomFieldData] = None
+    custom_field_data: Optional[Dict[str, CustomFieldData]] = None
     r"""Key-value object storing custom field values."""
 
     @model_serializer(mode="wrap")

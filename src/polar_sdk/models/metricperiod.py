@@ -11,6 +11,7 @@ class MetricPeriodTypedDict(TypedDict):
     r"""Timestamp of this period data."""
     orders: int
     revenue: int
+    cumulative_revenue: int
     average_order_value: int
     one_time_products: int
     one_time_products_revenue: int
@@ -29,6 +30,8 @@ class MetricPeriod(BaseModel):
     orders: int
 
     revenue: int
+
+    cumulative_revenue: int
 
     average_order_value: int
 

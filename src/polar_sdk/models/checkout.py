@@ -30,20 +30,14 @@ from typing import Dict, List, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-class CheckoutCustomFieldDataTypedDict(TypedDict):
-    r"""Key-value object storing custom field values."""
+CheckoutCustomFieldDataTypedDict = TypeAliasType(
+    "CheckoutCustomFieldDataTypedDict", Union[str, int, bool, datetime]
+)
 
 
-class CheckoutCustomFieldData(BaseModel):
-    r"""Key-value object storing custom field values."""
-
-
-class PaymentProcessorMetadataTypedDict(TypedDict):
-    pass
-
-
-class PaymentProcessorMetadata(BaseModel):
-    pass
+CheckoutCustomFieldData = TypeAliasType(
+    "CheckoutCustomFieldData", Union[str, int, bool, datetime]
+)
 
 
 CheckoutMetadataTypedDict = TypeAliasType(
@@ -134,11 +128,13 @@ class CheckoutTypedDict(TypedDict):
     r"""Whether the checkout requires a payment form, whether because of a payment or payment method setup."""
     customer_id: Nullable[str]
     customer_name: Nullable[str]
+    r"""Name of the customer."""
     customer_email: Nullable[str]
+    r"""Email address of the customer."""
     customer_ip_address: Nullable[str]
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
-    payment_processor_metadata: PaymentProcessorMetadataTypedDict
+    payment_processor_metadata: Dict[str, str]
     metadata: Dict[str, CheckoutMetadataTypedDict]
     product: CheckoutProductTypedDict
     r"""Product data for a checkout session."""
@@ -147,7 +143,7 @@ class CheckoutTypedDict(TypedDict):
     subscription_id: Nullable[str]
     attached_custom_fields: List[AttachedCustomFieldTypedDict]
     customer_metadata: Dict[str, CustomerMetadataTypedDict]
-    custom_field_data: NotRequired[CheckoutCustomFieldDataTypedDict]
+    custom_field_data: NotRequired[Dict[str, CheckoutCustomFieldDataTypedDict]]
     r"""Key-value object storing custom field values."""
 
 
@@ -226,8 +222,10 @@ class Checkout(BaseModel):
     customer_id: Nullable[str]
 
     customer_name: Nullable[str]
+    r"""Name of the customer."""
 
     customer_email: Nullable[str]
+    r"""Email address of the customer."""
 
     customer_ip_address: Nullable[str]
 
@@ -235,7 +233,7 @@ class Checkout(BaseModel):
 
     customer_tax_id: Nullable[str]
 
-    payment_processor_metadata: PaymentProcessorMetadata
+    payment_processor_metadata: Dict[str, str]
 
     metadata: Dict[str, CheckoutMetadata]
 
@@ -252,7 +250,7 @@ class Checkout(BaseModel):
 
     customer_metadata: Dict[str, CustomerMetadata]
 
-    custom_field_data: Optional[CheckoutCustomFieldData] = None
+    custom_field_data: Optional[Dict[str, CheckoutCustomFieldData]] = None
     r"""Key-value object storing custom field values."""
 
     @model_serializer(mode="wrap")

@@ -27,24 +27,18 @@ from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import List, Optional, Union
+from typing import Dict, List, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-class CheckoutPublicCustomFieldDataTypedDict(TypedDict):
-    r"""Key-value object storing custom field values."""
+CheckoutPublicCustomFieldDataTypedDict = TypeAliasType(
+    "CheckoutPublicCustomFieldDataTypedDict", Union[str, int, bool, datetime]
+)
 
 
-class CheckoutPublicCustomFieldData(BaseModel):
-    r"""Key-value object storing custom field values."""
-
-
-class CheckoutPublicPaymentProcessorMetadataTypedDict(TypedDict):
-    pass
-
-
-class CheckoutPublicPaymentProcessorMetadata(BaseModel):
-    pass
+CheckoutPublicCustomFieldData = TypeAliasType(
+    "CheckoutPublicCustomFieldData", Union[str, int, bool, datetime]
+)
 
 
 CheckoutPublicDiscountTypedDict = TypeAliasType(
@@ -119,18 +113,20 @@ class CheckoutPublicTypedDict(TypedDict):
     r"""Whether the checkout requires a payment form, whether because of a payment or payment method setup."""
     customer_id: Nullable[str]
     customer_name: Nullable[str]
+    r"""Name of the customer."""
     customer_email: Nullable[str]
+    r"""Email address of the customer."""
     customer_ip_address: Nullable[str]
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
-    payment_processor_metadata: CheckoutPublicPaymentProcessorMetadataTypedDict
+    payment_processor_metadata: Dict[str, str]
     product: CheckoutProductTypedDict
     r"""Product data for a checkout session."""
     product_price: ProductPriceTypedDict
     discount: Nullable[CheckoutPublicDiscountTypedDict]
     organization: OrganizationTypedDict
     attached_custom_fields: List[AttachedCustomFieldTypedDict]
-    custom_field_data: NotRequired[CheckoutPublicCustomFieldDataTypedDict]
+    custom_field_data: NotRequired[Dict[str, CheckoutPublicCustomFieldDataTypedDict]]
     r"""Key-value object storing custom field values."""
 
 
@@ -209,8 +205,10 @@ class CheckoutPublic(BaseModel):
     customer_id: Nullable[str]
 
     customer_name: Nullable[str]
+    r"""Name of the customer."""
 
     customer_email: Nullable[str]
+    r"""Email address of the customer."""
 
     customer_ip_address: Nullable[str]
 
@@ -218,7 +216,7 @@ class CheckoutPublic(BaseModel):
 
     customer_tax_id: Nullable[str]
 
-    payment_processor_metadata: CheckoutPublicPaymentProcessorMetadata
+    payment_processor_metadata: Dict[str, str]
 
     product: CheckoutProduct
     r"""Product data for a checkout session."""
@@ -231,7 +229,7 @@ class CheckoutPublic(BaseModel):
 
     attached_custom_fields: List[AttachedCustomField]
 
-    custom_field_data: Optional[CheckoutPublicCustomFieldData] = None
+    custom_field_data: Optional[Dict[str, CheckoutPublicCustomFieldData]] = None
     r"""Key-value object storing custom field values."""
 
     @model_serializer(mode="wrap")

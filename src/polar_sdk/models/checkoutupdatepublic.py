@@ -2,24 +2,28 @@
 
 from __future__ import annotations
 from .address import Address, AddressTypedDict
+from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing_extensions import NotRequired, TypedDict
+from typing import Dict, Union
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-class CheckoutUpdatePublicCustomFieldDataTypedDict(TypedDict):
-    pass
+CheckoutUpdatePublicCustomFieldDataTypedDict = TypeAliasType(
+    "CheckoutUpdatePublicCustomFieldDataTypedDict", Union[str, int, bool, datetime]
+)
 
 
-class CheckoutUpdatePublicCustomFieldData(BaseModel):
-    pass
+CheckoutUpdatePublicCustomFieldData = TypeAliasType(
+    "CheckoutUpdatePublicCustomFieldData", Union[str, int, bool, datetime]
+)
 
 
 class CheckoutUpdatePublicTypedDict(TypedDict):
     r"""Update an existing checkout session using the client secret."""
 
     custom_field_data: NotRequired[
-        Nullable[CheckoutUpdatePublicCustomFieldDataTypedDict]
+        Nullable[Dict[str, CheckoutUpdatePublicCustomFieldDataTypedDict]]
     ]
     r"""Key-value object storing custom field values."""
     product_price_id: NotRequired[Nullable[str]]
@@ -36,7 +40,9 @@ class CheckoutUpdatePublicTypedDict(TypedDict):
 class CheckoutUpdatePublic(BaseModel):
     r"""Update an existing checkout session using the client secret."""
 
-    custom_field_data: OptionalNullable[CheckoutUpdatePublicCustomFieldData] = UNSET
+    custom_field_data: OptionalNullable[
+        Dict[str, CheckoutUpdatePublicCustomFieldData]
+    ] = UNSET
     r"""Key-value object storing custom field values."""
 
     product_price_id: OptionalNullable[str] = UNSET

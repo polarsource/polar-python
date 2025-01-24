@@ -20,7 +20,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list()
+    res = polar.external_organizations.list(page=1, limit=10)
 
     while res is not None:
         # Handle items
