@@ -11,6 +11,8 @@ class MetricsTypedDict(TypedDict):
     r"""Information about a metric."""
     revenue: MetricTypedDict
     r"""Information about a metric."""
+    cumulative_revenue: MetricTypedDict
+    r"""Information about a metric."""
     average_order_value: MetricTypedDict
     r"""Information about a metric."""
     one_time_products: MetricTypedDict
@@ -36,6 +38,9 @@ class Metrics(BaseModel):
     r"""Information about a metric."""
 
     revenue: Metric
+    r"""Information about a metric."""
+
+    cumulative_revenue: Metric
     r"""Information about a metric."""
 
     average_order_value: Metric

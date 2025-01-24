@@ -24,7 +24,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.files.list()
+    res = polar.files.list(page=1, limit=10)
 
     while res is not None:
         # Handle items
@@ -123,7 +123,21 @@ with Polar(
         "id": "<id>",
         "path": "/sys",
         "parts": [
-
+            {
+                "number": 173116,
+                "checksum_etag": "<value>",
+                "checksum_sha256_base64": "<value>",
+            },
+            {
+                "number": 894030,
+                "checksum_etag": "<value>",
+                "checksum_sha256_base64": "<value>",
+            },
+            {
+                "number": 673715,
+                "checksum_etag": "<value>",
+                "checksum_sha256_base64": "<value>",
+            },
         ],
     })
 

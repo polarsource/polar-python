@@ -34,10 +34,15 @@ class BenefitGrants(BaseSDK):
             Union[models.CheckoutIDFilter, models.CheckoutIDFilterTypedDict]
         ] = UNSET,
         order_id: OptionalNullable[
-            Union[models.OrderIDFilter, models.OrderIDFilterTypedDict]
+            Union[
+                models.QueryParamOrderIDFilter, models.QueryParamOrderIDFilterTypedDict
+            ]
         ] = UNSET,
         subscription_id: OptionalNullable[
-            Union[models.SubscriptionIDFilter, models.SubscriptionIDFilterTypedDict]
+            Union[
+                models.QueryParamSubscriptionIDFilter,
+                models.QueryParamSubscriptionIDFilterTypedDict,
+            ]
         ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -209,10 +214,15 @@ class BenefitGrants(BaseSDK):
             Union[models.CheckoutIDFilter, models.CheckoutIDFilterTypedDict]
         ] = UNSET,
         order_id: OptionalNullable[
-            Union[models.OrderIDFilter, models.OrderIDFilterTypedDict]
+            Union[
+                models.QueryParamOrderIDFilter, models.QueryParamOrderIDFilterTypedDict
+            ]
         ] = UNSET,
         subscription_id: OptionalNullable[
-            Union[models.SubscriptionIDFilter, models.SubscriptionIDFilterTypedDict]
+            Union[
+                models.QueryParamSubscriptionIDFilter,
+                models.QueryParamSubscriptionIDFilterTypedDict,
+            ]
         ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,

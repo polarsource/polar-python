@@ -10,6 +10,11 @@
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
+> [!NOTE]
+> **Python version upgrade policy**
+>
+> Once a Python version reaches its [official end of life date](https://devguide.python.org/versions/), a 3-month grace period is provided for users to upgrade. Following this grace period, the minimum python version supported in the SDK will be updated.
+
 The SDK can be installed with either *pip* or *poetry* package managers.
 
 ### PIP
@@ -54,14 +59,14 @@ with Polar() as polar:
 
     res = polar.endpointcheckout_created_post(request=polar_sdk.WebhookCheckoutCreatedPayload(
         data=polar_sdk.Checkout(
-            created_at=dateutil.parser.isoparse("2024-11-12T14:26:42.882Z"),
-            modified_at=dateutil.parser.isoparse("2023-05-28T05:08:06.235Z"),
+            created_at=dateutil.parser.isoparse("2025-11-12T14:26:42.882Z"),
+            modified_at=dateutil.parser.isoparse("2024-05-27T05:08:06.235Z"),
             id="<value>",
             payment_processor=polar_sdk.PaymentProcessor.STRIPE,
             status=polar_sdk.CheckoutStatus.FAILED,
             client_secret="<value>",
             url="https://heavy-beret.com/",
-            expires_at=dateutil.parser.isoparse("2022-02-25T02:26:48.460Z"),
+            expires_at=dateutil.parser.isoparse("2023-02-25T02:26:48.460Z"),
             success_url="https://sardonic-final.info/",
             embed_origin="<value>",
             amount=962818,
@@ -80,48 +85,39 @@ with Polar() as polar:
             is_payment_form_required=False,
             customer_id="<value>",
             customer_name="<value>",
-            customer_email="Ryley_Erdman@hotmail.com",
+            customer_email="<value>",
             customer_ip_address="<value>",
             customer_billing_address={
-                "country": "South Africa",
+                "country": "Solomon Islands",
             },
             customer_tax_id="<id>",
-            payment_processor_metadata={},
+            payment_processor_metadata={
+                "key": "<value>",
+                "key1": "<value>",
+                "key2": "<value>",
+            },
             metadata={
-                "key": 18677,
-                "key1": 95370,
+                "key": "<value>",
             },
             product={
-                "created_at": dateutil.parser.isoparse("2022-04-02T00:05:42.586Z"),
-                "modified_at": dateutil.parser.isoparse("2023-12-16T03:02:38.803Z"),
+                "created_at": dateutil.parser.isoparse("2024-11-17T19:11:13.132Z"),
+                "modified_at": dateutil.parser.isoparse("2024-02-27T04:46:39.621Z"),
                 "id": "<value>",
                 "name": "<value>",
-                "description": "for embarrassment untidy long-term near honestly separate yet",
-                "is_recurring": True,
-                "is_archived": False,
+                "description": "border opposite overload interior shady",
+                "is_recurring": False,
+                "is_archived": True,
                 "organization_id": "<value>",
                 "prices": [
-                    {
-                        "created_at": dateutil.parser.isoparse("2025-11-19T15:59:15.588Z"),
-                        "modified_at": dateutil.parser.isoparse("2023-11-17T00:11:23.972Z"),
-                        "id": "<value>",
-                        "is_archived": False,
-                        "product_id": "<value>",
-                        "price_currency": "<value>",
-                        "minimum_amount": 363560,
-                        "maximum_amount": 75876,
-                        "preset_amount": 82334,
-                        "amount_type": "custom",
-                        "type": "one_time",
-                    },
+
                 ],
                 "benefits": [
                     {
-                        "created_at": dateutil.parser.isoparse("2023-08-22T00:47:02.059Z"),
-                        "modified_at": dateutil.parser.isoparse("2023-06-04T10:32:44.101Z"),
+                        "created_at": dateutil.parser.isoparse("2025-08-24T18:28:03.144Z"),
+                        "modified_at": dateutil.parser.isoparse("2023-10-21T11:52:11.842Z"),
                         "id": "<value>",
-                        "type": polar_sdk.BenefitType.LICENSE_KEYS,
-                        "description": "within jacket unless",
+                        "type": polar_sdk.BenefitType.ADS,
+                        "description": "certainly these restfully geez who countess happily gym",
                         "selectable": False,
                         "deletable": False,
                         "organization_id": "<value>",
@@ -132,41 +128,59 @@ with Polar() as polar:
                         "id": "<value>",
                         "organization_id": "<value>",
                         "name": "<value>",
-                        "path": "/private/var",
+                        "path": "/private/tmp",
                         "mime_type": "<value>",
-                        "size": 245189,
+                        "size": 486328,
                         "storage_version": "<value>",
                         "checksum_etag": "<value>",
                         "checksum_sha256_base64": "<value>",
                         "checksum_sha256_hex": "<value>",
-                        "last_modified_at": dateutil.parser.isoparse("2022-11-03T15:00:03.276Z"),
+                        "last_modified_at": dateutil.parser.isoparse("2023-09-26T17:28:00.673Z"),
+                        "version": "<value>",
+                        "is_uploaded": True,
+                        "created_at": dateutil.parser.isoparse("2025-05-06T18:54:29.001Z"),
+                        "size_readable": "<value>",
+                        "public_url": "https://forsaken-underpants.biz",
+                        "service": "product_media",
+                    },
+                    {
+                        "id": "<value>",
+                        "organization_id": "<value>",
+                        "name": "<value>",
+                        "path": "/Users",
+                        "mime_type": "<value>",
+                        "size": 796127,
+                        "storage_version": "<value>",
+                        "checksum_etag": "<value>",
+                        "checksum_sha256_base64": "<value>",
+                        "checksum_sha256_hex": "<value>",
+                        "last_modified_at": dateutil.parser.isoparse("2023-09-05T18:42:07.313Z"),
                         "version": "<value>",
                         "is_uploaded": False,
-                        "created_at": dateutil.parser.isoparse("2024-06-07T13:47:02.365Z"),
+                        "created_at": dateutil.parser.isoparse("2025-10-05T11:55:07.194Z"),
                         "size_readable": "<value>",
-                        "public_url": "https://webbed-experience.name/",
+                        "public_url": "https://quick-witted-markup.org/",
                         "service": "product_media",
                     },
                 ],
             },
             product_price={
-                "created_at": dateutil.parser.isoparse("2025-02-14T09:22:19.644Z"),
-                "modified_at": dateutil.parser.isoparse("2023-12-28T20:59:29.904Z"),
+                "created_at": dateutil.parser.isoparse("2025-11-19T15:59:15.588Z"),
+                "modified_at": dateutil.parser.isoparse("2023-11-17T00:11:23.972Z"),
                 "id": "<value>",
                 "is_archived": False,
                 "product_id": "<value>",
                 "price_currency": "<value>",
-                "minimum_amount": 417896,
-                "maximum_amount": 962818,
-                "preset_amount": 6400,
-                "recurring_interval": polar_sdk.SubscriptionRecurringInterval.MONTH,
+                "minimum_amount": 363560,
+                "maximum_amount": 75876,
+                "preset_amount": 82334,
                 "amount_type": "custom",
-                "type": "recurring",
+                "type": "one_time",
             },
             discount={
                 "duration": polar_sdk.DiscountDuration.REPEATING,
-                "type": polar_sdk.DiscountType.FIXED,
-                "basis_points": 341163,
+                "type": polar_sdk.DiscountType.PERCENTAGE,
+                "basis_points": 416143,
                 "id": "<value>",
                 "name": "<value>",
                 "code": "<value>",
@@ -176,51 +190,8 @@ with Polar() as polar:
                 {
                     "custom_field_id": "<value>",
                     "custom_field": {
-                        "created_at": dateutil.parser.isoparse("2023-08-19T22:18:44.316Z"),
-                        "modified_at": dateutil.parser.isoparse("2024-04-28T23:39:10.699Z"),
-                        "id": "<value>",
-                        "metadata": {
-                            "key": False,
-                        },
-                        "slug": "<value>",
-                        "name": "<value>",
-                        "organization_id": "<value>",
-                        "properties": {
-                            "options": [
-                                {
-                                    "value": "<value>",
-                                    "label": "<value>",
-                                },
-                            ],
-                        },
-                        "type": "select",
-                    },
-                    "order": 996863,
-                    "required": False,
-                },
-                {
-                    "custom_field_id": "<value>",
-                    "custom_field": {
-                        "created_at": dateutil.parser.isoparse("2024-07-02T09:46:29.338Z"),
-                        "modified_at": dateutil.parser.isoparse("2025-01-24T18:08:49.597Z"),
-                        "id": "<value>",
-                        "metadata": {
-                            "key": False,
-                        },
-                        "slug": "<value>",
-                        "name": "<value>",
-                        "organization_id": "<value>",
-                        "properties": {},
-                        "type": "number",
-                    },
-                    "order": 72589,
-                    "required": True,
-                },
-                {
-                    "custom_field_id": "<value>",
-                    "custom_field": {
-                        "created_at": dateutil.parser.isoparse("2025-07-31T13:25:31.669Z"),
-                        "modified_at": dateutil.parser.isoparse("2023-11-12T09:40:10.044Z"),
+                        "created_at": dateutil.parser.isoparse("2024-06-03T08:42:54.736Z"),
+                        "modified_at": dateutil.parser.isoparse("2025-02-14T09:22:19.644Z"),
                         "id": "<value>",
                         "metadata": {
                             "key": "<value>",
@@ -229,15 +200,51 @@ with Polar() as polar:
                         "name": "<value>",
                         "organization_id": "<value>",
                         "properties": {},
-                        "type": "text",
+                        "type": "checkbox",
                     },
-                    "order": 161325,
+                    "order": 169862,
+                    "required": True,
+                },
+                {
+                    "custom_field_id": "<value>",
+                    "custom_field": {
+                        "created_at": dateutil.parser.isoparse("2025-11-21T05:56:48.487Z"),
+                        "modified_at": dateutil.parser.isoparse("2023-01-08T00:22:16.025Z"),
+                        "id": "<value>",
+                        "metadata": {
+                            "key": 648726,
+                        },
+                        "slug": "<value>",
+                        "name": "<value>",
+                        "organization_id": "<value>",
+                        "properties": {},
+                        "type": "number",
+                    },
+                    "order": 918364,
+                    "required": True,
+                },
+                {
+                    "custom_field_id": "<value>",
+                    "custom_field": {
+                        "created_at": dateutil.parser.isoparse("2024-04-28T23:39:10.699Z"),
+                        "modified_at": dateutil.parser.isoparse("2025-04-20T22:18:45.464Z"),
+                        "id": "<value>",
+                        "metadata": {
+                            "key": 500372,
+                        },
+                        "slug": "<value>",
+                        "name": "<value>",
+                        "organization_id": "<value>",
+                        "properties": {},
+                        "type": "date",
+                    },
+                    "order": 187532,
                     "required": True,
                 },
             ],
             customer_metadata={
                 "key": "<value>",
-                "key1": "<value>",
+                "key1": 790078,
             },
         ),
         type="checkout.created",
@@ -262,14 +269,14 @@ async def main():
 
         res = await polar.endpointcheckout_created_post_async(request=polar_sdk.WebhookCheckoutCreatedPayload(
             data=polar_sdk.Checkout(
-                created_at=dateutil.parser.isoparse("2024-11-12T14:26:42.882Z"),
-                modified_at=dateutil.parser.isoparse("2023-05-28T05:08:06.235Z"),
+                created_at=dateutil.parser.isoparse("2025-11-12T14:26:42.882Z"),
+                modified_at=dateutil.parser.isoparse("2024-05-27T05:08:06.235Z"),
                 id="<value>",
                 payment_processor=polar_sdk.PaymentProcessor.STRIPE,
                 status=polar_sdk.CheckoutStatus.FAILED,
                 client_secret="<value>",
                 url="https://heavy-beret.com/",
-                expires_at=dateutil.parser.isoparse("2022-02-25T02:26:48.460Z"),
+                expires_at=dateutil.parser.isoparse("2023-02-25T02:26:48.460Z"),
                 success_url="https://sardonic-final.info/",
                 embed_origin="<value>",
                 amount=962818,
@@ -288,48 +295,39 @@ async def main():
                 is_payment_form_required=False,
                 customer_id="<value>",
                 customer_name="<value>",
-                customer_email="Ryley_Erdman@hotmail.com",
+                customer_email="<value>",
                 customer_ip_address="<value>",
                 customer_billing_address={
-                    "country": "South Africa",
+                    "country": "Solomon Islands",
                 },
                 customer_tax_id="<id>",
-                payment_processor_metadata={},
+                payment_processor_metadata={
+                    "key": "<value>",
+                    "key1": "<value>",
+                    "key2": "<value>",
+                },
                 metadata={
-                    "key": 18677,
-                    "key1": 95370,
+                    "key": "<value>",
                 },
                 product={
-                    "created_at": dateutil.parser.isoparse("2022-04-02T00:05:42.586Z"),
-                    "modified_at": dateutil.parser.isoparse("2023-12-16T03:02:38.803Z"),
+                    "created_at": dateutil.parser.isoparse("2024-11-17T19:11:13.132Z"),
+                    "modified_at": dateutil.parser.isoparse("2024-02-27T04:46:39.621Z"),
                     "id": "<value>",
                     "name": "<value>",
-                    "description": "for embarrassment untidy long-term near honestly separate yet",
-                    "is_recurring": True,
-                    "is_archived": False,
+                    "description": "border opposite overload interior shady",
+                    "is_recurring": False,
+                    "is_archived": True,
                     "organization_id": "<value>",
                     "prices": [
-                        {
-                            "created_at": dateutil.parser.isoparse("2024-02-07T04:30:48.802Z"),
-                            "modified_at": dateutil.parser.isoparse("2025-06-25T22:47:14.264Z"),
-                            "id": "<value>",
-                            "is_archived": False,
-                            "product_id": "<value>",
-                            "price_currency": "<value>",
-                            "minimum_amount": 691423,
-                            "maximum_amount": 499526,
-                            "preset_amount": 18677,
-                            "amount_type": "custom",
-                            "type": "one_time",
-                        },
+
                     ],
                     "benefits": [
                         {
-                            "created_at": dateutil.parser.isoparse("2023-08-22T00:47:02.059Z"),
-                            "modified_at": dateutil.parser.isoparse("2023-06-04T10:32:44.101Z"),
+                            "created_at": dateutil.parser.isoparse("2025-08-24T18:28:03.144Z"),
+                            "modified_at": dateutil.parser.isoparse("2023-10-21T11:52:11.842Z"),
                             "id": "<value>",
-                            "type": polar_sdk.BenefitType.LICENSE_KEYS,
-                            "description": "within jacket unless",
+                            "type": polar_sdk.BenefitType.ADS,
+                            "description": "certainly these restfully geez who countess happily gym",
                             "selectable": False,
                             "deletable": False,
                             "organization_id": "<value>",
@@ -340,38 +338,55 @@ async def main():
                             "id": "<value>",
                             "organization_id": "<value>",
                             "name": "<value>",
-                            "path": "/private/var",
+                            "path": "/private/tmp",
                             "mime_type": "<value>",
-                            "size": 245189,
+                            "size": 486328,
                             "storage_version": "<value>",
                             "checksum_etag": "<value>",
                             "checksum_sha256_base64": "<value>",
                             "checksum_sha256_hex": "<value>",
-                            "last_modified_at": dateutil.parser.isoparse("2022-11-03T15:00:03.276Z"),
+                            "last_modified_at": dateutil.parser.isoparse("2023-09-26T17:28:00.673Z"),
+                            "version": "<value>",
+                            "is_uploaded": True,
+                            "created_at": dateutil.parser.isoparse("2025-05-06T18:54:29.001Z"),
+                            "size_readable": "<value>",
+                            "public_url": "https://forsaken-underpants.biz",
+                            "service": "product_media",
+                        },
+                        {
+                            "id": "<value>",
+                            "organization_id": "<value>",
+                            "name": "<value>",
+                            "path": "/Users",
+                            "mime_type": "<value>",
+                            "size": 796127,
+                            "storage_version": "<value>",
+                            "checksum_etag": "<value>",
+                            "checksum_sha256_base64": "<value>",
+                            "checksum_sha256_hex": "<value>",
+                            "last_modified_at": dateutil.parser.isoparse("2023-09-05T18:42:07.313Z"),
                             "version": "<value>",
                             "is_uploaded": False,
-                            "created_at": dateutil.parser.isoparse("2024-06-07T13:47:02.365Z"),
+                            "created_at": dateutil.parser.isoparse("2025-10-05T11:55:07.194Z"),
                             "size_readable": "<value>",
-                            "public_url": "https://webbed-experience.name/",
+                            "public_url": "https://quick-witted-markup.org/",
                             "service": "product_media",
                         },
                     ],
                 },
                 product_price={
-                    "created_at": dateutil.parser.isoparse("2023-04-02T00:05:42.586Z"),
-                    "modified_at": dateutil.parser.isoparse("2024-12-15T03:02:38.803Z"),
+                    "created_at": dateutil.parser.isoparse("2025-06-18T23:55:22.042Z"),
+                    "modified_at": dateutil.parser.isoparse("2025-07-31T13:25:31.669Z"),
                     "id": "<value>",
                     "is_archived": False,
                     "product_id": "<value>",
-                    "price_currency": "<value>",
-                    "price_amount": 740296,
-                    "amount_type": "fixed",
+                    "amount_type": "free",
                     "type": "one_time",
                 },
                 discount={
                     "duration": polar_sdk.DiscountDuration.REPEATING,
-                    "type": polar_sdk.DiscountType.FIXED,
-                    "basis_points": 341163,
+                    "type": polar_sdk.DiscountType.PERCENTAGE,
+                    "basis_points": 416143,
                     "id": "<value>",
                     "name": "<value>",
                     "code": "<value>",
@@ -381,8 +396,26 @@ async def main():
                     {
                         "custom_field_id": "<value>",
                         "custom_field": {
-                            "created_at": dateutil.parser.isoparse("2025-06-23T16:57:50.081Z"),
-                            "modified_at": dateutil.parser.isoparse("2024-12-13T18:25:33.693Z"),
+                            "created_at": dateutil.parser.isoparse("2023-08-29T09:50:00.241Z"),
+                            "modified_at": dateutil.parser.isoparse("2024-11-17T19:11:13.132Z"),
+                            "id": "<value>",
+                            "metadata": {
+                                "key": 366960,
+                            },
+                            "slug": "<value>",
+                            "name": "<value>",
+                            "organization_id": "<value>",
+                            "properties": {},
+                            "type": "date",
+                        },
+                        "order": 169862,
+                        "required": True,
+                    },
+                    {
+                        "custom_field_id": "<value>",
+                        "custom_field": {
+                            "created_at": dateutil.parser.isoparse("2025-01-27T19:10:37.564Z"),
+                            "modified_at": dateutil.parser.isoparse("2024-07-01T11:31:44.349Z"),
                             "id": "<value>",
                             "metadata": {
                                 "key": "<value>",
@@ -391,58 +424,33 @@ async def main():
                             "name": "<value>",
                             "organization_id": "<value>",
                             "properties": {},
-                            "type": "number",
+                            "type": "text",
                         },
-                        "order": 996863,
-                        "required": False,
-                    },
-                    {
-                        "custom_field_id": "<value>",
-                        "custom_field": {
-                            "created_at": dateutil.parser.isoparse("2023-04-26T22:34:57.487Z"),
-                            "modified_at": dateutil.parser.isoparse("2023-08-07T19:57:51.694Z"),
-                            "id": "<value>",
-                            "metadata": {
-                                "key": 856200,
-                            },
-                            "slug": "<value>",
-                            "name": "<value>",
-                            "organization_id": "<value>",
-                            "properties": {
-                                "options": [
-                                    {
-                                        "value": "<value>",
-                                        "label": "<value>",
-                                    },
-                                ],
-                            },
-                            "type": "select",
-                        },
-                        "order": 72589,
+                        "order": 918364,
                         "required": True,
                     },
                     {
                         "custom_field_id": "<value>",
                         "custom_field": {
-                            "created_at": dateutil.parser.isoparse("2025-05-25T15:20:50.694Z"),
-                            "modified_at": dateutil.parser.isoparse("2024-11-27T14:29:40.329Z"),
+                            "created_at": dateutil.parser.isoparse("2023-04-15T12:36:50.681Z"),
+                            "modified_at": dateutil.parser.isoparse("2023-04-02T00:05:42.586Z"),
                             "id": "<value>",
                             "metadata": {
-                                "key": False,
+                                "key": 740296,
                             },
                             "slug": "<value>",
                             "name": "<value>",
                             "organization_id": "<value>",
                             "properties": {},
-                            "type": "checkbox",
+                            "type": "number",
                         },
-                        "order": 161325,
+                        "order": 187532,
                         "required": True,
                     },
                 ],
                 customer_metadata={
                     "key": "<value>",
-                    "key1": "<value>",
+                    "key1": 790078,
                 },
             ),
             type="checkout.created",
@@ -657,6 +665,11 @@ def webhook():
 * [update](docs/sdks/products/README.md#update) - Update Product
 * [update_benefits](docs/sdks/products/README.md#update_benefits) - Update Product Benefits
 
+### [refunds](docs/sdks/refunds/README.md)
+
+* [list](docs/sdks/refunds/README.md#list) - List Refunds
+* [create](docs/sdks/refunds/README.md#create) - Create Refund
+
 ### [repositories](docs/sdks/repositories/README.md)
 
 * [list](docs/sdks/repositories/README.md#list) - List Repositories
@@ -687,7 +700,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(,
+    res = polar.external_organizations.list(page=1, limit=10,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     while res is not None:
@@ -707,7 +720,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list()
+    res = polar.external_organizations.list(page=1, limit=10)
 
     while res is not None:
         # Handle items
@@ -749,7 +762,7 @@ with Polar(
     res = None
     try:
 
-        res = polar.external_organizations.list()
+        res = polar.external_organizations.list(page=1, limit=10)
 
         while res is not None:
             # Handle items
@@ -787,7 +800,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list()
+    res = polar.external_organizations.list(page=1, limit=10)
 
     while res is not None:
         # Handle items
@@ -807,7 +820,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list()
+    res = polar.external_organizations.list(page=1, limit=10)
 
     while res is not None:
         # Handle items
@@ -917,7 +930,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list()
+    res = polar.external_organizations.list(page=1, limit=10)
 
     while res is not None:
         # Handle items
@@ -926,6 +939,31 @@ with Polar(
 
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Resource Management [resource-management] -->
+## Resource Management
+
+The `Polar` class implements the context manager protocol and registers a finalizer function to close the underlying sync and async HTTPX clients it uses under the hood. This will close HTTP connections, release memory and free up other resources held by the SDK. In short-lived Python programs and notebooks that make a few SDK method calls, resource management may not be a concern. However, in longer-lived programs, it is beneficial to create a single SDK instance via a [context manager][context-manager] and reuse it across the application.
+
+[context-manager]: https://docs.python.org/3/reference/datamodel.html#context-managers
+
+```python
+from polar_sdk import Polar
+def main():
+    with Polar(
+        access_token="<YOUR_BEARER_TOKEN_HERE>",
+    ) as polar:
+        # Rest of application here...
+
+
+# Or when using async:
+async def amain():
+    async with Polar(
+        access_token="<YOUR_BEARER_TOKEN_HERE>",
+    ) as polar:
+        # Rest of application here...
+```
+<!-- End Resource Management [resource-management] -->
 
 <!-- Start Debugging [debug] -->
 ## Debugging
@@ -957,7 +995,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list()
+    res = polar.external_organizations.list(page=1, limit=10)
 
     while res is not None:
         # Handle items
@@ -989,6 +1027,7 @@ Read the docs at https://docs.polar.sh/api-reference
   * [Server Selection](#server-selection)
   * [Custom HTTP Client](#custom-http-client)
   * [Authentication](#authentication)
+  * [Resource Management](#resource-management)
   * [Debugging](#debugging)
   * [Pagination](#pagination)
 * [Development](#development)

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .address import Address, AddressTypedDict
+from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, Optional, Union
@@ -18,12 +19,14 @@ CheckoutProductCreateMetadata = TypeAliasType(
 )
 
 
-class CheckoutProductCreateCustomFieldDataTypedDict(TypedDict):
-    r"""Key-value object storing custom field values."""
+CheckoutProductCreateCustomFieldDataTypedDict = TypeAliasType(
+    "CheckoutProductCreateCustomFieldDataTypedDict", Union[str, int, bool, datetime]
+)
 
 
-class CheckoutProductCreateCustomFieldData(BaseModel):
-    r"""Key-value object storing custom field values."""
+CheckoutProductCreateCustomFieldData = TypeAliasType(
+    "CheckoutProductCreateCustomFieldData", Union[str, int, bool, datetime]
+)
 
 
 CheckoutProductCreateCustomerMetadataTypedDict = TypeAliasType(
@@ -57,7 +60,9 @@ class CheckoutProductCreateTypedDict(TypedDict):
 
     You can store up to **50 key-value pairs**.
     """
-    custom_field_data: NotRequired[CheckoutProductCreateCustomFieldDataTypedDict]
+    custom_field_data: NotRequired[
+        Dict[str, CheckoutProductCreateCustomFieldDataTypedDict]
+    ]
     r"""Key-value object storing custom field values."""
     discount_id: NotRequired[Nullable[str]]
     r"""ID of the discount to apply to the checkout."""
@@ -116,7 +121,7 @@ class CheckoutProductCreate(BaseModel):
     You can store up to **50 key-value pairs**.
     """
 
-    custom_field_data: Optional[CheckoutProductCreateCustomFieldData] = None
+    custom_field_data: Optional[Dict[str, CheckoutProductCreateCustomFieldData]] = None
     r"""Key-value object storing custom field values."""
 
     discount_id: OptionalNullable[str] = UNSET

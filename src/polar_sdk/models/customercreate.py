@@ -5,8 +5,16 @@ from .address import Address, AddressTypedDict
 from .taxidformat import TaxIDFormat
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import List, Union
+from typing import Dict, List, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
+
+
+CustomerCreateMetadataTypedDict = TypeAliasType(
+    "CustomerCreateMetadataTypedDict", Union[str, int, bool]
+)
+
+
+CustomerCreateMetadata = TypeAliasType("CustomerCreateMetadata", Union[str, int, bool])
 
 
 CustomerCreateTaxIDTypedDict = TypeAliasType(
@@ -19,6 +27,18 @@ CustomerCreateTaxID = TypeAliasType("CustomerCreateTaxID", Union[str, TaxIDForma
 
 class CustomerCreateTypedDict(TypedDict):
     email: str
+    metadata: NotRequired[Dict[str, CustomerCreateMetadataTypedDict]]
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
     name: NotRequired[Nullable[str]]
     billing_address: NotRequired[Nullable[AddressTypedDict]]
     tax_id: NotRequired[Nullable[List[CustomerCreateTaxIDTypedDict]]]
@@ -28,6 +48,19 @@ class CustomerCreateTypedDict(TypedDict):
 
 class CustomerCreate(BaseModel):
     email: str
+
+    metadata: Optional[Dict[str, CustomerCreateMetadata]] = None
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
 
     name: OptionalNullable[str] = UNSET
 
@@ -40,7 +73,13 @@ class CustomerCreate(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["name", "billing_address", "tax_id", "organization_id"]
+        optional_fields = [
+            "metadata",
+            "name",
+            "billing_address",
+            "tax_id",
+            "organization_id",
+        ]
         nullable_fields = ["name", "billing_address", "tax_id", "organization_id"]
         null_default_fields = []
 

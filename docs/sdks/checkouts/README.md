@@ -25,7 +25,7 @@ with Polar(
 
     res = polar.checkouts.create(request={
         "product_price_id": "<value>",
-        "success_url": "http://limp-pastry.org",
+        "success_url": "https://probable-heating.com/",
     })
 
     # Handle response

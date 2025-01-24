@@ -105,7 +105,7 @@ with Polar(
 
     res = polar.oauth2.revoke(request={
         "token": "<value>",
-        "client_id": "<value>",
+        "client_id": "<id>",
         "client_secret": "<value>",
     })
 
@@ -146,7 +146,7 @@ with Polar(
 
     res = polar.oauth2.introspect(request={
         "token": "<value>",
-        "client_id": "<value>",
+        "client_id": "<id>",
         "client_secret": "<value>",
     })
 

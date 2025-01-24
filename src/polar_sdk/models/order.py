@@ -38,12 +38,14 @@ OrderMetadataTypedDict = TypeAliasType("OrderMetadataTypedDict", Union[str, int,
 OrderMetadata = TypeAliasType("OrderMetadata", Union[str, int, bool])
 
 
-class OrderCustomFieldDataTypedDict(TypedDict):
-    r"""Key-value object storing custom field values."""
+OrderCustomFieldDataTypedDict = TypeAliasType(
+    "OrderCustomFieldDataTypedDict", Union[str, int, bool, datetime]
+)
 
 
-class OrderCustomFieldData(BaseModel):
-    r"""Key-value object storing custom field values."""
+OrderCustomFieldData = TypeAliasType(
+    "OrderCustomFieldData", Union[str, int, bool, datetime]
+)
 
 
 OrderDiscountTypedDict = TypeAliasType(
@@ -76,8 +78,13 @@ class OrderTypedDict(TypedDict):
     id: str
     r"""The ID of the object."""
     metadata: Dict[str, OrderMetadataTypedDict]
+    status: str
     amount: int
     tax_amount: int
+    refunded_amount: int
+    r"""Amount refunded"""
+    refunded_tax_amount: int
+    r"""Sales tax refunded"""
     currency: str
     billing_reason: OrderBillingReason
     billing_address: Nullable[AddressTypedDict]
@@ -94,7 +101,7 @@ class OrderTypedDict(TypedDict):
     product_price: ProductPriceTypedDict
     discount: Nullable[OrderDiscountTypedDict]
     subscription: Nullable[OrderSubscriptionTypedDict]
-    custom_field_data: NotRequired[OrderCustomFieldDataTypedDict]
+    custom_field_data: NotRequired[Dict[str, OrderCustomFieldDataTypedDict]]
     r"""Key-value object storing custom field values."""
 
 
@@ -110,9 +117,17 @@ class Order(BaseModel):
 
     metadata: Dict[str, OrderMetadata]
 
+    status: str
+
     amount: int
 
     tax_amount: int
+
+    refunded_amount: int
+    r"""Amount refunded"""
+
+    refunded_tax_amount: int
+    r"""Sales tax refunded"""
 
     currency: str
 
@@ -151,7 +166,7 @@ class Order(BaseModel):
 
     subscription: Nullable[OrderSubscription]
 
-    custom_field_data: Optional[OrderCustomFieldData] = None
+    custom_field_data: Optional[Dict[str, OrderCustomFieldData]] = None
     r"""Key-value object storing custom field values."""
 
     @model_serializer(mode="wrap")

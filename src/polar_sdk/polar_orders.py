@@ -32,8 +32,8 @@ class PolarOrders(BaseSDK):
         ] = UNSET,
         subscription_id: OptionalNullable[
             Union[
-                models.QueryParamSubscriptionIDFilter,
-                models.QueryParamSubscriptionIDFilterTypedDict,
+                models.CustomerPortalOrdersListQueryParamSubscriptionIDFilter,
+                models.CustomerPortalOrdersListQueryParamSubscriptionIDFilterTypedDict,
             ]
         ] = UNSET,
         query: OptionalNullable[str] = UNSET,
@@ -200,8 +200,8 @@ class PolarOrders(BaseSDK):
         ] = UNSET,
         subscription_id: OptionalNullable[
             Union[
-                models.QueryParamSubscriptionIDFilter,
-                models.QueryParamSubscriptionIDFilterTypedDict,
+                models.CustomerPortalOrdersListQueryParamSubscriptionIDFilter,
+                models.CustomerPortalOrdersListQueryParamSubscriptionIDFilterTypedDict,
             ]
         ] = UNSET,
         query: OptionalNullable[str] = UNSET,

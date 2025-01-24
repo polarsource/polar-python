@@ -21,7 +21,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.customer_portal.downloadables.list()
+    res = polar.customer_portal.downloadables.list(page=1, limit=10)
 
     while res is not None:
         # Handle items
