@@ -9,6 +9,10 @@ from .organizationprofilesettings import (
     OrganizationProfileSettings,
     OrganizationProfileSettingsTypedDict,
 )
+from .organizationsubscriptionsettings import (
+    OrganizationSubscriptionSettings,
+    OrganizationSubscriptionSettingsTypedDict,
+)
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Optional
@@ -27,6 +31,9 @@ class OrganizationUpdateTypedDict(TypedDict):
     per_user_monthly_spending_limit: NotRequired[Nullable[int]]
     profile_settings: NotRequired[Nullable[OrganizationProfileSettingsTypedDict]]
     feature_settings: NotRequired[Nullable[OrganizationFeatureSettingsTypedDict]]
+    subscription_settings: NotRequired[
+        Nullable[OrganizationSubscriptionSettingsTypedDict]
+    ]
 
 
 class OrganizationUpdate(BaseModel):
@@ -52,6 +59,8 @@ class OrganizationUpdate(BaseModel):
 
     feature_settings: OptionalNullable[OrganizationFeatureSettings] = UNSET
 
+    subscription_settings: OptionalNullable[OrganizationSubscriptionSettings] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -66,6 +75,7 @@ class OrganizationUpdate(BaseModel):
             "per_user_monthly_spending_limit",
             "profile_settings",
             "feature_settings",
+            "subscription_settings",
         ]
         nullable_fields = [
             "name",
@@ -77,6 +87,7 @@ class OrganizationUpdate(BaseModel):
             "per_user_monthly_spending_limit",
             "profile_settings",
             "feature_settings",
+            "subscription_settings",
         ]
         null_default_fields = []
 

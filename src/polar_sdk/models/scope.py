@@ -25,6 +25,8 @@ class Scope(str, Enum):
     PRODUCTS_WRITE = "products:write"
     BENEFITS_READ = "benefits:read"
     BENEFITS_WRITE = "benefits:write"
+    EVENTS_READ = "events:read"
+    EVENTS_WRITE = "events:write"
     FILES_READ = "files:read"
     FILES_WRITE = "files:write"
     SUBSCRIPTIONS_READ = "subscriptions:read"

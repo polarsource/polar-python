@@ -1,6 +1,6 @@
 [project]
 name = "polar-sdk"
-version = "0.13.3"
+version = "0.13.4"
 description = "Polar SDK for Python"
 authors = [{ name = "Polar" },]
 readme = "README-PYPI.md"
@@ -40,6 +40,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"
 pythonpath = ["src"]
 
 [tool.mypy]

@@ -9,6 +9,10 @@ from .organizationprofilesettings import (
     OrganizationProfileSettings,
     OrganizationProfileSettingsTypedDict,
 )
+from .organizationsubscriptionsettings import (
+    OrganizationSubscriptionSettings,
+    OrganizationSubscriptionSettingsTypedDict,
+)
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -38,6 +42,7 @@ class OrganizationTypedDict(TypedDict):
     r"""Settings for the organization profile"""
     feature_settings: Nullable[OrganizationFeatureSettingsTypedDict]
     r"""Settings for the organization features"""
+    subscription_settings: OrganizationSubscriptionSettingsTypedDict
 
 
 class Organization(BaseModel):
@@ -79,6 +84,8 @@ class Organization(BaseModel):
 
     feature_settings: Nullable[OrganizationFeatureSettings]
     r"""Settings for the organization features"""
+
+    subscription_settings: OrganizationSubscriptionSettings
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
