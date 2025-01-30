@@ -747,13 +747,18 @@ class Custom(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.Checkout)
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(
+                http_res.text, models.AlreadyActiveSubscriptionErrorData
+            )
+            raise models.AlreadyActiveSubscriptionError(data=data)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -850,13 +855,18 @@ class Custom(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.Checkout)
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(
+                http_res.text, models.AlreadyActiveSubscriptionErrorData
+            )
+            raise models.AlreadyActiveSubscriptionError(data=data)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -1149,13 +1159,18 @@ class Custom(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.CheckoutPublic)
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(
+                http_res.text, models.AlreadyActiveSubscriptionErrorData
+            )
+            raise models.AlreadyActiveSubscriptionError(data=data)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -1258,13 +1273,18 @@ class Custom(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.CheckoutPublic)
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(
+                http_res.text, models.AlreadyActiveSubscriptionErrorData
+            )
+            raise models.AlreadyActiveSubscriptionError(data=data)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -1369,13 +1389,18 @@ class Custom(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.CheckoutPublicConfirmed)
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(
+                http_res.text, models.AlreadyActiveSubscriptionErrorData
+            )
+            raise models.AlreadyActiveSubscriptionError(data=data)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)
@@ -1480,13 +1505,18 @@ class Custom(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.CheckoutPublicConfirmed)
+        if utils.match_response(http_res, "403", "application/json"):
+            data = utils.unmarshal_json(
+                http_res.text, models.AlreadyActiveSubscriptionErrorData
+            )
+            raise models.AlreadyActiveSubscriptionError(data=data)
         if utils.match_response(http_res, "404", "application/json"):
             data = utils.unmarshal_json(http_res.text, models.ResourceNotFoundData)
             raise models.ResourceNotFound(data=data)

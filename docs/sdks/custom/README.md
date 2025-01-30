@@ -171,11 +171,12 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| models.AlreadyActiveSubscriptionError | 403                                   | application/json                      |
+| models.ResourceNotFound               | 404                                   | application/json                      |
+| models.HTTPValidationError            | 422                                   | application/json                      |
+| models.SDKError                       | 4XX, 5XX                              | \*/\*                                 |
 
 ## client_get
 
@@ -250,11 +251,12 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| models.AlreadyActiveSubscriptionError | 403                                   | application/json                      |
+| models.ResourceNotFound               | 404                                   | application/json                      |
+| models.HTTPValidationError            | 422                                   | application/json                      |
+| models.SDKError                       | 4XX, 5XX                              | \*/\*                                 |
 
 ## client_confirm
 
@@ -292,8 +294,9 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| models.AlreadyActiveSubscriptionError | 403                                   | application/json                      |
+| models.ResourceNotFound               | 404                                   | application/json                      |
+| models.HTTPValidationError            | 422                                   | application/json                      |
+| models.SDKError                       | 4XX, 5XX                              | \*/\*                                 |

@@ -17,6 +17,10 @@ from .advertisements_listop import (
     AdvertisementsListResponseTypedDict,
 )
 from .advertisementsortproperty import AdvertisementSortProperty
+from .alreadyactivesubscriptionerror import (
+    AlreadyActiveSubscriptionError,
+    AlreadyActiveSubscriptionErrorData,
+)
 from .alreadycanceledsubscription import (
     AlreadyCanceledSubscription,
     AlreadyCanceledSubscriptionData,
@@ -1245,6 +1249,10 @@ from .organizationsubscribepromotesettings import (
     OrganizationSubscribePromoteSettings,
     OrganizationSubscribePromoteSettingsTypedDict,
 )
+from .organizationsubscriptionsettings import (
+    OrganizationSubscriptionSettings,
+    OrganizationSubscriptionSettingsTypedDict,
+)
 from .organizationupdate import OrganizationUpdate, OrganizationUpdateTypedDict
 from .pagination import Pagination, PaginationTypedDict
 from .paymentprocessor import PaymentProcessor
@@ -1450,12 +1458,17 @@ from .subscriptioncustomer import (
     TaxID,
     TaxIDTypedDict,
 )
+from .subscriptionprorationbehavior import SubscriptionProrationBehavior
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptions_exportop import (
     OrganizationID,
     OrganizationIDTypedDict,
     SubscriptionsExportRequest,
     SubscriptionsExportRequestTypedDict,
+)
+from .subscriptions_getop import (
+    SubscriptionsGetRequest,
+    SubscriptionsGetRequestTypedDict,
 )
 from .subscriptions_listop import (
     CustomerIDFilter,
@@ -1604,6 +1617,8 @@ __all__ = [
     "AdvertisementsListRequestTypedDict",
     "AdvertisementsListResponse",
     "AdvertisementsListResponseTypedDict",
+    "AlreadyActiveSubscriptionError",
+    "AlreadyActiveSubscriptionErrorData",
     "AlreadyCanceledSubscription",
     "AlreadyCanceledSubscriptionData",
     "Assignee",
@@ -2493,6 +2508,8 @@ __all__ = [
     "OrganizationSortProperty",
     "OrganizationSubscribePromoteSettings",
     "OrganizationSubscribePromoteSettingsTypedDict",
+    "OrganizationSubscriptionSettings",
+    "OrganizationSubscriptionSettingsTypedDict",
     "OrganizationTypedDict",
     "OrganizationUpdate",
     "OrganizationUpdateTypedDict",
@@ -2698,6 +2715,7 @@ __all__ = [
     "SubscriptionDiscountTypedDict",
     "SubscriptionIDFilter",
     "SubscriptionIDFilterTypedDict",
+    "SubscriptionProrationBehavior",
     "SubscriptionRecurringInterval",
     "SubscriptionSortProperty",
     "SubscriptionStatus",
@@ -2710,6 +2728,8 @@ __all__ = [
     "SubscriptionUserTypedDict",
     "SubscriptionsExportRequest",
     "SubscriptionsExportRequestTypedDict",
+    "SubscriptionsGetRequest",
+    "SubscriptionsGetRequestTypedDict",
     "SubscriptionsListQueryParamOrganizationIDFilter",
     "SubscriptionsListQueryParamOrganizationIDFilterTypedDict",
     "SubscriptionsListRequest",
