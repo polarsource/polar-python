@@ -81,48 +81,48 @@ actions:
         - "lang": "python"
           "label": "Python (SDK)"
           "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkout_links.update(id=\"<value>\", checkout_link_update={})\n\n    # Handle response\n    print(res)"
-  - target: $["paths"]["/v1/checkouts/custom/"]["get"]
+  - target: $["paths"]["/v1/checkouts/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.custom.list()\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
-  - target: $["paths"]["/v1/checkouts/custom/"]["post"]
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.list()\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
+  - target: $["paths"]["/v1/checkouts/"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.custom.create(request={\n        \"allow_discount_codes\": True,\n        \"product_id\": \"<value>\",\n    })\n\n    # Handle response\n    print(res)"
-  - target: $["paths"]["/v1/checkouts/custom/client/{client_secret}"]["get"]
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.create(request={\n        \"allow_discount_codes\": True,\n        \"product_id\": \"<value>\",\n    })\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/checkouts/client/{client_secret}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.custom.client_get(client_secret=\"<value>\")\n\n    # Handle response\n    print(res)"
-  - target: $["paths"]["/v1/checkouts/custom/client/{client_secret}"]["patch"]
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.client_get(client_secret=\"<value>\")\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/checkouts/client/{client_secret}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.custom.client_update(client_secret=\"<value>\", checkout_update_public={})\n\n    # Handle response\n    print(res)"
-  - target: $["paths"]["/v1/checkouts/custom/client/{client_secret}/confirm"]["post"]
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.client_update(client_secret=\"<value>\", checkout_update_public={})\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/checkouts/client/{client_secret}/confirm"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.custom.client_confirm(client_secret=\"<value>\", checkout_confirm_stripe={})\n\n    # Handle response\n    print(res)"
-  - target: $["paths"]["/v1/checkouts/custom/{id}"]["get"]
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.client_confirm(client_secret=\"<value>\", checkout_confirm_stripe={})\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/checkouts/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.custom.get(id=\"<value>\")\n\n    # Handle response\n    print(res)"
-  - target: $["paths"]["/v1/checkouts/custom/{id}"]["patch"]
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.get(id=\"<value>\")\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/checkouts/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.custom.update(id=\"<value>\", checkout_update={})\n\n    # Handle response\n    print(res)"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.update(id=\"<value>\", checkout_update={})\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/custom-fields/"]["get"]
     update:
       "x-codeSamples":

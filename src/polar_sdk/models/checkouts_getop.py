@@ -8,9 +8,11 @@ from typing_extensions import Annotated, TypedDict
 
 class CheckoutsGetRequestTypedDict(TypedDict):
     id: str
+    r"""The checkout session ID."""
 
 
 class CheckoutsGetRequest(BaseModel):
     id: Annotated[
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
+    r"""The checkout session ID."""

@@ -10,38 +10,36 @@ from typing import Callable, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-CheckoutsCustomListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
-    "CheckoutsCustomListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
+CheckoutsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "CheckoutsListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by organization ID."""
 
 
-CheckoutsCustomListQueryParamOrganizationIDFilter = TypeAliasType(
-    "CheckoutsCustomListQueryParamOrganizationIDFilter", Union[str, List[str]]
+CheckoutsListQueryParamOrganizationIDFilter = TypeAliasType(
+    "CheckoutsListQueryParamOrganizationIDFilter", Union[str, List[str]]
 )
 r"""Filter by organization ID."""
 
 
-CheckoutsCustomListQueryParamProductIDFilterTypedDict = TypeAliasType(
-    "CheckoutsCustomListQueryParamProductIDFilterTypedDict", Union[str, List[str]]
+CheckoutsListQueryParamProductIDFilterTypedDict = TypeAliasType(
+    "CheckoutsListQueryParamProductIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by product ID."""
 
 
-CheckoutsCustomListQueryParamProductIDFilter = TypeAliasType(
-    "CheckoutsCustomListQueryParamProductIDFilter", Union[str, List[str]]
+CheckoutsListQueryParamProductIDFilter = TypeAliasType(
+    "CheckoutsListQueryParamProductIDFilter", Union[str, List[str]]
 )
 r"""Filter by product ID."""
 
 
-class CheckoutsCustomListRequestTypedDict(TypedDict):
+class CheckoutsListRequestTypedDict(TypedDict):
     organization_id: NotRequired[
-        Nullable[CheckoutsCustomListQueryParamOrganizationIDFilterTypedDict]
+        Nullable[CheckoutsListQueryParamOrganizationIDFilterTypedDict]
     ]
     r"""Filter by organization ID."""
-    product_id: NotRequired[
-        Nullable[CheckoutsCustomListQueryParamProductIDFilterTypedDict]
-    ]
+    product_id: NotRequired[Nullable[CheckoutsListQueryParamProductIDFilterTypedDict]]
     r"""Filter by product ID."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
@@ -51,15 +49,15 @@ class CheckoutsCustomListRequestTypedDict(TypedDict):
     r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
 
 
-class CheckoutsCustomListRequest(BaseModel):
+class CheckoutsListRequest(BaseModel):
     organization_id: Annotated[
-        OptionalNullable[CheckoutsCustomListQueryParamOrganizationIDFilter],
+        OptionalNullable[CheckoutsListQueryParamOrganizationIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by organization ID."""
 
     product_id: Annotated[
-        OptionalNullable[CheckoutsCustomListQueryParamProductIDFilter],
+        OptionalNullable[CheckoutsListQueryParamProductIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by product ID."""
@@ -113,11 +111,11 @@ class CheckoutsCustomListRequest(BaseModel):
         return m
 
 
-class CheckoutsCustomListResponseTypedDict(TypedDict):
+class CheckoutsListResponseTypedDict(TypedDict):
     result: ListResourceCheckoutTypedDict
 
 
-class CheckoutsCustomListResponse(BaseModel):
-    next: Callable[[], Optional[CheckoutsCustomListResponse]]
+class CheckoutsListResponse(BaseModel):
+    next: Callable[[], Optional[CheckoutsListResponse]]
 
     result: ListResourceCheckout

@@ -1,4 +1,4 @@
-# CheckoutsCustomListQueryParamProductIDFilter
+# CheckoutsListQueryParamProductIDFilter
 
 Filter by product ID.
 
