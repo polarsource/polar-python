@@ -550,18 +550,13 @@ def webhook():
 
 ### [checkouts](docs/sdks/checkouts/README.md)
 
-* [~~create~~](docs/sdks/checkouts/README.md#create) - Create Checkout :warning: **Deprecated** Use [create](docs/sdks/custom/README.md#create) instead.
-* [~~get~~](docs/sdks/checkouts/README.md#get) - Get Checkout :warning: **Deprecated**
-
-#### [checkouts.custom](docs/sdks/custom/README.md)
-
-* [list](docs/sdks/custom/README.md#list) - List Checkout Sessions
-* [create](docs/sdks/custom/README.md#create) - Create Checkout Session
-* [get](docs/sdks/custom/README.md#get) - Get Checkout Session
-* [update](docs/sdks/custom/README.md#update) - Update Checkout Session
-* [client_get](docs/sdks/custom/README.md#client_get) - Get Checkout Session from Client
-* [client_update](docs/sdks/custom/README.md#client_update) - Update Checkout Session from Client
-* [client_confirm](docs/sdks/custom/README.md#client_confirm) - Confirm Checkout Session from Client
+* [list](docs/sdks/checkouts/README.md#list) - List Checkout Sessions
+* [create](docs/sdks/checkouts/README.md#create) - Create Checkout Session
+* [get](docs/sdks/checkouts/README.md#get) - Get Checkout Session
+* [update](docs/sdks/checkouts/README.md#update) - Update Checkout Session
+* [client_get](docs/sdks/checkouts/README.md#client_get) - Get Checkout Session from Client
+* [client_update](docs/sdks/checkouts/README.md#client_update) - Update Checkout Session from Client
+* [client_confirm](docs/sdks/checkouts/README.md#client_confirm) - Confirm Checkout Session from Client
 
 ### [custom_fields](docs/sdks/customfields/README.md)
 

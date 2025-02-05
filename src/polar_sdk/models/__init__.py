@@ -297,8 +297,6 @@ from .checkoutdiscountpercentagerepeatduration import (
     CheckoutDiscountPercentageRepeatDuration,
     CheckoutDiscountPercentageRepeatDurationTypedDict,
 )
-from .checkoutlegacy import CheckoutLegacy, CheckoutLegacyTypedDict
-from .checkoutlegacycreate import CheckoutLegacyCreate, CheckoutLegacyCreateTypedDict
 from .checkoutlink import (
     CheckoutLink,
     CheckoutLinkDiscount,
@@ -365,37 +363,30 @@ from .checkoutpublicconfirmed import (
     CheckoutPublicConfirmedDiscountTypedDict,
     CheckoutPublicConfirmedTypedDict,
 )
-from .checkouts_custom_client_confirmop import (
-    CheckoutsCustomClientConfirmRequest,
-    CheckoutsCustomClientConfirmRequestTypedDict,
+from .checkouts_client_confirmop import (
+    CheckoutsClientConfirmRequest,
+    CheckoutsClientConfirmRequestTypedDict,
 )
-from .checkouts_custom_client_getop import (
-    CheckoutsCustomClientGetRequest,
-    CheckoutsCustomClientGetRequestTypedDict,
+from .checkouts_client_getop import (
+    CheckoutsClientGetRequest,
+    CheckoutsClientGetRequestTypedDict,
 )
-from .checkouts_custom_client_updateop import (
-    CheckoutsCustomClientUpdateRequest,
-    CheckoutsCustomClientUpdateRequestTypedDict,
-)
-from .checkouts_custom_getop import (
-    CheckoutsCustomGetRequest,
-    CheckoutsCustomGetRequestTypedDict,
-)
-from .checkouts_custom_listop import (
-    CheckoutsCustomListQueryParamOrganizationIDFilter,
-    CheckoutsCustomListQueryParamOrganizationIDFilterTypedDict,
-    CheckoutsCustomListQueryParamProductIDFilter,
-    CheckoutsCustomListQueryParamProductIDFilterTypedDict,
-    CheckoutsCustomListRequest,
-    CheckoutsCustomListRequestTypedDict,
-    CheckoutsCustomListResponse,
-    CheckoutsCustomListResponseTypedDict,
-)
-from .checkouts_custom_updateop import (
-    CheckoutsCustomUpdateRequest,
-    CheckoutsCustomUpdateRequestTypedDict,
+from .checkouts_client_updateop import (
+    CheckoutsClientUpdateRequest,
+    CheckoutsClientUpdateRequestTypedDict,
 )
 from .checkouts_getop import CheckoutsGetRequest, CheckoutsGetRequestTypedDict
+from .checkouts_listop import (
+    CheckoutsListQueryParamOrganizationIDFilter,
+    CheckoutsListQueryParamOrganizationIDFilterTypedDict,
+    CheckoutsListQueryParamProductIDFilter,
+    CheckoutsListQueryParamProductIDFilterTypedDict,
+    CheckoutsListRequest,
+    CheckoutsListRequestTypedDict,
+    CheckoutsListResponse,
+    CheckoutsListResponseTypedDict,
+)
+from .checkouts_updateop import CheckoutsUpdateRequest, CheckoutsUpdateRequestTypedDict
 from .checkoutsortproperty import CheckoutSortProperty
 from .checkoutstatus import CheckoutStatus
 from .checkoutupdate import (
@@ -1885,10 +1876,6 @@ __all__ = [
     "CheckoutDiscountTypedDict",
     "CheckoutIDFilter",
     "CheckoutIDFilterTypedDict",
-    "CheckoutLegacy",
-    "CheckoutLegacyCreate",
-    "CheckoutLegacyCreateTypedDict",
-    "CheckoutLegacyTypedDict",
     "CheckoutLink",
     "CheckoutLinkCreate",
     "CheckoutLinkCreateTypedDict",
@@ -1973,26 +1960,24 @@ __all__ = [
     "CheckoutUpdatePublicCustomFieldDataTypedDict",
     "CheckoutUpdatePublicTypedDict",
     "CheckoutUpdateTypedDict",
-    "CheckoutsCustomClientConfirmRequest",
-    "CheckoutsCustomClientConfirmRequestTypedDict",
-    "CheckoutsCustomClientGetRequest",
-    "CheckoutsCustomClientGetRequestTypedDict",
-    "CheckoutsCustomClientUpdateRequest",
-    "CheckoutsCustomClientUpdateRequestTypedDict",
-    "CheckoutsCustomGetRequest",
-    "CheckoutsCustomGetRequestTypedDict",
-    "CheckoutsCustomListQueryParamOrganizationIDFilter",
-    "CheckoutsCustomListQueryParamOrganizationIDFilterTypedDict",
-    "CheckoutsCustomListQueryParamProductIDFilter",
-    "CheckoutsCustomListQueryParamProductIDFilterTypedDict",
-    "CheckoutsCustomListRequest",
-    "CheckoutsCustomListRequestTypedDict",
-    "CheckoutsCustomListResponse",
-    "CheckoutsCustomListResponseTypedDict",
-    "CheckoutsCustomUpdateRequest",
-    "CheckoutsCustomUpdateRequestTypedDict",
+    "CheckoutsClientConfirmRequest",
+    "CheckoutsClientConfirmRequestTypedDict",
+    "CheckoutsClientGetRequest",
+    "CheckoutsClientGetRequestTypedDict",
+    "CheckoutsClientUpdateRequest",
+    "CheckoutsClientUpdateRequestTypedDict",
     "CheckoutsGetRequest",
     "CheckoutsGetRequestTypedDict",
+    "CheckoutsListQueryParamOrganizationIDFilter",
+    "CheckoutsListQueryParamOrganizationIDFilterTypedDict",
+    "CheckoutsListQueryParamProductIDFilter",
+    "CheckoutsListQueryParamProductIDFilterTypedDict",
+    "CheckoutsListRequest",
+    "CheckoutsListRequestTypedDict",
+    "CheckoutsListResponse",
+    "CheckoutsListResponseTypedDict",
+    "CheckoutsUpdateRequest",
+    "CheckoutsUpdateRequestTypedDict",
     "Clauses",
     "ClausesTypedDict",
     "Conditions",

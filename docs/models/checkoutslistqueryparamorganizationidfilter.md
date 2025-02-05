@@ -1,4 +1,4 @@
-# CheckoutsCustomListQueryParamOrganizationIDFilter
+# CheckoutsListQueryParamOrganizationIDFilter
 
 Filter by organization ID.
 

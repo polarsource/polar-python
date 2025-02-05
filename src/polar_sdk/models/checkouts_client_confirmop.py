@@ -7,13 +7,13 @@ from polar_sdk.utils import FieldMetadata, PathParamMetadata, RequestMetadata
 from typing_extensions import Annotated, TypedDict
 
 
-class CheckoutsCustomClientConfirmRequestTypedDict(TypedDict):
+class CheckoutsClientConfirmRequestTypedDict(TypedDict):
     client_secret: str
     r"""The checkout session client secret."""
     checkout_confirm_stripe: CheckoutConfirmStripeTypedDict
 
 
-class CheckoutsCustomClientConfirmRequest(BaseModel):
+class CheckoutsClientConfirmRequest(BaseModel):
     client_secret: Annotated[
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
