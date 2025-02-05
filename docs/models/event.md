@@ -1,0 +1,15 @@
+# Event
+
+
+## Fields
+
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `metadata`                                                               | Dict[str, [models.EventMetadata](../models/eventmetadata.md)]            | :heavy_check_mark:                                                       | N/A                                                                      |
+| `id`                                                                     | *str*                                                                    | :heavy_check_mark:                                                       | The ID of the object.                                                    |
+| `timestamp`                                                              | [date](https://docs.python.org/3/library/datetime.html#date-objects)     | :heavy_check_mark:                                                       | The timestamp of the event.                                              |
+| `name`                                                                   | *str*                                                                    | :heavy_check_mark:                                                       | The name of the event.                                                   |
+| `source`                                                                 | [models.EventSource](../models/eventsource.md)                           | :heavy_check_mark:                                                       | N/A                                                                      |
+| `organization_id`                                                        | *str*                                                                    | :heavy_check_mark:                                                       | The ID of the organization owning the event.                             |
+| `customer_id`                                                            | *Nullable[str]*                                                          | :heavy_check_mark:                                                       | ID of the customer in your Polar organization associated with the event. |
+| `external_customer_id`                                                   | *Nullable[str]*                                                          | :heavy_check_mark:                                                       | ID of the customer in your system associated with the event.             |

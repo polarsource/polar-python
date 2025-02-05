@@ -23,7 +23,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.license_keys.list(page=1, limit=10)
+    res = polar.license_keys.list()
 
     while res is not None:
         # Handle items
@@ -108,9 +108,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.license_keys.update(id="<value>", license_key_update={
-        "usage": 0,
-    })
+    res = polar.license_keys.update(id="<value>", license_key_update={})
 
     # Handle response
     print(res)

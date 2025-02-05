@@ -32,6 +32,37 @@ pip install polar-sdk
 ```bash
 poetry add polar-sdk
 ```
+
+### Shell and script usage with `uv`
+
+You can use this SDK in a Python shell with [uv](https://docs.astral.sh/uv/) and the `uvx` command that comes with it like so:
+
+```shell
+uvx --from polar-sdk python
+```
+
+It's also possible to write a standalone Python script without needing to set up a whole project like so:
+
+```python
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.9"
+# dependencies = [
+#     "polar-sdk",
+# ]
+# ///
+
+from polar_sdk import Polar
+
+sdk = Polar(
+  # SDK arguments
+)
+
+# Rest of script here...
+```
+
+Once that is saved to a file, you can run it with `uv run script.py` where
+`script.py` can be replaced with the actual file name.
 <!-- End SDK Installation [installation] -->
 
 <!-- Start IDE Support [idesupport] -->
@@ -603,6 +634,12 @@ def webhook():
 * [update](docs/sdks/discounts/README.md#update) - Update Discount
 * [delete](docs/sdks/discounts/README.md#delete) - Delete Discount
 
+### [events](docs/sdks/events/README.md)
+
+* [list](docs/sdks/events/README.md#list) - List Events
+* [get](docs/sdks/events/README.md#get) - Get Event
+* [ingest](docs/sdks/events/README.md#ingest) - Ingest Events
+
 ### [external_organizations](docs/sdks/externalorganizations/README.md)
 
 * [list](docs/sdks/externalorganizations/README.md#list) - List External Organizations
@@ -621,6 +658,15 @@ def webhook():
 * [get](docs/sdks/licensekeys/README.md#get) - Get License Key
 * [update](docs/sdks/licensekeys/README.md#update) - Update License Key
 * [get_activation](docs/sdks/licensekeys/README.md#get_activation) - Get Activation
+
+### [meters](docs/sdks/meters/README.md)
+
+* [list](docs/sdks/meters/README.md#list) - List Meters
+* [create](docs/sdks/meters/README.md#create) - Create Meter
+* [get](docs/sdks/meters/README.md#get) - Get Meter
+* [update](docs/sdks/meters/README.md#update) - Update Meter
+* [events](docs/sdks/meters/README.md#events) - Get Meter Events
+* [quantities](docs/sdks/meters/README.md#quantities) - Get Meter Quantities
 
 ### [metrics](docs/sdks/metricssdk/README.md)
 
@@ -701,7 +747,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(page=1, limit=10,
+    res = polar.external_organizations.list(,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     while res is not None:
@@ -721,7 +767,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(page=1, limit=10)
+    res = polar.external_organizations.list()
 
     while res is not None:
         # Handle items
@@ -763,7 +809,7 @@ with Polar(
     res = None
     try:
 
-        res = polar.external_organizations.list(page=1, limit=10)
+        res = polar.external_organizations.list()
 
         while res is not None:
             # Handle items
@@ -801,7 +847,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(page=1, limit=10)
+    res = polar.external_organizations.list()
 
     while res is not None:
         # Handle items
@@ -821,7 +867,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(page=1, limit=10)
+    res = polar.external_organizations.list()
 
     while res is not None:
         # Handle items
@@ -931,7 +977,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(page=1, limit=10)
+    res = polar.external_organizations.list()
 
     while res is not None:
         # Handle items
@@ -996,7 +1042,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(page=1, limit=10)
+    res = polar.external_organizations.list()
 
     while res is not None:
         # Handle items

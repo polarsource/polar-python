@@ -17,9 +17,11 @@ from polar_sdk.customer_portal import CustomerPortal
 from polar_sdk.customer_sessions import CustomerSessions
 from polar_sdk.customers import Customers
 from polar_sdk.discounts import Discounts
+from polar_sdk.events import Events
 from polar_sdk.external_organizations import ExternalOrganizations
 from polar_sdk.files import Files
 from polar_sdk.license_keys import LicenseKeys
+from polar_sdk.meters import Meters
 from polar_sdk.metrics_sdk import MetricsSDK
 from polar_sdk.oauth2 import Oauth2
 from polar_sdk.orders import Orders
@@ -59,6 +61,8 @@ class Polar(BaseSDK):
     customers: Customers
     customer_portal: CustomerPortal
     customer_sessions: CustomerSessions
+    events: Events
+    meters: Meters
 
     def __init__(
         self,
@@ -168,6 +172,8 @@ class Polar(BaseSDK):
         self.customers = Customers(self.sdk_configuration)
         self.customer_portal = CustomerPortal(self.sdk_configuration)
         self.customer_sessions = CustomerSessions(self.sdk_configuration)
+        self.events = Events(self.sdk_configuration)
+        self.meters = Meters(self.sdk_configuration)
 
     def __enter__(self):
         return self

@@ -24,7 +24,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.oauth2.clients.list(page=1, limit=10)
+    res = polar.oauth2.clients.list()
 
     while res is not None:
         # Handle items
@@ -59,7 +59,6 @@ Create an OAuth2 client.
 ### Example Usage
 
 ```python
-import polar_sdk
 from polar_sdk import Polar
 
 with Polar(
@@ -71,8 +70,6 @@ with Polar(
             "https://inferior-chainstay.com",
         ],
         "client_name": "<value>",
-        "token_endpoint_auth_method": polar_sdk.OAuth2ClientConfigurationTokenEndpointAuthMethod.CLIENT_SECRET_POST,
-        "scope": "openid profile email user:read organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write products:read products:write benefits:read benefits:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write customer_sessions:write orders:read refunds:read refunds:write metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write",
     })
 
     # Handle response
@@ -143,7 +140,6 @@ Update an OAuth2 client.
 ### Example Usage
 
 ```python
-import polar_sdk
 from polar_sdk import Polar
 
 with Polar(
@@ -158,8 +154,6 @@ with Polar(
         ],
         "client_name": "<value>",
         "client_id": "<id>",
-        "token_endpoint_auth_method": polar_sdk.OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod.CLIENT_SECRET_POST,
-        "scope": "openid profile email user:read organizations:read organizations:write custom_fields:read custom_fields:write discounts:read discounts:write checkout_links:read checkout_links:write checkouts:read checkouts:write products:read products:write benefits:read benefits:write files:read files:write subscriptions:read subscriptions:write customers:read customers:write customer_sessions:write orders:read refunds:read refunds:write metrics:read webhooks:read webhooks:write external_organizations:read license_keys:read license_keys:write repositories:read repositories:write issues:read issues:write customer_portal:read customer_portal:write",
     })
 
     # Handle response

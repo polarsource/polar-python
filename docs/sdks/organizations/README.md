@@ -23,7 +23,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.organizations.list(page=1, limit=10)
+    res = polar.organizations.list()
 
     while res is not None:
         # Handle items
@@ -146,10 +146,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.organizations.update(id="<value>", organization_update={
-        "pledge_badge_show_amount": False,
-        "pledge_minimum_amount": 2000,
-    })
+    res = polar.organizations.update(id="<value>", organization_update={})
 
     # Handle response
     print(res)

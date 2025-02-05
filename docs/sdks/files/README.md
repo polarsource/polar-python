@@ -24,7 +24,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.files.list(page=1, limit=10)
+    res = polar.files.list()
 
     while res is not None:
         # Handle items

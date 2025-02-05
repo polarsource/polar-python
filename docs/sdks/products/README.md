@@ -24,7 +24,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.products.list(page=1, limit=10)
+    res = polar.products.list()
 
     while res is not None:
         # Handle items

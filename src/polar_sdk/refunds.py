@@ -146,15 +146,17 @@ class Refunds(BaseSDK):
                 retries=retries,
             )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.RefundsListResponse(
                 result=utils.unmarshal_json(http_res.text, models.ListResourceRefund),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
-            raise models.HTTPValidationError(data=data)
+            response_data = utils.unmarshal_json(
+                http_res.text, models.HTTPValidationErrorData
+            )
+            raise models.HTTPValidationError(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.SDKError(
@@ -312,15 +314,17 @@ class Refunds(BaseSDK):
                 retries=retries,
             )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.RefundsListResponse(
                 result=utils.unmarshal_json(http_res.text, models.ListResourceRefund),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
-            raise models.HTTPValidationError(data=data)
+            response_data = utils.unmarshal_json(
+                http_res.text, models.HTTPValidationErrorData
+            )
+            raise models.HTTPValidationError(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.SDKError(
@@ -410,20 +414,26 @@ class Refunds(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.Refund)
         if utils.match_response(http_res, "201", "*"):
             return None
         if utils.match_response(http_res, "400", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.RefundAmountTooHighData)
-            raise models.RefundAmountTooHigh(data=data)
+            response_data = utils.unmarshal_json(
+                http_res.text, models.RefundAmountTooHighData
+            )
+            raise models.RefundAmountTooHigh(data=response_data)
         if utils.match_response(http_res, "403", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.RefundedAlreadyData)
-            raise models.RefundedAlready(data=data)
+            response_data = utils.unmarshal_json(
+                http_res.text, models.RefundedAlreadyData
+            )
+            raise models.RefundedAlready(data=response_data)
         if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
-            raise models.HTTPValidationError(data=data)
+            response_data = utils.unmarshal_json(
+                http_res.text, models.HTTPValidationErrorData
+            )
+            raise models.HTTPValidationError(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.SDKError(
@@ -513,20 +523,26 @@ class Refunds(BaseSDK):
             retry_config=retry_config,
         )
 
-        data: Any = None
+        response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.Refund)
         if utils.match_response(http_res, "201", "*"):
             return None
         if utils.match_response(http_res, "400", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.RefundAmountTooHighData)
-            raise models.RefundAmountTooHigh(data=data)
+            response_data = utils.unmarshal_json(
+                http_res.text, models.RefundAmountTooHighData
+            )
+            raise models.RefundAmountTooHigh(data=response_data)
         if utils.match_response(http_res, "403", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.RefundedAlreadyData)
-            raise models.RefundedAlready(data=data)
+            response_data = utils.unmarshal_json(
+                http_res.text, models.RefundedAlreadyData
+            )
+            raise models.RefundedAlready(data=response_data)
         if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.HTTPValidationErrorData)
-            raise models.HTTPValidationError(data=data)
+            response_data = utils.unmarshal_json(
+                http_res.text, models.HTTPValidationErrorData
+            )
+            raise models.HTTPValidationError(data=response_data)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.SDKError(
