@@ -4,9 +4,6 @@ from __future__ import annotations
 from enum import Enum
 
 
-class Interval(str, Enum):
-    YEAR = "year"
-    MONTH = "month"
-    WEEK = "week"
-    DAY = "day"
-    HOUR = "hour"
+class FilterConjunction(str, Enum):
+    AND = "and"
+    OR = "or"

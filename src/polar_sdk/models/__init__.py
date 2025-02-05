@@ -414,6 +414,7 @@ from .checkoutupdatepublic import (
     CheckoutUpdatePublicCustomFieldDataTypedDict,
     CheckoutUpdatePublicTypedDict,
 )
+from .countaggregation import CountAggregation, CountAggregationTypedDict
 from .currencyamount import CurrencyAmount, CurrencyAmountTypedDict
 from .custom_fields_deleteop import (
     CustomFieldsDeleteRequest,
@@ -644,8 +645,26 @@ from .customers_listop import (
     CustomersListRequestTypedDict,
     CustomersListResponse,
     CustomersListResponseTypedDict,
+    EventsListQueryParamCustomerIDFilter,
+    EventsListQueryParamCustomerIDFilterTypedDict,
+    EventsListQueryParamOrganizationIDFilter,
+    EventsListQueryParamOrganizationIDFilterTypedDict,
+    EventsListRequest,
+    EventsListRequestTypedDict,
+    EventsListResponse,
+    EventsListResponseTypedDict,
+    ExternalCustomerIDFilter,
+    ExternalCustomerIDFilterTypedDict,
     MetadataQuery,
     MetadataQueryTypedDict,
+    MetersListQueryParamOrganizationIDFilter,
+    MetersListQueryParamOrganizationIDFilterTypedDict,
+    MetersListRequest,
+    MetersListRequestTypedDict,
+    MetersListResponse,
+    MetersListResponseTypedDict,
+    SourceFilter,
+    SourceFilterTypedDict,
 )
 from .customers_updateop import CustomersUpdateRequest, CustomersUpdateRequestTypedDict
 from .customersession import CustomerSession, CustomerSessionTypedDict
@@ -897,6 +916,29 @@ from .downloadablefilecreate import (
 )
 from .downloadablefileread import DownloadableFileRead, DownloadableFileReadTypedDict
 from .downloadableread import DownloadableRead, DownloadableReadTypedDict
+from .event import Event, EventMetadata, EventMetadataTypedDict, EventTypedDict
+from .eventcreatecustomer import (
+    EventCreateCustomer,
+    EventCreateCustomerMetadata,
+    EventCreateCustomerMetadataTypedDict,
+    EventCreateCustomerTypedDict,
+)
+from .eventcreateexternalcustomer import (
+    EventCreateExternalCustomer,
+    EventCreateExternalCustomerMetadata,
+    EventCreateExternalCustomerMetadataTypedDict,
+    EventCreateExternalCustomerTypedDict,
+)
+from .events_getop import EventsGetRequest, EventsGetRequestTypedDict
+from .eventsingest import (
+    EventsIngest,
+    EventsIngestTypedDict,
+    EventsModel,
+    EventsModelTypedDict,
+)
+from .eventsingestresponse import EventsIngestResponse, EventsIngestResponseTypedDict
+from .eventsortproperty import EventSortProperty
+from .eventsource import EventSource
 from .existingproductprice import ExistingProductPrice, ExistingProductPriceTypedDict
 from .external_organizations_listop import (
     ExternalOrganizationsListRequest,
@@ -937,9 +979,12 @@ from .files_uploadedop import (
 from .fileservicetypes import FileServiceTypes
 from .fileupload import FileUpload, FileUploadTypedDict
 from .fileuploadcompleted import FileUploadCompleted, FileUploadCompletedTypedDict
+from .filter_ import Clauses, ClausesTypedDict, Filter, FilterTypedDict
+from .filterclause import FilterClause, FilterClauseTypedDict, Value, ValueTypedDict
+from .filterconjunction import FilterConjunction
+from .filteroperator import FilterOperator
 from .funding import Funding, FundingTypedDict
 from .httpvalidationerror import HTTPValidationError, HTTPValidationErrorData
-from .interval import Interval
 from .introspecttokenresponse import (
     IntrospectTokenResponse,
     IntrospectTokenResponseTypedDict,
@@ -1041,6 +1086,7 @@ from .listresource_downloadableread_ import (
     ListResourceDownloadableRead,
     ListResourceDownloadableReadTypedDict,
 )
+from .listresource_event_ import ListResourceEvent, ListResourceEventTypedDict
 from .listresource_externalorganization_ import (
     ListResourceExternalOrganization,
     ListResourceExternalOrganizationTypedDict,
@@ -1055,6 +1101,7 @@ from .listresource_licensekeyread_ import (
     ListResourceLicenseKeyRead,
     ListResourceLicenseKeyReadTypedDict,
 )
+from .listresource_meter_ import ListResourceMeter, ListResourceMeterTypedDict
 from .listresource_oauth2client_ import (
     ListResourceOAuth2Client,
     ListResourceOAuth2ClientTypedDict,
@@ -1073,6 +1120,49 @@ from .listresource_repository_ import (
 from .listresource_subscription_ import (
     ListResourceSubscription,
     ListResourceSubscriptionTypedDict,
+)
+from .meter import (
+    Meter,
+    MeterAggregation,
+    MeterAggregationTypedDict,
+    MeterMetadata,
+    MeterMetadataTypedDict,
+    MeterTypedDict,
+)
+from .metercreate import (
+    MeterCreate,
+    MeterCreateAggregation,
+    MeterCreateAggregationTypedDict,
+    MeterCreateMetadata,
+    MeterCreateMetadataTypedDict,
+    MeterCreateTypedDict,
+)
+from .meterquantities import MeterQuantities, MeterQuantitiesTypedDict
+from .meterquantity import MeterQuantity, MeterQuantityTypedDict
+from .meters_eventsop import (
+    MetersEventsRequest,
+    MetersEventsRequestTypedDict,
+    MetersEventsResponse,
+    MetersEventsResponseTypedDict,
+)
+from .meters_getop import MetersGetRequest, MetersGetRequestTypedDict
+from .meters_quantitiesop import (
+    MetersQuantitiesQueryParamCustomerIDFilter,
+    MetersQuantitiesQueryParamCustomerIDFilterTypedDict,
+    MetersQuantitiesRequest,
+    MetersQuantitiesRequestTypedDict,
+    QueryParamExternalCustomerIDFilter,
+    QueryParamExternalCustomerIDFilterTypedDict,
+)
+from .meters_updateop import MetersUpdateRequest, MetersUpdateRequestTypedDict
+from .metersortproperty import MeterSortProperty
+from .meterupdate import (
+    Aggregation,
+    AggregationTypedDict,
+    MeterUpdate,
+    MeterUpdateMetadata,
+    MeterUpdateMetadataTypedDict,
+    MeterUpdateTypedDict,
 )
 from .metric import Metric, MetricTypedDict
 from .metricperiod import MetricPeriod, MetricPeriodTypedDict
@@ -1365,6 +1455,7 @@ from .productupdate import (
     ProductUpdatePricesTypedDict,
     ProductUpdateTypedDict,
 )
+from .propertyaggregation import Func, PropertyAggregation, PropertyAggregationTypedDict
 from .reactions import Reactions, ReactionsTypedDict
 from .refund import Refund, RefundMetadata, RefundMetadataTypedDict, RefundTypedDict
 from .refundamounttoohigh import RefundAmountTooHigh, RefundAmountTooHighData
@@ -1502,6 +1593,7 @@ from .subscriptionupdateprice import (
 from .subscriptionuser import SubscriptionUser, SubscriptionUserTypedDict
 from .subtype import SubType
 from .taxidformat import TaxIDFormat
+from .timeinterval import TimeInterval
 from .tokenresponse import TokenResponse, TokenResponseTypedDict
 from .unauthorized import Unauthorized, UnauthorizedData
 from .userinfoorganization import UserInfoOrganization, UserInfoOrganizationTypedDict
@@ -1617,6 +1709,8 @@ __all__ = [
     "AdvertisementsListRequestTypedDict",
     "AdvertisementsListResponse",
     "AdvertisementsListResponseTypedDict",
+    "Aggregation",
+    "AggregationTypedDict",
     "AlreadyActiveSubscriptionError",
     "AlreadyActiveSubscriptionErrorData",
     "AlreadyCanceledSubscription",
@@ -1899,8 +1993,12 @@ __all__ = [
     "CheckoutsCustomUpdateRequestTypedDict",
     "CheckoutsGetRequest",
     "CheckoutsGetRequestTypedDict",
+    "Clauses",
+    "ClausesTypedDict",
     "Conditions",
     "ConditionsTypedDict",
+    "CountAggregation",
+    "CountAggregationTypedDict",
     "CurrencyAmount",
     "CurrencyAmountTypedDict",
     "CustomField",
@@ -2243,8 +2341,40 @@ __all__ = [
     "DownloadableFileReadTypedDict",
     "DownloadableRead",
     "DownloadableReadTypedDict",
+    "Event",
+    "EventCreateCustomer",
+    "EventCreateCustomerMetadata",
+    "EventCreateCustomerMetadataTypedDict",
+    "EventCreateCustomerTypedDict",
+    "EventCreateExternalCustomer",
+    "EventCreateExternalCustomerMetadata",
+    "EventCreateExternalCustomerMetadataTypedDict",
+    "EventCreateExternalCustomerTypedDict",
+    "EventMetadata",
+    "EventMetadataTypedDict",
+    "EventSortProperty",
+    "EventSource",
+    "EventTypedDict",
+    "EventsGetRequest",
+    "EventsGetRequestTypedDict",
+    "EventsIngest",
+    "EventsIngestResponse",
+    "EventsIngestResponseTypedDict",
+    "EventsIngestTypedDict",
+    "EventsListQueryParamCustomerIDFilter",
+    "EventsListQueryParamCustomerIDFilterTypedDict",
+    "EventsListQueryParamOrganizationIDFilter",
+    "EventsListQueryParamOrganizationIDFilterTypedDict",
+    "EventsListRequest",
+    "EventsListRequestTypedDict",
+    "EventsListResponse",
+    "EventsListResponseTypedDict",
+    "EventsModel",
+    "EventsModelTypedDict",
     "ExistingProductPrice",
     "ExistingProductPriceTypedDict",
+    "ExternalCustomerIDFilter",
+    "ExternalCustomerIDFilterTypedDict",
     "ExternalOrganization",
     "ExternalOrganizationNameFilter",
     "ExternalOrganizationNameFilterTypedDict",
@@ -2281,12 +2411,18 @@ __all__ = [
     "FilesUploadedRequestTypedDict",
     "FilesUploadedResponseFilesUploaded",
     "FilesUploadedResponseFilesUploadedTypedDict",
+    "Filter",
+    "FilterClause",
+    "FilterClauseTypedDict",
+    "FilterConjunction",
+    "FilterOperator",
+    "FilterTypedDict",
+    "Func",
     "Funding",
     "FundingTypedDict",
     "GrantTypes",
     "HTTPValidationError",
     "HTTPValidationErrorData",
-    "Interval",
     "IntrospectTokenResponse",
     "IntrospectTokenResponseTypedDict",
     "Issue",
@@ -2358,12 +2494,16 @@ __all__ = [
     "ListResourceDiscountTypedDict",
     "ListResourceDownloadableRead",
     "ListResourceDownloadableReadTypedDict",
+    "ListResourceEvent",
+    "ListResourceEventTypedDict",
     "ListResourceExternalOrganization",
     "ListResourceExternalOrganizationTypedDict",
     "ListResourceFileRead",
     "ListResourceFileReadTypedDict",
     "ListResourceLicenseKeyRead",
     "ListResourceLicenseKeyReadTypedDict",
+    "ListResourceMeter",
+    "ListResourceMeterTypedDict",
     "ListResourceOAuth2Client",
     "ListResourceOAuth2ClientTypedDict",
     "ListResourceOrder",
@@ -2386,6 +2526,45 @@ __all__ = [
     "MetadataQuery",
     "MetadataQueryTypedDict",
     "MetadataTypedDict",
+    "Meter",
+    "MeterAggregation",
+    "MeterAggregationTypedDict",
+    "MeterCreate",
+    "MeterCreateAggregation",
+    "MeterCreateAggregationTypedDict",
+    "MeterCreateMetadata",
+    "MeterCreateMetadataTypedDict",
+    "MeterCreateTypedDict",
+    "MeterMetadata",
+    "MeterMetadataTypedDict",
+    "MeterQuantities",
+    "MeterQuantitiesTypedDict",
+    "MeterQuantity",
+    "MeterQuantityTypedDict",
+    "MeterSortProperty",
+    "MeterTypedDict",
+    "MeterUpdate",
+    "MeterUpdateMetadata",
+    "MeterUpdateMetadataTypedDict",
+    "MeterUpdateTypedDict",
+    "MetersEventsRequest",
+    "MetersEventsRequestTypedDict",
+    "MetersEventsResponse",
+    "MetersEventsResponseTypedDict",
+    "MetersGetRequest",
+    "MetersGetRequestTypedDict",
+    "MetersListQueryParamOrganizationIDFilter",
+    "MetersListQueryParamOrganizationIDFilterTypedDict",
+    "MetersListRequest",
+    "MetersListRequestTypedDict",
+    "MetersListResponse",
+    "MetersListResponseTypedDict",
+    "MetersQuantitiesQueryParamCustomerIDFilter",
+    "MetersQuantitiesQueryParamCustomerIDFilterTypedDict",
+    "MetersQuantitiesRequest",
+    "MetersQuantitiesRequestTypedDict",
+    "MetersUpdateRequest",
+    "MetersUpdateRequestTypedDict",
     "Metric",
     "MetricPeriod",
     "MetricPeriodTypedDict",
@@ -2614,6 +2793,8 @@ __all__ = [
     "ProductsUpdateRequestTypedDict",
     "Properties",
     "PropertiesTypedDict",
+    "PropertyAggregation",
+    "PropertyAggregationTypedDict",
     "QueryParamBenefitIDFilter",
     "QueryParamBenefitIDFilterTypedDict",
     "QueryParamBenefitTypeFilter",
@@ -2622,6 +2803,8 @@ __all__ = [
     "QueryParamCustomerIDFilterTypedDict",
     "QueryParamDiscountIDFilter",
     "QueryParamDiscountIDFilterTypedDict",
+    "QueryParamExternalCustomerIDFilter",
+    "QueryParamExternalCustomerIDFilterTypedDict",
     "QueryParamOrderIDFilter",
     "QueryParamOrderIDFilterTypedDict",
     "QueryParamOrganizationIDFilter",
@@ -2702,6 +2885,8 @@ __all__ = [
     "Scope",
     "Security",
     "SecurityTypedDict",
+    "SourceFilter",
+    "SourceFilterTypedDict",
     "State",
     "SubType",
     "Subscription",
@@ -2743,6 +2928,7 @@ __all__ = [
     "TaxID",
     "TaxIDFormat",
     "TaxIDTypedDict",
+    "TimeInterval",
     "Timeframe",
     "TokenEndpointAuthMethod",
     "TokenResponse",
@@ -2759,6 +2945,8 @@ __all__ = [
     "ValidatedLicenseKeyTypedDict",
     "ValidationError",
     "ValidationErrorTypedDict",
+    "Value",
+    "ValueTypedDict",
     "WebhookBenefitCreatedPayload",
     "WebhookBenefitCreatedPayloadTypedDict",
     "WebhookBenefitGrantCreatedPayload",

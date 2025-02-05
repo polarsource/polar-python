@@ -24,7 +24,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.custom_fields.list(page=1, limit=10)
+    res = polar.custom_fields.list()
 
     while res is not None:
         # Handle items

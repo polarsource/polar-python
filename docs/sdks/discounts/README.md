@@ -24,7 +24,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.discounts.list(page=1, limit=10)
+    res = polar.discounts.list()
 
     while res is not None:
         # Handle items
@@ -153,9 +153,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.discounts.update(id="<value>", discount_update={
-        "currency": "usd",
-    })
+    res = polar.discounts.update(id="<value>", discount_update={})
 
     # Handle response
     print(res)

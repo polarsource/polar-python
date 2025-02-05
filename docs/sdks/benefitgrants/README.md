@@ -22,7 +22,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.customer_portal.benefit_grants.list(page=1, limit=10)
+    res = polar.customer_portal.benefit_grants.list()
 
     while res is not None:
         # Handle items

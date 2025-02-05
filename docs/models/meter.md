@@ -1,0 +1,15 @@
+# Meter
+
+
+## Fields
+
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `metadata`                                                              | Dict[str, [models.MeterMetadata](../models/metermetadata.md)]           | :heavy_check_mark:                                                      | N/A                                                                     |
+| `created_at`                                                            | [date](https://docs.python.org/3/library/datetime.html#date-objects)    | :heavy_check_mark:                                                      | Creation timestamp of the object.                                       |
+| `modified_at`                                                           | [date](https://docs.python.org/3/library/datetime.html#date-objects)    | :heavy_check_mark:                                                      | Last modification timestamp of the object.                              |
+| `id`                                                                    | *str*                                                                   | :heavy_check_mark:                                                      | The ID of the object.                                                   |
+| `name`                                                                  | *str*                                                                   | :heavy_check_mark:                                                      | The name of the meter. Will be shown on customer's invoices and usage.  |
+| `filter_`                                                               | [models.Filter](../models/filter_.md)                                   | :heavy_check_mark:                                                      | N/A                                                                     |
+| `aggregation`                                                           | [models.MeterAggregation](../models/meteraggregation.md)                | :heavy_check_mark:                                                      | The aggregation to apply on the filtered events to calculate the meter. |
+| `organization_id`                                                       | *str*                                                                   | :heavy_check_mark:                                                      | The ID of the organization owning the meter.                            |

@@ -27,6 +27,8 @@
 | `BENEFITS_WRITE`              | benefits:write                |
 | `EVENTS_READ`                 | events:read                   |
 | `EVENTS_WRITE`                | events:write                  |
+| `METERS_READ`                 | meters:read                   |
+| `METERS_WRITE`                | meters:write                  |
 | `FILES_READ`                  | files:read                    |
 | `FILES_WRITE`                 | files:write                   |
 | `SUBSCRIPTIONS_READ`          | subscriptions:read            |

@@ -21,7 +21,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.refunds.list(page=1, limit=10)
+    res = polar.refunds.list()
 
     while res is not None:
         # Handle items
@@ -74,7 +74,6 @@ with Polar(
         "order_id": "<value>",
         "reason": polar_sdk.RefundReason.CUSTOMER_REQUEST,
         "amount": 638424,
-        "revoke_benefits": False,
     })
 
     assert res is not None

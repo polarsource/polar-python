@@ -24,7 +24,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.checkout_links.list(page=1, limit=10)
+    res = polar.checkout_links.list()
 
     while res is not None:
         # Handle items
@@ -71,6 +71,7 @@ with Polar(
     res = polar.checkout_links.create(request={
         "product_id": "<value>",
         "payment_processor": "stripe",
+        "allow_discount_codes": True,
     })
 
     # Handle response
