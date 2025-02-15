@@ -5,7 +5,7 @@ from .address import Address, AddressTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict, Union
+from typing import Dict, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
@@ -23,7 +23,7 @@ class CheckoutConfirmStripeTypedDict(TypedDict):
     r"""Confirm a checkout session using a Stripe confirmation token."""
 
     custom_field_data: NotRequired[
-        Nullable[Dict[str, CheckoutConfirmStripeCustomFieldDataTypedDict]]
+        Dict[str, CheckoutConfirmStripeCustomFieldDataTypedDict]
     ]
     r"""Key-value object storing custom field values."""
     product_price_id: NotRequired[Nullable[str]]
@@ -42,9 +42,7 @@ class CheckoutConfirmStripeTypedDict(TypedDict):
 class CheckoutConfirmStripe(BaseModel):
     r"""Confirm a checkout session using a Stripe confirmation token."""
 
-    custom_field_data: OptionalNullable[
-        Dict[str, CheckoutConfirmStripeCustomFieldData]
-    ] = UNSET
+    custom_field_data: Optional[Dict[str, CheckoutConfirmStripeCustomFieldData]] = None
     r"""Key-value object storing custom field values."""
 
     product_price_id: OptionalNullable[str] = UNSET
@@ -80,7 +78,6 @@ class CheckoutConfirmStripe(BaseModel):
             "confirmation_token_id",
         ]
         nullable_fields = [
-            "custom_field_data",
             "product_price_id",
             "amount",
             "customer_name",

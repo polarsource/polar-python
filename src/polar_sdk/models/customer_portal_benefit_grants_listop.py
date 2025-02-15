@@ -54,13 +54,15 @@ CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilter = TypeAliasType(
 r"""Filter by organization ID."""
 
 
-CheckoutIDFilterTypedDict = TypeAliasType(
-    "CheckoutIDFilterTypedDict", Union[str, List[str]]
+QueryParamCheckoutIDFilterTypedDict = TypeAliasType(
+    "QueryParamCheckoutIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by checkout ID."""
 
 
-CheckoutIDFilter = TypeAliasType("CheckoutIDFilter", Union[str, List[str]])
+QueryParamCheckoutIDFilter = TypeAliasType(
+    "QueryParamCheckoutIDFilter", Union[str, List[str]]
+)
 r"""Filter by checkout ID."""
 
 
@@ -99,7 +101,7 @@ class CustomerPortalBenefitGrantsListRequestTypedDict(TypedDict):
         Nullable[CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilterTypedDict]
     ]
     r"""Filter by organization ID."""
-    checkout_id: NotRequired[Nullable[CheckoutIDFilterTypedDict]]
+    checkout_id: NotRequired[Nullable[QueryParamCheckoutIDFilterTypedDict]]
     r"""Filter by checkout ID."""
     order_id: NotRequired[Nullable[QueryParamOrderIDFilterTypedDict]]
     r"""Filter by order ID."""
@@ -134,7 +136,7 @@ class CustomerPortalBenefitGrantsListRequest(BaseModel):
     r"""Filter by organization ID."""
 
     checkout_id: Annotated[
-        OptionalNullable[CheckoutIDFilter],
+        OptionalNullable[QueryParamCheckoutIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by checkout ID."""

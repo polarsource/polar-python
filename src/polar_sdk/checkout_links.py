@@ -88,6 +88,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -236,6 +237,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -365,6 +367,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:create",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -462,6 +465,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:create",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -556,6 +560,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -655,6 +660,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -768,6 +774,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -881,6 +888,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -980,6 +988,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:delete",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1079,6 +1088,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:delete",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,

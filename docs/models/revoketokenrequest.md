@@ -1,4 +1,4 @@
-# Oauth2RevokeTokenRevokeTokenRequest
+# RevokeTokenRequest
 
 
 ## Fields

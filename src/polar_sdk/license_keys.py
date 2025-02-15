@@ -85,6 +85,7 @@ class LicenseKeys(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="license_keys:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -237,6 +238,7 @@ class LicenseKeys(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="license_keys:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -370,6 +372,7 @@ class LicenseKeys(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="license_keys:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -472,6 +475,7 @@ class LicenseKeys(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="license_keys:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -588,6 +592,7 @@ class LicenseKeys(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="license_keys:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -704,6 +709,7 @@ class LicenseKeys(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="license_keys:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -809,6 +815,7 @@ class LicenseKeys(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="license_keys:get_activation",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -914,6 +921,7 @@ class LicenseKeys(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="license_keys:get_activation",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,

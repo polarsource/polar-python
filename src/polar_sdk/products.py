@@ -102,6 +102,7 @@ class Products(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="products:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -266,6 +267,7 @@ class Products(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="products:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -397,6 +399,7 @@ class Products(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="products:create",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -494,6 +497,7 @@ class Products(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="products:create",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -588,6 +592,7 @@ class Products(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="products:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -687,6 +692,7 @@ class Products(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="products:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -794,6 +800,7 @@ class Products(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="products:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -904,6 +911,7 @@ class Products(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="products:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1020,6 +1028,7 @@ class Products(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="products:update_benefits",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1136,6 +1145,7 @@ class Products(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="products:update_benefits",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,

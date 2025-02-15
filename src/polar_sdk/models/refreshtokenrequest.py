@@ -9,30 +9,24 @@ from typing import Literal
 from typing_extensions import Annotated, TypedDict
 
 
-class Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequestTypedDict(
-    TypedDict
-):
+class RefreshTokenRequestTypedDict(TypedDict):
     client_id: str
     client_secret: str
-    code: str
-    redirect_uri: str
-    grant_type: Literal["authorization_code"]
+    refresh_token: str
+    grant_type: Literal["refresh_token"]
 
 
-class Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest(BaseModel):
+class RefreshTokenRequest(BaseModel):
     client_id: Annotated[str, FieldMetadata(form=True)]
 
     client_secret: Annotated[str, FieldMetadata(form=True)]
 
-    code: Annotated[str, FieldMetadata(form=True)]
-
-    redirect_uri: Annotated[str, FieldMetadata(form=True)]
+    refresh_token: Annotated[str, FieldMetadata(form=True)]
 
     GRANT_TYPE: Annotated[
         Annotated[
-            Literal["authorization_code"],
-            AfterValidator(validate_const("authorization_code")),
+            Literal["refresh_token"], AfterValidator(validate_const("refresh_token"))
         ],
         pydantic.Field(alias="grant_type"),
         FieldMetadata(form=True),
-    ] = "authorization_code"
+    ] = "refresh_token"

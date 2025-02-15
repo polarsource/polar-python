@@ -12,11 +12,12 @@ generation:
     nameResolutionDec2023: true
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
+    securityFeb2025: false
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
 python:
-  version: 0.14.0
+  version: 0.15.0
   additionalDependencies:
     dev:
       pytest: ^8.3.3
@@ -48,5 +49,6 @@ python:
   methodArguments: infer-optional-args
   outputModelSuffix: output
   packageName: polar-sdk
+  pytestTimeout: 0
   responseFormat: flat
   templateVersion: v2

@@ -71,6 +71,16 @@ OrdersListQueryParamCustomerIDFilter = TypeAliasType(
 r"""Filter by customer ID."""
 
 
+CheckoutIDFilterTypedDict = TypeAliasType(
+    "CheckoutIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by checkout ID."""
+
+
+CheckoutIDFilter = TypeAliasType("CheckoutIDFilter", Union[str, List[str]])
+r"""Filter by checkout ID."""
+
+
 class OrdersListRequestTypedDict(TypedDict):
     organization_id: NotRequired[
         Nullable[OrdersListQueryParamOrganizationIDFilterTypedDict]
@@ -84,6 +94,8 @@ class OrdersListRequestTypedDict(TypedDict):
     r"""Filter by discount ID."""
     customer_id: NotRequired[Nullable[OrdersListQueryParamCustomerIDFilterTypedDict]]
     r"""Filter by customer ID."""
+    checkout_id: NotRequired[Nullable[CheckoutIDFilterTypedDict]]
+    r"""Filter by checkout ID."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -123,6 +135,12 @@ class OrdersListRequest(BaseModel):
     ] = UNSET
     r"""Filter by customer ID."""
 
+    checkout_id: Annotated[
+        OptionalNullable[CheckoutIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by checkout ID."""
+
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -149,6 +167,7 @@ class OrdersListRequest(BaseModel):
             "product_price_type",
             "discount_id",
             "customer_id",
+            "checkout_id",
             "page",
             "limit",
             "sorting",
@@ -159,6 +178,7 @@ class OrdersListRequest(BaseModel):
             "product_price_type",
             "discount_id",
             "customer_id",
+            "checkout_id",
             "sorting",
         ]
         null_default_fields = []

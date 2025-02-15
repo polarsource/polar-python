@@ -1,4 +1,4 @@
-# Oauth2IntrospectTokenTokenTypeHint
+# IntrospectTokenRequestTokenTypeHint
 
 
 ## Values

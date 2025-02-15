@@ -8,19 +8,19 @@ from pydantic import model_serializer
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class TokenTypeHint(str, Enum):
+class IntrospectTokenRequestTokenTypeHint(str, Enum):
     ACCESS_TOKEN = "access_token"
     REFRESH_TOKEN = "refresh_token"
 
 
-class Oauth2RevokeTokenRevokeTokenRequestTypedDict(TypedDict):
+class IntrospectTokenRequestTypedDict(TypedDict):
     token: str
     client_id: str
     client_secret: str
-    token_type_hint: NotRequired[Nullable[TokenTypeHint]]
+    token_type_hint: NotRequired[Nullable[IntrospectTokenRequestTokenTypeHint]]
 
 
-class Oauth2RevokeTokenRevokeTokenRequest(BaseModel):
+class IntrospectTokenRequest(BaseModel):
     token: Annotated[str, FieldMetadata(form=True)]
 
     client_id: Annotated[str, FieldMetadata(form=True)]
@@ -28,7 +28,7 @@ class Oauth2RevokeTokenRevokeTokenRequest(BaseModel):
     client_secret: Annotated[str, FieldMetadata(form=True)]
 
     token_type_hint: Annotated[
-        OptionalNullable[TokenTypeHint], FieldMetadata(form=True)
+        OptionalNullable[IntrospectTokenRequestTokenTypeHint], FieldMetadata(form=True)
     ] = UNSET
 
     @model_serializer(mode="wrap")
