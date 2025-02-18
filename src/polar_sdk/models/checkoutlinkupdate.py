@@ -3,7 +3,7 @@
 from __future__ import annotations
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict, Union
+from typing import Dict, List, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
@@ -21,10 +21,11 @@ class CheckoutLinkUpdateTypedDict(TypedDict):
     r"""Schema to update an existing checkout link."""
 
     metadata: NotRequired[Nullable[Dict[str, CheckoutLinkUpdateMetadataTypedDict]]]
+    products: NotRequired[Nullable[List[str]]]
+    r"""List of products that will be available to select at checkout."""
     label: NotRequired[Nullable[str]]
     allow_discount_codes: NotRequired[Nullable[bool]]
     r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
-    product_price_id: NotRequired[Nullable[str]]
     discount_id: NotRequired[Nullable[str]]
     r"""ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored."""
     success_url: NotRequired[Nullable[str]]
@@ -36,12 +37,13 @@ class CheckoutLinkUpdate(BaseModel):
 
     metadata: OptionalNullable[Dict[str, CheckoutLinkUpdateMetadata]] = UNSET
 
+    products: OptionalNullable[List[str]] = UNSET
+    r"""List of products that will be available to select at checkout."""
+
     label: OptionalNullable[str] = UNSET
 
     allow_discount_codes: OptionalNullable[bool] = UNSET
     r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
-
-    product_price_id: OptionalNullable[str] = UNSET
 
     discount_id: OptionalNullable[str] = UNSET
     r"""ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored."""
@@ -53,17 +55,17 @@ class CheckoutLinkUpdate(BaseModel):
     def serialize_model(self, handler):
         optional_fields = [
             "metadata",
+            "products",
             "label",
             "allow_discount_codes",
-            "product_price_id",
             "discount_id",
             "success_url",
         ]
         nullable_fields = [
             "metadata",
+            "products",
             "label",
             "allow_discount_codes",
-            "product_price_id",
             "discount_id",
             "success_url",
         ]

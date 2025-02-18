@@ -6,12 +6,28 @@ from .customerordersubscription import (
     CustomerOrderSubscription,
     CustomerOrderSubscriptionTypedDict,
 )
+from .legacyrecurringproductprice import (
+    LegacyRecurringProductPrice,
+    LegacyRecurringProductPriceTypedDict,
+)
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
-from typing_extensions import Annotated, TypedDict
+from typing import Union
+from typing_extensions import Annotated, TypeAliasType, TypedDict
+
+
+CustomerOrderProductPriceTypedDict = TypeAliasType(
+    "CustomerOrderProductPriceTypedDict",
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+)
+
+
+CustomerOrderProductPrice = TypeAliasType(
+    "CustomerOrderProductPrice", Union[LegacyRecurringProductPrice, ProductPrice]
+)
 
 
 class CustomerOrderTypedDict(TypedDict):
@@ -29,7 +45,7 @@ class CustomerOrderTypedDict(TypedDict):
     subscription_id: Nullable[str]
     user_id: str
     product: CustomerOrderProductTypedDict
-    product_price: ProductPriceTypedDict
+    product_price: CustomerOrderProductPriceTypedDict
     subscription: Nullable[CustomerOrderSubscriptionTypedDict]
 
 
@@ -65,7 +81,7 @@ class CustomerOrder(BaseModel):
 
     product: CustomerOrderProduct
 
-    product_price: ProductPrice
+    product_price: CustomerOrderProductPrice
 
     subscription: Nullable[CustomerOrderSubscription]
 

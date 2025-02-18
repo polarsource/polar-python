@@ -75,11 +75,11 @@ with Polar(
 
     res = polar.products.create(request={
         "name": "<value>",
+        "recurring_interval": polar_sdk.SubscriptionRecurringInterval.MONTH,
         "prices": [
             {
-                "recurring_interval": polar_sdk.SubscriptionRecurringInterval.MONTH,
-                "type": "recurring",
-                "amount_type": "free",
+                "amount_type": "custom",
+                "price_currency": "usd",
             },
         ],
     })

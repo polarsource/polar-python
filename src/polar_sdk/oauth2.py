@@ -68,6 +68,7 @@ class Oauth2(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="oauth2:authorize",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -149,6 +150,7 @@ class Oauth2(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="oauth2:authorize",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -245,6 +247,7 @@ class Oauth2(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="oauth2:request_token",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -339,6 +342,7 @@ class Oauth2(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="oauth2:request_token",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -373,10 +377,7 @@ class Oauth2(BaseSDK):
     def revoke(
         self,
         *,
-        request: Union[
-            models.Oauth2RevokeTokenRevokeTokenRequest,
-            models.Oauth2RevokeTokenRevokeTokenRequestTypedDict,
-        ],
+        request: Union[models.RevokeTokenRequest, models.RevokeTokenRequestTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -401,10 +402,8 @@ class Oauth2(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(
-                request, models.Oauth2RevokeTokenRevokeTokenRequest
-            )
-        request = cast(models.Oauth2RevokeTokenRevokeTokenRequest, request)
+            request = utils.unmarshal(request, models.RevokeTokenRequest)
+        request = cast(models.RevokeTokenRequest, request)
 
         req = self._build_request(
             method="POST",
@@ -420,11 +419,7 @@ class Oauth2(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request,
-                False,
-                False,
-                "form",
-                models.Oauth2RevokeTokenRevokeTokenRequest,
+                request, False, False, "form", models.RevokeTokenRequest
             ),
             timeout_ms=timeout_ms,
         )
@@ -439,6 +434,7 @@ class Oauth2(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="oauth2:revoke_token",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -473,10 +469,7 @@ class Oauth2(BaseSDK):
     async def revoke_async(
         self,
         *,
-        request: Union[
-            models.Oauth2RevokeTokenRevokeTokenRequest,
-            models.Oauth2RevokeTokenRevokeTokenRequestTypedDict,
-        ],
+        request: Union[models.RevokeTokenRequest, models.RevokeTokenRequestTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -501,10 +494,8 @@ class Oauth2(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(
-                request, models.Oauth2RevokeTokenRevokeTokenRequest
-            )
-        request = cast(models.Oauth2RevokeTokenRevokeTokenRequest, request)
+            request = utils.unmarshal(request, models.RevokeTokenRequest)
+        request = cast(models.RevokeTokenRequest, request)
 
         req = self._build_request_async(
             method="POST",
@@ -520,11 +511,7 @@ class Oauth2(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request,
-                False,
-                False,
-                "form",
-                models.Oauth2RevokeTokenRevokeTokenRequest,
+                request, False, False, "form", models.RevokeTokenRequest
             ),
             timeout_ms=timeout_ms,
         )
@@ -539,6 +526,7 @@ class Oauth2(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="oauth2:revoke_token",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -574,8 +562,7 @@ class Oauth2(BaseSDK):
         self,
         *,
         request: Union[
-            models.Oauth2IntrospectTokenIntrospectTokenRequest,
-            models.Oauth2IntrospectTokenIntrospectTokenRequestTypedDict,
+            models.IntrospectTokenRequest, models.IntrospectTokenRequestTypedDict
         ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -601,10 +588,8 @@ class Oauth2(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(
-                request, models.Oauth2IntrospectTokenIntrospectTokenRequest
-            )
-        request = cast(models.Oauth2IntrospectTokenIntrospectTokenRequest, request)
+            request = utils.unmarshal(request, models.IntrospectTokenRequest)
+        request = cast(models.IntrospectTokenRequest, request)
 
         req = self._build_request(
             method="POST",
@@ -620,11 +605,7 @@ class Oauth2(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request,
-                False,
-                False,
-                "form",
-                models.Oauth2IntrospectTokenIntrospectTokenRequest,
+                request, False, False, "form", models.IntrospectTokenRequest
             ),
             timeout_ms=timeout_ms,
         )
@@ -639,6 +620,7 @@ class Oauth2(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="oauth2:introspect_token",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -674,8 +656,7 @@ class Oauth2(BaseSDK):
         self,
         *,
         request: Union[
-            models.Oauth2IntrospectTokenIntrospectTokenRequest,
-            models.Oauth2IntrospectTokenIntrospectTokenRequestTypedDict,
+            models.IntrospectTokenRequest, models.IntrospectTokenRequestTypedDict
         ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -701,10 +682,8 @@ class Oauth2(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(
-                request, models.Oauth2IntrospectTokenIntrospectTokenRequest
-            )
-        request = cast(models.Oauth2IntrospectTokenIntrospectTokenRequest, request)
+            request = utils.unmarshal(request, models.IntrospectTokenRequest)
+        request = cast(models.IntrospectTokenRequest, request)
 
         req = self._build_request_async(
             method="POST",
@@ -720,11 +699,7 @@ class Oauth2(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request,
-                False,
-                False,
-                "form",
-                models.Oauth2IntrospectTokenIntrospectTokenRequest,
+                request, False, False, "form", models.IntrospectTokenRequest
             ),
             timeout_ms=timeout_ms,
         )
@@ -739,6 +714,7 @@ class Oauth2(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="oauth2:introspect_token",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -820,6 +796,7 @@ class Oauth2(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="oauth2:userinfo",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -903,6 +880,7 @@ class Oauth2(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="oauth2:userinfo",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,

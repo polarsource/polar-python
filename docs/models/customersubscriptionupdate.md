@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### `models.CustomerSubscriptionUpdatePrice`
+### `models.CustomerSubscriptionUpdateProduct`
 
 ```python
-value: models.CustomerSubscriptionUpdatePrice = /* values here */
+value: models.CustomerSubscriptionUpdateProduct = /* values here */
 ```
 
 ### `models.CustomerSubscriptionCancel`

@@ -88,6 +88,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -236,6 +237,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -308,7 +310,10 @@ class CheckoutLinks(BaseSDK):
     def create(
         self,
         *,
-        request: Union[models.CheckoutLinkCreate, models.CheckoutLinkCreateTypedDict],
+        request: Union[
+            models.CheckoutLinksCreateCheckoutLinkCreate,
+            models.CheckoutLinksCreateCheckoutLinkCreateTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -333,8 +338,10 @@ class CheckoutLinks(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.CheckoutLinkCreate)
-        request = cast(models.CheckoutLinkCreate, request)
+            request = utils.unmarshal(
+                request, models.CheckoutLinksCreateCheckoutLinkCreate
+            )
+        request = cast(models.CheckoutLinksCreateCheckoutLinkCreate, request)
 
         req = self._build_request(
             method="POST",
@@ -350,7 +357,11 @@ class CheckoutLinks(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.CheckoutLinkCreate
+                request,
+                False,
+                False,
+                "json",
+                models.CheckoutLinksCreateCheckoutLinkCreate,
             ),
             timeout_ms=timeout_ms,
         )
@@ -365,6 +376,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:create",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -405,7 +417,10 @@ class CheckoutLinks(BaseSDK):
     async def create_async(
         self,
         *,
-        request: Union[models.CheckoutLinkCreate, models.CheckoutLinkCreateTypedDict],
+        request: Union[
+            models.CheckoutLinksCreateCheckoutLinkCreate,
+            models.CheckoutLinksCreateCheckoutLinkCreateTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -430,8 +445,10 @@ class CheckoutLinks(BaseSDK):
             base_url = server_url
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.CheckoutLinkCreate)
-        request = cast(models.CheckoutLinkCreate, request)
+            request = utils.unmarshal(
+                request, models.CheckoutLinksCreateCheckoutLinkCreate
+            )
+        request = cast(models.CheckoutLinksCreateCheckoutLinkCreate, request)
 
         req = self._build_request_async(
             method="POST",
@@ -447,7 +464,11 @@ class CheckoutLinks(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.CheckoutLinkCreate
+                request,
+                False,
+                False,
+                "json",
+                models.CheckoutLinksCreateCheckoutLinkCreate,
             ),
             timeout_ms=timeout_ms,
         )
@@ -462,6 +483,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:create",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -556,6 +578,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -655,6 +678,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -768,6 +792,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -881,6 +906,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -980,6 +1006,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:delete",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1079,6 +1106,7 @@ class CheckoutLinks(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkout-links:delete",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,

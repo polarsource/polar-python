@@ -4,9 +4,10 @@ from __future__ import annotations
 from .address import Address, AddressTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
 from typing import Dict, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 CheckoutUpdatePublicCustomFieldDataTypedDict = TypeAliasType(
@@ -26,8 +27,10 @@ class CheckoutUpdatePublicTypedDict(TypedDict):
         Nullable[Dict[str, CheckoutUpdatePublicCustomFieldDataTypedDict]]
     ]
     r"""Key-value object storing custom field values."""
+    product_id: NotRequired[Nullable[str]]
+    r"""ID of the product to checkout. Must be present in the checkout's product list."""
     product_price_id: NotRequired[Nullable[str]]
-    r"""ID of the product price to checkout. Must correspond to a price linked to the same product."""
+    r"""ID of the product price to checkout. Must correspond to a price present in the checkout's product list."""
     amount: NotRequired[Nullable[int]]
     customer_name: NotRequired[Nullable[str]]
     customer_email: NotRequired[Nullable[str]]
@@ -45,8 +48,16 @@ class CheckoutUpdatePublic(BaseModel):
     ] = UNSET
     r"""Key-value object storing custom field values."""
 
-    product_price_id: OptionalNullable[str] = UNSET
-    r"""ID of the product price to checkout. Must correspond to a price linked to the same product."""
+    product_id: OptionalNullable[str] = UNSET
+    r"""ID of the product to checkout. Must be present in the checkout's product list."""
+
+    product_price_id: Annotated[
+        OptionalNullable[str],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ] = UNSET
+    r"""ID of the product price to checkout. Must correspond to a price present in the checkout's product list."""
 
     amount: OptionalNullable[int] = UNSET
 
@@ -65,6 +76,7 @@ class CheckoutUpdatePublic(BaseModel):
     def serialize_model(self, handler):
         optional_fields = [
             "custom_field_data",
+            "product_id",
             "product_price_id",
             "amount",
             "customer_name",
@@ -75,6 +87,7 @@ class CheckoutUpdatePublic(BaseModel):
         ]
         nullable_fields = [
             "custom_field_data",
+            "product_id",
             "product_price_id",
             "amount",
             "customer_name",

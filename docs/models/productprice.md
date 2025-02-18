@@ -3,15 +3,21 @@
 
 ## Supported Types
 
-### `models.ProductPriceRecurring`
+### `models.ProductPriceFixed`
 
 ```python
-value: models.ProductPriceRecurring = /* values here */
+value: models.ProductPriceFixed = /* values here */
 ```
 
-### `models.ProductPriceOneTime`
+### `models.ProductPriceCustom`
 
 ```python
-value: models.ProductPriceOneTime = /* values here */
+value: models.ProductPriceCustom = /* values here */
+```
+
+### `models.ProductPriceFree`
+
+```python
+value: models.ProductPriceFree = /* values here */
 ```
 

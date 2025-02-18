@@ -39,6 +39,9 @@ class Orders(BaseSDK):
                 models.OrdersListQueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        checkout_id: OptionalNullable[
+            Union[models.CheckoutIDFilter, models.CheckoutIDFilterTypedDict]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.OrderSortProperty]] = UNSET,
@@ -56,6 +59,7 @@ class Orders(BaseSDK):
         :param product_price_type: Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
         :param discount_id: Filter by discount ID.
         :param customer_id: Filter by customer ID.
+        :param checkout_id: Filter by checkout ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -78,6 +82,7 @@ class Orders(BaseSDK):
             product_price_type=product_price_type,
             discount_id=discount_id,
             customer_id=customer_id,
+            checkout_id=checkout_id,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -109,6 +114,7 @@ class Orders(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="orders:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -142,6 +148,7 @@ class Orders(BaseSDK):
                 product_price_type=product_price_type,
                 discount_id=discount_id,
                 customer_id=customer_id,
+                checkout_id=checkout_id,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -209,6 +216,9 @@ class Orders(BaseSDK):
                 models.OrdersListQueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        checkout_id: OptionalNullable[
+            Union[models.CheckoutIDFilter, models.CheckoutIDFilterTypedDict]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.OrderSortProperty]] = UNSET,
@@ -226,6 +236,7 @@ class Orders(BaseSDK):
         :param product_price_type: Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
         :param discount_id: Filter by discount ID.
         :param customer_id: Filter by customer ID.
+        :param checkout_id: Filter by checkout ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -248,6 +259,7 @@ class Orders(BaseSDK):
             product_price_type=product_price_type,
             discount_id=discount_id,
             customer_id=customer_id,
+            checkout_id=checkout_id,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -279,6 +291,7 @@ class Orders(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="orders:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -312,6 +325,7 @@ class Orders(BaseSDK):
                 product_price_type=product_price_type,
                 discount_id=discount_id,
                 customer_id=customer_id,
+                checkout_id=checkout_id,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -406,6 +420,7 @@ class Orders(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="orders:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -505,6 +520,7 @@ class Orders(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="orders:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -604,6 +620,7 @@ class Orders(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="orders:invoice",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -703,6 +720,7 @@ class Orders(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="orders:invoice",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,

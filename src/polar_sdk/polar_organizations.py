@@ -16,7 +16,7 @@ class PolarOrganizations(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Organization:
+    ) -> models.CustomerOrganization:
         r"""Get Organization
 
         Get a customer portal's organization by slug.
@@ -65,6 +65,7 @@ class PolarOrganizations(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="customer_portal:organizations:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -76,7 +77,7 @@ class PolarOrganizations(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.Organization)
+            return utils.unmarshal_json(http_res.text, models.CustomerOrganization)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = utils.unmarshal_json(
                 http_res.text, models.ResourceNotFoundData
@@ -115,7 +116,7 @@ class PolarOrganizations(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Organization:
+    ) -> models.CustomerOrganization:
         r"""Get Organization
 
         Get a customer portal's organization by slug.
@@ -164,6 +165,7 @@ class PolarOrganizations(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="customer_portal:organizations:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -175,7 +177,7 @@ class PolarOrganizations(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.Organization)
+            return utils.unmarshal_json(http_res.text, models.CustomerOrganization)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = utils.unmarshal_json(
                 http_res.text, models.ResourceNotFoundData

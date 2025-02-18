@@ -75,6 +75,7 @@ class Files(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="files:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -207,6 +208,7 @@ class Files(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="files:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -333,6 +335,7 @@ class Files(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="files:create",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -430,6 +433,7 @@ class Files(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="files:create",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -538,6 +542,7 @@ class Files(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="files:uploaded",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -656,6 +661,7 @@ class Files(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="files:uploaded",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -766,6 +772,7 @@ class Files(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="files:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -876,6 +883,7 @@ class Files(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="files:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -980,6 +988,7 @@ class Files(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="files:delete",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1082,6 +1091,7 @@ class Files(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="files:delete",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,

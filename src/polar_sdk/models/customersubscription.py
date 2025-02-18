@@ -6,6 +6,10 @@ from .customersubscriptionproduct import (
     CustomerSubscriptionProduct,
     CustomerSubscriptionProductTypedDict,
 )
+from .legacyrecurringproductprice import (
+    LegacyRecurringProductPrice,
+    LegacyRecurringProductPriceTypedDict,
+)
 from .productprice import ProductPrice, ProductPriceTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptionstatus import SubscriptionStatus
@@ -13,7 +17,19 @@ from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
-from typing_extensions import Annotated, TypedDict
+from typing import Union
+from typing_extensions import Annotated, TypeAliasType, TypedDict
+
+
+CustomerSubscriptionPriceTypedDict = TypeAliasType(
+    "CustomerSubscriptionPriceTypedDict",
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+)
+
+
+CustomerSubscriptionPrice = TypeAliasType(
+    "CustomerSubscriptionPrice", Union[LegacyRecurringProductPrice, ProductPrice]
+)
 
 
 class CustomerSubscriptionTypedDict(TypedDict):
@@ -43,7 +59,7 @@ class CustomerSubscriptionTypedDict(TypedDict):
     customer_cancellation_comment: Nullable[str]
     user_id: str
     product: CustomerSubscriptionProductTypedDict
-    price: ProductPriceTypedDict
+    price: CustomerSubscriptionPriceTypedDict
 
 
 class CustomerSubscription(BaseModel):
@@ -101,7 +117,7 @@ class CustomerSubscription(BaseModel):
 
     product: CustomerSubscriptionProduct
 
-    price: ProductPrice
+    price: CustomerSubscriptionPrice
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

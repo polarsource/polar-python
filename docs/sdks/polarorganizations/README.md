@@ -36,7 +36,7 @@ with Polar(
 
 ### Response
 
-**[models.Organization](../../models/organization.md)**
+**[models.CustomerOrganization](../../models/customerorganization.md)**
 
 ### Errors
 

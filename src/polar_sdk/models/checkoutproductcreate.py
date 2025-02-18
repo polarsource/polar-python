@@ -42,6 +42,8 @@ CheckoutProductCreateCustomerMetadata = TypeAliasType(
 class CheckoutProductCreateTypedDict(TypedDict):
     r"""Create a new checkout session from a product.
 
+    **Deprecated**: Use `CheckoutProductsCreate` instead.
+
     Metadata set on the checkout will be copied
     to the resulting order and/or subscription.
     """
@@ -100,6 +102,8 @@ class CheckoutProductCreateTypedDict(TypedDict):
 
 class CheckoutProductCreate(BaseModel):
     r"""Create a new checkout session from a product.
+
+    **Deprecated**: Use `CheckoutProductsCreate` instead.
 
     Metadata set on the checkout will be copied
     to the resulting order and/or subscription.

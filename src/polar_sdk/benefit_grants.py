@@ -31,7 +31,10 @@ class BenefitGrants(BaseSDK):
             ]
         ] = UNSET,
         checkout_id: OptionalNullable[
-            Union[models.CheckoutIDFilter, models.CheckoutIDFilterTypedDict]
+            Union[
+                models.QueryParamCheckoutIDFilter,
+                models.QueryParamCheckoutIDFilterTypedDict,
+            ]
         ] = UNSET,
         order_id: OptionalNullable[
             Union[
@@ -118,6 +121,7 @@ class BenefitGrants(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -213,7 +217,10 @@ class BenefitGrants(BaseSDK):
             ]
         ] = UNSET,
         checkout_id: OptionalNullable[
-            Union[models.CheckoutIDFilter, models.CheckoutIDFilterTypedDict]
+            Union[
+                models.QueryParamCheckoutIDFilter,
+                models.QueryParamCheckoutIDFilterTypedDict,
+            ]
         ] = UNSET,
         order_id: OptionalNullable[
             Union[
@@ -300,6 +307,7 @@ class BenefitGrants(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -430,6 +438,7 @@ class BenefitGrants(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -529,6 +538,7 @@ class BenefitGrants(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -643,6 +653,7 @@ class BenefitGrants(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -760,6 +771,7 @@ class BenefitGrants(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
