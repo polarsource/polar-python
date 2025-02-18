@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### `models.Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest`
+### `models.AuthorizationCodeTokenRequest`
 
 ```python
-value: models.Onev11oauth21tokenPostXComponentsAuthorizationCodeTokenRequest = /* values here */
+value: models.AuthorizationCodeTokenRequest = /* values here */
 ```
 
-### `models.Onev11oauth21tokenPostXComponentsRefreshTokenRequest`
+### `models.RefreshTokenRequest`
 
 ```python
-value: models.Onev11oauth21tokenPostXComponentsRefreshTokenRequest = /* values here */
+value: models.RefreshTokenRequest = /* values here */
 ```
 

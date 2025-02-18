@@ -20,6 +20,10 @@ from .checkoutdiscountpercentagerepeatduration import (
     CheckoutDiscountPercentageRepeatDurationTypedDict,
 )
 from .checkoutproduct import CheckoutProduct, CheckoutProductTypedDict
+from .legacyrecurringproductprice import (
+    LegacyRecurringProductPrice,
+    LegacyRecurringProductPriceTypedDict,
+)
 from .organization import Organization, OrganizationTypedDict
 from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
@@ -41,6 +45,20 @@ CheckoutPublicConfirmedCustomFieldDataTypedDict = TypeAliasType(
 CheckoutPublicConfirmedCustomFieldData = TypeAliasType(
     "CheckoutPublicConfirmedCustomFieldData", Union[str, int, bool, datetime]
 )
+
+
+CheckoutPublicConfirmedProductPriceTypedDict = TypeAliasType(
+    "CheckoutPublicConfirmedProductPriceTypedDict",
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+)
+r"""Price of the selected product."""
+
+
+CheckoutPublicConfirmedProductPrice = TypeAliasType(
+    "CheckoutPublicConfirmedProductPrice",
+    Union[LegacyRecurringProductPrice, ProductPrice],
+)
+r"""Price of the selected product."""
 
 
 CheckoutPublicConfirmedDiscountTypedDict = TypeAliasType(
@@ -125,9 +143,12 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
     payment_processor_metadata: Dict[str, str]
+    products: List[CheckoutProductTypedDict]
+    r"""List of products available to select."""
     product: CheckoutProductTypedDict
     r"""Product data for a checkout session."""
-    product_price: ProductPriceTypedDict
+    product_price: CheckoutPublicConfirmedProductPriceTypedDict
+    r"""Price of the selected product."""
     discount: Nullable[CheckoutPublicConfirmedDiscountTypedDict]
     organization: OrganizationTypedDict
     attached_custom_fields: List[AttachedCustomFieldTypedDict]
@@ -229,10 +250,14 @@ class CheckoutPublicConfirmed(BaseModel):
 
     payment_processor_metadata: Dict[str, str]
 
+    products: List[CheckoutProduct]
+    r"""List of products available to select."""
+
     product: CheckoutProduct
     r"""Product data for a checkout session."""
 
-    product_price: ProductPrice
+    product_price: CheckoutPublicConfirmedProductPrice
+    r"""Price of the selected product."""
 
     discount: Nullable[CheckoutPublicConfirmedDiscount]
 

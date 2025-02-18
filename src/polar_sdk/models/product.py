@@ -3,8 +3,13 @@
 from __future__ import annotations
 from .attachedcustomfield import AttachedCustomField, AttachedCustomFieldTypedDict
 from .benefit import Benefit, BenefitTypedDict
+from .legacyrecurringproductprice import (
+    LegacyRecurringProductPrice,
+    LegacyRecurringProductPriceTypedDict,
+)
 from .productmediafileread import ProductMediaFileRead, ProductMediaFileReadTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
+from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -20,6 +25,15 @@ ProductMetadataTypedDict = TypeAliasType(
 ProductMetadata = TypeAliasType("ProductMetadata", Union[str, int, bool])
 
 
+PricesTypedDict = TypeAliasType(
+    "PricesTypedDict",
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+)
+
+
+Prices = TypeAliasType("Prices", Union[LegacyRecurringProductPrice, ProductPrice])
+
+
 class ProductTypedDict(TypedDict):
     r"""A product."""
 
@@ -33,14 +47,16 @@ class ProductTypedDict(TypedDict):
     r"""The name of the product."""
     description: Nullable[str]
     r"""The description of the product."""
+    recurring_interval: Nullable[SubscriptionRecurringInterval]
+    r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
     is_recurring: bool
-    r"""Whether the product is a subscription tier."""
+    r"""Whether the product is a subscription."""
     is_archived: bool
     r"""Whether the product is archived and no longer available."""
     organization_id: str
     r"""The ID of the organization owning the product."""
     metadata: Dict[str, ProductMetadataTypedDict]
-    prices: List[ProductPriceTypedDict]
+    prices: List[PricesTypedDict]
     r"""List of prices for this product."""
     benefits: List[BenefitTypedDict]
     r"""List of benefits granted by the product."""
@@ -68,8 +84,11 @@ class Product(BaseModel):
     description: Nullable[str]
     r"""The description of the product."""
 
+    recurring_interval: Nullable[SubscriptionRecurringInterval]
+    r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
+
     is_recurring: bool
-    r"""Whether the product is a subscription tier."""
+    r"""Whether the product is a subscription."""
 
     is_archived: bool
     r"""Whether the product is archived and no longer available."""
@@ -79,7 +98,7 @@ class Product(BaseModel):
 
     metadata: Dict[str, ProductMetadata]
 
-    prices: List[ProductPrice]
+    prices: List[Prices]
     r"""List of prices for this product."""
 
     benefits: List[Benefit]
@@ -94,7 +113,7 @@ class Product(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
-        nullable_fields = ["modified_at", "description"]
+        nullable_fields = ["modified_at", "description", "recurring_interval"]
         null_default_fields = []
 
         serialized = handler(self)

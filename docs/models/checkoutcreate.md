@@ -3,6 +3,12 @@
 
 ## Supported Types
 
+### `models.CheckoutProductsCreate`
+
+```python
+value: models.CheckoutProductsCreate = /* values here */
+```
+
 ### `models.CheckoutProductCreate`
 
 ```python

@@ -27,10 +27,10 @@ class MetricsSDK(BaseSDK):
                 models.MetricsGetQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
-        product_price_type: OptionalNullable[
+        billing_type: OptionalNullable[
             Union[
-                models.QueryParamProductPriceTypeFilter,
-                models.QueryParamProductPriceTypeFilterTypedDict,
+                models.ProductBillingTypeFilter,
+                models.ProductBillingTypeFilterTypedDict,
             ]
         ] = UNSET,
         customer_id: OptionalNullable[
@@ -53,7 +53,7 @@ class MetricsSDK(BaseSDK):
         :param interval: Interval between two timestamps.
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
-        :param product_price_type: Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
+        :param billing_type: Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
         :param customer_id: Filter by customer ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -74,7 +74,7 @@ class MetricsSDK(BaseSDK):
             interval=interval,
             organization_id=organization_id,
             product_id=product_id,
-            product_price_type=product_price_type,
+            billing_type=billing_type,
             customer_id=customer_id,
         )
 
@@ -104,6 +104,7 @@ class MetricsSDK(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="metrics:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -159,10 +160,10 @@ class MetricsSDK(BaseSDK):
                 models.MetricsGetQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
-        product_price_type: OptionalNullable[
+        billing_type: OptionalNullable[
             Union[
-                models.QueryParamProductPriceTypeFilter,
-                models.QueryParamProductPriceTypeFilterTypedDict,
+                models.ProductBillingTypeFilter,
+                models.ProductBillingTypeFilterTypedDict,
             ]
         ] = UNSET,
         customer_id: OptionalNullable[
@@ -185,7 +186,7 @@ class MetricsSDK(BaseSDK):
         :param interval: Interval between two timestamps.
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
-        :param product_price_type: Filter by product price type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
+        :param billing_type: Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
         :param customer_id: Filter by customer ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -206,7 +207,7 @@ class MetricsSDK(BaseSDK):
             interval=interval,
             organization_id=organization_id,
             product_id=product_id,
-            product_price_type=product_price_type,
+            billing_type=billing_type,
             customer_id=customer_id,
         )
 
@@ -236,6 +237,7 @@ class MetricsSDK(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="metrics:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -323,6 +325,7 @@ class MetricsSDK(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="metrics:limits",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -404,6 +407,7 @@ class MetricsSDK(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="metrics:limits",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,

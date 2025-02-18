@@ -26,8 +26,8 @@ class PolarOrders(BaseSDK):
         ] = UNSET,
         product_price_type: OptionalNullable[
             Union[
-                models.CustomerPortalOrdersListQueryParamProductPriceTypeFilter,
-                models.CustomerPortalOrdersListQueryParamProductPriceTypeFilterTypedDict,
+                models.QueryParamProductPriceTypeFilter,
+                models.QueryParamProductPriceTypeFilterTypedDict,
             ]
         ] = UNSET,
         subscription_id: OptionalNullable[
@@ -107,6 +107,7 @@ class PolarOrders(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="customer_portal:orders:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -196,8 +197,8 @@ class PolarOrders(BaseSDK):
         ] = UNSET,
         product_price_type: OptionalNullable[
             Union[
-                models.CustomerPortalOrdersListQueryParamProductPriceTypeFilter,
-                models.CustomerPortalOrdersListQueryParamProductPriceTypeFilterTypedDict,
+                models.QueryParamProductPriceTypeFilter,
+                models.QueryParamProductPriceTypeFilterTypedDict,
             ]
         ] = UNSET,
         subscription_id: OptionalNullable[
@@ -277,6 +278,7 @@ class PolarOrders(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="customer_portal:orders:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -406,6 +408,7 @@ class PolarOrders(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="customer_portal:orders:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -505,6 +508,7 @@ class PolarOrders(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="customer_portal:orders:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -604,6 +608,7 @@ class PolarOrders(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="customer_portal:orders:invoice",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -703,6 +708,7 @@ class PolarOrders(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="customer_portal:orders:invoice",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,

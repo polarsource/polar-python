@@ -6,26 +6,19 @@ from .attachedcustomfieldcreate import (
     AttachedCustomFieldCreateTypedDict,
 )
 from .existingproductprice import ExistingProductPrice, ExistingProductPriceTypedDict
-from .productpriceonetimecustomcreate import (
-    ProductPriceOneTimeCustomCreate,
-    ProductPriceOneTimeCustomCreateTypedDict,
+from .productpricecustomcreate import (
+    ProductPriceCustomCreate,
+    ProductPriceCustomCreateTypedDict,
 )
-from .productpriceonetimefixedcreate import (
-    ProductPriceOneTimeFixedCreate,
-    ProductPriceOneTimeFixedCreateTypedDict,
+from .productpricefixedcreate import (
+    ProductPriceFixedCreate,
+    ProductPriceFixedCreateTypedDict,
 )
-from .productpriceonetimefreecreate import (
-    ProductPriceOneTimeFreeCreate,
-    ProductPriceOneTimeFreeCreateTypedDict,
+from .productpricefreecreate import (
+    ProductPriceFreeCreate,
+    ProductPriceFreeCreateTypedDict,
 )
-from .productpricerecurringfixedcreate import (
-    ProductPriceRecurringFixedCreate,
-    ProductPriceRecurringFixedCreateTypedDict,
-)
-from .productpricerecurringfreecreate import (
-    ProductPriceRecurringFreeCreate,
-    ProductPriceRecurringFreeCreateTypedDict,
-)
+from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Union
@@ -44,11 +37,9 @@ ProductUpdatePricesTypedDict = TypeAliasType(
     "ProductUpdatePricesTypedDict",
     Union[
         ExistingProductPriceTypedDict,
-        ProductPriceOneTimeFreeCreateTypedDict,
-        ProductPriceRecurringFreeCreateTypedDict,
-        ProductPriceOneTimeFixedCreateTypedDict,
-        ProductPriceRecurringFixedCreateTypedDict,
-        ProductPriceOneTimeCustomCreateTypedDict,
+        ProductPriceFreeCreateTypedDict,
+        ProductPriceFixedCreateTypedDict,
+        ProductPriceCustomCreateTypedDict,
     ],
 )
 
@@ -57,11 +48,9 @@ ProductUpdatePrices = TypeAliasType(
     "ProductUpdatePrices",
     Union[
         ExistingProductPrice,
-        ProductPriceOneTimeFreeCreate,
-        ProductPriceRecurringFreeCreate,
-        ProductPriceOneTimeFixedCreate,
-        ProductPriceRecurringFixedCreate,
-        ProductPriceOneTimeCustomCreate,
+        ProductPriceFreeCreate,
+        ProductPriceFixedCreate,
+        ProductPriceCustomCreate,
     ],
 )
 
@@ -73,6 +62,8 @@ class ProductUpdateTypedDict(TypedDict):
     name: NotRequired[Nullable[str]]
     description: NotRequired[Nullable[str]]
     r"""The description of the product."""
+    recurring_interval: NotRequired[Nullable[SubscriptionRecurringInterval]]
+    r"""The recurring interval of the product. If `None`, the product is a one-time purchase. **Can only be set on legacy recurring products. Once set, it can't be changed.**"""
     is_archived: NotRequired[Nullable[bool]]
     r"""Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally."""
     prices: NotRequired[Nullable[List[ProductUpdatePricesTypedDict]]]
@@ -94,6 +85,9 @@ class ProductUpdate(BaseModel):
     description: OptionalNullable[str] = UNSET
     r"""The description of the product."""
 
+    recurring_interval: OptionalNullable[SubscriptionRecurringInterval] = UNSET
+    r"""The recurring interval of the product. If `None`, the product is a one-time purchase. **Can only be set on legacy recurring products. Once set, it can't be changed.**"""
+
     is_archived: OptionalNullable[bool] = UNSET
     r"""Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally."""
 
@@ -111,6 +105,7 @@ class ProductUpdate(BaseModel):
             "metadata",
             "name",
             "description",
+            "recurring_interval",
             "is_archived",
             "prices",
             "medias",
@@ -120,6 +115,7 @@ class ProductUpdate(BaseModel):
             "metadata",
             "name",
             "description",
+            "recurring_interval",
             "is_archived",
             "prices",
             "medias",

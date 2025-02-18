@@ -39,16 +39,15 @@ CustomerPortalOrdersListQueryParamProductIDFilter = TypeAliasType(
 r"""Filter by product ID."""
 
 
-CustomerPortalOrdersListQueryParamProductPriceTypeFilterTypedDict = TypeAliasType(
-    "CustomerPortalOrdersListQueryParamProductPriceTypeFilterTypedDict",
+QueryParamProductPriceTypeFilterTypedDict = TypeAliasType(
+    "QueryParamProductPriceTypeFilterTypedDict",
     Union[ProductPriceType, List[ProductPriceType]],
 )
 r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
 
 
-CustomerPortalOrdersListQueryParamProductPriceTypeFilter = TypeAliasType(
-    "CustomerPortalOrdersListQueryParamProductPriceTypeFilter",
-    Union[ProductPriceType, List[ProductPriceType]],
+QueryParamProductPriceTypeFilter = TypeAliasType(
+    "QueryParamProductPriceTypeFilter", Union[ProductPriceType, List[ProductPriceType]]
 )
 r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
 
@@ -75,9 +74,7 @@ class CustomerPortalOrdersListRequestTypedDict(TypedDict):
         Nullable[CustomerPortalOrdersListQueryParamProductIDFilterTypedDict]
     ]
     r"""Filter by product ID."""
-    product_price_type: NotRequired[
-        Nullable[CustomerPortalOrdersListQueryParamProductPriceTypeFilterTypedDict]
-    ]
+    product_price_type: NotRequired[Nullable[QueryParamProductPriceTypeFilterTypedDict]]
     r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
     subscription_id: NotRequired[
         Nullable[CustomerPortalOrdersListQueryParamSubscriptionIDFilterTypedDict]
@@ -107,7 +104,7 @@ class CustomerPortalOrdersListRequest(BaseModel):
     r"""Filter by product ID."""
 
     product_price_type: Annotated[
-        OptionalNullable[CustomerPortalOrdersListQueryParamProductPriceTypeFilter],
+        OptionalNullable[QueryParamProductPriceTypeFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""

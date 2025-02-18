@@ -18,6 +18,10 @@ from .discountpercentagerepeatdurationbase import (
     DiscountPercentageRepeatDurationBase,
     DiscountPercentageRepeatDurationBaseTypedDict,
 )
+from .legacyrecurringproductprice import (
+    LegacyRecurringProductPrice,
+    LegacyRecurringProductPriceTypedDict,
+)
 from .orderbillingreason import OrderBillingReason
 from .ordercustomer import OrderCustomer, OrderCustomerTypedDict
 from .orderproduct import OrderProduct, OrderProductTypedDict
@@ -45,6 +49,17 @@ OrderCustomFieldDataTypedDict = TypeAliasType(
 
 OrderCustomFieldData = TypeAliasType(
     "OrderCustomFieldData", Union[str, int, bool, datetime]
+)
+
+
+OrderProductPriceTypedDict = TypeAliasType(
+    "OrderProductPriceTypedDict",
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+)
+
+
+OrderProductPrice = TypeAliasType(
+    "OrderProductPrice", Union[LegacyRecurringProductPrice, ProductPrice]
 )
 
 
@@ -98,7 +113,7 @@ class OrderTypedDict(TypedDict):
     user_id: str
     user: OrderUserTypedDict
     product: OrderProductTypedDict
-    product_price: ProductPriceTypedDict
+    product_price: OrderProductPriceTypedDict
     discount: Nullable[OrderDiscountTypedDict]
     subscription: Nullable[OrderSubscriptionTypedDict]
     custom_field_data: NotRequired[Dict[str, OrderCustomFieldDataTypedDict]]
@@ -160,7 +175,7 @@ class Order(BaseModel):
 
     product: OrderProduct
 
-    product_price: ProductPrice
+    product_price: OrderProductPrice
 
     discount: Nullable[OrderDiscount]
 

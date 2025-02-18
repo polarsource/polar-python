@@ -21,6 +21,10 @@ from .checkoutdiscountpercentagerepeatduration import (
 )
 from .checkoutproduct import CheckoutProduct, CheckoutProductTypedDict
 from .checkoutstatus import CheckoutStatus
+from .legacyrecurringproductprice import (
+    LegacyRecurringProductPrice,
+    LegacyRecurringProductPriceTypedDict,
+)
 from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
@@ -46,6 +50,19 @@ CheckoutMetadataTypedDict = TypeAliasType(
 
 
 CheckoutMetadata = TypeAliasType("CheckoutMetadata", Union[str, int, bool])
+
+
+CheckoutProductPriceTypedDict = TypeAliasType(
+    "CheckoutProductPriceTypedDict",
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+)
+r"""Price of the selected product."""
+
+
+CheckoutProductPrice = TypeAliasType(
+    "CheckoutProductPrice", Union[LegacyRecurringProductPrice, ProductPrice]
+)
+r"""Price of the selected product."""
 
 
 CheckoutDiscountTypedDict = TypeAliasType(
@@ -136,9 +153,12 @@ class CheckoutTypedDict(TypedDict):
     customer_tax_id: Nullable[str]
     payment_processor_metadata: Dict[str, str]
     metadata: Dict[str, CheckoutMetadataTypedDict]
+    products: List[CheckoutProductTypedDict]
+    r"""List of products available to select."""
     product: CheckoutProductTypedDict
     r"""Product data for a checkout session."""
-    product_price: ProductPriceTypedDict
+    product_price: CheckoutProductPriceTypedDict
+    r"""Price of the selected product."""
     discount: Nullable[CheckoutDiscountTypedDict]
     subscription_id: Nullable[str]
     attached_custom_fields: List[AttachedCustomFieldTypedDict]
@@ -237,10 +257,14 @@ class Checkout(BaseModel):
 
     metadata: Dict[str, CheckoutMetadata]
 
+    products: List[CheckoutProduct]
+    r"""List of products available to select."""
+
     product: CheckoutProduct
     r"""Product data for a checkout session."""
 
-    product_price: ProductPrice
+    product_price: CheckoutProductPrice
+    r"""Price of the selected product."""
 
     discount: Nullable[CheckoutDiscount]
 

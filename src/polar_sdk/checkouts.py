@@ -88,6 +88,7 @@ class Checkouts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkouts:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -234,6 +235,7 @@ class Checkouts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkouts:list",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -361,6 +363,7 @@ class Checkouts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkouts:create",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -458,6 +461,7 @@ class Checkouts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkouts:create",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -552,6 +556,7 @@ class Checkouts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkouts:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -651,6 +656,7 @@ class Checkouts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkouts:get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -758,6 +764,7 @@ class Checkouts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkouts:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -772,9 +779,9 @@ class Checkouts(BaseSDK):
             return utils.unmarshal_json(http_res.text, models.Checkout)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = utils.unmarshal_json(
-                http_res.text, models.AlreadyActiveSubscriptionErrorData
+                http_res.text, models.CheckoutForbiddenErrorUnion
             )
-            raise models.AlreadyActiveSubscriptionError(data=response_data)
+            raise models.CheckoutForbiddenError(data=response_data)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = utils.unmarshal_json(
                 http_res.text, models.ResourceNotFoundData
@@ -870,6 +877,7 @@ class Checkouts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkouts:update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -884,9 +892,9 @@ class Checkouts(BaseSDK):
             return utils.unmarshal_json(http_res.text, models.Checkout)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = utils.unmarshal_json(
-                http_res.text, models.AlreadyActiveSubscriptionErrorData
+                http_res.text, models.CheckoutForbiddenErrorUnion
             )
-            raise models.AlreadyActiveSubscriptionError(data=response_data)
+            raise models.CheckoutForbiddenError(data=response_data)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = utils.unmarshal_json(
                 http_res.text, models.ResourceNotFoundData
@@ -974,6 +982,7 @@ class Checkouts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkouts:client_get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1073,6 +1082,7 @@ class Checkouts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkouts:client_get",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1186,6 +1196,7 @@ class Checkouts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkouts:client_update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1200,9 +1211,9 @@ class Checkouts(BaseSDK):
             return utils.unmarshal_json(http_res.text, models.CheckoutPublic)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = utils.unmarshal_json(
-                http_res.text, models.AlreadyActiveSubscriptionErrorData
+                http_res.text, models.CheckoutForbiddenErrorUnion
             )
-            raise models.AlreadyActiveSubscriptionError(data=response_data)
+            raise models.CheckoutForbiddenError(data=response_data)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = utils.unmarshal_json(
                 http_res.text, models.ResourceNotFoundData
@@ -1304,6 +1315,7 @@ class Checkouts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkouts:client_update",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
@@ -1318,9 +1330,9 @@ class Checkouts(BaseSDK):
             return utils.unmarshal_json(http_res.text, models.CheckoutPublic)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = utils.unmarshal_json(
-                http_res.text, models.AlreadyActiveSubscriptionErrorData
+                http_res.text, models.CheckoutForbiddenErrorUnion
             )
-            raise models.AlreadyActiveSubscriptionError(data=response_data)
+            raise models.CheckoutForbiddenError(data=response_data)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = utils.unmarshal_json(
                 http_res.text, models.ResourceNotFoundData
@@ -1424,23 +1436,27 @@ class Checkouts(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkouts:client_confirm",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["400", "403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.CheckoutPublicConfirmed)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = utils.unmarshal_json(http_res.text, models.PaymentErrorData)
+            raise models.PaymentError(data=response_data)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = utils.unmarshal_json(
-                http_res.text, models.AlreadyActiveSubscriptionErrorData
+                http_res.text, models.CheckoutForbiddenErrorUnion
             )
-            raise models.AlreadyActiveSubscriptionError(data=response_data)
+            raise models.CheckoutForbiddenError(data=response_data)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = utils.unmarshal_json(
                 http_res.text, models.ResourceNotFoundData
@@ -1544,23 +1560,27 @@ class Checkouts(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                base_url=base_url or "",
                 operation_id="checkouts:client_confirm",
                 oauth2_scopes=[],
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["400", "403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, models.CheckoutPublicConfirmed)
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = utils.unmarshal_json(http_res.text, models.PaymentErrorData)
+            raise models.PaymentError(data=response_data)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = utils.unmarshal_json(
-                http_res.text, models.AlreadyActiveSubscriptionErrorData
+                http_res.text, models.CheckoutForbiddenErrorUnion
             )
-            raise models.AlreadyActiveSubscriptionError(data=response_data)
+            raise models.CheckoutForbiddenError(data=response_data)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = utils.unmarshal_json(
                 http_res.text, models.ResourceNotFoundData

@@ -5,9 +5,9 @@ from .customersubscriptioncancel import (
     CustomerSubscriptionCancel,
     CustomerSubscriptionCancelTypedDict,
 )
-from .customersubscriptionupdateprice import (
-    CustomerSubscriptionUpdatePrice,
-    CustomerSubscriptionUpdatePriceTypedDict,
+from .customersubscriptionupdateproduct import (
+    CustomerSubscriptionUpdateProduct,
+    CustomerSubscriptionUpdateProductTypedDict,
 )
 from typing import Union
 from typing_extensions import TypeAliasType
@@ -16,12 +16,12 @@ from typing_extensions import TypeAliasType
 CustomerSubscriptionUpdateTypedDict = TypeAliasType(
     "CustomerSubscriptionUpdateTypedDict",
     Union[
-        CustomerSubscriptionUpdatePriceTypedDict, CustomerSubscriptionCancelTypedDict
+        CustomerSubscriptionUpdateProductTypedDict, CustomerSubscriptionCancelTypedDict
     ],
 )
 
 
 CustomerSubscriptionUpdate = TypeAliasType(
     "CustomerSubscriptionUpdate",
-    Union[CustomerSubscriptionUpdatePrice, CustomerSubscriptionCancel],
+    Union[CustomerSubscriptionUpdateProduct, CustomerSubscriptionCancel],
 )

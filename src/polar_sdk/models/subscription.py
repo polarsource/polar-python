@@ -18,8 +18,12 @@ from .discountpercentagerepeatdurationbase import (
     DiscountPercentageRepeatDurationBase,
     DiscountPercentageRepeatDurationBaseTypedDict,
 )
+from .legacyrecurringproductprice import (
+    LegacyRecurringProductPrice,
+    LegacyRecurringProductPriceTypedDict,
+)
 from .product import Product, ProductTypedDict
-from .productpricerecurring import ProductPriceRecurring, ProductPriceRecurringTypedDict
+from .productprice import ProductPrice, ProductPriceTypedDict
 from .subscriptioncustomer import SubscriptionCustomer, SubscriptionCustomerTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptionstatus import SubscriptionStatus
@@ -44,6 +48,14 @@ CustomFieldDataTypedDict = TypeAliasType(
 
 
 CustomFieldData = TypeAliasType("CustomFieldData", Union[str, int, bool, datetime])
+
+
+PriceTypedDict = TypeAliasType(
+    "PriceTypedDict", Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict]
+)
+
+
+Price = TypeAliasType("Price", Union[LegacyRecurringProductPrice, ProductPrice])
 
 
 SubscriptionDiscountTypedDict = TypeAliasType(
@@ -99,7 +111,7 @@ class SubscriptionTypedDict(TypedDict):
     user: SubscriptionUserTypedDict
     product: ProductTypedDict
     r"""A product."""
-    price: ProductPriceRecurringTypedDict
+    price: PriceTypedDict
     discount: Nullable[SubscriptionDiscountTypedDict]
     custom_field_data: NotRequired[Dict[str, CustomFieldDataTypedDict]]
     r"""Key-value object storing custom field values."""
@@ -167,7 +179,7 @@ class Subscription(BaseModel):
     product: Product
     r"""A product."""
 
-    price: ProductPriceRecurring
+    price: Price
 
     discount: Nullable[SubscriptionDiscount]
 

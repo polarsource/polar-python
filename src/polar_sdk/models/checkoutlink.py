@@ -18,13 +18,18 @@ from .discountpercentagerepeatdurationbase import (
     DiscountPercentageRepeatDurationBase,
     DiscountPercentageRepeatDurationBaseTypedDict,
 )
+from .legacyrecurringproductprice import (
+    LegacyRecurringProductPrice,
+    LegacyRecurringProductPriceTypedDict,
+)
 from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
-from typing import Dict, Union
-from typing_extensions import TypeAliasType, TypedDict
+from typing import Dict, List, Union
+from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
 CheckoutLinkMetadataTypedDict = TypeAliasType(
@@ -57,6 +62,17 @@ CheckoutLinkDiscount = TypeAliasType(
 )
 
 
+CheckoutLinkProductPriceTypedDict = TypeAliasType(
+    "CheckoutLinkProductPriceTypedDict",
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+)
+
+
+CheckoutLinkProductPrice = TypeAliasType(
+    "CheckoutLinkProductPrice", Union[LegacyRecurringProductPrice, ProductPrice]
+)
+
+
 class CheckoutLinkTypedDict(TypedDict):
     r"""Checkout link data."""
 
@@ -76,16 +92,17 @@ class CheckoutLinkTypedDict(TypedDict):
     r"""Optional label to distinguish links internally"""
     allow_discount_codes: bool
     r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
-    product_id: str
-    r"""ID of the product to checkout."""
-    product_price_id: Nullable[str]
-    r"""ID of the product price to checkout. First available price will be selected unless an explicit price ID is set."""
     discount_id: Nullable[str]
     r"""ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored."""
+    organization_id: str
+    r"""The organization ID."""
+    products: List[CheckoutLinkProductTypedDict]
+    discount: Nullable[CheckoutLinkDiscountTypedDict]
+    product_id: str
+    product_price_id: str
     product: CheckoutLinkProductTypedDict
     r"""Product data for a checkout link."""
-    product_price: Nullable[ProductPriceTypedDict]
-    discount: Nullable[CheckoutLinkDiscountTypedDict]
+    product_price: CheckoutLinkProductPriceTypedDict
     url: str
 
 
@@ -117,21 +134,39 @@ class CheckoutLink(BaseModel):
     allow_discount_codes: bool
     r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
 
-    product_id: str
-    r"""ID of the product to checkout."""
-
-    product_price_id: Nullable[str]
-    r"""ID of the product price to checkout. First available price will be selected unless an explicit price ID is set."""
-
     discount_id: Nullable[str]
     r"""ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored."""
+
+    organization_id: str
+    r"""The organization ID."""
+
+    products: List[CheckoutLinkProduct]
+
+    discount: Nullable[CheckoutLinkDiscount]
+
+    product_id: Annotated[
+        str,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    product_price_id: Annotated[
+        str,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
 
     product: CheckoutLinkProduct
     r"""Product data for a checkout link."""
 
-    product_price: Nullable[ProductPrice]
-
-    discount: Nullable[CheckoutLinkDiscount]
+    product_price: Annotated[
+        CheckoutLinkProductPrice,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
 
     url: str
 
@@ -142,9 +177,7 @@ class CheckoutLink(BaseModel):
             "modified_at",
             "success_url",
             "label",
-            "product_price_id",
             "discount_id",
-            "product_price",
             "discount",
         ]
         null_default_fields = []
