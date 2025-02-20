@@ -48,6 +48,8 @@ class Benefits(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.BenefitsListRequest(
             organization_id=organization_id,
@@ -188,6 +190,8 @@ class Benefits(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.BenefitsListRequest(
             organization_id=organization_id,
@@ -315,6 +319,8 @@ class Benefits(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.BenefitCreate)
@@ -413,6 +419,8 @@ class Benefits(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.BenefitCreate)
@@ -511,6 +519,8 @@ class Benefits(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.BenefitsGetRequest(
             id=id,
@@ -611,6 +621,8 @@ class Benefits(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.BenefitsGetRequest(
             id=id,
@@ -716,6 +728,8 @@ class Benefits(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.BenefitsUpdateRequest(
             id=id,
@@ -834,6 +848,8 @@ class Benefits(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.BenefitsUpdateRequest(
             id=id,
@@ -951,6 +967,8 @@ class Benefits(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.BenefitsDeleteRequest(
             id=id,
@@ -1058,6 +1076,8 @@ class Benefits(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.BenefitsDeleteRequest(
             id=id,
@@ -1176,6 +1196,8 @@ class Benefits(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.BenefitsGrantsRequest(
             id=id,
@@ -1327,6 +1349,8 @@ class Benefits(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.BenefitsGrantsRequest(
             id=id,

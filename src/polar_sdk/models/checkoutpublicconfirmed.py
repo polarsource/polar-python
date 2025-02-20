@@ -154,7 +154,7 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     attached_custom_fields: List[AttachedCustomFieldTypedDict]
     customer_session_token: str
     custom_field_data: NotRequired[
-        Dict[str, CheckoutPublicConfirmedCustomFieldDataTypedDict]
+        Dict[str, Nullable[CheckoutPublicConfirmedCustomFieldDataTypedDict]]
     ]
     r"""Key-value object storing custom field values."""
     status: Literal["confirmed"]
@@ -267,9 +267,9 @@ class CheckoutPublicConfirmed(BaseModel):
 
     customer_session_token: str
 
-    custom_field_data: Optional[Dict[str, CheckoutPublicConfirmedCustomFieldData]] = (
-        None
-    )
+    custom_field_data: Optional[
+        Dict[str, Nullable[CheckoutPublicConfirmedCustomFieldData]]
+    ] = None
     r"""Key-value object storing custom field values."""
 
     STATUS: Annotated[

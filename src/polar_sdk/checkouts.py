@@ -53,6 +53,8 @@ class Checkouts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CheckoutsListRequest(
             organization_id=organization_id,
@@ -200,6 +202,8 @@ class Checkouts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CheckoutsListRequest(
             organization_id=organization_id,
@@ -329,6 +333,8 @@ class Checkouts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.CheckoutCreate)
@@ -427,6 +433,8 @@ class Checkouts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.CheckoutCreate)
@@ -525,6 +533,8 @@ class Checkouts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CheckoutsGetRequest(
             id=id,
@@ -625,6 +635,8 @@ class Checkouts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CheckoutsGetRequest(
             id=id,
@@ -727,6 +739,8 @@ class Checkouts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CheckoutsUpdateRequest(
             id=id,
@@ -840,6 +854,8 @@ class Checkouts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CheckoutsUpdateRequest(
             id=id,
@@ -951,6 +967,8 @@ class Checkouts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CheckoutsClientGetRequest(
             client_secret=client_secret,
@@ -1051,6 +1069,8 @@ class Checkouts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CheckoutsClientGetRequest(
             client_secret=client_secret,
@@ -1155,6 +1175,8 @@ class Checkouts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CheckoutsClientUpdateRequest(
             client_secret=client_secret,
@@ -1274,6 +1296,8 @@ class Checkouts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CheckoutsClientUpdateRequest(
             client_secret=client_secret,
@@ -1395,6 +1419,8 @@ class Checkouts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CheckoutsClientConfirmRequest(
             client_secret=client_secret,
@@ -1519,6 +1545,8 @@ class Checkouts(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CheckoutsClientConfirmRequest(
             client_secret=client_secret,

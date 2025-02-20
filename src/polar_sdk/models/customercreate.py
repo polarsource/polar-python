@@ -41,7 +41,7 @@ class CustomerCreateTypedDict(TypedDict):
     """
     name: NotRequired[Nullable[str]]
     billing_address: NotRequired[Nullable[AddressTypedDict]]
-    tax_id: NotRequired[Nullable[List[CustomerCreateTaxIDTypedDict]]]
+    tax_id: NotRequired[Nullable[List[Nullable[CustomerCreateTaxIDTypedDict]]]]
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the customer. **Required unless you use an organization token.**"""
 
@@ -66,7 +66,7 @@ class CustomerCreate(BaseModel):
 
     billing_address: OptionalNullable[Address] = UNSET
 
-    tax_id: OptionalNullable[List[CustomerCreateTaxID]] = UNSET
+    tax_id: OptionalNullable[List[Nullable[CustomerCreateTaxID]]] = UNSET
 
     organization_id: OptionalNullable[str] = UNSET
     r"""The ID of the organization owning the customer. **Required unless you use an organization token.**"""

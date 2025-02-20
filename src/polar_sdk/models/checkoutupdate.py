@@ -42,7 +42,7 @@ class CheckoutUpdateTypedDict(TypedDict):
     r"""Update an existing checkout session using an access token."""
 
     custom_field_data: NotRequired[
-        Nullable[Dict[str, CheckoutUpdateCustomFieldDataTypedDict]]
+        Nullable[Dict[str, Nullable[CheckoutUpdateCustomFieldDataTypedDict]]]
     ]
     r"""Key-value object storing custom field values."""
     product_id: NotRequired[Nullable[str]]
@@ -83,9 +83,9 @@ class CheckoutUpdateTypedDict(TypedDict):
 class CheckoutUpdate(BaseModel):
     r"""Update an existing checkout session using an access token."""
 
-    custom_field_data: OptionalNullable[Dict[str, CheckoutUpdateCustomFieldData]] = (
-        UNSET
-    )
+    custom_field_data: OptionalNullable[
+        Dict[str, Nullable[CheckoutUpdateCustomFieldData]]
+    ] = UNSET
     r"""Key-value object storing custom field values."""
 
     product_id: OptionalNullable[str] = UNSET

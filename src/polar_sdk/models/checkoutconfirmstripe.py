@@ -24,7 +24,7 @@ class CheckoutConfirmStripeTypedDict(TypedDict):
     r"""Confirm a checkout session using a Stripe confirmation token."""
 
     custom_field_data: NotRequired[
-        Dict[str, CheckoutConfirmStripeCustomFieldDataTypedDict]
+        Dict[str, Nullable[CheckoutConfirmStripeCustomFieldDataTypedDict]]
     ]
     r"""Key-value object storing custom field values."""
     product_id: NotRequired[Nullable[str]]
@@ -45,7 +45,9 @@ class CheckoutConfirmStripeTypedDict(TypedDict):
 class CheckoutConfirmStripe(BaseModel):
     r"""Confirm a checkout session using a Stripe confirmation token."""
 
-    custom_field_data: Optional[Dict[str, CheckoutConfirmStripeCustomFieldData]] = None
+    custom_field_data: Optional[
+        Dict[str, Nullable[CheckoutConfirmStripeCustomFieldData]]
+    ] = None
     r"""Key-value object storing custom field values."""
 
     product_id: OptionalNullable[str] = UNSET

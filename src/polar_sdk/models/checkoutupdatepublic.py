@@ -24,7 +24,7 @@ class CheckoutUpdatePublicTypedDict(TypedDict):
     r"""Update an existing checkout session using the client secret."""
 
     custom_field_data: NotRequired[
-        Nullable[Dict[str, CheckoutUpdatePublicCustomFieldDataTypedDict]]
+        Nullable[Dict[str, Nullable[CheckoutUpdatePublicCustomFieldDataTypedDict]]]
     ]
     r"""Key-value object storing custom field values."""
     product_id: NotRequired[Nullable[str]]
@@ -44,7 +44,7 @@ class CheckoutUpdatePublic(BaseModel):
     r"""Update an existing checkout session using the client secret."""
 
     custom_field_data: OptionalNullable[
-        Dict[str, CheckoutUpdatePublicCustomFieldData]
+        Dict[str, Nullable[CheckoutUpdatePublicCustomFieldData]]
     ] = UNSET
     r"""Key-value object storing custom field values."""
 

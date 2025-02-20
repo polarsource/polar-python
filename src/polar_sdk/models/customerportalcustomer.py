@@ -35,7 +35,7 @@ class CustomerPortalCustomerTypedDict(TypedDict):
     email_verified: bool
     name: Nullable[str]
     billing_address: Nullable[AddressTypedDict]
-    tax_id: Nullable[List[CustomerPortalCustomerTaxIDTypedDict]]
+    tax_id: Nullable[List[Nullable[CustomerPortalCustomerTaxIDTypedDict]]]
     oauth_accounts: Dict[str, CustomerPortalOAuthAccountTypedDict]
 
 
@@ -57,7 +57,7 @@ class CustomerPortalCustomer(BaseModel):
 
     billing_address: Nullable[Address]
 
-    tax_id: Nullable[List[CustomerPortalCustomerTaxID]]
+    tax_id: Nullable[List[Nullable[CustomerPortalCustomerTaxID]]]
 
     oauth_accounts: Dict[str, CustomerPortalOAuthAccount]
 
