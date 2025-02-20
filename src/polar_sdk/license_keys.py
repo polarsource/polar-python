@@ -51,6 +51,8 @@ class LicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.LicenseKeysListRequest(
             organization_id=organization_id,
@@ -204,6 +206,8 @@ class LicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.LicenseKeysListRequest(
             organization_id=organization_id,
@@ -341,6 +345,8 @@ class LicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.LicenseKeysGetRequest(
             id=id,
@@ -444,6 +450,8 @@ class LicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.LicenseKeysGetRequest(
             id=id,
@@ -551,6 +559,8 @@ class LicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.LicenseKeysUpdateRequest(
             id=id,
@@ -668,6 +678,8 @@ class LicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.LicenseKeysUpdateRequest(
             id=id,
@@ -783,6 +795,8 @@ class LicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.LicenseKeysGetActivationRequest(
             id=id,
@@ -889,6 +903,8 @@ class LicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.LicenseKeysGetActivationRequest(
             id=id,

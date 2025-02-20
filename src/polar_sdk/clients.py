@@ -37,6 +37,8 @@ class Clients(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.Oauth2ClientsListRequest(
             page=page,
@@ -164,6 +166,8 @@ class Clients(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.Oauth2ClientsListRequest(
             page=page,
@@ -291,6 +295,8 @@ class Clients(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.OAuth2ClientConfiguration)
@@ -391,6 +397,8 @@ class Clients(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.OAuth2ClientConfiguration)
@@ -489,6 +497,8 @@ class Clients(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.Oauth2ClientsOauth2GetClientRequest(
             client_id=client_id,
@@ -584,6 +594,8 @@ class Clients(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.Oauth2ClientsOauth2GetClientRequest(
             client_id=client_id,
@@ -684,6 +696,8 @@ class Clients(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.Oauth2ClientsOauth2UpdateClientRequest(
             client_id=client_id,
@@ -795,6 +809,8 @@ class Clients(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.Oauth2ClientsOauth2UpdateClientRequest(
             client_id=client_id,
@@ -901,6 +917,8 @@ class Clients(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.Oauth2ClientsOauth2DeleteClientRequest(
             client_id=client_id,
@@ -996,6 +1014,8 @@ class Clients(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.Oauth2ClientsOauth2DeleteClientRequest(
             client_id=client_id,

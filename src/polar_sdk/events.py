@@ -76,6 +76,8 @@ class Events(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.EventsListRequest(
             start_timestamp=start_timestamp,
@@ -255,6 +257,8 @@ class Events(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.EventsListRequest(
             start_timestamp=start_timestamp,
@@ -394,6 +398,8 @@ class Events(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.EventsGetRequest(
             id=id,
@@ -494,6 +500,8 @@ class Events(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.EventsGetRequest(
             id=id,
@@ -594,6 +602,8 @@ class Events(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.EventsIngest)
@@ -692,6 +702,8 @@ class Events(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.EventsIngest)

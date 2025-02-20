@@ -30,7 +30,7 @@ class CustomerUpdateTypedDict(TypedDict):
     email: NotRequired[Nullable[str]]
     name: NotRequired[Nullable[str]]
     billing_address: NotRequired[Nullable[AddressTypedDict]]
-    tax_id: NotRequired[Nullable[List[CustomerUpdateTaxIDTypedDict]]]
+    tax_id: NotRequired[Nullable[List[Nullable[CustomerUpdateTaxIDTypedDict]]]]
 
 
 class CustomerUpdate(BaseModel):
@@ -42,7 +42,7 @@ class CustomerUpdate(BaseModel):
 
     billing_address: OptionalNullable[Address] = UNSET
 
-    tax_id: OptionalNullable[List[CustomerUpdateTaxID]] = UNSET
+    tax_id: OptionalNullable[List[Nullable[CustomerUpdateTaxID]]] = UNSET
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

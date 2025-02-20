@@ -52,6 +52,8 @@ class CustomFields(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomFieldsListRequest(
             organization_id=organization_id,
@@ -202,6 +204,8 @@ class CustomFields(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomFieldsListRequest(
             organization_id=organization_id,
@@ -335,6 +339,8 @@ class CustomFields(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.CustomFieldCreate)
@@ -433,6 +439,8 @@ class CustomFields(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.CustomFieldCreate)
@@ -531,6 +539,8 @@ class CustomFields(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomFieldsGetRequest(
             id=id,
@@ -631,6 +641,8 @@ class CustomFields(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomFieldsGetRequest(
             id=id,
@@ -735,6 +747,8 @@ class CustomFields(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomFieldsUpdateRequest(
             id=id,
@@ -849,6 +863,8 @@ class CustomFields(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomFieldsUpdateRequest(
             id=id,
@@ -959,6 +975,8 @@ class CustomFields(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomFieldsDeleteRequest(
             id=id,
@@ -1059,6 +1077,8 @@ class CustomFields(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomFieldsDeleteRequest(
             id=id,

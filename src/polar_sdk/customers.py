@@ -57,6 +57,8 @@ class Customers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomersListRequest(
             organization_id=organization_id,
@@ -212,6 +214,8 @@ class Customers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomersListRequest(
             organization_id=organization_id,
@@ -345,6 +349,8 @@ class Customers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.CustomerCreate)
@@ -443,6 +449,8 @@ class Customers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.CustomerCreate)
@@ -541,6 +549,8 @@ class Customers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomersGetRequest(
             id=id,
@@ -641,6 +651,8 @@ class Customers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomersGetRequest(
             id=id,
@@ -743,6 +755,8 @@ class Customers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomersUpdateRequest(
             id=id,
@@ -851,6 +865,8 @@ class Customers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomersUpdateRequest(
             id=id,
@@ -959,6 +975,8 @@ class Customers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomersDeleteRequest(
             id=id,
@@ -1061,6 +1079,8 @@ class Customers(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomersDeleteRequest(
             id=id,

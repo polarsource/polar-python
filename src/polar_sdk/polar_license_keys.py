@@ -44,6 +44,8 @@ class PolarLicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalLicenseKeysListRequest(
             organization_id=organization_id,
@@ -190,6 +192,8 @@ class PolarLicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalLicenseKeysListRequest(
             organization_id=organization_id,
@@ -327,6 +331,8 @@ class PolarLicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalLicenseKeysGetRequest(
             id=id,
@@ -427,6 +433,8 @@ class PolarLicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalLicenseKeysGetRequest(
             id=id,
@@ -527,6 +535,8 @@ class PolarLicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.LicenseKeyValidate)
@@ -630,6 +640,8 @@ class PolarLicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.LicenseKeyValidate)
@@ -733,6 +745,8 @@ class PolarLicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.LicenseKeyActivate)
@@ -839,6 +853,8 @@ class PolarLicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.LicenseKeyActivate)
@@ -947,6 +963,8 @@ class PolarLicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.LicenseKeyDeactivate)
@@ -1052,6 +1070,8 @@ class PolarLicenseKeys(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
             request = utils.unmarshal(request, models.LicenseKeyDeactivate)

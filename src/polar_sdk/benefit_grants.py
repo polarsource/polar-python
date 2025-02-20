@@ -82,6 +82,8 @@ class BenefitGrants(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalBenefitGrantsListRequest(
             type_filter=type_filter,
@@ -268,6 +270,8 @@ class BenefitGrants(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalBenefitGrantsListRequest(
             type_filter=type_filter,
@@ -407,6 +411,8 @@ class BenefitGrants(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalBenefitGrantsGetRequest(
             id=id,
@@ -507,6 +513,8 @@ class BenefitGrants(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalBenefitGrantsGetRequest(
             id=id,
@@ -612,6 +620,8 @@ class BenefitGrants(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalBenefitGrantsUpdateRequest(
             id=id,
@@ -730,6 +740,8 @@ class BenefitGrants(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalBenefitGrantsUpdateRequest(
             id=id,

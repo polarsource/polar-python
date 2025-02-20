@@ -116,7 +116,7 @@ class OrderTypedDict(TypedDict):
     product_price: OrderProductPriceTypedDict
     discount: Nullable[OrderDiscountTypedDict]
     subscription: Nullable[OrderSubscriptionTypedDict]
-    custom_field_data: NotRequired[Dict[str, OrderCustomFieldDataTypedDict]]
+    custom_field_data: NotRequired[Dict[str, Nullable[OrderCustomFieldDataTypedDict]]]
     r"""Key-value object storing custom field values."""
 
 
@@ -181,7 +181,7 @@ class Order(BaseModel):
 
     subscription: Nullable[OrderSubscription]
 
-    custom_field_data: Optional[Dict[str, OrderCustomFieldData]] = None
+    custom_field_data: Optional[Dict[str, Nullable[OrderCustomFieldData]]] = None
     r"""Key-value object storing custom field values."""
 
     @model_serializer(mode="wrap")

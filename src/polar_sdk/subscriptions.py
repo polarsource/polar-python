@@ -60,6 +60,8 @@ class Subscriptions(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.SubscriptionsListRequest(
             organization_id=organization_id,
@@ -222,6 +224,8 @@ class Subscriptions(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.SubscriptionsListRequest(
             organization_id=organization_id,
@@ -361,6 +365,8 @@ class Subscriptions(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.SubscriptionsExportRequest(
             organization_id=organization_id,
@@ -458,6 +464,8 @@ class Subscriptions(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.SubscriptionsExportRequest(
             organization_id=organization_id,
@@ -553,6 +561,8 @@ class Subscriptions(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.SubscriptionsGetRequest(
             id=id,
@@ -653,6 +663,8 @@ class Subscriptions(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.SubscriptionsGetRequest(
             id=id,
@@ -757,6 +769,8 @@ class Subscriptions(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.SubscriptionsUpdateRequest(
             id=id,
@@ -876,6 +890,8 @@ class Subscriptions(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.SubscriptionsUpdateRequest(
             id=id,
@@ -991,6 +1007,8 @@ class Subscriptions(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.SubscriptionsRevokeRequest(
             id=id,
@@ -1096,6 +1114,8 @@ class Subscriptions(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.SubscriptionsRevokeRequest(
             id=id,

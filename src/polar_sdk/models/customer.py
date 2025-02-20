@@ -40,7 +40,7 @@ class CustomerTypedDict(TypedDict):
     email_verified: bool
     name: Nullable[str]
     billing_address: Nullable[AddressTypedDict]
-    tax_id: Nullable[List[CustomerTaxIDTypedDict]]
+    tax_id: Nullable[List[Nullable[CustomerTaxIDTypedDict]]]
     organization_id: str
     avatar_url: str
 
@@ -67,7 +67,7 @@ class Customer(BaseModel):
 
     billing_address: Nullable[Address]
 
-    tax_id: Nullable[List[CustomerTaxID]]
+    tax_id: Nullable[List[Nullable[CustomerTaxID]]]
 
     organization_id: str
 

@@ -113,7 +113,7 @@ class SubscriptionTypedDict(TypedDict):
     r"""A product."""
     price: PriceTypedDict
     discount: Nullable[SubscriptionDiscountTypedDict]
-    custom_field_data: NotRequired[Dict[str, CustomFieldDataTypedDict]]
+    custom_field_data: NotRequired[Dict[str, Nullable[CustomFieldDataTypedDict]]]
     r"""Key-value object storing custom field values."""
 
 
@@ -183,7 +183,7 @@ class Subscription(BaseModel):
 
     discount: Nullable[SubscriptionDiscount]
 
-    custom_field_data: Optional[Dict[str, CustomFieldData]] = None
+    custom_field_data: Optional[Dict[str, Nullable[CustomFieldData]]] = None
     r"""Key-value object storing custom field values."""
 
     @model_serializer(mode="wrap")

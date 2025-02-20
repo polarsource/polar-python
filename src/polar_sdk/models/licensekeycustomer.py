@@ -42,7 +42,7 @@ class LicenseKeyCustomerTypedDict(TypedDict):
     email_verified: bool
     name: Nullable[str]
     billing_address: Nullable[AddressTypedDict]
-    tax_id: Nullable[List[LicenseKeyCustomerTaxIDTypedDict]]
+    tax_id: Nullable[List[Nullable[LicenseKeyCustomerTaxIDTypedDict]]]
     organization_id: str
     avatar_url: str
 
@@ -67,7 +67,7 @@ class LicenseKeyCustomer(BaseModel):
 
     billing_address: Nullable[Address]
 
-    tax_id: Nullable[List[LicenseKeyCustomerTaxID]]
+    tax_id: Nullable[List[Nullable[LicenseKeyCustomerTaxID]]]
 
     organization_id: str
 

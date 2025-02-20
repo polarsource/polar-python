@@ -163,7 +163,9 @@ class CheckoutTypedDict(TypedDict):
     subscription_id: Nullable[str]
     attached_custom_fields: List[AttachedCustomFieldTypedDict]
     customer_metadata: Dict[str, CustomerMetadataTypedDict]
-    custom_field_data: NotRequired[Dict[str, CheckoutCustomFieldDataTypedDict]]
+    custom_field_data: NotRequired[
+        Dict[str, Nullable[CheckoutCustomFieldDataTypedDict]]
+    ]
     r"""Key-value object storing custom field values."""
 
 
@@ -274,7 +276,7 @@ class Checkout(BaseModel):
 
     customer_metadata: Dict[str, CustomerMetadata]
 
-    custom_field_data: Optional[Dict[str, CheckoutCustomFieldData]] = None
+    custom_field_data: Optional[Dict[str, Nullable[CheckoutCustomFieldData]]] = None
     r"""Key-value object storing custom field values."""
 
     @model_serializer(mode="wrap")

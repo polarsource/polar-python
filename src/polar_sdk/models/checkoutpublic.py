@@ -146,7 +146,9 @@ class CheckoutPublicTypedDict(TypedDict):
     discount: Nullable[CheckoutPublicDiscountTypedDict]
     organization: OrganizationTypedDict
     attached_custom_fields: List[AttachedCustomFieldTypedDict]
-    custom_field_data: NotRequired[Dict[str, CheckoutPublicCustomFieldDataTypedDict]]
+    custom_field_data: NotRequired[
+        Dict[str, Nullable[CheckoutPublicCustomFieldDataTypedDict]]
+    ]
     r"""Key-value object storing custom field values."""
 
 
@@ -253,7 +255,9 @@ class CheckoutPublic(BaseModel):
 
     attached_custom_fields: List[AttachedCustomField]
 
-    custom_field_data: Optional[Dict[str, CheckoutPublicCustomFieldData]] = None
+    custom_field_data: Optional[Dict[str, Nullable[CheckoutPublicCustomFieldData]]] = (
+        None
+    )
     r"""Key-value object storing custom field values."""
 
     @model_serializer(mode="wrap")

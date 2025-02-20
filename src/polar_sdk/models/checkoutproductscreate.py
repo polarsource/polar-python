@@ -62,7 +62,7 @@ class CheckoutProductsCreateTypedDict(TypedDict):
     You can store up to **50 key-value pairs**.
     """
     custom_field_data: NotRequired[
-        Dict[str, CheckoutProductsCreateCustomFieldDataTypedDict]
+        Dict[str, Nullable[CheckoutProductsCreateCustomFieldDataTypedDict]]
     ]
     r"""Key-value object storing custom field values."""
     discount_id: NotRequired[Nullable[str]]
@@ -123,7 +123,9 @@ class CheckoutProductsCreate(BaseModel):
     You can store up to **50 key-value pairs**.
     """
 
-    custom_field_data: Optional[Dict[str, CheckoutProductsCreateCustomFieldData]] = None
+    custom_field_data: Optional[
+        Dict[str, Nullable[CheckoutProductsCreateCustomFieldData]]
+    ] = None
     r"""Key-value object storing custom field values."""
 
     discount_id: OptionalNullable[str] = UNSET

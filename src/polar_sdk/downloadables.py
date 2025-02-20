@@ -49,6 +49,8 @@ class Downloadables(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalDownloadablesListRequest(
             organization_id=organization_id,
@@ -192,6 +194,8 @@ class Downloadables(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalDownloadablesListRequest(
             organization_id=organization_id,
@@ -319,6 +323,8 @@ class Downloadables(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = (
             models.CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest(
@@ -416,6 +422,8 @@ class Downloadables(BaseSDK):
 
         if server_url is not None:
             base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
 
         request = (
             models.CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest(
