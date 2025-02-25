@@ -38,7 +38,7 @@ class PolarSubscriptions(BaseSDK):
     ) -> Optional[models.CustomerPortalSubscriptionsListResponse]:
         r"""List Subscriptions
 
-        List subscriptions of the authenticated customer or user.
+        List subscriptions of the authenticated customer.
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
@@ -199,7 +199,7 @@ class PolarSubscriptions(BaseSDK):
     ) -> Optional[models.CustomerPortalSubscriptionsListResponse]:
         r"""List Subscriptions
 
-        List subscriptions of the authenticated customer or user.
+        List subscriptions of the authenticated customer.
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
@@ -342,7 +342,7 @@ class PolarSubscriptions(BaseSDK):
     ) -> models.CustomerSubscription:
         r"""Get Subscription
 
-        Get a subscription for the authenticated customer or user.
+        Get a subscription for the authenticated customer.
 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
@@ -444,7 +444,7 @@ class PolarSubscriptions(BaseSDK):
     ) -> models.CustomerSubscription:
         r"""Get Subscription
 
-        Get a subscription for the authenticated customer or user.
+        Get a subscription for the authenticated customer.
 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
@@ -550,7 +550,7 @@ class PolarSubscriptions(BaseSDK):
     ) -> models.CustomerSubscription:
         r"""Update Subscription
 
-        Update a subscription of the authenticated customer or user.
+        Update a subscription of the authenticated customer.
 
         :param id: The subscription ID.
         :param customer_subscription_update:
@@ -672,7 +672,7 @@ class PolarSubscriptions(BaseSDK):
     ) -> models.CustomerSubscription:
         r"""Update Subscription
 
-        Update a subscription of the authenticated customer or user.
+        Update a subscription of the authenticated customer.
 
         :param id: The subscription ID.
         :param customer_subscription_update:
@@ -790,7 +790,7 @@ class PolarSubscriptions(BaseSDK):
     ) -> models.CustomerSubscription:
         r"""Cancel Subscription
 
-        Cancel a subscription of the authenticated customer or user.
+        Cancel a subscription of the authenticated customer.
 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
@@ -897,7 +897,7 @@ class PolarSubscriptions(BaseSDK):
     ) -> models.CustomerSubscription:
         r"""Cancel Subscription
 
-        Cancel a subscription of the authenticated customer or user.
+        Cancel a subscription of the authenticated customer.
 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method

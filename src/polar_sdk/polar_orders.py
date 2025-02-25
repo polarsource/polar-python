@@ -47,7 +47,7 @@ class PolarOrders(BaseSDK):
     ) -> Optional[models.CustomerPortalOrdersListResponse]:
         r"""List Orders
 
-        List orders of the authenticated customer or user.
+        List orders of the authenticated customer.
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
@@ -220,7 +220,7 @@ class PolarOrders(BaseSDK):
     ) -> Optional[models.CustomerPortalOrdersListResponse]:
         r"""List Orders
 
-        List orders of the authenticated customer or user.
+        List orders of the authenticated customer.
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
@@ -366,7 +366,7 @@ class PolarOrders(BaseSDK):
     ) -> models.CustomerOrder:
         r"""Get Order
 
-        Get an order by ID for the authenticated customer or user.
+        Get an order by ID for the authenticated customer.
 
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
@@ -468,7 +468,7 @@ class PolarOrders(BaseSDK):
     ) -> models.CustomerOrder:
         r"""Get Order
 
-        Get an order by ID for the authenticated customer or user.
+        Get an order by ID for the authenticated customer.
 
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method

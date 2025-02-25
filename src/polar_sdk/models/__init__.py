@@ -502,10 +502,6 @@ from .customer_portal_benefit_grants_updateop import (
     CustomerPortalBenefitGrantsUpdateRequest,
     CustomerPortalBenefitGrantsUpdateRequestTypedDict,
 )
-from .customer_portal_customers_getop import (
-    CustomerPortalCustomersGetRequest,
-    CustomerPortalCustomersGetRequestTypedDict,
-)
 from .customer_portal_downloadables_customer_portal_downloadables_getop import (
     CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest,
     CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequestTypedDict,
@@ -2234,8 +2230,6 @@ __all__ = [
     "CustomerPortalCustomerTaxID",
     "CustomerPortalCustomerTaxIDTypedDict",
     "CustomerPortalCustomerTypedDict",
-    "CustomerPortalCustomersGetRequest",
-    "CustomerPortalCustomersGetRequestTypedDict",
     "CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest",
     "CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequestTypedDict",
     "CustomerPortalDownloadablesListQueryParamBenefitIDFilter",

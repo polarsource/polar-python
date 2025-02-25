@@ -12,7 +12,7 @@
 
 ## list
 
-List subscriptions of the authenticated customer or user.
+List subscriptions of the authenticated customer.
 
 ### Example Usage
 
@@ -58,7 +58,7 @@ with Polar(
 
 ## get
 
-Get a subscription for the authenticated customer or user.
+Get a subscription for the authenticated customer.
 
 ### Example Usage
 
@@ -97,7 +97,7 @@ with Polar(
 
 ## update
 
-Update a subscription of the authenticated customer or user.
+Update a subscription of the authenticated customer.
 
 ### Example Usage
 
@@ -138,7 +138,7 @@ with Polar(
 
 ## cancel
 
-Cancel a subscription of the authenticated customer or user.
+Cancel a subscription of the authenticated customer.
 
 ### Example Usage
 

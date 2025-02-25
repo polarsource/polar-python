@@ -171,12 +171,12 @@ actions:
         - "lang": "python"
           "label": "Python (SDK)"
           "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.benefit_grants.update(id=\"<value>\", customer_benefit_grant_update={\n        \"benefit_type\": \"license_keys\",\n    })\n\n    # Handle response\n    print(res)"
-  - target: $["paths"]["/v1/customer-portal/customers/{id}"]["get"]
+  - target: $["paths"]["/v1/customer-portal/customers/me"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.customers.get(id=\"<value>\")\n\n    # Handle response\n    print(res)"
+          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.customers.get()\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customer-portal/downloadables/"]["get"]
     update:
       "x-codeSamples":

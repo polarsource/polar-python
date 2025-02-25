@@ -59,7 +59,7 @@ class BenefitGrants(BaseSDK):
     ) -> Optional[models.CustomerPortalBenefitGrantsListResponse]:
         r"""List Benefit Grants
 
-        List benefits grants of the authenticated customer or user.
+        List benefits grants of the authenticated customer.
 
         :param type_filter: Filter by benefit type.
         :param benefit_id: Filter by benefit ID.
@@ -247,7 +247,7 @@ class BenefitGrants(BaseSDK):
     ) -> Optional[models.CustomerPortalBenefitGrantsListResponse]:
         r"""List Benefit Grants
 
-        List benefits grants of the authenticated customer or user.
+        List benefits grants of the authenticated customer.
 
         :param type_filter: Filter by benefit type.
         :param benefit_id: Filter by benefit ID.
@@ -396,7 +396,7 @@ class BenefitGrants(BaseSDK):
     ) -> models.CustomerBenefitGrant:
         r"""Get Benefit Grant
 
-        Get a benefit grant by ID for the authenticated customer or user.
+        Get a benefit grant by ID for the authenticated customer.
 
         :param id: The benefit grant ID.
         :param retries: Override the default retry configuration for this method
@@ -498,7 +498,7 @@ class BenefitGrants(BaseSDK):
     ) -> models.CustomerBenefitGrant:
         r"""Get Benefit Grant
 
-        Get a benefit grant by ID for the authenticated customer or user.
+        Get a benefit grant by ID for the authenticated customer.
 
         :param id: The benefit grant ID.
         :param retries: Override the default retry configuration for this method
@@ -604,7 +604,7 @@ class BenefitGrants(BaseSDK):
     ) -> models.CustomerBenefitGrant:
         r"""Update Benefit Grant
 
-        Update a benefit grant for the authenticated customer or user.
+        Update a benefit grant for the authenticated customer.
 
         :param id: The benefit grant ID.
         :param customer_benefit_grant_update:
@@ -724,7 +724,7 @@ class BenefitGrants(BaseSDK):
     ) -> models.CustomerBenefitGrant:
         r"""Update Benefit Grant
 
-        Update a benefit grant for the authenticated customer or user.
+        Update a benefit grant for the authenticated customer.
 
         :param id: The benefit grant ID.
         :param customer_benefit_grant_update:

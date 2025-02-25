@@ -11,7 +11,7 @@
 
 ## list
 
-List orders of the authenticated customer or user.
+List orders of the authenticated customer.
 
 ### Example Usage
 
@@ -58,7 +58,7 @@ with Polar(
 
 ## get
 
-Get an order by ID for the authenticated customer or user.
+Get an order by ID for the authenticated customer.
 
 ### Example Usage
 

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: 3da720c5c3d53c438906e7abbdfa65f3
+  docChecksum: 1cab2a6c0dce2a3c46aa1481198d6f36
   docVersion: 0.1.0
-  speakeasyVersion: 1.497.0
-  generationVersion: 2.517.3
-  releaseVersion: 0.15.1
-  configChecksum: 961fc1ba809d77e035d92ba145cb3e74
+  speakeasyVersion: 1.502.0
+  generationVersion: 2.524.1
+  releaseVersion: 0.16.0
+  configChecksum: e1311abddb5d1fddcb72bbe55d049410
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -14,7 +14,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.11.0
+    core: 5.12.1
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.2
     devContainers: 3.0.0
@@ -252,7 +252,6 @@ generatedFiles:
   - docs/models/customerportalbenefitgrantslistresponse.md
   - docs/models/customerportalbenefitgrantsupdaterequest.md
   - docs/models/customerportalcustomer.md
-  - docs/models/customerportalcustomersgetrequest.md
   - docs/models/customerportalcustomertaxid.md
   - docs/models/customerportaldownloadablescustomerportaldownloadablesgetrequest.md
   - docs/models/customerportaldownloadableslistqueryparambenefitidfilter.md
@@ -925,7 +924,6 @@ generatedFiles:
   - src/polar_sdk/models/customer_portal_benefit_grants_getop.py
   - src/polar_sdk/models/customer_portal_benefit_grants_listop.py
   - src/polar_sdk/models/customer_portal_benefit_grants_updateop.py
-  - src/polar_sdk/models/customer_portal_customers_getop.py
   - src/polar_sdk/models/customer_portal_downloadables_customer_portal_downloadables_getop.py
   - src/polar_sdk/models/customer_portal_downloadables_listop.py
   - src/polar_sdk/models/customer_portal_license_keys_getop.py

@@ -11,7 +11,7 @@
 
 ## list
 
-List benefits grants of the authenticated customer or user.
+List benefits grants of the authenticated customer.
 
 ### Example Usage
 
@@ -59,7 +59,7 @@ with Polar(
 
 ## get
 
-Get a benefit grant by ID for the authenticated customer or user.
+Get a benefit grant by ID for the authenticated customer.
 
 ### Example Usage
 
@@ -98,7 +98,7 @@ with Polar(
 
 ## update
 
-Update a benefit grant for the authenticated customer or user.
+Update a benefit grant for the authenticated customer.
 
 ### Example Usage
 
