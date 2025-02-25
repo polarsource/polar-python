@@ -6,10 +6,28 @@ from .listresource_licensekeyread_ import (
     ListResourceLicenseKeyReadTypedDict,
 )
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from polar_sdk.utils import FieldMetadata, QueryParamMetadata
+from polar_sdk.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
 from pydantic import model_serializer
 from typing import Callable, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+
+
+class CustomerPortalLicenseKeysListSecurityTypedDict(TypedDict):
+    customer_session: str
+
+
+class CustomerPortalLicenseKeysListSecurity(BaseModel):
+    customer_session: Annotated[
+        str,
+        FieldMetadata(
+            security=SecurityMetadata(
+                scheme=True,
+                scheme_type="http",
+                sub_type="bearer",
+                field_name="Authorization",
+            )
+        ),
+    ]
 
 
 CustomerPortalLicenseKeysListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(

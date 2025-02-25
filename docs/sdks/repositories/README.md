@@ -13,6 +13,8 @@
 
 List repositories.
 
+**Scopes**: `repositories:read` `repositories:write`
+
 ### Example Usage
 
 ```python
@@ -60,6 +62,8 @@ with Polar(
 
 Get a repository by ID.
 
+**Scopes**: `repositories:read` `repositories:write`
+
 ### Example Usage
 
 ```python
@@ -98,6 +102,8 @@ with Polar(
 ## update
 
 Update a repository.
+
+**Scopes**: `repositories:write`
 
 ### Example Usage
 

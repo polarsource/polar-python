@@ -8,11 +8,29 @@ from .listresource_customerbenefitgrant_ import (
     ListResourceCustomerBenefitGrantTypedDict,
 )
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from polar_sdk.utils import FieldMetadata, QueryParamMetadata
+from polar_sdk.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
 import pydantic
 from pydantic import model_serializer
 from typing import Callable, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+
+
+class CustomerPortalBenefitGrantsListSecurityTypedDict(TypedDict):
+    customer_session: str
+
+
+class CustomerPortalBenefitGrantsListSecurity(BaseModel):
+    customer_session: Annotated[
+        str,
+        FieldMetadata(
+            security=SecurityMetadata(
+                scheme=True,
+                scheme_type="http",
+                sub_type="bearer",
+                field_name="Authorization",
+            )
+        ),
+    ]
 
 
 QueryParamBenefitTypeFilterTypedDict = TypeAliasType(

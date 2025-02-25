@@ -54,6 +54,8 @@ class Events(BaseSDK):
 
         List events.
 
+        **Scopes**: `events:read` `events:write`
+
         :param start_timestamp: Filter events after this timestamp.
         :param end_timestamp: Filter events before this timestamp.
         :param organization_id: Filter by organization ID.
@@ -235,6 +237,8 @@ class Events(BaseSDK):
 
         List events.
 
+        **Scopes**: `events:read` `events:write`
+
         :param start_timestamp: Filter events after this timestamp.
         :param end_timestamp: Filter events before this timestamp.
         :param organization_id: Filter by organization ID.
@@ -385,6 +389,8 @@ class Events(BaseSDK):
 
         Get an event by ID.
 
+        **Scopes**: `events:read` `events:write`
+
         :param id: The event ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -486,6 +492,8 @@ class Events(BaseSDK):
         r"""Get Event
 
         Get an event by ID.
+
+        **Scopes**: `events:read` `events:write`
 
         :param id: The event ID.
         :param retries: Override the default retry configuration for this method
@@ -589,6 +597,8 @@ class Events(BaseSDK):
 
         Ingest batch of events.
 
+        **Scopes**: `events:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -688,6 +698,8 @@ class Events(BaseSDK):
         r"""Ingest Events
 
         Ingest batch of events.
+
+        **Scopes**: `events:write`
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method

@@ -13,6 +13,8 @@
 
 List orders.
 
+**Scopes**: `orders:read`
+
 ### Example Usage
 
 ```python
@@ -61,6 +63,8 @@ with Polar(
 
 Get an order by ID.
 
+**Scopes**: `orders:read`
+
 ### Example Usage
 
 ```python
@@ -99,6 +103,8 @@ with Polar(
 ## invoice
 
 Get an order's invoice data.
+
+**Scopes**: `orders:read`
 
 ### Example Usage
 

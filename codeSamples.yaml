@@ -158,31 +158,55 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.benefit_grants.list()\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.benefit_grants.list(security=polar_sdk.CustomerPortalBenefitGrantsListSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ))\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
   - target: $["paths"]["/v1/customer-portal/benefit-grants/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.benefit_grants.get(id=\"<value>\")\n\n    # Handle response\n    print(res)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.benefit_grants.get(security=polar_sdk.CustomerPortalBenefitGrantsGetSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<value>\")\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customer-portal/benefit-grants/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.benefit_grants.update(id=\"<value>\", customer_benefit_grant_update={\n        \"benefit_type\": \"license_keys\",\n    })\n\n    # Handle response\n    print(res)"
-  - target: $["paths"]["/v1/customer-portal/customers/{id}"]["get"]
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.benefit_grants.update(security=polar_sdk.CustomerPortalBenefitGrantsUpdateSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<value>\", customer_benefit_grant_update={\n        \"benefit_type\": \"license_keys\",\n    })\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/customer-portal/customers/me"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.customers.get(id=\"<value>\")\n\n    # Handle response\n    print(res)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.customers.get(security=polar_sdk.CustomerPortalCustomersGetSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ))\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/customer-portal/customers/me"]["patch"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.customers.update(security=polar_sdk.CustomerPortalCustomersUpdateSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ))\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/customer-portal/customers/me/payment-methods"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.customers.get_payment_methods(security=polar_sdk.CustomerPortalCustomersGetPaymentMethodsSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ))\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
+  - target: $["paths"]["/v1/customer-portal/customers/me/payment-methods"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.customers.add_payment_method(security=polar_sdk.CustomerPortalCustomersAddPaymentMethodSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), request={\n        \"confirmation_token_id\": \"<id>\",\n        \"set_default\": False,\n        \"return_url\": \"https://slight-digestive.info\",\n    })\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/customer-portal/customers/me/payment-methods/{id}"]["delete"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    polar.customer_portal.customers.delete_payment_method(security=polar_sdk.CustomerPortalCustomersDeletePaymentMethodSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<id>\")\n\n    # Use the SDK ..."
   - target: $["paths"]["/v1/customer-portal/downloadables/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.downloadables.list()\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.downloadables.list(security=polar_sdk.CustomerPortalDownloadablesListSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ))\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
   - target: $["paths"]["/v1/customer-portal/downloadables/{token}"]["get"]
     update:
       "x-codeSamples":
@@ -194,7 +218,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.license_keys.list()\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.license_keys.list(security=polar_sdk.CustomerPortalLicenseKeysListSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ))\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
   - target: $["paths"]["/v1/customer-portal/license-keys/activate"]["post"]
     update:
       "x-codeSamples":
@@ -218,25 +242,25 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.license_keys.get(id=\"<value>\")\n\n    # Handle response\n    print(res)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.license_keys.get(security=polar_sdk.CustomerPortalLicenseKeysGetSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<value>\")\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customer-portal/orders/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.orders.list()\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.orders.list(security=polar_sdk.CustomerPortalOrdersListSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ))\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
   - target: $["paths"]["/v1/customer-portal/orders/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.orders.get(id=\"<value>\")\n\n    # Handle response\n    print(res)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.orders.get(security=polar_sdk.CustomerPortalOrdersGetSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<value>\")\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customer-portal/orders/{id}/invoice"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.orders.invoice(id=\"<value>\")\n\n    # Handle response\n    print(res)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.orders.invoice(security=polar_sdk.CustomerPortalOrdersInvoiceSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<value>\")\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customer-portal/organizations/{slug}"]["get"]
     update:
       "x-codeSamples":
@@ -248,25 +272,25 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.subscriptions.list()\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.subscriptions.list(security=polar_sdk.CustomerPortalSubscriptionsListSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ))\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
   - target: $["paths"]["/v1/customer-portal/subscriptions/{id}"]["delete"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.subscriptions.cancel(id=\"<value>\")\n\n    # Handle response\n    print(res)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.subscriptions.cancel(security=polar_sdk.CustomerPortalSubscriptionsCancelSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<value>\")\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customer-portal/subscriptions/{id}"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.subscriptions.get(id=\"<value>\")\n\n    # Handle response\n    print(res)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.subscriptions.get(security=polar_sdk.CustomerPortalSubscriptionsGetSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<value>\")\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customer-portal/subscriptions/{id}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.subscriptions.update(id=\"<value>\", customer_subscription_update={})\n\n    # Handle response\n    print(res)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.subscriptions.update(security=polar_sdk.CustomerPortalSubscriptionsUpdateSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<value>\", customer_subscription_update={})\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customer-sessions/"]["post"]
     update:
       "x-codeSamples":

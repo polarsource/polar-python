@@ -48,6 +48,8 @@ class MetricsSDK(BaseSDK):
 
         Get metrics about your orders and subscriptions.
 
+        **Scopes**: `metrics:read`
+
         :param start_date: Start date.
         :param end_date: End date.
         :param interval: Interval between two timestamps.
@@ -183,6 +185,8 @@ class MetricsSDK(BaseSDK):
 
         Get metrics about your orders and subscriptions.
 
+        **Scopes**: `metrics:read`
+
         :param start_date: Start date.
         :param end_date: End date.
         :param interval: Interval between two timestamps.
@@ -291,6 +295,8 @@ class MetricsSDK(BaseSDK):
 
         Get the interval limits for the metrics endpoint.
 
+        **Scopes**: `metrics:read`
+
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -374,6 +380,8 @@ class MetricsSDK(BaseSDK):
         r"""Get Metrics Limits
 
         Get the interval limits for the metrics endpoint.
+
+        **Scopes**: `metrics:read`
 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method

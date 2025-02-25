@@ -15,6 +15,8 @@
 
 List checkout links.
 
+**Scopes**: `checkout_links:read` `checkout_links:write`
+
 ### Example Usage
 
 ```python
@@ -59,6 +61,8 @@ with Polar(
 
 Create a checkout link.
 
+**Scopes**: `checkout_links:write`
+
 ### Example Usage
 
 ```python
@@ -101,6 +105,8 @@ with Polar(
 
 Get a checkout link by ID.
 
+**Scopes**: `checkout_links:read` `checkout_links:write`
+
 ### Example Usage
 
 ```python
@@ -139,6 +145,8 @@ with Polar(
 ## update
 
 Update a checkout link.
+
+**Scopes**: `checkout_links:write`
 
 ### Example Usage
 
@@ -179,6 +187,8 @@ with Polar(
 ## delete
 
 Delete a checkout link.
+
+**Scopes**: `checkout_links:write`
 
 ### Example Usage
 

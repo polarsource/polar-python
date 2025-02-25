@@ -31,6 +31,8 @@ class Discounts(BaseSDK):
 
         List discounts.
 
+        **Scopes**: `discounts:read` `discounts:write`
+
         :param organization_id: Filter by organization ID.
         :param query: Filter by name.
         :param page: Page number, defaults to 1.
@@ -175,6 +177,8 @@ class Discounts(BaseSDK):
 
         List discounts.
 
+        **Scopes**: `discounts:read` `discounts:write`
+
         :param organization_id: Filter by organization ID.
         :param query: Filter by name.
         :param page: Page number, defaults to 1.
@@ -310,6 +314,8 @@ class Discounts(BaseSDK):
 
         Create a discount.
 
+        **Scopes**: `discounts:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -410,6 +416,8 @@ class Discounts(BaseSDK):
 
         Create a discount.
 
+        **Scopes**: `discounts:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -509,6 +517,8 @@ class Discounts(BaseSDK):
         r"""Get Discount
 
         Get a discount by ID.
+
+        **Scopes**: `discounts:read` `discounts:write`
 
         :param id: The discount ID.
         :param retries: Override the default retry configuration for this method
@@ -612,6 +622,8 @@ class Discounts(BaseSDK):
 
         Get a discount by ID.
 
+        **Scopes**: `discounts:read` `discounts:write`
+
         :param id: The discount ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -714,6 +726,8 @@ class Discounts(BaseSDK):
         r"""Update Discount
 
         Update a discount.
+
+        **Scopes**: `discounts:write`
 
         :param id: The discount ID.
         :param discount_update:
@@ -825,6 +839,8 @@ class Discounts(BaseSDK):
 
         Update a discount.
 
+        **Scopes**: `discounts:write`
+
         :param id: The discount ID.
         :param discount_update:
         :param retries: Override the default retry configuration for this method
@@ -934,6 +950,8 @@ class Discounts(BaseSDK):
 
         Delete a discount.
 
+        **Scopes**: `discounts:write`
+
         :param id: The discount ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1035,6 +1053,8 @@ class Discounts(BaseSDK):
         r"""Delete Discount
 
         Delete a discount.
+
+        **Scopes**: `discounts:write`
 
         :param id: The discount ID.
         :param retries: Override the default retry configuration for this method

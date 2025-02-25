@@ -35,6 +35,8 @@ class LicenseKeys(BaseSDK):
 
         Get license keys connected to the given organization & filters.
 
+        **Scopes**: `license_keys:read` `license_keys:write`
+
         :param organization_id: Filter by organization ID.
         :param benefit_id: Filter by benefit ID.
         :param page: Page number, defaults to 1.
@@ -190,6 +192,8 @@ class LicenseKeys(BaseSDK):
 
         Get license keys connected to the given organization & filters.
 
+        **Scopes**: `license_keys:read` `license_keys:write`
+
         :param organization_id: Filter by organization ID.
         :param benefit_id: Filter by benefit ID.
         :param page: Page number, defaults to 1.
@@ -332,6 +336,8 @@ class LicenseKeys(BaseSDK):
 
         Get a license key.
 
+        **Scopes**: `license_keys:read` `license_keys:write`
+
         :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -436,6 +442,8 @@ class LicenseKeys(BaseSDK):
         r"""Get License Key
 
         Get a license key.
+
+        **Scopes**: `license_keys:read` `license_keys:write`
 
         :param id:
         :param retries: Override the default retry configuration for this method
@@ -544,6 +552,8 @@ class LicenseKeys(BaseSDK):
         r"""Update License Key
 
         Update a license key.
+
+        **Scopes**: `license_keys:write`
 
         :param id:
         :param license_key_update:
@@ -664,6 +674,8 @@ class LicenseKeys(BaseSDK):
 
         Update a license key.
 
+        **Scopes**: `license_keys:write`
+
         :param id:
         :param license_key_update:
         :param retries: Override the default retry configuration for this method
@@ -781,6 +793,8 @@ class LicenseKeys(BaseSDK):
 
         Get a license key activation.
 
+        **Scopes**: `license_keys:read` `license_keys:write`
+
         :param id:
         :param activation_id:
         :param retries: Override the default retry configuration for this method
@@ -888,6 +902,8 @@ class LicenseKeys(BaseSDK):
         r"""Get Activation
 
         Get a license key activation.
+
+        **Scopes**: `license_keys:read` `license_keys:write`
 
         :param id:
         :param activation_id:

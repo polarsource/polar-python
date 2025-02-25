@@ -42,6 +42,8 @@ class Products(BaseSDK):
 
         List products.
 
+        **Scopes**: `products:read` `products:write`
+
         :param id: Filter by product ID.
         :param organization_id: Filter by organization ID.
         :param query: Filter by product name.
@@ -209,6 +211,8 @@ class Products(BaseSDK):
 
         List products.
 
+        **Scopes**: `products:read` `products:write`
+
         :param id: Filter by product ID.
         :param organization_id: Filter by organization ID.
         :param query: Filter by product name.
@@ -356,6 +360,8 @@ class Products(BaseSDK):
 
         Create a product.
 
+        **Scopes**: `products:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -456,6 +462,8 @@ class Products(BaseSDK):
 
         Create a product.
 
+        **Scopes**: `products:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -555,6 +563,8 @@ class Products(BaseSDK):
         r"""Get Product
 
         Get a product by ID.
+
+        **Scopes**: `products:read` `products:write`
 
         :param id:
         :param retries: Override the default retry configuration for this method
@@ -658,6 +668,8 @@ class Products(BaseSDK):
 
         Get a product by ID.
 
+        **Scopes**: `products:read` `products:write`
+
         :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -760,6 +772,8 @@ class Products(BaseSDK):
         r"""Update Product
 
         Update a product.
+
+        **Scopes**: `products:write`
 
         :param id:
         :param product_update:
@@ -873,6 +887,8 @@ class Products(BaseSDK):
         r"""Update Product
 
         Update a product.
+
+        **Scopes**: `products:write`
 
         :param id:
         :param product_update:
@@ -988,6 +1004,8 @@ class Products(BaseSDK):
         r"""Update Product Benefits
 
         Update benefits granted by a product.
+
+        **Scopes**: `products:write`
 
         :param id:
         :param product_benefits_update:
@@ -1107,6 +1125,8 @@ class Products(BaseSDK):
         r"""Update Product Benefits
 
         Update benefits granted by a product.
+
+        **Scopes**: `products:write`
 
         :param id:
         :param product_benefits_update:

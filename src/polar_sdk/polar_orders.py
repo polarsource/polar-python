@@ -12,6 +12,10 @@ class PolarOrders(BaseSDK):
     def list(
         self,
         *,
+        security: Union[
+            models.CustomerPortalOrdersListSecurity,
+            models.CustomerPortalOrdersListSecurityTypedDict,
+        ],
         organization_id: OptionalNullable[
             Union[
                 models.CustomerPortalOrdersListQueryParamOrganizationIDFilter,
@@ -47,8 +51,11 @@ class PolarOrders(BaseSDK):
     ) -> Optional[models.CustomerPortalOrdersListResponse]:
         r"""List Orders
 
-        List orders of the authenticated customer or user.
+        List orders of the authenticated customer.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param product_price_type: Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
@@ -95,7 +102,9 @@ class PolarOrders(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalOrdersListSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -112,7 +121,7 @@ class PolarOrders(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:orders:list",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["422", "4XX", "5XX"],
@@ -138,6 +147,7 @@ class PolarOrders(BaseSDK):
                 return None
 
             return self.list(
+                security=security,
                 organization_id=organization_id,
                 product_id=product_id,
                 product_price_type=product_price_type,
@@ -185,6 +195,10 @@ class PolarOrders(BaseSDK):
     async def list_async(
         self,
         *,
+        security: Union[
+            models.CustomerPortalOrdersListSecurity,
+            models.CustomerPortalOrdersListSecurityTypedDict,
+        ],
         organization_id: OptionalNullable[
             Union[
                 models.CustomerPortalOrdersListQueryParamOrganizationIDFilter,
@@ -220,8 +234,11 @@ class PolarOrders(BaseSDK):
     ) -> Optional[models.CustomerPortalOrdersListResponse]:
         r"""List Orders
 
-        List orders of the authenticated customer or user.
+        List orders of the authenticated customer.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param product_price_type: Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
@@ -268,7 +285,9 @@ class PolarOrders(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalOrdersListSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -285,7 +304,7 @@ class PolarOrders(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:orders:list",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["422", "4XX", "5XX"],
@@ -311,6 +330,7 @@ class PolarOrders(BaseSDK):
                 return None
 
             return self.list(
+                security=security,
                 organization_id=organization_id,
                 product_id=product_id,
                 product_price_type=product_price_type,
@@ -358,6 +378,10 @@ class PolarOrders(BaseSDK):
     def get(
         self,
         *,
+        security: Union[
+            models.CustomerPortalOrdersGetSecurity,
+            models.CustomerPortalOrdersGetSecurityTypedDict,
+        ],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -366,8 +390,11 @@ class PolarOrders(BaseSDK):
     ) -> models.CustomerOrder:
         r"""Get Order
 
-        Get an order by ID for the authenticated customer or user.
+        Get an order by ID for the authenticated customer.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -400,7 +427,9 @@ class PolarOrders(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalOrdersGetSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -417,7 +446,7 @@ class PolarOrders(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:orders:get",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["404", "422", "4XX", "5XX"],
@@ -460,6 +489,10 @@ class PolarOrders(BaseSDK):
     async def get_async(
         self,
         *,
+        security: Union[
+            models.CustomerPortalOrdersGetSecurity,
+            models.CustomerPortalOrdersGetSecurityTypedDict,
+        ],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -468,8 +501,11 @@ class PolarOrders(BaseSDK):
     ) -> models.CustomerOrder:
         r"""Get Order
 
-        Get an order by ID for the authenticated customer or user.
+        Get an order by ID for the authenticated customer.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -502,7 +538,9 @@ class PolarOrders(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalOrdersGetSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -519,7 +557,7 @@ class PolarOrders(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:orders:get",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["404", "422", "4XX", "5XX"],
@@ -562,6 +600,10 @@ class PolarOrders(BaseSDK):
     def invoice(
         self,
         *,
+        security: Union[
+            models.CustomerPortalOrdersInvoiceSecurity,
+            models.CustomerPortalOrdersInvoiceSecurityTypedDict,
+        ],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -572,6 +614,9 @@ class PolarOrders(BaseSDK):
 
         Get an order's invoice data.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -604,7 +649,9 @@ class PolarOrders(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalOrdersInvoiceSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -621,7 +668,7 @@ class PolarOrders(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:orders:invoice",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["404", "422", "4XX", "5XX"],
@@ -664,6 +711,10 @@ class PolarOrders(BaseSDK):
     async def invoice_async(
         self,
         *,
+        security: Union[
+            models.CustomerPortalOrdersInvoiceSecurity,
+            models.CustomerPortalOrdersInvoiceSecurityTypedDict,
+        ],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -674,6 +725,9 @@ class PolarOrders(BaseSDK):
 
         Get an order's invoice data.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -706,7 +760,9 @@ class PolarOrders(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalOrdersInvoiceSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -723,7 +779,7 @@ class PolarOrders(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:orders:invoice",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["404", "422", "4XX", "5XX"],

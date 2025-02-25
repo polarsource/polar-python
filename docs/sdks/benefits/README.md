@@ -16,6 +16,8 @@
 
 List benefits.
 
+**Scopes**: `benefits:read` `benefits:write`
+
 ### Example Usage
 
 ```python
@@ -58,6 +60,8 @@ with Polar(
 ## create
 
 Create a benefit.
+
+**Scopes**: `benefits:write`
 
 ### Example Usage
 
@@ -104,6 +108,8 @@ with Polar(
 
 Get a benefit by ID.
 
+**Scopes**: `benefits:read` `benefits:write`
+
 ### Example Usage
 
 ```python
@@ -142,6 +148,8 @@ with Polar(
 ## update
 
 Update a benefit.
+
+**Scopes**: `benefits:write`
 
 ### Example Usage
 
@@ -190,6 +198,8 @@ Delete a benefit.
 > Every grants associated with the benefit will be revoked.
 > Users will lose access to the benefit.
 
+**Scopes**: `benefits:write`
+
 ### Example Usage
 
 ```python
@@ -226,6 +236,8 @@ with Polar(
 List the individual grants for a benefit.
 
 It's especially useful to check if a user has been granted a benefit.
+
+**Scopes**: `benefits:read` `benefits:write`
 
 ### Example Usage
 

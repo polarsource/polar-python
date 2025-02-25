@@ -15,6 +15,8 @@
 
 List OAuth2 clients.
 
+**Scopes**:
+
 ### Example Usage
 
 ```python
@@ -55,6 +57,8 @@ with Polar(
 ## create
 
 Create an OAuth2 client.
+
+**Scopes**:
 
 ### Example Usage
 
@@ -99,6 +103,8 @@ with Polar(
 
 Get an OAuth2 client by Client ID.
 
+**Scopes**:
+
 ### Example Usage
 
 ```python
@@ -136,6 +142,8 @@ with Polar(
 ## update
 
 Update an OAuth2 client.
+
+**Scopes**:
 
 ### Example Usage
 
@@ -183,6 +191,8 @@ with Polar(
 ## delete
 
 Delete an OAuth2 client.
+
+**Scopes**:
 
 ### Example Usage
 

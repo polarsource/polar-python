@@ -10,18 +10,19 @@
 
 ## list
 
-List Downloadables
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.customer_portal.downloadables.list()
+    res = polar.customer_portal.downloadables.list(security=polar_sdk.CustomerPortalDownloadablesListSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ))
 
     while res is not None:
         # Handle items
@@ -34,6 +35,7 @@ with Polar(
 
 | Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                                                              | [models.CustomerPortalDownloadablesListSecurity](../../models/customerportaldownloadableslistsecurity.md)                                                               | :heavy_check_mark:                                                                                                                                                      | N/A                                                                                                                                                                     |
 | `organization_id`                                                                                                                                                       | [OptionalNullable[models.CustomerPortalDownloadablesListQueryParamOrganizationIDFilter]](../../models/customerportaldownloadableslistqueryparamorganizationidfilter.md) | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
 | `benefit_id`                                                                                                                                                            | [OptionalNullable[models.CustomerPortalDownloadablesListQueryParamBenefitIDFilter]](../../models/customerportaldownloadableslistqueryparambenefitidfilter.md)           | :heavy_minus_sign:                                                                                                                                                      | Filter by benefit ID.                                                                                                                                                   |
 | `page`                                                                                                                                                                  | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |

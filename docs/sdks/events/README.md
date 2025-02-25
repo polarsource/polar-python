@@ -13,6 +13,8 @@
 
 List events.
 
+**Scopes**: `events:read` `events:write`
+
 ### Example Usage
 
 ```python
@@ -62,6 +64,8 @@ with Polar(
 
 Get an event by ID.
 
+**Scopes**: `events:read` `events:write`
+
 ### Example Usage
 
 ```python
@@ -100,6 +104,8 @@ with Polar(
 ## ingest
 
 Ingest batch of events.
+
+**Scopes**: `events:write`
 
 ### Example Usage
 

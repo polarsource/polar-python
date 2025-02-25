@@ -2,8 +2,26 @@
 
 from __future__ import annotations
 from polar_sdk.types import BaseModel
-from polar_sdk.utils import FieldMetadata, PathParamMetadata
+from polar_sdk.utils import FieldMetadata, PathParamMetadata, SecurityMetadata
 from typing_extensions import Annotated, TypedDict
+
+
+class CustomerPortalSubscriptionsCancelSecurityTypedDict(TypedDict):
+    customer_session: str
+
+
+class CustomerPortalSubscriptionsCancelSecurity(BaseModel):
+    customer_session: Annotated[
+        str,
+        FieldMetadata(
+            security=SecurityMetadata(
+                scheme=True,
+                scheme_type="http",
+                sub_type="bearer",
+                field_name="Authorization",
+            )
+        ),
+    ]
 
 
 class CustomerPortalSubscriptionsCancelRequestTypedDict(TypedDict):

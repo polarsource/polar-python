@@ -14,6 +14,8 @@
 
 List organizations.
 
+**Scopes**: `organizations:read` `organizations:write`
+
 ### Example Usage
 
 ```python
@@ -57,6 +59,8 @@ with Polar(
 
 Create an organization.
 
+**Scopes**: `organizations:write`
+
 ### Example Usage
 
 ```python
@@ -98,6 +102,8 @@ with Polar(
 
 Get an organization by ID.
 
+**Scopes**: `organizations:read` `organizations:write`
+
 ### Example Usage
 
 ```python
@@ -136,6 +142,8 @@ with Polar(
 ## update
 
 Update an organization.
+
+**Scopes**: `organizations:write`
 
 ### Example Usage
 

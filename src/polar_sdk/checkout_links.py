@@ -36,6 +36,8 @@ class CheckoutLinks(BaseSDK):
 
         List checkout links.
 
+        **Scopes**: `checkout_links:read` `checkout_links:write`
+
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param page: Page number, defaults to 1.
@@ -187,6 +189,8 @@ class CheckoutLinks(BaseSDK):
 
         List checkout links.
 
+        **Scopes**: `checkout_links:read` `checkout_links:write`
+
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param page: Page number, defaults to 1.
@@ -327,6 +331,8 @@ class CheckoutLinks(BaseSDK):
 
         Create a checkout link.
 
+        **Scopes**: `checkout_links:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -436,6 +442,8 @@ class CheckoutLinks(BaseSDK):
 
         Create a checkout link.
 
+        **Scopes**: `checkout_links:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -542,6 +550,8 @@ class CheckoutLinks(BaseSDK):
 
         Get a checkout link by ID.
 
+        **Scopes**: `checkout_links:read` `checkout_links:write`
+
         :param id: The checkout link ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -643,6 +653,8 @@ class CheckoutLinks(BaseSDK):
         r"""Get Checkout Link
 
         Get a checkout link by ID.
+
+        **Scopes**: `checkout_links:read` `checkout_links:write`
 
         :param id: The checkout link ID.
         :param retries: Override the default retry configuration for this method
@@ -748,6 +760,8 @@ class CheckoutLinks(BaseSDK):
         r"""Update Checkout Link
 
         Update a checkout link.
+
+        **Scopes**: `checkout_links:write`
 
         :param id: The checkout link ID.
         :param checkout_link_update:
@@ -865,6 +879,8 @@ class CheckoutLinks(BaseSDK):
 
         Update a checkout link.
 
+        **Scopes**: `checkout_links:write`
+
         :param id: The checkout link ID.
         :param checkout_link_update:
         :param retries: Override the default retry configuration for this method
@@ -978,6 +994,8 @@ class CheckoutLinks(BaseSDK):
 
         Delete a checkout link.
 
+        **Scopes**: `checkout_links:write`
+
         :param id: The checkout link ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1079,6 +1097,8 @@ class CheckoutLinks(BaseSDK):
         r"""Delete Checkout Link
 
         Delete a checkout link.
+
+        **Scopes**: `checkout_links:write`
 
         :param id: The checkout link ID.
         :param retries: Override the default retry configuration for this method

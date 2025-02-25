@@ -12,6 +12,10 @@ class Downloadables(BaseSDK):
     def list(
         self,
         *,
+        security: Union[
+            models.CustomerPortalDownloadablesListSecurity,
+            models.CustomerPortalDownloadablesListSecurityTypedDict,
+        ],
         organization_id: OptionalNullable[
             Union[
                 models.CustomerPortalDownloadablesListQueryParamOrganizationIDFilter,
@@ -33,6 +37,9 @@ class Downloadables(BaseSDK):
     ) -> Optional[models.CustomerPortalDownloadablesListResponse]:
         r"""List Downloadables
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param organization_id: Filter by organization ID.
         :param benefit_id: Filter by benefit ID.
         :param page: Page number, defaults to 1.
@@ -71,7 +78,9 @@ class Downloadables(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalDownloadablesListSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -88,7 +97,7 @@ class Downloadables(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:downloadables:list",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["422", "4XX", "5XX"],
@@ -114,6 +123,7 @@ class Downloadables(BaseSDK):
                 return None
 
             return self.list(
+                security=security,
                 organization_id=organization_id,
                 benefit_id=benefit_id,
                 page=next_page,
@@ -157,6 +167,10 @@ class Downloadables(BaseSDK):
     async def list_async(
         self,
         *,
+        security: Union[
+            models.CustomerPortalDownloadablesListSecurity,
+            models.CustomerPortalDownloadablesListSecurityTypedDict,
+        ],
         organization_id: OptionalNullable[
             Union[
                 models.CustomerPortalDownloadablesListQueryParamOrganizationIDFilter,
@@ -178,6 +192,9 @@ class Downloadables(BaseSDK):
     ) -> Optional[models.CustomerPortalDownloadablesListResponse]:
         r"""List Downloadables
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param organization_id: Filter by organization ID.
         :param benefit_id: Filter by benefit ID.
         :param page: Page number, defaults to 1.
@@ -216,7 +233,9 @@ class Downloadables(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalDownloadablesListSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -233,7 +252,7 @@ class Downloadables(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:downloadables:list",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["422", "4XX", "5XX"],
@@ -259,6 +278,7 @@ class Downloadables(BaseSDK):
                 return None
 
             return self.list(
+                security=security,
                 organization_id=organization_id,
                 benefit_id=benefit_id,
                 page=next_page,

@@ -15,6 +15,8 @@
 
 List discounts.
 
+**Scopes**: `discounts:read` `discounts:write`
+
 ### Example Usage
 
 ```python
@@ -58,6 +60,8 @@ with Polar(
 ## create
 
 Create a discount.
+
+**Scopes**: `discounts:write`
 
 ### Example Usage
 
@@ -105,6 +109,8 @@ with Polar(
 
 Get a discount by ID.
 
+**Scopes**: `discounts:read` `discounts:write`
+
 ### Example Usage
 
 ```python
@@ -143,6 +149,8 @@ with Polar(
 ## update
 
 Update a discount.
+
+**Scopes**: `discounts:write`
 
 ### Example Usage
 
@@ -183,6 +191,8 @@ with Polar(
 ## delete
 
 Delete a discount.
+
+**Scopes**: `discounts:write`
 
 ### Example Usage
 

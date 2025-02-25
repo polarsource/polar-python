@@ -14,6 +14,8 @@
 
 Get license keys connected to the given organization & filters.
 
+**Scopes**: `license_keys:read` `license_keys:write`
+
 ### Example Usage
 
 ```python
@@ -59,6 +61,8 @@ with Polar(
 
 Get a license key.
 
+**Scopes**: `license_keys:read` `license_keys:write`
+
 ### Example Usage
 
 ```python
@@ -98,6 +102,8 @@ with Polar(
 ## update
 
 Update a license key.
+
+**Scopes**: `license_keys:write`
 
 ### Example Usage
 
@@ -139,6 +145,8 @@ with Polar(
 ## get_activation
 
 Get a license key activation.
+
+**Scopes**: `license_keys:read` `license_keys:write`
 
 ### Example Usage
 

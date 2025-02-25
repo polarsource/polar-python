@@ -1,8 +1,8 @@
-# CustomerPortalCustomersGetRequest
+# CustomerPortalCustomersAddPaymentMethodSecurity
 
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *str*              | :heavy_check_mark: | The customer ID.   |
+| `customer_session` | *str*              | :heavy_check_mark: | N/A                |

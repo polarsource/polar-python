@@ -15,6 +15,8 @@
 
 List products.
 
+**Scopes**: `products:read` `products:write`
+
 ### Example Usage
 
 ```python
@@ -62,6 +64,8 @@ with Polar(
 ## create
 
 Create a product.
+
+**Scopes**: `products:write`
 
 ### Example Usage
 
@@ -111,6 +115,8 @@ with Polar(
 
 Get a product by ID.
 
+**Scopes**: `products:read` `products:write`
+
 ### Example Usage
 
 ```python
@@ -149,6 +155,8 @@ with Polar(
 ## update
 
 Update a product.
+
+**Scopes**: `products:write`
 
 ### Example Usage
 
@@ -190,6 +198,8 @@ with Polar(
 ## update_benefits
 
 Update benefits granted by a product.
+
+**Scopes**: `products:write`
 
 ### Example Usage
 

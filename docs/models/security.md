@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `access_token`     | *str*              | :heavy_check_mark: | N/A                |
+| `access_token`     | *Optional[str]*    | :heavy_minus_sign: | N/A                |

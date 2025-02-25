@@ -23,6 +23,8 @@ class Clients(BaseSDK):
 
         List OAuth2 clients.
 
+        **Scopes**:
+
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -151,6 +153,8 @@ class Clients(BaseSDK):
         r"""List Clients
 
         List OAuth2 clients.
+
+        **Scopes**:
 
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -282,6 +286,8 @@ class Clients(BaseSDK):
 
         Create an OAuth2 client.
 
+        **Scopes**:
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -384,6 +390,8 @@ class Clients(BaseSDK):
 
         Create an OAuth2 client.
 
+        **Scopes**:
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -484,6 +492,8 @@ class Clients(BaseSDK):
 
         Get an OAuth2 client by Client ID.
 
+        **Scopes**:
+
         :param client_id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -580,6 +590,8 @@ class Clients(BaseSDK):
         r"""Get Client
 
         Get an OAuth2 client by Client ID.
+
+        **Scopes**:
 
         :param client_id:
         :param retries: Override the default retry configuration for this method
@@ -681,6 +693,8 @@ class Clients(BaseSDK):
         r"""Update Client
 
         Update an OAuth2 client.
+
+        **Scopes**:
 
         :param client_id:
         :param o_auth2_client_configuration_update:
@@ -795,6 +809,8 @@ class Clients(BaseSDK):
 
         Update an OAuth2 client.
 
+        **Scopes**:
+
         :param client_id:
         :param o_auth2_client_configuration_update:
         :param retries: Override the default retry configuration for this method
@@ -904,6 +920,8 @@ class Clients(BaseSDK):
 
         Delete an OAuth2 client.
 
+        **Scopes**:
+
         :param client_id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1000,6 +1018,8 @@ class Clients(BaseSDK):
         r"""Delete Client
 
         Delete an OAuth2 client.
+
+        **Scopes**:
 
         :param client_id:
         :param retries: Override the default retry configuration for this method
