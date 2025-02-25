@@ -38,6 +38,8 @@ class Customers(BaseSDK):
 
         List customers.
 
+        **Scopes**: `customers:read` `customers:write`
+
         :param organization_id: Filter by organization ID.
         :param email: Filter by exact email.
         :param query: Filter by name or email.
@@ -195,6 +197,8 @@ class Customers(BaseSDK):
 
         List customers.
 
+        **Scopes**: `customers:read` `customers:write`
+
         :param organization_id: Filter by organization ID.
         :param email: Filter by exact email.
         :param query: Filter by name or email.
@@ -336,6 +340,8 @@ class Customers(BaseSDK):
 
         Create a customer.
 
+        **Scopes**: `customers:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -436,6 +442,8 @@ class Customers(BaseSDK):
 
         Create a customer.
 
+        **Scopes**: `customers:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -535,6 +543,8 @@ class Customers(BaseSDK):
         r"""Get Customer
 
         Get a customer by ID.
+
+        **Scopes**: `customers:read` `customers:write`
 
         :param id: The customer ID.
         :param retries: Override the default retry configuration for this method
@@ -638,6 +648,8 @@ class Customers(BaseSDK):
 
         Get a customer by ID.
 
+        **Scopes**: `customers:read` `customers:write`
+
         :param id: The customer ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -740,6 +752,8 @@ class Customers(BaseSDK):
         r"""Update Customer
 
         Update a customer.
+
+        **Scopes**: `customers:write`
 
         :param id: The customer ID.
         :param customer_update:
@@ -850,6 +864,8 @@ class Customers(BaseSDK):
         r"""Update Customer
 
         Update a customer.
+
+        **Scopes**: `customers:write`
 
         :param id: The customer ID.
         :param customer_update:
@@ -962,6 +978,8 @@ class Customers(BaseSDK):
 
         Immediately cancels any active subscriptions and revokes any active benefits.
 
+        **Scopes**: `customers:write`
+
         :param id: The customer ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1065,6 +1083,8 @@ class Customers(BaseSDK):
         Delete a customer.
 
         Immediately cancels any active subscriptions and revokes any active benefits.
+
+        **Scopes**: `customers:write`
 
         :param id: The customer ID.
         :param retries: Override the default retry configuration for this method

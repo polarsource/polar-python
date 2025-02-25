@@ -13,18 +13,19 @@
 
 ## list
 
-List License Keys
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.customer_portal.license_keys.list()
+    res = polar.customer_portal.license_keys.list(security=polar_sdk.CustomerPortalLicenseKeysListSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ))
 
     while res is not None:
         # Handle items
@@ -37,6 +38,7 @@ with Polar(
 
 | Parameter                                                                                                                                                           | Type                                                                                                                                                                | Required                                                                                                                                                            | Description                                                                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                                                          | [models.CustomerPortalLicenseKeysListSecurity](../../models/customerportallicensekeyslistsecurity.md)                                                               | :heavy_check_mark:                                                                                                                                                  | N/A                                                                                                                                                                 |
 | `organization_id`                                                                                                                                                   | [OptionalNullable[models.CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter]](../../models/customerportallicensekeyslistqueryparamorganizationidfilter.md) | :heavy_minus_sign:                                                                                                                                                  | Filter by organization ID.                                                                                                                                          |
 | `benefit_id`                                                                                                                                                        | *OptionalNullable[str]*                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                  | Filter by a specific benefit                                                                                                                                        |
 | `page`                                                                                                                                                              | *Optional[int]*                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                  | Page number, defaults to 1.                                                                                                                                         |
@@ -60,16 +62,19 @@ with Polar(
 
 Get a license key.
 
+**Scopes**: `customer_portal:read` `customer_portal:write`
+
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.customer_portal.license_keys.get(id="<value>")
+    res = polar.customer_portal.license_keys.get(security=polar_sdk.CustomerPortalLicenseKeysGetSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), id="<value>")
 
     # Handle response
     print(res)
@@ -78,10 +83,11 @@ with Polar(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `security`                                                                                          | [models.CustomerPortalLicenseKeysGetSecurity](../../models/customerportallicensekeysgetsecurity.md) | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
+| `id`                                                                                                | *str*                                                                                               | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
+| `retries`                                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                    | :heavy_minus_sign:                                                                                  | Configuration to override the default retry behavior of the client.                                 |
 
 ### Response
 

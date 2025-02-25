@@ -12,6 +12,10 @@ class PolarLicenseKeys(BaseSDK):
     def list(
         self,
         *,
+        security: Union[
+            models.CustomerPortalLicenseKeysListSecurity,
+            models.CustomerPortalLicenseKeysListSecurityTypedDict,
+        ],
         organization_id: OptionalNullable[
             Union[
                 models.CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter,
@@ -28,6 +32,9 @@ class PolarLicenseKeys(BaseSDK):
     ) -> Optional[models.CustomerPortalLicenseKeysListResponse]:
         r"""List License Keys
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param organization_id: Filter by organization ID.
         :param benefit_id: Filter by a specific benefit
         :param page: Page number, defaults to 1.
@@ -66,7 +73,9 @@ class PolarLicenseKeys(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalLicenseKeysListSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -83,7 +92,7 @@ class PolarLicenseKeys(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:license_keys:list",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["401", "404", "422", "4XX", "5XX"],
@@ -109,6 +118,7 @@ class PolarLicenseKeys(BaseSDK):
                 return None
 
             return self.list(
+                security=security,
                 organization_id=organization_id,
                 benefit_id=benefit_id,
                 page=next_page,
@@ -160,6 +170,10 @@ class PolarLicenseKeys(BaseSDK):
     async def list_async(
         self,
         *,
+        security: Union[
+            models.CustomerPortalLicenseKeysListSecurity,
+            models.CustomerPortalLicenseKeysListSecurityTypedDict,
+        ],
         organization_id: OptionalNullable[
             Union[
                 models.CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter,
@@ -176,6 +190,9 @@ class PolarLicenseKeys(BaseSDK):
     ) -> Optional[models.CustomerPortalLicenseKeysListResponse]:
         r"""List License Keys
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param organization_id: Filter by organization ID.
         :param benefit_id: Filter by a specific benefit
         :param page: Page number, defaults to 1.
@@ -214,7 +231,9 @@ class PolarLicenseKeys(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalLicenseKeysListSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -231,7 +250,7 @@ class PolarLicenseKeys(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:license_keys:list",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["401", "404", "422", "4XX", "5XX"],
@@ -257,6 +276,7 @@ class PolarLicenseKeys(BaseSDK):
                 return None
 
             return self.list(
+                security=security,
                 organization_id=organization_id,
                 benefit_id=benefit_id,
                 page=next_page,
@@ -308,6 +328,10 @@ class PolarLicenseKeys(BaseSDK):
     def get(
         self,
         *,
+        security: Union[
+            models.CustomerPortalLicenseKeysGetSecurity,
+            models.CustomerPortalLicenseKeysGetSecurityTypedDict,
+        ],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -318,6 +342,9 @@ class PolarLicenseKeys(BaseSDK):
 
         Get a license key.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -350,7 +377,9 @@ class PolarLicenseKeys(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalLicenseKeysGetSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -367,7 +396,7 @@ class PolarLicenseKeys(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:license_keys:get",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["404", "422", "4XX", "5XX"],
@@ -410,6 +439,10 @@ class PolarLicenseKeys(BaseSDK):
     async def get_async(
         self,
         *,
+        security: Union[
+            models.CustomerPortalLicenseKeysGetSecurity,
+            models.CustomerPortalLicenseKeysGetSecurityTypedDict,
+        ],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -420,6 +453,9 @@ class PolarLicenseKeys(BaseSDK):
 
         Get a license key.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -452,7 +488,9 @@ class PolarLicenseKeys(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalLicenseKeysGetSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -469,7 +507,7 @@ class PolarLicenseKeys(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:license_keys:get",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["404", "422", "4XX", "5XX"],

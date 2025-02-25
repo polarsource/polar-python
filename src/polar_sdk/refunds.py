@@ -46,6 +46,8 @@ class Refunds(BaseSDK):
 
         List products.
 
+        **Scopes**: `refunds:read` `refunds:write`
+
         :param id: Filter by refund ID.
         :param organization_id: Filter by organization ID.
         :param order_id: Filter by order ID.
@@ -217,6 +219,8 @@ class Refunds(BaseSDK):
 
         List products.
 
+        **Scopes**: `refunds:read` `refunds:write`
+
         :param id: Filter by refund ID.
         :param organization_id: Filter by organization ID.
         :param order_id: Filter by order ID.
@@ -364,6 +368,8 @@ class Refunds(BaseSDK):
 
         Create a refund.
 
+        **Scopes**: `refunds:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -475,6 +481,8 @@ class Refunds(BaseSDK):
         r"""Create Refund
 
         Create a refund.
+
+        **Scopes**: `refunds:write`
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method

@@ -15,6 +15,8 @@
 
 List subscriptions.
 
+**Scopes**: `subscriptions:read` `subscriptions:write`
+
 ### Example Usage
 
 ```python
@@ -62,6 +64,8 @@ with Polar(
 
 Export subscriptions as a CSV file.
 
+**Scopes**: `subscriptions:read` `subscriptions:write`
+
 ### Example Usage
 
 ```python
@@ -99,6 +103,8 @@ with Polar(
 ## get
 
 Get a subscription by ID.
+
+**Scopes**: `subscriptions:write`
 
 ### Example Usage
 
@@ -138,6 +144,8 @@ with Polar(
 ## update
 
 Update a subscription.
+
+**Scopes**: `subscriptions:write`
 
 ### Example Usage
 
@@ -181,6 +189,8 @@ with Polar(
 ## revoke
 
 Revoke a subscription, i.e cancel immediately.
+
+**Scopes**: `subscriptions:write`
 
 ### Example Usage
 

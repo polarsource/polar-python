@@ -34,6 +34,8 @@ class CustomFields(BaseSDK):
 
         List custom fields.
 
+        **Scopes**: `custom_fields:read` `custom_fields:write`
+
         :param organization_id: Filter by organization ID.
         :param query: Filter by custom field name or slug.
         :param type_filter: Filter by custom field type.
@@ -186,6 +188,8 @@ class CustomFields(BaseSDK):
 
         List custom fields.
 
+        **Scopes**: `custom_fields:read` `custom_fields:write`
+
         :param organization_id: Filter by organization ID.
         :param query: Filter by custom field name or slug.
         :param type_filter: Filter by custom field type.
@@ -326,6 +330,8 @@ class CustomFields(BaseSDK):
 
         Create a custom field.
 
+        **Scopes**: `custom_fields:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -426,6 +432,8 @@ class CustomFields(BaseSDK):
 
         Create a custom field.
 
+        **Scopes**: `custom_fields:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -525,6 +533,8 @@ class CustomFields(BaseSDK):
         r"""Get Custom Field
 
         Get a custom field by ID.
+
+        **Scopes**: `custom_fields:read` `custom_fields:write`
 
         :param id: The custom field ID.
         :param retries: Override the default retry configuration for this method
@@ -627,6 +637,8 @@ class CustomFields(BaseSDK):
         r"""Get Custom Field
 
         Get a custom field by ID.
+
+        **Scopes**: `custom_fields:read` `custom_fields:write`
 
         :param id: The custom field ID.
         :param retries: Override the default retry configuration for this method
@@ -732,6 +744,8 @@ class CustomFields(BaseSDK):
         r"""Update Custom Field
 
         Update a custom field.
+
+        **Scopes**: `custom_fields:write`
 
         :param id: The custom field ID.
         :param custom_field_update:
@@ -849,6 +863,8 @@ class CustomFields(BaseSDK):
 
         Update a custom field.
 
+        **Scopes**: `custom_fields:write`
+
         :param id: The custom field ID.
         :param custom_field_update:
         :param retries: Override the default retry configuration for this method
@@ -962,6 +978,8 @@ class CustomFields(BaseSDK):
 
         Delete a custom field.
 
+        **Scopes**: `custom_fields:write`
+
         :param id: The custom field ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1063,6 +1081,8 @@ class CustomFields(BaseSDK):
         r"""Delete Custom Field
 
         Delete a custom field.
+
+        **Scopes**: `custom_fields:write`
 
         :param id: The custom field ID.
         :param retries: Override the default retry configuration for this method

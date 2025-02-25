@@ -479,6 +479,8 @@ from .customer import (
 from .customer_portal_benefit_grants_getop import (
     CustomerPortalBenefitGrantsGetRequest,
     CustomerPortalBenefitGrantsGetRequestTypedDict,
+    CustomerPortalBenefitGrantsGetSecurity,
+    CustomerPortalBenefitGrantsGetSecurityTypedDict,
 )
 from .customer_portal_benefit_grants_listop import (
     CustomerPortalBenefitGrantsListQueryParamBenefitIDFilter,
@@ -489,6 +491,8 @@ from .customer_portal_benefit_grants_listop import (
     CustomerPortalBenefitGrantsListRequestTypedDict,
     CustomerPortalBenefitGrantsListResponse,
     CustomerPortalBenefitGrantsListResponseTypedDict,
+    CustomerPortalBenefitGrantsListSecurity,
+    CustomerPortalBenefitGrantsListSecurityTypedDict,
     QueryParamBenefitTypeFilter,
     QueryParamBenefitTypeFilterTypedDict,
     QueryParamCheckoutIDFilter,
@@ -501,10 +505,36 @@ from .customer_portal_benefit_grants_listop import (
 from .customer_portal_benefit_grants_updateop import (
     CustomerPortalBenefitGrantsUpdateRequest,
     CustomerPortalBenefitGrantsUpdateRequestTypedDict,
+    CustomerPortalBenefitGrantsUpdateSecurity,
+    CustomerPortalBenefitGrantsUpdateSecurityTypedDict,
+)
+from .customer_portal_customers_add_payment_methodop import (
+    CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethod,
+    CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethodTypedDict,
+    CustomerPortalCustomersAddPaymentMethodSecurity,
+    CustomerPortalCustomersAddPaymentMethodSecurityTypedDict,
+)
+from .customer_portal_customers_delete_payment_methodop import (
+    CustomerPortalCustomersDeletePaymentMethodRequest,
+    CustomerPortalCustomersDeletePaymentMethodRequestTypedDict,
+    CustomerPortalCustomersDeletePaymentMethodSecurity,
+    CustomerPortalCustomersDeletePaymentMethodSecurityTypedDict,
+)
+from .customer_portal_customers_get_payment_methodsop import (
+    CustomerPortalCustomersGetPaymentMethodsRequest,
+    CustomerPortalCustomersGetPaymentMethodsRequestTypedDict,
+    CustomerPortalCustomersGetPaymentMethodsResponse,
+    CustomerPortalCustomersGetPaymentMethodsResponseTypedDict,
+    CustomerPortalCustomersGetPaymentMethodsSecurity,
+    CustomerPortalCustomersGetPaymentMethodsSecurityTypedDict,
 )
 from .customer_portal_customers_getop import (
-    CustomerPortalCustomersGetRequest,
-    CustomerPortalCustomersGetRequestTypedDict,
+    CustomerPortalCustomersGetSecurity,
+    CustomerPortalCustomersGetSecurityTypedDict,
+)
+from .customer_portal_customers_updateop import (
+    CustomerPortalCustomersUpdateSecurity,
+    CustomerPortalCustomersUpdateSecurityTypedDict,
 )
 from .customer_portal_downloadables_customer_portal_downloadables_getop import (
     CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest,
@@ -519,10 +549,14 @@ from .customer_portal_downloadables_listop import (
     CustomerPortalDownloadablesListRequestTypedDict,
     CustomerPortalDownloadablesListResponse,
     CustomerPortalDownloadablesListResponseTypedDict,
+    CustomerPortalDownloadablesListSecurity,
+    CustomerPortalDownloadablesListSecurityTypedDict,
 )
 from .customer_portal_license_keys_getop import (
     CustomerPortalLicenseKeysGetRequest,
     CustomerPortalLicenseKeysGetRequestTypedDict,
+    CustomerPortalLicenseKeysGetSecurity,
+    CustomerPortalLicenseKeysGetSecurityTypedDict,
 )
 from .customer_portal_license_keys_listop import (
     CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter,
@@ -531,14 +565,20 @@ from .customer_portal_license_keys_listop import (
     CustomerPortalLicenseKeysListRequestTypedDict,
     CustomerPortalLicenseKeysListResponse,
     CustomerPortalLicenseKeysListResponseTypedDict,
+    CustomerPortalLicenseKeysListSecurity,
+    CustomerPortalLicenseKeysListSecurityTypedDict,
 )
 from .customer_portal_orders_getop import (
     CustomerPortalOrdersGetRequest,
     CustomerPortalOrdersGetRequestTypedDict,
+    CustomerPortalOrdersGetSecurity,
+    CustomerPortalOrdersGetSecurityTypedDict,
 )
 from .customer_portal_orders_invoiceop import (
     CustomerPortalOrdersInvoiceRequest,
     CustomerPortalOrdersInvoiceRequestTypedDict,
+    CustomerPortalOrdersInvoiceSecurity,
+    CustomerPortalOrdersInvoiceSecurityTypedDict,
 )
 from .customer_portal_orders_listop import (
     CustomerPortalOrdersListQueryParamOrganizationIDFilter,
@@ -551,6 +591,8 @@ from .customer_portal_orders_listop import (
     CustomerPortalOrdersListRequestTypedDict,
     CustomerPortalOrdersListResponse,
     CustomerPortalOrdersListResponseTypedDict,
+    CustomerPortalOrdersListSecurity,
+    CustomerPortalOrdersListSecurityTypedDict,
     QueryParamProductPriceTypeFilter,
     QueryParamProductPriceTypeFilterTypedDict,
 )
@@ -561,10 +603,14 @@ from .customer_portal_organizations_getop import (
 from .customer_portal_subscriptions_cancelop import (
     CustomerPortalSubscriptionsCancelRequest,
     CustomerPortalSubscriptionsCancelRequestTypedDict,
+    CustomerPortalSubscriptionsCancelSecurity,
+    CustomerPortalSubscriptionsCancelSecurityTypedDict,
 )
 from .customer_portal_subscriptions_getop import (
     CustomerPortalSubscriptionsGetRequest,
     CustomerPortalSubscriptionsGetRequestTypedDict,
+    CustomerPortalSubscriptionsGetSecurity,
+    CustomerPortalSubscriptionsGetSecurityTypedDict,
 )
 from .customer_portal_subscriptions_listop import (
     CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter,
@@ -575,10 +621,14 @@ from .customer_portal_subscriptions_listop import (
     CustomerPortalSubscriptionsListRequestTypedDict,
     CustomerPortalSubscriptionsListResponse,
     CustomerPortalSubscriptionsListResponseTypedDict,
+    CustomerPortalSubscriptionsListSecurity,
+    CustomerPortalSubscriptionsListSecurityTypedDict,
 )
 from .customer_portal_subscriptions_updateop import (
     CustomerPortalSubscriptionsUpdateRequest,
     CustomerPortalSubscriptionsUpdateRequestTypedDict,
+    CustomerPortalSubscriptionsUpdateSecurity,
+    CustomerPortalSubscriptionsUpdateSecurityTypedDict,
 )
 from .customerbenefitgrant import CustomerBenefitGrant, CustomerBenefitGrantTypedDict
 from .customerbenefitgrantads import (
@@ -670,11 +720,19 @@ from .customerordersubscription import (
     CustomerOrderSubscriptionTypedDict,
 )
 from .customerorganization import CustomerOrganization, CustomerOrganizationTypedDict
+from .customerpaymentmethodcreate import (
+    CustomerPaymentMethodCreate,
+    CustomerPaymentMethodCreateTypedDict,
+)
 from .customerportalcustomer import (
     CustomerPortalCustomer,
     CustomerPortalCustomerTaxID,
     CustomerPortalCustomerTaxIDTypedDict,
     CustomerPortalCustomerTypedDict,
+)
+from .customerportalcustomerupdate import (
+    CustomerPortalCustomerUpdate,
+    CustomerPortalCustomerUpdateTypedDict,
 )
 from .customerportaloauthaccount import (
     CustomerPortalOAuthAccount,
@@ -1199,6 +1257,12 @@ from .listresource_subscription_ import (
     ListResourceSubscription,
     ListResourceSubscriptionTypedDict,
 )
+from .listresource_union_paymentmethodcard_paymentmethodgeneric_ import (
+    Items,
+    ItemsTypedDict,
+    ListResourceUnionPaymentMethodCardPaymentMethodGeneric,
+    ListResourceUnionPaymentMethodCardPaymentMethodGenericTypedDict,
+)
 from .meter import (
     Meter,
     MeterAggregation,
@@ -1411,6 +1475,9 @@ from .organizationsubscriptionsettings import (
 from .organizationupdate import OrganizationUpdate, OrganizationUpdateTypedDict
 from .pagination import Pagination, PaginationTypedDict
 from .paymenterror import PaymentError, PaymentErrorData
+from .paymentmethodcard import PaymentMethodCard, PaymentMethodCardTypedDict
+from .paymentmethodcarddata import PaymentMethodCardData, PaymentMethodCardDataTypedDict
+from .paymentmethodgeneric import PaymentMethodGeneric, PaymentMethodGenericTypedDict
 from .paymentprocessor import PaymentProcessor
 from .platforms import Platforms
 from .pledge import Pledge, PledgeTypedDict
@@ -2218,8 +2285,12 @@ __all__ = [
     "CustomerOrderTypedDict",
     "CustomerOrganization",
     "CustomerOrganizationTypedDict",
+    "CustomerPaymentMethodCreate",
+    "CustomerPaymentMethodCreateTypedDict",
     "CustomerPortalBenefitGrantsGetRequest",
     "CustomerPortalBenefitGrantsGetRequestTypedDict",
+    "CustomerPortalBenefitGrantsGetSecurity",
+    "CustomerPortalBenefitGrantsGetSecurityTypedDict",
     "CustomerPortalBenefitGrantsListQueryParamBenefitIDFilter",
     "CustomerPortalBenefitGrantsListQueryParamBenefitIDFilterTypedDict",
     "CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilter",
@@ -2228,14 +2299,36 @@ __all__ = [
     "CustomerPortalBenefitGrantsListRequestTypedDict",
     "CustomerPortalBenefitGrantsListResponse",
     "CustomerPortalBenefitGrantsListResponseTypedDict",
+    "CustomerPortalBenefitGrantsListSecurity",
+    "CustomerPortalBenefitGrantsListSecurityTypedDict",
     "CustomerPortalBenefitGrantsUpdateRequest",
     "CustomerPortalBenefitGrantsUpdateRequestTypedDict",
+    "CustomerPortalBenefitGrantsUpdateSecurity",
+    "CustomerPortalBenefitGrantsUpdateSecurityTypedDict",
     "CustomerPortalCustomer",
     "CustomerPortalCustomerTaxID",
     "CustomerPortalCustomerTaxIDTypedDict",
     "CustomerPortalCustomerTypedDict",
-    "CustomerPortalCustomersGetRequest",
-    "CustomerPortalCustomersGetRequestTypedDict",
+    "CustomerPortalCustomerUpdate",
+    "CustomerPortalCustomerUpdateTypedDict",
+    "CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethod",
+    "CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethodTypedDict",
+    "CustomerPortalCustomersAddPaymentMethodSecurity",
+    "CustomerPortalCustomersAddPaymentMethodSecurityTypedDict",
+    "CustomerPortalCustomersDeletePaymentMethodRequest",
+    "CustomerPortalCustomersDeletePaymentMethodRequestTypedDict",
+    "CustomerPortalCustomersDeletePaymentMethodSecurity",
+    "CustomerPortalCustomersDeletePaymentMethodSecurityTypedDict",
+    "CustomerPortalCustomersGetPaymentMethodsRequest",
+    "CustomerPortalCustomersGetPaymentMethodsRequestTypedDict",
+    "CustomerPortalCustomersGetPaymentMethodsResponse",
+    "CustomerPortalCustomersGetPaymentMethodsResponseTypedDict",
+    "CustomerPortalCustomersGetPaymentMethodsSecurity",
+    "CustomerPortalCustomersGetPaymentMethodsSecurityTypedDict",
+    "CustomerPortalCustomersGetSecurity",
+    "CustomerPortalCustomersGetSecurityTypedDict",
+    "CustomerPortalCustomersUpdateSecurity",
+    "CustomerPortalCustomersUpdateSecurityTypedDict",
     "CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest",
     "CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequestTypedDict",
     "CustomerPortalDownloadablesListQueryParamBenefitIDFilter",
@@ -2246,20 +2339,30 @@ __all__ = [
     "CustomerPortalDownloadablesListRequestTypedDict",
     "CustomerPortalDownloadablesListResponse",
     "CustomerPortalDownloadablesListResponseTypedDict",
+    "CustomerPortalDownloadablesListSecurity",
+    "CustomerPortalDownloadablesListSecurityTypedDict",
     "CustomerPortalLicenseKeysGetRequest",
     "CustomerPortalLicenseKeysGetRequestTypedDict",
+    "CustomerPortalLicenseKeysGetSecurity",
+    "CustomerPortalLicenseKeysGetSecurityTypedDict",
     "CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter",
     "CustomerPortalLicenseKeysListQueryParamOrganizationIDFilterTypedDict",
     "CustomerPortalLicenseKeysListRequest",
     "CustomerPortalLicenseKeysListRequestTypedDict",
     "CustomerPortalLicenseKeysListResponse",
     "CustomerPortalLicenseKeysListResponseTypedDict",
+    "CustomerPortalLicenseKeysListSecurity",
+    "CustomerPortalLicenseKeysListSecurityTypedDict",
     "CustomerPortalOAuthAccount",
     "CustomerPortalOAuthAccountTypedDict",
     "CustomerPortalOrdersGetRequest",
     "CustomerPortalOrdersGetRequestTypedDict",
+    "CustomerPortalOrdersGetSecurity",
+    "CustomerPortalOrdersGetSecurityTypedDict",
     "CustomerPortalOrdersInvoiceRequest",
     "CustomerPortalOrdersInvoiceRequestTypedDict",
+    "CustomerPortalOrdersInvoiceSecurity",
+    "CustomerPortalOrdersInvoiceSecurityTypedDict",
     "CustomerPortalOrdersListQueryParamOrganizationIDFilter",
     "CustomerPortalOrdersListQueryParamOrganizationIDFilterTypedDict",
     "CustomerPortalOrdersListQueryParamProductIDFilter",
@@ -2270,12 +2373,18 @@ __all__ = [
     "CustomerPortalOrdersListRequestTypedDict",
     "CustomerPortalOrdersListResponse",
     "CustomerPortalOrdersListResponseTypedDict",
+    "CustomerPortalOrdersListSecurity",
+    "CustomerPortalOrdersListSecurityTypedDict",
     "CustomerPortalOrganizationsGetRequest",
     "CustomerPortalOrganizationsGetRequestTypedDict",
     "CustomerPortalSubscriptionsCancelRequest",
     "CustomerPortalSubscriptionsCancelRequestTypedDict",
+    "CustomerPortalSubscriptionsCancelSecurity",
+    "CustomerPortalSubscriptionsCancelSecurityTypedDict",
     "CustomerPortalSubscriptionsGetRequest",
     "CustomerPortalSubscriptionsGetRequestTypedDict",
+    "CustomerPortalSubscriptionsGetSecurity",
+    "CustomerPortalSubscriptionsGetSecurityTypedDict",
     "CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter",
     "CustomerPortalSubscriptionsListQueryParamOrganizationIDFilterTypedDict",
     "CustomerPortalSubscriptionsListQueryParamProductIDFilter",
@@ -2284,8 +2393,12 @@ __all__ = [
     "CustomerPortalSubscriptionsListRequestTypedDict",
     "CustomerPortalSubscriptionsListResponse",
     "CustomerPortalSubscriptionsListResponseTypedDict",
+    "CustomerPortalSubscriptionsListSecurity",
+    "CustomerPortalSubscriptionsListSecurityTypedDict",
     "CustomerPortalSubscriptionsUpdateRequest",
     "CustomerPortalSubscriptionsUpdateRequestTypedDict",
+    "CustomerPortalSubscriptionsUpdateSecurity",
+    "CustomerPortalSubscriptionsUpdateSecurityTypedDict",
     "CustomerProduct",
     "CustomerProductPrices",
     "CustomerProductPricesTypedDict",
@@ -2501,6 +2614,8 @@ __all__ = [
     "IntrospectTokenResponseTypedDict",
     "Issue",
     "IssueTypedDict",
+    "Items",
+    "ItemsTypedDict",
     "Label",
     "LabelTypedDict",
     "LegacyRecurringProductPrice",
@@ -2600,6 +2715,8 @@ __all__ = [
     "ListResourceRepositoryTypedDict",
     "ListResourceSubscription",
     "ListResourceSubscriptionTypedDict",
+    "ListResourceUnionPaymentMethodCardPaymentMethodGeneric",
+    "ListResourceUnionPaymentMethodCardPaymentMethodGenericTypedDict",
     "Loc",
     "LocTypedDict",
     "Meta",
@@ -2781,6 +2898,12 @@ __all__ = [
     "PaginationTypedDict",
     "PaymentError",
     "PaymentErrorData",
+    "PaymentMethodCard",
+    "PaymentMethodCardData",
+    "PaymentMethodCardDataTypedDict",
+    "PaymentMethodCardTypedDict",
+    "PaymentMethodGeneric",
+    "PaymentMethodGenericTypedDict",
     "PaymentProcessor",
     "Permission",
     "PlatformFilter",

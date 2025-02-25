@@ -35,6 +35,8 @@ class ExternalOrganizations(BaseSDK):
 
         List external organizations.
 
+        **Scopes**: `external_organizations:read`
+
         :param platform: Filter by platform.
         :param name: Filter by name.
         :param organization_id: Filter by organization ID.
@@ -187,6 +189,8 @@ class ExternalOrganizations(BaseSDK):
         r"""List External Organizations
 
         List external organizations.
+
+        **Scopes**: `external_organizations:read`
 
         :param platform: Filter by platform.
         :param name: Filter by name.

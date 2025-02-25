@@ -12,18 +12,21 @@
 
 ## list
 
-List subscriptions of the authenticated customer or user.
+List subscriptions of the authenticated customer.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.customer_portal.subscriptions.list()
+    res = polar.customer_portal.subscriptions.list(security=polar_sdk.CustomerPortalSubscriptionsListSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ))
 
     while res is not None:
         # Handle items
@@ -36,6 +39,7 @@ with Polar(
 
 | Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                                                              | [models.CustomerPortalSubscriptionsListSecurity](../../models/customerportalsubscriptionslistsecurity.md)                                                               | :heavy_check_mark:                                                                                                                                                      | N/A                                                                                                                                                                     |
 | `organization_id`                                                                                                                                                       | [OptionalNullable[models.CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter]](../../models/customerportalsubscriptionslistqueryparamorganizationidfilter.md) | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
 | `product_id`                                                                                                                                                            | [OptionalNullable[models.CustomerPortalSubscriptionsListQueryParamProductIDFilter]](../../models/customerportalsubscriptionslistqueryparamproductidfilter.md)           | :heavy_minus_sign:                                                                                                                                                      | Filter by product ID.                                                                                                                                                   |
 | `active`                                                                                                                                                                | *OptionalNullable[bool]*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                      | Filter by active or cancelled subscription.                                                                                                                             |
@@ -58,18 +62,21 @@ with Polar(
 
 ## get
 
-Get a subscription for the authenticated customer or user.
+Get a subscription for the authenticated customer.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.customer_portal.subscriptions.get(id="<value>")
+    res = polar.customer_portal.subscriptions.get(security=polar_sdk.CustomerPortalSubscriptionsGetSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), id="<value>")
 
     # Handle response
     print(res)
@@ -78,10 +85,11 @@ with Polar(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The subscription ID.                                                |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                              | [models.CustomerPortalSubscriptionsGetSecurity](../../models/customerportalsubscriptionsgetsecurity.md) | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+| `id`                                                                                                    | *str*                                                                                                   | :heavy_check_mark:                                                                                      | The subscription ID.                                                                                    |
+| `retries`                                                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                        | :heavy_minus_sign:                                                                                      | Configuration to override the default retry behavior of the client.                                     |
 
 ### Response
 
@@ -97,18 +105,21 @@ with Polar(
 
 ## update
 
-Update a subscription of the authenticated customer or user.
+Update a subscription of the authenticated customer.
+
+**Scopes**: `customer_portal:write`
 
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.customer_portal.subscriptions.update(id="<value>", customer_subscription_update={})
+    res = polar.customer_portal.subscriptions.update(security=polar_sdk.CustomerPortalSubscriptionsUpdateSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), id="<value>", customer_subscription_update={})
 
     # Handle response
     print(res)
@@ -117,11 +128,12 @@ with Polar(
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `id`                                                                            | *str*                                                                           | :heavy_check_mark:                                                              | The subscription ID.                                                            |
-| `customer_subscription_update`                                                  | [models.CustomerSubscriptionUpdate](../../models/customersubscriptionupdate.md) | :heavy_check_mark:                                                              | N/A                                                                             |
-| `retries`                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                              | Configuration to override the default retry behavior of the client.             |
+| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                    | [models.CustomerPortalSubscriptionsUpdateSecurity](../../models/customerportalsubscriptionsupdatesecurity.md) | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
+| `id`                                                                                                          | *str*                                                                                                         | :heavy_check_mark:                                                                                            | The subscription ID.                                                                                          |
+| `customer_subscription_update`                                                                                | [models.CustomerSubscriptionUpdate](../../models/customersubscriptionupdate.md)                               | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
+| `retries`                                                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                              | :heavy_minus_sign:                                                                                            | Configuration to override the default retry behavior of the client.                                           |
 
 ### Response
 
@@ -138,18 +150,21 @@ with Polar(
 
 ## cancel
 
-Cancel a subscription of the authenticated customer or user.
+Cancel a subscription of the authenticated customer.
+
+**Scopes**: `customer_portal:write`
 
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.customer_portal.subscriptions.cancel(id="<value>")
+    res = polar.customer_portal.subscriptions.cancel(security=polar_sdk.CustomerPortalSubscriptionsCancelSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), id="<value>")
 
     # Handle response
     print(res)
@@ -158,10 +173,11 @@ with Polar(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The subscription ID.                                                |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                    | [models.CustomerPortalSubscriptionsCancelSecurity](../../models/customerportalsubscriptionscancelsecurity.md) | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
+| `id`                                                                                                          | *str*                                                                                                         | :heavy_check_mark:                                                                                            | The subscription ID.                                                                                          |
+| `retries`                                                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                              | :heavy_minus_sign:                                                                                            | Configuration to override the default retry behavior of the client.                                           |
 
 ### Response
 

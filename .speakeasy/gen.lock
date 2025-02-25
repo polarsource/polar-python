@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: 3da720c5c3d53c438906e7abbdfa65f3
+  docChecksum: f5cb5eb99a0c2e74687939feb495b787
   docVersion: 0.1.0
-  speakeasyVersion: 1.497.0
-  generationVersion: 2.517.3
-  releaseVersion: 0.15.1
-  configChecksum: 961fc1ba809d77e035d92ba145cb3e74
+  speakeasyVersion: 1.503.0
+  generationVersion: 2.526.1
+  releaseVersion: 0.16.0
+  configChecksum: e1311abddb5d1fddcb72bbe55d049410
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -14,7 +14,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.11.0
+    core: 5.12.1
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.2
     devContainers: 3.0.0
@@ -28,6 +28,7 @@ features:
     globalServerURLs: 3.1.0
     groups: 3.0.0
     methodArguments: 1.0.2
+    methodSecurity: 3.0.1
     nameOverrides: 3.0.1
     nullables: 1.0.1
     pagination: 3.0.4
@@ -245,40 +246,63 @@ generatedFiles:
   - docs/models/customerordersortproperty.md
   - docs/models/customerordersubscription.md
   - docs/models/customerorganization.md
+  - docs/models/customerpaymentmethodcreate.md
   - docs/models/customerportalbenefitgrantsgetrequest.md
+  - docs/models/customerportalbenefitgrantsgetsecurity.md
   - docs/models/customerportalbenefitgrantslistqueryparambenefitidfilter.md
   - docs/models/customerportalbenefitgrantslistqueryparamorganizationidfilter.md
   - docs/models/customerportalbenefitgrantslistrequest.md
   - docs/models/customerportalbenefitgrantslistresponse.md
+  - docs/models/customerportalbenefitgrantslistsecurity.md
   - docs/models/customerportalbenefitgrantsupdaterequest.md
+  - docs/models/customerportalbenefitgrantsupdatesecurity.md
   - docs/models/customerportalcustomer.md
-  - docs/models/customerportalcustomersgetrequest.md
+  - docs/models/customerportalcustomersaddpaymentmethodresponsecustomerportalcustomersaddpaymentmethod.md
+  - docs/models/customerportalcustomersaddpaymentmethodsecurity.md
+  - docs/models/customerportalcustomersdeletepaymentmethodrequest.md
+  - docs/models/customerportalcustomersdeletepaymentmethodsecurity.md
+  - docs/models/customerportalcustomersgetpaymentmethodsrequest.md
+  - docs/models/customerportalcustomersgetpaymentmethodsresponse.md
+  - docs/models/customerportalcustomersgetpaymentmethodssecurity.md
+  - docs/models/customerportalcustomersgetsecurity.md
+  - docs/models/customerportalcustomersupdatesecurity.md
   - docs/models/customerportalcustomertaxid.md
+  - docs/models/customerportalcustomerupdate.md
   - docs/models/customerportaldownloadablescustomerportaldownloadablesgetrequest.md
   - docs/models/customerportaldownloadableslistqueryparambenefitidfilter.md
   - docs/models/customerportaldownloadableslistqueryparamorganizationidfilter.md
   - docs/models/customerportaldownloadableslistrequest.md
   - docs/models/customerportaldownloadableslistresponse.md
+  - docs/models/customerportaldownloadableslistsecurity.md
   - docs/models/customerportallicensekeysgetrequest.md
+  - docs/models/customerportallicensekeysgetsecurity.md
   - docs/models/customerportallicensekeyslistqueryparamorganizationidfilter.md
   - docs/models/customerportallicensekeyslistrequest.md
   - docs/models/customerportallicensekeyslistresponse.md
+  - docs/models/customerportallicensekeyslistsecurity.md
   - docs/models/customerportaloauthaccount.md
   - docs/models/customerportalordersgetrequest.md
+  - docs/models/customerportalordersgetsecurity.md
   - docs/models/customerportalordersinvoicerequest.md
+  - docs/models/customerportalordersinvoicesecurity.md
   - docs/models/customerportalorderslistqueryparamorganizationidfilter.md
   - docs/models/customerportalorderslistqueryparamproductidfilter.md
   - docs/models/customerportalorderslistqueryparamsubscriptionidfilter.md
   - docs/models/customerportalorderslistrequest.md
   - docs/models/customerportalorderslistresponse.md
+  - docs/models/customerportalorderslistsecurity.md
   - docs/models/customerportalorganizationsgetrequest.md
   - docs/models/customerportalsubscriptionscancelrequest.md
+  - docs/models/customerportalsubscriptionscancelsecurity.md
   - docs/models/customerportalsubscriptionsgetrequest.md
+  - docs/models/customerportalsubscriptionsgetsecurity.md
   - docs/models/customerportalsubscriptionslistqueryparamorganizationidfilter.md
   - docs/models/customerportalsubscriptionslistqueryparamproductidfilter.md
   - docs/models/customerportalsubscriptionslistrequest.md
   - docs/models/customerportalsubscriptionslistresponse.md
+  - docs/models/customerportalsubscriptionslistsecurity.md
   - docs/models/customerportalsubscriptionsupdaterequest.md
+  - docs/models/customerportalsubscriptionsupdatesecurity.md
   - docs/models/customerproduct.md
   - docs/models/customerproductprices.md
   - docs/models/customersdeleterequest.md
@@ -442,6 +466,7 @@ generatedFiles:
   - docs/models/introspecttokenrequesttokentypehint.md
   - docs/models/introspecttokenresponse.md
   - docs/models/issue.md
+  - docs/models/items.md
   - docs/models/label.md
   - docs/models/legacyrecurringproductprice.md
   - docs/models/legacyrecurringproductpricecustom.md
@@ -492,6 +517,7 @@ generatedFiles:
   - docs/models/listresourcerefund.md
   - docs/models/listresourcerepository.md
   - docs/models/listresourcesubscription.md
+  - docs/models/listresourceunionpaymentmethodcardpaymentmethodgeneric.md
   - docs/models/loc.md
   - docs/models/meta.md
   - docs/models/metadata.md
@@ -587,6 +613,9 @@ generatedFiles:
   - docs/models/organizationupdate.md
   - docs/models/pagination.md
   - docs/models/paymenterror.md
+  - docs/models/paymentmethodcard.md
+  - docs/models/paymentmethodcarddata.md
+  - docs/models/paymentmethodgeneric.md
   - docs/models/paymentprocessor.md
   - docs/models/permission.md
   - docs/models/platformfilter.md
@@ -925,7 +954,11 @@ generatedFiles:
   - src/polar_sdk/models/customer_portal_benefit_grants_getop.py
   - src/polar_sdk/models/customer_portal_benefit_grants_listop.py
   - src/polar_sdk/models/customer_portal_benefit_grants_updateop.py
+  - src/polar_sdk/models/customer_portal_customers_add_payment_methodop.py
+  - src/polar_sdk/models/customer_portal_customers_delete_payment_methodop.py
+  - src/polar_sdk/models/customer_portal_customers_get_payment_methodsop.py
   - src/polar_sdk/models/customer_portal_customers_getop.py
+  - src/polar_sdk/models/customer_portal_customers_updateop.py
   - src/polar_sdk/models/customer_portal_downloadables_customer_portal_downloadables_getop.py
   - src/polar_sdk/models/customer_portal_downloadables_listop.py
   - src/polar_sdk/models/customer_portal_license_keys_getop.py
@@ -963,7 +996,9 @@ generatedFiles:
   - src/polar_sdk/models/customerordersortproperty.py
   - src/polar_sdk/models/customerordersubscription.py
   - src/polar_sdk/models/customerorganization.py
+  - src/polar_sdk/models/customerpaymentmethodcreate.py
   - src/polar_sdk/models/customerportalcustomer.py
+  - src/polar_sdk/models/customerportalcustomerupdate.py
   - src/polar_sdk/models/customerportaloauthaccount.py
   - src/polar_sdk/models/customerproduct.py
   - src/polar_sdk/models/customers_deleteop.py
@@ -1106,6 +1141,7 @@ generatedFiles:
   - src/polar_sdk/models/listresource_refund_.py
   - src/polar_sdk/models/listresource_repository_.py
   - src/polar_sdk/models/listresource_subscription_.py
+  - src/polar_sdk/models/listresource_union_paymentmethodcard_paymentmethodgeneric_.py
   - src/polar_sdk/models/meter.py
   - src/polar_sdk/models/metercreate.py
   - src/polar_sdk/models/meterquantities.py
@@ -1164,6 +1200,9 @@ generatedFiles:
   - src/polar_sdk/models/organizationupdate.py
   - src/polar_sdk/models/pagination.py
   - src/polar_sdk/models/paymenterror.py
+  - src/polar_sdk/models/paymentmethodcard.py
+  - src/polar_sdk/models/paymentmethodcarddata.py
+  - src/polar_sdk/models/paymentmethodgeneric.py
   - src/polar_sdk/models/paymentprocessor.py
   - src/polar_sdk/models/platforms.py
   - src/polar_sdk/models/pledge.py
@@ -2862,5 +2901,21 @@ examples:
         "422":
           application/json: {}
         "400": {}
+  customer_portal:customers:update: {}
+  customer_portal:customers:get_payment_methods:
+    speakeasy-default-customer-portal:customers:get-payment-methods:
+      parameters:
+        query:
+          page: 1
+          limit: 10
+  customer_portal:customers:add_payment_method:
+    speakeasy-default-customer-portal:customers:add-payment-method:
+      requestBody:
+        application/json: {"confirmation_token_id": "<id>", "set_default": false, "return_url": "https://slight-digestive.info"}
+  customer_portal:customers:delete_payment_method:
+    speakeasy-default-customer-portal:customers:delete-payment-method:
+      parameters:
+        path:
+          id: "<id>"
 examplesVersion: 1.0.0
 generatedTests: {}

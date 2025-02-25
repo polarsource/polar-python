@@ -1189,6 +1189,10 @@ def webhook():
 #### [customer_portal.customers](docs/sdks/polarcustomers/README.md)
 
 * [get](docs/sdks/polarcustomers/README.md#get) - Get Customer
+* [update](docs/sdks/polarcustomers/README.md#update) - Update Customer
+* [get_payment_methods](docs/sdks/polarcustomers/README.md#get_payment_methods) - Get Customer Payment Methods
+* [add_payment_method](docs/sdks/polarcustomers/README.md#add_payment_method) - Add Customer Payment Method
+* [delete_payment_method](docs/sdks/polarcustomers/README.md#delete_payment_method) - Delete Customer Payment Method
 
 #### [customer_portal.downloadables](docs/sdks/downloadables/README.md)
 
@@ -1584,6 +1588,26 @@ with Polar(
 ) as polar:
 
     res = polar.external_organizations.list()
+
+    while res is not None:
+        # Handle items
+
+        res = res.next()
+
+```
+
+### Per-Operation Security Schemes
+
+Some operations in this SDK require the security scheme to be specified at the request level. For example:
+```python
+import polar_sdk
+from polar_sdk import Polar
+
+with Polar() as polar:
+
+    res = polar.customer_portal.benefit_grants.list(security=polar_sdk.CustomerPortalBenefitGrantsListSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ))
 
     while res is not None:
         # Handle items

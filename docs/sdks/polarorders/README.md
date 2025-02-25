@@ -11,18 +11,21 @@
 
 ## list
 
-List orders of the authenticated customer or user.
+List orders of the authenticated customer.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.customer_portal.orders.list()
+    res = polar.customer_portal.orders.list(security=polar_sdk.CustomerPortalOrdersListSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ))
 
     while res is not None:
         # Handle items
@@ -35,6 +38,7 @@ with Polar(
 
 | Parameter                                                                                                                                                                             | Type                                                                                                                                                                                  | Required                                                                                                                                                                              | Description                                                                                                                                                                           |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                                                                            | [models.CustomerPortalOrdersListSecurity](../../models/customerportalorderslistsecurity.md)                                                                                           | :heavy_check_mark:                                                                                                                                                                    | N/A                                                                                                                                                                                   |
 | `organization_id`                                                                                                                                                                     | [OptionalNullable[models.CustomerPortalOrdersListQueryParamOrganizationIDFilter]](../../models/customerportalorderslistqueryparamorganizationidfilter.md)                             | :heavy_minus_sign:                                                                                                                                                                    | Filter by organization ID.                                                                                                                                                            |
 | `product_id`                                                                                                                                                                          | [OptionalNullable[models.CustomerPortalOrdersListQueryParamProductIDFilter]](../../models/customerportalorderslistqueryparamproductidfilter.md)                                       | :heavy_minus_sign:                                                                                                                                                                    | Filter by product ID.                                                                                                                                                                 |
 | `product_price_type`                                                                                                                                                                  | [OptionalNullable[models.QueryParamProductPriceTypeFilter]](../../models/queryparamproductpricetypefilter.md)                                                                         | :heavy_minus_sign:                                                                                                                                                                    | Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases. |
@@ -58,18 +62,21 @@ with Polar(
 
 ## get
 
-Get an order by ID for the authenticated customer or user.
+Get an order by ID for the authenticated customer.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.customer_portal.orders.get(id="<value>")
+    res = polar.customer_portal.orders.get(security=polar_sdk.CustomerPortalOrdersGetSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), id="<value>")
 
     # Handle response
     print(res)
@@ -78,10 +85,11 @@ with Polar(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The order ID.                                                       |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `security`                                                                                | [models.CustomerPortalOrdersGetSecurity](../../models/customerportalordersgetsecurity.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `id`                                                                                      | *str*                                                                                     | :heavy_check_mark:                                                                        | The order ID.                                                                             |
+| `retries`                                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                          | :heavy_minus_sign:                                                                        | Configuration to override the default retry behavior of the client.                       |
 
 ### Response
 
@@ -99,16 +107,19 @@ with Polar(
 
 Get an order's invoice data.
 
+**Scopes**: `customer_portal:read` `customer_portal:write`
+
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.customer_portal.orders.invoice(id="<value>")
+    res = polar.customer_portal.orders.invoice(security=polar_sdk.CustomerPortalOrdersInvoiceSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), id="<value>")
 
     # Handle response
     print(res)
@@ -117,10 +128,11 @@ with Polar(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The order ID.                                                       |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `security`                                                                                        | [models.CustomerPortalOrdersInvoiceSecurity](../../models/customerportalordersinvoicesecurity.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `id`                                                                                              | *str*                                                                                             | :heavy_check_mark:                                                                                | The order ID.                                                                                     |
+| `retries`                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                  | :heavy_minus_sign:                                                                                | Configuration to override the default retry behavior of the client.                               |
 
 ### Response
 

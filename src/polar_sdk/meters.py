@@ -38,6 +38,8 @@ class Meters(BaseSDK):
 
         List meters.
 
+        **Scopes**: `meters:read` `meters:write`
+
         :param organization_id: Filter by organization ID.
         :param query: Filter by name.
         :param page: Page number, defaults to 1.
@@ -191,6 +193,8 @@ class Meters(BaseSDK):
 
         List meters.
 
+        **Scopes**: `meters:read` `meters:write`
+
         :param organization_id: Filter by organization ID.
         :param query: Filter by name.
         :param page: Page number, defaults to 1.
@@ -329,6 +333,8 @@ class Meters(BaseSDK):
 
         Create a meter.
 
+        **Scopes**: `meters:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -429,6 +435,8 @@ class Meters(BaseSDK):
 
         Create a meter.
 
+        **Scopes**: `meters:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -528,6 +536,8 @@ class Meters(BaseSDK):
         r"""Get Meter
 
         Get a meter by ID.
+
+        **Scopes**: `meters:read` `meters:write`
 
         :param id: The meter ID.
         :param retries: Override the default retry configuration for this method
@@ -631,6 +641,8 @@ class Meters(BaseSDK):
 
         Get a meter by ID.
 
+        **Scopes**: `meters:read` `meters:write`
+
         :param id: The meter ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -733,6 +745,8 @@ class Meters(BaseSDK):
         r"""Update Meter
 
         Update a meter.
+
+        **Scopes**: `meters:write`
 
         :param id: The meter ID.
         :param meter_update:
@@ -842,6 +856,8 @@ class Meters(BaseSDK):
 
         Update a meter.
 
+        **Scopes**: `meters:write`
+
         :param id: The meter ID.
         :param meter_update:
         :param retries: Override the default retry configuration for this method
@@ -950,6 +966,8 @@ class Meters(BaseSDK):
         r"""Get Meter Events
 
         Get events matching the filter of a meter.
+
+        **Scopes**: `meters:read` `meters:write`
 
         :param id: The meter ID.
         :param page: Page number, defaults to 1.
@@ -1086,6 +1104,8 @@ class Meters(BaseSDK):
         r"""Get Meter Events
 
         Get events matching the filter of a meter.
+
+        **Scopes**: `meters:read` `meters:write`
 
         :param id: The meter ID.
         :param page: Page number, defaults to 1.
@@ -1236,6 +1256,8 @@ class Meters(BaseSDK):
 
         Get quantities of a meter over a time period.
 
+        **Scopes**: `meters:read` `meters:write`
+
         :param id: The meter ID.
         :param start_timestamp: Start timestamp.
         :param end_timestamp: End timestamp.
@@ -1362,6 +1384,8 @@ class Meters(BaseSDK):
         r"""Get Meter Quantities
 
         Get quantities of a meter over a time period.
+
+        **Scopes**: `meters:read` `meters:write`
 
         :param id: The meter ID.
         :param start_timestamp: Start timestamp.

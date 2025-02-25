@@ -2,17 +2,23 @@
 
 from __future__ import annotations
 from polar_sdk.types import BaseModel
-from polar_sdk.utils import FieldMetadata, PathParamMetadata
+from polar_sdk.utils import FieldMetadata, SecurityMetadata
 from typing_extensions import Annotated, TypedDict
 
 
-class CustomerPortalCustomersGetRequestTypedDict(TypedDict):
-    id: str
-    r"""The customer ID."""
+class CustomerPortalCustomersGetSecurityTypedDict(TypedDict):
+    customer_session: str
 
 
-class CustomerPortalCustomersGetRequest(BaseModel):
-    id: Annotated[
-        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+class CustomerPortalCustomersGetSecurity(BaseModel):
+    customer_session: Annotated[
+        str,
+        FieldMetadata(
+            security=SecurityMetadata(
+                scheme=True,
+                scheme_type="http",
+                sub_type="bearer",
+                field_name="Authorization",
+            )
+        ),
     ]
-    r"""The customer ID."""

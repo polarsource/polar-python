@@ -66,7 +66,9 @@ class Polar(BaseSDK):
 
     def __init__(
         self,
-        access_token: Union[str, Callable[[], str]],
+        access_token: Optional[
+            Union[Optional[str], Callable[[], Optional[str]]]
+        ] = None,
         server: Optional[str] = None,
         server_url: Optional[str] = None,
         url_params: Optional[Dict[str, str]] = None,

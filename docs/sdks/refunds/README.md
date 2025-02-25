@@ -12,6 +12,8 @@
 
 List products.
 
+**Scopes**: `refunds:read` `refunds:write`
+
 ### Example Usage
 
 ```python
@@ -59,6 +61,8 @@ with Polar(
 ## create
 
 Create a refund.
+
+**Scopes**: `refunds:write`
 
 ### Example Usage
 

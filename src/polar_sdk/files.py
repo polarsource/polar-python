@@ -25,6 +25,8 @@ class Files(BaseSDK):
 
         List files.
 
+        **Scopes**: `files:write`
+
         :param organization_id:
         :param ids: List of file IDs to get.
         :param page: Page number, defaults to 1.
@@ -160,6 +162,8 @@ class Files(BaseSDK):
 
         List files.
 
+        **Scopes**: `files:write`
+
         :param organization_id:
         :param ids: List of file IDs to get.
         :param page: Page number, defaults to 1.
@@ -292,6 +296,8 @@ class Files(BaseSDK):
 
         Create a file.
 
+        **Scopes**: `files:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -391,6 +397,8 @@ class Files(BaseSDK):
         r"""Create File
 
         Create a file.
+
+        **Scopes**: `files:write`
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -494,6 +502,8 @@ class Files(BaseSDK):
         r"""Complete File Upload
 
         Complete a file upload.
+
+        **Scopes**: `files:write`
 
         :param id: The file ID.
         :param file_upload_completed:
@@ -616,6 +626,8 @@ class Files(BaseSDK):
 
         Complete a file upload.
 
+        **Scopes**: `files:write`
+
         :param id: The file ID.
         :param file_upload_completed:
         :param retries: Override the default retry configuration for this method
@@ -735,6 +747,8 @@ class Files(BaseSDK):
 
         Update a file.
 
+        **Scopes**: `files:write`
+
         :param id: The file ID.
         :param file_patch:
         :param retries: Override the default retry configuration for this method
@@ -848,6 +862,8 @@ class Files(BaseSDK):
 
         Update a file.
 
+        **Scopes**: `files:write`
+
         :param id: The file ID.
         :param file_patch:
         :param retries: Override the default retry configuration for this method
@@ -960,6 +976,8 @@ class Files(BaseSDK):
 
         Delete a file.
 
+        **Scopes**: `files:write`
+
         :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1064,6 +1082,8 @@ class Files(BaseSDK):
         r"""Delete File
 
         Delete a file.
+
+        **Scopes**: `files:write`
 
         :param id:
         :param retries: Override the default retry configuration for this method

@@ -15,6 +15,8 @@
 
 List customers.
 
+**Scopes**: `customers:read` `customers:write`
+
 ### Example Usage
 
 ```python
@@ -61,6 +63,8 @@ with Polar(
 
 Create a customer.
 
+**Scopes**: `customers:write`
+
 ### Example Usage
 
 ```python
@@ -101,6 +105,8 @@ with Polar(
 
 Get a customer by ID.
 
+**Scopes**: `customers:read` `customers:write`
+
 ### Example Usage
 
 ```python
@@ -139,6 +145,8 @@ with Polar(
 ## update
 
 Update a customer.
+
+**Scopes**: `customers:write`
 
 ### Example Usage
 
@@ -181,6 +189,8 @@ with Polar(
 Delete a customer.
 
 Immediately cancels any active subscriptions and revokes any active benefits.
+
+**Scopes**: `customers:write`
 
 ### Example Usage
 

@@ -32,6 +32,8 @@ class Benefits(BaseSDK):
 
         List benefits.
 
+        **Scopes**: `benefits:read` `benefits:write`
+
         :param organization_id: Filter by organization ID.
         :param type_filter: Filter by benefit type.
         :param page: Page number, defaults to 1.
@@ -174,6 +176,8 @@ class Benefits(BaseSDK):
 
         List benefits.
 
+        **Scopes**: `benefits:read` `benefits:write`
+
         :param organization_id: Filter by organization ID.
         :param type_filter: Filter by benefit type.
         :param page: Page number, defaults to 1.
@@ -306,6 +310,8 @@ class Benefits(BaseSDK):
 
         Create a benefit.
 
+        **Scopes**: `benefits:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -406,6 +412,8 @@ class Benefits(BaseSDK):
 
         Create a benefit.
 
+        **Scopes**: `benefits:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -505,6 +513,8 @@ class Benefits(BaseSDK):
         r"""Get Benefit
 
         Get a benefit by ID.
+
+        **Scopes**: `benefits:read` `benefits:write`
 
         :param id:
         :param retries: Override the default retry configuration for this method
@@ -607,6 +617,8 @@ class Benefits(BaseSDK):
         r"""Get Benefit
 
         Get a benefit by ID.
+
+        **Scopes**: `benefits:read` `benefits:write`
 
         :param id:
         :param retries: Override the default retry configuration for this method
@@ -713,6 +725,8 @@ class Benefits(BaseSDK):
         r"""Update Benefit
 
         Update a benefit.
+
+        **Scopes**: `benefits:write`
 
         :param id:
         :param request_body:
@@ -834,6 +848,8 @@ class Benefits(BaseSDK):
 
         Update a benefit.
 
+        **Scopes**: `benefits:write`
+
         :param id:
         :param request_body:
         :param retries: Override the default retry configuration for this method
@@ -954,6 +970,8 @@ class Benefits(BaseSDK):
         > Every grants associated with the benefit will be revoked.
         > Users will lose access to the benefit.
 
+        **Scopes**: `benefits:write`
+
         :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1062,6 +1080,8 @@ class Benefits(BaseSDK):
         > [!WARNING]
         > Every grants associated with the benefit will be revoked.
         > Users will lose access to the benefit.
+
+        **Scopes**: `benefits:write`
 
         :param id:
         :param retries: Override the default retry configuration for this method
@@ -1178,6 +1198,8 @@ class Benefits(BaseSDK):
         List the individual grants for a benefit.
 
         It's especially useful to check if a user has been granted a benefit.
+
+        **Scopes**: `benefits:read` `benefits:write`
 
         :param id:
         :param is_granted: Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned.
@@ -1331,6 +1353,8 @@ class Benefits(BaseSDK):
         List the individual grants for a benefit.
 
         It's especially useful to check if a user has been granted a benefit.
+
+        **Scopes**: `benefits:read` `benefits:write`
 
         :param id:
         :param is_granted: Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned.

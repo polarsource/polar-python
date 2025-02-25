@@ -36,6 +36,8 @@ class Checkouts(BaseSDK):
 
         List checkout sessions.
 
+        **Scopes**: `checkouts:read` `checkouts:write`
+
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param page: Page number, defaults to 1.
@@ -185,6 +187,8 @@ class Checkouts(BaseSDK):
 
         List checkout sessions.
 
+        **Scopes**: `checkouts:read` `checkouts:write`
+
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param page: Page number, defaults to 1.
@@ -320,6 +324,8 @@ class Checkouts(BaseSDK):
 
         Create a checkout session.
 
+        **Scopes**: `checkouts:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -420,6 +426,8 @@ class Checkouts(BaseSDK):
 
         Create a checkout session.
 
+        **Scopes**: `checkouts:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -519,6 +527,8 @@ class Checkouts(BaseSDK):
         r"""Get Checkout Session
 
         Get a checkout session by ID.
+
+        **Scopes**: `checkouts:read` `checkouts:write`
 
         :param id: The checkout session ID.
         :param retries: Override the default retry configuration for this method
@@ -622,6 +632,8 @@ class Checkouts(BaseSDK):
 
         Get a checkout session by ID.
 
+        **Scopes**: `checkouts:read` `checkouts:write`
+
         :param id: The checkout session ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -724,6 +736,8 @@ class Checkouts(BaseSDK):
         r"""Update Checkout Session
 
         Update a checkout session.
+
+        **Scopes**: `checkouts:write`
 
         :param id: The checkout session ID.
         :param checkout_update:
@@ -839,6 +853,8 @@ class Checkouts(BaseSDK):
         r"""Update Checkout Session
 
         Update a checkout session.
+
+        **Scopes**: `checkouts:write`
 
         :param id: The checkout session ID.
         :param checkout_update:
@@ -1405,6 +1421,8 @@ class Checkouts(BaseSDK):
 
         Orders and subscriptions will be processed.
 
+        **Scopes**:
+
         :param client_secret: The checkout session client secret.
         :param checkout_confirm_stripe:
         :param retries: Override the default retry configuration for this method
@@ -1530,6 +1548,8 @@ class Checkouts(BaseSDK):
         Confirm a checkout session by client secret.
 
         Orders and subscriptions will be processed.
+
+        **Scopes**:
 
         :param client_secret: The checkout session client secret.
         :param checkout_confirm_stripe:

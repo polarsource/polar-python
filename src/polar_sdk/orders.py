@@ -54,6 +54,8 @@ class Orders(BaseSDK):
 
         List orders.
 
+        **Scopes**: `orders:read`
+
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param product_price_type: Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
@@ -233,6 +235,8 @@ class Orders(BaseSDK):
 
         List orders.
 
+        **Scopes**: `orders:read`
+
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param product_price_type: Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
@@ -380,6 +384,8 @@ class Orders(BaseSDK):
 
         Get an order by ID.
 
+        **Scopes**: `orders:read`
+
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -481,6 +487,8 @@ class Orders(BaseSDK):
         r"""Get Order
 
         Get an order by ID.
+
+        **Scopes**: `orders:read`
 
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
@@ -584,6 +592,8 @@ class Orders(BaseSDK):
 
         Get an order's invoice data.
 
+        **Scopes**: `orders:read`
+
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -685,6 +695,8 @@ class Orders(BaseSDK):
         r"""Get Order Invoice
 
         Get an order's invoice data.
+
+        **Scopes**: `orders:read`
 
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method

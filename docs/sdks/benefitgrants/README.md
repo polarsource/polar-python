@@ -11,18 +11,21 @@
 
 ## list
 
-List benefits grants of the authenticated customer or user.
+List benefits grants of the authenticated customer.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.customer_portal.benefit_grants.list()
+    res = polar.customer_portal.benefit_grants.list(security=polar_sdk.CustomerPortalBenefitGrantsListSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ))
 
     while res is not None:
         # Handle items
@@ -35,6 +38,7 @@ with Polar(
 
 | Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                                                              | [models.CustomerPortalBenefitGrantsListSecurity](../../models/customerportalbenefitgrantslistsecurity.md)                                                               | :heavy_check_mark:                                                                                                                                                      | N/A                                                                                                                                                                     |
 | `type_filter`                                                                                                                                                           | [OptionalNullable[models.QueryParamBenefitTypeFilter]](../../models/queryparambenefittypefilter.md)                                                                     | :heavy_minus_sign:                                                                                                                                                      | Filter by benefit type.                                                                                                                                                 |
 | `benefit_id`                                                                                                                                                            | [OptionalNullable[models.CustomerPortalBenefitGrantsListQueryParamBenefitIDFilter]](../../models/customerportalbenefitgrantslistqueryparambenefitidfilter.md)           | :heavy_minus_sign:                                                                                                                                                      | Filter by benefit ID.                                                                                                                                                   |
 | `organization_id`                                                                                                                                                       | [OptionalNullable[models.CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilter]](../../models/customerportalbenefitgrantslistqueryparamorganizationidfilter.md) | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
@@ -59,18 +63,21 @@ with Polar(
 
 ## get
 
-Get a benefit grant by ID for the authenticated customer or user.
+Get a benefit grant by ID for the authenticated customer.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.customer_portal.benefit_grants.get(id="<value>")
+    res = polar.customer_portal.benefit_grants.get(security=polar_sdk.CustomerPortalBenefitGrantsGetSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), id="<value>")
 
     # Handle response
     print(res)
@@ -79,10 +86,11 @@ with Polar(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The benefit grant ID.                                               |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                              | [models.CustomerPortalBenefitGrantsGetSecurity](../../models/customerportalbenefitgrantsgetsecurity.md) | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+| `id`                                                                                                    | *str*                                                                                                   | :heavy_check_mark:                                                                                      | The benefit grant ID.                                                                                   |
+| `retries`                                                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                        | :heavy_minus_sign:                                                                                      | Configuration to override the default retry behavior of the client.                                     |
 
 ### Response
 
@@ -98,18 +106,21 @@ with Polar(
 
 ## update
 
-Update a benefit grant for the authenticated customer or user.
+Update a benefit grant for the authenticated customer.
+
+**Scopes**: `customer_portal:write`
 
 ### Example Usage
 
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.customer_portal.benefit_grants.update(id="<value>", customer_benefit_grant_update={
+    res = polar.customer_portal.benefit_grants.update(security=polar_sdk.CustomerPortalBenefitGrantsUpdateSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), id="<value>", customer_benefit_grant_update={
         "benefit_type": "license_keys",
     })
 
@@ -120,11 +131,12 @@ with Polar(
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `id`                                                                            | *str*                                                                           | :heavy_check_mark:                                                              | The benefit grant ID.                                                           |
-| `customer_benefit_grant_update`                                                 | [models.CustomerBenefitGrantUpdate](../../models/customerbenefitgrantupdate.md) | :heavy_check_mark:                                                              | N/A                                                                             |
-| `retries`                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                | :heavy_minus_sign:                                                              | Configuration to override the default retry behavior of the client.             |
+| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                    | [models.CustomerPortalBenefitGrantsUpdateSecurity](../../models/customerportalbenefitgrantsupdatesecurity.md) | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
+| `id`                                                                                                          | *str*                                                                                                         | :heavy_check_mark:                                                                                            | The benefit grant ID.                                                                                         |
+| `customer_benefit_grant_update`                                                                               | [models.CustomerBenefitGrantUpdate](../../models/customerbenefitgrantupdate.md)                               | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
+| `retries`                                                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                              | :heavy_minus_sign:                                                                                            | Configuration to override the default retry behavior of the client.                                           |
 
 ### Response
 

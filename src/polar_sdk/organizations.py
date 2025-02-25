@@ -25,6 +25,8 @@ class Organizations(BaseSDK):
 
         List organizations.
 
+        **Scopes**: `organizations:read` `organizations:write`
+
         :param slug: Filter by slug.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -162,6 +164,8 @@ class Organizations(BaseSDK):
 
         List organizations.
 
+        **Scopes**: `organizations:read` `organizations:write`
+
         :param slug: Filter by slug.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -296,6 +300,8 @@ class Organizations(BaseSDK):
 
         Create an organization.
 
+        **Scopes**: `organizations:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -396,6 +402,8 @@ class Organizations(BaseSDK):
 
         Create an organization.
 
+        **Scopes**: `organizations:write`
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -495,6 +503,8 @@ class Organizations(BaseSDK):
         r"""Get Organization
 
         Get an organization by ID.
+
+        **Scopes**: `organizations:read` `organizations:write`
 
         :param id:
         :param retries: Override the default retry configuration for this method
@@ -597,6 +607,8 @@ class Organizations(BaseSDK):
         r"""Get Organization
 
         Get an organization by ID.
+
+        **Scopes**: `organizations:read` `organizations:write`
 
         :param id:
         :param retries: Override the default retry configuration for this method
@@ -702,6 +714,8 @@ class Organizations(BaseSDK):
         r"""Update Organization
 
         Update an organization.
+
+        **Scopes**: `organizations:write`
 
         :param id:
         :param organization_update:
@@ -821,6 +835,8 @@ class Organizations(BaseSDK):
         r"""Update Organization
 
         Update an organization.
+
+        **Scopes**: `organizations:write`
 
         :param id:
         :param organization_update:

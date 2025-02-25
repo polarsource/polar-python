@@ -15,6 +15,8 @@
 
 List files.
 
+**Scopes**: `files:write`
+
 ### Example Usage
 
 ```python
@@ -57,6 +59,8 @@ with Polar(
 ## create
 
 Create a file.
+
+**Scopes**: `files:write`
 
 ### Example Usage
 
@@ -109,6 +113,8 @@ with Polar(
 ## uploaded
 
 Complete a file upload.
+
+**Scopes**: `files:write`
 
 ### Example Usage
 
@@ -171,6 +177,8 @@ with Polar(
 
 Update a file.
 
+**Scopes**: `files:write`
+
 ### Example Usage
 
 ```python
@@ -211,6 +219,8 @@ with Polar(
 ## delete
 
 Delete a file.
+
+**Scopes**: `files:write`
 
 ### Example Usage
 

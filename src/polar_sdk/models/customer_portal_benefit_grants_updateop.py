@@ -6,8 +6,31 @@ from .customerbenefitgrantupdate import (
     CustomerBenefitGrantUpdateTypedDict,
 )
 from polar_sdk.types import BaseModel
-from polar_sdk.utils import FieldMetadata, PathParamMetadata, RequestMetadata
+from polar_sdk.utils import (
+    FieldMetadata,
+    PathParamMetadata,
+    RequestMetadata,
+    SecurityMetadata,
+)
 from typing_extensions import Annotated, TypedDict
+
+
+class CustomerPortalBenefitGrantsUpdateSecurityTypedDict(TypedDict):
+    customer_session: str
+
+
+class CustomerPortalBenefitGrantsUpdateSecurity(BaseModel):
+    customer_session: Annotated[
+        str,
+        FieldMetadata(
+            security=SecurityMetadata(
+                scheme=True,
+                scheme_type="http",
+                sub_type="bearer",
+                field_name="Authorization",
+            )
+        ),
+    ]
 
 
 class CustomerPortalBenefitGrantsUpdateRequestTypedDict(TypedDict):

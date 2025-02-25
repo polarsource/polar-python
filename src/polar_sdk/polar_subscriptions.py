@@ -12,6 +12,10 @@ class PolarSubscriptions(BaseSDK):
     def list(
         self,
         *,
+        security: Union[
+            models.CustomerPortalSubscriptionsListSecurity,
+            models.CustomerPortalSubscriptionsListSecurityTypedDict,
+        ],
         organization_id: OptionalNullable[
             Union[
                 models.CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter,
@@ -38,8 +42,11 @@ class PolarSubscriptions(BaseSDK):
     ) -> Optional[models.CustomerPortalSubscriptionsListResponse]:
         r"""List Subscriptions
 
-        List subscriptions of the authenticated customer or user.
+        List subscriptions of the authenticated customer.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param active: Filter by active or cancelled subscription.
@@ -84,7 +91,9 @@ class PolarSubscriptions(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalSubscriptionsListSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -101,7 +110,7 @@ class PolarSubscriptions(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:list",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["422", "4XX", "5XX"],
@@ -127,6 +136,7 @@ class PolarSubscriptions(BaseSDK):
                 return None
 
             return self.list(
+                security=security,
                 organization_id=organization_id,
                 product_id=product_id,
                 active=active,
@@ -173,6 +183,10 @@ class PolarSubscriptions(BaseSDK):
     async def list_async(
         self,
         *,
+        security: Union[
+            models.CustomerPortalSubscriptionsListSecurity,
+            models.CustomerPortalSubscriptionsListSecurityTypedDict,
+        ],
         organization_id: OptionalNullable[
             Union[
                 models.CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter,
@@ -199,8 +213,11 @@ class PolarSubscriptions(BaseSDK):
     ) -> Optional[models.CustomerPortalSubscriptionsListResponse]:
         r"""List Subscriptions
 
-        List subscriptions of the authenticated customer or user.
+        List subscriptions of the authenticated customer.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param active: Filter by active or cancelled subscription.
@@ -245,7 +262,9 @@ class PolarSubscriptions(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalSubscriptionsListSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -262,7 +281,7 @@ class PolarSubscriptions(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:list",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["422", "4XX", "5XX"],
@@ -288,6 +307,7 @@ class PolarSubscriptions(BaseSDK):
                 return None
 
             return self.list(
+                security=security,
                 organization_id=organization_id,
                 product_id=product_id,
                 active=active,
@@ -334,6 +354,10 @@ class PolarSubscriptions(BaseSDK):
     def get(
         self,
         *,
+        security: Union[
+            models.CustomerPortalSubscriptionsGetSecurity,
+            models.CustomerPortalSubscriptionsGetSecurityTypedDict,
+        ],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -342,8 +366,11 @@ class PolarSubscriptions(BaseSDK):
     ) -> models.CustomerSubscription:
         r"""Get Subscription
 
-        Get a subscription for the authenticated customer or user.
+        Get a subscription for the authenticated customer.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -376,7 +403,9 @@ class PolarSubscriptions(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalSubscriptionsGetSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -393,7 +422,7 @@ class PolarSubscriptions(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:get",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["404", "422", "4XX", "5XX"],
@@ -436,6 +465,10 @@ class PolarSubscriptions(BaseSDK):
     async def get_async(
         self,
         *,
+        security: Union[
+            models.CustomerPortalSubscriptionsGetSecurity,
+            models.CustomerPortalSubscriptionsGetSecurityTypedDict,
+        ],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -444,8 +477,11 @@ class PolarSubscriptions(BaseSDK):
     ) -> models.CustomerSubscription:
         r"""Get Subscription
 
-        Get a subscription for the authenticated customer or user.
+        Get a subscription for the authenticated customer.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -478,7 +514,9 @@ class PolarSubscriptions(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalSubscriptionsGetSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -495,7 +533,7 @@ class PolarSubscriptions(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:get",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["404", "422", "4XX", "5XX"],
@@ -538,6 +576,10 @@ class PolarSubscriptions(BaseSDK):
     def update(
         self,
         *,
+        security: Union[
+            models.CustomerPortalSubscriptionsUpdateSecurity,
+            models.CustomerPortalSubscriptionsUpdateSecurityTypedDict,
+        ],
         id: str,
         customer_subscription_update: Union[
             models.CustomerSubscriptionUpdate,
@@ -550,8 +592,11 @@ class PolarSubscriptions(BaseSDK):
     ) -> models.CustomerSubscription:
         r"""Update Subscription
 
-        Update a subscription of the authenticated customer or user.
+        Update a subscription of the authenticated customer.
 
+        **Scopes**: `customer_portal:write`
+
+        :param security:
         :param id: The subscription ID.
         :param customer_subscription_update:
         :param retries: Override the default retry configuration for this method
@@ -588,7 +633,9 @@ class PolarSubscriptions(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalSubscriptionsUpdateSecurity
+            ),
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.customer_subscription_update,
                 False,
@@ -612,7 +659,7 @@ class PolarSubscriptions(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:update",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["403", "404", "422", "4XX", "5XX"],
@@ -660,6 +707,10 @@ class PolarSubscriptions(BaseSDK):
     async def update_async(
         self,
         *,
+        security: Union[
+            models.CustomerPortalSubscriptionsUpdateSecurity,
+            models.CustomerPortalSubscriptionsUpdateSecurityTypedDict,
+        ],
         id: str,
         customer_subscription_update: Union[
             models.CustomerSubscriptionUpdate,
@@ -672,8 +723,11 @@ class PolarSubscriptions(BaseSDK):
     ) -> models.CustomerSubscription:
         r"""Update Subscription
 
-        Update a subscription of the authenticated customer or user.
+        Update a subscription of the authenticated customer.
 
+        **Scopes**: `customer_portal:write`
+
+        :param security:
         :param id: The subscription ID.
         :param customer_subscription_update:
         :param retries: Override the default retry configuration for this method
@@ -710,7 +764,9 @@ class PolarSubscriptions(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalSubscriptionsUpdateSecurity
+            ),
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.customer_subscription_update,
                 False,
@@ -734,7 +790,7 @@ class PolarSubscriptions(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:update",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["403", "404", "422", "4XX", "5XX"],
@@ -782,6 +838,10 @@ class PolarSubscriptions(BaseSDK):
     def cancel(
         self,
         *,
+        security: Union[
+            models.CustomerPortalSubscriptionsCancelSecurity,
+            models.CustomerPortalSubscriptionsCancelSecurityTypedDict,
+        ],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -790,8 +850,11 @@ class PolarSubscriptions(BaseSDK):
     ) -> models.CustomerSubscription:
         r"""Cancel Subscription
 
-        Cancel a subscription of the authenticated customer or user.
+        Cancel a subscription of the authenticated customer.
 
+        **Scopes**: `customer_portal:write`
+
+        :param security:
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -824,7 +887,9 @@ class PolarSubscriptions(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalSubscriptionsCancelSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -841,7 +906,7 @@ class PolarSubscriptions(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:cancel",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["403", "404", "422", "4XX", "5XX"],
@@ -889,6 +954,10 @@ class PolarSubscriptions(BaseSDK):
     async def cancel_async(
         self,
         *,
+        security: Union[
+            models.CustomerPortalSubscriptionsCancelSecurity,
+            models.CustomerPortalSubscriptionsCancelSecurityTypedDict,
+        ],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -897,8 +966,11 @@ class PolarSubscriptions(BaseSDK):
     ) -> models.CustomerSubscription:
         r"""Cancel Subscription
 
-        Cancel a subscription of the authenticated customer or user.
+        Cancel a subscription of the authenticated customer.
 
+        **Scopes**: `customer_portal:write`
+
+        :param security:
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -931,7 +1003,9 @@ class PolarSubscriptions(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalSubscriptionsCancelSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -948,7 +1022,7 @@ class PolarSubscriptions(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:cancel",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["403", "404", "422", "4XX", "5XX"],

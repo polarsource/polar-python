@@ -40,6 +40,8 @@ class Subscriptions(BaseSDK):
 
         List subscriptions.
 
+        **Scopes**: `subscriptions:read` `subscriptions:write`
+
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param customer_id: Filter by customer ID.
@@ -204,6 +206,8 @@ class Subscriptions(BaseSDK):
 
         List subscriptions.
 
+        **Scopes**: `subscriptions:read` `subscriptions:write`
+
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param customer_id: Filter by customer ID.
@@ -352,6 +356,8 @@ class Subscriptions(BaseSDK):
 
         Export subscriptions as a CSV file.
 
+        **Scopes**: `subscriptions:read` `subscriptions:write`
+
         :param organization_id: Filter by organization ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -451,6 +457,8 @@ class Subscriptions(BaseSDK):
 
         Export subscriptions as a CSV file.
 
+        **Scopes**: `subscriptions:read` `subscriptions:write`
+
         :param organization_id: Filter by organization ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -547,6 +555,8 @@ class Subscriptions(BaseSDK):
         r"""Get Subscription
 
         Get a subscription by ID.
+
+        **Scopes**: `subscriptions:write`
 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
@@ -649,6 +659,8 @@ class Subscriptions(BaseSDK):
         r"""Get Subscription
 
         Get a subscription by ID.
+
+        **Scopes**: `subscriptions:write`
 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
@@ -754,6 +766,8 @@ class Subscriptions(BaseSDK):
         r"""Update Subscription
 
         Update a subscription.
+
+        **Scopes**: `subscriptions:write`
 
         :param id: The subscription ID.
         :param subscription_update:
@@ -876,6 +890,8 @@ class Subscriptions(BaseSDK):
 
         Update a subscription.
 
+        **Scopes**: `subscriptions:write`
+
         :param id: The subscription ID.
         :param subscription_update:
         :param retries: Override the default retry configuration for this method
@@ -994,6 +1010,8 @@ class Subscriptions(BaseSDK):
 
         Revoke a subscription, i.e cancel immediately.
 
+        **Scopes**: `subscriptions:write`
+
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1100,6 +1118,8 @@ class Subscriptions(BaseSDK):
         r"""Revoke Subscription
 
         Revoke a subscription, i.e cancel immediately.
+
+        **Scopes**: `subscriptions:write`
 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method

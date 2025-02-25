@@ -17,6 +17,8 @@
 
 List checkout sessions.
 
+**Scopes**: `checkouts:read` `checkouts:write`
+
 ### Example Usage
 
 ```python
@@ -61,6 +63,8 @@ with Polar(
 
 Create a checkout session.
 
+**Scopes**: `checkouts:write`
+
 ### Example Usage
 
 ```python
@@ -103,6 +107,8 @@ with Polar(
 
 Get a checkout session by ID.
 
+**Scopes**: `checkouts:read` `checkouts:write`
+
 ### Example Usage
 
 ```python
@@ -141,6 +147,8 @@ with Polar(
 ## update
 
 Update a checkout session.
+
+**Scopes**: `checkouts:write`
 
 ### Example Usage
 
@@ -264,6 +272,8 @@ with Polar(
 Confirm a checkout session by client secret.
 
 Orders and subscriptions will be processed.
+
+**Scopes**:
 
 ### Example Usage
 

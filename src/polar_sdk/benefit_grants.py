@@ -12,6 +12,10 @@ class BenefitGrants(BaseSDK):
     def list(
         self,
         *,
+        security: Union[
+            models.CustomerPortalBenefitGrantsListSecurity,
+            models.CustomerPortalBenefitGrantsListSecurityTypedDict,
+        ],
         type_filter: OptionalNullable[
             Union[
                 models.QueryParamBenefitTypeFilter,
@@ -59,8 +63,11 @@ class BenefitGrants(BaseSDK):
     ) -> Optional[models.CustomerPortalBenefitGrantsListResponse]:
         r"""List Benefit Grants
 
-        List benefits grants of the authenticated customer or user.
+        List benefits grants of the authenticated customer.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param type_filter: Filter by benefit type.
         :param benefit_id: Filter by benefit ID.
         :param organization_id: Filter by organization ID.
@@ -109,7 +116,9 @@ class BenefitGrants(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalBenefitGrantsListSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -126,7 +135,7 @@ class BenefitGrants(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:list",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["422", "4XX", "5XX"],
@@ -152,6 +161,7 @@ class BenefitGrants(BaseSDK):
                 return None
 
             return self.list(
+                security=security,
                 type_filter=type_filter,
                 benefit_id=benefit_id,
                 organization_id=organization_id,
@@ -200,6 +210,10 @@ class BenefitGrants(BaseSDK):
     async def list_async(
         self,
         *,
+        security: Union[
+            models.CustomerPortalBenefitGrantsListSecurity,
+            models.CustomerPortalBenefitGrantsListSecurityTypedDict,
+        ],
         type_filter: OptionalNullable[
             Union[
                 models.QueryParamBenefitTypeFilter,
@@ -247,8 +261,11 @@ class BenefitGrants(BaseSDK):
     ) -> Optional[models.CustomerPortalBenefitGrantsListResponse]:
         r"""List Benefit Grants
 
-        List benefits grants of the authenticated customer or user.
+        List benefits grants of the authenticated customer.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param type_filter: Filter by benefit type.
         :param benefit_id: Filter by benefit ID.
         :param organization_id: Filter by organization ID.
@@ -297,7 +314,9 @@ class BenefitGrants(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalBenefitGrantsListSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -314,7 +333,7 @@ class BenefitGrants(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:list",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["422", "4XX", "5XX"],
@@ -340,6 +359,7 @@ class BenefitGrants(BaseSDK):
                 return None
 
             return self.list(
+                security=security,
                 type_filter=type_filter,
                 benefit_id=benefit_id,
                 organization_id=organization_id,
@@ -388,6 +408,10 @@ class BenefitGrants(BaseSDK):
     def get(
         self,
         *,
+        security: Union[
+            models.CustomerPortalBenefitGrantsGetSecurity,
+            models.CustomerPortalBenefitGrantsGetSecurityTypedDict,
+        ],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -396,8 +420,11 @@ class BenefitGrants(BaseSDK):
     ) -> models.CustomerBenefitGrant:
         r"""Get Benefit Grant
 
-        Get a benefit grant by ID for the authenticated customer or user.
+        Get a benefit grant by ID for the authenticated customer.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param id: The benefit grant ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -430,7 +457,9 @@ class BenefitGrants(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalBenefitGrantsGetSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -447,7 +476,7 @@ class BenefitGrants(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:get",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["404", "422", "4XX", "5XX"],
@@ -490,6 +519,10 @@ class BenefitGrants(BaseSDK):
     async def get_async(
         self,
         *,
+        security: Union[
+            models.CustomerPortalBenefitGrantsGetSecurity,
+            models.CustomerPortalBenefitGrantsGetSecurityTypedDict,
+        ],
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -498,8 +531,11 @@ class BenefitGrants(BaseSDK):
     ) -> models.CustomerBenefitGrant:
         r"""Get Benefit Grant
 
-        Get a benefit grant by ID for the authenticated customer or user.
+        Get a benefit grant by ID for the authenticated customer.
 
+        **Scopes**: `customer_portal:read` `customer_portal:write`
+
+        :param security:
         :param id: The benefit grant ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -532,7 +568,9 @@ class BenefitGrants(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalBenefitGrantsGetSecurity
+            ),
             timeout_ms=timeout_ms,
         )
 
@@ -549,7 +587,7 @@ class BenefitGrants(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:get",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["404", "422", "4XX", "5XX"],
@@ -592,6 +630,10 @@ class BenefitGrants(BaseSDK):
     def update(
         self,
         *,
+        security: Union[
+            models.CustomerPortalBenefitGrantsUpdateSecurity,
+            models.CustomerPortalBenefitGrantsUpdateSecurityTypedDict,
+        ],
         id: str,
         customer_benefit_grant_update: Union[
             models.CustomerBenefitGrantUpdate,
@@ -604,8 +646,11 @@ class BenefitGrants(BaseSDK):
     ) -> models.CustomerBenefitGrant:
         r"""Update Benefit Grant
 
-        Update a benefit grant for the authenticated customer or user.
+        Update a benefit grant for the authenticated customer.
 
+        **Scopes**: `customer_portal:write`
+
+        :param security:
         :param id: The benefit grant ID.
         :param customer_benefit_grant_update:
         :param retries: Override the default retry configuration for this method
@@ -642,7 +687,9 @@ class BenefitGrants(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalBenefitGrantsUpdateSecurity
+            ),
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.customer_benefit_grant_update,
                 False,
@@ -666,7 +713,7 @@ class BenefitGrants(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:update",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["403", "404", "422", "4XX", "5XX"],
@@ -712,6 +759,10 @@ class BenefitGrants(BaseSDK):
     async def update_async(
         self,
         *,
+        security: Union[
+            models.CustomerPortalBenefitGrantsUpdateSecurity,
+            models.CustomerPortalBenefitGrantsUpdateSecurityTypedDict,
+        ],
         id: str,
         customer_benefit_grant_update: Union[
             models.CustomerBenefitGrantUpdate,
@@ -724,8 +775,11 @@ class BenefitGrants(BaseSDK):
     ) -> models.CustomerBenefitGrant:
         r"""Update Benefit Grant
 
-        Update a benefit grant for the authenticated customer or user.
+        Update a benefit grant for the authenticated customer.
 
+        **Scopes**: `customer_portal:write`
+
+        :param security:
         :param id: The benefit grant ID.
         :param customer_benefit_grant_update:
         :param retries: Override the default retry configuration for this method
@@ -762,7 +816,9 @@ class BenefitGrants(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
+            security=utils.get_pydantic_model(
+                security, models.CustomerPortalBenefitGrantsUpdateSecurity
+            ),
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.customer_benefit_grant_update,
                 False,
@@ -786,7 +842,7 @@ class BenefitGrants(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:update",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=security,
             ),
             request=req,
             error_status_codes=["403", "404", "422", "4XX", "5XX"],

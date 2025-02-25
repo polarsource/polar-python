@@ -3,16 +3,17 @@
 from __future__ import annotations
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, SecurityMetadata
-from typing_extensions import Annotated, TypedDict
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class SecurityTypedDict(TypedDict):
-    access_token: str
+    access_token: NotRequired[str]
 
 
 class Security(BaseModel):
     access_token: Annotated[
-        str,
+        Optional[str],
         FieldMetadata(
             security=SecurityMetadata(
                 scheme=True,
@@ -21,4 +22,4 @@ class Security(BaseModel):
                 field_name="Authorization",
             )
         ),
-    ]
+    ] = None

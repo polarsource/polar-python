@@ -16,6 +16,8 @@
 
 List meters.
 
+**Scopes**: `meters:read` `meters:write`
+
 ### Example Usage
 
 ```python
@@ -60,6 +62,8 @@ with Polar(
 ## create
 
 Create a meter.
+
+**Scopes**: `meters:write`
 
 ### Example Usage
 
@@ -112,6 +116,8 @@ with Polar(
 
 Get a meter by ID.
 
+**Scopes**: `meters:read` `meters:write`
+
 ### Example Usage
 
 ```python
@@ -150,6 +156,8 @@ with Polar(
 ## update
 
 Update a meter.
+
+**Scopes**: `meters:write`
 
 ### Example Usage
 
@@ -190,6 +198,8 @@ with Polar(
 ## events
 
 Get events matching the filter of a meter.
+
+**Scopes**: `meters:read` `meters:write`
 
 ### Example Usage
 
@@ -233,6 +243,8 @@ with Polar(
 ## quantities
 
 Get quantities of a meter over a time period.
+
+**Scopes**: `meters:read` `meters:write`
 
 ### Example Usage
 

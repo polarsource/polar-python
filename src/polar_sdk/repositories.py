@@ -49,6 +49,8 @@ class Repositories(BaseSDK):
 
         List repositories.
 
+        **Scopes**: `repositories:read` `repositories:write`
+
         :param platform: Filter by platform.
         :param name: Filter by name.
         :param external_organization_name: Filter by external organization name.
@@ -222,6 +224,8 @@ class Repositories(BaseSDK):
 
         List repositories.
 
+        **Scopes**: `repositories:read` `repositories:write`
+
         :param platform: Filter by platform.
         :param name: Filter by name.
         :param external_organization_name: Filter by external organization name.
@@ -368,6 +372,8 @@ class Repositories(BaseSDK):
 
         Get a repository by ID.
 
+        **Scopes**: `repositories:read` `repositories:write`
+
         :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -469,6 +475,8 @@ class Repositories(BaseSDK):
         r"""Get Repository
 
         Get a repository by ID.
+
+        **Scopes**: `repositories:read` `repositories:write`
 
         :param id:
         :param retries: Override the default retry configuration for this method
@@ -574,6 +582,8 @@ class Repositories(BaseSDK):
         r"""Update Repository
 
         Update a repository.
+
+        **Scopes**: `repositories:write`
 
         :param id:
         :param repository_update:
@@ -689,6 +699,8 @@ class Repositories(BaseSDK):
         r"""Update Repository
 
         Update a repository.
+
+        **Scopes**: `repositories:write`
 
         :param id:
         :param repository_update:
