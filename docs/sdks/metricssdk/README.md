@@ -12,6 +12,8 @@
 
 Get metrics about your orders and subscriptions.
 
+Currency values are output in cents.
+
 **Scopes**: `metrics:read`
 
 ### Example Usage
@@ -20,6 +22,7 @@ Get metrics about your orders and subscriptions.
 import dateutil.parser
 import polar_sdk
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -66,6 +69,7 @@ Get the interval limits for the metrics endpoint.
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

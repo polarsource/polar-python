@@ -21,6 +21,7 @@ List orders of the authenticated customer.
 import polar_sdk
 from polar_sdk import Polar
 
+
 with Polar() as polar:
 
     res = polar.customer_portal.orders.list(security=polar_sdk.CustomerPortalOrdersListSecurity(
@@ -72,6 +73,7 @@ Get an order by ID for the authenticated customer.
 import polar_sdk
 from polar_sdk import Polar
 
+
 with Polar() as polar:
 
     res = polar.customer_portal.orders.get(security=polar_sdk.CustomerPortalOrdersGetSecurity(
@@ -114,6 +116,7 @@ Get an order's invoice data.
 ```python
 import polar_sdk
 from polar_sdk import Polar
+
 
 with Polar() as polar:
 

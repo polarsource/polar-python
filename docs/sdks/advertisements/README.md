@@ -17,6 +17,7 @@ List active advertisement campaigns for a benefit.
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -59,6 +60,7 @@ Get an advertisement campaign by ID.
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

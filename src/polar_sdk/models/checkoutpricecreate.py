@@ -73,6 +73,8 @@ class CheckoutPriceCreateTypedDict(TypedDict):
     amount: NotRequired[Nullable[int]]
     customer_id: NotRequired[Nullable[str]]
     r"""ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer."""
+    customer_external_id: NotRequired[Nullable[str]]
+    r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
     customer_name: NotRequired[Nullable[str]]
     customer_email: NotRequired[Nullable[str]]
     customer_ip_address: NotRequired[Nullable[str]]
@@ -141,6 +143,9 @@ class CheckoutPriceCreate(BaseModel):
     customer_id: OptionalNullable[str] = UNSET
     r"""ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer."""
 
+    customer_external_id: OptionalNullable[str] = UNSET
+    r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
+
     customer_name: OptionalNullable[str] = UNSET
 
     customer_email: OptionalNullable[str] = UNSET
@@ -182,6 +187,7 @@ class CheckoutPriceCreate(BaseModel):
             "allow_discount_codes",
             "amount",
             "customer_id",
+            "customer_external_id",
             "customer_name",
             "customer_email",
             "customer_ip_address",
@@ -196,6 +202,7 @@ class CheckoutPriceCreate(BaseModel):
             "discount_id",
             "amount",
             "customer_id",
+            "customer_external_id",
             "customer_name",
             "customer_email",
             "customer_ip_address",

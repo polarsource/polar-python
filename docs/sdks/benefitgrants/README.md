@@ -21,6 +21,7 @@ List benefits grants of the authenticated customer.
 import polar_sdk
 from polar_sdk import Polar
 
+
 with Polar() as polar:
 
     res = polar.customer_portal.benefit_grants.list(security=polar_sdk.CustomerPortalBenefitGrantsListSecurity(
@@ -73,6 +74,7 @@ Get a benefit grant by ID for the authenticated customer.
 import polar_sdk
 from polar_sdk import Polar
 
+
 with Polar() as polar:
 
     res = polar.customer_portal.benefit_grants.get(security=polar_sdk.CustomerPortalBenefitGrantsGetSecurity(
@@ -115,6 +117,7 @@ Update a benefit grant for the authenticated customer.
 ```python
 import polar_sdk
 from polar_sdk import Polar
+
 
 with Polar() as polar:
 

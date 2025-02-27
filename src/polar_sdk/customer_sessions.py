@@ -12,7 +12,8 @@ class CustomerSessions(BaseSDK):
         self,
         *,
         request: Union[
-            models.CustomerSessionCreate, models.CustomerSessionCreateTypedDict
+            models.CustomerSessionsCreateCustomerSessionCreate,
+            models.CustomerSessionsCreateCustomerSessionCreateTypedDict,
         ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -42,8 +43,10 @@ class CustomerSessions(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.CustomerSessionCreate)
-        request = cast(models.CustomerSessionCreate, request)
+            request = utils.unmarshal(
+                request, models.CustomerSessionsCreateCustomerSessionCreate
+            )
+        request = cast(models.CustomerSessionsCreateCustomerSessionCreate, request)
 
         req = self._build_request(
             method="POST",
@@ -59,7 +62,11 @@ class CustomerSessions(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.CustomerSessionCreate
+                request,
+                False,
+                False,
+                "json",
+                models.CustomerSessionsCreateCustomerSessionCreate,
             ),
             timeout_ms=timeout_ms,
         )
@@ -116,7 +123,8 @@ class CustomerSessions(BaseSDK):
         self,
         *,
         request: Union[
-            models.CustomerSessionCreate, models.CustomerSessionCreateTypedDict
+            models.CustomerSessionsCreateCustomerSessionCreate,
+            models.CustomerSessionsCreateCustomerSessionCreateTypedDict,
         ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -146,8 +154,10 @@ class CustomerSessions(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.CustomerSessionCreate)
-        request = cast(models.CustomerSessionCreate, request)
+            request = utils.unmarshal(
+                request, models.CustomerSessionsCreateCustomerSessionCreate
+            )
+        request = cast(models.CustomerSessionsCreateCustomerSessionCreate, request)
 
         req = self._build_request_async(
             method="POST",
@@ -163,7 +173,11 @@ class CustomerSessions(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.CustomerSessionCreate
+                request,
+                False,
+                False,
+                "json",
+                models.CustomerSessionsCreateCustomerSessionCreate,
             ),
             timeout_ms=timeout_ms,
         )

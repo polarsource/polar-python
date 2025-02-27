@@ -30,8 +30,6 @@ class Oauth2(BaseSDK):
     ) -> models.Oauth2AuthorizeResponseOauth2Authorize:
         r"""Authorize
 
-        **Scopes**:
-
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -115,8 +113,6 @@ class Oauth2(BaseSDK):
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.Oauth2AuthorizeResponseOauth2Authorize:
         r"""Authorize
-
-        **Scopes**:
 
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method

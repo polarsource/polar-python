@@ -34,8 +34,12 @@ class OrderCustomerTypedDict(TypedDict):
     id: str
     r"""The ID of the object."""
     metadata: Dict[str, OrderCustomerMetadataTypedDict]
+    external_id: Nullable[str]
+    r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
     email: str
+    r"""The email address of the customer. This must be unique within the organization."""
     email_verified: bool
+    r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
     name: Nullable[str]
     billing_address: Nullable[AddressTypedDict]
     tax_id: Nullable[List[Nullable[OrderCustomerTaxIDTypedDict]]]
@@ -55,9 +59,14 @@ class OrderCustomer(BaseModel):
 
     metadata: Dict[str, OrderCustomerMetadata]
 
+    external_id: Nullable[str]
+    r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
+
     email: str
+    r"""The email address of the customer. This must be unique within the organization."""
 
     email_verified: bool
+    r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
 
     name: Nullable[str]
 
@@ -72,7 +81,13 @@ class OrderCustomer(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
-        nullable_fields = ["modified_at", "name", "billing_address", "tax_id"]
+        nullable_fields = [
+            "modified_at",
+            "external_id",
+            "name",
+            "billing_address",
+            "tax_id",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

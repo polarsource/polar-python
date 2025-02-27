@@ -23,6 +23,7 @@ Get authenticated customer.
 import polar_sdk
 from polar_sdk import Polar
 
+
 with Polar() as polar:
 
     res = polar.customer_portal.customers.get(security=polar_sdk.CustomerPortalCustomersGetSecurity(
@@ -62,6 +63,7 @@ Update authenticated customer.
 ```python
 import polar_sdk
 from polar_sdk import Polar
+
 
 with Polar() as polar:
 
@@ -104,6 +106,7 @@ Get saved payment methods of the authenticated customer.
 ```python
 import polar_sdk
 from polar_sdk import Polar
+
 
 with Polar() as polar:
 
@@ -150,6 +153,7 @@ Add a payment method to the authenticated customer.
 import polar_sdk
 from polar_sdk import Polar
 
+
 with Polar() as polar:
 
     res = polar.customer_portal.customers.add_payment_method(security=polar_sdk.CustomerPortalCustomersAddPaymentMethodSecurity(
@@ -195,6 +199,7 @@ Delete a payment method from the authenticated customer.
 ```python
 import polar_sdk
 from polar_sdk import Polar
+
 
 with Polar() as polar:
 

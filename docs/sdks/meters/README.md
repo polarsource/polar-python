@@ -23,6 +23,7 @@ List meters.
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -70,6 +71,7 @@ Create a meter.
 ```python
 import polar_sdk
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -123,6 +125,7 @@ Get a meter by ID.
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -163,6 +166,7 @@ Update a meter.
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -205,6 +209,7 @@ Get events matching the filter of a meter.
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -253,6 +258,7 @@ import dateutil.parser
 import polar_sdk
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -273,7 +279,7 @@ with Polar(
 | `end_timestamp`                                                                                                                   | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                              | :heavy_check_mark:                                                                                                                | End timestamp.                                                                                                                    |
 | `interval`                                                                                                                        | [models.TimeInterval](../../models/timeinterval.md)                                                                               | :heavy_check_mark:                                                                                                                | Interval between two timestamps.                                                                                                  |
 | `customer_id`                                                                                                                     | [OptionalNullable[models.MetersQuantitiesQueryParamCustomerIDFilter]](../../models/metersquantitiesqueryparamcustomeridfilter.md) | :heavy_minus_sign:                                                                                                                | Filter by customer ID.                                                                                                            |
-| `exernal_customer_id`                                                                                                             | [OptionalNullable[models.QueryParamExternalCustomerIDFilter]](../../models/queryparamexternalcustomeridfilter.md)                 | :heavy_minus_sign:                                                                                                                | Filter by external customer ID.                                                                                                   |
+| `external_customer_id`                                                                                                            | [OptionalNullable[models.QueryParamExternalCustomerIDFilter]](../../models/queryparamexternalcustomeridfilter.md)                 | :heavy_minus_sign:                                                                                                                | Filter by external customer ID.                                                                                                   |
 | `retries`                                                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                  | :heavy_minus_sign:                                                                                                                | Configuration to override the default retry behavior of the client.                                                               |
 
 ### Response

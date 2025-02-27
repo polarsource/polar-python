@@ -630,6 +630,10 @@ from .customer_portal_subscriptions_updateop import (
     CustomerPortalSubscriptionsUpdateSecurity,
     CustomerPortalSubscriptionsUpdateSecurityTypedDict,
 )
+from .customer_sessions_createop import (
+    CustomerSessionsCreateCustomerSessionCreate,
+    CustomerSessionsCreateCustomerSessionCreateTypedDict,
+)
 from .customerbenefitgrant import CustomerBenefitGrant, CustomerBenefitGrantTypedDict
 from .customerbenefitgrantads import (
     CustomerBenefitGrantAds,
@@ -744,7 +748,15 @@ from .customerproduct import (
     CustomerProductPricesTypedDict,
     CustomerProductTypedDict,
 )
+from .customers_delete_externalop import (
+    CustomersDeleteExternalRequest,
+    CustomersDeleteExternalRequestTypedDict,
+)
 from .customers_deleteop import CustomersDeleteRequest, CustomersDeleteRequestTypedDict
+from .customers_get_externalop import (
+    CustomersGetExternalRequest,
+    CustomersGetExternalRequestTypedDict,
+)
 from .customers_getop import CustomersGetRequest, CustomersGetRequestTypedDict
 from .customers_listop import (
     CustomersListQueryParamOrganizationIDFilter,
@@ -774,9 +786,20 @@ from .customers_listop import (
     SourceFilter,
     SourceFilterTypedDict,
 )
+from .customers_update_externalop import (
+    CustomersUpdateExternalRequest,
+    CustomersUpdateExternalRequestTypedDict,
+)
 from .customers_updateop import CustomersUpdateRequest, CustomersUpdateRequestTypedDict
 from .customersession import CustomerSession, CustomerSessionTypedDict
-from .customersessioncreate import CustomerSessionCreate, CustomerSessionCreateTypedDict
+from .customersessioncustomerexternalidcreate import (
+    CustomerSessionCustomerExternalIDCreate,
+    CustomerSessionCustomerExternalIDCreateTypedDict,
+)
+from .customersessioncustomeridcreate import (
+    CustomerSessionCustomerIDCreate,
+    CustomerSessionCustomerIDCreateTypedDict,
+)
 from .customersortproperty import CustomerSortProperty
 from .customersubscription import (
     CustomerSubscription,
@@ -2404,9 +2427,13 @@ __all__ = [
     "CustomerProductPricesTypedDict",
     "CustomerProductTypedDict",
     "CustomerSession",
-    "CustomerSessionCreate",
-    "CustomerSessionCreateTypedDict",
+    "CustomerSessionCustomerExternalIDCreate",
+    "CustomerSessionCustomerExternalIDCreateTypedDict",
+    "CustomerSessionCustomerIDCreate",
+    "CustomerSessionCustomerIDCreateTypedDict",
     "CustomerSessionTypedDict",
+    "CustomerSessionsCreateCustomerSessionCreate",
+    "CustomerSessionsCreateCustomerSessionCreateTypedDict",
     "CustomerSortProperty",
     "CustomerSubscription",
     "CustomerSubscriptionCancel",
@@ -2432,8 +2459,12 @@ __all__ = [
     "CustomerUpdateTaxID",
     "CustomerUpdateTaxIDTypedDict",
     "CustomerUpdateTypedDict",
+    "CustomersDeleteExternalRequest",
+    "CustomersDeleteExternalRequestTypedDict",
     "CustomersDeleteRequest",
     "CustomersDeleteRequestTypedDict",
+    "CustomersGetExternalRequest",
+    "CustomersGetExternalRequestTypedDict",
     "CustomersGetRequest",
     "CustomersGetRequestTypedDict",
     "CustomersListQueryParamOrganizationIDFilter",
@@ -2442,6 +2473,8 @@ __all__ = [
     "CustomersListRequestTypedDict",
     "CustomersListResponse",
     "CustomersListResponseTypedDict",
+    "CustomersUpdateExternalRequest",
+    "CustomersUpdateExternalRequestTypedDict",
     "CustomersUpdateRequest",
     "CustomersUpdateRequestTypedDict",
     "Discount",

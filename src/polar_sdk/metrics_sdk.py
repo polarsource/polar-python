@@ -48,6 +48,8 @@ class MetricsSDK(BaseSDK):
 
         Get metrics about your orders and subscriptions.
 
+        Currency values are output in cents.
+
         **Scopes**: `metrics:read`
 
         :param start_date: Start date.
@@ -184,6 +186,8 @@ class MetricsSDK(BaseSDK):
         r"""Get Metrics
 
         Get metrics about your orders and subscriptions.
+
+        Currency values are output in cents.
 
         **Scopes**: `metrics:read`
 

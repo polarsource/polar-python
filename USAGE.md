@@ -3,6 +3,7 @@
 # Synchronous Example
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -24,6 +25,7 @@ import asyncio
 from polar_sdk import Polar
 
 async def main():
+
     async with Polar(
         access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as polar:
