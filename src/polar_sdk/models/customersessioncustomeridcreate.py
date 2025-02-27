@@ -5,15 +5,15 @@ from polar_sdk.types import BaseModel
 from typing_extensions import TypedDict
 
 
-class CustomerSessionCreateTypedDict(TypedDict):
-    r"""Schema for creating a customer session."""
+class CustomerSessionCustomerIDCreateTypedDict(TypedDict):
+    r"""Schema for creating a customer session using a customer ID."""
 
     customer_id: str
     r"""ID of the customer to create a session for."""
 
 
-class CustomerSessionCreate(BaseModel):
-    r"""Schema for creating a customer session."""
+class CustomerSessionCustomerIDCreate(BaseModel):
+    r"""Schema for creating a customer session using a customer ID."""
 
     customer_id: str
     r"""ID of the customer to create a session for."""

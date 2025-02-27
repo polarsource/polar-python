@@ -1421,8 +1421,6 @@ class Checkouts(BaseSDK):
 
         Orders and subscriptions will be processed.
 
-        **Scopes**:
-
         :param client_secret: The checkout session client secret.
         :param checkout_confirm_stripe:
         :param retries: Override the default retry configuration for this method
@@ -1548,8 +1546,6 @@ class Checkouts(BaseSDK):
         Confirm a checkout session by client secret.
 
         Orders and subscriptions will be processed.
-
-        **Scopes**:
 
         :param client_secret: The checkout session client secret.
         :param checkout_confirm_stripe:

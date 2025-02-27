@@ -22,6 +22,7 @@ List subscriptions of the authenticated customer.
 import polar_sdk
 from polar_sdk import Polar
 
+
 with Polar() as polar:
 
     res = polar.customer_portal.subscriptions.list(security=polar_sdk.CustomerPortalSubscriptionsListSecurity(
@@ -72,6 +73,7 @@ Get a subscription for the authenticated customer.
 import polar_sdk
 from polar_sdk import Polar
 
+
 with Polar() as polar:
 
     res = polar.customer_portal.subscriptions.get(security=polar_sdk.CustomerPortalSubscriptionsGetSecurity(
@@ -114,6 +116,7 @@ Update a subscription of the authenticated customer.
 ```python
 import polar_sdk
 from polar_sdk import Polar
+
 
 with Polar() as polar:
 
@@ -159,6 +162,7 @@ Cancel a subscription of the authenticated customer.
 ```python
 import polar_sdk
 from polar_sdk import Polar
+
 
 with Polar() as polar:
 

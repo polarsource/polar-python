@@ -22,6 +22,7 @@ List checkout links.
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -68,6 +69,7 @@ Create a checkout link.
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -112,6 +114,7 @@ Get a checkout link by ID.
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -152,6 +155,7 @@ Update a checkout link.
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -194,6 +198,7 @@ Delete a checkout link.
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

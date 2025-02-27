@@ -22,6 +22,7 @@ List custom fields.
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -69,6 +70,7 @@ Create a custom field.
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -114,6 +116,7 @@ Get a custom field by ID.
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -154,6 +157,7 @@ Update a custom field.
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -198,6 +202,7 @@ Delete a custom field.
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

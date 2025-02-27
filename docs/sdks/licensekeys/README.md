@@ -21,6 +21,7 @@ Get license keys connected to the given organization & filters.
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -68,6 +69,7 @@ Get a license key.
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -109,6 +111,7 @@ Update a license key.
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -152,6 +155,7 @@ Get a license key activation.
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

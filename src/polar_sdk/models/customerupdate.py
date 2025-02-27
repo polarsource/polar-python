@@ -27,7 +27,10 @@ CustomerUpdateTaxID = TypeAliasType("CustomerUpdateTaxID", Union[str, TaxIDForma
 
 class CustomerUpdateTypedDict(TypedDict):
     metadata: NotRequired[Nullable[Dict[str, CustomerUpdateMetadataTypedDict]]]
+    external_id: NotRequired[Nullable[str]]
+    r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
     email: NotRequired[Nullable[str]]
+    r"""The email address of the customer. This must be unique within the organization."""
     name: NotRequired[Nullable[str]]
     billing_address: NotRequired[Nullable[AddressTypedDict]]
     tax_id: NotRequired[Nullable[List[Nullable[CustomerUpdateTaxIDTypedDict]]]]
@@ -36,7 +39,11 @@ class CustomerUpdateTypedDict(TypedDict):
 class CustomerUpdate(BaseModel):
     metadata: OptionalNullable[Dict[str, CustomerUpdateMetadata]] = UNSET
 
+    external_id: OptionalNullable[str] = UNSET
+    r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
+
     email: OptionalNullable[str] = UNSET
+    r"""The email address of the customer. This must be unique within the organization."""
 
     name: OptionalNullable[str] = UNSET
 
@@ -46,8 +53,22 @@ class CustomerUpdate(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["metadata", "email", "name", "billing_address", "tax_id"]
-        nullable_fields = ["metadata", "email", "name", "billing_address", "tax_id"]
+        optional_fields = [
+            "metadata",
+            "external_id",
+            "email",
+            "name",
+            "billing_address",
+            "tax_id",
+        ]
+        nullable_fields = [
+            "metadata",
+            "external_id",
+            "email",
+            "name",
+            "billing_address",
+            "tax_id",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

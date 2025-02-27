@@ -18,6 +18,7 @@
 import polar_sdk
 from polar_sdk import Polar
 
+
 with Polar() as polar:
 
     res = polar.customer_portal.downloadables.list(security=polar_sdk.CustomerPortalDownloadablesListSecurity(
@@ -61,6 +62,7 @@ Get Downloadable
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

@@ -21,6 +21,7 @@
 import polar_sdk
 from polar_sdk import Polar
 
+
 with Polar() as polar:
 
     res = polar.customer_portal.license_keys.list(security=polar_sdk.CustomerPortalLicenseKeysListSecurity(
@@ -70,6 +71,7 @@ Get a license key.
 import polar_sdk
 from polar_sdk import Polar
 
+
 with Polar() as polar:
 
     res = polar.customer_portal.license_keys.get(security=polar_sdk.CustomerPortalLicenseKeysGetSecurity(
@@ -109,6 +111,7 @@ Validate a license key.
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -151,6 +154,7 @@ Activate a license key instance.
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -195,6 +199,7 @@ Deactivate a license key instance.
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

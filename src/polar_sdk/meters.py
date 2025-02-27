@@ -1241,7 +1241,7 @@ class Meters(BaseSDK):
                 models.MetersQuantitiesQueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
-        exernal_customer_id: OptionalNullable[
+        external_customer_id: OptionalNullable[
             Union[
                 models.QueryParamExternalCustomerIDFilter,
                 models.QueryParamExternalCustomerIDFilterTypedDict,
@@ -1263,7 +1263,7 @@ class Meters(BaseSDK):
         :param end_timestamp: End timestamp.
         :param interval: Interval between two timestamps.
         :param customer_id: Filter by customer ID.
-        :param exernal_customer_id: Filter by external customer ID.
+        :param external_customer_id: Filter by external customer ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1285,7 +1285,7 @@ class Meters(BaseSDK):
             end_timestamp=end_timestamp,
             interval=interval,
             customer_id=customer_id,
-            exernal_customer_id=exernal_customer_id,
+            external_customer_id=external_customer_id,
         )
 
         req = self._build_request(
@@ -1370,7 +1370,7 @@ class Meters(BaseSDK):
                 models.MetersQuantitiesQueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
-        exernal_customer_id: OptionalNullable[
+        external_customer_id: OptionalNullable[
             Union[
                 models.QueryParamExternalCustomerIDFilter,
                 models.QueryParamExternalCustomerIDFilterTypedDict,
@@ -1392,7 +1392,7 @@ class Meters(BaseSDK):
         :param end_timestamp: End timestamp.
         :param interval: Interval between two timestamps.
         :param customer_id: Filter by customer ID.
-        :param exernal_customer_id: Filter by external customer ID.
+        :param external_customer_id: Filter by external customer ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1414,7 +1414,7 @@ class Meters(BaseSDK):
             end_timestamp=end_timestamp,
             interval=interval,
             customer_id=customer_id,
-            exernal_customer_id=exernal_customer_id,
+            external_customer_id=external_customer_id,
         )
 
         req = self._build_request_async(

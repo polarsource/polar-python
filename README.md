@@ -109,6 +109,7 @@ import dateutil.parser
 import polar_sdk
 from polar_sdk import Polar
 
+
 with Polar() as polar:
 
     res = polar.endpointcheckout_created_post(request=polar_sdk.WebhookCheckoutCreatedPayload(
@@ -614,6 +615,7 @@ import polar_sdk
 from polar_sdk import Polar
 
 async def main():
+
     async with Polar() as polar:
 
         res = await polar.endpointcheckout_created_post_async(request=polar_sdk.WebhookCheckoutCreatedPayload(
@@ -1235,6 +1237,9 @@ def webhook():
 * [get](docs/sdks/customers/README.md#get) - Get Customer
 * [update](docs/sdks/customers/README.md#update) - Update Customer
 * [delete](docs/sdks/customers/README.md#delete) - Delete Customer
+* [get_external](docs/sdks/customers/README.md#get_external) - Get Customer by External ID
+* [update_external](docs/sdks/customers/README.md#update_external) - Update Customer by External ID
+* [delete_external](docs/sdks/customers/README.md#delete_external) - Delete Customer by External ID
 
 ### [discounts](docs/sdks/discounts/README.md)
 
@@ -1353,6 +1358,7 @@ To change the default retry strategy for a single API call, simply provide a `Re
 from polar_sdk import Polar
 from polar_sdk.utils import BackoffStrategy, RetryConfig
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -1371,6 +1377,7 @@ If you'd like to override the default retry strategy for all operations that sup
 ```python
 from polar_sdk import Polar
 from polar_sdk.utils import BackoffStrategy, RetryConfig
+
 
 with Polar(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
@@ -1413,6 +1420,7 @@ When custom error responses are specified for an operation, the SDK may also rai
 ```python
 from polar_sdk import Polar, models
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -1452,6 +1460,7 @@ You can override the default server globally by passing a server name to the `se
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     server="sandbox",
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -1471,6 +1480,7 @@ with Polar(
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     server_url="https://api.polar.sh",
@@ -1583,6 +1593,7 @@ To authenticate with the API the `access_token` parameter must be set when initi
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -1602,6 +1613,7 @@ Some operations in this SDK require the security scheme to be specified at the r
 ```python
 import polar_sdk
 from polar_sdk import Polar
+
 
 with Polar() as polar:
 
@@ -1627,6 +1639,7 @@ The `Polar` class implements the context manager protocol and registers a finali
 ```python
 from polar_sdk import Polar
 def main():
+
     with Polar(
         access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as polar:
@@ -1635,6 +1648,7 @@ def main():
 
 # Or when using async:
 async def amain():
+
     async with Polar(
         access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as polar:
@@ -1667,6 +1681,7 @@ return value of `Next` is `None`, then there are no more pages to be fetched.
 Here's an example of one such pagination call:
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

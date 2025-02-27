@@ -27,6 +27,7 @@ CustomerCreateTaxID = TypeAliasType("CustomerCreateTaxID", Union[str, TaxIDForma
 
 class CustomerCreateTypedDict(TypedDict):
     email: str
+    r"""The email address of the customer. This must be unique within the organization."""
     metadata: NotRequired[Dict[str, CustomerCreateMetadataTypedDict]]
     r"""Key-value object allowing you to store additional information.
 
@@ -39,6 +40,8 @@ class CustomerCreateTypedDict(TypedDict):
 
     You can store up to **50 key-value pairs**.
     """
+    external_id: NotRequired[Nullable[str]]
+    r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
     name: NotRequired[Nullable[str]]
     billing_address: NotRequired[Nullable[AddressTypedDict]]
     tax_id: NotRequired[Nullable[List[Nullable[CustomerCreateTaxIDTypedDict]]]]
@@ -48,6 +51,7 @@ class CustomerCreateTypedDict(TypedDict):
 
 class CustomerCreate(BaseModel):
     email: str
+    r"""The email address of the customer. This must be unique within the organization."""
 
     metadata: Optional[Dict[str, CustomerCreateMetadata]] = None
     r"""Key-value object allowing you to store additional information.
@@ -62,6 +66,9 @@ class CustomerCreate(BaseModel):
     You can store up to **50 key-value pairs**.
     """
 
+    external_id: OptionalNullable[str] = UNSET
+    r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
+
     name: OptionalNullable[str] = UNSET
 
     billing_address: OptionalNullable[Address] = UNSET
@@ -75,12 +82,19 @@ class CustomerCreate(BaseModel):
     def serialize_model(self, handler):
         optional_fields = [
             "metadata",
+            "external_id",
             "name",
             "billing_address",
             "tax_id",
             "organization_id",
         ]
-        nullable_fields = ["name", "billing_address", "tax_id", "organization_id"]
+        nullable_fields = [
+            "external_id",
+            "name",
+            "billing_address",
+            "tax_id",
+            "organization_id",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

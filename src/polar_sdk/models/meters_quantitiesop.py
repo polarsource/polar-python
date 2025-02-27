@@ -47,7 +47,7 @@ class MetersQuantitiesRequestTypedDict(TypedDict):
         Nullable[MetersQuantitiesQueryParamCustomerIDFilterTypedDict]
     ]
     r"""Filter by customer ID."""
-    exernal_customer_id: NotRequired[
+    external_customer_id: NotRequired[
         Nullable[QueryParamExternalCustomerIDFilterTypedDict]
     ]
     r"""Filter by external customer ID."""
@@ -81,7 +81,7 @@ class MetersQuantitiesRequest(BaseModel):
     ] = UNSET
     r"""Filter by customer ID."""
 
-    exernal_customer_id: Annotated[
+    external_customer_id: Annotated[
         OptionalNullable[QueryParamExternalCustomerIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
@@ -89,8 +89,8 @@ class MetersQuantitiesRequest(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["customer_id", "exernal_customer_id"]
-        nullable_fields = ["customer_id", "exernal_customer_id"]
+        optional_fields = ["customer_id", "external_customer_id"]
+        nullable_fields = ["customer_id", "external_customer_id"]
         null_default_fields = []
 
         serialized = handler(self)

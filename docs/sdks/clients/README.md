@@ -15,12 +15,11 @@
 
 List OAuth2 clients.
 
-**Scopes**:
-
 ### Example Usage
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -58,12 +57,11 @@ with Polar(
 
 Create an OAuth2 client.
 
-**Scopes**:
-
 ### Example Usage
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -103,12 +101,11 @@ with Polar(
 
 Get an OAuth2 client by Client ID.
 
-**Scopes**:
-
 ### Example Usage
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -143,12 +140,11 @@ with Polar(
 
 Update an OAuth2 client.
 
-**Scopes**:
-
 ### Example Usage
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -192,12 +188,11 @@ with Polar(
 
 Delete an OAuth2 client.
 
-**Scopes**:
-
 ### Example Usage
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",

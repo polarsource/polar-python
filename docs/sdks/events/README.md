@@ -20,6 +20,7 @@ List events.
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -71,6 +72,7 @@ Get an event by ID.
 ```python
 from polar_sdk import Polar
 
+
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
@@ -111,6 +113,7 @@ Ingest batch of events.
 
 ```python
 from polar_sdk import Polar
+
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
