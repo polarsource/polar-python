@@ -20,14 +20,10 @@ LicenseKeyCustomerMetadata = TypeAliasType(
 )
 
 
-LicenseKeyCustomerTaxIDTypedDict = TypeAliasType(
-    "LicenseKeyCustomerTaxIDTypedDict", Union[str, TaxIDFormat]
-)
+TaxIDTypedDict = TypeAliasType("TaxIDTypedDict", Union[str, TaxIDFormat])
 
 
-LicenseKeyCustomerTaxID = TypeAliasType(
-    "LicenseKeyCustomerTaxID", Union[str, TaxIDFormat]
-)
+TaxID = TypeAliasType("TaxID", Union[str, TaxIDFormat])
 
 
 class LicenseKeyCustomerTypedDict(TypedDict):
@@ -46,7 +42,7 @@ class LicenseKeyCustomerTypedDict(TypedDict):
     r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
     name: Nullable[str]
     billing_address: Nullable[AddressTypedDict]
-    tax_id: Nullable[List[Nullable[LicenseKeyCustomerTaxIDTypedDict]]]
+    tax_id: Nullable[List[Nullable[TaxIDTypedDict]]]
     organization_id: str
     avatar_url: str
 
@@ -76,7 +72,7 @@ class LicenseKeyCustomer(BaseModel):
 
     billing_address: Nullable[Address]
 
-    tax_id: Nullable[List[Nullable[LicenseKeyCustomerTaxID]]]
+    tax_id: Nullable[List[Nullable[TaxID]]]
 
     organization_id: str
 

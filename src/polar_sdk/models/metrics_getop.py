@@ -35,15 +35,16 @@ MetricsGetQueryParamProductIDFilter = TypeAliasType(
 r"""Filter by product ID."""
 
 
-ProductBillingTypeFilterTypedDict = TypeAliasType(
-    "ProductBillingTypeFilterTypedDict",
+QueryParamProductBillingTypeFilterTypedDict = TypeAliasType(
+    "QueryParamProductBillingTypeFilterTypedDict",
     Union[ProductBillingType, List[ProductBillingType]],
 )
 r"""Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
 
 
-ProductBillingTypeFilter = TypeAliasType(
-    "ProductBillingTypeFilter", Union[ProductBillingType, List[ProductBillingType]]
+QueryParamProductBillingTypeFilter = TypeAliasType(
+    "QueryParamProductBillingTypeFilter",
+    Union[ProductBillingType, List[ProductBillingType]],
 )
 r"""Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
 
@@ -73,7 +74,7 @@ class MetricsGetRequestTypedDict(TypedDict):
     r"""Filter by organization ID."""
     product_id: NotRequired[Nullable[MetricsGetQueryParamProductIDFilterTypedDict]]
     r"""Filter by product ID."""
-    billing_type: NotRequired[Nullable[ProductBillingTypeFilterTypedDict]]
+    billing_type: NotRequired[Nullable[QueryParamProductBillingTypeFilterTypedDict]]
     r"""Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
     customer_id: NotRequired[Nullable[MetricsGetQueryParamCustomerIDFilterTypedDict]]
     r"""Filter by customer ID."""
@@ -109,7 +110,7 @@ class MetricsGetRequest(BaseModel):
     r"""Filter by product ID."""
 
     billing_type: Annotated[
-        OptionalNullable[ProductBillingTypeFilter],
+        OptionalNullable[QueryParamProductBillingTypeFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""

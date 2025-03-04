@@ -29,8 +29,8 @@ class MetricsSDK(BaseSDK):
         ] = UNSET,
         billing_type: OptionalNullable[
             Union[
-                models.ProductBillingTypeFilter,
-                models.ProductBillingTypeFilterTypedDict,
+                models.QueryParamProductBillingTypeFilter,
+                models.QueryParamProductBillingTypeFilterTypedDict,
             ]
         ] = UNSET,
         customer_id: OptionalNullable[
@@ -168,8 +168,8 @@ class MetricsSDK(BaseSDK):
         ] = UNSET,
         billing_type: OptionalNullable[
             Union[
-                models.ProductBillingTypeFilter,
-                models.ProductBillingTypeFilterTypedDict,
+                models.QueryParamProductBillingTypeFilter,
+                models.QueryParamProductBillingTypeFilterTypedDict,
             ]
         ] = UNSET,
         customer_id: OptionalNullable[

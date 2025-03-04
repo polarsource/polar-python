@@ -3,12 +3,6 @@
 
 ## Supported Types
 
-### `models.BenefitAds`
-
-```python
-value: models.BenefitAds = /* values here */
-```
-
 ### `models.BenefitCustom`
 
 ```python

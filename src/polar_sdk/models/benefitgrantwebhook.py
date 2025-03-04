@@ -2,10 +2,6 @@
 
 from __future__ import annotations
 from .benefit import Benefit, BenefitTypedDict
-from .benefitgrantadsproperties import (
-    BenefitGrantAdsProperties,
-    BenefitGrantAdsPropertiesTypedDict,
-)
 from .benefitgrantcustomproperties import (
     BenefitGrantCustomProperties,
     BenefitGrantCustomPropertiesTypedDict,
@@ -40,7 +36,6 @@ BenefitGrantWebhookPropertiesTypedDict = TypeAliasType(
     Union[
         BenefitGrantCustomPropertiesTypedDict,
         BenefitGrantDownloadablesPropertiesTypedDict,
-        BenefitGrantAdsPropertiesTypedDict,
         BenefitGrantLicenseKeysPropertiesTypedDict,
         BenefitGrantDiscordPropertiesTypedDict,
         BenefitGrantGitHubRepositoryPropertiesTypedDict,
@@ -53,7 +48,6 @@ BenefitGrantWebhookProperties = TypeAliasType(
     Union[
         BenefitGrantCustomProperties,
         BenefitGrantDownloadablesProperties,
-        BenefitGrantAdsProperties,
         BenefitGrantLicenseKeysProperties,
         BenefitGrantDiscordProperties,
         BenefitGrantGitHubRepositoryProperties,
@@ -66,7 +60,6 @@ PreviousPropertiesTypedDict = TypeAliasType(
     Union[
         BenefitGrantCustomPropertiesTypedDict,
         BenefitGrantDownloadablesPropertiesTypedDict,
-        BenefitGrantAdsPropertiesTypedDict,
         BenefitGrantLicenseKeysPropertiesTypedDict,
         BenefitGrantDiscordPropertiesTypedDict,
         BenefitGrantGitHubRepositoryPropertiesTypedDict,
@@ -79,7 +72,6 @@ PreviousProperties = TypeAliasType(
     Union[
         BenefitGrantCustomProperties,
         BenefitGrantDownloadablesProperties,
-        BenefitGrantAdsProperties,
         BenefitGrantLicenseKeysProperties,
         BenefitGrantDiscordProperties,
         BenefitGrantGitHubRepositoryProperties,

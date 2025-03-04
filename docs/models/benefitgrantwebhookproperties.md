@@ -27,12 +27,6 @@ value: models.BenefitGrantDownloadablesProperties = /* values here */
 value: models.BenefitGrantLicenseKeysProperties = /* values here */
 ```
 
-### `models.BenefitGrantAdsProperties`
-
-```python
-value: models.BenefitGrantAdsProperties = /* values here */
-```
-
 ### `models.BenefitGrantCustomProperties`
 
 ```python

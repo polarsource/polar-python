@@ -24,16 +24,14 @@ from typing import Dict, List, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-ProductCreateMetadataTypedDict = TypeAliasType(
-    "ProductCreateMetadataTypedDict", Union[str, int, bool]
-)
+MetadataTypedDict = TypeAliasType("MetadataTypedDict", Union[str, int, bool])
 
 
-ProductCreateMetadata = TypeAliasType("ProductCreateMetadata", Union[str, int, bool])
+Metadata = TypeAliasType("Metadata", Union[str, int, bool])
 
 
-ProductCreatePricesTypedDict = TypeAliasType(
-    "ProductCreatePricesTypedDict",
+PricesTypedDict = TypeAliasType(
+    "PricesTypedDict",
     Union[
         ProductPriceFreeCreateTypedDict,
         ProductPriceFixedCreateTypedDict,
@@ -42,8 +40,8 @@ ProductCreatePricesTypedDict = TypeAliasType(
 )
 
 
-ProductCreatePrices = TypeAliasType(
-    "ProductCreatePrices",
+Prices = TypeAliasType(
+    "Prices",
     Union[ProductPriceFreeCreate, ProductPriceFixedCreate, ProductPriceCustomCreate],
 )
 
@@ -55,9 +53,9 @@ class ProductCreateTypedDict(TypedDict):
     r"""The name of the product."""
     recurring_interval: Nullable[SubscriptionRecurringInterval]
     r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
-    prices: List[ProductCreatePricesTypedDict]
+    prices: List[PricesTypedDict]
     r"""List of available prices for this product. Currently, only a single price is supported."""
-    metadata: NotRequired[Dict[str, ProductCreateMetadataTypedDict]]
+    metadata: NotRequired[Dict[str, MetadataTypedDict]]
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
@@ -88,10 +86,10 @@ class ProductCreate(BaseModel):
     recurring_interval: Nullable[SubscriptionRecurringInterval]
     r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
 
-    prices: List[ProductCreatePrices]
+    prices: List[Prices]
     r"""List of available prices for this product. Currently, only a single price is supported."""
 
-    metadata: Optional[Dict[str, ProductCreateMetadata]] = None
+    metadata: Optional[Dict[str, Metadata]] = None
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.

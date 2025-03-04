@@ -25,7 +25,7 @@ class Files(BaseSDK):
 
         List files.
 
-        **Scopes**: `files:write`
+        **Scopes**: `files:read` `files:write`
 
         :param organization_id:
         :param ids: List of file IDs to get.
@@ -162,7 +162,7 @@ class Files(BaseSDK):
 
         List files.
 
-        **Scopes**: `files:write`
+        **Scopes**: `files:read` `files:write`
 
         :param organization_id:
         :param ids: List of file IDs to get.

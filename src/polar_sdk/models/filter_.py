@@ -20,8 +20,8 @@ class Filter(BaseModel):
 
 
 ClausesTypedDict = TypeAliasType(
-    "ClausesTypedDict", Union[FilterTypedDict, FilterClauseTypedDict]
+    "ClausesTypedDict", Union["FilterTypedDict", FilterClauseTypedDict]
 )
 
 
-Clauses = TypeAliasType("Clauses", Union[Filter, FilterClause])
+Clauses = TypeAliasType("Clauses", Union["Filter", FilterClause])

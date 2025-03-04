@@ -8,7 +8,6 @@ from .utils.retries import RetryConfig
 import httpx
 from polar_sdk import models, utils
 from polar_sdk._hooks import SDKHooks
-from polar_sdk.advertisements import Advertisements
 from polar_sdk.benefits import Benefits
 from polar_sdk.checkout_links import CheckoutLinks
 from polar_sdk.checkouts import Checkouts
@@ -45,7 +44,6 @@ class Polar(BaseSDK):
     repositories: Repositories
     organizations: Organizations
     subscriptions: Subscriptions
-    advertisements: Advertisements
     oauth2: Oauth2
     benefits: Benefits
     products: Products
@@ -166,7 +164,6 @@ class Polar(BaseSDK):
         self.repositories = Repositories(self.sdk_configuration)
         self.organizations = Organizations(self.sdk_configuration)
         self.subscriptions = Subscriptions(self.sdk_configuration)
-        self.advertisements = Advertisements(self.sdk_configuration)
         self.oauth2 = Oauth2(self.sdk_configuration)
         self.benefits = Benefits(self.sdk_configuration)
         self.products = Products(self.sdk_configuration)

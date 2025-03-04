@@ -36,26 +36,33 @@ from typing import Dict, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-MetadataTypedDict = TypeAliasType("MetadataTypedDict", Union[str, int, bool])
-
-
-Metadata = TypeAliasType("Metadata", Union[str, int, bool])
-
-
-CustomFieldDataTypedDict = TypeAliasType(
-    "CustomFieldDataTypedDict", Union[str, int, bool, datetime]
+SubscriptionMetadataTypedDict = TypeAliasType(
+    "SubscriptionMetadataTypedDict", Union[str, int, bool]
 )
 
 
-CustomFieldData = TypeAliasType("CustomFieldData", Union[str, int, bool, datetime])
+SubscriptionMetadata = TypeAliasType("SubscriptionMetadata", Union[str, int, bool])
 
 
-PriceTypedDict = TypeAliasType(
-    "PriceTypedDict", Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict]
+SubscriptionCustomFieldDataTypedDict = TypeAliasType(
+    "SubscriptionCustomFieldDataTypedDict", Union[str, int, bool, datetime]
 )
 
 
-Price = TypeAliasType("Price", Union[LegacyRecurringProductPrice, ProductPrice])
+SubscriptionCustomFieldData = TypeAliasType(
+    "SubscriptionCustomFieldData", Union[str, int, bool, datetime]
+)
+
+
+SubscriptionPriceTypedDict = TypeAliasType(
+    "SubscriptionPriceTypedDict",
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+)
+
+
+SubscriptionPrice = TypeAliasType(
+    "SubscriptionPrice", Union[LegacyRecurringProductPrice, ProductPrice]
+)
 
 
 SubscriptionDiscountTypedDict = TypeAliasType(
@@ -105,15 +112,17 @@ class SubscriptionTypedDict(TypedDict):
     checkout_id: Nullable[str]
     customer_cancellation_reason: Nullable[CustomerCancellationReason]
     customer_cancellation_comment: Nullable[str]
-    metadata: Dict[str, MetadataTypedDict]
+    metadata: Dict[str, SubscriptionMetadataTypedDict]
     customer: SubscriptionCustomerTypedDict
     user_id: str
     user: SubscriptionUserTypedDict
     product: ProductTypedDict
     r"""A product."""
-    price: PriceTypedDict
+    price: SubscriptionPriceTypedDict
     discount: Nullable[SubscriptionDiscountTypedDict]
-    custom_field_data: NotRequired[Dict[str, Nullable[CustomFieldDataTypedDict]]]
+    custom_field_data: NotRequired[
+        Dict[str, Nullable[SubscriptionCustomFieldDataTypedDict]]
+    ]
     r"""Key-value object storing custom field values."""
 
 
@@ -163,7 +172,7 @@ class Subscription(BaseModel):
 
     customer_cancellation_comment: Nullable[str]
 
-    metadata: Dict[str, Metadata]
+    metadata: Dict[str, SubscriptionMetadata]
 
     customer: SubscriptionCustomer
 
@@ -179,11 +188,11 @@ class Subscription(BaseModel):
     product: Product
     r"""A product."""
 
-    price: Price
+    price: SubscriptionPrice
 
     discount: Nullable[SubscriptionDiscount]
 
-    custom_field_data: Optional[Dict[str, Nullable[CustomFieldData]]] = None
+    custom_field_data: Optional[Dict[str, Nullable[SubscriptionCustomFieldData]]] = None
     r"""Key-value object storing custom field values."""
 
     @model_serializer(mode="wrap")

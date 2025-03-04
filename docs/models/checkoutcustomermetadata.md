@@ -1,4 +1,4 @@
-# CheckoutProductsCreateCustomFieldData
+# CheckoutCustomerMetadata
 
 
 ## Supported Types
@@ -19,11 +19,5 @@ value: int = /* values here */
 
 ```python
 value: bool = /* values here */
-```
-
-### `datetime`
-
-```python
-value: datetime = /* values here */
 ```
 

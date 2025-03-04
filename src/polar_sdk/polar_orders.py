@@ -28,6 +28,12 @@ class PolarOrders(BaseSDK):
                 models.CustomerPortalOrdersListQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
+        product_billing_type: OptionalNullable[
+            Union[
+                models.CustomerPortalOrdersListQueryParamProductBillingTypeFilter,
+                models.CustomerPortalOrdersListQueryParamProductBillingTypeFilterTypedDict,
+            ]
+        ] = UNSET,
         product_price_type: OptionalNullable[
             Union[
                 models.QueryParamProductPriceTypeFilter,
@@ -58,7 +64,8 @@ class PolarOrders(BaseSDK):
         :param security:
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
-        :param product_price_type: Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
+        :param product_billing_type: Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
+        :param product_price_type:
         :param subscription_id: Filter by subscription ID.
         :param query: Search by product or organization name.
         :param page: Page number, defaults to 1.
@@ -82,6 +89,7 @@ class PolarOrders(BaseSDK):
         request = models.CustomerPortalOrdersListRequest(
             organization_id=organization_id,
             product_id=product_id,
+            product_billing_type=product_billing_type,
             product_price_type=product_price_type,
             subscription_id=subscription_id,
             query=query,
@@ -150,6 +158,7 @@ class PolarOrders(BaseSDK):
                 security=security,
                 organization_id=organization_id,
                 product_id=product_id,
+                product_billing_type=product_billing_type,
                 product_price_type=product_price_type,
                 subscription_id=subscription_id,
                 query=query,
@@ -211,6 +220,12 @@ class PolarOrders(BaseSDK):
                 models.CustomerPortalOrdersListQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
+        product_billing_type: OptionalNullable[
+            Union[
+                models.CustomerPortalOrdersListQueryParamProductBillingTypeFilter,
+                models.CustomerPortalOrdersListQueryParamProductBillingTypeFilterTypedDict,
+            ]
+        ] = UNSET,
         product_price_type: OptionalNullable[
             Union[
                 models.QueryParamProductPriceTypeFilter,
@@ -241,7 +256,8 @@ class PolarOrders(BaseSDK):
         :param security:
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
-        :param product_price_type: Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
+        :param product_billing_type: Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
+        :param product_price_type:
         :param subscription_id: Filter by subscription ID.
         :param query: Search by product or organization name.
         :param page: Page number, defaults to 1.
@@ -265,6 +281,7 @@ class PolarOrders(BaseSDK):
         request = models.CustomerPortalOrdersListRequest(
             organization_id=organization_id,
             product_id=product_id,
+            product_billing_type=product_billing_type,
             product_price_type=product_price_type,
             subscription_id=subscription_id,
             query=query,
@@ -333,6 +350,7 @@ class PolarOrders(BaseSDK):
                 security=security,
                 organization_id=organization_id,
                 product_id=product_id,
+                product_billing_type=product_billing_type,
                 product_price_type=product_price_type,
                 subscription_id=subscription_id,
                 query=query,

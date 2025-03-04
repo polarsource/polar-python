@@ -21,15 +21,12 @@ from typing import Union
 from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
-CustomerSubscriptionPriceTypedDict = TypeAliasType(
-    "CustomerSubscriptionPriceTypedDict",
-    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+PriceTypedDict = TypeAliasType(
+    "PriceTypedDict", Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict]
 )
 
 
-CustomerSubscriptionPrice = TypeAliasType(
-    "CustomerSubscriptionPrice", Union[LegacyRecurringProductPrice, ProductPrice]
-)
+Price = TypeAliasType("Price", Union[LegacyRecurringProductPrice, ProductPrice])
 
 
 class CustomerSubscriptionTypedDict(TypedDict):
@@ -59,7 +56,7 @@ class CustomerSubscriptionTypedDict(TypedDict):
     customer_cancellation_comment: Nullable[str]
     user_id: str
     product: CustomerSubscriptionProductTypedDict
-    price: CustomerSubscriptionPriceTypedDict
+    price: PriceTypedDict
 
 
 class CustomerSubscription(BaseModel):
@@ -117,7 +114,7 @@ class CustomerSubscription(BaseModel):
 
     product: CustomerSubscriptionProduct
 
-    price: CustomerSubscriptionPrice
+    price: Price
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

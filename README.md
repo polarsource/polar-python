@@ -293,7 +293,7 @@ with Polar() as polar:
                             "created_at": dateutil.parser.isoparse("2025-10-16T20:09:46.139Z"),
                             "modified_at": dateutil.parser.isoparse("2023-09-29T18:20:07.088Z"),
                             "id": "<value>",
-                            "type": polar_sdk.BenefitType.ADS,
+                            "type": polar_sdk.BenefitType.GITHUB_REPOSITORY,
                             "description": "pupil divine roundabout gah oh hm over equatorial",
                             "selectable": False,
                             "deletable": False,
@@ -453,7 +453,7 @@ with Polar() as polar:
                         "created_at": dateutil.parser.isoparse("2025-08-24T18:28:03.144Z"),
                         "modified_at": dateutil.parser.isoparse("2023-10-21T11:52:11.842Z"),
                         "id": "<value>",
-                        "type": polar_sdk.BenefitType.ADS,
+                        "type": polar_sdk.BenefitType.CUSTOM,
                         "description": "certainly these restfully geez who countess happily gym",
                         "selectable": False,
                         "deletable": False,
@@ -797,7 +797,7 @@ async def main():
                                 "created_at": dateutil.parser.isoparse("2025-10-16T20:09:46.139Z"),
                                 "modified_at": dateutil.parser.isoparse("2023-09-29T18:20:07.088Z"),
                                 "id": "<value>",
-                                "type": polar_sdk.BenefitType.ADS,
+                                "type": polar_sdk.BenefitType.GITHUB_REPOSITORY,
                                 "description": "pupil divine roundabout gah oh hm over equatorial",
                                 "selectable": False,
                                 "deletable": False,
@@ -960,7 +960,7 @@ async def main():
                             "created_at": dateutil.parser.isoparse("2025-08-24T18:28:03.144Z"),
                             "modified_at": dateutil.parser.isoparse("2023-10-21T11:52:11.842Z"),
                             "id": "<value>",
-                            "type": polar_sdk.BenefitType.ADS,
+                            "type": polar_sdk.BenefitType.CUSTOM,
                             "description": "certainly these restfully geez who countess happily gym",
                             "selectable": False,
                             "deletable": False,
@@ -1138,11 +1138,6 @@ def webhook():
 
 <details open>
 <summary>Available methods</summary>
-
-### [advertisements](docs/sdks/advertisements/README.md)
-
-* [list](docs/sdks/advertisements/README.md#list) - List Campaigns
-* [get](docs/sdks/advertisements/README.md#get) - Get Campaign
 
 ### [benefits](docs/sdks/benefits/README.md)
 

@@ -8,7 +8,7 @@ from pydantic import model_serializer
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class Permission(str, Enum):
+class BenefitGitHubRepositoryPropertiesPermission(str, Enum):
     r"""The permission level to grant. Read more about roles and their permissions on [GitHub documentation](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization#permissions-for-each-role)."""
 
     PULL = "pull"
@@ -25,7 +25,7 @@ class BenefitGitHubRepositoryPropertiesTypedDict(TypedDict):
     r"""The owner of the repository."""
     repository_name: str
     r"""The name of the repository."""
-    permission: Permission
+    permission: BenefitGitHubRepositoryPropertiesPermission
     r"""The permission level to grant. Read more about roles and their permissions on [GitHub documentation](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization#permissions-for-each-role)."""
     repository_id: NotRequired[Nullable[str]]
 
@@ -39,7 +39,7 @@ class BenefitGitHubRepositoryProperties(BaseModel):
     repository_name: str
     r"""The name of the repository."""
 
-    permission: Permission
+    permission: BenefitGitHubRepositoryPropertiesPermission
     r"""The permission level to grant. Read more about roles and their permissions on [GitHub documentation](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization#permissions-for-each-role)."""
 
     repository_id: Annotated[
