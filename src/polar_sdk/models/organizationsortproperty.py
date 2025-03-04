@@ -7,5 +7,7 @@ from enum import Enum
 class OrganizationSortProperty(str, Enum):
     CREATED_AT = "created_at"
     MINUS_CREATED_AT = "-created_at"
+    SLUG = "slug"
+    MINUS_SLUG = "-slug"
     NAME = "name"
     MINUS_NAME = "-name"

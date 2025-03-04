@@ -24,6 +24,12 @@ class Orders(BaseSDK):
                 models.OrdersListQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
+        product_billing_type: OptionalNullable[
+            Union[
+                models.ProductBillingTypeFilter,
+                models.ProductBillingTypeFilterTypedDict,
+            ]
+        ] = UNSET,
         product_price_type: OptionalNullable[
             Union[models.ProductPriceTypeFilter, models.ProductPriceTypeFilterTypedDict]
         ] = UNSET,
@@ -58,7 +64,8 @@ class Orders(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
-        :param product_price_type: Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
+        :param product_billing_type: Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
+        :param product_price_type:
         :param discount_id: Filter by discount ID.
         :param customer_id: Filter by customer ID.
         :param checkout_id: Filter by checkout ID.
@@ -83,6 +90,7 @@ class Orders(BaseSDK):
         request = models.OrdersListRequest(
             organization_id=organization_id,
             product_id=product_id,
+            product_billing_type=product_billing_type,
             product_price_type=product_price_type,
             discount_id=discount_id,
             customer_id=customer_id,
@@ -149,6 +157,7 @@ class Orders(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 product_id=product_id,
+                product_billing_type=product_billing_type,
                 product_price_type=product_price_type,
                 discount_id=discount_id,
                 customer_id=customer_id,
@@ -205,6 +214,12 @@ class Orders(BaseSDK):
                 models.OrdersListQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
+        product_billing_type: OptionalNullable[
+            Union[
+                models.ProductBillingTypeFilter,
+                models.ProductBillingTypeFilterTypedDict,
+            ]
+        ] = UNSET,
         product_price_type: OptionalNullable[
             Union[models.ProductPriceTypeFilter, models.ProductPriceTypeFilterTypedDict]
         ] = UNSET,
@@ -239,7 +254,8 @@ class Orders(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
-        :param product_price_type: Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases.
+        :param product_billing_type: Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
+        :param product_price_type:
         :param discount_id: Filter by discount ID.
         :param customer_id: Filter by customer ID.
         :param checkout_id: Filter by checkout ID.
@@ -264,6 +280,7 @@ class Orders(BaseSDK):
         request = models.OrdersListRequest(
             organization_id=organization_id,
             product_id=product_id,
+            product_billing_type=product_billing_type,
             product_price_type=product_price_type,
             discount_id=discount_id,
             customer_id=customer_id,
@@ -330,6 +347,7 @@ class Orders(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 product_id=product_id,
+                product_billing_type=product_billing_type,
                 product_price_type=product_price_type,
                 discount_id=discount_id,
                 customer_id=customer_id,

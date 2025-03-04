@@ -360,11 +360,10 @@ class Downloadables(BaseSDK):
             request=request,
             request_body_required=False,
             request_has_path_params=True,
-            request_has_query_params=True,
+            request_has_query_params=False,
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
 
@@ -381,7 +380,7 @@ class Downloadables(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:downloadables:customer_portal.downloadables.get",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=None,
             ),
             request=req,
             error_status_codes=["400", "404", "410", "422", "4XX", "5XX"],
@@ -459,11 +458,10 @@ class Downloadables(BaseSDK):
             request=request,
             request_body_required=False,
             request_has_path_params=True,
-            request_has_query_params=True,
+            request_has_query_params=False,
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
 
@@ -480,7 +478,7 @@ class Downloadables(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:downloadables:customer_portal.downloadables.get",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=None,
             ),
             request=req,
             error_status_codes=["400", "404", "410", "422", "4XX", "5XX"],

@@ -6,9 +6,11 @@ from .listresource_customerorder_ import (
     ListResourceCustomerOrder,
     ListResourceCustomerOrderTypedDict,
 )
+from .productbillingtype import ProductBillingType
 from .productpricetype import ProductPriceType
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
+import pydantic
 from pydantic import model_serializer
 from typing import Callable, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -57,17 +59,29 @@ CustomerPortalOrdersListQueryParamProductIDFilter = TypeAliasType(
 r"""Filter by product ID."""
 
 
+CustomerPortalOrdersListQueryParamProductBillingTypeFilterTypedDict = TypeAliasType(
+    "CustomerPortalOrdersListQueryParamProductBillingTypeFilterTypedDict",
+    Union[ProductBillingType, List[ProductBillingType]],
+)
+r"""Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
+
+
+CustomerPortalOrdersListQueryParamProductBillingTypeFilter = TypeAliasType(
+    "CustomerPortalOrdersListQueryParamProductBillingTypeFilter",
+    Union[ProductBillingType, List[ProductBillingType]],
+)
+r"""Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
+
+
 QueryParamProductPriceTypeFilterTypedDict = TypeAliasType(
     "QueryParamProductPriceTypeFilterTypedDict",
     Union[ProductPriceType, List[ProductPriceType]],
 )
-r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
 
 
 QueryParamProductPriceTypeFilter = TypeAliasType(
     "QueryParamProductPriceTypeFilter", Union[ProductPriceType, List[ProductPriceType]]
 )
-r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
 
 
 CustomerPortalOrdersListQueryParamSubscriptionIDFilterTypedDict = TypeAliasType(
@@ -92,8 +106,11 @@ class CustomerPortalOrdersListRequestTypedDict(TypedDict):
         Nullable[CustomerPortalOrdersListQueryParamProductIDFilterTypedDict]
     ]
     r"""Filter by product ID."""
+    product_billing_type: NotRequired[
+        Nullable[CustomerPortalOrdersListQueryParamProductBillingTypeFilterTypedDict]
+    ]
+    r"""Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
     product_price_type: NotRequired[Nullable[QueryParamProductPriceTypeFilterTypedDict]]
-    r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
     subscription_id: NotRequired[
         Nullable[CustomerPortalOrdersListQueryParamSubscriptionIDFilterTypedDict]
     ]
@@ -121,11 +138,19 @@ class CustomerPortalOrdersListRequest(BaseModel):
     ] = UNSET
     r"""Filter by product ID."""
 
-    product_price_type: Annotated[
-        OptionalNullable[QueryParamProductPriceTypeFilter],
+    product_billing_type: Annotated[
+        OptionalNullable[CustomerPortalOrdersListQueryParamProductBillingTypeFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
-    r"""Filter by product price type. `recurring` will return orders corresponding to subscriptions creations or renewals. `one_time` will return orders corresponding to one-time purchases."""
+    r"""Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
+
+    product_price_type: Annotated[
+        OptionalNullable[QueryParamProductPriceTypeFilter],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
 
     subscription_id: Annotated[
         OptionalNullable[CustomerPortalOrdersListQueryParamSubscriptionIDFilter],
@@ -162,6 +187,7 @@ class CustomerPortalOrdersListRequest(BaseModel):
         optional_fields = [
             "organization_id",
             "product_id",
+            "product_billing_type",
             "product_price_type",
             "subscription_id",
             "query",
@@ -172,6 +198,7 @@ class CustomerPortalOrdersListRequest(BaseModel):
         nullable_fields = [
             "organization_id",
             "product_id",
+            "product_billing_type",
             "product_price_type",
             "subscription_id",
             "query",

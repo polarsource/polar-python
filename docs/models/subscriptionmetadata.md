@@ -1,4 +1,4 @@
-# CheckoutProductsCreateCustomerMetadata
+# SubscriptionMetadata
 
 
 ## Supported Types

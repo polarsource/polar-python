@@ -20,10 +20,14 @@ SubscriptionCustomerMetadata = TypeAliasType(
 )
 
 
-TaxIDTypedDict = TypeAliasType("TaxIDTypedDict", Union[str, TaxIDFormat])
+SubscriptionCustomerTaxIDTypedDict = TypeAliasType(
+    "SubscriptionCustomerTaxIDTypedDict", Union[str, TaxIDFormat]
+)
 
 
-TaxID = TypeAliasType("TaxID", Union[str, TaxIDFormat])
+SubscriptionCustomerTaxID = TypeAliasType(
+    "SubscriptionCustomerTaxID", Union[str, TaxIDFormat]
+)
 
 
 class SubscriptionCustomerTypedDict(TypedDict):
@@ -42,7 +46,7 @@ class SubscriptionCustomerTypedDict(TypedDict):
     r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
     name: Nullable[str]
     billing_address: Nullable[AddressTypedDict]
-    tax_id: Nullable[List[Nullable[TaxIDTypedDict]]]
+    tax_id: Nullable[List[Nullable[SubscriptionCustomerTaxIDTypedDict]]]
     organization_id: str
     avatar_url: str
 
@@ -72,7 +76,7 @@ class SubscriptionCustomer(BaseModel):
 
     billing_address: Nullable[Address]
 
-    tax_id: Nullable[List[Nullable[TaxID]]]
+    tax_id: Nullable[List[Nullable[SubscriptionCustomerTaxID]]]
 
     organization_id: str
 

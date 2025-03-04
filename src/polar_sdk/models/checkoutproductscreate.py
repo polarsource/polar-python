@@ -19,24 +19,20 @@ CheckoutProductsCreateMetadata = TypeAliasType(
 )
 
 
-CheckoutProductsCreateCustomFieldDataTypedDict = TypeAliasType(
-    "CheckoutProductsCreateCustomFieldDataTypedDict", Union[str, int, bool, datetime]
+CustomFieldDataTypedDict = TypeAliasType(
+    "CustomFieldDataTypedDict", Union[str, int, bool, datetime]
 )
 
 
-CheckoutProductsCreateCustomFieldData = TypeAliasType(
-    "CheckoutProductsCreateCustomFieldData", Union[str, int, bool, datetime]
+CustomFieldData = TypeAliasType("CustomFieldData", Union[str, int, bool, datetime])
+
+
+CustomerMetadataTypedDict = TypeAliasType(
+    "CustomerMetadataTypedDict", Union[str, int, bool]
 )
 
 
-CheckoutProductsCreateCustomerMetadataTypedDict = TypeAliasType(
-    "CheckoutProductsCreateCustomerMetadataTypedDict", Union[str, int, bool]
-)
-
-
-CheckoutProductsCreateCustomerMetadata = TypeAliasType(
-    "CheckoutProductsCreateCustomerMetadata", Union[str, int, bool]
-)
+CustomerMetadata = TypeAliasType("CustomerMetadata", Union[str, int, bool])
 
 
 class CheckoutProductsCreateTypedDict(TypedDict):
@@ -61,9 +57,7 @@ class CheckoutProductsCreateTypedDict(TypedDict):
 
     You can store up to **50 key-value pairs**.
     """
-    custom_field_data: NotRequired[
-        Dict[str, Nullable[CheckoutProductsCreateCustomFieldDataTypedDict]]
-    ]
+    custom_field_data: NotRequired[Dict[str, Nullable[CustomFieldDataTypedDict]]]
     r"""Key-value object storing custom field values."""
     discount_id: NotRequired[Nullable[str]]
     r"""ID of the discount to apply to the checkout."""
@@ -79,9 +73,7 @@ class CheckoutProductsCreateTypedDict(TypedDict):
     customer_ip_address: NotRequired[Nullable[str]]
     customer_billing_address: NotRequired[Nullable[AddressTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
-    customer_metadata: NotRequired[
-        Dict[str, CheckoutProductsCreateCustomerMetadataTypedDict]
-    ]
+    customer_metadata: NotRequired[Dict[str, CustomerMetadataTypedDict]]
     r"""Key-value object allowing you to store additional information that'll be copied to the created customer.
 
     The key must be a string with a maximum length of **40 characters**.
@@ -125,9 +117,7 @@ class CheckoutProductsCreate(BaseModel):
     You can store up to **50 key-value pairs**.
     """
 
-    custom_field_data: Optional[
-        Dict[str, Nullable[CheckoutProductsCreateCustomFieldData]]
-    ] = None
+    custom_field_data: Optional[Dict[str, Nullable[CustomFieldData]]] = None
     r"""Key-value object storing custom field values."""
 
     discount_id: OptionalNullable[str] = UNSET
@@ -154,9 +144,7 @@ class CheckoutProductsCreate(BaseModel):
 
     customer_tax_id: OptionalNullable[str] = UNSET
 
-    customer_metadata: Optional[Dict[str, CheckoutProductsCreateCustomerMetadata]] = (
-        None
-    )
+    customer_metadata: Optional[Dict[str, CustomerMetadata]] = None
     r"""Key-value object allowing you to store additional information that'll be copied to the created customer.
 
     The key must be a string with a maximum length of **40 characters**.

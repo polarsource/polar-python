@@ -27,12 +27,6 @@ value: models.CustomerBenefitGrantDownloadables = /* values here */
 value: models.CustomerBenefitGrantLicenseKeys = /* values here */
 ```
 
-### `models.CustomerBenefitGrantAds`
-
-```python
-value: models.CustomerBenefitGrantAds = /* values here */
-```
-
 ### `models.CustomerBenefitGrantCustom`
 
 ```python

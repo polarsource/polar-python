@@ -77,10 +77,11 @@ with Polar(
     res = polar.benefits.create(request={
         "description": "delightfully fumigate convection though zowie up bulky electronics",
         "properties": {
-            "guild_token": "<value>",
-            "role_id": "<id>",
+            "files": [
+                "<value>",
+            ],
         },
-        "type": "discord",
+        "type": "downloadables",
     })
 
     # Handle response
