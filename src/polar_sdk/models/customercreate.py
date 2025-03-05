@@ -43,6 +43,7 @@ class CustomerCreateTypedDict(TypedDict):
     external_id: NotRequired[Nullable[str]]
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
     name: NotRequired[Nullable[str]]
+    r"""The name of the customer."""
     billing_address: NotRequired[Nullable[AddressTypedDict]]
     tax_id: NotRequired[Nullable[List[Nullable[CustomerCreateTaxIDTypedDict]]]]
     organization_id: NotRequired[Nullable[str]]
@@ -70,6 +71,7 @@ class CustomerCreate(BaseModel):
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
 
     name: OptionalNullable[str] = UNSET
+    r"""The name of the customer."""
 
     billing_address: OptionalNullable[Address] = UNSET
 

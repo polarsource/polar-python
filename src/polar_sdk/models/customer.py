@@ -29,12 +29,12 @@ CustomerTaxID = TypeAliasType("CustomerTaxID", Union[str, TaxIDFormat])
 class CustomerTypedDict(TypedDict):
     r"""A customer in an organization."""
 
+    id: str
+    r"""The ID of the customer."""
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    id: str
-    r"""The ID of the object."""
     metadata: Dict[str, CustomerMetadata1TypedDict]
     external_id: Nullable[str]
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
@@ -43,23 +43,25 @@ class CustomerTypedDict(TypedDict):
     email_verified: bool
     r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
     name: Nullable[str]
+    r"""The name of the customer."""
     billing_address: Nullable[AddressTypedDict]
     tax_id: Nullable[List[Nullable[CustomerTaxIDTypedDict]]]
     organization_id: str
+    r"""The ID of the organization owning the customer."""
     avatar_url: str
 
 
 class Customer(BaseModel):
     r"""A customer in an organization."""
 
+    id: str
+    r"""The ID of the customer."""
+
     created_at: datetime
     r"""Creation timestamp of the object."""
 
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-
-    id: str
-    r"""The ID of the object."""
 
     metadata: Dict[str, CustomerMetadata1]
 
@@ -73,12 +75,14 @@ class Customer(BaseModel):
     r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
 
     name: Nullable[str]
+    r"""The name of the customer."""
 
     billing_address: Nullable[Address]
 
     tax_id: Nullable[List[Nullable[CustomerTaxID]]]
 
     organization_id: str
+    r"""The ID of the organization owning the customer."""
 
     avatar_url: str
 

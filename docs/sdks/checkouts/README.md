@@ -29,7 +29,9 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.checkouts.list()
+    res = polar.checkouts.list(organization_id=[
+        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+    ])
 
     while res is not None:
         # Handle items
@@ -79,6 +81,9 @@ with Polar(
     res = polar.checkouts.create(request={
         "product_price_id": "<value>",
         "allow_discount_codes": True,
+        "customer_billing_address": {
+            "country": "SE",
+        },
         "success_url": "https://probable-heating.com/",
     })
 

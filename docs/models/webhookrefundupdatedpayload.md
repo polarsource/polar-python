@@ -7,7 +7,7 @@ Sent when a refund is updated.
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `data`                               | [models.Refund](../models/refund.md) | :heavy_check_mark:                   | N/A                                  |
-| `type`                               | *Literal["refund.updated"]*          | :heavy_check_mark:                   | N/A                                  |
+| Field                                | Type                                 | Required                             | Description                          | Example                              |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `data`                               | [models.Refund](../models/refund.md) | :heavy_check_mark:                   | N/A                                  |                                      |
+| `type`                               | *Literal["refund.updated"]*          | :heavy_check_mark:                   | N/A                                  | refund.updated                       |

@@ -26,7 +26,9 @@ with Polar() as polar:
 
     res = polar.customer_portal.benefit_grants.list(security=polar_sdk.CustomerPortalBenefitGrantsListSecurity(
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
-    ))
+    ), organization_id=[
+        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+    ])
 
     while res is not None:
         # Handle items

@@ -726,6 +726,14 @@ from .customers_get_externalop import (
     CustomersGetExternalRequest,
     CustomersGetExternalRequestTypedDict,
 )
+from .customers_get_state_externalop import (
+    CustomersGetStateExternalRequest,
+    CustomersGetStateExternalRequestTypedDict,
+)
+from .customers_get_stateop import (
+    CustomersGetStateRequest,
+    CustomersGetStateRequestTypedDict,
+)
 from .customers_getop import CustomersGetRequest, CustomersGetRequestTypedDict
 from .customers_listop import (
     CustomersListQueryParamOrganizationIDFilter,
@@ -770,6 +778,28 @@ from .customersessioncustomeridcreate import (
     CustomerSessionCustomerIDCreateTypedDict,
 )
 from .customersortproperty import CustomerSortProperty
+from .customerstate import (
+    CustomerState,
+    CustomerStateMetadata,
+    CustomerStateMetadataTypedDict,
+    CustomerStateTaxID,
+    CustomerStateTaxIDTypedDict,
+    CustomerStateTypedDict,
+)
+from .customerstatebenefitgrant import (
+    CustomerStateBenefitGrant,
+    CustomerStateBenefitGrantProperties,
+    CustomerStateBenefitGrantPropertiesTypedDict,
+    CustomerStateBenefitGrantTypedDict,
+)
+from .customerstatesubscription import (
+    CustomerStateSubscription,
+    CustomerStateSubscriptionCustomFieldData,
+    CustomerStateSubscriptionCustomFieldDataTypedDict,
+    CustomerStateSubscriptionMetadata,
+    CustomerStateSubscriptionMetadataTypedDict,
+    CustomerStateSubscriptionTypedDict,
+)
 from .customersubscription import (
     CustomerSubscription,
     CustomerSubscriptionTypedDict,
@@ -1731,6 +1761,22 @@ from .webhookcheckoutupdatedpayload import (
     WebhookCheckoutUpdatedPayload,
     WebhookCheckoutUpdatedPayloadTypedDict,
 )
+from .webhookcustomercreatedpayload import (
+    WebhookCustomerCreatedPayload,
+    WebhookCustomerCreatedPayloadTypedDict,
+)
+from .webhookcustomerdeletedpayload import (
+    WebhookCustomerDeletedPayload,
+    WebhookCustomerDeletedPayloadTypedDict,
+)
+from .webhookcustomerstatechangedpayload import (
+    WebhookCustomerStateChangedPayload,
+    WebhookCustomerStateChangedPayloadTypedDict,
+)
+from .webhookcustomerupdatedpayload import (
+    WebhookCustomerUpdatedPayload,
+    WebhookCustomerUpdatedPayloadTypedDict,
+)
 from .webhookordercreatedpayload import (
     WebhookOrderCreatedPayload,
     WebhookOrderCreatedPayloadTypedDict,
@@ -2379,6 +2425,22 @@ __all__ = [
     "CustomerSessionsCreateCustomerSessionCreate",
     "CustomerSessionsCreateCustomerSessionCreateTypedDict",
     "CustomerSortProperty",
+    "CustomerState",
+    "CustomerStateBenefitGrant",
+    "CustomerStateBenefitGrantProperties",
+    "CustomerStateBenefitGrantPropertiesTypedDict",
+    "CustomerStateBenefitGrantTypedDict",
+    "CustomerStateMetadata",
+    "CustomerStateMetadataTypedDict",
+    "CustomerStateSubscription",
+    "CustomerStateSubscriptionCustomFieldData",
+    "CustomerStateSubscriptionCustomFieldDataTypedDict",
+    "CustomerStateSubscriptionMetadata",
+    "CustomerStateSubscriptionMetadataTypedDict",
+    "CustomerStateSubscriptionTypedDict",
+    "CustomerStateTaxID",
+    "CustomerStateTaxIDTypedDict",
+    "CustomerStateTypedDict",
     "CustomerSubscription",
     "CustomerSubscriptionCancel",
     "CustomerSubscriptionCancelTypedDict",
@@ -2409,6 +2471,10 @@ __all__ = [
     "CustomersGetExternalRequestTypedDict",
     "CustomersGetRequest",
     "CustomersGetRequestTypedDict",
+    "CustomersGetStateExternalRequest",
+    "CustomersGetStateExternalRequestTypedDict",
+    "CustomersGetStateRequest",
+    "CustomersGetStateRequestTypedDict",
     "CustomersListQueryParamOrganizationIDFilter",
     "CustomersListQueryParamOrganizationIDFilterTypedDict",
     "CustomersListRequest",
@@ -3135,6 +3201,14 @@ __all__ = [
     "WebhookCheckoutCreatedPayloadTypedDict",
     "WebhookCheckoutUpdatedPayload",
     "WebhookCheckoutUpdatedPayloadTypedDict",
+    "WebhookCustomerCreatedPayload",
+    "WebhookCustomerCreatedPayloadTypedDict",
+    "WebhookCustomerDeletedPayload",
+    "WebhookCustomerDeletedPayloadTypedDict",
+    "WebhookCustomerStateChangedPayload",
+    "WebhookCustomerStateChangedPayloadTypedDict",
+    "WebhookCustomerUpdatedPayload",
+    "WebhookCustomerUpdatedPayloadTypedDict",
     "WebhookOrderCreatedPayload",
     "WebhookOrderCreatedPayloadTypedDict",
     "WebhookOrderRefundedPayload",

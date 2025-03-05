@@ -31,12 +31,12 @@ SubscriptionCustomerTaxID = TypeAliasType(
 
 
 class SubscriptionCustomerTypedDict(TypedDict):
+    id: str
+    r"""The ID of the customer."""
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    id: str
-    r"""The ID of the object."""
     metadata: Dict[str, SubscriptionCustomerMetadataTypedDict]
     external_id: Nullable[str]
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
@@ -45,21 +45,23 @@ class SubscriptionCustomerTypedDict(TypedDict):
     email_verified: bool
     r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
     name: Nullable[str]
+    r"""The name of the customer."""
     billing_address: Nullable[AddressTypedDict]
     tax_id: Nullable[List[Nullable[SubscriptionCustomerTaxIDTypedDict]]]
     organization_id: str
+    r"""The ID of the organization owning the customer."""
     avatar_url: str
 
 
 class SubscriptionCustomer(BaseModel):
+    id: str
+    r"""The ID of the customer."""
+
     created_at: datetime
     r"""Creation timestamp of the object."""
 
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-
-    id: str
-    r"""The ID of the object."""
 
     metadata: Dict[str, SubscriptionCustomerMetadata]
 
@@ -73,12 +75,14 @@ class SubscriptionCustomer(BaseModel):
     r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
 
     name: Nullable[str]
+    r"""The name of the customer."""
 
     billing_address: Nullable[Address]
 
     tax_id: Nullable[List[Nullable[SubscriptionCustomerTaxID]]]
 
     organization_id: str
+    r"""The ID of the organization owning the customer."""
 
     avatar_url: str
 

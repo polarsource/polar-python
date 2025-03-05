@@ -13,6 +13,8 @@ from typing_extensions import Annotated, TypedDict
 class WebhookSubscriptionCreatedPayloadTypedDict(TypedDict):
     r"""Sent when a new subscription is created.
 
+    When this event occurs, the subscription `status` might not be `active` yet, as we can still have to wait for the first payment to be processed.
+
     **Discord & Slack support:** Full
     """
 
@@ -22,6 +24,8 @@ class WebhookSubscriptionCreatedPayloadTypedDict(TypedDict):
 
 class WebhookSubscriptionCreatedPayload(BaseModel):
     r"""Sent when a new subscription is created.
+
+    When this event occurs, the subscription `status` might not be `active` yet, as we can still have to wait for the first payment to be processed.
 
     **Discord & Slack support:** Full
     """

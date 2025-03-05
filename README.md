@@ -143,7 +143,7 @@ with Polar() as polar:
             customer_email="<value>",
             customer_ip_address="<value>",
             customer_billing_address={
-                "country": "Solomon Islands",
+                "country": "FR",
             },
             customer_tax_id="<id>",
             payment_processor_metadata={
@@ -534,7 +534,7 @@ with Polar() as polar:
                         },
                         "slug": "<value>",
                         "name": "<value>",
-                        "organization_id": "<value>",
+                        "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
                         "properties": {
                             "options": [
                                 {
@@ -559,7 +559,7 @@ with Polar() as polar:
                         },
                         "slug": "<value>",
                         "name": "<value>",
-                        "organization_id": "<value>",
+                        "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
                         "properties": {},
                         "type": "checkbox",
                     },
@@ -577,7 +577,7 @@ with Polar() as polar:
                         },
                         "slug": "<value>",
                         "name": "<value>",
-                        "organization_id": "<value>",
+                        "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
                         "properties": {
                             "options": [
                                 {
@@ -649,7 +649,7 @@ async def main():
                 customer_email="<value>",
                 customer_ip_address="<value>",
                 customer_billing_address={
-                    "country": "Solomon Islands",
+                    "country": "FR",
                 },
                 customer_tax_id="<id>",
                 payment_processor_metadata={
@@ -1041,7 +1041,7 @@ async def main():
                             },
                             "slug": "<value>",
                             "name": "<value>",
-                            "organization_id": "<value>",
+                            "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
                             "properties": {
                                 "options": [
                                     {
@@ -1066,7 +1066,7 @@ async def main():
                             },
                             "slug": "<value>",
                             "name": "<value>",
-                            "organization_id": "<value>",
+                            "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
                             "properties": {},
                             "type": "text",
                         },
@@ -1084,7 +1084,7 @@ async def main():
                             },
                             "slug": "<value>",
                             "name": "<value>",
-                            "organization_id": "<value>",
+                            "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
                             "properties": {},
                             "type": "text",
                         },
@@ -1235,6 +1235,8 @@ def webhook():
 * [get_external](docs/sdks/customers/README.md#get_external) - Get Customer by External ID
 * [update_external](docs/sdks/customers/README.md#update_external) - Update Customer by External ID
 * [delete_external](docs/sdks/customers/README.md#delete_external) - Delete Customer by External ID
+* [get_state](docs/sdks/customers/README.md#get_state) - Get Customer State
+* [get_state_external](docs/sdks/customers/README.md#get_state_external) - Get Customer State by External ID
 
 ### [discounts](docs/sdks/discounts/README.md)
 
@@ -1358,7 +1360,9 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(,
+    res = polar.external_organizations.list(organization_id=[
+        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+    ],
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     while res is not None:
@@ -1379,7 +1383,9 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list()
+    res = polar.external_organizations.list(organization_id=[
+        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+    ])
 
     while res is not None:
         # Handle items
@@ -1422,7 +1428,9 @@ with Polar(
     res = None
     try:
 
-        res = polar.external_organizations.list()
+        res = polar.external_organizations.list(organization_id=[
+            "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+        ])
 
         while res is not None:
             # Handle items
@@ -1461,7 +1469,9 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list()
+    res = polar.external_organizations.list(organization_id=[
+        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+    ])
 
     while res is not None:
         # Handle items
@@ -1482,7 +1492,9 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list()
+    res = polar.external_organizations.list(organization_id=[
+        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+    ])
 
     while res is not None:
         # Handle items
@@ -1593,7 +1605,9 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list()
+    res = polar.external_organizations.list(organization_id=[
+        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+    ])
 
     while res is not None:
         # Handle items
@@ -1614,7 +1628,9 @@ with Polar() as polar:
 
     res = polar.customer_portal.benefit_grants.list(security=polar_sdk.CustomerPortalBenefitGrantsListSecurity(
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
-    ))
+    ), organization_id=[
+        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+    ])
 
     while res is not None:
         # Handle items
@@ -1682,7 +1698,9 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list()
+    res = polar.external_organizations.list(organization_id=[
+        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+    ])
 
     while res is not None:
         # Handle items

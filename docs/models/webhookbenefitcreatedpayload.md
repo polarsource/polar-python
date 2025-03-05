@@ -7,7 +7,7 @@ Sent when a new benefit is created.
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `data`                                 | [models.Benefit](../models/benefit.md) | :heavy_check_mark:                     | N/A                                    |
-| `type`                                 | *Literal["benefit.created"]*           | :heavy_check_mark:                     | N/A                                    |
+| Field                                  | Type                                   | Required                               | Description                            | Example                                |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `data`                                 | [models.Benefit](../models/benefit.md) | :heavy_check_mark:                     | N/A                                    |                                        |
+| `type`                                 | *Literal["benefit.created"]*           | :heavy_check_mark:                     | N/A                                    | benefit.created                        |

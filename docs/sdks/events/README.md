@@ -25,7 +25,9 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.events.list()
+    res = polar.events.list(organization_id=[
+        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+    ])
 
     while res is not None:
         # Handle items
@@ -124,10 +126,12 @@ with Polar(
             {
                 "name": "<value>",
                 "customer_id": "<value>",
+                "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
             },
             {
                 "name": "<value>",
                 "external_customer_id": "<id>",
+                "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
             },
         ],
     })
