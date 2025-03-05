@@ -9,6 +9,10 @@ from standardwebhooks.webhooks import (
 from typing_extensions import Annotated
 
 from polar_sdk.models import (
+    WebhookCustomerCreatedPayload,
+    WebhookCustomerUpdatedPayload,
+    WebhookCustomerDeletedPayload,
+    WebhookCustomerStateChangedPayload,
     WebhookBenefitCreatedPayload,
     WebhookBenefitGrantCreatedPayload,
     WebhookBenefitGrantRevokedPayload,
@@ -38,6 +42,10 @@ def _get_discriminator(v: Any) -> Union[str, None]:
 
 WebhoookPayload = Annotated[
     Union[
+        Annotated[WebhookCustomerCreatedPayload, Tag("customer.created")],
+        Annotated[WebhookCustomerUpdatedPayload, Tag("customer.updated")],
+        Annotated[WebhookCustomerDeletedPayload, Tag("customer.deleted")],
+        Annotated[WebhookCustomerStateChangedPayload, Tag("customer.state_changed")],
         Annotated[WebhookBenefitCreatedPayload, Tag("benefit.created")],
         Annotated[WebhookBenefitGrantCreatedPayload, Tag("benefit_grant.created")],
         Annotated[WebhookBenefitGrantRevokedPayload, Tag("benefit_grant.revoked")],
