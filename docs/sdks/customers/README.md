@@ -13,6 +13,8 @@
 * [get_external](#get_external) - Get Customer by External ID
 * [update_external](#update_external) - Update Customer by External ID
 * [delete_external](#delete_external) - Delete Customer by External ID
+* [get_state](#get_state) - Get Customer State
+* [get_state_external](#get_state_external) - Get Customer State by External ID
 
 ## list
 
@@ -30,7 +32,9 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.customers.list()
+    res = polar.customers.list(organization_id=[
+        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+    ])
 
     while res is not None:
         # Handle items
@@ -80,7 +84,17 @@ with Polar(
 ) as polar:
 
     res = polar.customers.create(request={
-        "email": "Loyal79@yahoo.com",
+        "email": "customer@example.com",
+        "external_id": "usr_1337",
+        "name": "John Doe",
+        "billing_address": {
+            "country": "SE",
+        },
+        "tax_id": [
+            "FR61954506077",
+            "eu_vat",
+        ],
+        "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
     })
 
     # Handle response
@@ -345,6 +359,102 @@ with Polar(
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `external_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | The customer external ID.                                           |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## get_state
+
+Get a customer state by ID.
+
+The customer state includes information about
+the customer's active subscriptions and benefits.
+
+It's the ideal endpoint to use when you need to get a full overview
+of a customer's status.
+
+**Scopes**: `customers:read` `customers:write`
+
+### Example Usage
+
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.customers.get_state(id="<value>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The customer ID.                                                    |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.CustomerState](../../models/customerstate.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## get_state_external
+
+Get a customer state by external ID.
+
+The customer state includes information about
+the customer's active subscriptions and benefits.
+
+It's the ideal endpoint to use when you need to get a full overview
+of a customer's status.
+
+**Scopes**: `customers:read` `customers:write`
+
+### Example Usage
+
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.customers.get_state_external(external_id="<id>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `external_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | The customer external ID.                                           |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.CustomerState](../../models/customerstate.md)**
 
 ### Errors
 

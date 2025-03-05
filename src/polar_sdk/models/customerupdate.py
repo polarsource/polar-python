@@ -32,6 +32,7 @@ class CustomerUpdateTypedDict(TypedDict):
     email: NotRequired[Nullable[str]]
     r"""The email address of the customer. This must be unique within the organization."""
     name: NotRequired[Nullable[str]]
+    r"""The name of the customer."""
     billing_address: NotRequired[Nullable[AddressTypedDict]]
     tax_id: NotRequired[Nullable[List[Nullable[CustomerUpdateTaxIDTypedDict]]]]
 
@@ -46,6 +47,7 @@ class CustomerUpdate(BaseModel):
     r"""The email address of the customer. This must be unique within the organization."""
 
     name: OptionalNullable[str] = UNSET
+    r"""The name of the customer."""
 
     billing_address: OptionalNullable[Address] = UNSET
 

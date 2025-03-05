@@ -7,7 +7,7 @@ Sent when a refund is created regardless of status.
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `data`                               | [models.Refund](../models/refund.md) | :heavy_check_mark:                   | N/A                                  |
-| `type`                               | *Literal["refund.created"]*          | :heavy_check_mark:                   | N/A                                  |
+| Field                                | Type                                 | Required                             | Description                          | Example                              |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `data`                               | [models.Refund](../models/refund.md) | :heavy_check_mark:                   | N/A                                  |                                      |
+| `type`                               | *Literal["refund.created"]*          | :heavy_check_mark:                   | N/A                                  | refund.created                       |

@@ -95,20 +95,33 @@ class SubscriptionTypedDict(TypedDict):
     id: str
     r"""The ID of the object."""
     amount: Nullable[int]
+    r"""The amount of the subscription."""
     currency: Nullable[str]
+    r"""The currency of the subscription."""
     recurring_interval: SubscriptionRecurringInterval
     status: SubscriptionStatus
     current_period_start: datetime
+    r"""The start timestamp of the current billing period."""
     current_period_end: Nullable[datetime]
+    r"""The end timestamp of the current billing period."""
     cancel_at_period_end: bool
+    r"""Whether the subscription will be canceled at the end of the current period."""
     canceled_at: Nullable[datetime]
+    r"""The timestamp when the subscription was canceled. The subscription might still be active if `cancel_at_period_end` is `true`."""
     started_at: Nullable[datetime]
+    r"""The timestamp when the subscription started."""
     ends_at: Nullable[datetime]
+    r"""The timestamp when the subscription will end."""
     ended_at: Nullable[datetime]
+    r"""The timestamp when the subscription ended."""
     customer_id: str
+    r"""The ID of the subscribed customer."""
     product_id: str
+    r"""The ID of the subscribed product."""
     price_id: str
+    r"""The ID of the subscribed price."""
     discount_id: Nullable[str]
+    r"""The ID of the applied discount, if any."""
     checkout_id: Nullable[str]
     customer_cancellation_reason: Nullable[CustomerCancellationReason]
     customer_cancellation_comment: Nullable[str]
@@ -137,34 +150,47 @@ class Subscription(BaseModel):
     r"""The ID of the object."""
 
     amount: Nullable[int]
+    r"""The amount of the subscription."""
 
     currency: Nullable[str]
+    r"""The currency of the subscription."""
 
     recurring_interval: SubscriptionRecurringInterval
 
     status: SubscriptionStatus
 
     current_period_start: datetime
+    r"""The start timestamp of the current billing period."""
 
     current_period_end: Nullable[datetime]
+    r"""The end timestamp of the current billing period."""
 
     cancel_at_period_end: bool
+    r"""Whether the subscription will be canceled at the end of the current period."""
 
     canceled_at: Nullable[datetime]
+    r"""The timestamp when the subscription was canceled. The subscription might still be active if `cancel_at_period_end` is `true`."""
 
     started_at: Nullable[datetime]
+    r"""The timestamp when the subscription started."""
 
     ends_at: Nullable[datetime]
+    r"""The timestamp when the subscription will end."""
 
     ended_at: Nullable[datetime]
+    r"""The timestamp when the subscription ended."""
 
     customer_id: str
+    r"""The ID of the subscribed customer."""
 
     product_id: str
+    r"""The ID of the subscribed product."""
 
     price_id: str
+    r"""The ID of the subscribed price."""
 
     discount_id: Nullable[str]
+    r"""The ID of the applied discount, if any."""
 
     checkout_id: Nullable[str]
 

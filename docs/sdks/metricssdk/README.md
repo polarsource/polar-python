@@ -28,7 +28,9 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.metrics.get(start_date=dateutil.parser.parse("2025-02-06").date(), end_date=dateutil.parser.parse("2024-09-04").date(), interval=polar_sdk.TimeInterval.WEEK)
+    res = polar.metrics.get(start_date=dateutil.parser.parse("2025-02-06").date(), end_date=dateutil.parser.parse("2024-09-04").date(), interval=polar_sdk.TimeInterval.WEEK, organization_id=[
+        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+    ])
 
     # Handle response
     print(res)

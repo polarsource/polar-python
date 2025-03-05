@@ -7,7 +7,7 @@ Sent when a new checkout is created.
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `data`                                                 | [models.Checkout](../models/checkout.md)               | :heavy_check_mark:                                     | Checkout session data retrieved using an access token. |
-| `type`                                                 | *Literal["checkout.created"]*                          | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                                  | Type                                                   | Required                                               | Description                                            | Example                                                |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `data`                                                 | [models.Checkout](../models/checkout.md)               | :heavy_check_mark:                                     | Checkout session data retrieved using an access token. |                                                        |
+| `type`                                                 | *Literal["checkout.created"]*                          | :heavy_check_mark:                                     | N/A                                                    | checkout.created                                       |

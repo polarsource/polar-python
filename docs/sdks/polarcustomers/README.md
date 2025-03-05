@@ -69,7 +69,11 @@ with Polar() as polar:
 
     res = polar.customer_portal.customers.update(security=polar_sdk.CustomerPortalCustomersUpdateSecurity(
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
-    ))
+    ), request={
+        "billing_address": {
+            "country": "FR",
+        },
+    })
 
     # Handle response
     print(res)

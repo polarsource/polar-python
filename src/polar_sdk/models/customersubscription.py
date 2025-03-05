@@ -37,7 +37,9 @@ class CustomerSubscriptionTypedDict(TypedDict):
     id: str
     r"""The ID of the object."""
     amount: Nullable[int]
+    r"""The amount of the subscription."""
     currency: Nullable[str]
+    r"""The currency of the subscription."""
     recurring_interval: SubscriptionRecurringInterval
     status: SubscriptionStatus
     current_period_start: datetime
@@ -51,6 +53,7 @@ class CustomerSubscriptionTypedDict(TypedDict):
     product_id: str
     price_id: str
     discount_id: Nullable[str]
+    r"""The ID of the applied discount, if any."""
     checkout_id: Nullable[str]
     customer_cancellation_reason: Nullable[CustomerCancellationReason]
     customer_cancellation_comment: Nullable[str]
@@ -70,8 +73,10 @@ class CustomerSubscription(BaseModel):
     r"""The ID of the object."""
 
     amount: Nullable[int]
+    r"""The amount of the subscription."""
 
     currency: Nullable[str]
+    r"""The currency of the subscription."""
 
     recurring_interval: SubscriptionRecurringInterval
 
@@ -98,6 +103,7 @@ class CustomerSubscription(BaseModel):
     price_id: str
 
     discount_id: Nullable[str]
+    r"""The ID of the applied discount, if any."""
 
     checkout_id: Nullable[str]
 
