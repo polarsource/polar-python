@@ -155,6 +155,8 @@ class CheckoutTypedDict(TypedDict):
     customer_tax_id: Nullable[str]
     payment_processor_metadata: Dict[str, str]
     metadata: Dict[str, CheckoutMetadataTypedDict]
+    customer_external_id: Nullable[str]
+    r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
     products: List[CheckoutProductTypedDict]
     r"""List of products available to select."""
     product: CheckoutProductTypedDict
@@ -261,6 +263,9 @@ class Checkout(BaseModel):
 
     metadata: Dict[str, CheckoutMetadata]
 
+    customer_external_id: Nullable[str]
+    r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
+
     products: List[CheckoutProduct]
     r"""List of products available to select."""
 
@@ -299,6 +304,7 @@ class Checkout(BaseModel):
             "customer_ip_address",
             "customer_billing_address",
             "customer_tax_id",
+            "customer_external_id",
             "discount",
             "subscription_id",
         ]
