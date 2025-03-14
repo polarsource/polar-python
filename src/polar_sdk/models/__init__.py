@@ -103,13 +103,13 @@ from .benefitgithubrepositorycreate import (
 )
 from .benefitgithubrepositorycreateproperties import (
     BenefitGitHubRepositoryCreateProperties,
+    BenefitGitHubRepositoryCreatePropertiesPermission,
     BenefitGitHubRepositoryCreatePropertiesTypedDict,
-    Permission,
 )
 from .benefitgithubrepositoryproperties import (
     BenefitGitHubRepositoryProperties,
-    BenefitGitHubRepositoryPropertiesPermission,
     BenefitGitHubRepositoryPropertiesTypedDict,
+    Permission,
 )
 from .benefitgithubrepositorysubscriber import (
     BenefitGitHubRepositorySubscriber,
@@ -223,8 +223,6 @@ from .checkout import (
     Checkout,
     CheckoutCustomFieldData,
     CheckoutCustomFieldDataTypedDict,
-    CheckoutCustomerMetadata,
-    CheckoutCustomerMetadataTypedDict,
     CheckoutDiscount,
     CheckoutDiscountTypedDict,
     CheckoutMetadata,
@@ -232,6 +230,8 @@ from .checkout import (
     CheckoutProductPrice,
     CheckoutProductPriceTypedDict,
     CheckoutTypedDict,
+    CustomerMetadata,
+    CustomerMetadataTypedDict,
 )
 from .checkout_links_createop import (
     CheckoutLinksCreateCheckoutLinkCreate,
@@ -352,13 +352,13 @@ from .checkoutproductcreate import (
 )
 from .checkoutproductscreate import (
     CheckoutProductsCreate,
+    CheckoutProductsCreateCustomFieldData,
+    CheckoutProductsCreateCustomFieldDataTypedDict,
+    CheckoutProductsCreateCustomerMetadata,
+    CheckoutProductsCreateCustomerMetadataTypedDict,
     CheckoutProductsCreateMetadata,
     CheckoutProductsCreateMetadataTypedDict,
     CheckoutProductsCreateTypedDict,
-    CustomFieldData,
-    CustomFieldDataTypedDict,
-    CustomerMetadata,
-    CustomerMetadataTypedDict,
 )
 from .checkoutpublic import (
     CheckoutPublic,
@@ -802,9 +802,11 @@ from .customerstatesubscription import (
 )
 from .customersubscription import (
     CustomerSubscription,
+    CustomerSubscriptionPrice,
+    CustomerSubscriptionPriceTypedDict,
+    CustomerSubscriptionPrices,
+    CustomerSubscriptionPricesTypedDict,
     CustomerSubscriptionTypedDict,
-    Price,
-    PriceTypedDict,
 )
 from .customersubscriptioncancel import (
     CustomerSubscriptionCancel,
@@ -1193,9 +1195,9 @@ from .licensekeycustomer import (
     LicenseKeyCustomer,
     LicenseKeyCustomerMetadata,
     LicenseKeyCustomerMetadataTypedDict,
+    LicenseKeyCustomerTaxID,
+    LicenseKeyCustomerTaxIDTypedDict,
     LicenseKeyCustomerTypedDict,
-    TaxID,
-    TaxIDTypedDict,
 )
 from .licensekeydeactivate import LicenseKeyDeactivate, LicenseKeyDeactivateTypedDict
 from .licensekeyread import LicenseKeyRead, LicenseKeyReadTypedDict
@@ -1424,6 +1426,7 @@ from .ordercustomer import (
     OrderCustomerTypedDict,
 )
 from .orderinvoice import OrderInvoice, OrderInvoiceTypedDict
+from .orderitemschema import OrderItemSchema, OrderItemSchemaTypedDict
 from .orderproduct import OrderProduct, OrderProductTypedDict
 from .orders_getop import OrdersGetRequest, OrdersGetRequestTypedDict
 from .orders_invoiceop import OrdersInvoiceRequest, OrdersInvoiceRequestTypedDict
@@ -1465,6 +1468,11 @@ from .organizationavatarfileread import (
     OrganizationAvatarFileReadTypedDict,
 )
 from .organizationcreate import OrganizationCreate, OrganizationCreateTypedDict
+from .organizationdetails import (
+    OrganizationDetails,
+    OrganizationDetailsTypedDict,
+    SwitchingFrom,
+)
 from .organizationfeaturesettings import (
     OrganizationFeatureSettings,
     OrganizationFeatureSettingsTypedDict,
@@ -1487,6 +1495,11 @@ from .organizations_updateop import (
     OrganizationsUpdateRequest,
     OrganizationsUpdateRequestTypedDict,
 )
+from .organizationsociallink import (
+    OrganizationSocialLink,
+    OrganizationSocialLinkTypedDict,
+)
+from .organizationsocialplatforms import OrganizationSocialPlatforms
 from .organizationsortproperty import OrganizationSortProperty
 from .organizationsubscribepromotesettings import (
     OrganizationSubscribePromoteSettings,
@@ -1509,21 +1522,21 @@ from .pledger import Pledger, PledgerTypedDict
 from .pledgestate import PledgeState
 from .pledgetype import PledgeType
 from .product import (
+    Prices,
+    PricesTypedDict,
     Product,
     ProductMetadata,
     ProductMetadataTypedDict,
-    ProductPrices,
-    ProductPricesTypedDict,
     ProductTypedDict,
 )
 from .productbenefitsupdate import ProductBenefitsUpdate, ProductBenefitsUpdateTypedDict
 from .productbillingtype import ProductBillingType
 from .productcreate import (
-    Metadata,
-    MetadataTypedDict,
-    Prices,
-    PricesTypedDict,
     ProductCreate,
+    ProductCreateMetadata,
+    ProductCreateMetadataTypedDict,
+    ProductCreatePrices,
+    ProductCreatePricesTypedDict,
     ProductCreateTypedDict,
 )
 from .productmediafilecreate import (
@@ -1657,15 +1670,17 @@ from .sdkerror import SDKError
 from .security import Security, SecurityTypedDict
 from .state import State
 from .subscription import (
+    CustomFieldData,
+    CustomFieldDataTypedDict,
+    Metadata,
+    MetadataTypedDict,
+    Price,
+    PriceTypedDict,
     Subscription,
-    SubscriptionCustomFieldData,
-    SubscriptionCustomFieldDataTypedDict,
     SubscriptionDiscount,
     SubscriptionDiscountTypedDict,
-    SubscriptionMetadata,
-    SubscriptionMetadataTypedDict,
-    SubscriptionPrice,
-    SubscriptionPriceTypedDict,
+    SubscriptionPrices,
+    SubscriptionPricesTypedDict,
     SubscriptionTypedDict,
 )
 from .subscriptioncancel import SubscriptionCancel, SubscriptionCancelTypedDict
@@ -1673,9 +1688,9 @@ from .subscriptioncustomer import (
     SubscriptionCustomer,
     SubscriptionCustomerMetadata,
     SubscriptionCustomerMetadataTypedDict,
-    SubscriptionCustomerTaxID,
-    SubscriptionCustomerTaxIDTypedDict,
     SubscriptionCustomerTypedDict,
+    TaxID,
+    TaxIDTypedDict,
 )
 from .subscriptionprorationbehavior import SubscriptionProrationBehavior
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
@@ -1916,10 +1931,10 @@ __all__ = [
     "BenefitGitHubRepository",
     "BenefitGitHubRepositoryCreate",
     "BenefitGitHubRepositoryCreateProperties",
+    "BenefitGitHubRepositoryCreatePropertiesPermission",
     "BenefitGitHubRepositoryCreatePropertiesTypedDict",
     "BenefitGitHubRepositoryCreateTypedDict",
     "BenefitGitHubRepositoryProperties",
-    "BenefitGitHubRepositoryPropertiesPermission",
     "BenefitGitHubRepositoryPropertiesTypedDict",
     "BenefitGitHubRepositorySubscriber",
     "BenefitGitHubRepositorySubscriberProperties",
@@ -1996,8 +2011,6 @@ __all__ = [
     "CheckoutCreateTypedDict",
     "CheckoutCustomFieldData",
     "CheckoutCustomFieldDataTypedDict",
-    "CheckoutCustomerMetadata",
-    "CheckoutCustomerMetadataTypedDict",
     "CheckoutDiscount",
     "CheckoutDiscountFixedOnceForeverDuration",
     "CheckoutDiscountFixedOnceForeverDurationTypedDict",
@@ -2082,6 +2095,10 @@ __all__ = [
     "CheckoutProductPricesTypedDict",
     "CheckoutProductTypedDict",
     "CheckoutProductsCreate",
+    "CheckoutProductsCreateCustomFieldData",
+    "CheckoutProductsCreateCustomFieldDataTypedDict",
+    "CheckoutProductsCreateCustomerMetadata",
+    "CheckoutProductsCreateCustomerMetadataTypedDict",
     "CheckoutProductsCreateMetadata",
     "CheckoutProductsCreateMetadataTypedDict",
     "CheckoutProductsCreateTypedDict",
@@ -2444,6 +2461,10 @@ __all__ = [
     "CustomerSubscription",
     "CustomerSubscriptionCancel",
     "CustomerSubscriptionCancelTypedDict",
+    "CustomerSubscriptionPrice",
+    "CustomerSubscriptionPriceTypedDict",
+    "CustomerSubscriptionPrices",
+    "CustomerSubscriptionPricesTypedDict",
     "CustomerSubscriptionProduct",
     "CustomerSubscriptionProductPrices",
     "CustomerSubscriptionProductPricesTypedDict",
@@ -2682,6 +2703,8 @@ __all__ = [
     "LicenseKeyCustomer",
     "LicenseKeyCustomerMetadata",
     "LicenseKeyCustomerMetadataTypedDict",
+    "LicenseKeyCustomerTaxID",
+    "LicenseKeyCustomerTaxIDTypedDict",
     "LicenseKeyCustomerTypedDict",
     "LicenseKeyDeactivate",
     "LicenseKeyDeactivateTypedDict",
@@ -2874,6 +2897,8 @@ __all__ = [
     "OrderIDFilterTypedDict",
     "OrderInvoice",
     "OrderInvoiceTypedDict",
+    "OrderItemSchema",
+    "OrderItemSchemaTypedDict",
     "OrderMetadata",
     "OrderMetadataTypedDict",
     "OrderProduct",
@@ -2909,6 +2934,8 @@ __all__ = [
     "OrganizationAvatarFileReadTypedDict",
     "OrganizationCreate",
     "OrganizationCreateTypedDict",
+    "OrganizationDetails",
+    "OrganizationDetailsTypedDict",
     "OrganizationFeatureSettings",
     "OrganizationFeatureSettingsTypedDict",
     "OrganizationID",
@@ -2917,6 +2944,9 @@ __all__ = [
     "OrganizationIDTypedDict",
     "OrganizationProfileSettings",
     "OrganizationProfileSettingsTypedDict",
+    "OrganizationSocialLink",
+    "OrganizationSocialLinkTypedDict",
+    "OrganizationSocialPlatforms",
     "OrganizationSortProperty",
     "OrganizationSubscribePromoteSettings",
     "OrganizationSubscribePromoteSettingsTypedDict",
@@ -2967,6 +2997,10 @@ __all__ = [
     "ProductBillingTypeFilter",
     "ProductBillingTypeFilterTypedDict",
     "ProductCreate",
+    "ProductCreateMetadata",
+    "ProductCreateMetadataTypedDict",
+    "ProductCreatePrices",
+    "ProductCreatePricesTypedDict",
     "ProductCreateTypedDict",
     "ProductIDFilter",
     "ProductIDFilterTypedDict",
@@ -2993,8 +3027,6 @@ __all__ = [
     "ProductPriceTypeFilter",
     "ProductPriceTypeFilterTypedDict",
     "ProductPriceTypedDict",
-    "ProductPrices",
-    "ProductPricesTypedDict",
     "ProductSortProperty",
     "ProductTypedDict",
     "ProductUpdate",
@@ -3124,22 +3156,16 @@ __all__ = [
     "Subscription",
     "SubscriptionCancel",
     "SubscriptionCancelTypedDict",
-    "SubscriptionCustomFieldData",
-    "SubscriptionCustomFieldDataTypedDict",
     "SubscriptionCustomer",
     "SubscriptionCustomerMetadata",
     "SubscriptionCustomerMetadataTypedDict",
-    "SubscriptionCustomerTaxID",
-    "SubscriptionCustomerTaxIDTypedDict",
     "SubscriptionCustomerTypedDict",
     "SubscriptionDiscount",
     "SubscriptionDiscountTypedDict",
     "SubscriptionIDFilter",
     "SubscriptionIDFilterTypedDict",
-    "SubscriptionMetadata",
-    "SubscriptionMetadataTypedDict",
-    "SubscriptionPrice",
-    "SubscriptionPriceTypedDict",
+    "SubscriptionPrices",
+    "SubscriptionPricesTypedDict",
     "SubscriptionProrationBehavior",
     "SubscriptionRecurringInterval",
     "SubscriptionSortProperty",
@@ -3165,6 +3191,7 @@ __all__ = [
     "SubscriptionsRevokeRequestTypedDict",
     "SubscriptionsUpdateRequest",
     "SubscriptionsUpdateRequestTypedDict",
+    "SwitchingFrom",
     "TaxID",
     "TaxIDFormat",
     "TaxIDTypedDict",

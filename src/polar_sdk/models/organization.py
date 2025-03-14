@@ -9,14 +9,20 @@ from .organizationprofilesettings import (
     OrganizationProfileSettings,
     OrganizationProfileSettingsTypedDict,
 )
+from .organizationsociallink import (
+    OrganizationSocialLink,
+    OrganizationSocialLinkTypedDict,
+)
 from .organizationsubscriptionsettings import (
     OrganizationSubscriptionSettings,
     OrganizationSubscriptionSettingsTypedDict,
 )
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import Annotated, TypedDict
 
 
 class OrganizationTypedDict(TypedDict):
@@ -27,22 +33,32 @@ class OrganizationTypedDict(TypedDict):
     id: str
     r"""The organization ID."""
     name: str
+    r"""Organization name shown in checkout, customer portal, emails etc."""
     slug: str
+    r"""Unique organization slug in checkout, customer portal and credit card statements."""
     avatar_url: Nullable[str]
+    r"""Avatar URL shown in checkout, customer portal, emails etc."""
+    email: Nullable[str]
+    r"""Public support email."""
+    website: Nullable[str]
+    r"""Official website of the organization."""
+    socials: List[OrganizationSocialLinkTypedDict]
+    r"""Links to social profiles."""
+    details_submitted_at: Nullable[datetime]
+    r"""When the business details were submitted."""
+    feature_settings: Nullable[OrganizationFeatureSettingsTypedDict]
+    r"""Organization feature settings"""
+    subscription_settings: OrganizationSubscriptionSettingsTypedDict
     bio: Nullable[str]
     company: Nullable[str]
     blog: Nullable[str]
     location: Nullable[str]
-    email: Nullable[str]
     twitter_username: Nullable[str]
     pledge_minimum_amount: int
     pledge_badge_show_amount: bool
     default_upfront_split_to_contributors: Nullable[int]
     profile_settings: Nullable[OrganizationProfileSettingsTypedDict]
     r"""Settings for the organization profile"""
-    feature_settings: Nullable[OrganizationFeatureSettingsTypedDict]
-    r"""Settings for the organization features"""
-    subscription_settings: OrganizationSubscriptionSettingsTypedDict
 
 
 class Organization(BaseModel):
@@ -56,36 +72,94 @@ class Organization(BaseModel):
     r"""The organization ID."""
 
     name: str
+    r"""Organization name shown in checkout, customer portal, emails etc."""
 
     slug: str
+    r"""Unique organization slug in checkout, customer portal and credit card statements."""
 
     avatar_url: Nullable[str]
-
-    bio: Nullable[str]
-
-    company: Nullable[str]
-
-    blog: Nullable[str]
-
-    location: Nullable[str]
+    r"""Avatar URL shown in checkout, customer portal, emails etc."""
 
     email: Nullable[str]
+    r"""Public support email."""
 
-    twitter_username: Nullable[str]
+    website: Nullable[str]
+    r"""Official website of the organization."""
 
-    pledge_minimum_amount: int
+    socials: List[OrganizationSocialLink]
+    r"""Links to social profiles."""
 
-    pledge_badge_show_amount: bool
-
-    default_upfront_split_to_contributors: Nullable[int]
-
-    profile_settings: Nullable[OrganizationProfileSettings]
-    r"""Settings for the organization profile"""
+    details_submitted_at: Nullable[datetime]
+    r"""When the business details were submitted."""
 
     feature_settings: Nullable[OrganizationFeatureSettings]
-    r"""Settings for the organization features"""
+    r"""Organization feature settings"""
 
     subscription_settings: OrganizationSubscriptionSettings
+
+    bio: Annotated[
+        Nullable[str],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    company: Annotated[
+        Nullable[str],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    blog: Annotated[
+        Nullable[str],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    location: Annotated[
+        Nullable[str],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    twitter_username: Annotated[
+        Nullable[str],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    pledge_minimum_amount: Annotated[
+        int,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    pledge_badge_show_amount: Annotated[
+        bool,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    default_upfront_split_to_contributors: Annotated[
+        Nullable[int],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    profile_settings: Annotated[
+        Nullable[OrganizationProfileSettings],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+    r"""Settings for the organization profile"""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -93,15 +167,17 @@ class Organization(BaseModel):
         nullable_fields = [
             "modified_at",
             "avatar_url",
+            "email",
+            "website",
+            "details_submitted_at",
+            "feature_settings",
             "bio",
             "company",
             "blog",
             "location",
-            "email",
             "twitter_username",
             "default_upfront_split_to_contributors",
             "profile_settings",
-            "feature_settings",
         ]
         null_default_fields = []
 

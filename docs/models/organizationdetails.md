@@ -1,0 +1,15 @@
+# OrganizationDetails
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `about`                                                              | *str*                                                                | :heavy_check_mark:                                                   | Brief information about you and your business.                       |
+| `product_description`                                                | *str*                                                                | :heavy_check_mark:                                                   | Description of digital products being sold.                          |
+| `intended_use`                                                       | *str*                                                                | :heavy_check_mark:                                                   | How the organization will integrate and use Polar.                   |
+| `customer_acquisition`                                               | List[*str*]                                                          | :heavy_check_mark:                                                   | Main customer acquisition channels.                                  |
+| `future_annual_revenue`                                              | *int*                                                                | :heavy_check_mark:                                                   | Estimated revenue in the next 12 months                              |
+| `switching`                                                          | *Optional[bool]*                                                     | :heavy_minus_sign:                                                   | Switching from another platform?                                     |
+| `switching_from`                                                     | [OptionalNullable[models.SwitchingFrom]](../models/switchingfrom.md) | :heavy_minus_sign:                                                   | Which platform the organization is migrating from.                   |
+| `previous_annual_revenue`                                            | *Optional[int]*                                                      | :heavy_minus_sign:                                                   | Revenue from last year if applicable.                                |

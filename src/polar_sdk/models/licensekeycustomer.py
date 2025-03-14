@@ -20,10 +20,14 @@ LicenseKeyCustomerMetadata = TypeAliasType(
 )
 
 
-TaxIDTypedDict = TypeAliasType("TaxIDTypedDict", Union[str, TaxIDFormat])
+LicenseKeyCustomerTaxIDTypedDict = TypeAliasType(
+    "LicenseKeyCustomerTaxIDTypedDict", Union[str, TaxIDFormat]
+)
 
 
-TaxID = TypeAliasType("TaxID", Union[str, TaxIDFormat])
+LicenseKeyCustomerTaxID = TypeAliasType(
+    "LicenseKeyCustomerTaxID", Union[str, TaxIDFormat]
+)
 
 
 class LicenseKeyCustomerTypedDict(TypedDict):
@@ -43,9 +47,11 @@ class LicenseKeyCustomerTypedDict(TypedDict):
     name: Nullable[str]
     r"""The name of the customer."""
     billing_address: Nullable[AddressTypedDict]
-    tax_id: Nullable[List[Nullable[TaxIDTypedDict]]]
+    tax_id: Nullable[List[Nullable[LicenseKeyCustomerTaxIDTypedDict]]]
     organization_id: str
     r"""The ID of the organization owning the customer."""
+    deleted_at: Nullable[datetime]
+    r"""Timestamp for when the customer was soft deleted."""
     avatar_url: str
 
 
@@ -75,10 +81,13 @@ class LicenseKeyCustomer(BaseModel):
 
     billing_address: Nullable[Address]
 
-    tax_id: Nullable[List[Nullable[TaxID]]]
+    tax_id: Nullable[List[Nullable[LicenseKeyCustomerTaxID]]]
 
     organization_id: str
     r"""The ID of the organization owning the customer."""
+
+    deleted_at: Nullable[datetime]
+    r"""Timestamp for when the customer was soft deleted."""
 
     avatar_url: str
 
@@ -91,6 +100,7 @@ class LicenseKeyCustomer(BaseModel):
             "name",
             "billing_address",
             "tax_id",
+            "deleted_at",
         ]
         null_default_fields = []
 

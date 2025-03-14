@@ -6,7 +6,7 @@ from polar_sdk.types import BaseModel
 from typing_extensions import TypedDict
 
 
-class Permission(str, Enum):
+class BenefitGitHubRepositoryCreatePropertiesPermission(str, Enum):
     r"""The permission level to grant. Read more about roles and their permissions on [GitHub documentation](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization#permissions-for-each-role)."""
 
     PULL = "pull"
@@ -23,7 +23,7 @@ class BenefitGitHubRepositoryCreatePropertiesTypedDict(TypedDict):
     r"""The owner of the repository."""
     repository_name: str
     r"""The name of the repository."""
-    permission: Permission
+    permission: BenefitGitHubRepositoryCreatePropertiesPermission
     r"""The permission level to grant. Read more about roles and their permissions on [GitHub documentation](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization#permissions-for-each-role)."""
 
 
@@ -36,5 +36,5 @@ class BenefitGitHubRepositoryCreateProperties(BaseModel):
     repository_name: str
     r"""The name of the repository."""
 
-    permission: Permission
+    permission: BenefitGitHubRepositoryCreatePropertiesPermission
     r"""The permission level to grant. Read more about roles and their permissions on [GitHub documentation](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization#permissions-for-each-role)."""

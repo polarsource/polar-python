@@ -21,6 +21,7 @@ class Benefits(BaseSDK):
         type_filter: OptionalNullable[
             Union[models.BenefitTypeFilter, models.BenefitTypeFilterTypedDict]
         ] = UNSET,
+        query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -36,6 +37,7 @@ class Benefits(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param type_filter: Filter by benefit type.
+        :param query: Filter by description.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -56,6 +58,7 @@ class Benefits(BaseSDK):
         request = models.BenefitsListRequest(
             organization_id=organization_id,
             type_filter=type_filter,
+            query=query,
             page=page,
             limit=limit,
         )
@@ -117,6 +120,7 @@ class Benefits(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 type_filter=type_filter,
+                query=query,
                 page=next_page,
                 limit=limit,
                 retries=retries,
@@ -165,6 +169,7 @@ class Benefits(BaseSDK):
         type_filter: OptionalNullable[
             Union[models.BenefitTypeFilter, models.BenefitTypeFilterTypedDict]
         ] = UNSET,
+        query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -180,6 +185,7 @@ class Benefits(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param type_filter: Filter by benefit type.
+        :param query: Filter by description.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -200,6 +206,7 @@ class Benefits(BaseSDK):
         request = models.BenefitsListRequest(
             organization_id=organization_id,
             type_filter=type_filter,
+            query=query,
             page=page,
             limit=limit,
         )
@@ -261,6 +268,7 @@ class Benefits(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 type_filter=type_filter,
+                query=query,
                 page=next_page,
                 limit=limit,
                 retries=retries,

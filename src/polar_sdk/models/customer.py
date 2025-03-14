@@ -48,6 +48,8 @@ class CustomerTypedDict(TypedDict):
     tax_id: Nullable[List[Nullable[CustomerTaxIDTypedDict]]]
     organization_id: str
     r"""The ID of the organization owning the customer."""
+    deleted_at: Nullable[datetime]
+    r"""Timestamp for when the customer was soft deleted."""
     avatar_url: str
 
 
@@ -84,6 +86,9 @@ class Customer(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the customer."""
 
+    deleted_at: Nullable[datetime]
+    r"""Timestamp for when the customer was soft deleted."""
+
     avatar_url: str
 
     @model_serializer(mode="wrap")
@@ -95,6 +100,7 @@ class Customer(BaseModel):
             "name",
             "billing_address",
             "tax_id",
+            "deleted_at",
         ]
         null_default_fields = []
 

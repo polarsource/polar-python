@@ -20,14 +20,10 @@ SubscriptionCustomerMetadata = TypeAliasType(
 )
 
 
-SubscriptionCustomerTaxIDTypedDict = TypeAliasType(
-    "SubscriptionCustomerTaxIDTypedDict", Union[str, TaxIDFormat]
-)
+TaxIDTypedDict = TypeAliasType("TaxIDTypedDict", Union[str, TaxIDFormat])
 
 
-SubscriptionCustomerTaxID = TypeAliasType(
-    "SubscriptionCustomerTaxID", Union[str, TaxIDFormat]
-)
+TaxID = TypeAliasType("TaxID", Union[str, TaxIDFormat])
 
 
 class SubscriptionCustomerTypedDict(TypedDict):
@@ -47,9 +43,11 @@ class SubscriptionCustomerTypedDict(TypedDict):
     name: Nullable[str]
     r"""The name of the customer."""
     billing_address: Nullable[AddressTypedDict]
-    tax_id: Nullable[List[Nullable[SubscriptionCustomerTaxIDTypedDict]]]
+    tax_id: Nullable[List[Nullable[TaxIDTypedDict]]]
     organization_id: str
     r"""The ID of the organization owning the customer."""
+    deleted_at: Nullable[datetime]
+    r"""Timestamp for when the customer was soft deleted."""
     avatar_url: str
 
 
@@ -79,10 +77,13 @@ class SubscriptionCustomer(BaseModel):
 
     billing_address: Nullable[Address]
 
-    tax_id: Nullable[List[Nullable[SubscriptionCustomerTaxID]]]
+    tax_id: Nullable[List[Nullable[TaxID]]]
 
     organization_id: str
     r"""The ID of the organization owning the customer."""
+
+    deleted_at: Nullable[datetime]
+    r"""Timestamp for when the customer was soft deleted."""
 
     avatar_url: str
 
@@ -95,6 +96,7 @@ class SubscriptionCustomer(BaseModel):
             "name",
             "billing_address",
             "tax_id",
+            "deleted_at",
         ]
         null_default_fields = []
 

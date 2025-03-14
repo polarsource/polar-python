@@ -25,15 +25,13 @@ ProductMetadataTypedDict = TypeAliasType(
 ProductMetadata = TypeAliasType("ProductMetadata", Union[str, int, bool])
 
 
-ProductPricesTypedDict = TypeAliasType(
-    "ProductPricesTypedDict",
+PricesTypedDict = TypeAliasType(
+    "PricesTypedDict",
     Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
 )
 
 
-ProductPrices = TypeAliasType(
-    "ProductPrices", Union[LegacyRecurringProductPrice, ProductPrice]
-)
+Prices = TypeAliasType("Prices", Union[LegacyRecurringProductPrice, ProductPrice])
 
 
 class ProductTypedDict(TypedDict):
@@ -58,7 +56,7 @@ class ProductTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the product."""
     metadata: Dict[str, ProductMetadataTypedDict]
-    prices: List[ProductPricesTypedDict]
+    prices: List[PricesTypedDict]
     r"""List of prices for this product."""
     benefits: List[BenefitTypedDict]
     r"""List of benefits granted by the product."""
@@ -100,7 +98,7 @@ class Product(BaseModel):
 
     metadata: Dict[str, ProductMetadata]
 
-    prices: List[ProductPrices]
+    prices: List[Prices]
     r"""List of prices for this product."""
 
     benefits: List[Benefit]
