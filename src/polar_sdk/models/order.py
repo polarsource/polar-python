@@ -24,6 +24,7 @@ from .legacyrecurringproductprice import (
 )
 from .orderbillingreason import OrderBillingReason
 from .ordercustomer import OrderCustomer, OrderCustomerTypedDict
+from .orderitemschema import OrderItemSchema, OrderItemSchemaTypedDict
 from .orderproduct import OrderProduct, OrderProductTypedDict
 from .ordersubscription import OrderSubscription, OrderSubscriptionTypedDict
 from .orderuser import OrderUser, OrderUserTypedDict
@@ -32,7 +33,7 @@ from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
-from typing import Dict, Optional, Union
+from typing import Dict, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -94,12 +95,22 @@ class OrderTypedDict(TypedDict):
     r"""The ID of the object."""
     metadata: Dict[str, OrderMetadataTypedDict]
     status: str
+    subtotal_amount: int
+    r"""Amount in cents, before discounts and taxes."""
+    discount_amount: int
+    r"""Discount amount in cents."""
+    net_amount: int
+    r"""Amount in cents, after discounts but before taxes."""
     amount: int
+    r"""Amount in cents, after discounts but before taxes."""
     tax_amount: int
+    r"""Sales tax amount in cents."""
+    total_amount: int
+    r"""Amount in cents, after discounts and taxes."""
     refunded_amount: int
-    r"""Amount refunded"""
+    r"""Amount refunded in cents."""
     refunded_tax_amount: int
-    r"""Sales tax refunded"""
+    r"""Sales tax refunded in cents."""
     currency: str
     billing_reason: OrderBillingReason
     billing_address: Nullable[AddressTypedDict]
@@ -116,6 +127,8 @@ class OrderTypedDict(TypedDict):
     product_price: OrderProductPriceTypedDict
     discount: Nullable[OrderDiscountTypedDict]
     subscription: Nullable[OrderSubscriptionTypedDict]
+    items: List[OrderItemSchemaTypedDict]
+    r"""Line items composing the order."""
     custom_field_data: NotRequired[Dict[str, Nullable[OrderCustomFieldDataTypedDict]]]
     r"""Key-value object storing custom field values."""
 
@@ -134,15 +147,34 @@ class Order(BaseModel):
 
     status: str
 
-    amount: int
+    subtotal_amount: int
+    r"""Amount in cents, before discounts and taxes."""
+
+    discount_amount: int
+    r"""Discount amount in cents."""
+
+    net_amount: int
+    r"""Amount in cents, after discounts but before taxes."""
+
+    amount: Annotated[
+        int,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+    r"""Amount in cents, after discounts but before taxes."""
 
     tax_amount: int
+    r"""Sales tax amount in cents."""
+
+    total_amount: int
+    r"""Amount in cents, after discounts and taxes."""
 
     refunded_amount: int
-    r"""Amount refunded"""
+    r"""Amount refunded in cents."""
 
     refunded_tax_amount: int
-    r"""Sales tax refunded"""
+    r"""Sales tax refunded in cents."""
 
     currency: str
 
@@ -154,7 +186,12 @@ class Order(BaseModel):
 
     product_id: str
 
-    product_price_id: str
+    product_price_id: Annotated[
+        str,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
 
     discount_id: Nullable[str]
 
@@ -175,11 +212,19 @@ class Order(BaseModel):
 
     product: OrderProduct
 
-    product_price: OrderProductPrice
+    product_price: Annotated[
+        OrderProductPrice,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
 
     discount: Nullable[OrderDiscount]
 
     subscription: Nullable[OrderSubscription]
+
+    items: List[OrderItemSchema]
+    r"""Line items composing the order."""
 
     custom_field_data: Optional[Dict[str, Nullable[OrderCustomFieldData]]] = None
     r"""Key-value object storing custom field values."""

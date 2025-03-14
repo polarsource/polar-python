@@ -30,9 +30,9 @@ class OrderSubscriptionTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
-    amount: Nullable[int]
+    amount: int
     r"""The amount of the subscription."""
-    currency: Nullable[str]
+    currency: str
     r"""The currency of the subscription."""
     recurring_interval: SubscriptionRecurringInterval
     status: SubscriptionStatus
@@ -54,13 +54,12 @@ class OrderSubscriptionTypedDict(TypedDict):
     r"""The ID of the subscribed customer."""
     product_id: str
     r"""The ID of the subscribed product."""
-    price_id: str
-    r"""The ID of the subscribed price."""
     discount_id: Nullable[str]
     r"""The ID of the applied discount, if any."""
     checkout_id: Nullable[str]
     customer_cancellation_reason: Nullable[CustomerCancellationReason]
     customer_cancellation_comment: Nullable[str]
+    price_id: str
     user_id: str
 
 
@@ -76,10 +75,10 @@ class OrderSubscription(BaseModel):
     id: str
     r"""The ID of the object."""
 
-    amount: Nullable[int]
+    amount: int
     r"""The amount of the subscription."""
 
-    currency: Nullable[str]
+    currency: str
     r"""The currency of the subscription."""
 
     recurring_interval: SubscriptionRecurringInterval
@@ -113,9 +112,6 @@ class OrderSubscription(BaseModel):
     product_id: str
     r"""The ID of the subscribed product."""
 
-    price_id: str
-    r"""The ID of the subscribed price."""
-
     discount_id: Nullable[str]
     r"""The ID of the applied discount, if any."""
 
@@ -124,6 +120,13 @@ class OrderSubscription(BaseModel):
     customer_cancellation_reason: Nullable[CustomerCancellationReason]
 
     customer_cancellation_comment: Nullable[str]
+
+    price_id: Annotated[
+        str,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
 
     user_id: Annotated[
         str,
@@ -137,8 +140,6 @@ class OrderSubscription(BaseModel):
         optional_fields = []
         nullable_fields = [
             "modified_at",
-            "amount",
-            "currency",
             "current_period_end",
             "canceled_at",
             "started_at",

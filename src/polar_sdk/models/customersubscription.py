@@ -17,16 +17,30 @@ from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
-from typing import Union
+from typing import List, Union
 from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
-PriceTypedDict = TypeAliasType(
-    "PriceTypedDict", Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict]
+CustomerSubscriptionPriceTypedDict = TypeAliasType(
+    "CustomerSubscriptionPriceTypedDict",
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
 )
 
 
-Price = TypeAliasType("Price", Union[LegacyRecurringProductPrice, ProductPrice])
+CustomerSubscriptionPrice = TypeAliasType(
+    "CustomerSubscriptionPrice", Union[LegacyRecurringProductPrice, ProductPrice]
+)
+
+
+CustomerSubscriptionPricesTypedDict = TypeAliasType(
+    "CustomerSubscriptionPricesTypedDict",
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+)
+
+
+CustomerSubscriptionPrices = TypeAliasType(
+    "CustomerSubscriptionPrices", Union[LegacyRecurringProductPrice, ProductPrice]
+)
 
 
 class CustomerSubscriptionTypedDict(TypedDict):
@@ -36,30 +50,41 @@ class CustomerSubscriptionTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
-    amount: Nullable[int]
+    amount: int
     r"""The amount of the subscription."""
-    currency: Nullable[str]
+    currency: str
     r"""The currency of the subscription."""
     recurring_interval: SubscriptionRecurringInterval
     status: SubscriptionStatus
     current_period_start: datetime
+    r"""The start timestamp of the current billing period."""
     current_period_end: Nullable[datetime]
+    r"""The end timestamp of the current billing period."""
     cancel_at_period_end: bool
+    r"""Whether the subscription will be canceled at the end of the current period."""
     canceled_at: Nullable[datetime]
+    r"""The timestamp when the subscription was canceled. The subscription might still be active if `cancel_at_period_end` is `true`."""
     started_at: Nullable[datetime]
+    r"""The timestamp when the subscription started."""
     ends_at: Nullable[datetime]
+    r"""The timestamp when the subscription will end."""
     ended_at: Nullable[datetime]
+    r"""The timestamp when the subscription ended."""
     customer_id: str
+    r"""The ID of the subscribed customer."""
     product_id: str
-    price_id: str
+    r"""The ID of the subscribed product."""
     discount_id: Nullable[str]
     r"""The ID of the applied discount, if any."""
     checkout_id: Nullable[str]
     customer_cancellation_reason: Nullable[CustomerCancellationReason]
     customer_cancellation_comment: Nullable[str]
+    price_id: str
     user_id: str
     product: CustomerSubscriptionProductTypedDict
-    price: PriceTypedDict
+    price: CustomerSubscriptionPriceTypedDict
+    prices: List[CustomerSubscriptionPricesTypedDict]
+    r"""List of enabled prices for the subscription."""
 
 
 class CustomerSubscription(BaseModel):
@@ -72,10 +97,10 @@ class CustomerSubscription(BaseModel):
     id: str
     r"""The ID of the object."""
 
-    amount: Nullable[int]
+    amount: int
     r"""The amount of the subscription."""
 
-    currency: Nullable[str]
+    currency: str
     r"""The currency of the subscription."""
 
     recurring_interval: SubscriptionRecurringInterval
@@ -83,24 +108,31 @@ class CustomerSubscription(BaseModel):
     status: SubscriptionStatus
 
     current_period_start: datetime
+    r"""The start timestamp of the current billing period."""
 
     current_period_end: Nullable[datetime]
+    r"""The end timestamp of the current billing period."""
 
     cancel_at_period_end: bool
+    r"""Whether the subscription will be canceled at the end of the current period."""
 
     canceled_at: Nullable[datetime]
+    r"""The timestamp when the subscription was canceled. The subscription might still be active if `cancel_at_period_end` is `true`."""
 
     started_at: Nullable[datetime]
+    r"""The timestamp when the subscription started."""
 
     ends_at: Nullable[datetime]
+    r"""The timestamp when the subscription will end."""
 
     ended_at: Nullable[datetime]
+    r"""The timestamp when the subscription ended."""
 
     customer_id: str
+    r"""The ID of the subscribed customer."""
 
     product_id: str
-
-    price_id: str
+    r"""The ID of the subscribed product."""
 
     discount_id: Nullable[str]
     r"""The ID of the applied discount, if any."""
@@ -111,6 +143,13 @@ class CustomerSubscription(BaseModel):
 
     customer_cancellation_comment: Nullable[str]
 
+    price_id: Annotated[
+        str,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
     user_id: Annotated[
         str,
         pydantic.Field(
@@ -120,15 +159,21 @@ class CustomerSubscription(BaseModel):
 
     product: CustomerSubscriptionProduct
 
-    price: Price
+    price: Annotated[
+        CustomerSubscriptionPrice,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    prices: List[CustomerSubscriptionPrices]
+    r"""List of enabled prices for the subscription."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
         nullable_fields = [
             "modified_at",
-            "amount",
-            "currency",
             "current_period_end",
             "canceled_at",
             "started_at",

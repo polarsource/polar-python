@@ -9,6 +9,8 @@
 | `MINUS_CREATED_AT`   | -created_at          |
 | `AMOUNT`             | amount               |
 | `MINUS_AMOUNT`       | -amount              |
+| `NET_AMOUNT`         | net_amount           |
+| `MINUS_NET_AMOUNT`   | -net_amount          |
 | `CUSTOMER`           | customer             |
 | `MINUS_CUSTOMER`     | -customer            |
 | `PRODUCT`            | product              |

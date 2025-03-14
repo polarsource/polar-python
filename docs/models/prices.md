@@ -3,21 +3,15 @@
 
 ## Supported Types
 
-### `models.ProductPriceFixedCreate`
+### `models.LegacyRecurringProductPrice`
 
 ```python
-value: models.ProductPriceFixedCreate = /* values here */
+value: models.LegacyRecurringProductPrice = /* values here */
 ```
 
-### `models.ProductPriceCustomCreate`
+### `models.ProductPrice`
 
 ```python
-value: models.ProductPriceCustomCreate = /* values here */
-```
-
-### `models.ProductPriceFreeCreate`
-
-```python
-value: models.ProductPriceFreeCreate = /* values here */
+value: models.ProductPrice = /* values here */
 ```
 

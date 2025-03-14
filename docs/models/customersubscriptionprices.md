@@ -1,4 +1,4 @@
-# SubscriptionPrice
+# CustomerSubscriptionPrices
 
 
 ## Supported Types

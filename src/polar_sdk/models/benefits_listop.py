@@ -42,6 +42,8 @@ class BenefitsListRequestTypedDict(TypedDict):
     r"""Filter by organization ID."""
     type_filter: NotRequired[Nullable[BenefitTypeFilterTypedDict]]
     r"""Filter by benefit type."""
+    query: NotRequired[Nullable[str]]
+    r"""Filter by description."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -62,6 +64,12 @@ class BenefitsListRequest(BaseModel):
     ] = UNSET
     r"""Filter by benefit type."""
 
+    query: Annotated[
+        OptionalNullable[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by description."""
+
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -76,8 +84,8 @@ class BenefitsListRequest(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["organization_id", "type_filter", "page", "limit"]
-        nullable_fields = ["organization_id", "type_filter"]
+        optional_fields = ["organization_id", "type_filter", "query", "page", "limit"]
+        nullable_fields = ["organization_id", "type_filter", "query"]
         null_default_fields = []
 
         serialized = handler(self)

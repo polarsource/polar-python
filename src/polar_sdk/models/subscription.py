@@ -32,37 +32,22 @@ from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
-from typing import Dict, Optional, Union
+from typing import Dict, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-SubscriptionMetadataTypedDict = TypeAliasType(
-    "SubscriptionMetadataTypedDict", Union[str, int, bool]
+MetadataTypedDict = TypeAliasType("MetadataTypedDict", Union[str, int, bool])
+
+
+Metadata = TypeAliasType("Metadata", Union[str, int, bool])
+
+
+CustomFieldDataTypedDict = TypeAliasType(
+    "CustomFieldDataTypedDict", Union[str, int, bool, datetime]
 )
 
 
-SubscriptionMetadata = TypeAliasType("SubscriptionMetadata", Union[str, int, bool])
-
-
-SubscriptionCustomFieldDataTypedDict = TypeAliasType(
-    "SubscriptionCustomFieldDataTypedDict", Union[str, int, bool, datetime]
-)
-
-
-SubscriptionCustomFieldData = TypeAliasType(
-    "SubscriptionCustomFieldData", Union[str, int, bool, datetime]
-)
-
-
-SubscriptionPriceTypedDict = TypeAliasType(
-    "SubscriptionPriceTypedDict",
-    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
-)
-
-
-SubscriptionPrice = TypeAliasType(
-    "SubscriptionPrice", Union[LegacyRecurringProductPrice, ProductPrice]
-)
+CustomFieldData = TypeAliasType("CustomFieldData", Union[str, int, bool, datetime])
 
 
 SubscriptionDiscountTypedDict = TypeAliasType(
@@ -87,6 +72,25 @@ SubscriptionDiscount = TypeAliasType(
 )
 
 
+PriceTypedDict = TypeAliasType(
+    "PriceTypedDict", Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict]
+)
+
+
+Price = TypeAliasType("Price", Union[LegacyRecurringProductPrice, ProductPrice])
+
+
+SubscriptionPricesTypedDict = TypeAliasType(
+    "SubscriptionPricesTypedDict",
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+)
+
+
+SubscriptionPrices = TypeAliasType(
+    "SubscriptionPrices", Union[LegacyRecurringProductPrice, ProductPrice]
+)
+
+
 class SubscriptionTypedDict(TypedDict):
     created_at: datetime
     r"""Creation timestamp of the object."""
@@ -94,9 +98,9 @@ class SubscriptionTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
-    amount: Nullable[int]
+    amount: int
     r"""The amount of the subscription."""
-    currency: Nullable[str]
+    currency: str
     r"""The currency of the subscription."""
     recurring_interval: SubscriptionRecurringInterval
     status: SubscriptionStatus
@@ -118,24 +122,23 @@ class SubscriptionTypedDict(TypedDict):
     r"""The ID of the subscribed customer."""
     product_id: str
     r"""The ID of the subscribed product."""
-    price_id: str
-    r"""The ID of the subscribed price."""
     discount_id: Nullable[str]
     r"""The ID of the applied discount, if any."""
     checkout_id: Nullable[str]
     customer_cancellation_reason: Nullable[CustomerCancellationReason]
     customer_cancellation_comment: Nullable[str]
-    metadata: Dict[str, SubscriptionMetadataTypedDict]
+    price_id: str
+    metadata: Dict[str, MetadataTypedDict]
     customer: SubscriptionCustomerTypedDict
     user_id: str
     user: SubscriptionUserTypedDict
     product: ProductTypedDict
     r"""A product."""
-    price: SubscriptionPriceTypedDict
     discount: Nullable[SubscriptionDiscountTypedDict]
-    custom_field_data: NotRequired[
-        Dict[str, Nullable[SubscriptionCustomFieldDataTypedDict]]
-    ]
+    price: PriceTypedDict
+    prices: List[SubscriptionPricesTypedDict]
+    r"""List of enabled prices for the subscription."""
+    custom_field_data: NotRequired[Dict[str, Nullable[CustomFieldDataTypedDict]]]
     r"""Key-value object storing custom field values."""
 
 
@@ -149,10 +152,10 @@ class Subscription(BaseModel):
     id: str
     r"""The ID of the object."""
 
-    amount: Nullable[int]
+    amount: int
     r"""The amount of the subscription."""
 
-    currency: Nullable[str]
+    currency: str
     r"""The currency of the subscription."""
 
     recurring_interval: SubscriptionRecurringInterval
@@ -186,9 +189,6 @@ class Subscription(BaseModel):
     product_id: str
     r"""The ID of the subscribed product."""
 
-    price_id: str
-    r"""The ID of the subscribed price."""
-
     discount_id: Nullable[str]
     r"""The ID of the applied discount, if any."""
 
@@ -198,7 +198,14 @@ class Subscription(BaseModel):
 
     customer_cancellation_comment: Nullable[str]
 
-    metadata: Dict[str, SubscriptionMetadata]
+    price_id: Annotated[
+        str,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    metadata: Dict[str, Metadata]
 
     customer: SubscriptionCustomer
 
@@ -214,11 +221,19 @@ class Subscription(BaseModel):
     product: Product
     r"""A product."""
 
-    price: SubscriptionPrice
-
     discount: Nullable[SubscriptionDiscount]
 
-    custom_field_data: Optional[Dict[str, Nullable[SubscriptionCustomFieldData]]] = None
+    price: Annotated[
+        Price,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    prices: List[SubscriptionPrices]
+    r"""List of enabled prices for the subscription."""
+
+    custom_field_data: Optional[Dict[str, Nullable[CustomFieldData]]] = None
     r"""Key-value object storing custom field values."""
 
     @model_serializer(mode="wrap")
@@ -226,8 +241,6 @@ class Subscription(BaseModel):
         optional_fields = ["custom_field_data"]
         nullable_fields = [
             "modified_at",
-            "amount",
-            "currency",
             "current_period_end",
             "canceled_at",
             "started_at",

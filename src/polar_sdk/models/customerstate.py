@@ -60,6 +60,8 @@ class CustomerStateTypedDict(TypedDict):
     tax_id: Nullable[List[Nullable[CustomerStateTaxIDTypedDict]]]
     organization_id: str
     r"""The ID of the organization owning the customer."""
+    deleted_at: Nullable[datetime]
+    r"""Timestamp for when the customer was soft deleted."""
     active_subscriptions: List[CustomerStateSubscriptionTypedDict]
     r"""The customer's active subscriptions."""
     granted_benefits: List[CustomerStateBenefitGrantTypedDict]
@@ -104,6 +106,9 @@ class CustomerState(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the customer."""
 
+    deleted_at: Nullable[datetime]
+    r"""Timestamp for when the customer was soft deleted."""
+
     active_subscriptions: List[CustomerStateSubscription]
     r"""The customer's active subscriptions."""
 
@@ -121,6 +126,7 @@ class CustomerState(BaseModel):
             "name",
             "billing_address",
             "tax_id",
+            "deleted_at",
         ]
         null_default_fields = []
 
