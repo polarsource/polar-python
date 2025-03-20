@@ -20,6 +20,7 @@ class RefundCreateTypedDict(TypedDict):
     order_id: str
     reason: RefundReason
     amount: int
+    r"""Amount to refund in cents. Minimum is 1."""
     metadata: NotRequired[Dict[str, RefundCreateMetadataTypedDict]]
     r"""Key-value object allowing you to store additional information.
 
@@ -50,6 +51,7 @@ class RefundCreate(BaseModel):
     reason: RefundReason
 
     amount: int
+    r"""Amount to refund in cents. Minimum is 1."""
 
     metadata: Optional[Dict[str, RefundCreateMetadata]] = None
     r"""Key-value object allowing you to store additional information.

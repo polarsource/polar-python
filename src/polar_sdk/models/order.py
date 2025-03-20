@@ -26,6 +26,7 @@ from .orderbillingreason import OrderBillingReason
 from .ordercustomer import OrderCustomer, OrderCustomerTypedDict
 from .orderitemschema import OrderItemSchema, OrderItemSchemaTypedDict
 from .orderproduct import OrderProduct, OrderProductTypedDict
+from .orderstatus import OrderStatus
 from .ordersubscription import OrderSubscription, OrderSubscriptionTypedDict
 from .orderuser import OrderUser, OrderUserTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
@@ -94,7 +95,9 @@ class OrderTypedDict(TypedDict):
     id: str
     r"""The ID of the object."""
     metadata: Dict[str, OrderMetadataTypedDict]
-    status: str
+    status: OrderStatus
+    paid: bool
+    r"""Whether the order has been paid for."""
     subtotal_amount: int
     r"""Amount in cents, before discounts and taxes."""
     discount_amount: int
@@ -145,7 +148,10 @@ class Order(BaseModel):
 
     metadata: Dict[str, OrderMetadata]
 
-    status: str
+    status: OrderStatus
+
+    paid: bool
+    r"""Whether the order has been paid for."""
 
     subtotal_amount: int
     r"""Amount in cents, before discounts and taxes."""
