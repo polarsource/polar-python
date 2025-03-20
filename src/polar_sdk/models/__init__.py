@@ -1451,6 +1451,7 @@ from .orders_listop import (
     QueryParamDiscountIDFilterTypedDict,
 )
 from .ordersortproperty import OrderSortProperty
+from .orderstatus import OrderStatus
 from .ordersubscription import (
     OrderSubscription,
     OrderSubscriptionMetadata,
@@ -1796,9 +1797,17 @@ from .webhookordercreatedpayload import (
     WebhookOrderCreatedPayload,
     WebhookOrderCreatedPayloadTypedDict,
 )
+from .webhookorderpaidpayload import (
+    WebhookOrderPaidPayload,
+    WebhookOrderPaidPayloadTypedDict,
+)
 from .webhookorderrefundedpayload import (
     WebhookOrderRefundedPayload,
     WebhookOrderRefundedPayloadTypedDict,
+)
+from .webhookorderupdatedpayload import (
+    WebhookOrderUpdatedPayload,
+    WebhookOrderUpdatedPayloadTypedDict,
 )
 from .webhookorganizationupdatedpayload import (
     WebhookOrganizationUpdatedPayload,
@@ -2906,6 +2915,7 @@ __all__ = [
     "OrderProductPriceTypedDict",
     "OrderProductTypedDict",
     "OrderSortProperty",
+    "OrderStatus",
     "OrderSubscription",
     "OrderSubscriptionMetadata",
     "OrderSubscriptionMetadataTypedDict",
@@ -3238,8 +3248,12 @@ __all__ = [
     "WebhookCustomerUpdatedPayloadTypedDict",
     "WebhookOrderCreatedPayload",
     "WebhookOrderCreatedPayloadTypedDict",
+    "WebhookOrderPaidPayload",
+    "WebhookOrderPaidPayloadTypedDict",
     "WebhookOrderRefundedPayload",
     "WebhookOrderRefundedPayloadTypedDict",
+    "WebhookOrderUpdatedPayload",
+    "WebhookOrderUpdatedPayloadTypedDict",
     "WebhookOrganizationUpdatedPayload",
     "WebhookOrganizationUpdatedPayloadTypedDict",
     "WebhookPledgeCreatedPayload",

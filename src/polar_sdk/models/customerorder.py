@@ -11,6 +11,7 @@ from .legacyrecurringproductprice import (
     LegacyRecurringProductPriceTypedDict,
 )
 from .orderitemschema import OrderItemSchema, OrderItemSchemaTypedDict
+from .orderstatus import OrderStatus
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -37,6 +38,9 @@ class CustomerOrderTypedDict(TypedDict):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
     id: str
+    status: OrderStatus
+    paid: bool
+    r"""Whether the order has been paid for."""
     subtotal_amount: int
     r"""Amount in cents, before discounts and taxes."""
     discount_amount: int
@@ -74,6 +78,11 @@ class CustomerOrder(BaseModel):
     r"""Last modification timestamp of the object."""
 
     id: str
+
+    status: OrderStatus
+
+    paid: bool
+    r"""Whether the order has been paid for."""
 
     subtotal_amount: int
     r"""Amount in cents, before discounts and taxes."""
