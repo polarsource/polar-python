@@ -10,7 +10,7 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Literal, Union
+from typing import Dict, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -27,7 +27,18 @@ CustomFieldUpdateNumberMetadata = TypeAliasType(
 class CustomFieldUpdateNumberTypedDict(TypedDict):
     r"""Schema to update a custom field of type number."""
 
-    metadata: NotRequired[Nullable[Dict[str, CustomFieldUpdateNumberMetadataTypedDict]]]
+    metadata: NotRequired[Dict[str, CustomFieldUpdateNumberMetadataTypedDict]]
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
     name: NotRequired[Nullable[str]]
     slug: NotRequired[Nullable[str]]
     type: Literal["number"]
@@ -37,7 +48,18 @@ class CustomFieldUpdateNumberTypedDict(TypedDict):
 class CustomFieldUpdateNumber(BaseModel):
     r"""Schema to update a custom field of type number."""
 
-    metadata: OptionalNullable[Dict[str, CustomFieldUpdateNumberMetadata]] = UNSET
+    metadata: Optional[Dict[str, CustomFieldUpdateNumberMetadata]] = None
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
 
     name: OptionalNullable[str] = UNSET
 
@@ -53,7 +75,7 @@ class CustomFieldUpdateNumber(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = ["metadata", "name", "slug", "properties"]
-        nullable_fields = ["metadata", "name", "slug", "properties"]
+        nullable_fields = ["name", "slug", "properties"]
         null_default_fields = []
 
         serialized = handler(self)

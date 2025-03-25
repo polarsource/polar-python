@@ -5,7 +5,7 @@ from .address import Address, AddressTypedDict
 from .taxidformat import TaxIDFormat
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict, List, Union
+from typing import Dict, List, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
@@ -26,7 +26,18 @@ CustomerUpdateTaxID = TypeAliasType("CustomerUpdateTaxID", Union[str, TaxIDForma
 
 
 class CustomerUpdateTypedDict(TypedDict):
-    metadata: NotRequired[Nullable[Dict[str, CustomerUpdateMetadataTypedDict]]]
+    metadata: NotRequired[Dict[str, CustomerUpdateMetadataTypedDict]]
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
     external_id: NotRequired[Nullable[str]]
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
     email: NotRequired[Nullable[str]]
@@ -38,7 +49,18 @@ class CustomerUpdateTypedDict(TypedDict):
 
 
 class CustomerUpdate(BaseModel):
-    metadata: OptionalNullable[Dict[str, CustomerUpdateMetadata]] = UNSET
+    metadata: Optional[Dict[str, CustomerUpdateMetadata]] = None
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
 
     external_id: OptionalNullable[str] = UNSET
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
@@ -63,14 +85,7 @@ class CustomerUpdate(BaseModel):
             "billing_address",
             "tax_id",
         ]
-        nullable_fields = [
-            "metadata",
-            "external_id",
-            "email",
-            "name",
-            "billing_address",
-            "tax_id",
-        ]
+        nullable_fields = ["external_id", "email", "name", "billing_address", "tax_id"]
         null_default_fields = []
 
         serialized = handler(self)

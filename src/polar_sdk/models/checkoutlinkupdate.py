@@ -3,7 +3,7 @@
 from __future__ import annotations
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict, List, Union
+from typing import Dict, List, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
@@ -20,7 +20,18 @@ CheckoutLinkUpdateMetadata = TypeAliasType(
 class CheckoutLinkUpdateTypedDict(TypedDict):
     r"""Schema to update an existing checkout link."""
 
-    metadata: NotRequired[Nullable[Dict[str, CheckoutLinkUpdateMetadataTypedDict]]]
+    metadata: NotRequired[Dict[str, CheckoutLinkUpdateMetadataTypedDict]]
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
     products: NotRequired[Nullable[List[str]]]
     r"""List of products that will be available to select at checkout."""
     label: NotRequired[Nullable[str]]
@@ -35,7 +46,18 @@ class CheckoutLinkUpdateTypedDict(TypedDict):
 class CheckoutLinkUpdate(BaseModel):
     r"""Schema to update an existing checkout link."""
 
-    metadata: OptionalNullable[Dict[str, CheckoutLinkUpdateMetadata]] = UNSET
+    metadata: Optional[Dict[str, CheckoutLinkUpdateMetadata]] = None
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
 
     products: OptionalNullable[List[str]] = UNSET
     r"""List of products that will be available to select at checkout."""
@@ -62,7 +84,6 @@ class CheckoutLinkUpdate(BaseModel):
             "success_url",
         ]
         nullable_fields = [
-            "metadata",
             "products",
             "label",
             "allow_discount_codes",

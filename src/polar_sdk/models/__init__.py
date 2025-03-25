@@ -1561,6 +1561,11 @@ from .productpricefreecreate import (
     ProductPriceFreeCreate,
     ProductPriceFreeCreateTypedDict,
 )
+from .productpricemeter import ProductPriceMeter, ProductPriceMeterTypedDict
+from .productpricemeteredunit import (
+    ProductPriceMeteredUnit,
+    ProductPriceMeteredUnitTypedDict,
+)
 from .productpricetype import ProductPriceType
 from .products_getop import ProductsGetRequest, ProductsGetRequestTypedDict
 from .products_listop import (
@@ -3033,6 +3038,10 @@ __all__ = [
     "ProductPriceFreeCreate",
     "ProductPriceFreeCreateTypedDict",
     "ProductPriceFreeTypedDict",
+    "ProductPriceMeter",
+    "ProductPriceMeterTypedDict",
+    "ProductPriceMeteredUnit",
+    "ProductPriceMeteredUnitTypedDict",
     "ProductPriceType",
     "ProductPriceTypeFilter",
     "ProductPriceTypeFilterTypedDict",

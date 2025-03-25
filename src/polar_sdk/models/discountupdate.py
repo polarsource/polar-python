@@ -6,7 +6,7 @@ from .discounttype import DiscountType
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict, List, Union
+from typing import Dict, List, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
@@ -21,7 +21,18 @@ DiscountUpdateMetadata = TypeAliasType("DiscountUpdateMetadata", Union[str, int,
 class DiscountUpdateTypedDict(TypedDict):
     r"""Schema to update a discount."""
 
-    metadata: NotRequired[Nullable[Dict[str, DiscountUpdateMetadataTypedDict]]]
+    metadata: NotRequired[Dict[str, DiscountUpdateMetadataTypedDict]]
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
     name: NotRequired[Nullable[str]]
     code: NotRequired[Nullable[str]]
     starts_at: NotRequired[Nullable[datetime]]
@@ -39,7 +50,18 @@ class DiscountUpdateTypedDict(TypedDict):
 class DiscountUpdate(BaseModel):
     r"""Schema to update a discount."""
 
-    metadata: OptionalNullable[Dict[str, DiscountUpdateMetadata]] = UNSET
+    metadata: Optional[Dict[str, DiscountUpdateMetadata]] = None
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
 
     name: OptionalNullable[str] = UNSET
 
@@ -83,7 +105,6 @@ class DiscountUpdate(BaseModel):
             "products",
         ]
         nullable_fields = [
-            "metadata",
             "name",
             "code",
             "starts_at",

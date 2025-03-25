@@ -6,7 +6,7 @@ from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
-from typing import Dict, Union
+from typing import Dict, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -42,7 +42,7 @@ class CheckoutUpdateTypedDict(TypedDict):
     r"""Update an existing checkout session using an access token."""
 
     custom_field_data: NotRequired[
-        Nullable[Dict[str, Nullable[CheckoutUpdateCustomFieldDataTypedDict]]]
+        Dict[str, Nullable[CheckoutUpdateCustomFieldDataTypedDict]]
     ]
     r"""Key-value object storing custom field values."""
     product_id: NotRequired[Nullable[str]]
@@ -54,7 +54,18 @@ class CheckoutUpdateTypedDict(TypedDict):
     customer_email: NotRequired[Nullable[str]]
     customer_billing_address: NotRequired[Nullable[AddressTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
-    metadata: NotRequired[Nullable[Dict[str, CheckoutUpdateMetadataTypedDict]]]
+    metadata: NotRequired[Dict[str, CheckoutUpdateMetadataTypedDict]]
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
     discount_id: NotRequired[Nullable[str]]
     r"""ID of the discount to apply to the checkout."""
     allow_discount_codes: NotRequired[Nullable[bool]]
@@ -83,9 +94,9 @@ class CheckoutUpdateTypedDict(TypedDict):
 class CheckoutUpdate(BaseModel):
     r"""Update an existing checkout session using an access token."""
 
-    custom_field_data: OptionalNullable[
-        Dict[str, Nullable[CheckoutUpdateCustomFieldData]]
-    ] = UNSET
+    custom_field_data: Optional[Dict[str, Nullable[CheckoutUpdateCustomFieldData]]] = (
+        None
+    )
     r"""Key-value object storing custom field values."""
 
     product_id: OptionalNullable[str] = UNSET
@@ -109,7 +120,18 @@ class CheckoutUpdate(BaseModel):
 
     customer_tax_id: OptionalNullable[str] = UNSET
 
-    metadata: OptionalNullable[Dict[str, CheckoutUpdateMetadata]] = UNSET
+    metadata: Optional[Dict[str, CheckoutUpdateMetadata]] = None
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
 
     discount_id: OptionalNullable[str] = UNSET
     r"""ID of the discount to apply to the checkout."""
@@ -160,7 +182,6 @@ class CheckoutUpdate(BaseModel):
             "embed_origin",
         ]
         nullable_fields = [
-            "custom_field_data",
             "product_id",
             "product_price_id",
             "amount",
@@ -168,7 +189,6 @@ class CheckoutUpdate(BaseModel):
             "customer_email",
             "customer_billing_address",
             "customer_tax_id",
-            "metadata",
             "discount_id",
             "allow_discount_codes",
             "customer_ip_address",

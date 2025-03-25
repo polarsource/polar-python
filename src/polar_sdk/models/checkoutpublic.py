@@ -30,9 +30,10 @@ from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 CheckoutPublicCustomFieldDataTypedDict = TypeAliasType(
@@ -102,14 +103,16 @@ class CheckoutPublicTypedDict(TypedDict):
     embed_origin: Nullable[str]
     r"""When checkout is embedded, represents the Origin of the page embedding the checkout. Used as a security measure to send messages only to the embedding page."""
     amount: Nullable[int]
+    discount_amount: Nullable[int]
+    r"""Discount amount in cents."""
+    net_amount: Nullable[int]
+    r"""Amount in cents, after discounts but before taxes."""
     tax_amount: Nullable[int]
-    r"""Computed tax amount to pay in cents."""
+    r"""Sales tax amount in cents."""
+    total_amount: Nullable[int]
+    r"""Amount in cents, after discounts and taxes."""
     currency: Nullable[str]
     r"""Currency code of the checkout session."""
-    subtotal_amount: Nullable[int]
-    r"""Subtotal amount in cents, including discounts and before tax."""
-    total_amount: Nullable[int]
-    r"""Total amount to pay in cents, including discounts and after tax."""
     product_id: str
     r"""ID of the product to checkout."""
     product_price_id: str
@@ -137,6 +140,7 @@ class CheckoutPublicTypedDict(TypedDict):
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
     payment_processor_metadata: Dict[str, str]
+    subtotal_amount: Nullable[int]
     products: List[CheckoutProductTypedDict]
     r"""List of products available to select."""
     product: CheckoutProductTypedDict
@@ -185,17 +189,20 @@ class CheckoutPublic(BaseModel):
 
     amount: Nullable[int]
 
+    discount_amount: Nullable[int]
+    r"""Discount amount in cents."""
+
+    net_amount: Nullable[int]
+    r"""Amount in cents, after discounts but before taxes."""
+
     tax_amount: Nullable[int]
-    r"""Computed tax amount to pay in cents."""
+    r"""Sales tax amount in cents."""
+
+    total_amount: Nullable[int]
+    r"""Amount in cents, after discounts and taxes."""
 
     currency: Nullable[str]
     r"""Currency code of the checkout session."""
-
-    subtotal_amount: Nullable[int]
-    r"""Subtotal amount in cents, including discounts and before tax."""
-
-    total_amount: Nullable[int]
-    r"""Total amount to pay in cents, including discounts and after tax."""
 
     product_id: str
     r"""ID of the product to checkout."""
@@ -240,6 +247,13 @@ class CheckoutPublic(BaseModel):
 
     payment_processor_metadata: Dict[str, str]
 
+    subtotal_amount: Annotated[
+        Nullable[int],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
     products: List[CheckoutProduct]
     r"""List of products available to select."""
 
@@ -267,10 +281,11 @@ class CheckoutPublic(BaseModel):
             "modified_at",
             "embed_origin",
             "amount",
+            "discount_amount",
+            "net_amount",
             "tax_amount",
-            "currency",
-            "subtotal_amount",
             "total_amount",
+            "currency",
             "discount_id",
             "customer_id",
             "customer_name",
@@ -278,6 +293,7 @@ class CheckoutPublic(BaseModel):
             "customer_ip_address",
             "customer_billing_address",
             "customer_tax_id",
+            "subtotal_amount",
             "discount",
         ]
         null_default_fields = []
