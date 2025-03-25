@@ -4,6 +4,10 @@ from __future__ import annotations
 from .productpricecustom import ProductPriceCustom, ProductPriceCustomTypedDict
 from .productpricefixed import ProductPriceFixed, ProductPriceFixedTypedDict
 from .productpricefree import ProductPriceFree, ProductPriceFreeTypedDict
+from .productpricemeteredunit import (
+    ProductPriceMeteredUnit,
+    ProductPriceMeteredUnitTypedDict,
+)
 from typing import Union
 from typing_extensions import TypeAliasType
 
@@ -14,10 +18,14 @@ ProductPriceTypedDict = TypeAliasType(
         ProductPriceFreeTypedDict,
         ProductPriceFixedTypedDict,
         ProductPriceCustomTypedDict,
+        ProductPriceMeteredUnitTypedDict,
     ],
 )
 
 
 ProductPrice = TypeAliasType(
-    "ProductPrice", Union[ProductPriceFree, ProductPriceFixed, ProductPriceCustom]
+    "ProductPrice",
+    Union[
+        ProductPriceFree, ProductPriceFixed, ProductPriceCustom, ProductPriceMeteredUnit
+    ],
 )

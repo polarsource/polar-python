@@ -8,7 +8,7 @@ from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_
 from polar_sdk.utils import get_discriminator
 import pydantic
 from pydantic import Discriminator, Tag, model_serializer
-from typing import Dict, Union
+from typing import Dict, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -39,7 +39,18 @@ Aggregation = Annotated[
 
 
 class MeterUpdateTypedDict(TypedDict):
-    metadata: NotRequired[Nullable[Dict[str, MeterUpdateMetadataTypedDict]]]
+    metadata: NotRequired[Dict[str, MeterUpdateMetadataTypedDict]]
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
     name: NotRequired[Nullable[str]]
     r"""The name of the meter. Will be shown on customer's invoices and usage."""
     filter_: NotRequired[Nullable[FilterTypedDict]]
@@ -49,7 +60,18 @@ class MeterUpdateTypedDict(TypedDict):
 
 
 class MeterUpdate(BaseModel):
-    metadata: OptionalNullable[Dict[str, MeterUpdateMetadata]] = UNSET
+    metadata: Optional[Dict[str, MeterUpdateMetadata]] = None
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
 
     name: OptionalNullable[str] = UNSET
     r"""The name of the meter. Will be shown on customer's invoices and usage."""
@@ -63,7 +85,7 @@ class MeterUpdate(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = ["metadata", "name", "filter", "aggregation"]
-        nullable_fields = ["metadata", "name", "filter", "aggregation"]
+        nullable_fields = ["name", "filter", "aggregation"]
         null_default_fields = []
 
         serialized = handler(self)
