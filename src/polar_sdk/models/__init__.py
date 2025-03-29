@@ -218,6 +218,7 @@ from .benefits_updateop import (
     BenefitsUpdateRequest,
     BenefitsUpdateRequestTypedDict,
 )
+from .benefitsortproperty import BenefitSortProperty
 from .benefittype import BenefitType
 from .checkout import (
     Checkout,
@@ -1566,6 +1567,10 @@ from .productpricemeteredunit import (
     ProductPriceMeteredUnit,
     ProductPriceMeteredUnitTypedDict,
 )
+from .productpricemeteredunitcreate import (
+    ProductPriceMeteredUnitCreate,
+    ProductPriceMeteredUnitCreateTypedDict,
+)
 from .productpricetype import ProductPriceType
 from .products_getop import ProductsGetRequest, ProductsGetRequestTypedDict
 from .products_listop import (
@@ -1994,6 +1999,7 @@ __all__ = [
     "BenefitLicenseKeysTypedDict",
     "BenefitLicenseKeysUpdate",
     "BenefitLicenseKeysUpdateTypedDict",
+    "BenefitSortProperty",
     "BenefitType",
     "BenefitTypeFilter",
     "BenefitTypeFilterTypedDict",
@@ -3041,6 +3047,8 @@ __all__ = [
     "ProductPriceMeter",
     "ProductPriceMeterTypedDict",
     "ProductPriceMeteredUnit",
+    "ProductPriceMeteredUnitCreate",
+    "ProductPriceMeteredUnitCreateTypedDict",
     "ProductPriceMeteredUnitTypedDict",
     "ProductPriceType",
     "ProductPriceTypeFilter",

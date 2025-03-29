@@ -5,7 +5,7 @@ from jsonpath import JSONPath
 from polar_sdk import models, utils
 from polar_sdk._hooks import HookContext
 from polar_sdk.types import BaseModel, OptionalNullable, UNSET
-from typing import Any, Dict, Mapping, Optional, Union, cast
+from typing import Any, Dict, List, Mapping, Optional, Union, cast
 
 
 class Benefits(BaseSDK):
@@ -24,6 +24,7 @@ class Benefits(BaseSDK):
         query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
+        sorting: OptionalNullable[List[models.BenefitSortProperty]] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -40,6 +41,7 @@ class Benefits(BaseSDK):
         :param query: Filter by description.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
+        :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -61,6 +63,7 @@ class Benefits(BaseSDK):
             query=query,
             page=page,
             limit=limit,
+            sorting=sorting,
         )
 
         req = self._build_request(
@@ -123,6 +126,7 @@ class Benefits(BaseSDK):
                 query=query,
                 page=next_page,
                 limit=limit,
+                sorting=sorting,
                 retries=retries,
             )
 
@@ -172,6 +176,7 @@ class Benefits(BaseSDK):
         query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
+        sorting: OptionalNullable[List[models.BenefitSortProperty]] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -188,6 +193,7 @@ class Benefits(BaseSDK):
         :param query: Filter by description.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
+        :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -209,6 +215,7 @@ class Benefits(BaseSDK):
             query=query,
             page=page,
             limit=limit,
+            sorting=sorting,
         )
 
         req = self._build_request_async(
@@ -271,6 +278,7 @@ class Benefits(BaseSDK):
                 query=query,
                 page=next_page,
                 limit=limit,
+                sorting=sorting,
                 retries=retries,
             )
 
