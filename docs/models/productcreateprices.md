@@ -21,3 +21,9 @@ value: models.ProductPriceCustomCreate = /* values here */
 value: models.ProductPriceFreeCreate = /* values here */
 ```
 
+### `models.ProductPriceMeteredUnitCreate`
+
+```python
+value: models.ProductPriceMeteredUnitCreate = /* values here */
+```
+
