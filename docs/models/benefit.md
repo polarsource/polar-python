@@ -33,3 +33,9 @@ value: models.BenefitDownloadables = /* values here */
 value: models.BenefitLicenseKeys = /* values here */
 ```
 
+### `models.BenefitMeterCredit`
+
+```python
+value: models.BenefitMeterCredit = /* values here */
+```
+

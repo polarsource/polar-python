@@ -1,6 +1,7 @@
-# WebhookBenefitGrantRevokedPayload
+# WebhookBenefitGrantCycledPayload
 
-Sent when a benefit grant is revoked.
+Sent when a benefit grant is cycled,
+meaning the related subscription has been renewed for another period.
 
 **Discord & Slack support:** Basic
 
@@ -10,4 +11,4 @@ Sent when a benefit grant is revoked.
 | Field                                                          | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
 | `data`                                                         | [models.BenefitGrantWebhook](../models/benefitgrantwebhook.md) | :heavy_check_mark:                                             | N/A                                                            |                                                                |
-| `type`                                                         | *Literal["benefit_grant.revoked"]*                             | :heavy_check_mark:                                             | N/A                                                            | benefit_grant.revoked                                          |
+| `type`                                                         | *Literal["benefit_grant.cycled"]*                              | :heavy_check_mark:                                             | N/A                                                            | benefit_grant.cycled                                           |

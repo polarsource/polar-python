@@ -10,18 +10,20 @@ from typing import Literal
 from typing_extensions import Annotated, TypedDict
 
 
-class WebhookBenefitGrantUpdatedPayloadTypedDict(TypedDict):
-    r"""Sent when a benefit grant is updated.
+class WebhookBenefitGrantCycledPayloadTypedDict(TypedDict):
+    r"""Sent when a benefit grant is cycled,
+    meaning the related subscription has been renewed for another period.
 
     **Discord & Slack support:** Basic
     """
 
     data: BenefitGrantWebhookTypedDict
-    type: Literal["benefit_grant.updated"]
+    type: Literal["benefit_grant.cycled"]
 
 
-class WebhookBenefitGrantUpdatedPayload(BaseModel):
-    r"""Sent when a benefit grant is updated.
+class WebhookBenefitGrantCycledPayload(BaseModel):
+    r"""Sent when a benefit grant is cycled,
+    meaning the related subscription has been renewed for another period.
 
     **Discord & Slack support:** Basic
     """
@@ -30,8 +32,8 @@ class WebhookBenefitGrantUpdatedPayload(BaseModel):
 
     TYPE: Annotated[
         Annotated[
-            Literal["benefit_grant.updated"],
-            AfterValidator(validate_const("benefit_grant.updated")),
+            Literal["benefit_grant.cycled"],
+            AfterValidator(validate_const("benefit_grant.cycled")),
         ],
         pydantic.Field(alias="type"),
-    ] = "benefit_grant.updated"
+    ] = "benefit_grant.cycled"

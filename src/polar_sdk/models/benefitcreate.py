@@ -15,6 +15,10 @@ from .benefitlicensekeyscreate import (
     BenefitLicenseKeysCreate,
     BenefitLicenseKeysCreateTypedDict,
 )
+from .benefitmetercreditcreate import (
+    BenefitMeterCreditCreate,
+    BenefitMeterCreditCreateTypedDict,
+)
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
@@ -29,6 +33,7 @@ BenefitCreateTypedDict = TypeAliasType(
         BenefitGitHubRepositoryCreateTypedDict,
         BenefitDownloadablesCreateTypedDict,
         BenefitLicenseKeysCreateTypedDict,
+        BenefitMeterCreditCreateTypedDict,
     ],
 )
 
@@ -40,6 +45,7 @@ BenefitCreate = Annotated[
         Annotated[BenefitDownloadablesCreate, Tag("downloadables")],
         Annotated[BenefitGitHubRepositoryCreate, Tag("github_repository")],
         Annotated[BenefitLicenseKeysCreate, Tag("license_keys")],
+        Annotated[BenefitMeterCreditCreate, Tag("meter_credit")],
     ],
     Discriminator(lambda m: get_discriminator(m, "type", "type")),
 ]

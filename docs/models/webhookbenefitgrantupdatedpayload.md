@@ -1,6 +1,6 @@
 # WebhookBenefitGrantUpdatedPayload
 
-Sent when a new benefit grant is updated.
+Sent when a benefit grant is updated.
 
 **Discord & Slack support:** Basic
 
