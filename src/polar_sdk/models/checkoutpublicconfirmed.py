@@ -107,14 +107,15 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     r"""URL where the customer will be redirected after a successful payment."""
     embed_origin: Nullable[str]
     r"""When checkout is embedded, represents the Origin of the page embedding the checkout. Used as a security measure to send messages only to the embedding page."""
-    amount: Nullable[int]
-    discount_amount: Nullable[int]
+    amount: int
+    r"""Amount in cents, before discounts and taxes."""
+    discount_amount: int
     r"""Discount amount in cents."""
-    net_amount: Nullable[int]
+    net_amount: int
     r"""Amount in cents, after discounts but before taxes."""
     tax_amount: Nullable[int]
-    r"""Sales tax amount in cents."""
-    total_amount: Nullable[int]
+    r"""Sales tax amount in cents. If `null`, it means there is no enough information yet to calculate it."""
+    total_amount: int
     r"""Amount in cents, after discounts and taxes."""
     currency: Nullable[str]
     r"""Currency code of the checkout session."""
@@ -196,18 +197,19 @@ class CheckoutPublicConfirmed(BaseModel):
     embed_origin: Nullable[str]
     r"""When checkout is embedded, represents the Origin of the page embedding the checkout. Used as a security measure to send messages only to the embedding page."""
 
-    amount: Nullable[int]
+    amount: int
+    r"""Amount in cents, before discounts and taxes."""
 
-    discount_amount: Nullable[int]
+    discount_amount: int
     r"""Discount amount in cents."""
 
-    net_amount: Nullable[int]
+    net_amount: int
     r"""Amount in cents, after discounts but before taxes."""
 
     tax_amount: Nullable[int]
-    r"""Sales tax amount in cents."""
+    r"""Sales tax amount in cents. If `null`, it means there is no enough information yet to calculate it."""
 
-    total_amount: Nullable[int]
+    total_amount: int
     r"""Amount in cents, after discounts and taxes."""
 
     currency: Nullable[str]
@@ -296,11 +298,7 @@ class CheckoutPublicConfirmed(BaseModel):
         nullable_fields = [
             "modified_at",
             "embed_origin",
-            "amount",
-            "discount_amount",
-            "net_amount",
             "tax_amount",
-            "total_amount",
             "currency",
             "discount_id",
             "customer_id",

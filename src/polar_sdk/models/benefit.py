@@ -9,6 +9,7 @@ from .benefitgithubrepository import (
     BenefitGitHubRepositoryTypedDict,
 )
 from .benefitlicensekeys import BenefitLicenseKeys, BenefitLicenseKeysTypedDict
+from .benefitmetercredit import BenefitMeterCredit, BenefitMeterCreditTypedDict
 from typing import Union
 from typing_extensions import TypeAliasType
 
@@ -20,6 +21,7 @@ BenefitTypedDict = TypeAliasType(
         BenefitGitHubRepositoryTypedDict,
         BenefitDownloadablesTypedDict,
         BenefitLicenseKeysTypedDict,
+        BenefitMeterCreditTypedDict,
         BenefitCustomTypedDict,
     ],
 )
@@ -32,6 +34,7 @@ Benefit = TypeAliasType(
         BenefitGitHubRepository,
         BenefitDownloadables,
         BenefitLicenseKeys,
+        BenefitMeterCredit,
         BenefitCustom,
     ],
 )

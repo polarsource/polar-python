@@ -1,0 +1,14 @@
+# ProductPriceMeteredUnitCreate
+
+Schema to create a metered price with a fixed unit price.
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `meter_id`                                                                                        | *str*                                                                                             | :heavy_check_mark:                                                                                | The ID of the meter associated to the price.                                                      |
+| `unit_amount`                                                                                     | *int*                                                                                             | :heavy_check_mark:                                                                                | The price per unit in cents.                                                                      |
+| `amount_type`                                                                                     | *Literal["metered_unit"]*                                                                         | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `price_currency`                                                                                  | *Optional[str]*                                                                                   | :heavy_minus_sign:                                                                                | The currency. Currently, only `usd` is supported.                                                 |
+| `cap_amount`                                                                                      | *OptionalNullable[int]*                                                                           | :heavy_minus_sign:                                                                                | Optional maximum amount in cents that can be charged, regardless of the number of units consumed. |

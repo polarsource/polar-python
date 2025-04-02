@@ -15,6 +15,10 @@ from .benefitlicensekeysupdate import (
     BenefitLicenseKeysUpdate,
     BenefitLicenseKeysUpdateTypedDict,
 )
+from .benefitmetercreditupdate import (
+    BenefitMeterCreditUpdate,
+    BenefitMeterCreditUpdateTypedDict,
+)
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, PathParamMetadata, RequestMetadata
 from typing import Union
@@ -29,6 +33,7 @@ BenefitsUpdateBenefitUpdateTypedDict = TypeAliasType(
         BenefitGitHubRepositoryUpdateTypedDict,
         BenefitDownloadablesUpdateTypedDict,
         BenefitLicenseKeysUpdateTypedDict,
+        BenefitMeterCreditUpdateTypedDict,
     ],
 )
 
@@ -41,6 +46,7 @@ BenefitsUpdateBenefitUpdate = TypeAliasType(
         BenefitGitHubRepositoryUpdate,
         BenefitDownloadablesUpdate,
         BenefitLicenseKeysUpdate,
+        BenefitMeterCreditUpdate,
     ],
 )
 

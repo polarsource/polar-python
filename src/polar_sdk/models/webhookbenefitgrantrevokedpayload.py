@@ -11,7 +11,7 @@ from typing_extensions import Annotated, TypedDict
 
 
 class WebhookBenefitGrantRevokedPayloadTypedDict(TypedDict):
-    r"""Sent when a new benefit grant is revoked.
+    r"""Sent when a benefit grant is revoked.
 
     **Discord & Slack support:** Basic
     """
@@ -21,7 +21,7 @@ class WebhookBenefitGrantRevokedPayloadTypedDict(TypedDict):
 
 
 class WebhookBenefitGrantRevokedPayload(BaseModel):
-    r"""Sent when a new benefit grant is revoked.
+    r"""Sent when a benefit grant is revoked.
 
     **Discord & Slack support:** Basic
     """

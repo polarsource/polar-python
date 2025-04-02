@@ -33,8 +33,6 @@ class ProductPriceMeteredUnitTypedDict(TypedDict):
     r"""The currency."""
     unit_amount: int
     r"""The price per unit in cents."""
-    included_units: int
-    r"""The number of units included in the price. They will be deducted from the total."""
     cap_amount: Nullable[int]
     r"""The maximum amount in cents that can be charged, regardless of the number of units consumed."""
     meter_id: str
@@ -76,9 +74,6 @@ class ProductPriceMeteredUnit(BaseModel):
 
     unit_amount: int
     r"""The price per unit in cents."""
-
-    included_units: int
-    r"""The number of units included in the price. They will be deducted from the total."""
 
     cap_amount: Nullable[int]
     r"""The maximum amount in cents that can be charged, regardless of the number of units consumed."""

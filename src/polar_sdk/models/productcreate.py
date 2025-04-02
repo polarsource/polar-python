@@ -17,6 +17,10 @@ from .productpricefreecreate import (
     ProductPriceFreeCreate,
     ProductPriceFreeCreateTypedDict,
 )
+from .productpricemeteredunitcreate import (
+    ProductPriceMeteredUnitCreate,
+    ProductPriceMeteredUnitCreateTypedDict,
+)
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -38,13 +42,19 @@ ProductCreatePricesTypedDict = TypeAliasType(
         ProductPriceFreeCreateTypedDict,
         ProductPriceFixedCreateTypedDict,
         ProductPriceCustomCreateTypedDict,
+        ProductPriceMeteredUnitCreateTypedDict,
     ],
 )
 
 
 ProductCreatePrices = TypeAliasType(
     "ProductCreatePrices",
-    Union[ProductPriceFreeCreate, ProductPriceFixedCreate, ProductPriceCustomCreate],
+    Union[
+        ProductPriceFreeCreate,
+        ProductPriceFixedCreate,
+        ProductPriceCustomCreate,
+        ProductPriceMeteredUnitCreate,
+    ],
 )
 
 

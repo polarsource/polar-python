@@ -33,3 +33,9 @@ value: models.BenefitGitHubRepositoryCreate = /* values here */
 value: models.BenefitLicenseKeysCreate = /* values here */
 ```
 
+### `models.BenefitMeterCreditCreate`
+
+```python
+value: models.BenefitMeterCreditCreate = /* values here */
+```
+

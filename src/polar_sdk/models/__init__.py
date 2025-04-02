@@ -158,6 +158,10 @@ from .benefitgrantwebhook import (
     PreviousProperties,
     PreviousPropertiesTypedDict,
 )
+from .benefitlicensekeyactivationcreateproperties import (
+    BenefitLicenseKeyActivationCreateProperties,
+    BenefitLicenseKeyActivationCreatePropertiesTypedDict,
+)
 from .benefitlicensekeyactivationproperties import (
     BenefitLicenseKeyActivationProperties,
     BenefitLicenseKeyActivationPropertiesTypedDict,
@@ -192,6 +196,23 @@ from .benefitlicensekeysupdate import (
     BenefitLicenseKeysUpdate,
     BenefitLicenseKeysUpdateTypedDict,
 )
+from .benefitmetercredit import BenefitMeterCredit, BenefitMeterCreditTypedDict
+from .benefitmetercreditcreate import (
+    BenefitMeterCreditCreate,
+    BenefitMeterCreditCreateTypedDict,
+)
+from .benefitmetercreditcreateproperties import (
+    BenefitMeterCreditCreateProperties,
+    BenefitMeterCreditCreatePropertiesTypedDict,
+)
+from .benefitmetercreditproperties import (
+    BenefitMeterCreditProperties,
+    BenefitMeterCreditPropertiesTypedDict,
+)
+from .benefitmetercreditupdate import (
+    BenefitMeterCreditUpdate,
+    BenefitMeterCreditUpdateTypedDict,
+)
 from .benefits_deleteop import BenefitsDeleteRequest, BenefitsDeleteRequestTypedDict
 from .benefits_getop import BenefitsGetRequest, BenefitsGetRequestTypedDict
 from .benefits_grantsop import (
@@ -218,6 +239,7 @@ from .benefits_updateop import (
     BenefitsUpdateRequest,
     BenefitsUpdateRequestTypedDict,
 )
+from .benefitsortproperty import BenefitSortProperty
 from .benefittype import BenefitType
 from .checkout import (
     Checkout,
@@ -1566,6 +1588,10 @@ from .productpricemeteredunit import (
     ProductPriceMeteredUnit,
     ProductPriceMeteredUnitTypedDict,
 )
+from .productpricemeteredunitcreate import (
+    ProductPriceMeteredUnitCreate,
+    ProductPriceMeteredUnitCreateTypedDict,
+)
 from .productpricetype import ProductPriceType
 from .products_getop import ProductsGetRequest, ProductsGetRequestTypedDict
 from .products_listop import (
@@ -1761,6 +1787,10 @@ from .webhookbenefitcreatedpayload import (
 from .webhookbenefitgrantcreatedpayload import (
     WebhookBenefitGrantCreatedPayload,
     WebhookBenefitGrantCreatedPayloadTypedDict,
+)
+from .webhookbenefitgrantcycledpayload import (
+    WebhookBenefitGrantCycledPayload,
+    WebhookBenefitGrantCycledPayloadTypedDict,
 )
 from .webhookbenefitgrantrevokedpayload import (
     WebhookBenefitGrantRevokedPayload,
@@ -1976,6 +2006,8 @@ __all__ = [
     "BenefitGrantWebhookTypedDict",
     "BenefitIDFilter",
     "BenefitIDFilterTypedDict",
+    "BenefitLicenseKeyActivationCreateProperties",
+    "BenefitLicenseKeyActivationCreatePropertiesTypedDict",
     "BenefitLicenseKeyActivationProperties",
     "BenefitLicenseKeyActivationPropertiesTypedDict",
     "BenefitLicenseKeyExpirationProperties",
@@ -1994,6 +2026,17 @@ __all__ = [
     "BenefitLicenseKeysTypedDict",
     "BenefitLicenseKeysUpdate",
     "BenefitLicenseKeysUpdateTypedDict",
+    "BenefitMeterCredit",
+    "BenefitMeterCreditCreate",
+    "BenefitMeterCreditCreateProperties",
+    "BenefitMeterCreditCreatePropertiesTypedDict",
+    "BenefitMeterCreditCreateTypedDict",
+    "BenefitMeterCreditProperties",
+    "BenefitMeterCreditPropertiesTypedDict",
+    "BenefitMeterCreditTypedDict",
+    "BenefitMeterCreditUpdate",
+    "BenefitMeterCreditUpdateTypedDict",
+    "BenefitSortProperty",
     "BenefitType",
     "BenefitTypeFilter",
     "BenefitTypeFilterTypedDict",
@@ -3041,6 +3084,8 @@ __all__ = [
     "ProductPriceMeter",
     "ProductPriceMeterTypedDict",
     "ProductPriceMeteredUnit",
+    "ProductPriceMeteredUnitCreate",
+    "ProductPriceMeteredUnitCreateTypedDict",
     "ProductPriceMeteredUnitTypedDict",
     "ProductPriceType",
     "ProductPriceTypeFilter",
@@ -3237,6 +3282,8 @@ __all__ = [
     "WebhookBenefitCreatedPayloadTypedDict",
     "WebhookBenefitGrantCreatedPayload",
     "WebhookBenefitGrantCreatedPayloadTypedDict",
+    "WebhookBenefitGrantCycledPayload",
+    "WebhookBenefitGrantCycledPayloadTypedDict",
     "WebhookBenefitGrantRevokedPayload",
     "WebhookBenefitGrantRevokedPayloadTypedDict",
     "WebhookBenefitGrantUpdatedPayload",
