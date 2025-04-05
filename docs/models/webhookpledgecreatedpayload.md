@@ -9,5 +9,5 @@ Sent when a new pledge is created. Note that this does mean that the pledge has 
 
 | Field                                | Type                                 | Required                             | Description                          | Example                              |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `data`                               | [models.Pledge](../models/pledge.md) | :heavy_check_mark:                   | N/A                                  |                                      |
 | `type`                               | *Literal["pledge.created"]*          | :heavy_check_mark:                   | N/A                                  | pledge.created                       |
+| `data`                               | [models.Pledge](../models/pledge.md) | :heavy_check_mark:                   | N/A                                  |                                      |

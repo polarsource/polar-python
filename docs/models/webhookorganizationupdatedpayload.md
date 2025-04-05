@@ -9,5 +9,5 @@ Sent when a organization is updated.
 
 | Field                                            | Type                                             | Required                                         | Description                                      | Example                                          |
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `data`                                           | [models.Organization](../models/organization.md) | :heavy_check_mark:                               | N/A                                              |                                                  |
 | `type`                                           | *Literal["organization.updated"]*                | :heavy_check_mark:                               | N/A                                              | organization.updated                             |
+| `data`                                           | [models.Organization](../models/organization.md) | :heavy_check_mark:                               | N/A                                              |                                                  |

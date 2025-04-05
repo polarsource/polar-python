@@ -79,14 +79,14 @@ with Polar(
 ) as polar:
 
     res = polar.benefits.create(request={
+        "type": "downloadables",
         "description": "delightfully fumigate convection though zowie up bulky electronics",
+        "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
         "properties": {
             "files": [
                 "<value>",
             ],
         },
-        "type": "downloadables",
-        "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
     })
 
     # Handle response

@@ -125,13 +125,13 @@ with Polar(
         "events": [
             {
                 "name": "<value>",
-                "customer_id": "<value>",
                 "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+                "customer_id": "<value>",
             },
             {
                 "name": "<value>",
-                "external_customer_id": "<id>",
                 "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+                "external_customer_id": "<id>",
             },
         ],
     })

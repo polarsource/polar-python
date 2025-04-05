@@ -10,5 +10,5 @@ whether because it's a new paid subscription or because payment was recovered.
 
 | Field                                            | Type                                             | Required                                         | Description                                      | Example                                          |
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `data`                                           | [models.Subscription](../models/subscription.md) | :heavy_check_mark:                               | N/A                                              |                                                  |
 | `type`                                           | *Literal["subscription.active"]*                 | :heavy_check_mark:                               | N/A                                              | subscription.active                              |
+| `data`                                           | [models.Subscription](../models/subscription.md) | :heavy_check_mark:                               | N/A                                              |                                                  |

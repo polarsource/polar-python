@@ -82,8 +82,8 @@ with Polar(
         "duration_in_months": 417458,
         "type": polar_sdk.DiscountType.FIXED,
         "amount": 69025,
-        "name": "<value>",
         "currency": "usd",
+        "name": "<value>",
         "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
     })
 

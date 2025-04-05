@@ -9,5 +9,5 @@ Sent when a product is updated.
 
 | Field                                  | Type                                   | Required                               | Description                            | Example                                |
 | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `data`                                 | [models.Product](../models/product.md) | :heavy_check_mark:                     | A product.                             |                                        |
 | `type`                                 | *Literal["product.updated"]*           | :heavy_check_mark:                     | N/A                                    | product.updated                        |
+| `data`                                 | [models.Product](../models/product.md) | :heavy_check_mark:                     | A product.                             |                                        |

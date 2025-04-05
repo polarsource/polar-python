@@ -21,6 +21,10 @@ from .customerbenefitgrantlicensekeys import (
     CustomerBenefitGrantLicenseKeys,
     CustomerBenefitGrantLicenseKeysTypedDict,
 )
+from .customerbenefitgrantmetercredit import (
+    CustomerBenefitGrantMeterCredit,
+    CustomerBenefitGrantMeterCreditTypedDict,
+)
 from typing import Union
 from typing_extensions import TypeAliasType
 
@@ -33,6 +37,7 @@ CustomerBenefitGrantTypedDict = TypeAliasType(
         CustomerBenefitGrantDownloadablesTypedDict,
         CustomerBenefitGrantLicenseKeysTypedDict,
         CustomerBenefitGrantCustomTypedDict,
+        CustomerBenefitGrantMeterCreditTypedDict,
     ],
 )
 
@@ -45,5 +50,6 @@ CustomerBenefitGrant = TypeAliasType(
         CustomerBenefitGrantDownloadables,
         CustomerBenefitGrantLicenseKeys,
         CustomerBenefitGrantCustom,
+        CustomerBenefitGrantMeterCredit,
     ],
 )

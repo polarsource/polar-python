@@ -91,7 +91,7 @@ class PolarLicenseKeys(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:license_keys:list",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -249,7 +249,7 @@ class PolarLicenseKeys(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:license_keys:list",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -395,7 +395,7 @@ class PolarLicenseKeys(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:license_keys:get",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -506,7 +506,7 @@ class PolarLicenseKeys(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:license_keys:get",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,

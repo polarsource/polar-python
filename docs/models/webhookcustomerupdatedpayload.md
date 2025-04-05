@@ -13,5 +13,5 @@ If you want to be notified when a customer subscription or benefit state changes
 
 | Field                                    | Type                                     | Required                                 | Description                              | Example                                  |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `data`                                   | [models.Customer](../models/customer.md) | :heavy_check_mark:                       | A customer in an organization.           |                                          |
 | `type`                                   | *Literal["customer.updated"]*            | :heavy_check_mark:                       | N/A                                      | customer.updated                         |
+| `data`                                   | [models.Customer](../models/customer.md) | :heavy_check_mark:                       | A customer in an organization.           |                                          |

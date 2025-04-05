@@ -8,13 +8,13 @@ from typing_extensions import TypedDict
 class BenefitMeterCreditPropertiesTypedDict(TypedDict):
     r"""Properties for a benefit of type `meter_unit`."""
 
-    unit: int
+    units: int
     meter_id: str
 
 
 class BenefitMeterCreditProperties(BaseModel):
     r"""Properties for a benefit of type `meter_unit`."""
 
-    unit: int
+    units: int
 
     meter_id: str
