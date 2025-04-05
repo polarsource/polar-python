@@ -33,3 +33,9 @@ value: models.CustomerBenefitGrantGitHubRepositoryUpdate = /* values here */
 value: models.CustomerBenefitGrantLicenseKeysUpdate = /* values here */
 ```
 
+### `models.CustomerBenefitGrantMeterCreditUpdate`
+
+```python
+value: models.CustomerBenefitGrantMeterCreditUpdate = /* values here */
+```
+

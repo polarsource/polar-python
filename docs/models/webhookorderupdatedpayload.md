@@ -14,5 +14,5 @@ An order is updated when:
 
 | Field                              | Type                               | Required                           | Description                        | Example                            |
 | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `data`                             | [models.Order](../models/order.md) | :heavy_check_mark:                 | N/A                                |                                    |
 | `type`                             | *Literal["order.updated"]*         | :heavy_check_mark:                 | N/A                                | order.updated                      |
+| `data`                             | [models.Order](../models/order.md) | :heavy_check_mark:                 | N/A                                |                                    |

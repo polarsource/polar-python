@@ -61,11 +61,11 @@ from polar_sdk import Polar
 with Polar() as polar:
 
     res = polar.oauth2.token(request={
+        "grant_type": "authorization_code",
         "client_id": "<id>",
         "client_secret": "<value>",
         "code": "<value>",
         "redirect_uri": "https://old-fort.name",
-        "grant_type": "authorization_code",
     })
 
     # Handle response

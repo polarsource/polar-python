@@ -11,5 +11,5 @@ When this event occurs, the subscription `status` might not be `active` yet, as 
 
 | Field                                            | Type                                             | Required                                         | Description                                      | Example                                          |
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `data`                                           | [models.Subscription](../models/subscription.md) | :heavy_check_mark:                               | N/A                                              |                                                  |
 | `type`                                           | *Literal["subscription.created"]*                | :heavy_check_mark:                               | N/A                                              | subscription.created                             |
+| `data`                                           | [models.Subscription](../models/subscription.md) | :heavy_check_mark:                               | N/A                                              |                                                  |

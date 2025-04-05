@@ -16,139 +16,6 @@ from typing import Callable, Dict, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-CustomersListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
-    "CustomersListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
-)
-r"""Filter by organization ID."""
-
-
-CustomersListQueryParamOrganizationIDFilter = TypeAliasType(
-    "CustomersListQueryParamOrganizationIDFilter", Union[str, List[str]]
-)
-r"""Filter by organization ID."""
-
-
-MetadataQueryTypedDict = TypeAliasType(
-    "MetadataQueryTypedDict", Union[str, int, bool, List[str], List[int], List[bool]]
-)
-
-
-MetadataQuery = TypeAliasType(
-    "MetadataQuery", Union[str, int, bool, List[str], List[int], List[bool]]
-)
-
-
-class CustomersListRequestTypedDict(TypedDict):
-    organization_id: NotRequired[
-        Nullable[CustomersListQueryParamOrganizationIDFilterTypedDict]
-    ]
-    r"""Filter by organization ID."""
-    email: NotRequired[Nullable[str]]
-    r"""Filter by exact email."""
-    query: NotRequired[Nullable[str]]
-    r"""Filter by name or email."""
-    page: NotRequired[int]
-    r"""Page number, defaults to 1."""
-    limit: NotRequired[int]
-    r"""Size of a page, defaults to 10. Maximum is 100."""
-    sorting: NotRequired[Nullable[List[CustomerSortProperty]]]
-    r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
-    metadata: NotRequired[Nullable[Dict[str, MetadataQueryTypedDict]]]
-    r"""Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`."""
-
-
-class CustomersListRequest(BaseModel):
-    organization_id: Annotated[
-        OptionalNullable[CustomersListQueryParamOrganizationIDFilter],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = UNSET
-    r"""Filter by organization ID."""
-
-    email: Annotated[
-        OptionalNullable[str],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = UNSET
-    r"""Filter by exact email."""
-
-    query: Annotated[
-        OptionalNullable[str],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = UNSET
-    r"""Filter by name or email."""
-
-    page: Annotated[
-        Optional[int],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = 1
-    r"""Page number, defaults to 1."""
-
-    limit: Annotated[
-        Optional[int],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = 10
-    r"""Size of a page, defaults to 10. Maximum is 100."""
-
-    sorting: Annotated[
-        OptionalNullable[List[CustomerSortProperty]],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = UNSET
-    r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
-
-    metadata: Annotated[
-        OptionalNullable[Dict[str, MetadataQuery]],
-        FieldMetadata(query=QueryParamMetadata(style="deepObject", explode=True)),
-    ] = UNSET
-    r"""Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`."""
-
-    @model_serializer(mode="wrap")
-    def serialize_model(self, handler):
-        optional_fields = [
-            "organization_id",
-            "email",
-            "query",
-            "page",
-            "limit",
-            "sorting",
-            "metadata",
-        ]
-        nullable_fields = ["organization_id", "email", "query", "sorting", "metadata"]
-        null_default_fields = []
-
-        serialized = handler(self)
-
-        m = {}
-
-        for n, f in self.model_fields.items():
-            k = f.alias or n
-            val = serialized.get(k)
-            serialized.pop(k, None)
-
-            optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (
-                self.__pydantic_fields_set__.intersection({n})
-                or k in null_default_fields
-            )  # pylint: disable=no-member
-
-            if val is not None and val != UNSET_SENTINEL:
-                m[k] = val
-            elif val != UNSET_SENTINEL and (
-                not k in optional_fields or (optional_nullable and is_set)
-            ):
-                m[k] = val
-
-        return m
-
-
-class CustomersListResponseTypedDict(TypedDict):
-    result: ListResourceCustomerTypedDict
-
-
-class CustomersListResponse(BaseModel):
-    next: Callable[[], Optional[CustomersListResponse]]
-
-    result: ListResourceCustomer
-
-
 EventsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
     "EventsListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
 )
@@ -193,6 +60,16 @@ r"""Filter by event source."""
 
 SourceFilter = TypeAliasType("SourceFilter", Union[EventSource, List[EventSource]])
 r"""Filter by event source."""
+
+
+MetadataQueryTypedDict = TypeAliasType(
+    "MetadataQueryTypedDict", Union[str, int, bool, List[str], List[int], List[bool]]
+)
+
+
+MetadataQuery = TypeAliasType(
+    "MetadataQuery", Union[str, int, bool, List[str], List[int], List[bool]]
+)
 
 
 class EventsListRequestTypedDict(TypedDict):
@@ -311,7 +188,7 @@ class EventsListRequest(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)
@@ -425,7 +302,7 @@ class MetersListRequest(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)
@@ -454,3 +331,126 @@ class MetersListResponse(BaseModel):
     next: Callable[[], Optional[MetersListResponse]]
 
     result: ListResourceMeter
+
+
+CustomersListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "CustomersListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by organization ID."""
+
+
+CustomersListQueryParamOrganizationIDFilter = TypeAliasType(
+    "CustomersListQueryParamOrganizationIDFilter", Union[str, List[str]]
+)
+r"""Filter by organization ID."""
+
+
+class CustomersListRequestTypedDict(TypedDict):
+    organization_id: NotRequired[
+        Nullable[CustomersListQueryParamOrganizationIDFilterTypedDict]
+    ]
+    r"""Filter by organization ID."""
+    email: NotRequired[Nullable[str]]
+    r"""Filter by exact email."""
+    query: NotRequired[Nullable[str]]
+    r"""Filter by name or email."""
+    page: NotRequired[int]
+    r"""Page number, defaults to 1."""
+    limit: NotRequired[int]
+    r"""Size of a page, defaults to 10. Maximum is 100."""
+    sorting: NotRequired[Nullable[List[CustomerSortProperty]]]
+    r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
+    metadata: NotRequired[Nullable[Dict[str, MetadataQueryTypedDict]]]
+    r"""Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`."""
+
+
+class CustomersListRequest(BaseModel):
+    organization_id: Annotated[
+        OptionalNullable[CustomersListQueryParamOrganizationIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by organization ID."""
+
+    email: Annotated[
+        OptionalNullable[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by exact email."""
+
+    query: Annotated[
+        OptionalNullable[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by name or email."""
+
+    page: Annotated[
+        Optional[int],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = 1
+    r"""Page number, defaults to 1."""
+
+    limit: Annotated[
+        Optional[int],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = 10
+    r"""Size of a page, defaults to 10. Maximum is 100."""
+
+    sorting: Annotated[
+        OptionalNullable[List[CustomerSortProperty]],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order."""
+
+    metadata: Annotated[
+        OptionalNullable[Dict[str, MetadataQuery]],
+        FieldMetadata(query=QueryParamMetadata(style="deepObject", explode=True)),
+    ] = UNSET
+    r"""Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = [
+            "organization_id",
+            "email",
+            "query",
+            "page",
+            "limit",
+            "sorting",
+            "metadata",
+        ]
+        nullable_fields = ["organization_id", "email", "query", "sorting", "metadata"]
+        null_default_fields = []
+
+        serialized = handler(self)
+
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+            serialized.pop(k, None)
+
+            optional_nullable = k in optional_fields and k in nullable_fields
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
+
+            if val is not None and val != UNSET_SENTINEL:
+                m[k] = val
+            elif val != UNSET_SENTINEL and (
+                not k in optional_fields or (optional_nullable and is_set)
+            ):
+                m[k] = val
+
+        return m
+
+
+class CustomersListResponseTypedDict(TypedDict):
+    result: ListResourceCustomerTypedDict
+
+
+class CustomersListResponse(BaseModel):
+    next: Callable[[], Optional[CustomersListResponse]]
+
+    result: ListResourceCustomer

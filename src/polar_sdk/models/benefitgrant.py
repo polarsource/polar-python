@@ -134,10 +134,10 @@ class BenefitGrant(BaseModel):
         optional_fields = ["granted_at", "revoked_at"]
         nullable_fields = [
             "modified_at",
-            "subscription_id",
-            "order_id",
             "granted_at",
             "revoked_at",
+            "subscription_id",
+            "order_id",
         ]
         null_default_fields = []
 
@@ -145,7 +145,7 @@ class BenefitGrant(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)

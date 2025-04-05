@@ -79,12 +79,11 @@ with Polar(
 ) as polar:
 
     res = polar.checkouts.create(request={
-        "product_price_id": "<value>",
         "allow_discount_codes": True,
         "customer_billing_address": {
             "country": "SE",
         },
-        "success_url": "https://probable-heating.com/",
+        "product_id": "<value>",
     })
 
     # Handle response
@@ -126,7 +125,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.checkouts.get(id="<id>")
+    res = polar.checkouts.get(id="<value>")
 
     # Handle response
     print(res)
@@ -168,7 +167,11 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.checkouts.update(id="<value>", checkout_update={})
+    res = polar.checkouts.update(id="<value>", checkout_update={
+        "customer_billing_address": {
+            "country": "FR",
+        },
+    })
 
     # Handle response
     print(res)
@@ -247,7 +250,11 @@ from polar_sdk import Polar
 
 with Polar() as polar:
 
-    res = polar.checkouts.client_update(client_secret="<value>", checkout_update_public={})
+    res = polar.checkouts.client_update(client_secret="<value>", checkout_update_public={
+        "customer_billing_address": {
+            "country": "FR",
+        },
+    })
 
     # Handle response
     print(res)
@@ -292,7 +299,11 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.checkouts.client_confirm(client_secret="<value>", checkout_confirm_stripe={})
+    res = polar.checkouts.client_confirm(client_secret="<value>", checkout_confirm_stripe={
+        "customer_billing_address": {
+            "country": "FR",
+        },
+    })
 
     # Handle response
     print(res)

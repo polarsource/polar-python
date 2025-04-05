@@ -11,5 +11,5 @@ When you receive this event, the order is fully processed and payment has been r
 
 | Field                              | Type                               | Required                           | Description                        | Example                            |
 | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `data`                             | [models.Order](../models/order.md) | :heavy_check_mark:                 | N/A                                |                                    |
 | `type`                             | *Literal["order.paid"]*            | :heavy_check_mark:                 | N/A                                | order.paid                         |
+| `data`                             | [models.Order](../models/order.md) | :heavy_check_mark:                 | N/A                                |                                    |

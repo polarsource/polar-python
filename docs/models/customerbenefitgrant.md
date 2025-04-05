@@ -33,3 +33,9 @@ value: models.CustomerBenefitGrantLicenseKeys = /* values here */
 value: models.CustomerBenefitGrantCustom = /* values here */
 ```
 
+### `models.CustomerBenefitGrantMeterCredit`
+
+```python
+value: models.CustomerBenefitGrantMeterCredit = /* values here */
+```
+

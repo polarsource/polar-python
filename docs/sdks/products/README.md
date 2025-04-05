@@ -89,6 +89,9 @@ with Polar(
                 "amount_type": "custom",
                 "price_currency": "usd",
             },
+            {
+                "amount_type": "free",
+            },
         ],
         "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
     })

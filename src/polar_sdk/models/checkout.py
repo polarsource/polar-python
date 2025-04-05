@@ -127,7 +127,7 @@ class CheckoutTypedDict(TypedDict):
     r"""Sales tax amount in cents. If `null`, it means there is no enough information yet to calculate it."""
     total_amount: int
     r"""Amount in cents, after discounts and taxes."""
-    currency: Nullable[str]
+    currency: str
     r"""Currency code of the checkout session."""
     product_id: str
     r"""ID of the product to checkout."""
@@ -222,7 +222,7 @@ class Checkout(BaseModel):
     total_amount: int
     r"""Amount in cents, after discounts and taxes."""
 
-    currency: Nullable[str]
+    currency: str
     r"""Currency code of the checkout session."""
 
     product_id: str
@@ -307,7 +307,6 @@ class Checkout(BaseModel):
             "modified_at",
             "embed_origin",
             "tax_amount",
-            "currency",
             "discount_id",
             "customer_id",
             "customer_name",
@@ -326,7 +325,7 @@ class Checkout(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)

@@ -126,7 +126,7 @@ with Polar() as polar:
     res = polar.customer_portal.benefit_grants.update(security=polar_sdk.CustomerPortalBenefitGrantsUpdateSecurity(
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
     ), id="<value>", customer_benefit_grant_update={
-        "benefit_type": "license_keys",
+        "benefit_type": "meter_credit",
     })
 
     # Handle response
