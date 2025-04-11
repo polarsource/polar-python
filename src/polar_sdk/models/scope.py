@@ -35,6 +35,7 @@ class Scope(str, Enum):
     SUBSCRIPTIONS_WRITE = "subscriptions:write"
     CUSTOMERS_READ = "customers:read"
     CUSTOMERS_WRITE = "customers:write"
+    CUSTOMER_METERS_READ = "customer_meters:read"
     CUSTOMER_SESSIONS_WRITE = "customer_sessions:write"
     ORDERS_READ = "orders:read"
     REFUNDS_READ = "refunds:read"
@@ -51,3 +52,5 @@ class Scope(str, Enum):
     ISSUES_WRITE = "issues:write"
     CUSTOMER_PORTAL_READ = "customer_portal:read"
     CUSTOMER_PORTAL_WRITE = "customer_portal:write"
+    NOTIFICATION_RECIPIENTS_READ = "notification_recipients:read"
+    NOTIFICATION_RECIPIENTS_WRITE = "notification_recipients:write"

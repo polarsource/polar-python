@@ -66,7 +66,7 @@ class ProductCreateTypedDict(TypedDict):
     recurring_interval: Nullable[SubscriptionRecurringInterval]
     r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
     prices: List[ProductCreatePricesTypedDict]
-    r"""List of available prices for this product. Currently, only a single price is supported."""
+    r"""List of available prices for this product. It should contain at most one static price (fixed, custom or free), and any number of metered prices. Metered prices are not supported on one-time purchase products."""
     metadata: NotRequired[Dict[str, ProductCreateMetadataTypedDict]]
     r"""Key-value object allowing you to store additional information.
 
@@ -99,7 +99,7 @@ class ProductCreate(BaseModel):
     r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
 
     prices: List[ProductCreatePrices]
-    r"""List of available prices for this product. Currently, only a single price is supported."""
+    r"""List of available prices for this product. It should contain at most one static price (fixed, custom or free), and any number of metered prices. Metered prices are not supported on one-time purchase products."""
 
     metadata: Optional[Dict[str, ProductCreateMetadata]] = None
     r"""Key-value object allowing you to store additional information.

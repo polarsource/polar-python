@@ -6,8 +6,16 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Literal, Optional
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing import Literal, Optional, Union
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+
+
+UnitAmountTypedDict = TypeAliasType("UnitAmountTypedDict", Union[float, str])
+r"""The price per unit in cents. Supports up to 12 decimal places."""
+
+
+UnitAmount = TypeAliasType("UnitAmount", Union[float, str])
+r"""The price per unit in cents. Supports up to 12 decimal places."""
 
 
 class ProductPriceMeteredUnitCreateTypedDict(TypedDict):
@@ -15,8 +23,8 @@ class ProductPriceMeteredUnitCreateTypedDict(TypedDict):
 
     meter_id: str
     r"""The ID of the meter associated to the price."""
-    unit_amount: int
-    r"""The price per unit in cents."""
+    unit_amount: UnitAmountTypedDict
+    r"""The price per unit in cents. Supports up to 12 decimal places."""
     amount_type: Literal["metered_unit"]
     price_currency: NotRequired[str]
     r"""The currency. Currently, only `usd` is supported."""
@@ -30,8 +38,8 @@ class ProductPriceMeteredUnitCreate(BaseModel):
     meter_id: str
     r"""The ID of the meter associated to the price."""
 
-    unit_amount: int
-    r"""The price per unit in cents."""
+    unit_amount: UnitAmount
+    r"""The price per unit in cents. Supports up to 12 decimal places."""
 
     AMOUNT_TYPE: Annotated[
         Annotated[
