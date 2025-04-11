@@ -6,6 +6,7 @@ from .customerstatebenefitgrant import (
     CustomerStateBenefitGrant,
     CustomerStateBenefitGrantTypedDict,
 )
+from .customerstatemeter import CustomerStateMeter, CustomerStateMeterTypedDict
 from .customerstatesubscription import (
     CustomerStateSubscription,
     CustomerStateSubscriptionTypedDict,
@@ -38,7 +39,8 @@ class CustomerStateTypedDict(TypedDict):
     r"""A customer along with additional state information:
 
     * Active subscriptions
-    * Active benefits
+    * Granted benefits
+    * Active meters
     """
 
     id: str
@@ -66,6 +68,8 @@ class CustomerStateTypedDict(TypedDict):
     r"""The customer's active subscriptions."""
     granted_benefits: List[CustomerStateBenefitGrantTypedDict]
     r"""The customer's active benefit grants."""
+    active_meters: List[CustomerStateMeterTypedDict]
+    r"""The customer's active meters."""
     avatar_url: str
 
 
@@ -73,7 +77,8 @@ class CustomerState(BaseModel):
     r"""A customer along with additional state information:
 
     * Active subscriptions
-    * Active benefits
+    * Granted benefits
+    * Active meters
     """
 
     id: str
@@ -114,6 +119,9 @@ class CustomerState(BaseModel):
 
     granted_benefits: List[CustomerStateBenefitGrant]
     r"""The customer's active benefit grants."""
+
+    active_meters: List[CustomerStateMeter]
+    r"""The customer's active meters."""
 
     avatar_url: str
 

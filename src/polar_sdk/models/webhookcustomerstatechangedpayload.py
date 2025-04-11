@@ -26,7 +26,8 @@ class WebhookCustomerStateChangedPayloadTypedDict(TypedDict):
     r"""A customer along with additional state information:
 
     * Active subscriptions
-    * Active benefits
+    * Granted benefits
+    * Active meters
     """
     type: Literal["customer.state_changed"]
 
@@ -47,7 +48,8 @@ class WebhookCustomerStateChangedPayload(BaseModel):
     r"""A customer along with additional state information:
 
     * Active subscriptions
-    * Active benefits
+    * Granted benefits
+    * Active meters
     """
 
     TYPE: Annotated[

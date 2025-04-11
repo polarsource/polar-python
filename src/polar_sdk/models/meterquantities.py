@@ -9,7 +9,12 @@ from typing_extensions import TypedDict
 
 class MeterQuantitiesTypedDict(TypedDict):
     quantities: List[MeterQuantityTypedDict]
+    total: float
+    r"""The total quantity for the period."""
 
 
 class MeterQuantities(BaseModel):
     quantities: List[MeterQuantity]
+
+    total: float
+    r"""The total quantity for the period."""

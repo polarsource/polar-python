@@ -1021,7 +1021,7 @@ class Checkouts(BaseSDK):
                 security_source=None,
             ),
             request=req,
-            error_status_codes=["404", "422", "4XX", "5XX"],
+            error_status_codes=["404", "410", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1033,6 +1033,11 @@ class Checkouts(BaseSDK):
                 http_res.text, models.ResourceNotFoundData
             )
             raise models.ResourceNotFound(data=response_data)
+        if utils.match_response(http_res, "410", "application/json"):
+            response_data = utils.unmarshal_json(
+                http_res.text, models.ExpiredCheckoutErrorData
+            )
+            raise models.ExpiredCheckoutError(data=response_data)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = utils.unmarshal_json(
                 http_res.text, models.HTTPValidationErrorData
@@ -1122,7 +1127,7 @@ class Checkouts(BaseSDK):
                 security_source=None,
             ),
             request=req,
-            error_status_codes=["404", "422", "4XX", "5XX"],
+            error_status_codes=["404", "410", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1134,6 +1139,11 @@ class Checkouts(BaseSDK):
                 http_res.text, models.ResourceNotFoundData
             )
             raise models.ResourceNotFound(data=response_data)
+        if utils.match_response(http_res, "410", "application/json"):
+            response_data = utils.unmarshal_json(
+                http_res.text, models.ExpiredCheckoutErrorData
+            )
+            raise models.ExpiredCheckoutError(data=response_data)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = utils.unmarshal_json(
                 http_res.text, models.HTTPValidationErrorData
@@ -1237,7 +1247,7 @@ class Checkouts(BaseSDK):
                 security_source=None,
             ),
             request=req,
-            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "410", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1254,6 +1264,11 @@ class Checkouts(BaseSDK):
                 http_res.text, models.ResourceNotFoundData
             )
             raise models.ResourceNotFound(data=response_data)
+        if utils.match_response(http_res, "410", "application/json"):
+            response_data = utils.unmarshal_json(
+                http_res.text, models.ExpiredCheckoutErrorData
+            )
+            raise models.ExpiredCheckoutError(data=response_data)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = utils.unmarshal_json(
                 http_res.text, models.HTTPValidationErrorData
@@ -1357,7 +1372,7 @@ class Checkouts(BaseSDK):
                 security_source=None,
             ),
             request=req,
-            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "410", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1374,6 +1389,11 @@ class Checkouts(BaseSDK):
                 http_res.text, models.ResourceNotFoundData
             )
             raise models.ResourceNotFound(data=response_data)
+        if utils.match_response(http_res, "410", "application/json"):
+            response_data = utils.unmarshal_json(
+                http_res.text, models.ExpiredCheckoutErrorData
+            )
+            raise models.ExpiredCheckoutError(data=response_data)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = utils.unmarshal_json(
                 http_res.text, models.HTTPValidationErrorData
@@ -1480,7 +1500,7 @@ class Checkouts(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["400", "403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["400", "403", "404", "410", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1500,6 +1520,11 @@ class Checkouts(BaseSDK):
                 http_res.text, models.ResourceNotFoundData
             )
             raise models.ResourceNotFound(data=response_data)
+        if utils.match_response(http_res, "410", "application/json"):
+            response_data = utils.unmarshal_json(
+                http_res.text, models.ExpiredCheckoutErrorData
+            )
+            raise models.ExpiredCheckoutError(data=response_data)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = utils.unmarshal_json(
                 http_res.text, models.HTTPValidationErrorData
@@ -1606,7 +1631,7 @@ class Checkouts(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["400", "403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["400", "403", "404", "410", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1626,6 +1651,11 @@ class Checkouts(BaseSDK):
                 http_res.text, models.ResourceNotFoundData
             )
             raise models.ResourceNotFound(data=response_data)
+        if utils.match_response(http_res, "410", "application/json"):
+            response_data = utils.unmarshal_json(
+                http_res.text, models.ExpiredCheckoutErrorData
+            )
+            raise models.ExpiredCheckoutError(data=response_data)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = utils.unmarshal_json(
                 http_res.text, models.HTTPValidationErrorData

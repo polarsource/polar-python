@@ -6,6 +6,7 @@
 ### Available Operations
 
 * [list](#list) - List Events
+* [list_names](#list_names) - List Event Names
 * [get](#get) - Get Event
 * [ingest](#ingest) - Ingest Events
 
@@ -45,6 +46,8 @@ with Polar(
 | `organization_id`                                                                                                                                                       | [OptionalNullable[models.EventsListQueryParamOrganizationIDFilter]](../../models/eventslistqueryparamorganizationidfilter.md)                                           | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
 | `customer_id`                                                                                                                                                           | [OptionalNullable[models.EventsListQueryParamCustomerIDFilter]](../../models/eventslistqueryparamcustomeridfilter.md)                                                   | :heavy_minus_sign:                                                                                                                                                      | Filter by customer ID.                                                                                                                                                  |
 | `external_customer_id`                                                                                                                                                  | [OptionalNullable[models.ExternalCustomerIDFilter]](../../models/externalcustomeridfilter.md)                                                                           | :heavy_minus_sign:                                                                                                                                                      | Filter by external customer ID.                                                                                                                                         |
+| `meter_id`                                                                                                                                                              | *OptionalNullable[str]*                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                      | Filter by a meter filter clause.                                                                                                                                        |
+| `name`                                                                                                                                                                  | [OptionalNullable[models.NameFilter]](../../models/namefilter.md)                                                                                                       | :heavy_minus_sign:                                                                                                                                                      | Filter by event name.                                                                                                                                                   |
 | `source`                                                                                                                                                                | [OptionalNullable[models.SourceFilter]](../../models/sourcefilter.md)                                                                                                   | :heavy_minus_sign:                                                                                                                                                      | Filter by event source.                                                                                                                                                 |
 | `page`                                                                                                                                                                  | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |
 | `limit`                                                                                                                                                                 | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Size of a page, defaults to 10. Maximum is 100.                                                                                                                         |
@@ -55,6 +58,55 @@ with Polar(
 ### Response
 
 **[models.EventsListResponse](../../models/eventslistresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## list_names
+
+List event names.
+
+**Scopes**: `events:read` `events:write`
+
+### Example Usage
+
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.events.list_names(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
+
+    while res is not None:
+        # Handle items
+
+        res = res.next()
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `organization_id`                                                                                                                                                       | [OptionalNullable[models.EventsListNamesQueryParamOrganizationIDFilter]](../../models/eventslistnamesqueryparamorganizationidfilter.md)                                 | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
+| `customer_id`                                                                                                                                                           | [OptionalNullable[models.EventsListNamesQueryParamCustomerIDFilter]](../../models/eventslistnamesqueryparamcustomeridfilter.md)                                         | :heavy_minus_sign:                                                                                                                                                      | Filter by customer ID.                                                                                                                                                  |
+| `external_customer_id`                                                                                                                                                  | [OptionalNullable[models.QueryParamExternalCustomerIDFilter]](../../models/queryparamexternalcustomeridfilter.md)                                                       | :heavy_minus_sign:                                                                                                                                                      | Filter by external customer ID.                                                                                                                                         |
+| `query`                                                                                                                                                                 | *OptionalNullable[str]*                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                      | Query to filter event names.                                                                                                                                            |
+| `page`                                                                                                                                                                  | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |
+| `limit`                                                                                                                                                                 | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Size of a page, defaults to 10. Maximum is 100.                                                                                                                         |
+| `sorting`                                                                                                                                                               | List[[models.EventNamesSortProperty](../../models/eventnamessortproperty.md)]                                                                                           | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
+| `retries`                                                                                                                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                        | :heavy_minus_sign:                                                                                                                                                      | Configuration to override the default retry behavior of the client.                                                                                                     |
+
+### Response
+
+**[models.EventsListNamesResponse](../../models/eventslistnamesresponse.md)**
 
 ### Errors
 

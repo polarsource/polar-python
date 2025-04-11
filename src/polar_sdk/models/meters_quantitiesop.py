@@ -22,14 +22,14 @@ MetersQuantitiesQueryParamCustomerIDFilter = TypeAliasType(
 r"""Filter by customer ID."""
 
 
-QueryParamExternalCustomerIDFilterTypedDict = TypeAliasType(
-    "QueryParamExternalCustomerIDFilterTypedDict", Union[str, List[str]]
+MetersQuantitiesQueryParamExternalCustomerIDFilterTypedDict = TypeAliasType(
+    "MetersQuantitiesQueryParamExternalCustomerIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by external customer ID."""
 
 
-QueryParamExternalCustomerIDFilter = TypeAliasType(
-    "QueryParamExternalCustomerIDFilter", Union[str, List[str]]
+MetersQuantitiesQueryParamExternalCustomerIDFilter = TypeAliasType(
+    "MetersQuantitiesQueryParamExternalCustomerIDFilter", Union[str, List[str]]
 )
 r"""Filter by external customer ID."""
 
@@ -48,7 +48,7 @@ class MetersQuantitiesRequestTypedDict(TypedDict):
     ]
     r"""Filter by customer ID."""
     external_customer_id: NotRequired[
-        Nullable[QueryParamExternalCustomerIDFilterTypedDict]
+        Nullable[MetersQuantitiesQueryParamExternalCustomerIDFilterTypedDict]
     ]
     r"""Filter by external customer ID."""
 
@@ -82,7 +82,7 @@ class MetersQuantitiesRequest(BaseModel):
     r"""Filter by customer ID."""
 
     external_customer_id: Annotated[
-        OptionalNullable[QueryParamExternalCustomerIDFilter],
+        OptionalNullable[MetersQuantitiesQueryParamExternalCustomerIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by external customer ID."""

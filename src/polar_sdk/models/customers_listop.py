@@ -185,6 +185,14 @@ ExternalCustomerIDFilter = TypeAliasType(
 r"""Filter by external customer ID."""
 
 
+NameFilterTypedDict = TypeAliasType("NameFilterTypedDict", Union[str, List[str]])
+r"""Filter by event name."""
+
+
+NameFilter = TypeAliasType("NameFilter", Union[str, List[str]])
+r"""Filter by event name."""
+
+
 SourceFilterTypedDict = TypeAliasType(
     "SourceFilterTypedDict", Union[EventSource, List[EventSource]]
 )
@@ -208,6 +216,10 @@ class EventsListRequestTypedDict(TypedDict):
     r"""Filter by customer ID."""
     external_customer_id: NotRequired[Nullable[ExternalCustomerIDFilterTypedDict]]
     r"""Filter by external customer ID."""
+    meter_id: NotRequired[Nullable[str]]
+    r"""Filter by a meter filter clause."""
+    name: NotRequired[Nullable[NameFilterTypedDict]]
+    r"""Filter by event name."""
     source: NotRequired[Nullable[SourceFilterTypedDict]]
     r"""Filter by event source."""
     page: NotRequired[int]
@@ -251,6 +263,18 @@ class EventsListRequest(BaseModel):
     ] = UNSET
     r"""Filter by external customer ID."""
 
+    meter_id: Annotated[
+        OptionalNullable[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by a meter filter clause."""
+
+    name: Annotated[
+        OptionalNullable[NameFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by event name."""
+
     source: Annotated[
         OptionalNullable[SourceFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -289,6 +313,8 @@ class EventsListRequest(BaseModel):
             "organization_id",
             "customer_id",
             "external_customer_id",
+            "meter_id",
+            "name",
             "source",
             "page",
             "limit",
@@ -301,6 +327,8 @@ class EventsListRequest(BaseModel):
             "organization_id",
             "customer_id",
             "external_customer_id",
+            "meter_id",
+            "name",
             "source",
             "sorting",
             "metadata",

@@ -31,7 +31,7 @@ class ProductPriceMeteredUnitTypedDict(TypedDict):
     recurring_interval: Nullable[SubscriptionRecurringInterval]
     price_currency: str
     r"""The currency."""
-    unit_amount: int
+    unit_amount: str
     r"""The price per unit in cents."""
     cap_amount: Nullable[int]
     r"""The maximum amount in cents that can be charged, regardless of the number of units consumed."""
@@ -72,7 +72,7 @@ class ProductPriceMeteredUnit(BaseModel):
     price_currency: str
     r"""The currency."""
 
-    unit_amount: int
+    unit_amount: str
     r"""The price per unit in cents."""
 
     cap_amount: Nullable[int]

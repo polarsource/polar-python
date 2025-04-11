@@ -178,7 +178,18 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.customers.update(id="<value>", customer_update={})
+    res = polar.customers.update(id="<value>", customer_update={
+        "external_id": "usr_1337",
+        "email": "customer@example.com",
+        "name": "John Doe",
+        "billing_address": {
+            "country": "FR",
+        },
+        "tax_id": [
+            "FR61954506077",
+            "eu_vat",
+        ],
+    })
 
     # Handle response
     print(res)
@@ -312,7 +323,18 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.customers.update_external(external_id="<id>", customer_update={})
+    res = polar.customers.update_external(external_id="<id>", customer_update={
+        "external_id": "usr_1337",
+        "email": "customer@example.com",
+        "name": "John Doe",
+        "billing_address": {
+            "country": "US",
+        },
+        "tax_id": [
+            "FR61954506077",
+            "eu_vat",
+        ],
+    })
 
     # Handle response
     print(res)

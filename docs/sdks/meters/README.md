@@ -9,7 +9,6 @@
 * [create](#create) - Create Meter
 * [get](#get) - Get Meter
 * [update](#update) - Update Meter
-* [events](#events) - Get Meter Events
 * [quantities](#quantities) - Get Meter Quantities
 
 ## list
@@ -202,52 +201,6 @@ with Polar(
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## events
-
-Get events matching the filter of a meter.
-
-**Scopes**: `meters:read` `meters:write`
-
-### Example Usage
-
-```python
-from polar_sdk import Polar
-
-
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
-
-    res = polar.meters.events(id="<value>")
-
-    while res is not None:
-        # Handle items
-
-        res = res.next()
-
-```
-
-### Parameters
-
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The meter ID.                                                       |
-| `page`                                                              | *Optional[int]*                                                     | :heavy_minus_sign:                                                  | Page number, defaults to 1.                                         |
-| `limit`                                                             | *Optional[int]*                                                     | :heavy_minus_sign:                                                  | Size of a page, defaults to 10. Maximum is 100.                     |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[models.MetersEventsResponse](../../models/meterseventsresponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
 ## quantities
 
 Get quantities of a meter over a time period.
@@ -275,15 +228,15 @@ with Polar(
 
 ### Parameters
 
-| Parameter                                                                                                                         | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       |
-| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                                              | *str*                                                                                                                             | :heavy_check_mark:                                                                                                                | The meter ID.                                                                                                                     |
-| `start_timestamp`                                                                                                                 | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                              | :heavy_check_mark:                                                                                                                | Start timestamp.                                                                                                                  |
-| `end_timestamp`                                                                                                                   | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                              | :heavy_check_mark:                                                                                                                | End timestamp.                                                                                                                    |
-| `interval`                                                                                                                        | [models.TimeInterval](../../models/timeinterval.md)                                                                               | :heavy_check_mark:                                                                                                                | Interval between two timestamps.                                                                                                  |
-| `customer_id`                                                                                                                     | [OptionalNullable[models.MetersQuantitiesQueryParamCustomerIDFilter]](../../models/metersquantitiesqueryparamcustomeridfilter.md) | :heavy_minus_sign:                                                                                                                | Filter by customer ID.                                                                                                            |
-| `external_customer_id`                                                                                                            | [OptionalNullable[models.QueryParamExternalCustomerIDFilter]](../../models/queryparamexternalcustomeridfilter.md)                 | :heavy_minus_sign:                                                                                                                | Filter by external customer ID.                                                                                                   |
-| `retries`                                                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                  | :heavy_minus_sign:                                                                                                                | Configuration to override the default retry behavior of the client.                                                               |
+| Parameter                                                                                                                                         | Type                                                                                                                                              | Required                                                                                                                                          | Description                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                                                              | *str*                                                                                                                                             | :heavy_check_mark:                                                                                                                                | The meter ID.                                                                                                                                     |
+| `start_timestamp`                                                                                                                                 | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                                              | :heavy_check_mark:                                                                                                                                | Start timestamp.                                                                                                                                  |
+| `end_timestamp`                                                                                                                                   | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                                              | :heavy_check_mark:                                                                                                                                | End timestamp.                                                                                                                                    |
+| `interval`                                                                                                                                        | [models.TimeInterval](../../models/timeinterval.md)                                                                                               | :heavy_check_mark:                                                                                                                                | Interval between two timestamps.                                                                                                                  |
+| `customer_id`                                                                                                                                     | [OptionalNullable[models.MetersQuantitiesQueryParamCustomerIDFilter]](../../models/metersquantitiesqueryparamcustomeridfilter.md)                 | :heavy_minus_sign:                                                                                                                                | Filter by customer ID.                                                                                                                            |
+| `external_customer_id`                                                                                                                            | [OptionalNullable[models.MetersQuantitiesQueryParamExternalCustomerIDFilter]](../../models/metersquantitiesqueryparamexternalcustomeridfilter.md) | :heavy_minus_sign:                                                                                                                                | Filter by external customer ID.                                                                                                                   |
+| `retries`                                                                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                  | :heavy_minus_sign:                                                                                                                                | Configuration to override the default retry behavior of the client.                                                                               |
 
 ### Response
 

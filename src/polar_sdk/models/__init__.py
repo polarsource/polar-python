@@ -150,6 +150,10 @@ from .benefitgrantlicensekeysproperties import (
     BenefitGrantLicenseKeysProperties,
     BenefitGrantLicenseKeysPropertiesTypedDict,
 )
+from .benefitgrantmetercreditproperties import (
+    BenefitGrantMeterCreditProperties,
+    BenefitGrantMeterCreditPropertiesTypedDict,
+)
 from .benefitgrantwebhook import (
     BenefitGrantWebhook,
     BenefitGrantWebhookProperties,
@@ -208,6 +212,14 @@ from .benefitmetercreditcreateproperties import (
 from .benefitmetercreditproperties import (
     BenefitMeterCreditProperties,
     BenefitMeterCreditPropertiesTypedDict,
+)
+from .benefitmetercreditsubscriber import (
+    BenefitMeterCreditSubscriber,
+    BenefitMeterCreditSubscriberTypedDict,
+)
+from .benefitmetercreditsubscriberproperties import (
+    BenefitMeterCreditSubscriberProperties,
+    BenefitMeterCreditSubscriberPropertiesTypedDict,
 )
 from .benefitmetercreditupdate import (
     BenefitMeterCreditUpdate,
@@ -473,6 +485,24 @@ from .customer import (
     CustomerTaxIDTypedDict,
     CustomerTypedDict,
 )
+from .customer_meters_getop import (
+    CustomerMetersGetRequest,
+    CustomerMetersGetRequestTypedDict,
+)
+from .customer_meters_listop import (
+    CustomerMetersListQueryParamCustomerIDFilter,
+    CustomerMetersListQueryParamCustomerIDFilterTypedDict,
+    CustomerMetersListQueryParamExternalCustomerIDFilter,
+    CustomerMetersListQueryParamExternalCustomerIDFilterTypedDict,
+    CustomerMetersListQueryParamOrganizationIDFilter,
+    CustomerMetersListQueryParamOrganizationIDFilterTypedDict,
+    CustomerMetersListRequest,
+    CustomerMetersListRequestTypedDict,
+    CustomerMetersListResponse,
+    CustomerMetersListResponseTypedDict,
+    QueryParamMeterIDFilter,
+    QueryParamMeterIDFilterTypedDict,
+)
 from .customer_portal_benefit_grants_getop import (
     CustomerPortalBenefitGrantsGetRequest,
     CustomerPortalBenefitGrantsGetRequestTypedDict,
@@ -504,6 +534,22 @@ from .customer_portal_benefit_grants_updateop import (
     CustomerPortalBenefitGrantsUpdateRequestTypedDict,
     CustomerPortalBenefitGrantsUpdateSecurity,
     CustomerPortalBenefitGrantsUpdateSecurityTypedDict,
+)
+from .customer_portal_customer_meters_getop import (
+    CustomerPortalCustomerMetersGetRequest,
+    CustomerPortalCustomerMetersGetRequestTypedDict,
+    CustomerPortalCustomerMetersGetSecurity,
+    CustomerPortalCustomerMetersGetSecurityTypedDict,
+)
+from .customer_portal_customer_meters_listop import (
+    CustomerPortalCustomerMetersListRequest,
+    CustomerPortalCustomerMetersListRequestTypedDict,
+    CustomerPortalCustomerMetersListResponse,
+    CustomerPortalCustomerMetersListResponseTypedDict,
+    CustomerPortalCustomerMetersListSecurity,
+    CustomerPortalCustomerMetersListSecurityTypedDict,
+    MeterIDFilter,
+    MeterIDFilterTypedDict,
 )
 from .customer_portal_customers_add_payment_methodop import (
     CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethod,
@@ -682,6 +728,14 @@ from .customerbenefitgrantlicensekeysupdate import (
     CustomerBenefitGrantLicenseKeysUpdate,
     CustomerBenefitGrantLicenseKeysUpdateTypedDict,
 )
+from .customerbenefitgrantmetercredit import (
+    CustomerBenefitGrantMeterCredit,
+    CustomerBenefitGrantMeterCreditTypedDict,
+)
+from .customerbenefitgrantmetercreditupdate import (
+    CustomerBenefitGrantMeterCreditUpdate,
+    CustomerBenefitGrantMeterCreditUpdateTypedDict,
+)
 from .customerbenefitgrantsortproperty import CustomerBenefitGrantSortProperty
 from .customerbenefitgrantupdate import (
     CustomerBenefitGrantUpdate,
@@ -696,6 +750,14 @@ from .customercreate import (
     CustomerCreateTaxIDTypedDict,
     CustomerCreateTypedDict,
 )
+from .customercustomermeter import CustomerCustomerMeter, CustomerCustomerMeterTypedDict
+from .customercustomermetermeter import (
+    CustomerCustomerMeterMeter,
+    CustomerCustomerMeterMeterTypedDict,
+)
+from .customercustomermetersortproperty import CustomerCustomerMeterSortProperty
+from .customermeter import CustomerMeter, CustomerMeterTypedDict
+from .customermetersortproperty import CustomerMeterSortProperty
 from .customerorder import (
     CustomerOrder,
     CustomerOrderProductPrice,
@@ -782,6 +844,8 @@ from .customers_listop import (
     MetersListRequestTypedDict,
     MetersListResponse,
     MetersListResponseTypedDict,
+    NameFilter,
+    NameFilterTypedDict,
     SourceFilter,
     SourceFilterTypedDict,
 )
@@ -814,6 +878,7 @@ from .customerstatebenefitgrant import (
     CustomerStateBenefitGrantPropertiesTypedDict,
     CustomerStateBenefitGrantTypedDict,
 )
+from .customerstatemeter import CustomerStateMeter, CustomerStateMeterTypedDict
 from .customerstatesubscription import (
     CustomerStateSubscription,
     CustomerStateSubscriptionCustomFieldData,
@@ -1090,7 +1155,21 @@ from .eventcreateexternalcustomer import (
     EventCreateExternalCustomerMetadataTypedDict,
     EventCreateExternalCustomerTypedDict,
 )
+from .eventname import EventName, EventNameTypedDict
+from .eventnamessortproperty import EventNamesSortProperty
 from .events_getop import EventsGetRequest, EventsGetRequestTypedDict
+from .events_list_namesop import (
+    EventsListNamesQueryParamCustomerIDFilter,
+    EventsListNamesQueryParamCustomerIDFilterTypedDict,
+    EventsListNamesQueryParamOrganizationIDFilter,
+    EventsListNamesQueryParamOrganizationIDFilterTypedDict,
+    EventsListNamesRequest,
+    EventsListNamesRequestTypedDict,
+    EventsListNamesResponse,
+    EventsListNamesResponseTypedDict,
+    QueryParamExternalCustomerIDFilter,
+    QueryParamExternalCustomerIDFilterTypedDict,
+)
 from .eventsingest import (
     EventsIngest,
     EventsIngestTypedDict,
@@ -1101,6 +1180,7 @@ from .eventsingestresponse import EventsIngestResponse, EventsIngestResponseType
 from .eventsortproperty import EventSortProperty
 from .eventsource import EventSource
 from .existingproductprice import ExistingProductPrice, ExistingProductPriceTypedDict
+from .expiredcheckouterror import ExpiredCheckoutError, ExpiredCheckoutErrorData
 from .external_organizations_listop import (
     ExternalOrganizationsListRequest,
     ExternalOrganizationsListRequestTypedDict,
@@ -1251,6 +1331,14 @@ from .listresource_customerbenefitgrant_ import (
     ListResourceCustomerBenefitGrant,
     ListResourceCustomerBenefitGrantTypedDict,
 )
+from .listresource_customercustomermeter_ import (
+    ListResourceCustomerCustomerMeter,
+    ListResourceCustomerCustomerMeterTypedDict,
+)
+from .listresource_customermeter_ import (
+    ListResourceCustomerMeter,
+    ListResourceCustomerMeterTypedDict,
+)
 from .listresource_customerorder_ import (
     ListResourceCustomerOrder,
     ListResourceCustomerOrderTypedDict,
@@ -1269,6 +1357,10 @@ from .listresource_downloadableread_ import (
     ListResourceDownloadableReadTypedDict,
 )
 from .listresource_event_ import ListResourceEvent, ListResourceEventTypedDict
+from .listresource_eventname_ import (
+    ListResourceEventName,
+    ListResourceEventNameTypedDict,
+)
 from .listresource_externalorganization_ import (
     ListResourceExternalOrganization,
     ListResourceExternalOrganizationTypedDict,
@@ -1327,20 +1419,14 @@ from .metercreate import (
 )
 from .meterquantities import MeterQuantities, MeterQuantitiesTypedDict
 from .meterquantity import MeterQuantity, MeterQuantityTypedDict
-from .meters_eventsop import (
-    MetersEventsRequest,
-    MetersEventsRequestTypedDict,
-    MetersEventsResponse,
-    MetersEventsResponseTypedDict,
-)
 from .meters_getop import MetersGetRequest, MetersGetRequestTypedDict
 from .meters_quantitiesop import (
     MetersQuantitiesQueryParamCustomerIDFilter,
     MetersQuantitiesQueryParamCustomerIDFilterTypedDict,
+    MetersQuantitiesQueryParamExternalCustomerIDFilter,
+    MetersQuantitiesQueryParamExternalCustomerIDFilterTypedDict,
     MetersQuantitiesRequest,
     MetersQuantitiesRequestTypedDict,
-    QueryParamExternalCustomerIDFilter,
-    QueryParamExternalCustomerIDFilterTypedDict,
 )
 from .meters_updateop import MetersUpdateRequest, MetersUpdateRequestTypedDict
 from .metersortproperty import MeterSortProperty
@@ -1591,6 +1677,8 @@ from .productpricemeteredunit import (
 from .productpricemeteredunitcreate import (
     ProductPriceMeteredUnitCreate,
     ProductPriceMeteredUnitCreateTypedDict,
+    UnitAmount,
+    UnitAmountTypedDict,
 )
 from .productpricetype import ProductPriceType
 from .products_getop import ProductsGetRequest, ProductsGetRequestTypedDict
@@ -1999,6 +2087,8 @@ __all__ = [
     "BenefitGrantGitHubRepositoryPropertiesTypedDict",
     "BenefitGrantLicenseKeysProperties",
     "BenefitGrantLicenseKeysPropertiesTypedDict",
+    "BenefitGrantMeterCreditProperties",
+    "BenefitGrantMeterCreditPropertiesTypedDict",
     "BenefitGrantTypedDict",
     "BenefitGrantWebhook",
     "BenefitGrantWebhookProperties",
@@ -2033,6 +2123,10 @@ __all__ = [
     "BenefitMeterCreditCreateTypedDict",
     "BenefitMeterCreditProperties",
     "BenefitMeterCreditPropertiesTypedDict",
+    "BenefitMeterCreditSubscriber",
+    "BenefitMeterCreditSubscriberProperties",
+    "BenefitMeterCreditSubscriberPropertiesTypedDict",
+    "BenefitMeterCreditSubscriberTypedDict",
     "BenefitMeterCreditTypedDict",
     "BenefitMeterCreditUpdate",
     "BenefitMeterCreditUpdateTypedDict",
@@ -2338,6 +2432,10 @@ __all__ = [
     "CustomerBenefitGrantLicenseKeysTypedDict",
     "CustomerBenefitGrantLicenseKeysUpdate",
     "CustomerBenefitGrantLicenseKeysUpdateTypedDict",
+    "CustomerBenefitGrantMeterCredit",
+    "CustomerBenefitGrantMeterCreditTypedDict",
+    "CustomerBenefitGrantMeterCreditUpdate",
+    "CustomerBenefitGrantMeterCreditUpdateTypedDict",
     "CustomerBenefitGrantSortProperty",
     "CustomerBenefitGrantTypedDict",
     "CustomerBenefitGrantUpdate",
@@ -2349,12 +2447,32 @@ __all__ = [
     "CustomerCreateTaxID",
     "CustomerCreateTaxIDTypedDict",
     "CustomerCreateTypedDict",
+    "CustomerCustomerMeter",
+    "CustomerCustomerMeterMeter",
+    "CustomerCustomerMeterMeterTypedDict",
+    "CustomerCustomerMeterSortProperty",
+    "CustomerCustomerMeterTypedDict",
     "CustomerIDFilter",
     "CustomerIDFilterTypedDict",
     "CustomerMetadata",
     "CustomerMetadata1",
     "CustomerMetadata1TypedDict",
     "CustomerMetadataTypedDict",
+    "CustomerMeter",
+    "CustomerMeterSortProperty",
+    "CustomerMeterTypedDict",
+    "CustomerMetersGetRequest",
+    "CustomerMetersGetRequestTypedDict",
+    "CustomerMetersListQueryParamCustomerIDFilter",
+    "CustomerMetersListQueryParamCustomerIDFilterTypedDict",
+    "CustomerMetersListQueryParamExternalCustomerIDFilter",
+    "CustomerMetersListQueryParamExternalCustomerIDFilterTypedDict",
+    "CustomerMetersListQueryParamOrganizationIDFilter",
+    "CustomerMetersListQueryParamOrganizationIDFilterTypedDict",
+    "CustomerMetersListRequest",
+    "CustomerMetersListRequestTypedDict",
+    "CustomerMetersListResponse",
+    "CustomerMetersListResponseTypedDict",
     "CustomerOrder",
     "CustomerOrderInvoice",
     "CustomerOrderInvoiceTypedDict",
@@ -2391,6 +2509,16 @@ __all__ = [
     "CustomerPortalBenefitGrantsUpdateSecurity",
     "CustomerPortalBenefitGrantsUpdateSecurityTypedDict",
     "CustomerPortalCustomer",
+    "CustomerPortalCustomerMetersGetRequest",
+    "CustomerPortalCustomerMetersGetRequestTypedDict",
+    "CustomerPortalCustomerMetersGetSecurity",
+    "CustomerPortalCustomerMetersGetSecurityTypedDict",
+    "CustomerPortalCustomerMetersListRequest",
+    "CustomerPortalCustomerMetersListRequestTypedDict",
+    "CustomerPortalCustomerMetersListResponse",
+    "CustomerPortalCustomerMetersListResponseTypedDict",
+    "CustomerPortalCustomerMetersListSecurity",
+    "CustomerPortalCustomerMetersListSecurityTypedDict",
     "CustomerPortalCustomerTaxID",
     "CustomerPortalCustomerTaxIDTypedDict",
     "CustomerPortalCustomerTypedDict",
@@ -2506,6 +2634,8 @@ __all__ = [
     "CustomerStateBenefitGrantTypedDict",
     "CustomerStateMetadata",
     "CustomerStateMetadataTypedDict",
+    "CustomerStateMeter",
+    "CustomerStateMeterTypedDict",
     "CustomerStateSubscription",
     "CustomerStateSubscriptionCustomFieldData",
     "CustomerStateSubscriptionCustomFieldDataTypedDict",
@@ -2655,6 +2785,9 @@ __all__ = [
     "EventCreateExternalCustomerTypedDict",
     "EventMetadata",
     "EventMetadataTypedDict",
+    "EventName",
+    "EventNameTypedDict",
+    "EventNamesSortProperty",
     "EventSortProperty",
     "EventSource",
     "EventTypedDict",
@@ -2664,6 +2797,14 @@ __all__ = [
     "EventsIngestResponse",
     "EventsIngestResponseTypedDict",
     "EventsIngestTypedDict",
+    "EventsListNamesQueryParamCustomerIDFilter",
+    "EventsListNamesQueryParamCustomerIDFilterTypedDict",
+    "EventsListNamesQueryParamOrganizationIDFilter",
+    "EventsListNamesQueryParamOrganizationIDFilterTypedDict",
+    "EventsListNamesRequest",
+    "EventsListNamesRequestTypedDict",
+    "EventsListNamesResponse",
+    "EventsListNamesResponseTypedDict",
     "EventsListQueryParamCustomerIDFilter",
     "EventsListQueryParamCustomerIDFilterTypedDict",
     "EventsListQueryParamOrganizationIDFilter",
@@ -2676,6 +2817,8 @@ __all__ = [
     "EventsModelTypedDict",
     "ExistingProductPrice",
     "ExistingProductPriceTypedDict",
+    "ExpiredCheckoutError",
+    "ExpiredCheckoutErrorData",
     "ExternalCustomerIDFilter",
     "ExternalCustomerIDFilterTypedDict",
     "ExternalOrganization",
@@ -2801,6 +2944,10 @@ __all__ = [
     "ListResourceCustomer",
     "ListResourceCustomerBenefitGrant",
     "ListResourceCustomerBenefitGrantTypedDict",
+    "ListResourceCustomerCustomerMeter",
+    "ListResourceCustomerCustomerMeterTypedDict",
+    "ListResourceCustomerMeter",
+    "ListResourceCustomerMeterTypedDict",
     "ListResourceCustomerOrder",
     "ListResourceCustomerOrderTypedDict",
     "ListResourceCustomerSubscription",
@@ -2811,6 +2958,8 @@ __all__ = [
     "ListResourceDownloadableRead",
     "ListResourceDownloadableReadTypedDict",
     "ListResourceEvent",
+    "ListResourceEventName",
+    "ListResourceEventNameTypedDict",
     "ListResourceEventTypedDict",
     "ListResourceExternalOrganization",
     "ListResourceExternalOrganizationTypedDict",
@@ -2853,6 +3002,8 @@ __all__ = [
     "MeterCreateMetadata",
     "MeterCreateMetadataTypedDict",
     "MeterCreateTypedDict",
+    "MeterIDFilter",
+    "MeterIDFilterTypedDict",
     "MeterMetadata",
     "MeterMetadataTypedDict",
     "MeterQuantities",
@@ -2865,10 +3016,6 @@ __all__ = [
     "MeterUpdateMetadata",
     "MeterUpdateMetadataTypedDict",
     "MeterUpdateTypedDict",
-    "MetersEventsRequest",
-    "MetersEventsRequestTypedDict",
-    "MetersEventsResponse",
-    "MetersEventsResponseTypedDict",
     "MetersGetRequest",
     "MetersGetRequestTypedDict",
     "MetersListQueryParamOrganizationIDFilter",
@@ -2879,6 +3026,8 @@ __all__ = [
     "MetersListResponseTypedDict",
     "MetersQuantitiesQueryParamCustomerIDFilter",
     "MetersQuantitiesQueryParamCustomerIDFilterTypedDict",
+    "MetersQuantitiesQueryParamExternalCustomerIDFilter",
+    "MetersQuantitiesQueryParamExternalCustomerIDFilterTypedDict",
     "MetersQuantitiesRequest",
     "MetersQuantitiesRequestTypedDict",
     "MetersUpdateRequest",
@@ -2906,6 +3055,8 @@ __all__ = [
     "MetricsResponse",
     "MetricsResponseTypedDict",
     "MetricsTypedDict",
+    "NameFilter",
+    "NameFilterTypedDict",
     "NotOpenCheckout",
     "NotOpenCheckoutData",
     "NotPermitted",
@@ -3127,6 +3278,8 @@ __all__ = [
     "QueryParamDiscountIDFilterTypedDict",
     "QueryParamExternalCustomerIDFilter",
     "QueryParamExternalCustomerIDFilterTypedDict",
+    "QueryParamMeterIDFilter",
+    "QueryParamMeterIDFilterTypedDict",
     "QueryParamOrderIDFilter",
     "QueryParamOrderIDFilterTypedDict",
     "QueryParamOrganizationIDFilter",
@@ -3268,6 +3421,8 @@ __all__ = [
     "TokenTypeHint",
     "Unauthorized",
     "UnauthorizedData",
+    "UnitAmount",
+    "UnitAmountTypedDict",
     "UserInfoOrganization",
     "UserInfoOrganizationTypedDict",
     "UserInfoUser",
