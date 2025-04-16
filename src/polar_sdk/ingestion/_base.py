@@ -1,5 +1,6 @@
 import atexit
 import contextlib
+import datetime
 import logging
 import queue
 import threading
@@ -12,6 +13,8 @@ from polar_sdk import Polar
 if TYPE_CHECKING:
     from polar_sdk import EventsModelTypedDict
 
+    from .strategies._base import S
+
 logger = logging.getLogger("polar_sdk.ingestion")
 
 
@@ -20,7 +23,7 @@ class Ingestion:
     Event ingestion client for Polar.
 
     This class handles the ingestion of events into the Polar API without blocking
-    the main thread, by using background thread sending them in batches.
+    the main thread, by using a background thread sending them in batches.
 
     :param access_token: The access_token required for authentication
     :param server: The server by name to use for all methods
@@ -58,12 +61,23 @@ class Ingestion:
 
         atexit.register(self.close)
 
+    def strategy(self, strategy_class: type["S"], event_name: str) -> "S":
+        """
+        Instantiate a strategy tied to this ingestion client.
+
+        :param strategy_class: The strategy class to instantiate.
+        :param event_name: The name of the events that'll be reported by the strategy.
+        """
+        return strategy_class(event_name, self)
+
     def ingest(self, event: "EventsModelTypedDict") -> None:
         """
         Send an event to the ingestion queue.
 
         :param event: The event to send.
         """
+        if event.get("timestamp") is None:
+            event["timestamp"] = datetime.datetime.now(datetime.timezone.utc)
         self._queue.put(event, block=False)
 
     def flush(self, max_batch_size: Union[int, None] = None) -> None:
