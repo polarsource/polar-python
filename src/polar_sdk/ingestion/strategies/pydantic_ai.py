@@ -14,7 +14,7 @@ class PydanticAIStrategy(BaseStrategy):
     An ingestion strategy to report usage from PydanticAI agent runs.
     """
 
-    def ingest(
+    def ingest(  # pylint: disable=W
         self,
         external_customer_id: str,
         result: AgentRunResult[Any],
