@@ -18,7 +18,7 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
 python:
-  version: 0.17.1
+  version: 0.17.2
   additionalDependencies:
     dev:
       pydantic-ai-slim: ^0.1.0
