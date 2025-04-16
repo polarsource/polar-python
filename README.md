@@ -239,7 +239,7 @@ with Polar() as polar:
                         created_at=dateutil.parser.isoparse("2025-11-18T07:12:26.749Z"),
                         modified_at=dateutil.parser.isoparse("2024-08-14T14:29:29.201Z"),
                         metadata={
-                            "key": False,
+                            "key": 648726,
                         },
                         type=polar_sdk.BenefitType.GITHUB_REPOSITORY,
                         description="phew empty flawed worth radiant anti of blissfully",
@@ -253,7 +253,7 @@ with Polar() as polar:
                         modified_at=dateutil.parser.isoparse("2024-06-27T20:20:27.400Z"),
                         metadata={
                             "key": 8517.45,
-                            "key1": 5003.72,
+                            "key1": "<value>",
                         },
                         type=polar_sdk.BenefitType.LICENSE_KEYS,
                         description="ack neatly jagged as weekly drat nor why",
@@ -296,22 +296,14 @@ with Polar() as polar:
                     ),
                 ],
             ),
-            product_price=polar_sdk.ProductPriceMeteredUnit(
-                created_at=dateutil.parser.isoparse("2025-06-18T23:55:22.042Z"),
-                modified_at=dateutil.parser.isoparse("2025-07-31T13:25:31.669Z"),
+            product_price=polar_sdk.ProductPriceFree(
+                created_at=dateutil.parser.isoparse("2024-07-02T09:46:29.338Z"),
+                modified_at=dateutil.parser.isoparse("2025-01-24T18:08:49.597Z"),
                 id="<value>",
                 is_archived=False,
                 product_id="<value>",
-                type=polar_sdk.ProductPriceType.ONE_TIME,
-                recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
-                price_currency="<value>",
-                unit_amount="<value>",
-                cap_amount=626642,
-                meter_id="<value>",
-                meter=polar_sdk.ProductPriceMeter(
-                    id="<value>",
-                    name="<value>",
-                ),
+                type=polar_sdk.ProductPriceType.RECURRING,
+                recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
             ),
             discount=polar_sdk.CheckoutDiscountPercentageRepeatDuration(
                 duration=polar_sdk.DiscountDuration.FOREVER,
@@ -326,58 +318,51 @@ with Polar() as polar:
             attached_custom_fields=[
                 polar_sdk.AttachedCustomField(
                     custom_field_id="<value>",
-                    custom_field=polar_sdk.CustomFieldDate(
-                        created_at=dateutil.parser.isoparse("2024-02-07T04:30:48.802Z"),
-                        modified_at=dateutil.parser.isoparse("2025-06-25T22:47:14.264Z"),
+                    custom_field=polar_sdk.CustomFieldText(
+                        created_at=dateutil.parser.isoparse("2023-11-12T09:40:10.044Z"),
+                        modified_at=dateutil.parser.isoparse("2023-08-29T09:50:00.241Z"),
                         id="<value>",
                         metadata={
-                            "key": 4995.26,
+                            "key": 3852.18,
                         },
                         slug="<value>",
                         name="<value>",
                         organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-                        properties=polar_sdk.CustomFieldDateProperties(),
+                        properties=polar_sdk.CustomFieldTextProperties(),
                     ),
                     order=192934,
                     required=True,
                 ),
                 polar_sdk.AttachedCustomField(
                     custom_field_id="<value>",
-                    custom_field=polar_sdk.CustomFieldCheckbox(
-                        created_at=dateutil.parser.isoparse("2024-08-14T19:11:10.463Z"),
-                        modified_at=dateutil.parser.isoparse("2023-04-15T12:36:50.681Z"),
+                    custom_field=polar_sdk.CustomFieldDate(
+                        created_at=dateutil.parser.isoparse("2025-06-25T22:47:14.264Z"),
+                        modified_at=dateutil.parser.isoparse("2025-01-27T19:10:37.564Z"),
                         id="<value>",
                         metadata={
-                            "key": "<value>",
+                            "key": 18677,
                         },
                         slug="<value>",
                         name="<value>",
                         organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-                        properties=polar_sdk.CustomFieldCheckboxProperties(),
+                        properties=polar_sdk.CustomFieldDateProperties(),
                     ),
                     order=597839,
                     required=False,
                 ),
                 polar_sdk.AttachedCustomField(
                     custom_field_id="<value>",
-                    custom_field=polar_sdk.CustomFieldSelect(
-                        created_at=dateutil.parser.isoparse("2025-03-22T08:44:11.595Z"),
-                        modified_at=dateutil.parser.isoparse("2024-09-02T09:05:14.886Z"),
+                    custom_field=polar_sdk.CustomFieldNumber(
+                        created_at=dateutil.parser.isoparse("2023-04-15T12:36:50.681Z"),
+                        modified_at=dateutil.parser.isoparse("2023-04-02T00:05:42.586Z"),
                         id="<value>",
                         metadata={
-                            "key": False,
+                            "key": 7402.96,
                         },
                         slug="<value>",
                         name="<value>",
                         organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-                        properties=polar_sdk.CustomFieldSelectProperties(
-                            options=[
-                                polar_sdk.CustomFieldSelectOption(
-                                    value="<value>",
-                                    label="<value>",
-                                ),
-                            ],
-                        ),
+                        properties=polar_sdk.CustomFieldNumberProperties(),
                     ),
                     order=660585,
                     required=False,
@@ -463,24 +448,30 @@ async def main():
                         is_archived=False,
                         organization_id="<value>",
                         prices=[
-                            polar_sdk.ProductPriceFixed(
-                                created_at=dateutil.parser.isoparse("2024-12-24T07:52:43.518Z"),
-                                modified_at=dateutil.parser.isoparse("2023-04-26T22:34:57.487Z"),
+                            polar_sdk.ProductPriceMeteredUnit(
+                                created_at=dateutil.parser.isoparse("2024-12-13T18:25:33.693Z"),
+                                modified_at=dateutil.parser.isoparse("2023-01-09T04:38:53.436Z"),
                                 id="<value>",
                                 is_archived=False,
                                 product_id="<value>",
-                                type=polar_sdk.ProductPriceType.ONE_TIME,
+                                type=polar_sdk.ProductPriceType.RECURRING,
                                 recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
                                 price_currency="<value>",
-                                price_amount=856200,
+                                unit_amount="<value>",
+                                cap_amount=199664,
+                                meter_id="<value>",
+                                meter=polar_sdk.ProductPriceMeter(
+                                    id="<value>",
+                                    name="<value>",
+                                ),
                             ),
                             polar_sdk.LegacyRecurringProductPriceFree(
-                                created_at=dateutil.parser.isoparse("2024-11-27T14:29:40.329Z"),
-                                modified_at=dateutil.parser.isoparse("2025-12-25T02:24:08.035Z"),
+                                created_at=dateutil.parser.isoparse("2023-01-25T05:44:56.791Z"),
+                                modified_at=dateutil.parser.isoparse("2025-05-25T15:20:50.694Z"),
                                 id="<value>",
                                 is_archived=False,
                                 product_id="<value>",
-                                recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
+                                recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
                             ),
                         ],
                         benefits=[
@@ -527,7 +518,7 @@ async def main():
                             created_at=dateutil.parser.isoparse("2025-11-18T07:12:26.749Z"),
                             modified_at=dateutil.parser.isoparse("2024-08-14T14:29:29.201Z"),
                             metadata={
-                                "key": 7454.42,
+                                "key": 648726,
                             },
                             type=polar_sdk.BenefitType.GITHUB_REPOSITORY,
                             description="phew empty flawed worth radiant anti of blissfully",
@@ -585,17 +576,17 @@ async def main():
                     ],
                 ),
                 product_price=polar_sdk.ProductPriceCustom(
-                    created_at=dateutil.parser.isoparse("2025-03-10T15:40:27.607Z"),
-                    modified_at=dateutil.parser.isoparse("2025-09-19T22:43:39.176Z"),
+                    created_at=dateutil.parser.isoparse("2024-12-18T06:26:25.293Z"),
+                    modified_at=dateutil.parser.isoparse("2025-03-28T00:06:24.086Z"),
                     id="<value>",
                     is_archived=False,
                     product_id="<value>",
-                    type=polar_sdk.ProductPriceType.RECURRING,
+                    type=polar_sdk.ProductPriceType.ONE_TIME,
                     recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
                     price_currency="<value>",
-                    minimum_amount=774323,
-                    maximum_amount=538461,
-                    preset_amount=729540,
+                    minimum_amount=476477,
+                    maximum_amount=729611,
+                    preset_amount=905974,
                 ),
                 discount=polar_sdk.CheckoutDiscountPercentageRepeatDuration(
                     duration=polar_sdk.DiscountDuration.FOREVER,
@@ -608,6 +599,23 @@ async def main():
                 ),
                 subscription_id="<value>",
                 attached_custom_fields=[
+                    polar_sdk.AttachedCustomField(
+                        custom_field_id="<value>",
+                        custom_field=polar_sdk.CustomFieldNumber(
+                            created_at=dateutil.parser.isoparse("2025-10-29T00:32:24.235Z"),
+                            modified_at=dateutil.parser.isoparse("2025-04-28T15:46:25.145Z"),
+                            id="<value>",
+                            metadata={
+                                "key": 7295.4,
+                            },
+                            slug="<value>",
+                            name="<value>",
+                            organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+                            properties=polar_sdk.CustomFieldNumberProperties(),
+                        ),
+                        order=192934,
+                        required=True,
+                    ),
                     polar_sdk.AttachedCustomField(
                         custom_field_id="<value>",
                         custom_field=polar_sdk.CustomFieldSelect(
@@ -629,8 +637,8 @@ async def main():
                                 ],
                             ),
                         ),
-                        order=192934,
-                        required=True,
+                        order=597839,
+                        required=False,
                     ),
                     polar_sdk.AttachedCustomField(
                         custom_field_id="<value>",
@@ -645,30 +653,6 @@ async def main():
                             name="<value>",
                             organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737",
                             properties=polar_sdk.CustomFieldDateProperties(),
-                        ),
-                        order=597839,
-                        required=False,
-                    ),
-                    polar_sdk.AttachedCustomField(
-                        custom_field_id="<value>",
-                        custom_field=polar_sdk.CustomFieldSelect(
-                            created_at=dateutil.parser.isoparse("2025-11-05T18:06:37.266Z"),
-                            modified_at=dateutil.parser.isoparse("2025-05-05T09:05:51.688Z"),
-                            id="<value>",
-                            metadata={
-                                "key": "<value>",
-                            },
-                            slug="<value>",
-                            name="<value>",
-                            organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-                            properties=polar_sdk.CustomFieldSelectProperties(
-                                options=[
-                                    polar_sdk.CustomFieldSelectOption(
-                                        value="<value>",
-                                        label="<value>",
-                                    ),
-                                ],
-                            ),
                         ),
                         order=660585,
                         required=False,
