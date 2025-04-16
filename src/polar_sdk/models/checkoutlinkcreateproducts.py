@@ -11,12 +11,12 @@ from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 CheckoutLinkCreateProductsMetadataTypedDict = TypeAliasType(
-    "CheckoutLinkCreateProductsMetadataTypedDict", Union[str, int, bool]
+    "CheckoutLinkCreateProductsMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 CheckoutLinkCreateProductsMetadata = TypeAliasType(
-    "CheckoutLinkCreateProductsMetadata", Union[str, int, bool]
+    "CheckoutLinkCreateProductsMetadata", Union[str, int, float, bool]
 )
 
 
@@ -33,6 +33,7 @@ class CheckoutLinkCreateProductsTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -63,6 +64,7 @@ class CheckoutLinkCreateProducts(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

@@ -15,12 +15,12 @@ from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 CustomFieldCreateNumberMetadataTypedDict = TypeAliasType(
-    "CustomFieldCreateNumberMetadataTypedDict", Union[str, int, bool]
+    "CustomFieldCreateNumberMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 CustomFieldCreateNumberMetadata = TypeAliasType(
-    "CustomFieldCreateNumberMetadata", Union[str, int, bool]
+    "CustomFieldCreateNumberMetadata", Union[str, int, float, bool]
 )
 
 
@@ -40,6 +40,7 @@ class CustomFieldCreateNumberTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -68,6 +69,7 @@ class CustomFieldCreateNumber(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

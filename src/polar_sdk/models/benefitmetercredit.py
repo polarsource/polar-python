@@ -11,8 +11,18 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Literal
-from typing_extensions import Annotated, TypedDict
+from typing import Dict, Literal, Union
+from typing_extensions import Annotated, TypeAliasType, TypedDict
+
+
+BenefitMeterCreditMetadataTypedDict = TypeAliasType(
+    "BenefitMeterCreditMetadataTypedDict", Union[str, int, float, bool]
+)
+
+
+BenefitMeterCreditMetadata = TypeAliasType(
+    "BenefitMeterCreditMetadata", Union[str, int, float, bool]
+)
 
 
 class BenefitMeterCreditTypedDict(TypedDict):
@@ -21,12 +31,13 @@ class BenefitMeterCreditTypedDict(TypedDict):
     Use it to grant a number of units on a specific meter.
     """
 
+    id: str
+    r"""The ID of the benefit."""
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    id: str
-    r"""The ID of the benefit."""
+    metadata: Dict[str, BenefitMeterCreditMetadataTypedDict]
     description: str
     r"""The description of the benefit."""
     selectable: bool
@@ -46,14 +57,16 @@ class BenefitMeterCredit(BaseModel):
     Use it to grant a number of units on a specific meter.
     """
 
+    id: str
+    r"""The ID of the benefit."""
+
     created_at: datetime
     r"""Creation timestamp of the object."""
 
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    id: str
-    r"""The ID of the benefit."""
+    metadata: Dict[str, BenefitMeterCreditMetadata]
 
     description: str
     r"""The description of the benefit."""

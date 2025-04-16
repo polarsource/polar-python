@@ -26,10 +26,25 @@ from .authorizeresponseorganization import (
 from .authorizeresponseuser import AuthorizeResponseUser, AuthorizeResponseUserTypedDict
 from .authorizeuser import AuthorizeUser, AuthorizeUserTypedDict
 from .benefit import Benefit, BenefitTypedDict
-from .benefitbase import BenefitBase, BenefitBaseTypedDict
+from .benefitbase import (
+    BenefitBase,
+    BenefitBaseMetadata,
+    BenefitBaseMetadataTypedDict,
+    BenefitBaseTypedDict,
+)
 from .benefitcreate import BenefitCreate, BenefitCreateTypedDict
-from .benefitcustom import BenefitCustom, BenefitCustomTypedDict
-from .benefitcustomcreate import BenefitCustomCreate, BenefitCustomCreateTypedDict
+from .benefitcustom import (
+    BenefitCustom,
+    BenefitCustomMetadata,
+    BenefitCustomMetadataTypedDict,
+    BenefitCustomTypedDict,
+)
+from .benefitcustomcreate import (
+    BenefitCustomCreate,
+    BenefitCustomCreateMetadata,
+    BenefitCustomCreateMetadataTypedDict,
+    BenefitCustomCreateTypedDict,
+)
 from .benefitcustomcreateproperties import (
     BenefitCustomCreateProperties,
     BenefitCustomCreatePropertiesTypedDict,
@@ -40,15 +55,32 @@ from .benefitcustomproperties import (
 )
 from .benefitcustomsubscriber import (
     BenefitCustomSubscriber,
+    BenefitCustomSubscriberMetadata,
+    BenefitCustomSubscriberMetadataTypedDict,
     BenefitCustomSubscriberTypedDict,
 )
 from .benefitcustomsubscriberproperties import (
     BenefitCustomSubscriberProperties,
     BenefitCustomSubscriberPropertiesTypedDict,
 )
-from .benefitcustomupdate import BenefitCustomUpdate, BenefitCustomUpdateTypedDict
-from .benefitdiscord import BenefitDiscord, BenefitDiscordTypedDict
-from .benefitdiscordcreate import BenefitDiscordCreate, BenefitDiscordCreateTypedDict
+from .benefitcustomupdate import (
+    BenefitCustomUpdate,
+    BenefitCustomUpdateMetadata,
+    BenefitCustomUpdateMetadataTypedDict,
+    BenefitCustomUpdateTypedDict,
+)
+from .benefitdiscord import (
+    BenefitDiscord,
+    BenefitDiscordMetadata,
+    BenefitDiscordMetadataTypedDict,
+    BenefitDiscordTypedDict,
+)
+from .benefitdiscordcreate import (
+    BenefitDiscordCreate,
+    BenefitDiscordCreateMetadata,
+    BenefitDiscordCreateMetadataTypedDict,
+    BenefitDiscordCreateTypedDict,
+)
 from .benefitdiscordcreateproperties import (
     BenefitDiscordCreateProperties,
     BenefitDiscordCreatePropertiesTypedDict,
@@ -59,16 +91,30 @@ from .benefitdiscordproperties import (
 )
 from .benefitdiscordsubscriber import (
     BenefitDiscordSubscriber,
+    BenefitDiscordSubscriberMetadata,
+    BenefitDiscordSubscriberMetadataTypedDict,
     BenefitDiscordSubscriberTypedDict,
 )
 from .benefitdiscordsubscriberproperties import (
     BenefitDiscordSubscriberProperties,
     BenefitDiscordSubscriberPropertiesTypedDict,
 )
-from .benefitdiscordupdate import BenefitDiscordUpdate, BenefitDiscordUpdateTypedDict
-from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesTypedDict
+from .benefitdiscordupdate import (
+    BenefitDiscordUpdate,
+    BenefitDiscordUpdateMetadata,
+    BenefitDiscordUpdateMetadataTypedDict,
+    BenefitDiscordUpdateTypedDict,
+)
+from .benefitdownloadables import (
+    BenefitDownloadables,
+    BenefitDownloadablesMetadata,
+    BenefitDownloadablesMetadataTypedDict,
+    BenefitDownloadablesTypedDict,
+)
 from .benefitdownloadablescreate import (
     BenefitDownloadablesCreate,
+    BenefitDownloadablesCreateMetadata,
+    BenefitDownloadablesCreateMetadataTypedDict,
     BenefitDownloadablesCreateTypedDict,
 )
 from .benefitdownloadablescreateproperties import (
@@ -81,6 +127,8 @@ from .benefitdownloadablesproperties import (
 )
 from .benefitdownloadablessubscriber import (
     BenefitDownloadablesSubscriber,
+    BenefitDownloadablesSubscriberMetadata,
+    BenefitDownloadablesSubscriberMetadataTypedDict,
     BenefitDownloadablesSubscriberTypedDict,
 )
 from .benefitdownloadablessubscriberproperties import (
@@ -89,14 +137,20 @@ from .benefitdownloadablessubscriberproperties import (
 )
 from .benefitdownloadablesupdate import (
     BenefitDownloadablesUpdate,
+    BenefitDownloadablesUpdateMetadata,
+    BenefitDownloadablesUpdateMetadataTypedDict,
     BenefitDownloadablesUpdateTypedDict,
 )
 from .benefitgithubrepository import (
     BenefitGitHubRepository,
+    BenefitGitHubRepositoryMetadata,
+    BenefitGitHubRepositoryMetadataTypedDict,
     BenefitGitHubRepositoryTypedDict,
 )
 from .benefitgithubrepositorycreate import (
     BenefitGitHubRepositoryCreate,
+    BenefitGitHubRepositoryCreateMetadata,
+    BenefitGitHubRepositoryCreateMetadataTypedDict,
     BenefitGitHubRepositoryCreateTypedDict,
 )
 from .benefitgithubrepositorycreateproperties import (
@@ -111,6 +165,8 @@ from .benefitgithubrepositoryproperties import (
 )
 from .benefitgithubrepositorysubscriber import (
     BenefitGitHubRepositorySubscriber,
+    BenefitGitHubRepositorySubscriberMetadata,
+    BenefitGitHubRepositorySubscriberMetadataTypedDict,
     BenefitGitHubRepositorySubscriberTypedDict,
 )
 from .benefitgithubrepositorysubscriberproperties import (
@@ -119,6 +175,8 @@ from .benefitgithubrepositorysubscriberproperties import (
 )
 from .benefitgithubrepositoryupdate import (
     BenefitGitHubRepositoryUpdate,
+    BenefitGitHubRepositoryUpdateMetadata,
+    BenefitGitHubRepositoryUpdateMetadataTypedDict,
     BenefitGitHubRepositoryUpdateTypedDict,
 )
 from .benefitgrant import (
@@ -173,9 +231,16 @@ from .benefitlicensekeyexpirationproperties import (
     BenefitLicenseKeyExpirationPropertiesTypedDict,
     Timeframe,
 )
-from .benefitlicensekeys import BenefitLicenseKeys, BenefitLicenseKeysTypedDict
+from .benefitlicensekeys import (
+    BenefitLicenseKeys,
+    BenefitLicenseKeysMetadata,
+    BenefitLicenseKeysMetadataTypedDict,
+    BenefitLicenseKeysTypedDict,
+)
 from .benefitlicensekeyscreate import (
     BenefitLicenseKeysCreate,
+    BenefitLicenseKeysCreateMetadata,
+    BenefitLicenseKeysCreateMetadataTypedDict,
     BenefitLicenseKeysCreateTypedDict,
 )
 from .benefitlicensekeyscreateproperties import (
@@ -188,6 +253,8 @@ from .benefitlicensekeysproperties import (
 )
 from .benefitlicensekeyssubscriber import (
     BenefitLicenseKeysSubscriber,
+    BenefitLicenseKeysSubscriberMetadata,
+    BenefitLicenseKeysSubscriberMetadataTypedDict,
     BenefitLicenseKeysSubscriberTypedDict,
 )
 from .benefitlicensekeyssubscriberproperties import (
@@ -196,11 +263,20 @@ from .benefitlicensekeyssubscriberproperties import (
 )
 from .benefitlicensekeysupdate import (
     BenefitLicenseKeysUpdate,
+    BenefitLicenseKeysUpdateMetadata,
+    BenefitLicenseKeysUpdateMetadataTypedDict,
     BenefitLicenseKeysUpdateTypedDict,
 )
-from .benefitmetercredit import BenefitMeterCredit, BenefitMeterCreditTypedDict
+from .benefitmetercredit import (
+    BenefitMeterCredit,
+    BenefitMeterCreditMetadata,
+    BenefitMeterCreditMetadataTypedDict,
+    BenefitMeterCreditTypedDict,
+)
 from .benefitmetercreditcreate import (
     BenefitMeterCreditCreate,
+    BenefitMeterCreditCreateMetadata,
+    BenefitMeterCreditCreateMetadataTypedDict,
     BenefitMeterCreditCreateTypedDict,
 )
 from .benefitmetercreditcreateproperties import (
@@ -213,6 +289,8 @@ from .benefitmetercreditproperties import (
 )
 from .benefitmetercreditsubscriber import (
     BenefitMeterCreditSubscriber,
+    BenefitMeterCreditSubscriberMetadata,
+    BenefitMeterCreditSubscriberMetadataTypedDict,
     BenefitMeterCreditSubscriberTypedDict,
 )
 from .benefitmetercreditsubscriberproperties import (
@@ -221,6 +299,8 @@ from .benefitmetercreditsubscriberproperties import (
 )
 from .benefitmetercreditupdate import (
     BenefitMeterCreditUpdate,
+    BenefitMeterCreditUpdateMetadata,
+    BenefitMeterCreditUpdateMetadataTypedDict,
     BenefitMeterCreditUpdateTypedDict,
 )
 from .benefits_deleteop import BenefitsDeleteRequest, BenefitsDeleteRequestTypedDict
@@ -1178,6 +1258,8 @@ from .events_list_namesop import (
     EventsListNamesResponseTypedDict,
     QueryParamExternalCustomerIDFilter,
     QueryParamExternalCustomerIDFilterTypedDict,
+    QueryParamSourceFilter,
+    QueryParamSourceFilterTypedDict,
 )
 from .eventsingest import (
     EventsIngest,
@@ -1943,65 +2025,99 @@ __all__ = [
     "AuthorizeUserTypedDict",
     "Benefit",
     "BenefitBase",
+    "BenefitBaseMetadata",
+    "BenefitBaseMetadataTypedDict",
     "BenefitBaseTypedDict",
     "BenefitCreate",
     "BenefitCreateTypedDict",
     "BenefitCustom",
     "BenefitCustomCreate",
+    "BenefitCustomCreateMetadata",
+    "BenefitCustomCreateMetadataTypedDict",
     "BenefitCustomCreateProperties",
     "BenefitCustomCreatePropertiesTypedDict",
     "BenefitCustomCreateTypedDict",
+    "BenefitCustomMetadata",
+    "BenefitCustomMetadataTypedDict",
     "BenefitCustomProperties",
     "BenefitCustomPropertiesTypedDict",
     "BenefitCustomSubscriber",
+    "BenefitCustomSubscriberMetadata",
+    "BenefitCustomSubscriberMetadataTypedDict",
     "BenefitCustomSubscriberProperties",
     "BenefitCustomSubscriberPropertiesTypedDict",
     "BenefitCustomSubscriberTypedDict",
     "BenefitCustomTypedDict",
     "BenefitCustomUpdate",
+    "BenefitCustomUpdateMetadata",
+    "BenefitCustomUpdateMetadataTypedDict",
     "BenefitCustomUpdateTypedDict",
     "BenefitDiscord",
     "BenefitDiscordCreate",
+    "BenefitDiscordCreateMetadata",
+    "BenefitDiscordCreateMetadataTypedDict",
     "BenefitDiscordCreateProperties",
     "BenefitDiscordCreatePropertiesTypedDict",
     "BenefitDiscordCreateTypedDict",
+    "BenefitDiscordMetadata",
+    "BenefitDiscordMetadataTypedDict",
     "BenefitDiscordProperties",
     "BenefitDiscordPropertiesTypedDict",
     "BenefitDiscordSubscriber",
+    "BenefitDiscordSubscriberMetadata",
+    "BenefitDiscordSubscriberMetadataTypedDict",
     "BenefitDiscordSubscriberProperties",
     "BenefitDiscordSubscriberPropertiesTypedDict",
     "BenefitDiscordSubscriberTypedDict",
     "BenefitDiscordTypedDict",
     "BenefitDiscordUpdate",
+    "BenefitDiscordUpdateMetadata",
+    "BenefitDiscordUpdateMetadataTypedDict",
     "BenefitDiscordUpdateTypedDict",
     "BenefitDownloadables",
     "BenefitDownloadablesCreate",
+    "BenefitDownloadablesCreateMetadata",
+    "BenefitDownloadablesCreateMetadataTypedDict",
     "BenefitDownloadablesCreateProperties",
     "BenefitDownloadablesCreatePropertiesTypedDict",
     "BenefitDownloadablesCreateTypedDict",
+    "BenefitDownloadablesMetadata",
+    "BenefitDownloadablesMetadataTypedDict",
     "BenefitDownloadablesProperties",
     "BenefitDownloadablesPropertiesTypedDict",
     "BenefitDownloadablesSubscriber",
+    "BenefitDownloadablesSubscriberMetadata",
+    "BenefitDownloadablesSubscriberMetadataTypedDict",
     "BenefitDownloadablesSubscriberProperties",
     "BenefitDownloadablesSubscriberPropertiesTypedDict",
     "BenefitDownloadablesSubscriberTypedDict",
     "BenefitDownloadablesTypedDict",
     "BenefitDownloadablesUpdate",
+    "BenefitDownloadablesUpdateMetadata",
+    "BenefitDownloadablesUpdateMetadataTypedDict",
     "BenefitDownloadablesUpdateTypedDict",
     "BenefitGitHubRepository",
     "BenefitGitHubRepositoryCreate",
+    "BenefitGitHubRepositoryCreateMetadata",
+    "BenefitGitHubRepositoryCreateMetadataTypedDict",
     "BenefitGitHubRepositoryCreateProperties",
     "BenefitGitHubRepositoryCreatePropertiesPermission",
     "BenefitGitHubRepositoryCreatePropertiesTypedDict",
     "BenefitGitHubRepositoryCreateTypedDict",
+    "BenefitGitHubRepositoryMetadata",
+    "BenefitGitHubRepositoryMetadataTypedDict",
     "BenefitGitHubRepositoryProperties",
     "BenefitGitHubRepositoryPropertiesTypedDict",
     "BenefitGitHubRepositorySubscriber",
+    "BenefitGitHubRepositorySubscriberMetadata",
+    "BenefitGitHubRepositorySubscriberMetadataTypedDict",
     "BenefitGitHubRepositorySubscriberProperties",
     "BenefitGitHubRepositorySubscriberPropertiesTypedDict",
     "BenefitGitHubRepositorySubscriberTypedDict",
     "BenefitGitHubRepositoryTypedDict",
     "BenefitGitHubRepositoryUpdate",
+    "BenefitGitHubRepositoryUpdateMetadata",
+    "BenefitGitHubRepositoryUpdateMetadataTypedDict",
     "BenefitGitHubRepositoryUpdateTypedDict",
     "BenefitGrant",
     "BenefitGrantCustomProperties",
@@ -2032,31 +2148,47 @@ __all__ = [
     "BenefitLicenseKeyExpirationPropertiesTypedDict",
     "BenefitLicenseKeys",
     "BenefitLicenseKeysCreate",
+    "BenefitLicenseKeysCreateMetadata",
+    "BenefitLicenseKeysCreateMetadataTypedDict",
     "BenefitLicenseKeysCreateProperties",
     "BenefitLicenseKeysCreatePropertiesTypedDict",
     "BenefitLicenseKeysCreateTypedDict",
+    "BenefitLicenseKeysMetadata",
+    "BenefitLicenseKeysMetadataTypedDict",
     "BenefitLicenseKeysProperties",
     "BenefitLicenseKeysPropertiesTypedDict",
     "BenefitLicenseKeysSubscriber",
+    "BenefitLicenseKeysSubscriberMetadata",
+    "BenefitLicenseKeysSubscriberMetadataTypedDict",
     "BenefitLicenseKeysSubscriberProperties",
     "BenefitLicenseKeysSubscriberPropertiesTypedDict",
     "BenefitLicenseKeysSubscriberTypedDict",
     "BenefitLicenseKeysTypedDict",
     "BenefitLicenseKeysUpdate",
+    "BenefitLicenseKeysUpdateMetadata",
+    "BenefitLicenseKeysUpdateMetadataTypedDict",
     "BenefitLicenseKeysUpdateTypedDict",
     "BenefitMeterCredit",
     "BenefitMeterCreditCreate",
+    "BenefitMeterCreditCreateMetadata",
+    "BenefitMeterCreditCreateMetadataTypedDict",
     "BenefitMeterCreditCreateProperties",
     "BenefitMeterCreditCreatePropertiesTypedDict",
     "BenefitMeterCreditCreateTypedDict",
+    "BenefitMeterCreditMetadata",
+    "BenefitMeterCreditMetadataTypedDict",
     "BenefitMeterCreditProperties",
     "BenefitMeterCreditPropertiesTypedDict",
     "BenefitMeterCreditSubscriber",
+    "BenefitMeterCreditSubscriberMetadata",
+    "BenefitMeterCreditSubscriberMetadataTypedDict",
     "BenefitMeterCreditSubscriberProperties",
     "BenefitMeterCreditSubscriberPropertiesTypedDict",
     "BenefitMeterCreditSubscriberTypedDict",
     "BenefitMeterCreditTypedDict",
     "BenefitMeterCreditUpdate",
+    "BenefitMeterCreditUpdateMetadata",
+    "BenefitMeterCreditUpdateMetadataTypedDict",
     "BenefitMeterCreditUpdateTypedDict",
     "BenefitSortProperty",
     "BenefitType",
@@ -3188,6 +3320,8 @@ __all__ = [
     "QueryParamProductIDFilterTypedDict",
     "QueryParamProductPriceTypeFilter",
     "QueryParamProductPriceTypeFilterTypedDict",
+    "QueryParamSourceFilter",
+    "QueryParamSourceFilterTypedDict",
     "QueryParamSubscriptionIDFilter",
     "QueryParamSubscriptionIDFilterTypedDict",
     "RefreshTokenRequest",

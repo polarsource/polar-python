@@ -18,11 +18,11 @@ from typing_extensions import TypeAliasType, TypedDict
 
 
 ProductMetadataTypedDict = TypeAliasType(
-    "ProductMetadataTypedDict", Union[str, int, bool]
+    "ProductMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-ProductMetadata = TypeAliasType("ProductMetadata", Union[str, int, bool])
+ProductMetadata = TypeAliasType("ProductMetadata", Union[str, int, float, bool])
 
 
 PricesTypedDict = TypeAliasType(

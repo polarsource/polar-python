@@ -13,11 +13,11 @@ from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 MeterUpdateMetadataTypedDict = TypeAliasType(
-    "MeterUpdateMetadataTypedDict", Union[str, int, bool]
+    "MeterUpdateMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-MeterUpdateMetadata = TypeAliasType("MeterUpdateMetadata", Union[str, int, bool])
+MeterUpdateMetadata = TypeAliasType("MeterUpdateMetadata", Union[str, int, float, bool])
 
 
 AggregationTypedDict = TypeAliasType(
@@ -47,6 +47,7 @@ class MeterUpdateTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -68,6 +69,7 @@ class MeterUpdate(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

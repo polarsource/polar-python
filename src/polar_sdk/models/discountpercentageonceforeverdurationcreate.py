@@ -12,12 +12,12 @@ from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 DiscountPercentageOnceForeverDurationCreateMetadataTypedDict = TypeAliasType(
     "DiscountPercentageOnceForeverDurationCreateMetadataTypedDict",
-    Union[str, int, bool],
+    Union[str, int, float, bool],
 )
 
 
 DiscountPercentageOnceForeverDurationCreateMetadata = TypeAliasType(
-    "DiscountPercentageOnceForeverDurationCreateMetadata", Union[str, int, bool]
+    "DiscountPercentageOnceForeverDurationCreateMetadata", Union[str, int, float, bool]
 )
 
 
@@ -44,6 +44,7 @@ class DiscountPercentageOnceForeverDurationCreateTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -88,6 +89,7 @@ class DiscountPercentageOnceForeverDurationCreate(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

@@ -11,11 +11,13 @@ from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 DiscountUpdateMetadataTypedDict = TypeAliasType(
-    "DiscountUpdateMetadataTypedDict", Union[str, int, bool]
+    "DiscountUpdateMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-DiscountUpdateMetadata = TypeAliasType("DiscountUpdateMetadata", Union[str, int, bool])
+DiscountUpdateMetadata = TypeAliasType(
+    "DiscountUpdateMetadata", Union[str, int, float, bool]
+)
 
 
 class DiscountUpdateTypedDict(TypedDict):
@@ -29,6 +31,7 @@ class DiscountUpdateTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -58,6 +61,7 @@ class DiscountUpdate(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

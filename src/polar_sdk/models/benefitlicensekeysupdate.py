@@ -10,11 +10,34 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Literal
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing import Dict, Literal, Optional, Union
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+
+
+BenefitLicenseKeysUpdateMetadataTypedDict = TypeAliasType(
+    "BenefitLicenseKeysUpdateMetadataTypedDict", Union[str, int, float, bool]
+)
+
+
+BenefitLicenseKeysUpdateMetadata = TypeAliasType(
+    "BenefitLicenseKeysUpdateMetadata", Union[str, int, float, bool]
+)
 
 
 class BenefitLicenseKeysUpdateTypedDict(TypedDict):
+    metadata: NotRequired[Dict[str, BenefitLicenseKeysUpdateMetadataTypedDict]]
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A floating-point number
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
     description: NotRequired[Nullable[str]]
     r"""The description of the benefit. Will be displayed on products having this benefit."""
     type: Literal["license_keys"]
@@ -22,6 +45,20 @@ class BenefitLicenseKeysUpdateTypedDict(TypedDict):
 
 
 class BenefitLicenseKeysUpdate(BaseModel):
+    metadata: Optional[Dict[str, BenefitLicenseKeysUpdateMetadata]] = None
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A floating-point number
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
+
     description: OptionalNullable[str] = UNSET
     r"""The description of the benefit. Will be displayed on products having this benefit."""
 
@@ -36,7 +73,7 @@ class BenefitLicenseKeysUpdate(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["description", "properties"]
+        optional_fields = ["metadata", "description", "properties"]
         nullable_fields = ["description", "properties"]
         null_default_fields = []
 

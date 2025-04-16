@@ -15,6 +15,12 @@ value: str = /* values here */
 value: int = /* values here */
 ```
 
+### `float`
+
+```python
+value: float = /* values here */
+```
+
 ### `bool`
 
 ```python

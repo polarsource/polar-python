@@ -10,8 +10,18 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Literal
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing import Dict, Literal, Optional, Union
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+
+
+BenefitGitHubRepositoryCreateMetadataTypedDict = TypeAliasType(
+    "BenefitGitHubRepositoryCreateMetadataTypedDict", Union[str, int, float, bool]
+)
+
+
+BenefitGitHubRepositoryCreateMetadata = TypeAliasType(
+    "BenefitGitHubRepositoryCreateMetadata", Union[str, int, float, bool]
+)
 
 
 class BenefitGitHubRepositoryCreateTypedDict(TypedDict):
@@ -19,6 +29,19 @@ class BenefitGitHubRepositoryCreateTypedDict(TypedDict):
     r"""The description of the benefit. Will be displayed on products having this benefit."""
     properties: BenefitGitHubRepositoryCreatePropertiesTypedDict
     r"""Properties to create a benefit of type `github_repository`."""
+    metadata: NotRequired[Dict[str, BenefitGitHubRepositoryCreateMetadataTypedDict]]
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A floating-point number
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
     type: Literal["github_repository"]
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the benefit. **Required unless you use an organization token.**"""
@@ -30,6 +53,20 @@ class BenefitGitHubRepositoryCreate(BaseModel):
 
     properties: BenefitGitHubRepositoryCreateProperties
     r"""Properties to create a benefit of type `github_repository`."""
+
+    metadata: Optional[Dict[str, BenefitGitHubRepositoryCreateMetadata]] = None
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A floating-point number
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
 
     TYPE: Annotated[
         Annotated[
@@ -44,7 +81,7 @@ class BenefitGitHubRepositoryCreate(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["organization_id"]
+        optional_fields = ["metadata", "organization_id"]
         nullable_fields = ["organization_id"]
         null_default_fields = []
 

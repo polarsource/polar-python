@@ -11,17 +11,28 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Literal
-from typing_extensions import Annotated, TypedDict
+from typing import Dict, Literal, Union
+from typing_extensions import Annotated, TypeAliasType, TypedDict
+
+
+BenefitLicenseKeysMetadataTypedDict = TypeAliasType(
+    "BenefitLicenseKeysMetadataTypedDict", Union[str, int, float, bool]
+)
+
+
+BenefitLicenseKeysMetadata = TypeAliasType(
+    "BenefitLicenseKeysMetadata", Union[str, int, float, bool]
+)
 
 
 class BenefitLicenseKeysTypedDict(TypedDict):
+    id: str
+    r"""The ID of the benefit."""
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    id: str
-    r"""The ID of the benefit."""
+    metadata: Dict[str, BenefitLicenseKeysMetadataTypedDict]
     description: str
     r"""The description of the benefit."""
     selectable: bool
@@ -35,14 +46,16 @@ class BenefitLicenseKeysTypedDict(TypedDict):
 
 
 class BenefitLicenseKeys(BaseModel):
+    id: str
+    r"""The ID of the benefit."""
+
     created_at: datetime
     r"""Creation timestamp of the object."""
 
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    id: str
-    r"""The ID of the benefit."""
+    metadata: Dict[str, BenefitLicenseKeysMetadata]
 
     description: str
     r"""The description of the benefit."""

@@ -46,11 +46,11 @@ CheckoutCustomFieldData = TypeAliasType(
 
 
 CheckoutMetadataTypedDict = TypeAliasType(
-    "CheckoutMetadataTypedDict", Union[str, int, bool]
+    "CheckoutMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-CheckoutMetadata = TypeAliasType("CheckoutMetadata", Union[str, int, bool])
+CheckoutMetadata = TypeAliasType("CheckoutMetadata", Union[str, int, float, bool])
 
 
 CheckoutProductPriceTypedDict = TypeAliasType(

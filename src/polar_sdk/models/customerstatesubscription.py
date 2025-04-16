@@ -27,12 +27,12 @@ CustomerStateSubscriptionCustomFieldData = TypeAliasType(
 
 
 CustomerStateSubscriptionMetadataTypedDict = TypeAliasType(
-    "CustomerStateSubscriptionMetadataTypedDict", Union[str, int, bool]
+    "CustomerStateSubscriptionMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 CustomerStateSubscriptionMetadata = TypeAliasType(
-    "CustomerStateSubscriptionMetadata", Union[str, int, bool]
+    "CustomerStateSubscriptionMetadata", Union[str, int, float, bool]
 )
 
 

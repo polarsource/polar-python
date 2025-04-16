@@ -11,8 +11,18 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Literal
-from typing_extensions import Annotated, TypedDict
+from typing import Dict, Literal, Union
+from typing_extensions import Annotated, TypeAliasType, TypedDict
+
+
+BenefitDiscordMetadataTypedDict = TypeAliasType(
+    "BenefitDiscordMetadataTypedDict", Union[str, int, float, bool]
+)
+
+
+BenefitDiscordMetadata = TypeAliasType(
+    "BenefitDiscordMetadata", Union[str, int, float, bool]
+)
 
 
 class BenefitDiscordTypedDict(TypedDict):
@@ -21,12 +31,13 @@ class BenefitDiscordTypedDict(TypedDict):
     Use it to automatically invite your backers to a Discord server.
     """
 
+    id: str
+    r"""The ID of the benefit."""
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    id: str
-    r"""The ID of the benefit."""
+    metadata: Dict[str, BenefitDiscordMetadataTypedDict]
     description: str
     r"""The description of the benefit."""
     selectable: bool
@@ -46,14 +57,16 @@ class BenefitDiscord(BaseModel):
     Use it to automatically invite your backers to a Discord server.
     """
 
+    id: str
+    r"""The ID of the benefit."""
+
     created_at: datetime
     r"""Creation timestamp of the object."""
 
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    id: str
-    r"""The ID of the benefit."""
+    metadata: Dict[str, BenefitDiscordMetadata]
 
     description: str
     r"""The description of the benefit."""

@@ -9,12 +9,12 @@ from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 EventCreateCustomerMetadataTypedDict = TypeAliasType(
-    "EventCreateCustomerMetadataTypedDict", Union[str, int, bool]
+    "EventCreateCustomerMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 EventCreateCustomerMetadata = TypeAliasType(
-    "EventCreateCustomerMetadata", Union[str, int, bool]
+    "EventCreateCustomerMetadata", Union[str, int, float, bool]
 )
 
 
@@ -31,6 +31,7 @@ class EventCreateCustomerTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -56,6 +57,7 @@ class EventCreateCustomer(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

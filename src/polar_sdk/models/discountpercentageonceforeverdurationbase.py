@@ -11,12 +11,13 @@ from typing_extensions import TypeAliasType, TypedDict
 
 
 DiscountPercentageOnceForeverDurationBaseMetadataTypedDict = TypeAliasType(
-    "DiscountPercentageOnceForeverDurationBaseMetadataTypedDict", Union[str, int, bool]
+    "DiscountPercentageOnceForeverDurationBaseMetadataTypedDict",
+    Union[str, int, float, bool],
 )
 
 
 DiscountPercentageOnceForeverDurationBaseMetadata = TypeAliasType(
-    "DiscountPercentageOnceForeverDurationBaseMetadata", Union[str, int, bool]
+    "DiscountPercentageOnceForeverDurationBaseMetadata", Union[str, int, float, bool]
 )
 
 

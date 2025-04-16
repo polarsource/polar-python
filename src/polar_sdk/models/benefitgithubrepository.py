@@ -11,8 +11,18 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Literal
-from typing_extensions import Annotated, TypedDict
+from typing import Dict, Literal, Union
+from typing_extensions import Annotated, TypeAliasType, TypedDict
+
+
+BenefitGitHubRepositoryMetadataTypedDict = TypeAliasType(
+    "BenefitGitHubRepositoryMetadataTypedDict", Union[str, int, float, bool]
+)
+
+
+BenefitGitHubRepositoryMetadata = TypeAliasType(
+    "BenefitGitHubRepositoryMetadata", Union[str, int, float, bool]
+)
 
 
 class BenefitGitHubRepositoryTypedDict(TypedDict):
@@ -21,12 +31,13 @@ class BenefitGitHubRepositoryTypedDict(TypedDict):
     Use it to automatically invite your backers to a private GitHub repository.
     """
 
+    id: str
+    r"""The ID of the benefit."""
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    id: str
-    r"""The ID of the benefit."""
+    metadata: Dict[str, BenefitGitHubRepositoryMetadataTypedDict]
     description: str
     r"""The description of the benefit."""
     selectable: bool
@@ -46,14 +57,16 @@ class BenefitGitHubRepository(BaseModel):
     Use it to automatically invite your backers to a private GitHub repository.
     """
 
+    id: str
+    r"""The ID of the benefit."""
+
     created_at: datetime
     r"""Creation timestamp of the object."""
 
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    id: str
-    r"""The ID of the benefit."""
+    metadata: Dict[str, BenefitGitHubRepositoryMetadata]
 
     description: str
     r"""The description of the benefit."""

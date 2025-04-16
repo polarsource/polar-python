@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .eventnamessortproperty import EventNamesSortProperty
+from .eventsource import EventSource
 from .listresource_eventname_ import (
     ListResourceEventName,
     ListResourceEventNameTypedDict,
@@ -49,6 +50,18 @@ QueryParamExternalCustomerIDFilter = TypeAliasType(
 r"""Filter by external customer ID."""
 
 
+QueryParamSourceFilterTypedDict = TypeAliasType(
+    "QueryParamSourceFilterTypedDict", Union[EventSource, List[EventSource]]
+)
+r"""Filter by event source."""
+
+
+QueryParamSourceFilter = TypeAliasType(
+    "QueryParamSourceFilter", Union[EventSource, List[EventSource]]
+)
+r"""Filter by event source."""
+
+
 class EventsListNamesRequestTypedDict(TypedDict):
     organization_id: NotRequired[
         Nullable[EventsListNamesQueryParamOrganizationIDFilterTypedDict]
@@ -62,6 +75,8 @@ class EventsListNamesRequestTypedDict(TypedDict):
         Nullable[QueryParamExternalCustomerIDFilterTypedDict]
     ]
     r"""Filter by external customer ID."""
+    source: NotRequired[Nullable[QueryParamSourceFilterTypedDict]]
+    r"""Filter by event source."""
     query: NotRequired[Nullable[str]]
     r"""Query to filter event names."""
     page: NotRequired[int]
@@ -90,6 +105,12 @@ class EventsListNamesRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by external customer ID."""
+
+    source: Annotated[
+        OptionalNullable[QueryParamSourceFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by event source."""
 
     query: Annotated[
         OptionalNullable[str],
@@ -121,6 +142,7 @@ class EventsListNamesRequest(BaseModel):
             "organization_id",
             "customer_id",
             "external_customer_id",
+            "source",
             "query",
             "page",
             "limit",
@@ -130,6 +152,7 @@ class EventsListNamesRequest(BaseModel):
             "organization_id",
             "customer_id",
             "external_customer_id",
+            "source",
             "query",
             "sorting",
         ]

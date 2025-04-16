@@ -16,12 +16,12 @@ from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
 CustomFieldCheckboxMetadataTypedDict = TypeAliasType(
-    "CustomFieldCheckboxMetadataTypedDict", Union[str, int, bool]
+    "CustomFieldCheckboxMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 CustomFieldCheckboxMetadata = TypeAliasType(
-    "CustomFieldCheckboxMetadata", Union[str, int, bool]
+    "CustomFieldCheckboxMetadata", Union[str, int, float, bool]
 )
 
 

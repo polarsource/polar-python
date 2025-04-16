@@ -13,10 +13,12 @@ from typing import Dict, Union
 from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
-MeterMetadataTypedDict = TypeAliasType("MeterMetadataTypedDict", Union[str, int, bool])
+MeterMetadataTypedDict = TypeAliasType(
+    "MeterMetadataTypedDict", Union[str, int, float, bool]
+)
 
 
-MeterMetadata = TypeAliasType("MeterMetadata", Union[str, int, bool])
+MeterMetadata = TypeAliasType("MeterMetadata", Union[str, int, float, bool])
 
 
 MeterAggregationTypedDict = TypeAliasType(

@@ -16,12 +16,12 @@ from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
 CustomFieldTextMetadataTypedDict = TypeAliasType(
-    "CustomFieldTextMetadataTypedDict", Union[str, int, bool]
+    "CustomFieldTextMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 CustomFieldTextMetadata = TypeAliasType(
-    "CustomFieldTextMetadata", Union[str, int, bool]
+    "CustomFieldTextMetadata", Union[str, int, float, bool]
 )
 
 

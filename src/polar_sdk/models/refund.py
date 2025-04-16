@@ -11,11 +11,11 @@ from typing_extensions import TypeAliasType, TypedDict
 
 
 RefundMetadataTypedDict = TypeAliasType(
-    "RefundMetadataTypedDict", Union[str, int, bool]
+    "RefundMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-RefundMetadata = TypeAliasType("RefundMetadata", Union[str, int, bool])
+RefundMetadata = TypeAliasType("RefundMetadata", Union[str, int, float, bool])
 
 
 class RefundTypedDict(TypedDict):
