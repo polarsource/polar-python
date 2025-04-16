@@ -4,7 +4,6 @@ import datetime
 import logging
 import queue
 import threading
-import time
 from collections.abc import Callable
 from typing import TYPE_CHECKING, Union
 
@@ -55,8 +54,7 @@ class Ingestion:
         self._queue = queue.Queue["EventsModelTypedDict"](maxsize=max_queue_size)
 
         self._thread = threading.Thread(target=self._worker, daemon=True)
-        self._thread_running = threading.Event()
-        self._thread_running.set()
+        self._should_close_thread = threading.Event()
         self._thread.start()
 
         atexit.register(self.close)
@@ -125,7 +123,7 @@ class Ingestion:
         It's called automatically on program exit.
         """
         logger.debug("Shutting down, flushing remaining events...")
-        self._thread_running.clear()
+        self._should_close_thread.set()
 
         # Try to flush remaining events
         try:
@@ -134,20 +132,20 @@ class Ingestion:
             logger.error("Error during shutdown flush: %s", e)
 
         if self._thread.is_alive():
-            self._thread.join(timeout=5.0)
+            self._thread.join(timeout=1.0)
 
         self._stack.close()
         logger.debug("Shutdown complete")
 
     def _worker(self) -> None:
         logger.debug("Worker thread started")
-        while self._thread_running.is_set():
+        while not self._should_close_thread.is_set():
             try:
                 self.flush(self.max_batch_size)
             except Exception as e:
                 logger.error("Error in worker thread: %s", e)
 
-            time.sleep(self.flush_interval)
+            self._should_close_thread.wait(timeout=self.flush_interval)
 
     def _send_batch(self, events: list["EventsModelTypedDict"]) -> None:
         response = self._client.events.ingest(request={"events": events})
