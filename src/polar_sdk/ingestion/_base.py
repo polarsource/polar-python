@@ -10,7 +10,7 @@ from typing import TYPE_CHECKING, Union
 from polar_sdk import Polar
 
 if TYPE_CHECKING:
-    from polar_sdk import EventsModelTypedDict
+    from polar_sdk import EventCreateCustomerMetadataTypedDict, EventsModelTypedDict
 
     from .strategies._base import S
 
@@ -59,14 +59,20 @@ class Ingestion:
 
         atexit.register(self.close)
 
-    def strategy(self, strategy_class: type["S"], event_name: str) -> "S":
+    def strategy(
+        self,
+        strategy_class: type["S"],
+        event_name: str,
+        **metadata: "EventCreateCustomerMetadataTypedDict",
+    ) -> "S":
         """
         Instantiate a strategy tied to this ingestion client.
 
         :param strategy_class: The strategy class to instantiate.
         :param event_name: The name of the events that'll be reported by the strategy.
+        :param metadata: Extra metadata to include with all events.
         """
-        return strategy_class(event_name, self)
+        return strategy_class(event_name, self, metadata=metadata)
 
     def ingest(self, event: "EventsModelTypedDict") -> None:
         """
