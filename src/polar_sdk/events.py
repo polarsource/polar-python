@@ -425,6 +425,9 @@ class Events(BaseSDK):
                 models.QueryParamExternalCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        source: OptionalNullable[
+            Union[models.QueryParamSourceFilter, models.QueryParamSourceFilterTypedDict]
+        ] = UNSET,
         query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -443,6 +446,7 @@ class Events(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param customer_id: Filter by customer ID.
         :param external_customer_id: Filter by external customer ID.
+        :param source: Filter by event source.
         :param query: Query to filter event names.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -466,6 +470,7 @@ class Events(BaseSDK):
             organization_id=organization_id,
             customer_id=customer_id,
             external_customer_id=external_customer_id,
+            source=source,
             query=query,
             page=page,
             limit=limit,
@@ -530,6 +535,7 @@ class Events(BaseSDK):
                 organization_id=organization_id,
                 customer_id=customer_id,
                 external_customer_id=external_customer_id,
+                source=source,
                 query=query,
                 page=next_page,
                 limit=limit,
@@ -591,6 +597,9 @@ class Events(BaseSDK):
                 models.QueryParamExternalCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        source: OptionalNullable[
+            Union[models.QueryParamSourceFilter, models.QueryParamSourceFilterTypedDict]
+        ] = UNSET,
         query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -609,6 +618,7 @@ class Events(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param customer_id: Filter by customer ID.
         :param external_customer_id: Filter by external customer ID.
+        :param source: Filter by event source.
         :param query: Query to filter event names.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -632,6 +642,7 @@ class Events(BaseSDK):
             organization_id=organization_id,
             customer_id=customer_id,
             external_customer_id=external_customer_id,
+            source=source,
             query=query,
             page=page,
             limit=limit,
@@ -696,6 +707,7 @@ class Events(BaseSDK):
                 organization_id=organization_id,
                 customer_id=customer_id,
                 external_customer_id=external_customer_id,
+                source=source,
                 query=query,
                 page=next_page,
                 limit=limit,

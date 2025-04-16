@@ -30,11 +30,13 @@ from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 ProductUpdateMetadataTypedDict = TypeAliasType(
-    "ProductUpdateMetadataTypedDict", Union[str, int, bool]
+    "ProductUpdateMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-ProductUpdateMetadata = TypeAliasType("ProductUpdateMetadata", Union[str, int, bool])
+ProductUpdateMetadata = TypeAliasType(
+    "ProductUpdateMetadata", Union[str, int, float, bool]
+)
 
 
 ProductUpdatePricesTypedDict = TypeAliasType(
@@ -72,6 +74,7 @@ class ProductUpdateTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -103,6 +106,7 @@ class ProductUpdate(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

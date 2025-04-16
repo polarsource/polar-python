@@ -11,12 +11,12 @@ from typing_extensions import TypeAliasType, TypedDict
 
 
 LicenseKeyCustomerMetadataTypedDict = TypeAliasType(
-    "LicenseKeyCustomerMetadataTypedDict", Union[str, int, bool]
+    "LicenseKeyCustomerMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 LicenseKeyCustomerMetadata = TypeAliasType(
-    "LicenseKeyCustomerMetadata", Union[str, int, bool]
+    "LicenseKeyCustomerMetadata", Union[str, int, float, bool]
 )
 
 

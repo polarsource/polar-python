@@ -15,12 +15,12 @@ from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 CustomFieldCreateCheckboxMetadataTypedDict = TypeAliasType(
-    "CustomFieldCreateCheckboxMetadataTypedDict", Union[str, int, bool]
+    "CustomFieldCreateCheckboxMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 CustomFieldCreateCheckboxMetadata = TypeAliasType(
-    "CustomFieldCreateCheckboxMetadata", Union[str, int, bool]
+    "CustomFieldCreateCheckboxMetadata", Union[str, int, float, bool]
 )
 
 
@@ -40,6 +40,7 @@ class CustomFieldCreateCheckboxTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -68,6 +69,7 @@ class CustomFieldCreateCheckbox(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

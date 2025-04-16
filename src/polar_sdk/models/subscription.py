@@ -37,10 +37,10 @@ from typing import Dict, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-MetadataTypedDict = TypeAliasType("MetadataTypedDict", Union[str, int, bool])
+MetadataTypedDict = TypeAliasType("MetadataTypedDict", Union[str, int, float, bool])
 
 
-Metadata = TypeAliasType("Metadata", Union[str, int, bool])
+Metadata = TypeAliasType("Metadata", Union[str, int, float, bool])
 
 
 CustomFieldDataTypedDict = TypeAliasType(

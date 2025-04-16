@@ -11,11 +11,13 @@ from typing_extensions import TypeAliasType, TypedDict
 
 
 OrderCustomerMetadataTypedDict = TypeAliasType(
-    "OrderCustomerMetadataTypedDict", Union[str, int, bool]
+    "OrderCustomerMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-OrderCustomerMetadata = TypeAliasType("OrderCustomerMetadata", Union[str, int, bool])
+OrderCustomerMetadata = TypeAliasType(
+    "OrderCustomerMetadata", Union[str, int, float, bool]
+)
 
 
 OrderCustomerTaxIDTypedDict = TypeAliasType(

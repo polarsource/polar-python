@@ -21,20 +21,22 @@ CheckoutUpdateCustomFieldData = TypeAliasType(
 
 
 CheckoutUpdateMetadataTypedDict = TypeAliasType(
-    "CheckoutUpdateMetadataTypedDict", Union[str, int, bool]
+    "CheckoutUpdateMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-CheckoutUpdateMetadata = TypeAliasType("CheckoutUpdateMetadata", Union[str, int, bool])
+CheckoutUpdateMetadata = TypeAliasType(
+    "CheckoutUpdateMetadata", Union[str, int, float, bool]
+)
 
 
 CheckoutUpdateCustomerMetadataTypedDict = TypeAliasType(
-    "CheckoutUpdateCustomerMetadataTypedDict", Union[str, int, bool]
+    "CheckoutUpdateCustomerMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 CheckoutUpdateCustomerMetadata = TypeAliasType(
-    "CheckoutUpdateCustomerMetadata", Union[str, int, bool]
+    "CheckoutUpdateCustomerMetadata", Union[str, int, float, bool]
 )
 
 
@@ -62,6 +64,7 @@ class CheckoutUpdateTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -81,6 +84,7 @@ class CheckoutUpdateTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -128,6 +132,7 @@ class CheckoutUpdate(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -151,6 +156,7 @@ class CheckoutUpdate(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

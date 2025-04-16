@@ -11,12 +11,12 @@ from typing_extensions import TypeAliasType, TypedDict
 
 
 SubscriptionCustomerMetadataTypedDict = TypeAliasType(
-    "SubscriptionCustomerMetadataTypedDict", Union[str, int, bool]
+    "SubscriptionCustomerMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 SubscriptionCustomerMetadata = TypeAliasType(
-    "SubscriptionCustomerMetadata", Union[str, int, bool]
+    "SubscriptionCustomerMetadata", Union[str, int, float, bool]
 )
 
 

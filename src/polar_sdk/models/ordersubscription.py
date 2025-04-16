@@ -13,12 +13,12 @@ from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
 OrderSubscriptionMetadataTypedDict = TypeAliasType(
-    "OrderSubscriptionMetadataTypedDict", Union[str, int, bool]
+    "OrderSubscriptionMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 OrderSubscriptionMetadata = TypeAliasType(
-    "OrderSubscriptionMetadata", Union[str, int, bool]
+    "OrderSubscriptionMetadata", Union[str, int, float, bool]
 )
 
 

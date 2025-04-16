@@ -33,11 +33,13 @@ from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
 CheckoutLinkMetadataTypedDict = TypeAliasType(
-    "CheckoutLinkMetadataTypedDict", Union[str, int, bool]
+    "CheckoutLinkMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-CheckoutLinkMetadata = TypeAliasType("CheckoutLinkMetadata", Union[str, int, bool])
+CheckoutLinkMetadata = TypeAliasType(
+    "CheckoutLinkMetadata", Union[str, int, float, bool]
+)
 
 
 CheckoutLinkDiscountTypedDict = TypeAliasType(

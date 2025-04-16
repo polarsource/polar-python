@@ -11,12 +11,12 @@ from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 DiscountFixedRepeatDurationCreateMetadataTypedDict = TypeAliasType(
-    "DiscountFixedRepeatDurationCreateMetadataTypedDict", Union[str, int, bool]
+    "DiscountFixedRepeatDurationCreateMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 DiscountFixedRepeatDurationCreateMetadata = TypeAliasType(
-    "DiscountFixedRepeatDurationCreateMetadata", Union[str, int, bool]
+    "DiscountFixedRepeatDurationCreateMetadata", Union[str, int, float, bool]
 )
 
 
@@ -47,6 +47,7 @@ class DiscountFixedRepeatDurationCreateTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -97,6 +98,7 @@ class DiscountFixedRepeatDurationCreate(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

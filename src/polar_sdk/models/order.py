@@ -38,10 +38,12 @@ from typing import Dict, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-OrderMetadataTypedDict = TypeAliasType("OrderMetadataTypedDict", Union[str, int, bool])
+OrderMetadataTypedDict = TypeAliasType(
+    "OrderMetadataTypedDict", Union[str, int, float, bool]
+)
 
 
-OrderMetadata = TypeAliasType("OrderMetadata", Union[str, int, bool])
+OrderMetadata = TypeAliasType("OrderMetadata", Union[str, int, float, bool])
 
 
 OrderCustomFieldDataTypedDict = TypeAliasType(

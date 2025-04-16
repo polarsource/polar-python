@@ -10,12 +10,12 @@ from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 CheckoutProductsCreateMetadataTypedDict = TypeAliasType(
-    "CheckoutProductsCreateMetadataTypedDict", Union[str, int, bool]
+    "CheckoutProductsCreateMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 CheckoutProductsCreateMetadata = TypeAliasType(
-    "CheckoutProductsCreateMetadata", Union[str, int, bool]
+    "CheckoutProductsCreateMetadata", Union[str, int, float, bool]
 )
 
 
@@ -30,12 +30,12 @@ CheckoutProductsCreateCustomFieldData = TypeAliasType(
 
 
 CheckoutProductsCreateCustomerMetadataTypedDict = TypeAliasType(
-    "CheckoutProductsCreateCustomerMetadataTypedDict", Union[str, int, bool]
+    "CheckoutProductsCreateCustomerMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 CheckoutProductsCreateCustomerMetadata = TypeAliasType(
-    "CheckoutProductsCreateCustomerMetadata", Union[str, int, bool]
+    "CheckoutProductsCreateCustomerMetadata", Union[str, int, float, bool]
 )
 
 
@@ -57,6 +57,7 @@ class CheckoutProductsCreateTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -89,6 +90,7 @@ class CheckoutProductsCreateTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -120,6 +122,7 @@ class CheckoutProductsCreate(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -164,6 +167,7 @@ class CheckoutProductsCreate(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

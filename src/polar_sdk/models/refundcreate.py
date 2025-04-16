@@ -9,11 +9,13 @@ from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 RefundCreateMetadataTypedDict = TypeAliasType(
-    "RefundCreateMetadataTypedDict", Union[str, int, bool]
+    "RefundCreateMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-RefundCreateMetadata = TypeAliasType("RefundCreateMetadata", Union[str, int, bool])
+RefundCreateMetadata = TypeAliasType(
+    "RefundCreateMetadata", Union[str, int, float, bool]
+)
 
 
 class RefundCreateTypedDict(TypedDict):
@@ -29,6 +31,7 @@ class RefundCreateTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -61,6 +64,7 @@ class RefundCreate(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

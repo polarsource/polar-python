@@ -10,10 +10,12 @@ from typing import Dict, Union
 from typing_extensions import TypeAliasType, TypedDict
 
 
-EventMetadataTypedDict = TypeAliasType("EventMetadataTypedDict", Union[str, int, bool])
+EventMetadataTypedDict = TypeAliasType(
+    "EventMetadataTypedDict", Union[str, int, float, bool]
+)
 
 
-EventMetadata = TypeAliasType("EventMetadata", Union[str, int, bool])
+EventMetadata = TypeAliasType("EventMetadata", Union[str, int, float, bool])
 
 
 class EventTypedDict(TypedDict):

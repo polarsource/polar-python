@@ -12,12 +12,12 @@ from typing_extensions import TypeAliasType, TypedDict
 
 
 DiscountFixedRepeatDurationMetadataTypedDict = TypeAliasType(
-    "DiscountFixedRepeatDurationMetadataTypedDict", Union[str, int, bool]
+    "DiscountFixedRepeatDurationMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 DiscountFixedRepeatDurationMetadata = TypeAliasType(
-    "DiscountFixedRepeatDurationMetadata", Union[str, int, bool]
+    "DiscountFixedRepeatDurationMetadata", Union[str, int, float, bool]
 )
 
 

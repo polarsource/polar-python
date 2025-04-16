@@ -8,12 +8,12 @@ from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 CheckoutLinkUpdateMetadataTypedDict = TypeAliasType(
-    "CheckoutLinkUpdateMetadataTypedDict", Union[str, int, bool]
+    "CheckoutLinkUpdateMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 CheckoutLinkUpdateMetadata = TypeAliasType(
-    "CheckoutLinkUpdateMetadata", Union[str, int, bool]
+    "CheckoutLinkUpdateMetadata", Union[str, int, float, bool]
 )
 
 
@@ -28,6 +28,7 @@ class CheckoutLinkUpdateTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -54,6 +55,7 @@ class CheckoutLinkUpdate(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

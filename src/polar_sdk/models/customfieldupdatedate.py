@@ -15,12 +15,12 @@ from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 CustomFieldUpdateDateMetadataTypedDict = TypeAliasType(
-    "CustomFieldUpdateDateMetadataTypedDict", Union[str, int, bool]
+    "CustomFieldUpdateDateMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
 CustomFieldUpdateDateMetadata = TypeAliasType(
-    "CustomFieldUpdateDateMetadata", Union[str, int, bool]
+    "CustomFieldUpdateDateMetadata", Union[str, int, float, bool]
 )
 
 
@@ -35,6 +35,7 @@ class CustomFieldUpdateDateTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -56,6 +57,7 @@ class CustomFieldUpdateDate(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

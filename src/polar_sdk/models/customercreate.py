@@ -10,11 +10,13 @@ from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 CustomerCreateMetadataTypedDict = TypeAliasType(
-    "CustomerCreateMetadataTypedDict", Union[str, int, bool]
+    "CustomerCreateMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-CustomerCreateMetadata = TypeAliasType("CustomerCreateMetadata", Union[str, int, bool])
+CustomerCreateMetadata = TypeAliasType(
+    "CustomerCreateMetadata", Union[str, int, float, bool]
+)
 
 
 CustomerCreateTaxIDTypedDict = TypeAliasType(
@@ -36,6 +38,7 @@ class CustomerCreateTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -62,6 +65,7 @@ class CustomerCreate(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

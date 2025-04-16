@@ -11,8 +11,18 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Literal
-from typing_extensions import Annotated, TypedDict
+from typing import Dict, Literal, Union
+from typing_extensions import Annotated, TypeAliasType, TypedDict
+
+
+BenefitCustomMetadataTypedDict = TypeAliasType(
+    "BenefitCustomMetadataTypedDict", Union[str, int, float, bool]
+)
+
+
+BenefitCustomMetadata = TypeAliasType(
+    "BenefitCustomMetadata", Union[str, int, float, bool]
+)
 
 
 class BenefitCustomTypedDict(TypedDict):
@@ -21,12 +31,13 @@ class BenefitCustomTypedDict(TypedDict):
     Use it to grant any kind of benefit that doesn't fit in the other types.
     """
 
+    id: str
+    r"""The ID of the benefit."""
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    id: str
-    r"""The ID of the benefit."""
+    metadata: Dict[str, BenefitCustomMetadataTypedDict]
     description: str
     r"""The description of the benefit."""
     selectable: bool
@@ -47,14 +58,16 @@ class BenefitCustom(BaseModel):
     Use it to grant any kind of benefit that doesn't fit in the other types.
     """
 
+    id: str
+    r"""The ID of the benefit."""
+
     created_at: datetime
     r"""Creation timestamp of the object."""
 
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    id: str
-    r"""The ID of the benefit."""
+    metadata: Dict[str, BenefitCustomMetadata]
 
     description: str
     r"""The description of the benefit."""

@@ -10,11 +10,13 @@ from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 CustomerUpdateMetadataTypedDict = TypeAliasType(
-    "CustomerUpdateMetadataTypedDict", Union[str, int, bool]
+    "CustomerUpdateMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-CustomerUpdateMetadata = TypeAliasType("CustomerUpdateMetadata", Union[str, int, bool])
+CustomerUpdateMetadata = TypeAliasType(
+    "CustomerUpdateMetadata", Union[str, int, float, bool]
+)
 
 
 CustomerUpdateTaxIDTypedDict = TypeAliasType(
@@ -34,6 +36,7 @@ class CustomerUpdateTypedDict(TypedDict):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.
@@ -57,6 +60,7 @@ class CustomerUpdate(BaseModel):
 
     * A string with a maximum length of **500 characters**
     * An integer
+    * A floating-point number
     * A boolean
 
     You can store up to **50 key-value pairs**.

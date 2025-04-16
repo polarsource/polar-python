@@ -9,8 +9,13 @@ from typing_extensions import NotRequired, TypedDict
 class OrganizationFeatureSettingsTypedDict(TypedDict):
     issue_funding_enabled: NotRequired[bool]
     r"""If this organization has issue funding enabled"""
+    usage_based_billing_enabled: NotRequired[bool]
+    r"""If this organization has usage-based billing enabled"""
 
 
 class OrganizationFeatureSettings(BaseModel):
     issue_funding_enabled: Optional[bool] = False
     r"""If this organization has issue funding enabled"""
+
+    usage_based_billing_enabled: Optional[bool] = False
+    r"""If this organization has usage-based billing enabled"""
