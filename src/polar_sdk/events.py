@@ -13,6 +13,7 @@ class Events(BaseSDK):
     def list(
         self,
         *,
+        filter_: OptionalNullable[str] = UNSET,
         start_timestamp: OptionalNullable[datetime] = UNSET,
         end_timestamp: OptionalNullable[datetime] = UNSET,
         organization_id: OptionalNullable[
@@ -60,6 +61,7 @@ class Events(BaseSDK):
 
         **Scopes**: `events:read` `events:write`
 
+        :param filter_: Filter events following filter clauses. JSON string following the same schema a meter filter clause.
         :param start_timestamp: Filter events after this timestamp.
         :param end_timestamp: Filter events before this timestamp.
         :param organization_id: Filter by organization ID.
@@ -88,6 +90,7 @@ class Events(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.EventsListRequest(
+            filter_=filter_,
             start_timestamp=start_timestamp,
             end_timestamp=end_timestamp,
             organization_id=organization_id,
@@ -139,7 +142,7 @@ class Events(BaseSDK):
         )
 
         def next_func() -> Optional[models.EventsListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -157,6 +160,7 @@ class Events(BaseSDK):
                 return None
 
             return self.list(
+                filter_=filter_,
                 start_timestamp=start_timestamp,
                 end_timestamp=end_timestamp,
                 organization_id=organization_id,
@@ -206,6 +210,7 @@ class Events(BaseSDK):
     async def list_async(
         self,
         *,
+        filter_: OptionalNullable[str] = UNSET,
         start_timestamp: OptionalNullable[datetime] = UNSET,
         end_timestamp: OptionalNullable[datetime] = UNSET,
         organization_id: OptionalNullable[
@@ -253,6 +258,7 @@ class Events(BaseSDK):
 
         **Scopes**: `events:read` `events:write`
 
+        :param filter_: Filter events following filter clauses. JSON string following the same schema a meter filter clause.
         :param start_timestamp: Filter events after this timestamp.
         :param end_timestamp: Filter events before this timestamp.
         :param organization_id: Filter by organization ID.
@@ -281,6 +287,7 @@ class Events(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.EventsListRequest(
+            filter_=filter_,
             start_timestamp=start_timestamp,
             end_timestamp=end_timestamp,
             organization_id=organization_id,
@@ -332,7 +339,7 @@ class Events(BaseSDK):
         )
 
         def next_func() -> Optional[models.EventsListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -350,6 +357,7 @@ class Events(BaseSDK):
                 return None
 
             return self.list(
+                filter_=filter_,
                 start_timestamp=start_timestamp,
                 end_timestamp=end_timestamp,
                 organization_id=organization_id,
@@ -501,7 +509,7 @@ class Events(BaseSDK):
         )
 
         def next_func() -> Optional[models.EventsListNamesResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -667,7 +675,7 @@ class Events(BaseSDK):
         )
 
         def next_func() -> Optional[models.EventsListNamesResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 

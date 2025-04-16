@@ -13,15 +13,13 @@ from typing import Callable, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-SubscriptionsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
-    "SubscriptionsListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
+OrganizationIDFilterTypedDict = TypeAliasType(
+    "OrganizationIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by organization ID."""
 
 
-SubscriptionsListQueryParamOrganizationIDFilter = TypeAliasType(
-    "SubscriptionsListQueryParamOrganizationIDFilter", Union[str, List[str]]
-)
+OrganizationIDFilter = TypeAliasType("OrganizationIDFilter", Union[str, List[str]])
 r"""Filter by organization ID."""
 
 
@@ -56,9 +54,7 @@ r"""Filter by discount ID."""
 
 
 class SubscriptionsListRequestTypedDict(TypedDict):
-    organization_id: NotRequired[
-        Nullable[SubscriptionsListQueryParamOrganizationIDFilterTypedDict]
-    ]
+    organization_id: NotRequired[Nullable[OrganizationIDFilterTypedDict]]
     r"""Filter by organization ID."""
     product_id: NotRequired[Nullable[ProductIDFilterTypedDict]]
     r"""Filter by product ID."""
@@ -78,7 +74,7 @@ class SubscriptionsListRequestTypedDict(TypedDict):
 
 class SubscriptionsListRequest(BaseModel):
     organization_id: Annotated[
-        OptionalNullable[SubscriptionsListQueryParamOrganizationIDFilter],
+        OptionalNullable[OrganizationIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by organization ID."""
@@ -151,7 +147,7 @@ class SubscriptionsListRequest(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)

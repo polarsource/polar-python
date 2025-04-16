@@ -6,10 +6,6 @@ from .organizationfeaturesettings import (
     OrganizationFeatureSettings,
     OrganizationFeatureSettingsTypedDict,
 )
-from .organizationprofilesettings import (
-    OrganizationProfileSettings,
-    OrganizationProfileSettingsTypedDict,
-)
 from .organizationsociallink import (
     OrganizationSocialLink,
     OrganizationSocialLinkTypedDict,
@@ -19,10 +15,9 @@ from .organizationsubscriptionsettings import (
     OrganizationSubscriptionSettingsTypedDict,
 )
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
-from typing import List, Optional
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing import List
+from typing_extensions import NotRequired, TypedDict
 
 
 class OrganizationUpdateTypedDict(TypedDict):
@@ -40,14 +35,6 @@ class OrganizationUpdateTypedDict(TypedDict):
     subscription_settings: NotRequired[
         Nullable[OrganizationSubscriptionSettingsTypedDict]
     ]
-    default_upfront_split_to_contributors: NotRequired[Nullable[int]]
-    pledge_badge_show_amount: NotRequired[bool]
-    billing_email: NotRequired[Nullable[str]]
-    default_badge_custom_content: NotRequired[Nullable[str]]
-    pledge_minimum_amount: NotRequired[int]
-    total_monthly_spending_limit: NotRequired[Nullable[int]]
-    per_user_monthly_spending_limit: NotRequired[Nullable[int]]
-    profile_settings: NotRequired[Nullable[OrganizationProfileSettingsTypedDict]]
 
 
 class OrganizationUpdate(BaseModel):
@@ -71,62 +58,6 @@ class OrganizationUpdate(BaseModel):
 
     subscription_settings: OptionalNullable[OrganizationSubscriptionSettings] = UNSET
 
-    default_upfront_split_to_contributors: Annotated[
-        OptionalNullable[int],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ] = UNSET
-
-    pledge_badge_show_amount: Annotated[
-        Optional[bool],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ] = False
-
-    billing_email: Annotated[
-        OptionalNullable[str],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ] = UNSET
-
-    default_badge_custom_content: Annotated[
-        OptionalNullable[str],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ] = UNSET
-
-    pledge_minimum_amount: Annotated[
-        Optional[int],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ] = 2000
-
-    total_monthly_spending_limit: Annotated[
-        OptionalNullable[int],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ] = UNSET
-
-    per_user_monthly_spending_limit: Annotated[
-        OptionalNullable[int],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ] = UNSET
-
-    profile_settings: Annotated[
-        OptionalNullable[OrganizationProfileSettings],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ] = UNSET
-
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -138,14 +69,6 @@ class OrganizationUpdate(BaseModel):
             "details",
             "feature_settings",
             "subscription_settings",
-            "default_upfront_split_to_contributors",
-            "pledge_badge_show_amount",
-            "billing_email",
-            "default_badge_custom_content",
-            "pledge_minimum_amount",
-            "total_monthly_spending_limit",
-            "per_user_monthly_spending_limit",
-            "profile_settings",
         ]
         nullable_fields = [
             "name",
@@ -156,12 +79,6 @@ class OrganizationUpdate(BaseModel):
             "details",
             "feature_settings",
             "subscription_settings",
-            "default_upfront_split_to_contributors",
-            "billing_email",
-            "default_badge_custom_content",
-            "total_monthly_spending_limit",
-            "per_user_monthly_spending_limit",
-            "profile_settings",
         ]
         null_default_fields = []
 
@@ -169,7 +86,7 @@ class OrganizationUpdate(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)

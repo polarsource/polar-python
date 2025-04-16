@@ -5,5 +5,5 @@
 
 | Field                            | Type                             | Required                         | Description                      | Example                          |
 | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `detail`                         | *str*                            | :heavy_check_mark:               | N/A                              |                                  |
 | `error`                          | *Literal["RefundAmountTooHigh"]* | :heavy_check_mark:               | N/A                              | RefundAmountTooHigh              |
+| `detail`                         | *str*                            | :heavy_check_mark:               | N/A                              |                                  |

@@ -84,8 +84,8 @@ with Polar(
 ) as polar:
 
     res = polar.customers.create(request={
-        "email": "customer@example.com",
         "external_id": "usr_1337",
+        "email": "customer@example.com",
         "name": "John Doe",
         "billing_address": {
             "country": "SE",

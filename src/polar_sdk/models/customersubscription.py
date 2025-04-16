@@ -2,6 +2,10 @@
 
 from __future__ import annotations
 from .customercancellationreason import CustomerCancellationReason
+from .customersubscriptionmeter import (
+    CustomerSubscriptionMeter,
+    CustomerSubscriptionMeterTypedDict,
+)
 from .customersubscriptionproduct import (
     CustomerSubscriptionProduct,
     CustomerSubscriptionProductTypedDict,
@@ -85,6 +89,8 @@ class CustomerSubscriptionTypedDict(TypedDict):
     price: CustomerSubscriptionPriceTypedDict
     prices: List[CustomerSubscriptionPricesTypedDict]
     r"""List of enabled prices for the subscription."""
+    meters: List[CustomerSubscriptionMeterTypedDict]
+    r"""List of meters associated with the subscription."""
 
 
 class CustomerSubscription(BaseModel):
@@ -169,6 +175,9 @@ class CustomerSubscription(BaseModel):
     prices: List[CustomerSubscriptionPrices]
     r"""List of enabled prices for the subscription."""
 
+    meters: List[CustomerSubscriptionMeter]
+    r"""List of meters associated with the subscription."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
@@ -190,7 +199,7 @@ class CustomerSubscription(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)

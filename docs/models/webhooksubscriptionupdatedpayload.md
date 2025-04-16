@@ -13,5 +13,5 @@ To listen specifically for renewals, you can listen to `order.created` events an
 
 | Field                                            | Type                                             | Required                                         | Description                                      | Example                                          |
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `data`                                           | [models.Subscription](../models/subscription.md) | :heavy_check_mark:                               | N/A                                              |                                                  |
 | `type`                                           | *Literal["subscription.updated"]*                | :heavy_check_mark:                               | N/A                                              | subscription.updated                             |
+| `data`                                           | [models.Subscription](../models/subscription.md) | :heavy_check_mark:                               | N/A                                              |                                                  |

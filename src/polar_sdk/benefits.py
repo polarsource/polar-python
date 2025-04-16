@@ -14,8 +14,8 @@ class Benefits(BaseSDK):
         *,
         organization_id: OptionalNullable[
             Union[
-                models.BenefitsListQueryParamOrganizationIDFilter,
-                models.BenefitsListQueryParamOrganizationIDFilterTypedDict,
+                models.QueryParamOrganizationIDFilter,
+                models.QueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
         type_filter: OptionalNullable[
@@ -103,7 +103,7 @@ class Benefits(BaseSDK):
         )
 
         def next_func() -> Optional[models.BenefitsListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -166,8 +166,8 @@ class Benefits(BaseSDK):
         *,
         organization_id: OptionalNullable[
             Union[
-                models.BenefitsListQueryParamOrganizationIDFilter,
-                models.BenefitsListQueryParamOrganizationIDFilterTypedDict,
+                models.QueryParamOrganizationIDFilter,
+                models.QueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
         type_filter: OptionalNullable[
@@ -255,7 +255,7 @@ class Benefits(BaseSDK):
         )
 
         def next_func() -> Optional[models.BenefitsListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -1276,7 +1276,7 @@ class Benefits(BaseSDK):
         )
 
         def next_func() -> Optional[models.BenefitsGrantsResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -1431,7 +1431,7 @@ class Benefits(BaseSDK):
         )
 
         def next_func() -> Optional[models.BenefitsGrantsResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 

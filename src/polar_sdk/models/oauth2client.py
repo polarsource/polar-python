@@ -93,11 +93,11 @@ class OAuth2Client(BaseModel):
             "policy_uri",
         ]
         nullable_fields = [
-            "modified_at",
             "client_uri",
             "logo_uri",
             "tos_uri",
             "policy_uri",
+            "modified_at",
         ]
         null_default_fields = []
 
@@ -105,7 +105,7 @@ class OAuth2Client(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)

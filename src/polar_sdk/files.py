@@ -90,7 +90,7 @@ class Files(BaseSDK):
         )
 
         def next_func() -> Optional[models.FilesListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -227,7 +227,7 @@ class Files(BaseSDK):
         )
 
         def next_func() -> Optional[models.FilesListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 

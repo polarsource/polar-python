@@ -41,6 +41,7 @@ with Polar(
 
 | Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `filter_`                                                                                                                                                               | *OptionalNullable[str]*                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                      | Filter events following filter clauses. JSON string following the same schema a meter filter clause.                                                                    |
 | `start_timestamp`                                                                                                                                                       | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                                                                    | :heavy_minus_sign:                                                                                                                                                      | Filter events after this timestamp.                                                                                                                                     |
 | `end_timestamp`                                                                                                                                                         | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                                                                    | :heavy_minus_sign:                                                                                                                                                      | Filter events before this timestamp.                                                                                                                                    |
 | `organization_id`                                                                                                                                                       | [OptionalNullable[models.EventsListQueryParamOrganizationIDFilter]](../../models/eventslistqueryparamorganizationidfilter.md)                                           | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
@@ -177,13 +178,13 @@ with Polar(
         "events": [
             {
                 "name": "<value>",
-                "customer_id": "<value>",
                 "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+                "customer_id": "<value>",
             },
             {
                 "name": "<value>",
-                "external_customer_id": "<id>",
                 "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+                "external_customer_id": "<id>",
             },
         ],
     })

@@ -9,13 +9,11 @@ from .alreadycanceledsubscription import (
     AlreadyCanceledSubscription,
     AlreadyCanceledSubscriptionData,
 )
-from .assignee import Assignee, AssigneeTypedDict
 from .attachedcustomfield import AttachedCustomField, AttachedCustomFieldTypedDict
 from .attachedcustomfieldcreate import (
     AttachedCustomFieldCreate,
     AttachedCustomFieldCreateTypedDict,
 )
-from .author import Author, AuthorTypedDict
 from .authorizationcodetokenrequest import (
     AuthorizationCodeTokenRequest,
     AuthorizationCodeTokenRequestTypedDict,
@@ -238,12 +236,12 @@ from .benefits_grantsop import (
 from .benefits_listop import (
     BenefitTypeFilter,
     BenefitTypeFilterTypedDict,
-    BenefitsListQueryParamOrganizationIDFilter,
-    BenefitsListQueryParamOrganizationIDFilterTypedDict,
     BenefitsListRequest,
     BenefitsListRequestTypedDict,
     BenefitsListResponse,
     BenefitsListResponseTypedDict,
+    QueryParamOrganizationIDFilter,
+    QueryParamOrganizationIDFilterTypedDict,
 )
 from .benefits_updateop import (
     BenefitsUpdateBenefitUpdate,
@@ -457,7 +455,6 @@ from .checkoutupdatepublic import (
     CheckoutUpdatePublicTypedDict,
 )
 from .countaggregation import CountAggregation, CountAggregationTypedDict
-from .currencyamount import CurrencyAmount, CurrencyAmountTypedDict
 from .custom_fields_deleteop import (
     CustomFieldsDeleteRequest,
     CustomFieldsDeleteRequestTypedDict,
@@ -887,6 +884,10 @@ from .customerstatesubscription import (
     CustomerStateSubscriptionMetadataTypedDict,
     CustomerStateSubscriptionTypedDict,
 )
+from .customerstatesubscriptionmeter import (
+    CustomerStateSubscriptionMeter,
+    CustomerStateSubscriptionMeterTypedDict,
+)
 from .customersubscription import (
     CustomerSubscription,
     CustomerSubscriptionPrice,
@@ -898,6 +899,14 @@ from .customersubscription import (
 from .customersubscriptioncancel import (
     CustomerSubscriptionCancel,
     CustomerSubscriptionCancelTypedDict,
+)
+from .customersubscriptionmeter import (
+    CustomerSubscriptionMeter,
+    CustomerSubscriptionMeterTypedDict,
+)
+from .customersubscriptionmetermeter import (
+    CustomerSubscriptionMeterMeter,
+    CustomerSubscriptionMeterMeterTypedDict,
 )
 from .customersubscriptionproduct import (
     CustomerSubscriptionProduct,
@@ -1181,20 +1190,6 @@ from .eventsortproperty import EventSortProperty
 from .eventsource import EventSource
 from .existingproductprice import ExistingProductPrice, ExistingProductPriceTypedDict
 from .expiredcheckouterror import ExpiredCheckoutError, ExpiredCheckoutErrorData
-from .external_organizations_listop import (
-    ExternalOrganizationsListRequest,
-    ExternalOrganizationsListRequestTypedDict,
-    ExternalOrganizationsListResponse,
-    ExternalOrganizationsListResponseTypedDict,
-    OrganizationIDFilter,
-    OrganizationIDFilterTypedDict,
-    PlatformFilter,
-    PlatformFilterTypedDict,
-    RepositoryNameFilter,
-    RepositoryNameFilterTypedDict,
-)
-from .externalorganization import ExternalOrganization, ExternalOrganizationTypedDict
-from .externalorganizationsortproperty import ExternalOrganizationSortProperty
 from .filecreate import FileCreate, FileCreateTypedDict
 from .filedownload import FileDownload, FileDownloadTypedDict
 from .filepatch import FilePatch, FilePatchTypedDict
@@ -1224,7 +1219,6 @@ from .filter_ import Clauses, ClausesTypedDict, Filter, FilterTypedDict
 from .filterclause import FilterClause, FilterClauseTypedDict, Value, ValueTypedDict
 from .filterconjunction import FilterConjunction
 from .filteroperator import FilterOperator
-from .funding import Funding, FundingTypedDict
 from .httpvalidationerror import HTTPValidationError, HTTPValidationErrorData
 from .introspecttokenrequest import (
     IntrospectTokenRequest,
@@ -1236,8 +1230,6 @@ from .introspecttokenresponse import (
     IntrospectTokenResponseTypedDict,
     TokenType,
 )
-from .issue import Issue, IssueTypedDict
-from .label import Label, LabelTypedDict
 from .legacyrecurringproductprice import (
     LegacyRecurringProductPrice,
     LegacyRecurringProductPriceTypedDict,
@@ -1361,10 +1353,6 @@ from .listresource_eventname_ import (
     ListResourceEventName,
     ListResourceEventNameTypedDict,
 )
-from .listresource_externalorganization_ import (
-    ListResourceExternalOrganization,
-    ListResourceExternalOrganizationTypedDict,
-)
 from .listresource_fileread_ import (
     FileRead,
     FileReadTypedDict,
@@ -1387,10 +1375,6 @@ from .listresource_organization_ import (
 )
 from .listresource_product_ import ListResourceProduct, ListResourceProductTypedDict
 from .listresource_refund_ import ListResourceRefund, ListResourceRefundTypedDict
-from .listresource_repository_ import (
-    ListResourceRepository,
-    ListResourceRepositoryTypedDict,
-)
 from .listresource_subscription_ import (
     ListResourceSubscription,
     ListResourceSubscriptionTypedDict,
@@ -1586,10 +1570,6 @@ from .organizationfeaturesettings import (
     OrganizationFeatureSettings,
     OrganizationFeatureSettingsTypedDict,
 )
-from .organizationprofilesettings import (
-    OrganizationProfileSettings,
-    OrganizationProfileSettingsTypedDict,
-)
 from .organizations_getop import (
     OrganizationsGetRequest,
     OrganizationsGetRequestTypedDict,
@@ -1610,10 +1590,6 @@ from .organizationsociallink import (
 )
 from .organizationsocialplatforms import OrganizationSocialPlatforms
 from .organizationsortproperty import OrganizationSortProperty
-from .organizationsubscribepromotesettings import (
-    OrganizationSubscribePromoteSettings,
-    OrganizationSubscribePromoteSettingsTypedDict,
-)
 from .organizationsubscriptionsettings import (
     OrganizationSubscriptionSettings,
     OrganizationSubscriptionSettingsTypedDict,
@@ -1625,11 +1601,6 @@ from .paymentmethodcard import PaymentMethodCard, PaymentMethodCardTypedDict
 from .paymentmethodcarddata import PaymentMethodCardData, PaymentMethodCardDataTypedDict
 from .paymentmethodgeneric import PaymentMethodGeneric, PaymentMethodGenericTypedDict
 from .paymentprocessor import PaymentProcessor
-from .platforms import Platforms
-from .pledge import Pledge, PledgeTypedDict
-from .pledger import Pledger, PledgerTypedDict
-from .pledgestate import PledgeState
-from .pledgetype import PledgeType
 from .product import (
     Prices,
     PricesTypedDict,
@@ -1709,7 +1680,6 @@ from .productupdate import (
     ProductUpdateTypedDict,
 )
 from .propertyaggregation import Func, PropertyAggregation, PropertyAggregationTypedDict
-from .reactions import Reactions, ReactionsTypedDict
 from .refreshtokenrequest import RefreshTokenRequest, RefreshTokenRequestTypedDict
 from .refund import Refund, RefundMetadata, RefundMetadataTypedDict, RefundTypedDict
 from .refundamounttoohigh import RefundAmountTooHigh, RefundAmountTooHighData
@@ -1739,36 +1709,6 @@ from .refunds_listop import (
 )
 from .refundsortproperty import RefundSortProperty
 from .refundstatus import RefundStatus
-from .repositories_getop import RepositoriesGetRequest, RepositoriesGetRequestTypedDict
-from .repositories_listop import (
-    ExternalOrganizationNameFilter,
-    ExternalOrganizationNameFilterTypedDict,
-    QueryParamOrganizationIDFilter,
-    QueryParamOrganizationIDFilterTypedDict,
-    QueryParamPlatformFilter,
-    QueryParamPlatformFilterTypedDict,
-    QueryParamRepositoryNameFilter,
-    QueryParamRepositoryNameFilterTypedDict,
-    RepositoriesListRequest,
-    RepositoriesListRequestTypedDict,
-    RepositoriesListResponse,
-    RepositoriesListResponseTypedDict,
-)
-from .repositories_updateop import (
-    RepositoriesUpdateRequest,
-    RepositoriesUpdateRequestTypedDict,
-)
-from .repository import Repository, RepositoryTypedDict
-from .repositoryprofilesettings import (
-    RepositoryProfileSettings,
-    RepositoryProfileSettingsTypedDict,
-)
-from .repositoryprofilesettingsupdate import (
-    RepositoryProfileSettingsUpdate,
-    RepositoryProfileSettingsUpdateTypedDict,
-)
-from .repositorysortproperty import RepositorySortProperty
-from .repositoryupdate import RepositoryUpdate, RepositoryUpdateTypedDict
 from .resourcenotfound import ResourceNotFound, ResourceNotFoundData
 from .revoketokenrequest import (
     RevokeTokenRequest,
@@ -1788,7 +1728,6 @@ from .s3fileuploadpart import S3FileUploadPart, S3FileUploadPartTypedDict
 from .scope import Scope
 from .sdkerror import SDKError
 from .security import Security, SecurityTypedDict
-from .state import State
 from .subscription import (
     CustomFieldData,
     CustomFieldDataTypedDict,
@@ -1812,6 +1751,7 @@ from .subscriptioncustomer import (
     TaxID,
     TaxIDTypedDict,
 )
+from .subscriptionmeter import SubscriptionMeter, SubscriptionMeterTypedDict
 from .subscriptionprorationbehavior import SubscriptionProrationBehavior
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptions_exportop import (
@@ -1829,10 +1769,10 @@ from .subscriptions_listop import (
     CustomerIDFilterTypedDict,
     DiscountIDFilter,
     DiscountIDFilterTypedDict,
+    OrganizationIDFilter,
+    OrganizationIDFilterTypedDict,
     ProductIDFilter,
     ProductIDFilterTypedDict,
-    SubscriptionsListQueryParamOrganizationIDFilter,
-    SubscriptionsListQueryParamOrganizationIDFilterTypedDict,
     SubscriptionsListRequest,
     SubscriptionsListRequestTypedDict,
     SubscriptionsListResponse,
@@ -1936,14 +1876,6 @@ from .webhookorganizationupdatedpayload import (
     WebhookOrganizationUpdatedPayload,
     WebhookOrganizationUpdatedPayloadTypedDict,
 )
-from .webhookpledgecreatedpayload import (
-    WebhookPledgeCreatedPayload,
-    WebhookPledgeCreatedPayloadTypedDict,
-)
-from .webhookpledgeupdatedpayload import (
-    WebhookPledgeUpdatedPayload,
-    WebhookPledgeUpdatedPayloadTypedDict,
-)
 from .webhookproductcreatedpayload import (
     WebhookProductCreatedPayload,
     WebhookProductCreatedPayloadTypedDict,
@@ -1995,14 +1927,10 @@ __all__ = [
     "AlreadyActiveSubscriptionErrorData",
     "AlreadyCanceledSubscription",
     "AlreadyCanceledSubscriptionData",
-    "Assignee",
-    "AssigneeTypedDict",
     "AttachedCustomField",
     "AttachedCustomFieldCreate",
     "AttachedCustomFieldCreateTypedDict",
     "AttachedCustomFieldTypedDict",
-    "Author",
-    "AuthorTypedDict",
     "AuthorizationCodeTokenRequest",
     "AuthorizationCodeTokenRequestTypedDict",
     "AuthorizeOrganization",
@@ -2143,8 +2071,6 @@ __all__ = [
     "BenefitsGrantsRequestTypedDict",
     "BenefitsGrantsResponse",
     "BenefitsGrantsResponseTypedDict",
-    "BenefitsListQueryParamOrganizationIDFilter",
-    "BenefitsListQueryParamOrganizationIDFilterTypedDict",
     "BenefitsListRequest",
     "BenefitsListRequestTypedDict",
     "BenefitsListResponse",
@@ -2308,8 +2234,6 @@ __all__ = [
     "ConditionsTypedDict",
     "CountAggregation",
     "CountAggregationTypedDict",
-    "CurrencyAmount",
-    "CurrencyAmountTypedDict",
     "CustomField",
     "CustomFieldCheckbox",
     "CustomFieldCheckboxMetadata",
@@ -2641,6 +2565,8 @@ __all__ = [
     "CustomerStateSubscriptionCustomFieldDataTypedDict",
     "CustomerStateSubscriptionMetadata",
     "CustomerStateSubscriptionMetadataTypedDict",
+    "CustomerStateSubscriptionMeter",
+    "CustomerStateSubscriptionMeterTypedDict",
     "CustomerStateSubscriptionTypedDict",
     "CustomerStateTaxID",
     "CustomerStateTaxIDTypedDict",
@@ -2648,6 +2574,10 @@ __all__ = [
     "CustomerSubscription",
     "CustomerSubscriptionCancel",
     "CustomerSubscriptionCancelTypedDict",
+    "CustomerSubscriptionMeter",
+    "CustomerSubscriptionMeterMeter",
+    "CustomerSubscriptionMeterMeterTypedDict",
+    "CustomerSubscriptionMeterTypedDict",
     "CustomerSubscriptionPrice",
     "CustomerSubscriptionPriceTypedDict",
     "CustomerSubscriptionPrices",
@@ -2821,15 +2751,6 @@ __all__ = [
     "ExpiredCheckoutErrorData",
     "ExternalCustomerIDFilter",
     "ExternalCustomerIDFilterTypedDict",
-    "ExternalOrganization",
-    "ExternalOrganizationNameFilter",
-    "ExternalOrganizationNameFilterTypedDict",
-    "ExternalOrganizationSortProperty",
-    "ExternalOrganizationTypedDict",
-    "ExternalOrganizationsListRequest",
-    "ExternalOrganizationsListRequestTypedDict",
-    "ExternalOrganizationsListResponse",
-    "ExternalOrganizationsListResponseTypedDict",
     "FileCreate",
     "FileCreateTypedDict",
     "FileDownload",
@@ -2864,8 +2785,6 @@ __all__ = [
     "FilterOperator",
     "FilterTypedDict",
     "Func",
-    "Funding",
-    "FundingTypedDict",
     "GrantTypes",
     "HTTPValidationError",
     "HTTPValidationErrorData",
@@ -2874,12 +2793,8 @@ __all__ = [
     "IntrospectTokenRequestTypedDict",
     "IntrospectTokenResponse",
     "IntrospectTokenResponseTypedDict",
-    "Issue",
-    "IssueTypedDict",
     "Items",
     "ItemsTypedDict",
-    "Label",
-    "LabelTypedDict",
     "LegacyRecurringProductPrice",
     "LegacyRecurringProductPriceCustom",
     "LegacyRecurringProductPriceCustomTypedDict",
@@ -2961,8 +2876,6 @@ __all__ = [
     "ListResourceEventName",
     "ListResourceEventNameTypedDict",
     "ListResourceEventTypedDict",
-    "ListResourceExternalOrganization",
-    "ListResourceExternalOrganizationTypedDict",
     "ListResourceFileRead",
     "ListResourceFileReadTypedDict",
     "ListResourceLicenseKeyRead",
@@ -2979,8 +2892,6 @@ __all__ = [
     "ListResourceProductTypedDict",
     "ListResourceRefund",
     "ListResourceRefundTypedDict",
-    "ListResourceRepository",
-    "ListResourceRepositoryTypedDict",
     "ListResourceSubscription",
     "ListResourceSubscriptionTypedDict",
     "ListResourceUnionPaymentMethodCardPaymentMethodGeneric",
@@ -3151,14 +3062,10 @@ __all__ = [
     "OrganizationIDFilter",
     "OrganizationIDFilterTypedDict",
     "OrganizationIDTypedDict",
-    "OrganizationProfileSettings",
-    "OrganizationProfileSettingsTypedDict",
     "OrganizationSocialLink",
     "OrganizationSocialLinkTypedDict",
     "OrganizationSocialPlatforms",
     "OrganizationSortProperty",
-    "OrganizationSubscribePromoteSettings",
-    "OrganizationSubscribePromoteSettingsTypedDict",
     "OrganizationSubscriptionSettings",
     "OrganizationSubscriptionSettingsTypedDict",
     "OrganizationTypedDict",
@@ -3184,15 +3091,6 @@ __all__ = [
     "PaymentMethodGenericTypedDict",
     "PaymentProcessor",
     "Permission",
-    "PlatformFilter",
-    "PlatformFilterTypedDict",
-    "Platforms",
-    "Pledge",
-    "PledgeState",
-    "PledgeType",
-    "PledgeTypedDict",
-    "Pledger",
-    "PledgerTypedDict",
     "PreviousProperties",
     "PreviousPropertiesTypedDict",
     "Price",
@@ -3284,20 +3182,14 @@ __all__ = [
     "QueryParamOrderIDFilterTypedDict",
     "QueryParamOrganizationIDFilter",
     "QueryParamOrganizationIDFilterTypedDict",
-    "QueryParamPlatformFilter",
-    "QueryParamPlatformFilterTypedDict",
     "QueryParamProductBillingTypeFilter",
     "QueryParamProductBillingTypeFilterTypedDict",
     "QueryParamProductIDFilter",
     "QueryParamProductIDFilterTypedDict",
     "QueryParamProductPriceTypeFilter",
     "QueryParamProductPriceTypeFilterTypedDict",
-    "QueryParamRepositoryNameFilter",
-    "QueryParamRepositoryNameFilterTypedDict",
     "QueryParamSubscriptionIDFilter",
     "QueryParamSubscriptionIDFilterTypedDict",
-    "Reactions",
-    "ReactionsTypedDict",
     "RefreshTokenRequest",
     "RefreshTokenRequestTypedDict",
     "Refund",
@@ -3325,25 +3217,6 @@ __all__ = [
     "RefundsListRequestTypedDict",
     "RefundsListResponse",
     "RefundsListResponseTypedDict",
-    "RepositoriesGetRequest",
-    "RepositoriesGetRequestTypedDict",
-    "RepositoriesListRequest",
-    "RepositoriesListRequestTypedDict",
-    "RepositoriesListResponse",
-    "RepositoriesListResponseTypedDict",
-    "RepositoriesUpdateRequest",
-    "RepositoriesUpdateRequestTypedDict",
-    "Repository",
-    "RepositoryNameFilter",
-    "RepositoryNameFilterTypedDict",
-    "RepositoryProfileSettings",
-    "RepositoryProfileSettingsTypedDict",
-    "RepositoryProfileSettingsUpdate",
-    "RepositoryProfileSettingsUpdateTypedDict",
-    "RepositorySortProperty",
-    "RepositoryTypedDict",
-    "RepositoryUpdate",
-    "RepositoryUpdateTypedDict",
     "ResourceNotFound",
     "ResourceNotFoundData",
     "RevokeTokenRequest",
@@ -3368,7 +3241,6 @@ __all__ = [
     "SecurityTypedDict",
     "SourceFilter",
     "SourceFilterTypedDict",
-    "State",
     "SubType",
     "Subscription",
     "SubscriptionCancel",
@@ -3381,6 +3253,8 @@ __all__ = [
     "SubscriptionDiscountTypedDict",
     "SubscriptionIDFilter",
     "SubscriptionIDFilterTypedDict",
+    "SubscriptionMeter",
+    "SubscriptionMeterTypedDict",
     "SubscriptionPrices",
     "SubscriptionPricesTypedDict",
     "SubscriptionProrationBehavior",
@@ -3398,8 +3272,6 @@ __all__ = [
     "SubscriptionsExportRequestTypedDict",
     "SubscriptionsGetRequest",
     "SubscriptionsGetRequestTypedDict",
-    "SubscriptionsListQueryParamOrganizationIDFilter",
-    "SubscriptionsListQueryParamOrganizationIDFilterTypedDict",
     "SubscriptionsListRequest",
     "SubscriptionsListRequestTypedDict",
     "SubscriptionsListResponse",
@@ -3467,10 +3339,6 @@ __all__ = [
     "WebhookOrderUpdatedPayloadTypedDict",
     "WebhookOrganizationUpdatedPayload",
     "WebhookOrganizationUpdatedPayloadTypedDict",
-    "WebhookPledgeCreatedPayload",
-    "WebhookPledgeCreatedPayloadTypedDict",
-    "WebhookPledgeUpdatedPayload",
-    "WebhookPledgeUpdatedPayloadTypedDict",
     "WebhookProductCreatedPayload",
     "WebhookProductCreatedPayloadTypedDict",
     "WebhookProductUpdatedPayload",

@@ -78,11 +78,11 @@ with Polar(
 ) as polar:
 
     res = polar.custom_fields.create(request={
+        "type": "number",
         "slug": "<value>",
         "name": "<value>",
-        "properties": {},
-        "type": "number",
         "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+        "properties": {},
     })
 
     # Handle response

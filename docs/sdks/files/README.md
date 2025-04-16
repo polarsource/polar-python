@@ -74,6 +74,7 @@ with Polar(
 ) as polar:
 
     res = polar.files.create(request={
+        "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
         "name": "<value>",
         "mime_type": "<value>",
         "size": 638424,
@@ -86,7 +87,6 @@ with Polar(
                 },
             ],
         },
-        "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
         "service": "organization_avatar",
     })
 

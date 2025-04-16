@@ -11,6 +11,7 @@ from .metersortproperty import MeterSortProperty
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
+import pydantic
 from pydantic import model_serializer
 from typing import Callable, Dict, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -118,7 +119,7 @@ class CustomersListRequest(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)
@@ -204,6 +205,8 @@ r"""Filter by event source."""
 
 
 class EventsListRequestTypedDict(TypedDict):
+    filter_: NotRequired[Nullable[str]]
+    r"""Filter events following filter clauses. JSON string following the same schema a meter filter clause."""
     start_timestamp: NotRequired[Nullable[datetime]]
     r"""Filter events after this timestamp."""
     end_timestamp: NotRequired[Nullable[datetime]]
@@ -233,6 +236,13 @@ class EventsListRequestTypedDict(TypedDict):
 
 
 class EventsListRequest(BaseModel):
+    filter_: Annotated[
+        OptionalNullable[str],
+        pydantic.Field(alias="filter"),
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter events following filter clauses. JSON string following the same schema a meter filter clause."""
+
     start_timestamp: Annotated[
         OptionalNullable[datetime],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -308,6 +318,7 @@ class EventsListRequest(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "filter",
             "start_timestamp",
             "end_timestamp",
             "organization_id",
@@ -322,6 +333,7 @@ class EventsListRequest(BaseModel):
             "metadata",
         ]
         nullable_fields = [
+            "filter",
             "start_timestamp",
             "end_timestamp",
             "organization_id",
@@ -339,7 +351,7 @@ class EventsListRequest(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)
@@ -453,7 +465,7 @@ class MetersListRequest(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)

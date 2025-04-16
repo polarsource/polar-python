@@ -109,7 +109,7 @@ class PolarSubscriptions(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:list",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -118,7 +118,7 @@ class PolarSubscriptions(BaseSDK):
         )
 
         def next_func() -> Optional[models.CustomerPortalSubscriptionsListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -280,7 +280,7 @@ class PolarSubscriptions(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:list",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -289,7 +289,7 @@ class PolarSubscriptions(BaseSDK):
         )
 
         def next_func() -> Optional[models.CustomerPortalSubscriptionsListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -421,7 +421,7 @@ class PolarSubscriptions(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:get",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -532,7 +532,7 @@ class PolarSubscriptions(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:get",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -658,7 +658,7 @@ class PolarSubscriptions(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:update",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -789,7 +789,7 @@ class PolarSubscriptions(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:update",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -905,7 +905,7 @@ class PolarSubscriptions(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:cancel",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -1021,7 +1021,7 @@ class PolarSubscriptions(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:subscriptions:cancel",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
