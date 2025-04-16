@@ -57,5 +57,3 @@ ignore_missing_imports = true
 [tool.pyright]
 venvPath = "."
 venv = ".venv"
-
-

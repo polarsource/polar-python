@@ -1,2 +1,4 @@
+.zed/
 src/polar_sdk/webhooks/
 src/tests/
+ruff.toml

@@ -1,0 +1,6 @@
+target-version = "py39"
+
+include = ["src/polar_sdk/webhooks/**/*.py"]
+
+[lint]
+extend-select = ["I", "UP", "T20"]

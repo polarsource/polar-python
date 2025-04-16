@@ -1,12 +1,11 @@
 import base64
-from typing import Any, Dict, Union
+from typing import Annotated, Any, Union
 
 from pydantic import Discriminator, Tag, TypeAdapter
 from standardwebhooks.webhooks import Webhook
 from standardwebhooks.webhooks import (
     WebhookVerificationError as _WebhookVerificationError,
 )
-from typing_extensions import Annotated
 
 from polar_sdk.models import (
     WebhookBenefitCreatedPayload,
@@ -88,7 +87,7 @@ class WebhookVerificationError(_WebhookVerificationError):
 
 
 def validate_event(
-    body: Union[str, bytes], headers: Dict[str, str], secret: str
+    body: Union[str, bytes], headers: dict[str, str], secret: str
 ) -> WebhoookPayload:
     base64_secret = base64.b64encode(secret.encode()).decode()
     webhook = Webhook(base64_secret)
