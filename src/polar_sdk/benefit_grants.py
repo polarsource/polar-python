@@ -134,7 +134,7 @@ class BenefitGrants(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:list",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -143,7 +143,7 @@ class BenefitGrants(BaseSDK):
         )
 
         def next_func() -> Optional[models.CustomerPortalBenefitGrantsListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -332,7 +332,7 @@ class BenefitGrants(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:list",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -341,7 +341,7 @@ class BenefitGrants(BaseSDK):
         )
 
         def next_func() -> Optional[models.CustomerPortalBenefitGrantsListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -475,7 +475,7 @@ class BenefitGrants(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:get",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -586,7 +586,7 @@ class BenefitGrants(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:get",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -712,7 +712,7 @@ class BenefitGrants(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:update",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -841,7 +841,7 @@ class BenefitGrants(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:benefit-grants:update",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,

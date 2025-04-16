@@ -5,7 +5,7 @@ from jsonpath import JSONPath
 from polar_sdk import models, utils
 from polar_sdk._hooks import HookContext
 from polar_sdk.types import OptionalNullable, UNSET
-from typing import Any, Dict, Mapping, Optional, Union
+from typing import Any, Dict, List, Mapping, Optional, Union
 
 
 class LicenseKeys(BaseSDK):
@@ -100,7 +100,7 @@ class LicenseKeys(BaseSDK):
         )
 
         def next_func() -> Optional[models.LicenseKeysListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -257,7 +257,7 @@ class LicenseKeys(BaseSDK):
         )
 
         def next_func() -> Optional[models.LicenseKeysListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 

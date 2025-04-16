@@ -806,10 +806,6 @@ def webhook():
 * [get](docs/sdks/events/README.md#get) - Get Event
 * [ingest](docs/sdks/events/README.md#ingest) - Ingest Events
 
-### [external_organizations](docs/sdks/externalorganizations/README.md)
-
-* [list](docs/sdks/externalorganizations/README.md#list) - List External Organizations
-
 ### [files](docs/sdks/files/README.md)
 
 * [list](docs/sdks/files/README.md#list) - List Files
@@ -881,12 +877,6 @@ def webhook():
 * [list](docs/sdks/refunds/README.md#list) - List Refunds
 * [create](docs/sdks/refunds/README.md#create) - Create Refund
 
-### [repositories](docs/sdks/repositories/README.md)
-
-* [list](docs/sdks/repositories/README.md#list) - List Repositories
-* [get](docs/sdks/repositories/README.md#get) - Get Repository
-* [update](docs/sdks/repositories/README.md#update) - Update Repository
-
 ### [subscriptions](docs/sdks/subscriptions/README.md)
 
 * [list](docs/sdks/subscriptions/README.md#list) - List Subscriptions
@@ -913,9 +903,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ],
+    res = polar.organizations.list(,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     while res is not None:
@@ -936,9 +924,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.organizations.list()
 
     while res is not None:
         # Handle items
@@ -981,9 +967,7 @@ with Polar(
     res = None
     try:
 
-        res = polar.external_organizations.list(organization_id=[
-            "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-        ])
+        res = polar.organizations.list()
 
         while res is not None:
             # Handle items
@@ -1022,9 +1006,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.organizations.list()
 
     while res is not None:
         # Handle items
@@ -1045,9 +1027,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.organizations.list()
 
     while res is not None:
         # Handle items
@@ -1158,9 +1138,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.organizations.list()
 
     while res is not None:
         # Handle items
@@ -1251,9 +1229,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.organizations.list()
 
     while res is not None:
         # Handle items

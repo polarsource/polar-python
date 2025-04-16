@@ -13,10 +13,7 @@ class Subscriptions(BaseSDK):
         self,
         *,
         organization_id: OptionalNullable[
-            Union[
-                models.SubscriptionsListQueryParamOrganizationIDFilter,
-                models.SubscriptionsListQueryParamOrganizationIDFilterTypedDict,
-            ]
+            Union[models.OrganizationIDFilter, models.OrganizationIDFilterTypedDict]
         ] = UNSET,
         product_id: OptionalNullable[
             Union[models.ProductIDFilter, models.ProductIDFilterTypedDict]
@@ -113,7 +110,7 @@ class Subscriptions(BaseSDK):
         )
 
         def next_func() -> Optional[models.SubscriptionsListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -179,10 +176,7 @@ class Subscriptions(BaseSDK):
         self,
         *,
         organization_id: OptionalNullable[
-            Union[
-                models.SubscriptionsListQueryParamOrganizationIDFilter,
-                models.SubscriptionsListQueryParamOrganizationIDFilterTypedDict,
-            ]
+            Union[models.OrganizationIDFilter, models.OrganizationIDFilterTypedDict]
         ] = UNSET,
         product_id: OptionalNullable[
             Union[models.ProductIDFilter, models.ProductIDFilterTypedDict]
@@ -279,7 +273,7 @@ class Subscriptions(BaseSDK):
         )
 
         def next_func() -> Optional[models.SubscriptionsListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 

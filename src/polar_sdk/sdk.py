@@ -18,7 +18,6 @@ from polar_sdk.customer_sessions import CustomerSessions
 from polar_sdk.customers import Customers
 from polar_sdk.discounts import Discounts
 from polar_sdk.events import Events
-from polar_sdk.external_organizations import ExternalOrganizations
 from polar_sdk.files import Files
 from polar_sdk.license_keys import LicenseKeys
 from polar_sdk.meters import Meters
@@ -28,7 +27,6 @@ from polar_sdk.orders import Orders
 from polar_sdk.organizations import Organizations
 from polar_sdk.products import Products
 from polar_sdk.refunds import Refunds
-from polar_sdk.repositories import Repositories
 from polar_sdk.subscriptions import Subscriptions
 from polar_sdk.types import OptionalNullable, UNSET
 from typing import Any, Callable, Dict, Optional, Union, cast
@@ -41,8 +39,6 @@ class Polar(BaseSDK):
     Read the docs at https://docs.polar.sh/api-reference
     """
 
-    external_organizations: ExternalOrganizations
-    repositories: Repositories
     organizations: Organizations
     subscriptions: Subscriptions
     oauth2: Oauth2
@@ -162,8 +158,6 @@ class Polar(BaseSDK):
         self._init_sdks()
 
     def _init_sdks(self):
-        self.external_organizations = ExternalOrganizations(self.sdk_configuration)
-        self.repositories = Repositories(self.sdk_configuration)
         self.organizations = Organizations(self.sdk_configuration)
         self.subscriptions = Subscriptions(self.sdk_configuration)
         self.oauth2 = Oauth2(self.sdk_configuration)

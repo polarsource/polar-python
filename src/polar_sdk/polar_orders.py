@@ -128,7 +128,7 @@ class PolarOrders(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:orders:list",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -137,7 +137,7 @@ class PolarOrders(BaseSDK):
         )
 
         def next_func() -> Optional[models.CustomerPortalOrdersListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -320,7 +320,7 @@ class PolarOrders(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:orders:list",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -329,7 +329,7 @@ class PolarOrders(BaseSDK):
         )
 
         def next_func() -> Optional[models.CustomerPortalOrdersListResponse]:
-            body = utils.unmarshal_json(http_res.text, Dict[Any, Any])
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
             next_page = page + 1
 
@@ -463,7 +463,7 @@ class PolarOrders(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:orders:get",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -574,7 +574,7 @@ class PolarOrders(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:orders:get",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -685,7 +685,7 @@ class PolarOrders(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:orders:invoice",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,
@@ -796,7 +796,7 @@ class PolarOrders(BaseSDK):
             hook_ctx=HookContext(
                 base_url=base_url or "",
                 operation_id="customer_portal:orders:invoice",
-                oauth2_scopes=[],
+                oauth2_scopes=None,
                 security_source=security,
             ),
             request=req,

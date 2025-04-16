@@ -5,10 +5,6 @@ from .organizationfeaturesettings import (
     OrganizationFeatureSettings,
     OrganizationFeatureSettingsTypedDict,
 )
-from .organizationprofilesettings import (
-    OrganizationProfileSettings,
-    OrganizationProfileSettingsTypedDict,
-)
 from .organizationsociallink import (
     OrganizationSocialLink,
     OrganizationSocialLinkTypedDict,
@@ -54,11 +50,6 @@ class OrganizationTypedDict(TypedDict):
     blog: Nullable[str]
     location: Nullable[str]
     twitter_username: Nullable[str]
-    pledge_minimum_amount: int
-    pledge_badge_show_amount: bool
-    default_upfront_split_to_contributors: Nullable[int]
-    profile_settings: Nullable[OrganizationProfileSettingsTypedDict]
-    r"""Settings for the organization profile"""
 
 
 class Organization(BaseModel):
@@ -132,35 +123,6 @@ class Organization(BaseModel):
         ),
     ]
 
-    pledge_minimum_amount: Annotated[
-        int,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
-    pledge_badge_show_amount: Annotated[
-        bool,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
-    default_upfront_split_to_contributors: Annotated[
-        Nullable[int],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
-    profile_settings: Annotated[
-        Nullable[OrganizationProfileSettings],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-    r"""Settings for the organization profile"""
-
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
@@ -176,8 +138,6 @@ class Organization(BaseModel):
             "blog",
             "location",
             "twitter_username",
-            "default_upfront_split_to_contributors",
-            "profile_settings",
         ]
         null_default_fields = []
 
@@ -185,7 +145,7 @@ class Organization(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)

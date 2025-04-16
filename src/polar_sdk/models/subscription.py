@@ -25,6 +25,7 @@ from .legacyrecurringproductprice import (
 from .product import Product, ProductTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
 from .subscriptioncustomer import SubscriptionCustomer, SubscriptionCustomerTypedDict
+from .subscriptionmeter import SubscriptionMeter, SubscriptionMeterTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptionstatus import SubscriptionStatus
 from .subscriptionuser import SubscriptionUser, SubscriptionUserTypedDict
@@ -138,6 +139,8 @@ class SubscriptionTypedDict(TypedDict):
     price: PriceTypedDict
     prices: List[SubscriptionPricesTypedDict]
     r"""List of enabled prices for the subscription."""
+    meters: List[SubscriptionMeterTypedDict]
+    r"""List of meters associated with the subscription."""
     custom_field_data: NotRequired[Dict[str, Nullable[CustomFieldDataTypedDict]]]
     r"""Key-value object storing custom field values."""
 
@@ -233,6 +236,9 @@ class Subscription(BaseModel):
     prices: List[SubscriptionPrices]
     r"""List of enabled prices for the subscription."""
 
+    meters: List[SubscriptionMeter]
+    r"""List of meters associated with the subscription."""
+
     custom_field_data: Optional[Dict[str, Nullable[CustomFieldData]]] = None
     r"""Key-value object storing custom field values."""
 
@@ -258,7 +264,7 @@ class Subscription(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)

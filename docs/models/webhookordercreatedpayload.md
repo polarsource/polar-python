@@ -18,5 +18,5 @@ A new order is created when:
 
 | Field                              | Type                               | Required                           | Description                        | Example                            |
 | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `data`                             | [models.Order](../models/order.md) | :heavy_check_mark:                 | N/A                                |                                    |
 | `type`                             | *Literal["order.created"]*         | :heavy_check_mark:                 | N/A                                | order.created                      |
+| `data`                             | [models.Order](../models/order.md) | :heavy_check_mark:                 | N/A                                |                                    |

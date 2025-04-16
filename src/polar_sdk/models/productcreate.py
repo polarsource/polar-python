@@ -136,8 +136,8 @@ class ProductCreate(BaseModel):
             "organization_id",
         ]
         nullable_fields = [
-            "recurring_interval",
             "description",
+            "recurring_interval",
             "medias",
             "organization_id",
         ]
@@ -147,7 +147,7 @@ class ProductCreate(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)

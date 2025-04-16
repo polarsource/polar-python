@@ -12,14 +12,14 @@ from typing import Callable, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-BenefitsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
-    "BenefitsListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
+QueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "QueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by organization ID."""
 
 
-BenefitsListQueryParamOrganizationIDFilter = TypeAliasType(
-    "BenefitsListQueryParamOrganizationIDFilter", Union[str, List[str]]
+QueryParamOrganizationIDFilter = TypeAliasType(
+    "QueryParamOrganizationIDFilter", Union[str, List[str]]
 )
 r"""Filter by organization ID."""
 
@@ -37,9 +37,7 @@ r"""Filter by benefit type."""
 
 
 class BenefitsListRequestTypedDict(TypedDict):
-    organization_id: NotRequired[
-        Nullable[BenefitsListQueryParamOrganizationIDFilterTypedDict]
-    ]
+    organization_id: NotRequired[Nullable[QueryParamOrganizationIDFilterTypedDict]]
     r"""Filter by organization ID."""
     type_filter: NotRequired[Nullable[BenefitTypeFilterTypedDict]]
     r"""Filter by benefit type."""
@@ -55,7 +53,7 @@ class BenefitsListRequestTypedDict(TypedDict):
 
 class BenefitsListRequest(BaseModel):
     organization_id: Annotated[
-        OptionalNullable[BenefitsListQueryParamOrganizationIDFilter],
+        OptionalNullable[QueryParamOrganizationIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by organization ID."""
@@ -108,7 +106,7 @@ class BenefitsListRequest(BaseModel):
 
         m = {}
 
-        for n, f in self.model_fields.items():
+        for n, f in type(self).model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
             serialized.pop(k, None)

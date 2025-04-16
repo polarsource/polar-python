@@ -8,9 +8,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.external_organizations.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.organizations.list()
 
     while res is not None:
         # Handle items
@@ -32,9 +30,7 @@ async def main():
         access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as polar:
 
-        res = await polar.external_organizations.list_async(organization_id=[
-            "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-        ])
+        res = await polar.organizations.list_async()
 
         while res is not None:
             # Handle items

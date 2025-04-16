@@ -10,5 +10,5 @@ Happens when the subscription is canceled, or payment is past due.
 
 | Field                                            | Type                                             | Required                                         | Description                                      | Example                                          |
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `data`                                           | [models.Subscription](../models/subscription.md) | :heavy_check_mark:                               | N/A                                              |                                                  |
 | `type`                                           | *Literal["subscription.revoked"]*                | :heavy_check_mark:                               | N/A                                              | subscription.revoked                             |
+| `data`                                           | [models.Subscription](../models/subscription.md) | :heavy_check_mark:                               | N/A                                              |                                                  |
