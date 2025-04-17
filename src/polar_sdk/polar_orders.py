@@ -34,12 +34,6 @@ class PolarOrders(BaseSDK):
                 models.CustomerPortalOrdersListQueryParamProductBillingTypeFilterTypedDict,
             ]
         ] = UNSET,
-        product_price_type: OptionalNullable[
-            Union[
-                models.QueryParamProductPriceTypeFilter,
-                models.QueryParamProductPriceTypeFilterTypedDict,
-            ]
-        ] = UNSET,
         subscription_id: OptionalNullable[
             Union[
                 models.CustomerPortalOrdersListQueryParamSubscriptionIDFilter,
@@ -65,7 +59,6 @@ class PolarOrders(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param product_billing_type: Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
-        :param product_price_type:
         :param subscription_id: Filter by subscription ID.
         :param query: Search by product or organization name.
         :param page: Page number, defaults to 1.
@@ -90,7 +83,6 @@ class PolarOrders(BaseSDK):
             organization_id=organization_id,
             product_id=product_id,
             product_billing_type=product_billing_type,
-            product_price_type=product_price_type,
             subscription_id=subscription_id,
             query=query,
             page=page,
@@ -159,7 +151,6 @@ class PolarOrders(BaseSDK):
                 organization_id=organization_id,
                 product_id=product_id,
                 product_billing_type=product_billing_type,
-                product_price_type=product_price_type,
                 subscription_id=subscription_id,
                 query=query,
                 page=next_page,
@@ -226,12 +217,6 @@ class PolarOrders(BaseSDK):
                 models.CustomerPortalOrdersListQueryParamProductBillingTypeFilterTypedDict,
             ]
         ] = UNSET,
-        product_price_type: OptionalNullable[
-            Union[
-                models.QueryParamProductPriceTypeFilter,
-                models.QueryParamProductPriceTypeFilterTypedDict,
-            ]
-        ] = UNSET,
         subscription_id: OptionalNullable[
             Union[
                 models.CustomerPortalOrdersListQueryParamSubscriptionIDFilter,
@@ -257,7 +242,6 @@ class PolarOrders(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param product_billing_type: Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
-        :param product_price_type:
         :param subscription_id: Filter by subscription ID.
         :param query: Search by product or organization name.
         :param page: Page number, defaults to 1.
@@ -282,7 +266,6 @@ class PolarOrders(BaseSDK):
             organization_id=organization_id,
             product_id=product_id,
             product_billing_type=product_billing_type,
-            product_price_type=product_price_type,
             subscription_id=subscription_id,
             query=query,
             page=page,
@@ -351,7 +334,6 @@ class PolarOrders(BaseSDK):
                 organization_id=organization_id,
                 product_id=product_id,
                 product_billing_type=product_billing_type,
-                product_price_type=product_price_type,
                 subscription_id=subscription_id,
                 query=query,
                 page=next_page,

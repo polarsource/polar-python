@@ -37,7 +37,6 @@ class BenefitMeterCreditTypedDict(TypedDict):
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    metadata: Dict[str, BenefitMeterCreditMetadataTypedDict]
     description: str
     r"""The description of the benefit."""
     selectable: bool
@@ -46,6 +45,7 @@ class BenefitMeterCreditTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
+    metadata: Dict[str, BenefitMeterCreditMetadataTypedDict]
     properties: BenefitMeterCreditPropertiesTypedDict
     r"""Properties for a benefit of type `meter_unit`."""
     type: Literal["meter_credit"]
@@ -66,8 +66,6 @@ class BenefitMeterCredit(BaseModel):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    metadata: Dict[str, BenefitMeterCreditMetadata]
-
     description: str
     r"""The description of the benefit."""
 
@@ -79,6 +77,8 @@ class BenefitMeterCredit(BaseModel):
 
     organization_id: str
     r"""The ID of the organization owning the benefit."""
+
+    metadata: Dict[str, BenefitMeterCreditMetadata]
 
     properties: BenefitMeterCreditProperties
     r"""Properties for a benefit of type `meter_unit`."""

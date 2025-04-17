@@ -37,7 +37,6 @@ class BenefitCustomTypedDict(TypedDict):
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    metadata: Dict[str, BenefitCustomMetadataTypedDict]
     description: str
     r"""The description of the benefit."""
     selectable: bool
@@ -46,9 +45,9 @@ class BenefitCustomTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
+    metadata: Dict[str, BenefitCustomMetadataTypedDict]
     properties: BenefitCustomPropertiesTypedDict
     r"""Properties for a benefit of type `custom`."""
-    is_tax_applicable: bool
     type: Literal["custom"]
 
 
@@ -67,8 +66,6 @@ class BenefitCustom(BaseModel):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    metadata: Dict[str, BenefitCustomMetadata]
-
     description: str
     r"""The description of the benefit."""
 
@@ -81,15 +78,10 @@ class BenefitCustom(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
 
+    metadata: Dict[str, BenefitCustomMetadata]
+
     properties: BenefitCustomProperties
     r"""Properties for a benefit of type `custom`."""
-
-    is_tax_applicable: Annotated[
-        bool,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
 
     TYPE: Annotated[
         Annotated[Literal["custom"], AfterValidator(validate_const("custom"))],

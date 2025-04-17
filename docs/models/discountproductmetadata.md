@@ -1,4 +1,4 @@
-# CheckoutPriceCreateCustomFieldData
+# DiscountProductMetadata
 
 
 ## Supported Types
@@ -15,15 +15,15 @@ value: str = /* values here */
 value: int = /* values here */
 ```
 
+### `float`
+
+```python
+value: float = /* values here */
+```
+
 ### `bool`
 
 ```python
 value: bool = /* values here */
-```
-
-### `datetime`
-
-```python
-value: datetime = /* values here */
 ```
 

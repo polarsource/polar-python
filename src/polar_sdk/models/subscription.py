@@ -28,13 +28,11 @@ from .subscriptioncustomer import SubscriptionCustomer, SubscriptionCustomerType
 from .subscriptionmeter import SubscriptionMeter, SubscriptionMeterTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptionstatus import SubscriptionStatus
-from .subscriptionuser import SubscriptionUser, SubscriptionUserTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 MetadataTypedDict = TypeAliasType("MetadataTypedDict", Union[str, int, float, bool])
@@ -71,14 +69,6 @@ SubscriptionDiscount = TypeAliasType(
         DiscountFixedRepeatDurationBase,
     ],
 )
-
-
-PriceTypedDict = TypeAliasType(
-    "PriceTypedDict", Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict]
-)
-
-
-Price = TypeAliasType("Price", Union[LegacyRecurringProductPrice, ProductPrice])
 
 
 SubscriptionPricesTypedDict = TypeAliasType(
@@ -128,15 +118,11 @@ class SubscriptionTypedDict(TypedDict):
     checkout_id: Nullable[str]
     customer_cancellation_reason: Nullable[CustomerCancellationReason]
     customer_cancellation_comment: Nullable[str]
-    price_id: str
     metadata: Dict[str, MetadataTypedDict]
     customer: SubscriptionCustomerTypedDict
-    user_id: str
-    user: SubscriptionUserTypedDict
     product: ProductTypedDict
     r"""A product."""
     discount: Nullable[SubscriptionDiscountTypedDict]
-    price: PriceTypedDict
     prices: List[SubscriptionPricesTypedDict]
     r"""List of enabled prices for the subscription."""
     meters: List[SubscriptionMeterTypedDict]
@@ -201,37 +187,14 @@ class Subscription(BaseModel):
 
     customer_cancellation_comment: Nullable[str]
 
-    price_id: Annotated[
-        str,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
     metadata: Dict[str, Metadata]
 
     customer: SubscriptionCustomer
-
-    user_id: Annotated[
-        str,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
-    user: SubscriptionUser
 
     product: Product
     r"""A product."""
 
     discount: Nullable[SubscriptionDiscount]
-
-    price: Annotated[
-        Price,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
 
     prices: List[SubscriptionPrices]
     r"""List of enabled prices for the subscription."""

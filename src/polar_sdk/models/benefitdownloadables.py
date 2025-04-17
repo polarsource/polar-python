@@ -32,7 +32,6 @@ class BenefitDownloadablesTypedDict(TypedDict):
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    metadata: Dict[str, BenefitDownloadablesMetadataTypedDict]
     description: str
     r"""The description of the benefit."""
     selectable: bool
@@ -41,6 +40,7 @@ class BenefitDownloadablesTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
+    metadata: Dict[str, BenefitDownloadablesMetadataTypedDict]
     properties: BenefitDownloadablesPropertiesTypedDict
     type: Literal["downloadables"]
 
@@ -55,8 +55,6 @@ class BenefitDownloadables(BaseModel):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    metadata: Dict[str, BenefitDownloadablesMetadata]
-
     description: str
     r"""The description of the benefit."""
 
@@ -68,6 +66,8 @@ class BenefitDownloadables(BaseModel):
 
     organization_id: str
     r"""The ID of the organization owning the benefit."""
+
+    metadata: Dict[str, BenefitDownloadablesMetadata]
 
     properties: BenefitDownloadablesProperties
 

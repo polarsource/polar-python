@@ -6,30 +6,14 @@ from .customerordersubscription import (
     CustomerOrderSubscription,
     CustomerOrderSubscriptionTypedDict,
 )
-from .legacyrecurringproductprice import (
-    LegacyRecurringProductPrice,
-    LegacyRecurringProductPriceTypedDict,
-)
 from .orderitemschema import OrderItemSchema, OrderItemSchemaTypedDict
 from .orderstatus import OrderStatus
-from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
-from typing import List, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
-
-
-CustomerOrderProductPriceTypedDict = TypeAliasType(
-    "CustomerOrderProductPriceTypedDict",
-    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
-)
-
-
-CustomerOrderProductPrice = TypeAliasType(
-    "CustomerOrderProductPrice", Union[LegacyRecurringProductPrice, ProductPrice]
-)
+from typing import List
+from typing_extensions import Annotated, TypedDict
 
 
 class CustomerOrderTypedDict(TypedDict):
@@ -47,8 +31,6 @@ class CustomerOrderTypedDict(TypedDict):
     r"""Discount amount in cents."""
     net_amount: int
     r"""Amount in cents, after discounts but before taxes."""
-    amount: int
-    r"""Amount in cents, after discounts but before taxes."""
     tax_amount: int
     r"""Sales tax amount in cents."""
     total_amount: int
@@ -60,11 +42,9 @@ class CustomerOrderTypedDict(TypedDict):
     currency: str
     customer_id: str
     product_id: str
-    product_price_id: str
     subscription_id: Nullable[str]
     user_id: str
     product: CustomerOrderProductTypedDict
-    product_price: CustomerOrderProductPriceTypedDict
     subscription: Nullable[CustomerOrderSubscriptionTypedDict]
     items: List[OrderItemSchemaTypedDict]
     r"""Line items composing the order."""
@@ -93,14 +73,6 @@ class CustomerOrder(BaseModel):
     net_amount: int
     r"""Amount in cents, after discounts but before taxes."""
 
-    amount: Annotated[
-        int,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-    r"""Amount in cents, after discounts but before taxes."""
-
     tax_amount: int
     r"""Sales tax amount in cents."""
 
@@ -119,13 +91,6 @@ class CustomerOrder(BaseModel):
 
     product_id: str
 
-    product_price_id: Annotated[
-        str,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
     subscription_id: Nullable[str]
 
     user_id: Annotated[
@@ -136,13 +101,6 @@ class CustomerOrder(BaseModel):
     ]
 
     product: CustomerOrderProduct
-
-    product_price: Annotated[
-        CustomerOrderProductPrice,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
 
     subscription: Nullable[CustomerOrderSubscription]
 

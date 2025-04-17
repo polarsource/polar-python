@@ -24,10 +24,9 @@ from .benefitgrantlicensekeysproperties import (
 from .customer import Customer, CustomerTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import Union
-from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 PropertiesTypedDict = TypeAliasType(
@@ -71,7 +70,6 @@ class BenefitGrantTypedDict(TypedDict):
     r"""The ID of the order that granted this benefit."""
     customer_id: str
     r"""The ID of the customer concerned by this grant."""
-    user_id: str
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
     customer: CustomerTypedDict
@@ -107,13 +105,6 @@ class BenefitGrant(BaseModel):
 
     customer_id: str
     r"""The ID of the customer concerned by this grant."""
-
-    user_id: Annotated[
-        str,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
 
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""

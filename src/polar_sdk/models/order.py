@@ -18,18 +18,12 @@ from .discountpercentagerepeatdurationbase import (
     DiscountPercentageRepeatDurationBase,
     DiscountPercentageRepeatDurationBaseTypedDict,
 )
-from .legacyrecurringproductprice import (
-    LegacyRecurringProductPrice,
-    LegacyRecurringProductPriceTypedDict,
-)
 from .orderbillingreason import OrderBillingReason
 from .ordercustomer import OrderCustomer, OrderCustomerTypedDict
 from .orderitemschema import OrderItemSchema, OrderItemSchemaTypedDict
 from .orderproduct import OrderProduct, OrderProductTypedDict
 from .orderstatus import OrderStatus
 from .ordersubscription import OrderSubscription, OrderSubscriptionTypedDict
-from .orderuser import OrderUser, OrderUserTypedDict
-from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 import pydantic
@@ -53,17 +47,6 @@ OrderCustomFieldDataTypedDict = TypeAliasType(
 
 OrderCustomFieldData = TypeAliasType(
     "OrderCustomFieldData", Union[str, int, bool, datetime]
-)
-
-
-OrderProductPriceTypedDict = TypeAliasType(
-    "OrderProductPriceTypedDict",
-    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
-)
-
-
-OrderProductPrice = TypeAliasType(
-    "OrderProductPrice", Union[LegacyRecurringProductPrice, ProductPrice]
 )
 
 
@@ -121,15 +104,12 @@ class OrderTypedDict(TypedDict):
     billing_address: Nullable[AddressTypedDict]
     customer_id: str
     product_id: str
-    product_price_id: str
     discount_id: Nullable[str]
     subscription_id: Nullable[str]
     checkout_id: Nullable[str]
     customer: OrderCustomerTypedDict
     user_id: str
-    user: OrderUserTypedDict
     product: OrderProductTypedDict
-    product_price: OrderProductPriceTypedDict
     discount: Nullable[OrderDiscountTypedDict]
     subscription: Nullable[OrderSubscriptionTypedDict]
     items: List[OrderItemSchemaTypedDict]
@@ -194,13 +174,6 @@ class Order(BaseModel):
 
     product_id: str
 
-    product_price_id: Annotated[
-        str,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
     discount_id: Nullable[str]
 
     subscription_id: Nullable[str]
@@ -216,16 +189,7 @@ class Order(BaseModel):
         ),
     ]
 
-    user: OrderUser
-
     product: OrderProduct
-
-    product_price: Annotated[
-        OrderProductPrice,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
 
     discount: Nullable[OrderDiscount]
 

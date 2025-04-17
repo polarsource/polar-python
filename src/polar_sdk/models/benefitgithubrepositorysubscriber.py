@@ -33,7 +33,6 @@ class BenefitGitHubRepositorySubscriberTypedDict(TypedDict):
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    metadata: Dict[str, BenefitGitHubRepositorySubscriberMetadataTypedDict]
     description: str
     r"""The description of the benefit."""
     selectable: bool
@@ -42,6 +41,7 @@ class BenefitGitHubRepositorySubscriberTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
+    metadata: Dict[str, BenefitGitHubRepositorySubscriberMetadataTypedDict]
     organization: OrganizationTypedDict
     properties: BenefitGitHubRepositorySubscriberPropertiesTypedDict
     r"""Properties available to subscribers for a benefit of type `github_repository`."""
@@ -58,8 +58,6 @@ class BenefitGitHubRepositorySubscriber(BaseModel):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    metadata: Dict[str, BenefitGitHubRepositorySubscriberMetadata]
-
     description: str
     r"""The description of the benefit."""
 
@@ -71,6 +69,8 @@ class BenefitGitHubRepositorySubscriber(BaseModel):
 
     organization_id: str
     r"""The ID of the organization owning the benefit."""
+
+    metadata: Dict[str, BenefitGitHubRepositorySubscriberMetadata]
 
     organization: Organization
 

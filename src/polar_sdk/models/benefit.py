@@ -17,12 +17,12 @@ from typing_extensions import TypeAliasType
 BenefitTypedDict = TypeAliasType(
     "BenefitTypedDict",
     Union[
+        BenefitCustomTypedDict,
         BenefitDiscordTypedDict,
         BenefitGitHubRepositoryTypedDict,
         BenefitDownloadablesTypedDict,
         BenefitLicenseKeysTypedDict,
         BenefitMeterCreditTypedDict,
-        BenefitCustomTypedDict,
     ],
 )
 
@@ -30,11 +30,11 @@ BenefitTypedDict = TypeAliasType(
 Benefit = TypeAliasType(
     "Benefit",
     Union[
+        BenefitCustom,
         BenefitDiscord,
         BenefitGitHubRepository,
         BenefitDownloadables,
         BenefitLicenseKeys,
         BenefitMeterCredit,
-        BenefitCustom,
     ],
 )

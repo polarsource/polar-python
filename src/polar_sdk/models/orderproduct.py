@@ -5,10 +5,22 @@ from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing_extensions import TypedDict
+from typing import Dict, Union
+from typing_extensions import TypeAliasType, TypedDict
+
+
+OrderProductMetadataTypedDict = TypeAliasType(
+    "OrderProductMetadataTypedDict", Union[str, int, float, bool]
+)
+
+
+OrderProductMetadata = TypeAliasType(
+    "OrderProductMetadata", Union[str, int, float, bool]
+)
 
 
 class OrderProductTypedDict(TypedDict):
+    metadata: Dict[str, OrderProductMetadataTypedDict]
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
@@ -30,6 +42,8 @@ class OrderProductTypedDict(TypedDict):
 
 
 class OrderProduct(BaseModel):
+    metadata: Dict[str, OrderProductMetadata]
+
     created_at: datetime
     r"""Creation timestamp of the object."""
 

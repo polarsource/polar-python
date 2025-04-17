@@ -30,10 +30,9 @@ from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 CheckoutPublicCustomFieldDataTypedDict = TypeAliasType(
@@ -141,7 +140,6 @@ class CheckoutPublicTypedDict(TypedDict):
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
     payment_processor_metadata: Dict[str, str]
-    subtotal_amount: Nullable[int]
     products: List[CheckoutProductTypedDict]
     r"""List of products available to select."""
     product: CheckoutProductTypedDict
@@ -249,13 +247,6 @@ class CheckoutPublic(BaseModel):
 
     payment_processor_metadata: Dict[str, str]
 
-    subtotal_amount: Annotated[
-        Nullable[int],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
     products: List[CheckoutProduct]
     r"""List of products available to select."""
 
@@ -290,7 +281,6 @@ class CheckoutPublic(BaseModel):
             "customer_ip_address",
             "customer_billing_address",
             "customer_tax_id",
-            "subtotal_amount",
             "discount",
         ]
         null_default_fields = []
