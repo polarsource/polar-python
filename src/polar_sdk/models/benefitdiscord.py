@@ -37,7 +37,6 @@ class BenefitDiscordTypedDict(TypedDict):
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    metadata: Dict[str, BenefitDiscordMetadataTypedDict]
     description: str
     r"""The description of the benefit."""
     selectable: bool
@@ -46,6 +45,7 @@ class BenefitDiscordTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
+    metadata: Dict[str, BenefitDiscordMetadataTypedDict]
     properties: BenefitDiscordPropertiesTypedDict
     r"""Properties for a benefit of type `discord`."""
     type: Literal["discord"]
@@ -66,8 +66,6 @@ class BenefitDiscord(BaseModel):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    metadata: Dict[str, BenefitDiscordMetadata]
-
     description: str
     r"""The description of the benefit."""
 
@@ -79,6 +77,8 @@ class BenefitDiscord(BaseModel):
 
     organization_id: str
     r"""The ID of the organization owning the benefit."""
+
+    metadata: Dict[str, BenefitDiscordMetadata]
 
     properties: BenefitDiscordProperties
     r"""Properties for a benefit of type `discord`."""

@@ -15,10 +15,9 @@ from .organizationsubscriptionsettings import (
 )
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import List
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import TypedDict
 
 
 class OrganizationTypedDict(TypedDict):
@@ -45,11 +44,6 @@ class OrganizationTypedDict(TypedDict):
     feature_settings: Nullable[OrganizationFeatureSettingsTypedDict]
     r"""Organization feature settings"""
     subscription_settings: OrganizationSubscriptionSettingsTypedDict
-    bio: Nullable[str]
-    company: Nullable[str]
-    blog: Nullable[str]
-    location: Nullable[str]
-    twitter_username: Nullable[str]
 
 
 class Organization(BaseModel):
@@ -88,41 +82,6 @@ class Organization(BaseModel):
 
     subscription_settings: OrganizationSubscriptionSettings
 
-    bio: Annotated[
-        Nullable[str],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
-    company: Annotated[
-        Nullable[str],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
-    blog: Annotated[
-        Nullable[str],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
-    location: Annotated[
-        Nullable[str],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
-    twitter_username: Annotated[
-        Nullable[str],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
@@ -133,11 +92,6 @@ class Organization(BaseModel):
             "website",
             "details_submitted_at",
             "feature_settings",
-            "bio",
-            "company",
-            "blog",
-            "location",
-            "twitter_username",
         ]
         null_default_fields = []
 

@@ -33,7 +33,6 @@ class BenefitLicenseKeysSubscriberTypedDict(TypedDict):
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    metadata: Dict[str, BenefitLicenseKeysSubscriberMetadataTypedDict]
     description: str
     r"""The description of the benefit."""
     selectable: bool
@@ -42,6 +41,7 @@ class BenefitLicenseKeysSubscriberTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
+    metadata: Dict[str, BenefitLicenseKeysSubscriberMetadataTypedDict]
     organization: OrganizationTypedDict
     properties: BenefitLicenseKeysSubscriberPropertiesTypedDict
     type: Literal["license_keys"]
@@ -57,8 +57,6 @@ class BenefitLicenseKeysSubscriber(BaseModel):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    metadata: Dict[str, BenefitLicenseKeysSubscriberMetadata]
-
     description: str
     r"""The description of the benefit."""
 
@@ -70,6 +68,8 @@ class BenefitLicenseKeysSubscriber(BaseModel):
 
     organization_id: str
     r"""The ID of the organization owning the benefit."""
+
+    metadata: Dict[str, BenefitLicenseKeysSubscriberMetadata]
 
     organization: Organization
 

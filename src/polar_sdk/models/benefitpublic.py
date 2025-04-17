@@ -5,26 +5,16 @@ from .benefittype import BenefitType
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict, Union
-from typing_extensions import TypeAliasType, TypedDict
+from typing_extensions import TypedDict
 
 
-BenefitBaseMetadataTypedDict = TypeAliasType(
-    "BenefitBaseMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-BenefitBaseMetadata = TypeAliasType("BenefitBaseMetadata", Union[str, int, float, bool])
-
-
-class BenefitBaseTypedDict(TypedDict):
+class BenefitPublicTypedDict(TypedDict):
     id: str
     r"""The ID of the benefit."""
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    metadata: Dict[str, BenefitBaseMetadataTypedDict]
     type: BenefitType
     description: str
     r"""The description of the benefit."""
@@ -36,7 +26,7 @@ class BenefitBaseTypedDict(TypedDict):
     r"""The ID of the organization owning the benefit."""
 
 
-class BenefitBase(BaseModel):
+class BenefitPublic(BaseModel):
     id: str
     r"""The ID of the benefit."""
 
@@ -45,8 +35,6 @@ class BenefitBase(BaseModel):
 
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-
-    metadata: Dict[str, BenefitBaseMetadata]
 
     type: BenefitType
 

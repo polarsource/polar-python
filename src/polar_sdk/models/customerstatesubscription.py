@@ -67,7 +67,6 @@ class CustomerStateSubscriptionTypedDict(TypedDict):
     r"""The ID of the subscribed product."""
     discount_id: Nullable[str]
     r"""The ID of the applied discount, if any."""
-    price_id: str
     meters: List[CustomerStateSubscriptionMeterTypedDict]
     r"""List of meters associated with the subscription."""
     custom_field_data: NotRequired[
@@ -122,13 +121,6 @@ class CustomerStateSubscription(BaseModel):
 
     discount_id: Nullable[str]
     r"""The ID of the applied discount, if any."""
-
-    price_id: Annotated[
-        str,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
 
     meters: List[CustomerStateSubscriptionMeter]
     r"""List of meters associated with the subscription."""

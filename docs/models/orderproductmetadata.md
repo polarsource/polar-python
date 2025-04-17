@@ -1,4 +1,4 @@
-# CheckoutPriceCreateCustomerMetadata
+# OrderProductMetadata
 
 
 ## Supported Types

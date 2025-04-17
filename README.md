@@ -150,7 +150,6 @@ with Polar() as polar:
             payment_processor_metadata={
                 "key": "<value>",
             },
-            subtotal_amount=219352,
             metadata={
                 "key": 366960,
                 "key1": 961375,
@@ -234,40 +233,30 @@ with Polar() as polar:
 
                 ],
                 benefits=[
-                    polar_sdk.BenefitBase(
+                    polar_sdk.BenefitPublic(
                         id="<value>",
                         created_at=dateutil.parser.isoparse("2025-11-18T07:12:26.749Z"),
                         modified_at=dateutil.parser.isoparse("2024-08-14T14:29:29.201Z"),
-                        metadata={
-                            "key": 648726,
-                        },
                         type=polar_sdk.BenefitType.GITHUB_REPOSITORY,
                         description="phew empty flawed worth radiant anti of blissfully",
                         selectable=False,
                         deletable=False,
                         organization_id="<value>",
                     ),
-                    polar_sdk.BenefitBase(
+                    polar_sdk.BenefitPublic(
                         id="<value>",
                         created_at=dateutil.parser.isoparse("2024-03-12T06:20:21.161Z"),
                         modified_at=dateutil.parser.isoparse("2024-06-27T20:20:27.400Z"),
-                        metadata={
-                            "key": 8517.45,
-                            "key1": "<value>",
-                        },
                         type=polar_sdk.BenefitType.LICENSE_KEYS,
                         description="ack neatly jagged as weekly drat nor why",
                         selectable=True,
                         deletable=False,
                         organization_id="<value>",
                     ),
-                    polar_sdk.BenefitBase(
+                    polar_sdk.BenefitPublic(
                         id="<value>",
                         created_at=dateutil.parser.isoparse("2024-03-31T07:42:35.077Z"),
                         modified_at=dateutil.parser.isoparse("2025-04-30T13:13:01.707Z"),
-                        metadata={
-                            "key": "<value>",
-                        },
                         type=polar_sdk.BenefitType.GITHUB_REPOSITORY,
                         description="ironclad chilly seriously finger unbearably and bourgeoisie deplore unless",
                         selectable=False,
@@ -430,7 +419,6 @@ async def main():
                 payment_processor_metadata={
                     "key": "<value>",
                 },
-                subtotal_amount=219352,
                 metadata={
                     "key": 366960,
                     "key1": 961375,
@@ -513,40 +501,30 @@ async def main():
 
                     ],
                     benefits=[
-                        polar_sdk.BenefitBase(
+                        polar_sdk.BenefitPublic(
                             id="<value>",
                             created_at=dateutil.parser.isoparse("2025-11-18T07:12:26.749Z"),
                             modified_at=dateutil.parser.isoparse("2024-08-14T14:29:29.201Z"),
-                            metadata={
-                                "key": 648726,
-                            },
                             type=polar_sdk.BenefitType.GITHUB_REPOSITORY,
                             description="phew empty flawed worth radiant anti of blissfully",
                             selectable=False,
                             deletable=False,
                             organization_id="<value>",
                         ),
-                        polar_sdk.BenefitBase(
+                        polar_sdk.BenefitPublic(
                             id="<value>",
                             created_at=dateutil.parser.isoparse("2024-03-12T06:20:21.161Z"),
                             modified_at=dateutil.parser.isoparse("2024-06-27T20:20:27.400Z"),
-                            metadata={
-                                "key": 8517.45,
-                                "key1": "<value>",
-                            },
                             type=polar_sdk.BenefitType.LICENSE_KEYS,
                             description="ack neatly jagged as weekly drat nor why",
                             selectable=True,
                             deletable=False,
                             organization_id="<value>",
                         ),
-                        polar_sdk.BenefitBase(
+                        polar_sdk.BenefitPublic(
                             id="<value>",
                             created_at=dateutil.parser.isoparse("2024-03-31T07:42:35.077Z"),
                             modified_at=dateutil.parser.isoparse("2025-04-30T13:13:01.707Z"),
-                            metadata={
-                                "key": "<value>",
-                            },
                             type=polar_sdk.BenefitType.GITHUB_REPOSITORY,
                             description="ironclad chilly seriously finger unbearably and bourgeoisie deplore unless",
                             selectable=False,

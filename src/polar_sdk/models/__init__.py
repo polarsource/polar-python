@@ -26,12 +26,6 @@ from .authorizeresponseorganization import (
 from .authorizeresponseuser import AuthorizeResponseUser, AuthorizeResponseUserTypedDict
 from .authorizeuser import AuthorizeUser, AuthorizeUserTypedDict
 from .benefit import Benefit, BenefitTypedDict
-from .benefitbase import (
-    BenefitBase,
-    BenefitBaseMetadata,
-    BenefitBaseMetadataTypedDict,
-    BenefitBaseTypedDict,
-)
 from .benefitcreate import BenefitCreate, BenefitCreateTypedDict
 from .benefitcustom import (
     BenefitCustom,
@@ -303,6 +297,7 @@ from .benefitmetercreditupdate import (
     BenefitMeterCreditUpdateMetadataTypedDict,
     BenefitMeterCreditUpdateTypedDict,
 )
+from .benefitpublic import BenefitPublic, BenefitPublicTypedDict
 from .benefits_deleteop import BenefitsDeleteRequest, BenefitsDeleteRequestTypedDict
 from .benefits_getop import BenefitsGetRequest, BenefitsGetRequestTypedDict
 from .benefits_grantsop import (
@@ -377,7 +372,16 @@ from .checkoutconfirmstripe import (
     CheckoutConfirmStripeCustomFieldDataTypedDict,
     CheckoutConfirmStripeTypedDict,
 )
-from .checkoutcreate import CheckoutCreate, CheckoutCreateTypedDict
+from .checkoutcreate import (
+    CheckoutCreate,
+    CheckoutCreateCustomFieldData,
+    CheckoutCreateCustomFieldDataTypedDict,
+    CheckoutCreateCustomerMetadata,
+    CheckoutCreateCustomerMetadataTypedDict,
+    CheckoutCreateMetadata,
+    CheckoutCreateMetadataTypedDict,
+    CheckoutCreateTypedDict,
+)
 from .checkoutdiscountfixedonceforeverduration import (
     CheckoutDiscountFixedOnceForeverDuration,
     CheckoutDiscountFixedOnceForeverDurationTypedDict,
@@ -401,8 +405,6 @@ from .checkoutlink import (
     CheckoutLinkDiscountTypedDict,
     CheckoutLinkMetadata,
     CheckoutLinkMetadataTypedDict,
-    CheckoutLinkProductPrice,
-    CheckoutLinkProductPriceTypedDict,
     CheckoutLinkTypedDict,
 )
 from .checkoutlinkcreateproduct import (
@@ -425,6 +427,8 @@ from .checkoutlinkcreateproducts import (
 )
 from .checkoutlinkproduct import (
     CheckoutLinkProduct,
+    CheckoutLinkProductMetadata,
+    CheckoutLinkProductMetadataTypedDict,
     CheckoutLinkProductPrices,
     CheckoutLinkProductPricesTypedDict,
     CheckoutLinkProductTypedDict,
@@ -436,41 +440,11 @@ from .checkoutlinkupdate import (
     CheckoutLinkUpdateMetadataTypedDict,
     CheckoutLinkUpdateTypedDict,
 )
-from .checkoutpricecreate import (
-    CheckoutPriceCreate,
-    CheckoutPriceCreateCustomFieldData,
-    CheckoutPriceCreateCustomFieldDataTypedDict,
-    CheckoutPriceCreateCustomerMetadata,
-    CheckoutPriceCreateCustomerMetadataTypedDict,
-    CheckoutPriceCreateMetadata,
-    CheckoutPriceCreateMetadataTypedDict,
-    CheckoutPriceCreateTypedDict,
-)
 from .checkoutproduct import (
     CheckoutProduct,
     CheckoutProductPrices,
     CheckoutProductPricesTypedDict,
     CheckoutProductTypedDict,
-)
-from .checkoutproductcreate import (
-    CheckoutProductCreate,
-    CheckoutProductCreateCustomFieldData,
-    CheckoutProductCreateCustomFieldDataTypedDict,
-    CheckoutProductCreateCustomerMetadata,
-    CheckoutProductCreateCustomerMetadataTypedDict,
-    CheckoutProductCreateMetadata,
-    CheckoutProductCreateMetadataTypedDict,
-    CheckoutProductCreateTypedDict,
-)
-from .checkoutproductscreate import (
-    CheckoutProductsCreate,
-    CheckoutProductsCreateCustomFieldData,
-    CheckoutProductsCreateCustomFieldDataTypedDict,
-    CheckoutProductsCreateCustomerMetadata,
-    CheckoutProductsCreateCustomerMetadataTypedDict,
-    CheckoutProductsCreateMetadata,
-    CheckoutProductsCreateMetadataTypedDict,
-    CheckoutProductsCreateTypedDict,
 )
 from .checkoutpublic import (
     CheckoutPublic,
@@ -715,8 +689,6 @@ from .customer_portal_orders_listop import (
     CustomerPortalOrdersListResponseTypedDict,
     CustomerPortalOrdersListSecurity,
     CustomerPortalOrdersListSecurityTypedDict,
-    QueryParamProductPriceTypeFilter,
-    QueryParamProductPriceTypeFilterTypedDict,
 )
 from .customer_portal_organizations_getop import (
     CustomerPortalOrganizationsGetRequest,
@@ -835,12 +807,7 @@ from .customercustomermetermeter import (
 from .customercustomermetersortproperty import CustomerCustomerMeterSortProperty
 from .customermeter import CustomerMeter, CustomerMeterTypedDict
 from .customermetersortproperty import CustomerMeterSortProperty
-from .customerorder import (
-    CustomerOrder,
-    CustomerOrderProductPrice,
-    CustomerOrderProductPriceTypedDict,
-    CustomerOrderTypedDict,
-)
+from .customerorder import CustomerOrder, CustomerOrderTypedDict
 from .customerorderinvoice import CustomerOrderInvoice, CustomerOrderInvoiceTypedDict
 from .customerorderproduct import (
     CustomerOrderProduct,
@@ -970,8 +937,6 @@ from .customerstatesubscriptionmeter import (
 )
 from .customersubscription import (
     CustomerSubscription,
-    CustomerSubscriptionPrice,
-    CustomerSubscriptionPriceTypedDict,
     CustomerSubscriptionPrices,
     CustomerSubscriptionPricesTypedDict,
     CustomerSubscriptionTypedDict,
@@ -1205,7 +1170,12 @@ from .discountpercentagerepeatdurationcreate import (
     DiscountPercentageRepeatDurationCreateMetadataTypedDict,
     DiscountPercentageRepeatDurationCreateTypedDict,
 )
-from .discountproduct import DiscountProduct, DiscountProductTypedDict
+from .discountproduct import (
+    DiscountProduct,
+    DiscountProductMetadata,
+    DiscountProductMetadataTypedDict,
+    DiscountProductTypedDict,
+)
 from .discounts_deleteop import DiscountsDeleteRequest, DiscountsDeleteRequestTypedDict
 from .discounts_getop import DiscountsGetRequest, DiscountsGetRequestTypedDict
 from .discounts_listop import (
@@ -1379,7 +1349,6 @@ from .licensekeydeactivate import LicenseKeyDeactivate, LicenseKeyDeactivateType
 from .licensekeyread import LicenseKeyRead, LicenseKeyReadTypedDict
 from .licensekeystatus import LicenseKeyStatus
 from .licensekeyupdate import LicenseKeyUpdate, LicenseKeyUpdateTypedDict
-from .licensekeyuser import LicenseKeyUser, LicenseKeyUserTypedDict
 from .licensekeyvalidate import (
     Conditions,
     ConditionsTypedDict,
@@ -1586,8 +1555,6 @@ from .order import (
     OrderDiscountTypedDict,
     OrderMetadata,
     OrderMetadataTypedDict,
-    OrderProductPrice,
-    OrderProductPriceTypedDict,
     OrderTypedDict,
 )
 from .orderbillingreason import OrderBillingReason
@@ -1601,7 +1568,12 @@ from .ordercustomer import (
 )
 from .orderinvoice import OrderInvoice, OrderInvoiceTypedDict
 from .orderitemschema import OrderItemSchema, OrderItemSchemaTypedDict
-from .orderproduct import OrderProduct, OrderProductTypedDict
+from .orderproduct import (
+    OrderProduct,
+    OrderProductMetadata,
+    OrderProductMetadataTypedDict,
+    OrderProductTypedDict,
+)
 from .orders_getop import OrdersGetRequest, OrdersGetRequestTypedDict
 from .orders_invoiceop import OrdersInvoiceRequest, OrdersInvoiceRequestTypedDict
 from .orders_listop import (
@@ -1619,8 +1591,6 @@ from .orders_listop import (
     OrdersListResponseTypedDict,
     ProductBillingTypeFilter,
     ProductBillingTypeFilterTypedDict,
-    ProductPriceTypeFilter,
-    ProductPriceTypeFilterTypedDict,
     QueryParamDiscountIDFilter,
     QueryParamDiscountIDFilterTypedDict,
 )
@@ -1632,7 +1602,6 @@ from .ordersubscription import (
     OrderSubscriptionMetadataTypedDict,
     OrderSubscriptionTypedDict,
 )
-from .orderuser import OrderUser, OrderUserTypedDict
 from .organization import Organization, OrganizationTypedDict
 from .organizationavatarfilecreate import (
     OrganizationAvatarFileCreate,
@@ -1815,8 +1784,6 @@ from .subscription import (
     CustomFieldDataTypedDict,
     Metadata,
     MetadataTypedDict,
-    Price,
-    PriceTypedDict,
     Subscription,
     SubscriptionDiscount,
     SubscriptionDiscountTypedDict,
@@ -1875,7 +1842,6 @@ from .subscriptionupdateproduct import (
     SubscriptionUpdateProduct,
     SubscriptionUpdateProductTypedDict,
 )
-from .subscriptionuser import SubscriptionUser, SubscriptionUserTypedDict
 from .subtype import SubType
 from .taxidformat import TaxIDFormat
 from .timeinterval import TimeInterval
@@ -2024,10 +1990,6 @@ __all__ = [
     "AuthorizeUser",
     "AuthorizeUserTypedDict",
     "Benefit",
-    "BenefitBase",
-    "BenefitBaseMetadata",
-    "BenefitBaseMetadataTypedDict",
-    "BenefitBaseTypedDict",
     "BenefitCreate",
     "BenefitCreateTypedDict",
     "BenefitCustom",
@@ -2190,6 +2152,8 @@ __all__ = [
     "BenefitMeterCreditUpdateMetadata",
     "BenefitMeterCreditUpdateMetadataTypedDict",
     "BenefitMeterCreditUpdateTypedDict",
+    "BenefitPublic",
+    "BenefitPublicTypedDict",
     "BenefitSortProperty",
     "BenefitType",
     "BenefitTypeFilter",
@@ -2217,6 +2181,12 @@ __all__ = [
     "CheckoutConfirmStripeCustomFieldDataTypedDict",
     "CheckoutConfirmStripeTypedDict",
     "CheckoutCreate",
+    "CheckoutCreateCustomFieldData",
+    "CheckoutCreateCustomFieldDataTypedDict",
+    "CheckoutCreateCustomerMetadata",
+    "CheckoutCreateCustomerMetadataTypedDict",
+    "CheckoutCreateMetadata",
+    "CheckoutCreateMetadataTypedDict",
     "CheckoutCreateTypedDict",
     "CheckoutCustomFieldData",
     "CheckoutCustomFieldDataTypedDict",
@@ -2252,8 +2222,8 @@ __all__ = [
     "CheckoutLinkMetadata",
     "CheckoutLinkMetadataTypedDict",
     "CheckoutLinkProduct",
-    "CheckoutLinkProductPrice",
-    "CheckoutLinkProductPriceTypedDict",
+    "CheckoutLinkProductMetadata",
+    "CheckoutLinkProductMetadataTypedDict",
     "CheckoutLinkProductPrices",
     "CheckoutLinkProductPricesTypedDict",
     "CheckoutLinkProductTypedDict",
@@ -2281,36 +2251,12 @@ __all__ = [
     "CheckoutLinksUpdateRequestTypedDict",
     "CheckoutMetadata",
     "CheckoutMetadataTypedDict",
-    "CheckoutPriceCreate",
-    "CheckoutPriceCreateCustomFieldData",
-    "CheckoutPriceCreateCustomFieldDataTypedDict",
-    "CheckoutPriceCreateCustomerMetadata",
-    "CheckoutPriceCreateCustomerMetadataTypedDict",
-    "CheckoutPriceCreateMetadata",
-    "CheckoutPriceCreateMetadataTypedDict",
-    "CheckoutPriceCreateTypedDict",
     "CheckoutProduct",
-    "CheckoutProductCreate",
-    "CheckoutProductCreateCustomFieldData",
-    "CheckoutProductCreateCustomFieldDataTypedDict",
-    "CheckoutProductCreateCustomerMetadata",
-    "CheckoutProductCreateCustomerMetadataTypedDict",
-    "CheckoutProductCreateMetadata",
-    "CheckoutProductCreateMetadataTypedDict",
-    "CheckoutProductCreateTypedDict",
     "CheckoutProductPrice",
     "CheckoutProductPriceTypedDict",
     "CheckoutProductPrices",
     "CheckoutProductPricesTypedDict",
     "CheckoutProductTypedDict",
-    "CheckoutProductsCreate",
-    "CheckoutProductsCreateCustomFieldData",
-    "CheckoutProductsCreateCustomFieldDataTypedDict",
-    "CheckoutProductsCreateCustomerMetadata",
-    "CheckoutProductsCreateCustomerMetadataTypedDict",
-    "CheckoutProductsCreateMetadata",
-    "CheckoutProductsCreateMetadataTypedDict",
-    "CheckoutProductsCreateTypedDict",
     "CheckoutPublic",
     "CheckoutPublicConfirmed",
     "CheckoutPublicConfirmedCustomFieldData",
@@ -2533,8 +2479,6 @@ __all__ = [
     "CustomerOrderInvoice",
     "CustomerOrderInvoiceTypedDict",
     "CustomerOrderProduct",
-    "CustomerOrderProductPrice",
-    "CustomerOrderProductPriceTypedDict",
     "CustomerOrderProductPrices",
     "CustomerOrderProductPricesTypedDict",
     "CustomerOrderProductTypedDict",
@@ -2710,8 +2654,6 @@ __all__ = [
     "CustomerSubscriptionMeterMeter",
     "CustomerSubscriptionMeterMeterTypedDict",
     "CustomerSubscriptionMeterTypedDict",
-    "CustomerSubscriptionPrice",
-    "CustomerSubscriptionPriceTypedDict",
     "CustomerSubscriptionPrices",
     "CustomerSubscriptionPricesTypedDict",
     "CustomerSubscriptionProduct",
@@ -2810,6 +2752,8 @@ __all__ = [
     "DiscountPercentageRepeatDurationMetadataTypedDict",
     "DiscountPercentageRepeatDurationTypedDict",
     "DiscountProduct",
+    "DiscountProductMetadata",
+    "DiscountProductMetadataTypedDict",
     "DiscountProductTypedDict",
     "DiscountSortProperty",
     "DiscountType",
@@ -2960,8 +2904,6 @@ __all__ = [
     "LicenseKeyStatus",
     "LicenseKeyUpdate",
     "LicenseKeyUpdateTypedDict",
-    "LicenseKeyUser",
-    "LicenseKeyUserTypedDict",
     "LicenseKeyValidate",
     "LicenseKeyValidateTypedDict",
     "LicenseKeyWithActivations",
@@ -3153,8 +3095,8 @@ __all__ = [
     "OrderMetadata",
     "OrderMetadataTypedDict",
     "OrderProduct",
-    "OrderProductPrice",
-    "OrderProductPriceTypedDict",
+    "OrderProductMetadata",
+    "OrderProductMetadataTypedDict",
     "OrderProductTypedDict",
     "OrderSortProperty",
     "OrderStatus",
@@ -3163,8 +3105,6 @@ __all__ = [
     "OrderSubscriptionMetadataTypedDict",
     "OrderSubscriptionTypedDict",
     "OrderTypedDict",
-    "OrderUser",
-    "OrderUserTypedDict",
     "OrdersGetRequest",
     "OrdersGetRequestTypedDict",
     "OrdersInvoiceRequest",
@@ -3225,8 +3165,6 @@ __all__ = [
     "Permission",
     "PreviousProperties",
     "PreviousPropertiesTypedDict",
-    "Price",
-    "PriceTypedDict",
     "Prices",
     "PricesTypedDict",
     "Product",
@@ -3269,8 +3207,6 @@ __all__ = [
     "ProductPriceMeteredUnitCreateTypedDict",
     "ProductPriceMeteredUnitTypedDict",
     "ProductPriceType",
-    "ProductPriceTypeFilter",
-    "ProductPriceTypeFilterTypedDict",
     "ProductPriceTypedDict",
     "ProductSortProperty",
     "ProductTypedDict",
@@ -3318,8 +3254,6 @@ __all__ = [
     "QueryParamProductBillingTypeFilterTypedDict",
     "QueryParamProductIDFilter",
     "QueryParamProductIDFilterTypedDict",
-    "QueryParamProductPriceTypeFilter",
-    "QueryParamProductPriceTypeFilterTypedDict",
     "QueryParamSourceFilter",
     "QueryParamSourceFilterTypedDict",
     "QueryParamSubscriptionIDFilter",
@@ -3400,8 +3334,6 @@ __all__ = [
     "SubscriptionUpdateProduct",
     "SubscriptionUpdateProductTypedDict",
     "SubscriptionUpdateTypedDict",
-    "SubscriptionUser",
-    "SubscriptionUserTypedDict",
     "SubscriptionsExportRequest",
     "SubscriptionsExportRequestTypedDict",
     "SubscriptionsGetRequest",

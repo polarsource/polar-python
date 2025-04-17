@@ -19,21 +19,9 @@ from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptionstatus import SubscriptionStatus
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import List, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
-
-
-CustomerSubscriptionPriceTypedDict = TypeAliasType(
-    "CustomerSubscriptionPriceTypedDict",
-    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
-)
-
-
-CustomerSubscriptionPrice = TypeAliasType(
-    "CustomerSubscriptionPrice", Union[LegacyRecurringProductPrice, ProductPrice]
-)
+from typing_extensions import TypeAliasType, TypedDict
 
 
 CustomerSubscriptionPricesTypedDict = TypeAliasType(
@@ -83,10 +71,7 @@ class CustomerSubscriptionTypedDict(TypedDict):
     checkout_id: Nullable[str]
     customer_cancellation_reason: Nullable[CustomerCancellationReason]
     customer_cancellation_comment: Nullable[str]
-    price_id: str
-    user_id: str
     product: CustomerSubscriptionProductTypedDict
-    price: CustomerSubscriptionPriceTypedDict
     prices: List[CustomerSubscriptionPricesTypedDict]
     r"""List of enabled prices for the subscription."""
     meters: List[CustomerSubscriptionMeterTypedDict]
@@ -149,28 +134,7 @@ class CustomerSubscription(BaseModel):
 
     customer_cancellation_comment: Nullable[str]
 
-    price_id: Annotated[
-        str,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
-    user_id: Annotated[
-        str,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
     product: CustomerSubscriptionProduct
-
-    price: Annotated[
-        CustomerSubscriptionPrice,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
 
     prices: List[CustomerSubscriptionPrices]
     r"""List of enabled prices for the subscription."""

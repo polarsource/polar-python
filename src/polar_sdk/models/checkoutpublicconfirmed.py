@@ -146,7 +146,6 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
     payment_processor_metadata: Dict[str, str]
-    subtotal_amount: Nullable[int]
     products: List[CheckoutProductTypedDict]
     r"""List of products available to select."""
     product: CheckoutProductTypedDict
@@ -258,13 +257,6 @@ class CheckoutPublicConfirmed(BaseModel):
 
     payment_processor_metadata: Dict[str, str]
 
-    subtotal_amount: Annotated[
-        Nullable[int],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
     products: List[CheckoutProduct]
     r"""List of products available to select."""
 
@@ -306,7 +298,6 @@ class CheckoutPublicConfirmed(BaseModel):
             "customer_ip_address",
             "customer_billing_address",
             "customer_tax_id",
-            "subtotal_amount",
             "discount",
         ]
         null_default_fields = []

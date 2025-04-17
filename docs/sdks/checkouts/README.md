@@ -79,11 +79,13 @@ with Polar(
 ) as polar:
 
     res = polar.checkouts.create(request={
-        "allow_discount_codes": True,
         "customer_billing_address": {
             "country": "SE",
         },
-        "product_id": "<value>",
+        "products": [
+            "<value>",
+            "<value>",
+        ],
     })
 
     # Handle response

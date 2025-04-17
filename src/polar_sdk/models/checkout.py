@@ -29,10 +29,9 @@ from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 CheckoutCustomFieldDataTypedDict = TypeAliasType(
@@ -156,7 +155,6 @@ class CheckoutTypedDict(TypedDict):
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
     payment_processor_metadata: Dict[str, str]
-    subtotal_amount: Nullable[int]
     metadata: Dict[str, CheckoutMetadataTypedDict]
     customer_external_id: Nullable[str]
     r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
@@ -268,13 +266,6 @@ class Checkout(BaseModel):
 
     payment_processor_metadata: Dict[str, str]
 
-    subtotal_amount: Annotated[
-        Nullable[int],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
     metadata: Dict[str, CheckoutMetadata]
 
     customer_external_id: Nullable[str]
@@ -314,7 +305,6 @@ class Checkout(BaseModel):
             "customer_ip_address",
             "customer_billing_address",
             "customer_tax_id",
-            "subtotal_amount",
             "customer_external_id",
             "discount",
             "subscription_id",

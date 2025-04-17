@@ -18,18 +18,12 @@ from .discountpercentagerepeatdurationbase import (
     DiscountPercentageRepeatDurationBase,
     DiscountPercentageRepeatDurationBaseTypedDict,
 )
-from .legacyrecurringproductprice import (
-    LegacyRecurringProductPrice,
-    LegacyRecurringProductPriceTypedDict,
-)
 from .paymentprocessor import PaymentProcessor
-from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import Dict, List, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
+from typing_extensions import TypeAliasType, TypedDict
 
 
 CheckoutLinkMetadataTypedDict = TypeAliasType(
@@ -64,17 +58,6 @@ CheckoutLinkDiscount = TypeAliasType(
 )
 
 
-CheckoutLinkProductPriceTypedDict = TypeAliasType(
-    "CheckoutLinkProductPriceTypedDict",
-    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
-)
-
-
-CheckoutLinkProductPrice = TypeAliasType(
-    "CheckoutLinkProductPrice", Union[LegacyRecurringProductPrice, ProductPrice]
-)
-
-
 class CheckoutLinkTypedDict(TypedDict):
     r"""Checkout link data."""
 
@@ -100,11 +83,6 @@ class CheckoutLinkTypedDict(TypedDict):
     r"""The organization ID."""
     products: List[CheckoutLinkProductTypedDict]
     discount: Nullable[CheckoutLinkDiscountTypedDict]
-    product_id: str
-    product_price_id: str
-    product: CheckoutLinkProductTypedDict
-    r"""Product data for a checkout link."""
-    product_price: CheckoutLinkProductPriceTypedDict
     url: str
 
 
@@ -145,30 +123,6 @@ class CheckoutLink(BaseModel):
     products: List[CheckoutLinkProduct]
 
     discount: Nullable[CheckoutLinkDiscount]
-
-    product_id: Annotated[
-        str,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
-    product_price_id: Annotated[
-        str,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
-    product: CheckoutLinkProduct
-    r"""Product data for a checkout link."""
-
-    product_price: Annotated[
-        CheckoutLinkProductPrice,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
 
     url: str
 

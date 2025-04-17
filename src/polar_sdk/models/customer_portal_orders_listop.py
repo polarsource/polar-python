@@ -7,10 +7,8 @@ from .listresource_customerorder_ import (
     ListResourceCustomerOrderTypedDict,
 )
 from .productbillingtype import ProductBillingType
-from .productpricetype import ProductPriceType
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
-import pydantic
 from pydantic import model_serializer
 from typing import Callable, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
@@ -73,17 +71,6 @@ CustomerPortalOrdersListQueryParamProductBillingTypeFilter = TypeAliasType(
 r"""Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
 
 
-QueryParamProductPriceTypeFilterTypedDict = TypeAliasType(
-    "QueryParamProductPriceTypeFilterTypedDict",
-    Union[ProductPriceType, List[ProductPriceType]],
-)
-
-
-QueryParamProductPriceTypeFilter = TypeAliasType(
-    "QueryParamProductPriceTypeFilter", Union[ProductPriceType, List[ProductPriceType]]
-)
-
-
 CustomerPortalOrdersListQueryParamSubscriptionIDFilterTypedDict = TypeAliasType(
     "CustomerPortalOrdersListQueryParamSubscriptionIDFilterTypedDict",
     Union[str, List[str]],
@@ -110,7 +97,6 @@ class CustomerPortalOrdersListRequestTypedDict(TypedDict):
         Nullable[CustomerPortalOrdersListQueryParamProductBillingTypeFilterTypedDict]
     ]
     r"""Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
-    product_price_type: NotRequired[Nullable[QueryParamProductPriceTypeFilterTypedDict]]
     subscription_id: NotRequired[
         Nullable[CustomerPortalOrdersListQueryParamSubscriptionIDFilterTypedDict]
     ]
@@ -143,14 +129,6 @@ class CustomerPortalOrdersListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
-
-    product_price_type: Annotated[
-        OptionalNullable[QueryParamProductPriceTypeFilter],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = UNSET
 
     subscription_id: Annotated[
         OptionalNullable[CustomerPortalOrdersListQueryParamSubscriptionIDFilter],
@@ -188,7 +166,6 @@ class CustomerPortalOrdersListRequest(BaseModel):
             "organization_id",
             "product_id",
             "product_billing_type",
-            "product_price_type",
             "subscription_id",
             "query",
             "page",
@@ -199,7 +176,6 @@ class CustomerPortalOrdersListRequest(BaseModel):
             "organization_id",
             "product_id",
             "product_billing_type",
-            "product_price_type",
             "subscription_id",
             "query",
             "sorting",
