@@ -3,6 +3,10 @@
 from __future__ import annotations
 from .address import Address, AddressTypedDict
 from .attachedcustomfield import AttachedCustomField, AttachedCustomFieldTypedDict
+from .checkoutcustomerbillingaddressfields import (
+    CheckoutCustomerBillingAddressFields,
+    CheckoutCustomerBillingAddressFieldsTypedDict,
+)
 from .checkoutdiscountfixedonceforeverduration import (
     CheckoutDiscountFixedOnceForeverDuration,
     CheckoutDiscountFixedOnceForeverDurationTypedDict,
@@ -121,6 +125,8 @@ class CheckoutPublicTypedDict(TypedDict):
     r"""ID of the discount applied to the checkout."""
     allow_discount_codes: bool
     r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
+    require_billing_address: bool
+    r"""Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting. If you preset the billing address, this setting will be automatically set to `true`."""
     is_discount_applicable: bool
     r"""Whether the discount is applicable to the checkout. Typically, free and custom prices are not discountable."""
     is_free_product_price: bool
@@ -149,6 +155,7 @@ class CheckoutPublicTypedDict(TypedDict):
     discount: Nullable[CheckoutPublicDiscountTypedDict]
     organization: OrganizationTypedDict
     attached_custom_fields: List[AttachedCustomFieldTypedDict]
+    customer_billing_address_fields: CheckoutCustomerBillingAddressFieldsTypedDict
     custom_field_data: NotRequired[
         Dict[str, Nullable[CheckoutPublicCustomFieldDataTypedDict]]
     ]
@@ -216,6 +223,9 @@ class CheckoutPublic(BaseModel):
     allow_discount_codes: bool
     r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
 
+    require_billing_address: bool
+    r"""Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting. If you preset the billing address, this setting will be automatically set to `true`."""
+
     is_discount_applicable: bool
     r"""Whether the discount is applicable to the checkout. Typically, free and custom prices are not discountable."""
 
@@ -261,6 +271,8 @@ class CheckoutPublic(BaseModel):
     organization: Organization
 
     attached_custom_fields: List[AttachedCustomField]
+
+    customer_billing_address_fields: CheckoutCustomerBillingAddressFields
 
     custom_field_data: Optional[Dict[str, Nullable[CheckoutPublicCustomFieldData]]] = (
         None

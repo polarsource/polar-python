@@ -82,9 +82,7 @@ with Polar(
         "name": "<value>",
         "filter_": {
             "conjunction": polar_sdk.FilterConjunction.AND,
-            "clauses": [
-
-            ],
+            "clauses": [],
         },
         "aggregation": {
             "func": polar_sdk.Func.SUM,

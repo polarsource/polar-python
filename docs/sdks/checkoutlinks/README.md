@@ -79,6 +79,7 @@ with Polar(
     res = polar.checkout_links.create(request={
         "payment_processor": "stripe",
         "allow_discount_codes": True,
+        "require_billing_address": False,
         "product_id": "<value>",
     })
 

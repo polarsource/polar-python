@@ -70,6 +70,8 @@ class CheckoutCreateTypedDict(TypedDict):
     r"""ID of the discount to apply to the checkout."""
     allow_discount_codes: NotRequired[bool]
     r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
+    require_billing_address: NotRequired[bool]
+    r"""Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting. If you preset the billing address, this setting will be automatically set to `true`."""
     amount: NotRequired[Nullable[int]]
     customer_id: NotRequired[Nullable[str]]
     r"""ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer."""
@@ -137,6 +139,9 @@ class CheckoutCreate(BaseModel):
     allow_discount_codes: Optional[bool] = True
     r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
 
+    require_billing_address: Optional[bool] = False
+    r"""Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting. If you preset the billing address, this setting will be automatically set to `true`."""
+
     amount: OptionalNullable[int] = UNSET
 
     customer_id: OptionalNullable[str] = UNSET
@@ -185,6 +190,7 @@ class CheckoutCreate(BaseModel):
             "custom_field_data",
             "discount_id",
             "allow_discount_codes",
+            "require_billing_address",
             "amount",
             "customer_id",
             "customer_external_id",

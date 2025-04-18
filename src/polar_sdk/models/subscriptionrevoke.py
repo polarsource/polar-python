@@ -3,16 +3,15 @@
 from __future__ import annotations
 from .customercancellationreason import CustomerCancellationReason
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
+import pydantic
 from pydantic import model_serializer
-from typing_extensions import NotRequired, TypedDict
+from pydantic.functional_validators import AfterValidator
+from typing import Literal
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class SubscriptionCancelTypedDict(TypedDict):
-    cancel_at_period_end: bool
-    r"""Cancel an active subscription once the current period ends.
-
-    Or uncancel a subscription currently set to be revoked at period end.
-    """
+class SubscriptionRevokeTypedDict(TypedDict):
     customer_cancellation_reason: NotRequired[Nullable[CustomerCancellationReason]]
     r"""Customer reason for cancellation.
 
@@ -43,15 +42,11 @@ class SubscriptionCancelTypedDict(TypedDict):
     customer. Or you copy a message directly from a customer
     conversation, i.e support.
     """
+    revoke: Literal[True]
+    r"""Cancel and revoke an active subscription immediately"""
 
 
-class SubscriptionCancel(BaseModel):
-    cancel_at_period_end: bool
-    r"""Cancel an active subscription once the current period ends.
-
-    Or uncancel a subscription currently set to be revoked at period end.
-    """
-
+class SubscriptionRevoke(BaseModel):
     customer_cancellation_reason: OptionalNullable[CustomerCancellationReason] = UNSET
     r"""Customer reason for cancellation.
 
@@ -83,6 +78,12 @@ class SubscriptionCancel(BaseModel):
     customer. Or you copy a message directly from a customer
     conversation, i.e support.
     """
+
+    REVOKE: Annotated[
+        Annotated[Literal[True], AfterValidator(validate_const(True))],
+        pydantic.Field(alias="revoke"),
+    ] = True
+    r"""Cancel and revoke an active subscription immediately"""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

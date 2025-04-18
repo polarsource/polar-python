@@ -134,6 +134,7 @@ with Polar() as polar:
             product_price_id="<value>",
             discount_id="<value>",
             allow_discount_codes=False,
+            require_billing_address=False,
             is_discount_applicable=False,
             is_free_product_price=False,
             is_payment_required=False,
@@ -144,7 +145,7 @@ with Polar() as polar:
             customer_email="<value>",
             customer_ip_address="<value>",
             customer_billing_address=polar_sdk.Address(
-                country="FR",
+                country="SE",
             ),
             customer_tax_id="<id>",
             payment_processor_metadata={
@@ -194,9 +195,7 @@ with Polar() as polar:
                             preset_amount=441593,
                         ),
                     ],
-                    benefits=[
-
-                    ],
+                    benefits=[],
                     medias=[
                         polar_sdk.ProductMediaFileRead(
                             id="<value>",
@@ -229,9 +228,7 @@ with Polar() as polar:
                 is_recurring=True,
                 is_archived=False,
                 organization_id="<value>",
-                prices=[
-
-                ],
+                prices=[],
                 benefits=[
                     polar_sdk.BenefitPublic(
                         id="<value>",
@@ -360,6 +357,14 @@ with Polar() as polar:
             customer_metadata={
                 "key": True,
             },
+            customer_billing_address_fields=polar_sdk.CheckoutCustomerBillingAddressFields(
+                country=True,
+                state=False,
+                city=True,
+                postal_code=False,
+                line1=False,
+                line2=False,
+            ),
         ),
     ))
 
@@ -403,6 +408,7 @@ async def main():
                 product_price_id="<value>",
                 discount_id="<value>",
                 allow_discount_codes=False,
+                require_billing_address=False,
                 is_discount_applicable=False,
                 is_free_product_price=False,
                 is_payment_required=False,
@@ -413,7 +419,7 @@ async def main():
                 customer_email="<value>",
                 customer_ip_address="<value>",
                 customer_billing_address=polar_sdk.Address(
-                    country="FR",
+                    country="SE",
                 ),
                 customer_tax_id="<id>",
                 payment_processor_metadata={
@@ -462,9 +468,7 @@ async def main():
                                 recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
                             ),
                         ],
-                        benefits=[
-
-                        ],
+                        benefits=[],
                         medias=[
                             polar_sdk.ProductMediaFileRead(
                                 id="<value>",
@@ -497,9 +501,7 @@ async def main():
                     is_recurring=True,
                     is_archived=False,
                     organization_id="<value>",
-                    prices=[
-
-                    ],
+                    prices=[],
                     benefits=[
                         polar_sdk.BenefitPublic(
                             id="<value>",
@@ -639,6 +641,14 @@ async def main():
                 customer_metadata={
                     "key": True,
                 },
+                customer_billing_address_fields=polar_sdk.CheckoutCustomerBillingAddressFields(
+                    country=True,
+                    state=False,
+                    city=True,
+                    postal_code=False,
+                    line1=False,
+                    line2=False,
+                ),
             ),
         ))
 
