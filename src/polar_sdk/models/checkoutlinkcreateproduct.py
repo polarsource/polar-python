@@ -46,6 +46,8 @@ class CheckoutLinkCreateProductTypedDict(TypedDict):
     r"""Optional label to distinguish links internally"""
     allow_discount_codes: NotRequired[bool]
     r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
+    require_billing_address: NotRequired[bool]
+    r"""Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting."""
     discount_id: NotRequired[Nullable[str]]
     r"""ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored."""
     success_url: NotRequired[Nullable[str]]
@@ -86,6 +88,9 @@ class CheckoutLinkCreateProduct(BaseModel):
     allow_discount_codes: Optional[bool] = True
     r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
 
+    require_billing_address: Optional[bool] = False
+    r"""Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting."""
+
     discount_id: OptionalNullable[str] = UNSET
     r"""ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored."""
 
@@ -98,6 +103,7 @@ class CheckoutLinkCreateProduct(BaseModel):
             "metadata",
             "label",
             "allow_discount_codes",
+            "require_billing_address",
             "discount_id",
             "success_url",
         ]

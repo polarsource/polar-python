@@ -73,6 +73,8 @@ class CheckoutUpdateTypedDict(TypedDict):
     r"""ID of the discount to apply to the checkout."""
     allow_discount_codes: NotRequired[Nullable[bool]]
     r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
+    require_billing_address: NotRequired[Nullable[bool]]
+    r"""Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting. If you preset the billing address, this setting will be automatically set to `true`."""
     customer_ip_address: NotRequired[Nullable[str]]
     customer_metadata: NotRequired[
         Nullable[Dict[str, CheckoutUpdateCustomerMetadataTypedDict]]
@@ -144,6 +146,9 @@ class CheckoutUpdate(BaseModel):
     allow_discount_codes: OptionalNullable[bool] = UNSET
     r"""Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it."""
 
+    require_billing_address: OptionalNullable[bool] = UNSET
+    r"""Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting. If you preset the billing address, this setting will be automatically set to `true`."""
+
     customer_ip_address: OptionalNullable[str] = UNSET
 
     customer_metadata: OptionalNullable[Dict[str, CheckoutUpdateCustomerMetadata]] = (
@@ -182,6 +187,7 @@ class CheckoutUpdate(BaseModel):
             "metadata",
             "discount_id",
             "allow_discount_codes",
+            "require_billing_address",
             "customer_ip_address",
             "customer_metadata",
             "success_url",
@@ -197,6 +203,7 @@ class CheckoutUpdate(BaseModel):
             "customer_tax_id",
             "discount_id",
             "allow_discount_codes",
+            "require_billing_address",
             "customer_ip_address",
             "customer_metadata",
             "success_url",

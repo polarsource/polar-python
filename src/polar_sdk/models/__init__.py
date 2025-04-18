@@ -382,6 +382,10 @@ from .checkoutcreate import (
     CheckoutCreateMetadataTypedDict,
     CheckoutCreateTypedDict,
 )
+from .checkoutcustomerbillingaddressfields import (
+    CheckoutCustomerBillingAddressFields,
+    CheckoutCustomerBillingAddressFieldsTypedDict,
+)
 from .checkoutdiscountfixedonceforeverduration import (
     CheckoutDiscountFixedOnceForeverDuration,
     CheckoutDiscountFixedOnceForeverDurationTypedDict,
@@ -1803,6 +1807,7 @@ from .subscriptioncustomer import (
 from .subscriptionmeter import SubscriptionMeter, SubscriptionMeterTypedDict
 from .subscriptionprorationbehavior import SubscriptionProrationBehavior
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
+from .subscriptionrevoke import SubscriptionRevoke, SubscriptionRevokeTypedDict
 from .subscriptions_exportop import (
     OrganizationID,
     OrganizationIDTypedDict,
@@ -2190,6 +2195,8 @@ __all__ = [
     "CheckoutCreateTypedDict",
     "CheckoutCustomFieldData",
     "CheckoutCustomFieldDataTypedDict",
+    "CheckoutCustomerBillingAddressFields",
+    "CheckoutCustomerBillingAddressFieldsTypedDict",
     "CheckoutDiscount",
     "CheckoutDiscountFixedOnceForeverDuration",
     "CheckoutDiscountFixedOnceForeverDurationTypedDict",
@@ -3327,6 +3334,8 @@ __all__ = [
     "SubscriptionPricesTypedDict",
     "SubscriptionProrationBehavior",
     "SubscriptionRecurringInterval",
+    "SubscriptionRevoke",
+    "SubscriptionRevokeTypedDict",
     "SubscriptionSortProperty",
     "SubscriptionStatus",
     "SubscriptionTypedDict",
