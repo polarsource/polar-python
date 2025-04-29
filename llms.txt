@@ -1,0 +1,39 @@
+# Polar
+
+> Polar SDK Python
+
+## Sdks Files
+
+- [Benefitgrants](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/benefitgrants/README.md)
+- [Benefits](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/benefits/README.md)
+- [Checkoutlinks](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/checkoutlinks/README.md)
+- [Checkouts](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/checkouts/README.md)
+- [Clients](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/clients/README.md)
+- [Customermeters](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/customermeters/README.md)
+- [Customerportal](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/customerportal/README.md)
+- [Customers](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/customers/README.md)
+- [Customersessions](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/customersessions/README.md)
+- [Customfields](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/customfields/README.md)
+- [Discounts](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/discounts/README.md)
+- [Downloadables](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/downloadables/README.md)
+- [Events](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/events/README.md)
+- [Files](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/files/README.md)
+- [Licensekeys](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/licensekeys/README.md)
+- [Meters](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/meters/README.md)
+- [Metricssdk](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/metricssdk/README.md)
+- [Oauth2](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/oauth2/README.md)
+- [Orders](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/orders/README.md)
+- [Organizations](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/organizations/README.md)
+- [Polar](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/polar/README.md)
+- [Polarcustomermeters](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/polarcustomermeters/README.md)
+- [Polarcustomers](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/polarcustomers/README.md)
+- [Polarlicensekeys](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/polarlicensekeys/README.md)
+- [Polarorders](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/polarorders/README.md)
+- [Polarorganizations](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/polarorganizations/README.md)
+- [Polarsubscriptions](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/polarsubscriptions/README.md)
+- [Products](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/products/README.md)
+- [Refunds](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/refunds/README.md)
+- [Subscriptions](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/docs/sdks/subscriptions/README.md)
+
+## Optional
+- [Extended Context](https://raw.githubusercontent.com/canburaks/polar-python/llms-txt/llms-full.txt)
