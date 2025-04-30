@@ -5,22 +5,25 @@ from .licensekeyread import LicenseKeyRead, LicenseKeyReadTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing_extensions import TypedDict
+from typing import Dict, Union
+from typing_extensions import TypeAliasType, TypedDict
 
 
-class LicenseKeyActivationReadMetaTypedDict(TypedDict):
-    pass
+LicenseKeyActivationReadMetaTypedDict = TypeAliasType(
+    "LicenseKeyActivationReadMetaTypedDict", Union[str, int, float, bool]
+)
 
 
-class LicenseKeyActivationReadMeta(BaseModel):
-    pass
+LicenseKeyActivationReadMeta = TypeAliasType(
+    "LicenseKeyActivationReadMeta", Union[str, int, float, bool]
+)
 
 
 class LicenseKeyActivationReadTypedDict(TypedDict):
     id: str
     license_key_id: str
     label: str
-    meta: LicenseKeyActivationReadMetaTypedDict
+    meta: Dict[str, LicenseKeyActivationReadMetaTypedDict]
     created_at: datetime
     modified_at: Nullable[datetime]
     license_key: LicenseKeyReadTypedDict
@@ -33,7 +36,7 @@ class LicenseKeyActivationRead(BaseModel):
 
     label: str
 
-    meta: LicenseKeyActivationReadMeta
+    meta: Dict[str, LicenseKeyActivationReadMeta]
 
     created_at: datetime
 

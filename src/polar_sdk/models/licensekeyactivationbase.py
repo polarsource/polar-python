@@ -4,22 +4,21 @@ from __future__ import annotations
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing_extensions import TypedDict
+from typing import Dict, Union
+from typing_extensions import TypeAliasType, TypedDict
 
 
-class MetaTypedDict(TypedDict):
-    pass
+MetaTypedDict = TypeAliasType("MetaTypedDict", Union[str, int, float, bool])
 
 
-class Meta(BaseModel):
-    pass
+Meta = TypeAliasType("Meta", Union[str, int, float, bool])
 
 
 class LicenseKeyActivationBaseTypedDict(TypedDict):
     id: str
     license_key_id: str
     label: str
-    meta: MetaTypedDict
+    meta: Dict[str, MetaTypedDict]
     created_at: datetime
     modified_at: Nullable[datetime]
 
@@ -31,7 +30,7 @@ class LicenseKeyActivationBase(BaseModel):
 
     label: str
 
-    meta: Meta
+    meta: Dict[str, Meta]
 
     created_at: datetime
 

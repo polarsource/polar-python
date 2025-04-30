@@ -208,16 +208,16 @@ Get quantities of a meter over a time period.
 ### Example Usage
 
 ```python
-import dateutil.parser
 import polar_sdk
 from polar_sdk import Polar
+from polar_sdk.utils import parse_datetime
 
 
 with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.meters.quantities(id="<value>", start_timestamp=dateutil.parser.isoparse("2023-09-17T00:45:34.608Z"), end_timestamp=dateutil.parser.isoparse("2023-07-21T18:11:39.069Z"), interval=polar_sdk.TimeInterval.HOUR)
+    res = polar.meters.quantities(id="<value>", start_timestamp=parse_datetime("2023-09-17T00:45:34.608Z"), end_timestamp=parse_datetime("2023-07-21T18:11:39.069Z"), interval=polar_sdk.TimeInterval.HOUR)
 
     # Handle response
     print(res)
