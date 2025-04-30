@@ -73,13 +73,12 @@ OrderDiscount = TypeAliasType(
 
 
 class OrderTypedDict(TypedDict):
+    id: str
+    r"""The ID of the object."""
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    id: str
-    r"""The ID of the object."""
-    metadata: Dict[str, OrderMetadataTypedDict]
     status: OrderStatus
     paid: bool
     r"""Whether the order has been paid for."""
@@ -107,6 +106,7 @@ class OrderTypedDict(TypedDict):
     discount_id: Nullable[str]
     subscription_id: Nullable[str]
     checkout_id: Nullable[str]
+    metadata: Dict[str, OrderMetadataTypedDict]
     customer: OrderCustomerTypedDict
     user_id: str
     product: OrderProductTypedDict
@@ -119,16 +119,14 @@ class OrderTypedDict(TypedDict):
 
 
 class Order(BaseModel):
+    id: str
+    r"""The ID of the object."""
+
     created_at: datetime
     r"""Creation timestamp of the object."""
 
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-
-    id: str
-    r"""The ID of the object."""
-
-    metadata: Dict[str, OrderMetadata]
 
     status: OrderStatus
 
@@ -179,6 +177,8 @@ class Order(BaseModel):
     subscription_id: Nullable[str]
 
     checkout_id: Nullable[str]
+
+    metadata: Dict[str, OrderMetadata]
 
     customer: OrderCustomer
 

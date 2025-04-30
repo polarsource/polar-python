@@ -16,6 +16,11 @@ from typing_extensions import TypedDict
 
 class LicenseKeyWithActivationsTypedDict(TypedDict):
     id: str
+    r"""The ID of the object."""
+    created_at: datetime
+    r"""Creation timestamp of the object."""
+    modified_at: Nullable[datetime]
+    r"""Last modification timestamp of the object."""
     organization_id: str
     customer_id: str
     customer: LicenseKeyCustomerTypedDict
@@ -35,6 +40,13 @@ class LicenseKeyWithActivationsTypedDict(TypedDict):
 
 class LicenseKeyWithActivations(BaseModel):
     id: str
+    r"""The ID of the object."""
+
+    created_at: datetime
+    r"""Creation timestamp of the object."""
+
+    modified_at: Nullable[datetime]
+    r"""Last modification timestamp of the object."""
 
     organization_id: str
 
@@ -69,6 +81,7 @@ class LicenseKeyWithActivations(BaseModel):
     def serialize_model(self, handler):
         optional_fields = []
         nullable_fields = [
+            "modified_at",
             "limit_activations",
             "limit_usage",
             "last_validated_at",

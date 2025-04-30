@@ -9,26 +9,28 @@ from typing import Dict, List, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-CustomerUpdateMetadataTypedDict = TypeAliasType(
-    "CustomerUpdateMetadataTypedDict", Union[str, int, float, bool]
+CustomerUpdateExternalIDMetadataTypedDict = TypeAliasType(
+    "CustomerUpdateExternalIDMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-CustomerUpdateMetadata = TypeAliasType(
-    "CustomerUpdateMetadata", Union[str, int, float, bool]
+CustomerUpdateExternalIDMetadata = TypeAliasType(
+    "CustomerUpdateExternalIDMetadata", Union[str, int, float, bool]
 )
 
 
-CustomerUpdateTaxIDTypedDict = TypeAliasType(
-    "CustomerUpdateTaxIDTypedDict", Union[str, TaxIDFormat]
+CustomerUpdateExternalIDTaxIDTypedDict = TypeAliasType(
+    "CustomerUpdateExternalIDTaxIDTypedDict", Union[str, TaxIDFormat]
 )
 
 
-CustomerUpdateTaxID = TypeAliasType("CustomerUpdateTaxID", Union[str, TaxIDFormat])
+CustomerUpdateExternalIDTaxID = TypeAliasType(
+    "CustomerUpdateExternalIDTaxID", Union[str, TaxIDFormat]
+)
 
 
-class CustomerUpdateTypedDict(TypedDict):
-    metadata: NotRequired[Dict[str, CustomerUpdateMetadataTypedDict]]
+class CustomerUpdateExternalIDTypedDict(TypedDict):
+    metadata: NotRequired[Dict[str, CustomerUpdateExternalIDMetadataTypedDict]]
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
@@ -46,13 +48,13 @@ class CustomerUpdateTypedDict(TypedDict):
     name: NotRequired[Nullable[str]]
     r"""The name of the customer."""
     billing_address: NotRequired[Nullable[AddressTypedDict]]
-    tax_id: NotRequired[Nullable[List[Nullable[CustomerUpdateTaxIDTypedDict]]]]
-    external_id: NotRequired[Nullable[str]]
-    r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
+    tax_id: NotRequired[
+        Nullable[List[Nullable[CustomerUpdateExternalIDTaxIDTypedDict]]]
+    ]
 
 
-class CustomerUpdate(BaseModel):
-    metadata: Optional[Dict[str, CustomerUpdateMetadata]] = None
+class CustomerUpdateExternalID(BaseModel):
+    metadata: Optional[Dict[str, CustomerUpdateExternalIDMetadata]] = None
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
@@ -74,22 +76,12 @@ class CustomerUpdate(BaseModel):
 
     billing_address: OptionalNullable[Address] = UNSET
 
-    tax_id: OptionalNullable[List[Nullable[CustomerUpdateTaxID]]] = UNSET
-
-    external_id: OptionalNullable[str] = UNSET
-    r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
+    tax_id: OptionalNullable[List[Nullable[CustomerUpdateExternalIDTaxID]]] = UNSET
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "metadata",
-            "email",
-            "name",
-            "billing_address",
-            "tax_id",
-            "external_id",
-        ]
-        nullable_fields = ["email", "name", "billing_address", "tax_id", "external_id"]
+        optional_fields = ["metadata", "email", "name", "billing_address", "tax_id"]
+        nullable_fields = ["email", "name", "billing_address", "tax_id"]
         null_default_fields = []
 
         serialized = handler(self)

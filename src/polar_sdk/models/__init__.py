@@ -980,6 +980,14 @@ from .customerupdate import (
     CustomerUpdateTaxIDTypedDict,
     CustomerUpdateTypedDict,
 )
+from .customerupdateexternalid import (
+    CustomerUpdateExternalID,
+    CustomerUpdateExternalIDMetadata,
+    CustomerUpdateExternalIDMetadataTypedDict,
+    CustomerUpdateExternalIDTaxID,
+    CustomerUpdateExternalIDTaxIDTypedDict,
+    CustomerUpdateExternalIDTypedDict,
+)
 from .customfield import CustomField, CustomFieldTypedDict
 from .customfieldcheckbox import (
     CustomFieldCheckbox,
@@ -2677,6 +2685,12 @@ __all__ = [
     "CustomerTaxIDTypedDict",
     "CustomerTypedDict",
     "CustomerUpdate",
+    "CustomerUpdateExternalID",
+    "CustomerUpdateExternalIDMetadata",
+    "CustomerUpdateExternalIDMetadataTypedDict",
+    "CustomerUpdateExternalIDTaxID",
+    "CustomerUpdateExternalIDTaxIDTypedDict",
+    "CustomerUpdateExternalIDTypedDict",
     "CustomerUpdateMetadata",
     "CustomerUpdateMetadataTypedDict",
     "CustomerUpdateTaxID",

@@ -179,7 +179,6 @@ with Polar(
 ) as polar:
 
     res = polar.customers.update(id="<value>", customer_update={
-        "external_id": "usr_1337",
         "email": "customer@example.com",
         "name": "John Doe",
         "billing_address": {
@@ -189,6 +188,7 @@ with Polar(
             "FR61954506077",
             "eu_vat",
         ],
+        "external_id": "usr_1337",
     })
 
     # Handle response
@@ -323,8 +323,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.customers.update_external(external_id="<id>", customer_update={
-        "external_id": "usr_1337",
+    res = polar.customers.update_external(external_id="<id>", customer_update_external_id={
         "email": "customer@example.com",
         "name": "John Doe",
         "billing_address": {
@@ -343,11 +342,11 @@ with Polar(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `external_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | The customer external ID.                                           |
-| `customer_update`                                                   | [models.CustomerUpdate](../../models/customerupdate.md)             | :heavy_check_mark:                                                  | N/A                                                                 |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `external_id`                                                               | *str*                                                                       | :heavy_check_mark:                                                          | The customer external ID.                                                   |
+| `customer_update_external_id`                                               | [models.CustomerUpdateExternalID](../../models/customerupdateexternalid.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| `retries`                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)            | :heavy_minus_sign:                                                          | Configuration to override the default retry behavior of the client.         |
 
 ### Response
 
