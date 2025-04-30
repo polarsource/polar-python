@@ -19,7 +19,7 @@ Currency values are output in cents.
 ### Example Usage
 
 ```python
-import dateutil.parser
+from datetime import date
 import polar_sdk
 from polar_sdk import Polar
 
@@ -28,7 +28,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.metrics.get(start_date=dateutil.parser.parse("2025-02-06").date(), end_date=dateutil.parser.parse("2024-09-04").date(), interval=polar_sdk.TimeInterval.WEEK, organization_id=[
+    res = polar.metrics.get(start_date=date.fromisoformat("2025-02-06"), end_date=date.fromisoformat("2024-09-04"), interval=polar_sdk.TimeInterval.WEEK, organization_id=[
         "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
     ])
 

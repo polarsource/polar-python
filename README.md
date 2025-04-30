@@ -105,23 +105,23 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 
 ```python
 # Synchronous Example
-import dateutil.parser
 import polar_sdk
 from polar_sdk import Polar
+from polar_sdk.utils import parse_datetime
 
 
 with Polar() as polar:
 
     res = polar.endpointcheckout_created_post(request=polar_sdk.WebhookCheckoutCreatedPayload(
         data=polar_sdk.Checkout(
-            created_at=dateutil.parser.isoparse("2025-11-12T14:26:42.882Z"),
-            modified_at=dateutil.parser.isoparse("2024-05-27T05:08:06.235Z"),
+            created_at=parse_datetime("2025-11-12T14:26:42.882Z"),
+            modified_at=parse_datetime("2024-05-27T05:08:06.235Z"),
             id="<value>",
             payment_processor=polar_sdk.PaymentProcessor.STRIPE,
             status=polar_sdk.CheckoutStatus.FAILED,
             client_secret="<value>",
             url="https://heavy-beret.com/",
-            expires_at=dateutil.parser.isoparse("2023-02-25T02:26:48.460Z"),
+            expires_at=parse_datetime("2023-02-25T02:26:48.460Z"),
             success_url="https://sardonic-final.info/",
             embed_origin="<value>",
             amount=962818,
@@ -145,7 +145,7 @@ with Polar() as polar:
             customer_email="<value>",
             customer_ip_address="<value>",
             customer_billing_address=polar_sdk.Address(
-                country="SE",
+                country="FR",
             ),
             customer_tax_id="<id>",
             payment_processor_metadata={
@@ -158,8 +158,8 @@ with Polar() as polar:
             customer_external_id="<id>",
             products=[
                 polar_sdk.CheckoutProduct(
-                    created_at=dateutil.parser.isoparse("2023-01-21T11:17:02.173Z"),
-                    modified_at=dateutil.parser.isoparse("2024-08-14T19:11:10.463Z"),
+                    created_at=parse_datetime("2023-01-21T11:17:02.173Z"),
+                    modified_at=parse_datetime("2024-08-14T19:11:10.463Z"),
                     id="<value>",
                     name="<value>",
                     description="accessorise ack pave",
@@ -169,8 +169,8 @@ with Polar() as polar:
                     organization_id="<value>",
                     prices=[
                         polar_sdk.ProductPriceCustom(
-                            created_at=dateutil.parser.isoparse("2025-11-19T15:59:15.588Z"),
-                            modified_at=dateutil.parser.isoparse("2023-11-17T00:11:23.972Z"),
+                            created_at=parse_datetime("2025-11-19T15:59:15.588Z"),
+                            modified_at=parse_datetime("2023-11-17T00:11:23.972Z"),
                             id="<value>",
                             is_archived=False,
                             product_id="<value>",
@@ -182,8 +182,8 @@ with Polar() as polar:
                             preset_amount=473871,
                         ),
                         polar_sdk.ProductPriceCustom(
-                            created_at=dateutil.parser.isoparse("2024-04-03T00:20:23.805Z"),
-                            modified_at=dateutil.parser.isoparse("2025-11-21T05:56:48.487Z"),
+                            created_at=parse_datetime("2024-04-03T00:20:23.805Z"),
+                            modified_at=parse_datetime("2025-11-21T05:56:48.487Z"),
                             id="<value>",
                             is_archived=False,
                             product_id="<value>",
@@ -208,10 +208,10 @@ with Polar() as polar:
                             checksum_etag="<value>",
                             checksum_sha256_base64="<value>",
                             checksum_sha256_hex="<value>",
-                            last_modified_at=dateutil.parser.isoparse("2024-07-16T16:32:06.101Z"),
+                            last_modified_at=parse_datetime("2024-07-16T16:32:06.101Z"),
                             version="<value>",
                             is_uploaded=False,
-                            created_at=dateutil.parser.isoparse("2025-12-08T10:05:37.208Z"),
+                            created_at=parse_datetime("2025-12-08T10:05:37.208Z"),
                             size_readable="<value>",
                             public_url="https://separate-pinstripe.com",
                         ),
@@ -219,8 +219,8 @@ with Polar() as polar:
                 ),
             ],
             product=polar_sdk.CheckoutProduct(
-                created_at=dateutil.parser.isoparse("2025-08-22T02:17:20.661Z"),
-                modified_at=dateutil.parser.isoparse("2025-09-12T19:41:14.261Z"),
+                created_at=parse_datetime("2025-08-22T02:17:20.661Z"),
+                modified_at=parse_datetime("2025-09-12T19:41:14.261Z"),
                 id="<value>",
                 name="<value>",
                 description="darling lined nephew crank",
@@ -232,8 +232,8 @@ with Polar() as polar:
                 benefits=[
                     polar_sdk.BenefitPublic(
                         id="<value>",
-                        created_at=dateutil.parser.isoparse("2025-11-18T07:12:26.749Z"),
-                        modified_at=dateutil.parser.isoparse("2024-08-14T14:29:29.201Z"),
+                        created_at=parse_datetime("2025-11-18T07:12:26.749Z"),
+                        modified_at=parse_datetime("2024-08-14T14:29:29.201Z"),
                         type=polar_sdk.BenefitType.GITHUB_REPOSITORY,
                         description="phew empty flawed worth radiant anti of blissfully",
                         selectable=False,
@@ -242,8 +242,8 @@ with Polar() as polar:
                     ),
                     polar_sdk.BenefitPublic(
                         id="<value>",
-                        created_at=dateutil.parser.isoparse("2024-03-12T06:20:21.161Z"),
-                        modified_at=dateutil.parser.isoparse("2024-06-27T20:20:27.400Z"),
+                        created_at=parse_datetime("2024-03-12T06:20:21.161Z"),
+                        modified_at=parse_datetime("2024-06-27T20:20:27.400Z"),
                         type=polar_sdk.BenefitType.LICENSE_KEYS,
                         description="ack neatly jagged as weekly drat nor why",
                         selectable=True,
@@ -252,8 +252,8 @@ with Polar() as polar:
                     ),
                     polar_sdk.BenefitPublic(
                         id="<value>",
-                        created_at=dateutil.parser.isoparse("2024-03-31T07:42:35.077Z"),
-                        modified_at=dateutil.parser.isoparse("2025-04-30T13:13:01.707Z"),
+                        created_at=parse_datetime("2024-03-31T07:42:35.077Z"),
+                        modified_at=parse_datetime("2025-04-30T13:13:01.707Z"),
                         type=polar_sdk.BenefitType.GITHUB_REPOSITORY,
                         description="ironclad chilly seriously finger unbearably and bourgeoisie deplore unless",
                         selectable=False,
@@ -273,18 +273,18 @@ with Polar() as polar:
                         checksum_etag="<value>",
                         checksum_sha256_base64="<value>",
                         checksum_sha256_hex="<value>",
-                        last_modified_at=dateutil.parser.isoparse("2024-09-08T17:09:22.377Z"),
+                        last_modified_at=parse_datetime("2024-09-08T17:09:22.377Z"),
                         version="<value>",
                         is_uploaded=False,
-                        created_at=dateutil.parser.isoparse("2025-01-15T08:45:21.256Z"),
+                        created_at=parse_datetime("2025-01-15T08:45:21.256Z"),
                         size_readable="<value>",
                         public_url="https://cumbersome-seafood.net",
                     ),
                 ],
             ),
             product_price=polar_sdk.ProductPriceFree(
-                created_at=dateutil.parser.isoparse("2024-07-02T09:46:29.338Z"),
-                modified_at=dateutil.parser.isoparse("2025-01-24T18:08:49.597Z"),
+                created_at=parse_datetime("2024-07-02T09:46:29.338Z"),
+                modified_at=parse_datetime("2025-01-24T18:08:49.597Z"),
                 id="<value>",
                 is_archived=False,
                 product_id="<value>",
@@ -305,8 +305,8 @@ with Polar() as polar:
                 polar_sdk.AttachedCustomField(
                     custom_field_id="<value>",
                     custom_field=polar_sdk.CustomFieldText(
-                        created_at=dateutil.parser.isoparse("2023-11-12T09:40:10.044Z"),
-                        modified_at=dateutil.parser.isoparse("2023-08-29T09:50:00.241Z"),
+                        created_at=parse_datetime("2023-11-12T09:40:10.044Z"),
+                        modified_at=parse_datetime("2023-08-29T09:50:00.241Z"),
                         id="<value>",
                         metadata={
                             "key": 3852.18,
@@ -322,8 +322,8 @@ with Polar() as polar:
                 polar_sdk.AttachedCustomField(
                     custom_field_id="<value>",
                     custom_field=polar_sdk.CustomFieldDate(
-                        created_at=dateutil.parser.isoparse("2025-06-25T22:47:14.264Z"),
-                        modified_at=dateutil.parser.isoparse("2025-01-27T19:10:37.564Z"),
+                        created_at=parse_datetime("2025-06-25T22:47:14.264Z"),
+                        modified_at=parse_datetime("2025-01-27T19:10:37.564Z"),
                         id="<value>",
                         metadata={
                             "key": 18677,
@@ -339,8 +339,8 @@ with Polar() as polar:
                 polar_sdk.AttachedCustomField(
                     custom_field_id="<value>",
                     custom_field=polar_sdk.CustomFieldNumber(
-                        created_at=dateutil.parser.isoparse("2023-04-15T12:36:50.681Z"),
-                        modified_at=dateutil.parser.isoparse("2023-04-02T00:05:42.586Z"),
+                        created_at=parse_datetime("2023-04-15T12:36:50.681Z"),
+                        modified_at=parse_datetime("2023-04-02T00:05:42.586Z"),
                         id="<value>",
                         metadata={
                             "key": 7402.96,
@@ -378,9 +378,9 @@ The same SDK client can also be used to make asychronous requests by importing a
 ```python
 # Asynchronous Example
 import asyncio
-import dateutil.parser
 import polar_sdk
 from polar_sdk import Polar
+from polar_sdk.utils import parse_datetime
 
 async def main():
 
@@ -388,14 +388,14 @@ async def main():
 
         res = await polar.endpointcheckout_created_post_async(request=polar_sdk.WebhookCheckoutCreatedPayload(
             data=polar_sdk.Checkout(
-                created_at=dateutil.parser.isoparse("2025-11-12T14:26:42.882Z"),
-                modified_at=dateutil.parser.isoparse("2024-05-27T05:08:06.235Z"),
+                created_at=parse_datetime("2025-11-12T14:26:42.882Z"),
+                modified_at=parse_datetime("2024-05-27T05:08:06.235Z"),
                 id="<value>",
                 payment_processor=polar_sdk.PaymentProcessor.STRIPE,
                 status=polar_sdk.CheckoutStatus.FAILED,
                 client_secret="<value>",
                 url="https://heavy-beret.com/",
-                expires_at=dateutil.parser.isoparse("2023-02-25T02:26:48.460Z"),
+                expires_at=parse_datetime("2023-02-25T02:26:48.460Z"),
                 success_url="https://sardonic-final.info/",
                 embed_origin="<value>",
                 amount=962818,
@@ -419,7 +419,7 @@ async def main():
                 customer_email="<value>",
                 customer_ip_address="<value>",
                 customer_billing_address=polar_sdk.Address(
-                    country="SE",
+                    country="FR",
                 ),
                 customer_tax_id="<id>",
                 payment_processor_metadata={
@@ -432,8 +432,8 @@ async def main():
                 customer_external_id="<id>",
                 products=[
                     polar_sdk.CheckoutProduct(
-                        created_at=dateutil.parser.isoparse("2023-01-21T11:17:02.173Z"),
-                        modified_at=dateutil.parser.isoparse("2024-08-14T19:11:10.463Z"),
+                        created_at=parse_datetime("2023-01-21T11:17:02.173Z"),
+                        modified_at=parse_datetime("2024-08-14T19:11:10.463Z"),
                         id="<value>",
                         name="<value>",
                         description="accessorise ack pave",
@@ -443,8 +443,8 @@ async def main():
                         organization_id="<value>",
                         prices=[
                             polar_sdk.ProductPriceMeteredUnit(
-                                created_at=dateutil.parser.isoparse("2024-12-13T18:25:33.693Z"),
-                                modified_at=dateutil.parser.isoparse("2023-01-09T04:38:53.436Z"),
+                                created_at=parse_datetime("2024-12-13T18:25:33.693Z"),
+                                modified_at=parse_datetime("2023-01-09T04:38:53.436Z"),
                                 id="<value>",
                                 is_archived=False,
                                 product_id="<value>",
@@ -460,8 +460,8 @@ async def main():
                                 ),
                             ),
                             polar_sdk.LegacyRecurringProductPriceFree(
-                                created_at=dateutil.parser.isoparse("2023-01-25T05:44:56.791Z"),
-                                modified_at=dateutil.parser.isoparse("2025-05-25T15:20:50.694Z"),
+                                created_at=parse_datetime("2023-01-25T05:44:56.791Z"),
+                                modified_at=parse_datetime("2025-05-25T15:20:50.694Z"),
                                 id="<value>",
                                 is_archived=False,
                                 product_id="<value>",
@@ -481,10 +481,10 @@ async def main():
                                 checksum_etag="<value>",
                                 checksum_sha256_base64="<value>",
                                 checksum_sha256_hex="<value>",
-                                last_modified_at=dateutil.parser.isoparse("2024-07-16T16:32:06.101Z"),
+                                last_modified_at=parse_datetime("2024-07-16T16:32:06.101Z"),
                                 version="<value>",
                                 is_uploaded=False,
-                                created_at=dateutil.parser.isoparse("2025-12-08T10:05:37.208Z"),
+                                created_at=parse_datetime("2025-12-08T10:05:37.208Z"),
                                 size_readable="<value>",
                                 public_url="https://separate-pinstripe.com",
                             ),
@@ -492,8 +492,8 @@ async def main():
                     ),
                 ],
                 product=polar_sdk.CheckoutProduct(
-                    created_at=dateutil.parser.isoparse("2025-08-22T02:17:20.661Z"),
-                    modified_at=dateutil.parser.isoparse("2025-09-12T19:41:14.261Z"),
+                    created_at=parse_datetime("2025-08-22T02:17:20.661Z"),
+                    modified_at=parse_datetime("2025-09-12T19:41:14.261Z"),
                     id="<value>",
                     name="<value>",
                     description="darling lined nephew crank",
@@ -505,8 +505,8 @@ async def main():
                     benefits=[
                         polar_sdk.BenefitPublic(
                             id="<value>",
-                            created_at=dateutil.parser.isoparse("2025-11-18T07:12:26.749Z"),
-                            modified_at=dateutil.parser.isoparse("2024-08-14T14:29:29.201Z"),
+                            created_at=parse_datetime("2025-11-18T07:12:26.749Z"),
+                            modified_at=parse_datetime("2024-08-14T14:29:29.201Z"),
                             type=polar_sdk.BenefitType.GITHUB_REPOSITORY,
                             description="phew empty flawed worth radiant anti of blissfully",
                             selectable=False,
@@ -515,8 +515,8 @@ async def main():
                         ),
                         polar_sdk.BenefitPublic(
                             id="<value>",
-                            created_at=dateutil.parser.isoparse("2024-03-12T06:20:21.161Z"),
-                            modified_at=dateutil.parser.isoparse("2024-06-27T20:20:27.400Z"),
+                            created_at=parse_datetime("2024-03-12T06:20:21.161Z"),
+                            modified_at=parse_datetime("2024-06-27T20:20:27.400Z"),
                             type=polar_sdk.BenefitType.LICENSE_KEYS,
                             description="ack neatly jagged as weekly drat nor why",
                             selectable=True,
@@ -525,8 +525,8 @@ async def main():
                         ),
                         polar_sdk.BenefitPublic(
                             id="<value>",
-                            created_at=dateutil.parser.isoparse("2024-03-31T07:42:35.077Z"),
-                            modified_at=dateutil.parser.isoparse("2025-04-30T13:13:01.707Z"),
+                            created_at=parse_datetime("2024-03-31T07:42:35.077Z"),
+                            modified_at=parse_datetime("2025-04-30T13:13:01.707Z"),
                             type=polar_sdk.BenefitType.GITHUB_REPOSITORY,
                             description="ironclad chilly seriously finger unbearably and bourgeoisie deplore unless",
                             selectable=False,
@@ -546,18 +546,18 @@ async def main():
                             checksum_etag="<value>",
                             checksum_sha256_base64="<value>",
                             checksum_sha256_hex="<value>",
-                            last_modified_at=dateutil.parser.isoparse("2024-09-08T17:09:22.377Z"),
+                            last_modified_at=parse_datetime("2024-09-08T17:09:22.377Z"),
                             version="<value>",
                             is_uploaded=False,
-                            created_at=dateutil.parser.isoparse("2025-01-15T08:45:21.256Z"),
+                            created_at=parse_datetime("2025-01-15T08:45:21.256Z"),
                             size_readable="<value>",
                             public_url="https://cumbersome-seafood.net",
                         ),
                     ],
                 ),
                 product_price=polar_sdk.ProductPriceCustom(
-                    created_at=dateutil.parser.isoparse("2024-12-18T06:26:25.293Z"),
-                    modified_at=dateutil.parser.isoparse("2025-03-28T00:06:24.086Z"),
+                    created_at=parse_datetime("2024-12-18T06:26:25.293Z"),
+                    modified_at=parse_datetime("2025-03-28T00:06:24.086Z"),
                     id="<value>",
                     is_archived=False,
                     product_id="<value>",
@@ -582,8 +582,8 @@ async def main():
                     polar_sdk.AttachedCustomField(
                         custom_field_id="<value>",
                         custom_field=polar_sdk.CustomFieldNumber(
-                            created_at=dateutil.parser.isoparse("2025-10-29T00:32:24.235Z"),
-                            modified_at=dateutil.parser.isoparse("2025-04-28T15:46:25.145Z"),
+                            created_at=parse_datetime("2025-10-29T00:32:24.235Z"),
+                            modified_at=parse_datetime("2025-04-28T15:46:25.145Z"),
                             id="<value>",
                             metadata={
                                 "key": 7295.4,
@@ -599,8 +599,8 @@ async def main():
                     polar_sdk.AttachedCustomField(
                         custom_field_id="<value>",
                         custom_field=polar_sdk.CustomFieldSelect(
-                            created_at=dateutil.parser.isoparse("2024-06-12T07:35:26.368Z"),
-                            modified_at=dateutil.parser.isoparse("2023-01-01T03:32:54.177Z"),
+                            created_at=parse_datetime("2024-06-12T07:35:26.368Z"),
+                            modified_at=parse_datetime("2023-01-01T03:32:54.177Z"),
                             id="<value>",
                             metadata={
                                 "key": 882089,
@@ -623,8 +623,8 @@ async def main():
                     polar_sdk.AttachedCustomField(
                         custom_field_id="<value>",
                         custom_field=polar_sdk.CustomFieldDate(
-                            created_at=dateutil.parser.isoparse("2023-10-09T19:13:38.530Z"),
-                            modified_at=dateutil.parser.isoparse("2025-03-10T05:19:02.590Z"),
+                            created_at=parse_datetime("2023-10-09T19:13:38.530Z"),
+                            modified_at=parse_datetime("2025-03-10T05:19:02.590Z"),
                             id="<value>",
                             metadata={
                                 "key": 6244.25,

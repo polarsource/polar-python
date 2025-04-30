@@ -14,11 +14,12 @@ generation:
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: false
+    sharedErrorComponentsApr2025: false
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
 python:
-  version: 0.17.4
+  version: 0.18.0
   additionalDependencies:
     dev:
       pydantic-ai-slim: ^0.1.0

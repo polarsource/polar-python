@@ -3,16 +3,14 @@
 from __future__ import annotations
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Optional
-from typing_extensions import NotRequired, TypedDict
+from typing import Dict, Optional, Union
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-class ConditionsTypedDict(TypedDict):
-    pass
+ConditionsTypedDict = TypeAliasType("ConditionsTypedDict", Union[str, int, float, bool])
 
 
-class Conditions(BaseModel):
-    pass
+Conditions = TypeAliasType("Conditions", Union[str, int, float, bool])
 
 
 class LicenseKeyValidateTypedDict(TypedDict):
@@ -22,7 +20,19 @@ class LicenseKeyValidateTypedDict(TypedDict):
     benefit_id: NotRequired[Nullable[str]]
     customer_id: NotRequired[Nullable[str]]
     increment_usage: NotRequired[Nullable[int]]
-    conditions: NotRequired[ConditionsTypedDict]
+    conditions: NotRequired[Dict[str, ConditionsTypedDict]]
+    r"""Key-value object allowing you to set conditions that must match when validating the license key.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A floating-point number
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
 
 
 class LicenseKeyValidate(BaseModel):
@@ -38,7 +48,19 @@ class LicenseKeyValidate(BaseModel):
 
     increment_usage: OptionalNullable[int] = UNSET
 
-    conditions: Optional[Conditions] = None
+    conditions: Optional[Dict[str, Conditions]] = None
+    r"""Key-value object allowing you to set conditions that must match when validating the license key.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A floating-point number
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

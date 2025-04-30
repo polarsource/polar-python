@@ -2,32 +2,60 @@
 
 from __future__ import annotations
 from polar_sdk.types import BaseModel
-from typing import Optional
-from typing_extensions import NotRequired, TypedDict
+from typing import Dict, Optional, Union
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-class LicenseKeyActivateConditionsTypedDict(TypedDict):
-    pass
+LicenseKeyActivateConditionsTypedDict = TypeAliasType(
+    "LicenseKeyActivateConditionsTypedDict", Union[str, int, float, bool]
+)
 
 
-class LicenseKeyActivateConditions(BaseModel):
-    pass
+LicenseKeyActivateConditions = TypeAliasType(
+    "LicenseKeyActivateConditions", Union[str, int, float, bool]
+)
 
 
-class LicenseKeyActivateMetaTypedDict(TypedDict):
-    pass
+LicenseKeyActivateMetaTypedDict = TypeAliasType(
+    "LicenseKeyActivateMetaTypedDict", Union[str, int, float, bool]
+)
 
 
-class LicenseKeyActivateMeta(BaseModel):
-    pass
+LicenseKeyActivateMeta = TypeAliasType(
+    "LicenseKeyActivateMeta", Union[str, int, float, bool]
+)
 
 
 class LicenseKeyActivateTypedDict(TypedDict):
     key: str
     organization_id: str
     label: str
-    conditions: NotRequired[LicenseKeyActivateConditionsTypedDict]
-    meta: NotRequired[LicenseKeyActivateMetaTypedDict]
+    conditions: NotRequired[Dict[str, LicenseKeyActivateConditionsTypedDict]]
+    r"""Key-value object allowing you to set conditions that must match when validating the license key.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A floating-point number
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
+    meta: NotRequired[Dict[str, LicenseKeyActivateMetaTypedDict]]
+    r"""Key-value object allowing you to store additional information about the activation
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A floating-point number
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
 
 
 class LicenseKeyActivate(BaseModel):
@@ -37,6 +65,30 @@ class LicenseKeyActivate(BaseModel):
 
     label: str
 
-    conditions: Optional[LicenseKeyActivateConditions] = None
+    conditions: Optional[Dict[str, LicenseKeyActivateConditions]] = None
+    r"""Key-value object allowing you to set conditions that must match when validating the license key.
 
-    meta: Optional[LicenseKeyActivateMeta] = None
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A floating-point number
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
+
+    meta: Optional[Dict[str, LicenseKeyActivateMeta]] = None
+    r"""Key-value object allowing you to store additional information about the activation
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A floating-point number
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """

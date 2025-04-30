@@ -1,18 +1,15 @@
 [project]
 name = "polar-sdk"
-version = "0.17.4"
+version = "0.18.0"
 description = "Polar SDK for Python"
 authors = [{ name = "Polar" },]
 readme = "README-PYPI.md"
 requires-python = ">=3.9"
 dependencies = [
-    "eval-type-backport >=0.2.0",
     "httpx >=0.28.1",
     "jsonpath-python >=1.0.6",
     "pydantic >=2.11.2",
-    "python-dateutil >=2.8.2",
     "standardwebhooks (>=1.0.0,<2.0.0)",
-    "typing-inspection >=0.4.0",
 ]
 
 [tool.poetry]
@@ -34,7 +31,6 @@ pydantic-ai-slim = "^0.1.0"
 pylint = "==3.2.3"
 pytest = "^8.3.3"
 ruff = "^0.8.0"
-types-python-dateutil = "^2.9.0.20240316"
 
 [build-system]
 requires = ["poetry-core"]
