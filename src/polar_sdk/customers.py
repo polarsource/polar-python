@@ -1407,7 +1407,9 @@ class Customers(BaseSDK):
         self,
         *,
         external_id: str,
-        customer_update: Union[models.CustomerUpdate, models.CustomerUpdateTypedDict],
+        customer_update_external_id: Union[
+            models.CustomerUpdateExternalID, models.CustomerUpdateExternalIDTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1420,7 +1422,7 @@ class Customers(BaseSDK):
         **Scopes**: `customers:write`
 
         :param external_id: The customer external ID.
-        :param customer_update:
+        :param customer_update_external_id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1438,8 +1440,8 @@ class Customers(BaseSDK):
 
         request = models.CustomersUpdateExternalRequest(
             external_id=external_id,
-            customer_update=utils.get_pydantic_model(
-                customer_update, models.CustomerUpdate
+            customer_update_external_id=utils.get_pydantic_model(
+                customer_update_external_id, models.CustomerUpdateExternalID
             ),
         )
 
@@ -1457,7 +1459,11 @@ class Customers(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.customer_update, False, False, "json", models.CustomerUpdate
+                request.customer_update_external_id,
+                False,
+                False,
+                "json",
+                models.CustomerUpdateExternalID,
             ),
             timeout_ms=timeout_ms,
         )
@@ -1519,7 +1525,9 @@ class Customers(BaseSDK):
         self,
         *,
         external_id: str,
-        customer_update: Union[models.CustomerUpdate, models.CustomerUpdateTypedDict],
+        customer_update_external_id: Union[
+            models.CustomerUpdateExternalID, models.CustomerUpdateExternalIDTypedDict
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1532,7 +1540,7 @@ class Customers(BaseSDK):
         **Scopes**: `customers:write`
 
         :param external_id: The customer external ID.
-        :param customer_update:
+        :param customer_update_external_id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1550,8 +1558,8 @@ class Customers(BaseSDK):
 
         request = models.CustomersUpdateExternalRequest(
             external_id=external_id,
-            customer_update=utils.get_pydantic_model(
-                customer_update, models.CustomerUpdate
+            customer_update_external_id=utils.get_pydantic_model(
+                customer_update_external_id, models.CustomerUpdateExternalID
             ),
         )
 
@@ -1569,7 +1577,11 @@ class Customers(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.customer_update, False, False, "json", models.CustomerUpdate
+                request.customer_update_external_id,
+                False,
+                False,
+                "json",
+                models.CustomerUpdateExternalID,
             ),
             timeout_ms=timeout_ms,
         )
