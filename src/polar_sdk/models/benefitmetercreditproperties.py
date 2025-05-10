@@ -9,6 +9,7 @@ class BenefitMeterCreditPropertiesTypedDict(TypedDict):
     r"""Properties for a benefit of type `meter_unit`."""
 
     units: int
+    rollover: bool
     meter_id: str
 
 
@@ -16,5 +17,7 @@ class BenefitMeterCreditProperties(BaseModel):
     r"""Properties for a benefit of type `meter_unit`."""
 
     units: int
+
+    rollover: bool
 
     meter_id: str
