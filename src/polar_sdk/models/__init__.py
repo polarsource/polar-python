@@ -326,6 +326,8 @@ from .benefits_updateop import (
 )
 from .benefitsortproperty import BenefitSortProperty
 from .benefittype import BenefitType
+from .cardpayment import CardPayment, CardPaymentTypedDict
+from .cardpaymentmetadata import CardPaymentMetadata, CardPaymentMetadataTypedDict
 from .checkout import (
     Checkout,
     CheckoutCustomFieldData,
@@ -484,6 +486,8 @@ from .checkouts_client_updateop import (
 )
 from .checkouts_getop import CheckoutsGetRequest, CheckoutsGetRequestTypedDict
 from .checkouts_listop import (
+    CheckoutsListQueryParamCustomerIDFilter,
+    CheckoutsListQueryParamCustomerIDFilterTypedDict,
     CheckoutsListQueryParamOrganizationIDFilter,
     CheckoutsListQueryParamOrganizationIDFilterTypedDict,
     CheckoutsListQueryParamProductIDFilter,
@@ -492,6 +496,8 @@ from .checkouts_listop import (
     CheckoutsListRequestTypedDict,
     CheckoutsListResponse,
     CheckoutsListResponseTypedDict,
+    StatusFilter,
+    StatusFilterTypedDict,
 )
 from .checkouts_updateop import CheckoutsUpdateRequest, CheckoutsUpdateRequestTypedDict
 from .checkoutsortproperty import CheckoutSortProperty
@@ -1283,6 +1289,7 @@ from .filter_ import Clauses, ClausesTypedDict, Filter, FilterTypedDict
 from .filterclause import FilterClause, FilterClauseTypedDict, Value, ValueTypedDict
 from .filterconjunction import FilterConjunction
 from .filteroperator import FilterOperator
+from .genericpayment import GenericPayment, GenericPaymentTypedDict
 from .httpvalidationerror import HTTPValidationError, HTTPValidationErrorData
 from .introspecttokenrequest import (
     IntrospectTokenRequest,
@@ -1371,6 +1378,7 @@ from .licensekeywithactivations import (
     LicenseKeyWithActivations,
     LicenseKeyWithActivationsTypedDict,
 )
+from .listresource_ import ListResource, ListResourceTypedDict
 from .listresource_benefit_ import ListResourceBenefit, ListResourceBenefitTypedDict
 from .listresource_benefitgrant_ import (
     ListResourceBenefitGrant,
@@ -1486,7 +1494,40 @@ from .meterupdate import (
     MeterUpdateTypedDict,
 )
 from .metric import Metric, MetricTypedDict
-from .metricperiod import MetricPeriod, MetricPeriodTypedDict
+from .metricperiod import (
+    ActiveSubscriptions,
+    ActiveSubscriptionsTypedDict,
+    AverageOrderValue,
+    AverageOrderValueTypedDict,
+    CheckoutsConversion,
+    CheckoutsConversionTypedDict,
+    CheckoutsModel,
+    CheckoutsModelTypedDict,
+    CumulativeRevenue,
+    CumulativeRevenueTypedDict,
+    MetricPeriod,
+    MetricPeriodTypedDict,
+    MonthlyRecurringRevenue,
+    MonthlyRecurringRevenueTypedDict,
+    NewSubscriptions,
+    NewSubscriptionsRevenue,
+    NewSubscriptionsRevenueTypedDict,
+    NewSubscriptionsTypedDict,
+    OneTimeProducts,
+    OneTimeProductsRevenue,
+    OneTimeProductsRevenueTypedDict,
+    OneTimeProductsTypedDict,
+    OrdersModel,
+    OrdersModelTypedDict,
+    RenewedSubscriptions,
+    RenewedSubscriptionsRevenue,
+    RenewedSubscriptionsRevenueTypedDict,
+    RenewedSubscriptionsTypedDict,
+    Revenue,
+    RevenueTypedDict,
+    SucceededCheckouts,
+    SucceededCheckoutsTypedDict,
+)
 from .metrics import Metrics, MetricsTypedDict
 from .metrics_getop import (
     MetricsGetQueryParamCustomerIDFilter,
@@ -1507,6 +1548,40 @@ from .metricsintervalslimits import (
 )
 from .metricslimits import MetricsLimits, MetricsLimitsTypedDict
 from .metricsresponse import MetricsResponse, MetricsResponseTypedDict
+from .metricstotals import (
+    MetricsTotals,
+    MetricsTotalsActiveSubscriptions,
+    MetricsTotalsActiveSubscriptionsTypedDict,
+    MetricsTotalsAverageOrderValue,
+    MetricsTotalsAverageOrderValueTypedDict,
+    MetricsTotalsCheckouts,
+    MetricsTotalsCheckoutsConversion,
+    MetricsTotalsCheckoutsConversionTypedDict,
+    MetricsTotalsCheckoutsTypedDict,
+    MetricsTotalsCumulativeRevenue,
+    MetricsTotalsCumulativeRevenueTypedDict,
+    MetricsTotalsMonthlyRecurringRevenue,
+    MetricsTotalsMonthlyRecurringRevenueTypedDict,
+    MetricsTotalsNewSubscriptions,
+    MetricsTotalsNewSubscriptionsRevenue,
+    MetricsTotalsNewSubscriptionsRevenueTypedDict,
+    MetricsTotalsNewSubscriptionsTypedDict,
+    MetricsTotalsOneTimeProducts,
+    MetricsTotalsOneTimeProductsRevenue,
+    MetricsTotalsOneTimeProductsRevenueTypedDict,
+    MetricsTotalsOneTimeProductsTypedDict,
+    MetricsTotalsOrders,
+    MetricsTotalsOrdersTypedDict,
+    MetricsTotalsRenewedSubscriptions,
+    MetricsTotalsRenewedSubscriptionsRevenue,
+    MetricsTotalsRenewedSubscriptionsRevenueTypedDict,
+    MetricsTotalsRenewedSubscriptionsTypedDict,
+    MetricsTotalsRevenue,
+    MetricsTotalsRevenueTypedDict,
+    MetricsTotalsSucceededCheckouts,
+    MetricsTotalsSucceededCheckoutsTypedDict,
+    MetricsTotalsTypedDict,
+)
 from .metrictype import MetricType
 from .notopencheckout import NotOpenCheckout, NotOpenCheckoutData
 from .notpermitted import NotPermitted, NotPermittedData
@@ -1659,11 +1734,33 @@ from .organizationsubscriptionsettings import (
 )
 from .organizationupdate import OrganizationUpdate, OrganizationUpdateTypedDict
 from .pagination import Pagination, PaginationTypedDict
+from .payment import Payment, PaymentTypedDict
 from .paymenterror import PaymentError, PaymentErrorData
 from .paymentmethodcard import PaymentMethodCard, PaymentMethodCardTypedDict
 from .paymentmethodcarddata import PaymentMethodCardData, PaymentMethodCardDataTypedDict
 from .paymentmethodgeneric import PaymentMethodGeneric, PaymentMethodGenericTypedDict
 from .paymentprocessor import PaymentProcessor
+from .payments_getop import PaymentsGetRequest, PaymentsGetRequestTypedDict
+from .payments_listop import (
+    CustomerEmailFilter,
+    CustomerEmailFilterTypedDict,
+    MethodFilter,
+    MethodFilterTypedDict,
+    PaymentsListQueryParamCheckoutIDFilter,
+    PaymentsListQueryParamCheckoutIDFilterTypedDict,
+    PaymentsListQueryParamOrderIDFilter,
+    PaymentsListQueryParamOrderIDFilterTypedDict,
+    PaymentsListQueryParamOrganizationIDFilter,
+    PaymentsListQueryParamOrganizationIDFilterTypedDict,
+    PaymentsListRequest,
+    PaymentsListRequestTypedDict,
+    PaymentsListResponse,
+    PaymentsListResponseTypedDict,
+    QueryParamStatusFilter,
+    QueryParamStatusFilterTypedDict,
+)
+from .paymentsortproperty import PaymentSortProperty
+from .paymentstatus import PaymentStatus
 from .product import (
     Prices,
     PricesTypedDict,
@@ -1980,6 +2077,8 @@ from .webhooksubscriptionupdatedpayload import (
 
 
 __all__ = [
+    "ActiveSubscriptions",
+    "ActiveSubscriptionsTypedDict",
     "Address",
     "AddressTypedDict",
     "Aggregation",
@@ -2002,6 +2101,8 @@ __all__ = [
     "AuthorizeResponseUserTypedDict",
     "AuthorizeUser",
     "AuthorizeUserTypedDict",
+    "AverageOrderValue",
+    "AverageOrderValueTypedDict",
     "Benefit",
     "BenefitCreate",
     "BenefitCreateTypedDict",
@@ -2188,6 +2289,10 @@ __all__ = [
     "BenefitsUpdateBenefitUpdateTypedDict",
     "BenefitsUpdateRequest",
     "BenefitsUpdateRequestTypedDict",
+    "CardPayment",
+    "CardPaymentMetadata",
+    "CardPaymentMetadataTypedDict",
+    "CardPaymentTypedDict",
     "Checkout",
     "CheckoutConfirmStripe",
     "CheckoutConfirmStripeCustomFieldData",
@@ -2309,8 +2414,12 @@ __all__ = [
     "CheckoutsClientGetRequestTypedDict",
     "CheckoutsClientUpdateRequest",
     "CheckoutsClientUpdateRequestTypedDict",
+    "CheckoutsConversion",
+    "CheckoutsConversionTypedDict",
     "CheckoutsGetRequest",
     "CheckoutsGetRequestTypedDict",
+    "CheckoutsListQueryParamCustomerIDFilter",
+    "CheckoutsListQueryParamCustomerIDFilterTypedDict",
     "CheckoutsListQueryParamOrganizationIDFilter",
     "CheckoutsListQueryParamOrganizationIDFilterTypedDict",
     "CheckoutsListQueryParamProductIDFilter",
@@ -2319,6 +2428,8 @@ __all__ = [
     "CheckoutsListRequestTypedDict",
     "CheckoutsListResponse",
     "CheckoutsListResponseTypedDict",
+    "CheckoutsModel",
+    "CheckoutsModelTypedDict",
     "CheckoutsUpdateRequest",
     "CheckoutsUpdateRequestTypedDict",
     "Clauses",
@@ -2327,6 +2438,8 @@ __all__ = [
     "ConditionsTypedDict",
     "CountAggregation",
     "CountAggregationTypedDict",
+    "CumulativeRevenue",
+    "CumulativeRevenueTypedDict",
     "CustomField",
     "CustomFieldCheckbox",
     "CustomFieldCheckboxMetadata",
@@ -2469,6 +2582,8 @@ __all__ = [
     "CustomerCustomerMeterMeterTypedDict",
     "CustomerCustomerMeterSortProperty",
     "CustomerCustomerMeterTypedDict",
+    "CustomerEmailFilter",
+    "CustomerEmailFilterTypedDict",
     "CustomerIDFilter",
     "CustomerIDFilterTypedDict",
     "CustomerMetadata",
@@ -2882,6 +2997,8 @@ __all__ = [
     "FilterOperator",
     "FilterTypedDict",
     "Func",
+    "GenericPayment",
+    "GenericPaymentTypedDict",
     "GrantTypes",
     "HTTPValidationError",
     "HTTPValidationErrorData",
@@ -2941,6 +3058,7 @@ __all__ = [
     "LicenseKeysListResponseTypedDict",
     "LicenseKeysUpdateRequest",
     "LicenseKeysUpdateRequestTypedDict",
+    "ListResource",
     "ListResourceBenefit",
     "ListResourceBenefitGrant",
     "ListResourceBenefitGrantTypedDict",
@@ -2989,6 +3107,7 @@ __all__ = [
     "ListResourceRefundTypedDict",
     "ListResourceSubscription",
     "ListResourceSubscriptionTypedDict",
+    "ListResourceTypedDict",
     "ListResourceUnionPaymentMethodCardPaymentMethodGeneric",
     "ListResourceUnionPaymentMethodCardPaymentMethodGenericTypedDict",
     "Loc",
@@ -3038,6 +3157,8 @@ __all__ = [
     "MetersQuantitiesRequestTypedDict",
     "MetersUpdateRequest",
     "MetersUpdateRequestTypedDict",
+    "MethodFilter",
+    "MethodFilterTypedDict",
     "Metric",
     "MetricPeriod",
     "MetricPeriodTypedDict",
@@ -3060,9 +3181,47 @@ __all__ = [
     "MetricsLimitsTypedDict",
     "MetricsResponse",
     "MetricsResponseTypedDict",
+    "MetricsTotals",
+    "MetricsTotalsActiveSubscriptions",
+    "MetricsTotalsActiveSubscriptionsTypedDict",
+    "MetricsTotalsAverageOrderValue",
+    "MetricsTotalsAverageOrderValueTypedDict",
+    "MetricsTotalsCheckouts",
+    "MetricsTotalsCheckoutsConversion",
+    "MetricsTotalsCheckoutsConversionTypedDict",
+    "MetricsTotalsCheckoutsTypedDict",
+    "MetricsTotalsCumulativeRevenue",
+    "MetricsTotalsCumulativeRevenueTypedDict",
+    "MetricsTotalsMonthlyRecurringRevenue",
+    "MetricsTotalsMonthlyRecurringRevenueTypedDict",
+    "MetricsTotalsNewSubscriptions",
+    "MetricsTotalsNewSubscriptionsRevenue",
+    "MetricsTotalsNewSubscriptionsRevenueTypedDict",
+    "MetricsTotalsNewSubscriptionsTypedDict",
+    "MetricsTotalsOneTimeProducts",
+    "MetricsTotalsOneTimeProductsRevenue",
+    "MetricsTotalsOneTimeProductsRevenueTypedDict",
+    "MetricsTotalsOneTimeProductsTypedDict",
+    "MetricsTotalsOrders",
+    "MetricsTotalsOrdersTypedDict",
+    "MetricsTotalsRenewedSubscriptions",
+    "MetricsTotalsRenewedSubscriptionsRevenue",
+    "MetricsTotalsRenewedSubscriptionsRevenueTypedDict",
+    "MetricsTotalsRenewedSubscriptionsTypedDict",
+    "MetricsTotalsRevenue",
+    "MetricsTotalsRevenueTypedDict",
+    "MetricsTotalsSucceededCheckouts",
+    "MetricsTotalsSucceededCheckoutsTypedDict",
+    "MetricsTotalsTypedDict",
     "MetricsTypedDict",
+    "MonthlyRecurringRevenue",
+    "MonthlyRecurringRevenueTypedDict",
     "NameFilter",
     "NameFilterTypedDict",
+    "NewSubscriptions",
+    "NewSubscriptionsRevenue",
+    "NewSubscriptionsRevenueTypedDict",
+    "NewSubscriptionsTypedDict",
     "NotOpenCheckout",
     "NotOpenCheckoutData",
     "NotPermitted",
@@ -3095,6 +3254,10 @@ __all__ = [
     "Oauth2RequestTokenRequestBodyTypedDict",
     "Oauth2UserinfoResponseOauth2Userinfo",
     "Oauth2UserinfoResponseOauth2UserinfoTypedDict",
+    "OneTimeProducts",
+    "OneTimeProductsRevenue",
+    "OneTimeProductsRevenueTypedDict",
+    "OneTimeProductsTypedDict",
     "Order",
     "OrderBillingReason",
     "OrderCustomFieldData",
@@ -3140,6 +3303,8 @@ __all__ = [
     "OrdersListRequestTypedDict",
     "OrdersListResponse",
     "OrdersListResponseTypedDict",
+    "OrdersModel",
+    "OrdersModelTypedDict",
     "Organization",
     "OrganizationAvatarFileCreate",
     "OrganizationAvatarFileCreateTypedDict",
@@ -3174,6 +3339,7 @@ __all__ = [
     "OrganizationsUpdateRequestTypedDict",
     "Pagination",
     "PaginationTypedDict",
+    "Payment",
     "PaymentError",
     "PaymentErrorData",
     "PaymentMethodCard",
@@ -3183,6 +3349,21 @@ __all__ = [
     "PaymentMethodGeneric",
     "PaymentMethodGenericTypedDict",
     "PaymentProcessor",
+    "PaymentSortProperty",
+    "PaymentStatus",
+    "PaymentTypedDict",
+    "PaymentsGetRequest",
+    "PaymentsGetRequestTypedDict",
+    "PaymentsListQueryParamCheckoutIDFilter",
+    "PaymentsListQueryParamCheckoutIDFilterTypedDict",
+    "PaymentsListQueryParamOrderIDFilter",
+    "PaymentsListQueryParamOrderIDFilterTypedDict",
+    "PaymentsListQueryParamOrganizationIDFilter",
+    "PaymentsListQueryParamOrganizationIDFilterTypedDict",
+    "PaymentsListRequest",
+    "PaymentsListRequestTypedDict",
+    "PaymentsListResponse",
+    "PaymentsListResponseTypedDict",
     "Permission",
     "PreviousProperties",
     "PreviousPropertiesTypedDict",
@@ -3277,6 +3458,8 @@ __all__ = [
     "QueryParamProductIDFilterTypedDict",
     "QueryParamSourceFilter",
     "QueryParamSourceFilterTypedDict",
+    "QueryParamStatusFilter",
+    "QueryParamStatusFilterTypedDict",
     "QueryParamSubscriptionIDFilter",
     "QueryParamSubscriptionIDFilterTypedDict",
     "RefreshTokenRequest",
@@ -3306,8 +3489,14 @@ __all__ = [
     "RefundsListRequestTypedDict",
     "RefundsListResponse",
     "RefundsListResponseTypedDict",
+    "RenewedSubscriptions",
+    "RenewedSubscriptionsRevenue",
+    "RenewedSubscriptionsRevenueTypedDict",
+    "RenewedSubscriptionsTypedDict",
     "ResourceNotFound",
     "ResourceNotFoundData",
+    "Revenue",
+    "RevenueTypedDict",
     "RevokeTokenRequest",
     "RevokeTokenRequestTypedDict",
     "RevokeTokenResponse",
@@ -3330,6 +3519,8 @@ __all__ = [
     "SecurityTypedDict",
     "SourceFilter",
     "SourceFilterTypedDict",
+    "StatusFilter",
+    "StatusFilterTypedDict",
     "SubType",
     "Subscription",
     "SubscriptionCancel",
@@ -3369,6 +3560,8 @@ __all__ = [
     "SubscriptionsRevokeRequestTypedDict",
     "SubscriptionsUpdateRequest",
     "SubscriptionsUpdateRequestTypedDict",
+    "SucceededCheckouts",
+    "SucceededCheckoutsTypedDict",
     "SwitchingFrom",
     "TaxID",
     "TaxIDFormat",

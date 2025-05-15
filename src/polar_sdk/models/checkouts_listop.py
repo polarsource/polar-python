@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .checkoutsortproperty import CheckoutSortProperty
+from .checkoutstatus import CheckoutStatus
 from .listresource_checkout_ import ListResourceCheckout, ListResourceCheckoutTypedDict
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
@@ -34,6 +35,30 @@ CheckoutsListQueryParamProductIDFilter = TypeAliasType(
 r"""Filter by product ID."""
 
 
+CheckoutsListQueryParamCustomerIDFilterTypedDict = TypeAliasType(
+    "CheckoutsListQueryParamCustomerIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by customer ID."""
+
+
+CheckoutsListQueryParamCustomerIDFilter = TypeAliasType(
+    "CheckoutsListQueryParamCustomerIDFilter", Union[str, List[str]]
+)
+r"""Filter by customer ID."""
+
+
+StatusFilterTypedDict = TypeAliasType(
+    "StatusFilterTypedDict", Union[CheckoutStatus, List[CheckoutStatus]]
+)
+r"""Filter by checkout session status."""
+
+
+StatusFilter = TypeAliasType(
+    "StatusFilter", Union[CheckoutStatus, List[CheckoutStatus]]
+)
+r"""Filter by checkout session status."""
+
+
 class CheckoutsListRequestTypedDict(TypedDict):
     organization_id: NotRequired[
         Nullable[CheckoutsListQueryParamOrganizationIDFilterTypedDict]
@@ -41,6 +66,12 @@ class CheckoutsListRequestTypedDict(TypedDict):
     r"""Filter by organization ID."""
     product_id: NotRequired[Nullable[CheckoutsListQueryParamProductIDFilterTypedDict]]
     r"""Filter by product ID."""
+    customer_id: NotRequired[Nullable[CheckoutsListQueryParamCustomerIDFilterTypedDict]]
+    r"""Filter by customer ID."""
+    status: NotRequired[Nullable[StatusFilterTypedDict]]
+    r"""Filter by checkout session status."""
+    query: NotRequired[Nullable[str]]
+    r"""Filter by customer email."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -62,6 +93,24 @@ class CheckoutsListRequest(BaseModel):
     ] = UNSET
     r"""Filter by product ID."""
 
+    customer_id: Annotated[
+        OptionalNullable[CheckoutsListQueryParamCustomerIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by customer ID."""
+
+    status: Annotated[
+        OptionalNullable[StatusFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by checkout session status."""
+
+    query: Annotated[
+        OptionalNullable[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by customer email."""
+
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -82,8 +131,24 @@ class CheckoutsListRequest(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["organization_id", "product_id", "page", "limit", "sorting"]
-        nullable_fields = ["organization_id", "product_id", "sorting"]
+        optional_fields = [
+            "organization_id",
+            "product_id",
+            "customer_id",
+            "status",
+            "query",
+            "page",
+            "limit",
+            "sorting",
+        ]
+        nullable_fields = [
+            "organization_id",
+            "product_id",
+            "customer_id",
+            "status",
+            "query",
+            "sorting",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

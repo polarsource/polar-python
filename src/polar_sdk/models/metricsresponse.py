@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .metricperiod import MetricPeriod, MetricPeriodTypedDict
 from .metrics import Metrics, MetricsTypedDict
+from .metricstotals import MetricsTotals, MetricsTotalsTypedDict
 from polar_sdk.types import BaseModel
 from typing import List
 from typing_extensions import TypedDict
@@ -13,6 +14,7 @@ class MetricsResponseTypedDict(TypedDict):
 
     periods: List[MetricPeriodTypedDict]
     r"""List of data for each timestamp."""
+    totals: MetricsTotalsTypedDict
     metrics: MetricsTypedDict
 
 
@@ -21,5 +23,7 @@ class MetricsResponse(BaseModel):
 
     periods: List[MetricPeriod]
     r"""List of data for each timestamp."""
+
+    totals: MetricsTotals
 
     metrics: Metrics

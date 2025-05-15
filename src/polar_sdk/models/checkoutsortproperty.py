@@ -9,3 +9,5 @@ class CheckoutSortProperty(str, Enum):
     MINUS_CREATED_AT = "-created_at"
     EXPIRES_AT = "expires_at"
     MINUS_EXPIRES_AT = "-expires_at"
+    STATUS = "status"
+    MINUS_STATUS = "-status"

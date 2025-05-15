@@ -25,6 +25,7 @@ from polar_sdk.metrics_sdk import MetricsSDK
 from polar_sdk.oauth2 import Oauth2
 from polar_sdk.orders import Orders
 from polar_sdk.organizations import Organizations
+from polar_sdk.payments import Payments
 from polar_sdk.products import Products
 from polar_sdk.refunds import Refunds
 from polar_sdk.subscriptions import Subscriptions
@@ -59,6 +60,7 @@ class Polar(BaseSDK):
     events: Events
     meters: Meters
     customer_meters: CustomerMeters
+    payments: Payments
 
     def __init__(
         self,
@@ -178,6 +180,7 @@ class Polar(BaseSDK):
         self.events = Events(self.sdk_configuration)
         self.meters = Meters(self.sdk_configuration)
         self.customer_meters = CustomerMeters(self.sdk_configuration)
+        self.payments = Payments(self.sdk_configuration)
 
     def __enter__(self):
         return self

@@ -17,3 +17,6 @@
 | `renewed_subscriptions_revenue`      | [models.Metric](../models/metric.md) | :heavy_check_mark:                   | Information about a metric.          |
 | `active_subscriptions`               | [models.Metric](../models/metric.md) | :heavy_check_mark:                   | Information about a metric.          |
 | `monthly_recurring_revenue`          | [models.Metric](../models/metric.md) | :heavy_check_mark:                   | Information about a metric.          |
+| `checkouts`                          | [models.Metric](../models/metric.md) | :heavy_check_mark:                   | Information about a metric.          |
+| `succeeded_checkouts`                | [models.Metric](../models/metric.md) | :heavy_check_mark:                   | Information about a metric.          |
+| `checkouts_conversion`               | [models.Metric](../models/metric.md) | :heavy_check_mark:                   | Information about a metric.          |

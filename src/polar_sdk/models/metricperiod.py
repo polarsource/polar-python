@@ -3,50 +3,174 @@
 from __future__ import annotations
 from datetime import datetime
 from polar_sdk.types import BaseModel
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import TypeAliasType, TypedDict
+
+
+OrdersModelTypedDict = TypeAliasType("OrdersModelTypedDict", Union[int, float])
+
+
+OrdersModel = TypeAliasType("OrdersModel", Union[int, float])
+
+
+RevenueTypedDict = TypeAliasType("RevenueTypedDict", Union[int, float])
+
+
+Revenue = TypeAliasType("Revenue", Union[int, float])
+
+
+CumulativeRevenueTypedDict = TypeAliasType(
+    "CumulativeRevenueTypedDict", Union[int, float]
+)
+
+
+CumulativeRevenue = TypeAliasType("CumulativeRevenue", Union[int, float])
+
+
+AverageOrderValueTypedDict = TypeAliasType(
+    "AverageOrderValueTypedDict", Union[int, float]
+)
+
+
+AverageOrderValue = TypeAliasType("AverageOrderValue", Union[int, float])
+
+
+OneTimeProductsTypedDict = TypeAliasType("OneTimeProductsTypedDict", Union[int, float])
+
+
+OneTimeProducts = TypeAliasType("OneTimeProducts", Union[int, float])
+
+
+OneTimeProductsRevenueTypedDict = TypeAliasType(
+    "OneTimeProductsRevenueTypedDict", Union[int, float]
+)
+
+
+OneTimeProductsRevenue = TypeAliasType("OneTimeProductsRevenue", Union[int, float])
+
+
+NewSubscriptionsTypedDict = TypeAliasType(
+    "NewSubscriptionsTypedDict", Union[int, float]
+)
+
+
+NewSubscriptions = TypeAliasType("NewSubscriptions", Union[int, float])
+
+
+NewSubscriptionsRevenueTypedDict = TypeAliasType(
+    "NewSubscriptionsRevenueTypedDict", Union[int, float]
+)
+
+
+NewSubscriptionsRevenue = TypeAliasType("NewSubscriptionsRevenue", Union[int, float])
+
+
+RenewedSubscriptionsTypedDict = TypeAliasType(
+    "RenewedSubscriptionsTypedDict", Union[int, float]
+)
+
+
+RenewedSubscriptions = TypeAliasType("RenewedSubscriptions", Union[int, float])
+
+
+RenewedSubscriptionsRevenueTypedDict = TypeAliasType(
+    "RenewedSubscriptionsRevenueTypedDict", Union[int, float]
+)
+
+
+RenewedSubscriptionsRevenue = TypeAliasType(
+    "RenewedSubscriptionsRevenue", Union[int, float]
+)
+
+
+ActiveSubscriptionsTypedDict = TypeAliasType(
+    "ActiveSubscriptionsTypedDict", Union[int, float]
+)
+
+
+ActiveSubscriptions = TypeAliasType("ActiveSubscriptions", Union[int, float])
+
+
+MonthlyRecurringRevenueTypedDict = TypeAliasType(
+    "MonthlyRecurringRevenueTypedDict", Union[int, float]
+)
+
+
+MonthlyRecurringRevenue = TypeAliasType("MonthlyRecurringRevenue", Union[int, float])
+
+
+CheckoutsModelTypedDict = TypeAliasType("CheckoutsModelTypedDict", Union[int, float])
+
+
+CheckoutsModel = TypeAliasType("CheckoutsModel", Union[int, float])
+
+
+SucceededCheckoutsTypedDict = TypeAliasType(
+    "SucceededCheckoutsTypedDict", Union[int, float]
+)
+
+
+SucceededCheckouts = TypeAliasType("SucceededCheckouts", Union[int, float])
+
+
+CheckoutsConversionTypedDict = TypeAliasType(
+    "CheckoutsConversionTypedDict", Union[int, float]
+)
+
+
+CheckoutsConversion = TypeAliasType("CheckoutsConversion", Union[int, float])
 
 
 class MetricPeriodTypedDict(TypedDict):
     timestamp: datetime
     r"""Timestamp of this period data."""
-    orders: int
-    revenue: int
-    cumulative_revenue: int
-    average_order_value: int
-    one_time_products: int
-    one_time_products_revenue: int
-    new_subscriptions: int
-    new_subscriptions_revenue: int
-    renewed_subscriptions: int
-    renewed_subscriptions_revenue: int
-    active_subscriptions: int
-    monthly_recurring_revenue: int
+    orders: OrdersModelTypedDict
+    revenue: RevenueTypedDict
+    cumulative_revenue: CumulativeRevenueTypedDict
+    average_order_value: AverageOrderValueTypedDict
+    one_time_products: OneTimeProductsTypedDict
+    one_time_products_revenue: OneTimeProductsRevenueTypedDict
+    new_subscriptions: NewSubscriptionsTypedDict
+    new_subscriptions_revenue: NewSubscriptionsRevenueTypedDict
+    renewed_subscriptions: RenewedSubscriptionsTypedDict
+    renewed_subscriptions_revenue: RenewedSubscriptionsRevenueTypedDict
+    active_subscriptions: ActiveSubscriptionsTypedDict
+    monthly_recurring_revenue: MonthlyRecurringRevenueTypedDict
+    checkouts: CheckoutsModelTypedDict
+    succeeded_checkouts: SucceededCheckoutsTypedDict
+    checkouts_conversion: CheckoutsConversionTypedDict
 
 
 class MetricPeriod(BaseModel):
     timestamp: datetime
     r"""Timestamp of this period data."""
 
-    orders: int
+    orders: OrdersModel
 
-    revenue: int
+    revenue: Revenue
 
-    cumulative_revenue: int
+    cumulative_revenue: CumulativeRevenue
 
-    average_order_value: int
+    average_order_value: AverageOrderValue
 
-    one_time_products: int
+    one_time_products: OneTimeProducts
 
-    one_time_products_revenue: int
+    one_time_products_revenue: OneTimeProductsRevenue
 
-    new_subscriptions: int
+    new_subscriptions: NewSubscriptions
 
-    new_subscriptions_revenue: int
+    new_subscriptions_revenue: NewSubscriptionsRevenue
 
-    renewed_subscriptions: int
+    renewed_subscriptions: RenewedSubscriptions
 
-    renewed_subscriptions_revenue: int
+    renewed_subscriptions_revenue: RenewedSubscriptionsRevenue
 
-    active_subscriptions: int
+    active_subscriptions: ActiveSubscriptions
 
-    monthly_recurring_revenue: int
+    monthly_recurring_revenue: MonthlyRecurringRevenue
+
+    checkouts: CheckoutsModel
+
+    succeeded_checkouts: SucceededCheckouts
+
+    checkouts_conversion: CheckoutsConversion
