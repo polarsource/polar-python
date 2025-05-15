@@ -24,6 +24,16 @@ class Checkouts(BaseSDK):
                 models.CheckoutsListQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
+        customer_id: OptionalNullable[
+            Union[
+                models.CheckoutsListQueryParamCustomerIDFilter,
+                models.CheckoutsListQueryParamCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
+        status: OptionalNullable[
+            Union[models.StatusFilter, models.StatusFilterTypedDict]
+        ] = UNSET,
+        query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.CheckoutSortProperty]] = UNSET,
@@ -40,6 +50,9 @@ class Checkouts(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
+        :param customer_id: Filter by customer ID.
+        :param status: Filter by checkout session status.
+        :param query: Filter by customer email.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -61,6 +74,9 @@ class Checkouts(BaseSDK):
         request = models.CheckoutsListRequest(
             organization_id=organization_id,
             product_id=product_id,
+            customer_id=customer_id,
+            status=status,
+            query=query,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -123,6 +139,9 @@ class Checkouts(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 product_id=product_id,
+                customer_id=customer_id,
+                status=status,
+                query=query,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -175,6 +194,16 @@ class Checkouts(BaseSDK):
                 models.CheckoutsListQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
+        customer_id: OptionalNullable[
+            Union[
+                models.CheckoutsListQueryParamCustomerIDFilter,
+                models.CheckoutsListQueryParamCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
+        status: OptionalNullable[
+            Union[models.StatusFilter, models.StatusFilterTypedDict]
+        ] = UNSET,
+        query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.CheckoutSortProperty]] = UNSET,
@@ -191,6 +220,9 @@ class Checkouts(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
+        :param customer_id: Filter by customer ID.
+        :param status: Filter by checkout session status.
+        :param query: Filter by customer email.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -212,6 +244,9 @@ class Checkouts(BaseSDK):
         request = models.CheckoutsListRequest(
             organization_id=organization_id,
             product_id=product_id,
+            customer_id=customer_id,
+            status=status,
+            query=query,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -274,6 +309,9 @@ class Checkouts(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 product_id=product_id,
+                customer_id=customer_id,
+                status=status,
+                query=query,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,

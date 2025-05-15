@@ -40,6 +40,7 @@ class Scope(str, Enum):
     ORDERS_READ = "orders:read"
     REFUNDS_READ = "refunds:read"
     REFUNDS_WRITE = "refunds:write"
+    PAYMENTS_READ = "payments:read"
     METRICS_READ = "metrics:read"
     WEBHOOKS_READ = "webhooks:read"
     WEBHOOKS_WRITE = "webhooks:write"

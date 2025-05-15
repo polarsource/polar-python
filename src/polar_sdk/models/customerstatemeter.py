@@ -21,7 +21,7 @@ class CustomerStateMeterTypedDict(TypedDict):
     credited_units: int
     r"""The number of credited units."""
     balance: float
-    r"""The balance of the meter, i.e. the difference between credited and consumed units. Never goes negative."""
+    r"""The balance of the meter, i.e. the difference between credited and consumed units."""
 
 
 class CustomerStateMeter(BaseModel):
@@ -43,7 +43,7 @@ class CustomerStateMeter(BaseModel):
     r"""The number of credited units."""
 
     balance: float
-    r"""The balance of the meter, i.e. the difference between credited and consumed units. Never goes negative."""
+    r"""The balance of the meter, i.e. the difference between credited and consumed units."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

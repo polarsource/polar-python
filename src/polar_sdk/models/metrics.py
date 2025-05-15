@@ -31,6 +31,12 @@ class MetricsTypedDict(TypedDict):
     r"""Information about a metric."""
     monthly_recurring_revenue: MetricTypedDict
     r"""Information about a metric."""
+    checkouts: MetricTypedDict
+    r"""Information about a metric."""
+    succeeded_checkouts: MetricTypedDict
+    r"""Information about a metric."""
+    checkouts_conversion: MetricTypedDict
+    r"""Information about a metric."""
 
 
 class Metrics(BaseModel):
@@ -68,4 +74,13 @@ class Metrics(BaseModel):
     r"""Information about a metric."""
 
     monthly_recurring_revenue: Metric
+    r"""Information about a metric."""
+
+    checkouts: Metric
+    r"""Information about a metric."""
+
+    succeeded_checkouts: Metric
+    r"""Information about a metric."""
+
+    checkouts_conversion: Metric
     r"""Information about a metric."""

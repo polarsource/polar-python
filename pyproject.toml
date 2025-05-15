@@ -1,10 +1,10 @@
 [project]
 name = "polar-sdk"
-version = "0.18.1"
+version = "0.19.0"
 description = "Polar SDK for Python"
 authors = [{ name = "Polar" },]
 readme = "README-PYPI.md"
-requires-python = ">=3.9"
+requires-python = ">=3.9.2"
 dependencies = [
     "httpx >=0.28.1",
     "jsonpath-python >=1.0.6",
