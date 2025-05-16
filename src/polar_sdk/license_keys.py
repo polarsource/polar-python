@@ -65,7 +65,7 @@ class LicenseKeys(BaseSDK):
 
         req = self._build_request(
             method="GET",
-            path="/v1/license-keys",
+            path="/v1/license-keys/",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -222,7 +222,7 @@ class LicenseKeys(BaseSDK):
 
         req = self._build_request_async(
             method="GET",
-            path="/v1/license-keys",
+            path="/v1/license-keys/",
             base_url=base_url,
             url_variables=url_variables,
             request=request,

@@ -14,6 +14,7 @@ from .benefitgrantdownloadablesproperties import (
     BenefitGrantDownloadablesProperties,
     BenefitGrantDownloadablesPropertiesTypedDict,
 )
+from .benefitgranterror import BenefitGrantError, BenefitGrantErrorTypedDict
 from .benefitgrantgithubrepositoryproperties import (
     BenefitGrantGitHubRepositoryProperties,
     BenefitGrantGitHubRepositoryPropertiesTypedDict,
@@ -105,6 +106,8 @@ class BenefitGrantWebhookTypedDict(TypedDict):
     r"""The timestamp when the benefit was granted. If `None`, the benefit is not granted."""
     revoked_at: NotRequired[Nullable[datetime]]
     r"""The timestamp when the benefit was revoked. If `None`, the benefit is not revoked."""
+    error: NotRequired[Nullable[BenefitGrantErrorTypedDict]]
+    r"""The error information if the benefit grant failed with an unrecoverable error."""
     previous_properties: NotRequired[Nullable[PreviousPropertiesTypedDict]]
 
 
@@ -149,17 +152,21 @@ class BenefitGrantWebhook(BaseModel):
     revoked_at: OptionalNullable[datetime] = UNSET
     r"""The timestamp when the benefit was revoked. If `None`, the benefit is not revoked."""
 
+    error: OptionalNullable[BenefitGrantError] = UNSET
+    r"""The error information if the benefit grant failed with an unrecoverable error."""
+
     previous_properties: OptionalNullable[PreviousProperties] = UNSET
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["granted_at", "revoked_at", "previous_properties"]
+        optional_fields = ["granted_at", "revoked_at", "error", "previous_properties"]
         nullable_fields = [
             "modified_at",
             "granted_at",
             "revoked_at",
             "subscription_id",
             "order_id",
+            "error",
             "previous_properties",
         ]
         null_default_fields = []

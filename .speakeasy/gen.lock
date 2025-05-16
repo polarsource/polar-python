@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: 9a2d40ce4ddb7ab5f71f0aa3bcea411d
+  docChecksum: ee661a18d41072f7bf8fcd87ae84110d
   docVersion: 0.1.0
   speakeasyVersion: 1.545.0
   generationVersion: 2.599.0
-  releaseVersion: 0.19.0
-  configChecksum: 4041b53ffaf9dcae8083ddf0ccb08486
+  releaseVersion: 0.19.1
+  configChecksum: 63a610f6b95242f4dfdd11a799ef8e29
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -110,6 +110,7 @@ generatedFiles:
   - docs/models/benefitgrantcustomproperties.md
   - docs/models/benefitgrantdiscordproperties.md
   - docs/models/benefitgrantdownloadablesproperties.md
+  - docs/models/benefitgranterror.md
   - docs/models/benefitgrantgithubrepositoryproperties.md
   - docs/models/benefitgrantgithubrepositorypropertiespermission.md
   - docs/models/benefitgrantlicensekeysproperties.md
@@ -502,10 +503,12 @@ generatedFiles:
   - docs/models/externalcustomeridfilter.md
   - docs/models/filecreate.md
   - docs/models/filedownload.md
+  - docs/models/fileidfilter.md
   - docs/models/filepatch.md
   - docs/models/fileread.md
   - docs/models/filesdeleterequest.md
   - docs/models/fileservicetypes.md
+  - docs/models/fileslistqueryparamorganizationidfilter.md
   - docs/models/fileslistrequest.md
   - docs/models/fileslistresponse.md
   - docs/models/filesupdaterequest.md
@@ -966,6 +969,7 @@ generatedFiles:
   - src/polar_sdk/models/benefitgrantcustomproperties.py
   - src/polar_sdk/models/benefitgrantdiscordproperties.py
   - src/polar_sdk/models/benefitgrantdownloadablesproperties.py
+  - src/polar_sdk/models/benefitgranterror.py
   - src/polar_sdk/models/benefitgrantgithubrepositoryproperties.py
   - src/polar_sdk/models/benefitgrantlicensekeysproperties.py
   - src/polar_sdk/models/benefitgrantmetercreditproperties.py
@@ -1103,7 +1107,6 @@ generatedFiles:
   - src/polar_sdk/models/customers_get_state_externalop.py
   - src/polar_sdk/models/customers_get_stateop.py
   - src/polar_sdk/models/customers_getop.py
-  - src/polar_sdk/models/customers_listop.py
   - src/polar_sdk/models/customers_update_externalop.py
   - src/polar_sdk/models/customers_updateop.py
   - src/polar_sdk/models/customersession.py
@@ -1292,7 +1295,6 @@ generatedFiles:
   - src/polar_sdk/models/orderproduct.py
   - src/polar_sdk/models/orders_getop.py
   - src/polar_sdk/models/orders_invoiceop.py
-  - src/polar_sdk/models/orders_listop.py
   - src/polar_sdk/models/ordersortproperty.py
   - src/polar_sdk/models/orderstatus.py
   - src/polar_sdk/models/ordersubscription.py
