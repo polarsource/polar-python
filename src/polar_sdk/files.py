@@ -12,8 +12,15 @@ class Files(BaseSDK):
     def list(
         self,
         *,
-        organization_id: OptionalNullable[str] = UNSET,
-        ids: OptionalNullable[List[str]] = UNSET,
+        organization_id: OptionalNullable[
+            Union[
+                models.FilesListQueryParamOrganizationIDFilter,
+                models.FilesListQueryParamOrganizationIDFilterTypedDict,
+            ]
+        ] = UNSET,
+        ids: OptionalNullable[
+            Union[models.FileIDFilter, models.FileIDFilterTypedDict]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -27,8 +34,8 @@ class Files(BaseSDK):
 
         **Scopes**: `files:read` `files:write`
 
-        :param organization_id:
-        :param ids: List of file IDs to get.
+        :param organization_id: Filter by organization ID.
+        :param ids: Filter by file ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -149,8 +156,15 @@ class Files(BaseSDK):
     async def list_async(
         self,
         *,
-        organization_id: OptionalNullable[str] = UNSET,
-        ids: OptionalNullable[List[str]] = UNSET,
+        organization_id: OptionalNullable[
+            Union[
+                models.FilesListQueryParamOrganizationIDFilter,
+                models.FilesListQueryParamOrganizationIDFilterTypedDict,
+            ]
+        ] = UNSET,
+        ids: OptionalNullable[
+            Union[models.FileIDFilter, models.FileIDFilterTypedDict]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -164,8 +178,8 @@ class Files(BaseSDK):
 
         **Scopes**: `files:read` `files:write`
 
-        :param organization_id:
-        :param ids: List of file IDs to get.
+        :param organization_id: Filter by organization ID.
+        :param ids: Filter by file ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method

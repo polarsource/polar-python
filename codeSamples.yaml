@@ -428,7 +428,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.files.list(organization_id=\"1dbfc517-0bbf-4301-9ba8-555ca42b9737\")\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.files.list(organization_id=[\n        \"1dbfc517-0bbf-4301-9ba8-555ca42b9737\",\n    ])\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
   - target: $["paths"]["/v1/files/"]["post"]
     update:
       "x-codeSamples":
@@ -453,7 +453,7 @@ actions:
         - "lang": "python"
           "label": "Python (SDK)"
           "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.files.uploaded(id=\"<value>\", file_upload_completed={\n        \"id\": \"<id>\",\n        \"path\": \"/sys\",\n        \"parts\": [\n            {\n                \"number\": 173116,\n                \"checksum_etag\": \"<value>\",\n                \"checksum_sha256_base64\": \"<value>\",\n            },\n            {\n                \"number\": 894030,\n                \"checksum_etag\": \"<value>\",\n                \"checksum_sha256_base64\": \"<value>\",\n            },\n            {\n                \"number\": 673715,\n                \"checksum_etag\": \"<value>\",\n                \"checksum_sha256_base64\": \"<value>\",\n            },\n        ],\n    })\n\n    # Handle response\n    print(res)"
-  - target: $["paths"]["/v1/license-keys"]["get"]
+  - target: $["paths"]["/v1/license-keys/"]["get"]
     update:
       "x-codeSamples":
         - "lang": "python"

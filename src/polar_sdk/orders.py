@@ -48,6 +48,12 @@ class Orders(BaseSDK):
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.OrderSortProperty]] = UNSET,
+        metadata: OptionalNullable[
+            Union[
+                Dict[str, models.MetadataQuery],
+                Dict[str, models.MetadataQueryTypedDict],
+            ]
+        ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -68,6 +74,7 @@ class Orders(BaseSDK):
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
+        :param metadata: Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -93,6 +100,7 @@ class Orders(BaseSDK):
             page=page,
             limit=limit,
             sorting=sorting,
+            metadata=metadata,
         )
 
         req = self._build_request(
@@ -159,6 +167,7 @@ class Orders(BaseSDK):
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
+                metadata=metadata,
                 retries=retries,
             )
 
@@ -232,6 +241,12 @@ class Orders(BaseSDK):
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.OrderSortProperty]] = UNSET,
+        metadata: OptionalNullable[
+            Union[
+                Dict[str, models.MetadataQuery],
+                Dict[str, models.MetadataQueryTypedDict],
+            ]
+        ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -252,6 +267,7 @@ class Orders(BaseSDK):
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
+        :param metadata: Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -277,6 +293,7 @@ class Orders(BaseSDK):
             page=page,
             limit=limit,
             sorting=sorting,
+            metadata=metadata,
         )
 
         req = self._build_request_async(
@@ -343,6 +360,7 @@ class Orders(BaseSDK):
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
+                metadata=metadata,
                 retries=retries,
             )
 

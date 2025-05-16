@@ -5,14 +5,37 @@ from .listresource_fileread_ import ListResourceFileRead, ListResourceFileReadTy
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
-from typing import Callable, List, Optional
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing import Callable, List, Optional, Union
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+
+
+FilesListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "FilesListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by organization ID."""
+
+
+FilesListQueryParamOrganizationIDFilter = TypeAliasType(
+    "FilesListQueryParamOrganizationIDFilter", Union[str, List[str]]
+)
+r"""Filter by organization ID."""
+
+
+FileIDFilterTypedDict = TypeAliasType("FileIDFilterTypedDict", Union[str, List[str]])
+r"""Filter by file ID."""
+
+
+FileIDFilter = TypeAliasType("FileIDFilter", Union[str, List[str]])
+r"""Filter by file ID."""
 
 
 class FilesListRequestTypedDict(TypedDict):
-    organization_id: NotRequired[Nullable[str]]
-    ids: NotRequired[Nullable[List[str]]]
-    r"""List of file IDs to get."""
+    organization_id: NotRequired[
+        Nullable[FilesListQueryParamOrganizationIDFilterTypedDict]
+    ]
+    r"""Filter by organization ID."""
+    ids: NotRequired[Nullable[FileIDFilterTypedDict]]
+    r"""Filter by file ID."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -21,15 +44,16 @@ class FilesListRequestTypedDict(TypedDict):
 
 class FilesListRequest(BaseModel):
     organization_id: Annotated[
-        OptionalNullable[str],
+        OptionalNullable[FilesListQueryParamOrganizationIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
+    r"""Filter by organization ID."""
 
     ids: Annotated[
-        OptionalNullable[List[str]],
+        OptionalNullable[FileIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
-    r"""List of file IDs to get."""
+    r"""Filter by file ID."""
 
     page: Annotated[
         Optional[int],
