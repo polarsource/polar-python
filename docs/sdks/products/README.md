@@ -27,9 +27,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.products.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.products.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
 
     while res is not None:
         # Handle items
@@ -83,14 +81,16 @@ with Polar(
 
     res = polar.products.create(request={
         "name": "<value>",
-        "recurring_interval": polar_sdk.SubscriptionRecurringInterval.MONTH,
+        "recurring_interval": polar_sdk.SubscriptionRecurringInterval.YEAR,
         "prices": [
             {
-                "amount_type": "custom",
+                "amount_type": "fixed",
+                "price_amount": 677078,
                 "price_currency": "usd",
             },
             {
                 "amount_type": "free",
+                "price_currency": "usd",
             },
         ],
         "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
@@ -223,7 +223,9 @@ with Polar(
 
     res = polar.products.update_benefits(id="<value>", product_benefits_update={
         "benefits": [
-            "<value>",
+            "<value 1>",
+            "<value 2>",
+            "<value 3>",
         ],
     })
 

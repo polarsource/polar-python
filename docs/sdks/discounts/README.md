@@ -27,9 +27,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.discounts.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.discounts.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
 
     while res is not None:
         # Handle items
@@ -78,11 +76,9 @@ with Polar(
 ) as polar:
 
     res = polar.discounts.create(request={
-        "duration": polar_sdk.DiscountDuration.FOREVER,
-        "duration_in_months": 417458,
+        "duration": polar_sdk.DiscountDuration.ONCE,
         "type": polar_sdk.DiscountType.FIXED,
-        "amount": 69025,
-        "currency": "usd",
+        "basis_points": 449604,
         "name": "<value>",
         "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
     })

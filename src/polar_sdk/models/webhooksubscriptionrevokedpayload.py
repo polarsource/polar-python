@@ -11,7 +11,7 @@ from typing_extensions import Annotated, TypedDict
 
 
 class WebhookSubscriptionRevokedPayloadTypedDict(TypedDict):
-    r"""Sent when a subscription is revoked, the user looses access immediately.
+    r"""Sent when a subscription is revoked, the user loses access immediately.
     Happens when the subscription is canceled, or payment is past due.
 
     **Discord & Slack support:** Full
@@ -22,7 +22,7 @@ class WebhookSubscriptionRevokedPayloadTypedDict(TypedDict):
 
 
 class WebhookSubscriptionRevokedPayload(BaseModel):
-    r"""Sent when a subscription is revoked, the user looses access immediately.
+    r"""Sent when a subscription is revoked, the user loses access immediately.
     Happens when the subscription is canceled, or payment is past due.
 
     **Discord & Slack support:** Full

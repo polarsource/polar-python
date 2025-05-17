@@ -80,7 +80,7 @@ with Polar(
         "payment_processor": "stripe",
         "allow_discount_codes": True,
         "require_billing_address": False,
-        "product_id": "<value>",
+        "product_price_id": "<value>",
     })
 
     # Handle response

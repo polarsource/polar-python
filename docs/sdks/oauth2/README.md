@@ -65,7 +65,7 @@ with Polar() as polar:
         "client_id": "<id>",
         "client_secret": "<value>",
         "code": "<value>",
-        "redirect_uri": "https://old-fort.name",
+        "redirect_uri": "https://memorable-season.name",
     })
 
     # Handle response
