@@ -26,9 +26,7 @@ with Polar() as polar:
 
     res = polar.customer_portal.benefit_grants.list(security=polar_sdk.CustomerPortalBenefitGrantsListSecurity(
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
-    ), organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    ), organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
 
     while res is not None:
         # Handle items
@@ -126,7 +124,7 @@ with Polar() as polar:
     res = polar.customer_portal.benefit_grants.update(security=polar_sdk.CustomerPortalBenefitGrantsUpdateSecurity(
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
     ), id="<value>", customer_benefit_grant_update={
-        "benefit_type": "meter_credit",
+        "benefit_type": "license_keys",
     })
 
     # Handle response

@@ -166,7 +166,7 @@ with Polar(
 ) as polar:
 
     res = polar.subscriptions.update(id="<value>", subscription_update={
-        "revoke": True,
+        "product_id": "<value>",
     })
 
     # Handle response

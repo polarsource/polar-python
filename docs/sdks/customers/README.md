@@ -88,7 +88,7 @@ with Polar(
         "email": "customer@example.com",
         "name": "John Doe",
         "billing_address": {
-            "country": "SE",
+            "country": "FR",
         },
         "tax_id": [
             "FR61954506077",
@@ -185,8 +185,8 @@ with Polar(
             "country": "FR",
         },
         "tax_id": [
-            "FR61954506077",
-            "eu_vat",
+            "911144442",
+            "us_ein",
         ],
         "external_id": "usr_1337",
     })
@@ -330,8 +330,8 @@ with Polar(
             "country": "US",
         },
         "tax_id": [
-            "FR61954506077",
-            "eu_vat",
+            "911144442",
+            "us_ein",
         ],
     })
 

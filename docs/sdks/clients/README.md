@@ -69,7 +69,8 @@ with Polar(
 
     res = polar.oauth2.clients.create(request={
         "redirect_uris": [
-            "https://inferior-chainstay.com",
+            "https://impolite-hippodrome.com/",
+            "https://acidic-tomography.net/",
         ],
         "client_name": "<value>",
     })
@@ -152,9 +153,8 @@ with Polar(
 
     res = polar.oauth2.clients.update(client_id="<id>", o_auth2_client_configuration_update={
         "redirect_uris": [
-            "https://grown-worth.name",
-            "https://worthwhile-avalanche.org/",
-            "https://general-digit.com/",
+            "https://classic-cantaloupe.org",
+            "https://corrupt-status.biz/",
         ],
         "client_name": "<value>",
         "client_id": "<id>",
