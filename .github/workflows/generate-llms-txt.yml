@@ -1,0 +1,56 @@
+name: Generate llms.txt and llms-full.txt
+
+on:
+  push:
+    branches:
+      - main
+      - feature/llm-txt # testing purpose
+    paths:
+      - 'docs/sdks/**' # Trigger only if files in docs/ change
+      - '.github/scripts/generate_llms_files.py' # Also trigger if the script itself changes
+      - 'pyproject.toml' # Also trigger if project metadata changes
+      - '.github/workflows/generate-llms-txt.yml' # Also trigger if the workflow changes
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files.
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10' # Choose a version that includes toml or install it
+
+      - name: Install dependencies
+        run: pip install toml
+
+      - name: Run script to generate llms files
+        env:
+          # Construct the base URL for raw file links using the branch/tag name
+          RAW_BASE_URL: "https://raw.githubusercontent.com/${{ github.repository_owner }}/${{ github.event.repository.name}}/${{ github.ref_name }}/"
+        run: |
+          echo "Base URL: $RAW_BASE_URL"
+          python .github/scripts/generate_llms_files.py \
+            --dir docs/sdks \
+            --output . \
+            --repo-root . \
+            --base-url "$RAW_BASE_URL"
+        # Explanation:
+        # --dir docs: Scan the 'docs/sdks' directory for *.md files.
+        # --output .: Place the generated llms.txt/llms-full.txt in the repo root.
+        # --repo-root .: Use the current checkout directory as the repo root for path calculations.
+
+      - name: Commit and push if files changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: Auto-generate llms.txt and llms-full.txt"
+          file_pattern: "llms.txt llms-full.txt" # Only commit these specific files if they change
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
