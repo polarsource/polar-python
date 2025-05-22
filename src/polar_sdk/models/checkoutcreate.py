@@ -75,11 +75,14 @@ class CheckoutCreateTypedDict(TypedDict):
     amount: NotRequired[Nullable[int]]
     customer_id: NotRequired[Nullable[str]]
     r"""ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer."""
+    is_business_customer: NotRequired[bool]
+    r"""Whether the customer is a business or an individual. If `true`, the customer will be required to fill their full billing address and billing name."""
     customer_external_id: NotRequired[Nullable[str]]
     r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
     customer_name: NotRequired[Nullable[str]]
     customer_email: NotRequired[Nullable[str]]
     customer_ip_address: NotRequired[Nullable[str]]
+    customer_billing_name: NotRequired[Nullable[str]]
     customer_billing_address: NotRequired[Nullable[AddressTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
     customer_metadata: NotRequired[Dict[str, CheckoutCreateCustomerMetadataTypedDict]]
@@ -147,6 +150,9 @@ class CheckoutCreate(BaseModel):
     customer_id: OptionalNullable[str] = UNSET
     r"""ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer."""
 
+    is_business_customer: Optional[bool] = False
+    r"""Whether the customer is a business or an individual. If `true`, the customer will be required to fill their full billing address and billing name."""
+
     customer_external_id: OptionalNullable[str] = UNSET
     r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
 
@@ -155,6 +161,8 @@ class CheckoutCreate(BaseModel):
     customer_email: OptionalNullable[str] = UNSET
 
     customer_ip_address: OptionalNullable[str] = UNSET
+
+    customer_billing_name: OptionalNullable[str] = UNSET
 
     customer_billing_address: OptionalNullable[Address] = UNSET
 
@@ -193,10 +201,12 @@ class CheckoutCreate(BaseModel):
             "require_billing_address",
             "amount",
             "customer_id",
+            "is_business_customer",
             "customer_external_id",
             "customer_name",
             "customer_email",
             "customer_ip_address",
+            "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
             "customer_metadata",
@@ -212,6 +222,7 @@ class CheckoutCreate(BaseModel):
             "customer_name",
             "customer_email",
             "customer_ip_address",
+            "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
             "subscription_id",

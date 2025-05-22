@@ -63,6 +63,7 @@ from .benefitcustomupdate import (
     BenefitCustomUpdateMetadataTypedDict,
     BenefitCustomUpdateTypedDict,
 )
+from .benefitcycledevent import BenefitCycledEvent, BenefitCycledEventTypedDict
 from .benefitdiscord import (
     BenefitDiscord,
     BenefitDiscordMetadata,
@@ -191,6 +192,7 @@ from .benefitgrantdownloadablesproperties import (
     BenefitGrantDownloadablesProperties,
     BenefitGrantDownloadablesPropertiesTypedDict,
 )
+from .benefitgrantedevent import BenefitGrantedEvent, BenefitGrantedEventTypedDict
 from .benefitgranterror import BenefitGrantError, BenefitGrantErrorTypedDict
 from .benefitgrantgithubrepositoryproperties import (
     BenefitGrantGitHubRepositoryProperties,
@@ -201,6 +203,7 @@ from .benefitgrantlicensekeysproperties import (
     BenefitGrantLicenseKeysProperties,
     BenefitGrantLicenseKeysPropertiesTypedDict,
 )
+from .benefitgrantmetadata import BenefitGrantMetadata, BenefitGrantMetadataTypedDict
 from .benefitgrantmetercreditproperties import (
     BenefitGrantMeterCreditProperties,
     BenefitGrantMeterCreditPropertiesTypedDict,
@@ -299,6 +302,7 @@ from .benefitmetercreditupdate import (
     BenefitMeterCreditUpdateTypedDict,
 )
 from .benefitpublic import BenefitPublic, BenefitPublicTypedDict
+from .benefitrevokedevent import BenefitRevokedEvent, BenefitRevokedEventTypedDict
 from .benefits_deleteop import BenefitsDeleteRequest, BenefitsDeleteRequestTypedDict
 from .benefits_getop import BenefitsGetRequest, BenefitsGetRequestTypedDict
 from .benefits_grantsop import (
@@ -327,6 +331,7 @@ from .benefits_updateop import (
 )
 from .benefitsortproperty import BenefitSortProperty
 from .benefittype import BenefitType
+from .benefitupdatedevent import BenefitUpdatedEvent, BenefitUpdatedEventTypedDict
 from .cardpayment import CardPayment, CardPaymentTypedDict
 from .cardpaymentmetadata import CardPaymentMetadata, CardPaymentMetadataTypedDict
 from .checkout import (
@@ -1190,7 +1195,7 @@ from .downloadablefilecreate import (
 )
 from .downloadablefileread import DownloadableFileRead, DownloadableFileReadTypedDict
 from .downloadableread import DownloadableRead, DownloadableReadTypedDict
-from .event import Event, EventMetadata, EventMetadataTypedDict, EventTypedDict
+from .event import Event, EventTypedDict
 from .eventcreatecustomer import (
     EventCreateCustomer,
     EventCreateCustomerMetadata,
@@ -1447,8 +1452,12 @@ from .metercreate import (
     MeterCreateMetadataTypedDict,
     MeterCreateTypedDict,
 )
+from .metercreditedmetadata import MeterCreditedMetadata, MeterCreditedMetadataTypedDict
+from .metercreditevent import MeterCreditEvent, MeterCreditEventTypedDict
 from .meterquantities import MeterQuantities, MeterQuantitiesTypedDict
 from .meterquantity import MeterQuantity, MeterQuantityTypedDict
+from .meterresetevent import MeterResetEvent, MeterResetEventTypedDict
+from .meterresetmetadata import MeterResetMetadata, MeterResetMetadataTypedDict
 from .meters_getop import MetersGetRequest, MetersGetRequestTypedDict
 from .meters_quantitiesop import (
     MetersQuantitiesQueryParamCustomerIDFilter,
@@ -1954,10 +1963,17 @@ from .subscriptionupdateproduct import (
     SubscriptionUpdateProductTypedDict,
 )
 from .subtype import SubType
+from .systemevent import SystemEvent, SystemEventTypedDict
 from .taxidformat import TaxIDFormat
 from .timeinterval import TimeInterval
 from .tokenresponse import TokenResponse, TokenResponseTypedDict
 from .unauthorized import Unauthorized, UnauthorizedData
+from .userevent import (
+    UserEvent,
+    UserEventMetadata,
+    UserEventMetadataTypedDict,
+    UserEventTypedDict,
+)
 from .userinfoorganization import UserInfoOrganization, UserInfoOrganizationTypedDict
 from .userinfouser import UserInfoUser, UserInfoUserTypedDict
 from .validatedlicensekey import ValidatedLicenseKey, ValidatedLicenseKeyTypedDict
@@ -2129,6 +2145,8 @@ __all__ = [
     "BenefitCustomUpdateMetadata",
     "BenefitCustomUpdateMetadataTypedDict",
     "BenefitCustomUpdateTypedDict",
+    "BenefitCycledEvent",
+    "BenefitCycledEventTypedDict",
     "BenefitDiscord",
     "BenefitDiscordCreate",
     "BenefitDiscordCreateMetadata",
@@ -2210,6 +2228,8 @@ __all__ = [
     "BenefitGrantGitHubRepositoryPropertiesTypedDict",
     "BenefitGrantLicenseKeysProperties",
     "BenefitGrantLicenseKeysPropertiesTypedDict",
+    "BenefitGrantMetadata",
+    "BenefitGrantMetadataTypedDict",
     "BenefitGrantMeterCreditProperties",
     "BenefitGrantMeterCreditPropertiesTypedDict",
     "BenefitGrantTypedDict",
@@ -2217,6 +2237,8 @@ __all__ = [
     "BenefitGrantWebhookProperties",
     "BenefitGrantWebhookPropertiesTypedDict",
     "BenefitGrantWebhookTypedDict",
+    "BenefitGrantedEvent",
+    "BenefitGrantedEventTypedDict",
     "BenefitIDFilter",
     "BenefitIDFilterTypedDict",
     "BenefitLicenseKeyActivationCreateProperties",
@@ -2271,11 +2293,15 @@ __all__ = [
     "BenefitMeterCreditUpdateTypedDict",
     "BenefitPublic",
     "BenefitPublicTypedDict",
+    "BenefitRevokedEvent",
+    "BenefitRevokedEventTypedDict",
     "BenefitSortProperty",
     "BenefitType",
     "BenefitTypeFilter",
     "BenefitTypeFilterTypedDict",
     "BenefitTypedDict",
+    "BenefitUpdatedEvent",
+    "BenefitUpdatedEventTypedDict",
     "BenefitsDeleteRequest",
     "BenefitsDeleteRequestTypedDict",
     "BenefitsGetRequest",
@@ -2928,8 +2954,6 @@ __all__ = [
     "EventCreateExternalCustomerMetadata",
     "EventCreateExternalCustomerMetadataTypedDict",
     "EventCreateExternalCustomerTypedDict",
-    "EventMetadata",
-    "EventMetadataTypedDict",
     "EventName",
     "EventNameTypedDict",
     "EventNamesSortProperty",
@@ -3134,6 +3158,10 @@ __all__ = [
     "MeterCreateMetadata",
     "MeterCreateMetadataTypedDict",
     "MeterCreateTypedDict",
+    "MeterCreditEvent",
+    "MeterCreditEventTypedDict",
+    "MeterCreditedMetadata",
+    "MeterCreditedMetadataTypedDict",
     "MeterIDFilter",
     "MeterIDFilterTypedDict",
     "MeterMetadata",
@@ -3142,6 +3170,10 @@ __all__ = [
     "MeterQuantitiesTypedDict",
     "MeterQuantity",
     "MeterQuantityTypedDict",
+    "MeterResetEvent",
+    "MeterResetEventTypedDict",
+    "MeterResetMetadata",
+    "MeterResetMetadataTypedDict",
     "MeterSortProperty",
     "MeterTypedDict",
     "MeterUpdate",
@@ -3570,6 +3602,8 @@ __all__ = [
     "SucceededCheckouts",
     "SucceededCheckoutsTypedDict",
     "SwitchingFrom",
+    "SystemEvent",
+    "SystemEventTypedDict",
     "TaxID",
     "TaxIDFormat",
     "TaxIDTypedDict",
@@ -3584,6 +3618,10 @@ __all__ = [
     "UnauthorizedData",
     "UnitAmount",
     "UnitAmountTypedDict",
+    "UserEvent",
+    "UserEventMetadata",
+    "UserEventMetadataTypedDict",
+    "UserEventTypedDict",
     "UserInfoOrganization",
     "UserInfoOrganizationTypedDict",
     "UserInfoUser",

@@ -32,8 +32,10 @@ class CheckoutConfirmStripeTypedDict(TypedDict):
     product_price_id: NotRequired[Nullable[str]]
     r"""ID of the product price to checkout. Must correspond to a price present in the checkout's product list."""
     amount: NotRequired[Nullable[int]]
+    is_business_customer: NotRequired[Nullable[bool]]
     customer_name: NotRequired[Nullable[str]]
     customer_email: NotRequired[Nullable[str]]
+    customer_billing_name: NotRequired[Nullable[str]]
     customer_billing_address: NotRequired[Nullable[AddressTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
     discount_code: NotRequired[Nullable[str]]
@@ -63,9 +65,13 @@ class CheckoutConfirmStripe(BaseModel):
 
     amount: OptionalNullable[int] = UNSET
 
+    is_business_customer: OptionalNullable[bool] = UNSET
+
     customer_name: OptionalNullable[str] = UNSET
 
     customer_email: OptionalNullable[str] = UNSET
+
+    customer_billing_name: OptionalNullable[str] = UNSET
 
     customer_billing_address: OptionalNullable[Address] = UNSET
 
@@ -84,8 +90,10 @@ class CheckoutConfirmStripe(BaseModel):
             "product_id",
             "product_price_id",
             "amount",
+            "is_business_customer",
             "customer_name",
             "customer_email",
+            "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
             "discount_code",
@@ -95,8 +103,10 @@ class CheckoutConfirmStripe(BaseModel):
             "product_id",
             "product_price_id",
             "amount",
+            "is_business_customer",
             "customer_name",
             "customer_email",
+            "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
             "discount_code",

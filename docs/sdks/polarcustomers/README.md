@@ -71,7 +71,7 @@ with Polar() as polar:
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
     ), request={
         "billing_address": {
-            "country": "FR",
+            "country": "US",
         },
     })
 
@@ -165,7 +165,7 @@ with Polar() as polar:
     ), request={
         "confirmation_token_id": "<id>",
         "set_default": False,
-        "return_url": "https://slight-digestive.info",
+        "return_url": "https://yearly-custom.net/",
     })
 
     # Handle response

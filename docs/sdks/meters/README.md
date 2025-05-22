@@ -27,9 +27,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.meters.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.meters.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
 
     while res is not None:
         # Handle items
@@ -81,7 +79,7 @@ with Polar(
     res = polar.meters.create(request={
         "name": "<value>",
         "filter_": {
-            "conjunction": polar_sdk.FilterConjunction.AND,
+            "conjunction": polar_sdk.FilterConjunction.OR,
             "clauses": [
                 {
                     "property": "<value>",
@@ -223,7 +221,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.meters.quantities(id="<value>", start_timestamp=parse_datetime("2023-09-17T00:45:34.608Z"), end_timestamp=parse_datetime("2023-07-21T18:11:39.069Z"), interval=polar_sdk.TimeInterval.HOUR)
+    res = polar.meters.quantities(id="<value>", start_timestamp=parse_datetime("2025-11-25T04:37:16.823Z"), end_timestamp=parse_datetime("2025-11-26T17:06:00.727Z"), interval=polar_sdk.TimeInterval.DAY)
 
     # Handle response
     print(res)

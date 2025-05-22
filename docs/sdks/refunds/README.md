@@ -24,9 +24,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.refunds.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.refunds.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
 
     while res is not None:
         # Handle items
@@ -81,7 +79,7 @@ with Polar(
     res = polar.refunds.create(request={
         "order_id": "<value>",
         "reason": polar_sdk.RefundReason.CUSTOMER_REQUEST,
-        "amount": 638424,
+        "amount": 90,
     })
 
     assert res is not None

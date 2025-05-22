@@ -28,9 +28,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.benefits.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.benefits.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
 
     while res is not None:
         # Handle items
@@ -79,14 +77,9 @@ with Polar(
 ) as polar:
 
     res = polar.benefits.create(request={
-        "type": "downloadables",
-        "description": "delightfully fumigate convection though zowie up bulky electronics",
-        "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-        "properties": {
-            "files": [
-                "<value>",
-            ],
-        },
+        "type": "license_keys",
+        "description": "mature emergent at outside arrogantly gadzooks zealous equatorial notwithstanding",
+        "properties": {},
     })
 
     # Handle response

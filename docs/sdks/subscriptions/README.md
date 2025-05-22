@@ -27,9 +27,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.subscriptions.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.subscriptions.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
 
     while res is not None:
         # Handle items
@@ -80,9 +78,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.subscriptions.export(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.subscriptions.export(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
 
     # Handle response
     print(res)
@@ -166,7 +162,7 @@ with Polar(
 ) as polar:
 
     res = polar.subscriptions.update(id="<value>", subscription_update={
-        "revoke": True,
+        "product_id": "<value>",
     })
 
     # Handle response
