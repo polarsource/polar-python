@@ -27,9 +27,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.custom_fields.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.custom_fields.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
 
     while res is not None:
         # Handle items
@@ -78,11 +76,12 @@ with Polar(
 ) as polar:
 
     res = polar.custom_fields.create(request={
-        "type": "number",
+        "type": "select",
         "slug": "<value>",
         "name": "<value>",
-        "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-        "properties": {},
+        "properties": {
+            "options": [],
+        },
     })
 
     # Handle response
@@ -167,7 +166,7 @@ with Polar(
 ) as polar:
 
     res = polar.custom_fields.update(id="<value>", custom_field_update={
-        "type": "text",
+        "type": "date",
     })
 
     # Handle response

@@ -138,11 +138,14 @@ class CheckoutPublicTypedDict(TypedDict):
     is_payment_form_required: bool
     r"""Whether the checkout requires a payment form, whether because of a payment or payment method setup."""
     customer_id: Nullable[str]
+    is_business_customer: bool
+    r"""Whether the customer is a business or an individual. If `true`, the customer will be required to fill their full billing address and billing name."""
     customer_name: Nullable[str]
     r"""Name of the customer."""
     customer_email: Nullable[str]
     r"""Email address of the customer."""
     customer_ip_address: Nullable[str]
+    customer_billing_name: Nullable[str]
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
     payment_processor_metadata: Dict[str, str]
@@ -243,6 +246,9 @@ class CheckoutPublic(BaseModel):
 
     customer_id: Nullable[str]
 
+    is_business_customer: bool
+    r"""Whether the customer is a business or an individual. If `true`, the customer will be required to fill their full billing address and billing name."""
+
     customer_name: Nullable[str]
     r"""Name of the customer."""
 
@@ -250,6 +256,8 @@ class CheckoutPublic(BaseModel):
     r"""Email address of the customer."""
 
     customer_ip_address: Nullable[str]
+
+    customer_billing_name: Nullable[str]
 
     customer_billing_address: Nullable[Address]
 
@@ -291,6 +299,7 @@ class CheckoutPublic(BaseModel):
             "customer_name",
             "customer_email",
             "customer_ip_address",
+            "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
             "discount",

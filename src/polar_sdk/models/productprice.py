@@ -8,8 +8,10 @@ from .productpricemeteredunit import (
     ProductPriceMeteredUnit,
     ProductPriceMeteredUnitTypedDict,
 )
+from polar_sdk.utils import get_discriminator
+from pydantic import Discriminator, Tag
 from typing import Union
-from typing_extensions import TypeAliasType
+from typing_extensions import Annotated, TypeAliasType
 
 
 ProductPriceTypedDict = TypeAliasType(
@@ -23,9 +25,12 @@ ProductPriceTypedDict = TypeAliasType(
 )
 
 
-ProductPrice = TypeAliasType(
-    "ProductPrice",
+ProductPrice = Annotated[
     Union[
-        ProductPriceFree, ProductPriceFixed, ProductPriceCustom, ProductPriceMeteredUnit
+        Annotated[ProductPriceCustom, Tag("custom")],
+        Annotated[ProductPriceFixed, Tag("fixed")],
+        Annotated[ProductPriceFree, Tag("free")],
+        Annotated[ProductPriceMeteredUnit, Tag("metered_unit")],
     ],
-)
+    Discriminator(lambda m: get_discriminator(m, "amount_type", "amount_type")),
+]

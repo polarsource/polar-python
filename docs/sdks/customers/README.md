@@ -32,9 +32,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.customers.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.customers.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
 
     while res is not None:
         # Handle items
@@ -88,11 +86,11 @@ with Polar(
         "email": "customer@example.com",
         "name": "John Doe",
         "billing_address": {
-            "country": "SE",
+            "country": "US",
         },
         "tax_id": [
-            "FR61954506077",
-            "eu_vat",
+            "911144442",
+            "us_ein",
         ],
         "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
     })
@@ -182,11 +180,11 @@ with Polar(
         "email": "customer@example.com",
         "name": "John Doe",
         "billing_address": {
-            "country": "FR",
+            "country": "US",
         },
         "tax_id": [
-            "FR61954506077",
-            "eu_vat",
+            "911144442",
+            "us_ein",
         ],
         "external_id": "usr_1337",
     })
@@ -326,12 +324,10 @@ with Polar(
     res = polar.customers.update_external(external_id="<id>", customer_update_external_id={
         "email": "customer@example.com",
         "name": "John Doe",
-        "billing_address": {
-            "country": "US",
-        },
+        "billing_address": None,
         "tax_id": [
-            "FR61954506077",
-            "eu_vat",
+            "911144442",
+            "us_ein",
         ],
     })
 

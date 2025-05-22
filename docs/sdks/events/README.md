@@ -26,9 +26,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.events.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.events.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
 
     while res is not None:
         # Handle items
@@ -176,18 +174,7 @@ with Polar(
 ) as polar:
 
     res = polar.events.ingest(request={
-        "events": [
-            {
-                "name": "<value>",
-                "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-                "customer_id": "<value>",
-            },
-            {
-                "name": "<value>",
-                "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-                "external_customer_id": "<id>",
-            },
-        ],
+        "events": [],
     })
 
     # Handle response

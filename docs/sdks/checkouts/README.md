@@ -29,9 +29,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.checkouts.list(organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.checkouts.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
 
     while res is not None:
         # Handle items
@@ -83,11 +81,12 @@ with Polar(
 
     res = polar.checkouts.create(request={
         "customer_billing_address": {
-            "country": "SE",
+            "country": "US",
         },
         "products": [
-            "<value>",
-            "<value>",
+            "<value 1>",
+            "<value 2>",
+            "<value 3>",
         ],
     })
 
@@ -174,7 +173,7 @@ with Polar(
 
     res = polar.checkouts.update(id="<value>", checkout_update={
         "customer_billing_address": {
-            "country": "FR",
+            "country": "US",
         },
     })
 
@@ -257,9 +256,7 @@ from polar_sdk import Polar
 with Polar() as polar:
 
     res = polar.checkouts.client_update(client_secret="<value>", checkout_update_public={
-        "customer_billing_address": {
-            "country": "FR",
-        },
+        "customer_billing_address": None,
     })
 
     # Handle response
@@ -308,7 +305,7 @@ with Polar(
 
     res = polar.checkouts.client_confirm(client_secret="<value>", checkout_confirm_stripe={
         "customer_billing_address": {
-            "country": "FR",
+            "country": "US",
         },
     })
 
