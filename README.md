@@ -803,6 +803,8 @@ def webhook():
 
 * [list](docs/sdks/polarorders/README.md#list) - List Orders
 * [get](docs/sdks/polarorders/README.md#get) - Get Order
+* [update](docs/sdks/polarorders/README.md#update) - Update Order
+* [generate_invoice](docs/sdks/polarorders/README.md#generate_invoice) - Generate Order Invoice
 * [invoice](docs/sdks/polarorders/README.md#invoice) - Get Order Invoice
 
 #### [customer_portal.organizations](docs/sdks/polarorganizations/README.md)
@@ -896,6 +898,8 @@ def webhook():
 
 * [list](docs/sdks/orders/README.md#list) - List Orders
 * [get](docs/sdks/orders/README.md#get) - Get Order
+* [update](docs/sdks/orders/README.md#update) - Update Order
+* [generate_invoice](docs/sdks/orders/README.md#generate_invoice) - Generate Order Invoice
 * [invoice](docs/sdks/orders/README.md#invoice) - Get Order Invoice
 
 ### [organizations](docs/sdks/organizations/README.md)
