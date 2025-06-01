@@ -7,6 +7,8 @@
 
 * [list](#list) - List Orders
 * [get](#get) - Get Order
+* [update](#update) - Update Order
+* [generate_invoice](#generate_invoice) - Generate Order Invoice
 * [invoice](#invoice) - Get Order Invoice
 
 ## list
@@ -104,6 +106,101 @@ with Polar() as polar:
 | models.ResourceNotFound    | 404                        | application/json           |
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## update
+
+Update an order for the authenticated customer.
+
+**Scopes**: `customer_portal:write`
+
+### Example Usage
+
+```python
+import polar_sdk
+from polar_sdk import Polar
+
+
+with Polar() as polar:
+
+    res = polar.customer_portal.orders.update(security=polar_sdk.CustomerPortalOrdersUpdateSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), id="<value>", customer_order_update={
+        "billing_name": "<value>",
+        "billing_address": {
+            "country": "US",
+        },
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `security`                                                                                      | [models.CustomerPortalOrdersUpdateSecurity](../../models/customerportalordersupdatesecurity.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `id`                                                                                            | *str*                                                                                           | :heavy_check_mark:                                                                              | The order ID.                                                                                   |
+| `customer_order_update`                                                                         | [models.CustomerOrderUpdate](../../models/customerorderupdate.md)                               | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `retries`                                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                | :heavy_minus_sign:                                                                              | Configuration to override the default retry behavior of the client.                             |
+
+### Response
+
+**[models.CustomerOrder](../../models/customerorder.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## generate_invoice
+
+Trigger generation of an order's invoice.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
+
+### Example Usage
+
+```python
+import polar_sdk
+from polar_sdk import Polar
+
+
+with Polar() as polar:
+
+    res = polar.customer_portal.orders.generate_invoice(security=polar_sdk.CustomerPortalOrdersGenerateInvoiceSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), id="<value>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                        | [models.CustomerPortalOrdersGenerateInvoiceSecurity](../../models/customerportalordersgenerateinvoicesecurity.md) | :heavy_check_mark:                                                                                                | N/A                                                                                                               |
+| `id`                                                                                                              | *str*                                                                                                             | :heavy_check_mark:                                                                                                | The order ID.                                                                                                     |
+| `retries`                                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                  | :heavy_minus_sign:                                                                                                | Configuration to override the default retry behavior of the client.                                               |
+
+### Response
+
+**[Any](../../models/.md)**
+
+### Errors
+
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.InvoiceAlreadyExists         | 409                                 | application/json                    |
+| models.MissingInvoiceBillingDetails | 422                                 | application/json                    |
+| models.NotPaidOrder                 | 422                                 | application/json                    |
+| models.SDKError                     | 4XX, 5XX                            | \*/\*                               |
 
 ## invoice
 

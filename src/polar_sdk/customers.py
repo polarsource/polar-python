@@ -98,6 +98,7 @@ class Customers(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:list",
                 oauth2_scopes=[],
@@ -257,6 +258,7 @@ class Customers(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:list",
                 oauth2_scopes=[],
@@ -391,6 +393,7 @@ class Customers(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:create",
                 oauth2_scopes=[],
@@ -493,6 +496,7 @@ class Customers(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:create",
                 oauth2_scopes=[],
@@ -592,6 +596,7 @@ class Customers(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:get",
                 oauth2_scopes=[],
@@ -696,6 +701,7 @@ class Customers(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:get",
                 oauth2_scopes=[],
@@ -808,6 +814,7 @@ class Customers(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:update",
                 oauth2_scopes=[],
@@ -920,6 +927,7 @@ class Customers(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:update",
                 oauth2_scopes=[],
@@ -1036,6 +1044,7 @@ class Customers(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:delete",
                 oauth2_scopes=[],
@@ -1152,6 +1161,7 @@ class Customers(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:delete",
                 oauth2_scopes=[],
@@ -1256,6 +1266,7 @@ class Customers(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:get_external",
                 oauth2_scopes=[],
@@ -1360,6 +1371,7 @@ class Customers(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:get_external",
                 oauth2_scopes=[],
@@ -1478,6 +1490,7 @@ class Customers(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:update_external",
                 oauth2_scopes=[],
@@ -1596,6 +1609,7 @@ class Customers(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:update_external",
                 oauth2_scopes=[],
@@ -1702,6 +1716,7 @@ class Customers(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:delete_external",
                 oauth2_scopes=[],
@@ -1808,6 +1823,7 @@ class Customers(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:delete_external",
                 oauth2_scopes=[],
@@ -1918,6 +1934,7 @@ class Customers(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:get_state",
                 oauth2_scopes=[],
@@ -2028,6 +2045,7 @@ class Customers(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:get_state",
                 oauth2_scopes=[],
@@ -2138,6 +2156,7 @@ class Customers(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:get_state_external",
                 oauth2_scopes=[],
@@ -2248,6 +2267,7 @@ class Customers(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="customers:get_state_external",
                 oauth2_scopes=[],

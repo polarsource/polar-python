@@ -6,32 +6,35 @@ from .sdkconfiguration import SDKConfiguration
 from .utils.logger import Logger, get_default_logger
 from .utils.retries import RetryConfig
 import httpx
+import importlib
 from polar_sdk import models, utils
 from polar_sdk._hooks import SDKHooks
-from polar_sdk.benefits import Benefits
-from polar_sdk.checkout_links import CheckoutLinks
-from polar_sdk.checkouts import Checkouts
-from polar_sdk.custom_fields import CustomFields
-from polar_sdk.customer_meters import CustomerMeters
-from polar_sdk.customer_portal import CustomerPortal
-from polar_sdk.customer_sessions import CustomerSessions
-from polar_sdk.customers import Customers
-from polar_sdk.discounts import Discounts
-from polar_sdk.events import Events
-from polar_sdk.files import Files
-from polar_sdk.license_keys import LicenseKeys
-from polar_sdk.meters import Meters
-from polar_sdk.metrics_sdk import MetricsSDK
-from polar_sdk.oauth2 import Oauth2
-from polar_sdk.orders import Orders
-from polar_sdk.organizations import Organizations
-from polar_sdk.payments import Payments
-from polar_sdk.products import Products
-from polar_sdk.refunds import Refunds
-from polar_sdk.subscriptions import Subscriptions
 from polar_sdk.types import OptionalNullable, UNSET
-from typing import Any, Callable, Dict, Optional, Union, cast
+from typing import Any, Callable, Dict, Optional, TYPE_CHECKING, Union, cast
 import weakref
+
+if TYPE_CHECKING:
+    from polar_sdk.benefits import Benefits
+    from polar_sdk.checkout_links import CheckoutLinks
+    from polar_sdk.checkouts import Checkouts
+    from polar_sdk.custom_fields import CustomFields
+    from polar_sdk.customer_meters import CustomerMeters
+    from polar_sdk.customer_portal import CustomerPortal
+    from polar_sdk.customer_sessions import CustomerSessions
+    from polar_sdk.customers import Customers
+    from polar_sdk.discounts import Discounts
+    from polar_sdk.events import Events
+    from polar_sdk.files import Files
+    from polar_sdk.license_keys import LicenseKeys
+    from polar_sdk.meters import Meters
+    from polar_sdk.metrics_sdk import MetricsSDK
+    from polar_sdk.oauth2 import Oauth2
+    from polar_sdk.orders import Orders
+    from polar_sdk.organizations import Organizations
+    from polar_sdk.payments import Payments
+    from polar_sdk.products import Products
+    from polar_sdk.refunds import Refunds
+    from polar_sdk.subscriptions import Subscriptions
 
 
 class Polar(BaseSDK):
@@ -40,27 +43,50 @@ class Polar(BaseSDK):
     Read the docs at https://docs.polar.sh/api-reference
     """
 
-    organizations: Organizations
-    subscriptions: Subscriptions
-    oauth2: Oauth2
-    benefits: Benefits
-    products: Products
-    orders: Orders
-    refunds: Refunds
-    checkouts: Checkouts
-    files: Files
-    metrics: MetricsSDK
-    license_keys: LicenseKeys
-    checkout_links: CheckoutLinks
-    custom_fields: CustomFields
-    discounts: Discounts
-    customers: Customers
-    customer_portal: CustomerPortal
-    customer_sessions: CustomerSessions
-    events: Events
-    meters: Meters
-    customer_meters: CustomerMeters
-    payments: Payments
+    organizations: "Organizations"
+    subscriptions: "Subscriptions"
+    oauth2: "Oauth2"
+    benefits: "Benefits"
+    products: "Products"
+    orders: "Orders"
+    refunds: "Refunds"
+    checkouts: "Checkouts"
+    files: "Files"
+    metrics: "MetricsSDK"
+    license_keys: "LicenseKeys"
+    checkout_links: "CheckoutLinks"
+    custom_fields: "CustomFields"
+    discounts: "Discounts"
+    customers: "Customers"
+    customer_portal: "CustomerPortal"
+    customer_sessions: "CustomerSessions"
+    events: "Events"
+    meters: "Meters"
+    customer_meters: "CustomerMeters"
+    payments: "Payments"
+    _sub_sdk_map = {
+        "organizations": ("polar_sdk.organizations", "Organizations"),
+        "subscriptions": ("polar_sdk.subscriptions", "Subscriptions"),
+        "oauth2": ("polar_sdk.oauth2", "Oauth2"),
+        "benefits": ("polar_sdk.benefits", "Benefits"),
+        "products": ("polar_sdk.products", "Products"),
+        "orders": ("polar_sdk.orders", "Orders"),
+        "refunds": ("polar_sdk.refunds", "Refunds"),
+        "checkouts": ("polar_sdk.checkouts", "Checkouts"),
+        "files": ("polar_sdk.files", "Files"),
+        "metrics": ("polar_sdk.metrics_sdk", "MetricsSDK"),
+        "license_keys": ("polar_sdk.license_keys", "LicenseKeys"),
+        "checkout_links": ("polar_sdk.checkout_links", "CheckoutLinks"),
+        "custom_fields": ("polar_sdk.custom_fields", "CustomFields"),
+        "discounts": ("polar_sdk.discounts", "Discounts"),
+        "customers": ("polar_sdk.customers", "Customers"),
+        "customer_portal": ("polar_sdk.customer_portal", "CustomerPortal"),
+        "customer_sessions": ("polar_sdk.customer_sessions", "CustomerSessions"),
+        "events": ("polar_sdk.events", "Events"),
+        "meters": ("polar_sdk.meters", "Meters"),
+        "customer_meters": ("polar_sdk.customer_meters", "CustomerMeters"),
+        "payments": ("polar_sdk.payments", "Payments"),
+    }
 
     def __init__(
         self,
@@ -137,15 +163,15 @@ class Polar(BaseSDK):
 
         hooks = SDKHooks()
 
+        # pylint: disable=protected-access
+        self.sdk_configuration.__dict__["_hooks"] = hooks
+
         current_server_url, *_ = self.sdk_configuration.get_server_details()
         server_url, self.sdk_configuration.client = hooks.sdk_init(
             current_server_url, client
         )
         if current_server_url != server_url:
             self.sdk_configuration.server_url = server_url
-
-        # pylint: disable=protected-access
-        self.sdk_configuration.__dict__["_hooks"] = hooks
 
         weakref.finalize(
             self,
@@ -157,30 +183,32 @@ class Polar(BaseSDK):
             self.sdk_configuration.async_client_supplied,
         )
 
-        self._init_sdks()
+    def __getattr__(self, name: str):
+        if name in self._sub_sdk_map:
+            module_path, class_name = self._sub_sdk_map[name]
+            try:
+                module = importlib.import_module(module_path)
+                klass = getattr(module, class_name)
+                instance = klass(self.sdk_configuration)
+                setattr(self, name, instance)
+                return instance
+            except ImportError as e:
+                raise AttributeError(
+                    f"Failed to import module {module_path} for attribute {name}: {e}"
+                ) from e
+            except AttributeError as e:
+                raise AttributeError(
+                    f"Failed to find class {class_name} in module {module_path} for attribute {name}: {e}"
+                ) from e
 
-    def _init_sdks(self):
-        self.organizations = Organizations(self.sdk_configuration)
-        self.subscriptions = Subscriptions(self.sdk_configuration)
-        self.oauth2 = Oauth2(self.sdk_configuration)
-        self.benefits = Benefits(self.sdk_configuration)
-        self.products = Products(self.sdk_configuration)
-        self.orders = Orders(self.sdk_configuration)
-        self.refunds = Refunds(self.sdk_configuration)
-        self.checkouts = Checkouts(self.sdk_configuration)
-        self.files = Files(self.sdk_configuration)
-        self.metrics = MetricsSDK(self.sdk_configuration)
-        self.license_keys = LicenseKeys(self.sdk_configuration)
-        self.checkout_links = CheckoutLinks(self.sdk_configuration)
-        self.custom_fields = CustomFields(self.sdk_configuration)
-        self.discounts = Discounts(self.sdk_configuration)
-        self.customers = Customers(self.sdk_configuration)
-        self.customer_portal = CustomerPortal(self.sdk_configuration)
-        self.customer_sessions = CustomerSessions(self.sdk_configuration)
-        self.events = Events(self.sdk_configuration)
-        self.meters = Meters(self.sdk_configuration)
-        self.customer_meters = CustomerMeters(self.sdk_configuration)
-        self.payments = Payments(self.sdk_configuration)
+        raise AttributeError(
+            f"'{type(self).__name__}' object has no attribute '{name}'"
+        )
+
+    def __dir__(self):
+        default_attrs = list(super().__dir__())
+        lazy_attrs = list(self._sub_sdk_map.keys())
+        return sorted(list(set(default_attrs + lazy_attrs)))
 
     def __enter__(self):
         return self

@@ -100,7 +100,11 @@ class OrderTypedDict(TypedDict):
     r"""Sales tax refunded in cents."""
     currency: str
     billing_reason: OrderBillingReason
+    billing_name: Nullable[str]
+    r"""The name of the customer that should appear on the invoice."""
     billing_address: Nullable[AddressTypedDict]
+    is_invoice_generated: bool
+    r"""Whether an invoice has been generated for this order."""
     customer_id: str
     product_id: str
     discount_id: Nullable[str]
@@ -166,7 +170,13 @@ class Order(BaseModel):
 
     billing_reason: OrderBillingReason
 
+    billing_name: Nullable[str]
+    r"""The name of the customer that should appear on the invoice."""
+
     billing_address: Nullable[Address]
+
+    is_invoice_generated: bool
+    r"""Whether an invoice has been generated for this order."""
 
     customer_id: str
 
@@ -206,6 +216,7 @@ class Order(BaseModel):
         optional_fields = ["custom_field_data"]
         nullable_fields = [
             "modified_at",
+            "billing_name",
             "billing_address",
             "discount_id",
             "subscription_id",
