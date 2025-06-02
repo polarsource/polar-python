@@ -10,6 +10,8 @@ from typing_extensions import TypedDict
 class CustomerStateMeterTypedDict(TypedDict):
     r"""An active meter for a customer, with latest consumed and credited units."""
 
+    id: str
+    r"""The ID of the object."""
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
@@ -26,6 +28,9 @@ class CustomerStateMeterTypedDict(TypedDict):
 
 class CustomerStateMeter(BaseModel):
     r"""An active meter for a customer, with latest consumed and credited units."""
+
+    id: str
+    r"""The ID of the object."""
 
     created_at: datetime
     r"""Creation timestamp of the object."""

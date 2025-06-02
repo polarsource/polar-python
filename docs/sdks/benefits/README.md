@@ -164,7 +164,7 @@ with Polar(
 ) as polar:
 
     res = polar.benefits.update(id="<value>", request_body={
-        "type": "meter_credit",
+        "type": "custom",
     })
 
     # Handle response

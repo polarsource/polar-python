@@ -70,6 +70,7 @@ class Oauth2(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="oauth2:authorize",
                 oauth2_scopes=[],
@@ -154,6 +155,7 @@ class Oauth2(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="oauth2:authorize",
                 oauth2_scopes=[],
@@ -252,6 +254,7 @@ class Oauth2(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="oauth2:request_token",
                 oauth2_scopes=[],
@@ -348,6 +351,7 @@ class Oauth2(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="oauth2:request_token",
                 oauth2_scopes=[],
@@ -441,6 +445,7 @@ class Oauth2(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="oauth2:revoke_token",
                 oauth2_scopes=[],
@@ -534,6 +539,7 @@ class Oauth2(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="oauth2:revoke_token",
                 oauth2_scopes=[],
@@ -629,6 +635,7 @@ class Oauth2(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="oauth2:introspect_token",
                 oauth2_scopes=[],
@@ -724,6 +731,7 @@ class Oauth2(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="oauth2:introspect_token",
                 oauth2_scopes=[],
@@ -808,6 +816,7 @@ class Oauth2(BaseSDK):
 
         http_res = self.do_request(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="oauth2:userinfo",
                 oauth2_scopes=[],
@@ -894,6 +903,7 @@ class Oauth2(BaseSDK):
 
         http_res = await self.do_request_async(
             hook_ctx=HookContext(
+                config=self.sdk_configuration,
                 base_url=base_url or "",
                 operation_id="oauth2:userinfo",
                 oauth2_scopes=[],
