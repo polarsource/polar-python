@@ -207,7 +207,7 @@ class PolarCustomers(BaseSDK):
         request: Union[
             models.CustomerPortalCustomerUpdate,
             models.CustomerPortalCustomerUpdateTypedDict,
-        ] = models.CustomerPortalCustomerUpdate(),
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -256,11 +256,7 @@ class PolarCustomers(BaseSDK):
                 security, models.CustomerPortalCustomersUpdateSecurity
             ),
             get_serialized_body=lambda: utils.serialize_request_body(
-                request,
-                False,
-                True,
-                "json",
-                Optional[models.CustomerPortalCustomerUpdate],
+                request, False, False, "json", models.CustomerPortalCustomerUpdate
             ),
             timeout_ms=timeout_ms,
         )
@@ -324,7 +320,7 @@ class PolarCustomers(BaseSDK):
         request: Union[
             models.CustomerPortalCustomerUpdate,
             models.CustomerPortalCustomerUpdateTypedDict,
-        ] = models.CustomerPortalCustomerUpdate(),
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -373,11 +369,7 @@ class PolarCustomers(BaseSDK):
                 security, models.CustomerPortalCustomersUpdateSecurity
             ),
             get_serialized_body=lambda: utils.serialize_request_body(
-                request,
-                False,
-                True,
-                "json",
-                Optional[models.CustomerPortalCustomerUpdate],
+                request, False, False, "json", models.CustomerPortalCustomerUpdate
             ),
             timeout_ms=timeout_ms,
         )

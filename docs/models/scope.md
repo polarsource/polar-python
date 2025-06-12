@@ -21,6 +21,8 @@
 | `CHECKOUT_LINKS_WRITE`          | checkout_links:write            |
 | `CHECKOUTS_READ`                | checkouts:read                  |
 | `CHECKOUTS_WRITE`               | checkouts:write                 |
+| `TRANSACTIONS_READ`             | transactions:read               |
+| `TRANSACTIONS_WRITE`            | transactions:write              |
 | `PRODUCTS_READ`                 | products:read                   |
 | `PRODUCTS_WRITE`                | products:write                  |
 | `BENEFITS_READ`                 | benefits:read                   |

@@ -28,7 +28,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.benefits.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
+    res = polar.benefits.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737", page=1, limit=10)
 
     while res is not None:
         # Handle items
@@ -252,7 +252,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.benefits.grants(id="<value>")
+    res = polar.benefits.grants(id="<value>", page=1, limit=10)
 
     while res is not None:
         # Handle items
