@@ -2085,6 +2085,10 @@ if TYPE_CHECKING:
     from .subscriptionsortproperty import SubscriptionSortProperty
     from .subscriptionstatus import SubscriptionStatus
     from .subscriptionupdate import SubscriptionUpdate, SubscriptionUpdateTypedDict
+    from .subscriptionupdatediscount import (
+        SubscriptionUpdateDiscount,
+        SubscriptionUpdateDiscountTypedDict,
+    )
     from .subscriptionupdateproduct import (
         SubscriptionUpdateProduct,
         SubscriptionUpdateProductTypedDict,
@@ -3741,6 +3745,8 @@ __all__ = [
     "SubscriptionStatus",
     "SubscriptionTypedDict",
     "SubscriptionUpdate",
+    "SubscriptionUpdateDiscount",
+    "SubscriptionUpdateDiscountTypedDict",
     "SubscriptionUpdateProduct",
     "SubscriptionUpdateProductTypedDict",
     "SubscriptionUpdateTypedDict",
@@ -5381,6 +5387,8 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionStatus": ".subscriptionstatus",
     "SubscriptionUpdate": ".subscriptionupdate",
     "SubscriptionUpdateTypedDict": ".subscriptionupdate",
+    "SubscriptionUpdateDiscount": ".subscriptionupdatediscount",
+    "SubscriptionUpdateDiscountTypedDict": ".subscriptionupdatediscount",
     "SubscriptionUpdateProduct": ".subscriptionupdateproduct",
     "SubscriptionUpdateProductTypedDict": ".subscriptionupdateproduct",
     "SubType": ".subtype",

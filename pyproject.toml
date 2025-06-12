@@ -1,6 +1,6 @@
 [project]
 name = "polar-sdk"
-version = "0.20.0"
+version = "0.20.1"
 description = "Polar SDK for Python"
 authors = [{ name = "Polar" },]
 readme = "README-PYPI.md"
@@ -43,6 +43,8 @@ pythonpath = ["src"]
 
 [tool.mypy]
 disable_error_code = "misc"
+explicit_package_bases = true
+mypy_path = "src"
 
 [[tool.mypy.overrides]]
 module = "typing_inspect"

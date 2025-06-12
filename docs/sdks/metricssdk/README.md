@@ -28,9 +28,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.metrics.get(start_date=date.fromisoformat("2025-03-14"), end_date=date.fromisoformat("2025-03-18"), interval=polar_sdk.TimeInterval.HOUR, organization_id=[
-        "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-    ])
+    res = polar.metrics.get(start_date=date.fromisoformat("2025-03-14"), end_date=date.fromisoformat("2025-03-18"), interval=polar_sdk.TimeInterval.HOUR, organization_id=None)
 
     # Handle response
     print(res)

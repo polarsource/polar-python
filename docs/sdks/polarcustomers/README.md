@@ -116,7 +116,7 @@ with Polar() as polar:
 
     res = polar.customer_portal.customers.get_payment_methods(security=polar_sdk.CustomerPortalCustomersGetPaymentMethodsSecurity(
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
-    ))
+    ), page=1, limit=10)
 
     while res is not None:
         # Handle items

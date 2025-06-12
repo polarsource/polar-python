@@ -25,7 +25,7 @@ with Polar() as polar:
 
     res = polar.customer_portal.customer_meters.list(security=polar_sdk.CustomerPortalCustomerMetersListSecurity(
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
-    ))
+    ), page=1, limit=10)
 
     while res is not None:
         # Handle items
