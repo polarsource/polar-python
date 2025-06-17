@@ -933,6 +933,16 @@ def webhook():
 * [update](docs/sdks/subscriptions/README.md#update) - Update Subscription
 * [revoke](docs/sdks/subscriptions/README.md#revoke) - Revoke Subscription
 
+### [webhooks](docs/sdks/webhooks/README.md)
+
+* [list_webhook_endpoints](docs/sdks/webhooks/README.md#list_webhook_endpoints) - List Webhook Endpoints
+* [create_webhook_endpoint](docs/sdks/webhooks/README.md#create_webhook_endpoint) - Create Webhook Endpoint
+* [get_webhook_endpoint](docs/sdks/webhooks/README.md#get_webhook_endpoint) - Get Webhook Endpoint
+* [update_webhook_endpoint](docs/sdks/webhooks/README.md#update_webhook_endpoint) - Update Webhook Endpoint
+* [delete_webhook_endpoint](docs/sdks/webhooks/README.md#delete_webhook_endpoint) - Delete Webhook Endpoint
+* [list_webhook_deliveries](docs/sdks/webhooks/README.md#list_webhook_deliveries) - List Webhook Deliveries
+* [redeliver_webhook_event](docs/sdks/webhooks/README.md#redeliver_webhook_event) - Redeliver Webhook Event
+
 </details>
 <!-- End Available Resources and Operations [operations] -->
 

@@ -2,7 +2,8 @@ target-version = "py39"
 
 include = [
     "src/polar_sdk/ingestion/**/*.py",
-    "src/polar_sdk/webhooks/**/*.py"
+    "src/polar_sdk/_webhooks/**/*.py",
+    "src/tests/**/*.py",
 ]
 
 [lint]

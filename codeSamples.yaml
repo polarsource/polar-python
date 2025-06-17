@@ -729,6 +729,48 @@ actions:
         - "lang": "python"
           "label": "Python (SDK)"
           "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.subscriptions.update(id=\"<value>\", subscription_update={\n        \"discount_id\": \"<value>\",\n    })\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/webhooks/deliveries"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.webhooks.list_webhook_deliveries(page=1, limit=10)\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
+  - target: $["paths"]["/v1/webhooks/endpoints"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.webhooks.list_webhook_endpoints(organization_id=\"1dbfc517-0bbf-4301-9ba8-555ca42b9737\", page=1, limit=10)\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
+  - target: $["paths"]["/v1/webhooks/endpoints"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.webhooks.create_webhook_endpoint(request={\n        \"url\": \"https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0\",\n        \"format_\": polar_sdk.WebhookFormat.SLACK,\n        \"secret\": \"f_z6mfSpxkjogyw3FkA2aH2gYE5huxruNf34MpdWMcA\",\n        \"events\": [\n            polar_sdk.WebhookEventType.SUBSCRIPTION_UNCANCELED,\n        ],\n        \"organization_id\": \"1dbfc517-0bbf-4301-9ba8-555ca42b9737\",\n    })\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/webhooks/endpoints/{id}"]["delete"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    polar.webhooks.delete_webhook_endpoint(id=\"<value>\")\n\n    # Use the SDK ..."
+  - target: $["paths"]["/v1/webhooks/endpoints/{id}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.webhooks.get_webhook_endpoint(id=\"<value>\")\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/webhooks/endpoints/{id}"]["patch"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.webhooks.update_webhook_endpoint(id=\"<value>\", webhook_endpoint_update={\n        \"url\": \"https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0\",\n        \"secret\": \"f_z6mfSpxkjogyw3FkA2aH2gYE5huxruNf34MpdWMcA\",\n    })\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/webhooks/events/{id}/redeliver"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.webhooks.redeliver_webhook_event(id=\"<value>\")\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["benefit.created"]["post"]
     update:
       "x-codeSamples":

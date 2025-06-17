@@ -1,0 +1,16 @@
+# WebhookEndpoint
+
+A webhook endpoint.
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          | Example                                                              |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `created_at`                                                         | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_check_mark:                                                   | Creation timestamp of the object.                                    |                                                                      |
+| `modified_at`                                                        | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_check_mark:                                                   | Last modification timestamp of the object.                           |                                                                      |
+| `id`                                                                 | *str*                                                                | :heavy_check_mark:                                                   | The ID of the object.                                                |                                                                      |
+| `url`                                                                | *str*                                                                | :heavy_check_mark:                                                   | The URL where the webhook events will be sent.                       | https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0            |
+| `format_`                                                            | [models.WebhookFormat](../models/webhookformat.md)                   | :heavy_check_mark:                                                   | N/A                                                                  |                                                                      |
+| `organization_id`                                                    | *str*                                                                | :heavy_check_mark:                                                   | The organization ID associated with the webhook endpoint.            |                                                                      |
+| `events`                                                             | List[[models.WebhookEventType](../models/webhookeventtype.md)]       | :heavy_check_mark:                                                   | The events that will trigger the webhook.                            |                                                                      |

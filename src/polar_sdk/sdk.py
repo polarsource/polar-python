@@ -35,6 +35,7 @@ if TYPE_CHECKING:
     from polar_sdk.products import Products
     from polar_sdk.refunds import Refunds
     from polar_sdk.subscriptions import Subscriptions
+    from polar_sdk.webhooks import Webhooks
 
 
 class Polar(BaseSDK):
@@ -47,6 +48,7 @@ class Polar(BaseSDK):
     subscriptions: "Subscriptions"
     oauth2: "Oauth2"
     benefits: "Benefits"
+    webhooks: "Webhooks"
     products: "Products"
     orders: "Orders"
     refunds: "Refunds"
@@ -69,6 +71,7 @@ class Polar(BaseSDK):
         "subscriptions": ("polar_sdk.subscriptions", "Subscriptions"),
         "oauth2": ("polar_sdk.oauth2", "Oauth2"),
         "benefits": ("polar_sdk.benefits", "Benefits"),
+        "webhooks": ("polar_sdk.webhooks", "Webhooks"),
         "products": ("polar_sdk.products", "Products"),
         "orders": ("polar_sdk.orders", "Orders"),
         "refunds": ("polar_sdk.refunds", "Refunds"),

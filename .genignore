@@ -1,5 +1,5 @@
 .zed/
 src/polar_sdk/ingestion/
-src/polar_sdk/webhooks/
+src/polar_sdk/_webhooks/
 src/tests/
 ruff.toml

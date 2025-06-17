@@ -34,7 +34,7 @@ python:
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
   description: Polar SDK for Python
-  enableCustomCodeRegions: false
+  enableCustomCodeRegions: true
   enumFormat: enum
   fixFlags:
     responseRequiredSep2024: true

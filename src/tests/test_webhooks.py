@@ -1,28 +1,29 @@
 import base64
 import datetime
 import uuid
-from typing import Dict, Union
+from typing import Union
 
 import pytest
 from pydantic import ValidationError
 from standardwebhooks.webhooks import Webhook
 
-from polar_sdk.models import (
-    Checkout,
-    CheckoutProduct,
-    CheckoutStatus,
-    PaymentProcessor,
-    PaymentProcessorMetadata,
-    ProductPriceOneTimeFixed,
-    WebhookCheckoutCreatedPayload
+from polar_sdk.models.checkout import Checkout
+from polar_sdk.models.checkoutcustomerbillingaddressfields import (
+    CheckoutCustomerBillingAddressFields,
 )
+from polar_sdk.models.checkoutproduct import CheckoutProduct
+from polar_sdk.models.checkoutstatus import CheckoutStatus
+from polar_sdk.models.paymentprocessor import PaymentProcessor
+from polar_sdk.models.productpricefixed import ProductPriceFixed
+from polar_sdk.models.productpricetype import ProductPriceType
+from polar_sdk.models.webhookcheckoutcreatedpayload import WebhookCheckoutCreatedPayload
 from polar_sdk.webhooks import WebhookVerificationError, validate_event
 
 ORGANIZATION_ID = str(uuid.uuid4())
 PRODUCT_ID = str(uuid.uuid4())
 PRICE_ID = str(uuid.uuid4())
 
-price = ProductPriceOneTimeFixed(
+price = ProductPriceFixed(
     id=PRICE_ID,
     created_at=datetime.datetime.now(datetime.timezone.utc),
     modified_at=None,
@@ -30,8 +31,8 @@ price = ProductPriceOneTimeFixed(
     product_id=PRODUCT_ID,
     price_currency="usd",
     price_amount=1000,
-    TYPE="one_time",
-    AMOUNT_TYPE="fixed"
+    type=ProductPriceType.ONE_TIME,
+    recurring_interval=None,
 )
 
 product = CheckoutProduct(
@@ -43,6 +44,7 @@ product = CheckoutProduct(
     is_recurring=False,
     is_archived=False,
     organization_id=ORGANIZATION_ID,
+    recurring_interval=None,
     prices=[price],
     benefits=[],
     medias=[],
@@ -63,8 +65,9 @@ checkout_created = WebhookCheckoutCreatedPayload(
         embed_origin=None,
         tax_amount=0,
         amount=0,
+        discount_amount=0,
         currency="usd",
-        subtotal_amount=1000,
+        net_amount=1000,
         total_amount=1000,
         product_id=PRODUCT_ID,
         product_price_id=PRICE_ID,
@@ -81,9 +84,10 @@ checkout_created = WebhookCheckoutCreatedPayload(
         customer_ip_address=None,
         customer_billing_address=None,
         customer_tax_id=None,
-        payment_processor_metadata=PaymentProcessorMetadata(),
+        payment_processor_metadata={},
         metadata={},
         product=product,
+        products=[product],
         product_price=price,
         discount=None,
         subscription_id=None,
@@ -91,6 +95,18 @@ checkout_created = WebhookCheckoutCreatedPayload(
         custom_field_data=None,
         payment_processor=PaymentProcessor.STRIPE,
         customer_metadata={},
+        require_billing_address=False,
+        is_business_customer=False,
+        customer_billing_name=None,
+        customer_external_id=None,
+        customer_billing_address_fields=CheckoutCustomerBillingAddressFields(
+            country=True,
+            state=False,
+            city=False,
+            postal_code=False,
+            line1=False,
+            line2=False,
+        ),
     ),
 )
 
@@ -102,7 +118,7 @@ def get_headers(
     body: str,
     webhook_id: str = "WEBHOOK_ID",
     timestamp: Union[datetime.datetime, None] = None,
-) -> Dict[str, str]:
+) -> dict[str, str]:
     timestamp = timestamp or datetime.datetime.now(datetime.timezone.utc)
     signature = Webhook(WEBHOOK_SECRET_BASE64).sign(webhook_id, timestamp, body)
     return {
