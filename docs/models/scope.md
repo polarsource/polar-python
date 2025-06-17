@@ -23,6 +23,8 @@
 | `CHECKOUTS_WRITE`               | checkouts:write                 |
 | `TRANSACTIONS_READ`             | transactions:read               |
 | `TRANSACTIONS_WRITE`            | transactions:write              |
+| `PAYOUTS_READ`                  | payouts:read                    |
+| `PAYOUTS_WRITE`                 | payouts:write                   |
 | `PRODUCTS_READ`                 | products:read                   |
 | `PRODUCTS_WRITE`                | products:write                  |
 | `BENEFITS_READ`                 | benefits:read                   |
