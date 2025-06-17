@@ -8,8 +8,9 @@ from polar_sdk.types import BaseModel, OptionalNullable, UNSET
 from typing import Any, Dict, List, Mapping, Optional, Union, cast
 
 # region imports
-from ._webhooks import WebhookVerificationError, WebhoookPayload, validate_event # pylint: disable=unused-import
+from ._webhooks import WebhookVerificationError, WebhoookPayload, validate_event  # pylint: disable=unused-import
 # endregion imports
+
 
 class Webhooks(BaseSDK):
     def list_webhook_endpoints(
