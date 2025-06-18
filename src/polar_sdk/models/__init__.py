@@ -959,6 +959,8 @@ if TYPE_CHECKING:
         CustomerStateTypedDict,
     )
     from .customerstatebenefitgrant import (
+        BenefitMetadata,
+        BenefitMetadataTypedDict,
         CustomerStateBenefitGrant,
         CustomerStateBenefitGrantProperties,
         CustomerStateBenefitGrantPropertiesTypedDict,
@@ -2457,6 +2459,8 @@ __all__ = [
     "BenefitLicenseKeysUpdateMetadata",
     "BenefitLicenseKeysUpdateMetadataTypedDict",
     "BenefitLicenseKeysUpdateTypedDict",
+    "BenefitMetadata",
+    "BenefitMetadataTypedDict",
     "BenefitMeterCredit",
     "BenefitMeterCreditCreate",
     "BenefitMeterCreditCreateMetadata",
@@ -4588,6 +4592,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerStateTaxID": ".customerstate",
     "CustomerStateTaxIDTypedDict": ".customerstate",
     "CustomerStateTypedDict": ".customerstate",
+    "BenefitMetadata": ".customerstatebenefitgrant",
+    "BenefitMetadataTypedDict": ".customerstatebenefitgrant",
     "CustomerStateBenefitGrant": ".customerstatebenefitgrant",
     "CustomerStateBenefitGrantProperties": ".customerstatebenefitgrant",
     "CustomerStateBenefitGrantPropertiesTypedDict": ".customerstatebenefitgrant",

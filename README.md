@@ -159,6 +159,7 @@ with Polar() as polar:
                 "key": False,
                 "key1": False,
             },
+            external_customer_id=None,
             customer_external_id="<id>",
             products=[
                 polar_sdk.CheckoutProduct(
@@ -172,14 +173,7 @@ with Polar() as polar:
                     is_archived=True,
                     organization_id="<value>",
                     prices=[
-                        polar_sdk.LegacyRecurringProductPriceFree(
-                            created_at=parse_datetime("2023-09-13T08:36:46.434Z"),
-                            modified_at=parse_datetime("2023-10-05T12:55:46.428Z"),
-                            id="<value>",
-                            is_archived=False,
-                            product_id="<value>",
-                            recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
-                        ),
+                        polar_sdk.LegacyRecurringProductPriceFree(),
                     ],
                     benefits=[],
                     medias=[
@@ -251,37 +245,9 @@ with Polar() as polar:
                 is_archived=False,
                 organization_id="<value>",
                 prices=[
-                    polar_sdk.ProductPriceFixed(
-                        created_at=parse_datetime("2024-05-02T18:25:33.974Z"),
-                        modified_at=parse_datetime("2025-02-06T12:55:07.640Z"),
-                        id="<value>",
-                        is_archived=False,
-                        product_id="<value>",
-                        type=polar_sdk.ProductPriceType.RECURRING,
-                        recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
-                        price_currency="<value>",
-                        price_amount=115799,
-                    ),
-                    polar_sdk.LegacyRecurringProductPriceCustom(
-                        created_at=parse_datetime("2025-07-31T12:54:47.590Z"),
-                        modified_at=parse_datetime("2023-01-11T22:31:47.320Z"),
-                        id="<value>",
-                        is_archived=True,
-                        product_id="<value>",
-                        recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
-                        price_currency="<value>",
-                        minimum_amount=203013,
-                        maximum_amount=None,
-                        preset_amount=119260,
-                    ),
-                    polar_sdk.LegacyRecurringProductPriceFree(
-                        created_at=parse_datetime("2024-04-06T18:48:21.449Z"),
-                        modified_at=None,
-                        id="<value>",
-                        is_archived=True,
-                        product_id="<value>",
-                        recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
-                    ),
+                    polar_sdk.LegacyRecurringProductPriceCustom(),
+                    polar_sdk.LegacyRecurringProductPriceCustom(),
+                    polar_sdk.ProductPriceMeteredUnit(),
                 ],
                 benefits=[
                     polar_sdk.BenefitPublic(
@@ -307,14 +273,7 @@ with Polar() as polar:
                 ],
                 medias=[],
             ),
-            product_price=polar_sdk.LegacyRecurringProductPriceFree(
-                created_at=parse_datetime("2025-12-30T03:22:33.818Z"),
-                modified_at=parse_datetime("2025-07-13T15:35:24.219Z"),
-                id="<value>",
-                is_archived=False,
-                product_id="<value>",
-                recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
-            ),
+            product_price=polar_sdk.ProductPriceMeteredUnit(),
             discount=polar_sdk.CheckoutDiscountPercentageRepeatDuration(
                 duration=polar_sdk.DiscountDuration.REPEATING,
                 duration_in_months=470604,
@@ -442,6 +401,7 @@ async def main():
                     "key": False,
                     "key1": False,
                 },
+                external_customer_id=None,
                 customer_external_id="<id>",
                 products=[
                     polar_sdk.CheckoutProduct(
@@ -455,23 +415,7 @@ async def main():
                         is_archived=True,
                         organization_id="<value>",
                         prices=[
-                            polar_sdk.ProductPriceMeteredUnit(
-                                created_at=parse_datetime("2023-12-22T12:14:26.730Z"),
-                                modified_at=parse_datetime("2023-08-19T20:45:43.750Z"),
-                                id="<value>",
-                                is_archived=True,
-                                product_id="<value>",
-                                type=polar_sdk.ProductPriceType.RECURRING,
-                                recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
-                                price_currency="<value>",
-                                unit_amount="<value>",
-                                cap_amount=217361,
-                                meter_id="<value>",
-                                meter=polar_sdk.ProductPriceMeter(
-                                    id="<value>",
-                                    name="<value>",
-                                ),
-                            ),
+                            polar_sdk.LegacyRecurringProductPriceFree(),
                         ],
                         benefits=[],
                         medias=[
@@ -543,45 +487,9 @@ async def main():
                     is_archived=False,
                     organization_id="<value>",
                     prices=[
-                        polar_sdk.ProductPriceMeteredUnit(
-                            created_at=parse_datetime("2024-08-14T07:06:25.139Z"),
-                            modified_at=parse_datetime("2025-03-27T15:59:30.223Z"),
-                            id="<value>",
-                            is_archived=True,
-                            product_id="<value>",
-                            type=polar_sdk.ProductPriceType.RECURRING,
-                            recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
-                            price_currency="<value>",
-                            unit_amount="<value>",
-                            cap_amount=1655,
-                            meter_id="<value>",
-                            meter=polar_sdk.ProductPriceMeter(
-                                id="<value>",
-                                name="<value>",
-                            ),
-                        ),
-                        polar_sdk.LegacyRecurringProductPriceCustom(
-                            created_at=parse_datetime("2024-08-02T17:12:30.950Z"),
-                            modified_at=None,
-                            id="<value>",
-                            is_archived=False,
-                            product_id="<value>",
-                            recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
-                            price_currency="<value>",
-                            minimum_amount=503938,
-                            maximum_amount=590205,
-                            preset_amount=329003,
-                        ),
-                        polar_sdk.LegacyRecurringProductPriceFixed(
-                            created_at=parse_datetime("2024-07-20T01:39:43.676Z"),
-                            modified_at=parse_datetime("2025-09-16T11:22:24.287Z"),
-                            id="<value>",
-                            is_archived=False,
-                            product_id="<value>",
-                            recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
-                            price_currency="<value>",
-                            price_amount=862607,
-                        ),
+                        polar_sdk.ProductPriceFixed(),
+                        polar_sdk.ProductPriceMeteredUnit(),
+                        polar_sdk.ProductPriceCustom(),
                     ],
                     benefits=[
                         polar_sdk.BenefitPublic(
@@ -607,19 +515,7 @@ async def main():
                     ],
                     medias=[],
                 ),
-                product_price=polar_sdk.ProductPriceCustom(
-                    created_at=parse_datetime("2023-08-10T00:19:46.209Z"),
-                    modified_at=parse_datetime("2024-03-20T15:17:56.967Z"),
-                    id="<value>",
-                    is_archived=False,
-                    product_id="<value>",
-                    type=polar_sdk.ProductPriceType.ONE_TIME,
-                    recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
-                    price_currency="<value>",
-                    minimum_amount=861966,
-                    maximum_amount=196630,
-                    preset_amount=None,
-                ),
+                product_price=polar_sdk.LegacyRecurringProductPriceFixed(),
                 discount=polar_sdk.CheckoutDiscountPercentageRepeatDuration(
                     duration=polar_sdk.DiscountDuration.REPEATING,
                     duration_in_months=470604,

@@ -77,7 +77,7 @@ class CheckoutCreateTypedDict(TypedDict):
     r"""ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer."""
     is_business_customer: NotRequired[bool]
     r"""Whether the customer is a business or an individual. If `true`, the customer will be required to fill their full billing address and billing name."""
-    customer_external_id: NotRequired[Nullable[str]]
+    external_customer_id: NotRequired[Nullable[str]]
     r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
     customer_name: NotRequired[Nullable[str]]
     customer_email: NotRequired[Nullable[str]]
@@ -153,7 +153,7 @@ class CheckoutCreate(BaseModel):
     is_business_customer: Optional[bool] = False
     r"""Whether the customer is a business or an individual. If `true`, the customer will be required to fill their full billing address and billing name."""
 
-    customer_external_id: OptionalNullable[str] = UNSET
+    external_customer_id: OptionalNullable[str] = UNSET
     r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
 
     customer_name: OptionalNullable[str] = UNSET
@@ -202,7 +202,7 @@ class CheckoutCreate(BaseModel):
             "amount",
             "customer_id",
             "is_business_customer",
-            "customer_external_id",
+            "external_customer_id",
             "customer_name",
             "customer_email",
             "customer_ip_address",
@@ -218,7 +218,7 @@ class CheckoutCreate(BaseModel):
             "discount_id",
             "amount",
             "customer_id",
-            "customer_external_id",
+            "external_customer_id",
             "customer_name",
             "customer_email",
             "customer_ip_address",

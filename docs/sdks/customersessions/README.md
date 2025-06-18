@@ -24,7 +24,7 @@ with Polar(
 ) as polar:
 
     res = polar.customer_sessions.create(request={
-        "customer_external_id": "<id>",
+        "external_customer_id": "<id>",
     })
 
     # Handle response

@@ -33,9 +33,10 @@ from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 CheckoutCustomFieldDataTypedDict = TypeAliasType(
@@ -165,8 +166,9 @@ class CheckoutTypedDict(TypedDict):
     customer_tax_id: Nullable[str]
     payment_processor_metadata: Dict[str, str]
     metadata: Dict[str, CheckoutMetadataTypedDict]
-    customer_external_id: Nullable[str]
+    external_customer_id: Nullable[str]
     r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
+    customer_external_id: Nullable[str]
     products: List[CheckoutProductTypedDict]
     r"""List of products available to select."""
     product: CheckoutProductTypedDict
@@ -286,8 +288,15 @@ class Checkout(BaseModel):
 
     metadata: Dict[str, CheckoutMetadata]
 
-    customer_external_id: Nullable[str]
+    external_customer_id: Nullable[str]
     r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
+
+    customer_external_id: Annotated[
+        Nullable[str],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
 
     products: List[CheckoutProduct]
     r"""List of products available to select."""
@@ -326,6 +335,7 @@ class Checkout(BaseModel):
             "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
+            "external_customer_id",
             "customer_external_id",
             "discount",
             "subscription_id",
