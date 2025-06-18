@@ -8,12 +8,12 @@ from typing_extensions import TypedDict
 class CustomerSessionCustomerExternalIDCreateTypedDict(TypedDict):
     r"""Schema for creating a customer session using an external customer ID."""
 
-    customer_external_id: str
+    external_customer_id: str
     r"""External ID of the customer to create a session for."""
 
 
 class CustomerSessionCustomerExternalIDCreate(BaseModel):
     r"""Schema for creating a customer session using an external customer ID."""
 
-    customer_external_id: str
+    external_customer_id: str
     r"""External ID of the customer to create a session for."""
