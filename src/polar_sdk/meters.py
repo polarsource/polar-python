@@ -979,6 +979,12 @@ class Meters(BaseSDK):
                 models.MetersQuantitiesQueryParamExternalCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        metadata: OptionalNullable[
+            Union[
+                Dict[str, models.MetadataQuery],
+                Dict[str, models.MetadataQueryTypedDict],
+            ]
+        ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -996,6 +1002,7 @@ class Meters(BaseSDK):
         :param interval: Interval between two timestamps.
         :param customer_id: Filter by customer ID.
         :param external_customer_id: Filter by external customer ID.
+        :param metadata: Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1018,6 +1025,7 @@ class Meters(BaseSDK):
             interval=interval,
             customer_id=customer_id,
             external_customer_id=external_customer_id,
+            metadata=metadata,
         )
 
         req = self._build_request(
@@ -1109,6 +1117,12 @@ class Meters(BaseSDK):
                 models.MetersQuantitiesQueryParamExternalCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        metadata: OptionalNullable[
+            Union[
+                Dict[str, models.MetadataQuery],
+                Dict[str, models.MetadataQueryTypedDict],
+            ]
+        ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1126,6 +1140,7 @@ class Meters(BaseSDK):
         :param interval: Interval between two timestamps.
         :param customer_id: Filter by customer ID.
         :param external_customer_id: Filter by external customer ID.
+        :param metadata: Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1148,6 +1163,7 @@ class Meters(BaseSDK):
             interval=interval,
             customer_id=customer_id,
             external_customer_id=external_customer_id,
+            metadata=metadata,
         )
 
         req = self._build_request_async(

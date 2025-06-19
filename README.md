@@ -155,6 +155,14 @@ with Polar() as polar:
                 "key1": "<value>",
                 "key2": "<value>",
             },
+            customer_billing_address_fields=polar_sdk.CheckoutCustomerBillingAddressFields(
+                country=True,
+                state=False,
+                city=False,
+                postal_code=True,
+                line1=True,
+                line2=False,
+            ),
             metadata={
                 "key": False,
                 "key1": False,
@@ -325,14 +333,6 @@ with Polar() as polar:
             customer_metadata={
 
             },
-            customer_billing_address_fields=polar_sdk.CheckoutCustomerBillingAddressFields(
-                country=True,
-                state=False,
-                city=False,
-                postal_code=True,
-                line1=True,
-                line2=False,
-            ),
         ),
     ))
 
@@ -397,6 +397,14 @@ async def main():
                     "key1": "<value>",
                     "key2": "<value>",
                 },
+                customer_billing_address_fields=polar_sdk.CheckoutCustomerBillingAddressFields(
+                    country=True,
+                    state=False,
+                    city=False,
+                    postal_code=True,
+                    line1=True,
+                    line2=False,
+                ),
                 metadata={
                     "key": False,
                     "key1": False,
@@ -567,14 +575,6 @@ async def main():
                 customer_metadata={
 
                 },
-                customer_billing_address_fields=polar_sdk.CheckoutCustomerBillingAddressFields(
-                    country=True,
-                    state=False,
-                    city=False,
-                    postal_code=True,
-                    line1=True,
-                    line2=False,
-                ),
             ),
         ))
 

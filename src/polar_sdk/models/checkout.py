@@ -165,6 +165,7 @@ class CheckoutTypedDict(TypedDict):
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
     payment_processor_metadata: Dict[str, str]
+    customer_billing_address_fields: CheckoutCustomerBillingAddressFieldsTypedDict
     metadata: Dict[str, CheckoutMetadataTypedDict]
     external_customer_id: Nullable[str]
     r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
@@ -179,7 +180,6 @@ class CheckoutTypedDict(TypedDict):
     subscription_id: Nullable[str]
     attached_custom_fields: List[AttachedCustomFieldTypedDict]
     customer_metadata: Dict[str, CustomerMetadataTypedDict]
-    customer_billing_address_fields: CheckoutCustomerBillingAddressFieldsTypedDict
     custom_field_data: NotRequired[
         Dict[str, Nullable[CheckoutCustomFieldDataTypedDict]]
     ]
@@ -286,6 +286,8 @@ class Checkout(BaseModel):
 
     payment_processor_metadata: Dict[str, str]
 
+    customer_billing_address_fields: CheckoutCustomerBillingAddressFields
+
     metadata: Dict[str, CheckoutMetadata]
 
     external_customer_id: Nullable[str]
@@ -314,8 +316,6 @@ class Checkout(BaseModel):
     attached_custom_fields: List[AttachedCustomField]
 
     customer_metadata: Dict[str, CustomerMetadata]
-
-    customer_billing_address_fields: CheckoutCustomerBillingAddressFields
 
     custom_field_data: Optional[Dict[str, Nullable[CheckoutCustomFieldData]]] = None
     r"""Key-value object storing custom field values."""
