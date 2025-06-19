@@ -155,6 +155,7 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
     payment_processor_metadata: Dict[str, str]
+    customer_billing_address_fields: CheckoutCustomerBillingAddressFieldsTypedDict
     products: List[CheckoutProductTypedDict]
     r"""List of products available to select."""
     product: CheckoutProductTypedDict
@@ -165,7 +166,6 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     organization: OrganizationTypedDict
     attached_custom_fields: List[AttachedCustomFieldTypedDict]
     customer_session_token: str
-    customer_billing_address_fields: CheckoutCustomerBillingAddressFieldsTypedDict
     custom_field_data: NotRequired[
         Dict[str, Nullable[CheckoutPublicConfirmedCustomFieldDataTypedDict]]
     ]
@@ -275,6 +275,8 @@ class CheckoutPublicConfirmed(BaseModel):
 
     payment_processor_metadata: Dict[str, str]
 
+    customer_billing_address_fields: CheckoutCustomerBillingAddressFields
+
     products: List[CheckoutProduct]
     r"""List of products available to select."""
 
@@ -291,8 +293,6 @@ class CheckoutPublicConfirmed(BaseModel):
     attached_custom_fields: List[AttachedCustomField]
 
     customer_session_token: str
-
-    customer_billing_address_fields: CheckoutCustomerBillingAddressFields
 
     custom_field_data: Optional[
         Dict[str, Nullable[CheckoutPublicConfirmedCustomFieldData]]
