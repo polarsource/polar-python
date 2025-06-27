@@ -643,17 +643,17 @@ if TYPE_CHECKING:
         CustomerPortalCustomersDeletePaymentMethodSecurity,
         CustomerPortalCustomersDeletePaymentMethodSecurityTypedDict,
     )
-    from .customer_portal_customers_get_payment_methodsop import (
-        CustomerPortalCustomersGetPaymentMethodsRequest,
-        CustomerPortalCustomersGetPaymentMethodsRequestTypedDict,
-        CustomerPortalCustomersGetPaymentMethodsResponse,
-        CustomerPortalCustomersGetPaymentMethodsResponseTypedDict,
-        CustomerPortalCustomersGetPaymentMethodsSecurity,
-        CustomerPortalCustomersGetPaymentMethodsSecurityTypedDict,
-    )
     from .customer_portal_customers_getop import (
         CustomerPortalCustomersGetSecurity,
         CustomerPortalCustomersGetSecurityTypedDict,
+    )
+    from .customer_portal_customers_list_payment_methodsop import (
+        CustomerPortalCustomersListPaymentMethodsRequest,
+        CustomerPortalCustomersListPaymentMethodsRequestTypedDict,
+        CustomerPortalCustomersListPaymentMethodsResponse,
+        CustomerPortalCustomersListPaymentMethodsResponseTypedDict,
+        CustomerPortalCustomersListPaymentMethodsSecurity,
+        CustomerPortalCustomersListPaymentMethodsSecurityTypedDict,
     )
     from .customer_portal_customers_updateop import (
         CustomerPortalCustomersUpdateSecurity,
@@ -1800,9 +1800,9 @@ if TYPE_CHECKING:
     from .payment import Payment, PaymentTypedDict
     from .paymenterror import PaymentError, PaymentErrorData
     from .paymentmethodcard import PaymentMethodCard, PaymentMethodCardTypedDict
-    from .paymentmethodcarddata import (
-        PaymentMethodCardData,
-        PaymentMethodCardDataTypedDict,
+    from .paymentmethodcardmetadata import (
+        PaymentMethodCardMetadata,
+        PaymentMethodCardMetadataTypedDict,
     )
     from .paymentmethodgeneric import (
         PaymentMethodGeneric,
@@ -2879,14 +2879,14 @@ __all__ = [
     "CustomerPortalCustomersDeletePaymentMethodRequestTypedDict",
     "CustomerPortalCustomersDeletePaymentMethodSecurity",
     "CustomerPortalCustomersDeletePaymentMethodSecurityTypedDict",
-    "CustomerPortalCustomersGetPaymentMethodsRequest",
-    "CustomerPortalCustomersGetPaymentMethodsRequestTypedDict",
-    "CustomerPortalCustomersGetPaymentMethodsResponse",
-    "CustomerPortalCustomersGetPaymentMethodsResponseTypedDict",
-    "CustomerPortalCustomersGetPaymentMethodsSecurity",
-    "CustomerPortalCustomersGetPaymentMethodsSecurityTypedDict",
     "CustomerPortalCustomersGetSecurity",
     "CustomerPortalCustomersGetSecurityTypedDict",
+    "CustomerPortalCustomersListPaymentMethodsRequest",
+    "CustomerPortalCustomersListPaymentMethodsRequestTypedDict",
+    "CustomerPortalCustomersListPaymentMethodsResponse",
+    "CustomerPortalCustomersListPaymentMethodsResponseTypedDict",
+    "CustomerPortalCustomersListPaymentMethodsSecurity",
+    "CustomerPortalCustomersListPaymentMethodsSecurityTypedDict",
     "CustomerPortalCustomersUpdateSecurity",
     "CustomerPortalCustomersUpdateSecurityTypedDict",
     "CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest",
@@ -3600,8 +3600,8 @@ __all__ = [
     "PaymentError",
     "PaymentErrorData",
     "PaymentMethodCard",
-    "PaymentMethodCardData",
-    "PaymentMethodCardDataTypedDict",
+    "PaymentMethodCardMetadata",
+    "PaymentMethodCardMetadataTypedDict",
     "PaymentMethodCardTypedDict",
     "PaymentMethodGeneric",
     "PaymentMethodGenericTypedDict",
@@ -4380,14 +4380,14 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalCustomersDeletePaymentMethodRequestTypedDict": ".customer_portal_customers_delete_payment_methodop",
     "CustomerPortalCustomersDeletePaymentMethodSecurity": ".customer_portal_customers_delete_payment_methodop",
     "CustomerPortalCustomersDeletePaymentMethodSecurityTypedDict": ".customer_portal_customers_delete_payment_methodop",
-    "CustomerPortalCustomersGetPaymentMethodsRequest": ".customer_portal_customers_get_payment_methodsop",
-    "CustomerPortalCustomersGetPaymentMethodsRequestTypedDict": ".customer_portal_customers_get_payment_methodsop",
-    "CustomerPortalCustomersGetPaymentMethodsResponse": ".customer_portal_customers_get_payment_methodsop",
-    "CustomerPortalCustomersGetPaymentMethodsResponseTypedDict": ".customer_portal_customers_get_payment_methodsop",
-    "CustomerPortalCustomersGetPaymentMethodsSecurity": ".customer_portal_customers_get_payment_methodsop",
-    "CustomerPortalCustomersGetPaymentMethodsSecurityTypedDict": ".customer_portal_customers_get_payment_methodsop",
     "CustomerPortalCustomersGetSecurity": ".customer_portal_customers_getop",
     "CustomerPortalCustomersGetSecurityTypedDict": ".customer_portal_customers_getop",
+    "CustomerPortalCustomersListPaymentMethodsRequest": ".customer_portal_customers_list_payment_methodsop",
+    "CustomerPortalCustomersListPaymentMethodsRequestTypedDict": ".customer_portal_customers_list_payment_methodsop",
+    "CustomerPortalCustomersListPaymentMethodsResponse": ".customer_portal_customers_list_payment_methodsop",
+    "CustomerPortalCustomersListPaymentMethodsResponseTypedDict": ".customer_portal_customers_list_payment_methodsop",
+    "CustomerPortalCustomersListPaymentMethodsSecurity": ".customer_portal_customers_list_payment_methodsop",
+    "CustomerPortalCustomersListPaymentMethodsSecurityTypedDict": ".customer_portal_customers_list_payment_methodsop",
     "CustomerPortalCustomersUpdateSecurity": ".customer_portal_customers_updateop",
     "CustomerPortalCustomersUpdateSecurityTypedDict": ".customer_portal_customers_updateop",
     "CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest": ".customer_portal_downloadables_customer_portal_downloadables_getop",
@@ -5225,8 +5225,8 @@ _dynamic_imports: dict[str, str] = {
     "PaymentErrorData": ".paymenterror",
     "PaymentMethodCard": ".paymentmethodcard",
     "PaymentMethodCardTypedDict": ".paymentmethodcard",
-    "PaymentMethodCardData": ".paymentmethodcarddata",
-    "PaymentMethodCardDataTypedDict": ".paymentmethodcarddata",
+    "PaymentMethodCardMetadata": ".paymentmethodcardmetadata",
+    "PaymentMethodCardMetadataTypedDict": ".paymentmethodcardmetadata",
     "PaymentMethodGeneric": ".paymentmethodgeneric",
     "PaymentMethodGenericTypedDict": ".paymentmethodgeneric",
     "PaymentProcessor": ".paymentprocessor",

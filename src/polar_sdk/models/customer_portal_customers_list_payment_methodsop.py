@@ -11,11 +11,11 @@ from typing import Callable, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class CustomerPortalCustomersGetPaymentMethodsSecurityTypedDict(TypedDict):
+class CustomerPortalCustomersListPaymentMethodsSecurityTypedDict(TypedDict):
     customer_session: str
 
 
-class CustomerPortalCustomersGetPaymentMethodsSecurity(BaseModel):
+class CustomerPortalCustomersListPaymentMethodsSecurity(BaseModel):
     customer_session: Annotated[
         str,
         FieldMetadata(
@@ -29,14 +29,14 @@ class CustomerPortalCustomersGetPaymentMethodsSecurity(BaseModel):
     ]
 
 
-class CustomerPortalCustomersGetPaymentMethodsRequestTypedDict(TypedDict):
+class CustomerPortalCustomersListPaymentMethodsRequestTypedDict(TypedDict):
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
     r"""Size of a page, defaults to 10. Maximum is 100."""
 
 
-class CustomerPortalCustomersGetPaymentMethodsRequest(BaseModel):
+class CustomerPortalCustomersListPaymentMethodsRequest(BaseModel):
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -50,11 +50,11 @@ class CustomerPortalCustomersGetPaymentMethodsRequest(BaseModel):
     r"""Size of a page, defaults to 10. Maximum is 100."""
 
 
-class CustomerPortalCustomersGetPaymentMethodsResponseTypedDict(TypedDict):
+class CustomerPortalCustomersListPaymentMethodsResponseTypedDict(TypedDict):
     result: ListResourceUnionPaymentMethodCardPaymentMethodGenericTypedDict
 
 
-class CustomerPortalCustomersGetPaymentMethodsResponse(BaseModel):
-    next: Callable[[], Optional[CustomerPortalCustomersGetPaymentMethodsResponse]]
+class CustomerPortalCustomersListPaymentMethodsResponse(BaseModel):
+    next: Callable[[], Optional[CustomerPortalCustomersListPaymentMethodsResponse]]
 
     result: ListResourceUnionPaymentMethodCardPaymentMethodGeneric

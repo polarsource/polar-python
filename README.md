@@ -675,7 +675,7 @@ def webhook():
 
 * [get](docs/sdks/polarcustomers/README.md#get) - Get Customer
 * [update](docs/sdks/polarcustomers/README.md#update) - Update Customer
-* [get_payment_methods](docs/sdks/polarcustomers/README.md#get_payment_methods) - Get Customer Payment Methods
+* [list_payment_methods](docs/sdks/polarcustomers/README.md#list_payment_methods) - List Customer Payment Methods
 * [add_payment_method](docs/sdks/polarcustomers/README.md#add_payment_method) - Add Customer Payment Method
 * [delete_payment_method](docs/sdks/polarcustomers/README.md#delete_payment_method) - Delete Customer Payment Method
 

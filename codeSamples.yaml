@@ -188,7 +188,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.customers.get_payment_methods(security=polar_sdk.CustomerPortalCustomersGetPaymentMethodsSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), page=1, limit=10)\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.customers.list_payment_methods(security=polar_sdk.CustomerPortalCustomersListPaymentMethodsSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), page=1, limit=10)\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
   - target: $["paths"]["/v1/customer-portal/customers/me/payment-methods"]["post"]
     update:
       "x-codeSamples":
@@ -200,7 +200,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    polar.customer_portal.customers.delete_payment_method(security=polar_sdk.CustomerPortalCustomersDeletePaymentMethodSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<id>\")\n\n    # Use the SDK ..."
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    polar.customer_portal.customers.delete_payment_method(security=polar_sdk.CustomerPortalCustomersDeletePaymentMethodSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<value>\")\n\n    # Use the SDK ..."
   - target: $["paths"]["/v1/customer-portal/downloadables/"]["get"]
     update:
       "x-codeSamples":
