@@ -3,10 +3,11 @@
 from __future__ import annotations
 from .missinginvoicebillingdetails import MissingInvoiceBillingDetailsData
 from .notpaidorder import NotPaidOrderData
-from polar_sdk import utils
+import httpx
+from polar_sdk.models import PolarError
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, PathParamMetadata, SecurityMetadata
-from typing import Union
+from typing import Optional, Union
 from typing_extensions import Annotated, TypeAliasType, TypedDict
 
 
@@ -48,7 +49,7 @@ r"""Order is not paid or is missing billing name or address."""
 
 
 class CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoice(
-    Exception
+    PolarError
 ):
     r"""Order is not paid or is missing billing name or address."""
 
@@ -57,11 +58,9 @@ class CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerate
     def __init__(
         self,
         data: CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoiceUnion,
+        raw_response: httpx.Response,
+        body: Optional[str] = None,
     ):
+        message = body or raw_response.text
+        super().__init__(message, raw_response, body)
         self.data = data
-
-    def __str__(self) -> str:
-        return utils.marshal_json(
-            self.data,
-            CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoiceUnion,
-        )

@@ -82,26 +82,17 @@ class PolarCustomers(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.CustomerPortalCustomer)
+            return utils.unmarshal_json_response(
+                models.CustomerPortalCustomer, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def get_async(
         self,
@@ -176,26 +167,17 @@ class PolarCustomers(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.CustomerPortalCustomer)
+            return utils.unmarshal_json_response(
+                models.CustomerPortalCustomer, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def update(
         self,
@@ -284,31 +266,22 @@ class PolarCustomers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.CustomerPortalCustomer)
-        if utils.match_response(http_res, "422", "application/json"):
-            response_data = utils.unmarshal_json(
-                http_res.text, models.HTTPValidationErrorData
+            return utils.unmarshal_json_response(
+                models.CustomerPortalCustomer, http_res
             )
-            raise models.HTTPValidationError(data=response_data)
+        if utils.match_response(http_res, "422", "application/json"):
+            response_data = utils.unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
+            )
+            raise models.HTTPValidationError(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def update_async(
         self,
@@ -397,38 +370,29 @@ class PolarCustomers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.CustomerPortalCustomer)
-        if utils.match_response(http_res, "422", "application/json"):
-            response_data = utils.unmarshal_json(
-                http_res.text, models.HTTPValidationErrorData
+            return utils.unmarshal_json_response(
+                models.CustomerPortalCustomer, http_res
             )
-            raise models.HTTPValidationError(data=response_data)
+        if utils.match_response(http_res, "422", "application/json"):
+            response_data = utils.unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
+            )
+            raise models.HTTPValidationError(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
-    def get_payment_methods(
+    def list_payment_methods(
         self,
         *,
         security: Union[
-            models.CustomerPortalCustomersGetPaymentMethodsSecurity,
-            models.CustomerPortalCustomersGetPaymentMethodsSecurityTypedDict,
+            models.CustomerPortalCustomersListPaymentMethodsSecurity,
+            models.CustomerPortalCustomersListPaymentMethodsSecurityTypedDict,
         ],
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -436,8 +400,8 @@ class PolarCustomers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[models.CustomerPortalCustomersGetPaymentMethodsResponse]:
-        r"""Get Customer Payment Methods
+    ) -> Optional[models.CustomerPortalCustomersListPaymentMethodsResponse]:
+        r"""List Customer Payment Methods
 
         Get saved payment methods of the authenticated customer.
 
@@ -461,7 +425,7 @@ class PolarCustomers(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.CustomerPortalCustomersGetPaymentMethodsRequest(
+        request = models.CustomerPortalCustomersListPaymentMethodsRequest(
             page=page,
             limit=limit,
         )
@@ -479,7 +443,7 @@ class PolarCustomers(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=utils.get_pydantic_model(
-                security, models.CustomerPortalCustomersGetPaymentMethodsSecurity
+                security, models.CustomerPortalCustomersListPaymentMethodsSecurity
             ),
             timeout_ms=timeout_ms,
         )
@@ -496,7 +460,7 @@ class PolarCustomers(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="customer_portal:customers:get_payment_methods",
+                operation_id="customer_portal:customers:list_payment_methods",
                 oauth2_scopes=None,
                 security_source=security,
             ),
@@ -506,7 +470,7 @@ class PolarCustomers(BaseSDK):
         )
 
         def next_func() -> (
-            Optional[models.CustomerPortalCustomersGetPaymentMethodsResponse]
+            Optional[models.CustomerPortalCustomersListPaymentMethodsResponse]
         ):
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
@@ -525,7 +489,7 @@ class PolarCustomers(BaseSDK):
             if len(results[0]) < limit:
                 return None
 
-            return self.get_payment_methods(
+            return self.list_payment_methods(
                 security=security,
                 page=next_page,
                 limit=limit,
@@ -534,44 +498,33 @@ class PolarCustomers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.CustomerPortalCustomersGetPaymentMethodsResponse(
-                result=utils.unmarshal_json(
-                    http_res.text,
+            return models.CustomerPortalCustomersListPaymentMethodsResponse(
+                result=utils.unmarshal_json_response(
                     models.ListResourceUnionPaymentMethodCardPaymentMethodGeneric,
+                    http_res,
                 ),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
-            response_data = utils.unmarshal_json(
-                http_res.text, models.HTTPValidationErrorData
+            response_data = utils.unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
             )
-            raise models.HTTPValidationError(data=response_data)
+            raise models.HTTPValidationError(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
-    async def get_payment_methods_async(
+    async def list_payment_methods_async(
         self,
         *,
         security: Union[
-            models.CustomerPortalCustomersGetPaymentMethodsSecurity,
-            models.CustomerPortalCustomersGetPaymentMethodsSecurityTypedDict,
+            models.CustomerPortalCustomersListPaymentMethodsSecurity,
+            models.CustomerPortalCustomersListPaymentMethodsSecurityTypedDict,
         ],
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -579,8 +532,8 @@ class PolarCustomers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[models.CustomerPortalCustomersGetPaymentMethodsResponse]:
-        r"""Get Customer Payment Methods
+    ) -> Optional[models.CustomerPortalCustomersListPaymentMethodsResponse]:
+        r"""List Customer Payment Methods
 
         Get saved payment methods of the authenticated customer.
 
@@ -604,7 +557,7 @@ class PolarCustomers(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.CustomerPortalCustomersGetPaymentMethodsRequest(
+        request = models.CustomerPortalCustomersListPaymentMethodsRequest(
             page=page,
             limit=limit,
         )
@@ -622,7 +575,7 @@ class PolarCustomers(BaseSDK):
             accept_header_value="application/json",
             http_headers=http_headers,
             security=utils.get_pydantic_model(
-                security, models.CustomerPortalCustomersGetPaymentMethodsSecurity
+                security, models.CustomerPortalCustomersListPaymentMethodsSecurity
             ),
             timeout_ms=timeout_ms,
         )
@@ -639,7 +592,7 @@ class PolarCustomers(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="customer_portal:customers:get_payment_methods",
+                operation_id="customer_portal:customers:list_payment_methods",
                 oauth2_scopes=None,
                 security_source=security,
             ),
@@ -649,7 +602,7 @@ class PolarCustomers(BaseSDK):
         )
 
         def next_func() -> (
-            Optional[models.CustomerPortalCustomersGetPaymentMethodsResponse]
+            Optional[models.CustomerPortalCustomersListPaymentMethodsResponse]
         ):
             body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
             page = request.page if not request.page is None else 1
@@ -668,7 +621,7 @@ class PolarCustomers(BaseSDK):
             if len(results[0]) < limit:
                 return None
 
-            return self.get_payment_methods(
+            return self.list_payment_methods(
                 security=security,
                 page=next_page,
                 limit=limit,
@@ -677,37 +630,26 @@ class PolarCustomers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.CustomerPortalCustomersGetPaymentMethodsResponse(
-                result=utils.unmarshal_json(
-                    http_res.text,
+            return models.CustomerPortalCustomersListPaymentMethodsResponse(
+                result=utils.unmarshal_json_response(
                     models.ListResourceUnionPaymentMethodCardPaymentMethodGeneric,
+                    http_res,
                 ),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
-            response_data = utils.unmarshal_json(
-                http_res.text, models.HTTPValidationErrorData
+            response_data = utils.unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
             )
-            raise models.HTTPValidationError(data=response_data)
+            raise models.HTTPValidationError(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def add_payment_method(
         self,
@@ -796,34 +738,23 @@ class PolarCustomers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text,
+            return utils.unmarshal_json_response(
                 models.CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethod,
+                http_res,
             )
         if utils.match_response(http_res, "422", "application/json"):
-            response_data = utils.unmarshal_json(
-                http_res.text, models.HTTPValidationErrorData
+            response_data = utils.unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
             )
-            raise models.HTTPValidationError(data=response_data)
+            raise models.HTTPValidationError(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def add_payment_method_async(
         self,
@@ -912,34 +843,23 @@ class PolarCustomers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return utils.unmarshal_json(
-                http_res.text,
+            return utils.unmarshal_json_response(
                 models.CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethod,
+                http_res,
             )
         if utils.match_response(http_res, "422", "application/json"):
-            response_data = utils.unmarshal_json(
-                http_res.text, models.HTTPValidationErrorData
+            response_data = utils.unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
             )
-            raise models.HTTPValidationError(data=response_data)
+            raise models.HTTPValidationError(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def delete_payment_method(
         self,
@@ -1024,34 +944,23 @@ class PolarCustomers(BaseSDK):
         if utils.match_response(http_res, "204", "*"):
             return
         if utils.match_response(http_res, "404", "application/json"):
-            response_data = utils.unmarshal_json(
-                http_res.text, models.ResourceNotFoundData
+            response_data = utils.unmarshal_json_response(
+                models.ResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(data=response_data)
+            raise models.ResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
-            response_data = utils.unmarshal_json(
-                http_res.text, models.HTTPValidationErrorData
+            response_data = utils.unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
             )
-            raise models.HTTPValidationError(data=response_data)
+            raise models.HTTPValidationError(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def delete_payment_method_async(
         self,
@@ -1136,31 +1045,20 @@ class PolarCustomers(BaseSDK):
         if utils.match_response(http_res, "204", "*"):
             return
         if utils.match_response(http_res, "404", "application/json"):
-            response_data = utils.unmarshal_json(
-                http_res.text, models.ResourceNotFoundData
+            response_data = utils.unmarshal_json_response(
+                models.ResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(data=response_data)
+            raise models.ResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
-            response_data = utils.unmarshal_json(
-                http_res.text, models.HTTPValidationErrorData
+            response_data = utils.unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
             )
-            raise models.HTTPValidationError(data=response_data)
+            raise models.HTTPValidationError(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)

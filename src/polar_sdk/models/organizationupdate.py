@@ -6,6 +6,10 @@ from .organizationfeaturesettings import (
     OrganizationFeatureSettings,
     OrganizationFeatureSettingsTypedDict,
 )
+from .organizationnotificationsettings import (
+    OrganizationNotificationSettings,
+    OrganizationNotificationSettingsTypedDict,
+)
 from .organizationsociallink import (
     OrganizationSocialLink,
     OrganizationSocialLinkTypedDict,
@@ -35,6 +39,9 @@ class OrganizationUpdateTypedDict(TypedDict):
     subscription_settings: NotRequired[
         Nullable[OrganizationSubscriptionSettingsTypedDict]
     ]
+    notification_settings: NotRequired[
+        Nullable[OrganizationNotificationSettingsTypedDict]
+    ]
 
 
 class OrganizationUpdate(BaseModel):
@@ -58,6 +65,8 @@ class OrganizationUpdate(BaseModel):
 
     subscription_settings: OptionalNullable[OrganizationSubscriptionSettings] = UNSET
 
+    notification_settings: OptionalNullable[OrganizationNotificationSettings] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -69,6 +78,7 @@ class OrganizationUpdate(BaseModel):
             "details",
             "feature_settings",
             "subscription_settings",
+            "notification_settings",
         ]
         nullable_fields = [
             "name",
@@ -79,6 +89,7 @@ class OrganizationUpdate(BaseModel):
             "details",
             "feature_settings",
             "subscription_settings",
+            "notification_settings",
         ]
         null_default_fields = []
 
