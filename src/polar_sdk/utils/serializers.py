@@ -4,7 +4,7 @@ from decimal import Decimal
 import functools
 import json
 import typing
-from typing import Any, Dict, List, Tuple, Union, get_args
+from typing import Any, Dict, List, Optional, Tuple, Union, get_args
 import typing_extensions
 from typing_extensions import get_origin
 
@@ -13,6 +13,7 @@ from pydantic import ConfigDict, create_model
 from pydantic_core import from_json
 
 from ..types.basemodel import BaseModel, Nullable, OptionalNullable, Unset
+from polar_sdk import models
 
 
 def serialize_decimal(as_str: bool):
@@ -140,6 +141,22 @@ def unmarshal_json(raw, typ: Any) -> Any:
     return unmarshal(from_json(raw), typ)
 
 
+def unmarshal_json_response(
+    typ: Any, http_res: httpx.Response, body: Optional[str] = None
+) -> Any:
+    if body is None:
+        body = http_res.text
+    try:
+        return unmarshal_json(body, typ)
+    except Exception as e:
+        raise models.ResponseValidationError(
+            "Response validation failed",
+            http_res,
+            e,
+            body,
+        ) from e
+
+
 def unmarshal(val, typ: Any) -> Any:
     unmarshaller = create_model(
         "Unmarshaller",
@@ -192,7 +209,9 @@ def is_union(obj: object) -> bool:
     """
     Returns True if the given object is a typing.Union or typing_extensions.Union.
     """
-    return any(obj is typing_obj for typing_obj in _get_typing_objects_by_name_of("Union"))
+    return any(
+        obj is typing_obj for typing_obj in _get_typing_objects_by_name_of("Union")
+    )
 
 
 def stream_to_text(stream: httpx.Response) -> str:
@@ -245,4 +264,3 @@ def _get_typing_objects_by_name_of(name: str) -> Tuple[Any, ...]:
             f"Neither typing nor typing_extensions has an object called {name!r}"
         )
     return result
-

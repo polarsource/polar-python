@@ -6,7 +6,6 @@
 ### Available Operations
 
 * [list](#list) - List Downloadables
-* [get](#get) - Get Downloadable
 
 ## list
 
@@ -46,45 +45,6 @@ with Polar() as polar:
 ### Response
 
 **[models.CustomerPortalDownloadablesListResponse](../../models/customerportaldownloadableslistresponse.md)**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## get
-
-Get Downloadable
-
-### Example Usage
-
-```python
-from polar_sdk import Polar
-
-
-with Polar() as polar:
-
-    res = polar.customer_portal.downloadables.get(token="<value>")
-
-    assert res is not None
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `token`                                                             | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[Any](../../models/.md)**
 
 ### Errors
 

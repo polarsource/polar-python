@@ -7,7 +7,7 @@ from datetime import date
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
-from typing import List, Union
+from typing import List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -68,6 +68,8 @@ class MetricsGetRequestTypedDict(TypedDict):
     r"""End date."""
     interval: TimeInterval
     r"""Interval between two timestamps."""
+    timezone: NotRequired[str]
+    r"""Timezone to use for the timestamps. Default is UTC."""
     organization_id: NotRequired[
         Nullable[MetricsGetQueryParamOrganizationIDFilterTypedDict]
     ]
@@ -97,6 +99,12 @@ class MetricsGetRequest(BaseModel):
     ]
     r"""Interval between two timestamps."""
 
+    timezone: Annotated[
+        Optional[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = "UTC"
+    r"""Timezone to use for the timestamps. Default is UTC."""
+
     organization_id: Annotated[
         OptionalNullable[MetricsGetQueryParamOrganizationIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -124,6 +132,7 @@ class MetricsGetRequest(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "timezone",
             "organization_id",
             "product_id",
             "billing_type",

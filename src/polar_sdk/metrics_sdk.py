@@ -15,6 +15,7 @@ class MetricsSDK(BaseSDK):
         start_date: date,
         end_date: date,
         interval: models.TimeInterval,
+        timezone: Optional[str] = "UTC",
         organization_id: OptionalNullable[
             Union[
                 models.MetricsGetQueryParamOrganizationIDFilter,
@@ -55,6 +56,7 @@ class MetricsSDK(BaseSDK):
         :param start_date: Start date.
         :param end_date: End date.
         :param interval: Interval between two timestamps.
+        :param timezone: Timezone to use for the timestamps. Default is UTC.
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param billing_type: Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
@@ -77,6 +79,7 @@ class MetricsSDK(BaseSDK):
         request = models.MetricsGetRequest(
             start_date=start_date,
             end_date=end_date,
+            timezone=timezone,
             interval=interval,
             organization_id=organization_id,
             product_id=product_id,
@@ -123,31 +126,20 @@ class MetricsSDK(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.MetricsResponse)
+            return utils.unmarshal_json_response(models.MetricsResponse, http_res)
         if utils.match_response(http_res, "422", "application/json"):
-            response_data = utils.unmarshal_json(
-                http_res.text, models.HTTPValidationErrorData
+            response_data = utils.unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
             )
-            raise models.HTTPValidationError(data=response_data)
+            raise models.HTTPValidationError(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def get_async(
         self,
@@ -155,6 +147,7 @@ class MetricsSDK(BaseSDK):
         start_date: date,
         end_date: date,
         interval: models.TimeInterval,
+        timezone: Optional[str] = "UTC",
         organization_id: OptionalNullable[
             Union[
                 models.MetricsGetQueryParamOrganizationIDFilter,
@@ -195,6 +188,7 @@ class MetricsSDK(BaseSDK):
         :param start_date: Start date.
         :param end_date: End date.
         :param interval: Interval between two timestamps.
+        :param timezone: Timezone to use for the timestamps. Default is UTC.
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param billing_type: Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
@@ -217,6 +211,7 @@ class MetricsSDK(BaseSDK):
         request = models.MetricsGetRequest(
             start_date=start_date,
             end_date=end_date,
+            timezone=timezone,
             interval=interval,
             organization_id=organization_id,
             product_id=product_id,
@@ -263,31 +258,20 @@ class MetricsSDK(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.MetricsResponse)
+            return utils.unmarshal_json_response(models.MetricsResponse, http_res)
         if utils.match_response(http_res, "422", "application/json"):
-            response_data = utils.unmarshal_json(
-                http_res.text, models.HTTPValidationErrorData
+            response_data = utils.unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
             )
-            raise models.HTTPValidationError(data=response_data)
+            raise models.HTTPValidationError(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     def limits(
         self,
@@ -355,26 +339,15 @@ class MetricsSDK(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.MetricsLimits)
+            return utils.unmarshal_json_response(models.MetricsLimits, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = utils.stream_to_text(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
 
     async def limits_async(
         self,
@@ -442,23 +415,12 @@ class MetricsSDK(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, models.MetricsLimits)
+            return utils.unmarshal_json_response(models.MetricsLimits, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "5XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError(
-                "API error occurred", http_res.status_code, http_res_text, http_res
-            )
+            raise models.SDKError("API error occurred", http_res, http_res_text)
 
-        content_type = http_res.headers.get("Content-Type")
-        http_res_text = await utils.stream_to_text_async(http_res)
-        raise models.SDKError(
-            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
-            http_res.status_code,
-            http_res_text,
-            http_res,
-        )
+        raise models.SDKError("Unexpected response received", http_res)
