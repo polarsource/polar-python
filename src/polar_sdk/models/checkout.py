@@ -3,9 +3,9 @@
 from __future__ import annotations
 from .address import Address, AddressTypedDict
 from .attachedcustomfield import AttachedCustomField, AttachedCustomFieldTypedDict
-from .checkoutcustomerbillingaddressfields import (
-    CheckoutCustomerBillingAddressFields,
-    CheckoutCustomerBillingAddressFieldsTypedDict,
+from .checkoutbillingaddressfields import (
+    CheckoutBillingAddressFields,
+    CheckoutBillingAddressFieldsTypedDict,
 )
 from .checkoutdiscountfixedonceforeverduration import (
     CheckoutDiscountFixedOnceForeverDuration,
@@ -165,7 +165,7 @@ class CheckoutTypedDict(TypedDict):
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
     payment_processor_metadata: Dict[str, str]
-    customer_billing_address_fields: CheckoutCustomerBillingAddressFieldsTypedDict
+    billing_address_fields: CheckoutBillingAddressFieldsTypedDict
     metadata: Dict[str, CheckoutMetadataTypedDict]
     external_customer_id: Nullable[str]
     r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
@@ -286,7 +286,7 @@ class Checkout(BaseModel):
 
     payment_processor_metadata: Dict[str, str]
 
-    customer_billing_address_fields: CheckoutCustomerBillingAddressFields
+    billing_address_fields: CheckoutBillingAddressFields
 
     metadata: Dict[str, CheckoutMetadata]
 

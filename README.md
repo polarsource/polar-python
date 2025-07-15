@@ -155,13 +155,13 @@ with Polar() as polar:
                 "key1": "<value>",
                 "key2": "<value>",
             },
-            customer_billing_address_fields=polar_sdk.CheckoutCustomerBillingAddressFields(
-                country=True,
-                state=False,
-                city=False,
-                postal_code=True,
-                line1=True,
-                line2=False,
+            billing_address_fields=polar_sdk.CheckoutBillingAddressFields(
+                country=polar_sdk.BillingAddressFieldMode.REQUIRED,
+                state=polar_sdk.BillingAddressFieldMode.DISABLED,
+                city=polar_sdk.BillingAddressFieldMode.REQUIRED,
+                postal_code=polar_sdk.BillingAddressFieldMode.REQUIRED,
+                line1=polar_sdk.BillingAddressFieldMode.REQUIRED,
+                line2=polar_sdk.BillingAddressFieldMode.DISABLED,
             ),
             metadata={
                 "key": False,
@@ -181,7 +181,14 @@ with Polar() as polar:
                     is_archived=True,
                     organization_id="<value>",
                     prices=[
-                        polar_sdk.LegacyRecurringProductPriceFree(),
+                        polar_sdk.LegacyRecurringProductPriceFree(
+                            created_at=parse_datetime("2023-09-13T08:36:46.434Z"),
+                            modified_at=parse_datetime("2023-10-05T12:55:46.428Z"),
+                            id="<value>",
+                            is_archived=False,
+                            product_id="<value>",
+                            recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
+                        ),
                     ],
                     benefits=[],
                     medias=[
@@ -253,9 +260,36 @@ with Polar() as polar:
                 is_archived=False,
                 organization_id="<value>",
                 prices=[
-                    polar_sdk.LegacyRecurringProductPriceCustom(),
-                    polar_sdk.LegacyRecurringProductPriceCustom(),
-                    polar_sdk.ProductPriceMeteredUnit(),
+                    polar_sdk.LegacyRecurringProductPriceFixed(
+                        created_at=parse_datetime("2024-05-02T18:25:33.974Z"),
+                        modified_at=parse_datetime("2025-02-06T12:55:07.640Z"),
+                        id="<value>",
+                        is_archived=False,
+                        product_id="<value>",
+                        recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
+                        price_currency="<value>",
+                        price_amount=115799,
+                    ),
+                    polar_sdk.LegacyRecurringProductPriceCustom(
+                        created_at=parse_datetime("2025-07-31T12:54:47.590Z"),
+                        modified_at=parse_datetime("2023-01-11T22:31:47.320Z"),
+                        id="<value>",
+                        is_archived=True,
+                        product_id="<value>",
+                        recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
+                        price_currency="<value>",
+                        minimum_amount=203013,
+                        maximum_amount=None,
+                        preset_amount=119260,
+                    ),
+                    polar_sdk.LegacyRecurringProductPriceFree(
+                        created_at=parse_datetime("2024-04-06T18:48:21.449Z"),
+                        modified_at=None,
+                        id="<value>",
+                        is_archived=True,
+                        product_id="<value>",
+                        recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
+                    ),
                 ],
                 benefits=[
                     polar_sdk.BenefitPublic(
@@ -281,7 +315,16 @@ with Polar() as polar:
                 ],
                 medias=[],
             ),
-            product_price=polar_sdk.ProductPriceMeteredUnit(),
+            product_price=polar_sdk.LegacyRecurringProductPriceFixed(
+                created_at=parse_datetime("2024-08-14T23:26:30.929Z"),
+                modified_at=parse_datetime("2025-01-15T11:59:21.523Z"),
+                id="<value>",
+                is_archived=False,
+                product_id="<value>",
+                recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
+                price_currency="<value>",
+                price_amount=499786,
+            ),
             discount=polar_sdk.CheckoutDiscountPercentageRepeatDuration(
                 duration=polar_sdk.DiscountDuration.REPEATING,
                 duration_in_months=470604,
@@ -397,13 +440,13 @@ async def main():
                     "key1": "<value>",
                     "key2": "<value>",
                 },
-                customer_billing_address_fields=polar_sdk.CheckoutCustomerBillingAddressFields(
-                    country=True,
-                    state=False,
-                    city=False,
-                    postal_code=True,
-                    line1=True,
-                    line2=False,
+                billing_address_fields=polar_sdk.CheckoutBillingAddressFields(
+                    country=polar_sdk.BillingAddressFieldMode.REQUIRED,
+                    state=polar_sdk.BillingAddressFieldMode.DISABLED,
+                    city=polar_sdk.BillingAddressFieldMode.REQUIRED,
+                    postal_code=polar_sdk.BillingAddressFieldMode.REQUIRED,
+                    line1=polar_sdk.BillingAddressFieldMode.REQUIRED,
+                    line2=polar_sdk.BillingAddressFieldMode.DISABLED,
                 ),
                 metadata={
                     "key": False,
@@ -423,7 +466,14 @@ async def main():
                         is_archived=True,
                         organization_id="<value>",
                         prices=[
-                            polar_sdk.LegacyRecurringProductPriceFree(),
+                            polar_sdk.LegacyRecurringProductPriceFree(
+                                created_at=parse_datetime("2023-09-13T08:36:46.434Z"),
+                                modified_at=parse_datetime("2023-10-05T12:55:46.428Z"),
+                                id="<value>",
+                                is_archived=False,
+                                product_id="<value>",
+                                recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
+                            ),
                         ],
                         benefits=[],
                         medias=[
@@ -495,9 +545,36 @@ async def main():
                     is_archived=False,
                     organization_id="<value>",
                     prices=[
-                        polar_sdk.ProductPriceFixed(),
-                        polar_sdk.ProductPriceMeteredUnit(),
-                        polar_sdk.ProductPriceCustom(),
+                        polar_sdk.LegacyRecurringProductPriceFixed(
+                            created_at=parse_datetime("2024-05-02T18:25:33.974Z"),
+                            modified_at=parse_datetime("2025-02-06T12:55:07.640Z"),
+                            id="<value>",
+                            is_archived=False,
+                            product_id="<value>",
+                            recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
+                            price_currency="<value>",
+                            price_amount=115799,
+                        ),
+                        polar_sdk.LegacyRecurringProductPriceCustom(
+                            created_at=parse_datetime("2025-07-31T12:54:47.590Z"),
+                            modified_at=parse_datetime("2023-01-11T22:31:47.320Z"),
+                            id="<value>",
+                            is_archived=True,
+                            product_id="<value>",
+                            recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
+                            price_currency="<value>",
+                            minimum_amount=203013,
+                            maximum_amount=None,
+                            preset_amount=119260,
+                        ),
+                        polar_sdk.LegacyRecurringProductPriceFree(
+                            created_at=parse_datetime("2024-04-06T18:48:21.449Z"),
+                            modified_at=None,
+                            id="<value>",
+                            is_archived=True,
+                            product_id="<value>",
+                            recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
+                        ),
                     ],
                     benefits=[
                         polar_sdk.BenefitPublic(
@@ -523,7 +600,16 @@ async def main():
                     ],
                     medias=[],
                 ),
-                product_price=polar_sdk.LegacyRecurringProductPriceFixed(),
+                product_price=polar_sdk.LegacyRecurringProductPriceFixed(
+                    created_at=parse_datetime("2024-08-14T23:26:30.929Z"),
+                    modified_at=parse_datetime("2025-01-15T11:59:21.523Z"),
+                    id="<value>",
+                    is_archived=False,
+                    product_id="<value>",
+                    recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
+                    price_currency="<value>",
+                    price_amount=499786,
+                ),
                 discount=polar_sdk.CheckoutDiscountPercentageRepeatDuration(
                     duration=polar_sdk.DiscountDuration.REPEATING,
                     duration_in_months=470604,
@@ -675,14 +761,13 @@ def webhook():
 
 * [get](docs/sdks/polarcustomers/README.md#get) - Get Customer
 * [update](docs/sdks/polarcustomers/README.md#update) - Update Customer
-* [get_payment_methods](docs/sdks/polarcustomers/README.md#get_payment_methods) - Get Customer Payment Methods
+* [list_payment_methods](docs/sdks/polarcustomers/README.md#list_payment_methods) - List Customer Payment Methods
 * [add_payment_method](docs/sdks/polarcustomers/README.md#add_payment_method) - Add Customer Payment Method
 * [delete_payment_method](docs/sdks/polarcustomers/README.md#delete_payment_method) - Delete Customer Payment Method
 
 #### [customer_portal.downloadables](docs/sdks/downloadables/README.md)
 
 * [list](docs/sdks/downloadables/README.md#list) - List Downloadables
-* [get](docs/sdks/downloadables/README.md#get) - Get Downloadable
 
 #### [customer_portal.license_keys](docs/sdks/polarlicensekeys/README.md)
 
@@ -778,14 +863,6 @@ def webhook():
 * [revoke](docs/sdks/oauth2/README.md#revoke) - Revoke Token
 * [introspect](docs/sdks/oauth2/README.md#introspect) - Introspect Token
 * [userinfo](docs/sdks/oauth2/README.md#userinfo) - Get User Info
-
-#### [oauth2.clients](docs/sdks/clients/README.md)
-
-* [list](docs/sdks/clients/README.md#list) - List Clients
-* [create](docs/sdks/clients/README.md#create) - Create Client
-* [get](docs/sdks/clients/README.md#get) - Get Client
-* [update](docs/sdks/clients/README.md#update) - Update Client
-* [delete](docs/sdks/clients/README.md#delete) - Delete Client
 
 ### [orders](docs/sdks/orders/README.md)
 
@@ -891,27 +968,20 @@ with Polar(
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an exception.
+[`PolarError`](./src/polar_sdk/models/polarerror.py) is the base class for all HTTP error responses. It has the following properties:
 
-By default, an API error will raise a models.SDKError exception, which has the following properties:
-
-| Property        | Type             | Description           |
-|-----------------|------------------|-----------------------|
-| `.status_code`  | *int*            | The HTTP status code  |
-| `.message`      | *str*            | The error message     |
-| `.raw_response` | *httpx.Response* | The raw HTTP response |
-| `.body`         | *str*            | The response content  |
-
-When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `list_async` method may raise the following exceptions:
-
-| Error Type                 | Status Code | Content Type     |
-| -------------------------- | ----------- | ---------------- |
-| models.HTTPValidationError | 422         | application/json |
-| models.SDKError            | 4XX, 5XX    | \*/\*            |
+| Property           | Type             | Description                                                                             |
+| ------------------ | ---------------- | --------------------------------------------------------------------------------------- |
+| `err.message`      | `str`            | Error message                                                                           |
+| `err.status_code`  | `int`            | HTTP response status code eg `404`                                                      |
+| `err.headers`      | `httpx.Headers`  | HTTP response headers                                                                   |
+| `err.body`         | `str`            | HTTP body. Can be empty string if no body is returned.                                  |
+| `err.raw_response` | `httpx.Response` | Raw HTTP response                                                                       |
+| `err.data`         |                  | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
 
 ### Example
-
 ```python
+import polar_sdk
 from polar_sdk import Polar, models
 
 
@@ -928,13 +998,54 @@ with Polar(
 
             res = res.next()
 
-    except models.HTTPValidationError as e:
-        # handle e.data: models.HTTPValidationErrorData
-        raise(e)
-    except models.SDKError as e:
-        # handle exception
-        raise(e)
+
+    except models.PolarError as e:
+        # The base class for HTTP error responses
+        print(e.message)
+        print(e.status_code)
+        print(e.body)
+        print(e.headers)
+        print(e.raw_response)
+
+        # Depending on the method different errors may be thrown
+        if isinstance(e, models.HTTPValidationError):
+            print(e.data.detail)  # Optional[List[polar_sdk.ValidationError]]
 ```
+
+### Error Classes
+**Primary errors:**
+* [`PolarError`](./src/polar_sdk/models/polarerror.py): The base class for HTTP error responses.
+  * [`HTTPValidationError`](./src/polar_sdk/models/httpvalidationerror.py): Validation Error. Status code `422`. *
+
+<details><summary>Less common errors (18)</summary>
+
+<br />
+
+**Network errors:**
+* [`httpx.RequestError`](https://www.python-httpx.org/exceptions/#httpx.RequestError): Base class for request errors.
+    * [`httpx.ConnectError`](https://www.python-httpx.org/exceptions/#httpx.ConnectError): HTTP client was unable to make a request to a server.
+    * [`httpx.TimeoutException`](https://www.python-httpx.org/exceptions/#httpx.TimeoutException): HTTP request timed out.
+
+
+**Inherit from [`PolarError`](./src/polar_sdk/models/polarerror.py)**:
+* [`ResourceNotFound`](./src/polar_sdk/models/resourcenotfound.py): Status code `404`. Applicable to 70 of 122 methods.*
+* [`NotPermitted`](./src/polar_sdk/models/notpermitted.py): Status code `403`. Applicable to 9 of 122 methods.*
+* [`Unauthorized`](./src/polar_sdk/models/unauthorized.py): Not authorized to manage license key. Status code `401`. Applicable to 5 of 122 methods.*
+* [`AlreadyCanceledSubscription`](./src/polar_sdk/models/alreadycanceledsubscription.py): Status code `403`. Applicable to 4 of 122 methods.*
+* [`AlreadyActiveSubscriptionError`](./src/polar_sdk/models/alreadyactivesubscriptionerror.py): The checkout is expired or the customer already has an active subscription. Status code `403`. Applicable to 3 of 122 methods.*
+* [`NotOpenCheckout`](./src/polar_sdk/models/notopencheckout.py): The checkout is expired or the customer already has an active subscription. Status code `403`. Applicable to 3 of 122 methods.*
+* [`ExpiredCheckoutError`](./src/polar_sdk/models/expiredcheckouterror.py): The checkout session is expired. Status code `410`. Applicable to 3 of 122 methods.*
+* [`InvoiceAlreadyExists`](./src/polar_sdk/models/invoicealreadyexists.py): Order already has an invoice. Status code `409`. Applicable to 2 of 122 methods.*
+* [`MissingInvoiceBillingDetails`](./src/polar_sdk/models/missinginvoicebillingdetails.py): Order is not paid or is missing billing name or address. Status code `422`. Applicable to 2 of 122 methods.*
+* [`NotPaidOrder`](./src/polar_sdk/models/notpaidorder.py): Order is not paid or is missing billing name or address. Status code `422`. Applicable to 2 of 122 methods.*
+* [`RefundAmountTooHigh`](./src/polar_sdk/models/refundamounttoohigh.py): Refund amount exceeds remaining order balance. Status code `400`. Applicable to 1 of 122 methods.*
+* [`PaymentError`](./src/polar_sdk/models/paymenterror.py): The payment failed. Status code `400`. Applicable to 1 of 122 methods.*
+* [`RefundedAlready`](./src/polar_sdk/models/refundedalready.py): Order is already fully refunded. Status code `403`. Applicable to 1 of 122 methods.*
+* [`ResponseValidationError`](./src/polar_sdk/models/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
+
+</details>
+
+\* Check [the method documentation](#available-resources-and-operations) to see if the error is applicable.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->

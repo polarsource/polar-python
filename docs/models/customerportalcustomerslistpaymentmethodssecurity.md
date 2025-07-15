@@ -1,8 +1,8 @@
-# CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest
+# CustomerPortalCustomersListPaymentMethodsSecurity
 
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `token`            | *str*              | :heavy_check_mark: | N/A                |
+| `customer_session` | *str*              | :heavy_check_mark: | N/A                |

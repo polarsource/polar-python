@@ -8,10 +8,10 @@ from .customerportaloauthaccount import (
 )
 from .taxidformat import TaxIDFormat
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Union
-from typing_extensions import TypeAliasType, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 CustomerPortalCustomerTaxIDTypedDict = TypeAliasType(
@@ -37,6 +37,7 @@ class CustomerPortalCustomerTypedDict(TypedDict):
     billing_address: Nullable[AddressTypedDict]
     tax_id: Nullable[List[Nullable[CustomerPortalCustomerTaxIDTypedDict]]]
     oauth_accounts: Dict[str, CustomerPortalOAuthAccountTypedDict]
+    default_payment_method_id: NotRequired[Nullable[str]]
 
 
 class CustomerPortalCustomer(BaseModel):
@@ -61,10 +62,18 @@ class CustomerPortalCustomer(BaseModel):
 
     oauth_accounts: Dict[str, CustomerPortalOAuthAccount]
 
+    default_payment_method_id: OptionalNullable[str] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
-        nullable_fields = ["modified_at", "name", "billing_address", "tax_id"]
+        optional_fields = ["default_payment_method_id"]
+        nullable_fields = [
+            "modified_at",
+            "name",
+            "billing_address",
+            "tax_id",
+            "default_payment_method_id",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

@@ -6,7 +6,7 @@ from pydantic import model_serializer
 from typing_extensions import NotRequired, TypedDict
 
 
-class PaymentMethodCardDataTypedDict(TypedDict):
+class PaymentMethodCardMetadataTypedDict(TypedDict):
     brand: str
     last4: str
     exp_month: int
@@ -14,7 +14,7 @@ class PaymentMethodCardDataTypedDict(TypedDict):
     wallet: NotRequired[Nullable[str]]
 
 
-class PaymentMethodCardData(BaseModel):
+class PaymentMethodCardMetadata(BaseModel):
     brand: str
 
     last4: str
