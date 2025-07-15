@@ -7,7 +7,7 @@
 
 * [get](#get) - Get Customer
 * [update](#update) - Update Customer
-* [get_payment_methods](#get_payment_methods) - Get Customer Payment Methods
+* [list_payment_methods](#list_payment_methods) - List Customer Payment Methods
 * [add_payment_method](#add_payment_method) - Add Customer Payment Method
 * [delete_payment_method](#delete_payment_method) - Delete Customer Payment Method
 
@@ -99,7 +99,7 @@ with Polar() as polar:
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## get_payment_methods
+## list_payment_methods
 
 Get saved payment methods of the authenticated customer.
 
@@ -114,7 +114,7 @@ from polar_sdk import Polar
 
 with Polar() as polar:
 
-    res = polar.customer_portal.customers.get_payment_methods(security=polar_sdk.CustomerPortalCustomersGetPaymentMethodsSecurity(
+    res = polar.customer_portal.customers.list_payment_methods(security=polar_sdk.CustomerPortalCustomersListPaymentMethodsSecurity(
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
     ), page=1, limit=10)
 
@@ -127,16 +127,16 @@ with Polar() as polar:
 
 ### Parameters
 
-| Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
-| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                                  | [models.CustomerPortalCustomersGetPaymentMethodsSecurity](../../models/customerportalcustomersgetpaymentmethodssecurity.md) | :heavy_check_mark:                                                                                                          | N/A                                                                                                                         |
-| `page`                                                                                                                      | *Optional[int]*                                                                                                             | :heavy_minus_sign:                                                                                                          | Page number, defaults to 1.                                                                                                 |
-| `limit`                                                                                                                     | *Optional[int]*                                                                                                             | :heavy_minus_sign:                                                                                                          | Size of a page, defaults to 10. Maximum is 100.                                                                             |
-| `retries`                                                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                            | :heavy_minus_sign:                                                                                                          | Configuration to override the default retry behavior of the client.                                                         |
+| Parameter                                                                                                                     | Type                                                                                                                          | Required                                                                                                                      | Description                                                                                                                   |
+| ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                    | [models.CustomerPortalCustomersListPaymentMethodsSecurity](../../models/customerportalcustomerslistpaymentmethodssecurity.md) | :heavy_check_mark:                                                                                                            | N/A                                                                                                                           |
+| `page`                                                                                                                        | *Optional[int]*                                                                                                               | :heavy_minus_sign:                                                                                                            | Page number, defaults to 1.                                                                                                   |
+| `limit`                                                                                                                       | *Optional[int]*                                                                                                               | :heavy_minus_sign:                                                                                                            | Size of a page, defaults to 10. Maximum is 100.                                                                               |
+| `retries`                                                                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                              | :heavy_minus_sign:                                                                                                            | Configuration to override the default retry behavior of the client.                                                           |
 
 ### Response
 
-**[models.CustomerPortalCustomersGetPaymentMethodsResponse](../../models/customerportalcustomersgetpaymentmethodsresponse.md)**
+**[models.CustomerPortalCustomersListPaymentMethodsResponse](../../models/customerportalcustomerslistpaymentmethodsresponse.md)**
 
 ### Errors
 

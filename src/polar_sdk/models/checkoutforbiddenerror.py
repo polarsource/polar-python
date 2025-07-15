@@ -3,8 +3,9 @@
 from __future__ import annotations
 from .alreadyactivesubscriptionerror import AlreadyActiveSubscriptionErrorData
 from .notopencheckout import NotOpenCheckoutData
-from polar_sdk import utils
-from typing import Union
+import httpx
+from polar_sdk.models import PolarError
+from typing import Optional, Union
 from typing_extensions import TypeAliasType
 
 
@@ -14,11 +15,15 @@ CheckoutForbiddenErrorUnion = TypeAliasType(
 )
 
 
-class CheckoutForbiddenError(Exception):
+class CheckoutForbiddenError(PolarError):
     data: CheckoutForbiddenErrorUnion
 
-    def __init__(self, data: CheckoutForbiddenErrorUnion):
+    def __init__(
+        self,
+        data: CheckoutForbiddenErrorUnion,
+        raw_response: httpx.Response,
+        body: Optional[str] = None,
+    ):
+        message = body or raw_response.text
+        super().__init__(message, raw_response, body)
         self.data = data
-
-    def __str__(self) -> str:
-        return utils.marshal_json(self.data, CheckoutForbiddenErrorUnion)

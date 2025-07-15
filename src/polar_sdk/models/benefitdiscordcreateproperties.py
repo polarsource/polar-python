@@ -11,6 +11,8 @@ class BenefitDiscordCreatePropertiesTypedDict(TypedDict):
     guild_token: str
     role_id: str
     r"""The ID of the Discord role to grant."""
+    kick_member: bool
+    r"""Whether to kick the member from the Discord server on revocation."""
 
 
 class BenefitDiscordCreateProperties(BaseModel):
@@ -20,3 +22,6 @@ class BenefitDiscordCreateProperties(BaseModel):
 
     role_id: str
     r"""The ID of the Discord role to grant."""
+
+    kick_member: bool
+    r"""Whether to kick the member from the Discord server on revocation."""

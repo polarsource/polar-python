@@ -336,6 +336,7 @@ if TYPE_CHECKING:
     from .benefitsortproperty import BenefitSortProperty
     from .benefittype import BenefitType
     from .benefitupdatedevent import BenefitUpdatedEvent, BenefitUpdatedEventTypedDict
+    from .billingaddressfieldmode import BillingAddressFieldMode
     from .cardpayment import CardPayment, CardPaymentTypedDict
     from .cardpaymentmetadata import CardPaymentMetadata, CardPaymentMetadataTypedDict
     from .checkout import (
@@ -378,6 +379,10 @@ if TYPE_CHECKING:
         CheckoutLinksUpdateRequest,
         CheckoutLinksUpdateRequestTypedDict,
     )
+    from .checkoutbillingaddressfields import (
+        CheckoutBillingAddressFields,
+        CheckoutBillingAddressFieldsTypedDict,
+    )
     from .checkoutconfirmstripe import (
         CheckoutConfirmStripe,
         CheckoutConfirmStripeCustomFieldData,
@@ -393,10 +398,6 @@ if TYPE_CHECKING:
         CheckoutCreateMetadata,
         CheckoutCreateMetadataTypedDict,
         CheckoutCreateTypedDict,
-    )
-    from .checkoutcustomerbillingaddressfields import (
-        CheckoutCustomerBillingAddressFields,
-        CheckoutCustomerBillingAddressFieldsTypedDict,
     )
     from .checkoutdiscountfixedonceforeverduration import (
         CheckoutDiscountFixedOnceForeverDuration,
@@ -643,25 +644,21 @@ if TYPE_CHECKING:
         CustomerPortalCustomersDeletePaymentMethodSecurity,
         CustomerPortalCustomersDeletePaymentMethodSecurityTypedDict,
     )
-    from .customer_portal_customers_get_payment_methodsop import (
-        CustomerPortalCustomersGetPaymentMethodsRequest,
-        CustomerPortalCustomersGetPaymentMethodsRequestTypedDict,
-        CustomerPortalCustomersGetPaymentMethodsResponse,
-        CustomerPortalCustomersGetPaymentMethodsResponseTypedDict,
-        CustomerPortalCustomersGetPaymentMethodsSecurity,
-        CustomerPortalCustomersGetPaymentMethodsSecurityTypedDict,
-    )
     from .customer_portal_customers_getop import (
         CustomerPortalCustomersGetSecurity,
         CustomerPortalCustomersGetSecurityTypedDict,
     )
+    from .customer_portal_customers_list_payment_methodsop import (
+        CustomerPortalCustomersListPaymentMethodsRequest,
+        CustomerPortalCustomersListPaymentMethodsRequestTypedDict,
+        CustomerPortalCustomersListPaymentMethodsResponse,
+        CustomerPortalCustomersListPaymentMethodsResponseTypedDict,
+        CustomerPortalCustomersListPaymentMethodsSecurity,
+        CustomerPortalCustomersListPaymentMethodsSecurityTypedDict,
+    )
     from .customer_portal_customers_updateop import (
         CustomerPortalCustomersUpdateSecurity,
         CustomerPortalCustomersUpdateSecurityTypedDict,
-    )
-    from .customer_portal_downloadables_customer_portal_downloadables_getop import (
-        CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest,
-        CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequestTypedDict,
     )
     from .customer_portal_downloadables_listop import (
         CustomerPortalDownloadablesListQueryParamBenefitIDFilter,
@@ -1271,14 +1268,14 @@ if TYPE_CHECKING:
     from .events_list_namesop import (
         EventsListNamesQueryParamCustomerIDFilter,
         EventsListNamesQueryParamCustomerIDFilterTypedDict,
+        EventsListNamesQueryParamExternalCustomerIDFilter,
+        EventsListNamesQueryParamExternalCustomerIDFilterTypedDict,
         EventsListNamesQueryParamOrganizationIDFilter,
         EventsListNamesQueryParamOrganizationIDFilterTypedDict,
         EventsListNamesRequest,
         EventsListNamesRequestTypedDict,
         EventsListNamesResponse,
         EventsListNamesResponseTypedDict,
-        QueryParamExternalCustomerIDFilter,
-        QueryParamExternalCustomerIDFilterTypedDict,
         QueryParamSourceFilter,
         QueryParamSourceFilterTypedDict,
     )
@@ -1493,10 +1490,6 @@ if TYPE_CHECKING:
         ListResourceLicenseKeyReadTypedDict,
     )
     from .listresource_meter_ import ListResourceMeter, ListResourceMeterTypedDict
-    from .listresource_oauth2client_ import (
-        ListResourceOAuth2Client,
-        ListResourceOAuth2ClientTypedDict,
-    )
     from .listresource_order_ import ListResourceOrder, ListResourceOrderTypedDict
     from .listresource_organization_ import (
         ListResourceOrganization,
@@ -1655,30 +1648,13 @@ if TYPE_CHECKING:
         MissingInvoiceBillingDetails,
         MissingInvoiceBillingDetailsData,
     )
+    from .no_response_error import NoResponseError
     from .notopencheckout import NotOpenCheckout, NotOpenCheckoutData
     from .notpaidorder import NotPaidOrder, NotPaidOrderData
     from .notpermitted import NotPermitted, NotPermittedData
     from .oauth2_authorizeop import (
         Oauth2AuthorizeResponseOauth2Authorize,
         Oauth2AuthorizeResponseOauth2AuthorizeTypedDict,
-    )
-    from .oauth2_clients_listop import (
-        Oauth2ClientsListRequest,
-        Oauth2ClientsListRequestTypedDict,
-        Oauth2ClientsListResponse,
-        Oauth2ClientsListResponseTypedDict,
-    )
-    from .oauth2_clients_oauth2_delete_clientop import (
-        Oauth2ClientsOauth2DeleteClientRequest,
-        Oauth2ClientsOauth2DeleteClientRequestTypedDict,
-    )
-    from .oauth2_clients_oauth2_get_clientop import (
-        Oauth2ClientsOauth2GetClientRequest,
-        Oauth2ClientsOauth2GetClientRequestTypedDict,
-    )
-    from .oauth2_clients_oauth2_update_clientop import (
-        Oauth2ClientsOauth2UpdateClientRequest,
-        Oauth2ClientsOauth2UpdateClientRequestTypedDict,
     )
     from .oauth2_request_tokenop import (
         Oauth2RequestTokenRequestBody,
@@ -1687,24 +1663,6 @@ if TYPE_CHECKING:
     from .oauth2_userinfoop import (
         Oauth2UserinfoResponseOauth2Userinfo,
         Oauth2UserinfoResponseOauth2UserinfoTypedDict,
-    )
-    from .oauth2client import (
-        GrantTypes,
-        OAuth2Client,
-        OAuth2ClientTypedDict,
-        TokenEndpointAuthMethod,
-    )
-    from .oauth2clientconfiguration import (
-        OAuth2ClientConfiguration,
-        OAuth2ClientConfigurationGrantTypes,
-        OAuth2ClientConfigurationTokenEndpointAuthMethod,
-        OAuth2ClientConfigurationTypedDict,
-    )
-    from .oauth2clientconfigurationupdate import (
-        OAuth2ClientConfigurationUpdate,
-        OAuth2ClientConfigurationUpdateGrantTypes,
-        OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod,
-        OAuth2ClientConfigurationUpdateTypedDict,
     )
     from .oauth2clientpublic import OAuth2ClientPublic, OAuth2ClientPublicTypedDict
     from .order import (
@@ -1771,6 +1729,10 @@ if TYPE_CHECKING:
         OrganizationFeatureSettings,
         OrganizationFeatureSettingsTypedDict,
     )
+    from .organizationnotificationsettings import (
+        OrganizationNotificationSettings,
+        OrganizationNotificationSettingsTypedDict,
+    )
     from .organizations_getop import (
         OrganizationsGetRequest,
         OrganizationsGetRequestTypedDict,
@@ -1800,9 +1762,9 @@ if TYPE_CHECKING:
     from .payment import Payment, PaymentTypedDict
     from .paymenterror import PaymentError, PaymentErrorData
     from .paymentmethodcard import PaymentMethodCard, PaymentMethodCardTypedDict
-    from .paymentmethodcarddata import (
-        PaymentMethodCardData,
-        PaymentMethodCardDataTypedDict,
+    from .paymentmethodcardmetadata import (
+        PaymentMethodCardMetadata,
+        PaymentMethodCardMetadataTypedDict,
     )
     from .paymentmethodgeneric import (
         PaymentMethodGeneric,
@@ -1830,6 +1792,7 @@ if TYPE_CHECKING:
     )
     from .paymentsortproperty import PaymentSortProperty
     from .paymentstatus import PaymentStatus
+    from .polarerror import PolarError
     from .product import (
         Prices,
         PricesTypedDict,
@@ -1937,6 +1900,7 @@ if TYPE_CHECKING:
     from .refundsortproperty import RefundSortProperty
     from .refundstatus import RefundStatus
     from .resourcenotfound import ResourceNotFound, ResourceNotFoundData
+    from .responsevalidationerror import ResponseValidationError
     from .revoketokenrequest import (
         RevokeTokenRequest,
         RevokeTokenRequestTypedDict,
@@ -2067,6 +2031,8 @@ if TYPE_CHECKING:
         ProductsListResponseTypedDict,
         QueryParamDiscountIDFilter,
         QueryParamDiscountIDFilterTypedDict,
+        QueryParamExternalCustomerIDFilter,
+        QueryParamExternalCustomerIDFilterTypedDict,
         QueryParamOrganizationIDFilter,
         QueryParamOrganizationIDFilterTypedDict,
         QueryParamProductIDFilter,
@@ -2504,11 +2470,14 @@ __all__ = [
     "BenefitsUpdateBenefitUpdateTypedDict",
     "BenefitsUpdateRequest",
     "BenefitsUpdateRequestTypedDict",
+    "BillingAddressFieldMode",
     "CardPayment",
     "CardPaymentMetadata",
     "CardPaymentMetadataTypedDict",
     "CardPaymentTypedDict",
     "Checkout",
+    "CheckoutBillingAddressFields",
+    "CheckoutBillingAddressFieldsTypedDict",
     "CheckoutConfirmStripe",
     "CheckoutConfirmStripeCustomFieldData",
     "CheckoutConfirmStripeCustomFieldDataTypedDict",
@@ -2523,8 +2492,6 @@ __all__ = [
     "CheckoutCreateTypedDict",
     "CheckoutCustomFieldData",
     "CheckoutCustomFieldDataTypedDict",
-    "CheckoutCustomerBillingAddressFields",
-    "CheckoutCustomerBillingAddressFieldsTypedDict",
     "CheckoutDiscount",
     "CheckoutDiscountFixedOnceForeverDuration",
     "CheckoutDiscountFixedOnceForeverDurationTypedDict",
@@ -2879,18 +2846,16 @@ __all__ = [
     "CustomerPortalCustomersDeletePaymentMethodRequestTypedDict",
     "CustomerPortalCustomersDeletePaymentMethodSecurity",
     "CustomerPortalCustomersDeletePaymentMethodSecurityTypedDict",
-    "CustomerPortalCustomersGetPaymentMethodsRequest",
-    "CustomerPortalCustomersGetPaymentMethodsRequestTypedDict",
-    "CustomerPortalCustomersGetPaymentMethodsResponse",
-    "CustomerPortalCustomersGetPaymentMethodsResponseTypedDict",
-    "CustomerPortalCustomersGetPaymentMethodsSecurity",
-    "CustomerPortalCustomersGetPaymentMethodsSecurityTypedDict",
     "CustomerPortalCustomersGetSecurity",
     "CustomerPortalCustomersGetSecurityTypedDict",
+    "CustomerPortalCustomersListPaymentMethodsRequest",
+    "CustomerPortalCustomersListPaymentMethodsRequestTypedDict",
+    "CustomerPortalCustomersListPaymentMethodsResponse",
+    "CustomerPortalCustomersListPaymentMethodsResponseTypedDict",
+    "CustomerPortalCustomersListPaymentMethodsSecurity",
+    "CustomerPortalCustomersListPaymentMethodsSecurityTypedDict",
     "CustomerPortalCustomersUpdateSecurity",
     "CustomerPortalCustomersUpdateSecurityTypedDict",
-    "CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest",
-    "CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequestTypedDict",
     "CustomerPortalDownloadablesListQueryParamBenefitIDFilter",
     "CustomerPortalDownloadablesListQueryParamBenefitIDFilterTypedDict",
     "CustomerPortalDownloadablesListQueryParamOrganizationIDFilter",
@@ -3168,6 +3133,8 @@ __all__ = [
     "EventsIngestTypedDict",
     "EventsListNamesQueryParamCustomerIDFilter",
     "EventsListNamesQueryParamCustomerIDFilterTypedDict",
+    "EventsListNamesQueryParamExternalCustomerIDFilter",
+    "EventsListNamesQueryParamExternalCustomerIDFilterTypedDict",
     "EventsListNamesQueryParamOrganizationIDFilter",
     "EventsListNamesQueryParamOrganizationIDFilterTypedDict",
     "EventsListNamesRequest",
@@ -3230,7 +3197,6 @@ __all__ = [
     "Func",
     "GenericPayment",
     "GenericPaymentTypedDict",
-    "GrantTypes",
     "HTTPValidationError",
     "HTTPValidationErrorData",
     "IntrospectTokenRequest",
@@ -3328,8 +3294,6 @@ __all__ = [
     "ListResourceLicenseKeyReadTypedDict",
     "ListResourceMeter",
     "ListResourceMeterTypedDict",
-    "ListResourceOAuth2Client",
-    "ListResourceOAuth2ClientTypedDict",
     "ListResourceOrder",
     "ListResourceOrderTypedDict",
     "ListResourceOrganization",
@@ -3469,36 +3433,17 @@ __all__ = [
     "NewSubscriptionsRevenue",
     "NewSubscriptionsRevenueTypedDict",
     "NewSubscriptionsTypedDict",
+    "NoResponseError",
     "NotOpenCheckout",
     "NotOpenCheckoutData",
     "NotPaidOrder",
     "NotPaidOrderData",
     "NotPermitted",
     "NotPermittedData",
-    "OAuth2Client",
-    "OAuth2ClientConfiguration",
-    "OAuth2ClientConfigurationGrantTypes",
-    "OAuth2ClientConfigurationTokenEndpointAuthMethod",
-    "OAuth2ClientConfigurationTypedDict",
-    "OAuth2ClientConfigurationUpdate",
-    "OAuth2ClientConfigurationUpdateGrantTypes",
-    "OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod",
-    "OAuth2ClientConfigurationUpdateTypedDict",
     "OAuth2ClientPublic",
     "OAuth2ClientPublicTypedDict",
-    "OAuth2ClientTypedDict",
     "Oauth2AuthorizeResponseOauth2Authorize",
     "Oauth2AuthorizeResponseOauth2AuthorizeTypedDict",
-    "Oauth2ClientsListRequest",
-    "Oauth2ClientsListRequestTypedDict",
-    "Oauth2ClientsListResponse",
-    "Oauth2ClientsListResponseTypedDict",
-    "Oauth2ClientsOauth2DeleteClientRequest",
-    "Oauth2ClientsOauth2DeleteClientRequestTypedDict",
-    "Oauth2ClientsOauth2GetClientRequest",
-    "Oauth2ClientsOauth2GetClientRequestTypedDict",
-    "Oauth2ClientsOauth2UpdateClientRequest",
-    "Oauth2ClientsOauth2UpdateClientRequestTypedDict",
     "Oauth2RequestTokenRequestBody",
     "Oauth2RequestTokenRequestBodyTypedDict",
     "Oauth2UserinfoResponseOauth2Userinfo",
@@ -3577,6 +3522,8 @@ __all__ = [
     "OrganizationIDFilter",
     "OrganizationIDFilterTypedDict",
     "OrganizationIDTypedDict",
+    "OrganizationNotificationSettings",
+    "OrganizationNotificationSettingsTypedDict",
     "OrganizationSocialLink",
     "OrganizationSocialLinkTypedDict",
     "OrganizationSocialPlatforms",
@@ -3600,8 +3547,8 @@ __all__ = [
     "PaymentError",
     "PaymentErrorData",
     "PaymentMethodCard",
-    "PaymentMethodCardData",
-    "PaymentMethodCardDataTypedDict",
+    "PaymentMethodCardMetadata",
+    "PaymentMethodCardMetadataTypedDict",
     "PaymentMethodCardTypedDict",
     "PaymentMethodGeneric",
     "PaymentMethodGenericTypedDict",
@@ -3622,6 +3569,7 @@ __all__ = [
     "PaymentsListResponse",
     "PaymentsListResponseTypedDict",
     "Permission",
+    "PolarError",
     "PreviousProperties",
     "PreviousPropertiesTypedDict",
     "Prices",
@@ -3754,6 +3702,7 @@ __all__ = [
     "RenewedSubscriptionsTypedDict",
     "ResourceNotFound",
     "ResourceNotFoundData",
+    "ResponseValidationError",
     "Revenue",
     "RevenueTypedDict",
     "RevokeTokenRequest",
@@ -3831,7 +3780,6 @@ __all__ = [
     "TaxIDTypedDict",
     "TimeInterval",
     "Timeframe",
-    "TokenEndpointAuthMethod",
     "TokenResponse",
     "TokenResponseTypedDict",
     "TokenType",
@@ -4157,6 +4105,7 @@ _dynamic_imports: dict[str, str] = {
     "BenefitType": ".benefittype",
     "BenefitUpdatedEvent": ".benefitupdatedevent",
     "BenefitUpdatedEventTypedDict": ".benefitupdatedevent",
+    "BillingAddressFieldMode": ".billingaddressfieldmode",
     "CardPayment": ".cardpayment",
     "CardPaymentTypedDict": ".cardpayment",
     "CardPaymentMetadata": ".cardpaymentmetadata",
@@ -4189,6 +4138,8 @@ _dynamic_imports: dict[str, str] = {
     "CheckoutLinksListResponseTypedDict": ".checkout_links_listop",
     "CheckoutLinksUpdateRequest": ".checkout_links_updateop",
     "CheckoutLinksUpdateRequestTypedDict": ".checkout_links_updateop",
+    "CheckoutBillingAddressFields": ".checkoutbillingaddressfields",
+    "CheckoutBillingAddressFieldsTypedDict": ".checkoutbillingaddressfields",
     "CheckoutConfirmStripe": ".checkoutconfirmstripe",
     "CheckoutConfirmStripeCustomFieldData": ".checkoutconfirmstripe",
     "CheckoutConfirmStripeCustomFieldDataTypedDict": ".checkoutconfirmstripe",
@@ -4201,8 +4152,6 @@ _dynamic_imports: dict[str, str] = {
     "CheckoutCreateMetadata": ".checkoutcreate",
     "CheckoutCreateMetadataTypedDict": ".checkoutcreate",
     "CheckoutCreateTypedDict": ".checkoutcreate",
-    "CheckoutCustomerBillingAddressFields": ".checkoutcustomerbillingaddressfields",
-    "CheckoutCustomerBillingAddressFieldsTypedDict": ".checkoutcustomerbillingaddressfields",
     "CheckoutDiscountFixedOnceForeverDuration": ".checkoutdiscountfixedonceforeverduration",
     "CheckoutDiscountFixedOnceForeverDurationTypedDict": ".checkoutdiscountfixedonceforeverduration",
     "CheckoutDiscountFixedRepeatDuration": ".checkoutdiscountfixedrepeatduration",
@@ -4380,18 +4329,16 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalCustomersDeletePaymentMethodRequestTypedDict": ".customer_portal_customers_delete_payment_methodop",
     "CustomerPortalCustomersDeletePaymentMethodSecurity": ".customer_portal_customers_delete_payment_methodop",
     "CustomerPortalCustomersDeletePaymentMethodSecurityTypedDict": ".customer_portal_customers_delete_payment_methodop",
-    "CustomerPortalCustomersGetPaymentMethodsRequest": ".customer_portal_customers_get_payment_methodsop",
-    "CustomerPortalCustomersGetPaymentMethodsRequestTypedDict": ".customer_portal_customers_get_payment_methodsop",
-    "CustomerPortalCustomersGetPaymentMethodsResponse": ".customer_portal_customers_get_payment_methodsop",
-    "CustomerPortalCustomersGetPaymentMethodsResponseTypedDict": ".customer_portal_customers_get_payment_methodsop",
-    "CustomerPortalCustomersGetPaymentMethodsSecurity": ".customer_portal_customers_get_payment_methodsop",
-    "CustomerPortalCustomersGetPaymentMethodsSecurityTypedDict": ".customer_portal_customers_get_payment_methodsop",
     "CustomerPortalCustomersGetSecurity": ".customer_portal_customers_getop",
     "CustomerPortalCustomersGetSecurityTypedDict": ".customer_portal_customers_getop",
+    "CustomerPortalCustomersListPaymentMethodsRequest": ".customer_portal_customers_list_payment_methodsop",
+    "CustomerPortalCustomersListPaymentMethodsRequestTypedDict": ".customer_portal_customers_list_payment_methodsop",
+    "CustomerPortalCustomersListPaymentMethodsResponse": ".customer_portal_customers_list_payment_methodsop",
+    "CustomerPortalCustomersListPaymentMethodsResponseTypedDict": ".customer_portal_customers_list_payment_methodsop",
+    "CustomerPortalCustomersListPaymentMethodsSecurity": ".customer_portal_customers_list_payment_methodsop",
+    "CustomerPortalCustomersListPaymentMethodsSecurityTypedDict": ".customer_portal_customers_list_payment_methodsop",
     "CustomerPortalCustomersUpdateSecurity": ".customer_portal_customers_updateop",
     "CustomerPortalCustomersUpdateSecurityTypedDict": ".customer_portal_customers_updateop",
-    "CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequest": ".customer_portal_downloadables_customer_portal_downloadables_getop",
-    "CustomerPortalDownloadablesCustomerPortalDownloadablesGetRequestTypedDict": ".customer_portal_downloadables_customer_portal_downloadables_getop",
     "CustomerPortalDownloadablesListQueryParamBenefitIDFilter": ".customer_portal_downloadables_listop",
     "CustomerPortalDownloadablesListQueryParamBenefitIDFilterTypedDict": ".customer_portal_downloadables_listop",
     "CustomerPortalDownloadablesListQueryParamOrganizationIDFilter": ".customer_portal_downloadables_listop",
@@ -4803,14 +4750,14 @@ _dynamic_imports: dict[str, str] = {
     "EventsGetRequestTypedDict": ".events_getop",
     "EventsListNamesQueryParamCustomerIDFilter": ".events_list_namesop",
     "EventsListNamesQueryParamCustomerIDFilterTypedDict": ".events_list_namesop",
+    "EventsListNamesQueryParamExternalCustomerIDFilter": ".events_list_namesop",
+    "EventsListNamesQueryParamExternalCustomerIDFilterTypedDict": ".events_list_namesop",
     "EventsListNamesQueryParamOrganizationIDFilter": ".events_list_namesop",
     "EventsListNamesQueryParamOrganizationIDFilterTypedDict": ".events_list_namesop",
     "EventsListNamesRequest": ".events_list_namesop",
     "EventsListNamesRequestTypedDict": ".events_list_namesop",
     "EventsListNamesResponse": ".events_list_namesop",
     "EventsListNamesResponseTypedDict": ".events_list_namesop",
-    "QueryParamExternalCustomerIDFilter": ".events_list_namesop",
-    "QueryParamExternalCustomerIDFilterTypedDict": ".events_list_namesop",
     "QueryParamSourceFilter": ".events_list_namesop",
     "QueryParamSourceFilterTypedDict": ".events_list_namesop",
     "EventsIngest": ".eventsingest",
@@ -4967,8 +4914,6 @@ _dynamic_imports: dict[str, str] = {
     "ListResourceLicenseKeyReadTypedDict": ".listresource_licensekeyread_",
     "ListResourceMeter": ".listresource_meter_",
     "ListResourceMeterTypedDict": ".listresource_meter_",
-    "ListResourceOAuth2Client": ".listresource_oauth2client_",
-    "ListResourceOAuth2ClientTypedDict": ".listresource_oauth2client_",
     "ListResourceOrder": ".listresource_order_",
     "ListResourceOrderTypedDict": ".listresource_order_",
     "ListResourceOrganization": ".listresource_organization_",
@@ -5111,6 +5056,7 @@ _dynamic_imports: dict[str, str] = {
     "MetricType": ".metrictype",
     "MissingInvoiceBillingDetails": ".missinginvoicebillingdetails",
     "MissingInvoiceBillingDetailsData": ".missinginvoicebillingdetails",
+    "NoResponseError": ".no_response_error",
     "NotOpenCheckout": ".notopencheckout",
     "NotOpenCheckoutData": ".notopencheckout",
     "NotPaidOrder": ".notpaidorder",
@@ -5119,32 +5065,10 @@ _dynamic_imports: dict[str, str] = {
     "NotPermittedData": ".notpermitted",
     "Oauth2AuthorizeResponseOauth2Authorize": ".oauth2_authorizeop",
     "Oauth2AuthorizeResponseOauth2AuthorizeTypedDict": ".oauth2_authorizeop",
-    "Oauth2ClientsListRequest": ".oauth2_clients_listop",
-    "Oauth2ClientsListRequestTypedDict": ".oauth2_clients_listop",
-    "Oauth2ClientsListResponse": ".oauth2_clients_listop",
-    "Oauth2ClientsListResponseTypedDict": ".oauth2_clients_listop",
-    "Oauth2ClientsOauth2DeleteClientRequest": ".oauth2_clients_oauth2_delete_clientop",
-    "Oauth2ClientsOauth2DeleteClientRequestTypedDict": ".oauth2_clients_oauth2_delete_clientop",
-    "Oauth2ClientsOauth2GetClientRequest": ".oauth2_clients_oauth2_get_clientop",
-    "Oauth2ClientsOauth2GetClientRequestTypedDict": ".oauth2_clients_oauth2_get_clientop",
-    "Oauth2ClientsOauth2UpdateClientRequest": ".oauth2_clients_oauth2_update_clientop",
-    "Oauth2ClientsOauth2UpdateClientRequestTypedDict": ".oauth2_clients_oauth2_update_clientop",
     "Oauth2RequestTokenRequestBody": ".oauth2_request_tokenop",
     "Oauth2RequestTokenRequestBodyTypedDict": ".oauth2_request_tokenop",
     "Oauth2UserinfoResponseOauth2Userinfo": ".oauth2_userinfoop",
     "Oauth2UserinfoResponseOauth2UserinfoTypedDict": ".oauth2_userinfoop",
-    "GrantTypes": ".oauth2client",
-    "OAuth2Client": ".oauth2client",
-    "OAuth2ClientTypedDict": ".oauth2client",
-    "TokenEndpointAuthMethod": ".oauth2client",
-    "OAuth2ClientConfiguration": ".oauth2clientconfiguration",
-    "OAuth2ClientConfigurationGrantTypes": ".oauth2clientconfiguration",
-    "OAuth2ClientConfigurationTokenEndpointAuthMethod": ".oauth2clientconfiguration",
-    "OAuth2ClientConfigurationTypedDict": ".oauth2clientconfiguration",
-    "OAuth2ClientConfigurationUpdate": ".oauth2clientconfigurationupdate",
-    "OAuth2ClientConfigurationUpdateGrantTypes": ".oauth2clientconfigurationupdate",
-    "OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod": ".oauth2clientconfigurationupdate",
-    "OAuth2ClientConfigurationUpdateTypedDict": ".oauth2clientconfigurationupdate",
     "OAuth2ClientPublic": ".oauth2clientpublic",
     "OAuth2ClientPublicTypedDict": ".oauth2clientpublic",
     "Order": ".order",
@@ -5201,6 +5125,8 @@ _dynamic_imports: dict[str, str] = {
     "SwitchingFrom": ".organizationdetails",
     "OrganizationFeatureSettings": ".organizationfeaturesettings",
     "OrganizationFeatureSettingsTypedDict": ".organizationfeaturesettings",
+    "OrganizationNotificationSettings": ".organizationnotificationsettings",
+    "OrganizationNotificationSettingsTypedDict": ".organizationnotificationsettings",
     "OrganizationsGetRequest": ".organizations_getop",
     "OrganizationsGetRequestTypedDict": ".organizations_getop",
     "OrganizationsListRequest": ".organizations_listop",
@@ -5225,8 +5151,8 @@ _dynamic_imports: dict[str, str] = {
     "PaymentErrorData": ".paymenterror",
     "PaymentMethodCard": ".paymentmethodcard",
     "PaymentMethodCardTypedDict": ".paymentmethodcard",
-    "PaymentMethodCardData": ".paymentmethodcarddata",
-    "PaymentMethodCardDataTypedDict": ".paymentmethodcarddata",
+    "PaymentMethodCardMetadata": ".paymentmethodcardmetadata",
+    "PaymentMethodCardMetadataTypedDict": ".paymentmethodcardmetadata",
     "PaymentMethodGeneric": ".paymentmethodgeneric",
     "PaymentMethodGenericTypedDict": ".paymentmethodgeneric",
     "PaymentProcessor": ".paymentprocessor",
@@ -5250,6 +5176,7 @@ _dynamic_imports: dict[str, str] = {
     "QueryParamStatusFilterTypedDict": ".payments_listop",
     "PaymentSortProperty": ".paymentsortproperty",
     "PaymentStatus": ".paymentstatus",
+    "PolarError": ".polarerror",
     "Prices": ".product",
     "PricesTypedDict": ".product",
     "Product": ".product",
@@ -5341,6 +5268,7 @@ _dynamic_imports: dict[str, str] = {
     "RefundStatus": ".refundstatus",
     "ResourceNotFound": ".resourcenotfound",
     "ResourceNotFoundData": ".resourcenotfound",
+    "ResponseValidationError": ".responsevalidationerror",
     "RevokeTokenRequest": ".revoketokenrequest",
     "RevokeTokenRequestTypedDict": ".revoketokenrequest",
     "TokenTypeHint": ".revoketokenrequest",
@@ -5462,6 +5390,8 @@ _dynamic_imports: dict[str, str] = {
     "ProductsListResponseTypedDict": ".subscriptions_listop",
     "QueryParamDiscountIDFilter": ".subscriptions_listop",
     "QueryParamDiscountIDFilterTypedDict": ".subscriptions_listop",
+    "QueryParamExternalCustomerIDFilter": ".subscriptions_listop",
+    "QueryParamExternalCustomerIDFilterTypedDict": ".subscriptions_listop",
     "QueryParamOrganizationIDFilter": ".subscriptions_listop",
     "QueryParamOrganizationIDFilterTypedDict": ".subscriptions_listop",
     "QueryParamProductIDFilter": ".subscriptions_listop",

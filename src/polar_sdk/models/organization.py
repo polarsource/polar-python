@@ -5,6 +5,10 @@ from .organizationfeaturesettings import (
     OrganizationFeatureSettings,
     OrganizationFeatureSettingsTypedDict,
 )
+from .organizationnotificationsettings import (
+    OrganizationNotificationSettings,
+    OrganizationNotificationSettingsTypedDict,
+)
 from .organizationsociallink import (
     OrganizationSocialLink,
     OrganizationSocialLinkTypedDict,
@@ -44,6 +48,7 @@ class OrganizationTypedDict(TypedDict):
     feature_settings: Nullable[OrganizationFeatureSettingsTypedDict]
     r"""Organization feature settings"""
     subscription_settings: OrganizationSubscriptionSettingsTypedDict
+    notification_settings: OrganizationNotificationSettingsTypedDict
 
 
 class Organization(BaseModel):
@@ -81,6 +86,8 @@ class Organization(BaseModel):
     r"""Organization feature settings"""
 
     subscription_settings: OrganizationSubscriptionSettings
+
+    notification_settings: OrganizationNotificationSettings
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
