@@ -1,4 +1,4 @@
-# Items
+# CustomerPaymentMethod
 
 
 ## Supported Types

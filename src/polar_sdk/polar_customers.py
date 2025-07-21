@@ -493,8 +493,7 @@ class PolarCustomers(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.CustomerPortalCustomersListPaymentMethodsResponse(
                 result=unmarshal_json_response(
-                    models.ListResourceUnionPaymentMethodCardPaymentMethodGeneric,
-                    http_res,
+                    models.ListResourceCustomerPaymentMethod, http_res
                 ),
                 next=next_func,
             )
@@ -625,8 +624,7 @@ class PolarCustomers(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return models.CustomerPortalCustomersListPaymentMethodsResponse(
                 result=unmarshal_json_response(
-                    models.ListResourceUnionPaymentMethodCardPaymentMethodGeneric,
-                    http_res,
+                    models.ListResourceCustomerPaymentMethod, http_res
                 ),
                 next=next_func,
             )
@@ -659,7 +657,7 @@ class PolarCustomers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethod:
+    ) -> models.CustomerPaymentMethod:
         r"""Add Customer Payment Method
 
         Add a payment method to the authenticated customer.
@@ -731,10 +729,7 @@ class PolarCustomers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(
-                models.CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethod,
-                http_res,
-            )
+            return unmarshal_json_response(models.CustomerPaymentMethod, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -764,7 +759,7 @@ class PolarCustomers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethod:
+    ) -> models.CustomerPaymentMethod:
         r"""Add Customer Payment Method
 
         Add a payment method to the authenticated customer.
@@ -836,10 +831,7 @@ class PolarCustomers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(
-                models.CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethod,
-                http_res,
-            )
+            return unmarshal_json_response(models.CustomerPaymentMethod, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res

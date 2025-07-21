@@ -633,8 +633,6 @@ if TYPE_CHECKING:
         MeterIDFilterTypedDict,
     )
     from .customer_portal_customers_add_payment_methodop import (
-        CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethod,
-        CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethodTypedDict,
         CustomerPortalCustomersAddPaymentMethodSecurity,
         CustomerPortalCustomersAddPaymentMethodSecurityTypedDict,
     )
@@ -873,6 +871,10 @@ if TYPE_CHECKING:
     from .customerorganization import (
         CustomerOrganization,
         CustomerOrganizationTypedDict,
+    )
+    from .customerpaymentmethod import (
+        CustomerPaymentMethod,
+        CustomerPaymentMethodTypedDict,
     )
     from .customerpaymentmethodcreate import (
         CustomerPaymentMethodCreate,
@@ -1458,6 +1460,10 @@ if TYPE_CHECKING:
         ListResourceCustomerOrder,
         ListResourceCustomerOrderTypedDict,
     )
+    from .listresource_customerpaymentmethod_ import (
+        ListResourceCustomerPaymentMethod,
+        ListResourceCustomerPaymentMethodTypedDict,
+    )
     from .listresource_customersubscription_ import (
         ListResourceCustomerSubscription,
         ListResourceCustomerSubscriptionTypedDict,
@@ -1500,12 +1506,6 @@ if TYPE_CHECKING:
     from .listresource_subscription_ import (
         ListResourceSubscription,
         ListResourceSubscriptionTypedDict,
-    )
-    from .listresource_union_paymentmethodcard_paymentmethodgeneric_ import (
-        Items,
-        ItemsTypedDict,
-        ListResourceUnionPaymentMethodCardPaymentMethodGeneric,
-        ListResourceUnionPaymentMethodCardPaymentMethodGenericTypedDict,
     )
     from .listresource_webhookdelivery_ import (
         ListResourceWebhookDelivery,
@@ -2212,6 +2212,10 @@ if TYPE_CHECKING:
         WebhooksRedeliverWebhookEventRequest,
         WebhooksRedeliverWebhookEventRequestTypedDict,
     )
+    from .webhooks_reset_webhook_endpoint_secretop import (
+        WebhooksResetWebhookEndpointSecretRequest,
+        WebhooksResetWebhookEndpointSecretRequestTypedDict,
+    )
     from .webhooks_update_webhook_endpointop import (
         WebhooksUpdateWebhookEndpointRequest,
         WebhooksUpdateWebhookEndpointRequestTypedDict,
@@ -2802,8 +2806,10 @@ __all__ = [
     "CustomerOrderUpdateTypedDict",
     "CustomerOrganization",
     "CustomerOrganizationTypedDict",
+    "CustomerPaymentMethod",
     "CustomerPaymentMethodCreate",
     "CustomerPaymentMethodCreateTypedDict",
+    "CustomerPaymentMethodTypedDict",
     "CustomerPortalBenefitGrantsGetRequest",
     "CustomerPortalBenefitGrantsGetRequestTypedDict",
     "CustomerPortalBenefitGrantsGetSecurity",
@@ -2838,8 +2844,6 @@ __all__ = [
     "CustomerPortalCustomerTypedDict",
     "CustomerPortalCustomerUpdate",
     "CustomerPortalCustomerUpdateTypedDict",
-    "CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethod",
-    "CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethodTypedDict",
     "CustomerPortalCustomersAddPaymentMethodSecurity",
     "CustomerPortalCustomersAddPaymentMethodSecurityTypedDict",
     "CustomerPortalCustomersDeletePaymentMethodRequest",
@@ -3206,8 +3210,6 @@ __all__ = [
     "IntrospectTokenResponseTypedDict",
     "InvoiceAlreadyExists",
     "InvoiceAlreadyExistsData",
-    "Items",
-    "ItemsTypedDict",
     "LegacyRecurringProductPrice",
     "LegacyRecurringProductPriceCustom",
     "LegacyRecurringProductPriceCustomTypedDict",
@@ -3277,6 +3279,8 @@ __all__ = [
     "ListResourceCustomerMeterTypedDict",
     "ListResourceCustomerOrder",
     "ListResourceCustomerOrderTypedDict",
+    "ListResourceCustomerPaymentMethod",
+    "ListResourceCustomerPaymentMethodTypedDict",
     "ListResourceCustomerSubscription",
     "ListResourceCustomerSubscriptionTypedDict",
     "ListResourceCustomerTypedDict",
@@ -3305,8 +3309,6 @@ __all__ = [
     "ListResourceSubscription",
     "ListResourceSubscriptionTypedDict",
     "ListResourceTypedDict",
-    "ListResourceUnionPaymentMethodCardPaymentMethodGeneric",
-    "ListResourceUnionPaymentMethodCardPaymentMethodGenericTypedDict",
     "ListResourceWebhookDelivery",
     "ListResourceWebhookDeliveryTypedDict",
     "ListResourceWebhookEndpoint",
@@ -3882,6 +3884,8 @@ __all__ = [
     "WebhooksListWebhookEndpointsResponseTypedDict",
     "WebhooksRedeliverWebhookEventRequest",
     "WebhooksRedeliverWebhookEventRequestTypedDict",
+    "WebhooksResetWebhookEndpointSecretRequest",
+    "WebhooksResetWebhookEndpointSecretRequestTypedDict",
     "WebhooksUpdateWebhookEndpointRequest",
     "WebhooksUpdateWebhookEndpointRequestTypedDict",
 ]
@@ -4321,8 +4325,6 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalCustomerMetersListSecurityTypedDict": ".customer_portal_customer_meters_listop",
     "MeterIDFilter": ".customer_portal_customer_meters_listop",
     "MeterIDFilterTypedDict": ".customer_portal_customer_meters_listop",
-    "CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethod": ".customer_portal_customers_add_payment_methodop",
-    "CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethodTypedDict": ".customer_portal_customers_add_payment_methodop",
     "CustomerPortalCustomersAddPaymentMethodSecurity": ".customer_portal_customers_add_payment_methodop",
     "CustomerPortalCustomersAddPaymentMethodSecurityTypedDict": ".customer_portal_customers_add_payment_methodop",
     "CustomerPortalCustomersDeletePaymentMethodRequest": ".customer_portal_customers_delete_payment_methodop",
@@ -4482,6 +4484,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerOrderUpdateTypedDict": ".customerorderupdate",
     "CustomerOrganization": ".customerorganization",
     "CustomerOrganizationTypedDict": ".customerorganization",
+    "CustomerPaymentMethod": ".customerpaymentmethod",
+    "CustomerPaymentMethodTypedDict": ".customerpaymentmethod",
     "CustomerPaymentMethodCreate": ".customerpaymentmethodcreate",
     "CustomerPaymentMethodCreateTypedDict": ".customerpaymentmethodcreate",
     "CustomerPortalCustomer": ".customerportalcustomer",
@@ -4894,6 +4898,8 @@ _dynamic_imports: dict[str, str] = {
     "ListResourceCustomerMeterTypedDict": ".listresource_customermeter_",
     "ListResourceCustomerOrder": ".listresource_customerorder_",
     "ListResourceCustomerOrderTypedDict": ".listresource_customerorder_",
+    "ListResourceCustomerPaymentMethod": ".listresource_customerpaymentmethod_",
+    "ListResourceCustomerPaymentMethodTypedDict": ".listresource_customerpaymentmethod_",
     "ListResourceCustomerSubscription": ".listresource_customersubscription_",
     "ListResourceCustomerSubscriptionTypedDict": ".listresource_customersubscription_",
     "ListResourceCustomField": ".listresource_customfield_",
@@ -4924,10 +4930,6 @@ _dynamic_imports: dict[str, str] = {
     "ListResourceRefundTypedDict": ".listresource_refund_",
     "ListResourceSubscription": ".listresource_subscription_",
     "ListResourceSubscriptionTypedDict": ".listresource_subscription_",
-    "Items": ".listresource_union_paymentmethodcard_paymentmethodgeneric_",
-    "ItemsTypedDict": ".listresource_union_paymentmethodcard_paymentmethodgeneric_",
-    "ListResourceUnionPaymentMethodCardPaymentMethodGeneric": ".listresource_union_paymentmethodcard_paymentmethodgeneric_",
-    "ListResourceUnionPaymentMethodCardPaymentMethodGenericTypedDict": ".listresource_union_paymentmethodcard_paymentmethodgeneric_",
     "ListResourceWebhookDelivery": ".listresource_webhookdelivery_",
     "ListResourceWebhookDeliveryTypedDict": ".listresource_webhookdelivery_",
     "ListResourceWebhookEndpoint": ".listresource_webhookendpoint_",
@@ -5509,6 +5511,8 @@ _dynamic_imports: dict[str, str] = {
     "WebhooksListWebhookEndpointsResponseTypedDict": ".webhooks_list_webhook_endpointsop",
     "WebhooksRedeliverWebhookEventRequest": ".webhooks_redeliver_webhook_eventop",
     "WebhooksRedeliverWebhookEventRequestTypedDict": ".webhooks_redeliver_webhook_eventop",
+    "WebhooksResetWebhookEndpointSecretRequest": ".webhooks_reset_webhook_endpoint_secretop",
+    "WebhooksResetWebhookEndpointSecretRequestTypedDict": ".webhooks_reset_webhook_endpoint_secretop",
     "WebhooksUpdateWebhookEndpointRequest": ".webhooks_update_webhook_endpointop",
     "WebhooksUpdateWebhookEndpointRequestTypedDict": ".webhooks_update_webhook_endpointop",
     "WebhookSubscriptionActivePayload": ".webhooksubscriptionactivepayload",
