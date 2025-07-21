@@ -183,7 +183,7 @@ with Polar() as polar:
 
 ### Response
 
-**[models.CustomerPortalCustomersAddPaymentMethodResponseCustomerPortalCustomersAddPaymentMethod](../../models/customerportalcustomersaddpaymentmethodresponsecustomerportalcustomersaddpaymentmethod.md)**
+**[models.CustomerPaymentMethod](../../models/customerpaymentmethod.md)**
 
 ### Errors
 

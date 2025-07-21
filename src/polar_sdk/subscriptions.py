@@ -547,7 +547,7 @@ class Subscriptions(BaseSDK):
 
         Get a subscription by ID.
 
-        **Scopes**: `subscriptions:write`
+        **Scopes**: `subscriptions:read` `subscriptions:write`
 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
@@ -641,7 +641,7 @@ class Subscriptions(BaseSDK):
 
         Get a subscription by ID.
 
-        **Scopes**: `subscriptions:write`
+        **Scopes**: `subscriptions:read` `subscriptions:write`
 
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method

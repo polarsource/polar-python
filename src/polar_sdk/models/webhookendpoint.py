@@ -23,6 +23,8 @@ class WebhookEndpointTypedDict(TypedDict):
     url: str
     r"""The URL where the webhook events will be sent."""
     format_: WebhookFormat
+    secret: str
+    r"""The secret used to sign the webhook events."""
     organization_id: str
     r"""The organization ID associated with the webhook endpoint."""
     events: List[WebhookEventType]
@@ -45,6 +47,9 @@ class WebhookEndpoint(BaseModel):
     r"""The URL where the webhook events will be sent."""
 
     format_: Annotated[WebhookFormat, pydantic.Field(alias="format")]
+
+    secret: str
+    r"""The secret used to sign the webhook events."""
 
     organization_id: str
     r"""The organization ID associated with the webhook endpoint."""

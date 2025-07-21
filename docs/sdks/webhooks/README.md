@@ -10,6 +10,7 @@
 * [get_webhook_endpoint](#get_webhook_endpoint) - Get Webhook Endpoint
 * [update_webhook_endpoint](#update_webhook_endpoint) - Update Webhook Endpoint
 * [delete_webhook_endpoint](#delete_webhook_endpoint) - Delete Webhook Endpoint
+* [reset_webhook_endpoint_secret](#reset_webhook_endpoint_secret) - Reset Webhook Endpoint Secret
 * [list_webhook_deliveries](#list_webhook_deliveries) - List Webhook Deliveries
 * [redeliver_webhook_event](#redeliver_webhook_event) - Redeliver Webhook Event
 
@@ -78,7 +79,6 @@ with Polar(
     res = polar.webhooks.create_webhook_endpoint(request={
         "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0",
         "format_": polar_sdk.WebhookFormat.SLACK,
-        "secret": "f_z6mfSpxkjogyw3FkA2aH2gYE5huxruNf34MpdWMcA",
         "events": [
             polar_sdk.WebhookEventType.SUBSCRIPTION_UNCANCELED,
         ],
@@ -168,7 +168,6 @@ with Polar(
 
     res = polar.webhooks.update_webhook_endpoint(id="<value>", webhook_endpoint_update={
         "url": "https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0",
-        "secret": "f_z6mfSpxkjogyw3FkA2aH2gYE5huxruNf34MpdWMcA",
     })
 
     # Handle response
@@ -224,6 +223,48 @@ with Polar(
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The webhook endpoint ID.                                            |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## reset_webhook_endpoint_secret
+
+Regenerate a webhook endpoint secret.
+
+**Scopes**: `webhooks:write`
+
+### Example Usage
+
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.webhooks.reset_webhook_endpoint_secret(id="<value>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The webhook endpoint ID.                                            |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.WebhookEndpoint](../../models/webhookendpoint.md)**
 
 ### Errors
 
