@@ -15,3 +15,9 @@ value: models.AlreadyActiveSubscriptionError = /* values here */
 value: models.NotOpenCheckout = /* values here */
 ```
 
+### `models.PaymentNotReady`
+
+```python
+value: models.PaymentNotReady = /* values here */
+```
+

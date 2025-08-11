@@ -21,6 +21,7 @@ List checkout sessions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="checkouts:list" method="get" path="/v1/checkouts/" -->
 ```python
 from polar_sdk import Polar
 
@@ -71,6 +72,7 @@ Create a checkout session.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="checkouts:create" method="post" path="/v1/checkouts/" -->
 ```python
 from polar_sdk import Polar
 
@@ -121,6 +123,7 @@ Get a checkout session by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="checkouts:get" method="get" path="/v1/checkouts/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -163,6 +166,7 @@ Update a checkout session.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="checkouts:update" method="patch" path="/v1/checkouts/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -200,6 +204,7 @@ with Polar(
 | ------------------------------------- | ------------------------------------- | ------------------------------------- |
 | models.AlreadyActiveSubscriptionError | 403                                   | application/json                      |
 | models.NotOpenCheckout                | 403                                   | application/json                      |
+| models.PaymentNotReady                | 403                                   | application/json                      |
 | models.ResourceNotFound               | 404                                   | application/json                      |
 | models.HTTPValidationError            | 422                                   | application/json                      |
 | models.SDKError                       | 4XX, 5XX                              | \*/\*                                 |
@@ -210,6 +215,7 @@ Get a checkout session by client secret.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="checkouts:client_get" method="get" path="/v1/checkouts/client/{client_secret}" -->
 ```python
 from polar_sdk import Polar
 
@@ -251,6 +257,7 @@ Update a checkout session by client secret.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="checkouts:client_update" method="patch" path="/v1/checkouts/client/{client_secret}" -->
 ```python
 from polar_sdk import Polar
 
@@ -286,6 +293,7 @@ with Polar(
 | ------------------------------------- | ------------------------------------- | ------------------------------------- |
 | models.AlreadyActiveSubscriptionError | 403                                   | application/json                      |
 | models.NotOpenCheckout                | 403                                   | application/json                      |
+| models.PaymentNotReady                | 403                                   | application/json                      |
 | models.ResourceNotFound               | 404                                   | application/json                      |
 | models.ExpiredCheckoutError           | 410                                   | application/json                      |
 | models.HTTPValidationError            | 422                                   | application/json                      |
@@ -299,6 +307,7 @@ Orders and subscriptions will be processed.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="checkouts:client_confirm" method="post" path="/v1/checkouts/client/{client_secret}/confirm" -->
 ```python
 from polar_sdk import Polar
 
@@ -337,6 +346,7 @@ with Polar(
 | models.PaymentError                   | 400                                   | application/json                      |
 | models.AlreadyActiveSubscriptionError | 403                                   | application/json                      |
 | models.NotOpenCheckout                | 403                                   | application/json                      |
+| models.PaymentNotReady                | 403                                   | application/json                      |
 | models.ResourceNotFound               | 404                                   | application/json                      |
 | models.ExpiredCheckoutError           | 410                                   | application/json                      |
 | models.HTTPValidationError            | 422                                   | application/json                      |

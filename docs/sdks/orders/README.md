@@ -19,6 +19,7 @@ List orders.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="orders:list" method="get" path="/v1/orders/" -->
 ```python
 from polar_sdk import Polar
 
@@ -71,6 +72,7 @@ Get an order by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="orders:get" method="get" path="/v1/orders/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -113,6 +115,7 @@ Update an order.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="orders:update" method="patch" path="/v1/orders/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -161,6 +164,7 @@ Trigger generation of an order's invoice.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="orders:generate_invoice" method="post" path="/v1/orders/{id}/invoice" -->
 ```python
 from polar_sdk import Polar
 
@@ -204,6 +208,7 @@ Get an order's invoice data.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="orders:invoice" method="get" path="/v1/orders/{id}/invoice" -->
 ```python
 from polar_sdk import Polar
 

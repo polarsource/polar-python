@@ -11,11 +11,11 @@ from .orderbillingreason import OrderBillingReason
 from .orderitemschema import OrderItemSchema, OrderItemSchemaTypedDict
 from .orderstatus import OrderStatus
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
 from typing import List
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CustomerOrderTypedDict(TypedDict):
@@ -61,6 +61,8 @@ class CustomerOrderTypedDict(TypedDict):
     subscription: Nullable[CustomerOrderSubscriptionTypedDict]
     items: List[OrderItemSchemaTypedDict]
     r"""Line items composing the order."""
+    next_payment_attempt_at: NotRequired[Nullable[datetime]]
+    r"""When the next payment retry is scheduled"""
 
 
 class CustomerOrder(BaseModel):
@@ -143,9 +145,12 @@ class CustomerOrder(BaseModel):
     items: List[OrderItemSchema]
     r"""Line items composing the order."""
 
+    next_payment_attempt_at: OptionalNullable[datetime] = UNSET
+    r"""When the next payment retry is scheduled"""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["next_payment_attempt_at"]
         nullable_fields = [
             "modified_at",
             "billing_name",
@@ -154,6 +159,7 @@ class CustomerOrder(BaseModel):
             "subscription_id",
             "checkout_id",
             "subscription",
+            "next_payment_attempt_at",
         ]
         null_default_fields = []
 

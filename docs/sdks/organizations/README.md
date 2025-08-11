@@ -18,6 +18,7 @@ List organizations.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="organizations:list" method="get" path="/v1/organizations/" -->
 ```python
 from polar_sdk import Polar
 
@@ -64,6 +65,7 @@ Create an organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="organizations:create" method="post" path="/v1/organizations/" -->
 ```python
 from polar_sdk import Polar
 
@@ -108,6 +110,7 @@ Get an organization by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="organizations:get" method="get" path="/v1/organizations/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -150,6 +153,7 @@ Update an organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="organizations:update" method="patch" path="/v1/organizations/{id}" -->
 ```python
 from polar_sdk import Polar
 

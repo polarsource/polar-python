@@ -3,6 +3,7 @@
 from .filter_ import Clauses, ClausesTypedDict, Filter, FilterTypedDict
 from typing import TYPE_CHECKING
 from importlib import import_module
+import builtins
 
 if TYPE_CHECKING:
     from .address import Address, AddressTypedDict
@@ -721,6 +722,12 @@ if TYPE_CHECKING:
         CustomerPortalOrdersListResponseTypedDict,
         CustomerPortalOrdersListSecurity,
         CustomerPortalOrdersListSecurityTypedDict,
+    )
+    from .customer_portal_orders_retry_paymentop import (
+        CustomerPortalOrdersRetryPaymentRequest,
+        CustomerPortalOrdersRetryPaymentRequestTypedDict,
+        CustomerPortalOrdersRetryPaymentSecurity,
+        CustomerPortalOrdersRetryPaymentSecurityTypedDict,
     )
     from .customer_portal_orders_updateop import (
         CustomerPortalOrdersUpdateRequest,
@@ -1561,6 +1568,8 @@ if TYPE_CHECKING:
         CheckoutsConversionTypedDict,
         CheckoutsModel,
         CheckoutsModelTypedDict,
+        CommittedMonthlyRecurringRevenue,
+        CommittedMonthlyRecurringRevenueTypedDict,
         CumulativeRevenue,
         CumulativeRevenueTypedDict,
         MetricPeriod,
@@ -1619,6 +1628,8 @@ if TYPE_CHECKING:
         MetricsTotalsCheckoutsConversion,
         MetricsTotalsCheckoutsConversionTypedDict,
         MetricsTotalsCheckoutsTypedDict,
+        MetricsTotalsCommittedMonthlyRecurringRevenue,
+        MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict,
         MetricsTotalsCumulativeRevenue,
         MetricsTotalsCumulativeRevenueTypedDict,
         MetricsTotalsMonthlyRecurringRevenue,
@@ -1686,6 +1697,10 @@ if TYPE_CHECKING:
     )
     from .orderinvoice import OrderInvoice, OrderInvoiceTypedDict
     from .orderitemschema import OrderItemSchema, OrderItemSchemaTypedDict
+    from .ordernoteligibleforretry import (
+        OrderNotEligibleForRetry,
+        OrderNotEligibleForRetryData,
+    )
     from .orderproduct import (
         OrderProduct,
         OrderProductMetadata,
@@ -1760,6 +1775,10 @@ if TYPE_CHECKING:
     from .organizationupdate import OrganizationUpdate, OrganizationUpdateTypedDict
     from .pagination import Pagination, PaginationTypedDict
     from .payment import Payment, PaymentTypedDict
+    from .paymentalreadyinprogress import (
+        PaymentAlreadyInProgress,
+        PaymentAlreadyInProgressData,
+    )
     from .paymenterror import PaymentError, PaymentErrorData
     from .paymentmethodcard import PaymentMethodCard, PaymentMethodCardTypedDict
     from .paymentmethodcardmetadata import (
@@ -1770,6 +1789,7 @@ if TYPE_CHECKING:
         PaymentMethodGeneric,
         PaymentMethodGenericTypedDict,
     )
+    from .paymentnotready import PaymentNotReady, PaymentNotReadyData
     from .paymentprocessor import PaymentProcessor
     from .payments_getop import PaymentsGetRequest, PaymentsGetRequestTypedDict
     from .payments_listop import (
@@ -2620,6 +2640,8 @@ __all__ = [
     "CheckoutsUpdateRequestTypedDict",
     "Clauses",
     "ClausesTypedDict",
+    "CommittedMonthlyRecurringRevenue",
+    "CommittedMonthlyRecurringRevenueTypedDict",
     "Conditions",
     "ConditionsTypedDict",
     "CountAggregation",
@@ -2912,6 +2934,10 @@ __all__ = [
     "CustomerPortalOrdersListResponseTypedDict",
     "CustomerPortalOrdersListSecurity",
     "CustomerPortalOrdersListSecurityTypedDict",
+    "CustomerPortalOrdersRetryPaymentRequest",
+    "CustomerPortalOrdersRetryPaymentRequestTypedDict",
+    "CustomerPortalOrdersRetryPaymentSecurity",
+    "CustomerPortalOrdersRetryPaymentSecurityTypedDict",
     "CustomerPortalOrdersUpdateRequest",
     "CustomerPortalOrdersUpdateRequestTypedDict",
     "CustomerPortalOrdersUpdateSecurity",
@@ -3401,6 +3427,8 @@ __all__ = [
     "MetricsTotalsCheckoutsConversion",
     "MetricsTotalsCheckoutsConversionTypedDict",
     "MetricsTotalsCheckoutsTypedDict",
+    "MetricsTotalsCommittedMonthlyRecurringRevenue",
+    "MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict",
     "MetricsTotalsCumulativeRevenue",
     "MetricsTotalsCumulativeRevenueTypedDict",
     "MetricsTotalsMonthlyRecurringRevenue",
@@ -3474,6 +3502,8 @@ __all__ = [
     "OrderItemSchemaTypedDict",
     "OrderMetadata",
     "OrderMetadataTypedDict",
+    "OrderNotEligibleForRetry",
+    "OrderNotEligibleForRetryData",
     "OrderProduct",
     "OrderProductMetadata",
     "OrderProductMetadataTypedDict",
@@ -3546,6 +3576,8 @@ __all__ = [
     "Pagination",
     "PaginationTypedDict",
     "Payment",
+    "PaymentAlreadyInProgress",
+    "PaymentAlreadyInProgressData",
     "PaymentError",
     "PaymentErrorData",
     "PaymentMethodCard",
@@ -3554,6 +3586,8 @@ __all__ = [
     "PaymentMethodCardTypedDict",
     "PaymentMethodGeneric",
     "PaymentMethodGenericTypedDict",
+    "PaymentNotReady",
+    "PaymentNotReadyData",
     "PaymentProcessor",
     "PaymentSortProperty",
     "PaymentStatus",
@@ -4391,6 +4425,10 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalOrdersListResponseTypedDict": ".customer_portal_orders_listop",
     "CustomerPortalOrdersListSecurity": ".customer_portal_orders_listop",
     "CustomerPortalOrdersListSecurityTypedDict": ".customer_portal_orders_listop",
+    "CustomerPortalOrdersRetryPaymentRequest": ".customer_portal_orders_retry_paymentop",
+    "CustomerPortalOrdersRetryPaymentRequestTypedDict": ".customer_portal_orders_retry_paymentop",
+    "CustomerPortalOrdersRetryPaymentSecurity": ".customer_portal_orders_retry_paymentop",
+    "CustomerPortalOrdersRetryPaymentSecurityTypedDict": ".customer_portal_orders_retry_paymentop",
     "CustomerPortalOrdersUpdateRequest": ".customer_portal_orders_updateop",
     "CustomerPortalOrdersUpdateRequestTypedDict": ".customer_portal_orders_updateop",
     "CustomerPortalOrdersUpdateSecurity": ".customer_portal_orders_updateop",
@@ -4979,6 +5017,8 @@ _dynamic_imports: dict[str, str] = {
     "CheckoutsConversionTypedDict": ".metricperiod",
     "CheckoutsModel": ".metricperiod",
     "CheckoutsModelTypedDict": ".metricperiod",
+    "CommittedMonthlyRecurringRevenue": ".metricperiod",
+    "CommittedMonthlyRecurringRevenueTypedDict": ".metricperiod",
     "CumulativeRevenue": ".metricperiod",
     "CumulativeRevenueTypedDict": ".metricperiod",
     "MetricPeriod": ".metricperiod",
@@ -5032,6 +5072,8 @@ _dynamic_imports: dict[str, str] = {
     "MetricsTotalsCheckoutsConversion": ".metricstotals",
     "MetricsTotalsCheckoutsConversionTypedDict": ".metricstotals",
     "MetricsTotalsCheckoutsTypedDict": ".metricstotals",
+    "MetricsTotalsCommittedMonthlyRecurringRevenue": ".metricstotals",
+    "MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict": ".metricstotals",
     "MetricsTotalsCumulativeRevenue": ".metricstotals",
     "MetricsTotalsCumulativeRevenueTypedDict": ".metricstotals",
     "MetricsTotalsMonthlyRecurringRevenue": ".metricstotals",
@@ -5092,6 +5134,8 @@ _dynamic_imports: dict[str, str] = {
     "OrderInvoiceTypedDict": ".orderinvoice",
     "OrderItemSchema": ".orderitemschema",
     "OrderItemSchemaTypedDict": ".orderitemschema",
+    "OrderNotEligibleForRetry": ".ordernoteligibleforretry",
+    "OrderNotEligibleForRetryData": ".ordernoteligibleforretry",
     "OrderProduct": ".orderproduct",
     "OrderProductMetadata": ".orderproduct",
     "OrderProductMetadataTypedDict": ".orderproduct",
@@ -5149,6 +5193,8 @@ _dynamic_imports: dict[str, str] = {
     "PaginationTypedDict": ".pagination",
     "Payment": ".payment",
     "PaymentTypedDict": ".payment",
+    "PaymentAlreadyInProgress": ".paymentalreadyinprogress",
+    "PaymentAlreadyInProgressData": ".paymentalreadyinprogress",
     "PaymentError": ".paymenterror",
     "PaymentErrorData": ".paymenterror",
     "PaymentMethodCard": ".paymentmethodcard",
@@ -5157,6 +5203,8 @@ _dynamic_imports: dict[str, str] = {
     "PaymentMethodCardMetadataTypedDict": ".paymentmethodcardmetadata",
     "PaymentMethodGeneric": ".paymentmethodgeneric",
     "PaymentMethodGenericTypedDict": ".paymentmethodgeneric",
+    "PaymentNotReady": ".paymentnotready",
+    "PaymentNotReadyData": ".paymentnotready",
     "PaymentProcessor": ".paymentprocessor",
     "PaymentsGetRequest": ".payments_getop",
     "PaymentsGetRequestTypedDict": ".payments_getop",
@@ -5552,5 +5600,5 @@ def __getattr__(attr_name: str) -> object:
 
 
 def __dir__():
-    lazy_attrs = list(_dynamic_imports.keys())
-    return sorted(lazy_attrs)
+    lazy_attrs = builtins.list(_dynamic_imports.keys())
+    return builtins.sorted(lazy_attrs)

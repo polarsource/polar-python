@@ -19,6 +19,7 @@ List products.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="products:list" method="get" path="/v1/products/" -->
 ```python
 from polar_sdk import Polar
 
@@ -71,6 +72,7 @@ Create a product.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="products:create" method="post" path="/v1/products/" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -118,6 +120,7 @@ Get a product by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="products:get" method="get" path="/v1/products/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -160,6 +163,7 @@ Update a product.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="products:update" method="patch" path="/v1/products/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -204,6 +208,7 @@ Update benefits granted by a product.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="products:update_benefits" method="post" path="/v1/products/{id}/benefits" -->
 ```python
 from polar_sdk import Polar
 

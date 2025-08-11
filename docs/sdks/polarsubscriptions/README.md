@@ -18,6 +18,7 @@ List subscriptions of the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:subscriptions:list" method="get" path="/v1/customer-portal/subscriptions/" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -69,6 +70,7 @@ Get a subscription for the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:subscriptions:get" method="get" path="/v1/customer-portal/subscriptions/{id}" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -113,6 +115,7 @@ Update a subscription of the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:subscriptions:update" method="patch" path="/v1/customer-portal/subscriptions/{id}" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -159,6 +162,7 @@ Cancel a subscription of the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:subscriptions:cancel" method="delete" path="/v1/customer-portal/subscriptions/{id}" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar

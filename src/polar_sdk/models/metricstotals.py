@@ -122,6 +122,16 @@ MetricsTotalsMonthlyRecurringRevenue = TypeAliasType(
 )
 
 
+MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict = TypeAliasType(
+    "MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCommittedMonthlyRecurringRevenue = TypeAliasType(
+    "MetricsTotalsCommittedMonthlyRecurringRevenue", Union[int, float]
+)
+
+
 MetricsTotalsCheckoutsTypedDict = TypeAliasType(
     "MetricsTotalsCheckoutsTypedDict", Union[int, float]
 )
@@ -163,6 +173,9 @@ class MetricsTotalsTypedDict(TypedDict):
     renewed_subscriptions_revenue: MetricsTotalsRenewedSubscriptionsRevenueTypedDict
     active_subscriptions: MetricsTotalsActiveSubscriptionsTypedDict
     monthly_recurring_revenue: MetricsTotalsMonthlyRecurringRevenueTypedDict
+    committed_monthly_recurring_revenue: (
+        MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict
+    )
     checkouts: MetricsTotalsCheckoutsTypedDict
     succeeded_checkouts: MetricsTotalsSucceededCheckoutsTypedDict
     checkouts_conversion: MetricsTotalsCheckoutsConversionTypedDict
@@ -192,6 +205,8 @@ class MetricsTotals(BaseModel):
     active_subscriptions: MetricsTotalsActiveSubscriptions
 
     monthly_recurring_revenue: MetricsTotalsMonthlyRecurringRevenue
+
+    committed_monthly_recurring_revenue: MetricsTotalsCommittedMonthlyRecurringRevenue
 
     checkouts: MetricsTotalsCheckouts
 

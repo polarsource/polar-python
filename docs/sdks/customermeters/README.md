@@ -16,6 +16,7 @@ List customer meters.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_meters:list" method="get" path="/v1/customer-meters/" -->
 ```python
 from polar_sdk import Polar
 
@@ -65,6 +66,7 @@ Get a customer meter by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_meters:get" method="get" path="/v1/customer-meters/{id}" -->
 ```python
 from polar_sdk import Polar
 

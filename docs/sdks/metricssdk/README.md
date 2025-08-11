@@ -18,6 +18,7 @@ Currency values are output in cents.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="metrics:get" method="get" path="/v1/metrics/" -->
 ```python
 from datetime import date
 import polar_sdk
@@ -68,6 +69,7 @@ Get the interval limits for the metrics endpoint.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="metrics:limits" method="get" path="/v1/metrics/limits" -->
 ```python
 from polar_sdk import Polar
 

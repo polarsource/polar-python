@@ -19,6 +19,7 @@ List discounts.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="discounts:list" method="get" path="/v1/discounts/" -->
 ```python
 from polar_sdk import Polar
 
@@ -66,6 +67,7 @@ Create a discount.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="discounts:create" method="post" path="/v1/discounts/" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -114,6 +116,7 @@ Get a discount by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="discounts:get" method="get" path="/v1/discounts/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -156,6 +159,7 @@ Update a discount.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="discounts:update" method="patch" path="/v1/discounts/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -199,6 +203,7 @@ Delete a discount.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="discounts:delete" method="delete" path="/v1/discounts/{id}" -->
 ```python
 from polar_sdk import Polar
 

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: b0f01aec457cc91ea8f087c1cb410d91
+  docChecksum: 65b52aa270befaec33d1ecb4a090c803
   docVersion: 0.1.0
-  speakeasyVersion: 1.583.1
-  generationVersion: 2.658.3
-  releaseVersion: 0.22.4
-  configChecksum: 1462b0c961b81104788d38d30ab2fe07
+  speakeasyVersion: 1.600.2
+  generationVersion: 2.677.3
+  releaseVersion: 0.22.5
+  configChecksum: abd73721782a59cfc9f656301a4bc83c
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -14,7 +14,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.19.4
+    core: 5.19.7
     customCodeRegions: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.2
@@ -236,6 +236,7 @@ generatedFiles:
   - docs/models/checkoutupdatepublic.md
   - docs/models/checkoutupdatepubliccustomfielddata.md
   - docs/models/clauses.md
+  - docs/models/committedmonthlyrecurringrevenue.md
   - docs/models/conditions.md
   - docs/models/countaggregation.md
   - docs/models/cumulativerevenue.md
@@ -337,6 +338,8 @@ generatedFiles:
   - docs/models/customerportalorderslistrequest.md
   - docs/models/customerportalorderslistresponse.md
   - docs/models/customerportalorderslistsecurity.md
+  - docs/models/customerportalordersretrypaymentrequest.md
+  - docs/models/customerportalordersretrypaymentsecurity.md
   - docs/models/customerportalordersupdaterequest.md
   - docs/models/customerportalordersupdatesecurity.md
   - docs/models/customerportalorganizationsgetrequest.md
@@ -638,6 +641,7 @@ generatedFiles:
   - docs/models/metricstotalsaverageordervalue.md
   - docs/models/metricstotalscheckouts.md
   - docs/models/metricstotalscheckoutsconversion.md
+  - docs/models/metricstotalscommittedmonthlyrecurringrevenue.md
   - docs/models/metricstotalscumulativerevenue.md
   - docs/models/metricstotalsmonthlyrecurringrevenue.md
   - docs/models/metricstotalsnewsubscriptions.md
@@ -675,6 +679,7 @@ generatedFiles:
   - docs/models/orderinvoice.md
   - docs/models/orderitemschema.md
   - docs/models/ordermetadata.md
+  - docs/models/ordernoteligibleforretry.md
   - docs/models/orderproduct.md
   - docs/models/orderproductmetadata.md
   - docs/models/ordersgenerateinvoicerequest.md
@@ -713,10 +718,12 @@ generatedFiles:
   - docs/models/organizationupdate.md
   - docs/models/pagination.md
   - docs/models/payment.md
+  - docs/models/paymentalreadyinprogress.md
   - docs/models/paymenterror.md
   - docs/models/paymentmethodcard.md
   - docs/models/paymentmethodcardmetadata.md
   - docs/models/paymentmethodgeneric.md
+  - docs/models/paymentnotready.md
   - docs/models/paymentprocessor.md
   - docs/models/paymentsgetrequest.md
   - docs/models/paymentslistqueryparamcheckoutidfilter.md
@@ -1096,6 +1103,7 @@ generatedFiles:
   - src/polar_sdk/models/customer_portal_orders_getop.py
   - src/polar_sdk/models/customer_portal_orders_invoiceop.py
   - src/polar_sdk/models/customer_portal_orders_listop.py
+  - src/polar_sdk/models/customer_portal_orders_retry_paymentop.py
   - src/polar_sdk/models/customer_portal_orders_updateop.py
   - src/polar_sdk/models/customer_portal_organizations_getop.py
   - src/polar_sdk/models/customer_portal_subscriptions_cancelop.py
@@ -1332,6 +1340,7 @@ generatedFiles:
   - src/polar_sdk/models/ordercustomer.py
   - src/polar_sdk/models/orderinvoice.py
   - src/polar_sdk/models/orderitemschema.py
+  - src/polar_sdk/models/ordernoteligibleforretry.py
   - src/polar_sdk/models/orderproduct.py
   - src/polar_sdk/models/orders_generate_invoiceop.py
   - src/polar_sdk/models/orders_getop.py
@@ -1358,10 +1367,12 @@ generatedFiles:
   - src/polar_sdk/models/organizationupdate.py
   - src/polar_sdk/models/pagination.py
   - src/polar_sdk/models/payment.py
+  - src/polar_sdk/models/paymentalreadyinprogress.py
   - src/polar_sdk/models/paymenterror.py
   - src/polar_sdk/models/paymentmethodcard.py
   - src/polar_sdk/models/paymentmethodcardmetadata.py
   - src/polar_sdk/models/paymentmethodgeneric.py
+  - src/polar_sdk/models/paymentnotready.py
   - src/polar_sdk/models/paymentprocessor.py
   - src/polar_sdk/models/payments_getop.py
   - src/polar_sdk/models/payments_listop.py
@@ -2334,7 +2345,7 @@ examples:
           timezone: "UTC"
       responses:
         "200":
-          application/json: {"periods": [{"timestamp": "2024-11-05T16:37:46.152Z", "orders": 2313.41, "revenue": 3697.18, "cumulative_revenue": 160547, "average_order_value": 8348.91, "one_time_products": 6315.62, "one_time_products_revenue": 271957, "new_subscriptions": 225346, "new_subscriptions_revenue": 5903.37, "renewed_subscriptions": 146.2, "renewed_subscriptions_revenue": 3772.41, "active_subscriptions": 1692.89, "monthly_recurring_revenue": 5809.97, "checkouts": 6229.46, "succeeded_checkouts": 464.75, "checkouts_conversion": 536209}], "totals": {"orders": 300394, "revenue": 980988, "cumulative_revenue": 5367.66, "average_order_value": 7320.73, "one_time_products": 772559, "one_time_products_revenue": 875093, "new_subscriptions": 903196, "new_subscriptions_revenue": 18.97, "renewed_subscriptions": 723.93, "renewed_subscriptions_revenue": 846052, "active_subscriptions": 5698.58, "monthly_recurring_revenue": 180851, "checkouts": 5307.17, "succeeded_checkouts": 9995.79, "checkouts_conversion": 5883.46}, "metrics": {"orders": {"slug": "<value>", "display_name": "Mortimer35", "type": "percentage"}, "revenue": {"slug": "<value>", "display_name": "Cruz.Yundt29", "type": "scalar"}, "cumulative_revenue": {"slug": "<value>", "display_name": "Keshaun_Mraz87", "type": "scalar"}, "average_order_value": {"slug": "<value>", "display_name": "Therese_Marks93", "type": "percentage"}, "one_time_products": {"slug": "<value>", "display_name": "Roslyn.White86", "type": "scalar"}, "one_time_products_revenue": {"slug": "<value>", "display_name": "Henderson.Herman17", "type": "percentage"}, "new_subscriptions": {"slug": "<value>", "display_name": "Jamaal_Mueller91", "type": "percentage"}, "new_subscriptions_revenue": {"slug": "<value>", "display_name": "Kaylee25", "type": "currency"}, "renewed_subscriptions": {"slug": "<value>", "display_name": "Leland_Yundt", "type": "scalar"}, "renewed_subscriptions_revenue": {"slug": "<value>", "display_name": "Dalton_Waters92", "type": "scalar"}, "active_subscriptions": {"slug": "<value>", "display_name": "Alfonzo_Daugherty", "type": "percentage"}, "monthly_recurring_revenue": {"slug": "<value>", "display_name": "Diana97", "type": "currency"}, "checkouts": {"slug": "<value>", "display_name": "Magdalen_Goodwin-Schoen", "type": "scalar"}, "succeeded_checkouts": {"slug": "<value>", "display_name": "Ida37", "type": "scalar"}, "checkouts_conversion": {"slug": "<value>", "display_name": "Savion.Gerlach", "type": "percentage"}}}
+          application/json: {"periods": [{"timestamp": "2024-11-05T16:37:46.152Z", "orders": 2313.41, "revenue": 3697.18, "cumulative_revenue": 160547, "average_order_value": 8348.91, "one_time_products": 6315.62, "one_time_products_revenue": 271957, "new_subscriptions": 225346, "new_subscriptions_revenue": 5903.37, "renewed_subscriptions": 146.2, "renewed_subscriptions_revenue": 3772.41, "active_subscriptions": 1692.89, "monthly_recurring_revenue": 5809.97, "committed_monthly_recurring_revenue": 7366.16, "checkouts": 6229.46, "succeeded_checkouts": 464.75, "checkouts_conversion": 536209}], "totals": {"orders": 300394, "revenue": 980988, "cumulative_revenue": 5367.66, "average_order_value": 7320.73, "one_time_products": 772559, "one_time_products_revenue": 875093, "new_subscriptions": 903196, "new_subscriptions_revenue": 18.97, "renewed_subscriptions": 723.93, "renewed_subscriptions_revenue": 846052, "active_subscriptions": 5698.58, "monthly_recurring_revenue": 180851, "committed_monthly_recurring_revenue": 620.86, "checkouts": 5307.17, "succeeded_checkouts": 9995.79, "checkouts_conversion": 5883.46}, "metrics": {"orders": {"slug": "<value>", "display_name": "Mortimer35", "type": "percentage"}, "revenue": {"slug": "<value>", "display_name": "Cruz.Yundt29", "type": "scalar"}, "cumulative_revenue": {"slug": "<value>", "display_name": "Keshaun_Mraz87", "type": "scalar"}, "average_order_value": {"slug": "<value>", "display_name": "Therese_Marks93", "type": "percentage"}, "one_time_products": {"slug": "<value>", "display_name": "Roslyn.White86", "type": "scalar"}, "one_time_products_revenue": {"slug": "<value>", "display_name": "Henderson.Herman17", "type": "percentage"}, "new_subscriptions": {"slug": "<value>", "display_name": "Jamaal_Mueller91", "type": "percentage"}, "new_subscriptions_revenue": {"slug": "<value>", "display_name": "Kaylee25", "type": "currency"}, "renewed_subscriptions": {"slug": "<value>", "display_name": "Leland_Yundt", "type": "scalar"}, "renewed_subscriptions_revenue": {"slug": "<value>", "display_name": "Dalton_Waters92", "type": "scalar"}, "active_subscriptions": {"slug": "<value>", "display_name": "Alfonzo_Daugherty", "type": "percentage"}, "monthly_recurring_revenue": {"slug": "<value>", "display_name": "Diana97", "type": "currency"}, "committed_monthly_recurring_revenue": {"slug": "<value>", "display_name": "Garrett.Stokes", "type": "scalar"}, "checkouts": {"slug": "<value>", "display_name": "Magdalen_Goodwin-Schoen", "type": "scalar"}, "succeeded_checkouts": {"slug": "<value>", "display_name": "Ida37", "type": "scalar"}, "checkouts_conversion": {"slug": "<value>", "display_name": "Savion.Gerlach", "type": "percentage"}}}
         "422":
           application/json: {}
   metrics:limits:
@@ -3303,5 +3314,19 @@ examples:
           application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "422":
           application/json: {}
+  customer_portal:orders:retry_payment:
+    speakeasy-default-customer-portal:orders:retry-payment:
+      parameters:
+        path:
+          id: "<value>"
+      responses:
+        "202":
+          application/json: "<value>"
+        "404":
+          application/json: {"error": "ResourceNotFound", "detail": "<value>"}
+        "409":
+          application/json: {"error": "PaymentAlreadyInProgress", "detail": "<value>"}
+        "422":
+          application/json: {"error": "OrderNotEligibleForRetry", "detail": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}

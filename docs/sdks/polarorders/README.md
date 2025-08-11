@@ -10,6 +10,7 @@
 * [update](#update) - Update Order
 * [generate_invoice](#generate_invoice) - Generate Order Invoice
 * [invoice](#invoice) - Get Order Invoice
+* [retry_payment](#retry_payment) - Retry Payment
 
 ## list
 
@@ -19,6 +20,7 @@ List orders of the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:orders:list" method="get" path="/v1/customer-portal/orders/" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -71,6 +73,7 @@ Get an order by ID for the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:orders:get" method="get" path="/v1/customer-portal/orders/{id}" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -115,6 +118,7 @@ Update an order for the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:orders:update" method="patch" path="/v1/customer-portal/orders/{id}" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -165,6 +169,7 @@ Trigger generation of an order's invoice.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:orders:generate_invoice" method="post" path="/v1/customer-portal/orders/{id}/invoice" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -210,6 +215,7 @@ Get an order's invoice data.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:orders:invoice" method="get" path="/v1/customer-portal/orders/{id}/invoice" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -245,3 +251,49 @@ with Polar() as polar:
 | models.ResourceNotFound    | 404                        | application/json           |
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## retry_payment
+
+Manually retry payment for a failed order.
+
+**Scopes**: `customer_portal:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="customer_portal:orders:retry_payment" method="post" path="/v1/customer-portal/orders/{id}/retry-payment" -->
+```python
+import polar_sdk
+from polar_sdk import Polar
+
+
+with Polar() as polar:
+
+    res = polar.customer_portal.orders.retry_payment(security=polar_sdk.CustomerPortalOrdersRetryPaymentSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), id="<value>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                  | [models.CustomerPortalOrdersRetryPaymentSecurity](../../models/customerportalordersretrypaymentsecurity.md) | :heavy_check_mark:                                                                                          | N/A                                                                                                         |
+| `id`                                                                                                        | *str*                                                                                                       | :heavy_check_mark:                                                                                          | The order ID.                                                                                               |
+| `retries`                                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                            | :heavy_minus_sign:                                                                                          | Configuration to override the default retry behavior of the client.                                         |
+
+### Response
+
+**[Any](../../models/.md)**
+
+### Errors
+
+| Error Type                      | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| models.ResourceNotFound         | 404                             | application/json                |
+| models.PaymentAlreadyInProgress | 409                             | application/json                |
+| models.OrderNotEligibleForRetry | 422                             | application/json                |
+| models.SDKError                 | 4XX, 5XX                        | \*/\*                           |

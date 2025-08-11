@@ -24,6 +24,7 @@ List customers.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customers:list" method="get" path="/v1/customers/" -->
 ```python
 from polar_sdk import Polar
 
@@ -73,6 +74,7 @@ Create a customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customers:create" method="post" path="/v1/customers/" -->
 ```python
 from polar_sdk import Polar
 
@@ -126,6 +128,7 @@ Get a customer by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customers:get" method="get" path="/v1/customers/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -168,6 +171,7 @@ Update a customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customers:update" method="patch" path="/v1/customers/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -234,6 +238,7 @@ orders and subscriptions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customers:delete" method="delete" path="/v1/customers/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -271,6 +276,7 @@ Get a customer by external ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customers:get_external" method="get" path="/v1/customers/external/{external_id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -313,6 +319,7 @@ Update a customer by external ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customers:update_external" method="patch" path="/v1/customers/external/{external_id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -366,6 +373,7 @@ Immediately cancels any active subscriptions and revokes any active benefits.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customers:delete_external" method="delete" path="/v1/customers/external/{external_id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -409,6 +417,7 @@ of a customer's status.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customers:get_state" method="get" path="/v1/customers/{id}/state" -->
 ```python
 from polar_sdk import Polar
 
@@ -457,6 +466,7 @@ of a customer's status.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customers:get_state_external" method="get" path="/v1/customers/external/{external_id}/state" -->
 ```python
 from polar_sdk import Polar
 

@@ -16,6 +16,7 @@ List products.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="refunds:list" method="get" path="/v1/refunds/" -->
 ```python
 from polar_sdk import Polar
 
@@ -67,6 +68,7 @@ Create a refund.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="refunds:create" method="post" path="/v1/refunds/" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar

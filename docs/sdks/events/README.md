@@ -18,6 +18,7 @@ List events.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="events:list" method="get" path="/v1/events/" -->
 ```python
 from polar_sdk import Polar
 
@@ -73,6 +74,7 @@ List event names.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="events:list_names" method="get" path="/v1/events/names" -->
 ```python
 from polar_sdk import Polar
 
@@ -123,6 +125,7 @@ Get an event by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="events:get" method="get" path="/v1/events/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -165,6 +168,7 @@ Ingest batch of events.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="events:ingest" method="post" path="/v1/events/ingest" -->
 ```python
 from polar_sdk import Polar
 

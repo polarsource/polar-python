@@ -17,6 +17,7 @@
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:license_keys:list" method="get" path="/v1/customer-portal/license-keys/" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -67,6 +68,7 @@ Get a license key.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:license_keys:get" method="get" path="/v1/customer-portal/license-keys/{id}" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -109,6 +111,7 @@ Validate a license key.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:license_keys:validate" method="post" path="/v1/customer-portal/license-keys/validate" -->
 ```python
 from polar_sdk import Polar
 
@@ -152,6 +155,7 @@ Activate a license key instance.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:license_keys:activate" method="post" path="/v1/customer-portal/license-keys/activate" -->
 ```python
 from polar_sdk import Polar
 
@@ -197,6 +201,7 @@ Deactivate a license key instance.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:license_keys:deactivate" method="post" path="/v1/customer-portal/license-keys/deactivate" -->
 ```python
 from polar_sdk import Polar
 

@@ -19,6 +19,7 @@ List checkout links.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="checkout-links:list" method="get" path="/v1/checkout-links/" -->
 ```python
 from polar_sdk import Polar
 
@@ -66,6 +67,7 @@ Create a checkout link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="checkout-links:create" method="post" path="/v1/checkout-links/" -->
 ```python
 from polar_sdk import Polar
 
@@ -112,6 +114,7 @@ Get a checkout link by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="checkout-links:get" method="get" path="/v1/checkout-links/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -154,6 +157,7 @@ Update a checkout link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="checkout-links:update" method="patch" path="/v1/checkout-links/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -197,6 +201,7 @@ Delete a checkout link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="checkout-links:delete" method="delete" path="/v1/checkout-links/{id}" -->
 ```python
 from polar_sdk import Polar
 

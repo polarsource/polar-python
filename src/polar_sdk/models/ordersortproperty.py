@@ -7,6 +7,10 @@ from enum import Enum
 class OrderSortProperty(str, Enum):
     CREATED_AT = "created_at"
     MINUS_CREATED_AT = "-created_at"
+    STATUS = "status"
+    MINUS_STATUS = "-status"
+    INVOICE_NUMBER = "invoice_number"
+    MINUS_INVOICE_NUMBER = "-invoice_number"
     AMOUNT = "amount"
     MINUS_AMOUNT = "-amount"
     NET_AMOUNT = "net_amount"

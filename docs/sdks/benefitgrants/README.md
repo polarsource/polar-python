@@ -17,6 +17,7 @@ List benefits grants of the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:benefit-grants:list" method="get" path="/v1/customer-portal/benefit-grants/" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -70,6 +71,7 @@ Get a benefit grant by ID for the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:benefit-grants:get" method="get" path="/v1/customer-portal/benefit-grants/{id}" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -114,6 +116,7 @@ Update a benefit grant for the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:benefit-grants:update" method="patch" path="/v1/customer-portal/benefit-grants/{id}" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
