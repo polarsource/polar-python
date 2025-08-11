@@ -16,6 +16,7 @@ List meters of the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:customer_meters:list" method="get" path="/v1/customer-portal/meters/" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -65,6 +66,7 @@ Get a meter by ID for the authenticated customer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:customer_meters:get" method="get" path="/v1/customer-portal/meters/{id}" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar

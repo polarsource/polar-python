@@ -19,6 +19,7 @@ List custom fields.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="custom-fields:list" method="get" path="/v1/custom-fields/" -->
 ```python
 from polar_sdk import Polar
 
@@ -67,6 +68,7 @@ Create a custom field.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="custom-fields:create" method="post" path="/v1/custom-fields/" -->
 ```python
 from polar_sdk import Polar
 
@@ -115,6 +117,7 @@ Get a custom field by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="custom-fields:get" method="get" path="/v1/custom-fields/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -157,6 +160,7 @@ Update a custom field.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="custom-fields:update" method="patch" path="/v1/custom-fields/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -202,6 +206,7 @@ Delete a custom field.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="custom-fields:delete" method="delete" path="/v1/custom-fields/{id}" -->
 ```python
 from polar_sdk import Polar
 

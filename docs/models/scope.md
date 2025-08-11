@@ -9,7 +9,6 @@
 | `PROFILE`                       | profile                         |
 | `EMAIL`                         | email                           |
 | `USER_READ`                     | user:read                       |
-| `ADMIN`                         | admin                           |
 | `WEB_DEFAULT`                   | web_default                     |
 | `ORGANIZATIONS_READ`            | organizations:read              |
 | `ORGANIZATIONS_WRITE`           | organizations:write             |

@@ -13,6 +13,7 @@
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:downloadables:list" method="get" path="/v1/customer-portal/downloadables/" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar

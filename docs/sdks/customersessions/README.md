@@ -15,6 +15,7 @@ Create a customer session.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer-sessions:create" method="post" path="/v1/customer-sessions/" -->
 ```python
 from polar_sdk import Polar
 

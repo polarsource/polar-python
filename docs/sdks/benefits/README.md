@@ -20,6 +20,7 @@ List benefits.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="benefits:list" method="get" path="/v1/benefits/" -->
 ```python
 from polar_sdk import Polar
 
@@ -69,6 +70,7 @@ Create a benefit.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="benefits:create" method="post" path="/v1/benefits/" -->
 ```python
 from polar_sdk import Polar
 
@@ -114,6 +116,7 @@ Get a benefit by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="benefits:get" method="get" path="/v1/benefits/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -156,6 +159,7 @@ Update a benefit.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="benefits:update" method="patch" path="/v1/benefits/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -205,6 +209,7 @@ Delete a benefit.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="benefits:delete" method="delete" path="/v1/benefits/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -245,6 +250,7 @@ It's especially useful to check if a user has been granted a benefit.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="benefits:grants" method="get" path="/v1/benefits/{id}/grants" -->
 ```python
 from polar_sdk import Polar
 

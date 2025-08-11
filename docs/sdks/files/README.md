@@ -19,6 +19,7 @@ List files.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="files:list" method="get" path="/v1/files/" -->
 ```python
 from polar_sdk import Polar
 
@@ -65,6 +66,7 @@ Create a file.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="files:create" method="post" path="/v1/files/" -->
 ```python
 from polar_sdk import Polar
 
@@ -114,6 +116,7 @@ Complete a file upload.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="files:uploaded" method="post" path="/v1/files/{id}/uploaded" -->
 ```python
 from polar_sdk import Polar
 
@@ -178,6 +181,7 @@ Update a file.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="files:update" method="patch" path="/v1/files/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -222,6 +226,7 @@ Delete a file.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="files:delete" method="delete" path="/v1/files/{id}" -->
 ```python
 from polar_sdk import Polar
 

@@ -279,6 +279,12 @@ actions:
         - "lang": "python"
           "label": "Python (SDK)"
           "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.orders.generate_invoice(security=polar_sdk.CustomerPortalOrdersGenerateInvoiceSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<value>\")\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/customer-portal/orders/{id}/retry-payment"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.orders.retry_payment(security=polar_sdk.CustomerPortalOrdersRetryPaymentSecurity(\n        customer_session=\"<YOUR_BEARER_TOKEN_HERE>\",\n    ), id=\"<value>\")\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customer-portal/organizations/{slug}"]["get"]
     update:
       "x-codeSamples":

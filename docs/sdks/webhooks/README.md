@@ -22,6 +22,7 @@ List webhook endpoints.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="webhooks:list_webhook_endpoints" method="get" path="/v1/webhooks/endpoints" -->
 ```python
 from polar_sdk import Polar
 
@@ -67,6 +68,7 @@ Create a webhook endpoint.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="webhooks:create_webhook_endpoint" method="post" path="/v1/webhooks/endpoints" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -116,6 +118,7 @@ Get a webhook endpoint by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="webhooks:get_webhook_endpoint" method="get" path="/v1/webhooks/endpoints/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -158,6 +161,7 @@ Update a webhook endpoint.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="webhooks:update_webhook_endpoint" method="patch" path="/v1/webhooks/endpoints/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -203,6 +207,7 @@ Delete a webhook endpoint.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="webhooks:delete_webhook_endpoint" method="delete" path="/v1/webhooks/endpoints/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -240,6 +245,7 @@ Regenerate a webhook endpoint secret.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="webhooks:reset_webhook_endpoint_secret" method="patch" path="/v1/webhooks/endpoints/{id}/secret" -->
 ```python
 from polar_sdk import Polar
 
@@ -284,6 +290,7 @@ Deliveries are all the attempts to deliver a webhook event to an endpoint.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="webhooks:list_webhook_deliveries" method="get" path="/v1/webhooks/deliveries" -->
 ```python
 from polar_sdk import Polar
 
@@ -329,6 +336,7 @@ Schedule the re-delivery of a webhook event.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="webhooks:redeliver_webhook_event" method="post" path="/v1/webhooks/events/{id}/redeliver" -->
 ```python
 from polar_sdk import Polar
 

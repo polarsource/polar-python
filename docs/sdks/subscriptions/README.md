@@ -19,6 +19,7 @@ List subscriptions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="subscriptions:list" method="get" path="/v1/subscriptions/" -->
 ```python
 from polar_sdk import Polar
 
@@ -71,6 +72,7 @@ Export subscriptions as a CSV file.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="subscriptions:export" method="get" path="/v1/subscriptions/export" -->
 ```python
 from polar_sdk import Polar
 
@@ -112,6 +114,7 @@ Get a subscription by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="subscriptions:get" method="get" path="/v1/subscriptions/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -154,6 +157,7 @@ Update a subscription.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="subscriptions:update" method="patch" path="/v1/subscriptions/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -200,6 +204,7 @@ Revoke a subscription, i.e cancel immediately.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="subscriptions:revoke" method="delete" path="/v1/subscriptions/{id}" -->
 ```python
 from polar_sdk import Polar
 

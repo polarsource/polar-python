@@ -19,6 +19,7 @@ List meters.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="meters:list" method="get" path="/v1/meters/" -->
 ```python
 from polar_sdk import Polar
 
@@ -67,6 +68,7 @@ Create a meter.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="meters:create" method="post" path="/v1/meters/" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -126,6 +128,7 @@ Get a meter by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="meters:get" method="get" path="/v1/meters/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -168,6 +171,7 @@ Update a meter.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="meters:update" method="patch" path="/v1/meters/{id}" -->
 ```python
 from polar_sdk import Polar
 
@@ -211,6 +215,7 @@ Get quantities of a meter over a time period.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="meters:quantities" method="get" path="/v1/meters/{id}/quantities" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar

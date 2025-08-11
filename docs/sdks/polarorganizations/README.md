@@ -13,6 +13,7 @@ Get a customer portal's organization by slug.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="customer_portal:organizations:get" method="get" path="/v1/customer-portal/organizations/{slug}" -->
 ```python
 from polar_sdk import Polar
 

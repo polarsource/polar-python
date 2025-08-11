@@ -16,6 +16,7 @@ List payments.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="payments:list" method="get" path="/v1/payments/" -->
 ```python
 from polar_sdk import Polar
 
@@ -67,6 +68,7 @@ Get a payment by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="payments:get" method="get" path="/v1/payments/{id}" -->
 ```python
 from polar_sdk import Polar
 
