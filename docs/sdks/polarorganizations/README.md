@@ -18,9 +18,7 @@ Get a customer portal's organization by slug.
 from polar_sdk import Polar
 
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
     res = polar.customer_portal.organizations.get(slug="<value>")
 

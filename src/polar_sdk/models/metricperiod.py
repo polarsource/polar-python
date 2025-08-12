@@ -19,6 +19,12 @@ RevenueTypedDict = TypeAliasType("RevenueTypedDict", Union[int, float])
 Revenue = TypeAliasType("Revenue", Union[int, float])
 
 
+NetRevenueTypedDict = TypeAliasType("NetRevenueTypedDict", Union[int, float])
+
+
+NetRevenue = TypeAliasType("NetRevenue", Union[int, float])
+
+
 CumulativeRevenueTypedDict = TypeAliasType(
     "CumulativeRevenueTypedDict", Union[int, float]
 )
@@ -27,12 +33,28 @@ CumulativeRevenueTypedDict = TypeAliasType(
 CumulativeRevenue = TypeAliasType("CumulativeRevenue", Union[int, float])
 
 
+NetCumulativeRevenueTypedDict = TypeAliasType(
+    "NetCumulativeRevenueTypedDict", Union[int, float]
+)
+
+
+NetCumulativeRevenue = TypeAliasType("NetCumulativeRevenue", Union[int, float])
+
+
 AverageOrderValueTypedDict = TypeAliasType(
     "AverageOrderValueTypedDict", Union[int, float]
 )
 
 
 AverageOrderValue = TypeAliasType("AverageOrderValue", Union[int, float])
+
+
+NetAverageOrderValueTypedDict = TypeAliasType(
+    "NetAverageOrderValueTypedDict", Union[int, float]
+)
+
+
+NetAverageOrderValue = TypeAliasType("NetAverageOrderValue", Union[int, float])
 
 
 OneTimeProductsTypedDict = TypeAliasType("OneTimeProductsTypedDict", Union[int, float])
@@ -47,6 +69,16 @@ OneTimeProductsRevenueTypedDict = TypeAliasType(
 
 
 OneTimeProductsRevenue = TypeAliasType("OneTimeProductsRevenue", Union[int, float])
+
+
+OneTimeProductsNetRevenueTypedDict = TypeAliasType(
+    "OneTimeProductsNetRevenueTypedDict", Union[int, float]
+)
+
+
+OneTimeProductsNetRevenue = TypeAliasType(
+    "OneTimeProductsNetRevenue", Union[int, float]
+)
 
 
 NewSubscriptionsTypedDict = TypeAliasType(
@@ -65,6 +97,16 @@ NewSubscriptionsRevenueTypedDict = TypeAliasType(
 NewSubscriptionsRevenue = TypeAliasType("NewSubscriptionsRevenue", Union[int, float])
 
 
+NewSubscriptionsNetRevenueTypedDict = TypeAliasType(
+    "NewSubscriptionsNetRevenueTypedDict", Union[int, float]
+)
+
+
+NewSubscriptionsNetRevenue = TypeAliasType(
+    "NewSubscriptionsNetRevenue", Union[int, float]
+)
+
+
 RenewedSubscriptionsTypedDict = TypeAliasType(
     "RenewedSubscriptionsTypedDict", Union[int, float]
 )
@@ -80,6 +122,16 @@ RenewedSubscriptionsRevenueTypedDict = TypeAliasType(
 
 RenewedSubscriptionsRevenue = TypeAliasType(
     "RenewedSubscriptionsRevenue", Union[int, float]
+)
+
+
+RenewedSubscriptionsNetRevenueTypedDict = TypeAliasType(
+    "RenewedSubscriptionsNetRevenueTypedDict", Union[int, float]
+)
+
+
+RenewedSubscriptionsNetRevenue = TypeAliasType(
+    "RenewedSubscriptionsNetRevenue", Union[int, float]
 )
 
 
@@ -136,14 +188,20 @@ class MetricPeriodTypedDict(TypedDict):
     r"""Timestamp of this period data."""
     orders: OrdersModelTypedDict
     revenue: RevenueTypedDict
+    net_revenue: NetRevenueTypedDict
     cumulative_revenue: CumulativeRevenueTypedDict
+    net_cumulative_revenue: NetCumulativeRevenueTypedDict
     average_order_value: AverageOrderValueTypedDict
+    net_average_order_value: NetAverageOrderValueTypedDict
     one_time_products: OneTimeProductsTypedDict
     one_time_products_revenue: OneTimeProductsRevenueTypedDict
+    one_time_products_net_revenue: OneTimeProductsNetRevenueTypedDict
     new_subscriptions: NewSubscriptionsTypedDict
     new_subscriptions_revenue: NewSubscriptionsRevenueTypedDict
+    new_subscriptions_net_revenue: NewSubscriptionsNetRevenueTypedDict
     renewed_subscriptions: RenewedSubscriptionsTypedDict
     renewed_subscriptions_revenue: RenewedSubscriptionsRevenueTypedDict
+    renewed_subscriptions_net_revenue: RenewedSubscriptionsNetRevenueTypedDict
     active_subscriptions: ActiveSubscriptionsTypedDict
     monthly_recurring_revenue: MonthlyRecurringRevenueTypedDict
     committed_monthly_recurring_revenue: CommittedMonthlyRecurringRevenueTypedDict
@@ -160,21 +218,33 @@ class MetricPeriod(BaseModel):
 
     revenue: Revenue
 
+    net_revenue: NetRevenue
+
     cumulative_revenue: CumulativeRevenue
 
+    net_cumulative_revenue: NetCumulativeRevenue
+
     average_order_value: AverageOrderValue
+
+    net_average_order_value: NetAverageOrderValue
 
     one_time_products: OneTimeProducts
 
     one_time_products_revenue: OneTimeProductsRevenue
 
+    one_time_products_net_revenue: OneTimeProductsNetRevenue
+
     new_subscriptions: NewSubscriptions
 
     new_subscriptions_revenue: NewSubscriptionsRevenue
 
+    new_subscriptions_net_revenue: NewSubscriptionsNetRevenue
+
     renewed_subscriptions: RenewedSubscriptions
 
     renewed_subscriptions_revenue: RenewedSubscriptionsRevenue
+
+    renewed_subscriptions_net_revenue: RenewedSubscriptionsNetRevenue
 
     active_subscriptions: ActiveSubscriptions
 

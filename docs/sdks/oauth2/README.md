@@ -60,9 +60,7 @@ Request an access token using a valid grant.
 from polar_sdk import Polar
 
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
     res = polar.oauth2.token(request={
         "grant_type": "authorization_code",
@@ -105,9 +103,7 @@ Revoke an access token or a refresh token.
 from polar_sdk import Polar
 
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
     res = polar.oauth2.revoke(request={
         "token": "<value>",
@@ -148,9 +144,7 @@ Get information about an access token.
 from polar_sdk import Polar
 
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
     res = polar.oauth2.introspect(request={
         "token": "<value>",
