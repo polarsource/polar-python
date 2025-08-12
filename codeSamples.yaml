@@ -86,13 +86,13 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.client_get(client_secret=\"<value>\")\n\n    # Handle response\n    print(res)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    res = polar.checkouts.client_get(client_secret=\"<value>\")\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/checkouts/client/{client_secret}"]["patch"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.checkouts.client_update(client_secret=\"<value>\", checkout_update_public={\n        \"customer_billing_address\": None,\n    })\n\n    # Handle response\n    print(res)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    res = polar.checkouts.client_update(client_secret=\"<value>\", checkout_update_public={\n        \"customer_billing_address\": None,\n    })\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/checkouts/client/{client_secret}/confirm"]["post"]
     update:
       "x-codeSamples":
@@ -218,19 +218,19 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.license_keys.activate(request={\n        \"key\": \"<key>\",\n        \"organization_id\": \"<value>\",\n        \"label\": \"<value>\",\n    })\n\n    # Handle response\n    print(res)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.license_keys.activate(request={\n        \"key\": \"<key>\",\n        \"organization_id\": \"<value>\",\n        \"label\": \"<value>\",\n    })\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customer-portal/license-keys/deactivate"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    polar.customer_portal.license_keys.deactivate(request={\n        \"key\": \"<key>\",\n        \"organization_id\": \"<value>\",\n        \"activation_id\": \"<value>\",\n    })\n\n    # Use the SDK ..."
+          "source": "from polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    polar.customer_portal.license_keys.deactivate(request={\n        \"key\": \"<key>\",\n        \"organization_id\": \"<value>\",\n        \"activation_id\": \"<value>\",\n    })\n\n    # Use the SDK ..."
   - target: $["paths"]["/v1/customer-portal/license-keys/validate"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.license_keys.validate(request={\n        \"key\": \"<key>\",\n        \"organization_id\": \"<value>\",\n    })\n\n    # Handle response\n    print(res)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.license_keys.validate(request={\n        \"key\": \"<key>\",\n        \"organization_id\": \"<value>\",\n    })\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customer-portal/license-keys/{id}"]["get"]
     update:
       "x-codeSamples":
@@ -290,7 +290,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customer_portal.organizations.get(slug=\"<value>\")\n\n    # Handle response\n    print(res)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    res = polar.customer_portal.organizations.get(slug=\"<value>\")\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customer-portal/subscriptions/"]["get"]
     update:
       "x-codeSamples":
@@ -542,19 +542,19 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.oauth2.introspect(request={\n        \"token\": \"<value>\",\n        \"client_id\": \"<id>\",\n        \"client_secret\": \"<value>\",\n    })\n\n    # Handle response\n    print(res)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    res = polar.oauth2.introspect(request={\n        \"token\": \"<value>\",\n        \"client_id\": \"<id>\",\n        \"client_secret\": \"<value>\",\n    })\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/oauth2/revoke"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.oauth2.revoke(request={\n        \"token\": \"<value>\",\n        \"client_id\": \"<id>\",\n        \"client_secret\": \"<value>\",\n    })\n\n    # Handle response\n    print(res)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    res = polar.oauth2.revoke(request={\n        \"token\": \"<value>\",\n        \"client_id\": \"<id>\",\n        \"client_secret\": \"<value>\",\n    })\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/oauth2/token"]["post"]
     update:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.oauth2.token(request={\n        \"grant_type\": \"authorization_code\",\n        \"client_id\": \"<id>\",\n        \"client_secret\": \"<value>\",\n        \"code\": \"<value>\",\n        \"redirect_uri\": \"https://memorable-season.name\",\n    })\n\n    # Handle response\n    print(res)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar() as polar:\n\n    res = polar.oauth2.token(request={\n        \"grant_type\": \"authorization_code\",\n        \"client_id\": \"<id>\",\n        \"client_secret\": \"<value>\",\n        \"code\": \"<value>\",\n        \"redirect_uri\": \"https://memorable-season.name\",\n    })\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/oauth2/userinfo"]["get"]
     update:
       "x-codeSamples":

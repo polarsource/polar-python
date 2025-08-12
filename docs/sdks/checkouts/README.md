@@ -220,9 +220,7 @@ Get a checkout session by client secret.
 from polar_sdk import Polar
 
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
     res = polar.checkouts.client_get(client_secret="<value>")
 
@@ -262,9 +260,7 @@ Update a checkout session by client secret.
 from polar_sdk import Polar
 
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
     res = polar.checkouts.client_update(client_secret="<value>", checkout_update_public={
         "customer_billing_address": None,

@@ -50,11 +50,10 @@ class PolarOrganizations(BaseSDK):
             request=request,
             request_body_required=False,
             request_has_path_params=True,
-            request_has_query_params=True,
+            request_has_query_params=False,
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
 
@@ -72,7 +71,7 @@ class PolarOrganizations(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:organizations:get",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=None,
             ),
             request=req,
             error_status_codes=["404", "422", "4XX", "5XX"],
@@ -142,11 +141,10 @@ class PolarOrganizations(BaseSDK):
             request=request,
             request_body_required=False,
             request_has_path_params=True,
-            request_has_query_params=True,
+            request_has_query_params=False,
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
 
@@ -164,7 +162,7 @@ class PolarOrganizations(BaseSDK):
                 base_url=base_url or "",
                 operation_id="customer_portal:organizations:get",
                 oauth2_scopes=[],
-                security_source=self.sdk_configuration.security,
+                security_source=None,
             ),
             request=req,
             error_status_codes=["404", "422", "4XX", "5XX"],

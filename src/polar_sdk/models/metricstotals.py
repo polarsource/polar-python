@@ -22,6 +22,14 @@ MetricsTotalsRevenueTypedDict = TypeAliasType(
 MetricsTotalsRevenue = TypeAliasType("MetricsTotalsRevenue", Union[int, float])
 
 
+MetricsTotalsNetRevenueTypedDict = TypeAliasType(
+    "MetricsTotalsNetRevenueTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsNetRevenue = TypeAliasType("MetricsTotalsNetRevenue", Union[int, float])
+
+
 MetricsTotalsCumulativeRevenueTypedDict = TypeAliasType(
     "MetricsTotalsCumulativeRevenueTypedDict", Union[int, float]
 )
@@ -32,6 +40,16 @@ MetricsTotalsCumulativeRevenue = TypeAliasType(
 )
 
 
+MetricsTotalsNetCumulativeRevenueTypedDict = TypeAliasType(
+    "MetricsTotalsNetCumulativeRevenueTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsNetCumulativeRevenue = TypeAliasType(
+    "MetricsTotalsNetCumulativeRevenue", Union[int, float]
+)
+
+
 MetricsTotalsAverageOrderValueTypedDict = TypeAliasType(
     "MetricsTotalsAverageOrderValueTypedDict", Union[int, float]
 )
@@ -39,6 +57,16 @@ MetricsTotalsAverageOrderValueTypedDict = TypeAliasType(
 
 MetricsTotalsAverageOrderValue = TypeAliasType(
     "MetricsTotalsAverageOrderValue", Union[int, float]
+)
+
+
+MetricsTotalsNetAverageOrderValueTypedDict = TypeAliasType(
+    "MetricsTotalsNetAverageOrderValueTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsNetAverageOrderValue = TypeAliasType(
+    "MetricsTotalsNetAverageOrderValue", Union[int, float]
 )
 
 
@@ -62,6 +90,16 @@ MetricsTotalsOneTimeProductsRevenue = TypeAliasType(
 )
 
 
+MetricsTotalsOneTimeProductsNetRevenueTypedDict = TypeAliasType(
+    "MetricsTotalsOneTimeProductsNetRevenueTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsOneTimeProductsNetRevenue = TypeAliasType(
+    "MetricsTotalsOneTimeProductsNetRevenue", Union[int, float]
+)
+
+
 MetricsTotalsNewSubscriptionsTypedDict = TypeAliasType(
     "MetricsTotalsNewSubscriptionsTypedDict", Union[int, float]
 )
@@ -82,6 +120,16 @@ MetricsTotalsNewSubscriptionsRevenue = TypeAliasType(
 )
 
 
+MetricsTotalsNewSubscriptionsNetRevenueTypedDict = TypeAliasType(
+    "MetricsTotalsNewSubscriptionsNetRevenueTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsNewSubscriptionsNetRevenue = TypeAliasType(
+    "MetricsTotalsNewSubscriptionsNetRevenue", Union[int, float]
+)
+
+
 MetricsTotalsRenewedSubscriptionsTypedDict = TypeAliasType(
     "MetricsTotalsRenewedSubscriptionsTypedDict", Union[int, float]
 )
@@ -99,6 +147,16 @@ MetricsTotalsRenewedSubscriptionsRevenueTypedDict = TypeAliasType(
 
 MetricsTotalsRenewedSubscriptionsRevenue = TypeAliasType(
     "MetricsTotalsRenewedSubscriptionsRevenue", Union[int, float]
+)
+
+
+MetricsTotalsRenewedSubscriptionsNetRevenueTypedDict = TypeAliasType(
+    "MetricsTotalsRenewedSubscriptionsNetRevenueTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsRenewedSubscriptionsNetRevenue = TypeAliasType(
+    "MetricsTotalsRenewedSubscriptionsNetRevenue", Union[int, float]
 )
 
 
@@ -163,14 +221,22 @@ MetricsTotalsCheckoutsConversion = TypeAliasType(
 class MetricsTotalsTypedDict(TypedDict):
     orders: MetricsTotalsOrdersTypedDict
     revenue: MetricsTotalsRevenueTypedDict
+    net_revenue: MetricsTotalsNetRevenueTypedDict
     cumulative_revenue: MetricsTotalsCumulativeRevenueTypedDict
+    net_cumulative_revenue: MetricsTotalsNetCumulativeRevenueTypedDict
     average_order_value: MetricsTotalsAverageOrderValueTypedDict
+    net_average_order_value: MetricsTotalsNetAverageOrderValueTypedDict
     one_time_products: MetricsTotalsOneTimeProductsTypedDict
     one_time_products_revenue: MetricsTotalsOneTimeProductsRevenueTypedDict
+    one_time_products_net_revenue: MetricsTotalsOneTimeProductsNetRevenueTypedDict
     new_subscriptions: MetricsTotalsNewSubscriptionsTypedDict
     new_subscriptions_revenue: MetricsTotalsNewSubscriptionsRevenueTypedDict
+    new_subscriptions_net_revenue: MetricsTotalsNewSubscriptionsNetRevenueTypedDict
     renewed_subscriptions: MetricsTotalsRenewedSubscriptionsTypedDict
     renewed_subscriptions_revenue: MetricsTotalsRenewedSubscriptionsRevenueTypedDict
+    renewed_subscriptions_net_revenue: (
+        MetricsTotalsRenewedSubscriptionsNetRevenueTypedDict
+    )
     active_subscriptions: MetricsTotalsActiveSubscriptionsTypedDict
     monthly_recurring_revenue: MetricsTotalsMonthlyRecurringRevenueTypedDict
     committed_monthly_recurring_revenue: (
@@ -186,21 +252,33 @@ class MetricsTotals(BaseModel):
 
     revenue: MetricsTotalsRevenue
 
+    net_revenue: MetricsTotalsNetRevenue
+
     cumulative_revenue: MetricsTotalsCumulativeRevenue
 
+    net_cumulative_revenue: MetricsTotalsNetCumulativeRevenue
+
     average_order_value: MetricsTotalsAverageOrderValue
+
+    net_average_order_value: MetricsTotalsNetAverageOrderValue
 
     one_time_products: MetricsTotalsOneTimeProducts
 
     one_time_products_revenue: MetricsTotalsOneTimeProductsRevenue
 
+    one_time_products_net_revenue: MetricsTotalsOneTimeProductsNetRevenue
+
     new_subscriptions: MetricsTotalsNewSubscriptions
 
     new_subscriptions_revenue: MetricsTotalsNewSubscriptionsRevenue
 
+    new_subscriptions_net_revenue: MetricsTotalsNewSubscriptionsNetRevenue
+
     renewed_subscriptions: MetricsTotalsRenewedSubscriptions
 
     renewed_subscriptions_revenue: MetricsTotalsRenewedSubscriptionsRevenue
+
+    renewed_subscriptions_net_revenue: MetricsTotalsRenewedSubscriptionsNetRevenue
 
     active_subscriptions: MetricsTotalsActiveSubscriptions
 

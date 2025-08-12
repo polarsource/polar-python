@@ -7,6 +7,7 @@ curl -fsSL https://raw.githubusercontent.com/speakeasy-api/speakeasy/main/instal
 rmdir samples || true
 mkdir samples
 
+
 python -m pip install --upgrade pip
 pip install -e .
 

@@ -11,21 +11,33 @@ class MetricsTypedDict(TypedDict):
     r"""Information about a metric."""
     revenue: MetricTypedDict
     r"""Information about a metric."""
+    net_revenue: MetricTypedDict
+    r"""Information about a metric."""
     cumulative_revenue: MetricTypedDict
     r"""Information about a metric."""
+    net_cumulative_revenue: MetricTypedDict
+    r"""Information about a metric."""
     average_order_value: MetricTypedDict
+    r"""Information about a metric."""
+    net_average_order_value: MetricTypedDict
     r"""Information about a metric."""
     one_time_products: MetricTypedDict
     r"""Information about a metric."""
     one_time_products_revenue: MetricTypedDict
     r"""Information about a metric."""
+    one_time_products_net_revenue: MetricTypedDict
+    r"""Information about a metric."""
     new_subscriptions: MetricTypedDict
     r"""Information about a metric."""
     new_subscriptions_revenue: MetricTypedDict
     r"""Information about a metric."""
+    new_subscriptions_net_revenue: MetricTypedDict
+    r"""Information about a metric."""
     renewed_subscriptions: MetricTypedDict
     r"""Information about a metric."""
     renewed_subscriptions_revenue: MetricTypedDict
+    r"""Information about a metric."""
+    renewed_subscriptions_net_revenue: MetricTypedDict
     r"""Information about a metric."""
     active_subscriptions: MetricTypedDict
     r"""Information about a metric."""
@@ -48,10 +60,19 @@ class Metrics(BaseModel):
     revenue: Metric
     r"""Information about a metric."""
 
+    net_revenue: Metric
+    r"""Information about a metric."""
+
     cumulative_revenue: Metric
     r"""Information about a metric."""
 
+    net_cumulative_revenue: Metric
+    r"""Information about a metric."""
+
     average_order_value: Metric
+    r"""Information about a metric."""
+
+    net_average_order_value: Metric
     r"""Information about a metric."""
 
     one_time_products: Metric
@@ -60,16 +81,25 @@ class Metrics(BaseModel):
     one_time_products_revenue: Metric
     r"""Information about a metric."""
 
+    one_time_products_net_revenue: Metric
+    r"""Information about a metric."""
+
     new_subscriptions: Metric
     r"""Information about a metric."""
 
     new_subscriptions_revenue: Metric
     r"""Information about a metric."""
 
+    new_subscriptions_net_revenue: Metric
+    r"""Information about a metric."""
+
     renewed_subscriptions: Metric
     r"""Information about a metric."""
 
     renewed_subscriptions_revenue: Metric
+    r"""Information about a metric."""
+
+    renewed_subscriptions_net_revenue: Metric
     r"""Information about a metric."""
 
     active_subscriptions: Metric
