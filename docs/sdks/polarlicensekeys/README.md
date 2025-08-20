@@ -109,6 +109,11 @@ with Polar() as polar:
 
 Validate a license key.
 
+> This endpoint doesn't require authentication and can be safely used on a public
+> client, like a desktop application or a mobile app.
+> If you plan to validate a license key on a server, use the `/v1/license-keys/validate`
+> endpoint instead.
+
 ### Example Usage
 
 <!-- UsageSnippet language="python" operationID="customer_portal:license_keys:validate" method="post" path="/v1/customer-portal/license-keys/validate" -->
@@ -150,6 +155,11 @@ with Polar() as polar:
 ## activate
 
 Activate a license key instance.
+
+> This endpoint doesn't require authentication and can be safely used on a public
+> client, like a desktop application or a mobile app.
+> If you plan to validate a license key on a server, use the `/v1/license-keys/activate`
+> endpoint instead.
 
 ### Example Usage
 
@@ -194,6 +204,11 @@ with Polar() as polar:
 ## deactivate
 
 Deactivate a license key instance.
+
+> This endpoint doesn't require authentication and can be safely used on a public
+> client, like a desktop application or a mobile app.
+> If you plan to validate a license key on a server, use the `/v1/license-keys/deactivate`
+> endpoint instead.
 
 ### Example Usage
 

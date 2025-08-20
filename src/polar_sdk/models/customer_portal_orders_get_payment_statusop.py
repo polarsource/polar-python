@@ -6,11 +6,11 @@ from polar_sdk.utils import FieldMetadata, PathParamMetadata, SecurityMetadata
 from typing_extensions import Annotated, TypedDict
 
 
-class CustomerPortalOrdersRetryPaymentSecurityTypedDict(TypedDict):
+class CustomerPortalOrdersGetPaymentStatusSecurityTypedDict(TypedDict):
     customer_session: str
 
 
-class CustomerPortalOrdersRetryPaymentSecurity(BaseModel):
+class CustomerPortalOrdersGetPaymentStatusSecurity(BaseModel):
     customer_session: Annotated[
         str,
         FieldMetadata(
@@ -24,12 +24,12 @@ class CustomerPortalOrdersRetryPaymentSecurity(BaseModel):
     ]
 
 
-class CustomerPortalOrdersRetryPaymentRequestTypedDict(TypedDict):
+class CustomerPortalOrdersGetPaymentStatusRequestTypedDict(TypedDict):
     id: str
     r"""The order ID."""
 
 
-class CustomerPortalOrdersRetryPaymentRequest(BaseModel):
+class CustomerPortalOrdersGetPaymentStatusRequest(BaseModel):
     id: Annotated[
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]

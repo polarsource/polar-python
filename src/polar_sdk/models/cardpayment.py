@@ -10,16 +10,8 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Literal, Optional
+from typing import Any, Dict, Literal, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
-
-
-class ProcessorMetadataTypedDict(TypedDict):
-    r"""Additional metadata from the payment processor for internal use."""
-
-
-class ProcessorMetadata(BaseModel):
-    r"""Additional metadata from the payment processor for internal use."""
 
 
 class CardPaymentTypedDict(TypedDict):
@@ -51,7 +43,7 @@ class CardPaymentTypedDict(TypedDict):
     r"""Additional metadata for a card payment method."""
     method: Literal["card"]
     r"""The payment method used."""
-    processor_metadata: NotRequired[ProcessorMetadataTypedDict]
+    processor_metadata: NotRequired[Dict[str, Any]]
     r"""Additional metadata from the payment processor for internal use."""
 
 
@@ -101,7 +93,7 @@ class CardPayment(BaseModel):
     ] = "card"
     r"""The payment method used."""
 
-    processor_metadata: Optional[ProcessorMetadata] = None
+    processor_metadata: Optional[Dict[str, Any]] = None
     r"""Additional metadata from the payment processor for internal use."""
 
     @model_serializer(mode="wrap")

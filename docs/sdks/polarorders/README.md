@@ -10,7 +10,8 @@
 * [update](#update) - Update Order
 * [generate_invoice](#generate_invoice) - Generate Order Invoice
 * [invoice](#invoice) - Get Order Invoice
-* [retry_payment](#retry_payment) - Retry Payment
+* [get_payment_status](#get_payment_status) - Get Order Payment Status
+* [confirm_retry_payment](#confirm_retry_payment) - Confirm Retry Payment
 
 ## list
 
@@ -252,15 +253,15 @@ with Polar() as polar:
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
-## retry_payment
+## get_payment_status
 
-Manually retry payment for a failed order.
+Get the current payment status for an order.
 
-**Scopes**: `customer_portal:write`
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="customer_portal:orders:retry_payment" method="post" path="/v1/customer-portal/orders/{id}/retry-payment" -->
+<!-- UsageSnippet language="python" operationID="customer_portal:orders:get_payment_status" method="get" path="/v1/customer-portal/orders/{id}/payment-status" -->
 ```python
 import polar_sdk
 from polar_sdk import Polar
@@ -268,7 +269,7 @@ from polar_sdk import Polar
 
 with Polar() as polar:
 
-    res = polar.customer_portal.orders.retry_payment(security=polar_sdk.CustomerPortalOrdersRetryPaymentSecurity(
+    res = polar.customer_portal.orders.get_payment_status(security=polar_sdk.CustomerPortalOrdersGetPaymentStatusSecurity(
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
     ), id="<value>")
 
@@ -279,15 +280,63 @@ with Polar() as polar:
 
 ### Parameters
 
-| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                  | [models.CustomerPortalOrdersRetryPaymentSecurity](../../models/customerportalordersretrypaymentsecurity.md) | :heavy_check_mark:                                                                                          | N/A                                                                                                         |
-| `id`                                                                                                        | *str*                                                                                                       | :heavy_check_mark:                                                                                          | The order ID.                                                                                               |
-| `retries`                                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                            | :heavy_minus_sign:                                                                                          | Configuration to override the default retry behavior of the client.                                         |
+| Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                          | [models.CustomerPortalOrdersGetPaymentStatusSecurity](../../models/customerportalordersgetpaymentstatussecurity.md) | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
+| `id`                                                                                                                | *str*                                                                                                               | :heavy_check_mark:                                                                                                  | The order ID.                                                                                                       |
+| `retries`                                                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                    | :heavy_minus_sign:                                                                                                  | Configuration to override the default retry behavior of the client.                                                 |
 
 ### Response
 
-**[Any](../../models/.md)**
+**[models.CustomerOrderPaymentStatus](../../models/customerorderpaymentstatus.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## confirm_retry_payment
+
+Confirm a retry payment using a Stripe confirmation token.
+
+**Scopes**: `customer_portal:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="customer_portal:orders:confirm_retry_payment" method="post" path="/v1/customer-portal/orders/{id}/confirm-payment" -->
+```python
+import polar_sdk
+from polar_sdk import Polar
+
+
+with Polar() as polar:
+
+    res = polar.customer_portal.orders.confirm_retry_payment(security=polar_sdk.CustomerPortalOrdersConfirmRetryPaymentSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), id="<value>", customer_order_confirm_payment={
+        "confirmation_token_id": "<id>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                 | Type                                                                                                                      | Required                                                                                                                  | Description                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                                | [models.CustomerPortalOrdersConfirmRetryPaymentSecurity](../../models/customerportalordersconfirmretrypaymentsecurity.md) | :heavy_check_mark:                                                                                                        | N/A                                                                                                                       |
+| `id`                                                                                                                      | *str*                                                                                                                     | :heavy_check_mark:                                                                                                        | The order ID.                                                                                                             |
+| `customer_order_confirm_payment`                                                                                          | [models.CustomerOrderConfirmPayment](../../models/customerorderconfirmpayment.md)                                         | :heavy_check_mark:                                                                                                        | N/A                                                                                                                       |
+| `retries`                                                                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                          | :heavy_minus_sign:                                                                                                        | Configuration to override the default retry behavior of the client.                                                       |
+
+### Response
+
+**[models.CustomerOrderPaymentConfirmation](../../models/customerorderpaymentconfirmation.md)**
 
 ### Errors
 

@@ -854,3 +854,13 @@ Based on:
 - [python v0.22.6] .
 ### Releases
 - [PyPI v0.22.6] https://pypi.org/project/polar-sdk/0.22.6 - .
+
+## 2025-08-20 00:13:18
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.606.0 (2.686.7) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v0.22.7] .
+### Releases
+- [PyPI v0.22.7] https://pypi.org/project/polar-sdk/0.22.7 - .

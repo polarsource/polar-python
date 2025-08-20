@@ -338,12 +338,7 @@ if TYPE_CHECKING:
     from .benefittype import BenefitType
     from .benefitupdatedevent import BenefitUpdatedEvent, BenefitUpdatedEventTypedDict
     from .billingaddressfieldmode import BillingAddressFieldMode
-    from .cardpayment import (
-        CardPayment,
-        CardPaymentTypedDict,
-        ProcessorMetadata,
-        ProcessorMetadataTypedDict,
-    )
+    from .cardpayment import CardPayment, CardPaymentTypedDict
     from .cardpaymentmetadata import CardPaymentMetadata, CardPaymentMetadataTypedDict
     from .checkout import (
         Checkout,
@@ -692,6 +687,12 @@ if TYPE_CHECKING:
         CustomerPortalLicenseKeysListSecurity,
         CustomerPortalLicenseKeysListSecurityTypedDict,
     )
+    from .customer_portal_orders_confirm_retry_paymentop import (
+        CustomerPortalOrdersConfirmRetryPaymentRequest,
+        CustomerPortalOrdersConfirmRetryPaymentRequestTypedDict,
+        CustomerPortalOrdersConfirmRetryPaymentSecurity,
+        CustomerPortalOrdersConfirmRetryPaymentSecurityTypedDict,
+    )
     from .customer_portal_orders_generate_invoiceop import (
         CustomerPortalOrdersGenerateInvoiceRequest,
         CustomerPortalOrdersGenerateInvoiceRequestTypedDict,
@@ -699,6 +700,12 @@ if TYPE_CHECKING:
         CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoiceUnion,
         CustomerPortalOrdersGenerateInvoiceSecurity,
         CustomerPortalOrdersGenerateInvoiceSecurityTypedDict,
+    )
+    from .customer_portal_orders_get_payment_statusop import (
+        CustomerPortalOrdersGetPaymentStatusRequest,
+        CustomerPortalOrdersGetPaymentStatusRequestTypedDict,
+        CustomerPortalOrdersGetPaymentStatusSecurity,
+        CustomerPortalOrdersGetPaymentStatusSecurityTypedDict,
     )
     from .customer_portal_orders_getop import (
         CustomerPortalOrdersGetRequest,
@@ -727,12 +734,6 @@ if TYPE_CHECKING:
         CustomerPortalOrdersListResponseTypedDict,
         CustomerPortalOrdersListSecurity,
         CustomerPortalOrdersListSecurityTypedDict,
-    )
-    from .customer_portal_orders_retry_paymentop import (
-        CustomerPortalOrdersRetryPaymentRequest,
-        CustomerPortalOrdersRetryPaymentRequestTypedDict,
-        CustomerPortalOrdersRetryPaymentSecurity,
-        CustomerPortalOrdersRetryPaymentSecurityTypedDict,
     )
     from .customer_portal_orders_updateop import (
         CustomerPortalOrdersUpdateRequest,
@@ -864,9 +865,21 @@ if TYPE_CHECKING:
     from .customermeter import CustomerMeter, CustomerMeterTypedDict
     from .customermetersortproperty import CustomerMeterSortProperty
     from .customerorder import CustomerOrder, CustomerOrderTypedDict
+    from .customerorderconfirmpayment import (
+        CustomerOrderConfirmPayment,
+        CustomerOrderConfirmPaymentTypedDict,
+    )
     from .customerorderinvoice import (
         CustomerOrderInvoice,
         CustomerOrderInvoiceTypedDict,
+    )
+    from .customerorderpaymentconfirmation import (
+        CustomerOrderPaymentConfirmation,
+        CustomerOrderPaymentConfirmationTypedDict,
+    )
+    from .customerorderpaymentstatus import (
+        CustomerOrderPaymentStatus,
+        CustomerOrderPaymentStatusTypedDict,
     )
     from .customerorderproduct import (
         CustomerOrderProduct,
@@ -1342,12 +1355,7 @@ if TYPE_CHECKING:
     from .filterclause import FilterClause, FilterClauseTypedDict, Value, ValueTypedDict
     from .filterconjunction import FilterConjunction
     from .filteroperator import FilterOperator
-    from .genericpayment import (
-        GenericPayment,
-        GenericPaymentProcessorMetadata,
-        GenericPaymentProcessorMetadataTypedDict,
-        GenericPaymentTypedDict,
-    )
+    from .genericpayment import GenericPayment, GenericPaymentTypedDict
     from .httpvalidationerror import HTTPValidationError, HTTPValidationErrorData
     from .introspecttokenrequest import (
         IntrospectTokenRequest,
@@ -2848,8 +2856,14 @@ __all__ = [
     "CustomerMetersListResponse",
     "CustomerMetersListResponseTypedDict",
     "CustomerOrder",
+    "CustomerOrderConfirmPayment",
+    "CustomerOrderConfirmPaymentTypedDict",
     "CustomerOrderInvoice",
     "CustomerOrderInvoiceTypedDict",
+    "CustomerOrderPaymentConfirmation",
+    "CustomerOrderPaymentConfirmationTypedDict",
+    "CustomerOrderPaymentStatus",
+    "CustomerOrderPaymentStatusTypedDict",
     "CustomerOrderProduct",
     "CustomerOrderProductPrices",
     "CustomerOrderProductPricesTypedDict",
@@ -2940,12 +2954,20 @@ __all__ = [
     "CustomerPortalLicenseKeysListSecurityTypedDict",
     "CustomerPortalOAuthAccount",
     "CustomerPortalOAuthAccountTypedDict",
+    "CustomerPortalOrdersConfirmRetryPaymentRequest",
+    "CustomerPortalOrdersConfirmRetryPaymentRequestTypedDict",
+    "CustomerPortalOrdersConfirmRetryPaymentSecurity",
+    "CustomerPortalOrdersConfirmRetryPaymentSecurityTypedDict",
     "CustomerPortalOrdersGenerateInvoiceRequest",
     "CustomerPortalOrdersGenerateInvoiceRequestTypedDict",
     "CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoice",
     "CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoiceUnion",
     "CustomerPortalOrdersGenerateInvoiceSecurity",
     "CustomerPortalOrdersGenerateInvoiceSecurityTypedDict",
+    "CustomerPortalOrdersGetPaymentStatusRequest",
+    "CustomerPortalOrdersGetPaymentStatusRequestTypedDict",
+    "CustomerPortalOrdersGetPaymentStatusSecurity",
+    "CustomerPortalOrdersGetPaymentStatusSecurityTypedDict",
     "CustomerPortalOrdersGetRequest",
     "CustomerPortalOrdersGetRequestTypedDict",
     "CustomerPortalOrdersGetSecurity",
@@ -2968,10 +2990,6 @@ __all__ = [
     "CustomerPortalOrdersListResponseTypedDict",
     "CustomerPortalOrdersListSecurity",
     "CustomerPortalOrdersListSecurityTypedDict",
-    "CustomerPortalOrdersRetryPaymentRequest",
-    "CustomerPortalOrdersRetryPaymentRequestTypedDict",
-    "CustomerPortalOrdersRetryPaymentSecurity",
-    "CustomerPortalOrdersRetryPaymentSecurityTypedDict",
     "CustomerPortalOrdersUpdateRequest",
     "CustomerPortalOrdersUpdateRequestTypedDict",
     "CustomerPortalOrdersUpdateSecurity",
@@ -3260,8 +3278,6 @@ __all__ = [
     "FilterTypedDict",
     "Func",
     "GenericPayment",
-    "GenericPaymentProcessorMetadata",
-    "GenericPaymentProcessorMetadataTypedDict",
     "GenericPaymentTypedDict",
     "HTTPValidationError",
     "HTTPValidationErrorData",
@@ -3668,8 +3684,6 @@ __all__ = [
     "PreviousPropertiesTypedDict",
     "Prices",
     "PricesTypedDict",
-    "ProcessorMetadata",
-    "ProcessorMetadataTypedDict",
     "Product",
     "ProductBenefitsUpdate",
     "ProductBenefitsUpdateTypedDict",
@@ -4208,8 +4222,6 @@ _dynamic_imports: dict[str, str] = {
     "BillingAddressFieldMode": ".billingaddressfieldmode",
     "CardPayment": ".cardpayment",
     "CardPaymentTypedDict": ".cardpayment",
-    "ProcessorMetadata": ".cardpayment",
-    "ProcessorMetadataTypedDict": ".cardpayment",
     "CardPaymentMetadata": ".cardpaymentmetadata",
     "CardPaymentMetadataTypedDict": ".cardpaymentmetadata",
     "Checkout": ".checkout",
@@ -4461,12 +4473,20 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalLicenseKeysListResponseTypedDict": ".customer_portal_license_keys_listop",
     "CustomerPortalLicenseKeysListSecurity": ".customer_portal_license_keys_listop",
     "CustomerPortalLicenseKeysListSecurityTypedDict": ".customer_portal_license_keys_listop",
+    "CustomerPortalOrdersConfirmRetryPaymentRequest": ".customer_portal_orders_confirm_retry_paymentop",
+    "CustomerPortalOrdersConfirmRetryPaymentRequestTypedDict": ".customer_portal_orders_confirm_retry_paymentop",
+    "CustomerPortalOrdersConfirmRetryPaymentSecurity": ".customer_portal_orders_confirm_retry_paymentop",
+    "CustomerPortalOrdersConfirmRetryPaymentSecurityTypedDict": ".customer_portal_orders_confirm_retry_paymentop",
     "CustomerPortalOrdersGenerateInvoiceRequest": ".customer_portal_orders_generate_invoiceop",
     "CustomerPortalOrdersGenerateInvoiceRequestTypedDict": ".customer_portal_orders_generate_invoiceop",
     "CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoice": ".customer_portal_orders_generate_invoiceop",
     "CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoiceUnion": ".customer_portal_orders_generate_invoiceop",
     "CustomerPortalOrdersGenerateInvoiceSecurity": ".customer_portal_orders_generate_invoiceop",
     "CustomerPortalOrdersGenerateInvoiceSecurityTypedDict": ".customer_portal_orders_generate_invoiceop",
+    "CustomerPortalOrdersGetPaymentStatusRequest": ".customer_portal_orders_get_payment_statusop",
+    "CustomerPortalOrdersGetPaymentStatusRequestTypedDict": ".customer_portal_orders_get_payment_statusop",
+    "CustomerPortalOrdersGetPaymentStatusSecurity": ".customer_portal_orders_get_payment_statusop",
+    "CustomerPortalOrdersGetPaymentStatusSecurityTypedDict": ".customer_portal_orders_get_payment_statusop",
     "CustomerPortalOrdersGetRequest": ".customer_portal_orders_getop",
     "CustomerPortalOrdersGetRequestTypedDict": ".customer_portal_orders_getop",
     "CustomerPortalOrdersGetSecurity": ".customer_portal_orders_getop",
@@ -4489,10 +4509,6 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalOrdersListResponseTypedDict": ".customer_portal_orders_listop",
     "CustomerPortalOrdersListSecurity": ".customer_portal_orders_listop",
     "CustomerPortalOrdersListSecurityTypedDict": ".customer_portal_orders_listop",
-    "CustomerPortalOrdersRetryPaymentRequest": ".customer_portal_orders_retry_paymentop",
-    "CustomerPortalOrdersRetryPaymentRequestTypedDict": ".customer_portal_orders_retry_paymentop",
-    "CustomerPortalOrdersRetryPaymentSecurity": ".customer_portal_orders_retry_paymentop",
-    "CustomerPortalOrdersRetryPaymentSecurityTypedDict": ".customer_portal_orders_retry_paymentop",
     "CustomerPortalOrdersUpdateRequest": ".customer_portal_orders_updateop",
     "CustomerPortalOrdersUpdateRequestTypedDict": ".customer_portal_orders_updateop",
     "CustomerPortalOrdersUpdateSecurity": ".customer_portal_orders_updateop",
@@ -4573,8 +4589,14 @@ _dynamic_imports: dict[str, str] = {
     "CustomerMeterSortProperty": ".customermetersortproperty",
     "CustomerOrder": ".customerorder",
     "CustomerOrderTypedDict": ".customerorder",
+    "CustomerOrderConfirmPayment": ".customerorderconfirmpayment",
+    "CustomerOrderConfirmPaymentTypedDict": ".customerorderconfirmpayment",
     "CustomerOrderInvoice": ".customerorderinvoice",
     "CustomerOrderInvoiceTypedDict": ".customerorderinvoice",
+    "CustomerOrderPaymentConfirmation": ".customerorderpaymentconfirmation",
+    "CustomerOrderPaymentConfirmationTypedDict": ".customerorderpaymentconfirmation",
+    "CustomerOrderPaymentStatus": ".customerorderpaymentstatus",
+    "CustomerOrderPaymentStatusTypedDict": ".customerorderpaymentstatus",
     "CustomerOrderProduct": ".customerorderproduct",
     "CustomerOrderProductPrices": ".customerorderproduct",
     "CustomerOrderProductPricesTypedDict": ".customerorderproduct",
@@ -4914,8 +4936,6 @@ _dynamic_imports: dict[str, str] = {
     "FilterConjunction": ".filterconjunction",
     "FilterOperator": ".filteroperator",
     "GenericPayment": ".genericpayment",
-    "GenericPaymentProcessorMetadata": ".genericpayment",
-    "GenericPaymentProcessorMetadataTypedDict": ".genericpayment",
     "GenericPaymentTypedDict": ".genericpayment",
     "HTTPValidationError": ".httpvalidationerror",
     "HTTPValidationErrorData": ".httpvalidationerror",

@@ -6,16 +6,8 @@ from .paymentstatus import PaymentStatus
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Optional
+from typing import Any, Dict, Optional
 from typing_extensions import NotRequired, TypedDict
-
-
-class GenericPaymentProcessorMetadataTypedDict(TypedDict):
-    r"""Additional metadata from the payment processor for internal use."""
-
-
-class GenericPaymentProcessorMetadata(BaseModel):
-    r"""Additional metadata from the payment processor for internal use."""
 
 
 class GenericPaymentTypedDict(TypedDict):
@@ -45,7 +37,7 @@ class GenericPaymentTypedDict(TypedDict):
     r"""The ID of the checkout session associated with this payment."""
     order_id: Nullable[str]
     r"""The ID of the order associated with this payment."""
-    processor_metadata: NotRequired[GenericPaymentProcessorMetadataTypedDict]
+    processor_metadata: NotRequired[Dict[str, Any]]
     r"""Additional metadata from the payment processor for internal use."""
 
 
@@ -89,7 +81,7 @@ class GenericPayment(BaseModel):
     order_id: Nullable[str]
     r"""The ID of the order associated with this payment."""
 
-    processor_metadata: Optional[GenericPaymentProcessorMetadata] = None
+    processor_metadata: Optional[Dict[str, Any]] = None
     r"""Additional metadata from the payment processor for internal use."""
 
     @model_serializer(mode="wrap")

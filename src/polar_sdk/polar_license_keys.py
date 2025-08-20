@@ -521,6 +521,11 @@ class PolarLicenseKeys(BaseSDK):
 
         Validate a license key.
 
+        > This endpoint doesn't require authentication and can be safely used on a public
+        > client, like a desktop application or a mobile app.
+        > If you plan to validate a license key on a server, use the `/v1/license-keys/validate`
+        > endpoint instead.
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -615,6 +620,11 @@ class PolarLicenseKeys(BaseSDK):
 
         Validate a license key.
 
+        > This endpoint doesn't require authentication and can be safely used on a public
+        > client, like a desktop application or a mobile app.
+        > If you plan to validate a license key on a server, use the `/v1/license-keys/validate`
+        > endpoint instead.
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -708,6 +718,11 @@ class PolarLicenseKeys(BaseSDK):
         r"""Activate License Key
 
         Activate a license key instance.
+
+        > This endpoint doesn't require authentication and can be safely used on a public
+        > client, like a desktop application or a mobile app.
+        > If you plan to validate a license key on a server, use the `/v1/license-keys/activate`
+        > endpoint instead.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -805,6 +820,11 @@ class PolarLicenseKeys(BaseSDK):
         r"""Activate License Key
 
         Activate a license key instance.
+
+        > This endpoint doesn't require authentication and can be safely used on a public
+        > client, like a desktop application or a mobile app.
+        > If you plan to validate a license key on a server, use the `/v1/license-keys/activate`
+        > endpoint instead.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -905,6 +925,11 @@ class PolarLicenseKeys(BaseSDK):
 
         Deactivate a license key instance.
 
+        > This endpoint doesn't require authentication and can be safely used on a public
+        > client, like a desktop application or a mobile app.
+        > If you plan to validate a license key on a server, use the `/v1/license-keys/deactivate`
+        > endpoint instead.
+
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1000,6 +1025,11 @@ class PolarLicenseKeys(BaseSDK):
         r"""Deactivate License Key
 
         Deactivate a license key instance.
+
+        > This endpoint doesn't require authentication and can be safely used on a public
+        > client, like a desktop application or a mobile app.
+        > If you plan to validate a license key on a server, use the `/v1/license-keys/deactivate`
+        > endpoint instead.
 
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
