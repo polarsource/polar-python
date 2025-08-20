@@ -9,6 +9,9 @@
 * [get](#get) - Get License Key
 * [update](#update) - Update License Key
 * [get_activation](#get_activation) - Get Activation
+* [validate](#validate) - Validate License Key
+* [activate](#activate) - Activate License Key
+* [deactivate](#deactivate) - Deactivate License Key
 
 ## list
 
@@ -189,6 +192,142 @@ with Polar(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.Unauthorized        | 401                        | application/json           |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## validate
+
+Validate a license key.
+
+**Scopes**: `license_keys:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="license_keys:validate" method="post" path="/v1/license-keys/validate" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.license_keys.validate(request={
+        "key": "<key>",
+        "organization_id": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [models.LicenseKeyValidate](../../models/licensekeyvalidate.md)     | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.ValidatedLicenseKey](../../models/validatedlicensekey.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## activate
+
+Activate a license key instance.
+
+**Scopes**: `license_keys:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="license_keys:activate" method="post" path="/v1/license-keys/activate" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.license_keys.activate(request={
+        "key": "<key>",
+        "organization_id": "<value>",
+        "label": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [models.LicenseKeyActivate](../../models/licensekeyactivate.md)     | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.LicenseKeyActivationRead](../../models/licensekeyactivationread.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.NotPermitted        | 403                        | application/json           |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## deactivate
+
+Deactivate a license key instance.
+
+**Scopes**: `license_keys:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="license_keys:deactivate" method="post" path="/v1/license-keys/deactivate" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    polar.license_keys.deactivate(request={
+        "key": "<key>",
+        "organization_id": "<value>",
+        "activation_id": "<value>",
+    })
+
+    # Use the SDK ...
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [models.LicenseKeyDeactivate](../../models/licensekeydeactivate.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
 | models.ResourceNotFound    | 404                        | application/json           |
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |

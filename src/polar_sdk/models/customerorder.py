@@ -34,8 +34,6 @@ class CustomerOrderTypedDict(TypedDict):
     r"""Discount amount in cents."""
     net_amount: int
     r"""Amount in cents, after discounts but before taxes."""
-    amount: int
-    r"""Amount in cents, after discounts but before taxes."""
     tax_amount: int
     r"""Sales tax amount in cents."""
     total_amount: int
@@ -87,14 +85,6 @@ class CustomerOrder(BaseModel):
     r"""Discount amount in cents."""
 
     net_amount: int
-    r"""Amount in cents, after discounts but before taxes."""
-
-    amount: Annotated[
-        int,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
     r"""Amount in cents, after discounts but before taxes."""
 
     tax_amount: int
