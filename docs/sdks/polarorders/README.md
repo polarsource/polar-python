@@ -316,9 +316,7 @@ with Polar() as polar:
 
     res = polar.customer_portal.orders.confirm_retry_payment(security=polar_sdk.CustomerPortalOrdersConfirmRetryPaymentSecurity(
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
-    ), id="<value>", customer_order_confirm_payment={
-        "confirmation_token_id": "<id>",
-    })
+    ), id="<value>", customer_order_confirm_payment={})
 
     # Handle response
     print(res)

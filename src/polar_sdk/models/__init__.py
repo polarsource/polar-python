@@ -1987,6 +1987,7 @@ if TYPE_CHECKING:
     from .scope import Scope
     from .sdkerror import SDKError
     from .security import Security, SecurityTypedDict
+    from .status import Status
     from .subscription import (
         CustomFieldData,
         CustomFieldDataTypedDict,
@@ -2131,6 +2132,7 @@ if TYPE_CHECKING:
     from .timeinterval import TimeInterval
     from .tokenresponse import TokenResponse, TokenResponseTypedDict
     from .unauthorized import Unauthorized, UnauthorizedData
+    from .uniqueaggregation import UniqueAggregation, UniqueAggregationTypedDict
     from .userevent import (
         UserEvent,
         UserEventMetadata,
@@ -3839,6 +3841,7 @@ __all__ = [
     "SecurityTypedDict",
     "SourceFilter",
     "SourceFilterTypedDict",
+    "Status",
     "StatusFilter",
     "StatusFilterTypedDict",
     "SubType",
@@ -3898,6 +3901,8 @@ __all__ = [
     "TokenTypeHint",
     "Unauthorized",
     "UnauthorizedData",
+    "UniqueAggregation",
+    "UniqueAggregationTypedDict",
     "UnitAmount",
     "UnitAmountTypedDict",
     "UserEvent",
@@ -5450,6 +5455,7 @@ _dynamic_imports: dict[str, str] = {
     "SDKError": ".sdkerror",
     "Security": ".security",
     "SecurityTypedDict": ".security",
+    "Status": ".status",
     "CustomFieldData": ".subscription",
     "CustomFieldDataTypedDict": ".subscription",
     "Metadata": ".subscription",
@@ -5583,6 +5589,8 @@ _dynamic_imports: dict[str, str] = {
     "TokenResponseTypedDict": ".tokenresponse",
     "Unauthorized": ".unauthorized",
     "UnauthorizedData": ".unauthorized",
+    "UniqueAggregation": ".uniqueaggregation",
+    "UniqueAggregationTypedDict": ".uniqueaggregation",
     "UserEvent": ".userevent",
     "UserEventMetadata": ".userevent",
     "UserEventMetadataTypedDict": ".userevent",
