@@ -4,6 +4,7 @@ from __future__ import annotations
 from .countaggregation import CountAggregation, CountAggregationTypedDict
 from .filter_ import Filter, FilterTypedDict
 from .propertyaggregation import PropertyAggregation, PropertyAggregationTypedDict
+from .uniqueaggregation import UniqueAggregation, UniqueAggregationTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import get_discriminator
@@ -23,7 +24,11 @@ MeterMetadata = TypeAliasType("MeterMetadata", Union[str, int, float, bool])
 
 MeterAggregationTypedDict = TypeAliasType(
     "MeterAggregationTypedDict",
-    Union[CountAggregationTypedDict, PropertyAggregationTypedDict],
+    Union[
+        CountAggregationTypedDict,
+        PropertyAggregationTypedDict,
+        UniqueAggregationTypedDict,
+    ],
 )
 r"""The aggregation to apply on the filtered events to calculate the meter."""
 
@@ -35,6 +40,7 @@ MeterAggregation = Annotated[
         Annotated[PropertyAggregation, Tag("max")],
         Annotated[PropertyAggregation, Tag("min")],
         Annotated[PropertyAggregation, Tag("sum")],
+        Annotated[UniqueAggregation, Tag("unique")],
     ],
     Discriminator(lambda m: get_discriminator(m, "func", "func")),
 ]

@@ -33,3 +33,9 @@ value: models.PropertyAggregation = /* values here */
 value: models.PropertyAggregation = /* values here */
 ```
 
+### `models.UniqueAggregation`
+
+```python
+value: models.UniqueAggregation = /* values here */
+```
+

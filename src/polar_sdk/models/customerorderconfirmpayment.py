@@ -2,23 +2,63 @@
 
 from __future__ import annotations
 from .paymentprocessor import PaymentProcessor
-from polar_sdk.types import BaseModel
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Optional
 from typing_extensions import NotRequired, TypedDict
 
 
 class CustomerOrderConfirmPaymentTypedDict(TypedDict):
-    r"""Schema to confirm a retry payment using a Stripe confirmation token."""
+    r"""Schema to confirm a retry payment using either a saved payment method or a new confirmation token."""
 
-    confirmation_token_id: str
-    r"""ID of the Stripe confirmation token."""
+    confirmation_token_id: NotRequired[Nullable[str]]
+    r"""ID of the Stripe confirmation token for new payment methods."""
+    payment_method_id: NotRequired[Nullable[str]]
+    r"""ID of an existing saved payment method."""
     payment_processor: NotRequired[PaymentProcessor]
 
 
 class CustomerOrderConfirmPayment(BaseModel):
-    r"""Schema to confirm a retry payment using a Stripe confirmation token."""
+    r"""Schema to confirm a retry payment using either a saved payment method or a new confirmation token."""
 
-    confirmation_token_id: str
-    r"""ID of the Stripe confirmation token."""
+    confirmation_token_id: OptionalNullable[str] = UNSET
+    r"""ID of the Stripe confirmation token for new payment methods."""
+
+    payment_method_id: OptionalNullable[str] = UNSET
+    r"""ID of an existing saved payment method."""
 
     payment_processor: Optional[PaymentProcessor] = None
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = [
+            "confirmation_token_id",
+            "payment_method_id",
+            "payment_processor",
+        ]
+        nullable_fields = ["confirmation_token_id", "payment_method_id"]
+        null_default_fields = []
+
+        serialized = handler(self)
+
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+            serialized.pop(k, None)
+
+            optional_nullable = k in optional_fields and k in nullable_fields
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
+
+            if val is not None and val != UNSET_SENTINEL:
+                m[k] = val
+            elif val != UNSET_SENTINEL and (
+                not k in optional_fields or (optional_nullable and is_set)
+            ):
+                m[k] = val
+
+        return m

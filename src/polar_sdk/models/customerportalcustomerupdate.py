@@ -8,16 +8,13 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class CustomerPortalCustomerUpdateTypedDict(TypedDict):
-    email: NotRequired[Nullable[str]]
-    name: NotRequired[Nullable[str]]
+    billing_name: NotRequired[Nullable[str]]
     billing_address: NotRequired[Nullable[AddressTypedDict]]
     tax_id: NotRequired[Nullable[str]]
 
 
 class CustomerPortalCustomerUpdate(BaseModel):
-    email: OptionalNullable[str] = UNSET
-
-    name: OptionalNullable[str] = UNSET
+    billing_name: OptionalNullable[str] = UNSET
 
     billing_address: OptionalNullable[Address] = UNSET
 
@@ -25,8 +22,8 @@ class CustomerPortalCustomerUpdate(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["email", "name", "billing_address", "tax_id"]
-        nullable_fields = ["email", "name", "billing_address", "tax_id"]
+        optional_fields = ["billing_name", "billing_address", "tax_id"]
+        nullable_fields = ["billing_name", "billing_address", "tax_id"]
         null_default_fields = []
 
         serialized = handler(self)
