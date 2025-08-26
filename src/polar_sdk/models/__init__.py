@@ -2009,6 +2009,7 @@ if TYPE_CHECKING:
         TaxID,
         TaxIDTypedDict,
     )
+    from .subscriptionlocked import SubscriptionLocked, SubscriptionLockedData
     from .subscriptionmeter import SubscriptionMeter, SubscriptionMeterTypedDict
     from .subscriptionprorationbehavior import SubscriptionProrationBehavior
     from .subscriptionrecurringinterval import SubscriptionRecurringInterval
@@ -3856,6 +3857,8 @@ __all__ = [
     "SubscriptionDiscountTypedDict",
     "SubscriptionIDFilter",
     "SubscriptionIDFilterTypedDict",
+    "SubscriptionLocked",
+    "SubscriptionLockedData",
     "SubscriptionMeter",
     "SubscriptionMeterTypedDict",
     "SubscriptionPrices",
@@ -5474,6 +5477,8 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionCustomerTypedDict": ".subscriptioncustomer",
     "TaxID": ".subscriptioncustomer",
     "TaxIDTypedDict": ".subscriptioncustomer",
+    "SubscriptionLocked": ".subscriptionlocked",
+    "SubscriptionLockedData": ".subscriptionlocked",
     "SubscriptionMeter": ".subscriptionmeter",
     "SubscriptionMeterTypedDict": ".subscriptionmeter",
     "SubscriptionProrationBehavior": ".subscriptionprorationbehavior",
