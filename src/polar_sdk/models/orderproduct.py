@@ -32,7 +32,7 @@ class OrderProductTypedDict(TypedDict):
     description: Nullable[str]
     r"""The description of the product."""
     recurring_interval: Nullable[SubscriptionRecurringInterval]
-    r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
+    r"""The recurring interval of the product. If `None`, the product is a one-time purchase.Note that the `day` and `week` values are for internal Polar staff use only."""
     is_recurring: bool
     r"""Whether the product is a subscription."""
     is_archived: bool
@@ -60,7 +60,7 @@ class OrderProduct(BaseModel):
     r"""The description of the product."""
 
     recurring_interval: Nullable[SubscriptionRecurringInterval]
-    r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
+    r"""The recurring interval of the product. If `None`, the product is a one-time purchase.Note that the `day` and `week` values are for internal Polar staff use only."""
 
     is_recurring: bool
     r"""Whether the product is a subscription."""

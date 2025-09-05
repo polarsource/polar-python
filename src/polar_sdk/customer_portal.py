@@ -10,6 +10,7 @@ from polar_sdk.polar_license_keys import PolarLicenseKeys
 from polar_sdk.polar_orders import PolarOrders
 from polar_sdk.polar_organizations import PolarOrganizations
 from polar_sdk.polar_subscriptions import PolarSubscriptions
+from typing import Optional
 
 
 class CustomerPortal(BaseSDK):
@@ -22,17 +23,33 @@ class CustomerPortal(BaseSDK):
     organizations: PolarOrganizations
     subscriptions: PolarSubscriptions
 
-    def __init__(self, sdk_config: SDKConfiguration) -> None:
-        BaseSDK.__init__(self, sdk_config)
+    def __init__(
+        self, sdk_config: SDKConfiguration, parent_ref: Optional[object] = None
+    ) -> None:
+        BaseSDK.__init__(self, sdk_config, parent_ref=parent_ref)
         self.sdk_configuration = sdk_config
         self._init_sdks()
 
     def _init_sdks(self):
-        self.benefit_grants = BenefitGrants(self.sdk_configuration)
-        self.customers = PolarCustomers(self.sdk_configuration)
-        self.customer_meters = PolarCustomerMeters(self.sdk_configuration)
-        self.downloadables = Downloadables(self.sdk_configuration)
-        self.license_keys = PolarLicenseKeys(self.sdk_configuration)
-        self.orders = PolarOrders(self.sdk_configuration)
-        self.organizations = PolarOrganizations(self.sdk_configuration)
-        self.subscriptions = PolarSubscriptions(self.sdk_configuration)
+        self.benefit_grants = BenefitGrants(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.customers = PolarCustomers(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.customer_meters = PolarCustomerMeters(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.downloadables = Downloadables(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.license_keys = PolarLicenseKeys(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.orders = PolarOrders(self.sdk_configuration, parent_ref=self.parent_ref)
+        self.organizations = PolarOrganizations(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.subscriptions = PolarSubscriptions(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )

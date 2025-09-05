@@ -921,13 +921,18 @@ class PolarCustomers(BaseSDK):
                 security_source=security,
             ),
             request=req,
-            error_status_codes=["404", "422", "4XX", "5XX"],
+            error_status_codes=["400", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         response_data: Any = None
         if utils.match_response(http_res, "204", "*"):
             return
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                models.PaymentMethodInUseByActiveSubscriptionData, http_res
+            )
+            raise models.PaymentMethodInUseByActiveSubscription(response_data, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -1022,13 +1027,18 @@ class PolarCustomers(BaseSDK):
                 security_source=security,
             ),
             request=req,
-            error_status_codes=["404", "422", "4XX", "5XX"],
+            error_status_codes=["400", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         response_data: Any = None
         if utils.match_response(http_res, "204", "*"):
             return
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                models.PaymentMethodInUseByActiveSubscriptionData, http_res
+            )
+            raise models.PaymentMethodInUseByActiveSubscription(response_data, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res

@@ -113,282 +113,19 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 
 ```python
 # Synchronous Example
-import polar_sdk
 from polar_sdk import Polar
-from polar_sdk.utils import parse_datetime
 
 
-with Polar() as polar:
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
 
-    res = polar.endpointcheckout_created_post(request=polar_sdk.WebhookCheckoutCreatedPayload(
-        data=polar_sdk.Checkout(
-            created_at=parse_datetime("2023-02-15T15:44:21.478Z"),
-            modified_at=parse_datetime("2023-09-13T08:36:46.434Z"),
-            id="<value>",
-            payment_processor=polar_sdk.PaymentProcessor.STRIPE,
-            status=polar_sdk.CheckoutStatus.EXPIRED,
-            client_secret="<value>",
-            url="https://whole-aftermath.net/",
-            expires_at=parse_datetime("2023-12-28T10:30:56.042Z"),
-            success_url="https://moral-premier.name/",
-            embed_origin="<value>",
-            amount=929514,
-            discount_amount=323773,
-            net_amount=115799,
-            tax_amount=97012,
-            total_amount=859980,
-            currency="Fiji Dollar",
-            product_id="<value>",
-            product_price_id="<value>",
-            discount_id=None,
-            allow_discount_codes=True,
-            require_billing_address=True,
-            is_discount_applicable=True,
-            is_free_product_price=True,
-            is_payment_required=True,
-            is_payment_setup_required=True,
-            is_payment_form_required=True,
-            customer_id="<value>",
-            is_business_customer=False,
-            customer_name="<value>",
-            customer_email=None,
-            customer_ip_address=None,
-            customer_billing_name="<value>",
-            customer_billing_address=polar_sdk.Address(
-                country="US",
-            ),
-            customer_tax_id="<id>",
-            payment_processor_metadata={
-                "key": "<value>",
-                "key1": "<value>",
-                "key2": "<value>",
-            },
-            billing_address_fields=polar_sdk.CheckoutBillingAddressFields(
-                country=polar_sdk.BillingAddressFieldMode.REQUIRED,
-                state=polar_sdk.BillingAddressFieldMode.DISABLED,
-                city=polar_sdk.BillingAddressFieldMode.REQUIRED,
-                postal_code=polar_sdk.BillingAddressFieldMode.REQUIRED,
-                line1=polar_sdk.BillingAddressFieldMode.REQUIRED,
-                line2=polar_sdk.BillingAddressFieldMode.DISABLED,
-            ),
-            metadata={
-                "key": False,
-                "key1": False,
-            },
-            external_customer_id=None,
-            customer_external_id="<id>",
-            products=[
-                polar_sdk.CheckoutProduct(
-                    created_at=parse_datetime("2025-07-23T17:21:51.405Z"),
-                    modified_at=parse_datetime("2024-01-17T03:32:08.030Z"),
-                    id="<value>",
-                    name="<value>",
-                    description="funny abscond fairly except slight",
-                    recurring_interval=None,
-                    is_recurring=True,
-                    is_archived=True,
-                    organization_id="<value>",
-                    prices=[
-                        polar_sdk.LegacyRecurringProductPriceFree(
-                            created_at=parse_datetime("2023-09-13T08:36:46.434Z"),
-                            modified_at=parse_datetime("2023-10-05T12:55:46.428Z"),
-                            id="<value>",
-                            is_archived=False,
-                            product_id="<value>",
-                            recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
-                        ),
-                    ],
-                    benefits=[],
-                    medias=[
-                        polar_sdk.ProductMediaFileRead(
-                            id="<value>",
-                            organization_id="<value>",
-                            name="<value>",
-                            path="/var/log",
-                            mime_type="<value>",
-                            size=982910,
-                            storage_version="<value>",
-                            checksum_etag="<value>",
-                            checksum_sha256_base64="<value>",
-                            checksum_sha256_hex="<value>",
-                            last_modified_at=parse_datetime("2024-09-13T03:57:17.676Z"),
-                            version="<value>",
-                            is_uploaded=False,
-                            created_at=parse_datetime("2023-03-23T06:47:50.944Z"),
-                            size_readable="<value>",
-                            public_url="https://yummy-ocelot.biz/",
-                        ),
-                        polar_sdk.ProductMediaFileRead(
-                            id="<value>",
-                            organization_id="<value>",
-                            name="<value>",
-                            path="/var/log",
-                            mime_type="<value>",
-                            size=982910,
-                            storage_version="<value>",
-                            checksum_etag="<value>",
-                            checksum_sha256_base64="<value>",
-                            checksum_sha256_hex="<value>",
-                            last_modified_at=parse_datetime("2024-09-13T03:57:17.676Z"),
-                            version="<value>",
-                            is_uploaded=False,
-                            created_at=parse_datetime("2023-03-23T06:47:50.944Z"),
-                            size_readable="<value>",
-                            public_url="https://yummy-ocelot.biz/",
-                        ),
-                        polar_sdk.ProductMediaFileRead(
-                            id="<value>",
-                            organization_id="<value>",
-                            name="<value>",
-                            path="/var/log",
-                            mime_type="<value>",
-                            size=982910,
-                            storage_version="<value>",
-                            checksum_etag="<value>",
-                            checksum_sha256_base64="<value>",
-                            checksum_sha256_hex="<value>",
-                            last_modified_at=parse_datetime("2024-09-13T03:57:17.676Z"),
-                            version="<value>",
-                            is_uploaded=False,
-                            created_at=parse_datetime("2023-03-23T06:47:50.944Z"),
-                            size_readable="<value>",
-                            public_url="https://yummy-ocelot.biz/",
-                        ),
-                    ],
-                ),
-            ],
-            product=polar_sdk.CheckoutProduct(
-                created_at=parse_datetime("2023-03-01T03:35:30.257Z"),
-                modified_at=parse_datetime("2024-12-19T15:40:11.887Z"),
-                id="<value>",
-                name="<value>",
-                description="until joyful how",
-                recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
-                is_recurring=True,
-                is_archived=False,
-                organization_id="<value>",
-                prices=[
-                    polar_sdk.LegacyRecurringProductPriceFixed(
-                        created_at=parse_datetime("2024-05-02T18:25:33.974Z"),
-                        modified_at=parse_datetime("2025-02-06T12:55:07.640Z"),
-                        id="<value>",
-                        is_archived=False,
-                        product_id="<value>",
-                        recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
-                        price_currency="<value>",
-                        price_amount=115799,
-                    ),
-                    polar_sdk.LegacyRecurringProductPriceCustom(
-                        created_at=parse_datetime("2025-07-31T12:54:47.590Z"),
-                        modified_at=parse_datetime("2023-01-11T22:31:47.320Z"),
-                        id="<value>",
-                        is_archived=True,
-                        product_id="<value>",
-                        recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
-                        price_currency="<value>",
-                        minimum_amount=203013,
-                        maximum_amount=None,
-                        preset_amount=119260,
-                    ),
-                    polar_sdk.LegacyRecurringProductPriceFree(
-                        created_at=parse_datetime("2024-04-06T18:48:21.449Z"),
-                        modified_at=None,
-                        id="<value>",
-                        is_archived=True,
-                        product_id="<value>",
-                        recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
-                    ),
-                ],
-                benefits=[
-                    polar_sdk.BenefitPublic(
-                        id="<value>",
-                        created_at=parse_datetime("2023-11-22T11:07:53.319Z"),
-                        modified_at=parse_datetime("2025-09-17T18:38:51.288Z"),
-                        type=polar_sdk.BenefitType.DISCORD,
-                        description="brr now psst",
-                        selectable=True,
-                        deletable=True,
-                        organization_id="<value>",
-                    ),
-                    polar_sdk.BenefitPublic(
-                        id="<value>",
-                        created_at=parse_datetime("2023-11-22T11:07:53.319Z"),
-                        modified_at=parse_datetime("2025-09-17T18:38:51.288Z"),
-                        type=polar_sdk.BenefitType.DISCORD,
-                        description="brr now psst",
-                        selectable=True,
-                        deletable=True,
-                        organization_id="<value>",
-                    ),
-                ],
-                medias=[],
-            ),
-            product_price=polar_sdk.LegacyRecurringProductPriceFixed(
-                created_at=parse_datetime("2024-08-14T23:26:30.929Z"),
-                modified_at=parse_datetime("2025-01-15T11:59:21.523Z"),
-                id="<value>",
-                is_archived=False,
-                product_id="<value>",
-                recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
-                price_currency="<value>",
-                price_amount=499786,
-            ),
-            discount=polar_sdk.CheckoutDiscountPercentageRepeatDuration(
-                duration=polar_sdk.DiscountDuration.REPEATING,
-                duration_in_months=470604,
-                type=polar_sdk.DiscountType.FIXED,
-                basis_points=567071,
-                id="<value>",
-                name="<value>",
-                code="<value>",
-            ),
-            subscription_id="<value>",
-            attached_custom_fields=[
-                polar_sdk.AttachedCustomField(
-                    custom_field_id="<value>",
-                    custom_field=polar_sdk.CustomFieldNumber(
-                        created_at=parse_datetime("2024-01-27T12:44:05.844Z"),
-                        modified_at=parse_datetime("2023-11-12T13:10:44.040Z"),
-                        id="<value>",
-                        metadata={
-                            "key": 833527,
-                            "key1": False,
-                        },
-                        slug="<value>",
-                        name="<value>",
-                        organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-                        properties=polar_sdk.CustomFieldNumberProperties(),
-                    ),
-                    order=786803,
-                    required=False,
-                ),
-                polar_sdk.AttachedCustomField(
-                    custom_field_id="<value>",
-                    custom_field=polar_sdk.CustomFieldNumber(
-                        created_at=parse_datetime("2024-01-27T12:44:05.844Z"),
-                        modified_at=parse_datetime("2023-11-12T13:10:44.040Z"),
-                        id="<value>",
-                        metadata={
-                            "key": 833527,
-                            "key1": False,
-                        },
-                        slug="<value>",
-                        name="<value>",
-                        organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-                        properties=polar_sdk.CustomFieldNumberProperties(),
-                    ),
-                    order=786803,
-                    required=False,
-                ),
-            ],
-            customer_metadata={
+    res = polar.organizations.list(page=1, limit=10)
 
-            },
-        ),
-    ))
+    while res is not None:
+        # Handle items
 
-    # Handle response
-    print(res)
+        res = res.next()
 ```
 
 </br>
@@ -397,283 +134,20 @@ The same SDK client can also be used to make asynchronous requests by importing 
 ```python
 # Asynchronous Example
 import asyncio
-import polar_sdk
 from polar_sdk import Polar
-from polar_sdk.utils import parse_datetime
 
 async def main():
 
-    async with Polar() as polar:
+    async with Polar(
+        access_token="<YOUR_BEARER_TOKEN_HERE>",
+    ) as polar:
 
-        res = await polar.endpointcheckout_created_post_async(request=polar_sdk.WebhookCheckoutCreatedPayload(
-            data=polar_sdk.Checkout(
-                created_at=parse_datetime("2023-02-15T15:44:21.478Z"),
-                modified_at=parse_datetime("2023-09-13T08:36:46.434Z"),
-                id="<value>",
-                payment_processor=polar_sdk.PaymentProcessor.STRIPE,
-                status=polar_sdk.CheckoutStatus.EXPIRED,
-                client_secret="<value>",
-                url="https://whole-aftermath.net/",
-                expires_at=parse_datetime("2023-12-28T10:30:56.042Z"),
-                success_url="https://moral-premier.name/",
-                embed_origin="<value>",
-                amount=929514,
-                discount_amount=323773,
-                net_amount=115799,
-                tax_amount=97012,
-                total_amount=859980,
-                currency="Fiji Dollar",
-                product_id="<value>",
-                product_price_id="<value>",
-                discount_id=None,
-                allow_discount_codes=True,
-                require_billing_address=True,
-                is_discount_applicable=True,
-                is_free_product_price=True,
-                is_payment_required=True,
-                is_payment_setup_required=True,
-                is_payment_form_required=True,
-                customer_id="<value>",
-                is_business_customer=False,
-                customer_name="<value>",
-                customer_email=None,
-                customer_ip_address=None,
-                customer_billing_name="<value>",
-                customer_billing_address=polar_sdk.Address(
-                    country="US",
-                ),
-                customer_tax_id="<id>",
-                payment_processor_metadata={
-                    "key": "<value>",
-                    "key1": "<value>",
-                    "key2": "<value>",
-                },
-                billing_address_fields=polar_sdk.CheckoutBillingAddressFields(
-                    country=polar_sdk.BillingAddressFieldMode.REQUIRED,
-                    state=polar_sdk.BillingAddressFieldMode.DISABLED,
-                    city=polar_sdk.BillingAddressFieldMode.REQUIRED,
-                    postal_code=polar_sdk.BillingAddressFieldMode.REQUIRED,
-                    line1=polar_sdk.BillingAddressFieldMode.REQUIRED,
-                    line2=polar_sdk.BillingAddressFieldMode.DISABLED,
-                ),
-                metadata={
-                    "key": False,
-                    "key1": False,
-                },
-                external_customer_id=None,
-                customer_external_id="<id>",
-                products=[
-                    polar_sdk.CheckoutProduct(
-                        created_at=parse_datetime("2025-07-23T17:21:51.405Z"),
-                        modified_at=parse_datetime("2024-01-17T03:32:08.030Z"),
-                        id="<value>",
-                        name="<value>",
-                        description="funny abscond fairly except slight",
-                        recurring_interval=None,
-                        is_recurring=True,
-                        is_archived=True,
-                        organization_id="<value>",
-                        prices=[
-                            polar_sdk.LegacyRecurringProductPriceFree(
-                                created_at=parse_datetime("2023-09-13T08:36:46.434Z"),
-                                modified_at=parse_datetime("2023-10-05T12:55:46.428Z"),
-                                id="<value>",
-                                is_archived=False,
-                                product_id="<value>",
-                                recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
-                            ),
-                        ],
-                        benefits=[],
-                        medias=[
-                            polar_sdk.ProductMediaFileRead(
-                                id="<value>",
-                                organization_id="<value>",
-                                name="<value>",
-                                path="/var/log",
-                                mime_type="<value>",
-                                size=982910,
-                                storage_version="<value>",
-                                checksum_etag="<value>",
-                                checksum_sha256_base64="<value>",
-                                checksum_sha256_hex="<value>",
-                                last_modified_at=parse_datetime("2024-09-13T03:57:17.676Z"),
-                                version="<value>",
-                                is_uploaded=False,
-                                created_at=parse_datetime("2023-03-23T06:47:50.944Z"),
-                                size_readable="<value>",
-                                public_url="https://yummy-ocelot.biz/",
-                            ),
-                            polar_sdk.ProductMediaFileRead(
-                                id="<value>",
-                                organization_id="<value>",
-                                name="<value>",
-                                path="/var/log",
-                                mime_type="<value>",
-                                size=982910,
-                                storage_version="<value>",
-                                checksum_etag="<value>",
-                                checksum_sha256_base64="<value>",
-                                checksum_sha256_hex="<value>",
-                                last_modified_at=parse_datetime("2024-09-13T03:57:17.676Z"),
-                                version="<value>",
-                                is_uploaded=False,
-                                created_at=parse_datetime("2023-03-23T06:47:50.944Z"),
-                                size_readable="<value>",
-                                public_url="https://yummy-ocelot.biz/",
-                            ),
-                            polar_sdk.ProductMediaFileRead(
-                                id="<value>",
-                                organization_id="<value>",
-                                name="<value>",
-                                path="/var/log",
-                                mime_type="<value>",
-                                size=982910,
-                                storage_version="<value>",
-                                checksum_etag="<value>",
-                                checksum_sha256_base64="<value>",
-                                checksum_sha256_hex="<value>",
-                                last_modified_at=parse_datetime("2024-09-13T03:57:17.676Z"),
-                                version="<value>",
-                                is_uploaded=False,
-                                created_at=parse_datetime("2023-03-23T06:47:50.944Z"),
-                                size_readable="<value>",
-                                public_url="https://yummy-ocelot.biz/",
-                            ),
-                        ],
-                    ),
-                ],
-                product=polar_sdk.CheckoutProduct(
-                    created_at=parse_datetime("2023-03-01T03:35:30.257Z"),
-                    modified_at=parse_datetime("2024-12-19T15:40:11.887Z"),
-                    id="<value>",
-                    name="<value>",
-                    description="until joyful how",
-                    recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
-                    is_recurring=True,
-                    is_archived=False,
-                    organization_id="<value>",
-                    prices=[
-                        polar_sdk.LegacyRecurringProductPriceFixed(
-                            created_at=parse_datetime("2024-05-02T18:25:33.974Z"),
-                            modified_at=parse_datetime("2025-02-06T12:55:07.640Z"),
-                            id="<value>",
-                            is_archived=False,
-                            product_id="<value>",
-                            recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
-                            price_currency="<value>",
-                            price_amount=115799,
-                        ),
-                        polar_sdk.LegacyRecurringProductPriceCustom(
-                            created_at=parse_datetime("2025-07-31T12:54:47.590Z"),
-                            modified_at=parse_datetime("2023-01-11T22:31:47.320Z"),
-                            id="<value>",
-                            is_archived=True,
-                            product_id="<value>",
-                            recurring_interval=polar_sdk.SubscriptionRecurringInterval.MONTH,
-                            price_currency="<value>",
-                            minimum_amount=203013,
-                            maximum_amount=None,
-                            preset_amount=119260,
-                        ),
-                        polar_sdk.LegacyRecurringProductPriceFree(
-                            created_at=parse_datetime("2024-04-06T18:48:21.449Z"),
-                            modified_at=None,
-                            id="<value>",
-                            is_archived=True,
-                            product_id="<value>",
-                            recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
-                        ),
-                    ],
-                    benefits=[
-                        polar_sdk.BenefitPublic(
-                            id="<value>",
-                            created_at=parse_datetime("2023-11-22T11:07:53.319Z"),
-                            modified_at=parse_datetime("2025-09-17T18:38:51.288Z"),
-                            type=polar_sdk.BenefitType.DISCORD,
-                            description="brr now psst",
-                            selectable=True,
-                            deletable=True,
-                            organization_id="<value>",
-                        ),
-                        polar_sdk.BenefitPublic(
-                            id="<value>",
-                            created_at=parse_datetime("2023-11-22T11:07:53.319Z"),
-                            modified_at=parse_datetime("2025-09-17T18:38:51.288Z"),
-                            type=polar_sdk.BenefitType.DISCORD,
-                            description="brr now psst",
-                            selectable=True,
-                            deletable=True,
-                            organization_id="<value>",
-                        ),
-                    ],
-                    medias=[],
-                ),
-                product_price=polar_sdk.LegacyRecurringProductPriceFixed(
-                    created_at=parse_datetime("2024-08-14T23:26:30.929Z"),
-                    modified_at=parse_datetime("2025-01-15T11:59:21.523Z"),
-                    id="<value>",
-                    is_archived=False,
-                    product_id="<value>",
-                    recurring_interval=polar_sdk.SubscriptionRecurringInterval.YEAR,
-                    price_currency="<value>",
-                    price_amount=499786,
-                ),
-                discount=polar_sdk.CheckoutDiscountPercentageRepeatDuration(
-                    duration=polar_sdk.DiscountDuration.REPEATING,
-                    duration_in_months=470604,
-                    type=polar_sdk.DiscountType.FIXED,
-                    basis_points=567071,
-                    id="<value>",
-                    name="<value>",
-                    code="<value>",
-                ),
-                subscription_id="<value>",
-                attached_custom_fields=[
-                    polar_sdk.AttachedCustomField(
-                        custom_field_id="<value>",
-                        custom_field=polar_sdk.CustomFieldNumber(
-                            created_at=parse_datetime("2024-01-27T12:44:05.844Z"),
-                            modified_at=parse_datetime("2023-11-12T13:10:44.040Z"),
-                            id="<value>",
-                            metadata={
-                                "key": 833527,
-                                "key1": False,
-                            },
-                            slug="<value>",
-                            name="<value>",
-                            organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-                            properties=polar_sdk.CustomFieldNumberProperties(),
-                        ),
-                        order=786803,
-                        required=False,
-                    ),
-                    polar_sdk.AttachedCustomField(
-                        custom_field_id="<value>",
-                        custom_field=polar_sdk.CustomFieldNumber(
-                            created_at=parse_datetime("2024-01-27T12:44:05.844Z"),
-                            modified_at=parse_datetime("2023-11-12T13:10:44.040Z"),
-                            id="<value>",
-                            metadata={
-                                "key": 833527,
-                                "key1": False,
-                            },
-                            slug="<value>",
-                            name="<value>",
-                            organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737",
-                            properties=polar_sdk.CustomFieldNumberProperties(),
-                        ),
-                        order=786803,
-                        required=False,
-                    ),
-                ],
-                customer_metadata={
+        res = await polar.organizations.list_async(page=1, limit=10)
 
-                },
-            ),
-        ))
+        while res is not None:
+            # Handle items
 
-        # Handle response
-        print(res)
+            res = res.next()
 
 asyncio.run(main())
 ```
@@ -1031,7 +505,7 @@ with Polar(
 * [`PolarError`](./src/polar_sdk/models/polarerror.py): The base class for HTTP error responses.
   * [`HTTPValidationError`](./src/polar_sdk/models/httpvalidationerror.py): Validation Error. Status code `422`. *
 
-<details><summary>Less common errors (21)</summary>
+<details><summary>Less common errors (23)</summary>
 
 <br />
 
@@ -1050,11 +524,13 @@ with Polar(
 * [`NotOpenCheckout`](./src/polar_sdk/models/notopencheckout.py): The checkout is expired, the customer already has an active subscription, or the organization is not ready to accept payments. Status code `403`. Applicable to 3 of 128 methods.*
 * [`PaymentNotReady`](./src/polar_sdk/models/paymentnotready.py): The checkout is expired, the customer already has an active subscription, or the organization is not ready to accept payments. Status code `403`. Applicable to 3 of 128 methods.*
 * [`ExpiredCheckoutError`](./src/polar_sdk/models/expiredcheckouterror.py): The checkout session is expired. Status code `410`. Applicable to 3 of 128 methods.*
+* [`SubscriptionLocked`](./src/polar_sdk/models/subscriptionlocked.py): Subscription is pending an update. Status code `409`. Applicable to 2 of 128 methods.*
 * [`InvoiceAlreadyExists`](./src/polar_sdk/models/invoicealreadyexists.py): Order already has an invoice. Status code `409`. Applicable to 2 of 128 methods.*
 * [`MissingInvoiceBillingDetails`](./src/polar_sdk/models/missinginvoicebillingdetails.py): Order is not paid or is missing billing name or address. Status code `422`. Applicable to 2 of 128 methods.*
 * [`NotPaidOrder`](./src/polar_sdk/models/notpaidorder.py): Order is not paid or is missing billing name or address. Status code `422`. Applicable to 2 of 128 methods.*
 * [`RefundAmountTooHigh`](./src/polar_sdk/models/refundamounttoohigh.py): Refund amount exceeds remaining order balance. Status code `400`. Applicable to 1 of 128 methods.*
 * [`PaymentError`](./src/polar_sdk/models/paymenterror.py): The payment failed. Status code `400`. Applicable to 1 of 128 methods.*
+* [`PaymentMethodInUseByActiveSubscription`](./src/polar_sdk/models/paymentmethodinusebyactivesubscription.py): Payment method is used by active subscription(s). Status code `400`. Applicable to 1 of 128 methods.*
 * [`RefundedAlready`](./src/polar_sdk/models/refundedalready.py): Order is already fully refunded. Status code `403`. Applicable to 1 of 128 methods.*
 * [`PaymentAlreadyInProgress`](./src/polar_sdk/models/paymentalreadyinprogress.py): Payment already in progress. Status code `409`. Applicable to 1 of 128 methods.*
 * [`OrderNotEligibleForRetry`](./src/polar_sdk/models/ordernoteligibleforretry.py): Order not eligible for retry or payment confirmation failed. Status code `422`. Applicable to 1 of 128 methods.*

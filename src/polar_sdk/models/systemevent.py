@@ -7,6 +7,18 @@ from .benefitrevokedevent import BenefitRevokedEvent, BenefitRevokedEventTypedDi
 from .benefitupdatedevent import BenefitUpdatedEvent, BenefitUpdatedEventTypedDict
 from .metercreditevent import MeterCreditEvent, MeterCreditEventTypedDict
 from .meterresetevent import MeterResetEvent, MeterResetEventTypedDict
+from .subscriptioncycledevent import (
+    SubscriptionCycledEvent,
+    SubscriptionCycledEventTypedDict,
+)
+from .subscriptionproductupdatedevent import (
+    SubscriptionProductUpdatedEvent,
+    SubscriptionProductUpdatedEventTypedDict,
+)
+from .subscriptionrevokedevent import (
+    SubscriptionRevokedEvent,
+    SubscriptionRevokedEventTypedDict,
+)
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
@@ -22,6 +34,9 @@ SystemEventTypedDict = TypeAliasType(
         BenefitCycledEventTypedDict,
         BenefitUpdatedEventTypedDict,
         BenefitRevokedEventTypedDict,
+        SubscriptionCycledEventTypedDict,
+        SubscriptionRevokedEventTypedDict,
+        SubscriptionProductUpdatedEventTypedDict,
     ],
 )
 
@@ -34,6 +49,9 @@ SystemEvent = Annotated[
         Annotated[BenefitUpdatedEvent, Tag("benefit.updated")],
         Annotated[MeterCreditEvent, Tag("meter.credited")],
         Annotated[MeterResetEvent, Tag("meter.reset")],
+        Annotated[SubscriptionCycledEvent, Tag("subscription.cycled")],
+        Annotated[SubscriptionProductUpdatedEvent, Tag("subscription.product_updated")],
+        Annotated[SubscriptionRevokedEvent, Tag("subscription.revoked")],
     ],
     Discriminator(lambda m: get_discriminator(m, "name", "name")),
 ]

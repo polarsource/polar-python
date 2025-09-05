@@ -66,7 +66,7 @@ class ProductCreateTypedDict(TypedDict):
     name: str
     r"""The name of the product."""
     recurring_interval: Nullable[SubscriptionRecurringInterval]
-    r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
+    r"""The recurring interval of the product. If `None`, the product is a one-time purchase.Note that the `day` and `week` values are for internal Polar staff use only."""
     prices: List[ProductCreatePricesTypedDict]
     r"""List of available prices for this product. It should contain at most one static price (fixed, custom or free), and any number of metered prices. Metered prices are not supported on one-time purchase products."""
     metadata: NotRequired[Dict[str, ProductCreateMetadataTypedDict]]
@@ -99,7 +99,7 @@ class ProductCreate(BaseModel):
     r"""The name of the product."""
 
     recurring_interval: Nullable[SubscriptionRecurringInterval]
-    r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
+    r"""The recurring interval of the product. If `None`, the product is a one-time purchase.Note that the `day` and `week` values are for internal Polar staff use only."""
 
     prices: List[ProductCreatePrices]
     r"""List of available prices for this product. It should contain at most one static price (fixed, custom or free), and any number of metered prices. Metered prices are not supported on one-time purchase products."""

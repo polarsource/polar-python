@@ -64,6 +64,8 @@ class MeterUpdateTypedDict(TypedDict):
     r"""The filter to apply on events that'll be used to calculate the meter."""
     aggregation: NotRequired[Nullable[AggregationTypedDict]]
     r"""The aggregation to apply on the filtered events to calculate the meter."""
+    is_archived: NotRequired[Nullable[bool]]
+    r"""Whether the meter is archived. Archived meters are no longer used for billing."""
 
 
 class MeterUpdate(BaseModel):
@@ -90,10 +92,13 @@ class MeterUpdate(BaseModel):
     aggregation: OptionalNullable[Aggregation] = UNSET
     r"""The aggregation to apply on the filtered events to calculate the meter."""
 
+    is_archived: OptionalNullable[bool] = UNSET
+    r"""Whether the meter is archived. Archived meters are no longer used for billing."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["metadata", "name", "filter", "aggregation"]
-        nullable_fields = ["name", "filter", "aggregation"]
+        optional_fields = ["metadata", "name", "filter", "aggregation", "is_archived"]
+        nullable_fields = ["name", "filter", "aggregation", "is_archived"]
         null_default_fields = []
 
         serialized = handler(self)

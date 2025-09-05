@@ -39,3 +39,21 @@ value: models.MeterCreditEvent = /* values here */
 value: models.MeterResetEvent = /* values here */
 ```
 
+### `models.SubscriptionCycledEvent`
+
+```python
+value: models.SubscriptionCycledEvent = /* values here */
+```
+
+### `models.SubscriptionProductUpdatedEvent`
+
+```python
+value: models.SubscriptionProductUpdatedEvent = /* values here */
+```
+
+### `models.SubscriptionRevokedEvent`
+
+```python
+value: models.SubscriptionRevokedEvent = /* values here */
+```
+

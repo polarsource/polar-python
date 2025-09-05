@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: 325f9072ad8465148f22517ea0de69e4
+  docChecksum: 3721564a1db1b7a536d00f0f876a4abc
   docVersion: 0.1.0
-  speakeasyVersion: 1.606.2
-  generationVersion: 2.687.1
-  releaseVersion: 0.22.8
-  configChecksum: a4495978dd6d201505d9cdf2da500ba3
+  speakeasyVersion: 1.609.0
+  generationVersion: 2.692.0
+  releaseVersion: 0.23.0
+  configChecksum: 60859e06b689b7e59770a13aa1ddec76
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -14,7 +14,7 @@ features:
   python:
     additionalDependencies: 1.0.0
     constsAndDefaults: 1.0.5
-    core: 5.19.9
+    core: 5.20.3
     customCodeRegions: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 3.0.2
@@ -739,6 +739,7 @@ generatedFiles:
   - docs/models/paymentmethodcard.md
   - docs/models/paymentmethodcardmetadata.md
   - docs/models/paymentmethodgeneric.md
+  - docs/models/paymentmethodinusebyactivesubscription.md
   - docs/models/paymentnotready.md
   - docs/models/paymentprocessor.md
   - docs/models/paymentsgetrequest.md
@@ -838,13 +839,20 @@ generatedFiles:
   - docs/models/subscriptioncancel.md
   - docs/models/subscriptioncustomer.md
   - docs/models/subscriptioncustomermetadata.md
+  - docs/models/subscriptioncycledevent.md
+  - docs/models/subscriptioncycledmetadata.md
   - docs/models/subscriptiondiscount.md
   - docs/models/subscriptionidfilter.md
+  - docs/models/subscriptionlocked.md
   - docs/models/subscriptionmeter.md
   - docs/models/subscriptionprices.md
+  - docs/models/subscriptionproductupdatedevent.md
+  - docs/models/subscriptionproductupdatedmetadata.md
   - docs/models/subscriptionprorationbehavior.md
   - docs/models/subscriptionrecurringinterval.md
   - docs/models/subscriptionrevoke.md
+  - docs/models/subscriptionrevokedevent.md
+  - docs/models/subscriptionrevokedmetadata.md
   - docs/models/subscriptionsexportrequest.md
   - docs/models/subscriptionsgetrequest.md
   - docs/models/subscriptionslistrequest.md
@@ -1395,6 +1403,7 @@ generatedFiles:
   - src/polar_sdk/models/paymentmethodcard.py
   - src/polar_sdk/models/paymentmethodcardmetadata.py
   - src/polar_sdk/models/paymentmethodgeneric.py
+  - src/polar_sdk/models/paymentmethodinusebyactivesubscription.py
   - src/polar_sdk/models/paymentnotready.py
   - src/polar_sdk/models/paymentprocessor.py
   - src/polar_sdk/models/payments_getop.py
@@ -1451,10 +1460,17 @@ generatedFiles:
   - src/polar_sdk/models/subscription.py
   - src/polar_sdk/models/subscriptioncancel.py
   - src/polar_sdk/models/subscriptioncustomer.py
+  - src/polar_sdk/models/subscriptioncycledevent.py
+  - src/polar_sdk/models/subscriptioncycledmetadata.py
+  - src/polar_sdk/models/subscriptionlocked.py
   - src/polar_sdk/models/subscriptionmeter.py
+  - src/polar_sdk/models/subscriptionproductupdatedevent.py
+  - src/polar_sdk/models/subscriptionproductupdatedmetadata.py
   - src/polar_sdk/models/subscriptionprorationbehavior.py
   - src/polar_sdk/models/subscriptionrecurringinterval.py
   - src/polar_sdk/models/subscriptionrevoke.py
+  - src/polar_sdk/models/subscriptionrevokedevent.py
+  - src/polar_sdk/models/subscriptionrevokedmetadata.py
   - src/polar_sdk/models/subscriptions_exportop.py
   - src/polar_sdk/models/subscriptions_getop.py
   - src/polar_sdk/models/subscriptions_listop.py
@@ -1896,6 +1912,8 @@ examples:
           application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "422":
           application/json: {}
+        "409":
+          application/json: {"error": "SubscriptionLocked", "detail": "<value>"}
   subscriptions:revoke:
     speakeasy-default-subscriptions:revoke:
       parameters:
@@ -1910,6 +1928,8 @@ examples:
           application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "422":
           application/json: {}
+        "409":
+          application/json: {"error": "SubscriptionLocked", "detail": "<value>"}
   oauth2:authorize:
     speakeasy-default-oauth2-:authorize:
       responses:
@@ -2811,6 +2831,8 @@ examples:
           application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "422":
           application/json: {}
+        "400":
+          application/json: {"error": "PaymentMethodInUseByActiveSubscription", "detail": "<value>"}
   customer_portal:customer_meters:list:
     speakeasy-default-customer-portal:customer-meters:list:
       parameters:
@@ -3416,4 +3438,4 @@ examples:
           application/json: {"error": "OrderNotEligibleForRetry", "detail": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `polar.customer_portal.customers.update()`: \n  *  `request` **Changed** **Breaking** :warning:\n  *  `response.billing_name` **Added**\n* `polar.customer_portal.customers.get()`:  `response.billing_name` **Added**\n* `polar.customer_portal.subscriptions.list()`:  `response.items.[].product.organization.status` **Added**\n* `polar.organizations.update()`:  `response.status` **Added**\n* `polar.subscriptions.list()`:  `response.items.[].meters.[].meter.aggregation.[max]` **Added**\n* `polar.subscriptions.get()`:  `response.meters.[].meter.aggregation.[max]` **Added**\n* `polar.subscriptions.revoke()`:  `response.meters.[].meter.aggregation.[max]` **Added**\n* `polar.subscriptions.update()`:  `response.meters.[].meter.aggregation.[max]` **Added**\n* `polar.checkouts.client_get()`:  `response.organization.status` **Added**\n* `polar.checkouts.client_update()`:  `response.organization.status` **Added**\n* `polar.checkouts.client_confirm()`:  `response.organization.status` **Added**\n* `polar.customer_portal.benefit-grants.list()`:  `response.items.[].[customer_benefit_grant_discord]` **Changed**\n* `polar.customer_portal.benefit-grants.get()`:  `response.[customer_benefit_grant_license_keys]` **Changed**\n* `polar.customer_portal.benefit-grants.update()`:  `response.[customer_benefit_grant_custom]` **Changed**\n* `polar.organizations.list()`:  `response.items.[].status` **Added**\n* `polar.organizations.get()`:  `response.status` **Added**\n* `polar.organizations.create()`:  `response.status` **Added**\n* `polar.customer_portal.subscriptions.cancel()`:  `response.product.organization.status` **Added**\n* `polar.customer_portal.orders.update()`:  `response.product.organization.status` **Added**\n* `polar.customer_portal.orders.confirm_retry_payment()`:  `request.customer_order_confirm_payment` **Changed**\n* `polar.customer_portal.organizations.get()`:  `response.organization.status` **Added**\n* `polar.customer_portal.orders.list()`:  `response.items.[].product.organization.status` **Added**\n* `polar.customer_portal.subscriptions.get()`:  `response.product.organization.status` **Added**\n* `polar.customer_portal.orders.get()`:  `response.product.organization.status` **Added**\n* `polar.customer_portal.subscriptions.update()`:  `response.product.organization.status` **Added**\n* `polar.meters.list()`:  `response.items.[].aggregation.[max]` **Added**\n* `polar.meters.create()`: \n  *  `request.aggregation.[max]` **Added**\n  *  `response.aggregation.[max]` **Added**\n* `polar.meters.get()`:  `response.aggregation.[max]` **Added**\n* `polar.meters.update()`: \n  *  `request.meter_update.aggregation.[max]` **Added**\n  *  `response.aggregation.[max]` **Added**\n* `polar.customer_meters.list()`:  `response.items.[].meter.aggregation.[max]` **Added**\n* `polar.customer_meters.get()`:  `response.meter.aggregation.[max]` **Added**\n"
+releaseNotes: "## Python SDK Changes Detected:\n* `polar.customer_portal.benefit-grants.get()`:  `response` **Changed** **Breaking** :warning:\n* `polar.customers.get_state_external()`:  `response.granted_benefits.[].properties` **Changed** **Breaking** :warning:\n* `polar.customer_portal.benefit-grants.list()`:  `response.items.[]` **Changed** **Breaking** :warning:\n* `polar.customer_portal.benefit-grants.update()`: \n  *  `request.customer_benefit_grant_update` **Changed**\n  *  `response` **Changed** **Breaking** :warning:\n* `polar.benefits.grants()`:  `response.items.[].properties` **Changed** **Breaking** :warning:\n* `polar.customers.get_state()`:  `response.granted_benefits.[].properties` **Changed** **Breaking** :warning:\n* `polar.customer_portal.customers.delete_payment_method()`:  `error.status[400]` **Added**\n* `polar.subscriptions.revoke()`: \n  *  `response.meters.[].meter.archived_at` **Added**\n  *  `error.status[409]` **Added**\n* `polar.subscriptions.get()`:  `response.meters.[].meter.archived_at` **Added**\n* `polar.subscriptions.list()`:  `response.items.[].meters.[].meter.archived_at` **Added**\n* `polar.subscriptions.update()`: \n  *  `response.meters.[].meter.archived_at` **Added**\n  *  `error.status[409]` **Added**\n* `polar.events.list()`:  `response.items.[].[system_event]` **Changed**\n* `polar.events.get()`:  `response.[system_event]` **Changed**\n* `polar.meters.list()`: \n  *  `request.is_archived` **Added**\n  *  `response.items.[].archived_at` **Added**\n* `polar.meters.create()`:  `response.archived_at` **Added**\n* `polar.meters.get()`:  `response.archived_at` **Added**\n* `polar.meters.update()`: \n  *  `request.meter_update.is_archived` **Added**\n  *  `response.archived_at` **Added**\n* `polar.customer_meters.list()`:  `response.items.[].meter.archived_at` **Added**\n* `polar.customer_meters.get()`:  `response.meter.archived_at` **Added**\n"

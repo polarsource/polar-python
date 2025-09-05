@@ -9,7 +9,8 @@
 | `PROFILE`                       | profile                         |
 | `EMAIL`                         | email                           |
 | `USER_READ`                     | user:read                       |
-| `WEB_DEFAULT`                   | web_default                     |
+| `WEB_READ`                      | web:read                        |
+| `WEB_WRITE`                     | web:write                       |
 | `ORGANIZATIONS_READ`            | organizations:read              |
 | `ORGANIZATIONS_WRITE`           | organizations:write             |
 | `CUSTOM_FIELDS_READ`            | custom_fields:read              |

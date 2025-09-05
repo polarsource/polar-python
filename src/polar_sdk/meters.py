@@ -21,6 +21,7 @@ class Meters(BaseSDK):
             ]
         ] = UNSET,
         query: OptionalNullable[str] = UNSET,
+        is_archived: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.MeterSortProperty]] = UNSET,
@@ -43,6 +44,7 @@ class Meters(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param query: Filter by name.
+        :param is_archived: Filter on archived meters.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -65,6 +67,7 @@ class Meters(BaseSDK):
         request = models.MetersListRequest(
             organization_id=organization_id,
             query=query,
+            is_archived=is_archived,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -129,6 +132,7 @@ class Meters(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 query=query,
+                is_archived=is_archived,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -166,6 +170,7 @@ class Meters(BaseSDK):
             ]
         ] = UNSET,
         query: OptionalNullable[str] = UNSET,
+        is_archived: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.MeterSortProperty]] = UNSET,
@@ -188,6 +193,7 @@ class Meters(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param query: Filter by name.
+        :param is_archived: Filter on archived meters.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -210,6 +216,7 @@ class Meters(BaseSDK):
         request = models.MetersListRequest(
             organization_id=organization_id,
             query=query,
+            is_archived=is_archived,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -274,6 +281,7 @@ class Meters(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 query=query,
+                is_archived=is_archived,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,

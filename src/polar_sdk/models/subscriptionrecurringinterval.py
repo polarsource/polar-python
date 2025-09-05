@@ -5,5 +5,7 @@ from enum import Enum
 
 
 class SubscriptionRecurringInterval(str, Enum):
+    DAY = "day"
+    WEEK = "week"
     MONTH = "month"
     YEAR = "year"
