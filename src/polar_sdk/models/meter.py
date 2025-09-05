@@ -6,12 +6,12 @@ from .filter_ import Filter, FilterTypedDict
 from .propertyaggregation import PropertyAggregation, PropertyAggregationTypedDict
 from .uniqueaggregation import UniqueAggregation, UniqueAggregationTypedDict
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import get_discriminator
 import pydantic
 from pydantic import Discriminator, Tag, model_serializer
 from typing import Dict, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 MeterMetadataTypedDict = TypeAliasType(
@@ -62,6 +62,8 @@ class MeterTypedDict(TypedDict):
     r"""The aggregation to apply on the filtered events to calculate the meter."""
     organization_id: str
     r"""The ID of the organization owning the meter."""
+    archived_at: NotRequired[Nullable[datetime]]
+    r"""Whether the meter is archived and the time it was archived."""
 
 
 class Meter(BaseModel):
@@ -87,10 +89,13 @@ class Meter(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the meter."""
 
+    archived_at: OptionalNullable[datetime] = UNSET
+    r"""Whether the meter is archived and the time it was archived."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
-        nullable_fields = ["modified_at"]
+        optional_fields = ["archived_at"]
+        nullable_fields = ["modified_at", "archived_at"]
         null_default_fields = []
 
         serialized = handler(self)

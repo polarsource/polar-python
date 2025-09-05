@@ -804,7 +804,7 @@ class Subscriptions(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "409", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -821,6 +821,11 @@ class Subscriptions(BaseSDK):
                 models.ResourceNotFoundData, http_res
             )
             raise models.ResourceNotFound(response_data, http_res)
+        if utils.match_response(http_res, "409", "application/json"):
+            response_data = unmarshal_json_response(
+                models.SubscriptionLockedData, http_res
+            )
+            raise models.SubscriptionLocked(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -917,7 +922,7 @@ class Subscriptions(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "409", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -934,6 +939,11 @@ class Subscriptions(BaseSDK):
                 models.ResourceNotFoundData, http_res
             )
             raise models.ResourceNotFound(response_data, http_res)
+        if utils.match_response(http_res, "409", "application/json"):
+            response_data = unmarshal_json_response(
+                models.SubscriptionLockedData, http_res
+            )
+            raise models.SubscriptionLocked(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1016,7 +1026,7 @@ class Subscriptions(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "409", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1033,6 +1043,11 @@ class Subscriptions(BaseSDK):
                 models.ResourceNotFoundData, http_res
             )
             raise models.ResourceNotFound(response_data, http_res)
+        if utils.match_response(http_res, "409", "application/json"):
+            response_data = unmarshal_json_response(
+                models.SubscriptionLockedData, http_res
+            )
+            raise models.SubscriptionLocked(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1115,7 +1130,7 @@ class Subscriptions(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "409", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1132,6 +1147,11 @@ class Subscriptions(BaseSDK):
                 models.ResourceNotFoundData, http_res
             )
             raise models.ResourceNotFound(response_data, http_res)
+        if utils.match_response(http_res, "409", "application/json"):
+            response_data = unmarshal_json_response(
+                models.SubscriptionLockedData, http_res
+            )
+            raise models.SubscriptionLocked(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res

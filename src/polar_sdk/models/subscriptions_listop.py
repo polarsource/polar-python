@@ -1153,6 +1153,8 @@ class MetersListRequestTypedDict(TypedDict):
     r"""Filter by organization ID."""
     query: NotRequired[Nullable[str]]
     r"""Filter by name."""
+    is_archived: NotRequired[Nullable[bool]]
+    r"""Filter on archived meters."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -1175,6 +1177,12 @@ class MetersListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by name."""
+
+    is_archived: Annotated[
+        OptionalNullable[bool],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter on archived meters."""
 
     page: Annotated[
         Optional[int],
@@ -1205,12 +1213,19 @@ class MetersListRequest(BaseModel):
         optional_fields = [
             "organization_id",
             "query",
+            "is_archived",
             "page",
             "limit",
             "sorting",
             "metadata",
         ]
-        nullable_fields = ["organization_id", "query", "sorting", "metadata"]
+        nullable_fields = [
+            "organization_id",
+            "query",
+            "is_archived",
+            "sorting",
+            "metadata",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

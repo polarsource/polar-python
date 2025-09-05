@@ -193,6 +193,7 @@ with Polar(
 | ---------------------------------- | ---------------------------------- | ---------------------------------- |
 | models.AlreadyCanceledSubscription | 403                                | application/json                   |
 | models.ResourceNotFound            | 404                                | application/json                   |
+| models.SubscriptionLocked          | 409                                | application/json                   |
 | models.HTTPValidationError         | 422                                | application/json                   |
 | models.SDKError                    | 4XX, 5XX                           | \*/\*                              |
 
@@ -237,5 +238,6 @@ with Polar(
 | ---------------------------------- | ---------------------------------- | ---------------------------------- |
 | models.AlreadyCanceledSubscription | 403                                | application/json                   |
 | models.ResourceNotFound            | 404                                | application/json                   |
+| models.SubscriptionLocked          | 409                                | application/json                   |
 | models.HTTPValidationError         | 422                                | application/json                   |
 | models.SDKError                    | 4XX, 5XX                           | \*/\*                              |

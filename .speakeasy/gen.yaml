@@ -24,7 +24,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 python:
-  version: 0.22.8
+  version: 0.23.0
   additionalDependencies:
     dev:
       pydantic-ai-slim: ^0.1.0
@@ -32,6 +32,9 @@ python:
       ruff: ^0.8.0
     main:
       standardwebhooks: ^1.0.0
+  allowedRedefinedBuiltins:
+    - id
+    - object
   authors:
     - Polar
   baseErrorName: PolarError
