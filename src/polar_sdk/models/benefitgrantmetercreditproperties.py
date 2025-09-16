@@ -2,18 +2,19 @@
 
 from __future__ import annotations
 from polar_sdk.types import BaseModel
-from typing_extensions import TypedDict
+from typing import Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class BenefitGrantMeterCreditPropertiesTypedDict(TypedDict):
-    last_credited_meter_id: str
-    last_credited_units: int
-    last_credited_at: str
+    last_credited_meter_id: NotRequired[str]
+    last_credited_units: NotRequired[int]
+    last_credited_at: NotRequired[str]
 
 
 class BenefitGrantMeterCreditProperties(BaseModel):
-    last_credited_meter_id: str
+    last_credited_meter_id: Optional[str] = None
 
-    last_credited_units: int
+    last_credited_units: Optional[int] = None
 
-    last_credited_at: str
+    last_credited_at: Optional[str] = None

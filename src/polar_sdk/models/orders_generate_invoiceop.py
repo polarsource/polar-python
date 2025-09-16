@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .missinginvoicebillingdetails import MissingInvoiceBillingDetailsData
 from .notpaidorder import NotPaidOrderData
+from dataclasses import dataclass, field
 import httpx
 from polar_sdk.models import PolarError
 from polar_sdk.types import BaseModel
@@ -30,10 +31,11 @@ OrdersGenerateInvoiceResponse422OrdersGenerateInvoiceUnion = TypeAliasType(
 r"""Order is not paid or is missing billing name or address."""
 
 
+@dataclass(frozen=True)
 class OrdersGenerateInvoiceResponse422OrdersGenerateInvoice(PolarError):
     r"""Order is not paid or is missing billing name or address."""
 
-    data: OrdersGenerateInvoiceResponse422OrdersGenerateInvoiceUnion
+    data: OrdersGenerateInvoiceResponse422OrdersGenerateInvoiceUnion = field(hash=False)
 
     def __init__(
         self,
@@ -43,4 +45,4 @@ class OrdersGenerateInvoiceResponse422OrdersGenerateInvoice(PolarError):
     ):
         message = body or raw_response.text
         super().__init__(message, raw_response, body)
-        self.data = data
+        object.__setattr__(self, "data", data)

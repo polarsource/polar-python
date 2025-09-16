@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .subscription import Subscription, SubscriptionTypedDict
+from datetime import datetime
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
@@ -17,6 +18,7 @@ class WebhookSubscriptionActivePayloadTypedDict(TypedDict):
     **Discord & Slack support:** Full
     """
 
+    timestamp: datetime
     data: SubscriptionTypedDict
     type: Literal["subscription.active"]
 
@@ -27,6 +29,8 @@ class WebhookSubscriptionActivePayload(BaseModel):
 
     **Discord & Slack support:** Full
     """
+
+    timestamp: datetime
 
     data: Subscription
 

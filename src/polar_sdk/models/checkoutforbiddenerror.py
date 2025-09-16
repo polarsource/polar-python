@@ -4,6 +4,7 @@ from __future__ import annotations
 from .alreadyactivesubscriptionerror import AlreadyActiveSubscriptionErrorData
 from .notopencheckout import NotOpenCheckoutData
 from .paymentnotready import PaymentNotReadyData
+from dataclasses import dataclass, field
 import httpx
 from polar_sdk.models import PolarError
 from typing import Optional, Union
@@ -16,8 +17,9 @@ CheckoutForbiddenErrorUnion = TypeAliasType(
 )
 
 
+@dataclass(frozen=True)
 class CheckoutForbiddenError(PolarError):
-    data: CheckoutForbiddenErrorUnion
+    data: CheckoutForbiddenErrorUnion = field(hash=False)
 
     def __init__(
         self,
@@ -27,4 +29,4 @@ class CheckoutForbiddenError(PolarError):
     ):
         message = body or raw_response.text
         super().__init__(message, raw_response, body)
-        self.data = data
+        object.__setattr__(self, "data", data)

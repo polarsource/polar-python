@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .subscription import Subscription, SubscriptionTypedDict
+from datetime import datetime
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
@@ -20,6 +21,7 @@ class WebhookSubscriptionUpdatedPayloadTypedDict(TypedDict):
     **Discord & Slack support:** On cancellation and revocation. Renewals are skipped.
     """
 
+    timestamp: datetime
     data: SubscriptionTypedDict
     type: Literal["subscription.updated"]
 
@@ -33,6 +35,8 @@ class WebhookSubscriptionUpdatedPayload(BaseModel):
 
     **Discord & Slack support:** On cancellation and revocation. Renewals are skipped.
     """
+
+    timestamp: datetime
 
     data: Subscription
 

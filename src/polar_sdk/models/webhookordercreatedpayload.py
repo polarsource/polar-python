@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .order import Order, OrderTypedDict
+from datetime import datetime
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
@@ -25,6 +26,7 @@ class WebhookOrderCreatedPayloadTypedDict(TypedDict):
     **Discord & Slack support:** Full
     """
 
+    timestamp: datetime
     data: OrderTypedDict
     type: Literal["order.created"]
 
@@ -43,6 +45,8 @@ class WebhookOrderCreatedPayload(BaseModel):
 
     **Discord & Slack support:** Full
     """
+
+    timestamp: datetime
 
     data: Order
 

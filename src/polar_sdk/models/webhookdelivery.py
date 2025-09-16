@@ -3,9 +3,9 @@
 from __future__ import annotations
 from .webhookevent import WebhookEvent, WebhookEventTypedDict
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
 class WebhookDeliveryTypedDict(TypedDict):
@@ -19,6 +19,10 @@ class WebhookDeliveryTypedDict(TypedDict):
     r"""The ID of the object."""
     succeeded: bool
     r"""Whether the delivery was successful."""
+    http_code: Nullable[int]
+    r"""The HTTP code returned by the URL. `null` if the endpoint was unreachable."""
+    response: Nullable[str]
+    r"""The response body returned by the URL, or the error message if the endpoint was unreachable."""
     webhook_event: WebhookEventTypedDict
     r"""A webhook event.
 
@@ -28,8 +32,6 @@ class WebhookDeliveryTypedDict(TypedDict):
     It can be delivered multiple times until it's marked as succeeded,
     each one creating a new delivery.
     """
-    http_code: NotRequired[Nullable[int]]
-    r"""The HTTP code returned by the URL. `null` if the endpoint was unreachable."""
 
 
 class WebhookDelivery(BaseModel):
@@ -47,6 +49,12 @@ class WebhookDelivery(BaseModel):
     succeeded: bool
     r"""Whether the delivery was successful."""
 
+    http_code: Nullable[int]
+    r"""The HTTP code returned by the URL. `null` if the endpoint was unreachable."""
+
+    response: Nullable[str]
+    r"""The response body returned by the URL, or the error message if the endpoint was unreachable."""
+
     webhook_event: WebhookEvent
     r"""A webhook event.
 
@@ -57,13 +65,10 @@ class WebhookDelivery(BaseModel):
     each one creating a new delivery.
     """
 
-    http_code: OptionalNullable[int] = UNSET
-    r"""The HTTP code returned by the URL. `null` if the endpoint was unreachable."""
-
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["http_code"]
-        nullable_fields = ["modified_at", "http_code"]
+        optional_fields = []
+        nullable_fields = ["modified_at", "http_code", "response"]
         null_default_fields = []
 
         serialized = handler(self)
