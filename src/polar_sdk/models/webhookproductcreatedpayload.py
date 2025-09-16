@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .product import Product, ProductTypedDict
+from datetime import datetime
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
@@ -16,6 +17,7 @@ class WebhookProductCreatedPayloadTypedDict(TypedDict):
     **Discord & Slack support:** Basic
     """
 
+    timestamp: datetime
     data: ProductTypedDict
     r"""A product."""
     type: Literal["product.created"]
@@ -26,6 +28,8 @@ class WebhookProductCreatedPayload(BaseModel):
 
     **Discord & Slack support:** Basic
     """
+
+    timestamp: datetime
 
     data: Product
     r"""A product."""

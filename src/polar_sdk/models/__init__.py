@@ -198,13 +198,25 @@ if TYPE_CHECKING:
         BenefitGrantCustomProperties,
         BenefitGrantCustomPropertiesTypedDict,
     )
+    from .benefitgrantcustomwebhook import (
+        BenefitGrantCustomWebhook,
+        BenefitGrantCustomWebhookTypedDict,
+    )
     from .benefitgrantdiscordproperties import (
         BenefitGrantDiscordProperties,
         BenefitGrantDiscordPropertiesTypedDict,
     )
+    from .benefitgrantdiscordwebhook import (
+        BenefitGrantDiscordWebhook,
+        BenefitGrantDiscordWebhookTypedDict,
+    )
     from .benefitgrantdownloadablesproperties import (
         BenefitGrantDownloadablesProperties,
         BenefitGrantDownloadablesPropertiesTypedDict,
+    )
+    from .benefitgrantdownloadableswebhook import (
+        BenefitGrantDownloadablesWebhook,
+        BenefitGrantDownloadablesWebhookTypedDict,
     )
     from .benefitgrantedevent import BenefitGrantedEvent, BenefitGrantedEventTypedDict
     from .benefitgranterror import BenefitGrantError, BenefitGrantErrorTypedDict
@@ -213,9 +225,17 @@ if TYPE_CHECKING:
         BenefitGrantGitHubRepositoryPropertiesPermission,
         BenefitGrantGitHubRepositoryPropertiesTypedDict,
     )
+    from .benefitgrantgithubrepositorywebhook import (
+        BenefitGrantGitHubRepositoryWebhook,
+        BenefitGrantGitHubRepositoryWebhookTypedDict,
+    )
     from .benefitgrantlicensekeysproperties import (
         BenefitGrantLicenseKeysProperties,
         BenefitGrantLicenseKeysPropertiesTypedDict,
+    )
+    from .benefitgrantlicensekeyswebhook import (
+        BenefitGrantLicenseKeysWebhook,
+        BenefitGrantLicenseKeysWebhookTypedDict,
     )
     from .benefitgrantmetadata import (
         BenefitGrantMetadata,
@@ -225,14 +245,11 @@ if TYPE_CHECKING:
         BenefitGrantMeterCreditProperties,
         BenefitGrantMeterCreditPropertiesTypedDict,
     )
-    from .benefitgrantwebhook import (
-        BenefitGrantWebhook,
-        BenefitGrantWebhookProperties,
-        BenefitGrantWebhookPropertiesTypedDict,
-        BenefitGrantWebhookTypedDict,
-        PreviousProperties,
-        PreviousPropertiesTypedDict,
+    from .benefitgrantmetercreditwebhook import (
+        BenefitGrantMeterCreditWebhook,
+        BenefitGrantMeterCreditWebhookTypedDict,
     )
+    from .benefitgrantwebhook import BenefitGrantWebhook, BenefitGrantWebhookTypedDict
     from .benefitlicensekeyactivationcreateproperties import (
         BenefitLicenseKeyActivationCreateProperties,
         BenefitLicenseKeyActivationCreatePropertiesTypedDict,
@@ -356,10 +373,6 @@ if TYPE_CHECKING:
         CustomerMetadata,
         CustomerMetadataTypedDict,
     )
-    from .checkout_links_createop import (
-        CheckoutLinksCreateCheckoutLinkCreate,
-        CheckoutLinksCreateCheckoutLinkCreateTypedDict,
-    )
     from .checkout_links_deleteop import (
         CheckoutLinksDeleteRequest,
         CheckoutLinksDeleteRequestTypedDict,
@@ -430,6 +443,7 @@ if TYPE_CHECKING:
         CheckoutLinkMetadataTypedDict,
         CheckoutLinkTypedDict,
     )
+    from .checkoutlinkcreate import CheckoutLinkCreate, CheckoutLinkCreateTypedDict
     from .checkoutlinkcreateproduct import (
         CheckoutLinkCreateProduct,
         CheckoutLinkCreateProductMetadata,
@@ -2465,25 +2479,35 @@ __all__ = [
     "BenefitGrant",
     "BenefitGrantCustomProperties",
     "BenefitGrantCustomPropertiesTypedDict",
+    "BenefitGrantCustomWebhook",
+    "BenefitGrantCustomWebhookTypedDict",
     "BenefitGrantDiscordProperties",
     "BenefitGrantDiscordPropertiesTypedDict",
+    "BenefitGrantDiscordWebhook",
+    "BenefitGrantDiscordWebhookTypedDict",
     "BenefitGrantDownloadablesProperties",
     "BenefitGrantDownloadablesPropertiesTypedDict",
+    "BenefitGrantDownloadablesWebhook",
+    "BenefitGrantDownloadablesWebhookTypedDict",
     "BenefitGrantError",
     "BenefitGrantErrorTypedDict",
     "BenefitGrantGitHubRepositoryProperties",
     "BenefitGrantGitHubRepositoryPropertiesPermission",
     "BenefitGrantGitHubRepositoryPropertiesTypedDict",
+    "BenefitGrantGitHubRepositoryWebhook",
+    "BenefitGrantGitHubRepositoryWebhookTypedDict",
     "BenefitGrantLicenseKeysProperties",
     "BenefitGrantLicenseKeysPropertiesTypedDict",
+    "BenefitGrantLicenseKeysWebhook",
+    "BenefitGrantLicenseKeysWebhookTypedDict",
     "BenefitGrantMetadata",
     "BenefitGrantMetadataTypedDict",
     "BenefitGrantMeterCreditProperties",
     "BenefitGrantMeterCreditPropertiesTypedDict",
+    "BenefitGrantMeterCreditWebhook",
+    "BenefitGrantMeterCreditWebhookTypedDict",
     "BenefitGrantTypedDict",
     "BenefitGrantWebhook",
-    "BenefitGrantWebhookProperties",
-    "BenefitGrantWebhookPropertiesTypedDict",
     "BenefitGrantWebhookTypedDict",
     "BenefitGrantedEvent",
     "BenefitGrantedEventTypedDict",
@@ -2605,6 +2629,7 @@ __all__ = [
     "CheckoutIDFilter",
     "CheckoutIDFilterTypedDict",
     "CheckoutLink",
+    "CheckoutLinkCreate",
     "CheckoutLinkCreateProduct",
     "CheckoutLinkCreateProductMetadata",
     "CheckoutLinkCreateProductMetadataTypedDict",
@@ -2617,6 +2642,7 @@ __all__ = [
     "CheckoutLinkCreateProductsMetadata",
     "CheckoutLinkCreateProductsMetadataTypedDict",
     "CheckoutLinkCreateProductsTypedDict",
+    "CheckoutLinkCreateTypedDict",
     "CheckoutLinkDiscount",
     "CheckoutLinkDiscountTypedDict",
     "CheckoutLinkMetadata",
@@ -2633,8 +2659,6 @@ __all__ = [
     "CheckoutLinkUpdateMetadata",
     "CheckoutLinkUpdateMetadataTypedDict",
     "CheckoutLinkUpdateTypedDict",
-    "CheckoutLinksCreateCheckoutLinkCreate",
-    "CheckoutLinksCreateCheckoutLinkCreateTypedDict",
     "CheckoutLinksDeleteRequest",
     "CheckoutLinksDeleteRequestTypedDict",
     "CheckoutLinksGetRequest",
@@ -3714,8 +3738,6 @@ __all__ = [
     "PaymentsListResponseTypedDict",
     "Permission",
     "PolarError",
-    "PreviousProperties",
-    "PreviousPropertiesTypedDict",
     "Prices",
     "PricesTypedDict",
     "Product",
@@ -4174,10 +4196,16 @@ _dynamic_imports: dict[str, str] = {
     "PropertiesTypedDict": ".benefitgrant",
     "BenefitGrantCustomProperties": ".benefitgrantcustomproperties",
     "BenefitGrantCustomPropertiesTypedDict": ".benefitgrantcustomproperties",
+    "BenefitGrantCustomWebhook": ".benefitgrantcustomwebhook",
+    "BenefitGrantCustomWebhookTypedDict": ".benefitgrantcustomwebhook",
     "BenefitGrantDiscordProperties": ".benefitgrantdiscordproperties",
     "BenefitGrantDiscordPropertiesTypedDict": ".benefitgrantdiscordproperties",
+    "BenefitGrantDiscordWebhook": ".benefitgrantdiscordwebhook",
+    "BenefitGrantDiscordWebhookTypedDict": ".benefitgrantdiscordwebhook",
     "BenefitGrantDownloadablesProperties": ".benefitgrantdownloadablesproperties",
     "BenefitGrantDownloadablesPropertiesTypedDict": ".benefitgrantdownloadablesproperties",
+    "BenefitGrantDownloadablesWebhook": ".benefitgrantdownloadableswebhook",
+    "BenefitGrantDownloadablesWebhookTypedDict": ".benefitgrantdownloadableswebhook",
     "BenefitGrantedEvent": ".benefitgrantedevent",
     "BenefitGrantedEventTypedDict": ".benefitgrantedevent",
     "BenefitGrantError": ".benefitgranterror",
@@ -4185,18 +4213,20 @@ _dynamic_imports: dict[str, str] = {
     "BenefitGrantGitHubRepositoryProperties": ".benefitgrantgithubrepositoryproperties",
     "BenefitGrantGitHubRepositoryPropertiesPermission": ".benefitgrantgithubrepositoryproperties",
     "BenefitGrantGitHubRepositoryPropertiesTypedDict": ".benefitgrantgithubrepositoryproperties",
+    "BenefitGrantGitHubRepositoryWebhook": ".benefitgrantgithubrepositorywebhook",
+    "BenefitGrantGitHubRepositoryWebhookTypedDict": ".benefitgrantgithubrepositorywebhook",
     "BenefitGrantLicenseKeysProperties": ".benefitgrantlicensekeysproperties",
     "BenefitGrantLicenseKeysPropertiesTypedDict": ".benefitgrantlicensekeysproperties",
+    "BenefitGrantLicenseKeysWebhook": ".benefitgrantlicensekeyswebhook",
+    "BenefitGrantLicenseKeysWebhookTypedDict": ".benefitgrantlicensekeyswebhook",
     "BenefitGrantMetadata": ".benefitgrantmetadata",
     "BenefitGrantMetadataTypedDict": ".benefitgrantmetadata",
     "BenefitGrantMeterCreditProperties": ".benefitgrantmetercreditproperties",
     "BenefitGrantMeterCreditPropertiesTypedDict": ".benefitgrantmetercreditproperties",
+    "BenefitGrantMeterCreditWebhook": ".benefitgrantmetercreditwebhook",
+    "BenefitGrantMeterCreditWebhookTypedDict": ".benefitgrantmetercreditwebhook",
     "BenefitGrantWebhook": ".benefitgrantwebhook",
-    "BenefitGrantWebhookProperties": ".benefitgrantwebhook",
-    "BenefitGrantWebhookPropertiesTypedDict": ".benefitgrantwebhook",
     "BenefitGrantWebhookTypedDict": ".benefitgrantwebhook",
-    "PreviousProperties": ".benefitgrantwebhook",
-    "PreviousPropertiesTypedDict": ".benefitgrantwebhook",
     "BenefitLicenseKeyActivationCreateProperties": ".benefitlicensekeyactivationcreateproperties",
     "BenefitLicenseKeyActivationCreatePropertiesTypedDict": ".benefitlicensekeyactivationcreateproperties",
     "BenefitLicenseKeyActivationProperties": ".benefitlicensekeyactivationproperties",
@@ -4287,8 +4317,6 @@ _dynamic_imports: dict[str, str] = {
     "CheckoutTypedDict": ".checkout",
     "CustomerMetadata": ".checkout",
     "CustomerMetadataTypedDict": ".checkout",
-    "CheckoutLinksCreateCheckoutLinkCreate": ".checkout_links_createop",
-    "CheckoutLinksCreateCheckoutLinkCreateTypedDict": ".checkout_links_createop",
     "CheckoutLinksDeleteRequest": ".checkout_links_deleteop",
     "CheckoutLinksDeleteRequestTypedDict": ".checkout_links_deleteop",
     "CheckoutLinksGetRequest": ".checkout_links_getop",
@@ -4333,6 +4361,8 @@ _dynamic_imports: dict[str, str] = {
     "CheckoutLinkMetadata": ".checkoutlink",
     "CheckoutLinkMetadataTypedDict": ".checkoutlink",
     "CheckoutLinkTypedDict": ".checkoutlink",
+    "CheckoutLinkCreate": ".checkoutlinkcreate",
+    "CheckoutLinkCreateTypedDict": ".checkoutlinkcreate",
     "CheckoutLinkCreateProduct": ".checkoutlinkcreateproduct",
     "CheckoutLinkCreateProductMetadata": ".checkoutlinkcreateproduct",
     "CheckoutLinkCreateProductMetadataTypedDict": ".checkoutlinkcreateproduct",

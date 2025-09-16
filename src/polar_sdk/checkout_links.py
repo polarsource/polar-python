@@ -299,10 +299,7 @@ class CheckoutLinks(BaseSDK):
     def create(
         self,
         *,
-        request: Union[
-            models.CheckoutLinksCreateCheckoutLinkCreate,
-            models.CheckoutLinksCreateCheckoutLinkCreateTypedDict,
-        ],
+        request: Union[models.CheckoutLinkCreate, models.CheckoutLinkCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -331,10 +328,8 @@ class CheckoutLinks(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(
-                request, models.CheckoutLinksCreateCheckoutLinkCreate
-            )
-        request = cast(models.CheckoutLinksCreateCheckoutLinkCreate, request)
+            request = utils.unmarshal(request, models.CheckoutLinkCreate)
+        request = cast(models.CheckoutLinkCreate, request)
 
         req = self._build_request(
             method="POST",
@@ -350,11 +345,7 @@ class CheckoutLinks(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request,
-                False,
-                False,
-                "json",
-                models.CheckoutLinksCreateCheckoutLinkCreate,
+                request, False, False, "json", models.CheckoutLinkCreate
             ),
             timeout_ms=timeout_ms,
         )
@@ -400,10 +391,7 @@ class CheckoutLinks(BaseSDK):
     async def create_async(
         self,
         *,
-        request: Union[
-            models.CheckoutLinksCreateCheckoutLinkCreate,
-            models.CheckoutLinksCreateCheckoutLinkCreateTypedDict,
-        ],
+        request: Union[models.CheckoutLinkCreate, models.CheckoutLinkCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -432,10 +420,8 @@ class CheckoutLinks(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(
-                request, models.CheckoutLinksCreateCheckoutLinkCreate
-            )
-        request = cast(models.CheckoutLinksCreateCheckoutLinkCreate, request)
+            request = utils.unmarshal(request, models.CheckoutLinkCreate)
+        request = cast(models.CheckoutLinkCreate, request)
 
         req = self._build_request_async(
             method="POST",
@@ -451,11 +437,7 @@ class CheckoutLinks(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request,
-                False,
-                False,
-                "json",
-                models.CheckoutLinksCreateCheckoutLinkCreate,
+                request, False, False, "json", models.CheckoutLinkCreate
             ),
             timeout_ms=timeout_ms,
         )

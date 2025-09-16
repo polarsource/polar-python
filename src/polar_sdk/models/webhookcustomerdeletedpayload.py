@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .customer import Customer, CustomerTypedDict
+from datetime import datetime
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
@@ -16,6 +17,7 @@ class WebhookCustomerDeletedPayloadTypedDict(TypedDict):
     **Discord & Slack support:** Basic
     """
 
+    timestamp: datetime
     data: CustomerTypedDict
     r"""A customer in an organization."""
     type: Literal["customer.deleted"]
@@ -26,6 +28,8 @@ class WebhookCustomerDeletedPayload(BaseModel):
 
     **Discord & Slack support:** Basic
     """
+
+    timestamp: datetime
 
     data: Customer
     r"""A customer in an organization."""

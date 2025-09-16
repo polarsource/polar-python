@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .customerstate import CustomerState, CustomerStateTypedDict
+from datetime import datetime
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
@@ -22,6 +23,7 @@ class WebhookCustomerStateChangedPayloadTypedDict(TypedDict):
     **Discord & Slack support:** Basic
     """
 
+    timestamp: datetime
     data: CustomerStateTypedDict
     r"""A customer along with additional state information:
 
@@ -43,6 +45,8 @@ class WebhookCustomerStateChangedPayload(BaseModel):
 
     **Discord & Slack support:** Basic
     """
+
+    timestamp: datetime
 
     data: CustomerState
     r"""A customer along with additional state information:

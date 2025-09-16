@@ -17,8 +17,8 @@ from typing import Union
 from typing_extensions import TypeAliasType
 
 
-CheckoutLinksCreateCheckoutLinkCreateTypedDict = TypeAliasType(
-    "CheckoutLinksCreateCheckoutLinkCreateTypedDict",
+CheckoutLinkCreateTypedDict = TypeAliasType(
+    "CheckoutLinkCreateTypedDict",
     Union[
         CheckoutLinkCreateProductPriceTypedDict,
         CheckoutLinkCreateProductTypedDict,
@@ -27,8 +27,8 @@ CheckoutLinksCreateCheckoutLinkCreateTypedDict = TypeAliasType(
 )
 
 
-CheckoutLinksCreateCheckoutLinkCreate = TypeAliasType(
-    "CheckoutLinksCreateCheckoutLinkCreate",
+CheckoutLinkCreate = TypeAliasType(
+    "CheckoutLinkCreate",
     Union[
         CheckoutLinkCreateProductPrice,
         CheckoutLinkCreateProduct,

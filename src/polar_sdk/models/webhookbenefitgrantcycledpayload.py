@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .benefitgrantwebhook import BenefitGrantWebhook, BenefitGrantWebhookTypedDict
+from datetime import datetime
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
@@ -17,6 +18,7 @@ class WebhookBenefitGrantCycledPayloadTypedDict(TypedDict):
     **Discord & Slack support:** Basic
     """
 
+    timestamp: datetime
     data: BenefitGrantWebhookTypedDict
     type: Literal["benefit_grant.cycled"]
 
@@ -27,6 +29,8 @@ class WebhookBenefitGrantCycledPayload(BaseModel):
 
     **Discord & Slack support:** Basic
     """
+
+    timestamp: datetime
 
     data: BenefitGrantWebhook
 

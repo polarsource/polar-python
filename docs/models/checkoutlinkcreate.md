@@ -1,4 +1,4 @@
-# CheckoutLinksCreateCheckoutLinkCreate
+# CheckoutLinkCreate
 
 
 ## Supported Types

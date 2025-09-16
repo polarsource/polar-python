@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .checkout import Checkout, CheckoutTypedDict
+from datetime import datetime
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
@@ -16,6 +17,7 @@ class WebhookCheckoutCreatedPayloadTypedDict(TypedDict):
     **Discord & Slack support:** Basic
     """
 
+    timestamp: datetime
     data: CheckoutTypedDict
     r"""Checkout session data retrieved using an access token."""
     type: Literal["checkout.created"]
@@ -26,6 +28,8 @@ class WebhookCheckoutCreatedPayload(BaseModel):
 
     **Discord & Slack support:** Basic
     """
+
+    timestamp: datetime
 
     data: Checkout
     r"""Checkout session data retrieved using an access token."""

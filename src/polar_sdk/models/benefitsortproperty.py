@@ -9,3 +9,5 @@ class BenefitSortProperty(str, Enum):
     MINUS_CREATED_AT = "-created_at"
     DESCRIPTION = "description"
     MINUS_DESCRIPTION = "-description"
+    TYPE = "type"
+    MINUS_TYPE = "-type"

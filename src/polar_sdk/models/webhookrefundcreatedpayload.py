@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .refund import Refund, RefundTypedDict
+from datetime import datetime
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
@@ -16,6 +17,7 @@ class WebhookRefundCreatedPayloadTypedDict(TypedDict):
     **Discord & Slack support:** Full
     """
 
+    timestamp: datetime
     data: RefundTypedDict
     type: Literal["refund.created"]
 
@@ -25,6 +27,8 @@ class WebhookRefundCreatedPayload(BaseModel):
 
     **Discord & Slack support:** Full
     """
+
+    timestamp: datetime
 
     data: Refund
 

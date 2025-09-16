@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .organization import Organization, OrganizationTypedDict
+from datetime import datetime
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import validate_const
 import pydantic
@@ -16,6 +17,7 @@ class WebhookOrganizationUpdatedPayloadTypedDict(TypedDict):
     **Discord & Slack support:** Basic
     """
 
+    timestamp: datetime
     data: OrganizationTypedDict
     type: Literal["organization.updated"]
 
@@ -25,6 +27,8 @@ class WebhookOrganizationUpdatedPayload(BaseModel):
 
     **Discord & Slack support:** Basic
     """
+
+    timestamp: datetime
 
     data: Organization
 
