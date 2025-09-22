@@ -15,6 +15,7 @@ from typing import Any, Callable, Dict, Optional, TYPE_CHECKING, Union, cast
 import weakref
 
 if TYPE_CHECKING:
+    from polar_sdk.benefit_grants import BenefitGrants
     from polar_sdk.benefits import Benefits
     from polar_sdk.checkout_links import CheckoutLinks
     from polar_sdk.checkouts import Checkouts
@@ -42,13 +43,14 @@ if TYPE_CHECKING:
 class Polar(BaseSDK):
     r"""Polar API: Polar HTTP and Webhooks API
 
-    Read the docs at https://docs.polar.sh/api-reference
+    Read the docs at https://polar.sh/docs/api-reference
     """
 
     organizations: "Organizations"
     subscriptions: "Subscriptions"
     oauth2: "Oauth2"
     benefits: "Benefits"
+    benefit_grants: "BenefitGrants"
     webhooks: "Webhooks"
     products: "Products"
     orders: "Orders"
@@ -72,6 +74,7 @@ class Polar(BaseSDK):
         "subscriptions": ("polar_sdk.subscriptions", "Subscriptions"),
         "oauth2": ("polar_sdk.oauth2", "Oauth2"),
         "benefits": ("polar_sdk.benefits", "Benefits"),
+        "benefit_grants": ("polar_sdk.benefit_grants", "BenefitGrants"),
         "webhooks": ("polar_sdk.webhooks", "Webhooks"),
         "products": ("polar_sdk.products", "Products"),
         "orders": ("polar_sdk.orders", "Orders"),

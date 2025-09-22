@@ -5,6 +5,7 @@ from .listresource_webhookdelivery_ import (
     ListResourceWebhookDelivery,
     ListResourceWebhookDeliveryTypedDict,
 )
+from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
@@ -23,6 +24,10 @@ r"""Filter by webhook endpoint ID."""
 class WebhooksListWebhookDeliveriesRequestTypedDict(TypedDict):
     endpoint_id: NotRequired[Nullable[EndpointIDTypedDict]]
     r"""Filter by webhook endpoint ID."""
+    start_timestamp: NotRequired[Nullable[datetime]]
+    r"""Filter deliveries after this timestamp."""
+    end_timestamp: NotRequired[Nullable[datetime]]
+    r"""Filter deliveries before this timestamp."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -35,6 +40,18 @@ class WebhooksListWebhookDeliveriesRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by webhook endpoint ID."""
+
+    start_timestamp: Annotated[
+        OptionalNullable[datetime],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter deliveries after this timestamp."""
+
+    end_timestamp: Annotated[
+        OptionalNullable[datetime],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter deliveries before this timestamp."""
 
     page: Annotated[
         Optional[int],
@@ -50,8 +67,14 @@ class WebhooksListWebhookDeliveriesRequest(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["endpoint_id", "page", "limit"]
-        nullable_fields = ["endpoint_id"]
+        optional_fields = [
+            "endpoint_id",
+            "start_timestamp",
+            "end_timestamp",
+            "page",
+            "limit",
+        ]
+        nullable_fields = ["endpoint_id", "start_timestamp", "end_timestamp"]
         null_default_fields = []
 
         serialized = handler(self)

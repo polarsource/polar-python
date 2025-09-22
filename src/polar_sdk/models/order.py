@@ -92,6 +92,8 @@ class OrderTypedDict(TypedDict):
     r"""Sales tax amount in cents."""
     total_amount: int
     r"""Amount in cents, after discounts and taxes."""
+    from_balance_amount: int
+    r"""How much of this invoice was paid using the customer's balance. Amount in cents."""
     refunded_amount: int
     r"""Amount refunded in cents."""
     refunded_tax_amount: int
@@ -149,6 +151,9 @@ class Order(BaseModel):
 
     total_amount: int
     r"""Amount in cents, after discounts and taxes."""
+
+    from_balance_amount: int
+    r"""How much of this invoice was paid using the customer's balance. Amount in cents."""
 
     refunded_amount: int
     r"""Amount refunded in cents."""

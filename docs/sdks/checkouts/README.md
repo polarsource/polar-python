@@ -74,6 +74,7 @@ Create a checkout session.
 
 <!-- UsageSnippet language="python" operationID="checkouts:create" method="post" path="/v1/checkouts/" -->
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
 
@@ -83,7 +84,7 @@ with Polar(
 
     res = polar.checkouts.create(request={
         "customer_billing_address": {
-            "country": "US",
+            "country": polar_sdk.CountryAlpha2Input.US,
         },
         "products": [
             "<value 1>",
@@ -168,6 +169,7 @@ Update a checkout session.
 
 <!-- UsageSnippet language="python" operationID="checkouts:update" method="patch" path="/v1/checkouts/{id}" -->
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
 
@@ -177,7 +179,7 @@ with Polar(
 
     res = polar.checkouts.update(id="<value>", checkout_update={
         "customer_billing_address": {
-            "country": "US",
+            "country": polar_sdk.CountryAlpha2Input.US,
         },
     })
 
@@ -305,6 +307,7 @@ Orders and subscriptions will be processed.
 
 <!-- UsageSnippet language="python" operationID="checkouts:client_confirm" method="post" path="/v1/checkouts/client/{client_secret}/confirm" -->
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
 
@@ -314,7 +317,7 @@ with Polar(
 
     res = polar.checkouts.client_confirm(client_secret="<value>", checkout_confirm_stripe={
         "customer_billing_address": {
-            "country": "US",
+            "country": polar_sdk.CountryAlpha2Input.US,
         },
     })
 

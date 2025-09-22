@@ -183,6 +183,94 @@ CheckoutsConversionTypedDict = TypeAliasType(
 CheckoutsConversion = TypeAliasType("CheckoutsConversion", Union[int, float])
 
 
+CanceledSubscriptionsTypedDict = TypeAliasType(
+    "CanceledSubscriptionsTypedDict", Union[int, float]
+)
+
+
+CanceledSubscriptions = TypeAliasType("CanceledSubscriptions", Union[int, float])
+
+
+CanceledSubscriptionsCustomerServiceTypedDict = TypeAliasType(
+    "CanceledSubscriptionsCustomerServiceTypedDict", Union[int, float]
+)
+
+
+CanceledSubscriptionsCustomerService = TypeAliasType(
+    "CanceledSubscriptionsCustomerService", Union[int, float]
+)
+
+
+CanceledSubscriptionsLowQualityTypedDict = TypeAliasType(
+    "CanceledSubscriptionsLowQualityTypedDict", Union[int, float]
+)
+
+
+CanceledSubscriptionsLowQuality = TypeAliasType(
+    "CanceledSubscriptionsLowQuality", Union[int, float]
+)
+
+
+CanceledSubscriptionsMissingFeaturesTypedDict = TypeAliasType(
+    "CanceledSubscriptionsMissingFeaturesTypedDict", Union[int, float]
+)
+
+
+CanceledSubscriptionsMissingFeatures = TypeAliasType(
+    "CanceledSubscriptionsMissingFeatures", Union[int, float]
+)
+
+
+CanceledSubscriptionsSwitchedServiceTypedDict = TypeAliasType(
+    "CanceledSubscriptionsSwitchedServiceTypedDict", Union[int, float]
+)
+
+
+CanceledSubscriptionsSwitchedService = TypeAliasType(
+    "CanceledSubscriptionsSwitchedService", Union[int, float]
+)
+
+
+CanceledSubscriptionsTooComplexTypedDict = TypeAliasType(
+    "CanceledSubscriptionsTooComplexTypedDict", Union[int, float]
+)
+
+
+CanceledSubscriptionsTooComplex = TypeAliasType(
+    "CanceledSubscriptionsTooComplex", Union[int, float]
+)
+
+
+CanceledSubscriptionsTooExpensiveTypedDict = TypeAliasType(
+    "CanceledSubscriptionsTooExpensiveTypedDict", Union[int, float]
+)
+
+
+CanceledSubscriptionsTooExpensive = TypeAliasType(
+    "CanceledSubscriptionsTooExpensive", Union[int, float]
+)
+
+
+CanceledSubscriptionsUnusedTypedDict = TypeAliasType(
+    "CanceledSubscriptionsUnusedTypedDict", Union[int, float]
+)
+
+
+CanceledSubscriptionsUnused = TypeAliasType(
+    "CanceledSubscriptionsUnused", Union[int, float]
+)
+
+
+CanceledSubscriptionsOtherTypedDict = TypeAliasType(
+    "CanceledSubscriptionsOtherTypedDict", Union[int, float]
+)
+
+
+CanceledSubscriptionsOther = TypeAliasType(
+    "CanceledSubscriptionsOther", Union[int, float]
+)
+
+
 class MetricPeriodTypedDict(TypedDict):
     timestamp: datetime
     r"""Timestamp of this period data."""
@@ -208,6 +296,21 @@ class MetricPeriodTypedDict(TypedDict):
     checkouts: CheckoutsModelTypedDict
     succeeded_checkouts: SucceededCheckoutsTypedDict
     checkouts_conversion: CheckoutsConversionTypedDict
+    canceled_subscriptions: CanceledSubscriptionsTypedDict
+    canceled_subscriptions_customer_service: (
+        CanceledSubscriptionsCustomerServiceTypedDict
+    )
+    canceled_subscriptions_low_quality: CanceledSubscriptionsLowQualityTypedDict
+    canceled_subscriptions_missing_features: (
+        CanceledSubscriptionsMissingFeaturesTypedDict
+    )
+    canceled_subscriptions_switched_service: (
+        CanceledSubscriptionsSwitchedServiceTypedDict
+    )
+    canceled_subscriptions_too_complex: CanceledSubscriptionsTooComplexTypedDict
+    canceled_subscriptions_too_expensive: CanceledSubscriptionsTooExpensiveTypedDict
+    canceled_subscriptions_unused: CanceledSubscriptionsUnusedTypedDict
+    canceled_subscriptions_other: CanceledSubscriptionsOtherTypedDict
 
 
 class MetricPeriod(BaseModel):
@@ -257,3 +360,21 @@ class MetricPeriod(BaseModel):
     succeeded_checkouts: SucceededCheckouts
 
     checkouts_conversion: CheckoutsConversion
+
+    canceled_subscriptions: CanceledSubscriptions
+
+    canceled_subscriptions_customer_service: CanceledSubscriptionsCustomerService
+
+    canceled_subscriptions_low_quality: CanceledSubscriptionsLowQuality
+
+    canceled_subscriptions_missing_features: CanceledSubscriptionsMissingFeatures
+
+    canceled_subscriptions_switched_service: CanceledSubscriptionsSwitchedService
+
+    canceled_subscriptions_too_complex: CanceledSubscriptionsTooComplex
+
+    canceled_subscriptions_too_expensive: CanceledSubscriptionsTooExpensive
+
+    canceled_subscriptions_unused: CanceledSubscriptionsUnused
+
+    canceled_subscriptions_other: CanceledSubscriptionsOther

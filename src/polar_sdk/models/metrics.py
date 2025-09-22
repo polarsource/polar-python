@@ -51,6 +51,24 @@ class MetricsTypedDict(TypedDict):
     r"""Information about a metric."""
     checkouts_conversion: MetricTypedDict
     r"""Information about a metric."""
+    canceled_subscriptions: MetricTypedDict
+    r"""Information about a metric."""
+    canceled_subscriptions_customer_service: MetricTypedDict
+    r"""Information about a metric."""
+    canceled_subscriptions_low_quality: MetricTypedDict
+    r"""Information about a metric."""
+    canceled_subscriptions_missing_features: MetricTypedDict
+    r"""Information about a metric."""
+    canceled_subscriptions_switched_service: MetricTypedDict
+    r"""Information about a metric."""
+    canceled_subscriptions_too_complex: MetricTypedDict
+    r"""Information about a metric."""
+    canceled_subscriptions_too_expensive: MetricTypedDict
+    r"""Information about a metric."""
+    canceled_subscriptions_unused: MetricTypedDict
+    r"""Information about a metric."""
+    canceled_subscriptions_other: MetricTypedDict
+    r"""Information about a metric."""
 
 
 class Metrics(BaseModel):
@@ -118,4 +136,31 @@ class Metrics(BaseModel):
     r"""Information about a metric."""
 
     checkouts_conversion: Metric
+    r"""Information about a metric."""
+
+    canceled_subscriptions: Metric
+    r"""Information about a metric."""
+
+    canceled_subscriptions_customer_service: Metric
+    r"""Information about a metric."""
+
+    canceled_subscriptions_low_quality: Metric
+    r"""Information about a metric."""
+
+    canceled_subscriptions_missing_features: Metric
+    r"""Information about a metric."""
+
+    canceled_subscriptions_switched_service: Metric
+    r"""Information about a metric."""
+
+    canceled_subscriptions_too_complex: Metric
+    r"""Information about a metric."""
+
+    canceled_subscriptions_too_expensive: Metric
+    r"""Information about a metric."""
+
+    canceled_subscriptions_unused: Metric
+    r"""Information about a metric."""
+
+    canceled_subscriptions_other: Metric
     r"""Information about a metric."""

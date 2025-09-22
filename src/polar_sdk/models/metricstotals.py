@@ -218,6 +218,96 @@ MetricsTotalsCheckoutsConversion = TypeAliasType(
 )
 
 
+MetricsTotalsCanceledSubscriptionsTypedDict = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptions = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptions", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsCustomerServiceTypedDict = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsCustomerServiceTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsCustomerService = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsCustomerService", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsLowQualityTypedDict = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsLowQualityTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsLowQuality = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsLowQuality", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsMissingFeaturesTypedDict = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsMissingFeaturesTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsMissingFeatures = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsMissingFeatures", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsSwitchedServiceTypedDict = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsSwitchedServiceTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsSwitchedService = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsSwitchedService", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsTooComplexTypedDict = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsTooComplexTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsTooComplex = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsTooComplex", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsTooExpensiveTypedDict = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsTooExpensiveTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsTooExpensive = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsTooExpensive", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsUnusedTypedDict = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsUnusedTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsUnused = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsUnused", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsOtherTypedDict = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsOtherTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCanceledSubscriptionsOther = TypeAliasType(
+    "MetricsTotalsCanceledSubscriptionsOther", Union[int, float]
+)
+
+
 class MetricsTotalsTypedDict(TypedDict):
     orders: MetricsTotalsOrdersTypedDict
     revenue: MetricsTotalsRevenueTypedDict
@@ -245,6 +335,27 @@ class MetricsTotalsTypedDict(TypedDict):
     checkouts: MetricsTotalsCheckoutsTypedDict
     succeeded_checkouts: MetricsTotalsSucceededCheckoutsTypedDict
     checkouts_conversion: MetricsTotalsCheckoutsConversionTypedDict
+    canceled_subscriptions: MetricsTotalsCanceledSubscriptionsTypedDict
+    canceled_subscriptions_customer_service: (
+        MetricsTotalsCanceledSubscriptionsCustomerServiceTypedDict
+    )
+    canceled_subscriptions_low_quality: (
+        MetricsTotalsCanceledSubscriptionsLowQualityTypedDict
+    )
+    canceled_subscriptions_missing_features: (
+        MetricsTotalsCanceledSubscriptionsMissingFeaturesTypedDict
+    )
+    canceled_subscriptions_switched_service: (
+        MetricsTotalsCanceledSubscriptionsSwitchedServiceTypedDict
+    )
+    canceled_subscriptions_too_complex: (
+        MetricsTotalsCanceledSubscriptionsTooComplexTypedDict
+    )
+    canceled_subscriptions_too_expensive: (
+        MetricsTotalsCanceledSubscriptionsTooExpensiveTypedDict
+    )
+    canceled_subscriptions_unused: MetricsTotalsCanceledSubscriptionsUnusedTypedDict
+    canceled_subscriptions_other: MetricsTotalsCanceledSubscriptionsOtherTypedDict
 
 
 class MetricsTotals(BaseModel):
@@ -291,3 +402,27 @@ class MetricsTotals(BaseModel):
     succeeded_checkouts: MetricsTotalsSucceededCheckouts
 
     checkouts_conversion: MetricsTotalsCheckoutsConversion
+
+    canceled_subscriptions: MetricsTotalsCanceledSubscriptions
+
+    canceled_subscriptions_customer_service: (
+        MetricsTotalsCanceledSubscriptionsCustomerService
+    )
+
+    canceled_subscriptions_low_quality: MetricsTotalsCanceledSubscriptionsLowQuality
+
+    canceled_subscriptions_missing_features: (
+        MetricsTotalsCanceledSubscriptionsMissingFeatures
+    )
+
+    canceled_subscriptions_switched_service: (
+        MetricsTotalsCanceledSubscriptionsSwitchedService
+    )
+
+    canceled_subscriptions_too_complex: MetricsTotalsCanceledSubscriptionsTooComplex
+
+    canceled_subscriptions_too_expensive: MetricsTotalsCanceledSubscriptionsTooExpensive
+
+    canceled_subscriptions_unused: MetricsTotalsCanceledSubscriptionsUnused
+
+    canceled_subscriptions_other: MetricsTotalsCanceledSubscriptionsOther
