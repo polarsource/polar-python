@@ -132,7 +132,7 @@ with Polar() as polar:
     ), id="<value>", customer_order_update={
         "billing_name": "<value>",
         "billing_address": {
-            "country": "US",
+            "country": polar_sdk.CountryAlpha2Input.US,
         },
     })
 

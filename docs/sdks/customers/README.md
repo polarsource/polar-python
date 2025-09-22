@@ -7,6 +7,7 @@
 
 * [list](#list) - List Customers
 * [create](#create) - Create Customer
+* [export](#export) - Export Customers
 * [get](#get) - Get Customer
 * [update](#update) - Update Customer
 * [delete](#delete) - Delete Customer
@@ -76,6 +77,7 @@ Create a customer.
 
 <!-- UsageSnippet language="python" operationID="customers:create" method="post" path="/v1/customers/" -->
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
 
@@ -88,7 +90,7 @@ with Polar(
         "email": "customer@example.com",
         "name": "John Doe",
         "billing_address": {
-            "country": "US",
+            "country": polar_sdk.CountryAlpha2Input.US,
         },
         "tax_id": [
             "911144442",
@@ -112,6 +114,48 @@ with Polar(
 ### Response
 
 **[models.Customer](../../models/customer.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## export
+
+Export customers as a CSV file.
+
+**Scopes**: `customers:read` `customers:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="customers:export" method="get" path="/v1/customers/export" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.customers.export(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `organization_id`                                                                                                           | [OptionalNullable[models.CustomersExportQueryParamOrganizationID]](../../models/customersexportqueryparamorganizationid.md) | :heavy_minus_sign:                                                                                                          | Filter by organization ID.                                                                                                  |
+| `retries`                                                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                            | :heavy_minus_sign:                                                                                                          | Configuration to override the default retry behavior of the client.                                                         |
+
+### Response
+
+**[Any](../../models/.md)**
 
 ### Errors
 
@@ -173,6 +217,7 @@ Update a customer.
 
 <!-- UsageSnippet language="python" operationID="customers:update" method="patch" path="/v1/customers/{id}" -->
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
 
@@ -184,7 +229,7 @@ with Polar(
         "email": "customer@example.com",
         "name": "John Doe",
         "billing_address": {
-            "country": "US",
+            "country": polar_sdk.CountryAlpha2Input.US,
         },
         "tax_id": [
             "911144442",

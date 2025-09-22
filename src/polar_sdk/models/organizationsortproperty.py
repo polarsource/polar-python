@@ -11,3 +11,7 @@ class OrganizationSortProperty(str, Enum):
     MINUS_SLUG = "-slug"
     NAME = "name"
     MINUS_NAME = "-name"
+    NEXT_REVIEW_THRESHOLD = "next_review_threshold"
+    MINUS_NEXT_REVIEW_THRESHOLD = "-next_review_threshold"
+    DAYS_IN_STATUS = "days_in_status"
+    MINUS_DAYS_IN_STATUS = "-days_in_status"

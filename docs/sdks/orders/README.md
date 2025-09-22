@@ -117,6 +117,7 @@ Update an order.
 
 <!-- UsageSnippet language="python" operationID="orders:update" method="patch" path="/v1/orders/{id}" -->
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
 
@@ -127,7 +128,7 @@ with Polar(
     res = polar.orders.update(id="<value>", order_update={
         "billing_name": "<value>",
         "billing_address": {
-            "country": "US",
+            "country": polar_sdk.CountryAlpha2Input.US,
         },
     })
 

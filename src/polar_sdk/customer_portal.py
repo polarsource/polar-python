@@ -2,8 +2,8 @@
 
 from .basesdk import BaseSDK
 from .sdkconfiguration import SDKConfiguration
-from polar_sdk.benefit_grants import BenefitGrants
 from polar_sdk.downloadables import Downloadables
+from polar_sdk.polar_benefit_grants import PolarBenefitGrants
 from polar_sdk.polar_customer_meters import PolarCustomerMeters
 from polar_sdk.polar_customers import PolarCustomers
 from polar_sdk.polar_license_keys import PolarLicenseKeys
@@ -14,7 +14,7 @@ from typing import Optional
 
 
 class CustomerPortal(BaseSDK):
-    benefit_grants: BenefitGrants
+    benefit_grants: PolarBenefitGrants
     customers: PolarCustomers
     customer_meters: PolarCustomerMeters
     downloadables: Downloadables
@@ -31,7 +31,7 @@ class CustomerPortal(BaseSDK):
         self._init_sdks()
 
     def _init_sdks(self):
-        self.benefit_grants = BenefitGrants(
+        self.benefit_grants = PolarBenefitGrants(
             self.sdk_configuration, parent_ref=self.parent_ref
         )
         self.customers = PolarCustomers(
