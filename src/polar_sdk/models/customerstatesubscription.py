@@ -7,13 +7,11 @@ from .customerstatesubscriptionmeter import (
 )
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from datetime import datetime
+from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
-from polar_sdk.utils import validate_const
-import pydantic
 from pydantic import model_serializer
-from pydantic.functional_validators import AfterValidator
-from typing import Dict, List, Literal, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+from typing import Dict, List, Optional, Union
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 CustomerStateSubscriptionCustomFieldDataTypedDict = TypeAliasType(
@@ -36,6 +34,11 @@ CustomerStateSubscriptionMetadata = TypeAliasType(
 )
 
 
+class CustomerStateSubscriptionStatus(str, Enum):
+    ACTIVE = "active"
+    TRIALING = "trialing"
+
+
 class CustomerStateSubscriptionTypedDict(TypedDict):
     r"""An active customer subscription."""
 
@@ -46,6 +49,7 @@ class CustomerStateSubscriptionTypedDict(TypedDict):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
     metadata: Dict[str, CustomerStateSubscriptionMetadataTypedDict]
+    status: CustomerStateSubscriptionStatus
     amount: int
     r"""The amount of the subscription."""
     currency: str
@@ -55,6 +59,10 @@ class CustomerStateSubscriptionTypedDict(TypedDict):
     r"""The start timestamp of the current billing period."""
     current_period_end: Nullable[datetime]
     r"""The end timestamp of the current billing period."""
+    trial_start: Nullable[datetime]
+    r"""The start timestamp of the trial period, if any."""
+    trial_end: Nullable[datetime]
+    r"""The end timestamp of the trial period, if any."""
     cancel_at_period_end: bool
     r"""Whether the subscription will be canceled at the end of the current period."""
     canceled_at: Nullable[datetime]
@@ -73,7 +81,6 @@ class CustomerStateSubscriptionTypedDict(TypedDict):
         Dict[str, Nullable[CustomerStateSubscriptionCustomFieldDataTypedDict]]
     ]
     r"""Key-value object storing custom field values."""
-    status: Literal["active"]
 
 
 class CustomerStateSubscription(BaseModel):
@@ -90,6 +97,8 @@ class CustomerStateSubscription(BaseModel):
 
     metadata: Dict[str, CustomerStateSubscriptionMetadata]
 
+    status: CustomerStateSubscriptionStatus
+
     amount: int
     r"""The amount of the subscription."""
 
@@ -103,6 +112,12 @@ class CustomerStateSubscription(BaseModel):
 
     current_period_end: Nullable[datetime]
     r"""The end timestamp of the current billing period."""
+
+    trial_start: Nullable[datetime]
+    r"""The start timestamp of the trial period, if any."""
+
+    trial_end: Nullable[datetime]
+    r"""The end timestamp of the trial period, if any."""
 
     cancel_at_period_end: bool
     r"""Whether the subscription will be canceled at the end of the current period."""
@@ -130,17 +145,14 @@ class CustomerStateSubscription(BaseModel):
     ] = None
     r"""Key-value object storing custom field values."""
 
-    STATUS: Annotated[
-        Annotated[Literal["active"], AfterValidator(validate_const("active"))],
-        pydantic.Field(alias="status"),
-    ] = "active"
-
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = ["custom_field_data"]
         nullable_fields = [
             "modified_at",
             "current_period_end",
+            "trial_start",
+            "trial_end",
             "canceled_at",
             "started_at",
             "ends_at",

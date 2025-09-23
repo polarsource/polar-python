@@ -52,6 +52,10 @@ class CustomerSubscriptionTypedDict(TypedDict):
     r"""The start timestamp of the current billing period."""
     current_period_end: Nullable[datetime]
     r"""The end timestamp of the current billing period."""
+    trial_start: Nullable[datetime]
+    r"""The start timestamp of the trial period, if any."""
+    trial_end: Nullable[datetime]
+    r"""The end timestamp of the trial period, if any."""
     cancel_at_period_end: bool
     r"""Whether the subscription will be canceled at the end of the current period."""
     canceled_at: Nullable[datetime]
@@ -104,6 +108,12 @@ class CustomerSubscription(BaseModel):
     current_period_end: Nullable[datetime]
     r"""The end timestamp of the current billing period."""
 
+    trial_start: Nullable[datetime]
+    r"""The start timestamp of the trial period, if any."""
+
+    trial_end: Nullable[datetime]
+    r"""The end timestamp of the trial period, if any."""
+
     cancel_at_period_end: bool
     r"""Whether the subscription will be canceled at the end of the current period."""
 
@@ -148,6 +158,8 @@ class CustomerSubscription(BaseModel):
         nullable_fields = [
             "modified_at",
             "current_period_end",
+            "trial_start",
+            "trial_end",
             "canceled_at",
             "started_at",
             "ends_at",

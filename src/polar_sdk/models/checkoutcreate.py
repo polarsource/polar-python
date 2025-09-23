@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .addressinput import AddressInput, AddressInputTypedDict
+from .trialinterval import TrialInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -49,6 +50,10 @@ class CheckoutCreateTypedDict(TypedDict):
 
     products: List[str]
     r"""List of product IDs available to select at that checkout. The first one will be selected by default."""
+    trial_interval: NotRequired[Nullable[TrialInterval]]
+    r"""The interval unit for the trial period."""
+    trial_interval_count: NotRequired[Nullable[int]]
+    r"""The number of interval units for the trial period."""
     metadata: NotRequired[Dict[str, CheckoutCreateMetadataTypedDict]]
     r"""Key-value object allowing you to store additional information.
 
@@ -116,6 +121,12 @@ class CheckoutCreate(BaseModel):
 
     products: List[str]
     r"""List of product IDs available to select at that checkout. The first one will be selected by default."""
+
+    trial_interval: OptionalNullable[TrialInterval] = UNSET
+    r"""The interval unit for the trial period."""
+
+    trial_interval_count: OptionalNullable[int] = UNSET
+    r"""The number of interval units for the trial period."""
 
     metadata: Optional[Dict[str, CheckoutCreateMetadata]] = None
     r"""Key-value object allowing you to store additional information.
@@ -194,6 +205,8 @@ class CheckoutCreate(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "trial_interval",
+            "trial_interval_count",
             "metadata",
             "custom_field_data",
             "discount_id",
@@ -215,6 +228,8 @@ class CheckoutCreate(BaseModel):
             "embed_origin",
         ]
         nullable_fields = [
+            "trial_interval",
+            "trial_interval_count",
             "discount_id",
             "amount",
             "customer_id",

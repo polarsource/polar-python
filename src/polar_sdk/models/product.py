@@ -10,6 +10,7 @@ from .legacyrecurringproductprice import (
 from .productmediafileread import ProductMediaFileRead, ProductMediaFileReadTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
+from .trialinterval import TrialInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -37,12 +38,16 @@ Prices = TypeAliasType("Prices", Union[LegacyRecurringProductPrice, ProductPrice
 class ProductTypedDict(TypedDict):
     r"""A product."""
 
+    id: str
+    r"""The ID of the object."""
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    id: str
-    r"""The ID of the product."""
+    trial_interval: Nullable[TrialInterval]
+    r"""The interval unit for the trial period."""
+    trial_interval_count: Nullable[int]
+    r"""The number of interval units for the trial period."""
     name: str
     r"""The name of the product."""
     description: Nullable[str]
@@ -69,14 +74,20 @@ class ProductTypedDict(TypedDict):
 class Product(BaseModel):
     r"""A product."""
 
+    id: str
+    r"""The ID of the object."""
+
     created_at: datetime
     r"""Creation timestamp of the object."""
 
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    id: str
-    r"""The ID of the product."""
+    trial_interval: Nullable[TrialInterval]
+    r"""The interval unit for the trial period."""
+
+    trial_interval_count: Nullable[int]
+    r"""The number of interval units for the trial period."""
 
     name: str
     r"""The name of the product."""
@@ -113,7 +124,13 @@ class Product(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
-        nullable_fields = ["modified_at", "description", "recurring_interval"]
+        nullable_fields = [
+            "modified_at",
+            "trial_interval",
+            "trial_interval_count",
+            "description",
+            "recurring_interval",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

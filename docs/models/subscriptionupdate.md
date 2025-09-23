@@ -15,6 +15,12 @@ value: models.SubscriptionUpdateProduct = /* values here */
 value: models.SubscriptionUpdateDiscount = /* values here */
 ```
 
+### `models.SubscriptionUpdateTrial`
+
+```python
+value: models.SubscriptionUpdateTrial = /* values here */
+```
+
 ### `models.SubscriptionCancel`
 
 ```python

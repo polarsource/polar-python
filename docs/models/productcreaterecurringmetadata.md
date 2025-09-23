@@ -1,4 +1,4 @@
-# ProductCreateMetadata
+# ProductCreateRecurringMetadata
 
 
 ## Supported Types
