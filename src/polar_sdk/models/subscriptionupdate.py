@@ -11,6 +11,10 @@ from .subscriptionupdateproduct import (
     SubscriptionUpdateProduct,
     SubscriptionUpdateProductTypedDict,
 )
+from .subscriptionupdatetrial import (
+    SubscriptionUpdateTrial,
+    SubscriptionUpdateTrialTypedDict,
+)
 from typing import Union
 from typing_extensions import TypeAliasType
 
@@ -19,6 +23,7 @@ SubscriptionUpdateTypedDict = TypeAliasType(
     "SubscriptionUpdateTypedDict",
     Union[
         SubscriptionUpdateDiscountTypedDict,
+        SubscriptionUpdateTrialTypedDict,
         SubscriptionUpdateProductTypedDict,
         SubscriptionCancelTypedDict,
         SubscriptionRevokeTypedDict,
@@ -30,6 +35,7 @@ SubscriptionUpdate = TypeAliasType(
     "SubscriptionUpdate",
     Union[
         SubscriptionUpdateDiscount,
+        SubscriptionUpdateTrial,
         SubscriptionUpdateProduct,
         SubscriptionCancel,
         SubscriptionRevoke,

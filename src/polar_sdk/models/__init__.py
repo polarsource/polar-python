@@ -1021,6 +1021,7 @@ if TYPE_CHECKING:
         CustomerStateSubscriptionCustomFieldDataTypedDict,
         CustomerStateSubscriptionMetadata,
         CustomerStateSubscriptionMetadataTypedDict,
+        CustomerStateSubscriptionStatus,
         CustomerStateSubscriptionTypedDict,
     )
     from .customerstatesubscriptionmeter import (
@@ -1941,13 +1942,22 @@ if TYPE_CHECKING:
         ProductBenefitsUpdateTypedDict,
     )
     from .productbillingtype import ProductBillingType
-    from .productcreate import (
-        ProductCreate,
-        ProductCreateMetadata,
-        ProductCreateMetadataTypedDict,
-        ProductCreatePrices,
-        ProductCreatePricesTypedDict,
-        ProductCreateTypedDict,
+    from .productcreate import ProductCreate, ProductCreateTypedDict
+    from .productcreateonetime import (
+        ProductCreateOneTime,
+        ProductCreateOneTimeMetadata,
+        ProductCreateOneTimeMetadataTypedDict,
+        ProductCreateOneTimePrices,
+        ProductCreateOneTimePricesTypedDict,
+        ProductCreateOneTimeTypedDict,
+    )
+    from .productcreaterecurring import (
+        ProductCreateRecurring,
+        ProductCreateRecurringMetadata,
+        ProductCreateRecurringMetadataTypedDict,
+        ProductCreateRecurringPrices,
+        ProductCreateRecurringPricesTypedDict,
+        ProductCreateRecurringTypedDict,
     )
     from .productmediafilecreate import (
         ProductMediaFileCreate,
@@ -2224,11 +2234,16 @@ if TYPE_CHECKING:
         SubscriptionUpdateProduct,
         SubscriptionUpdateProductTypedDict,
     )
+    from .subscriptionupdatetrial import (
+        SubscriptionUpdateTrial,
+        SubscriptionUpdateTrialTypedDict,
+    )
     from .subtype import SubType
     from .systemevent import SystemEvent, SystemEventTypedDict
     from .taxidformat import TaxIDFormat
     from .timeinterval import TimeInterval
     from .tokenresponse import TokenResponse, TokenResponseTypedDict
+    from .trialinterval import TrialInterval
     from .unauthorized import Unauthorized, UnauthorizedData
     from .uniqueaggregation import UniqueAggregation, UniqueAggregationTypedDict
     from .userevent import (
@@ -3188,6 +3203,7 @@ __all__ = [
     "CustomerStateSubscriptionMetadataTypedDict",
     "CustomerStateSubscriptionMeter",
     "CustomerStateSubscriptionMeterTypedDict",
+    "CustomerStateSubscriptionStatus",
     "CustomerStateSubscriptionTypedDict",
     "CustomerStateTaxID",
     "CustomerStateTaxIDTypedDict",
@@ -3854,10 +3870,18 @@ __all__ = [
     "ProductBillingTypeFilter",
     "ProductBillingTypeFilterTypedDict",
     "ProductCreate",
-    "ProductCreateMetadata",
-    "ProductCreateMetadataTypedDict",
-    "ProductCreatePrices",
-    "ProductCreatePricesTypedDict",
+    "ProductCreateOneTime",
+    "ProductCreateOneTimeMetadata",
+    "ProductCreateOneTimeMetadataTypedDict",
+    "ProductCreateOneTimePrices",
+    "ProductCreateOneTimePricesTypedDict",
+    "ProductCreateOneTimeTypedDict",
+    "ProductCreateRecurring",
+    "ProductCreateRecurringMetadata",
+    "ProductCreateRecurringMetadataTypedDict",
+    "ProductCreateRecurringPrices",
+    "ProductCreateRecurringPricesTypedDict",
+    "ProductCreateRecurringTypedDict",
     "ProductCreateTypedDict",
     "ProductIDFilter",
     "ProductIDFilterTypedDict",
@@ -4047,6 +4071,8 @@ __all__ = [
     "SubscriptionUpdateDiscountTypedDict",
     "SubscriptionUpdateProduct",
     "SubscriptionUpdateProductTypedDict",
+    "SubscriptionUpdateTrial",
+    "SubscriptionUpdateTrialTypedDict",
     "SubscriptionUpdateTypedDict",
     "SubscriptionsExportRequest",
     "SubscriptionsExportRequestTypedDict",
@@ -4074,6 +4100,7 @@ __all__ = [
     "TokenResponseTypedDict",
     "TokenType",
     "TokenTypeHint",
+    "TrialInterval",
     "Unauthorized",
     "UnauthorizedData",
     "UniqueAggregation",
@@ -4871,6 +4898,7 @@ _dynamic_imports: dict[str, str] = {
     "CustomerStateSubscriptionCustomFieldDataTypedDict": ".customerstatesubscription",
     "CustomerStateSubscriptionMetadata": ".customerstatesubscription",
     "CustomerStateSubscriptionMetadataTypedDict": ".customerstatesubscription",
+    "CustomerStateSubscriptionStatus": ".customerstatesubscription",
     "CustomerStateSubscriptionTypedDict": ".customerstatesubscription",
     "CustomerStateSubscriptionMeter": ".customerstatesubscriptionmeter",
     "CustomerStateSubscriptionMeterTypedDict": ".customerstatesubscriptionmeter",
@@ -5589,11 +5617,19 @@ _dynamic_imports: dict[str, str] = {
     "ProductBenefitsUpdateTypedDict": ".productbenefitsupdate",
     "ProductBillingType": ".productbillingtype",
     "ProductCreate": ".productcreate",
-    "ProductCreateMetadata": ".productcreate",
-    "ProductCreateMetadataTypedDict": ".productcreate",
-    "ProductCreatePrices": ".productcreate",
-    "ProductCreatePricesTypedDict": ".productcreate",
     "ProductCreateTypedDict": ".productcreate",
+    "ProductCreateOneTime": ".productcreateonetime",
+    "ProductCreateOneTimeMetadata": ".productcreateonetime",
+    "ProductCreateOneTimeMetadataTypedDict": ".productcreateonetime",
+    "ProductCreateOneTimePrices": ".productcreateonetime",
+    "ProductCreateOneTimePricesTypedDict": ".productcreateonetime",
+    "ProductCreateOneTimeTypedDict": ".productcreateonetime",
+    "ProductCreateRecurring": ".productcreaterecurring",
+    "ProductCreateRecurringMetadata": ".productcreaterecurring",
+    "ProductCreateRecurringMetadataTypedDict": ".productcreaterecurring",
+    "ProductCreateRecurringPrices": ".productcreaterecurring",
+    "ProductCreateRecurringPricesTypedDict": ".productcreaterecurring",
+    "ProductCreateRecurringTypedDict": ".productcreaterecurring",
     "ProductMediaFileCreate": ".productmediafilecreate",
     "ProductMediaFileCreateTypedDict": ".productmediafilecreate",
     "ProductMediaFileRead": ".productmediafileread",
@@ -5831,6 +5867,8 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionUpdateDiscountTypedDict": ".subscriptionupdatediscount",
     "SubscriptionUpdateProduct": ".subscriptionupdateproduct",
     "SubscriptionUpdateProductTypedDict": ".subscriptionupdateproduct",
+    "SubscriptionUpdateTrial": ".subscriptionupdatetrial",
+    "SubscriptionUpdateTrialTypedDict": ".subscriptionupdatetrial",
     "SubType": ".subtype",
     "SystemEvent": ".systemevent",
     "SystemEventTypedDict": ".systemevent",
@@ -5838,6 +5876,7 @@ _dynamic_imports: dict[str, str] = {
     "TimeInterval": ".timeinterval",
     "TokenResponse": ".tokenresponse",
     "TokenResponseTypedDict": ".tokenresponse",
+    "TrialInterval": ".trialinterval",
     "Unauthorized": ".unauthorized",
     "UnauthorizedData": ".unauthorized",
     "UniqueAggregation": ".uniqueaggregation",

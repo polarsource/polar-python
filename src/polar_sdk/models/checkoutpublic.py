@@ -32,6 +32,7 @@ from .legacyrecurringproductprice import (
 from .organization import Organization, OrganizationTypedDict
 from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
+from .trialinterval import TrialInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -87,12 +88,12 @@ CheckoutPublicDiscount = TypeAliasType(
 class CheckoutPublicTypedDict(TypedDict):
     r"""Checkout session data retrieved using the client secret."""
 
+    id: str
+    r"""The ID of the object."""
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    id: str
-    r"""The ID of the object."""
     payment_processor: PaymentProcessor
     status: CheckoutStatus
     client_secret: str
@@ -117,6 +118,12 @@ class CheckoutPublicTypedDict(TypedDict):
     r"""Amount in cents, after discounts and taxes."""
     currency: str
     r"""Currency code of the checkout session."""
+    active_trial_interval: Nullable[TrialInterval]
+    r"""Interval unit of the trial period, if any. This value is either set from the checkout, if `trial_interval` is set, or from the selected product."""
+    active_trial_interval_count: Nullable[int]
+    r"""Number of interval units of the trial period, if any. This value is either set from the checkout, if `trial_interval_count` is set, or from the selected product."""
+    trial_end: Nullable[datetime]
+    r"""End date and time of the trial period, if any."""
     product_id: str
     r"""ID of the product to checkout."""
     product_price_id: str
@@ -168,14 +175,14 @@ class CheckoutPublicTypedDict(TypedDict):
 class CheckoutPublic(BaseModel):
     r"""Checkout session data retrieved using the client secret."""
 
+    id: str
+    r"""The ID of the object."""
+
     created_at: datetime
     r"""Creation timestamp of the object."""
 
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-
-    id: str
-    r"""The ID of the object."""
 
     payment_processor: PaymentProcessor
 
@@ -213,6 +220,15 @@ class CheckoutPublic(BaseModel):
 
     currency: str
     r"""Currency code of the checkout session."""
+
+    active_trial_interval: Nullable[TrialInterval]
+    r"""Interval unit of the trial period, if any. This value is either set from the checkout, if `trial_interval` is set, or from the selected product."""
+
+    active_trial_interval_count: Nullable[int]
+    r"""Number of interval units of the trial period, if any. This value is either set from the checkout, if `trial_interval_count` is set, or from the selected product."""
+
+    trial_end: Nullable[datetime]
+    r"""End date and time of the trial period, if any."""
 
     product_id: str
     r"""ID of the product to checkout."""
@@ -294,6 +310,9 @@ class CheckoutPublic(BaseModel):
             "modified_at",
             "embed_origin",
             "tax_amount",
+            "active_trial_interval",
+            "active_trial_interval_count",
+            "trial_end",
             "discount_id",
             "customer_id",
             "customer_name",

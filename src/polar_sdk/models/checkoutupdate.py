@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .addressinput import AddressInput, AddressInputTypedDict
+from .trialinterval import TrialInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 import pydantic
@@ -58,6 +59,10 @@ class CheckoutUpdateTypedDict(TypedDict):
     customer_billing_name: NotRequired[Nullable[str]]
     customer_billing_address: NotRequired[Nullable[AddressInputTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
+    trial_interval: NotRequired[Nullable[TrialInterval]]
+    r"""The interval unit for the trial period."""
+    trial_interval_count: NotRequired[Nullable[int]]
+    r"""The number of interval units for the trial period."""
     metadata: NotRequired[Dict[str, CheckoutUpdateMetadataTypedDict]]
     r"""Key-value object allowing you to store additional information.
 
@@ -132,6 +137,12 @@ class CheckoutUpdate(BaseModel):
 
     customer_tax_id: OptionalNullable[str] = UNSET
 
+    trial_interval: OptionalNullable[TrialInterval] = UNSET
+    r"""The interval unit for the trial period."""
+
+    trial_interval_count: OptionalNullable[int] = UNSET
+    r"""The number of interval units for the trial period."""
+
     metadata: Optional[Dict[str, CheckoutUpdateMetadata]] = None
     r"""Key-value object allowing you to store additional information.
 
@@ -192,6 +203,8 @@ class CheckoutUpdate(BaseModel):
             "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
+            "trial_interval",
+            "trial_interval_count",
             "metadata",
             "discount_id",
             "allow_discount_codes",
@@ -211,6 +224,8 @@ class CheckoutUpdate(BaseModel):
             "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
+            "trial_interval",
+            "trial_interval_count",
             "discount_id",
             "allow_discount_codes",
             "require_billing_address",

@@ -5,7 +5,6 @@ from .attachedcustomfieldcreate import (
     AttachedCustomFieldCreate,
     AttachedCustomFieldCreateTypedDict,
 )
-from .existingproductprice import ExistingProductPrice, ExistingProductPriceTypedDict
 from .productpricecustomcreate import (
     ProductPriceCustomCreate,
     ProductPriceCustomCreateTypedDict,
@@ -30,20 +29,19 @@ from typing import Dict, List, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-ProductUpdateMetadataTypedDict = TypeAliasType(
-    "ProductUpdateMetadataTypedDict", Union[str, int, float, bool]
+ProductCreateRecurringMetadataTypedDict = TypeAliasType(
+    "ProductCreateRecurringMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-ProductUpdateMetadata = TypeAliasType(
-    "ProductUpdateMetadata", Union[str, int, float, bool]
+ProductCreateRecurringMetadata = TypeAliasType(
+    "ProductCreateRecurringMetadata", Union[str, int, float, bool]
 )
 
 
-ProductUpdatePricesTypedDict = TypeAliasType(
-    "ProductUpdatePricesTypedDict",
+ProductCreateRecurringPricesTypedDict = TypeAliasType(
+    "ProductCreateRecurringPricesTypedDict",
     Union[
-        ExistingProductPriceTypedDict,
         ProductPriceFreeCreateTypedDict,
         ProductPriceFixedCreateTypedDict,
         ProductPriceCustomCreateTypedDict,
@@ -52,10 +50,9 @@ ProductUpdatePricesTypedDict = TypeAliasType(
 )
 
 
-ProductUpdatePrices = TypeAliasType(
-    "ProductUpdatePrices",
+ProductCreateRecurringPrices = TypeAliasType(
+    "ProductCreateRecurringPrices",
     Union[
-        ExistingProductPrice,
         ProductPriceFreeCreate,
         ProductPriceFixedCreate,
         ProductPriceCustomCreate,
@@ -64,10 +61,13 @@ ProductUpdatePrices = TypeAliasType(
 )
 
 
-class ProductUpdateTypedDict(TypedDict):
-    r"""Schema to update a product."""
-
-    metadata: NotRequired[Dict[str, ProductUpdateMetadataTypedDict]]
+class ProductCreateRecurringTypedDict(TypedDict):
+    name: str
+    r"""The name of the product."""
+    prices: List[ProductCreateRecurringPricesTypedDict]
+    r"""List of available prices for this product. It should contain at most one static price (fixed, custom or free), and any number of metered prices. Metered prices are not supported on one-time purchase products."""
+    recurring_interval: SubscriptionRecurringInterval
+    metadata: NotRequired[Dict[str, ProductCreateRecurringMetadataTypedDict]]
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
@@ -80,30 +80,30 @@ class ProductUpdateTypedDict(TypedDict):
 
     You can store up to **50 key-value pairs**.
     """
+    description: NotRequired[Nullable[str]]
+    r"""The description of the product."""
+    medias: NotRequired[Nullable[List[str]]]
+    r"""List of file IDs. Each one must be on the same organization as the product, of type `product_media` and correctly uploaded."""
+    attached_custom_fields: NotRequired[List[AttachedCustomFieldCreateTypedDict]]
+    r"""List of custom fields to attach."""
+    organization_id: NotRequired[Nullable[str]]
+    r"""The ID of the organization owning the product. **Required unless you use an organization token.**"""
     trial_interval: NotRequired[Nullable[TrialInterval]]
     r"""The interval unit for the trial period."""
     trial_interval_count: NotRequired[Nullable[int]]
     r"""The number of interval units for the trial period."""
-    name: NotRequired[Nullable[str]]
-    description: NotRequired[Nullable[str]]
-    r"""The description of the product."""
-    recurring_interval: NotRequired[Nullable[SubscriptionRecurringInterval]]
-    r"""The recurring interval of the product. If `None`, the product is a one-time purchase. **Can only be set on legacy recurring products. Once set, it can't be changed.**"""
-    is_archived: NotRequired[Nullable[bool]]
-    r"""Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally."""
-    prices: NotRequired[Nullable[List[ProductUpdatePricesTypedDict]]]
-    r"""List of available prices for this product. If you want to keep existing prices, include them in the list as an `ExistingProductPrice` object."""
-    medias: NotRequired[Nullable[List[str]]]
-    r"""List of file IDs. Each one must be on the same organization as the product, of type `product_media` and correctly uploaded."""
-    attached_custom_fields: NotRequired[
-        Nullable[List[AttachedCustomFieldCreateTypedDict]]
-    ]
 
 
-class ProductUpdate(BaseModel):
-    r"""Schema to update a product."""
+class ProductCreateRecurring(BaseModel):
+    name: str
+    r"""The name of the product."""
 
-    metadata: Optional[Dict[str, ProductUpdateMetadata]] = None
+    prices: List[ProductCreateRecurringPrices]
+    r"""List of available prices for this product. It should contain at most one static price (fixed, custom or free), and any number of metered prices. Metered prices are not supported on one-time purchase products."""
+
+    recurring_interval: SubscriptionRecurringInterval
+
+    metadata: Optional[Dict[str, ProductCreateRecurringMetadata]] = None
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
@@ -116,6 +116,18 @@ class ProductUpdate(BaseModel):
 
     You can store up to **50 key-value pairs**.
     """
+
+    description: OptionalNullable[str] = UNSET
+    r"""The description of the product."""
+
+    medias: OptionalNullable[List[str]] = UNSET
+    r"""List of file IDs. Each one must be on the same organization as the product, of type `product_media` and correctly uploaded."""
+
+    attached_custom_fields: Optional[List[AttachedCustomFieldCreate]] = None
+    r"""List of custom fields to attach."""
+
+    organization_id: OptionalNullable[str] = UNSET
+    r"""The ID of the organization owning the product. **Required unless you use an organization token.**"""
 
     trial_interval: OptionalNullable[TrialInterval] = UNSET
     r"""The interval unit for the trial period."""
@@ -123,49 +135,23 @@ class ProductUpdate(BaseModel):
     trial_interval_count: OptionalNullable[int] = UNSET
     r"""The number of interval units for the trial period."""
 
-    name: OptionalNullable[str] = UNSET
-
-    description: OptionalNullable[str] = UNSET
-    r"""The description of the product."""
-
-    recurring_interval: OptionalNullable[SubscriptionRecurringInterval] = UNSET
-    r"""The recurring interval of the product. If `None`, the product is a one-time purchase. **Can only be set on legacy recurring products. Once set, it can't be changed.**"""
-
-    is_archived: OptionalNullable[bool] = UNSET
-    r"""Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally."""
-
-    prices: OptionalNullable[List[ProductUpdatePrices]] = UNSET
-    r"""List of available prices for this product. If you want to keep existing prices, include them in the list as an `ExistingProductPrice` object."""
-
-    medias: OptionalNullable[List[str]] = UNSET
-    r"""List of file IDs. Each one must be on the same organization as the product, of type `product_media` and correctly uploaded."""
-
-    attached_custom_fields: OptionalNullable[List[AttachedCustomFieldCreate]] = UNSET
-
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
             "metadata",
-            "trial_interval",
-            "trial_interval_count",
-            "name",
             "description",
-            "recurring_interval",
-            "is_archived",
-            "prices",
             "medias",
             "attached_custom_fields",
+            "organization_id",
+            "trial_interval",
+            "trial_interval_count",
         ]
         nullable_fields = [
+            "description",
+            "medias",
+            "organization_id",
             "trial_interval",
             "trial_interval_count",
-            "name",
-            "description",
-            "recurring_interval",
-            "is_archived",
-            "prices",
-            "medias",
-            "attached_custom_fields",
         ]
         null_default_fields = []
 

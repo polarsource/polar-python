@@ -74,7 +74,6 @@ Create a product.
 
 <!-- UsageSnippet language="python" operationID="products:create" method="post" path="/v1/products/" -->
 ```python
-import polar_sdk
 from polar_sdk import Polar
 
 
@@ -84,9 +83,9 @@ with Polar(
 
     res = polar.products.create(request={
         "name": "<value>",
-        "recurring_interval": polar_sdk.SubscriptionRecurringInterval.YEAR,
         "prices": [],
         "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+        "recurring_interval": "year",
     })
 
     # Handle response

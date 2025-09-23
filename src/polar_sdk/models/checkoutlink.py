@@ -19,6 +19,7 @@ from .discountpercentagerepeatdurationbase import (
     DiscountPercentageRepeatDurationBaseTypedDict,
 )
 from .paymentprocessor import PaymentProcessor
+from .trialinterval import TrialInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -61,12 +62,16 @@ CheckoutLinkDiscount = TypeAliasType(
 class CheckoutLinkTypedDict(TypedDict):
     r"""Checkout link data."""
 
+    id: str
+    r"""The ID of the object."""
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    id: str
-    r"""The ID of the object."""
+    trial_interval: Nullable[TrialInterval]
+    r"""The interval unit for the trial period."""
+    trial_interval_count: Nullable[int]
+    r"""The number of interval units for the trial period."""
     metadata: Dict[str, CheckoutLinkMetadataTypedDict]
     payment_processor: PaymentProcessor
     client_secret: str
@@ -91,14 +96,20 @@ class CheckoutLinkTypedDict(TypedDict):
 class CheckoutLink(BaseModel):
     r"""Checkout link data."""
 
+    id: str
+    r"""The ID of the object."""
+
     created_at: datetime
     r"""Creation timestamp of the object."""
 
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    id: str
-    r"""The ID of the object."""
+    trial_interval: Nullable[TrialInterval]
+    r"""The interval unit for the trial period."""
+
+    trial_interval_count: Nullable[int]
+    r"""The number of interval units for the trial period."""
 
     metadata: Dict[str, CheckoutLinkMetadata]
 
@@ -136,6 +147,8 @@ class CheckoutLink(BaseModel):
         optional_fields = []
         nullable_fields = [
             "modified_at",
+            "trial_interval",
+            "trial_interval_count",
             "success_url",
             "label",
             "discount_id",
