@@ -9,6 +9,7 @@
 * [update](#update) - Update Customer
 * [list_payment_methods](#list_payment_methods) - List Customer Payment Methods
 * [add_payment_method](#add_payment_method) - Add Customer Payment Method
+* [confirm_payment_method](#confirm_payment_method) - Confirm Customer Payment Method
 * [delete_payment_method](#delete_payment_method) - Delete Customer Payment Method
 
 ## get
@@ -187,12 +188,60 @@ with Polar() as polar:
 
 ### Response
 
-**[models.CustomerPaymentMethod](../../models/customerpaymentmethod.md)**
+**[models.CustomerPaymentMethodCreateResponse](../../models/customerpaymentmethodcreateresponse.md)**
 
 ### Errors
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## confirm_payment_method
+
+Confirm a payment method for the authenticated customer.
+
+**Scopes**: `customer_portal:read` `customer_portal:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="customer_portal:customers:confirm_payment_method" method="post" path="/v1/customer-portal/customers/me/payment-methods/confirm" -->
+```python
+import polar_sdk
+from polar_sdk import Polar
+
+
+with Polar() as polar:
+
+    res = polar.customer_portal.customers.confirm_payment_method(security=polar_sdk.CustomerPortalCustomersConfirmPaymentMethodSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), request={
+        "setup_intent_id": "<id>",
+        "set_default": True,
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                  | [models.CustomerPaymentMethodConfirm](../../models/customerpaymentmethodconfirm.md)                                        | :heavy_check_mark:                                                                                                         | The request object to use for the request.                                                                                 |
+| `security`                                                                                                                 | [models.CustomerPortalCustomersConfirmPaymentMethodSecurity](../../customerportalcustomersconfirmpaymentmethodsecurity.md) | :heavy_check_mark:                                                                                                         | The security requirements to use for the request.                                                                          |
+| `retries`                                                                                                                  | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                           | :heavy_minus_sign:                                                                                                         | Configuration to override the default retry behavior of the client.                                                        |
+
+### Response
+
+**[models.CustomerPaymentMethodCreateResponse](../../models/customerpaymentmethodcreateresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.CustomerNotReady    | 400                        | application/json           |
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 

@@ -1,7 +1,7 @@
 
 [project]
 name = "polar-sdk"
-version = "0.24.1"
+version = "0.25.0"
 description = "Polar SDK for Python"
 authors = [{ name = "Polar" },]
 readme = "README-PYPI.md"

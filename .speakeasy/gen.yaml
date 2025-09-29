@@ -25,7 +25,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 python:
-  version: 0.24.1
+  version: 0.25.0
   additionalDependencies:
     dev:
       pydantic-ai-slim: ^0.1.0
@@ -36,6 +36,7 @@ python:
   allowedRedefinedBuiltins:
     - id
     - object
+  asyncMode: both
   authors:
     - Polar
   baseErrorName: PolarError
@@ -58,6 +59,7 @@ python:
       shared: ""
       webhooks: ""
   inputModelSuffix: input
+  legacyPyright: true
   maxMethodParams: 100
   methodArguments: infer-optional-args
   moduleName: ""

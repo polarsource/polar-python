@@ -10,6 +10,7 @@ import sys
 if TYPE_CHECKING:
     from .address import Address, AddressTypedDict, CountryAlpha2
     from .addressinput import AddressInput, AddressInputTypedDict, CountryAlpha2Input
+    from .aggregationfunction import AggregationFunction
     from .alreadyactivesubscriptionerror import (
         AlreadyActiveSubscriptionError,
         AlreadyActiveSubscriptionErrorData,
@@ -665,6 +666,10 @@ if TYPE_CHECKING:
         CustomerPortalCustomersAddPaymentMethodSecurity,
         CustomerPortalCustomersAddPaymentMethodSecurityTypedDict,
     )
+    from .customer_portal_customers_confirm_payment_methodop import (
+        CustomerPortalCustomersConfirmPaymentMethodSecurity,
+        CustomerPortalCustomersConfirmPaymentMethodSecurityTypedDict,
+    )
     from .customer_portal_customers_delete_payment_methodop import (
         CustomerPortalCustomersDeletePaymentMethodRequest,
         CustomerPortalCustomersDeletePaymentMethodRequestTypedDict,
@@ -807,6 +812,7 @@ if TYPE_CHECKING:
         CustomerSessionsCreateCustomerSessionCreate,
         CustomerSessionsCreateCustomerSessionCreateTypedDict,
     )
+    from .customerbalance import CustomerBalance, CustomerBalanceTypedDict
     from .customerbenefitgrant import (
         CustomerBenefitGrant,
         CustomerBenefitGrantTypedDict,
@@ -892,6 +898,7 @@ if TYPE_CHECKING:
     from .customercustomermetersortproperty import CustomerCustomerMeterSortProperty
     from .customermeter import CustomerMeter, CustomerMeterTypedDict
     from .customermetersortproperty import CustomerMeterSortProperty
+    from .customernotready import CustomerNotReady, CustomerNotReadyData
     from .customerorder import CustomerOrder, CustomerOrderTypedDict
     from .customerorderconfirmpayment import (
         CustomerOrderConfirmPayment,
@@ -929,9 +936,25 @@ if TYPE_CHECKING:
         CustomerPaymentMethod,
         CustomerPaymentMethodTypedDict,
     )
+    from .customerpaymentmethodconfirm import (
+        CustomerPaymentMethodConfirm,
+        CustomerPaymentMethodConfirmTypedDict,
+    )
     from .customerpaymentmethodcreate import (
         CustomerPaymentMethodCreate,
         CustomerPaymentMethodCreateTypedDict,
+    )
+    from .customerpaymentmethodcreaterequiresactionresponse import (
+        CustomerPaymentMethodCreateRequiresActionResponse,
+        CustomerPaymentMethodCreateRequiresActionResponseTypedDict,
+    )
+    from .customerpaymentmethodcreateresponse import (
+        CustomerPaymentMethodCreateResponse,
+        CustomerPaymentMethodCreateResponseTypedDict,
+    )
+    from .customerpaymentmethodcreatesucceededresponse import (
+        CustomerPaymentMethodCreateSucceededResponse,
+        CustomerPaymentMethodCreateSucceededResponseTypedDict,
     )
     from .customerportalcustomer import (
         CustomerPortalCustomer,
@@ -966,6 +989,10 @@ if TYPE_CHECKING:
         CustomersExportQueryParamOrganizationIDTypedDict,
         CustomersExportRequest,
         CustomersExportRequestTypedDict,
+    )
+    from .customers_get_balanceop import (
+        CustomersGetBalanceRequest,
+        CustomersGetBalanceRequestTypedDict,
     )
     from .customers_get_externalop import (
         CustomersGetExternalRequest,
@@ -2432,6 +2459,7 @@ __all__ = [
     "AddressInputTypedDict",
     "AddressTypedDict",
     "Aggregation",
+    "AggregationFunction",
     "AggregationTypedDict",
     "AlreadyActiveSubscriptionError",
     "AlreadyActiveSubscriptionErrorData",
@@ -2943,6 +2971,8 @@ __all__ = [
     "CustomFieldsUpdateRequest",
     "CustomFieldsUpdateRequestTypedDict",
     "Customer",
+    "CustomerBalance",
+    "CustomerBalanceTypedDict",
     "CustomerBenefitGrant",
     "CustomerBenefitGrantCustom",
     "CustomerBenefitGrantCustomTypedDict",
@@ -3011,6 +3041,8 @@ __all__ = [
     "CustomerMetersListRequestTypedDict",
     "CustomerMetersListResponse",
     "CustomerMetersListResponseTypedDict",
+    "CustomerNotReady",
+    "CustomerNotReadyData",
     "CustomerOrder",
     "CustomerOrderConfirmPayment",
     "CustomerOrderConfirmPaymentTypedDict",
@@ -3033,7 +3065,15 @@ __all__ = [
     "CustomerOrganization",
     "CustomerOrganizationTypedDict",
     "CustomerPaymentMethod",
+    "CustomerPaymentMethodConfirm",
+    "CustomerPaymentMethodConfirmTypedDict",
     "CustomerPaymentMethodCreate",
+    "CustomerPaymentMethodCreateRequiresActionResponse",
+    "CustomerPaymentMethodCreateRequiresActionResponseTypedDict",
+    "CustomerPaymentMethodCreateResponse",
+    "CustomerPaymentMethodCreateResponseTypedDict",
+    "CustomerPaymentMethodCreateSucceededResponse",
+    "CustomerPaymentMethodCreateSucceededResponseTypedDict",
     "CustomerPaymentMethodCreateTypedDict",
     "CustomerPaymentMethodTypedDict",
     "CustomerPortalBenefitGrantsGetRequest",
@@ -3072,6 +3112,8 @@ __all__ = [
     "CustomerPortalCustomerUpdateTypedDict",
     "CustomerPortalCustomersAddPaymentMethodSecurity",
     "CustomerPortalCustomersAddPaymentMethodSecurityTypedDict",
+    "CustomerPortalCustomersConfirmPaymentMethodSecurity",
+    "CustomerPortalCustomersConfirmPaymentMethodSecurityTypedDict",
     "CustomerPortalCustomersDeletePaymentMethodRequest",
     "CustomerPortalCustomersDeletePaymentMethodRequestTypedDict",
     "CustomerPortalCustomersDeletePaymentMethodSecurity",
@@ -3250,6 +3292,8 @@ __all__ = [
     "CustomersExportQueryParamOrganizationIDTypedDict",
     "CustomersExportRequest",
     "CustomersExportRequestTypedDict",
+    "CustomersGetBalanceRequest",
+    "CustomersGetBalanceRequestTypedDict",
     "CustomersGetExternalRequest",
     "CustomersGetExternalRequestTypedDict",
     "CustomersGetRequest",
@@ -4214,6 +4258,7 @@ _dynamic_imports: dict[str, str] = {
     "AddressInput": ".addressinput",
     "AddressInputTypedDict": ".addressinput",
     "CountryAlpha2Input": ".addressinput",
+    "AggregationFunction": ".aggregationfunction",
     "AlreadyActiveSubscriptionError": ".alreadyactivesubscriptionerror",
     "AlreadyActiveSubscriptionErrorData": ".alreadyactivesubscriptionerror",
     "AlreadyCanceledSubscription": ".alreadycanceledsubscription",
@@ -4665,6 +4710,8 @@ _dynamic_imports: dict[str, str] = {
     "MeterIDFilterTypedDict": ".customer_portal_customer_meters_listop",
     "CustomerPortalCustomersAddPaymentMethodSecurity": ".customer_portal_customers_add_payment_methodop",
     "CustomerPortalCustomersAddPaymentMethodSecurityTypedDict": ".customer_portal_customers_add_payment_methodop",
+    "CustomerPortalCustomersConfirmPaymentMethodSecurity": ".customer_portal_customers_confirm_payment_methodop",
+    "CustomerPortalCustomersConfirmPaymentMethodSecurityTypedDict": ".customer_portal_customers_confirm_payment_methodop",
     "CustomerPortalCustomersDeletePaymentMethodRequest": ".customer_portal_customers_delete_payment_methodop",
     "CustomerPortalCustomersDeletePaymentMethodRequestTypedDict": ".customer_portal_customers_delete_payment_methodop",
     "CustomerPortalCustomersDeletePaymentMethodSecurity": ".customer_portal_customers_delete_payment_methodop",
@@ -4767,6 +4814,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalSubscriptionsUpdateSecurityTypedDict": ".customer_portal_subscriptions_updateop",
     "CustomerSessionsCreateCustomerSessionCreate": ".customer_sessions_createop",
     "CustomerSessionsCreateCustomerSessionCreateTypedDict": ".customer_sessions_createop",
+    "CustomerBalance": ".customerbalance",
+    "CustomerBalanceTypedDict": ".customerbalance",
     "CustomerBenefitGrant": ".customerbenefitgrant",
     "CustomerBenefitGrantTypedDict": ".customerbenefitgrant",
     "CustomerBenefitGrantCustom": ".customerbenefitgrantcustom",
@@ -4815,6 +4864,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerMeter": ".customermeter",
     "CustomerMeterTypedDict": ".customermeter",
     "CustomerMeterSortProperty": ".customermetersortproperty",
+    "CustomerNotReady": ".customernotready",
+    "CustomerNotReadyData": ".customernotready",
     "CustomerOrder": ".customerorder",
     "CustomerOrderTypedDict": ".customerorder",
     "CustomerOrderConfirmPayment": ".customerorderconfirmpayment",
@@ -4838,8 +4889,16 @@ _dynamic_imports: dict[str, str] = {
     "CustomerOrganizationTypedDict": ".customerorganization",
     "CustomerPaymentMethod": ".customerpaymentmethod",
     "CustomerPaymentMethodTypedDict": ".customerpaymentmethod",
+    "CustomerPaymentMethodConfirm": ".customerpaymentmethodconfirm",
+    "CustomerPaymentMethodConfirmTypedDict": ".customerpaymentmethodconfirm",
     "CustomerPaymentMethodCreate": ".customerpaymentmethodcreate",
     "CustomerPaymentMethodCreateTypedDict": ".customerpaymentmethodcreate",
+    "CustomerPaymentMethodCreateRequiresActionResponse": ".customerpaymentmethodcreaterequiresactionresponse",
+    "CustomerPaymentMethodCreateRequiresActionResponseTypedDict": ".customerpaymentmethodcreaterequiresactionresponse",
+    "CustomerPaymentMethodCreateResponse": ".customerpaymentmethodcreateresponse",
+    "CustomerPaymentMethodCreateResponseTypedDict": ".customerpaymentmethodcreateresponse",
+    "CustomerPaymentMethodCreateSucceededResponse": ".customerpaymentmethodcreatesucceededresponse",
+    "CustomerPaymentMethodCreateSucceededResponseTypedDict": ".customerpaymentmethodcreatesucceededresponse",
     "CustomerPortalCustomer": ".customerportalcustomer",
     "CustomerPortalCustomerTaxID": ".customerportalcustomer",
     "CustomerPortalCustomerTaxIDTypedDict": ".customerportalcustomer",
@@ -4860,6 +4919,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomersExportQueryParamOrganizationIDTypedDict": ".customers_exportop",
     "CustomersExportRequest": ".customers_exportop",
     "CustomersExportRequestTypedDict": ".customers_exportop",
+    "CustomersGetBalanceRequest": ".customers_get_balanceop",
+    "CustomersGetBalanceRequestTypedDict": ".customers_get_balanceop",
     "CustomersGetExternalRequest": ".customers_get_externalop",
     "CustomersGetExternalRequestTypedDict": ".customers_get_externalop",
     "CustomersGetStateExternalRequest": ".customers_get_state_externalop",
