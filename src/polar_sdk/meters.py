@@ -900,6 +900,9 @@ class Meters(BaseSDK):
                 models.MetersQuantitiesQueryParamExternalCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        customer_aggregation_function: OptionalNullable[
+            models.AggregationFunction
+        ] = UNSET,
         metadata: OptionalNullable[
             Union[
                 Dict[str, models.MetadataQuery],
@@ -923,6 +926,7 @@ class Meters(BaseSDK):
         :param interval: Interval between two timestamps.
         :param customer_id: Filter by customer ID.
         :param external_customer_id: Filter by external customer ID.
+        :param customer_aggregation_function: If set, will first compute the quantities per customer before aggregating them using the given function. If not set, the quantities will be aggregated across all events.
         :param metadata: Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -946,6 +950,7 @@ class Meters(BaseSDK):
             interval=interval,
             customer_id=customer_id,
             external_customer_id=external_customer_id,
+            customer_aggregation_function=customer_aggregation_function,
             metadata=metadata,
         )
 
@@ -1027,6 +1032,9 @@ class Meters(BaseSDK):
                 models.MetersQuantitiesQueryParamExternalCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        customer_aggregation_function: OptionalNullable[
+            models.AggregationFunction
+        ] = UNSET,
         metadata: OptionalNullable[
             Union[
                 Dict[str, models.MetadataQuery],
@@ -1050,6 +1058,7 @@ class Meters(BaseSDK):
         :param interval: Interval between two timestamps.
         :param customer_id: Filter by customer ID.
         :param external_customer_id: Filter by external customer ID.
+        :param customer_aggregation_function: If set, will first compute the quantities per customer before aggregating them using the given function. If not set, the quantities will be aggregated across all events.
         :param metadata: Filter by metadata key-value pairs. It uses the `deepObject` style, e.g. `?metadata[key]=value`.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -1073,6 +1082,7 @@ class Meters(BaseSDK):
             interval=interval,
             customer_id=customer_id,
             external_customer_id=external_customer_id,
+            customer_aggregation_function=customer_aggregation_function,
             metadata=metadata,
         )
 

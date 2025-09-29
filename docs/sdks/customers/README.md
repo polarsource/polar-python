@@ -16,6 +16,7 @@
 * [delete_external](#delete_external) - Delete Customer by External ID
 * [get_state](#get_state) - Get Customer State
 * [get_state_external](#get_state_external) - Get Customer State by External ID
+* [get_balance](#get_balance) - Get Customer Balance
 
 ## list
 
@@ -537,6 +538,49 @@ with Polar(
 ### Response
 
 **[models.CustomerState](../../models/customerstate.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## get_balance
+
+Get customer balance information.
+
+**Scopes**: `customers:read` `customers:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="customers:get_balance" method="get" path="/v1/customers/{id}/balance" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.customers.get_balance(id="<value>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The customer ID.                                                    |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.CustomerBalance](../../models/customerbalance.md)**
 
 ### Errors
 

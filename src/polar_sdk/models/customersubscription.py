@@ -80,6 +80,8 @@ class CustomerSubscriptionTypedDict(TypedDict):
     r"""List of enabled prices for the subscription."""
     meters: List[CustomerSubscriptionMeterTypedDict]
     r"""List of meters associated with the subscription."""
+    is_polar_managed: bool
+    r"""Whether the subscription is managed by Polar."""
 
 
 class CustomerSubscription(BaseModel):
@@ -151,6 +153,9 @@ class CustomerSubscription(BaseModel):
 
     meters: List[CustomerSubscriptionMeter]
     r"""List of meters associated with the subscription."""
+
+    is_polar_managed: bool
+    r"""Whether the subscription is managed by Polar."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

@@ -49,6 +49,8 @@ class CustomerOrderTypedDict(TypedDict):
     billing_name: Nullable[str]
     r"""The name of the customer that should appear on the invoice."""
     billing_address: Nullable[AddressTypedDict]
+    invoice_number: str
+    r"""The invoice number associated with this order."""
     is_invoice_generated: bool
     r"""Whether an invoice has been generated for this order."""
     customer_id: str
@@ -112,6 +114,9 @@ class CustomerOrder(BaseModel):
     r"""The name of the customer that should appear on the invoice."""
 
     billing_address: Nullable[Address]
+
+    invoice_number: str
+    r"""The invoice number associated with this order."""
 
     is_invoice_generated: bool
     r"""Whether an invoice has been generated for this order."""
