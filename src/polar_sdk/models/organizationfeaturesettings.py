@@ -9,8 +9,13 @@ from typing_extensions import NotRequired, TypedDict
 class OrganizationFeatureSettingsTypedDict(TypedDict):
     issue_funding_enabled: NotRequired[bool]
     r"""If this organization has issue funding enabled"""
+    seat_based_pricing_enabled: NotRequired[bool]
+    r"""If this organization has seat-based pricing enabled"""
 
 
 class OrganizationFeatureSettings(BaseModel):
     issue_funding_enabled: Optional[bool] = False
     r"""If this organization has issue funding enabled"""
+
+    seat_based_pricing_enabled: Optional[bool] = False
+    r"""If this organization has seat-based pricing enabled"""

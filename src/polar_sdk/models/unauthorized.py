@@ -23,7 +23,7 @@ class UnauthorizedData(BaseModel):
     ] = "Unauthorized"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class Unauthorized(PolarError):
     data: UnauthorizedData = field(hash=False)
 

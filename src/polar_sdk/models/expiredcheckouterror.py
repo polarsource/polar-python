@@ -24,7 +24,7 @@ class ExpiredCheckoutErrorData(BaseModel):
     ] = "ExpiredCheckoutError"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class ExpiredCheckoutError(PolarError):
     data: ExpiredCheckoutErrorData = field(hash=False)
 

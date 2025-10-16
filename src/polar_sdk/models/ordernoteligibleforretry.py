@@ -24,7 +24,7 @@ class OrderNotEligibleForRetryData(BaseModel):
     ] = "OrderNotEligibleForRetry"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class OrderNotEligibleForRetry(PolarError):
     data: OrderNotEligibleForRetryData = field(hash=False)
 

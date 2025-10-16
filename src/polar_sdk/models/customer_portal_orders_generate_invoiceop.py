@@ -49,7 +49,7 @@ CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoic
 r"""Order is not paid or is missing billing name or address."""
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoice(
     PolarError
 ):

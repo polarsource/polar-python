@@ -3,16 +3,16 @@
 
 ## Supported Types
 
-### `models.ProductPriceFixedCreate`
-
-```python
-value: models.ProductPriceFixedCreate = /* values here */
-```
-
 ### `models.ProductPriceCustomCreate`
 
 ```python
 value: models.ProductPriceCustomCreate = /* values here */
+```
+
+### `models.ProductPriceFixedCreate`
+
+```python
+value: models.ProductPriceFixedCreate = /* values here */
 ```
 
 ### `models.ProductPriceFreeCreate`
@@ -25,5 +25,11 @@ value: models.ProductPriceFreeCreate = /* values here */
 
 ```python
 value: models.ProductPriceMeteredUnitCreate = /* values here */
+```
+
+### `models.ProductPriceSeatBasedCreate`
+
+```python
+value: models.ProductPriceSeatBasedCreate = /* values here */
 ```
 

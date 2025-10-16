@@ -24,7 +24,7 @@ class AlreadyCanceledSubscriptionData(BaseModel):
     ] = "AlreadyCanceledSubscription"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class AlreadyCanceledSubscription(PolarError):
     data: AlreadyCanceledSubscriptionData = field(hash=False)
 

@@ -15,3 +15,9 @@ value: models.AuthorizationCodeTokenRequest = /* values here */
 value: models.RefreshTokenRequest = /* values here */
 ```
 
+### `models.WebTokenRequest`
+
+```python
+value: models.WebTokenRequest = /* values here */
+```
+

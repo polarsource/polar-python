@@ -24,7 +24,7 @@ class InvoiceAlreadyExistsData(BaseModel):
     ] = "InvoiceAlreadyExists"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class InvoiceAlreadyExists(PolarError):
     data: InvoiceAlreadyExistsData = field(hash=False)
 

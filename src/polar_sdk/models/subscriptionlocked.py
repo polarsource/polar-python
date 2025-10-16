@@ -24,7 +24,7 @@ class SubscriptionLockedData(BaseModel):
     ] = "SubscriptionLocked"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class SubscriptionLocked(PolarError):
     data: SubscriptionLockedData = field(hash=False)
 

@@ -9,27 +9,9 @@
 value: models.ExistingProductPrice = /* values here */
 ```
 
-### `models.ProductPriceFixedCreate`
+### `models.Two`
 
 ```python
-value: models.ProductPriceFixedCreate = /* values here */
-```
-
-### `models.ProductPriceCustomCreate`
-
-```python
-value: models.ProductPriceCustomCreate = /* values here */
-```
-
-### `models.ProductPriceFreeCreate`
-
-```python
-value: models.ProductPriceFreeCreate = /* values here */
-```
-
-### `models.ProductPriceMeteredUnitCreate`
-
-```python
-value: models.ProductPriceMeteredUnitCreate = /* values here */
+value: models.Two = /* values here */
 ```
 

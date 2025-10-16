@@ -24,7 +24,7 @@ class ResourceNotFoundData(BaseModel):
     ] = "ResourceNotFound"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class ResourceNotFound(PolarError):
     data: ResourceNotFoundData = field(hash=False)
 

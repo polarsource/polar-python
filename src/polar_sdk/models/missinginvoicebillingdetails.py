@@ -24,7 +24,7 @@ class MissingInvoiceBillingDetailsData(BaseModel):
     ] = "MissingInvoiceBillingDetails"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class MissingInvoiceBillingDetails(PolarError):
     data: MissingInvoiceBillingDetailsData = field(hash=False)
 

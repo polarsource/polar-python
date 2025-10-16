@@ -2,6 +2,7 @@
 
 from .basesdk import BaseSDK
 from .sdkconfiguration import SDKConfiguration
+from polar_sdk.customer_session_sdk import CustomerSessionSDK
 from polar_sdk.downloadables import Downloadables
 from polar_sdk.polar_benefit_grants import PolarBenefitGrants
 from polar_sdk.polar_customer_meters import PolarCustomerMeters
@@ -10,6 +11,7 @@ from polar_sdk.polar_license_keys import PolarLicenseKeys
 from polar_sdk.polar_orders import PolarOrders
 from polar_sdk.polar_organizations import PolarOrganizations
 from polar_sdk.polar_subscriptions import PolarSubscriptions
+from polar_sdk.seats import Seats
 from typing import Optional
 
 
@@ -17,6 +19,8 @@ class CustomerPortal(BaseSDK):
     benefit_grants: PolarBenefitGrants
     customers: PolarCustomers
     customer_meters: PolarCustomerMeters
+    seats: Seats
+    customer_session: CustomerSessionSDK
     downloadables: Downloadables
     license_keys: PolarLicenseKeys
     orders: PolarOrders
@@ -38,6 +42,10 @@ class CustomerPortal(BaseSDK):
             self.sdk_configuration, parent_ref=self.parent_ref
         )
         self.customer_meters = PolarCustomerMeters(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
+        self.seats = Seats(self.sdk_configuration, parent_ref=self.parent_ref)
+        self.customer_session = CustomerSessionSDK(
             self.sdk_configuration, parent_ref=self.parent_ref
         )
         self.downloadables = Downloadables(

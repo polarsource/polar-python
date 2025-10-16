@@ -78,6 +78,8 @@ class CheckoutCreateTypedDict(TypedDict):
     require_billing_address: NotRequired[bool]
     r"""Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting. If you preset the billing address, this setting will be automatically set to `true`."""
     amount: NotRequired[Nullable[int]]
+    seats: NotRequired[Nullable[int]]
+    r"""Number of seats for seat-based pricing. Required for seat-based products."""
     customer_id: NotRequired[Nullable[str]]
     r"""ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer."""
     is_business_customer: NotRequired[bool]
@@ -107,6 +109,8 @@ class CheckoutCreateTypedDict(TypedDict):
     r"""ID of a subscription to upgrade. It must be on a free pricing. If checkout is successful, metadata set on this checkout will be copied to the subscription, and existing keys will be overwritten."""
     success_url: NotRequired[Nullable[str]]
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
+    return_url: NotRequired[Nullable[str]]
+    r"""When set, a back button will be shown in the checkout to return to this URL."""
     embed_origin: NotRequired[Nullable[str]]
     r"""If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page."""
 
@@ -158,6 +162,9 @@ class CheckoutCreate(BaseModel):
 
     amount: OptionalNullable[int] = UNSET
 
+    seats: OptionalNullable[int] = UNSET
+    r"""Number of seats for seat-based pricing. Required for seat-based products."""
+
     customer_id: OptionalNullable[str] = UNSET
     r"""ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer."""
 
@@ -199,6 +206,9 @@ class CheckoutCreate(BaseModel):
     success_url: OptionalNullable[str] = UNSET
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
 
+    return_url: OptionalNullable[str] = UNSET
+    r"""When set, a back button will be shown in the checkout to return to this URL."""
+
     embed_origin: OptionalNullable[str] = UNSET
     r"""If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page."""
 
@@ -213,6 +223,7 @@ class CheckoutCreate(BaseModel):
             "allow_discount_codes",
             "require_billing_address",
             "amount",
+            "seats",
             "customer_id",
             "is_business_customer",
             "external_customer_id",
@@ -225,6 +236,7 @@ class CheckoutCreate(BaseModel):
             "customer_metadata",
             "subscription_id",
             "success_url",
+            "return_url",
             "embed_origin",
         ]
         nullable_fields = [
@@ -232,6 +244,7 @@ class CheckoutCreate(BaseModel):
             "trial_interval_count",
             "discount_id",
             "amount",
+            "seats",
             "customer_id",
             "external_customer_id",
             "customer_name",
@@ -242,6 +255,7 @@ class CheckoutCreate(BaseModel):
             "customer_tax_id",
             "subscription_id",
             "success_url",
+            "return_url",
             "embed_origin",
         ]
         null_default_fields = []

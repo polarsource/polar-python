@@ -32,6 +32,8 @@ class CheckoutConfirmStripeTypedDict(TypedDict):
     product_price_id: NotRequired[Nullable[str]]
     r"""ID of the product price to checkout. Must correspond to a price present in the checkout's product list."""
     amount: NotRequired[Nullable[int]]
+    seats: NotRequired[Nullable[int]]
+    r"""Number of seats for seat-based pricing."""
     is_business_customer: NotRequired[Nullable[bool]]
     customer_name: NotRequired[Nullable[str]]
     customer_email: NotRequired[Nullable[str]]
@@ -65,6 +67,9 @@ class CheckoutConfirmStripe(BaseModel):
 
     amount: OptionalNullable[int] = UNSET
 
+    seats: OptionalNullable[int] = UNSET
+    r"""Number of seats for seat-based pricing."""
+
     is_business_customer: OptionalNullable[bool] = UNSET
 
     customer_name: OptionalNullable[str] = UNSET
@@ -90,6 +95,7 @@ class CheckoutConfirmStripe(BaseModel):
             "product_id",
             "product_price_id",
             "amount",
+            "seats",
             "is_business_customer",
             "customer_name",
             "customer_email",
@@ -103,6 +109,7 @@ class CheckoutConfirmStripe(BaseModel):
             "product_id",
             "product_price_id",
             "amount",
+            "seats",
             "is_business_customer",
             "customer_name",
             "customer_email",

@@ -38,9 +38,13 @@ class DiscountUpdateTypedDict(TypedDict):
     """
     name: NotRequired[Nullable[str]]
     code: NotRequired[Nullable[str]]
+    r"""Code customers can use to apply the discount during checkout. Must be between 3 and 256 characters long and contain only alphanumeric characters.If not provided, the discount can only be applied via the API."""
     starts_at: NotRequired[Nullable[datetime]]
+    r"""Optional timestamp after which the discount is redeemable."""
     ends_at: NotRequired[Nullable[datetime]]
+    r"""Optional timestamp after which the discount is no longer redeemable."""
     max_redemptions: NotRequired[Nullable[int]]
+    r"""Optional maximum number of times the discount can be redeemed."""
     duration: NotRequired[Nullable[DiscountDuration]]
     duration_in_months: NotRequired[Nullable[int]]
     type: NotRequired[Nullable[DiscountType]]
@@ -70,12 +74,16 @@ class DiscountUpdate(BaseModel):
     name: OptionalNullable[str] = UNSET
 
     code: OptionalNullable[str] = UNSET
+    r"""Code customers can use to apply the discount during checkout. Must be between 3 and 256 characters long and contain only alphanumeric characters.If not provided, the discount can only be applied via the API."""
 
     starts_at: OptionalNullable[datetime] = UNSET
+    r"""Optional timestamp after which the discount is redeemable."""
 
     ends_at: OptionalNullable[datetime] = UNSET
+    r"""Optional timestamp after which the discount is no longer redeemable."""
 
     max_redemptions: OptionalNullable[int] = UNSET
+    r"""Optional maximum number of times the discount can be redeemed."""
 
     duration: OptionalNullable[DiscountDuration] = UNSET
 
@@ -85,7 +93,7 @@ class DiscountUpdate(BaseModel):
 
     amount: OptionalNullable[int] = UNSET
 
-    currency: OptionalNullable[str] = "usd"
+    currency: OptionalNullable[str] = UNSET
 
     basis_points: OptionalNullable[int] = UNSET
 

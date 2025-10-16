@@ -22,12 +22,17 @@ from .productpricemeteredunitcreate import (
     ProductPriceMeteredUnitCreate,
     ProductPriceMeteredUnitCreateTypedDict,
 )
+from .productpriceseatbasedcreate import (
+    ProductPriceSeatBasedCreate,
+    ProductPriceSeatBasedCreateTypedDict,
+)
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .trialinterval import TrialInterval
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from pydantic import model_serializer
+from polar_sdk.utils import get_discriminator
+from pydantic import Discriminator, Tag, model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 ProductUpdateMetadataTypedDict = TypeAliasType(
@@ -40,27 +45,37 @@ ProductUpdateMetadata = TypeAliasType(
 )
 
 
-ProductUpdatePricesTypedDict = TypeAliasType(
-    "ProductUpdatePricesTypedDict",
+TwoTypedDict = TypeAliasType(
+    "TwoTypedDict",
     Union[
-        ExistingProductPriceTypedDict,
         ProductPriceFreeCreateTypedDict,
         ProductPriceFixedCreateTypedDict,
+        ProductPriceSeatBasedCreateTypedDict,
         ProductPriceCustomCreateTypedDict,
         ProductPriceMeteredUnitCreateTypedDict,
     ],
 )
 
 
-ProductUpdatePrices = TypeAliasType(
-    "ProductUpdatePrices",
+Two = Annotated[
     Union[
-        ExistingProductPrice,
-        ProductPriceFreeCreate,
-        ProductPriceFixedCreate,
-        ProductPriceCustomCreate,
-        ProductPriceMeteredUnitCreate,
+        Annotated[ProductPriceCustomCreate, Tag("custom")],
+        Annotated[ProductPriceFixedCreate, Tag("fixed")],
+        Annotated[ProductPriceFreeCreate, Tag("free")],
+        Annotated[ProductPriceMeteredUnitCreate, Tag("metered_unit")],
+        Annotated[ProductPriceSeatBasedCreate, Tag("seat_based")],
     ],
+    Discriminator(lambda m: get_discriminator(m, "amount_type", "amount_type")),
+]
+
+
+ProductUpdatePricesTypedDict = TypeAliasType(
+    "ProductUpdatePricesTypedDict", Union[ExistingProductPriceTypedDict, TwoTypedDict]
+)
+
+
+ProductUpdatePrices = TypeAliasType(
+    "ProductUpdatePrices", Union[ExistingProductPrice, Two]
 )
 
 

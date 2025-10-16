@@ -24,7 +24,7 @@ class PaymentNotReadyData(BaseModel):
     ] = "PaymentNotReady"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class PaymentNotReady(PolarError):
     data: PaymentNotReadyData = field(hash=False)
 

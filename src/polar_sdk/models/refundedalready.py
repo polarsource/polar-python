@@ -24,7 +24,7 @@ class RefundedAlreadyData(BaseModel):
     ] = "RefundedAlready"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class RefundedAlready(PolarError):
     data: RefundedAlreadyData = field(hash=False)
 

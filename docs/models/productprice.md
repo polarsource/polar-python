@@ -27,3 +27,9 @@ value: models.ProductPriceFree = /* values here */
 value: models.ProductPriceMeteredUnit = /* values here */
 ```
 
+### `models.ProductPriceSeatBased`
+
+```python
+value: models.ProductPriceSeatBased = /* values here */
+```
+

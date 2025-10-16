@@ -13,7 +13,7 @@ class HTTPValidationErrorData(BaseModel):
     detail: Optional[List[ValidationError]] = None
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class HTTPValidationError(PolarError):
     data: HTTPValidationErrorData = field(hash=False)
 
