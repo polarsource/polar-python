@@ -19,6 +19,7 @@ class CustomerSessionTypedDict(TypedDict):
     r"""The ID of the object."""
     token: str
     expires_at: datetime
+    return_url: Nullable[str]
     customer_portal_url: str
     customer_id: str
     customer: CustomerTypedDict
@@ -41,6 +42,8 @@ class CustomerSession(BaseModel):
 
     expires_at: datetime
 
+    return_url: Nullable[str]
+
     customer_portal_url: str
 
     customer_id: str
@@ -51,7 +54,7 @@ class CustomerSession(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
-        nullable_fields = ["modified_at"]
+        nullable_fields = ["modified_at", "return_url"]
         null_default_fields = []
 
         serialized = handler(self)

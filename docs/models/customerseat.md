@@ -1,0 +1,18 @@
+# CustomerSeat
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `created_at`                                                         | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_check_mark:                                                   | Creation timestamp of the object.                                    |
+| `modified_at`                                                        | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_check_mark:                                                   | Last modification timestamp of the object.                           |
+| `id`                                                                 | *str*                                                                | :heavy_check_mark:                                                   | The seat ID                                                          |
+| `subscription_id`                                                    | *str*                                                                | :heavy_check_mark:                                                   | The subscription ID                                                  |
+| `status`                                                             | [models.SeatStatus](../models/seatstatus.md)                         | :heavy_check_mark:                                                   | N/A                                                                  |
+| `customer_id`                                                        | *OptionalNullable[str]*                                              | :heavy_minus_sign:                                                   | The assigned customer ID                                             |
+| `customer_email`                                                     | *OptionalNullable[str]*                                              | :heavy_minus_sign:                                                   | The assigned customer email                                          |
+| `invitation_token_expires_at`                                        | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_minus_sign:                                                   | When the invitation token expires                                    |
+| `claimed_at`                                                         | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_minus_sign:                                                   | When the seat was claimed                                            |
+| `revoked_at`                                                         | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_minus_sign:                                                   | When the seat was revoked                                            |
+| `seat_metadata`                                                      | Dict[str, *Any*]                                                     | :heavy_minus_sign:                                                   | Additional metadata for the seat                                     |

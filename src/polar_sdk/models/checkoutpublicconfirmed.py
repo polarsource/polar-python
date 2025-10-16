@@ -33,7 +33,7 @@ from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
 from .trialinterval import TrialInterval
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
@@ -110,6 +110,8 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     r"""Expiration date and time of the checkout session."""
     success_url: str
     r"""URL where the customer will be redirected after a successful payment."""
+    return_url: Nullable[str]
+    r"""When set, a back button will be shown in the checkout to return to this URL."""
     embed_origin: Nullable[str]
     r"""When checkout is embedded, represents the Origin of the page embedding the checkout. Used as a security measure to send messages only to the embedding page."""
     amount: int
@@ -178,6 +180,10 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     ]
     r"""Key-value object storing custom field values."""
     status: Literal["confirmed"]
+    seats: NotRequired[Nullable[int]]
+    r"""Number of seats for seat-based pricing."""
+    price_per_seat: NotRequired[Nullable[int]]
+    r"""Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing."""
 
 
 class CheckoutPublicConfirmed(BaseModel):
@@ -209,6 +215,9 @@ class CheckoutPublicConfirmed(BaseModel):
 
     success_url: str
     r"""URL where the customer will be redirected after a successful payment."""
+
+    return_url: Nullable[str]
+    r"""When set, a back button will be shown in the checkout to return to this URL."""
 
     embed_origin: Nullable[str]
     r"""When checkout is embedded, represents the Origin of the page embedding the checkout. Used as a security measure to send messages only to the embedding page."""
@@ -320,12 +329,21 @@ class CheckoutPublicConfirmed(BaseModel):
         pydantic.Field(alias="status"),
     ] = "confirmed"
 
+    seats: OptionalNullable[int] = UNSET
+    r"""Number of seats for seat-based pricing."""
+
+    price_per_seat: OptionalNullable[int] = UNSET
+    r"""Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["custom_field_data"]
+        optional_fields = ["custom_field_data", "seats", "price_per_seat"]
         nullable_fields = [
             "modified_at",
+            "return_url",
             "embed_origin",
+            "seats",
+            "price_per_seat",
             "tax_amount",
             "active_trial_interval",
             "active_trial_interval_count",

@@ -21,12 +21,17 @@ from .productpricemeteredunitcreate import (
     ProductPriceMeteredUnitCreate,
     ProductPriceMeteredUnitCreateTypedDict,
 )
+from .productpriceseatbasedcreate import (
+    ProductPriceSeatBasedCreate,
+    ProductPriceSeatBasedCreateTypedDict,
+)
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .trialinterval import TrialInterval
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from pydantic import model_serializer
+from polar_sdk.utils import get_discriminator
+from pydantic import Discriminator, Tag, model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 ProductCreateRecurringMetadataTypedDict = TypeAliasType(
@@ -44,21 +49,23 @@ ProductCreateRecurringPricesTypedDict = TypeAliasType(
     Union[
         ProductPriceFreeCreateTypedDict,
         ProductPriceFixedCreateTypedDict,
+        ProductPriceSeatBasedCreateTypedDict,
         ProductPriceCustomCreateTypedDict,
         ProductPriceMeteredUnitCreateTypedDict,
     ],
 )
 
 
-ProductCreateRecurringPrices = TypeAliasType(
-    "ProductCreateRecurringPrices",
+ProductCreateRecurringPrices = Annotated[
     Union[
-        ProductPriceFreeCreate,
-        ProductPriceFixedCreate,
-        ProductPriceCustomCreate,
-        ProductPriceMeteredUnitCreate,
+        Annotated[ProductPriceCustomCreate, Tag("custom")],
+        Annotated[ProductPriceFixedCreate, Tag("fixed")],
+        Annotated[ProductPriceFreeCreate, Tag("free")],
+        Annotated[ProductPriceMeteredUnitCreate, Tag("metered_unit")],
+        Annotated[ProductPriceSeatBasedCreate, Tag("seat_based")],
     ],
-)
+    Discriminator(lambda m: get_discriminator(m, "amount_type", "amount_type")),
+]
 
 
 class ProductCreateRecurringTypedDict(TypedDict):

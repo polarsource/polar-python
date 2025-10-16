@@ -24,7 +24,7 @@ class PaymentMethodInUseByActiveSubscriptionData(BaseModel):
     ] = "PaymentMethodInUseByActiveSubscription"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class PaymentMethodInUseByActiveSubscription(PolarError):
     data: PaymentMethodInUseByActiveSubscriptionData = field(hash=False)
 

@@ -17,7 +17,7 @@ CheckoutForbiddenErrorUnion = TypeAliasType(
 )
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class CheckoutForbiddenError(PolarError):
     data: CheckoutForbiddenErrorUnion = field(hash=False)
 

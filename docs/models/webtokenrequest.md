@@ -1,0 +1,14 @@
+# WebTokenRequest
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `grant_type`                                                                   | *Literal["web"]*                                                               | :heavy_check_mark:                                                             | N/A                                                                            |
+| `client_id`                                                                    | *str*                                                                          | :heavy_check_mark:                                                             | N/A                                                                            |
+| `client_secret`                                                                | *str*                                                                          | :heavy_check_mark:                                                             | N/A                                                                            |
+| `session_token`                                                                | *str*                                                                          | :heavy_check_mark:                                                             | N/A                                                                            |
+| `sub_type`                                                                     | [Optional[models.WebTokenRequestSubType]](../models/webtokenrequestsubtype.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `sub`                                                                          | *OptionalNullable[str]*                                                        | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `scope`                                                                        | *OptionalNullable[str]*                                                        | :heavy_minus_sign:                                                             | N/A                                                                            |

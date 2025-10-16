@@ -23,7 +23,7 @@ class NotPaidOrderData(BaseModel):
     ] = "NotPaidOrder"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class NotPaidOrder(PolarError):
     data: NotPaidOrderData = field(hash=False)
 

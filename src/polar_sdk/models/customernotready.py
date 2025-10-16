@@ -24,7 +24,7 @@ class CustomerNotReadyData(BaseModel):
     ] = "CustomerNotReady"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class CustomerNotReady(PolarError):
     data: CustomerNotReadyData = field(hash=False)
 

@@ -23,7 +23,7 @@ class NotPermittedData(BaseModel):
     ] = "NotPermitted"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class NotPermitted(PolarError):
     data: NotPermittedData = field(hash=False)
 

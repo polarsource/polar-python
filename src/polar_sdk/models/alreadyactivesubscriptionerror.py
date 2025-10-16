@@ -24,7 +24,7 @@ class AlreadyActiveSubscriptionErrorData(BaseModel):
     ] = "AlreadyActiveSubscriptionError"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class AlreadyActiveSubscriptionError(PolarError):
     data: AlreadyActiveSubscriptionErrorData = field(hash=False)
 

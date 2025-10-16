@@ -23,7 +23,7 @@ class PaymentErrorData(BaseModel):
     ] = "PaymentError"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class PaymentError(PolarError):
     data: PaymentErrorData = field(hash=False)
 

@@ -6,17 +6,22 @@ from .authorizationcodetokenrequest import (
     AuthorizationCodeTokenRequestTypedDict,
 )
 from .refreshtokenrequest import RefreshTokenRequest, RefreshTokenRequestTypedDict
+from .webtokenrequest import WebTokenRequest, WebTokenRequestTypedDict
 from typing import Union
 from typing_extensions import TypeAliasType
 
 
 Oauth2RequestTokenRequestBodyTypedDict = TypeAliasType(
     "Oauth2RequestTokenRequestBodyTypedDict",
-    Union[RefreshTokenRequestTypedDict, AuthorizationCodeTokenRequestTypedDict],
+    Union[
+        RefreshTokenRequestTypedDict,
+        AuthorizationCodeTokenRequestTypedDict,
+        WebTokenRequestTypedDict,
+    ],
 )
 
 
 Oauth2RequestTokenRequestBody = TypeAliasType(
     "Oauth2RequestTokenRequestBody",
-    Union[RefreshTokenRequest, AuthorizationCodeTokenRequest],
+    Union[RefreshTokenRequest, AuthorizationCodeTokenRequest, WebTokenRequest],
 )

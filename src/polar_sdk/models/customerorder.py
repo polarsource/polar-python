@@ -38,8 +38,10 @@ class CustomerOrderTypedDict(TypedDict):
     r"""Sales tax amount in cents."""
     total_amount: int
     r"""Amount in cents, after discounts and taxes."""
-    from_balance_amount: int
-    r"""How much of this invoice was paid using the customer's balance. Amount in cents."""
+    applied_balance_amount: int
+    r"""Customer's balance amount applied to this invoice. Can increase the total amount paid, if the customer has a negative balance,  or decrease it, if the customer has a positive balance.Amount in cents."""
+    due_amount: int
+    r"""Amount in cents that is due for this order."""
     refunded_amount: int
     r"""Amount refunded in cents."""
     refunded_tax_amount: int
@@ -97,8 +99,11 @@ class CustomerOrder(BaseModel):
     total_amount: int
     r"""Amount in cents, after discounts and taxes."""
 
-    from_balance_amount: int
-    r"""How much of this invoice was paid using the customer's balance. Amount in cents."""
+    applied_balance_amount: int
+    r"""Customer's balance amount applied to this invoice. Can increase the total amount paid, if the customer has a negative balance,  or decrease it, if the customer has a positive balance.Amount in cents."""
+
+    due_amount: int
+    r"""Amount in cents that is due for this order."""
 
     refunded_amount: int
     r"""Amount refunded in cents."""

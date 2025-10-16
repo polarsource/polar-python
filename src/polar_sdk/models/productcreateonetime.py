@@ -21,10 +21,15 @@ from .productpricemeteredunitcreate import (
     ProductPriceMeteredUnitCreate,
     ProductPriceMeteredUnitCreateTypedDict,
 )
+from .productpriceseatbasedcreate import (
+    ProductPriceSeatBasedCreate,
+    ProductPriceSeatBasedCreateTypedDict,
+)
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from pydantic import model_serializer
+from polar_sdk.utils import get_discriminator
+from pydantic import Discriminator, Tag, model_serializer
 from typing import Any, Dict, List, Optional, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 ProductCreateOneTimeMetadataTypedDict = TypeAliasType(
@@ -42,21 +47,23 @@ ProductCreateOneTimePricesTypedDict = TypeAliasType(
     Union[
         ProductPriceFreeCreateTypedDict,
         ProductPriceFixedCreateTypedDict,
+        ProductPriceSeatBasedCreateTypedDict,
         ProductPriceCustomCreateTypedDict,
         ProductPriceMeteredUnitCreateTypedDict,
     ],
 )
 
 
-ProductCreateOneTimePrices = TypeAliasType(
-    "ProductCreateOneTimePrices",
+ProductCreateOneTimePrices = Annotated[
     Union[
-        ProductPriceFreeCreate,
-        ProductPriceFixedCreate,
-        ProductPriceCustomCreate,
-        ProductPriceMeteredUnitCreate,
+        Annotated[ProductPriceCustomCreate, Tag("custom")],
+        Annotated[ProductPriceFixedCreate, Tag("fixed")],
+        Annotated[ProductPriceFreeCreate, Tag("free")],
+        Annotated[ProductPriceMeteredUnitCreate, Tag("metered_unit")],
+        Annotated[ProductPriceSeatBasedCreate, Tag("seat_based")],
     ],
-)
+    Discriminator(lambda m: get_discriminator(m, "amount_type", "amount_type")),
+]
 
 
 class ProductCreateOneTimeTypedDict(TypedDict):

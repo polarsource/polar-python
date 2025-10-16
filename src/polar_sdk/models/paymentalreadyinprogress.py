@@ -24,7 +24,7 @@ class PaymentAlreadyInProgressData(BaseModel):
     ] = "PaymentAlreadyInProgress"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class PaymentAlreadyInProgress(PolarError):
     data: PaymentAlreadyInProgressData = field(hash=False)
 

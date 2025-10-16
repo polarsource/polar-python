@@ -53,6 +53,8 @@ class CheckoutUpdateTypedDict(TypedDict):
     product_price_id: NotRequired[Nullable[str]]
     r"""ID of the product price to checkout. Must correspond to a price present in the checkout's product list."""
     amount: NotRequired[Nullable[int]]
+    seats: NotRequired[Nullable[int]]
+    r"""Number of seats for seat-based pricing."""
     is_business_customer: NotRequired[Nullable[bool]]
     customer_name: NotRequired[Nullable[str]]
     customer_email: NotRequired[Nullable[str]]
@@ -100,6 +102,8 @@ class CheckoutUpdateTypedDict(TypedDict):
     """
     success_url: NotRequired[Nullable[str]]
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
+    return_url: NotRequired[Nullable[str]]
+    r"""When set, a back button will be shown in the checkout to return to this URL."""
     embed_origin: NotRequired[Nullable[str]]
     r"""If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page."""
 
@@ -124,6 +128,9 @@ class CheckoutUpdate(BaseModel):
     r"""ID of the product price to checkout. Must correspond to a price present in the checkout's product list."""
 
     amount: OptionalNullable[int] = UNSET
+
+    seats: OptionalNullable[int] = UNSET
+    r"""Number of seats for seat-based pricing."""
 
     is_business_customer: OptionalNullable[bool] = UNSET
 
@@ -187,6 +194,9 @@ class CheckoutUpdate(BaseModel):
     success_url: OptionalNullable[str] = UNSET
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
 
+    return_url: OptionalNullable[str] = UNSET
+    r"""When set, a back button will be shown in the checkout to return to this URL."""
+
     embed_origin: OptionalNullable[str] = UNSET
     r"""If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page."""
 
@@ -197,6 +207,7 @@ class CheckoutUpdate(BaseModel):
             "product_id",
             "product_price_id",
             "amount",
+            "seats",
             "is_business_customer",
             "customer_name",
             "customer_email",
@@ -212,12 +223,14 @@ class CheckoutUpdate(BaseModel):
             "customer_ip_address",
             "customer_metadata",
             "success_url",
+            "return_url",
             "embed_origin",
         ]
         nullable_fields = [
             "product_id",
             "product_price_id",
             "amount",
+            "seats",
             "is_business_customer",
             "customer_name",
             "customer_email",
@@ -232,6 +245,7 @@ class CheckoutUpdate(BaseModel):
             "customer_ip_address",
             "customer_metadata",
             "success_url",
+            "return_url",
             "embed_origin",
         ]
         null_default_fields = []

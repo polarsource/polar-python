@@ -24,7 +24,7 @@ class RefundAmountTooHighData(BaseModel):
     ] = "RefundAmountTooHigh"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class RefundAmountTooHigh(PolarError):
     data: RefundAmountTooHighData = field(hash=False)
 

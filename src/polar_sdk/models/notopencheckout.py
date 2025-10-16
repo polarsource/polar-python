@@ -24,7 +24,7 @@ class NotOpenCheckoutData(BaseModel):
     ] = "NotOpenCheckout"
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class NotOpenCheckout(PolarError):
     data: NotOpenCheckoutData = field(hash=False)
 

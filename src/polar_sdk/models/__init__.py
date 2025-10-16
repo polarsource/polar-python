@@ -662,6 +662,10 @@ if TYPE_CHECKING:
         MeterIDFilter,
         MeterIDFilterTypedDict,
     )
+    from .customer_portal_customer_session_introspectop import (
+        CustomerPortalCustomerSessionIntrospectSecurity,
+        CustomerPortalCustomerSessionIntrospectSecurityTypedDict,
+    )
     from .customer_portal_customers_add_payment_methodop import (
         CustomerPortalCustomersAddPaymentMethodSecurity,
         CustomerPortalCustomersAddPaymentMethodSecurityTypedDict,
@@ -777,6 +781,32 @@ if TYPE_CHECKING:
     from .customer_portal_organizations_getop import (
         CustomerPortalOrganizationsGetRequest,
         CustomerPortalOrganizationsGetRequestTypedDict,
+    )
+    from .customer_portal_seats_assign_seatop import (
+        CustomerPortalSeatsAssignSeatSecurity,
+        CustomerPortalSeatsAssignSeatSecurityTypedDict,
+    )
+    from .customer_portal_seats_list_claimed_subscriptionsop import (
+        CustomerPortalSeatsListClaimedSubscriptionsSecurity,
+        CustomerPortalSeatsListClaimedSubscriptionsSecurityTypedDict,
+    )
+    from .customer_portal_seats_list_seatsop import (
+        CustomerPortalSeatsListSeatsRequest,
+        CustomerPortalSeatsListSeatsRequestTypedDict,
+        CustomerPortalSeatsListSeatsSecurity,
+        CustomerPortalSeatsListSeatsSecurityTypedDict,
+    )
+    from .customer_portal_seats_resend_invitationop import (
+        CustomerPortalSeatsResendInvitationRequest,
+        CustomerPortalSeatsResendInvitationRequestTypedDict,
+        CustomerPortalSeatsResendInvitationSecurity,
+        CustomerPortalSeatsResendInvitationSecurityTypedDict,
+    )
+    from .customer_portal_seats_revoke_seatop import (
+        CustomerPortalSeatsRevokeSeatRequest,
+        CustomerPortalSeatsRevokeSeatRequestTypedDict,
+        CustomerPortalSeatsRevokeSeatSecurity,
+        CustomerPortalSeatsRevokeSeatSecurityTypedDict,
     )
     from .customer_portal_subscriptions_cancelop import (
         CustomerPortalSubscriptionsCancelRequest,
@@ -896,6 +926,10 @@ if TYPE_CHECKING:
         CustomerCustomerMeterMeterTypedDict,
     )
     from .customercustomermetersortproperty import CustomerCustomerMeterSortProperty
+    from .customercustomersession import (
+        CustomerCustomerSession,
+        CustomerCustomerSessionTypedDict,
+    )
     from .customermeter import CustomerMeter, CustomerMeterTypedDict
     from .customermetersortproperty import CustomerMeterSortProperty
     from .customernotready import CustomerNotReady, CustomerNotReadyData
@@ -1015,6 +1049,7 @@ if TYPE_CHECKING:
         CustomersUpdateRequest,
         CustomersUpdateRequestTypedDict,
     )
+    from .customerseat import CustomerSeat, CustomerSeatTypedDict
     from .customersession import CustomerSession, CustomerSessionTypedDict
     from .customersessioncustomerexternalidcreate import (
         CustomerSessionCustomerExternalIDCreate,
@@ -1807,6 +1842,18 @@ if TYPE_CHECKING:
         Oauth2AuthorizeResponseOauth2Authorize,
         Oauth2AuthorizeResponseOauth2AuthorizeTypedDict,
     )
+    from .oauth2_clients_oauth2_delete_clientop import (
+        Oauth2ClientsOauth2DeleteClientRequest,
+        Oauth2ClientsOauth2DeleteClientRequestTypedDict,
+    )
+    from .oauth2_clients_oauth2_get_clientop import (
+        Oauth2ClientsOauth2GetClientRequest,
+        Oauth2ClientsOauth2GetClientRequestTypedDict,
+    )
+    from .oauth2_clients_oauth2_update_clientop import (
+        Oauth2ClientsOauth2UpdateClientRequest,
+        Oauth2ClientsOauth2UpdateClientRequestTypedDict,
+    )
     from .oauth2_request_tokenop import (
         Oauth2RequestTokenRequestBody,
         Oauth2RequestTokenRequestBodyTypedDict,
@@ -1814,6 +1861,18 @@ if TYPE_CHECKING:
     from .oauth2_userinfoop import (
         Oauth2UserinfoResponseOauth2Userinfo,
         Oauth2UserinfoResponseOauth2UserinfoTypedDict,
+    )
+    from .oauth2clientconfiguration import (
+        GrantTypes,
+        OAuth2ClientConfiguration,
+        OAuth2ClientConfigurationTypedDict,
+        TokenEndpointAuthMethod,
+    )
+    from .oauth2clientconfigurationupdate import (
+        OAuth2ClientConfigurationUpdate,
+        OAuth2ClientConfigurationUpdateGrantTypes,
+        OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod,
+        OAuth2ClientConfigurationUpdateTypedDict,
     )
     from .oauth2clientpublic import OAuth2ClientPublic, OAuth2ClientPublicTypedDict
     from .order import (
@@ -2021,6 +2080,22 @@ if TYPE_CHECKING:
         UnitAmount,
         UnitAmountTypedDict,
     )
+    from .productpriceseatbased import (
+        ProductPriceSeatBased,
+        ProductPriceSeatBasedTypedDict,
+    )
+    from .productpriceseatbasedcreate import (
+        ProductPriceSeatBasedCreate,
+        ProductPriceSeatBasedCreateTypedDict,
+    )
+    from .productpriceseattier import (
+        ProductPriceSeatTier,
+        ProductPriceSeatTierTypedDict,
+    )
+    from .productpriceseattiers import (
+        ProductPriceSeatTiers,
+        ProductPriceSeatTiersTypedDict,
+    )
     from .productpricetype import ProductPriceType
     from .products_getop import ProductsGetRequest, ProductsGetRequestTypedDict
     from .products_update_benefitsop import (
@@ -2036,6 +2111,8 @@ if TYPE_CHECKING:
         ProductUpdatePrices,
         ProductUpdatePricesTypedDict,
         ProductUpdateTypedDict,
+        Two,
+        TwoTypedDict,
     )
     from .propertyaggregation import (
         Func,
@@ -2096,6 +2173,9 @@ if TYPE_CHECKING:
     from .s3fileuploadpart import S3FileUploadPart, S3FileUploadPartTypedDict
     from .scope import Scope
     from .sdkerror import SDKError
+    from .seatassign import SeatAssign, SeatAssignTypedDict
+    from .seatslist import SeatsList, SeatsListTypedDict
+    from .seatstatus import SeatStatus
     from .security import Security, SecurityTypedDict
     from .status import Status
     from .subscription import (
@@ -2447,6 +2527,11 @@ if TYPE_CHECKING:
     from .webhooksubscriptionupdatedpayload import (
         WebhookSubscriptionUpdatedPayload,
         WebhookSubscriptionUpdatedPayloadTypedDict,
+    )
+    from .webtokenrequest import (
+        WebTokenRequest,
+        WebTokenRequestSubType,
+        WebTokenRequestTypedDict,
     )  # Pydantic models with forward references
 Filter.model_rebuild()
 
@@ -3018,6 +3103,8 @@ __all__ = [
     "CustomerCustomerMeterMeterTypedDict",
     "CustomerCustomerMeterSortProperty",
     "CustomerCustomerMeterTypedDict",
+    "CustomerCustomerSession",
+    "CustomerCustomerSessionTypedDict",
     "CustomerEmailFilter",
     "CustomerEmailFilterTypedDict",
     "CustomerIDFilter",
@@ -3105,6 +3192,8 @@ __all__ = [
     "CustomerPortalCustomerMetersListResponseTypedDict",
     "CustomerPortalCustomerMetersListSecurity",
     "CustomerPortalCustomerMetersListSecurityTypedDict",
+    "CustomerPortalCustomerSessionIntrospectSecurity",
+    "CustomerPortalCustomerSessionIntrospectSecurityTypedDict",
     "CustomerPortalCustomerTaxID",
     "CustomerPortalCustomerTaxIDTypedDict",
     "CustomerPortalCustomerTypedDict",
@@ -3194,6 +3283,22 @@ __all__ = [
     "CustomerPortalOrdersUpdateSecurityTypedDict",
     "CustomerPortalOrganizationsGetRequest",
     "CustomerPortalOrganizationsGetRequestTypedDict",
+    "CustomerPortalSeatsAssignSeatSecurity",
+    "CustomerPortalSeatsAssignSeatSecurityTypedDict",
+    "CustomerPortalSeatsListClaimedSubscriptionsSecurity",
+    "CustomerPortalSeatsListClaimedSubscriptionsSecurityTypedDict",
+    "CustomerPortalSeatsListSeatsRequest",
+    "CustomerPortalSeatsListSeatsRequestTypedDict",
+    "CustomerPortalSeatsListSeatsSecurity",
+    "CustomerPortalSeatsListSeatsSecurityTypedDict",
+    "CustomerPortalSeatsResendInvitationRequest",
+    "CustomerPortalSeatsResendInvitationRequestTypedDict",
+    "CustomerPortalSeatsResendInvitationSecurity",
+    "CustomerPortalSeatsResendInvitationSecurityTypedDict",
+    "CustomerPortalSeatsRevokeSeatRequest",
+    "CustomerPortalSeatsRevokeSeatRequestTypedDict",
+    "CustomerPortalSeatsRevokeSeatSecurity",
+    "CustomerPortalSeatsRevokeSeatSecurityTypedDict",
     "CustomerPortalSubscriptionsCancelRequest",
     "CustomerPortalSubscriptionsCancelRequestTypedDict",
     "CustomerPortalSubscriptionsCancelSecurity",
@@ -3220,6 +3325,8 @@ __all__ = [
     "CustomerProductPrices",
     "CustomerProductPricesTypedDict",
     "CustomerProductTypedDict",
+    "CustomerSeat",
+    "CustomerSeatTypedDict",
     "CustomerSession",
     "CustomerSessionCustomerExternalIDCreate",
     "CustomerSessionCustomerExternalIDCreateTypedDict",
@@ -3484,6 +3591,7 @@ __all__ = [
     "Func",
     "GenericPayment",
     "GenericPaymentTypedDict",
+    "GrantTypes",
     "HTTPValidationError",
     "HTTPValidationErrorData",
     "IntrospectTokenRequest",
@@ -3765,10 +3873,22 @@ __all__ = [
     "NotPaidOrderData",
     "NotPermitted",
     "NotPermittedData",
+    "OAuth2ClientConfiguration",
+    "OAuth2ClientConfigurationTypedDict",
+    "OAuth2ClientConfigurationUpdate",
+    "OAuth2ClientConfigurationUpdateGrantTypes",
+    "OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod",
+    "OAuth2ClientConfigurationUpdateTypedDict",
     "OAuth2ClientPublic",
     "OAuth2ClientPublicTypedDict",
     "Oauth2AuthorizeResponseOauth2Authorize",
     "Oauth2AuthorizeResponseOauth2AuthorizeTypedDict",
+    "Oauth2ClientsOauth2DeleteClientRequest",
+    "Oauth2ClientsOauth2DeleteClientRequestTypedDict",
+    "Oauth2ClientsOauth2GetClientRequest",
+    "Oauth2ClientsOauth2GetClientRequestTypedDict",
+    "Oauth2ClientsOauth2UpdateClientRequest",
+    "Oauth2ClientsOauth2UpdateClientRequestTypedDict",
     "Oauth2RequestTokenRequestBody",
     "Oauth2RequestTokenRequestBodyTypedDict",
     "Oauth2UserinfoResponseOauth2Userinfo",
@@ -3954,6 +4074,14 @@ __all__ = [
     "ProductPriceMeteredUnitCreate",
     "ProductPriceMeteredUnitCreateTypedDict",
     "ProductPriceMeteredUnitTypedDict",
+    "ProductPriceSeatBased",
+    "ProductPriceSeatBasedCreate",
+    "ProductPriceSeatBasedCreateTypedDict",
+    "ProductPriceSeatBasedTypedDict",
+    "ProductPriceSeatTier",
+    "ProductPriceSeatTierTypedDict",
+    "ProductPriceSeatTiers",
+    "ProductPriceSeatTiersTypedDict",
     "ProductPriceType",
     "ProductPriceTypedDict",
     "ProductSortProperty",
@@ -4066,6 +4194,11 @@ __all__ = [
     "S3FileUploadPartTypedDict",
     "SDKError",
     "Scope",
+    "SeatAssign",
+    "SeatAssignTypedDict",
+    "SeatStatus",
+    "SeatsList",
+    "SeatsListTypedDict",
     "Security",
     "SecurityTypedDict",
     "SourceFilter",
@@ -4140,11 +4273,14 @@ __all__ = [
     "TaxIDTypedDict",
     "TimeInterval",
     "Timeframe",
+    "TokenEndpointAuthMethod",
     "TokenResponse",
     "TokenResponseTypedDict",
     "TokenType",
     "TokenTypeHint",
     "TrialInterval",
+    "Two",
+    "TwoTypedDict",
     "Unauthorized",
     "UnauthorizedData",
     "UniqueAggregation",
@@ -4165,6 +4301,9 @@ __all__ = [
     "ValidationErrorTypedDict",
     "Value",
     "ValueTypedDict",
+    "WebTokenRequest",
+    "WebTokenRequestSubType",
+    "WebTokenRequestTypedDict",
     "WebhookBenefitCreatedPayload",
     "WebhookBenefitCreatedPayloadTypedDict",
     "WebhookBenefitGrantCreatedPayload",
@@ -4708,6 +4847,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalCustomerMetersListSecurityTypedDict": ".customer_portal_customer_meters_listop",
     "MeterIDFilter": ".customer_portal_customer_meters_listop",
     "MeterIDFilterTypedDict": ".customer_portal_customer_meters_listop",
+    "CustomerPortalCustomerSessionIntrospectSecurity": ".customer_portal_customer_session_introspectop",
+    "CustomerPortalCustomerSessionIntrospectSecurityTypedDict": ".customer_portal_customer_session_introspectop",
     "CustomerPortalCustomersAddPaymentMethodSecurity": ".customer_portal_customers_add_payment_methodop",
     "CustomerPortalCustomersAddPaymentMethodSecurityTypedDict": ".customer_portal_customers_add_payment_methodop",
     "CustomerPortalCustomersConfirmPaymentMethodSecurity": ".customer_portal_customers_confirm_payment_methodop",
@@ -4790,6 +4931,22 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalOrdersUpdateSecurityTypedDict": ".customer_portal_orders_updateop",
     "CustomerPortalOrganizationsGetRequest": ".customer_portal_organizations_getop",
     "CustomerPortalOrganizationsGetRequestTypedDict": ".customer_portal_organizations_getop",
+    "CustomerPortalSeatsAssignSeatSecurity": ".customer_portal_seats_assign_seatop",
+    "CustomerPortalSeatsAssignSeatSecurityTypedDict": ".customer_portal_seats_assign_seatop",
+    "CustomerPortalSeatsListClaimedSubscriptionsSecurity": ".customer_portal_seats_list_claimed_subscriptionsop",
+    "CustomerPortalSeatsListClaimedSubscriptionsSecurityTypedDict": ".customer_portal_seats_list_claimed_subscriptionsop",
+    "CustomerPortalSeatsListSeatsRequest": ".customer_portal_seats_list_seatsop",
+    "CustomerPortalSeatsListSeatsRequestTypedDict": ".customer_portal_seats_list_seatsop",
+    "CustomerPortalSeatsListSeatsSecurity": ".customer_portal_seats_list_seatsop",
+    "CustomerPortalSeatsListSeatsSecurityTypedDict": ".customer_portal_seats_list_seatsop",
+    "CustomerPortalSeatsResendInvitationRequest": ".customer_portal_seats_resend_invitationop",
+    "CustomerPortalSeatsResendInvitationRequestTypedDict": ".customer_portal_seats_resend_invitationop",
+    "CustomerPortalSeatsResendInvitationSecurity": ".customer_portal_seats_resend_invitationop",
+    "CustomerPortalSeatsResendInvitationSecurityTypedDict": ".customer_portal_seats_resend_invitationop",
+    "CustomerPortalSeatsRevokeSeatRequest": ".customer_portal_seats_revoke_seatop",
+    "CustomerPortalSeatsRevokeSeatRequestTypedDict": ".customer_portal_seats_revoke_seatop",
+    "CustomerPortalSeatsRevokeSeatSecurity": ".customer_portal_seats_revoke_seatop",
+    "CustomerPortalSeatsRevokeSeatSecurityTypedDict": ".customer_portal_seats_revoke_seatop",
     "CustomerPortalSubscriptionsCancelRequest": ".customer_portal_subscriptions_cancelop",
     "CustomerPortalSubscriptionsCancelRequestTypedDict": ".customer_portal_subscriptions_cancelop",
     "CustomerPortalSubscriptionsCancelSecurity": ".customer_portal_subscriptions_cancelop",
@@ -4861,6 +5018,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerCustomerMeterMeter": ".customercustomermetermeter",
     "CustomerCustomerMeterMeterTypedDict": ".customercustomermetermeter",
     "CustomerCustomerMeterSortProperty": ".customercustomermetersortproperty",
+    "CustomerCustomerSession": ".customercustomersession",
+    "CustomerCustomerSessionTypedDict": ".customercustomersession",
     "CustomerMeter": ".customermeter",
     "CustomerMeterTypedDict": ".customermeter",
     "CustomerMeterSortProperty": ".customermetersortproperty",
@@ -4933,6 +5092,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomersUpdateExternalRequestTypedDict": ".customers_update_externalop",
     "CustomersUpdateRequest": ".customers_updateop",
     "CustomersUpdateRequestTypedDict": ".customers_updateop",
+    "CustomerSeat": ".customerseat",
+    "CustomerSeatTypedDict": ".customerseat",
     "CustomerSession": ".customersession",
     "CustomerSessionTypedDict": ".customersession",
     "CustomerSessionCustomerExternalIDCreate": ".customersessioncustomerexternalidcreate",
@@ -5549,10 +5710,24 @@ _dynamic_imports: dict[str, str] = {
     "NotPermittedData": ".notpermitted",
     "Oauth2AuthorizeResponseOauth2Authorize": ".oauth2_authorizeop",
     "Oauth2AuthorizeResponseOauth2AuthorizeTypedDict": ".oauth2_authorizeop",
+    "Oauth2ClientsOauth2DeleteClientRequest": ".oauth2_clients_oauth2_delete_clientop",
+    "Oauth2ClientsOauth2DeleteClientRequestTypedDict": ".oauth2_clients_oauth2_delete_clientop",
+    "Oauth2ClientsOauth2GetClientRequest": ".oauth2_clients_oauth2_get_clientop",
+    "Oauth2ClientsOauth2GetClientRequestTypedDict": ".oauth2_clients_oauth2_get_clientop",
+    "Oauth2ClientsOauth2UpdateClientRequest": ".oauth2_clients_oauth2_update_clientop",
+    "Oauth2ClientsOauth2UpdateClientRequestTypedDict": ".oauth2_clients_oauth2_update_clientop",
     "Oauth2RequestTokenRequestBody": ".oauth2_request_tokenop",
     "Oauth2RequestTokenRequestBodyTypedDict": ".oauth2_request_tokenop",
     "Oauth2UserinfoResponseOauth2Userinfo": ".oauth2_userinfoop",
     "Oauth2UserinfoResponseOauth2UserinfoTypedDict": ".oauth2_userinfoop",
+    "GrantTypes": ".oauth2clientconfiguration",
+    "OAuth2ClientConfiguration": ".oauth2clientconfiguration",
+    "OAuth2ClientConfigurationTypedDict": ".oauth2clientconfiguration",
+    "TokenEndpointAuthMethod": ".oauth2clientconfiguration",
+    "OAuth2ClientConfigurationUpdate": ".oauth2clientconfigurationupdate",
+    "OAuth2ClientConfigurationUpdateGrantTypes": ".oauth2clientconfigurationupdate",
+    "OAuth2ClientConfigurationUpdateTokenEndpointAuthMethod": ".oauth2clientconfigurationupdate",
+    "OAuth2ClientConfigurationUpdateTypedDict": ".oauth2clientconfigurationupdate",
     "OAuth2ClientPublic": ".oauth2clientpublic",
     "OAuth2ClientPublicTypedDict": ".oauth2clientpublic",
     "Order": ".order",
@@ -5717,6 +5892,14 @@ _dynamic_imports: dict[str, str] = {
     "ProductPriceMeteredUnitCreateTypedDict": ".productpricemeteredunitcreate",
     "UnitAmount": ".productpricemeteredunitcreate",
     "UnitAmountTypedDict": ".productpricemeteredunitcreate",
+    "ProductPriceSeatBased": ".productpriceseatbased",
+    "ProductPriceSeatBasedTypedDict": ".productpriceseatbased",
+    "ProductPriceSeatBasedCreate": ".productpriceseatbasedcreate",
+    "ProductPriceSeatBasedCreateTypedDict": ".productpriceseatbasedcreate",
+    "ProductPriceSeatTier": ".productpriceseattier",
+    "ProductPriceSeatTierTypedDict": ".productpriceseattier",
+    "ProductPriceSeatTiers": ".productpriceseattiers",
+    "ProductPriceSeatTiersTypedDict": ".productpriceseattiers",
     "ProductPriceType": ".productpricetype",
     "ProductsGetRequest": ".products_getop",
     "ProductsGetRequestTypedDict": ".products_getop",
@@ -5731,6 +5914,8 @@ _dynamic_imports: dict[str, str] = {
     "ProductUpdatePrices": ".productupdate",
     "ProductUpdatePricesTypedDict": ".productupdate",
     "ProductUpdateTypedDict": ".productupdate",
+    "Two": ".productupdate",
+    "TwoTypedDict": ".productupdate",
     "Func": ".propertyaggregation",
     "PropertyAggregation": ".propertyaggregation",
     "PropertyAggregationTypedDict": ".propertyaggregation",
@@ -5787,6 +5972,11 @@ _dynamic_imports: dict[str, str] = {
     "S3FileUploadPartTypedDict": ".s3fileuploadpart",
     "Scope": ".scope",
     "SDKError": ".sdkerror",
+    "SeatAssign": ".seatassign",
+    "SeatAssignTypedDict": ".seatassign",
+    "SeatsList": ".seatslist",
+    "SeatsListTypedDict": ".seatslist",
+    "SeatStatus": ".seatstatus",
     "Security": ".security",
     "SecurityTypedDict": ".security",
     "Status": ".status",
@@ -6044,6 +6234,9 @@ _dynamic_imports: dict[str, str] = {
     "WebhookSubscriptionUncanceledPayloadTypedDict": ".webhooksubscriptionuncanceledpayload",
     "WebhookSubscriptionUpdatedPayload": ".webhooksubscriptionupdatedpayload",
     "WebhookSubscriptionUpdatedPayloadTypedDict": ".webhooksubscriptionupdatedpayload",
+    "WebTokenRequest": ".webtokenrequest",
+    "WebTokenRequestSubType": ".webtokenrequest",
+    "WebTokenRequestTypedDict": ".webtokenrequest",
 }
 
 

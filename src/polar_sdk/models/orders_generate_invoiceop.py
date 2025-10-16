@@ -31,7 +31,7 @@ OrdersGenerateInvoiceResponse422OrdersGenerateInvoiceUnion = TypeAliasType(
 r"""Order is not paid or is missing billing name or address."""
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class OrdersGenerateInvoiceResponse422OrdersGenerateInvoice(PolarError):
     r"""Order is not paid or is missing billing name or address."""
 
