@@ -798,7 +798,7 @@ class CustomersListRequestTypedDict(TypedDict):
     email: NotRequired[Nullable[str]]
     r"""Filter by exact email."""
     query: NotRequired[Nullable[str]]
-    r"""Filter by name or email."""
+    r"""Filter by name, email, or external ID."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -826,7 +826,7 @@ class CustomersListRequest(BaseModel):
         OptionalNullable[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
-    r"""Filter by name or email."""
+    r"""Filter by name, email, or external ID."""
 
     page: Annotated[
         Optional[int],
