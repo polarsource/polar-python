@@ -17,6 +17,7 @@ class CheckoutDiscountPercentageRepeatDurationTypedDict(TypedDict):
     duration_in_months: int
     type: DiscountType
     basis_points: int
+    r"""Discount percentage in basis points. A basis point is 1/100th of a percent. For example, 1000 basis points equals a 10% discount."""
     id: str
     r"""The ID of the object."""
     name: str
@@ -35,6 +36,7 @@ class CheckoutDiscountPercentageRepeatDuration(BaseModel):
     type: DiscountType
 
     basis_points: int
+    r"""Discount percentage in basis points. A basis point is 1/100th of a percent. For example, 1000 basis points equals a 10% discount."""
 
     id: str
     r"""The ID of the object."""

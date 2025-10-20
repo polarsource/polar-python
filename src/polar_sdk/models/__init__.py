@@ -1934,6 +1934,10 @@ if TYPE_CHECKING:
         OrganizationAvatarFileReadTypedDict,
     )
     from .organizationcreate import OrganizationCreate, OrganizationCreateTypedDict
+    from .organizationcustomeremailsettings import (
+        OrganizationCustomerEmailSettings,
+        OrganizationCustomerEmailSettingsTypedDict,
+    )
     from .organizationdetails import (
         OrganizationDetails,
         OrganizationDetailsTypedDict,
@@ -3963,6 +3967,8 @@ __all__ = [
     "OrganizationAvatarFileReadTypedDict",
     "OrganizationCreate",
     "OrganizationCreateTypedDict",
+    "OrganizationCustomerEmailSettings",
+    "OrganizationCustomerEmailSettingsTypedDict",
     "OrganizationDetails",
     "OrganizationDetailsTypedDict",
     "OrganizationFeatureSettings",
@@ -5781,6 +5787,8 @@ _dynamic_imports: dict[str, str] = {
     "OrganizationAvatarFileReadTypedDict": ".organizationavatarfileread",
     "OrganizationCreate": ".organizationcreate",
     "OrganizationCreateTypedDict": ".organizationcreate",
+    "OrganizationCustomerEmailSettings": ".organizationcustomeremailsettings",
+    "OrganizationCustomerEmailSettingsTypedDict": ".organizationcustomeremailsettings",
     "OrganizationDetails": ".organizationdetails",
     "OrganizationDetailsTypedDict": ".organizationdetails",
     "SwitchingFrom": ".organizationdetails",
