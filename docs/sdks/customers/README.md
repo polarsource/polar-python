@@ -50,7 +50,7 @@ with Polar(
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `organization_id`                                                                                                                                                       | [OptionalNullable[models.CustomersListQueryParamOrganizationIDFilter]](../../models/customerslistqueryparamorganizationidfilter.md)                                     | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
 | `email`                                                                                                                                                                 | *OptionalNullable[str]*                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                      | Filter by exact email.                                                                                                                                                  |
-| `query`                                                                                                                                                                 | *OptionalNullable[str]*                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                      | Filter by name or email.                                                                                                                                                |
+| `query`                                                                                                                                                                 | *OptionalNullable[str]*                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                      | Filter by name, email, or external ID.                                                                                                                                  |
 | `page`                                                                                                                                                                  | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |
 | `limit`                                                                                                                                                                 | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Size of a page, defaults to 10. Maximum is 100.                                                                                                                         |
 | `sorting`                                                                                                                                                               | List[[models.CustomerSortProperty](../../models/customersortproperty.md)]                                                                                               | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
@@ -202,11 +202,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| models.HTTPValidationError             | 422                                    | application/json                       |
+| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## update
 
@@ -258,11 +258,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| models.HTTPValidationError             | 422                                    | application/json                       |
+| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## delete
 
@@ -308,11 +308,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| models.HTTPValidationError             | 422                                    | application/json                       |
+| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## get_external
 
@@ -351,11 +351,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| models.HTTPValidationError             | 422                                    | application/json                       |
+| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## update_external
 
@@ -403,11 +403,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| models.HTTPValidationError             | 422                                    | application/json                       |
+| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## delete_external
 
@@ -443,11 +443,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| models.HTTPValidationError             | 422                                    | application/json                       |
+| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## get_state
 
@@ -492,11 +492,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| models.HTTPValidationError             | 422                                    | application/json                       |
+| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## get_state_external
 
@@ -541,11 +541,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| models.HTTPValidationError             | 422                                    | application/json                       |
+| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## get_balance
 
@@ -584,8 +584,8 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| models.HTTPValidationError             | 422                                    | application/json                       |
+| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |

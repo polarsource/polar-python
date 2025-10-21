@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### `models.LegacyRecurringProductPrice`
+### `models.LegacyRecurringProductPriceOutput`
 
 ```python
-value: models.LegacyRecurringProductPrice = /* values here */
+value: models.LegacyRecurringProductPriceOutput = /* values here */
 ```
 
-### `models.ProductPrice`
+### `models.ProductPriceOutput`
 
 ```python
-value: models.ProductPrice = /* values here */
+value: models.ProductPriceOutput = /* values here */
 ```
 

@@ -15,11 +15,10 @@ if TYPE_CHECKING:
         AlreadyActiveSubscriptionError,
         AlreadyActiveSubscriptionErrorData,
     )
-    from .alreadycanceledsubscription import (
-        AlreadyCanceledSubscription,
-        AlreadyCanceledSubscriptionData,
+    from .attachedcustomfield_output import (
+        AttachedCustomFieldOutput,
+        AttachedCustomFieldOutputTypedDict,
     )
-    from .attachedcustomfield import AttachedCustomField, AttachedCustomFieldTypedDict
     from .attachedcustomfieldcreate import (
         AttachedCustomFieldCreate,
         AttachedCustomFieldCreateTypedDict,
@@ -106,9 +105,9 @@ if TYPE_CHECKING:
         BenefitDiscordCreateProperties,
         BenefitDiscordCreatePropertiesTypedDict,
     )
-    from .benefitdiscordproperties import (
-        BenefitDiscordProperties,
-        BenefitDiscordPropertiesTypedDict,
+    from .benefitdiscordproperties_output import (
+        BenefitDiscordPropertiesOutput,
+        BenefitDiscordPropertiesOutputTypedDict,
     )
     from .benefitdiscordsubscriber import (
         BenefitDiscordSubscriber,
@@ -380,11 +379,11 @@ if TYPE_CHECKING:
         CheckoutDiscountTypedDict,
         CheckoutMetadata,
         CheckoutMetadataTypedDict,
-        CheckoutProductPrice,
-        CheckoutProductPriceTypedDict,
         CheckoutTypedDict,
         CustomerMetadata,
         CustomerMetadataTypedDict,
+        ProductPrice,
+        ProductPriceTypedDict,
     )
     from .checkout_links_deleteop import (
         CheckoutLinksDeleteRequest,
@@ -986,9 +985,9 @@ if TYPE_CHECKING:
         CustomerPaymentMethodCreateResponse,
         CustomerPaymentMethodCreateResponseTypedDict,
     )
-    from .customerpaymentmethodcreatesucceededresponse import (
-        CustomerPaymentMethodCreateSucceededResponse,
-        CustomerPaymentMethodCreateSucceededResponseTypedDict,
+    from .customerpaymentmethodcreatesucceededresponse_output import (
+        CustomerPaymentMethodCreateSucceededResponseOutput,
+        CustomerPaymentMethodCreateSucceededResponseOutputTypedDict,
     )
     from .customerportalcustomer import (
         CustomerPortalCustomer,
@@ -1374,18 +1373,13 @@ if TYPE_CHECKING:
     )
     from .downloadableread import DownloadableRead, DownloadableReadTypedDict
     from .event import Event, EventTypedDict
-    from .eventcreatecustomer import (
-        EventCreateCustomer,
-        EventCreateCustomerMetadata,
-        EventCreateCustomerMetadataTypedDict,
-        EventCreateCustomerTypedDict,
-    )
+    from .eventcreatecustomer import EventCreateCustomer, EventCreateCustomerTypedDict
     from .eventcreateexternalcustomer import (
         EventCreateExternalCustomer,
-        EventCreateExternalCustomerMetadata,
-        EventCreateExternalCustomerMetadataTypedDict,
         EventCreateExternalCustomerTypedDict,
     )
+    from .eventmetadatainput import EventMetadataInput, EventMetadataInputTypedDict
+    from .eventmetadataoutput import EventMetadataOutput, EventMetadataOutputTypedDict
     from .eventname import EventName, EventNameTypedDict
     from .eventnamessortproperty import EventNamesSortProperty
     from .events_getop import EventsGetRequest, EventsGetRequestTypedDict
@@ -1464,22 +1458,21 @@ if TYPE_CHECKING:
         IntrospectTokenResponseTypedDict,
         TokenType,
     )
-    from .invoicealreadyexists import InvoiceAlreadyExists, InvoiceAlreadyExistsData
-    from .legacyrecurringproductprice import (
-        LegacyRecurringProductPrice,
-        LegacyRecurringProductPriceTypedDict,
+    from .legacyrecurringproductprice_output import (
+        LegacyRecurringProductPriceOutput,
+        LegacyRecurringProductPriceOutputTypedDict,
     )
-    from .legacyrecurringproductpricecustom import (
-        LegacyRecurringProductPriceCustom,
-        LegacyRecurringProductPriceCustomTypedDict,
+    from .legacyrecurringproductpricecustom_output import (
+        LegacyRecurringProductPriceCustomOutput,
+        LegacyRecurringProductPriceCustomOutputTypedDict,
     )
-    from .legacyrecurringproductpricefixed import (
-        LegacyRecurringProductPriceFixed,
-        LegacyRecurringProductPriceFixedTypedDict,
+    from .legacyrecurringproductpricefixed_output import (
+        LegacyRecurringProductPriceFixedOutput,
+        LegacyRecurringProductPriceFixedOutputTypedDict,
     )
-    from .legacyrecurringproductpricefree import (
-        LegacyRecurringProductPriceFree,
-        LegacyRecurringProductPriceFreeTypedDict,
+    from .legacyrecurringproductpricefree_output import (
+        LegacyRecurringProductPriceFreeOutput,
+        LegacyRecurringProductPriceFreeOutputTypedDict,
     )
     from .license_keys_get_activationop import (
         LicenseKeysGetActivationRequest,
@@ -1740,7 +1733,6 @@ if TYPE_CHECKING:
         SucceededCheckouts,
         SucceededCheckoutsTypedDict,
     )
-    from .metrics import Metrics, MetricsTypedDict
     from .metrics_getop import (
         MetricsGetQueryParamCustomerIDFilter,
         MetricsGetQueryParamCustomerIDFilterTypedDict,
@@ -1753,6 +1745,7 @@ if TYPE_CHECKING:
         QueryParamProductBillingTypeFilter,
         QueryParamProductBillingTypeFilterTypedDict,
     )
+    from .metrics_output import MetricsOutput, MetricsOutputTypedDict
     from .metricsintervallimit import (
         MetricsIntervalLimit,
         MetricsIntervalLimitTypedDict,
@@ -1830,14 +1823,8 @@ if TYPE_CHECKING:
         MetricsTotalsTypedDict,
     )
     from .metrictype import MetricType
-    from .missinginvoicebillingdetails import (
-        MissingInvoiceBillingDetails,
-        MissingInvoiceBillingDetailsData,
-    )
     from .no_response_error import NoResponseError
     from .notopencheckout import NotOpenCheckout, NotOpenCheckoutData
-    from .notpaidorder import NotPaidOrder, NotPaidOrderData
-    from .notpermitted import NotPermitted, NotPermittedData
     from .oauth2_authorizeop import (
         Oauth2AuthorizeResponseOauth2Authorize,
         Oauth2AuthorizeResponseOauth2AuthorizeTypedDict,
@@ -1934,6 +1921,10 @@ if TYPE_CHECKING:
         OrganizationAvatarFileReadTypedDict,
     )
     from .organizationcreate import OrganizationCreate, OrganizationCreateTypedDict
+    from .organizationcustomeremailsettings import (
+        OrganizationCustomerEmailSettings,
+        OrganizationCustomerEmailSettingsTypedDict,
+    )
     from .organizationdetails import (
         OrganizationDetails,
         OrganizationDetailsTypedDict,
@@ -2015,6 +2006,34 @@ if TYPE_CHECKING:
     )
     from .paymentsortproperty import PaymentSortProperty
     from .paymentstatus import PaymentStatus
+    from .polar_exceptions_alreadycanceledsubscription import (
+        PolarExceptionsAlreadyCanceledSubscription,
+        PolarExceptionsAlreadyCanceledSubscriptionData,
+    )
+    from .polar_exceptions_invoicealreadyexists import (
+        PolarExceptionsInvoiceAlreadyExists,
+        PolarExceptionsInvoiceAlreadyExistsData,
+    )
+    from .polar_exceptions_missinginvoicebillingdetails import (
+        PolarExceptionsMissingInvoiceBillingDetails,
+        PolarExceptionsMissingInvoiceBillingDetailsData,
+    )
+    from .polar_exceptions_notpaidorder import (
+        PolarExceptionsNotPaidOrder,
+        PolarExceptionsNotPaidOrderData,
+    )
+    from .polar_exceptions_notpermitted import (
+        PolarExceptionsNotPermitted,
+        PolarExceptionsNotPermittedData,
+    )
+    from .polar_exceptions_resourcenotfound import (
+        PolarExceptionsResourceNotFound,
+        PolarExceptionsResourceNotFoundData,
+    )
+    from .polar_exceptions_subscriptionlocked import (
+        PolarExceptionsSubscriptionLocked,
+        PolarExceptionsSubscriptionLockedData,
+    )
     from .product import (
         Prices,
         PricesTypedDict,
@@ -2053,26 +2072,35 @@ if TYPE_CHECKING:
         ProductMediaFileRead,
         ProductMediaFileReadTypedDict,
     )
-    from .productprice import ProductPrice, ProductPriceTypedDict
-    from .productpricecustom import ProductPriceCustom, ProductPriceCustomTypedDict
+    from .productprice_output import ProductPriceOutput, ProductPriceOutputTypedDict
+    from .productpricecustom_output import (
+        ProductPriceCustomOutput,
+        ProductPriceCustomOutputTypedDict,
+    )
     from .productpricecustomcreate import (
         ProductPriceCustomCreate,
         ProductPriceCustomCreateTypedDict,
     )
-    from .productpricefixed import ProductPriceFixed, ProductPriceFixedTypedDict
+    from .productpricefixed_output import (
+        ProductPriceFixedOutput,
+        ProductPriceFixedOutputTypedDict,
+    )
     from .productpricefixedcreate import (
         ProductPriceFixedCreate,
         ProductPriceFixedCreateTypedDict,
     )
-    from .productpricefree import ProductPriceFree, ProductPriceFreeTypedDict
+    from .productpricefree_output import (
+        ProductPriceFreeOutput,
+        ProductPriceFreeOutputTypedDict,
+    )
     from .productpricefreecreate import (
         ProductPriceFreeCreate,
         ProductPriceFreeCreateTypedDict,
     )
     from .productpricemeter import ProductPriceMeter, ProductPriceMeterTypedDict
-    from .productpricemeteredunit import (
-        ProductPriceMeteredUnit,
-        ProductPriceMeteredUnitTypedDict,
+    from .productpricemeteredunit_output import (
+        ProductPriceMeteredUnitOutput,
+        ProductPriceMeteredUnitOutputTypedDict,
     )
     from .productpricemeteredunitcreate import (
         ProductPriceMeteredUnitCreate,
@@ -2080,9 +2108,9 @@ if TYPE_CHECKING:
         UnitAmount,
         UnitAmountTypedDict,
     )
-    from .productpriceseatbased import (
-        ProductPriceSeatBased,
-        ProductPriceSeatBasedTypedDict,
+    from .productpriceseatbased_output import (
+        ProductPriceSeatBasedOutput,
+        ProductPriceSeatBasedOutputTypedDict,
     )
     from .productpriceseatbasedcreate import (
         ProductPriceSeatBasedCreate,
@@ -2148,7 +2176,6 @@ if TYPE_CHECKING:
     )
     from .refundsortproperty import RefundSortProperty
     from .refundstatus import RefundStatus
-    from .resourcenotfound import ResourceNotFound, ResourceNotFoundData
     from .responsevalidationerror import ResponseValidationError
     from .revoketokenrequest import (
         RevokeTokenRequest,
@@ -2207,7 +2234,6 @@ if TYPE_CHECKING:
         SubscriptionCycledMetadata,
         SubscriptionCycledMetadataTypedDict,
     )
-    from .subscriptionlocked import SubscriptionLocked, SubscriptionLockedData
     from .subscriptionmeter import SubscriptionMeter, SubscriptionMeterTypedDict
     from .subscriptionproductupdatedevent import (
         SubscriptionProductUpdatedEvent,
@@ -2353,12 +2379,7 @@ if TYPE_CHECKING:
     from .trialinterval import TrialInterval
     from .unauthorized import Unauthorized, UnauthorizedData
     from .uniqueaggregation import UniqueAggregation, UniqueAggregationTypedDict
-    from .userevent import (
-        UserEvent,
-        UserEventMetadata,
-        UserEventMetadataTypedDict,
-        UserEventTypedDict,
-    )
+    from .userevent import UserEvent, UserEventTypedDict
     from .userinfoorganization import (
         UserInfoOrganization,
         UserInfoOrganizationTypedDict,
@@ -2548,12 +2569,10 @@ __all__ = [
     "AggregationTypedDict",
     "AlreadyActiveSubscriptionError",
     "AlreadyActiveSubscriptionErrorData",
-    "AlreadyCanceledSubscription",
-    "AlreadyCanceledSubscriptionData",
-    "AttachedCustomField",
     "AttachedCustomFieldCreate",
     "AttachedCustomFieldCreateTypedDict",
-    "AttachedCustomFieldTypedDict",
+    "AttachedCustomFieldOutput",
+    "AttachedCustomFieldOutputTypedDict",
     "AuthorizationCodeTokenRequest",
     "AuthorizationCodeTokenRequestTypedDict",
     "AuthorizeOrganization",
@@ -2602,8 +2621,8 @@ __all__ = [
     "BenefitDiscordCreateTypedDict",
     "BenefitDiscordMetadata",
     "BenefitDiscordMetadataTypedDict",
-    "BenefitDiscordProperties",
-    "BenefitDiscordPropertiesTypedDict",
+    "BenefitDiscordPropertiesOutput",
+    "BenefitDiscordPropertiesOutputTypedDict",
     "BenefitDiscordSubscriber",
     "BenefitDiscordSubscriberMetadata",
     "BenefitDiscordSubscriberMetadataTypedDict",
@@ -2887,8 +2906,6 @@ __all__ = [
     "CheckoutMetadata",
     "CheckoutMetadataTypedDict",
     "CheckoutProduct",
-    "CheckoutProductPrice",
-    "CheckoutProductPriceTypedDict",
     "CheckoutProductPrices",
     "CheckoutProductPricesTypedDict",
     "CheckoutProductTypedDict",
@@ -3159,8 +3176,8 @@ __all__ = [
     "CustomerPaymentMethodCreateRequiresActionResponseTypedDict",
     "CustomerPaymentMethodCreateResponse",
     "CustomerPaymentMethodCreateResponseTypedDict",
-    "CustomerPaymentMethodCreateSucceededResponse",
-    "CustomerPaymentMethodCreateSucceededResponseTypedDict",
+    "CustomerPaymentMethodCreateSucceededResponseOutput",
+    "CustomerPaymentMethodCreateSucceededResponseOutputTypedDict",
     "CustomerPaymentMethodCreateTypedDict",
     "CustomerPaymentMethodTypedDict",
     "CustomerPortalBenefitGrantsGetRequest",
@@ -3506,13 +3523,13 @@ __all__ = [
     "EndpointIDTypedDict",
     "Event",
     "EventCreateCustomer",
-    "EventCreateCustomerMetadata",
-    "EventCreateCustomerMetadataTypedDict",
     "EventCreateCustomerTypedDict",
     "EventCreateExternalCustomer",
-    "EventCreateExternalCustomerMetadata",
-    "EventCreateExternalCustomerMetadataTypedDict",
     "EventCreateExternalCustomerTypedDict",
+    "EventMetadataInput",
+    "EventMetadataInputTypedDict",
+    "EventMetadataOutput",
+    "EventMetadataOutputTypedDict",
     "EventName",
     "EventNameTypedDict",
     "EventNamesSortProperty",
@@ -3599,16 +3616,14 @@ __all__ = [
     "IntrospectTokenRequestTypedDict",
     "IntrospectTokenResponse",
     "IntrospectTokenResponseTypedDict",
-    "InvoiceAlreadyExists",
-    "InvoiceAlreadyExistsData",
-    "LegacyRecurringProductPrice",
-    "LegacyRecurringProductPriceCustom",
-    "LegacyRecurringProductPriceCustomTypedDict",
-    "LegacyRecurringProductPriceFixed",
-    "LegacyRecurringProductPriceFixedTypedDict",
-    "LegacyRecurringProductPriceFree",
-    "LegacyRecurringProductPriceFreeTypedDict",
-    "LegacyRecurringProductPriceTypedDict",
+    "LegacyRecurringProductPriceCustomOutput",
+    "LegacyRecurringProductPriceCustomOutputTypedDict",
+    "LegacyRecurringProductPriceFixedOutput",
+    "LegacyRecurringProductPriceFixedOutputTypedDict",
+    "LegacyRecurringProductPriceFreeOutput",
+    "LegacyRecurringProductPriceFreeOutputTypedDict",
+    "LegacyRecurringProductPriceOutput",
+    "LegacyRecurringProductPriceOutputTypedDict",
     "LicenseKeyActivate",
     "LicenseKeyActivateConditions",
     "LicenseKeyActivateConditionsTypedDict",
@@ -3766,7 +3781,6 @@ __all__ = [
     "MetricPeriodTypedDict",
     "MetricType",
     "MetricTypedDict",
-    "Metrics",
     "MetricsGetQueryParamCustomerIDFilter",
     "MetricsGetQueryParamCustomerIDFilterTypedDict",
     "MetricsGetQueryParamOrganizationIDFilter",
@@ -3781,6 +3795,8 @@ __all__ = [
     "MetricsIntervalsLimitsTypedDict",
     "MetricsLimits",
     "MetricsLimitsTypedDict",
+    "MetricsOutput",
+    "MetricsOutputTypedDict",
     "MetricsResponse",
     "MetricsResponseTypedDict",
     "MetricsTotals",
@@ -3847,9 +3863,6 @@ __all__ = [
     "MetricsTotalsSucceededCheckouts",
     "MetricsTotalsSucceededCheckoutsTypedDict",
     "MetricsTotalsTypedDict",
-    "MetricsTypedDict",
-    "MissingInvoiceBillingDetails",
-    "MissingInvoiceBillingDetailsData",
     "MonthlyRecurringRevenue",
     "MonthlyRecurringRevenueTypedDict",
     "NameFilter",
@@ -3869,10 +3882,6 @@ __all__ = [
     "NoResponseError",
     "NotOpenCheckout",
     "NotOpenCheckoutData",
-    "NotPaidOrder",
-    "NotPaidOrderData",
-    "NotPermitted",
-    "NotPermittedData",
     "OAuth2ClientConfiguration",
     "OAuth2ClientConfigurationTypedDict",
     "OAuth2ClientConfigurationUpdate",
@@ -3963,6 +3972,8 @@ __all__ = [
     "OrganizationAvatarFileReadTypedDict",
     "OrganizationCreate",
     "OrganizationCreateTypedDict",
+    "OrganizationCustomerEmailSettings",
+    "OrganizationCustomerEmailSettingsTypedDict",
     "OrganizationDetails",
     "OrganizationDetailsTypedDict",
     "OrganizationFeatureSettings",
@@ -4025,6 +4036,20 @@ __all__ = [
     "PaymentsListResponseTypedDict",
     "Permission",
     "PolarError",
+    "PolarExceptionsAlreadyCanceledSubscription",
+    "PolarExceptionsAlreadyCanceledSubscriptionData",
+    "PolarExceptionsInvoiceAlreadyExists",
+    "PolarExceptionsInvoiceAlreadyExistsData",
+    "PolarExceptionsMissingInvoiceBillingDetails",
+    "PolarExceptionsMissingInvoiceBillingDetailsData",
+    "PolarExceptionsNotPaidOrder",
+    "PolarExceptionsNotPaidOrderData",
+    "PolarExceptionsNotPermitted",
+    "PolarExceptionsNotPermittedData",
+    "PolarExceptionsResourceNotFound",
+    "PolarExceptionsResourceNotFoundData",
+    "PolarExceptionsSubscriptionLocked",
+    "PolarExceptionsSubscriptionLockedData",
     "Prices",
     "PricesTypedDict",
     "Product",
@@ -4056,28 +4081,30 @@ __all__ = [
     "ProductMetadata",
     "ProductMetadataTypedDict",
     "ProductPrice",
-    "ProductPriceCustom",
     "ProductPriceCustomCreate",
     "ProductPriceCustomCreateTypedDict",
-    "ProductPriceCustomTypedDict",
-    "ProductPriceFixed",
+    "ProductPriceCustomOutput",
+    "ProductPriceCustomOutputTypedDict",
     "ProductPriceFixedCreate",
     "ProductPriceFixedCreateTypedDict",
-    "ProductPriceFixedTypedDict",
-    "ProductPriceFree",
+    "ProductPriceFixedOutput",
+    "ProductPriceFixedOutputTypedDict",
     "ProductPriceFreeCreate",
     "ProductPriceFreeCreateTypedDict",
-    "ProductPriceFreeTypedDict",
+    "ProductPriceFreeOutput",
+    "ProductPriceFreeOutputTypedDict",
     "ProductPriceMeter",
     "ProductPriceMeterTypedDict",
-    "ProductPriceMeteredUnit",
     "ProductPriceMeteredUnitCreate",
     "ProductPriceMeteredUnitCreateTypedDict",
-    "ProductPriceMeteredUnitTypedDict",
-    "ProductPriceSeatBased",
+    "ProductPriceMeteredUnitOutput",
+    "ProductPriceMeteredUnitOutputTypedDict",
+    "ProductPriceOutput",
+    "ProductPriceOutputTypedDict",
     "ProductPriceSeatBasedCreate",
     "ProductPriceSeatBasedCreateTypedDict",
-    "ProductPriceSeatBasedTypedDict",
+    "ProductPriceSeatBasedOutput",
+    "ProductPriceSeatBasedOutputTypedDict",
     "ProductPriceSeatTier",
     "ProductPriceSeatTierTypedDict",
     "ProductPriceSeatTiers",
@@ -4171,8 +4198,6 @@ __all__ = [
     "RenewedSubscriptionsRevenue",
     "RenewedSubscriptionsRevenueTypedDict",
     "RenewedSubscriptionsTypedDict",
-    "ResourceNotFound",
-    "ResourceNotFoundData",
     "ResponseValidationError",
     "Revenue",
     "RevenueTypedDict",
@@ -4222,8 +4247,6 @@ __all__ = [
     "SubscriptionDiscountTypedDict",
     "SubscriptionIDFilter",
     "SubscriptionIDFilterTypedDict",
-    "SubscriptionLocked",
-    "SubscriptionLockedData",
     "SubscriptionMeter",
     "SubscriptionMeterTypedDict",
     "SubscriptionPrices",
@@ -4288,8 +4311,6 @@ __all__ = [
     "UnitAmount",
     "UnitAmountTypedDict",
     "UserEvent",
-    "UserEventMetadata",
-    "UserEventMetadataTypedDict",
     "UserEventTypedDict",
     "UserInfoOrganization",
     "UserInfoOrganizationTypedDict",
@@ -4400,10 +4421,8 @@ _dynamic_imports: dict[str, str] = {
     "AggregationFunction": ".aggregationfunction",
     "AlreadyActiveSubscriptionError": ".alreadyactivesubscriptionerror",
     "AlreadyActiveSubscriptionErrorData": ".alreadyactivesubscriptionerror",
-    "AlreadyCanceledSubscription": ".alreadycanceledsubscription",
-    "AlreadyCanceledSubscriptionData": ".alreadycanceledsubscription",
-    "AttachedCustomField": ".attachedcustomfield",
-    "AttachedCustomFieldTypedDict": ".attachedcustomfield",
+    "AttachedCustomFieldOutput": ".attachedcustomfield_output",
+    "AttachedCustomFieldOutputTypedDict": ".attachedcustomfield_output",
     "AttachedCustomFieldCreate": ".attachedcustomfieldcreate",
     "AttachedCustomFieldCreateTypedDict": ".attachedcustomfieldcreate",
     "AuthorizationCodeTokenRequest": ".authorizationcodetokenrequest",
@@ -4462,8 +4481,8 @@ _dynamic_imports: dict[str, str] = {
     "BenefitDiscordCreateTypedDict": ".benefitdiscordcreate",
     "BenefitDiscordCreateProperties": ".benefitdiscordcreateproperties",
     "BenefitDiscordCreatePropertiesTypedDict": ".benefitdiscordcreateproperties",
-    "BenefitDiscordProperties": ".benefitdiscordproperties",
-    "BenefitDiscordPropertiesTypedDict": ".benefitdiscordproperties",
+    "BenefitDiscordPropertiesOutput": ".benefitdiscordproperties_output",
+    "BenefitDiscordPropertiesOutputTypedDict": ".benefitdiscordproperties_output",
     "BenefitDiscordSubscriber": ".benefitdiscordsubscriber",
     "BenefitDiscordSubscriberMetadata": ".benefitdiscordsubscriber",
     "BenefitDiscordSubscriberMetadataTypedDict": ".benefitdiscordsubscriber",
@@ -4643,11 +4662,11 @@ _dynamic_imports: dict[str, str] = {
     "CheckoutDiscountTypedDict": ".checkout",
     "CheckoutMetadata": ".checkout",
     "CheckoutMetadataTypedDict": ".checkout",
-    "CheckoutProductPrice": ".checkout",
-    "CheckoutProductPriceTypedDict": ".checkout",
     "CheckoutTypedDict": ".checkout",
     "CustomerMetadata": ".checkout",
     "CustomerMetadataTypedDict": ".checkout",
+    "ProductPrice": ".checkout",
+    "ProductPriceTypedDict": ".checkout",
     "CheckoutLinksDeleteRequest": ".checkout_links_deleteop",
     "CheckoutLinksDeleteRequestTypedDict": ".checkout_links_deleteop",
     "CheckoutLinksGetRequest": ".checkout_links_getop",
@@ -5056,8 +5075,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPaymentMethodCreateRequiresActionResponseTypedDict": ".customerpaymentmethodcreaterequiresactionresponse",
     "CustomerPaymentMethodCreateResponse": ".customerpaymentmethodcreateresponse",
     "CustomerPaymentMethodCreateResponseTypedDict": ".customerpaymentmethodcreateresponse",
-    "CustomerPaymentMethodCreateSucceededResponse": ".customerpaymentmethodcreatesucceededresponse",
-    "CustomerPaymentMethodCreateSucceededResponseTypedDict": ".customerpaymentmethodcreatesucceededresponse",
+    "CustomerPaymentMethodCreateSucceededResponseOutput": ".customerpaymentmethodcreatesucceededresponse_output",
+    "CustomerPaymentMethodCreateSucceededResponseOutputTypedDict": ".customerpaymentmethodcreatesucceededresponse_output",
     "CustomerPortalCustomer": ".customerportalcustomer",
     "CustomerPortalCustomerTaxID": ".customerportalcustomer",
     "CustomerPortalCustomerTaxIDTypedDict": ".customerportalcustomer",
@@ -5319,13 +5338,13 @@ _dynamic_imports: dict[str, str] = {
     "Event": ".event",
     "EventTypedDict": ".event",
     "EventCreateCustomer": ".eventcreatecustomer",
-    "EventCreateCustomerMetadata": ".eventcreatecustomer",
-    "EventCreateCustomerMetadataTypedDict": ".eventcreatecustomer",
     "EventCreateCustomerTypedDict": ".eventcreatecustomer",
     "EventCreateExternalCustomer": ".eventcreateexternalcustomer",
-    "EventCreateExternalCustomerMetadata": ".eventcreateexternalcustomer",
-    "EventCreateExternalCustomerMetadataTypedDict": ".eventcreateexternalcustomer",
     "EventCreateExternalCustomerTypedDict": ".eventcreateexternalcustomer",
+    "EventMetadataInput": ".eventmetadatainput",
+    "EventMetadataInputTypedDict": ".eventmetadatainput",
+    "EventMetadataOutput": ".eventmetadataoutput",
+    "EventMetadataOutputTypedDict": ".eventmetadataoutput",
     "EventName": ".eventname",
     "EventNameTypedDict": ".eventname",
     "EventNamesSortProperty": ".eventnamessortproperty",
@@ -5400,16 +5419,14 @@ _dynamic_imports: dict[str, str] = {
     "IntrospectTokenResponse": ".introspecttokenresponse",
     "IntrospectTokenResponseTypedDict": ".introspecttokenresponse",
     "TokenType": ".introspecttokenresponse",
-    "InvoiceAlreadyExists": ".invoicealreadyexists",
-    "InvoiceAlreadyExistsData": ".invoicealreadyexists",
-    "LegacyRecurringProductPrice": ".legacyrecurringproductprice",
-    "LegacyRecurringProductPriceTypedDict": ".legacyrecurringproductprice",
-    "LegacyRecurringProductPriceCustom": ".legacyrecurringproductpricecustom",
-    "LegacyRecurringProductPriceCustomTypedDict": ".legacyrecurringproductpricecustom",
-    "LegacyRecurringProductPriceFixed": ".legacyrecurringproductpricefixed",
-    "LegacyRecurringProductPriceFixedTypedDict": ".legacyrecurringproductpricefixed",
-    "LegacyRecurringProductPriceFree": ".legacyrecurringproductpricefree",
-    "LegacyRecurringProductPriceFreeTypedDict": ".legacyrecurringproductpricefree",
+    "LegacyRecurringProductPriceOutput": ".legacyrecurringproductprice_output",
+    "LegacyRecurringProductPriceOutputTypedDict": ".legacyrecurringproductprice_output",
+    "LegacyRecurringProductPriceCustomOutput": ".legacyrecurringproductpricecustom_output",
+    "LegacyRecurringProductPriceCustomOutputTypedDict": ".legacyrecurringproductpricecustom_output",
+    "LegacyRecurringProductPriceFixedOutput": ".legacyrecurringproductpricefixed_output",
+    "LegacyRecurringProductPriceFixedOutputTypedDict": ".legacyrecurringproductpricefixed_output",
+    "LegacyRecurringProductPriceFreeOutput": ".legacyrecurringproductpricefree_output",
+    "LegacyRecurringProductPriceFreeOutputTypedDict": ".legacyrecurringproductpricefree_output",
     "LicenseKeysGetActivationRequest": ".license_keys_get_activationop",
     "LicenseKeysGetActivationRequestTypedDict": ".license_keys_get_activationop",
     "LicenseKeysGetRequest": ".license_keys_getop",
@@ -5614,8 +5631,6 @@ _dynamic_imports: dict[str, str] = {
     "RevenueTypedDict": ".metricperiod",
     "SucceededCheckouts": ".metricperiod",
     "SucceededCheckoutsTypedDict": ".metricperiod",
-    "Metrics": ".metrics",
-    "MetricsTypedDict": ".metrics",
     "MetricsGetQueryParamCustomerIDFilter": ".metrics_getop",
     "MetricsGetQueryParamCustomerIDFilterTypedDict": ".metrics_getop",
     "MetricsGetQueryParamOrganizationIDFilter": ".metrics_getop",
@@ -5626,6 +5641,8 @@ _dynamic_imports: dict[str, str] = {
     "MetricsGetRequestTypedDict": ".metrics_getop",
     "QueryParamProductBillingTypeFilter": ".metrics_getop",
     "QueryParamProductBillingTypeFilterTypedDict": ".metrics_getop",
+    "MetricsOutput": ".metrics_output",
+    "MetricsOutputTypedDict": ".metrics_output",
     "MetricsIntervalLimit": ".metricsintervallimit",
     "MetricsIntervalLimitTypedDict": ".metricsintervallimit",
     "MetricsIntervalsLimits": ".metricsintervalslimits",
@@ -5699,15 +5716,9 @@ _dynamic_imports: dict[str, str] = {
     "MetricsTotalsSucceededCheckoutsTypedDict": ".metricstotals",
     "MetricsTotalsTypedDict": ".metricstotals",
     "MetricType": ".metrictype",
-    "MissingInvoiceBillingDetails": ".missinginvoicebillingdetails",
-    "MissingInvoiceBillingDetailsData": ".missinginvoicebillingdetails",
     "NoResponseError": ".no_response_error",
     "NotOpenCheckout": ".notopencheckout",
     "NotOpenCheckoutData": ".notopencheckout",
-    "NotPaidOrder": ".notpaidorder",
-    "NotPaidOrderData": ".notpaidorder",
-    "NotPermitted": ".notpermitted",
-    "NotPermittedData": ".notpermitted",
     "Oauth2AuthorizeResponseOauth2Authorize": ".oauth2_authorizeop",
     "Oauth2AuthorizeResponseOauth2AuthorizeTypedDict": ".oauth2_authorizeop",
     "Oauth2ClientsOauth2DeleteClientRequest": ".oauth2_clients_oauth2_delete_clientop",
@@ -5781,6 +5792,8 @@ _dynamic_imports: dict[str, str] = {
     "OrganizationAvatarFileReadTypedDict": ".organizationavatarfileread",
     "OrganizationCreate": ".organizationcreate",
     "OrganizationCreateTypedDict": ".organizationcreate",
+    "OrganizationCustomerEmailSettings": ".organizationcustomeremailsettings",
+    "OrganizationCustomerEmailSettingsTypedDict": ".organizationcustomeremailsettings",
     "OrganizationDetails": ".organizationdetails",
     "OrganizationDetailsTypedDict": ".organizationdetails",
     "SwitchingFrom": ".organizationdetails",
@@ -5843,6 +5856,20 @@ _dynamic_imports: dict[str, str] = {
     "QueryParamStatusFilterTypedDict": ".payments_listop",
     "PaymentSortProperty": ".paymentsortproperty",
     "PaymentStatus": ".paymentstatus",
+    "PolarExceptionsAlreadyCanceledSubscription": ".polar_exceptions_alreadycanceledsubscription",
+    "PolarExceptionsAlreadyCanceledSubscriptionData": ".polar_exceptions_alreadycanceledsubscription",
+    "PolarExceptionsInvoiceAlreadyExists": ".polar_exceptions_invoicealreadyexists",
+    "PolarExceptionsInvoiceAlreadyExistsData": ".polar_exceptions_invoicealreadyexists",
+    "PolarExceptionsMissingInvoiceBillingDetails": ".polar_exceptions_missinginvoicebillingdetails",
+    "PolarExceptionsMissingInvoiceBillingDetailsData": ".polar_exceptions_missinginvoicebillingdetails",
+    "PolarExceptionsNotPaidOrder": ".polar_exceptions_notpaidorder",
+    "PolarExceptionsNotPaidOrderData": ".polar_exceptions_notpaidorder",
+    "PolarExceptionsNotPermitted": ".polar_exceptions_notpermitted",
+    "PolarExceptionsNotPermittedData": ".polar_exceptions_notpermitted",
+    "PolarExceptionsResourceNotFound": ".polar_exceptions_resourcenotfound",
+    "PolarExceptionsResourceNotFoundData": ".polar_exceptions_resourcenotfound",
+    "PolarExceptionsSubscriptionLocked": ".polar_exceptions_subscriptionlocked",
+    "PolarExceptionsSubscriptionLockedData": ".polar_exceptions_subscriptionlocked",
     "Prices": ".product",
     "PricesTypedDict": ".product",
     "Product": ".product",
@@ -5870,30 +5897,30 @@ _dynamic_imports: dict[str, str] = {
     "ProductMediaFileCreateTypedDict": ".productmediafilecreate",
     "ProductMediaFileRead": ".productmediafileread",
     "ProductMediaFileReadTypedDict": ".productmediafileread",
-    "ProductPrice": ".productprice",
-    "ProductPriceTypedDict": ".productprice",
-    "ProductPriceCustom": ".productpricecustom",
-    "ProductPriceCustomTypedDict": ".productpricecustom",
+    "ProductPriceOutput": ".productprice_output",
+    "ProductPriceOutputTypedDict": ".productprice_output",
+    "ProductPriceCustomOutput": ".productpricecustom_output",
+    "ProductPriceCustomOutputTypedDict": ".productpricecustom_output",
     "ProductPriceCustomCreate": ".productpricecustomcreate",
     "ProductPriceCustomCreateTypedDict": ".productpricecustomcreate",
-    "ProductPriceFixed": ".productpricefixed",
-    "ProductPriceFixedTypedDict": ".productpricefixed",
+    "ProductPriceFixedOutput": ".productpricefixed_output",
+    "ProductPriceFixedOutputTypedDict": ".productpricefixed_output",
     "ProductPriceFixedCreate": ".productpricefixedcreate",
     "ProductPriceFixedCreateTypedDict": ".productpricefixedcreate",
-    "ProductPriceFree": ".productpricefree",
-    "ProductPriceFreeTypedDict": ".productpricefree",
+    "ProductPriceFreeOutput": ".productpricefree_output",
+    "ProductPriceFreeOutputTypedDict": ".productpricefree_output",
     "ProductPriceFreeCreate": ".productpricefreecreate",
     "ProductPriceFreeCreateTypedDict": ".productpricefreecreate",
     "ProductPriceMeter": ".productpricemeter",
     "ProductPriceMeterTypedDict": ".productpricemeter",
-    "ProductPriceMeteredUnit": ".productpricemeteredunit",
-    "ProductPriceMeteredUnitTypedDict": ".productpricemeteredunit",
+    "ProductPriceMeteredUnitOutput": ".productpricemeteredunit_output",
+    "ProductPriceMeteredUnitOutputTypedDict": ".productpricemeteredunit_output",
     "ProductPriceMeteredUnitCreate": ".productpricemeteredunitcreate",
     "ProductPriceMeteredUnitCreateTypedDict": ".productpricemeteredunitcreate",
     "UnitAmount": ".productpricemeteredunitcreate",
     "UnitAmountTypedDict": ".productpricemeteredunitcreate",
-    "ProductPriceSeatBased": ".productpriceseatbased",
-    "ProductPriceSeatBasedTypedDict": ".productpriceseatbased",
+    "ProductPriceSeatBasedOutput": ".productpriceseatbased_output",
+    "ProductPriceSeatBasedOutputTypedDict": ".productpriceseatbased_output",
     "ProductPriceSeatBasedCreate": ".productpriceseatbasedcreate",
     "ProductPriceSeatBasedCreateTypedDict": ".productpriceseatbasedcreate",
     "ProductPriceSeatTier": ".productpriceseattier",
@@ -5950,8 +5977,6 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionIDFilterTypedDict": ".refunds_listop",
     "RefundSortProperty": ".refundsortproperty",
     "RefundStatus": ".refundstatus",
-    "ResourceNotFound": ".resourcenotfound",
-    "ResourceNotFoundData": ".resourcenotfound",
     "ResponseValidationError": ".responsevalidationerror",
     "RevokeTokenRequest": ".revoketokenrequest",
     "RevokeTokenRequestTypedDict": ".revoketokenrequest",
@@ -6002,8 +6027,6 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionCycledEventTypedDict": ".subscriptioncycledevent",
     "SubscriptionCycledMetadata": ".subscriptioncycledmetadata",
     "SubscriptionCycledMetadataTypedDict": ".subscriptioncycledmetadata",
-    "SubscriptionLocked": ".subscriptionlocked",
-    "SubscriptionLockedData": ".subscriptionlocked",
     "SubscriptionMeter": ".subscriptionmeter",
     "SubscriptionMeterTypedDict": ".subscriptionmeter",
     "SubscriptionProductUpdatedEvent": ".subscriptionproductupdatedevent",
@@ -6133,8 +6156,6 @@ _dynamic_imports: dict[str, str] = {
     "UniqueAggregation": ".uniqueaggregation",
     "UniqueAggregationTypedDict": ".uniqueaggregation",
     "UserEvent": ".userevent",
-    "UserEventMetadata": ".userevent",
-    "UserEventMetadataTypedDict": ".userevent",
     "UserEventTypedDict": ".userevent",
     "UserInfoOrganization": ".userinfoorganization",
     "UserInfoOrganizationTypedDict": ".userinfoorganization",

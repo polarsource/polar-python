@@ -5,15 +5,15 @@ Order is not paid or is missing billing name or address.
 
 ## Supported Types
 
-### `models.MissingInvoiceBillingDetails`
+### `models.PolarExceptionsMissingInvoiceBillingDetails`
 
 ```python
-value: models.MissingInvoiceBillingDetails = /* values here */
+value: models.PolarExceptionsMissingInvoiceBillingDetails = /* values here */
 ```
 
-### `models.NotPaidOrder`
+### `models.PolarExceptionsNotPaidOrder`
 
 ```python
-value: models.NotPaidOrder = /* values here */
+value: models.PolarExceptionsNotPaidOrder = /* values here */
 ```
 

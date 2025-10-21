@@ -5,9 +5,9 @@ from .customerpaymentmethodcreaterequiresactionresponse import (
     CustomerPaymentMethodCreateRequiresActionResponse,
     CustomerPaymentMethodCreateRequiresActionResponseTypedDict,
 )
-from .customerpaymentmethodcreatesucceededresponse import (
-    CustomerPaymentMethodCreateSucceededResponse,
-    CustomerPaymentMethodCreateSucceededResponseTypedDict,
+from .customerpaymentmethodcreatesucceededresponse_output import (
+    CustomerPaymentMethodCreateSucceededResponseOutput,
+    CustomerPaymentMethodCreateSucceededResponseOutputTypedDict,
 )
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
@@ -18,7 +18,7 @@ from typing_extensions import Annotated, TypeAliasType
 CustomerPaymentMethodCreateResponseTypedDict = TypeAliasType(
     "CustomerPaymentMethodCreateResponseTypedDict",
     Union[
-        CustomerPaymentMethodCreateSucceededResponseTypedDict,
+        CustomerPaymentMethodCreateSucceededResponseOutputTypedDict,
         CustomerPaymentMethodCreateRequiresActionResponseTypedDict,
     ],
 )
@@ -29,7 +29,7 @@ CustomerPaymentMethodCreateResponse = Annotated[
         Annotated[
             CustomerPaymentMethodCreateRequiresActionResponse, Tag("requires_action")
         ],
-        Annotated[CustomerPaymentMethodCreateSucceededResponse, Tag("succeeded")],
+        Annotated[CustomerPaymentMethodCreateSucceededResponseOutput, Tag("succeeded")],
     ],
     Discriminator(lambda m: get_discriminator(m, "status", "status")),
 ]

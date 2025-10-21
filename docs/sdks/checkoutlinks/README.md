@@ -143,11 +143,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| models.HTTPValidationError             | 422                                    | application/json                       |
+| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## update
 
@@ -187,11 +187,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| models.HTTPValidationError             | 422                                    | application/json                       |
+| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## delete
 
@@ -225,8 +225,8 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
+| models.HTTPValidationError             | 422                                    | application/json                       |
+| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |

@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 from .address import Address, AddressTypedDict
-from .attachedcustomfield import AttachedCustomField, AttachedCustomFieldTypedDict
+from .attachedcustomfield_output import (
+    AttachedCustomFieldOutput,
+    AttachedCustomFieldOutputTypedDict,
+)
 from .checkoutbillingaddressfields import (
     CheckoutBillingAddressFields,
     CheckoutBillingAddressFieldsTypedDict,
@@ -25,12 +28,12 @@ from .checkoutdiscountpercentagerepeatduration import (
 )
 from .checkoutproduct import CheckoutProduct, CheckoutProductTypedDict
 from .checkoutstatus import CheckoutStatus
-from .legacyrecurringproductprice import (
-    LegacyRecurringProductPrice,
-    LegacyRecurringProductPriceTypedDict,
+from .legacyrecurringproductprice_output import (
+    LegacyRecurringProductPriceOutput,
+    LegacyRecurringProductPriceOutputTypedDict,
 )
 from .paymentprocessor import PaymentProcessor
-from .productprice import ProductPrice, ProductPriceTypedDict
+from .productprice_output import ProductPriceOutput, ProductPriceOutputTypedDict
 from .trialinterval import TrialInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
@@ -58,15 +61,15 @@ CheckoutMetadataTypedDict = TypeAliasType(
 CheckoutMetadata = TypeAliasType("CheckoutMetadata", Union[str, int, float, bool])
 
 
-CheckoutProductPriceTypedDict = TypeAliasType(
-    "CheckoutProductPriceTypedDict",
-    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+ProductPriceTypedDict = TypeAliasType(
+    "ProductPriceTypedDict",
+    Union[LegacyRecurringProductPriceOutputTypedDict, ProductPriceOutputTypedDict],
 )
 r"""Price of the selected product."""
 
 
-CheckoutProductPrice = TypeAliasType(
-    "CheckoutProductPrice", Union[LegacyRecurringProductPrice, ProductPrice]
+ProductPrice = TypeAliasType(
+    "ProductPrice", Union[LegacyRecurringProductPriceOutput, ProductPriceOutput]
 )
 r"""Price of the selected product."""
 
@@ -187,11 +190,11 @@ class CheckoutTypedDict(TypedDict):
     r"""List of products available to select."""
     product: CheckoutProductTypedDict
     r"""Product data for a checkout session."""
-    product_price: CheckoutProductPriceTypedDict
+    product_price: ProductPriceTypedDict
     r"""Price of the selected product."""
     discount: Nullable[CheckoutDiscountTypedDict]
     subscription_id: Nullable[str]
-    attached_custom_fields: List[AttachedCustomFieldTypedDict]
+    attached_custom_fields: List[AttachedCustomFieldOutputTypedDict]
     customer_metadata: Dict[str, CustomerMetadataTypedDict]
     custom_field_data: NotRequired[
         Dict[str, Nullable[CheckoutCustomFieldDataTypedDict]]
@@ -341,14 +344,14 @@ class Checkout(BaseModel):
     product: CheckoutProduct
     r"""Product data for a checkout session."""
 
-    product_price: CheckoutProductPrice
+    product_price: ProductPrice
     r"""Price of the selected product."""
 
     discount: Nullable[CheckoutDiscount]
 
     subscription_id: Nullable[str]
 
-    attached_custom_fields: List[AttachedCustomField]
+    attached_custom_fields: List[AttachedCustomFieldOutput]
 
     customer_metadata: Dict[str, CustomerMetadata]
 

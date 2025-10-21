@@ -115,6 +115,8 @@ class OrderTypedDict(TypedDict):
     subscription_id: Nullable[str]
     checkout_id: Nullable[str]
     metadata: Dict[str, OrderMetadataTypedDict]
+    platform_fee_amount: int
+    r"""Platform fee amount in cents."""
     customer: OrderCustomerTypedDict
     user_id: str
     product: OrderProductTypedDict
@@ -194,6 +196,9 @@ class Order(BaseModel):
     checkout_id: Nullable[str]
 
     metadata: Dict[str, OrderMetadata]
+
+    platform_fee_amount: int
+    r"""Platform fee amount in cents."""
 
     customer: OrderCustomer
 

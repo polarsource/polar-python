@@ -43,7 +43,7 @@ class Customers(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param email: Filter by exact email.
-        :param query: Filter by name or email.
+        :param query: Filter by name, email, or external ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -192,7 +192,7 @@ class Customers(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param email: Filter by exact email.
-        :param query: Filter by name or email.
+        :param query: Filter by name, email, or external ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -757,9 +757,9 @@ class Customers(BaseSDK):
             return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -851,9 +851,9 @@ class Customers(BaseSDK):
             return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -953,9 +953,9 @@ class Customers(BaseSDK):
             return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1055,9 +1055,9 @@ class Customers(BaseSDK):
             return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1161,9 +1161,9 @@ class Customers(BaseSDK):
             return
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1267,9 +1267,9 @@ class Customers(BaseSDK):
             return
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1361,9 +1361,9 @@ class Customers(BaseSDK):
             return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1455,9 +1455,9 @@ class Customers(BaseSDK):
             return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1563,9 +1563,9 @@ class Customers(BaseSDK):
             return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1671,9 +1671,9 @@ class Customers(BaseSDK):
             return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1767,9 +1767,9 @@ class Customers(BaseSDK):
             return
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1863,9 +1863,9 @@ class Customers(BaseSDK):
             return
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1963,9 +1963,9 @@ class Customers(BaseSDK):
             return unmarshal_json_response(models.CustomerState, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -2063,9 +2063,9 @@ class Customers(BaseSDK):
             return unmarshal_json_response(models.CustomerState, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -2163,9 +2163,9 @@ class Customers(BaseSDK):
             return unmarshal_json_response(models.CustomerState, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -2263,9 +2263,9 @@ class Customers(BaseSDK):
             return unmarshal_json_response(models.CustomerState, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -2357,9 +2357,9 @@ class Customers(BaseSDK):
             return unmarshal_json_response(models.CustomerBalance, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -2451,9 +2451,9 @@ class Customers(BaseSDK):
             return unmarshal_json_response(models.CustomerBalance, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res

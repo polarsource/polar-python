@@ -470,9 +470,9 @@ class PolarBenefitGrants(BaseSDK):
             return unmarshal_json_response(models.CustomerBenefitGrant, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -571,9 +571,9 @@ class PolarBenefitGrants(BaseSDK):
             return unmarshal_json_response(models.CustomerBenefitGrant, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -686,13 +686,15 @@ class PolarBenefitGrants(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.CustomerBenefitGrant, http_res)
         if utils.match_response(http_res, "403", "application/json"):
-            response_data = unmarshal_json_response(models.NotPermittedData, http_res)
-            raise models.NotPermitted(response_data, http_res)
+            response_data = unmarshal_json_response(
+                models.PolarExceptionsNotPermittedData, http_res
+            )
+            raise models.PolarExceptionsNotPermitted(response_data, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -805,13 +807,15 @@ class PolarBenefitGrants(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.CustomerBenefitGrant, http_res)
         if utils.match_response(http_res, "403", "application/json"):
-            response_data = unmarshal_json_response(models.NotPermittedData, http_res)
-            raise models.NotPermitted(response_data, http_res)
+            response_data = unmarshal_json_response(
+                models.PolarExceptionsNotPermittedData, http_res
+            )
+            raise models.PolarExceptionsNotPermitted(response_data, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
