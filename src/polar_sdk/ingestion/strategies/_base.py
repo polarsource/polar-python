@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING, Any, TypeVar, Union
 from .._base import Ingestion
 
 if TYPE_CHECKING:
-    from polar_sdk import EventCreateCustomerMetadataTypedDict
+    from polar_sdk import EventMetadataInput
 
 
 class BaseStrategy:
@@ -19,7 +19,7 @@ class BaseStrategy:
         self,
         event_name: str,
         ingestion: Ingestion,
-        metadata: Union[dict[str, "EventCreateCustomerMetadataTypedDict"], None] = None,
+        metadata: Union[dict[str, "EventMetadataInput"], None] = None,
     ) -> None:
         self.event_name = event_name
         self._ingestion = ingestion

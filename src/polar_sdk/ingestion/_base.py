@@ -10,7 +10,7 @@ from typing import TYPE_CHECKING, Union
 from polar_sdk import Polar
 
 if TYPE_CHECKING:
-    from polar_sdk import EventCreateCustomerMetadataTypedDict, EventsModelTypedDict
+    from polar_sdk import EventMetadataInput, EventsModelTypedDict
 
     from .strategies._base import S
 
@@ -63,7 +63,7 @@ class Ingestion:
         self,
         strategy_class: type["S"],
         event_name: str,
-        **metadata: "EventCreateCustomerMetadataTypedDict",
+        **metadata: "EventMetadataInput",
     ) -> "S":
         """
         Instantiate a strategy tied to this ingestion client.

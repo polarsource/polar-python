@@ -6,7 +6,7 @@ from pydantic_ai.models import TYPE_CHECKING
 from ._base import BaseStrategy
 
 if TYPE_CHECKING:
-    from polar_sdk import EventCreateCustomerMetadataTypedDict
+    from polar_sdk import EventMetadataInput
 
 
 class PydanticAIStrategy(BaseStrategy):
@@ -18,7 +18,7 @@ class PydanticAIStrategy(BaseStrategy):
         self,
         external_customer_id: str,
         result: AgentRunResult[Any],
-        **metadata: "EventCreateCustomerMetadataTypedDict",
+        **metadata: "EventMetadataInput",
     ) -> None:
         """
         Report usage from a PydanticAI agent run.
