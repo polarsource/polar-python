@@ -18,12 +18,12 @@ from .discountpercentagerepeatdurationbase import (
     DiscountPercentageRepeatDurationBase,
     DiscountPercentageRepeatDurationBaseTypedDict,
 )
-from .legacyrecurringproductprice import (
-    LegacyRecurringProductPrice,
-    LegacyRecurringProductPriceTypedDict,
+from .legacyrecurringproductprice_output import (
+    LegacyRecurringProductPriceOutput,
+    LegacyRecurringProductPriceOutputTypedDict,
 )
 from .product import Product, ProductTypedDict
-from .productprice import ProductPrice, ProductPriceTypedDict
+from .productprice_output import ProductPriceOutput, ProductPriceOutputTypedDict
 from .subscriptioncustomer import SubscriptionCustomer, SubscriptionCustomerTypedDict
 from .subscriptionmeter import SubscriptionMeter, SubscriptionMeterTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
@@ -73,12 +73,12 @@ SubscriptionDiscount = TypeAliasType(
 
 SubscriptionPricesTypedDict = TypeAliasType(
     "SubscriptionPricesTypedDict",
-    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+    Union[LegacyRecurringProductPriceOutputTypedDict, ProductPriceOutputTypedDict],
 )
 
 
 SubscriptionPrices = TypeAliasType(
-    "SubscriptionPrices", Union[LegacyRecurringProductPrice, ProductPrice]
+    "SubscriptionPrices", Union[LegacyRecurringProductPriceOutput, ProductPriceOutput]
 )
 
 

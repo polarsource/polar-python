@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 from .address import Address, AddressTypedDict
-from .attachedcustomfield import AttachedCustomField, AttachedCustomFieldTypedDict
+from .attachedcustomfield_output import (
+    AttachedCustomFieldOutput,
+    AttachedCustomFieldOutputTypedDict,
+)
 from .checkoutbillingaddressfields import (
     CheckoutBillingAddressFields,
     CheckoutBillingAddressFieldsTypedDict,
@@ -24,13 +27,13 @@ from .checkoutdiscountpercentagerepeatduration import (
     CheckoutDiscountPercentageRepeatDurationTypedDict,
 )
 from .checkoutproduct import CheckoutProduct, CheckoutProductTypedDict
-from .legacyrecurringproductprice import (
-    LegacyRecurringProductPrice,
-    LegacyRecurringProductPriceTypedDict,
+from .legacyrecurringproductprice_output import (
+    LegacyRecurringProductPriceOutput,
+    LegacyRecurringProductPriceOutputTypedDict,
 )
 from .organization import Organization, OrganizationTypedDict
 from .paymentprocessor import PaymentProcessor
-from .productprice import ProductPrice, ProductPriceTypedDict
+from .productprice_output import ProductPriceOutput, ProductPriceOutputTypedDict
 from .trialinterval import TrialInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
@@ -54,14 +57,14 @@ CheckoutPublicConfirmedCustomFieldData = TypeAliasType(
 
 CheckoutPublicConfirmedProductPriceTypedDict = TypeAliasType(
     "CheckoutPublicConfirmedProductPriceTypedDict",
-    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+    Union[LegacyRecurringProductPriceOutputTypedDict, ProductPriceOutputTypedDict],
 )
 r"""Price of the selected product."""
 
 
 CheckoutPublicConfirmedProductPrice = TypeAliasType(
     "CheckoutPublicConfirmedProductPrice",
-    Union[LegacyRecurringProductPrice, ProductPrice],
+    Union[LegacyRecurringProductPriceOutput, ProductPriceOutput],
 )
 r"""Price of the selected product."""
 
@@ -173,7 +176,7 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     r"""Price of the selected product."""
     discount: Nullable[CheckoutPublicConfirmedDiscountTypedDict]
     organization: OrganizationTypedDict
-    attached_custom_fields: List[AttachedCustomFieldTypedDict]
+    attached_custom_fields: List[AttachedCustomFieldOutputTypedDict]
     customer_session_token: str
     custom_field_data: NotRequired[
         Dict[str, Nullable[CheckoutPublicConfirmedCustomFieldDataTypedDict]]
@@ -315,7 +318,7 @@ class CheckoutPublicConfirmed(BaseModel):
 
     organization: Organization
 
-    attached_custom_fields: List[AttachedCustomField]
+    attached_custom_fields: List[AttachedCustomFieldOutput]
 
     customer_session_token: str
 

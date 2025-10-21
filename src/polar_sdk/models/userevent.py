@@ -2,28 +2,20 @@
 
 from __future__ import annotations
 from .customer import Customer, CustomerTypedDict
+from .eventmetadataoutput import EventMetadataOutput, EventMetadataOutputTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Literal, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
-
-
-UserEventMetadataTypedDict = TypeAliasType(
-    "UserEventMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-UserEventMetadata = TypeAliasType("UserEventMetadata", Union[str, int, float, bool])
+from typing import Dict, Literal
+from typing_extensions import Annotated, TypedDict
 
 
 class UserEventTypedDict(TypedDict):
     r"""An event you created through the ingestion API."""
 
-    metadata: Dict[str, UserEventMetadataTypedDict]
     id: str
     r"""The ID of the object."""
     timestamp: datetime
@@ -38,14 +30,13 @@ class UserEventTypedDict(TypedDict):
     r"""ID of the customer in your system associated with the event."""
     name: str
     r"""The name of the event."""
+    metadata: Dict[str, EventMetadataOutputTypedDict]
     source: Literal["user"]
     r"""The source of the event. `system` events are created by Polar. `user` events are the one you create through our ingestion API."""
 
 
 class UserEvent(BaseModel):
     r"""An event you created through the ingestion API."""
-
-    metadata: Dict[str, UserEventMetadata]
 
     id: str
     r"""The ID of the object."""
@@ -67,6 +58,8 @@ class UserEvent(BaseModel):
 
     name: str
     r"""The name of the event."""
+
+    metadata: Dict[str, EventMetadataOutput]
 
     SOURCE: Annotated[
         Annotated[Literal["user"], AfterValidator(validate_const("user"))],

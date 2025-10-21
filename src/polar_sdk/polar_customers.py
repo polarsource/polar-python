@@ -1157,9 +1157,9 @@ class PolarCustomers(BaseSDK):
             raise models.PaymentMethodInUseByActiveSubscription(response_data, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1263,9 +1263,9 @@ class PolarCustomers(BaseSDK):
             raise models.PaymentMethodInUseByActiveSubscription(response_data, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
+                models.PolarExceptionsResourceNotFoundData, http_res
             )
-            raise models.ResourceNotFound(response_data, http_res)
+            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
