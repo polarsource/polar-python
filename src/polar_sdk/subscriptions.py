@@ -611,9 +611,9 @@ class Subscriptions(BaseSDK):
             return unmarshal_json_response(models.Subscription, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsResourceNotFoundData, http_res
+                models.ResourceNotFoundData, http_res
             )
-            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
+            raise models.ResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -705,9 +705,9 @@ class Subscriptions(BaseSDK):
             return unmarshal_json_response(models.Subscription, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsResourceNotFoundData, http_res
+                models.ResourceNotFoundData, http_res
             )
-            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
+            raise models.ResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -813,21 +813,19 @@ class Subscriptions(BaseSDK):
             return unmarshal_json_response(models.Subscription, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsAlreadyCanceledSubscriptionData, http_res
+                models.AlreadyCanceledSubscriptionData, http_res
             )
-            raise models.PolarExceptionsAlreadyCanceledSubscription(
-                response_data, http_res
-            )
+            raise models.AlreadyCanceledSubscription(response_data, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsResourceNotFoundData, http_res
+                models.ResourceNotFoundData, http_res
             )
-            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
+            raise models.ResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "409", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsSubscriptionLockedData, http_res
+                models.SubscriptionLockedData, http_res
             )
-            raise models.PolarExceptionsSubscriptionLocked(response_data, http_res)
+            raise models.SubscriptionLocked(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -933,21 +931,19 @@ class Subscriptions(BaseSDK):
             return unmarshal_json_response(models.Subscription, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsAlreadyCanceledSubscriptionData, http_res
+                models.AlreadyCanceledSubscriptionData, http_res
             )
-            raise models.PolarExceptionsAlreadyCanceledSubscription(
-                response_data, http_res
-            )
+            raise models.AlreadyCanceledSubscription(response_data, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsResourceNotFoundData, http_res
+                models.ResourceNotFoundData, http_res
             )
-            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
+            raise models.ResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "409", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsSubscriptionLockedData, http_res
+                models.SubscriptionLockedData, http_res
             )
-            raise models.PolarExceptionsSubscriptionLocked(response_data, http_res)
+            raise models.SubscriptionLocked(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1039,21 +1035,19 @@ class Subscriptions(BaseSDK):
             return unmarshal_json_response(models.Subscription, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsAlreadyCanceledSubscriptionData, http_res
+                models.AlreadyCanceledSubscriptionData, http_res
             )
-            raise models.PolarExceptionsAlreadyCanceledSubscription(
-                response_data, http_res
-            )
+            raise models.AlreadyCanceledSubscription(response_data, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsResourceNotFoundData, http_res
+                models.ResourceNotFoundData, http_res
             )
-            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
+            raise models.ResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "409", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsSubscriptionLockedData, http_res
+                models.SubscriptionLockedData, http_res
             )
-            raise models.PolarExceptionsSubscriptionLocked(response_data, http_res)
+            raise models.SubscriptionLocked(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1145,21 +1139,19 @@ class Subscriptions(BaseSDK):
             return unmarshal_json_response(models.Subscription, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsAlreadyCanceledSubscriptionData, http_res
+                models.AlreadyCanceledSubscriptionData, http_res
             )
-            raise models.PolarExceptionsAlreadyCanceledSubscription(
-                response_data, http_res
-            )
+            raise models.AlreadyCanceledSubscription(response_data, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsResourceNotFoundData, http_res
+                models.ResourceNotFoundData, http_res
             )
-            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
+            raise models.ResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "409", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsSubscriptionLockedData, http_res
+                models.SubscriptionLockedData, http_res
             )
-            raise models.PolarExceptionsSubscriptionLocked(response_data, http_res)
+            raise models.SubscriptionLocked(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res

@@ -29,7 +29,7 @@ if TYPE_CHECKING:
     from polar_sdk.files import Files
     from polar_sdk.license_keys import LicenseKeys
     from polar_sdk.meters import Meters
-    from polar_sdk.metrics import Metrics
+    from polar_sdk.metrics_sdk import MetricsSDK
     from polar_sdk.oauth2 import Oauth2
     from polar_sdk.orders import Orders
     from polar_sdk.organizations import Organizations
@@ -57,7 +57,7 @@ class Polar(BaseSDK):
     refunds: "Refunds"
     checkouts: "Checkouts"
     files: "Files"
-    metrics: "Metrics"
+    metrics: "MetricsSDK"
     license_keys: "LicenseKeys"
     checkout_links: "CheckoutLinks"
     custom_fields: "CustomFields"
@@ -81,7 +81,7 @@ class Polar(BaseSDK):
         "refunds": ("polar_sdk.refunds", "Refunds"),
         "checkouts": ("polar_sdk.checkouts", "Checkouts"),
         "files": ("polar_sdk.files", "Files"),
-        "metrics": ("polar_sdk.metrics", "Metrics"),
+        "metrics": ("polar_sdk.metrics_sdk", "MetricsSDK"),
         "license_keys": ("polar_sdk.license_keys", "LicenseKeys"),
         "checkout_links": ("polar_sdk.checkout_links", "CheckoutLinks"),
         "custom_fields": ("polar_sdk.custom_fields", "CustomFields"),

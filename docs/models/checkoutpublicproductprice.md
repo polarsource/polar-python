@@ -5,15 +5,15 @@ Price of the selected product.
 
 ## Supported Types
 
-### `models.LegacyRecurringProductPriceOutput`
+### `models.LegacyRecurringProductPrice`
 
 ```python
-value: models.LegacyRecurringProductPriceOutput = /* values here */
+value: models.LegacyRecurringProductPrice = /* values here */
 ```
 
-### `models.ProductPriceOutput`
+### `models.ProductPrice`
 
 ```python
-value: models.ProductPriceOutput = /* values here */
+value: models.ProductPrice = /* values here */
 ```
 

@@ -543,9 +543,9 @@ class Discounts(BaseSDK):
             return unmarshal_json_response(models.Discount, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsResourceNotFoundData, http_res
+                models.ResourceNotFoundData, http_res
             )
-            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
+            raise models.ResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -637,9 +637,9 @@ class Discounts(BaseSDK):
             return unmarshal_json_response(models.Discount, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsResourceNotFoundData, http_res
+                models.ResourceNotFoundData, http_res
             )
-            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
+            raise models.ResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -739,9 +739,9 @@ class Discounts(BaseSDK):
             return unmarshal_json_response(models.Discount, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsResourceNotFoundData, http_res
+                models.ResourceNotFoundData, http_res
             )
-            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
+            raise models.ResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -841,9 +841,9 @@ class Discounts(BaseSDK):
             return unmarshal_json_response(models.Discount, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsResourceNotFoundData, http_res
+                models.ResourceNotFoundData, http_res
             )
-            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
+            raise models.ResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -935,9 +935,9 @@ class Discounts(BaseSDK):
             return
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsResourceNotFoundData, http_res
+                models.ResourceNotFoundData, http_res
             )
-            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
+            raise models.ResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -1029,9 +1029,9 @@ class Discounts(BaseSDK):
             return
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
-                models.PolarExceptionsResourceNotFoundData, http_res
+                models.ResourceNotFoundData, http_res
             )
-            raise models.PolarExceptionsResourceNotFound(response_data, http_res)
+            raise models.ResourceNotFound(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res

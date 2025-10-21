@@ -153,11 +153,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| models.HTTPValidationError             | 422                                    | application/json                       |
-| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## update
 
@@ -202,14 +202,14 @@ with Polar(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| models.AlreadyActiveSubscriptionError  | 403                                    | application/json                       |
-| models.NotOpenCheckout                 | 403                                    | application/json                       |
-| models.PaymentNotReady                 | 403                                    | application/json                       |
-| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| models.HTTPValidationError             | 422                                    | application/json                       |
-| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| models.AlreadyActiveSubscriptionError | 403                                   | application/json                      |
+| models.NotOpenCheckout                | 403                                   | application/json                      |
+| models.PaymentNotReady                | 403                                   | application/json                      |
+| models.ResourceNotFound               | 404                                   | application/json                      |
+| models.HTTPValidationError            | 422                                   | application/json                      |
+| models.SDKError                       | 4XX, 5XX                              | \*/\*                                 |
 
 ## client_get
 
@@ -244,12 +244,12 @@ with Polar() as polar:
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| models.ExpiredCheckoutError            | 410                                    | application/json                       |
-| models.HTTPValidationError             | 422                                    | application/json                       |
-| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models.ResourceNotFound     | 404                         | application/json            |
+| models.ExpiredCheckoutError | 410                         | application/json            |
+| models.HTTPValidationError  | 422                         | application/json            |
+| models.SDKError             | 4XX, 5XX                    | \*/\*                       |
 
 ## client_update
 
@@ -287,15 +287,15 @@ with Polar() as polar:
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| models.AlreadyActiveSubscriptionError  | 403                                    | application/json                       |
-| models.NotOpenCheckout                 | 403                                    | application/json                       |
-| models.PaymentNotReady                 | 403                                    | application/json                       |
-| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| models.ExpiredCheckoutError            | 410                                    | application/json                       |
-| models.HTTPValidationError             | 422                                    | application/json                       |
-| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| models.AlreadyActiveSubscriptionError | 403                                   | application/json                      |
+| models.NotOpenCheckout                | 403                                   | application/json                      |
+| models.PaymentNotReady                | 403                                   | application/json                      |
+| models.ResourceNotFound               | 404                                   | application/json                      |
+| models.ExpiredCheckoutError           | 410                                   | application/json                      |
+| models.HTTPValidationError            | 422                                   | application/json                      |
+| models.SDKError                       | 4XX, 5XX                              | \*/\*                                 |
 
 ## client_confirm
 
@@ -340,13 +340,13 @@ with Polar(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| models.PaymentError                    | 400                                    | application/json                       |
-| models.AlreadyActiveSubscriptionError  | 403                                    | application/json                       |
-| models.NotOpenCheckout                 | 403                                    | application/json                       |
-| models.PaymentNotReady                 | 403                                    | application/json                       |
-| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| models.ExpiredCheckoutError            | 410                                    | application/json                       |
-| models.HTTPValidationError             | 422                                    | application/json                       |
-| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| models.PaymentError                   | 400                                   | application/json                      |
+| models.AlreadyActiveSubscriptionError | 403                                   | application/json                      |
+| models.NotOpenCheckout                | 403                                   | application/json                      |
+| models.PaymentNotReady                | 403                                   | application/json                      |
+| models.ResourceNotFound               | 404                                   | application/json                      |
+| models.ExpiredCheckoutError           | 410                                   | application/json                      |
+| models.HTTPValidationError            | 422                                   | application/json                      |
+| models.SDKError                       | 4XX, 5XX                              | \*/\*                                 |

@@ -9,9 +9,9 @@
 value: models.CustomerPaymentMethodCreateRequiresActionResponse = /* values here */
 ```
 
-### `models.CustomerPaymentMethodCreateSucceededResponseOutput`
+### `models.CustomerPaymentMethodCreateSucceededResponse`
 
 ```python
-value: models.CustomerPaymentMethodCreateSucceededResponseOutput = /* values here */
+value: models.CustomerPaymentMethodCreateSucceededResponse = /* values here */
 ```
 

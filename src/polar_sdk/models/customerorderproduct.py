@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 from .benefitpublic import BenefitPublic, BenefitPublicTypedDict
-from .legacyrecurringproductprice_output import (
-    LegacyRecurringProductPriceOutput,
-    LegacyRecurringProductPriceOutputTypedDict,
+from .legacyrecurringproductprice import (
+    LegacyRecurringProductPrice,
+    LegacyRecurringProductPriceTypedDict,
 )
 from .organization import Organization, OrganizationTypedDict
 from .productmediafileread import ProductMediaFileRead, ProductMediaFileReadTypedDict
-from .productprice_output import ProductPriceOutput, ProductPriceOutputTypedDict
+from .productprice import ProductPrice, ProductPriceTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .trialinterval import TrialInterval
 from datetime import datetime
@@ -20,13 +20,12 @@ from typing_extensions import TypeAliasType, TypedDict
 
 CustomerOrderProductPricesTypedDict = TypeAliasType(
     "CustomerOrderProductPricesTypedDict",
-    Union[LegacyRecurringProductPriceOutputTypedDict, ProductPriceOutputTypedDict],
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
 )
 
 
 CustomerOrderProductPrices = TypeAliasType(
-    "CustomerOrderProductPrices",
-    Union[LegacyRecurringProductPriceOutput, ProductPriceOutput],
+    "CustomerOrderProductPrices", Union[LegacyRecurringProductPrice, ProductPrice]
 )
 
 
