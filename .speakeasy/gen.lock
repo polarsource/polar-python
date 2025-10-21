@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: de7ecdd703b773b4918fdbdffc8a7291
+  docChecksum: d98f0afb6456414d1ff72ca3b167e5fd
   docVersion: 0.1.0
   speakeasyVersion: 1.637.3
   generationVersion: 2.727.9
-  releaseVersion: 0.27.0
-  configChecksum: 91e8196bf109eae45b00403128e9f0a2
+  releaseVersion: 0.27.1
+  configChecksum: 80dffce332c4721d784ac6bee5d50c22
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -53,8 +53,9 @@ generatedFiles:
   - docs/models/aggregation.md
   - docs/models/aggregationfunction.md
   - docs/models/alreadyactivesubscriptionerror.md
+  - docs/models/alreadycanceledsubscription.md
+  - docs/models/attachedcustomfield.md
   - docs/models/attachedcustomfieldcreate.md
-  - docs/models/attachedcustomfieldoutput.md
   - docs/models/authorizationcodetokenrequest.md
   - docs/models/authorizeorganization.md
   - docs/models/authorizeresponseorganization.md
@@ -80,7 +81,7 @@ generatedFiles:
   - docs/models/benefitdiscordcreatemetadata.md
   - docs/models/benefitdiscordcreateproperties.md
   - docs/models/benefitdiscordmetadata.md
-  - docs/models/benefitdiscordpropertiesoutput.md
+  - docs/models/benefitdiscordproperties.md
   - docs/models/benefitdiscordsubscriber.md
   - docs/models/benefitdiscordsubscribermetadata.md
   - docs/models/benefitdiscordsubscriberproperties.md
@@ -226,6 +227,7 @@ generatedFiles:
   - docs/models/checkoutlinkupdatemetadata.md
   - docs/models/checkoutmetadata.md
   - docs/models/checkoutproduct.md
+  - docs/models/checkoutproductprice.md
   - docs/models/checkoutproductprices.md
   - docs/models/checkoutpublic.md
   - docs/models/checkoutpublicconfirmed.md
@@ -318,7 +320,7 @@ generatedFiles:
   - docs/models/customerpaymentmethodcreate.md
   - docs/models/customerpaymentmethodcreaterequiresactionresponse.md
   - docs/models/customerpaymentmethodcreateresponse.md
-  - docs/models/customerpaymentmethodcreatesucceededresponseoutput.md
+  - docs/models/customerpaymentmethodcreatesucceededresponse.md
   - docs/models/customerportalbenefitgrantsgetrequest.md
   - docs/models/customerportalbenefitgrantsgetsecurity.md
   - docs/models/customerportalbenefitgrantslistqueryparambenefitidfilter.md
@@ -593,10 +595,11 @@ generatedFiles:
   - docs/models/introspecttokenrequest.md
   - docs/models/introspecttokenrequesttokentypehint.md
   - docs/models/introspecttokenresponse.md
-  - docs/models/legacyrecurringproductpricecustomoutput.md
-  - docs/models/legacyrecurringproductpricefixedoutput.md
-  - docs/models/legacyrecurringproductpricefreeoutput.md
-  - docs/models/legacyrecurringproductpriceoutput.md
+  - docs/models/invoicealreadyexists.md
+  - docs/models/legacyrecurringproductprice.md
+  - docs/models/legacyrecurringproductpricecustom.md
+  - docs/models/legacyrecurringproductpricefixed.md
+  - docs/models/legacyrecurringproductpricefree.md
   - docs/models/licensekeyactivate.md
   - docs/models/licensekeyactivateconditions.md
   - docs/models/licensekeyactivatemeta.md
@@ -676,6 +679,7 @@ generatedFiles:
   - docs/models/methodfilter.md
   - docs/models/metric.md
   - docs/models/metricperiod.md
+  - docs/models/metrics.md
   - docs/models/metricsgetqueryparamcustomeridfilter.md
   - docs/models/metricsgetqueryparamorganizationidfilter.md
   - docs/models/metricsgetqueryparamproductidfilter.md
@@ -683,7 +687,6 @@ generatedFiles:
   - docs/models/metricsintervallimit.md
   - docs/models/metricsintervalslimits.md
   - docs/models/metricslimits.md
-  - docs/models/metricsoutput.md
   - docs/models/metricsresponse.md
   - docs/models/metricstotals.md
   - docs/models/metricstotalsactivesubscriptions.md
@@ -718,6 +721,7 @@ generatedFiles:
   - docs/models/metricstotalsrevenue.md
   - docs/models/metricstotalssucceededcheckouts.md
   - docs/models/metrictype.md
+  - docs/models/missinginvoicebillingdetails.md
   - docs/models/monthlyrecurringrevenue.md
   - docs/models/namefilter.md
   - docs/models/netaverageordervalue.md
@@ -727,6 +731,8 @@ generatedFiles:
   - docs/models/newsubscriptionsnetrevenue.md
   - docs/models/newsubscriptionsrevenue.md
   - docs/models/notopencheckout.md
+  - docs/models/notpaidorder.md
+  - docs/models/notpermitted.md
   - docs/models/oauth2authorizeresponseoauth2authorize.md
   - docs/models/oauth2clientconfiguration.md
   - docs/models/oauth2clientconfigurationupdate.md
@@ -809,13 +815,6 @@ generatedFiles:
   - docs/models/paymentsortproperty.md
   - docs/models/paymentstatus.md
   - docs/models/permission.md
-  - docs/models/polarexceptionsalreadycanceledsubscription.md
-  - docs/models/polarexceptionsinvoicealreadyexists.md
-  - docs/models/polarexceptionsmissinginvoicebillingdetails.md
-  - docs/models/polarexceptionsnotpaidorder.md
-  - docs/models/polarexceptionsnotpermitted.md
-  - docs/models/polarexceptionsresourcenotfound.md
-  - docs/models/polarexceptionssubscriptionlocked.md
   - docs/models/prices.md
   - docs/models/product.md
   - docs/models/productbenefitsupdate.md
@@ -833,18 +832,17 @@ generatedFiles:
   - docs/models/productmediafileread.md
   - docs/models/productmetadata.md
   - docs/models/productprice.md
+  - docs/models/productpricecustom.md
   - docs/models/productpricecustomcreate.md
-  - docs/models/productpricecustomoutput.md
+  - docs/models/productpricefixed.md
   - docs/models/productpricefixedcreate.md
-  - docs/models/productpricefixedoutput.md
+  - docs/models/productpricefree.md
   - docs/models/productpricefreecreate.md
-  - docs/models/productpricefreeoutput.md
   - docs/models/productpricemeter.md
+  - docs/models/productpricemeteredunit.md
   - docs/models/productpricemeteredunitcreate.md
-  - docs/models/productpricemeteredunitoutput.md
-  - docs/models/productpriceoutput.md
+  - docs/models/productpriceseatbased.md
   - docs/models/productpriceseatbasedcreate.md
-  - docs/models/productpriceseatbasedoutput.md
   - docs/models/productpriceseattier.md
   - docs/models/productpriceseattiers.md
   - docs/models/productpricetype.md
@@ -893,6 +891,7 @@ generatedFiles:
   - docs/models/renewedsubscriptions.md
   - docs/models/renewedsubscriptionsnetrevenue.md
   - docs/models/renewedsubscriptionsrevenue.md
+  - docs/models/resourcenotfound.md
   - docs/models/revenue.md
   - docs/models/revoketokenrequest.md
   - docs/models/revoketokenresponse.md
@@ -918,6 +917,7 @@ generatedFiles:
   - docs/models/subscriptioncycledmetadata.md
   - docs/models/subscriptiondiscount.md
   - docs/models/subscriptionidfilter.md
+  - docs/models/subscriptionlocked.md
   - docs/models/subscriptionmeter.md
   - docs/models/subscriptionprices.md
   - docs/models/subscriptionproductupdatedevent.md
@@ -1024,7 +1024,7 @@ generatedFiles:
   - docs/sdks/files/README.md
   - docs/sdks/licensekeys/README.md
   - docs/sdks/meters/README.md
-  - docs/sdks/metrics/README.md
+  - docs/sdks/metricssdk/README.md
   - docs/sdks/oauth2/README.md
   - docs/sdks/orders/README.md
   - docs/sdks/organizations/README.md
@@ -1071,13 +1071,14 @@ generatedFiles:
   - src/polar_sdk/httpclient.py
   - src/polar_sdk/license_keys.py
   - src/polar_sdk/meters.py
-  - src/polar_sdk/metrics.py
+  - src/polar_sdk/metrics_sdk.py
   - src/polar_sdk/models/__init__.py
   - src/polar_sdk/models/address.py
   - src/polar_sdk/models/addressinput.py
   - src/polar_sdk/models/aggregationfunction.py
   - src/polar_sdk/models/alreadyactivesubscriptionerror.py
-  - src/polar_sdk/models/attachedcustomfield_output.py
+  - src/polar_sdk/models/alreadycanceledsubscription.py
+  - src/polar_sdk/models/attachedcustomfield.py
   - src/polar_sdk/models/attachedcustomfieldcreate.py
   - src/polar_sdk/models/authorizationcodetokenrequest.py
   - src/polar_sdk/models/authorizeorganization.py
@@ -1098,7 +1099,7 @@ generatedFiles:
   - src/polar_sdk/models/benefitdiscord.py
   - src/polar_sdk/models/benefitdiscordcreate.py
   - src/polar_sdk/models/benefitdiscordcreateproperties.py
-  - src/polar_sdk/models/benefitdiscordproperties_output.py
+  - src/polar_sdk/models/benefitdiscordproperties.py
   - src/polar_sdk/models/benefitdiscordsubscriber.py
   - src/polar_sdk/models/benefitdiscordsubscriberproperties.py
   - src/polar_sdk/models/benefitdiscordupdate.py
@@ -1280,7 +1281,7 @@ generatedFiles:
   - src/polar_sdk/models/customerpaymentmethodcreate.py
   - src/polar_sdk/models/customerpaymentmethodcreaterequiresactionresponse.py
   - src/polar_sdk/models/customerpaymentmethodcreateresponse.py
-  - src/polar_sdk/models/customerpaymentmethodcreatesucceededresponse_output.py
+  - src/polar_sdk/models/customerpaymentmethodcreatesucceededresponse.py
   - src/polar_sdk/models/customerportalcustomer.py
   - src/polar_sdk/models/customerportalcustomerupdate.py
   - src/polar_sdk/models/customerportaloauthaccount.py
@@ -1400,10 +1401,11 @@ generatedFiles:
   - src/polar_sdk/models/httpvalidationerror.py
   - src/polar_sdk/models/introspecttokenrequest.py
   - src/polar_sdk/models/introspecttokenresponse.py
-  - src/polar_sdk/models/legacyrecurringproductprice_output.py
-  - src/polar_sdk/models/legacyrecurringproductpricecustom_output.py
-  - src/polar_sdk/models/legacyrecurringproductpricefixed_output.py
-  - src/polar_sdk/models/legacyrecurringproductpricefree_output.py
+  - src/polar_sdk/models/invoicealreadyexists.py
+  - src/polar_sdk/models/legacyrecurringproductprice.py
+  - src/polar_sdk/models/legacyrecurringproductpricecustom.py
+  - src/polar_sdk/models/legacyrecurringproductpricefixed.py
+  - src/polar_sdk/models/legacyrecurringproductpricefree.py
   - src/polar_sdk/models/license_keys_get_activationop.py
   - src/polar_sdk/models/license_keys_getop.py
   - src/polar_sdk/models/license_keys_listop.py
@@ -1459,16 +1461,19 @@ generatedFiles:
   - src/polar_sdk/models/meterupdate.py
   - src/polar_sdk/models/metric.py
   - src/polar_sdk/models/metricperiod.py
+  - src/polar_sdk/models/metrics.py
   - src/polar_sdk/models/metrics_getop.py
-  - src/polar_sdk/models/metrics_output.py
   - src/polar_sdk/models/metricsintervallimit.py
   - src/polar_sdk/models/metricsintervalslimits.py
   - src/polar_sdk/models/metricslimits.py
   - src/polar_sdk/models/metricsresponse.py
   - src/polar_sdk/models/metricstotals.py
   - src/polar_sdk/models/metrictype.py
+  - src/polar_sdk/models/missinginvoicebillingdetails.py
   - src/polar_sdk/models/no_response_error.py
   - src/polar_sdk/models/notopencheckout.py
+  - src/polar_sdk/models/notpaidorder.py
+  - src/polar_sdk/models/notpermitted.py
   - src/polar_sdk/models/oauth2_authorizeop.py
   - src/polar_sdk/models/oauth2_clients_oauth2_delete_clientop.py
   - src/polar_sdk/models/oauth2_clients_oauth2_get_clientop.py
@@ -1523,13 +1528,6 @@ generatedFiles:
   - src/polar_sdk/models/payments_listop.py
   - src/polar_sdk/models/paymentsortproperty.py
   - src/polar_sdk/models/paymentstatus.py
-  - src/polar_sdk/models/polar_exceptions_alreadycanceledsubscription.py
-  - src/polar_sdk/models/polar_exceptions_invoicealreadyexists.py
-  - src/polar_sdk/models/polar_exceptions_missinginvoicebillingdetails.py
-  - src/polar_sdk/models/polar_exceptions_notpaidorder.py
-  - src/polar_sdk/models/polar_exceptions_notpermitted.py
-  - src/polar_sdk/models/polar_exceptions_resourcenotfound.py
-  - src/polar_sdk/models/polar_exceptions_subscriptionlocked.py
   - src/polar_sdk/models/polarerror.py
   - src/polar_sdk/models/product.py
   - src/polar_sdk/models/productbenefitsupdate.py
@@ -1539,17 +1537,17 @@ generatedFiles:
   - src/polar_sdk/models/productcreaterecurring.py
   - src/polar_sdk/models/productmediafilecreate.py
   - src/polar_sdk/models/productmediafileread.py
-  - src/polar_sdk/models/productprice_output.py
-  - src/polar_sdk/models/productpricecustom_output.py
+  - src/polar_sdk/models/productprice.py
+  - src/polar_sdk/models/productpricecustom.py
   - src/polar_sdk/models/productpricecustomcreate.py
-  - src/polar_sdk/models/productpricefixed_output.py
+  - src/polar_sdk/models/productpricefixed.py
   - src/polar_sdk/models/productpricefixedcreate.py
-  - src/polar_sdk/models/productpricefree_output.py
+  - src/polar_sdk/models/productpricefree.py
   - src/polar_sdk/models/productpricefreecreate.py
   - src/polar_sdk/models/productpricemeter.py
-  - src/polar_sdk/models/productpricemeteredunit_output.py
+  - src/polar_sdk/models/productpricemeteredunit.py
   - src/polar_sdk/models/productpricemeteredunitcreate.py
-  - src/polar_sdk/models/productpriceseatbased_output.py
+  - src/polar_sdk/models/productpriceseatbased.py
   - src/polar_sdk/models/productpriceseatbasedcreate.py
   - src/polar_sdk/models/productpriceseattier.py
   - src/polar_sdk/models/productpriceseattiers.py
@@ -1569,6 +1567,7 @@ generatedFiles:
   - src/polar_sdk/models/refunds_listop.py
   - src/polar_sdk/models/refundsortproperty.py
   - src/polar_sdk/models/refundstatus.py
+  - src/polar_sdk/models/resourcenotfound.py
   - src/polar_sdk/models/responsevalidationerror.py
   - src/polar_sdk/models/revoketokenrequest.py
   - src/polar_sdk/models/revoketokenresponse.py
@@ -1590,6 +1589,7 @@ generatedFiles:
   - src/polar_sdk/models/subscriptioncustomer.py
   - src/polar_sdk/models/subscriptioncycledevent.py
   - src/polar_sdk/models/subscriptioncycledmetadata.py
+  - src/polar_sdk/models/subscriptionlocked.py
   - src/polar_sdk/models/subscriptionmeter.py
   - src/polar_sdk/models/subscriptionproductupdatedevent.py
   - src/polar_sdk/models/subscriptionproductupdatedmetadata.py
@@ -3664,4 +3664,4 @@ examples:
           application/json: {"expires_at": "2024-05-11T10:26:41.943Z", "return_url": "https://affectionate-ectoderm.com/"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Python SDK Changes Detected:\n* `polar._endpointcheckout_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointcheckout_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointorder_created_post()`: \n  *  `request.data.platform_fee_amount` **Added** **Breaking** :warning:\n* `polar._endpointorder_updated_post()`: \n  *  `request.data.platform_fee_amount` **Added** **Breaking** :warning:\n* `polar._endpointorder_paid_post()`: \n  *  `request.data.platform_fee_amount` **Added** **Breaking** :warning:\n* `polar._endpointorder_refunded_post()`: \n  *  `request.data.platform_fee_amount` **Added** **Breaking** :warning:\n* `polar._endpointsubscription_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_active_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_canceled_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_uncanceled_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_revoked_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointproduct_created_post()`: \n  *  `request.data.prices.[]` **Changed** **Breaking** :warning:\n* `polar._endpointproduct_updated_post()`: \n  *  `request.data.prices.[]` **Changed** **Breaking** :warning:\n* `polar._endpointorganization_updated_post()`: \n  *  `request.data.customer_email_settings` **Added** **Breaking** :warning:\n* `polar.organizations.list()`:  `response.items.[].customer_email_settings` **Added**\n* `polar.organizations.create()`: \n  *  `request.customer_email_settings` **Added**\n  *  `response.customer_email_settings` **Added**\n* `polar.organizations.get()`:  `response.customer_email_settings` **Added**\n* `polar.organizations.update()`: \n  *  `request.organization_update.customer_email_settings` **Added**\n  *  `response.customer_email_settings` **Added**\n* `polar.subscriptions.list()`:  `response.items.[]` **Changed**\n* `polar.subscriptions.get()`:  `response` **Changed**\n* `polar.subscriptions.revoke()`:  `response` **Changed**\n* `polar.subscriptions.update()`:  `response` **Changed**\n* `polar.oauth2.clients.create()`: \n  *  `request.default_sub_type` **Added**\n* `polar.oauth2.clients.update()`: \n  *  `request.o_auth2client_configuration_update.default_sub_type` **Added**\n* `polar.products.list()`:  `response.items.[].prices.[]` **Changed**\n* `polar.products.create()`:  `response.prices.[]` **Changed**\n* `polar.products.get()`:  `response.prices.[]` **Changed**\n* `polar.products.update()`:  `response.prices.[]` **Changed**\n* `polar.products.update_benefits()`:  `response.prices.[]` **Changed**\n* `polar.orders.list()`:  `response.items.[].platform_fee_amount` **Added**\n* `polar.orders.get()`:  `response.platform_fee_amount` **Added**\n* `polar.orders.update()`:  `response.platform_fee_amount` **Added**\n* `polar.orders.generate_invoice()`:  `error` **Changed**\n* `polar.checkouts.list()`:  `response.items.[]` **Changed**\n* `polar.checkouts.create()`:  `response` **Changed**\n* `polar.checkouts.get()`:  `response` **Changed**\n* `polar.checkouts.update()`:  `response` **Changed**\n* `polar.checkouts.client_get()`:  `response` **Changed**\n* `polar.checkouts.client_update()`:  `response` **Changed**\n* `polar.checkouts.client_confirm()`:  `response` **Changed**\n* `polar.checkout-links.list()`:  `response.items.[].products.[].prices.[]` **Changed**\n* `polar.checkout-links.create()`:  `response.products.[].prices.[]` **Changed**\n* `polar.checkout-links.get()`:  `response.products.[].prices.[]` **Changed**\n* `polar.checkout-links.update()`:  `response.products.[].prices.[]` **Changed**\n* `polar.customer_portal.benefit-grants.list()`:  `response.items.[].[customer_benefit_grant_discord].benefit.organization.customer_email_settings` **Added**\n* `polar.customer_portal.benefit-grants.get()`:  `response.[customer_benefit_grant_downloadables].benefit.organization.customer_email_settings` **Added**\n* `polar.customer_portal.benefit-grants.update()`:  `response.[customer_benefit_grant_discord].benefit.organization.customer_email_settings` **Added**\n* `polar.customer_portal.seats.list_claimed_subscriptions()`:  `response.[]` **Changed**\n* `polar.customer_portal.orders.list()`:  `response.items.[].product` **Changed**\n* `polar.customer_portal.orders.get()`:  `response.product` **Changed**\n* `polar.customer_portal.orders.update()`:  `response.product` **Changed**\n* `polar.customer_portal.orders.generate_invoice()`:  `error` **Changed**\n* `polar.customer_portal.organizations.get()`:  `response` **Changed**\n* `polar.customer_portal.subscriptions.list()`:  `response.items.[]` **Changed**\n* `polar.customer_portal.subscriptions.get()`:  `response` **Changed**\n* `polar.customer_portal.subscriptions.cancel()`:  `response` **Changed**\n* `polar.customer_portal.subscriptions.update()`:  `response` **Changed**\n"
+releaseNotes: "## Python SDK Changes Detected:\n* `polar._endpointcheckout_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointcheckout_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_active_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_canceled_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_uncanceled_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_revoked_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointproduct_created_post()`: \n  *  `request.data.prices.[]` **Changed** **Breaking** :warning:\n* `polar._endpointproduct_updated_post()`: \n  *  `request.data.prices.[]` **Changed** **Breaking** :warning:\n* `polar.subscriptions.list()`:  `response.items.[]` **Changed**\n* `polar.subscriptions.get()`:  `response` **Changed**\n* `polar.subscriptions.revoke()`:  `response` **Changed**\n* `polar.subscriptions.update()`:  `response` **Changed**\n* `polar.products.list()`:  `response.items.[].prices.[]` **Changed**\n* `polar.products.create()`:  `response.prices.[]` **Changed**\n* `polar.products.get()`:  `response.prices.[]` **Changed**\n* `polar.products.update()`:  `response.prices.[]` **Changed**\n* `polar.products.update_benefits()`:  `response.prices.[]` **Changed**\n* `polar.orders.generate_invoice()`:  `error` **Changed**\n* `polar.checkouts.list()`:  `response.items.[]` **Changed**\n* `polar.checkouts.create()`:  `response` **Changed**\n* `polar.checkouts.get()`:  `response` **Changed**\n* `polar.checkouts.update()`:  `response` **Changed**\n* `polar.checkouts.client_get()`:  `response` **Changed**\n* `polar.checkouts.client_update()`:  `response` **Changed**\n* `polar.checkouts.client_confirm()`:  `response` **Changed**\n* `polar.checkout-links.list()`:  `response.items.[].products.[].prices.[]` **Changed**\n* `polar.checkout-links.create()`:  `response.products.[].prices.[]` **Changed**\n* `polar.checkout-links.get()`:  `response.products.[].prices.[]` **Changed**\n* `polar.checkout-links.update()`:  `response.products.[].prices.[]` **Changed**\n* `polar.customer_portal.seats.list_claimed_subscriptions()`:  `response.[]` **Changed**\n* `polar.customer_portal.orders.list()`:  `response.items.[].product.prices.[]` **Changed**\n* `polar.customer_portal.orders.get()`:  `response.product.prices.[]` **Changed**\n* `polar.customer_portal.orders.update()`:  `response.product.prices.[]` **Changed**\n* `polar.customer_portal.orders.generate_invoice()`:  `error` **Changed**\n* `polar.customer_portal.organizations.get()`:  `response.products.[].prices.[]` **Changed**\n* `polar.customer_portal.subscriptions.list()`:  `response.items.[]` **Changed**\n* `polar.customer_portal.subscriptions.get()`:  `response` **Changed**\n* `polar.customer_portal.subscriptions.cancel()`:  `response` **Changed**\n* `polar.customer_portal.subscriptions.update()`:  `response` **Changed**\n"

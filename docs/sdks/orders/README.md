@@ -101,11 +101,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| models.HTTPValidationError             | 422                                    | application/json                       |
-| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## update
 
@@ -151,11 +151,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| models.HTTPValidationError             | 422                                    | application/json                       |
-| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## generate_invoice
 
@@ -194,12 +194,12 @@ with Polar(
 
 ### Errors
 
-| Error Type                                         | Status Code                                        | Content Type                                       |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| models.PolarExceptionsInvoiceAlreadyExists         | 409                                                | application/json                                   |
-| models.PolarExceptionsMissingInvoiceBillingDetails | 422                                                | application/json                                   |
-| models.PolarExceptionsNotPaidOrder                 | 422                                                | application/json                                   |
-| models.SDKError                                    | 4XX, 5XX                                           | \*/\*                                              |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.InvoiceAlreadyExists         | 409                                 | application/json                    |
+| models.MissingInvoiceBillingDetails | 422                                 | application/json                    |
+| models.NotPaidOrder                 | 422                                 | application/json                    |
+| models.SDKError                     | 4XX, 5XX                            | \*/\*                               |
 
 ## invoice
 
@@ -238,8 +238,8 @@ with Polar(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| models.HTTPValidationError             | 422                                    | application/json                       |
-| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |

@@ -1,19 +1,35 @@
 # ProductPrice
 
-Price of the selected product.
-
 
 ## Supported Types
 
-### `models.LegacyRecurringProductPriceOutput`
+### `models.ProductPriceCustom`
 
 ```python
-value: models.LegacyRecurringProductPriceOutput = /* values here */
+value: models.ProductPriceCustom = /* values here */
 ```
 
-### `models.ProductPriceOutput`
+### `models.ProductPriceFixed`
 
 ```python
-value: models.ProductPriceOutput = /* values here */
+value: models.ProductPriceFixed = /* values here */
+```
+
+### `models.ProductPriceFree`
+
+```python
+value: models.ProductPriceFree = /* values here */
+```
+
+### `models.ProductPriceMeteredUnit`
+
+```python
+value: models.ProductPriceMeteredUnit = /* values here */
+```
+
+### `models.ProductPriceSeatBased`
+
+```python
+value: models.ProductPriceSeatBased = /* values here */
 ```
 

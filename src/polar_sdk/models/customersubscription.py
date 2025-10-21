@@ -10,11 +10,11 @@ from .customersubscriptionproduct import (
     CustomerSubscriptionProduct,
     CustomerSubscriptionProductTypedDict,
 )
-from .legacyrecurringproductprice_output import (
-    LegacyRecurringProductPriceOutput,
-    LegacyRecurringProductPriceOutputTypedDict,
+from .legacyrecurringproductprice import (
+    LegacyRecurringProductPrice,
+    LegacyRecurringProductPriceTypedDict,
 )
-from .productprice_output import ProductPriceOutput, ProductPriceOutputTypedDict
+from .productprice import ProductPrice, ProductPriceTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptionstatus import SubscriptionStatus
 from datetime import datetime
@@ -26,13 +26,12 @@ from typing_extensions import TypeAliasType, TypedDict
 
 CustomerSubscriptionPricesTypedDict = TypeAliasType(
     "CustomerSubscriptionPricesTypedDict",
-    Union[LegacyRecurringProductPriceOutputTypedDict, ProductPriceOutputTypedDict],
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
 )
 
 
 CustomerSubscriptionPrices = TypeAliasType(
-    "CustomerSubscriptionPrices",
-    Union[LegacyRecurringProductPriceOutput, ProductPriceOutput],
+    "CustomerSubscriptionPrices", Union[LegacyRecurringProductPrice, ProductPrice]
 )
 
 

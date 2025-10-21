@@ -147,11 +147,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| models.HTTPValidationError             | 422                                    | application/json                       |
-| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## update_webhook_endpoint
 
@@ -193,11 +193,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| models.HTTPValidationError             | 422                                    | application/json                       |
-| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## delete_webhook_endpoint
 
@@ -231,11 +231,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| models.HTTPValidationError             | 422                                    | application/json                       |
-| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## reset_webhook_endpoint_secret
 
@@ -274,11 +274,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| models.HTTPValidationError             | 422                                    | application/json                       |
-| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
 
 ## list_webhook_deliveries
 
@@ -367,8 +367,8 @@ with Polar(
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| models.PolarExceptionsResourceNotFound | 404                                    | application/json                       |
-| models.HTTPValidationError             | 422                                    | application/json                       |
-| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |

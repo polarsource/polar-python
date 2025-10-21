@@ -282,6 +282,6 @@ with Polar() as polar:
 | Error Type                                    | Status Code                                   | Content Type                                  |
 | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
 | models.PaymentMethodInUseByActiveSubscription | 400                                           | application/json                              |
-| models.PolarExceptionsResourceNotFound        | 404                                           | application/json                              |
+| models.ResourceNotFound                       | 404                                           | application/json                              |
 | models.HTTPValidationError                    | 422                                           | application/json                              |
 | models.SDKError                               | 4XX, 5XX                                      | \*/\*                                         |
