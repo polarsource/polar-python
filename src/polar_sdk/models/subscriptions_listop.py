@@ -978,6 +978,8 @@ class EventsListRequestTypedDict(TypedDict):
     r"""Filter by event name."""
     source: NotRequired[Nullable[SourceFilterTypedDict]]
     r"""Filter by event source."""
+    query: NotRequired[Nullable[str]]
+    r"""Query to filter events."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -1044,6 +1046,12 @@ class EventsListRequest(BaseModel):
     ] = UNSET
     r"""Filter by event source."""
 
+    query: Annotated[
+        OptionalNullable[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Query to filter events."""
+
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -1080,6 +1088,7 @@ class EventsListRequest(BaseModel):
             "meter_id",
             "name",
             "source",
+            "query",
             "page",
             "limit",
             "sorting",
@@ -1095,6 +1104,7 @@ class EventsListRequest(BaseModel):
             "meter_id",
             "name",
             "source",
+            "query",
             "sorting",
             "metadata",
         ]

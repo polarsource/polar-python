@@ -27,7 +27,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 python:
-  version: 0.27.1
+  version: 0.27.2
   additionalDependencies:
     dev:
       pydantic-ai-slim: ^0.1.0

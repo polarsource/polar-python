@@ -17,6 +17,10 @@ class MetricsTypedDict(TypedDict):
     r"""Information about a metric."""
     net_cumulative_revenue: MetricTypedDict
     r"""Information about a metric."""
+    costs: MetricTypedDict
+    r"""Information about a metric."""
+    cumulative_costs: MetricTypedDict
+    r"""Information about a metric."""
     average_order_value: MetricTypedDict
     r"""Information about a metric."""
     net_average_order_value: MetricTypedDict
@@ -85,6 +89,12 @@ class Metrics(BaseModel):
     r"""Information about a metric."""
 
     net_cumulative_revenue: Metric
+    r"""Information about a metric."""
+
+    costs: Metric
+    r"""Information about a metric."""
+
+    cumulative_costs: Metric
     r"""Information about a metric."""
 
     average_order_value: Metric

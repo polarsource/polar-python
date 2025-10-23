@@ -863,18 +863,13 @@ class PolarOrders(BaseSDK):
                 security_source=security,
             ),
             request=req,
-            error_status_codes=["409", "422", "4XX", "5XX"],
+            error_status_codes=["422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         response_data: Any = None
         if utils.match_response(http_res, "202", "application/json"):
             return unmarshal_json_response(Any, http_res)
-        if utils.match_response(http_res, "409", "application/json"):
-            response_data = unmarshal_json_response(
-                models.InvoiceAlreadyExistsData, http_res
-            )
-            raise models.InvoiceAlreadyExists(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoiceUnion,
@@ -967,18 +962,13 @@ class PolarOrders(BaseSDK):
                 security_source=security,
             ),
             request=req,
-            error_status_codes=["409", "422", "4XX", "5XX"],
+            error_status_codes=["422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         response_data: Any = None
         if utils.match_response(http_res, "202", "application/json"):
             return unmarshal_json_response(Any, http_res)
-        if utils.match_response(http_res, "409", "application/json"):
-            response_data = unmarshal_json_response(
-                models.InvoiceAlreadyExistsData, http_res
-            )
-            raise models.InvoiceAlreadyExists(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoiceUnion,

@@ -11,6 +11,8 @@ class OrganizationFeatureSettingsTypedDict(TypedDict):
     r"""If this organization has issue funding enabled"""
     seat_based_pricing_enabled: NotRequired[bool]
     r"""If this organization has seat-based pricing enabled"""
+    revops_enabled: NotRequired[bool]
+    r"""If this organization has RevOps enabled"""
 
 
 class OrganizationFeatureSettings(BaseModel):
@@ -19,3 +21,6 @@ class OrganizationFeatureSettings(BaseModel):
 
     seat_based_pricing_enabled: Optional[bool] = False
     r"""If this organization has seat-based pricing enabled"""
+
+    revops_enabled: Optional[bool] = False
+    r"""If this organization has RevOps enabled"""

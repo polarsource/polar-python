@@ -42,6 +42,7 @@ class Events(BaseSDK):
         source: OptionalNullable[
             Union[models.SourceFilter, models.SourceFilterTypedDict]
         ] = UNSET,
+        query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.EventSortProperty]] = UNSET,
@@ -71,6 +72,7 @@ class Events(BaseSDK):
         :param meter_id: Filter by a meter filter clause.
         :param name: Filter by event name.
         :param source: Filter by event source.
+        :param query: Query to filter events.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -100,6 +102,7 @@ class Events(BaseSDK):
             meter_id=meter_id,
             name=name,
             source=source,
+            query=query,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -171,6 +174,7 @@ class Events(BaseSDK):
                 meter_id=meter_id,
                 name=name,
                 source=source,
+                query=query,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -229,6 +233,7 @@ class Events(BaseSDK):
         source: OptionalNullable[
             Union[models.SourceFilter, models.SourceFilterTypedDict]
         ] = UNSET,
+        query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.EventSortProperty]] = UNSET,
@@ -258,6 +263,7 @@ class Events(BaseSDK):
         :param meter_id: Filter by a meter filter clause.
         :param name: Filter by event name.
         :param source: Filter by event source.
+        :param query: Query to filter events.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -287,6 +293,7 @@ class Events(BaseSDK):
             meter_id=meter_id,
             name=name,
             source=source,
+            query=query,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -358,6 +365,7 @@ class Events(BaseSDK):
                 meter_id=meter_id,
                 name=name,
                 source=source,
+                query=query,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,

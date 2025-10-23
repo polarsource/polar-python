@@ -5,9 +5,9 @@ from .customercancellationreason import CustomerCancellationReason
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptionstatus import SubscriptionStatus
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
 class CustomerOrderSubscriptionTypedDict(TypedDict):
@@ -22,6 +22,8 @@ class CustomerOrderSubscriptionTypedDict(TypedDict):
     currency: str
     r"""The currency of the subscription."""
     recurring_interval: SubscriptionRecurringInterval
+    recurring_interval_count: int
+    r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on."""
     status: SubscriptionStatus
     current_period_start: datetime
     r"""The start timestamp of the current billing period."""
@@ -50,6 +52,8 @@ class CustomerOrderSubscriptionTypedDict(TypedDict):
     checkout_id: Nullable[str]
     customer_cancellation_reason: Nullable[CustomerCancellationReason]
     customer_cancellation_comment: Nullable[str]
+    seats: NotRequired[Nullable[int]]
+    r"""Number of seats included in the subscription (for seat-based pricing)."""
 
 
 class CustomerOrderSubscription(BaseModel):
@@ -70,6 +74,9 @@ class CustomerOrderSubscription(BaseModel):
 
     recurring_interval: SubscriptionRecurringInterval
 
+    recurring_interval_count: int
+    r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on."""
+
     status: SubscriptionStatus
 
     current_period_start: datetime
@@ -114,9 +121,12 @@ class CustomerOrderSubscription(BaseModel):
 
     customer_cancellation_comment: Nullable[str]
 
+    seats: OptionalNullable[int] = UNSET
+    r"""Number of seats included in the subscription (for seat-based pricing)."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["seats"]
         nullable_fields = [
             "modified_at",
             "current_period_end",
@@ -130,6 +140,7 @@ class CustomerOrderSubscription(BaseModel):
             "checkout_id",
             "customer_cancellation_reason",
             "customer_cancellation_comment",
+            "seats",
         ]
         null_default_fields = []
 

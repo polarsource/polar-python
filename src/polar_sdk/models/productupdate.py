@@ -104,6 +104,8 @@ class ProductUpdateTypedDict(TypedDict):
     r"""The description of the product."""
     recurring_interval: NotRequired[Nullable[SubscriptionRecurringInterval]]
     r"""The recurring interval of the product. If `None`, the product is a one-time purchase. **Can only be set on legacy recurring products. Once set, it can't be changed.**"""
+    recurring_interval_count: NotRequired[Nullable[int]]
+    r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on. Once set, it can't be changed.**"""
     is_archived: NotRequired[Nullable[bool]]
     r"""Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally."""
     prices: NotRequired[Nullable[List[ProductUpdatePricesTypedDict]]]
@@ -146,6 +148,9 @@ class ProductUpdate(BaseModel):
     recurring_interval: OptionalNullable[SubscriptionRecurringInterval] = UNSET
     r"""The recurring interval of the product. If `None`, the product is a one-time purchase. **Can only be set on legacy recurring products. Once set, it can't be changed.**"""
 
+    recurring_interval_count: OptionalNullable[int] = UNSET
+    r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on. Once set, it can't be changed.**"""
+
     is_archived: OptionalNullable[bool] = UNSET
     r"""Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally."""
 
@@ -166,6 +171,7 @@ class ProductUpdate(BaseModel):
             "name",
             "description",
             "recurring_interval",
+            "recurring_interval_count",
             "is_archived",
             "prices",
             "medias",
@@ -177,6 +183,7 @@ class ProductUpdate(BaseModel):
             "name",
             "description",
             "recurring_interval",
+            "recurring_interval_count",
             "is_archived",
             "prices",
             "medias",

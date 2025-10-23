@@ -41,6 +41,18 @@ NetCumulativeRevenueTypedDict = TypeAliasType(
 NetCumulativeRevenue = TypeAliasType("NetCumulativeRevenue", Union[int, float])
 
 
+CostsTypedDict = TypeAliasType("CostsTypedDict", Union[int, float])
+
+
+Costs = TypeAliasType("Costs", Union[int, float])
+
+
+CumulativeCostsTypedDict = TypeAliasType("CumulativeCostsTypedDict", Union[int, float])
+
+
+CumulativeCosts = TypeAliasType("CumulativeCosts", Union[int, float])
+
+
 AverageOrderValueTypedDict = TypeAliasType(
     "AverageOrderValueTypedDict", Union[int, float]
 )
@@ -279,6 +291,8 @@ class MetricPeriodTypedDict(TypedDict):
     net_revenue: NetRevenueTypedDict
     cumulative_revenue: CumulativeRevenueTypedDict
     net_cumulative_revenue: NetCumulativeRevenueTypedDict
+    costs: CostsTypedDict
+    cumulative_costs: CumulativeCostsTypedDict
     average_order_value: AverageOrderValueTypedDict
     net_average_order_value: NetAverageOrderValueTypedDict
     one_time_products: OneTimeProductsTypedDict
@@ -326,6 +340,10 @@ class MetricPeriod(BaseModel):
     cumulative_revenue: CumulativeRevenue
 
     net_cumulative_revenue: NetCumulativeRevenue
+
+    costs: Costs
+
+    cumulative_costs: CumulativeCosts
 
     average_order_value: AverageOrderValue
 

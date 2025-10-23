@@ -29,7 +29,7 @@ from .subscriptionmeter import SubscriptionMeter, SubscriptionMeterTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptionstatus import SubscriptionStatus
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
@@ -94,6 +94,8 @@ class SubscriptionTypedDict(TypedDict):
     currency: str
     r"""The currency of the subscription."""
     recurring_interval: SubscriptionRecurringInterval
+    recurring_interval_count: int
+    r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on."""
     status: SubscriptionStatus
     current_period_start: datetime
     r"""The start timestamp of the current billing period."""
@@ -131,6 +133,8 @@ class SubscriptionTypedDict(TypedDict):
     r"""List of enabled prices for the subscription."""
     meters: List[SubscriptionMeterTypedDict]
     r"""List of meters associated with the subscription."""
+    seats: NotRequired[Nullable[int]]
+    r"""Number of seats included in the subscription (for seat-based pricing)."""
     custom_field_data: NotRequired[Dict[str, Nullable[CustomFieldDataTypedDict]]]
     r"""Key-value object storing custom field values."""
 
@@ -152,6 +156,9 @@ class Subscription(BaseModel):
     r"""The currency of the subscription."""
 
     recurring_interval: SubscriptionRecurringInterval
+
+    recurring_interval_count: int
+    r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on."""
 
     status: SubscriptionStatus
 
@@ -212,12 +219,15 @@ class Subscription(BaseModel):
     meters: List[SubscriptionMeter]
     r"""List of meters associated with the subscription."""
 
+    seats: OptionalNullable[int] = UNSET
+    r"""Number of seats included in the subscription (for seat-based pricing)."""
+
     custom_field_data: Optional[Dict[str, Nullable[CustomFieldData]]] = None
     r"""Key-value object storing custom field values."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["custom_field_data"]
+        optional_fields = ["seats", "custom_field_data"]
         nullable_fields = [
             "modified_at",
             "current_period_end",
@@ -231,6 +241,7 @@ class Subscription(BaseModel):
             "checkout_id",
             "customer_cancellation_reason",
             "customer_cancellation_comment",
+            "seats",
             "discount",
         ]
         null_default_fields = []

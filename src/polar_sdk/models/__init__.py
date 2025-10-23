@@ -838,6 +838,22 @@ if TYPE_CHECKING:
         CustomerPortalSubscriptionsUpdateSecurity,
         CustomerPortalSubscriptionsUpdateSecurityTypedDict,
     )
+    from .customer_seats_get_claim_infoop import (
+        CustomerSeatsGetClaimInfoRequest,
+        CustomerSeatsGetClaimInfoRequestTypedDict,
+    )
+    from .customer_seats_list_seatsop import (
+        CustomerSeatsListSeatsRequest,
+        CustomerSeatsListSeatsRequestTypedDict,
+    )
+    from .customer_seats_resend_invitationop import (
+        CustomerSeatsResendInvitationRequest,
+        CustomerSeatsResendInvitationRequestTypedDict,
+    )
+    from .customer_seats_revoke_seatop import (
+        CustomerSeatsRevokeSeatRequest,
+        CustomerSeatsRevokeSeatRequestTypedDict,
+    )
     from .customer_sessions_createop import (
         CustomerSessionsCreateCustomerSessionCreate,
         CustomerSessionsCreateCustomerSessionCreateTypedDict,
@@ -1050,6 +1066,10 @@ if TYPE_CHECKING:
         CustomersUpdateRequestTypedDict,
     )
     from .customerseat import CustomerSeat, CustomerSeatTypedDict
+    from .customerseatclaimresponse import (
+        CustomerSeatClaimResponse,
+        CustomerSeatClaimResponseTypedDict,
+    )
     from .customersession import CustomerSession, CustomerSessionTypedDict
     from .customersessioncustomerexternalidcreate import (
         CustomerSessionCustomerExternalIDCreate,
@@ -1459,7 +1479,6 @@ if TYPE_CHECKING:
         IntrospectTokenResponseTypedDict,
         TokenType,
     )
-    from .invoicealreadyexists import InvoiceAlreadyExists, InvoiceAlreadyExistsData
     from .legacyrecurringproductprice import (
         LegacyRecurringProductPrice,
         LegacyRecurringProductPriceTypedDict,
@@ -1698,6 +1717,10 @@ if TYPE_CHECKING:
         CheckoutsModelTypedDict,
         CommittedMonthlyRecurringRevenue,
         CommittedMonthlyRecurringRevenueTypedDict,
+        Costs,
+        CostsTypedDict,
+        CumulativeCosts,
+        CumulativeCostsTypedDict,
         CumulativeRevenue,
         CumulativeRevenueTypedDict,
         MetricPeriod,
@@ -1788,6 +1811,10 @@ if TYPE_CHECKING:
         MetricsTotalsCheckoutsTypedDict,
         MetricsTotalsCommittedMonthlyRecurringRevenue,
         MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict,
+        MetricsTotalsCosts,
+        MetricsTotalsCostsTypedDict,
+        MetricsTotalsCumulativeCosts,
+        MetricsTotalsCumulativeCostsTypedDict,
         MetricsTotalsCumulativeRevenue,
         MetricsTotalsCumulativeRevenueTypedDict,
         MetricsTotalsMonthlyRecurringRevenue,
@@ -1900,6 +1927,14 @@ if TYPE_CHECKING:
         OrderProductMetadata,
         OrderProductMetadataTypedDict,
         OrderProductTypedDict,
+    )
+    from .orders_exportop import (
+        OrdersExportQueryParamOrganizationIDFilter,
+        OrdersExportQueryParamOrganizationIDFilterTypedDict,
+        OrdersExportQueryParamProductIDFilter,
+        OrdersExportQueryParamProductIDFilterTypedDict,
+        OrdersExportRequest,
+        OrdersExportRequestTypedDict,
     )
     from .orders_generate_invoiceop import (
         OrdersGenerateInvoiceRequest,
@@ -2173,6 +2208,8 @@ if TYPE_CHECKING:
     from .scope import Scope
     from .sdkerror import SDKError
     from .seatassign import SeatAssign, SeatAssignTypedDict
+    from .seatclaim import SeatClaim, SeatClaimTypedDict
+    from .seatclaiminfo import SeatClaimInfo, SeatClaimInfoTypedDict
     from .seatslist import SeatsList, SeatsListTypedDict
     from .seatstatus import SeatStatus
     from .security import Security, SecurityTypedDict
@@ -2947,10 +2984,14 @@ __all__ = [
     "CommittedMonthlyRecurringRevenueTypedDict",
     "Conditions",
     "ConditionsTypedDict",
+    "Costs",
+    "CostsTypedDict",
     "CountAggregation",
     "CountAggregationTypedDict",
     "CountryAlpha2",
     "CountryAlpha2Input",
+    "CumulativeCosts",
+    "CumulativeCostsTypedDict",
     "CumulativeRevenue",
     "CumulativeRevenueTypedDict",
     "CustomField",
@@ -3320,7 +3361,17 @@ __all__ = [
     "CustomerProductPricesTypedDict",
     "CustomerProductTypedDict",
     "CustomerSeat",
+    "CustomerSeatClaimResponse",
+    "CustomerSeatClaimResponseTypedDict",
     "CustomerSeatTypedDict",
+    "CustomerSeatsGetClaimInfoRequest",
+    "CustomerSeatsGetClaimInfoRequestTypedDict",
+    "CustomerSeatsListSeatsRequest",
+    "CustomerSeatsListSeatsRequestTypedDict",
+    "CustomerSeatsResendInvitationRequest",
+    "CustomerSeatsResendInvitationRequestTypedDict",
+    "CustomerSeatsRevokeSeatRequest",
+    "CustomerSeatsRevokeSeatRequestTypedDict",
     "CustomerSession",
     "CustomerSessionCustomerExternalIDCreate",
     "CustomerSessionCustomerExternalIDCreateTypedDict",
@@ -3593,8 +3644,6 @@ __all__ = [
     "IntrospectTokenRequestTypedDict",
     "IntrospectTokenResponse",
     "IntrospectTokenResponseTypedDict",
-    "InvoiceAlreadyExists",
-    "InvoiceAlreadyExistsData",
     "LegacyRecurringProductPrice",
     "LegacyRecurringProductPriceCustom",
     "LegacyRecurringProductPriceCustomTypedDict",
@@ -3806,6 +3855,10 @@ __all__ = [
     "MetricsTotalsCheckoutsTypedDict",
     "MetricsTotalsCommittedMonthlyRecurringRevenue",
     "MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict",
+    "MetricsTotalsCosts",
+    "MetricsTotalsCostsTypedDict",
+    "MetricsTotalsCumulativeCosts",
+    "MetricsTotalsCumulativeCostsTypedDict",
     "MetricsTotalsCumulativeRevenue",
     "MetricsTotalsCumulativeRevenueTypedDict",
     "MetricsTotalsMonthlyRecurringRevenue",
@@ -3928,6 +3981,12 @@ __all__ = [
     "OrderTypedDict",
     "OrderUpdate",
     "OrderUpdateTypedDict",
+    "OrdersExportQueryParamOrganizationIDFilter",
+    "OrdersExportQueryParamOrganizationIDFilterTypedDict",
+    "OrdersExportQueryParamProductIDFilter",
+    "OrdersExportQueryParamProductIDFilterTypedDict",
+    "OrdersExportRequest",
+    "OrdersExportRequestTypedDict",
     "OrdersGenerateInvoiceRequest",
     "OrdersGenerateInvoiceRequestTypedDict",
     "OrdersGenerateInvoiceResponse422OrdersGenerateInvoice",
@@ -4192,6 +4251,10 @@ __all__ = [
     "Scope",
     "SeatAssign",
     "SeatAssignTypedDict",
+    "SeatClaim",
+    "SeatClaimInfo",
+    "SeatClaimInfoTypedDict",
+    "SeatClaimTypedDict",
     "SeatStatus",
     "SeatsList",
     "SeatsListTypedDict",
@@ -4963,6 +5026,14 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalSubscriptionsUpdateRequestTypedDict": ".customer_portal_subscriptions_updateop",
     "CustomerPortalSubscriptionsUpdateSecurity": ".customer_portal_subscriptions_updateop",
     "CustomerPortalSubscriptionsUpdateSecurityTypedDict": ".customer_portal_subscriptions_updateop",
+    "CustomerSeatsGetClaimInfoRequest": ".customer_seats_get_claim_infoop",
+    "CustomerSeatsGetClaimInfoRequestTypedDict": ".customer_seats_get_claim_infoop",
+    "CustomerSeatsListSeatsRequest": ".customer_seats_list_seatsop",
+    "CustomerSeatsListSeatsRequestTypedDict": ".customer_seats_list_seatsop",
+    "CustomerSeatsResendInvitationRequest": ".customer_seats_resend_invitationop",
+    "CustomerSeatsResendInvitationRequestTypedDict": ".customer_seats_resend_invitationop",
+    "CustomerSeatsRevokeSeatRequest": ".customer_seats_revoke_seatop",
+    "CustomerSeatsRevokeSeatRequestTypedDict": ".customer_seats_revoke_seatop",
     "CustomerSessionsCreateCustomerSessionCreate": ".customer_sessions_createop",
     "CustomerSessionsCreateCustomerSessionCreateTypedDict": ".customer_sessions_createop",
     "CustomerBalance": ".customerbalance",
@@ -5088,6 +5159,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomersUpdateRequestTypedDict": ".customers_updateop",
     "CustomerSeat": ".customerseat",
     "CustomerSeatTypedDict": ".customerseat",
+    "CustomerSeatClaimResponse": ".customerseatclaimresponse",
+    "CustomerSeatClaimResponseTypedDict": ".customerseatclaimresponse",
     "CustomerSession": ".customersession",
     "CustomerSessionTypedDict": ".customersession",
     "CustomerSessionCustomerExternalIDCreate": ".customersessioncustomerexternalidcreate",
@@ -5394,8 +5467,6 @@ _dynamic_imports: dict[str, str] = {
     "IntrospectTokenResponse": ".introspecttokenresponse",
     "IntrospectTokenResponseTypedDict": ".introspecttokenresponse",
     "TokenType": ".introspecttokenresponse",
-    "InvoiceAlreadyExists": ".invoicealreadyexists",
-    "InvoiceAlreadyExistsData": ".invoicealreadyexists",
     "LegacyRecurringProductPrice": ".legacyrecurringproductprice",
     "LegacyRecurringProductPriceTypedDict": ".legacyrecurringproductprice",
     "LegacyRecurringProductPriceCustom": ".legacyrecurringproductpricecustom",
@@ -5572,6 +5643,10 @@ _dynamic_imports: dict[str, str] = {
     "CheckoutsModelTypedDict": ".metricperiod",
     "CommittedMonthlyRecurringRevenue": ".metricperiod",
     "CommittedMonthlyRecurringRevenueTypedDict": ".metricperiod",
+    "Costs": ".metricperiod",
+    "CostsTypedDict": ".metricperiod",
+    "CumulativeCosts": ".metricperiod",
+    "CumulativeCostsTypedDict": ".metricperiod",
     "CumulativeRevenue": ".metricperiod",
     "CumulativeRevenueTypedDict": ".metricperiod",
     "MetricPeriod": ".metricperiod",
@@ -5657,6 +5732,10 @@ _dynamic_imports: dict[str, str] = {
     "MetricsTotalsCheckoutsTypedDict": ".metricstotals",
     "MetricsTotalsCommittedMonthlyRecurringRevenue": ".metricstotals",
     "MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict": ".metricstotals",
+    "MetricsTotalsCosts": ".metricstotals",
+    "MetricsTotalsCostsTypedDict": ".metricstotals",
+    "MetricsTotalsCumulativeCosts": ".metricstotals",
+    "MetricsTotalsCumulativeCostsTypedDict": ".metricstotals",
     "MetricsTotalsCumulativeRevenue": ".metricstotals",
     "MetricsTotalsCumulativeRevenueTypedDict": ".metricstotals",
     "MetricsTotalsMonthlyRecurringRevenue": ".metricstotals",
@@ -5749,6 +5828,12 @@ _dynamic_imports: dict[str, str] = {
     "OrderProductMetadata": ".orderproduct",
     "OrderProductMetadataTypedDict": ".orderproduct",
     "OrderProductTypedDict": ".orderproduct",
+    "OrdersExportQueryParamOrganizationIDFilter": ".orders_exportop",
+    "OrdersExportQueryParamOrganizationIDFilterTypedDict": ".orders_exportop",
+    "OrdersExportQueryParamProductIDFilter": ".orders_exportop",
+    "OrdersExportQueryParamProductIDFilterTypedDict": ".orders_exportop",
+    "OrdersExportRequest": ".orders_exportop",
+    "OrdersExportRequestTypedDict": ".orders_exportop",
     "OrdersGenerateInvoiceRequest": ".orders_generate_invoiceop",
     "OrdersGenerateInvoiceRequestTypedDict": ".orders_generate_invoiceop",
     "OrdersGenerateInvoiceResponse422OrdersGenerateInvoice": ".orders_generate_invoiceop",
@@ -5970,6 +6055,10 @@ _dynamic_imports: dict[str, str] = {
     "SDKError": ".sdkerror",
     "SeatAssign": ".seatassign",
     "SeatAssignTypedDict": ".seatassign",
+    "SeatClaim": ".seatclaim",
+    "SeatClaimTypedDict": ".seatclaim",
+    "SeatClaimInfo": ".seatclaiminfo",
+    "SeatClaimInfoTypedDict": ".seatclaiminfo",
     "SeatsList": ".seatslist",
     "SeatsListTypedDict": ".seatslist",
     "SeatStatus": ".seatstatus",

@@ -6,6 +6,7 @@
 ### Available Operations
 
 * [list](#list) - List Orders
+* [export](#export) - Export Subscriptions
 * [get](#get) - Get Order
 * [update](#update) - Update Order
 * [generate_invoice](#generate_invoice) - Generate Order Invoice
@@ -56,6 +57,49 @@ with Polar(
 ### Response
 
 **[models.OrdersListResponse](../../models/orderslistresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## export
+
+Export orders as a CSV file.
+
+**Scopes**: `orders:read`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="orders:export" method="get" path="/v1/orders/export" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.orders.export(organization_id=None)
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                         | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `organization_id`                                                                                                                 | [OptionalNullable[models.OrdersExportQueryParamOrganizationIDFilter]](../../models/ordersexportqueryparamorganizationidfilter.md) | :heavy_minus_sign:                                                                                                                | Filter by organization ID.                                                                                                        |
+| `product_id`                                                                                                                      | [OptionalNullable[models.OrdersExportQueryParamProductIDFilter]](../../models/ordersexportqueryparamproductidfilter.md)           | :heavy_minus_sign:                                                                                                                | Filter by product ID.                                                                                                             |
+| `retries`                                                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                  | :heavy_minus_sign:                                                                                                                | Configuration to override the default retry behavior of the client.                                                               |
+
+### Response
+
+**[Any](../../models/.md)**
 
 ### Errors
 
@@ -196,7 +240,6 @@ with Polar(
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| models.InvoiceAlreadyExists         | 409                                 | application/json                    |
 | models.MissingInvoiceBillingDetails | 422                                 | application/json                    |
 | models.NotPaidOrder                 | 422                                 | application/json                    |
 | models.SDKError                     | 4XX, 5XX                            | \*/\*                               |
