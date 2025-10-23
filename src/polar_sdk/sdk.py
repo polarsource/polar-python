@@ -22,6 +22,7 @@ if TYPE_CHECKING:
     from polar_sdk.custom_fields import CustomFields
     from polar_sdk.customer_meters import CustomerMeters
     from polar_sdk.customer_portal import CustomerPortal
+    from polar_sdk.customer_seats import CustomerSeats
     from polar_sdk.customer_sessions import CustomerSessions
     from polar_sdk.customers import Customers
     from polar_sdk.discounts import Discounts
@@ -64,6 +65,7 @@ class Polar(BaseSDK):
     discounts: "Discounts"
     customers: "Customers"
     customer_portal: "CustomerPortal"
+    customer_seats: "CustomerSeats"
     customer_sessions: "CustomerSessions"
     events: "Events"
     meters: "Meters"
@@ -88,6 +90,7 @@ class Polar(BaseSDK):
         "discounts": ("polar_sdk.discounts", "Discounts"),
         "customers": ("polar_sdk.customers", "Customers"),
         "customer_portal": ("polar_sdk.customer_portal", "CustomerPortal"),
+        "customer_seats": ("polar_sdk.customer_seats", "CustomerSeats"),
         "customer_sessions": ("polar_sdk.customer_sessions", "CustomerSessions"),
         "events": ("polar_sdk.events", "Events"),
         "meters": ("polar_sdk.meters", "Meters"),

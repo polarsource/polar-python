@@ -50,6 +50,24 @@ MetricsTotalsNetCumulativeRevenue = TypeAliasType(
 )
 
 
+MetricsTotalsCostsTypedDict = TypeAliasType(
+    "MetricsTotalsCostsTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCosts = TypeAliasType("MetricsTotalsCosts", Union[int, float])
+
+
+MetricsTotalsCumulativeCostsTypedDict = TypeAliasType(
+    "MetricsTotalsCumulativeCostsTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCumulativeCosts = TypeAliasType(
+    "MetricsTotalsCumulativeCosts", Union[int, float]
+)
+
+
 MetricsTotalsAverageOrderValueTypedDict = TypeAliasType(
     "MetricsTotalsAverageOrderValueTypedDict", Union[int, float]
 )
@@ -314,6 +332,8 @@ class MetricsTotalsTypedDict(TypedDict):
     net_revenue: MetricsTotalsNetRevenueTypedDict
     cumulative_revenue: MetricsTotalsCumulativeRevenueTypedDict
     net_cumulative_revenue: MetricsTotalsNetCumulativeRevenueTypedDict
+    costs: MetricsTotalsCostsTypedDict
+    cumulative_costs: MetricsTotalsCumulativeCostsTypedDict
     average_order_value: MetricsTotalsAverageOrderValueTypedDict
     net_average_order_value: MetricsTotalsNetAverageOrderValueTypedDict
     one_time_products: MetricsTotalsOneTimeProductsTypedDict
@@ -368,6 +388,10 @@ class MetricsTotals(BaseModel):
     cumulative_revenue: MetricsTotalsCumulativeRevenue
 
     net_cumulative_revenue: MetricsTotalsNetCumulativeRevenue
+
+    costs: MetricsTotalsCosts
+
+    cumulative_costs: MetricsTotalsCumulativeCosts
 
     average_order_value: MetricsTotalsAverageOrderValue
 

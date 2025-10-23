@@ -94,6 +94,8 @@ class ProductCreateOneTimeTypedDict(TypedDict):
     r"""The ID of the organization owning the product. **Required unless you use an organization token.**"""
     recurring_interval: NotRequired[Nullable[Any]]
     r"""States that the product is a one-time purchase."""
+    recurring_interval_count: NotRequired[Nullable[Any]]
+    r"""One-time products don't have a recurring interval count."""
 
 
 class ProductCreateOneTime(BaseModel):
@@ -132,6 +134,9 @@ class ProductCreateOneTime(BaseModel):
     recurring_interval: OptionalNullable[Any] = UNSET
     r"""States that the product is a one-time purchase."""
 
+    recurring_interval_count: OptionalNullable[Any] = UNSET
+    r"""One-time products don't have a recurring interval count."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -141,12 +146,14 @@ class ProductCreateOneTime(BaseModel):
             "attached_custom_fields",
             "organization_id",
             "recurring_interval",
+            "recurring_interval_count",
         ]
         nullable_fields = [
             "description",
             "medias",
             "organization_id",
             "recurring_interval",
+            "recurring_interval_count",
         ]
         null_default_fields = []
 

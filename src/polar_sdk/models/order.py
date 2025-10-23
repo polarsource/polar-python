@@ -25,7 +25,7 @@ from .orderproduct import OrderProduct, OrderProductTypedDict
 from .orderstatus import OrderStatus
 from .ordersubscription import OrderSubscription, OrderSubscriptionTypedDict
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
@@ -110,7 +110,7 @@ class OrderTypedDict(TypedDict):
     is_invoice_generated: bool
     r"""Whether an invoice has been generated for this order."""
     customer_id: str
-    product_id: str
+    product_id: Nullable[str]
     discount_id: Nullable[str]
     subscription_id: Nullable[str]
     checkout_id: Nullable[str]
@@ -119,11 +119,15 @@ class OrderTypedDict(TypedDict):
     r"""Platform fee amount in cents."""
     customer: OrderCustomerTypedDict
     user_id: str
-    product: OrderProductTypedDict
+    product: Nullable[OrderProductTypedDict]
     discount: Nullable[OrderDiscountTypedDict]
     subscription: Nullable[OrderSubscriptionTypedDict]
     items: List[OrderItemSchemaTypedDict]
     r"""Line items composing the order."""
+    description: str
+    r"""A summary description of the order."""
+    seats: NotRequired[Nullable[int]]
+    r"""Number of seats purchased (for seat-based one-time orders)."""
     custom_field_data: NotRequired[Dict[str, Nullable[OrderCustomFieldDataTypedDict]]]
     r"""Key-value object storing custom field values."""
 
@@ -187,7 +191,7 @@ class Order(BaseModel):
 
     customer_id: str
 
-    product_id: str
+    product_id: Nullable[str]
 
     discount_id: Nullable[str]
 
@@ -209,7 +213,7 @@ class Order(BaseModel):
         ),
     ]
 
-    product: OrderProduct
+    product: Nullable[OrderProduct]
 
     discount: Nullable[OrderDiscount]
 
@@ -218,19 +222,28 @@ class Order(BaseModel):
     items: List[OrderItemSchema]
     r"""Line items composing the order."""
 
+    description: str
+    r"""A summary description of the order."""
+
+    seats: OptionalNullable[int] = UNSET
+    r"""Number of seats purchased (for seat-based one-time orders)."""
+
     custom_field_data: Optional[Dict[str, Nullable[OrderCustomFieldData]]] = None
     r"""Key-value object storing custom field values."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["custom_field_data"]
+        optional_fields = ["seats", "custom_field_data"]
         nullable_fields = [
             "modified_at",
             "billing_name",
             "billing_address",
+            "seats",
+            "product_id",
             "discount_id",
             "subscription_id",
             "checkout_id",
+            "product",
             "discount",
             "subscription",
         ]

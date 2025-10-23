@@ -16,9 +16,11 @@ class CustomerSeatTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The seat ID"""
-    subscription_id: str
-    r"""The subscription ID"""
     status: SeatStatus
+    subscription_id: NotRequired[Nullable[str]]
+    r"""The subscription ID (for recurring seats)"""
+    order_id: NotRequired[Nullable[str]]
+    r"""The order ID (for one-time purchase seats)"""
     customer_id: NotRequired[Nullable[str]]
     r"""The assigned customer ID"""
     customer_email: NotRequired[Nullable[str]]
@@ -43,10 +45,13 @@ class CustomerSeat(BaseModel):
     id: str
     r"""The seat ID"""
 
-    subscription_id: str
-    r"""The subscription ID"""
-
     status: SeatStatus
+
+    subscription_id: OptionalNullable[str] = UNSET
+    r"""The subscription ID (for recurring seats)"""
+
+    order_id: OptionalNullable[str] = UNSET
+    r"""The order ID (for one-time purchase seats)"""
 
     customer_id: OptionalNullable[str] = UNSET
     r"""The assigned customer ID"""
@@ -69,6 +74,8 @@ class CustomerSeat(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "subscription_id",
+            "order_id",
             "customer_id",
             "customer_email",
             "invitation_token_expires_at",
@@ -78,6 +85,8 @@ class CustomerSeat(BaseModel):
         ]
         nullable_fields = [
             "modified_at",
+            "subscription_id",
+            "order_id",
             "customer_id",
             "customer_email",
             "invitation_token_expires_at",

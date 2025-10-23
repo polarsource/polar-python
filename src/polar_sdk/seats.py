@@ -16,7 +16,8 @@ class Seats(BaseSDK):
             models.CustomerPortalSeatsListSeatsSecurity,
             models.CustomerPortalSeatsListSeatsSecurityTypedDict,
         ],
-        subscription_id: str,
+        subscription_id: OptionalNullable[str] = UNSET,
+        order_id: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -28,6 +29,7 @@ class Seats(BaseSDK):
 
         :param security:
         :param subscription_id: Subscription ID
+        :param order_id: Order ID
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -45,6 +47,7 @@ class Seats(BaseSDK):
 
         request = models.CustomerPortalSeatsListSeatsRequest(
             subscription_id=subscription_id,
+            order_id=order_id,
         )
 
         req = self._build_request(
@@ -110,7 +113,8 @@ class Seats(BaseSDK):
             models.CustomerPortalSeatsListSeatsSecurity,
             models.CustomerPortalSeatsListSeatsSecurityTypedDict,
         ],
-        subscription_id: str,
+        subscription_id: OptionalNullable[str] = UNSET,
+        order_id: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -122,6 +126,7 @@ class Seats(BaseSDK):
 
         :param security:
         :param subscription_id: Subscription ID
+        :param order_id: Order ID
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -139,6 +144,7 @@ class Seats(BaseSDK):
 
         request = models.CustomerPortalSeatsListSeatsRequest(
             subscription_id=subscription_id,
+            order_id=order_id,
         )
 
         req = self._build_request_async(

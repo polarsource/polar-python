@@ -45,7 +45,9 @@ class CustomerOrderProductTypedDict(TypedDict):
     description: Nullable[str]
     r"""The description of the product."""
     recurring_interval: Nullable[SubscriptionRecurringInterval]
-    r"""The recurring interval of the product. If `None`, the product is a one-time purchase.Note that the `day` and `week` values are for internal Polar staff use only."""
+    r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
+    recurring_interval_count: Nullable[int]
+    r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on. None for one-time products."""
     is_recurring: bool
     r"""Whether the product is a subscription."""
     is_archived: bool
@@ -84,7 +86,10 @@ class CustomerOrderProduct(BaseModel):
     r"""The description of the product."""
 
     recurring_interval: Nullable[SubscriptionRecurringInterval]
-    r"""The recurring interval of the product. If `None`, the product is a one-time purchase.Note that the `day` and `week` values are for internal Polar staff use only."""
+    r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
+
+    recurring_interval_count: Nullable[int]
+    r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on. None for one-time products."""
 
     is_recurring: bool
     r"""Whether the product is a subscription."""
@@ -115,6 +120,7 @@ class CustomerOrderProduct(BaseModel):
             "trial_interval_count",
             "description",
             "recurring_interval",
+            "recurring_interval_count",
         ]
         null_default_fields = []
 

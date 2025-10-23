@@ -99,6 +99,8 @@ class ProductCreateRecurringTypedDict(TypedDict):
     r"""The interval unit for the trial period."""
     trial_interval_count: NotRequired[Nullable[int]]
     r"""The number of interval units for the trial period."""
+    recurring_interval_count: NotRequired[int]
+    r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on."""
 
 
 class ProductCreateRecurring(BaseModel):
@@ -142,6 +144,9 @@ class ProductCreateRecurring(BaseModel):
     trial_interval_count: OptionalNullable[int] = UNSET
     r"""The number of interval units for the trial period."""
 
+    recurring_interval_count: Optional[int] = 1
+    r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -152,6 +157,7 @@ class ProductCreateRecurring(BaseModel):
             "organization_id",
             "trial_interval",
             "trial_interval_count",
+            "recurring_interval_count",
         ]
         nullable_fields = [
             "description",

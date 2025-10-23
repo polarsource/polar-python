@@ -10,6 +10,8 @@
 | `net_revenue`                             | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `cumulative_revenue`                      | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `net_cumulative_revenue`                  | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
+| `costs`                                   | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
+| `cumulative_costs`                        | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `average_order_value`                     | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `net_average_order_value`                 | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `one_time_products`                       | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |

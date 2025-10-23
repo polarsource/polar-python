@@ -18,10 +18,10 @@ from .productprice import ProductPrice, ProductPriceTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptionstatus import SubscriptionStatus
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List, Union
-from typing_extensions import TypeAliasType, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 CustomerSubscriptionPricesTypedDict = TypeAliasType(
@@ -47,6 +47,8 @@ class CustomerSubscriptionTypedDict(TypedDict):
     currency: str
     r"""The currency of the subscription."""
     recurring_interval: SubscriptionRecurringInterval
+    recurring_interval_count: int
+    r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on."""
     status: SubscriptionStatus
     current_period_start: datetime
     r"""The start timestamp of the current billing period."""
@@ -82,6 +84,8 @@ class CustomerSubscriptionTypedDict(TypedDict):
     r"""List of meters associated with the subscription."""
     is_polar_managed: bool
     r"""Whether the subscription is managed by Polar."""
+    seats: NotRequired[Nullable[int]]
+    r"""Number of seats included in the subscription (for seat-based pricing)."""
 
 
 class CustomerSubscription(BaseModel):
@@ -101,6 +105,9 @@ class CustomerSubscription(BaseModel):
     r"""The currency of the subscription."""
 
     recurring_interval: SubscriptionRecurringInterval
+
+    recurring_interval_count: int
+    r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on."""
 
     status: SubscriptionStatus
 
@@ -157,9 +164,12 @@ class CustomerSubscription(BaseModel):
     is_polar_managed: bool
     r"""Whether the subscription is managed by Polar."""
 
+    seats: OptionalNullable[int] = UNSET
+    r"""Number of seats included in the subscription (for seat-based pricing)."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["seats"]
         nullable_fields = [
             "modified_at",
             "current_period_end",
@@ -173,6 +183,7 @@ class CustomerSubscription(BaseModel):
             "checkout_id",
             "customer_cancellation_reason",
             "customer_cancellation_comment",
+            "seats",
         ]
         null_default_fields = []
 

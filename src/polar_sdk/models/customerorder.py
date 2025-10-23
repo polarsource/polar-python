@@ -56,15 +56,19 @@ class CustomerOrderTypedDict(TypedDict):
     is_invoice_generated: bool
     r"""Whether an invoice has been generated for this order."""
     customer_id: str
-    product_id: str
+    product_id: Nullable[str]
     discount_id: Nullable[str]
     subscription_id: Nullable[str]
     checkout_id: Nullable[str]
     user_id: str
-    product: CustomerOrderProductTypedDict
+    product: Nullable[CustomerOrderProductTypedDict]
     subscription: Nullable[CustomerOrderSubscriptionTypedDict]
     items: List[OrderItemSchemaTypedDict]
     r"""Line items composing the order."""
+    description: str
+    r"""A summary description of the order."""
+    seats: NotRequired[Nullable[int]]
+    r"""Number of seats purchased (for seat-based one-time orders)."""
     next_payment_attempt_at: NotRequired[Nullable[datetime]]
     r"""When the next payment retry is scheduled"""
 
@@ -128,7 +132,7 @@ class CustomerOrder(BaseModel):
 
     customer_id: str
 
-    product_id: str
+    product_id: Nullable[str]
 
     discount_id: Nullable[str]
 
@@ -143,26 +147,35 @@ class CustomerOrder(BaseModel):
         ),
     ]
 
-    product: CustomerOrderProduct
+    product: Nullable[CustomerOrderProduct]
 
     subscription: Nullable[CustomerOrderSubscription]
 
     items: List[OrderItemSchema]
     r"""Line items composing the order."""
 
+    description: str
+    r"""A summary description of the order."""
+
+    seats: OptionalNullable[int] = UNSET
+    r"""Number of seats purchased (for seat-based one-time orders)."""
+
     next_payment_attempt_at: OptionalNullable[datetime] = UNSET
     r"""When the next payment retry is scheduled"""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["next_payment_attempt_at"]
+        optional_fields = ["seats", "next_payment_attempt_at"]
         nullable_fields = [
             "modified_at",
             "billing_name",
             "billing_address",
+            "seats",
+            "product_id",
             "discount_id",
             "subscription_id",
             "checkout_id",
+            "product",
             "subscription",
             "next_payment_attempt_at",
         ]

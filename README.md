@@ -295,6 +295,15 @@ def webhook():
 * [update](docs/sdks/polarsubscriptions/README.md#update) - Update Subscription
 * [cancel](docs/sdks/polarsubscriptions/README.md#cancel) - Cancel Subscription
 
+### [customer_seats](docs/sdks/customerseats/README.md)
+
+* [assign_seat](docs/sdks/customerseats/README.md#assign_seat) - Assign Seat
+* [list_seats](docs/sdks/customerseats/README.md#list_seats) - List Seats
+* [revoke_seat](docs/sdks/customerseats/README.md#revoke_seat) - Revoke Seat
+* [resend_invitation](docs/sdks/customerseats/README.md#resend_invitation) - Resend Invitation
+* [get_claim_info](docs/sdks/customerseats/README.md#get_claim_info) - Get Claim Info
+* [claim_seat](docs/sdks/customerseats/README.md#claim_seat) - Claim Seat
+
 ### [customer_sessions](docs/sdks/customersessions/README.md)
 
 * [create](docs/sdks/customersessions/README.md#create) - Create Customer Session
@@ -378,6 +387,7 @@ def webhook():
 ### [orders](docs/sdks/orders/README.md)
 
 * [list](docs/sdks/orders/README.md#list) - List Orders
+* [export](docs/sdks/orders/README.md#export) - Export Subscriptions
 * [get](docs/sdks/orders/README.md#get) - Get Order
 * [update](docs/sdks/orders/README.md#update) - Update Order
 * [generate_invoice](docs/sdks/orders/README.md#generate_invoice) - Generate Order Invoice
@@ -528,7 +538,7 @@ with Polar(
 * [`PolarError`](./src/polar_sdk/models/polarerror.py): The base class for HTTP error responses.
   * [`HTTPValidationError`](./src/polar_sdk/models/httpvalidationerror.py): Validation Error. Status code `422`. *
 
-<details><summary>Less common errors (24)</summary>
+<details><summary>Less common errors (23)</summary>
 
 <br />
 
@@ -539,25 +549,24 @@ with Polar(
 
 
 **Inherit from [`PolarError`](./src/polar_sdk/models/polarerror.py)**:
-* [`ResourceNotFound`](./src/polar_sdk/models/resourcenotfound.py): Status code `404`. Applicable to 77 of 142 methods.*
-* [`NotPermitted`](./src/polar_sdk/models/notpermitted.py): Status code `403`. Applicable to 10 of 142 methods.*
-* [`Unauthorized`](./src/polar_sdk/models/unauthorized.py): Not authorized to manage license key. Status code `401`. Applicable to 5 of 142 methods.*
-* [`AlreadyCanceledSubscription`](./src/polar_sdk/models/alreadycanceledsubscription.py): Status code `403`. Applicable to 4 of 142 methods.*
-* [`AlreadyActiveSubscriptionError`](./src/polar_sdk/models/alreadyactivesubscriptionerror.py): The checkout is expired, the customer already has an active subscription, or the organization is not ready to accept payments. Status code `403`. Applicable to 3 of 142 methods.*
-* [`NotOpenCheckout`](./src/polar_sdk/models/notopencheckout.py): The checkout is expired, the customer already has an active subscription, or the organization is not ready to accept payments. Status code `403`. Applicable to 3 of 142 methods.*
-* [`PaymentNotReady`](./src/polar_sdk/models/paymentnotready.py): The checkout is expired, the customer already has an active subscription, or the organization is not ready to accept payments. Status code `403`. Applicable to 3 of 142 methods.*
-* [`ExpiredCheckoutError`](./src/polar_sdk/models/expiredcheckouterror.py): The checkout session is expired. Status code `410`. Applicable to 3 of 142 methods.*
-* [`SubscriptionLocked`](./src/polar_sdk/models/subscriptionlocked.py): Subscription is pending an update. Status code `409`. Applicable to 2 of 142 methods.*
-* [`InvoiceAlreadyExists`](./src/polar_sdk/models/invoicealreadyexists.py): Order already has an invoice. Status code `409`. Applicable to 2 of 142 methods.*
-* [`MissingInvoiceBillingDetails`](./src/polar_sdk/models/missinginvoicebillingdetails.py): Order is not paid or is missing billing name or address. Status code `422`. Applicable to 2 of 142 methods.*
-* [`NotPaidOrder`](./src/polar_sdk/models/notpaidorder.py): Order is not paid or is missing billing name or address. Status code `422`. Applicable to 2 of 142 methods.*
-* [`RefundAmountTooHigh`](./src/polar_sdk/models/refundamounttoohigh.py): Refund amount exceeds remaining order balance. Status code `400`. Applicable to 1 of 142 methods.*
-* [`PaymentError`](./src/polar_sdk/models/paymenterror.py): The payment failed. Status code `400`. Applicable to 1 of 142 methods.*
-* [`CustomerNotReady`](./src/polar_sdk/models/customernotready.py): Customer is not ready to confirm a payment method. Status code `400`. Applicable to 1 of 142 methods.*
-* [`PaymentMethodInUseByActiveSubscription`](./src/polar_sdk/models/paymentmethodinusebyactivesubscription.py): Payment method is used by active subscription(s). Status code `400`. Applicable to 1 of 142 methods.*
-* [`RefundedAlready`](./src/polar_sdk/models/refundedalready.py): Order is already fully refunded. Status code `403`. Applicable to 1 of 142 methods.*
-* [`PaymentAlreadyInProgress`](./src/polar_sdk/models/paymentalreadyinprogress.py): Payment already in progress. Status code `409`. Applicable to 1 of 142 methods.*
-* [`OrderNotEligibleForRetry`](./src/polar_sdk/models/ordernoteligibleforretry.py): Order not eligible for retry or payment confirmation failed. Status code `422`. Applicable to 1 of 142 methods.*
+* [`ResourceNotFound`](./src/polar_sdk/models/resourcenotfound.py): Status code `404`. Applicable to 77 of 149 methods.*
+* [`NotPermitted`](./src/polar_sdk/models/notpermitted.py): Status code `403`. Applicable to 10 of 149 methods.*
+* [`Unauthorized`](./src/polar_sdk/models/unauthorized.py): Not authorized to manage license key. Status code `401`. Applicable to 5 of 149 methods.*
+* [`AlreadyCanceledSubscription`](./src/polar_sdk/models/alreadycanceledsubscription.py): Status code `403`. Applicable to 4 of 149 methods.*
+* [`AlreadyActiveSubscriptionError`](./src/polar_sdk/models/alreadyactivesubscriptionerror.py): The checkout is expired, the customer already has an active subscription, or the organization is not ready to accept payments. Status code `403`. Applicable to 3 of 149 methods.*
+* [`NotOpenCheckout`](./src/polar_sdk/models/notopencheckout.py): The checkout is expired, the customer already has an active subscription, or the organization is not ready to accept payments. Status code `403`. Applicable to 3 of 149 methods.*
+* [`PaymentNotReady`](./src/polar_sdk/models/paymentnotready.py): The checkout is expired, the customer already has an active subscription, or the organization is not ready to accept payments. Status code `403`. Applicable to 3 of 149 methods.*
+* [`ExpiredCheckoutError`](./src/polar_sdk/models/expiredcheckouterror.py): The checkout session is expired. Status code `410`. Applicable to 3 of 149 methods.*
+* [`SubscriptionLocked`](./src/polar_sdk/models/subscriptionlocked.py): Subscription is pending an update. Status code `409`. Applicable to 2 of 149 methods.*
+* [`MissingInvoiceBillingDetails`](./src/polar_sdk/models/missinginvoicebillingdetails.py): Order is not paid or is missing billing name or address. Status code `422`. Applicable to 2 of 149 methods.*
+* [`NotPaidOrder`](./src/polar_sdk/models/notpaidorder.py): Order is not paid or is missing billing name or address. Status code `422`. Applicable to 2 of 149 methods.*
+* [`RefundAmountTooHigh`](./src/polar_sdk/models/refundamounttoohigh.py): Refund amount exceeds remaining order balance. Status code `400`. Applicable to 1 of 149 methods.*
+* [`PaymentError`](./src/polar_sdk/models/paymenterror.py): The payment failed. Status code `400`. Applicable to 1 of 149 methods.*
+* [`CustomerNotReady`](./src/polar_sdk/models/customernotready.py): Customer is not ready to confirm a payment method. Status code `400`. Applicable to 1 of 149 methods.*
+* [`PaymentMethodInUseByActiveSubscription`](./src/polar_sdk/models/paymentmethodinusebyactivesubscription.py): Payment method is used by active subscription(s). Status code `400`. Applicable to 1 of 149 methods.*
+* [`RefundedAlready`](./src/polar_sdk/models/refundedalready.py): Order is already fully refunded. Status code `403`. Applicable to 1 of 149 methods.*
+* [`PaymentAlreadyInProgress`](./src/polar_sdk/models/paymentalreadyinprogress.py): Payment already in progress. Status code `409`. Applicable to 1 of 149 methods.*
+* [`OrderNotEligibleForRetry`](./src/polar_sdk/models/ordernoteligibleforretry.py): Order not eligible for retry or payment confirmation failed. Status code `422`. Applicable to 1 of 149 methods.*
 * [`ResponseValidationError`](./src/polar_sdk/models/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>
