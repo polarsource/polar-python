@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: 653b1e1852dd6db0921e35e30aa27ac6
+  docChecksum: 29e6de60bc2e806504796471fe6e8812
   docVersion: 0.1.0
-  speakeasyVersion: 1.638.1
-  generationVersion: 2.729.2
-  releaseVersion: 0.27.2
-  configChecksum: eec191e1205752e3913bd5662aaef252
+  speakeasyVersion: 1.639.1
+  generationVersion: 2.730.0
+  releaseVersion: 0.27.3
+  configChecksum: 273cda521471e637fc21c73f18aaa2d3
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -986,6 +986,9 @@ generatedFiles:
   - docs/models/webhookcheckoutupdatedpayload.md
   - docs/models/webhookcustomercreatedpayload.md
   - docs/models/webhookcustomerdeletedpayload.md
+  - docs/models/webhookcustomerseatassignedpayload.md
+  - docs/models/webhookcustomerseatclaimedpayload.md
+  - docs/models/webhookcustomerseatrevokedpayload.md
   - docs/models/webhookcustomerstatechangedpayload.md
   - docs/models/webhookcustomerupdatedpayload.md
   - docs/models/webhookdelivery.md
@@ -1654,6 +1657,9 @@ generatedFiles:
   - src/polar_sdk/models/webhookcheckoutupdatedpayload.py
   - src/polar_sdk/models/webhookcustomercreatedpayload.py
   - src/polar_sdk/models/webhookcustomerdeletedpayload.py
+  - src/polar_sdk/models/webhookcustomerseatassignedpayload.py
+  - src/polar_sdk/models/webhookcustomerseatclaimedpayload.py
+  - src/polar_sdk/models/webhookcustomerseatrevokedpayload.py
   - src/polar_sdk/models/webhookcustomerstatechangedpayload.py
   - src/polar_sdk/models/webhookcustomerupdatedpayload.py
   - src/polar_sdk/models/webhookdelivery.py
@@ -3749,6 +3755,37 @@ examples:
           application/json: {"seat": {"created_at": "2025-04-12T14:34:03.720Z", "modified_at": "2024-11-19T23:36:35.489Z", "id": "f64b62d8-93fd-4163-a769-ecd646971709", "status": "revoked"}, "customer_session_token": "<value>"}
         "422":
           application/json: {}
+  _endpointcustomer_seat_assigned_post:
+    speakeasy-default-endpointcustomer-seat-assigned-post:
+      requestBody:
+        application/json: {"type": "customer_seat.assigned", "timestamp": "2023-01-24T21:46:22.729Z", "data": {"created_at": "2024-04-02T01:55:00.575Z", "modified_at": "2025-03-27T17:16:29.966Z", "id": "ded032fb-362e-4ae1-83b9-4f4bcab6f430", "status": "revoked"}}
+      responses:
+        "200":
+          application/json: "<value>"
+        "422":
+          application/json: {}
+  _endpointcustomer_seat_claimed_post:
+    speakeasy-default-endpointcustomer-seat-claimed-post:
+      requestBody:
+        application/json: {"type": "customer_seat.claimed", "timestamp": "2023-08-22T13:16:39.616Z", "data": {"created_at": "2023-05-10T18:50:40.033Z", "modified_at": "2023-07-12T19:06:41.896Z", "id": "35ac8c8c-dc4e-44ea-9684-2a2c2b600002", "status": "pending"}}
+      responses:
+        "200":
+          application/json: "<value>"
+        "422":
+          application/json: {}
+  _endpointcustomer_seat_revoked_post:
+    speakeasy-default-endpointcustomer-seat-revoked-post:
+      requestBody:
+        application/json: {"type": "customer_seat.revoked", "timestamp": "2023-11-12T11:49:39.839Z", "data": {"created_at": "2024-08-05T10:54:13.336Z", "modified_at": "2023-12-02T21:24:11.844Z", "id": "518899df-02c0-4220-abaf-0f2f32e97539", "status": "pending"}}
+      responses:
+        "200":
+          application/json: "<value>"
+        "422":
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Python SDK Changes Detected:\n* `polar.orders.get()`:  `response` **Changed** **Breaking** :warning:\n* `polar.orders.list()`:  `response.items.[]` **Changed** **Breaking** :warning:\n* `polar._endpointorder_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointorder_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointorder_paid_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar.customer_portal.orders.generate_invoice()`:  `error.status[409]` **Removed** **Breaking** :warning:\n* `polar.customer_portal.orders.update()`:  `response` **Changed** **Breaking** :warning:\n* `polar._endpointorder_refunded_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar.orders.generate_invoice()`:  `error.status[409]` **Removed** **Breaking** :warning:\n* `polar._endpointsubscription_active_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_canceled_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_uncanceled_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_revoked_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointproduct_created_post()`: \n  *  `request.data.recurring_interval_count` **Added** **Breaking** :warning:\n* `polar._endpointproduct_updated_post()`: \n  *  `request.data.recurring_interval_count` **Added** **Breaking** :warning:\n* `polar.customer_portal.orders.get()`:  `response` **Changed** **Breaking** :warning:\n* `polar.customer_portal.orders.list()`:  `response.items.[]` **Changed** **Breaking** :warning:\n* `polar.customer_portal.seats.resend_invitation()`:  `response` **Changed** **Breaking** :warning:\n* `polar._endpointcheckout_created_post()`: \n  *  `request.data.products.[].recurring_interval_count` **Added** **Breaking** :warning:\n* `polar.customer_portal.seats.revoke_seat()`:  `response` **Changed** **Breaking** :warning:\n* `polar.customer_portal.seats.assign_seat()`: \n  *  `request.order_id` **Added**\n  *  `response` **Changed** **Breaking** :warning:\n* `polar.customer_portal.seats.list_seats()`: \n  *  `request` **Changed**\n  *  `response.seats.[]` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar.orders.update()`:  `response` **Changed** **Breaking** :warning:\n* `polar._endpointcheckout_updated_post()`: \n  *  `request.data.products.[].recurring_interval_count` **Added** **Breaking** :warning:\n* `polar.customer-seats.get_claim_info()`: **Added**\n* `polar.checkout-links.get()`:  `response.products.[].recurring_interval_count` **Added**\n* `polar.subscriptions.revoke()`:  `response` **Changed**\n* `polar.subscriptions.update()`:  `response` **Changed**\n* `polar.products.list()`:  `response.items.[].recurring_interval_count` **Added**\n* `polar.products.create()`: \n  *  `request` **Changed**\n  *  `response.recurring_interval_count` **Added**\n* `polar.products.get()`:  `response.recurring_interval_count` **Added**\n* `polar.products.update()`: \n  *  `request.product_update.recurring_interval_count` **Added**\n  *  `response.recurring_interval_count` **Added**\n* `polar.products.update_benefits()`:  `response.recurring_interval_count` **Added**\n* `polar.subscriptions.list()`:  `response.items.[]` **Changed**\n* `polar.organizations.update()`: \n  *  `request.organization_update.feature_settings.revops_enabled` **Added**\n  *  `response.feature_settings.revops_enabled` **Added**\n* `polar.organizations.get()`:  `response.feature_settings.revops_enabled` **Added**\n* `polar.organizations.create()`: \n  *  `request.feature_settings.revops_enabled` **Added**\n  *  `response.feature_settings.revops_enabled` **Added**\n* `polar.checkouts.list()`:  `response.items.[].products.[].recurring_interval_count` **Added**\n* `polar.checkouts.create()`:  `response.products.[].recurring_interval_count` **Added**\n* `polar.checkouts.get()`:  `response.products.[].recurring_interval_count` **Added**\n* `polar.checkouts.update()`:  `response.products.[].recurring_interval_count` **Added**\n* `polar.checkouts.client_get()`:  `response` **Changed**\n* `polar.checkouts.client_update()`:  `response` **Changed**\n* `polar.checkouts.client_confirm()`:  `response` **Changed**\n* `polar.metrics.get()`:  `response` **Changed**\n* `polar.checkout-links.list()`:  `response.items.[].products.[].recurring_interval_count` **Added**\n* `polar.checkout-links.create()`:  `response.products.[].recurring_interval_count` **Added**\n* `polar.subscriptions.get()`:  `response` **Changed**\n* `polar.checkout-links.update()`:  `response.products.[].recurring_interval_count` **Added**\n* `polar.discounts.list()`:  `response.items.[].[discount_fixed_once_forever_duration].products.[].recurring_interval_count` **Added**\n* `polar.discounts.create()`:  `response.[discount_percentage_repeat_duration].products.[].recurring_interval_count` **Added**\n* `polar.discounts.get()`:  `response.[discount_percentage_once_forever_duration].products.[].recurring_interval_count` **Added**\n* `polar.discounts.update()`:  `response.[discount_fixed_once_forever_duration].products.[].recurring_interval_count` **Added**\n* `polar.customer_portal.benefit-grants.list()`:  `response.items.[].[customer_benefit_grant_license_keys].benefit.organization.feature_settings.revops_enabled` **Added**\n* `polar.customer_portal.benefit-grants.get()`:  `response.[customer_benefit_grant_git_hub_repository].benefit.organization.feature_settings.revops_enabled` **Added**\n* `polar.customer_portal.benefit-grants.update()`:  `response.[customer_benefit_grant_license_keys].benefit.organization.feature_settings.revops_enabled` **Added**\n* `polar.organizations.list()`:  `response.items.[].feature_settings.revops_enabled` **Added**\n* `polar._endpointorganization_updated_post()`: \n  *  `request.data.feature_settings.revops_enabled` **Added**\n* `polar.customer-seats.claim_seat()`: **Added**\n* `polar.customer-seats.resend_invitation()`: **Added**\n* `polar.customer_portal.seats.list_claimed_subscriptions()`:  `response.[]` **Changed**\n* `polar.customer-seats.revoke_seat()`: **Added**\n* `polar.customer-seats.list_seats()`: **Added**\n* `polar.customer-seats.assign_seat()`: **Added**\n* `polar.orders.export()`: **Added**\n* `polar.customer_portal.organizations.get()`:  `response` **Changed**\n* `polar.customer_portal.subscriptions.list()`:  `response.items.[]` **Changed**\n* `polar.customer_portal.subscriptions.get()`:  `response` **Changed**\n* `polar.customer_portal.subscriptions.cancel()`:  `response` **Changed**\n* `polar.customer_portal.subscriptions.update()`:  `response` **Changed**\n* `polar.events.list()`:  `request.query` **Added**\n"
+releaseNotes: |
+  ## Python SDK Changes Detected:
+  * `polar._endpointcustomer_seat_assigned_post()`: **Added**
+  * `polar._endpointcustomer_seat_claimed_post()`: **Added**
+  * `polar._endpointcustomer_seat_revoked_post()`: **Added**

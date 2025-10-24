@@ -866,7 +866,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.webhooks.create_webhook_endpoint(request={\n        \"url\": \"https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0\",\n        \"format_\": polar_sdk.WebhookFormat.SLACK,\n        \"events\": [\n            polar_sdk.WebhookEventType.SUBSCRIPTION_UNCANCELED,\n        ],\n        \"organization_id\": \"1dbfc517-0bbf-4301-9ba8-555ca42b9737\",\n    })\n\n    # Handle response\n    print(res)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.webhooks.create_webhook_endpoint(request={\n        \"url\": \"https://webhook.site/cb791d80-f26e-4f8c-be88-6e56054192b0\",\n        \"format_\": polar_sdk.WebhookFormat.SLACK,\n        \"events\": [\n            polar_sdk.WebhookEventType.SUBSCRIPTION_CANCELED,\n        ],\n        \"organization_id\": \"1dbfc517-0bbf-4301-9ba8-555ca42b9737\",\n    })\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/webhooks/endpoints/{id}"]["delete"]
     update:
       "x-codeSamples":
@@ -969,6 +969,24 @@ actions:
         - "lang": "python"
           "label": "Python (SDK)"
           "source": "import polar_sdk\nfrom polar_sdk import Polar\nfrom polar_sdk.utils import parse_datetime\n\n\nwith Polar() as polar:\n\n    res = polar.endpointcustomer_updated_post(request={\n        \"type\": \"customer.updated\",\n        \"timestamp\": parse_datetime(\"2023-07-09T20:22:33.716Z\"),\n        \"data\": {\n            \"id\": \"992fae2a-2a17-4b7a-8d9e-e287cf90131b\",\n            \"created_at\": parse_datetime(\"2024-07-18T23:25:12.977Z\"),\n            \"modified_at\": parse_datetime(\"2023-04-07T04:58:11.725Z\"),\n            \"metadata\": {\n                \"key\": 983601,\n            },\n            \"external_id\": \"usr_1337\",\n            \"email\": \"customer@example.com\",\n            \"email_verified\": True,\n            \"name\": \"John Doe\",\n            \"billing_address\": {\n                \"country\": polar_sdk.CountryAlpha2.US,\n            },\n            \"tax_id\": [\n                \"911144442\",\n                \"us_ein\",\n            ],\n            \"organization_id\": \"1dbfc517-0bbf-4301-9ba8-555ca42b9737\",\n            \"deleted_at\": parse_datetime(\"2025-01-11T12:43:11.694Z\"),\n            \"avatar_url\": \"https://www.gravatar.com/avatar/xxx?d=404\",\n        },\n    })\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["customer_seat.assigned"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\nfrom polar_sdk.utils import parse_datetime\n\n\nwith Polar() as polar:\n\n    res = polar.endpointcustomer_seat_assigned_post(request={\n        \"type\": \"customer_seat.assigned\",\n        \"timestamp\": parse_datetime(\"2023-01-24T21:46:22.729Z\"),\n        \"data\": {\n            \"created_at\": parse_datetime(\"2024-04-02T01:55:00.575Z\"),\n            \"modified_at\": parse_datetime(\"2025-03-27T17:16:29.966Z\"),\n            \"id\": \"ded032fb-362e-4ae1-83b9-4f4bcab6f430\",\n            \"status\": polar_sdk.SeatStatus.REVOKED,\n        },\n    })\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["customer_seat.claimed"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\nfrom polar_sdk.utils import parse_datetime\n\n\nwith Polar() as polar:\n\n    res = polar.endpointcustomer_seat_claimed_post(request={\n        \"type\": \"customer_seat.claimed\",\n        \"timestamp\": parse_datetime(\"2023-08-22T13:16:39.616Z\"),\n        \"data\": {\n            \"created_at\": parse_datetime(\"2023-05-10T18:50:40.033Z\"),\n            \"modified_at\": parse_datetime(\"2023-07-12T19:06:41.896Z\"),\n            \"id\": \"35ac8c8c-dc4e-44ea-9684-2a2c2b600002\",\n            \"status\": polar_sdk.SeatStatus.PENDING,\n        },\n    })\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["customer_seat.revoked"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\nfrom polar_sdk.utils import parse_datetime\n\n\nwith Polar() as polar:\n\n    res = polar.endpointcustomer_seat_revoked_post(request={\n        \"type\": \"customer_seat.revoked\",\n        \"timestamp\": parse_datetime(\"2023-11-12T11:49:39.839Z\"),\n        \"data\": {\n            \"created_at\": parse_datetime(\"2024-08-05T10:54:13.336Z\"),\n            \"modified_at\": parse_datetime(\"2023-12-02T21:24:11.844Z\"),\n            \"id\": \"518899df-02c0-4220-abaf-0f2f32e97539\",\n            \"status\": polar_sdk.SeatStatus.PENDING,\n        },\n    })\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["order.created"]["post"]
     update:
       "x-codeSamples":

@@ -2442,6 +2442,18 @@ if TYPE_CHECKING:
         WebhookCustomerDeletedPayload,
         WebhookCustomerDeletedPayloadTypedDict,
     )
+    from .webhookcustomerseatassignedpayload import (
+        WebhookCustomerSeatAssignedPayload,
+        WebhookCustomerSeatAssignedPayloadTypedDict,
+    )
+    from .webhookcustomerseatclaimedpayload import (
+        WebhookCustomerSeatClaimedPayload,
+        WebhookCustomerSeatClaimedPayloadTypedDict,
+    )
+    from .webhookcustomerseatrevokedpayload import (
+        WebhookCustomerSeatRevokedPayload,
+        WebhookCustomerSeatRevokedPayloadTypedDict,
+    )
     from .webhookcustomerstatechangedpayload import (
         WebhookCustomerStateChangedPayload,
         WebhookCustomerStateChangedPayloadTypedDict,
@@ -4381,6 +4393,12 @@ __all__ = [
     "WebhookCustomerCreatedPayloadTypedDict",
     "WebhookCustomerDeletedPayload",
     "WebhookCustomerDeletedPayloadTypedDict",
+    "WebhookCustomerSeatAssignedPayload",
+    "WebhookCustomerSeatAssignedPayloadTypedDict",
+    "WebhookCustomerSeatClaimedPayload",
+    "WebhookCustomerSeatClaimedPayloadTypedDict",
+    "WebhookCustomerSeatRevokedPayload",
+    "WebhookCustomerSeatRevokedPayloadTypedDict",
     "WebhookCustomerStateChangedPayload",
     "WebhookCustomerStateChangedPayloadTypedDict",
     "WebhookCustomerUpdatedPayload",
@@ -6249,6 +6267,12 @@ _dynamic_imports: dict[str, str] = {
     "WebhookCustomerCreatedPayloadTypedDict": ".webhookcustomercreatedpayload",
     "WebhookCustomerDeletedPayload": ".webhookcustomerdeletedpayload",
     "WebhookCustomerDeletedPayloadTypedDict": ".webhookcustomerdeletedpayload",
+    "WebhookCustomerSeatAssignedPayload": ".webhookcustomerseatassignedpayload",
+    "WebhookCustomerSeatAssignedPayloadTypedDict": ".webhookcustomerseatassignedpayload",
+    "WebhookCustomerSeatClaimedPayload": ".webhookcustomerseatclaimedpayload",
+    "WebhookCustomerSeatClaimedPayloadTypedDict": ".webhookcustomerseatclaimedpayload",
+    "WebhookCustomerSeatRevokedPayload": ".webhookcustomerseatrevokedpayload",
+    "WebhookCustomerSeatRevokedPayloadTypedDict": ".webhookcustomerseatrevokedpayload",
     "WebhookCustomerStateChangedPayload": ".webhookcustomerstatechangedpayload",
     "WebhookCustomerStateChangedPayloadTypedDict": ".webhookcustomerstatechangedpayload",
     "WebhookCustomerUpdatedPayload": ".webhookcustomerupdatedpayload",
