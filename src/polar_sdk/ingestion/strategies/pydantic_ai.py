@@ -28,6 +28,10 @@ class PydanticAIStrategy(BaseStrategy):
         :param metadata: Extra metadata to include with the event.
         """
         usage = result.usage()
+        additional_metadata: dict[str, Any] = {
+            **self._metadata,
+            **metadata,
+        }
         self._ingestion.ingest(
             {
                 "name": self.event_name,
@@ -37,8 +41,7 @@ class PydanticAIStrategy(BaseStrategy):
                     "response_tokens": usage.response_tokens or 0,
                     "total_tokens": usage.total_tokens or 0,
                     "requests": usage.requests or 0,
-                    **self._metadata,
-                    **metadata,
+                    **additional_metadata,
                 },
             }
         )
