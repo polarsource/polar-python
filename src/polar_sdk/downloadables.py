@@ -17,12 +17,6 @@ class Downloadables(BaseSDK):
             models.CustomerPortalDownloadablesListSecurity,
             models.CustomerPortalDownloadablesListSecurityTypedDict,
         ],
-        organization_id: OptionalNullable[
-            Union[
-                models.CustomerPortalDownloadablesListQueryParamOrganizationIDFilter,
-                models.CustomerPortalDownloadablesListQueryParamOrganizationIDFilterTypedDict,
-            ]
-        ] = UNSET,
         benefit_id: OptionalNullable[
             Union[
                 models.CustomerPortalDownloadablesListQueryParamBenefitIDFilter,
@@ -41,7 +35,6 @@ class Downloadables(BaseSDK):
         **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
-        :param organization_id: Filter by organization ID.
         :param benefit_id: Filter by benefit ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -61,7 +54,6 @@ class Downloadables(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalDownloadablesListRequest(
-            organization_id=organization_id,
             benefit_id=benefit_id,
             page=page,
             limit=limit,
@@ -126,7 +118,6 @@ class Downloadables(BaseSDK):
 
             return self.list(
                 security=security,
-                organization_id=organization_id,
                 benefit_id=benefit_id,
                 page=next_page,
                 limit=limit,
@@ -162,12 +153,6 @@ class Downloadables(BaseSDK):
             models.CustomerPortalDownloadablesListSecurity,
             models.CustomerPortalDownloadablesListSecurityTypedDict,
         ],
-        organization_id: OptionalNullable[
-            Union[
-                models.CustomerPortalDownloadablesListQueryParamOrganizationIDFilter,
-                models.CustomerPortalDownloadablesListQueryParamOrganizationIDFilterTypedDict,
-            ]
-        ] = UNSET,
         benefit_id: OptionalNullable[
             Union[
                 models.CustomerPortalDownloadablesListQueryParamBenefitIDFilter,
@@ -186,7 +171,6 @@ class Downloadables(BaseSDK):
         **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
-        :param organization_id: Filter by organization ID.
         :param benefit_id: Filter by benefit ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -206,7 +190,6 @@ class Downloadables(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalDownloadablesListRequest(
-            organization_id=organization_id,
             benefit_id=benefit_id,
             page=page,
             limit=limit,
@@ -271,7 +254,6 @@ class Downloadables(BaseSDK):
 
             return self.list(
                 security=security,
-                organization_id=organization_id,
                 benefit_id=benefit_id,
                 page=next_page,
                 limit=limit,

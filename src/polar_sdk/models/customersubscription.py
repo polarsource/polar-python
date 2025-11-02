@@ -85,7 +85,7 @@ class CustomerSubscriptionTypedDict(TypedDict):
     is_polar_managed: bool
     r"""Whether the subscription is managed by Polar."""
     seats: NotRequired[Nullable[int]]
-    r"""Number of seats included in the subscription (for seat-based pricing)."""
+    r"""The number of seats for seat-based subscriptions. None for non-seat subscriptions."""
 
 
 class CustomerSubscription(BaseModel):
@@ -165,7 +165,7 @@ class CustomerSubscription(BaseModel):
     r"""Whether the subscription is managed by Polar."""
 
     seats: OptionalNullable[int] = UNSET
-    r"""Number of seats included in the subscription (for seat-based pricing)."""
+    r"""The number of seats for seat-based subscriptions. None for non-seat subscriptions."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -181,9 +181,9 @@ class CustomerSubscription(BaseModel):
             "ended_at",
             "discount_id",
             "checkout_id",
+            "seats",
             "customer_cancellation_reason",
             "customer_cancellation_comment",
-            "seats",
         ]
         null_default_fields = []
 

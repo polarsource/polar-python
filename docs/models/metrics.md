@@ -14,6 +14,9 @@
 | `cumulative_costs`                        | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `average_order_value`                     | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `net_average_order_value`                 | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
+| `average_revenue_per_user`                | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
+| `cost_per_user`                           | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
+| `active_user_by_event`                    | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `one_time_products`                       | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `one_time_products_revenue`               | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `one_time_products_net_revenue`           | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
@@ -38,3 +41,7 @@
 | `canceled_subscriptions_too_expensive`    | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `canceled_subscriptions_unused`           | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `canceled_subscriptions_other`            | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
+| `churn_rate`                              | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
+| `gross_margin`                            | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
+| `gross_margin_percentage`                 | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
+| `cashflow`                                | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |

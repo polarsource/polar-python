@@ -31,20 +31,6 @@ class CustomerPortalSubscriptionsListSecurity(BaseModel):
     ]
 
 
-CustomerPortalSubscriptionsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
-    "CustomerPortalSubscriptionsListQueryParamOrganizationIDFilterTypedDict",
-    Union[str, List[str]],
-)
-r"""Filter by organization ID."""
-
-
-CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter = TypeAliasType(
-    "CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter",
-    Union[str, List[str]],
-)
-r"""Filter by organization ID."""
-
-
 CustomerPortalSubscriptionsListQueryParamProductIDFilterTypedDict = TypeAliasType(
     "CustomerPortalSubscriptionsListQueryParamProductIDFilterTypedDict",
     Union[str, List[str]],
@@ -59,10 +45,6 @@ r"""Filter by product ID."""
 
 
 class CustomerPortalSubscriptionsListRequestTypedDict(TypedDict):
-    organization_id: NotRequired[
-        Nullable[CustomerPortalSubscriptionsListQueryParamOrganizationIDFilterTypedDict]
-    ]
-    r"""Filter by organization ID."""
     product_id: NotRequired[
         Nullable[CustomerPortalSubscriptionsListQueryParamProductIDFilterTypedDict]
     ]
@@ -80,12 +62,6 @@ class CustomerPortalSubscriptionsListRequestTypedDict(TypedDict):
 
 
 class CustomerPortalSubscriptionsListRequest(BaseModel):
-    organization_id: Annotated[
-        OptionalNullable[CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = UNSET
-    r"""Filter by organization ID."""
-
     product_id: Annotated[
         OptionalNullable[CustomerPortalSubscriptionsListQueryParamProductIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -124,22 +100,8 @@ class CustomerPortalSubscriptionsListRequest(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "organization_id",
-            "product_id",
-            "active",
-            "query",
-            "page",
-            "limit",
-            "sorting",
-        ]
-        nullable_fields = [
-            "organization_id",
-            "product_id",
-            "active",
-            "query",
-            "sorting",
-        ]
+        optional_fields = ["product_id", "active", "query", "page", "limit", "sorting"]
+        nullable_fields = ["product_id", "active", "query", "sorting"]
         null_default_fields = []
 
         serialized = handler(self)

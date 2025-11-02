@@ -11,6 +11,10 @@ from .subscriptionupdateproduct import (
     SubscriptionUpdateProduct,
     SubscriptionUpdateProductTypedDict,
 )
+from .subscriptionupdateseats import (
+    SubscriptionUpdateSeats,
+    SubscriptionUpdateSeatsTypedDict,
+)
 from .subscriptionupdatetrial import (
     SubscriptionUpdateTrial,
     SubscriptionUpdateTrialTypedDict,
@@ -25,6 +29,7 @@ SubscriptionUpdateTypedDict = TypeAliasType(
         SubscriptionUpdateDiscountTypedDict,
         SubscriptionUpdateTrialTypedDict,
         SubscriptionUpdateProductTypedDict,
+        SubscriptionUpdateSeatsTypedDict,
         SubscriptionCancelTypedDict,
         SubscriptionRevokeTypedDict,
     ],
@@ -37,6 +42,7 @@ SubscriptionUpdate = TypeAliasType(
         SubscriptionUpdateDiscount,
         SubscriptionUpdateTrial,
         SubscriptionUpdateProduct,
+        SubscriptionUpdateSeats,
         SubscriptionCancel,
         SubscriptionRevoke,
     ],

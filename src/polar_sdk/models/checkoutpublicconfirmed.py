@@ -56,14 +56,12 @@ CheckoutPublicConfirmedProductPriceTypedDict = TypeAliasType(
     "CheckoutPublicConfirmedProductPriceTypedDict",
     Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
 )
-r"""Price of the selected product."""
 
 
 CheckoutPublicConfirmedProductPrice = TypeAliasType(
     "CheckoutPublicConfirmedProductPrice",
     Union[LegacyRecurringProductPrice, ProductPrice],
 )
-r"""Price of the selected product."""
 
 
 CheckoutPublicConfirmedDiscountTypedDict = TypeAliasType(
@@ -132,9 +130,11 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     r"""Number of interval units of the trial period, if any. This value is either set from the checkout, if `trial_interval_count` is set, or from the selected product."""
     trial_end: Nullable[datetime]
     r"""End date and time of the trial period, if any."""
-    product_id: str
+    organization_id: str
+    r"""ID of the organization owning the checkout session."""
+    product_id: Nullable[str]
     r"""ID of the product to checkout."""
-    product_price_id: str
+    product_price_id: Nullable[str]
     r"""ID of the product price to checkout."""
     discount_id: Nullable[str]
     r"""ID of the discount applied to the checkout."""
@@ -167,13 +167,13 @@ class CheckoutPublicConfirmedTypedDict(TypedDict):
     billing_address_fields: CheckoutBillingAddressFieldsTypedDict
     products: List[CheckoutProductTypedDict]
     r"""List of products available to select."""
-    product: CheckoutProductTypedDict
-    r"""Product data for a checkout session."""
-    product_price: CheckoutPublicConfirmedProductPriceTypedDict
+    product: Nullable[CheckoutProductTypedDict]
+    r"""Product selected to checkout."""
+    product_price: Nullable[CheckoutPublicConfirmedProductPriceTypedDict]
     r"""Price of the selected product."""
     discount: Nullable[CheckoutPublicConfirmedDiscountTypedDict]
     organization: OrganizationTypedDict
-    attached_custom_fields: List[AttachedCustomFieldTypedDict]
+    attached_custom_fields: Nullable[List[AttachedCustomFieldTypedDict]]
     customer_session_token: str
     custom_field_data: NotRequired[
         Dict[str, Nullable[CheckoutPublicConfirmedCustomFieldDataTypedDict]]
@@ -249,10 +249,13 @@ class CheckoutPublicConfirmed(BaseModel):
     trial_end: Nullable[datetime]
     r"""End date and time of the trial period, if any."""
 
-    product_id: str
+    organization_id: str
+    r"""ID of the organization owning the checkout session."""
+
+    product_id: Nullable[str]
     r"""ID of the product to checkout."""
 
-    product_price_id: str
+    product_price_id: Nullable[str]
     r"""ID of the product price to checkout."""
 
     discount_id: Nullable[str]
@@ -305,17 +308,17 @@ class CheckoutPublicConfirmed(BaseModel):
     products: List[CheckoutProduct]
     r"""List of products available to select."""
 
-    product: CheckoutProduct
-    r"""Product data for a checkout session."""
+    product: Nullable[CheckoutProduct]
+    r"""Product selected to checkout."""
 
-    product_price: CheckoutPublicConfirmedProductPrice
+    product_price: Nullable[CheckoutPublicConfirmedProductPrice]
     r"""Price of the selected product."""
 
     discount: Nullable[CheckoutPublicConfirmedDiscount]
 
     organization: Organization
 
-    attached_custom_fields: List[AttachedCustomField]
+    attached_custom_fields: Nullable[List[AttachedCustomField]]
 
     customer_session_token: str
 
@@ -348,6 +351,8 @@ class CheckoutPublicConfirmed(BaseModel):
             "active_trial_interval",
             "active_trial_interval_count",
             "trial_end",
+            "product_id",
+            "product_price_id",
             "discount_id",
             "customer_id",
             "customer_name",
@@ -356,7 +361,10 @@ class CheckoutPublicConfirmed(BaseModel):
             "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
+            "product",
+            "product_price",
             "discount",
+            "attached_custom_fields",
         ]
         null_default_fields = []
 

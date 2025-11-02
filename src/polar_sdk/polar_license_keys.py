@@ -17,12 +17,6 @@ class PolarLicenseKeys(BaseSDK):
             models.CustomerPortalLicenseKeysListSecurity,
             models.CustomerPortalLicenseKeysListSecurityTypedDict,
         ],
-        organization_id: OptionalNullable[
-            Union[
-                models.CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter,
-                models.CustomerPortalLicenseKeysListQueryParamOrganizationIDFilterTypedDict,
-            ]
-        ] = UNSET,
         benefit_id: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -36,7 +30,6 @@ class PolarLicenseKeys(BaseSDK):
         **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
-        :param organization_id: Filter by organization ID.
         :param benefit_id: Filter by a specific benefit
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -56,7 +49,6 @@ class PolarLicenseKeys(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalLicenseKeysListRequest(
-            organization_id=organization_id,
             benefit_id=benefit_id,
             page=page,
             limit=limit,
@@ -121,7 +113,6 @@ class PolarLicenseKeys(BaseSDK):
 
             return self.list(
                 security=security,
-                organization_id=organization_id,
                 benefit_id=benefit_id,
                 page=next_page,
                 limit=limit,
@@ -165,12 +156,6 @@ class PolarLicenseKeys(BaseSDK):
             models.CustomerPortalLicenseKeysListSecurity,
             models.CustomerPortalLicenseKeysListSecurityTypedDict,
         ],
-        organization_id: OptionalNullable[
-            Union[
-                models.CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter,
-                models.CustomerPortalLicenseKeysListQueryParamOrganizationIDFilterTypedDict,
-            ]
-        ] = UNSET,
         benefit_id: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -184,7 +169,6 @@ class PolarLicenseKeys(BaseSDK):
         **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
-        :param organization_id: Filter by organization ID.
         :param benefit_id: Filter by a specific benefit
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -204,7 +188,6 @@ class PolarLicenseKeys(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalLicenseKeysListRequest(
-            organization_id=organization_id,
             benefit_id=benefit_id,
             page=page,
             limit=limit,
@@ -269,7 +252,6 @@ class PolarLicenseKeys(BaseSDK):
 
             return self.list(
                 security=security,
-                organization_id=organization_id,
                 benefit_id=benefit_id,
                 page=next_page,
                 limit=limit,

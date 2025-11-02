@@ -6,6 +6,7 @@
 ### Available Operations
 
 * [list](#list) - List Subscriptions
+* [create](#create) - Create Subscription
 * [export](#export) - Export Subscriptions
 * [get](#get) - Get Subscription
 * [update](#update) - Update Subscription
@@ -56,6 +57,56 @@ with Polar(
 ### Response
 
 **[models.SubscriptionsListResponse](../../models/subscriptionslistresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## create
+
+Create a subscription programmatically.
+
+This endpoint only allows to create subscription on free products.
+For paid products, use the checkout flow.
+
+No initial order will be created and no confirmation email will be sent.
+
+**Scopes**: `subscriptions:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="subscriptions:create" method="post" path="/v1/subscriptions/" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.subscriptions.create(request={
+        "product_id": "d8dd2de1-21b7-4a41-8bc3-ce909c0cfe23",
+        "customer_id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `request`                                                                                             | [models.SubscriptionsCreateSubscriptionCreate](../../models/subscriptionscreatesubscriptioncreate.md) | :heavy_check_mark:                                                                                    | The request object to use for the request.                                                            |
+| `retries`                                                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                      | :heavy_minus_sign:                                                                                    | Configuration to override the default retry behavior of the client.                                   |
+
+### Response
+
+**[models.Subscription](../../models/subscription.md)**
 
 ### Errors
 
