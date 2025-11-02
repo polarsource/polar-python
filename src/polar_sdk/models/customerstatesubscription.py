@@ -34,7 +34,7 @@ CustomerStateSubscriptionMetadata = TypeAliasType(
 )
 
 
-class CustomerStateSubscriptionStatus(str, Enum):
+class Status(str, Enum):
     ACTIVE = "active"
     TRIALING = "trialing"
 
@@ -49,7 +49,7 @@ class CustomerStateSubscriptionTypedDict(TypedDict):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
     metadata: Dict[str, CustomerStateSubscriptionMetadataTypedDict]
-    status: CustomerStateSubscriptionStatus
+    status: Status
     amount: int
     r"""The amount of the subscription."""
     currency: str
@@ -97,7 +97,7 @@ class CustomerStateSubscription(BaseModel):
 
     metadata: Dict[str, CustomerStateSubscriptionMetadata]
 
-    status: CustomerStateSubscriptionStatus
+    status: Status
 
     amount: int
     r"""The amount of the subscription."""

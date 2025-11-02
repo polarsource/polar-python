@@ -29,6 +29,8 @@ class WebhookEndpointTypedDict(TypedDict):
     r"""The organization ID associated with the webhook endpoint."""
     events: List[WebhookEventType]
     r"""The events that will trigger the webhook."""
+    enabled: bool
+    r"""Whether the webhook endpoint is enabled and will receive events."""
 
 
 class WebhookEndpoint(BaseModel):
@@ -56,6 +58,9 @@ class WebhookEndpoint(BaseModel):
 
     events: List[WebhookEventType]
     r"""The events that will trigger the webhook."""
+
+    enabled: bool
+    r"""Whether the webhook endpoint is enabled and will receive events."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

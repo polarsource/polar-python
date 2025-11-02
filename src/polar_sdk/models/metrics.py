@@ -25,6 +25,12 @@ class MetricsTypedDict(TypedDict):
     r"""Information about a metric."""
     net_average_order_value: MetricTypedDict
     r"""Information about a metric."""
+    average_revenue_per_user: MetricTypedDict
+    r"""Information about a metric."""
+    cost_per_user: MetricTypedDict
+    r"""Information about a metric."""
+    active_user_by_event: MetricTypedDict
+    r"""Information about a metric."""
     one_time_products: MetricTypedDict
     r"""Information about a metric."""
     one_time_products_revenue: MetricTypedDict
@@ -73,6 +79,14 @@ class MetricsTypedDict(TypedDict):
     r"""Information about a metric."""
     canceled_subscriptions_other: MetricTypedDict
     r"""Information about a metric."""
+    churn_rate: MetricTypedDict
+    r"""Information about a metric."""
+    gross_margin: MetricTypedDict
+    r"""Information about a metric."""
+    gross_margin_percentage: MetricTypedDict
+    r"""Information about a metric."""
+    cashflow: MetricTypedDict
+    r"""Information about a metric."""
 
 
 class Metrics(BaseModel):
@@ -101,6 +115,15 @@ class Metrics(BaseModel):
     r"""Information about a metric."""
 
     net_average_order_value: Metric
+    r"""Information about a metric."""
+
+    average_revenue_per_user: Metric
+    r"""Information about a metric."""
+
+    cost_per_user: Metric
+    r"""Information about a metric."""
+
+    active_user_by_event: Metric
     r"""Information about a metric."""
 
     one_time_products: Metric
@@ -173,4 +196,16 @@ class Metrics(BaseModel):
     r"""Information about a metric."""
 
     canceled_subscriptions_other: Metric
+    r"""Information about a metric."""
+
+    churn_rate: Metric
+    r"""Information about a metric."""
+
+    gross_margin: Metric
+    r"""Information about a metric."""
+
+    gross_margin_percentage: Metric
+    r"""Information about a metric."""
+
+    cashflow: Metric
     r"""Information about a metric."""

@@ -1,6 +1,6 @@
-# CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilter
+# WalletsListQueryParamCustomerIDFilter
 
-Filter by organization ID.
+Filter by customer ID.
 
 
 ## Supported Types

@@ -69,6 +69,28 @@ NetAverageOrderValueTypedDict = TypeAliasType(
 NetAverageOrderValue = TypeAliasType("NetAverageOrderValue", Union[int, float])
 
 
+AverageRevenuePerUserTypedDict = TypeAliasType(
+    "AverageRevenuePerUserTypedDict", Union[int, float]
+)
+
+
+AverageRevenuePerUser = TypeAliasType("AverageRevenuePerUser", Union[int, float])
+
+
+CostPerUserTypedDict = TypeAliasType("CostPerUserTypedDict", Union[int, float])
+
+
+CostPerUser = TypeAliasType("CostPerUser", Union[int, float])
+
+
+ActiveUserByEventTypedDict = TypeAliasType(
+    "ActiveUserByEventTypedDict", Union[int, float]
+)
+
+
+ActiveUserByEvent = TypeAliasType("ActiveUserByEvent", Union[int, float])
+
+
 OneTimeProductsTypedDict = TypeAliasType("OneTimeProductsTypedDict", Union[int, float])
 
 
@@ -283,6 +305,32 @@ CanceledSubscriptionsOther = TypeAliasType(
 )
 
 
+ChurnRateTypedDict = TypeAliasType("ChurnRateTypedDict", Union[int, float])
+
+
+ChurnRate = TypeAliasType("ChurnRate", Union[int, float])
+
+
+GrossMarginTypedDict = TypeAliasType("GrossMarginTypedDict", Union[int, float])
+
+
+GrossMargin = TypeAliasType("GrossMargin", Union[int, float])
+
+
+GrossMarginPercentageTypedDict = TypeAliasType(
+    "GrossMarginPercentageTypedDict", Union[int, float]
+)
+
+
+GrossMarginPercentage = TypeAliasType("GrossMarginPercentage", Union[int, float])
+
+
+CashflowTypedDict = TypeAliasType("CashflowTypedDict", Union[int, float])
+
+
+Cashflow = TypeAliasType("Cashflow", Union[int, float])
+
+
 class MetricPeriodTypedDict(TypedDict):
     timestamp: datetime
     r"""Timestamp of this period data."""
@@ -295,6 +343,9 @@ class MetricPeriodTypedDict(TypedDict):
     cumulative_costs: CumulativeCostsTypedDict
     average_order_value: AverageOrderValueTypedDict
     net_average_order_value: NetAverageOrderValueTypedDict
+    average_revenue_per_user: AverageRevenuePerUserTypedDict
+    cost_per_user: CostPerUserTypedDict
+    active_user_by_event: ActiveUserByEventTypedDict
     one_time_products: OneTimeProductsTypedDict
     one_time_products_revenue: OneTimeProductsRevenueTypedDict
     one_time_products_net_revenue: OneTimeProductsNetRevenueTypedDict
@@ -325,6 +376,10 @@ class MetricPeriodTypedDict(TypedDict):
     canceled_subscriptions_too_expensive: CanceledSubscriptionsTooExpensiveTypedDict
     canceled_subscriptions_unused: CanceledSubscriptionsUnusedTypedDict
     canceled_subscriptions_other: CanceledSubscriptionsOtherTypedDict
+    churn_rate: ChurnRateTypedDict
+    gross_margin: GrossMarginTypedDict
+    gross_margin_percentage: GrossMarginPercentageTypedDict
+    cashflow: CashflowTypedDict
 
 
 class MetricPeriod(BaseModel):
@@ -348,6 +403,12 @@ class MetricPeriod(BaseModel):
     average_order_value: AverageOrderValue
 
     net_average_order_value: NetAverageOrderValue
+
+    average_revenue_per_user: AverageRevenuePerUser
+
+    cost_per_user: CostPerUser
+
+    active_user_by_event: ActiveUserByEvent
 
     one_time_products: OneTimeProducts
 
@@ -396,3 +457,11 @@ class MetricPeriod(BaseModel):
     canceled_subscriptions_unused: CanceledSubscriptionsUnused
 
     canceled_subscriptions_other: CanceledSubscriptionsOther
+
+    churn_rate: ChurnRate
+
+    gross_margin: GrossMargin
+
+    gross_margin_percentage: GrossMarginPercentage
+
+    cashflow: Cashflow

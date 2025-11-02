@@ -17,6 +17,8 @@ class WebhookEndpointUpdateTypedDict(TypedDict):
     secret: NotRequired[Nullable[str]]
     format_: NotRequired[Nullable[WebhookFormat]]
     events: NotRequired[Nullable[List[WebhookEventType]]]
+    enabled: NotRequired[Nullable[bool]]
+    r"""Whether the webhook endpoint is enabled."""
 
 
 class WebhookEndpointUpdate(BaseModel):
@@ -37,10 +39,13 @@ class WebhookEndpointUpdate(BaseModel):
 
     events: OptionalNullable[List[WebhookEventType]] = UNSET
 
+    enabled: OptionalNullable[bool] = UNSET
+    r"""Whether the webhook endpoint is enabled."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["url", "secret", "format", "events"]
-        nullable_fields = ["url", "secret", "format", "events"]
+        optional_fields = ["url", "secret", "format", "events", "enabled"]
+        nullable_fields = ["url", "secret", "format", "events", "enabled"]
         null_default_fields = []
 
         serialized = handler(self)
