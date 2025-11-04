@@ -83,6 +83,7 @@ with Polar(
 ) as polar:
 
     res = polar.checkouts.create(request={
+        "customer_name": "John Doe",
         "customer_billing_address": {
             "country": polar_sdk.CountryAlpha2Input.US,
         },
@@ -178,6 +179,7 @@ with Polar(
 ) as polar:
 
     res = polar.checkouts.update(id="<value>", checkout_update={
+        "customer_name": "John Doe",
         "customer_billing_address": {
             "country": polar_sdk.CountryAlpha2Input.US,
         },
@@ -265,6 +267,7 @@ from polar_sdk import Polar
 with Polar() as polar:
 
     res = polar.checkouts.client_update(client_secret="<value>", checkout_update_public={
+        "customer_name": "John Doe",
         "customer_billing_address": None,
     })
 
@@ -316,6 +319,7 @@ with Polar(
 ) as polar:
 
     res = polar.checkouts.client_confirm(client_secret="<value>", checkout_confirm_stripe={
+        "customer_name": "John Doe",
         "customer_billing_address": {
             "country": polar_sdk.CountryAlpha2Input.US,
         },

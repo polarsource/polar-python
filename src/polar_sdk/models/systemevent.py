@@ -5,8 +5,13 @@ from .benefitcycledevent import BenefitCycledEvent, BenefitCycledEventTypedDict
 from .benefitgrantedevent import BenefitGrantedEvent, BenefitGrantedEventTypedDict
 from .benefitrevokedevent import BenefitRevokedEvent, BenefitRevokedEventTypedDict
 from .benefitupdatedevent import BenefitUpdatedEvent, BenefitUpdatedEventTypedDict
+from .customercreatedevent import CustomerCreatedEvent, CustomerCreatedEventTypedDict
+from .customerdeletedevent import CustomerDeletedEvent, CustomerDeletedEventTypedDict
+from .customerupdatedevent import CustomerUpdatedEvent, CustomerUpdatedEventTypedDict
 from .metercreditevent import MeterCreditEvent, MeterCreditEventTypedDict
 from .meterresetevent import MeterResetEvent, MeterResetEventTypedDict
+from .orderpaidevent import OrderPaidEvent, OrderPaidEventTypedDict
+from .orderrefundedevent import OrderRefundedEvent, OrderRefundedEventTypedDict
 from .subscriptioncycledevent import (
     SubscriptionCycledEvent,
     SubscriptionCycledEventTypedDict,
@@ -37,6 +42,11 @@ SystemEventTypedDict = TypeAliasType(
         SubscriptionCycledEventTypedDict,
         SubscriptionRevokedEventTypedDict,
         SubscriptionProductUpdatedEventTypedDict,
+        OrderPaidEventTypedDict,
+        OrderRefundedEventTypedDict,
+        CustomerCreatedEventTypedDict,
+        CustomerUpdatedEventTypedDict,
+        CustomerDeletedEventTypedDict,
     ],
 )
 
@@ -47,8 +57,13 @@ SystemEvent = Annotated[
         Annotated[BenefitGrantedEvent, Tag("benefit.granted")],
         Annotated[BenefitRevokedEvent, Tag("benefit.revoked")],
         Annotated[BenefitUpdatedEvent, Tag("benefit.updated")],
+        Annotated[CustomerCreatedEvent, Tag("customer.created")],
+        Annotated[CustomerDeletedEvent, Tag("customer.deleted")],
+        Annotated[CustomerUpdatedEvent, Tag("customer.updated")],
         Annotated[MeterCreditEvent, Tag("meter.credited")],
         Annotated[MeterResetEvent, Tag("meter.reset")],
+        Annotated[OrderPaidEvent, Tag("order.paid")],
+        Annotated[OrderRefundedEvent, Tag("order.refunded")],
         Annotated[SubscriptionCycledEvent, Tag("subscription.cycled")],
         Annotated[SubscriptionProductUpdatedEvent, Tag("subscription.product_updated")],
         Annotated[SubscriptionRevokedEvent, Tag("subscription.revoked")],

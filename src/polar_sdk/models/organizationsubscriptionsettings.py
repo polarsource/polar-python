@@ -10,6 +10,7 @@ class OrganizationSubscriptionSettingsTypedDict(TypedDict):
     allow_multiple_subscriptions: bool
     allow_customer_updates: bool
     proration_behavior: SubscriptionProrationBehavior
+    benefit_revocation_grace_period: int
 
 
 class OrganizationSubscriptionSettings(BaseModel):
@@ -18,3 +19,5 @@ class OrganizationSubscriptionSettings(BaseModel):
     allow_customer_updates: bool
 
     proration_behavior: SubscriptionProrationBehavior
+
+    benefit_revocation_grace_period: int

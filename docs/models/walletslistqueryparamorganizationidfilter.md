@@ -1,4 +1,4 @@
-# CustomerPortalOrdersListQueryParamOrganizationIDFilter
+# WalletsListQueryParamOrganizationIDFilter
 
 Filter by organization ID.
 

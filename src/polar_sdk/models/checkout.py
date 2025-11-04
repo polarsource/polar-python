@@ -62,13 +62,11 @@ CheckoutProductPriceTypedDict = TypeAliasType(
     "CheckoutProductPriceTypedDict",
     Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
 )
-r"""Price of the selected product."""
 
 
 CheckoutProductPrice = TypeAliasType(
     "CheckoutProductPrice", Union[LegacyRecurringProductPrice, ProductPrice]
 )
-r"""Price of the selected product."""
 
 
 CheckoutDiscountTypedDict = TypeAliasType(
@@ -142,9 +140,11 @@ class CheckoutTypedDict(TypedDict):
     r"""Number of interval units of the trial period, if any. This value is either set from the checkout, if `trial_interval_count` is set, or from the selected product."""
     trial_end: Nullable[datetime]
     r"""End date and time of the trial period, if any."""
-    product_id: str
+    organization_id: str
+    r"""ID of the organization owning the checkout session."""
+    product_id: Nullable[str]
     r"""ID of the product to checkout."""
-    product_price_id: str
+    product_price_id: Nullable[str]
     r"""ID of the product price to checkout."""
     discount_id: Nullable[str]
     r"""ID of the discount applied to the checkout."""
@@ -185,13 +185,13 @@ class CheckoutTypedDict(TypedDict):
     customer_external_id: Nullable[str]
     products: List[CheckoutProductTypedDict]
     r"""List of products available to select."""
-    product: CheckoutProductTypedDict
-    r"""Product data for a checkout session."""
-    product_price: CheckoutProductPriceTypedDict
+    product: Nullable[CheckoutProductTypedDict]
+    r"""Product selected to checkout."""
+    product_price: Nullable[CheckoutProductPriceTypedDict]
     r"""Price of the selected product."""
     discount: Nullable[CheckoutDiscountTypedDict]
     subscription_id: Nullable[str]
-    attached_custom_fields: List[AttachedCustomFieldTypedDict]
+    attached_custom_fields: Nullable[List[AttachedCustomFieldTypedDict]]
     customer_metadata: Dict[str, CustomerMetadataTypedDict]
     custom_field_data: NotRequired[
         Dict[str, Nullable[CheckoutCustomFieldDataTypedDict]]
@@ -264,10 +264,13 @@ class Checkout(BaseModel):
     trial_end: Nullable[datetime]
     r"""End date and time of the trial period, if any."""
 
-    product_id: str
+    organization_id: str
+    r"""ID of the organization owning the checkout session."""
+
+    product_id: Nullable[str]
     r"""ID of the product to checkout."""
 
-    product_price_id: str
+    product_price_id: Nullable[str]
     r"""ID of the product price to checkout."""
 
     discount_id: Nullable[str]
@@ -338,17 +341,17 @@ class Checkout(BaseModel):
     products: List[CheckoutProduct]
     r"""List of products available to select."""
 
-    product: CheckoutProduct
-    r"""Product data for a checkout session."""
+    product: Nullable[CheckoutProduct]
+    r"""Product selected to checkout."""
 
-    product_price: CheckoutProductPrice
+    product_price: Nullable[CheckoutProductPrice]
     r"""Price of the selected product."""
 
     discount: Nullable[CheckoutDiscount]
 
     subscription_id: Nullable[str]
 
-    attached_custom_fields: List[AttachedCustomField]
+    attached_custom_fields: Nullable[List[AttachedCustomField]]
 
     customer_metadata: Dict[str, CustomerMetadata]
 
@@ -374,6 +377,8 @@ class Checkout(BaseModel):
             "active_trial_interval",
             "active_trial_interval_count",
             "trial_end",
+            "product_id",
+            "product_price_id",
             "discount_id",
             "customer_id",
             "customer_name",
@@ -386,8 +391,11 @@ class Checkout(BaseModel):
             "trial_interval_count",
             "external_customer_id",
             "customer_external_id",
+            "product",
+            "product_price",
             "discount",
             "subscription_id",
+            "attached_custom_fields",
         ]
         null_default_fields = []
 

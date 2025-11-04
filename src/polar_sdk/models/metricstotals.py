@@ -88,6 +88,34 @@ MetricsTotalsNetAverageOrderValue = TypeAliasType(
 )
 
 
+MetricsTotalsAverageRevenuePerUserTypedDict = TypeAliasType(
+    "MetricsTotalsAverageRevenuePerUserTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsAverageRevenuePerUser = TypeAliasType(
+    "MetricsTotalsAverageRevenuePerUser", Union[int, float]
+)
+
+
+MetricsTotalsCostPerUserTypedDict = TypeAliasType(
+    "MetricsTotalsCostPerUserTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCostPerUser = TypeAliasType("MetricsTotalsCostPerUser", Union[int, float])
+
+
+MetricsTotalsActiveUserByEventTypedDict = TypeAliasType(
+    "MetricsTotalsActiveUserByEventTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsActiveUserByEvent = TypeAliasType(
+    "MetricsTotalsActiveUserByEvent", Union[int, float]
+)
+
+
 MetricsTotalsOneTimeProductsTypedDict = TypeAliasType(
     "MetricsTotalsOneTimeProductsTypedDict", Union[int, float]
 )
@@ -326,6 +354,40 @@ MetricsTotalsCanceledSubscriptionsOther = TypeAliasType(
 )
 
 
+MetricsTotalsChurnRateTypedDict = TypeAliasType(
+    "MetricsTotalsChurnRateTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsChurnRate = TypeAliasType("MetricsTotalsChurnRate", Union[int, float])
+
+
+MetricsTotalsGrossMarginTypedDict = TypeAliasType(
+    "MetricsTotalsGrossMarginTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsGrossMargin = TypeAliasType("MetricsTotalsGrossMargin", Union[int, float])
+
+
+MetricsTotalsGrossMarginPercentageTypedDict = TypeAliasType(
+    "MetricsTotalsGrossMarginPercentageTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsGrossMarginPercentage = TypeAliasType(
+    "MetricsTotalsGrossMarginPercentage", Union[int, float]
+)
+
+
+MetricsTotalsCashflowTypedDict = TypeAliasType(
+    "MetricsTotalsCashflowTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCashflow = TypeAliasType("MetricsTotalsCashflow", Union[int, float])
+
+
 class MetricsTotalsTypedDict(TypedDict):
     orders: MetricsTotalsOrdersTypedDict
     revenue: MetricsTotalsRevenueTypedDict
@@ -336,6 +398,9 @@ class MetricsTotalsTypedDict(TypedDict):
     cumulative_costs: MetricsTotalsCumulativeCostsTypedDict
     average_order_value: MetricsTotalsAverageOrderValueTypedDict
     net_average_order_value: MetricsTotalsNetAverageOrderValueTypedDict
+    average_revenue_per_user: MetricsTotalsAverageRevenuePerUserTypedDict
+    cost_per_user: MetricsTotalsCostPerUserTypedDict
+    active_user_by_event: MetricsTotalsActiveUserByEventTypedDict
     one_time_products: MetricsTotalsOneTimeProductsTypedDict
     one_time_products_revenue: MetricsTotalsOneTimeProductsRevenueTypedDict
     one_time_products_net_revenue: MetricsTotalsOneTimeProductsNetRevenueTypedDict
@@ -376,6 +441,10 @@ class MetricsTotalsTypedDict(TypedDict):
     )
     canceled_subscriptions_unused: MetricsTotalsCanceledSubscriptionsUnusedTypedDict
     canceled_subscriptions_other: MetricsTotalsCanceledSubscriptionsOtherTypedDict
+    churn_rate: MetricsTotalsChurnRateTypedDict
+    gross_margin: MetricsTotalsGrossMarginTypedDict
+    gross_margin_percentage: MetricsTotalsGrossMarginPercentageTypedDict
+    cashflow: MetricsTotalsCashflowTypedDict
 
 
 class MetricsTotals(BaseModel):
@@ -396,6 +465,12 @@ class MetricsTotals(BaseModel):
     average_order_value: MetricsTotalsAverageOrderValue
 
     net_average_order_value: MetricsTotalsNetAverageOrderValue
+
+    average_revenue_per_user: MetricsTotalsAverageRevenuePerUser
+
+    cost_per_user: MetricsTotalsCostPerUser
+
+    active_user_by_event: MetricsTotalsActiveUserByEvent
 
     one_time_products: MetricsTotalsOneTimeProducts
 
@@ -450,3 +525,11 @@ class MetricsTotals(BaseModel):
     canceled_subscriptions_unused: MetricsTotalsCanceledSubscriptionsUnused
 
     canceled_subscriptions_other: MetricsTotalsCanceledSubscriptionsOther
+
+    churn_rate: MetricsTotalsChurnRate
+
+    gross_margin: MetricsTotalsGrossMargin
+
+    gross_margin_percentage: MetricsTotalsGrossMarginPercentage
+
+    cashflow: MetricsTotalsCashflow

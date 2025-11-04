@@ -3,7 +3,7 @@
 from __future__ import annotations
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -22,6 +22,8 @@ class SeatAssignTypedDict(TypedDict):
     r"""Customer ID for the seat assignment"""
     metadata: NotRequired[Nullable[Dict[str, Any]]]
     r"""Additional metadata for the seat (max 10 keys, 1KB total)"""
+    immediate_claim: NotRequired[bool]
+    r"""If true, the seat will be immediately claimed without sending an invitation email. API-only feature."""
 
 
 class SeatAssign(BaseModel):
@@ -46,6 +48,9 @@ class SeatAssign(BaseModel):
     metadata: OptionalNullable[Dict[str, Any]] = UNSET
     r"""Additional metadata for the seat (max 10 keys, 1KB total)"""
 
+    immediate_claim: Optional[bool] = False
+    r"""If true, the seat will be immediately claimed without sending an invitation email. API-only feature."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -56,6 +61,7 @@ class SeatAssign(BaseModel):
             "external_customer_id",
             "customer_id",
             "metadata",
+            "immediate_claim",
         ]
         nullable_fields = [
             "subscription_id",

@@ -12,8 +12,8 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Literal
-from typing_extensions import Annotated, TypedDict
+from typing import Literal, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class SubscriptionCycledEventTypedDict(TypedDict):
@@ -32,6 +32,8 @@ class SubscriptionCycledEventTypedDict(TypedDict):
     external_customer_id: Nullable[str]
     r"""ID of the customer in your system associated with the event."""
     metadata: SubscriptionCycledMetadataTypedDict
+    child_count: NotRequired[int]
+    r"""Number of direct child events linked to this event."""
     source: Literal["system"]
     r"""The source of the event. `system` events are created by Polar. `user` events are the one you create through our ingestion API."""
     name: Literal["subscription.cycled"]
@@ -61,6 +63,9 @@ class SubscriptionCycledEvent(BaseModel):
 
     metadata: SubscriptionCycledMetadata
 
+    child_count: Optional[int] = 0
+    r"""Number of direct child events linked to this event."""
+
     SOURCE: Annotated[
         Annotated[Literal["system"], AfterValidator(validate_const("system"))],
         pydantic.Field(alias="source"),
@@ -78,7 +83,7 @@ class SubscriptionCycledEvent(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["child_count"]
         nullable_fields = ["customer_id", "customer", "external_customer_id"]
         null_default_fields = []
 

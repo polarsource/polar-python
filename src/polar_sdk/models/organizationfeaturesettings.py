@@ -13,6 +13,8 @@ class OrganizationFeatureSettingsTypedDict(TypedDict):
     r"""If this organization has seat-based pricing enabled"""
     revops_enabled: NotRequired[bool]
     r"""If this organization has RevOps enabled"""
+    wallets_enabled: NotRequired[bool]
+    r"""If this organization has Wallets enabled"""
 
 
 class OrganizationFeatureSettings(BaseModel):
@@ -24,3 +26,6 @@ class OrganizationFeatureSettings(BaseModel):
 
     revops_enabled: Optional[bool] = False
     r"""If this organization has RevOps enabled"""
+
+    wallets_enabled: Optional[bool] = False
+    r"""If this organization has Wallets enabled"""

@@ -30,20 +30,6 @@ class CustomerPortalDownloadablesListSecurity(BaseModel):
     ]
 
 
-CustomerPortalDownloadablesListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
-    "CustomerPortalDownloadablesListQueryParamOrganizationIDFilterTypedDict",
-    Union[str, List[str]],
-)
-r"""Filter by organization ID."""
-
-
-CustomerPortalDownloadablesListQueryParamOrganizationIDFilter = TypeAliasType(
-    "CustomerPortalDownloadablesListQueryParamOrganizationIDFilter",
-    Union[str, List[str]],
-)
-r"""Filter by organization ID."""
-
-
 CustomerPortalDownloadablesListQueryParamBenefitIDFilterTypedDict = TypeAliasType(
     "CustomerPortalDownloadablesListQueryParamBenefitIDFilterTypedDict",
     Union[str, List[str]],
@@ -58,10 +44,6 @@ r"""Filter by benefit ID."""
 
 
 class CustomerPortalDownloadablesListRequestTypedDict(TypedDict):
-    organization_id: NotRequired[
-        Nullable[CustomerPortalDownloadablesListQueryParamOrganizationIDFilterTypedDict]
-    ]
-    r"""Filter by organization ID."""
     benefit_id: NotRequired[
         Nullable[CustomerPortalDownloadablesListQueryParamBenefitIDFilterTypedDict]
     ]
@@ -73,12 +55,6 @@ class CustomerPortalDownloadablesListRequestTypedDict(TypedDict):
 
 
 class CustomerPortalDownloadablesListRequest(BaseModel):
-    organization_id: Annotated[
-        OptionalNullable[CustomerPortalDownloadablesListQueryParamOrganizationIDFilter],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = UNSET
-    r"""Filter by organization ID."""
-
     benefit_id: Annotated[
         OptionalNullable[CustomerPortalDownloadablesListQueryParamBenefitIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -99,8 +75,8 @@ class CustomerPortalDownloadablesListRequest(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["organization_id", "benefit_id", "page", "limit"]
-        nullable_fields = ["organization_id", "benefit_id"]
+        optional_fields = ["benefit_id", "page", "limit"]
+        nullable_fields = ["benefit_id"]
         null_default_fields = []
 
         serialized = handler(self)

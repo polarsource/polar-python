@@ -27,6 +27,24 @@ value: models.BenefitRevokedEvent = /* values here */
 value: models.BenefitUpdatedEvent = /* values here */
 ```
 
+### `models.CustomerCreatedEvent`
+
+```python
+value: models.CustomerCreatedEvent = /* values here */
+```
+
+### `models.CustomerDeletedEvent`
+
+```python
+value: models.CustomerDeletedEvent = /* values here */
+```
+
+### `models.CustomerUpdatedEvent`
+
+```python
+value: models.CustomerUpdatedEvent = /* values here */
+```
+
 ### `models.MeterCreditEvent`
 
 ```python
@@ -37,6 +55,18 @@ value: models.MeterCreditEvent = /* values here */
 
 ```python
 value: models.MeterResetEvent = /* values here */
+```
+
+### `models.OrderPaidEvent`
+
+```python
+value: models.OrderPaidEvent = /* values here */
+```
+
+### `models.OrderRefundedEvent`
+
+```python
+value: models.OrderRefundedEvent = /* values here */
 ```
 
 ### `models.SubscriptionCycledEvent`

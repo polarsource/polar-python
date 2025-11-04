@@ -38,6 +38,7 @@ if TYPE_CHECKING:
     from polar_sdk.products import Products
     from polar_sdk.refunds import Refunds
     from polar_sdk.subscriptions import Subscriptions
+    from polar_sdk.wallets import Wallets
     from polar_sdk.webhooks import Webhooks
 
 
@@ -71,6 +72,7 @@ class Polar(BaseSDK):
     meters: "Meters"
     customer_meters: "CustomerMeters"
     payments: "Payments"
+    wallets: "Wallets"
     _sub_sdk_map = {
         "organizations": ("polar_sdk.organizations", "Organizations"),
         "subscriptions": ("polar_sdk.subscriptions", "Subscriptions"),
@@ -96,6 +98,7 @@ class Polar(BaseSDK):
         "meters": ("polar_sdk.meters", "Meters"),
         "customer_meters": ("polar_sdk.customer_meters", "CustomerMeters"),
         "payments": ("polar_sdk.payments", "Payments"),
+        "wallets": ("polar_sdk.wallets", "Wallets"),
     }
 
     def __init__(

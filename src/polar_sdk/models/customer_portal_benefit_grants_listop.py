@@ -58,20 +58,6 @@ CustomerPortalBenefitGrantsListQueryParamBenefitIDFilter = TypeAliasType(
 r"""Filter by benefit ID."""
 
 
-CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
-    "CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilterTypedDict",
-    Union[str, List[str]],
-)
-r"""Filter by organization ID."""
-
-
-CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilter = TypeAliasType(
-    "CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilter",
-    Union[str, List[str]],
-)
-r"""Filter by organization ID."""
-
-
 QueryParamCheckoutIDFilterTypedDict = TypeAliasType(
     "QueryParamCheckoutIDFilterTypedDict", Union[str, List[str]]
 )
@@ -115,10 +101,6 @@ class CustomerPortalBenefitGrantsListRequestTypedDict(TypedDict):
         Nullable[CustomerPortalBenefitGrantsListQueryParamBenefitIDFilterTypedDict]
     ]
     r"""Filter by benefit ID."""
-    organization_id: NotRequired[
-        Nullable[CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilterTypedDict]
-    ]
-    r"""Filter by organization ID."""
     checkout_id: NotRequired[Nullable[QueryParamCheckoutIDFilterTypedDict]]
     r"""Filter by checkout ID."""
     order_id: NotRequired[Nullable[QueryParamOrderIDFilterTypedDict]]
@@ -146,12 +128,6 @@ class CustomerPortalBenefitGrantsListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by benefit ID."""
-
-    organization_id: Annotated[
-        OptionalNullable[CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilter],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = UNSET
-    r"""Filter by organization ID."""
 
     checkout_id: Annotated[
         OptionalNullable[QueryParamCheckoutIDFilter],
@@ -194,7 +170,6 @@ class CustomerPortalBenefitGrantsListRequest(BaseModel):
         optional_fields = [
             "type_filter",
             "benefit_id",
-            "organization_id",
             "checkout_id",
             "order_id",
             "subscription_id",
@@ -205,7 +180,6 @@ class CustomerPortalBenefitGrantsListRequest(BaseModel):
         nullable_fields = [
             "type_filter",
             "benefit_id",
-            "organization_id",
             "checkout_id",
             "order_id",
             "subscription_id",

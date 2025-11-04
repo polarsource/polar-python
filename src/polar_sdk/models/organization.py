@@ -17,11 +17,11 @@ from .organizationsociallink import (
     OrganizationSocialLink,
     OrganizationSocialLinkTypedDict,
 )
+from .organizationstatus import OrganizationStatus
 from .organizationsubscriptionsettings import (
     OrganizationSubscriptionSettings,
     OrganizationSubscriptionSettingsTypedDict,
 )
-from .status import Status
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -48,7 +48,7 @@ class OrganizationTypedDict(TypedDict):
     r"""Official website of the organization."""
     socials: List[OrganizationSocialLinkTypedDict]
     r"""Links to social profiles."""
-    status: Status
+    status: OrganizationStatus
     details_submitted_at: Nullable[datetime]
     r"""When the business details were submitted."""
     feature_settings: Nullable[OrganizationFeatureSettingsTypedDict]
@@ -86,7 +86,7 @@ class Organization(BaseModel):
     socials: List[OrganizationSocialLink]
     r"""Links to social profiles."""
 
-    status: Status
+    status: OrganizationStatus
 
     details_submitted_at: Nullable[datetime]
     r"""When the business details were submitted."""
