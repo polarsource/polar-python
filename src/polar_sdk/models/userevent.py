@@ -9,8 +9,8 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Literal
-from typing_extensions import Annotated, TypedDict
+from typing import Dict, Literal, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class UserEventTypedDict(TypedDict):
@@ -31,6 +31,8 @@ class UserEventTypedDict(TypedDict):
     name: str
     r"""The name of the event."""
     metadata: Dict[str, EventMetadataOutputTypedDict]
+    child_count: NotRequired[int]
+    r"""Number of direct child events linked to this event."""
     source: Literal["user"]
     r"""The source of the event. `system` events are created by Polar. `user` events are the one you create through our ingestion API."""
 
@@ -61,6 +63,9 @@ class UserEvent(BaseModel):
 
     metadata: Dict[str, EventMetadataOutput]
 
+    child_count: Optional[int] = 0
+    r"""Number of direct child events linked to this event."""
+
     SOURCE: Annotated[
         Annotated[Literal["user"], AfterValidator(validate_const("user"))],
         pydantic.Field(alias="source"),
@@ -69,7 +74,7 @@ class UserEvent(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["child_count"]
         nullable_fields = ["customer_id", "customer", "external_customer_id"]
         null_default_fields = []
 

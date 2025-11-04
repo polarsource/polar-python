@@ -9,6 +9,10 @@ from .customersubscriptionupdateproduct import (
     CustomerSubscriptionUpdateProduct,
     CustomerSubscriptionUpdateProductTypedDict,
 )
+from .customersubscriptionupdateseats import (
+    CustomerSubscriptionUpdateSeats,
+    CustomerSubscriptionUpdateSeatsTypedDict,
+)
 from typing import Union
 from typing_extensions import TypeAliasType
 
@@ -16,12 +20,18 @@ from typing_extensions import TypeAliasType
 CustomerSubscriptionUpdateTypedDict = TypeAliasType(
     "CustomerSubscriptionUpdateTypedDict",
     Union[
-        CustomerSubscriptionUpdateProductTypedDict, CustomerSubscriptionCancelTypedDict
+        CustomerSubscriptionUpdateProductTypedDict,
+        CustomerSubscriptionUpdateSeatsTypedDict,
+        CustomerSubscriptionCancelTypedDict,
     ],
 )
 
 
 CustomerSubscriptionUpdate = TypeAliasType(
     "CustomerSubscriptionUpdate",
-    Union[CustomerSubscriptionUpdateProduct, CustomerSubscriptionCancel],
+    Union[
+        CustomerSubscriptionUpdateProduct,
+        CustomerSubscriptionUpdateSeats,
+        CustomerSubscriptionCancel,
+    ],
 )

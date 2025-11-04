@@ -980,6 +980,8 @@ class EventsListRequestTypedDict(TypedDict):
     r"""Filter by event source."""
     query: NotRequired[Nullable[str]]
     r"""Query to filter events."""
+    parent_id: NotRequired[Nullable[str]]
+    r"""Filter events by parent event ID. When not specified, returns root events only."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -1052,6 +1054,12 @@ class EventsListRequest(BaseModel):
     ] = UNSET
     r"""Query to filter events."""
 
+    parent_id: Annotated[
+        OptionalNullable[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter events by parent event ID. When not specified, returns root events only."""
+
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -1089,6 +1097,7 @@ class EventsListRequest(BaseModel):
             "name",
             "source",
             "query",
+            "parent_id",
             "page",
             "limit",
             "sorting",
@@ -1105,6 +1114,7 @@ class EventsListRequest(BaseModel):
             "name",
             "source",
             "query",
+            "parent_id",
             "sorting",
             "metadata",
         ]

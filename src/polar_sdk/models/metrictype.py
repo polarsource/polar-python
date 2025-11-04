@@ -7,4 +7,5 @@ from enum import Enum
 class MetricType(str, Enum):
     SCALAR = "scalar"
     CURRENCY = "currency"
+    CURRENCY_SUB_CENT = "currency_sub_cent"
     PERCENTAGE = "percentage"

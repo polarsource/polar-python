@@ -53,7 +53,7 @@ class CustomerOrderSubscriptionTypedDict(TypedDict):
     customer_cancellation_reason: Nullable[CustomerCancellationReason]
     customer_cancellation_comment: Nullable[str]
     seats: NotRequired[Nullable[int]]
-    r"""Number of seats included in the subscription (for seat-based pricing)."""
+    r"""The number of seats for seat-based subscriptions. None for non-seat subscriptions."""
 
 
 class CustomerOrderSubscription(BaseModel):
@@ -122,7 +122,7 @@ class CustomerOrderSubscription(BaseModel):
     customer_cancellation_comment: Nullable[str]
 
     seats: OptionalNullable[int] = UNSET
-    r"""Number of seats included in the subscription (for seat-based pricing)."""
+    r"""The number of seats for seat-based subscriptions. None for non-seat subscriptions."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -138,9 +138,9 @@ class CustomerOrderSubscription(BaseModel):
             "ended_at",
             "discount_id",
             "checkout_id",
+            "seats",
             "customer_cancellation_reason",
             "customer_cancellation_comment",
-            "seats",
         ]
         null_default_fields = []
 

@@ -18,6 +18,10 @@ class EventCreateExternalCustomerTypedDict(TypedDict):
     r"""The timestamp of the event."""
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the event. **Required unless you use an organization token.**"""
+    external_id: NotRequired[Nullable[str]]
+    r"""Your unique identifier for this event. Useful for deduplication and parent-child relationships."""
+    parent_id: NotRequired[Nullable[str]]
+    r"""The ID of the parent event. Can be either a Polar event ID (UUID) or an external event ID."""
     metadata: NotRequired[Dict[str, EventMetadataInputTypedDict]]
 
 
@@ -34,12 +38,24 @@ class EventCreateExternalCustomer(BaseModel):
     organization_id: OptionalNullable[str] = UNSET
     r"""The ID of the organization owning the event. **Required unless you use an organization token.**"""
 
+    external_id: OptionalNullable[str] = UNSET
+    r"""Your unique identifier for this event. Useful for deduplication and parent-child relationships."""
+
+    parent_id: OptionalNullable[str] = UNSET
+    r"""The ID of the parent event. Can be either a Polar event ID (UUID) or an external event ID."""
+
     metadata: Optional[Dict[str, EventMetadataInput]] = None
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["timestamp", "organization_id", "metadata"]
-        nullable_fields = ["organization_id"]
+        optional_fields = [
+            "timestamp",
+            "organization_id",
+            "external_id",
+            "parent_id",
+            "metadata",
+        ]
+        nullable_fields = ["organization_id", "external_id", "parent_id"]
         null_default_fields = []
 
         serialized = handler(self)

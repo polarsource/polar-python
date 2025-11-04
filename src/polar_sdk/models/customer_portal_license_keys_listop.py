@@ -8,8 +8,8 @@ from .listresource_licensekeyread_ import (
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
 from pydantic import model_serializer
-from typing import Callable, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+from typing import Callable, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CustomerPortalLicenseKeysListSecurityTypedDict(TypedDict):
@@ -30,24 +30,7 @@ class CustomerPortalLicenseKeysListSecurity(BaseModel):
     ]
 
 
-CustomerPortalLicenseKeysListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
-    "CustomerPortalLicenseKeysListQueryParamOrganizationIDFilterTypedDict",
-    Union[str, List[str]],
-)
-r"""Filter by organization ID."""
-
-
-CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter = TypeAliasType(
-    "CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter", Union[str, List[str]]
-)
-r"""Filter by organization ID."""
-
-
 class CustomerPortalLicenseKeysListRequestTypedDict(TypedDict):
-    organization_id: NotRequired[
-        Nullable[CustomerPortalLicenseKeysListQueryParamOrganizationIDFilterTypedDict]
-    ]
-    r"""Filter by organization ID."""
     benefit_id: NotRequired[Nullable[str]]
     r"""Filter by a specific benefit"""
     page: NotRequired[int]
@@ -57,12 +40,6 @@ class CustomerPortalLicenseKeysListRequestTypedDict(TypedDict):
 
 
 class CustomerPortalLicenseKeysListRequest(BaseModel):
-    organization_id: Annotated[
-        OptionalNullable[CustomerPortalLicenseKeysListQueryParamOrganizationIDFilter],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = UNSET
-    r"""Filter by organization ID."""
-
     benefit_id: Annotated[
         OptionalNullable[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -83,8 +60,8 @@ class CustomerPortalLicenseKeysListRequest(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["organization_id", "benefit_id", "page", "limit"]
-        nullable_fields = ["organization_id", "benefit_id"]
+        optional_fields = ["benefit_id", "page", "limit"]
+        nullable_fields = ["benefit_id"]
         null_default_fields = []
 
         serialized = handler(self)

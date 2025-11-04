@@ -2,14 +2,20 @@
 
 from __future__ import annotations
 from polar_sdk.types import BaseModel
-from typing_extensions import TypedDict
+from typing import Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class EventsIngestResponseTypedDict(TypedDict):
     inserted: int
     r"""Number of events inserted."""
+    duplicates: NotRequired[int]
+    r"""Number of duplicate events skipped."""
 
 
 class EventsIngestResponse(BaseModel):
     inserted: int
     r"""Number of events inserted."""
+
+    duplicates: Optional[int] = 0
+    r"""Number of duplicate events skipped."""

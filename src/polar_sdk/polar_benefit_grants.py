@@ -29,12 +29,6 @@ class PolarBenefitGrants(BaseSDK):
                 models.CustomerPortalBenefitGrantsListQueryParamBenefitIDFilterTypedDict,
             ]
         ] = UNSET,
-        organization_id: OptionalNullable[
-            Union[
-                models.CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilter,
-                models.CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilterTypedDict,
-            ]
-        ] = UNSET,
         checkout_id: OptionalNullable[
             Union[
                 models.QueryParamCheckoutIDFilter,
@@ -71,7 +65,6 @@ class PolarBenefitGrants(BaseSDK):
         :param security:
         :param type_filter: Filter by benefit type.
         :param benefit_id: Filter by benefit ID.
-        :param organization_id: Filter by organization ID.
         :param checkout_id: Filter by checkout ID.
         :param order_id: Filter by order ID.
         :param subscription_id: Filter by subscription ID.
@@ -96,7 +89,6 @@ class PolarBenefitGrants(BaseSDK):
         request = models.CustomerPortalBenefitGrantsListRequest(
             type_filter=type_filter,
             benefit_id=benefit_id,
-            organization_id=organization_id,
             checkout_id=checkout_id,
             order_id=order_id,
             subscription_id=subscription_id,
@@ -166,7 +158,6 @@ class PolarBenefitGrants(BaseSDK):
                 security=security,
                 type_filter=type_filter,
                 benefit_id=benefit_id,
-                organization_id=organization_id,
                 checkout_id=checkout_id,
                 order_id=order_id,
                 subscription_id=subscription_id,
@@ -217,12 +208,6 @@ class PolarBenefitGrants(BaseSDK):
                 models.CustomerPortalBenefitGrantsListQueryParamBenefitIDFilterTypedDict,
             ]
         ] = UNSET,
-        organization_id: OptionalNullable[
-            Union[
-                models.CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilter,
-                models.CustomerPortalBenefitGrantsListQueryParamOrganizationIDFilterTypedDict,
-            ]
-        ] = UNSET,
         checkout_id: OptionalNullable[
             Union[
                 models.QueryParamCheckoutIDFilter,
@@ -259,7 +244,6 @@ class PolarBenefitGrants(BaseSDK):
         :param security:
         :param type_filter: Filter by benefit type.
         :param benefit_id: Filter by benefit ID.
-        :param organization_id: Filter by organization ID.
         :param checkout_id: Filter by checkout ID.
         :param order_id: Filter by order ID.
         :param subscription_id: Filter by subscription ID.
@@ -284,7 +268,6 @@ class PolarBenefitGrants(BaseSDK):
         request = models.CustomerPortalBenefitGrantsListRequest(
             type_filter=type_filter,
             benefit_id=benefit_id,
-            organization_id=organization_id,
             checkout_id=checkout_id,
             order_id=order_id,
             subscription_id=subscription_id,
@@ -354,7 +337,6 @@ class PolarBenefitGrants(BaseSDK):
                 security=security,
                 type_filter=type_filter,
                 benefit_id=benefit_id,
-                organization_id=organization_id,
                 checkout_id=checkout_id,
                 order_id=order_id,
                 subscription_id=subscription_id,

@@ -39,6 +39,8 @@
 | `SUBSCRIPTIONS_WRITE`           | subscriptions:write             |
 | `CUSTOMERS_READ`                | customers:read                  |
 | `CUSTOMERS_WRITE`               | customers:write                 |
+| `WALLETS_READ`                  | wallets:read                    |
+| `WALLETS_WRITE`                 | wallets:write                   |
 | `CUSTOMER_METERS_READ`          | customer_meters:read            |
 | `CUSTOMER_SESSIONS_WRITE`       | customer_sessions:write         |
 | `CUSTOMER_SEATS_READ`           | customer_seats:read             |

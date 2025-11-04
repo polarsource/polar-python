@@ -4,7 +4,7 @@ from __future__ import annotations
 from enum import Enum
 
 
-class Status(str, Enum):
+class OrganizationStatus(str, Enum):
     CREATED = "created"
     ONBOARDING_STARTED = "onboarding_started"
     UNDER_REVIEW = "under_review"

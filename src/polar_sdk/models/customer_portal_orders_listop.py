@@ -32,19 +32,6 @@ class CustomerPortalOrdersListSecurity(BaseModel):
     ]
 
 
-CustomerPortalOrdersListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
-    "CustomerPortalOrdersListQueryParamOrganizationIDFilterTypedDict",
-    Union[str, List[str]],
-)
-r"""Filter by organization ID."""
-
-
-CustomerPortalOrdersListQueryParamOrganizationIDFilter = TypeAliasType(
-    "CustomerPortalOrdersListQueryParamOrganizationIDFilter", Union[str, List[str]]
-)
-r"""Filter by organization ID."""
-
-
 CustomerPortalOrdersListQueryParamProductIDFilterTypedDict = TypeAliasType(
     "CustomerPortalOrdersListQueryParamProductIDFilterTypedDict", Union[str, List[str]]
 )
@@ -85,10 +72,6 @@ r"""Filter by subscription ID."""
 
 
 class CustomerPortalOrdersListRequestTypedDict(TypedDict):
-    organization_id: NotRequired[
-        Nullable[CustomerPortalOrdersListQueryParamOrganizationIDFilterTypedDict]
-    ]
-    r"""Filter by organization ID."""
     product_id: NotRequired[
         Nullable[CustomerPortalOrdersListQueryParamProductIDFilterTypedDict]
     ]
@@ -112,12 +95,6 @@ class CustomerPortalOrdersListRequestTypedDict(TypedDict):
 
 
 class CustomerPortalOrdersListRequest(BaseModel):
-    organization_id: Annotated[
-        OptionalNullable[CustomerPortalOrdersListQueryParamOrganizationIDFilter],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = UNSET
-    r"""Filter by organization ID."""
-
     product_id: Annotated[
         OptionalNullable[CustomerPortalOrdersListQueryParamProductIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -163,7 +140,6 @@ class CustomerPortalOrdersListRequest(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
-            "organization_id",
             "product_id",
             "product_billing_type",
             "subscription_id",
@@ -173,7 +149,6 @@ class CustomerPortalOrdersListRequest(BaseModel):
             "sorting",
         ]
         nullable_fields = [
-            "organization_id",
             "product_id",
             "product_billing_type",
             "subscription_id",

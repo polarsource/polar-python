@@ -27,3 +27,15 @@ value: float = /* values here */
 value: bool = /* values here */
 ```
 
+### `models.CostMetadataInput`
+
+```python
+value: models.CostMetadataInput = /* values here */
+```
+
+### `models.LLMMetadata`
+
+```python
+value: models.LLMMetadata = /* values here */
+```
+

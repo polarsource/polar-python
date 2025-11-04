@@ -17,12 +17,6 @@ class PolarSubscriptions(BaseSDK):
             models.CustomerPortalSubscriptionsListSecurity,
             models.CustomerPortalSubscriptionsListSecurityTypedDict,
         ],
-        organization_id: OptionalNullable[
-            Union[
-                models.CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter,
-                models.CustomerPortalSubscriptionsListQueryParamOrganizationIDFilterTypedDict,
-            ]
-        ] = UNSET,
         product_id: OptionalNullable[
             Union[
                 models.CustomerPortalSubscriptionsListQueryParamProductIDFilter,
@@ -48,7 +42,6 @@ class PolarSubscriptions(BaseSDK):
         **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
-        :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param active: Filter by active or cancelled subscription.
         :param query: Search by product or organization name.
@@ -71,7 +64,6 @@ class PolarSubscriptions(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalSubscriptionsListRequest(
-            organization_id=organization_id,
             product_id=product_id,
             active=active,
             query=query,
@@ -139,7 +131,6 @@ class PolarSubscriptions(BaseSDK):
 
             return self.list(
                 security=security,
-                organization_id=organization_id,
                 product_id=product_id,
                 active=active,
                 query=query,
@@ -178,12 +169,6 @@ class PolarSubscriptions(BaseSDK):
             models.CustomerPortalSubscriptionsListSecurity,
             models.CustomerPortalSubscriptionsListSecurityTypedDict,
         ],
-        organization_id: OptionalNullable[
-            Union[
-                models.CustomerPortalSubscriptionsListQueryParamOrganizationIDFilter,
-                models.CustomerPortalSubscriptionsListQueryParamOrganizationIDFilterTypedDict,
-            ]
-        ] = UNSET,
         product_id: OptionalNullable[
             Union[
                 models.CustomerPortalSubscriptionsListQueryParamProductIDFilter,
@@ -209,7 +194,6 @@ class PolarSubscriptions(BaseSDK):
         **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
-        :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param active: Filter by active or cancelled subscription.
         :param query: Search by product or organization name.
@@ -232,7 +216,6 @@ class PolarSubscriptions(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalSubscriptionsListRequest(
-            organization_id=organization_id,
             product_id=product_id,
             active=active,
             query=query,
@@ -300,7 +283,6 @@ class PolarSubscriptions(BaseSDK):
 
             return self.list(
                 security=security,
-                organization_id=organization_id,
                 product_id=product_id,
                 active=active,
                 query=query,

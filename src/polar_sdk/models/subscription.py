@@ -134,7 +134,7 @@ class SubscriptionTypedDict(TypedDict):
     meters: List[SubscriptionMeterTypedDict]
     r"""List of meters associated with the subscription."""
     seats: NotRequired[Nullable[int]]
-    r"""Number of seats included in the subscription (for seat-based pricing)."""
+    r"""The number of seats for seat-based subscriptions. None for non-seat subscriptions."""
     custom_field_data: NotRequired[Dict[str, Nullable[CustomFieldDataTypedDict]]]
     r"""Key-value object storing custom field values."""
 
@@ -220,7 +220,7 @@ class Subscription(BaseModel):
     r"""List of meters associated with the subscription."""
 
     seats: OptionalNullable[int] = UNSET
-    r"""Number of seats included in the subscription (for seat-based pricing)."""
+    r"""The number of seats for seat-based subscriptions. None for non-seat subscriptions."""
 
     custom_field_data: Optional[Dict[str, Nullable[CustomFieldData]]] = None
     r"""Key-value object storing custom field values."""
@@ -239,9 +239,9 @@ class Subscription(BaseModel):
             "ended_at",
             "discount_id",
             "checkout_id",
+            "seats",
             "customer_cancellation_reason",
             "customer_cancellation_comment",
-            "seats",
             "discount",
         ]
         null_default_fields = []
