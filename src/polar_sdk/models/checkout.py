@@ -134,6 +134,8 @@ class CheckoutTypedDict(TypedDict):
     r"""Amount in cents, after discounts and taxes."""
     currency: str
     r"""Currency code of the checkout session."""
+    allow_trial: Nullable[bool]
+    r"""Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured."""
     active_trial_interval: Nullable[TrialInterval]
     r"""Interval unit of the trial period, if any. This value is either set from the checkout, if `trial_interval` is set, or from the selected product."""
     active_trial_interval_count: Nullable[int]
@@ -255,6 +257,9 @@ class Checkout(BaseModel):
     currency: str
     r"""Currency code of the checkout session."""
 
+    allow_trial: Nullable[bool]
+    r"""Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured."""
+
     active_trial_interval: Nullable[TrialInterval]
     r"""Interval unit of the trial period, if any. This value is either set from the checkout, if `trial_interval` is set, or from the selected product."""
 
@@ -374,6 +379,7 @@ class Checkout(BaseModel):
             "seats",
             "price_per_seat",
             "tax_amount",
+            "allow_trial",
             "active_trial_interval",
             "active_trial_interval_count",
             "trial_end",

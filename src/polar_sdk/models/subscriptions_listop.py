@@ -107,6 +107,8 @@ class SubscriptionsListRequestTypedDict(TypedDict):
     r"""Filter by discount ID."""
     active: NotRequired[Nullable[bool]]
     r"""Filter by active or inactive subscription."""
+    cancel_at_period_end: NotRequired[Nullable[bool]]
+    r"""Filter by subscriptions that are set to cancel at period end."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -154,6 +156,12 @@ class SubscriptionsListRequest(BaseModel):
     ] = UNSET
     r"""Filter by active or inactive subscription."""
 
+    cancel_at_period_end: Annotated[
+        OptionalNullable[bool],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by subscriptions that are set to cancel at period end."""
+
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -187,6 +195,7 @@ class SubscriptionsListRequest(BaseModel):
             "external_customer_id",
             "discount_id",
             "active",
+            "cancel_at_period_end",
             "page",
             "limit",
             "sorting",
@@ -199,6 +208,7 @@ class SubscriptionsListRequest(BaseModel):
             "external_customer_id",
             "discount_id",
             "active",
+            "cancel_at_period_end",
             "sorting",
             "metadata",
         ]
@@ -981,7 +991,9 @@ class EventsListRequestTypedDict(TypedDict):
     query: NotRequired[Nullable[str]]
     r"""Query to filter events."""
     parent_id: NotRequired[Nullable[str]]
-    r"""Filter events by parent event ID. When not specified, returns root events only."""
+    r"""Filter events by parent event ID when hierarchical is set to true. When not specified or null, returns root events only."""
+    hierarchical: NotRequired[bool]
+    r"""When true, filters by parent_id (root events if not specified). When false, returns all events regardless of hierarchy."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -1058,7 +1070,13 @@ class EventsListRequest(BaseModel):
         OptionalNullable[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
-    r"""Filter events by parent event ID. When not specified, returns root events only."""
+    r"""Filter events by parent event ID when hierarchical is set to true. When not specified or null, returns root events only."""
+
+    hierarchical: Annotated[
+        Optional[bool],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = False
+    r"""When true, filters by parent_id (root events if not specified). When false, returns all events regardless of hierarchy."""
 
     page: Annotated[
         Optional[int],
@@ -1098,6 +1116,7 @@ class EventsListRequest(BaseModel):
             "source",
             "query",
             "parent_id",
+            "hierarchical",
             "page",
             "limit",
             "sorting",

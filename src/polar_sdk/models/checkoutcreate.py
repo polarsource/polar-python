@@ -80,6 +80,8 @@ class CheckoutCreateTypedDict(TypedDict):
     amount: NotRequired[Nullable[int]]
     seats: NotRequired[Nullable[int]]
     r"""Number of seats for seat-based pricing. Required for seat-based products."""
+    allow_trial: NotRequired[bool]
+    r"""Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured."""
     customer_id: NotRequired[Nullable[str]]
     r"""ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer."""
     is_business_customer: NotRequired[bool]
@@ -165,6 +167,9 @@ class CheckoutCreate(BaseModel):
     seats: OptionalNullable[int] = UNSET
     r"""Number of seats for seat-based pricing. Required for seat-based products."""
 
+    allow_trial: Optional[bool] = True
+    r"""Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured."""
+
     customer_id: OptionalNullable[str] = UNSET
     r"""ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer."""
 
@@ -224,6 +229,7 @@ class CheckoutCreate(BaseModel):
             "require_billing_address",
             "amount",
             "seats",
+            "allow_trial",
             "customer_id",
             "is_business_customer",
             "external_customer_id",

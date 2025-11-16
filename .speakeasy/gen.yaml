@@ -27,7 +27,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 python:
-  version: 0.28.0
+  version: 0.28.2
   additionalDependencies:
     dev:
       pydantic-ai-slim: ^0.1.0
@@ -62,6 +62,7 @@ python:
       webhooks: ""
   inputModelSuffix: input
   legacyPyright: true
+  license: ""
   maxMethodParams: 100
   methodArguments: infer-optional-args
   moduleName: ""

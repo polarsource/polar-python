@@ -36,7 +36,7 @@ with Polar() as polar:
 
 ### Response
 
-**[models.CustomerOrganization](../../models/customerorganization.md)**
+**[models.CustomerOrganizationData](../../models/customerorganizationdata.md)**
 
 ### Errors
 
