@@ -4,9 +4,11 @@ from __future__ import annotations
 from .addressinput import AddressInput, AddressInputTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Dict, Optional, Union
+from pydantic.functional_validators import AfterValidator
+from typing import Dict, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -42,6 +44,8 @@ class CheckoutConfirmStripeTypedDict(TypedDict):
     customer_tax_id: NotRequired[Nullable[str]]
     discount_code: NotRequired[Nullable[str]]
     r"""Discount code to apply to the checkout."""
+    allow_trial: Nullable[Literal[False]]
+    r"""Disable the trial period for the checkout session. It's mainly useful when the trial is blocked because the customer already redeemed one."""
     confirmation_token_id: NotRequired[Nullable[str]]
     r"""ID of the Stripe confirmation token. Required for fixed prices and custom prices."""
 
@@ -85,6 +89,14 @@ class CheckoutConfirmStripe(BaseModel):
     discount_code: OptionalNullable[str] = UNSET
     r"""Discount code to apply to the checkout."""
 
+    ALLOW_TRIAL: Annotated[
+        Annotated[
+            OptionalNullable[Literal[False]], AfterValidator(validate_const(False))
+        ],
+        pydantic.Field(alias="allow_trial"),
+    ] = False
+    r"""Disable the trial period for the checkout session. It's mainly useful when the trial is blocked because the customer already redeemed one."""
+
     confirmation_token_id: OptionalNullable[str] = UNSET
     r"""ID of the Stripe confirmation token. Required for fixed prices and custom prices."""
 
@@ -103,6 +115,7 @@ class CheckoutConfirmStripe(BaseModel):
             "customer_billing_address",
             "customer_tax_id",
             "discount_code",
+            "allow_trial",
             "confirmation_token_id",
         ]
         nullable_fields = [
@@ -117,6 +130,7 @@ class CheckoutConfirmStripe(BaseModel):
             "customer_billing_address",
             "customer_tax_id",
             "discount_code",
+            "allow_trial",
             "confirmation_token_id",
         ]
         null_default_fields = []

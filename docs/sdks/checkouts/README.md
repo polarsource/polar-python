@@ -209,6 +209,7 @@ with Polar(
 | models.AlreadyActiveSubscriptionError | 403                                   | application/json                      |
 | models.NotOpenCheckout                | 403                                   | application/json                      |
 | models.PaymentNotReady                | 403                                   | application/json                      |
+| models.TrialAlreadyRedeemed           | 403                                   | application/json                      |
 | models.ResourceNotFound               | 404                                   | application/json                      |
 | models.HTTPValidationError            | 422                                   | application/json                      |
 | models.SDKError                       | 4XX, 5XX                              | \*/\*                                 |
@@ -269,6 +270,7 @@ with Polar() as polar:
     res = polar.checkouts.client_update(client_secret="<value>", checkout_update_public={
         "customer_name": "John Doe",
         "customer_billing_address": None,
+        "allow_trial": False,
     })
 
     # Handle response
@@ -295,6 +297,7 @@ with Polar() as polar:
 | models.AlreadyActiveSubscriptionError | 403                                   | application/json                      |
 | models.NotOpenCheckout                | 403                                   | application/json                      |
 | models.PaymentNotReady                | 403                                   | application/json                      |
+| models.TrialAlreadyRedeemed           | 403                                   | application/json                      |
 | models.ResourceNotFound               | 404                                   | application/json                      |
 | models.ExpiredCheckoutError           | 410                                   | application/json                      |
 | models.HTTPValidationError            | 422                                   | application/json                      |
@@ -323,6 +326,7 @@ with Polar(
         "customer_billing_address": {
             "country": polar_sdk.CountryAlpha2Input.US,
         },
+        "allow_trial": False,
     })
 
     # Handle response
@@ -350,6 +354,7 @@ with Polar(
 | models.AlreadyActiveSubscriptionError | 403                                   | application/json                      |
 | models.NotOpenCheckout                | 403                                   | application/json                      |
 | models.PaymentNotReady                | 403                                   | application/json                      |
+| models.TrialAlreadyRedeemed           | 403                                   | application/json                      |
 | models.ResourceNotFound               | 404                                   | application/json                      |
 | models.ExpiredCheckoutError           | 410                                   | application/json                      |
 | models.HTTPValidationError            | 422                                   | application/json                      |

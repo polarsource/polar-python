@@ -5,7 +5,10 @@ from .benefitdiscordsubscriberproperties import (
     BenefitDiscordSubscriberProperties,
     BenefitDiscordSubscriberPropertiesTypedDict,
 )
-from .organization import Organization, OrganizationTypedDict
+from .benefitsubscriberorganization import (
+    BenefitSubscriberOrganization,
+    BenefitSubscriberOrganizationTypedDict,
+)
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
@@ -42,7 +45,7 @@ class BenefitDiscordSubscriberTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     metadata: Dict[str, BenefitDiscordSubscriberMetadataTypedDict]
-    organization: OrganizationTypedDict
+    organization: BenefitSubscriberOrganizationTypedDict
     properties: BenefitDiscordSubscriberPropertiesTypedDict
     r"""Properties available to subscribers for a benefit of type `discord`."""
     type: Literal["discord"]
@@ -72,7 +75,7 @@ class BenefitDiscordSubscriber(BaseModel):
 
     metadata: Dict[str, BenefitDiscordSubscriberMetadata]
 
-    organization: Organization
+    organization: BenefitSubscriberOrganization
 
     properties: BenefitDiscordSubscriberProperties
     r"""Properties available to subscribers for a benefit of type `discord`."""

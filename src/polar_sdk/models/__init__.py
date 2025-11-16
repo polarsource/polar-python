@@ -368,6 +368,10 @@ if TYPE_CHECKING:
         BenefitsUpdateRequestTypedDict,
     )
     from .benefitsortproperty import BenefitSortProperty
+    from .benefitsubscriberorganization import (
+        BenefitSubscriberOrganization,
+        BenefitSubscriberOrganizationTypedDict,
+    )
     from .benefittype import BenefitType
     from .benefitupdatedevent import BenefitUpdatedEvent, BenefitUpdatedEventTypedDict
     from .billingaddressfieldmode import BillingAddressFieldMode
@@ -490,6 +494,10 @@ if TYPE_CHECKING:
         CheckoutLinkUpdateMetadata,
         CheckoutLinkUpdateMetadataTypedDict,
         CheckoutLinkUpdateTypedDict,
+    )
+    from .checkoutorganization import (
+        CheckoutOrganization,
+        CheckoutOrganizationTypedDict,
     )
     from .checkoutproduct import (
         CheckoutProduct,
@@ -1009,6 +1017,10 @@ if TYPE_CHECKING:
     from .customerorganization import (
         CustomerOrganization,
         CustomerOrganizationTypedDict,
+    )
+    from .customerorganizationdata import (
+        CustomerOrganizationData,
+        CustomerOrganizationDataTypedDict,
     )
     from .customerpaymentmethod import (
         CustomerPaymentMethod,
@@ -2479,9 +2491,21 @@ if TYPE_CHECKING:
         SubscriptionsUpdateRequest,
         SubscriptionsUpdateRequestTypedDict,
     )
+    from .subscriptionseatsupdatedevent import (
+        SubscriptionSeatsUpdatedEvent,
+        SubscriptionSeatsUpdatedEventTypedDict,
+    )
+    from .subscriptionseatsupdatedmetadata import (
+        SubscriptionSeatsUpdatedMetadata,
+        SubscriptionSeatsUpdatedMetadataTypedDict,
+    )
     from .subscriptionsortproperty import SubscriptionSortProperty
     from .subscriptionstatus import SubscriptionStatus
     from .subscriptionupdate import SubscriptionUpdate, SubscriptionUpdateTypedDict
+    from .subscriptionupdatebillingperiod import (
+        SubscriptionUpdateBillingPeriod,
+        SubscriptionUpdateBillingPeriodTypedDict,
+    )
     from .subscriptionupdatediscount import (
         SubscriptionUpdateDiscount,
         SubscriptionUpdateDiscountTypedDict,
@@ -2503,6 +2527,7 @@ if TYPE_CHECKING:
     from .taxidformat import TaxIDFormat
     from .timeinterval import TimeInterval
     from .tokenresponse import TokenResponse, TokenResponseTypedDict
+    from .trialalreadyredeemed import TrialAlreadyRedeemed, TrialAlreadyRedeemedData
     from .trialinterval import TrialInterval
     from .unauthorized import Unauthorized, UnauthorizedData
     from .uniqueaggregation import UniqueAggregation, UniqueAggregationTypedDict
@@ -2946,6 +2971,8 @@ __all__ = [
     "BenefitRevokedEvent",
     "BenefitRevokedEventTypedDict",
     "BenefitSortProperty",
+    "BenefitSubscriberOrganization",
+    "BenefitSubscriberOrganizationTypedDict",
     "BenefitType",
     "BenefitTypeFilter",
     "BenefitTypeFilterTypedDict",
@@ -3071,6 +3098,8 @@ __all__ = [
     "CheckoutLinksUpdateRequestTypedDict",
     "CheckoutMetadata",
     "CheckoutMetadataTypedDict",
+    "CheckoutOrganization",
+    "CheckoutOrganizationTypedDict",
     "CheckoutProduct",
     "CheckoutProductPrice",
     "CheckoutProductPriceTypedDict",
@@ -3355,6 +3384,8 @@ __all__ = [
     "CustomerOrderUpdate",
     "CustomerOrderUpdateTypedDict",
     "CustomerOrganization",
+    "CustomerOrganizationData",
+    "CustomerOrganizationDataTypedDict",
     "CustomerOrganizationTypedDict",
     "CustomerPaymentMethod",
     "CustomerPaymentMethodConfirm",
@@ -4526,10 +4557,16 @@ __all__ = [
     "SubscriptionRevokedEventTypedDict",
     "SubscriptionRevokedMetadata",
     "SubscriptionRevokedMetadataTypedDict",
+    "SubscriptionSeatsUpdatedEvent",
+    "SubscriptionSeatsUpdatedEventTypedDict",
+    "SubscriptionSeatsUpdatedMetadata",
+    "SubscriptionSeatsUpdatedMetadataTypedDict",
     "SubscriptionSortProperty",
     "SubscriptionStatus",
     "SubscriptionTypedDict",
     "SubscriptionUpdate",
+    "SubscriptionUpdateBillingPeriod",
+    "SubscriptionUpdateBillingPeriodTypedDict",
     "SubscriptionUpdateDiscount",
     "SubscriptionUpdateDiscountTypedDict",
     "SubscriptionUpdateProduct",
@@ -4568,6 +4605,8 @@ __all__ = [
     "TokenResponseTypedDict",
     "TokenType",
     "TokenTypeHint",
+    "TrialAlreadyRedeemed",
+    "TrialAlreadyRedeemedData",
     "TrialInterval",
     "Two",
     "TwoTypedDict",
@@ -4941,6 +4980,8 @@ _dynamic_imports: dict[str, str] = {
     "BenefitsUpdateRequest": ".benefits_updateop",
     "BenefitsUpdateRequestTypedDict": ".benefits_updateop",
     "BenefitSortProperty": ".benefitsortproperty",
+    "BenefitSubscriberOrganization": ".benefitsubscriberorganization",
+    "BenefitSubscriberOrganizationTypedDict": ".benefitsubscriberorganization",
     "BenefitType": ".benefittype",
     "BenefitUpdatedEvent": ".benefitupdatedevent",
     "BenefitUpdatedEventTypedDict": ".benefitupdatedevent",
@@ -5030,6 +5071,8 @@ _dynamic_imports: dict[str, str] = {
     "CheckoutLinkUpdateMetadata": ".checkoutlinkupdate",
     "CheckoutLinkUpdateMetadataTypedDict": ".checkoutlinkupdate",
     "CheckoutLinkUpdateTypedDict": ".checkoutlinkupdate",
+    "CheckoutOrganization": ".checkoutorganization",
+    "CheckoutOrganizationTypedDict": ".checkoutorganization",
     "CheckoutProduct": ".checkoutproduct",
     "CheckoutProductPrices": ".checkoutproduct",
     "CheckoutProductPricesTypedDict": ".checkoutproduct",
@@ -5381,6 +5424,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerOrderUpdateTypedDict": ".customerorderupdate",
     "CustomerOrganization": ".customerorganization",
     "CustomerOrganizationTypedDict": ".customerorganization",
+    "CustomerOrganizationData": ".customerorganizationdata",
+    "CustomerOrganizationDataTypedDict": ".customerorganizationdata",
     "CustomerPaymentMethod": ".customerpaymentmethod",
     "CustomerPaymentMethodTypedDict": ".customerpaymentmethod",
     "CustomerPaymentMethodConfirm": ".customerpaymentmethodconfirm",
@@ -6534,10 +6579,16 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionsRevokeRequestTypedDict": ".subscriptions_revokeop",
     "SubscriptionsUpdateRequest": ".subscriptions_updateop",
     "SubscriptionsUpdateRequestTypedDict": ".subscriptions_updateop",
+    "SubscriptionSeatsUpdatedEvent": ".subscriptionseatsupdatedevent",
+    "SubscriptionSeatsUpdatedEventTypedDict": ".subscriptionseatsupdatedevent",
+    "SubscriptionSeatsUpdatedMetadata": ".subscriptionseatsupdatedmetadata",
+    "SubscriptionSeatsUpdatedMetadataTypedDict": ".subscriptionseatsupdatedmetadata",
     "SubscriptionSortProperty": ".subscriptionsortproperty",
     "SubscriptionStatus": ".subscriptionstatus",
     "SubscriptionUpdate": ".subscriptionupdate",
     "SubscriptionUpdateTypedDict": ".subscriptionupdate",
+    "SubscriptionUpdateBillingPeriod": ".subscriptionupdatebillingperiod",
+    "SubscriptionUpdateBillingPeriodTypedDict": ".subscriptionupdatebillingperiod",
     "SubscriptionUpdateDiscount": ".subscriptionupdatediscount",
     "SubscriptionUpdateDiscountTypedDict": ".subscriptionupdatediscount",
     "SubscriptionUpdateProduct": ".subscriptionupdateproduct",
@@ -6553,6 +6604,8 @@ _dynamic_imports: dict[str, str] = {
     "TimeInterval": ".timeinterval",
     "TokenResponse": ".tokenresponse",
     "TokenResponseTypedDict": ".tokenresponse",
+    "TrialAlreadyRedeemed": ".trialalreadyredeemed",
+    "TrialAlreadyRedeemedData": ".trialalreadyredeemed",
     "TrialInterval": ".trialinterval",
     "Unauthorized": ".unauthorized",
     "UnauthorizedData": ".unauthorized",

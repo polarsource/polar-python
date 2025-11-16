@@ -44,6 +44,7 @@ class Events(BaseSDK):
         ] = UNSET,
         query: OptionalNullable[str] = UNSET,
         parent_id: OptionalNullable[str] = UNSET,
+        hierarchical: Optional[bool] = False,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.EventSortProperty]] = UNSET,
@@ -74,7 +75,8 @@ class Events(BaseSDK):
         :param name: Filter by event name.
         :param source: Filter by event source.
         :param query: Query to filter events.
-        :param parent_id: Filter events by parent event ID. When not specified, returns root events only.
+        :param parent_id: Filter events by parent event ID when hierarchical is set to true. When not specified or null, returns root events only.
+        :param hierarchical: When true, filters by parent_id (root events if not specified). When false, returns all events regardless of hierarchy.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -106,6 +108,7 @@ class Events(BaseSDK):
             source=source,
             query=query,
             parent_id=parent_id,
+            hierarchical=hierarchical,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -179,6 +182,7 @@ class Events(BaseSDK):
                 source=source,
                 query=query,
                 parent_id=parent_id,
+                hierarchical=hierarchical,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -239,6 +243,7 @@ class Events(BaseSDK):
         ] = UNSET,
         query: OptionalNullable[str] = UNSET,
         parent_id: OptionalNullable[str] = UNSET,
+        hierarchical: Optional[bool] = False,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.EventSortProperty]] = UNSET,
@@ -269,7 +274,8 @@ class Events(BaseSDK):
         :param name: Filter by event name.
         :param source: Filter by event source.
         :param query: Query to filter events.
-        :param parent_id: Filter events by parent event ID. When not specified, returns root events only.
+        :param parent_id: Filter events by parent event ID when hierarchical is set to true. When not specified or null, returns root events only.
+        :param hierarchical: When true, filters by parent_id (root events if not specified). When false, returns all events regardless of hierarchy.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -301,6 +307,7 @@ class Events(BaseSDK):
             source=source,
             query=query,
             parent_id=parent_id,
+            hierarchical=hierarchical,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -374,6 +381,7 @@ class Events(BaseSDK):
                 source=source,
                 query=query,
                 parent_id=parent_id,
+                hierarchical=hierarchical,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,

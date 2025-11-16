@@ -5,7 +5,10 @@ from .benefitdownloadablessubscriberproperties import (
     BenefitDownloadablesSubscriberProperties,
     BenefitDownloadablesSubscriberPropertiesTypedDict,
 )
-from .organization import Organization, OrganizationTypedDict
+from .benefitsubscriberorganization import (
+    BenefitSubscriberOrganization,
+    BenefitSubscriberOrganizationTypedDict,
+)
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
@@ -42,7 +45,7 @@ class BenefitDownloadablesSubscriberTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     metadata: Dict[str, BenefitDownloadablesSubscriberMetadataTypedDict]
-    organization: OrganizationTypedDict
+    organization: BenefitSubscriberOrganizationTypedDict
     properties: BenefitDownloadablesSubscriberPropertiesTypedDict
     type: Literal["downloadables"]
 
@@ -71,7 +74,7 @@ class BenefitDownloadablesSubscriber(BaseModel):
 
     metadata: Dict[str, BenefitDownloadablesSubscriberMetadata]
 
-    organization: Organization
+    organization: BenefitSubscriberOrganization
 
     properties: BenefitDownloadablesSubscriberProperties
 

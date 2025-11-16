@@ -5,7 +5,10 @@ from .benefitmetercreditsubscriberproperties import (
     BenefitMeterCreditSubscriberProperties,
     BenefitMeterCreditSubscriberPropertiesTypedDict,
 )
-from .organization import Organization, OrganizationTypedDict
+from .benefitsubscriberorganization import (
+    BenefitSubscriberOrganization,
+    BenefitSubscriberOrganizationTypedDict,
+)
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
@@ -42,7 +45,7 @@ class BenefitMeterCreditSubscriberTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     metadata: Dict[str, BenefitMeterCreditSubscriberMetadataTypedDict]
-    organization: OrganizationTypedDict
+    organization: BenefitSubscriberOrganizationTypedDict
     properties: BenefitMeterCreditSubscriberPropertiesTypedDict
     r"""Properties available to subscribers for a benefit of type `meter_unit`."""
     type: Literal["meter_credit"]
@@ -72,7 +75,7 @@ class BenefitMeterCreditSubscriber(BaseModel):
 
     metadata: Dict[str, BenefitMeterCreditSubscriberMetadata]
 
-    organization: Organization
+    organization: BenefitSubscriberOrganization
 
     properties: BenefitMeterCreditSubscriberProperties
     r"""Properties available to subscribers for a benefit of type `meter_unit`."""
