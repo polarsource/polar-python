@@ -2,12 +2,33 @@
 
 from __future__ import annotations
 from .addressinput import AddressInput, AddressInputTypedDict
+from .productpricecustomcreate import (
+    ProductPriceCustomCreate,
+    ProductPriceCustomCreateTypedDict,
+)
+from .productpricefixedcreate import (
+    ProductPriceFixedCreate,
+    ProductPriceFixedCreateTypedDict,
+)
+from .productpricefreecreate import (
+    ProductPriceFreeCreate,
+    ProductPriceFreeCreateTypedDict,
+)
+from .productpricemeteredunitcreate import (
+    ProductPriceMeteredUnitCreate,
+    ProductPriceMeteredUnitCreateTypedDict,
+)
+from .productpriceseatbasedcreate import (
+    ProductPriceSeatBasedCreate,
+    ProductPriceSeatBasedCreateTypedDict,
+)
 from .trialinterval import TrialInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-from pydantic import model_serializer
+from polar_sdk.utils import get_discriminator
+from pydantic import Discriminator, Tag, model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 CheckoutCreateMetadataTypedDict = TypeAliasType(
@@ -38,6 +59,30 @@ CheckoutCreateCustomerMetadataTypedDict = TypeAliasType(
 CheckoutCreateCustomerMetadata = TypeAliasType(
     "CheckoutCreateCustomerMetadata", Union[str, int, float, bool]
 )
+
+
+CheckoutCreatePricesTypedDict = TypeAliasType(
+    "CheckoutCreatePricesTypedDict",
+    Union[
+        ProductPriceFreeCreateTypedDict,
+        ProductPriceFixedCreateTypedDict,
+        ProductPriceSeatBasedCreateTypedDict,
+        ProductPriceCustomCreateTypedDict,
+        ProductPriceMeteredUnitCreateTypedDict,
+    ],
+)
+
+
+CheckoutCreatePrices = Annotated[
+    Union[
+        Annotated[ProductPriceCustomCreate, Tag("custom")],
+        Annotated[ProductPriceFixedCreate, Tag("fixed")],
+        Annotated[ProductPriceFreeCreate, Tag("free")],
+        Annotated[ProductPriceMeteredUnitCreate, Tag("metered_unit")],
+        Annotated[ProductPriceSeatBasedCreate, Tag("seat_based")],
+    ],
+    Discriminator(lambda m: get_discriminator(m, "amount_type", "amount_type")),
+]
 
 
 class CheckoutCreateTypedDict(TypedDict):
@@ -80,6 +125,8 @@ class CheckoutCreateTypedDict(TypedDict):
     amount: NotRequired[Nullable[int]]
     seats: NotRequired[Nullable[int]]
     r"""Number of seats for seat-based pricing. Required for seat-based products."""
+    allow_trial: NotRequired[bool]
+    r"""Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured."""
     customer_id: NotRequired[Nullable[str]]
     r"""ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer."""
     is_business_customer: NotRequired[bool]
@@ -113,6 +160,8 @@ class CheckoutCreateTypedDict(TypedDict):
     r"""When set, a back button will be shown in the checkout to return to this URL."""
     embed_origin: NotRequired[Nullable[str]]
     r"""If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page."""
+    prices: NotRequired[Nullable[Dict[str, List[CheckoutCreatePricesTypedDict]]]]
+    r"""Optional mapping of product IDs to a list of ad-hoc prices to create for that product. If not set, catalog prices of the product will be used."""
 
 
 class CheckoutCreate(BaseModel):
@@ -165,6 +214,9 @@ class CheckoutCreate(BaseModel):
     seats: OptionalNullable[int] = UNSET
     r"""Number of seats for seat-based pricing. Required for seat-based products."""
 
+    allow_trial: Optional[bool] = True
+    r"""Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured."""
+
     customer_id: OptionalNullable[str] = UNSET
     r"""ID of an existing customer in the organization. The customer data will be pre-filled in the checkout form. The resulting order will be linked to this customer."""
 
@@ -212,6 +264,9 @@ class CheckoutCreate(BaseModel):
     embed_origin: OptionalNullable[str] = UNSET
     r"""If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page."""
 
+    prices: OptionalNullable[Dict[str, List[CheckoutCreatePrices]]] = UNSET
+    r"""Optional mapping of product IDs to a list of ad-hoc prices to create for that product. If not set, catalog prices of the product will be used."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -224,6 +279,7 @@ class CheckoutCreate(BaseModel):
             "require_billing_address",
             "amount",
             "seats",
+            "allow_trial",
             "customer_id",
             "is_business_customer",
             "external_customer_id",
@@ -238,6 +294,7 @@ class CheckoutCreate(BaseModel):
             "success_url",
             "return_url",
             "embed_origin",
+            "prices",
         ]
         nullable_fields = [
             "trial_interval",
@@ -257,6 +314,7 @@ class CheckoutCreate(BaseModel):
             "success_url",
             "return_url",
             "embed_origin",
+            "prices",
         ]
         null_default_fields = []
 

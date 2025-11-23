@@ -5,7 +5,10 @@ from .benefitcustomsubscriberproperties import (
     BenefitCustomSubscriberProperties,
     BenefitCustomSubscriberPropertiesTypedDict,
 )
-from .organization import Organization, OrganizationTypedDict
+from .benefitsubscriberorganization import (
+    BenefitSubscriberOrganization,
+    BenefitSubscriberOrganizationTypedDict,
+)
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
@@ -42,7 +45,7 @@ class BenefitCustomSubscriberTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     metadata: Dict[str, BenefitCustomSubscriberMetadataTypedDict]
-    organization: OrganizationTypedDict
+    organization: BenefitSubscriberOrganizationTypedDict
     properties: BenefitCustomSubscriberPropertiesTypedDict
     r"""Properties available to subscribers for a benefit of type `custom`."""
     type: Literal["custom"]
@@ -72,7 +75,7 @@ class BenefitCustomSubscriber(BaseModel):
 
     metadata: Dict[str, BenefitCustomSubscriberMetadata]
 
-    organization: Organization
+    organization: BenefitSubscriberOrganization
 
     properties: BenefitCustomSubscriberProperties
     r"""Properties available to subscribers for a benefit of type `custom`."""

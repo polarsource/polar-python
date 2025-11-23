@@ -5,7 +5,10 @@ from .benefitlicensekeyssubscriberproperties import (
     BenefitLicenseKeysSubscriberProperties,
     BenefitLicenseKeysSubscriberPropertiesTypedDict,
 )
-from .organization import Organization, OrganizationTypedDict
+from .benefitsubscriberorganization import (
+    BenefitSubscriberOrganization,
+    BenefitSubscriberOrganizationTypedDict,
+)
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
@@ -42,7 +45,7 @@ class BenefitLicenseKeysSubscriberTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     metadata: Dict[str, BenefitLicenseKeysSubscriberMetadataTypedDict]
-    organization: OrganizationTypedDict
+    organization: BenefitSubscriberOrganizationTypedDict
     properties: BenefitLicenseKeysSubscriberPropertiesTypedDict
     type: Literal["license_keys"]
 
@@ -71,7 +74,7 @@ class BenefitLicenseKeysSubscriber(BaseModel):
 
     metadata: Dict[str, BenefitLicenseKeysSubscriberMetadata]
 
-    organization: Organization
+    organization: BenefitSubscriberOrganization
 
     properties: BenefitLicenseKeysSubscriberProperties
 

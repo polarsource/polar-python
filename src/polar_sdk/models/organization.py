@@ -22,6 +22,7 @@ from .organizationsubscriptionsettings import (
     OrganizationSubscriptionSettings,
     OrganizationSubscriptionSettingsTypedDict,
 )
+from .subscriptionprorationbehavior import SubscriptionProrationBehavior
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -35,13 +36,16 @@ class OrganizationTypedDict(TypedDict):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
     id: str
-    r"""The organization ID."""
+    r"""The ID of the object."""
     name: str
     r"""Organization name shown in checkout, customer portal, emails etc."""
     slug: str
     r"""Unique organization slug in checkout, customer portal and credit card statements."""
     avatar_url: Nullable[str]
     r"""Avatar URL shown in checkout, customer portal, emails etc."""
+    proration_behavior: SubscriptionProrationBehavior
+    allow_customer_updates: bool
+    r"""Whether customers can update their subscriptions from the customer portal."""
     email: Nullable[str]
     r"""Public support email."""
     website: Nullable[str]
@@ -66,7 +70,7 @@ class Organization(BaseModel):
     r"""Last modification timestamp of the object."""
 
     id: str
-    r"""The organization ID."""
+    r"""The ID of the object."""
 
     name: str
     r"""Organization name shown in checkout, customer portal, emails etc."""
@@ -76,6 +80,11 @@ class Organization(BaseModel):
 
     avatar_url: Nullable[str]
     r"""Avatar URL shown in checkout, customer portal, emails etc."""
+
+    proration_behavior: SubscriptionProrationBehavior
+
+    allow_customer_updates: bool
+    r"""Whether customers can update their subscriptions from the customer portal."""
 
     email: Nullable[str]
     r"""Public support email."""

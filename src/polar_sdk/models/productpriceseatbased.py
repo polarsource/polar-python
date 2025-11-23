@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .productpriceseattiers import ProductPriceSeatTiers, ProductPriceSeatTiersTypedDict
+from .productpricesource import ProductPriceSource
 from .productpricetype import ProductPriceType
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from datetime import datetime
@@ -23,6 +24,7 @@ class ProductPriceSeatBasedTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the price."""
+    source: ProductPriceSource
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
     product_id: str
@@ -47,6 +49,8 @@ class ProductPriceSeatBased(BaseModel):
 
     id: str
     r"""The ID of the price."""
+
+    source: ProductPriceSource
 
     is_archived: bool
     r"""Whether the price is archived and no longer available."""

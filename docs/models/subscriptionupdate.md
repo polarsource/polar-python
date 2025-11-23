@@ -27,6 +27,12 @@ value: models.SubscriptionUpdateTrial = /* values here */
 value: models.SubscriptionUpdateSeats = /* values here */
 ```
 
+### `models.SubscriptionUpdateBillingPeriod`
+
+```python
+value: models.SubscriptionUpdateBillingPeriod = /* values here */
+```
+
 ### `models.SubscriptionCancel`
 
 ```python

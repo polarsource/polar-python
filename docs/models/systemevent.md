@@ -87,3 +87,9 @@ value: models.SubscriptionProductUpdatedEvent = /* values here */
 value: models.SubscriptionRevokedEvent = /* values here */
 ```
 
+### `models.SubscriptionSeatsUpdatedEvent`
+
+```python
+value: models.SubscriptionSeatsUpdatedEvent = /* values here */
+```
+

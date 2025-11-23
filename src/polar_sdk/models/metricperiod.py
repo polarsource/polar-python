@@ -305,6 +305,14 @@ CanceledSubscriptionsOther = TypeAliasType(
 )
 
 
+ChurnedSubscriptionsTypedDict = TypeAliasType(
+    "ChurnedSubscriptionsTypedDict", Union[int, float]
+)
+
+
+ChurnedSubscriptions = TypeAliasType("ChurnedSubscriptions", Union[int, float])
+
+
 ChurnRateTypedDict = TypeAliasType("ChurnRateTypedDict", Union[int, float])
 
 
@@ -376,6 +384,7 @@ class MetricPeriodTypedDict(TypedDict):
     canceled_subscriptions_too_expensive: CanceledSubscriptionsTooExpensiveTypedDict
     canceled_subscriptions_unused: CanceledSubscriptionsUnusedTypedDict
     canceled_subscriptions_other: CanceledSubscriptionsOtherTypedDict
+    churned_subscriptions: ChurnedSubscriptionsTypedDict
     churn_rate: ChurnRateTypedDict
     gross_margin: GrossMarginTypedDict
     gross_margin_percentage: GrossMarginPercentageTypedDict
@@ -457,6 +466,8 @@ class MetricPeriod(BaseModel):
     canceled_subscriptions_unused: CanceledSubscriptionsUnused
 
     canceled_subscriptions_other: CanceledSubscriptionsOther
+
+    churned_subscriptions: ChurnedSubscriptions
 
     churn_rate: ChurnRate
 

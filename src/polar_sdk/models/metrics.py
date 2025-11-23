@@ -79,6 +79,8 @@ class MetricsTypedDict(TypedDict):
     r"""Information about a metric."""
     canceled_subscriptions_other: MetricTypedDict
     r"""Information about a metric."""
+    churned_subscriptions: MetricTypedDict
+    r"""Information about a metric."""
     churn_rate: MetricTypedDict
     r"""Information about a metric."""
     gross_margin: MetricTypedDict
@@ -196,6 +198,9 @@ class Metrics(BaseModel):
     r"""Information about a metric."""
 
     canceled_subscriptions_other: Metric
+    r"""Information about a metric."""
+
+    churned_subscriptions: Metric
     r"""Information about a metric."""
 
     churn_rate: Metric

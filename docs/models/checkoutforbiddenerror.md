@@ -21,3 +21,9 @@ value: models.NotOpenCheckout = /* values here */
 value: models.PaymentNotReady = /* values here */
 ```
 
+### `models.TrialAlreadyRedeemed`
+
+```python
+value: models.TrialAlreadyRedeemed = /* values here */
+```
+
