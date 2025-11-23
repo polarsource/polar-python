@@ -4,9 +4,11 @@ from __future__ import annotations
 from .addressinput import AddressInput, AddressInputTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Dict, Optional, Union
+from pydantic.functional_validators import AfterValidator
+from typing import Dict, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -42,6 +44,8 @@ class CheckoutUpdatePublicTypedDict(TypedDict):
     customer_tax_id: NotRequired[Nullable[str]]
     discount_code: NotRequired[Nullable[str]]
     r"""Discount code to apply to the checkout."""
+    allow_trial: Nullable[Literal[False]]
+    r"""Disable the trial period for the checkout session. It's mainly useful when the trial is blocked because the customer already redeemed one."""
 
 
 class CheckoutUpdatePublic(BaseModel):
@@ -83,6 +87,14 @@ class CheckoutUpdatePublic(BaseModel):
     discount_code: OptionalNullable[str] = UNSET
     r"""Discount code to apply to the checkout."""
 
+    ALLOW_TRIAL: Annotated[
+        Annotated[
+            OptionalNullable[Literal[False]], AfterValidator(validate_const(False))
+        ],
+        pydantic.Field(alias="allow_trial"),
+    ] = False
+    r"""Disable the trial period for the checkout session. It's mainly useful when the trial is blocked because the customer already redeemed one."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -98,6 +110,7 @@ class CheckoutUpdatePublic(BaseModel):
             "customer_billing_address",
             "customer_tax_id",
             "discount_code",
+            "allow_trial",
         ]
         nullable_fields = [
             "product_id",
@@ -111,6 +124,7 @@ class CheckoutUpdatePublic(BaseModel):
             "customer_billing_address",
             "customer_tax_id",
             "discount_code",
+            "allow_trial",
         ]
         null_default_fields = []
 

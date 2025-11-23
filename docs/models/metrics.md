@@ -41,6 +41,7 @@
 | `canceled_subscriptions_too_expensive`    | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `canceled_subscriptions_unused`           | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `canceled_subscriptions_other`            | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
+| `churned_subscriptions`                   | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `churn_rate`                              | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `gross_margin`                            | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |
 | `gross_margin_percentage`                 | [models.Metric](../models/metric.md)      | :heavy_check_mark:                        | Information about a metric.               |

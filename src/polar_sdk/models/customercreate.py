@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .addressinput import AddressInput, AddressInputTypedDict
+from .ownercreate import OwnerCreate, OwnerCreateTypedDict
 from .taxidformat import TaxIDFormat
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -50,6 +51,8 @@ class CustomerCreateTypedDict(TypedDict):
     tax_id: NotRequired[Nullable[List[Nullable[CustomerCreateTaxIDTypedDict]]]]
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the customer. **Required unless you use an organization token.**"""
+    owner: NotRequired[Nullable[OwnerCreateTypedDict]]
+    r"""Optional owner member to create with the customer. If not provided, an owner member will be automatically created using the customer's email and name."""
 
 
 class CustomerCreate(BaseModel):
@@ -82,6 +85,9 @@ class CustomerCreate(BaseModel):
     organization_id: OptionalNullable[str] = UNSET
     r"""The ID of the organization owning the customer. **Required unless you use an organization token.**"""
 
+    owner: OptionalNullable[OwnerCreate] = UNSET
+    r"""Optional owner member to create with the customer. If not provided, an owner member will be automatically created using the customer's email and name."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -91,6 +97,7 @@ class CustomerCreate(BaseModel):
             "billing_address",
             "tax_id",
             "organization_id",
+            "owner",
         ]
         nullable_fields = [
             "external_id",
@@ -98,6 +105,7 @@ class CustomerCreate(BaseModel):
             "billing_address",
             "tax_id",
             "organization_id",
+            "owner",
         ]
         null_default_fields = []
 

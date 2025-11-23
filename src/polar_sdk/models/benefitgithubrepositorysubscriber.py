@@ -5,7 +5,10 @@ from .benefitgithubrepositorysubscriberproperties import (
     BenefitGitHubRepositorySubscriberProperties,
     BenefitGitHubRepositorySubscriberPropertiesTypedDict,
 )
-from .organization import Organization, OrganizationTypedDict
+from .benefitsubscriberorganization import (
+    BenefitSubscriberOrganization,
+    BenefitSubscriberOrganizationTypedDict,
+)
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
@@ -42,7 +45,7 @@ class BenefitGitHubRepositorySubscriberTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     metadata: Dict[str, BenefitGitHubRepositorySubscriberMetadataTypedDict]
-    organization: OrganizationTypedDict
+    organization: BenefitSubscriberOrganizationTypedDict
     properties: BenefitGitHubRepositorySubscriberPropertiesTypedDict
     r"""Properties available to subscribers for a benefit of type `github_repository`."""
     type: Literal["github_repository"]
@@ -72,7 +75,7 @@ class BenefitGitHubRepositorySubscriber(BaseModel):
 
     metadata: Dict[str, BenefitGitHubRepositorySubscriberMetadata]
 
-    organization: Organization
+    organization: BenefitSubscriberOrganization
 
     properties: BenefitGitHubRepositorySubscriberProperties
     r"""Properties available to subscribers for a benefit of type `github_repository`."""
