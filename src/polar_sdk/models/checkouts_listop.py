@@ -47,14 +47,14 @@ CheckoutsListQueryParamCustomerIDFilter = TypeAliasType(
 r"""Filter by customer ID."""
 
 
-StatusFilterTypedDict = TypeAliasType(
-    "StatusFilterTypedDict", Union[CheckoutStatus, List[CheckoutStatus]]
+QueryParamStatusFilterTypedDict = TypeAliasType(
+    "QueryParamStatusFilterTypedDict", Union[CheckoutStatus, List[CheckoutStatus]]
 )
 r"""Filter by checkout session status."""
 
 
-StatusFilter = TypeAliasType(
-    "StatusFilter", Union[CheckoutStatus, List[CheckoutStatus]]
+QueryParamStatusFilter = TypeAliasType(
+    "QueryParamStatusFilter", Union[CheckoutStatus, List[CheckoutStatus]]
 )
 r"""Filter by checkout session status."""
 
@@ -68,7 +68,7 @@ class CheckoutsListRequestTypedDict(TypedDict):
     r"""Filter by product ID."""
     customer_id: NotRequired[Nullable[CheckoutsListQueryParamCustomerIDFilterTypedDict]]
     r"""Filter by customer ID."""
-    status: NotRequired[Nullable[StatusFilterTypedDict]]
+    status: NotRequired[Nullable[QueryParamStatusFilterTypedDict]]
     r"""Filter by checkout session status."""
     query: NotRequired[Nullable[str]]
     r"""Filter by customer email."""
@@ -100,7 +100,7 @@ class CheckoutsListRequest(BaseModel):
     r"""Filter by customer ID."""
 
     status: Annotated[
-        OptionalNullable[StatusFilter],
+        OptionalNullable[QueryParamStatusFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by checkout session status."""

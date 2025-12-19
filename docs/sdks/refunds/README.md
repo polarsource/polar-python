@@ -10,7 +10,7 @@
 
 ## list
 
-List products.
+List refunds.
 
 **Scopes**: `refunds:read` `refunds:write`
 
@@ -106,7 +106,6 @@ with Polar(
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
-| models.RefundAmountTooHigh | 400                        | application/json           |
 | models.RefundedAlready     | 403                        | application/json           |
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |

@@ -4,7 +4,7 @@ from __future__ import annotations
 from .customer import Customer, CustomerTypedDict
 from .eventmetadataoutput import EventMetadataOutput, EventMetadataOutputTypedDict
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
@@ -28,11 +28,15 @@ class UserEventTypedDict(TypedDict):
     r"""The customer associated with the event."""
     external_customer_id: Nullable[str]
     r"""ID of the customer in your system associated with the event."""
+    label: str
+    r"""Human readable label of the event type."""
     name: str
     r"""The name of the event."""
     metadata: Dict[str, EventMetadataOutputTypedDict]
     child_count: NotRequired[int]
     r"""Number of direct child events linked to this event."""
+    parent_id: NotRequired[Nullable[str]]
+    r"""The ID of the parent event."""
     source: Literal["user"]
     r"""The source of the event. `system` events are created by Polar. `user` events are the one you create through our ingestion API."""
 
@@ -58,6 +62,9 @@ class UserEvent(BaseModel):
     external_customer_id: Nullable[str]
     r"""ID of the customer in your system associated with the event."""
 
+    label: str
+    r"""Human readable label of the event type."""
+
     name: str
     r"""The name of the event."""
 
@@ -65,6 +72,9 @@ class UserEvent(BaseModel):
 
     child_count: Optional[int] = 0
     r"""Number of direct child events linked to this event."""
+
+    parent_id: OptionalNullable[str] = UNSET
+    r"""The ID of the parent event."""
 
     SOURCE: Annotated[
         Annotated[Literal["user"], AfterValidator(validate_const("user"))],
@@ -74,8 +84,13 @@ class UserEvent(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["child_count"]
-        nullable_fields = ["customer_id", "customer", "external_customer_id"]
+        optional_fields = ["child_count", "parent_id"]
+        nullable_fields = [
+            "customer_id",
+            "customer",
+            "external_customer_id",
+            "parent_id",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

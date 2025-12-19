@@ -82,8 +82,6 @@ class CustomerSubscriptionTypedDict(TypedDict):
     r"""List of enabled prices for the subscription."""
     meters: List[CustomerSubscriptionMeterTypedDict]
     r"""List of meters associated with the subscription."""
-    is_polar_managed: bool
-    r"""Whether the subscription is managed by Polar."""
     seats: NotRequired[Nullable[int]]
     r"""The number of seats for seat-based subscriptions. None for non-seat subscriptions."""
 
@@ -160,9 +158,6 @@ class CustomerSubscription(BaseModel):
 
     meters: List[CustomerSubscriptionMeter]
     r"""List of meters associated with the subscription."""
-
-    is_polar_managed: bool
-    r"""Whether the subscription is managed by Polar."""
 
     seats: OptionalNullable[int] = UNSET
     r"""The number of seats for seat-based subscriptions. None for non-seat subscriptions."""

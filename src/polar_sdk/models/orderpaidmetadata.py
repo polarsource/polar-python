@@ -9,8 +9,18 @@ from typing_extensions import NotRequired, TypedDict
 class OrderPaidMetadataTypedDict(TypedDict):
     order_id: str
     amount: int
-    currency: str
-    backfilled: NotRequired[bool]
+    product_id: NotRequired[str]
+    billing_type: NotRequired[str]
+    currency: NotRequired[str]
+    net_amount: NotRequired[int]
+    tax_amount: NotRequired[int]
+    applied_balance_amount: NotRequired[int]
+    discount_amount: NotRequired[int]
+    discount_id: NotRequired[str]
+    platform_fee: NotRequired[int]
+    subscription_id: NotRequired[str]
+    recurring_interval: NotRequired[str]
+    recurring_interval_count: NotRequired[int]
 
 
 class OrderPaidMetadata(BaseModel):
@@ -18,6 +28,26 @@ class OrderPaidMetadata(BaseModel):
 
     amount: int
 
-    currency: str
+    product_id: Optional[str] = None
 
-    backfilled: Optional[bool] = None
+    billing_type: Optional[str] = None
+
+    currency: Optional[str] = None
+
+    net_amount: Optional[int] = None
+
+    tax_amount: Optional[int] = None
+
+    applied_balance_amount: Optional[int] = None
+
+    discount_amount: Optional[int] = None
+
+    discount_id: Optional[str] = None
+
+    platform_fee: Optional[int] = None
+
+    subscription_id: Optional[str] = None
+
+    recurring_interval: Optional[str] = None
+
+    recurring_interval_count: Optional[int] = None

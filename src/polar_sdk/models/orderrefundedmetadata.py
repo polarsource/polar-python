@@ -2,15 +2,13 @@
 
 from __future__ import annotations
 from polar_sdk.types import BaseModel
-from typing import Optional
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
 class OrderRefundedMetadataTypedDict(TypedDict):
     order_id: str
     refunded_amount: int
     currency: str
-    backfilled: NotRequired[bool]
 
 
 class OrderRefundedMetadata(BaseModel):
@@ -19,5 +17,3 @@ class OrderRefundedMetadata(BaseModel):
     refunded_amount: int
 
     currency: str
-
-    backfilled: Optional[bool] = None

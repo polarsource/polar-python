@@ -44,6 +44,7 @@ class Events(BaseSDK):
         ] = UNSET,
         query: OptionalNullable[str] = UNSET,
         parent_id: OptionalNullable[str] = UNSET,
+        depth: OptionalNullable[int] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.EventSortProperty]] = UNSET,
@@ -57,7 +58,7 @@ class Events(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[models.EventsListResponse]:
+    ) -> models.EventsListResponseEventsList:
         r"""List Events
 
         List events.
@@ -74,7 +75,8 @@ class Events(BaseSDK):
         :param name: Filter by event name.
         :param source: Filter by event source.
         :param query: Query to filter events.
-        :param parent_id: Filter events by parent event ID. When not specified, returns root events only.
+        :param parent_id: When combined with depth, use this event as the anchor instead of root events.
+        :param depth: Fetch descendants up to this depth. When set: 0=root events only, 1=roots+children, etc. Max 5. When not set, returns all events.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -106,6 +108,7 @@ class Events(BaseSDK):
             source=source,
             query=query,
             parent_id=parent_id,
+            depth=depth,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -149,48 +152,10 @@ class Events(BaseSDK):
             retry_config=retry_config,
         )
 
-        def next_func() -> Optional[models.EventsListResponse]:
-            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
-            page = request.page if not request.page is None else 1
-            next_page = page + 1
-
-            num_pages = JSONPath("$.pagination.max_page").parse(body)
-            if len(num_pages) == 0 or num_pages[0] <= page:
-                return None
-
-            if not http_res.text:
-                return None
-            results = JSONPath("$.items").parse(body)
-            if len(results) == 0 or len(results[0]) == 0:
-                return None
-            limit = request.limit if not request.limit is None else 10
-            if len(results[0]) < limit:
-                return None
-
-            return self.list(
-                filter_=filter_,
-                start_timestamp=start_timestamp,
-                end_timestamp=end_timestamp,
-                organization_id=organization_id,
-                customer_id=customer_id,
-                external_customer_id=external_customer_id,
-                meter_id=meter_id,
-                name=name,
-                source=source,
-                query=query,
-                parent_id=parent_id,
-                page=next_page,
-                limit=limit,
-                sorting=sorting,
-                metadata=metadata,
-                retries=retries,
-            )
-
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.EventsListResponse(
-                result=unmarshal_json_response(models.ListResourceEvent, http_res),
-                next=next_func,
+            return unmarshal_json_response(
+                models.EventsListResponseEventsList, http_res
             )
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
@@ -239,6 +204,7 @@ class Events(BaseSDK):
         ] = UNSET,
         query: OptionalNullable[str] = UNSET,
         parent_id: OptionalNullable[str] = UNSET,
+        depth: OptionalNullable[int] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.EventSortProperty]] = UNSET,
@@ -252,7 +218,7 @@ class Events(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[models.EventsListResponse]:
+    ) -> models.EventsListResponseEventsList:
         r"""List Events
 
         List events.
@@ -269,7 +235,8 @@ class Events(BaseSDK):
         :param name: Filter by event name.
         :param source: Filter by event source.
         :param query: Query to filter events.
-        :param parent_id: Filter events by parent event ID. When not specified, returns root events only.
+        :param parent_id: When combined with depth, use this event as the anchor instead of root events.
+        :param depth: Fetch descendants up to this depth. When set: 0=root events only, 1=roots+children, etc. Max 5. When not set, returns all events.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -301,6 +268,7 @@ class Events(BaseSDK):
             source=source,
             query=query,
             parent_id=parent_id,
+            depth=depth,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -344,48 +312,10 @@ class Events(BaseSDK):
             retry_config=retry_config,
         )
 
-        def next_func() -> Optional[models.EventsListResponse]:
-            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
-            page = request.page if not request.page is None else 1
-            next_page = page + 1
-
-            num_pages = JSONPath("$.pagination.max_page").parse(body)
-            if len(num_pages) == 0 or num_pages[0] <= page:
-                return None
-
-            if not http_res.text:
-                return None
-            results = JSONPath("$.items").parse(body)
-            if len(results) == 0 or len(results[0]) == 0:
-                return None
-            limit = request.limit if not request.limit is None else 10
-            if len(results[0]) < limit:
-                return None
-
-            return self.list(
-                filter_=filter_,
-                start_timestamp=start_timestamp,
-                end_timestamp=end_timestamp,
-                organization_id=organization_id,
-                customer_id=customer_id,
-                external_customer_id=external_customer_id,
-                meter_id=meter_id,
-                name=name,
-                source=source,
-                query=query,
-                parent_id=parent_id,
-                page=next_page,
-                limit=limit,
-                sorting=sorting,
-                metadata=metadata,
-                retries=retries,
-            )
-
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return models.EventsListResponse(
-                result=unmarshal_json_response(models.ListResourceEvent, http_res),
-                next=next_func,
+            return unmarshal_json_response(
+                models.EventsListResponseEventsList, http_res
             )
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(

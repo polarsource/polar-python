@@ -2,12 +2,28 @@
 
 from __future__ import annotations
 from polar_sdk.types import BaseModel
-from typing_extensions import TypedDict
+from typing import Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class SubscriptionRevokedMetadataTypedDict(TypedDict):
     subscription_id: str
+    product_id: NotRequired[str]
+    amount: NotRequired[int]
+    currency: NotRequired[str]
+    recurring_interval: NotRequired[str]
+    recurring_interval_count: NotRequired[int]
 
 
 class SubscriptionRevokedMetadata(BaseModel):
     subscription_id: str
+
+    product_id: Optional[str] = None
+
+    amount: Optional[int] = None
+
+    currency: Optional[str] = None
+
+    recurring_interval: Optional[str] = None
+
+    recurring_interval_count: Optional[int] = None

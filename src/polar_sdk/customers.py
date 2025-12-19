@@ -4,9 +4,9 @@ from .basesdk import BaseSDK
 from jsonpath import JSONPath
 from polar_sdk import models, utils
 from polar_sdk._hooks import HookContext
-from polar_sdk.types import BaseModel, OptionalNullable, UNSET
+from polar_sdk.types import OptionalNullable, UNSET
 from polar_sdk.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Dict, List, Mapping, Optional, Union, cast
+from typing import Any, Dict, List, Mapping, Optional, Union
 
 
 class Customers(BaseSDK):
@@ -21,6 +21,7 @@ class Customers(BaseSDK):
         ] = UNSET,
         email: OptionalNullable[str] = UNSET,
         query: OptionalNullable[str] = UNSET,
+        include_members: Optional[bool] = False,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.CustomerSortProperty]] = UNSET,
@@ -44,6 +45,7 @@ class Customers(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param email: Filter by exact email.
         :param query: Filter by name, email, or external ID.
+        :param include_members: Include members in the response. Only populated when set to true.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -67,6 +69,7 @@ class Customers(BaseSDK):
             organization_id=organization_id,
             email=email,
             query=query,
+            include_members=include_members,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -132,6 +135,7 @@ class Customers(BaseSDK):
                 organization_id=organization_id,
                 email=email,
                 query=query,
+                include_members=include_members,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -142,7 +146,9 @@ class Customers(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.CustomersListResponse(
-                result=unmarshal_json_response(models.ListResourceCustomer, http_res),
+                result=unmarshal_json_response(
+                    models.ListResourceCustomerWithMembers, http_res
+                ),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -170,6 +176,7 @@ class Customers(BaseSDK):
         ] = UNSET,
         email: OptionalNullable[str] = UNSET,
         query: OptionalNullable[str] = UNSET,
+        include_members: Optional[bool] = False,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.CustomerSortProperty]] = UNSET,
@@ -193,6 +200,7 @@ class Customers(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param email: Filter by exact email.
         :param query: Filter by name, email, or external ID.
+        :param include_members: Include members in the response. Only populated when set to true.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -216,6 +224,7 @@ class Customers(BaseSDK):
             organization_id=organization_id,
             email=email,
             query=query,
+            include_members=include_members,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -281,6 +290,7 @@ class Customers(BaseSDK):
                 organization_id=organization_id,
                 email=email,
                 query=query,
+                include_members=include_members,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -291,7 +301,9 @@ class Customers(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.CustomersListResponse(
-                result=unmarshal_json_response(models.ListResourceCustomer, http_res),
+                result=unmarshal_json_response(
+                    models.ListResourceCustomerWithMembers, http_res
+                ),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -311,19 +323,21 @@ class Customers(BaseSDK):
     def create(
         self,
         *,
-        request: Union[models.CustomerCreate, models.CustomerCreateTypedDict],
+        customer_create: Union[models.CustomerCreate, models.CustomerCreateTypedDict],
+        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer:
+    ) -> models.CustomerWithMembers:
         r"""Create Customer
 
         Create a customer.
 
         **Scopes**: `customers:write`
 
-        :param request: The request object to send.
+        :param customer_create:
+        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -339,9 +353,12 @@ class Customers(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.CustomerCreate)
-        request = cast(models.CustomerCreate, request)
+        request = models.CustomersCreateRequest(
+            include_members=include_members,
+            customer_create=utils.get_pydantic_model(
+                customer_create, models.CustomerCreate
+            ),
+        )
 
         req = self._build_request(
             method="POST",
@@ -357,7 +374,7 @@ class Customers(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.CustomerCreate
+                request.customer_create, False, False, "json", models.CustomerCreate
             ),
             timeout_ms=timeout_ms,
         )
@@ -385,7 +402,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Customer, http_res)
+            return unmarshal_json_response(models.CustomerWithMembers, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -403,19 +420,21 @@ class Customers(BaseSDK):
     async def create_async(
         self,
         *,
-        request: Union[models.CustomerCreate, models.CustomerCreateTypedDict],
+        customer_create: Union[models.CustomerCreate, models.CustomerCreateTypedDict],
+        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer:
+    ) -> models.CustomerWithMembers:
         r"""Create Customer
 
         Create a customer.
 
         **Scopes**: `customers:write`
 
-        :param request: The request object to send.
+        :param customer_create:
+        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -431,9 +450,12 @@ class Customers(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.CustomerCreate)
-        request = cast(models.CustomerCreate, request)
+        request = models.CustomersCreateRequest(
+            include_members=include_members,
+            customer_create=utils.get_pydantic_model(
+                customer_create, models.CustomerCreate
+            ),
+        )
 
         req = self._build_request_async(
             method="POST",
@@ -449,7 +471,7 @@ class Customers(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.CustomerCreate
+                request.customer_create, False, False, "json", models.CustomerCreate
             ),
             timeout_ms=timeout_ms,
         )
@@ -477,7 +499,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.Customer, http_res)
+            return unmarshal_json_response(models.CustomerWithMembers, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -684,11 +706,12 @@ class Customers(BaseSDK):
         self,
         *,
         id: str,
+        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer:
+    ) -> models.CustomerWithMembers:
         r"""Get Customer
 
         Get a customer by ID.
@@ -696,6 +719,7 @@ class Customers(BaseSDK):
         **Scopes**: `customers:read` `customers:write`
 
         :param id: The customer ID.
+        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -713,6 +737,7 @@ class Customers(BaseSDK):
 
         request = models.CustomersGetRequest(
             id=id,
+            include_members=include_members,
         )
 
         req = self._build_request(
@@ -754,7 +779,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Customer, http_res)
+            return unmarshal_json_response(models.CustomerWithMembers, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -778,11 +803,12 @@ class Customers(BaseSDK):
         self,
         *,
         id: str,
+        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer:
+    ) -> models.CustomerWithMembers:
         r"""Get Customer
 
         Get a customer by ID.
@@ -790,6 +816,7 @@ class Customers(BaseSDK):
         **Scopes**: `customers:read` `customers:write`
 
         :param id: The customer ID.
+        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -807,6 +834,7 @@ class Customers(BaseSDK):
 
         request = models.CustomersGetRequest(
             id=id,
+            include_members=include_members,
         )
 
         req = self._build_request_async(
@@ -848,7 +876,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Customer, http_res)
+            return unmarshal_json_response(models.CustomerWithMembers, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -873,11 +901,12 @@ class Customers(BaseSDK):
         *,
         id: str,
         customer_update: Union[models.CustomerUpdate, models.CustomerUpdateTypedDict],
+        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer:
+    ) -> models.CustomerWithMembers:
         r"""Update Customer
 
         Update a customer.
@@ -886,6 +915,7 @@ class Customers(BaseSDK):
 
         :param id: The customer ID.
         :param customer_update:
+        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -903,6 +933,7 @@ class Customers(BaseSDK):
 
         request = models.CustomersUpdateRequest(
             id=id,
+            include_members=include_members,
             customer_update=utils.get_pydantic_model(
                 customer_update, models.CustomerUpdate
             ),
@@ -950,7 +981,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Customer, http_res)
+            return unmarshal_json_response(models.CustomerWithMembers, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -975,11 +1006,12 @@ class Customers(BaseSDK):
         *,
         id: str,
         customer_update: Union[models.CustomerUpdate, models.CustomerUpdateTypedDict],
+        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer:
+    ) -> models.CustomerWithMembers:
         r"""Update Customer
 
         Update a customer.
@@ -988,6 +1020,7 @@ class Customers(BaseSDK):
 
         :param id: The customer ID.
         :param customer_update:
+        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1005,6 +1038,7 @@ class Customers(BaseSDK):
 
         request = models.CustomersUpdateRequest(
             id=id,
+            include_members=include_members,
             customer_update=utils.get_pydantic_model(
                 customer_update, models.CustomerUpdate
             ),
@@ -1052,7 +1086,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Customer, http_res)
+            return unmarshal_json_response(models.CustomerWithMembers, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -1288,11 +1322,12 @@ class Customers(BaseSDK):
         self,
         *,
         external_id: str,
+        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer:
+    ) -> models.CustomerWithMembers:
         r"""Get Customer by External ID
 
         Get a customer by external ID.
@@ -1300,6 +1335,7 @@ class Customers(BaseSDK):
         **Scopes**: `customers:read` `customers:write`
 
         :param external_id: The customer external ID.
+        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1317,6 +1353,7 @@ class Customers(BaseSDK):
 
         request = models.CustomersGetExternalRequest(
             external_id=external_id,
+            include_members=include_members,
         )
 
         req = self._build_request(
@@ -1358,7 +1395,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Customer, http_res)
+            return unmarshal_json_response(models.CustomerWithMembers, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -1382,11 +1419,12 @@ class Customers(BaseSDK):
         self,
         *,
         external_id: str,
+        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer:
+    ) -> models.CustomerWithMembers:
         r"""Get Customer by External ID
 
         Get a customer by external ID.
@@ -1394,6 +1432,7 @@ class Customers(BaseSDK):
         **Scopes**: `customers:read` `customers:write`
 
         :param external_id: The customer external ID.
+        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1411,6 +1450,7 @@ class Customers(BaseSDK):
 
         request = models.CustomersGetExternalRequest(
             external_id=external_id,
+            include_members=include_members,
         )
 
         req = self._build_request_async(
@@ -1452,7 +1492,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Customer, http_res)
+            return unmarshal_json_response(models.CustomerWithMembers, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -1479,11 +1519,12 @@ class Customers(BaseSDK):
         customer_update_external_id: Union[
             models.CustomerUpdateExternalID, models.CustomerUpdateExternalIDTypedDict
         ],
+        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer:
+    ) -> models.CustomerWithMembers:
         r"""Update Customer by External ID
 
         Update a customer by external ID.
@@ -1492,6 +1533,7 @@ class Customers(BaseSDK):
 
         :param external_id: The customer external ID.
         :param customer_update_external_id:
+        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1509,6 +1551,7 @@ class Customers(BaseSDK):
 
         request = models.CustomersUpdateExternalRequest(
             external_id=external_id,
+            include_members=include_members,
             customer_update_external_id=utils.get_pydantic_model(
                 customer_update_external_id, models.CustomerUpdateExternalID
             ),
@@ -1560,7 +1603,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Customer, http_res)
+            return unmarshal_json_response(models.CustomerWithMembers, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -1587,11 +1630,12 @@ class Customers(BaseSDK):
         customer_update_external_id: Union[
             models.CustomerUpdateExternalID, models.CustomerUpdateExternalIDTypedDict
         ],
+        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.Customer:
+    ) -> models.CustomerWithMembers:
         r"""Update Customer by External ID
 
         Update a customer by external ID.
@@ -1600,6 +1644,7 @@ class Customers(BaseSDK):
 
         :param external_id: The customer external ID.
         :param customer_update_external_id:
+        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1617,6 +1662,7 @@ class Customers(BaseSDK):
 
         request = models.CustomersUpdateExternalRequest(
             external_id=external_id,
+            include_members=include_members,
             customer_update_external_id=utils.get_pydantic_model(
                 customer_update_external_id, models.CustomerUpdateExternalID
             ),
@@ -1668,7 +1714,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.Customer, http_res)
+            return unmarshal_json_response(models.CustomerWithMembers, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -2261,194 +2307,6 @@ class Customers(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.CustomerState, http_res)
-        if utils.match_response(http_res, "404", "application/json"):
-            response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
-            )
-            raise models.ResourceNotFound(response_data, http_res)
-        if utils.match_response(http_res, "422", "application/json"):
-            response_data = unmarshal_json_response(
-                models.HTTPValidationErrorData, http_res
-            )
-            raise models.HTTPValidationError(response_data, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise models.SDKError("API error occurred", http_res, http_res_text)
-
-        raise models.SDKError("Unexpected response received", http_res)
-
-    def get_balance(
-        self,
-        *,
-        id: str,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerBalance:
-        r"""Get Customer Balance
-
-        Get customer balance information.
-
-        **Scopes**: `customers:read` `customers:write`
-
-        :param id: The customer ID.
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.CustomersGetBalanceRequest(
-            id=id,
-        )
-
-        req = self._build_request(
-            method="GET",
-            path="/v1/customers/{id}/balance",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=False,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = self.do_request(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="customers:get_balance",
-                oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
-            ),
-            request=req,
-            error_status_codes=["404", "422", "4XX", "5XX"],
-            retry_config=retry_config,
-        )
-
-        response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.CustomerBalance, http_res)
-        if utils.match_response(http_res, "404", "application/json"):
-            response_data = unmarshal_json_response(
-                models.ResourceNotFoundData, http_res
-            )
-            raise models.ResourceNotFound(response_data, http_res)
-        if utils.match_response(http_res, "422", "application/json"):
-            response_data = unmarshal_json_response(
-                models.HTTPValidationErrorData, http_res
-            )
-            raise models.HTTPValidationError(response_data, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise models.SDKError("API error occurred", http_res, http_res_text)
-
-        raise models.SDKError("Unexpected response received", http_res)
-
-    async def get_balance_async(
-        self,
-        *,
-        id: str,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerBalance:
-        r"""Get Customer Balance
-
-        Get customer balance information.
-
-        **Scopes**: `customers:read` `customers:write`
-
-        :param id: The customer ID.
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.CustomersGetBalanceRequest(
-            id=id,
-        )
-
-        req = self._build_request_async(
-            method="GET",
-            path="/v1/customers/{id}/balance",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=False,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["429", "500", "502", "503", "504"])
-
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="customers:get_balance",
-                oauth2_scopes=None,
-                security_source=self.sdk_configuration.security,
-            ),
-            request=req,
-            error_status_codes=["404", "422", "4XX", "5XX"],
-            retry_config=retry_config,
-        )
-
-        response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.CustomerBalance, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res

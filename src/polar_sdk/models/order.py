@@ -18,6 +18,7 @@ from .discountpercentagerepeatdurationbase import (
     DiscountPercentageRepeatDurationBase,
     DiscountPercentageRepeatDurationBaseTypedDict,
 )
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .orderbillingreason import OrderBillingReason
 from .ordercustomer import OrderCustomer, OrderCustomerTypedDict
 from .orderitemschema import OrderItemSchema, OrderItemSchemaTypedDict
@@ -30,14 +31,6 @@ import pydantic
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
-
-
-OrderMetadataTypedDict = TypeAliasType(
-    "OrderMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-OrderMetadata = TypeAliasType("OrderMetadata", Union[str, int, float, bool])
 
 
 OrderCustomFieldDataTypedDict = TypeAliasType(
@@ -114,9 +107,11 @@ class OrderTypedDict(TypedDict):
     discount_id: Nullable[str]
     subscription_id: Nullable[str]
     checkout_id: Nullable[str]
-    metadata: Dict[str, OrderMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     platform_fee_amount: int
     r"""Platform fee amount in cents."""
+    platform_fee_currency: Nullable[str]
+    r"""Currency of the platform fee."""
     customer: OrderCustomerTypedDict
     user_id: str
     product: Nullable[OrderProductTypedDict]
@@ -199,10 +194,13 @@ class Order(BaseModel):
 
     checkout_id: Nullable[str]
 
-    metadata: Dict[str, OrderMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     platform_fee_amount: int
     r"""Platform fee amount in cents."""
+
+    platform_fee_currency: Nullable[str]
+    r"""Currency of the platform fee."""
 
     customer: OrderCustomer
 
@@ -243,6 +241,7 @@ class Order(BaseModel):
             "discount_id",
             "subscription_id",
             "checkout_id",
+            "platform_fee_currency",
             "product",
             "discount",
             "subscription",

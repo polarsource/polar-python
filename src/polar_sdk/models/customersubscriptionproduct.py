@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 from .benefitpublic import BenefitPublic, BenefitPublicTypedDict
+from .customerorganization import CustomerOrganization, CustomerOrganizationTypedDict
 from .legacyrecurringproductprice import (
     LegacyRecurringProductPrice,
     LegacyRecurringProductPriceTypedDict,
 )
-from .organization import Organization, OrganizationTypedDict
 from .productmediafileread import ProductMediaFileRead, ProductMediaFileReadTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
@@ -61,7 +61,7 @@ class CustomerSubscriptionProductTypedDict(TypedDict):
     r"""List of benefits granted by the product."""
     medias: List[ProductMediaFileReadTypedDict]
     r"""List of medias associated to the product."""
-    organization: OrganizationTypedDict
+    organization: CustomerOrganizationTypedDict
 
 
 class CustomerSubscriptionProduct(BaseModel):
@@ -110,7 +110,7 @@ class CustomerSubscriptionProduct(BaseModel):
     medias: List[ProductMediaFileRead]
     r"""List of medias associated to the product."""
 
-    organization: Organization
+    organization: CustomerOrganization
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

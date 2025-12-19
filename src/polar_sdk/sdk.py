@@ -26,9 +26,12 @@ if TYPE_CHECKING:
     from polar_sdk.customer_sessions import CustomerSessions
     from polar_sdk.customers import Customers
     from polar_sdk.discounts import Discounts
+    from polar_sdk.disputes import Disputes
+    from polar_sdk.event_types import EventTypes
     from polar_sdk.events import Events
     from polar_sdk.files import Files
     from polar_sdk.license_keys import LicenseKeys
+    from polar_sdk.members import Members
     from polar_sdk.meters import Meters
     from polar_sdk.metrics_sdk import MetricsSDK
     from polar_sdk.oauth2 import Oauth2
@@ -38,7 +41,6 @@ if TYPE_CHECKING:
     from polar_sdk.products import Products
     from polar_sdk.refunds import Refunds
     from polar_sdk.subscriptions import Subscriptions
-    from polar_sdk.wallets import Wallets
     from polar_sdk.webhooks import Webhooks
 
 
@@ -57,6 +59,7 @@ class Polar(BaseSDK):
     products: "Products"
     orders: "Orders"
     refunds: "Refunds"
+    disputes: "Disputes"
     checkouts: "Checkouts"
     files: "Files"
     metrics: "MetricsSDK"
@@ -65,14 +68,15 @@ class Polar(BaseSDK):
     custom_fields: "CustomFields"
     discounts: "Discounts"
     customers: "Customers"
+    members: "Members"
     customer_portal: "CustomerPortal"
     customer_seats: "CustomerSeats"
     customer_sessions: "CustomerSessions"
     events: "Events"
+    event_types: "EventTypes"
     meters: "Meters"
     customer_meters: "CustomerMeters"
     payments: "Payments"
-    wallets: "Wallets"
     _sub_sdk_map = {
         "organizations": ("polar_sdk.organizations", "Organizations"),
         "subscriptions": ("polar_sdk.subscriptions", "Subscriptions"),
@@ -83,6 +87,7 @@ class Polar(BaseSDK):
         "products": ("polar_sdk.products", "Products"),
         "orders": ("polar_sdk.orders", "Orders"),
         "refunds": ("polar_sdk.refunds", "Refunds"),
+        "disputes": ("polar_sdk.disputes", "Disputes"),
         "checkouts": ("polar_sdk.checkouts", "Checkouts"),
         "files": ("polar_sdk.files", "Files"),
         "metrics": ("polar_sdk.metrics_sdk", "MetricsSDK"),
@@ -91,14 +96,15 @@ class Polar(BaseSDK):
         "custom_fields": ("polar_sdk.custom_fields", "CustomFields"),
         "discounts": ("polar_sdk.discounts", "Discounts"),
         "customers": ("polar_sdk.customers", "Customers"),
+        "members": ("polar_sdk.members", "Members"),
         "customer_portal": ("polar_sdk.customer_portal", "CustomerPortal"),
         "customer_seats": ("polar_sdk.customer_seats", "CustomerSeats"),
         "customer_sessions": ("polar_sdk.customer_sessions", "CustomerSessions"),
         "events": ("polar_sdk.events", "Events"),
+        "event_types": ("polar_sdk.event_types", "EventTypes"),
         "meters": ("polar_sdk.meters", "Meters"),
         "customer_meters": ("polar_sdk.customer_meters", "CustomerMeters"),
         "payments": ("polar_sdk.payments", "Payments"),
-        "wallets": ("polar_sdk.wallets", "Wallets"),
     }
 
     def __init__(

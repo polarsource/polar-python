@@ -8,7 +8,10 @@ from .customersortproperty import CustomerSortProperty
 from .eventsortproperty import EventSortProperty
 from .eventsource import EventSource
 from .listresource_benefit_ import ListResourceBenefit, ListResourceBenefitTypedDict
-from .listresource_customer_ import ListResourceCustomer, ListResourceCustomerTypedDict
+from .listresource_customerwithmembers_ import (
+    ListResourceCustomerWithMembers,
+    ListResourceCustomerWithMembersTypedDict,
+)
 from .listresource_event_ import ListResourceEvent, ListResourceEventTypedDict
 from .listresource_meter_ import ListResourceMeter, ListResourceMeterTypedDict
 from .listresource_order_ import ListResourceOrder, ListResourceOrderTypedDict
@@ -16,6 +19,10 @@ from .listresource_product_ import ListResourceProduct, ListResourceProductTyped
 from .listresource_subscription_ import (
     ListResourceSubscription,
     ListResourceSubscriptionTypedDict,
+)
+from .listresourcewithcursorpagination_event_ import (
+    ListResourceWithCursorPaginationEvent,
+    ListResourceWithCursorPaginationEventTypedDict,
 )
 from .metersortproperty import MeterSortProperty
 from .ordersortproperty import OrderSortProperty
@@ -107,6 +114,8 @@ class SubscriptionsListRequestTypedDict(TypedDict):
     r"""Filter by discount ID."""
     active: NotRequired[Nullable[bool]]
     r"""Filter by active or inactive subscription."""
+    cancel_at_period_end: NotRequired[Nullable[bool]]
+    r"""Filter by subscriptions that are set to cancel at period end."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -154,6 +163,12 @@ class SubscriptionsListRequest(BaseModel):
     ] = UNSET
     r"""Filter by active or inactive subscription."""
 
+    cancel_at_period_end: Annotated[
+        OptionalNullable[bool],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by subscriptions that are set to cancel at period end."""
+
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -187,6 +202,7 @@ class SubscriptionsListRequest(BaseModel):
             "external_customer_id",
             "discount_id",
             "active",
+            "cancel_at_period_end",
             "page",
             "limit",
             "sorting",
@@ -199,6 +215,7 @@ class SubscriptionsListRequest(BaseModel):
             "external_customer_id",
             "discount_id",
             "active",
+            "cancel_at_period_end",
             "sorting",
             "metadata",
         ]
@@ -263,11 +280,31 @@ BenefitTypeFilter = TypeAliasType(
 r"""Filter by benefit type."""
 
 
+FilterIDsTypedDict = TypeAliasType("FilterIDsTypedDict", Union[str, List[str]])
+r"""Filter by benefit IDs."""
+
+
+FilterIDs = TypeAliasType("FilterIDs", Union[str, List[str]])
+r"""Filter by benefit IDs."""
+
+
+ExcludeIDsTypedDict = TypeAliasType("ExcludeIDsTypedDict", Union[str, List[str]])
+r"""Exclude benefits with these IDs."""
+
+
+ExcludeIDs = TypeAliasType("ExcludeIDs", Union[str, List[str]])
+r"""Exclude benefits with these IDs."""
+
+
 class BenefitsListRequestTypedDict(TypedDict):
     organization_id: NotRequired[Nullable[QueryParamOrganizationIDFilterTypedDict]]
     r"""Filter by organization ID."""
     type_filter: NotRequired[Nullable[BenefitTypeFilterTypedDict]]
     r"""Filter by benefit type."""
+    id: NotRequired[Nullable[FilterIDsTypedDict]]
+    r"""Filter by benefit IDs."""
+    exclude_id: NotRequired[Nullable[ExcludeIDsTypedDict]]
+    r"""Exclude benefits with these IDs."""
     query: NotRequired[Nullable[str]]
     r"""Filter by description."""
     page: NotRequired[int]
@@ -293,6 +330,18 @@ class BenefitsListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by benefit type."""
+
+    id: Annotated[
+        OptionalNullable[FilterIDs],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by benefit IDs."""
+
+    exclude_id: Annotated[
+        OptionalNullable[ExcludeIDs],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Exclude benefits with these IDs."""
 
     query: Annotated[
         OptionalNullable[str],
@@ -329,6 +378,8 @@ class BenefitsListRequest(BaseModel):
         optional_fields = [
             "organization_id",
             "type_filter",
+            "id",
+            "exclude_id",
             "query",
             "page",
             "limit",
@@ -338,6 +389,8 @@ class BenefitsListRequest(BaseModel):
         nullable_fields = [
             "organization_id",
             "type_filter",
+            "id",
+            "exclude_id",
             "query",
             "sorting",
             "metadata",
@@ -799,6 +852,8 @@ class CustomersListRequestTypedDict(TypedDict):
     r"""Filter by exact email."""
     query: NotRequired[Nullable[str]]
     r"""Filter by name, email, or external ID."""
+    include_members: NotRequired[bool]
+    r"""Include members in the response. Only populated when set to true."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -827,6 +882,12 @@ class CustomersListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by name, email, or external ID."""
+
+    include_members: Annotated[
+        Optional[bool],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = False
+    r"""Include members in the response. Only populated when set to true."""
 
     page: Annotated[
         Optional[int],
@@ -858,6 +919,7 @@ class CustomersListRequest(BaseModel):
             "organization_id",
             "email",
             "query",
+            "include_members",
             "page",
             "limit",
             "sorting",
@@ -892,13 +954,13 @@ class CustomersListRequest(BaseModel):
 
 
 class CustomersListResponseTypedDict(TypedDict):
-    result: ListResourceCustomerTypedDict
+    result: ListResourceCustomerWithMembersTypedDict
 
 
 class CustomersListResponse(BaseModel):
     next: Callable[[], Optional[CustomersListResponse]]
 
-    result: ListResourceCustomer
+    result: ListResourceCustomerWithMembers
 
 
 EventsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
@@ -981,7 +1043,9 @@ class EventsListRequestTypedDict(TypedDict):
     query: NotRequired[Nullable[str]]
     r"""Query to filter events."""
     parent_id: NotRequired[Nullable[str]]
-    r"""Filter events by parent event ID. When not specified, returns root events only."""
+    r"""When combined with depth, use this event as the anchor instead of root events."""
+    depth: NotRequired[Nullable[int]]
+    r"""Fetch descendants up to this depth. When set: 0=root events only, 1=roots+children, etc. Max 5. When not set, returns all events."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -1058,7 +1122,13 @@ class EventsListRequest(BaseModel):
         OptionalNullable[str],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
-    r"""Filter events by parent event ID. When not specified, returns root events only."""
+    r"""When combined with depth, use this event as the anchor instead of root events."""
+
+    depth: Annotated[
+        OptionalNullable[int],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Fetch descendants up to this depth. When set: 0=root events only, 1=roots+children, etc. Max 5. When not set, returns all events."""
 
     page: Annotated[
         Optional[int],
@@ -1098,6 +1168,7 @@ class EventsListRequest(BaseModel):
             "source",
             "query",
             "parent_id",
+            "depth",
             "page",
             "limit",
             "sorting",
@@ -1115,6 +1186,7 @@ class EventsListRequest(BaseModel):
             "source",
             "query",
             "parent_id",
+            "depth",
             "sorting",
             "metadata",
         ]
@@ -1145,14 +1217,18 @@ class EventsListRequest(BaseModel):
         return m
 
 
-class EventsListResponseTypedDict(TypedDict):
-    result: ListResourceEventTypedDict
+EventsListResponseEventsListTypedDict = TypeAliasType(
+    "EventsListResponseEventsListTypedDict",
+    Union[ListResourceEventTypedDict, ListResourceWithCursorPaginationEventTypedDict],
+)
+r"""Successful Response"""
 
 
-class EventsListResponse(BaseModel):
-    next: Callable[[], Optional[EventsListResponse]]
-
-    result: ListResourceEvent
+EventsListResponseEventsList = TypeAliasType(
+    "EventsListResponseEventsList",
+    Union[ListResourceEvent, ListResourceWithCursorPaginationEvent],
+)
+r"""Successful Response"""
 
 
 MetersListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(

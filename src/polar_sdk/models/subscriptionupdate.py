@@ -3,6 +3,10 @@
 from __future__ import annotations
 from .subscriptioncancel import SubscriptionCancel, SubscriptionCancelTypedDict
 from .subscriptionrevoke import SubscriptionRevoke, SubscriptionRevokeTypedDict
+from .subscriptionupdatebillingperiod import (
+    SubscriptionUpdateBillingPeriod,
+    SubscriptionUpdateBillingPeriodTypedDict,
+)
 from .subscriptionupdatediscount import (
     SubscriptionUpdateDiscount,
     SubscriptionUpdateDiscountTypedDict,
@@ -28,6 +32,7 @@ SubscriptionUpdateTypedDict = TypeAliasType(
     Union[
         SubscriptionUpdateDiscountTypedDict,
         SubscriptionUpdateTrialTypedDict,
+        SubscriptionUpdateBillingPeriodTypedDict,
         SubscriptionUpdateProductTypedDict,
         SubscriptionUpdateSeatsTypedDict,
         SubscriptionCancelTypedDict,
@@ -41,6 +46,7 @@ SubscriptionUpdate = TypeAliasType(
     Union[
         SubscriptionUpdateDiscount,
         SubscriptionUpdateTrial,
+        SubscriptionUpdateBillingPeriod,
         SubscriptionUpdateProduct,
         SubscriptionUpdateSeats,
         SubscriptionCancel,

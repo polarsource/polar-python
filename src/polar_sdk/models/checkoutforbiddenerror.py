@@ -4,6 +4,7 @@ from __future__ import annotations
 from .alreadyactivesubscriptionerror import AlreadyActiveSubscriptionErrorData
 from .notopencheckout import NotOpenCheckoutData
 from .paymentnotready import PaymentNotReadyData
+from .trialalreadyredeemed import TrialAlreadyRedeemedData
 from dataclasses import dataclass, field
 import httpx
 from polar_sdk.models import PolarError
@@ -13,7 +14,12 @@ from typing_extensions import TypeAliasType
 
 CheckoutForbiddenErrorUnion = TypeAliasType(
     "CheckoutForbiddenErrorUnion",
-    Union[AlreadyActiveSubscriptionErrorData, NotOpenCheckoutData, PaymentNotReadyData],
+    Union[
+        AlreadyActiveSubscriptionErrorData,
+        NotOpenCheckoutData,
+        PaymentNotReadyData,
+        TrialAlreadyRedeemedData,
+    ],
 )
 
 

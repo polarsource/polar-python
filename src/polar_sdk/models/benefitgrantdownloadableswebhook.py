@@ -41,6 +41,8 @@ class BenefitGrantDownloadablesWebhookTypedDict(TypedDict):
     r"""The timestamp when the benefit was granted. If `None`, the benefit is not granted."""
     revoked_at: NotRequired[Nullable[datetime]]
     r"""The timestamp when the benefit was revoked. If `None`, the benefit is not revoked."""
+    member_id: NotRequired[Nullable[str]]
+    r"""The ID of the member concerned by this grant."""
     error: NotRequired[Nullable[BenefitGrantErrorTypedDict]]
     r"""The error information if the benefit grant failed with an unrecoverable error."""
     previous_properties: NotRequired[
@@ -89,6 +91,9 @@ class BenefitGrantDownloadablesWebhook(BaseModel):
     revoked_at: OptionalNullable[datetime] = UNSET
     r"""The timestamp when the benefit was revoked. If `None`, the benefit is not revoked."""
 
+    member_id: OptionalNullable[str] = UNSET
+    r"""The ID of the member concerned by this grant."""
+
     error: OptionalNullable[BenefitGrantError] = UNSET
     r"""The error information if the benefit grant failed with an unrecoverable error."""
 
@@ -96,13 +101,20 @@ class BenefitGrantDownloadablesWebhook(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["granted_at", "revoked_at", "error", "previous_properties"]
+        optional_fields = [
+            "granted_at",
+            "revoked_at",
+            "member_id",
+            "error",
+            "previous_properties",
+        ]
         nullable_fields = [
             "modified_at",
             "granted_at",
             "revoked_at",
             "subscription_id",
             "order_id",
+            "member_id",
             "error",
             "previous_properties",
         ]

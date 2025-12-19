@@ -5,6 +5,7 @@ from .customerstatesubscriptionmeter import (
     CustomerStateSubscriptionMeter,
     CustomerStateSubscriptionMeterTypedDict,
 )
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from datetime import datetime
 from enum import Enum
@@ -24,16 +25,6 @@ CustomerStateSubscriptionCustomFieldData = TypeAliasType(
 )
 
 
-CustomerStateSubscriptionMetadataTypedDict = TypeAliasType(
-    "CustomerStateSubscriptionMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-CustomerStateSubscriptionMetadata = TypeAliasType(
-    "CustomerStateSubscriptionMetadata", Union[str, int, float, bool]
-)
-
-
 class Status(str, Enum):
     ACTIVE = "active"
     TRIALING = "trialing"
@@ -48,7 +39,7 @@ class CustomerStateSubscriptionTypedDict(TypedDict):
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    metadata: Dict[str, CustomerStateSubscriptionMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     status: Status
     amount: int
     r"""The amount of the subscription."""
@@ -95,7 +86,7 @@ class CustomerStateSubscription(BaseModel):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    metadata: Dict[str, CustomerStateSubscriptionMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     status: Status
 

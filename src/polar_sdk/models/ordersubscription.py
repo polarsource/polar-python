@@ -2,27 +2,18 @@
 
 from __future__ import annotations
 from .customercancellationreason import CustomerCancellationReason
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptionstatus import SubscriptionStatus
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
-
-
-OrderSubscriptionMetadataTypedDict = TypeAliasType(
-    "OrderSubscriptionMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-OrderSubscriptionMetadata = TypeAliasType(
-    "OrderSubscriptionMetadata", Union[str, int, float, bool]
-)
+from typing import Dict
+from typing_extensions import NotRequired, TypedDict
 
 
 class OrderSubscriptionTypedDict(TypedDict):
-    metadata: Dict[str, OrderSubscriptionMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
@@ -69,7 +60,7 @@ class OrderSubscriptionTypedDict(TypedDict):
 
 
 class OrderSubscription(BaseModel):
-    metadata: Dict[str, OrderSubscriptionMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     created_at: datetime
     r"""Creation timestamp of the object."""

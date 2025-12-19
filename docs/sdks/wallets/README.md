@@ -1,5 +1,5 @@
 # Wallets
-(*wallets*)
+(*customer_portal.wallets*)
 
 ## Overview
 
@@ -7,26 +7,26 @@
 
 * [list](#list) - List Wallets
 * [get](#get) - Get Wallet
-* [top_up](#top_up) - Top-Up Wallet
 
 ## list
 
-List wallets.
+List wallets of the authenticated customer.
 
-**Scopes**: `wallets:read`
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="wallets:list" method="get" path="/v1/wallets/" -->
+<!-- UsageSnippet language="python" operationID="customer_portal:wallets:list" method="get" path="/v1/customer-portal/wallets/" -->
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.wallets.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737", page=1, limit=10)
+    res = polar.customer_portal.wallets.list(security=polar_sdk.CustomerPortalWalletsListSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), page=1, limit=10)
 
     while res is not None:
         # Handle items
@@ -39,16 +39,15 @@ with Polar(
 
 | Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `organization_id`                                                                                                                                                       | [OptionalNullable[models.WalletsListQueryParamOrganizationIDFilter]](../../models/walletslistqueryparamorganizationidfilter.md)                                         | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
-| `customer_id`                                                                                                                                                           | [OptionalNullable[models.WalletsListQueryParamCustomerIDFilter]](../../models/walletslistqueryparamcustomeridfilter.md)                                                 | :heavy_minus_sign:                                                                                                                                                      | Filter by customer ID.                                                                                                                                                  |
+| `security`                                                                                                                                                              | [models.CustomerPortalWalletsListSecurity](../../models/customerportalwalletslistsecurity.md)                                                                           | :heavy_check_mark:                                                                                                                                                      | N/A                                                                                                                                                                     |
 | `page`                                                                                                                                                                  | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |
 | `limit`                                                                                                                                                                 | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Size of a page, defaults to 10. Maximum is 100.                                                                                                                         |
-| `sorting`                                                                                                                                                               | List[[models.WalletSortProperty](../../models/walletsortproperty.md)]                                                                                                   | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
+| `sorting`                                                                                                                                                               | List[[models.CustomerWalletSortProperty](../../models/customerwalletsortproperty.md)]                                                                                   | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
 | `retries`                                                                                                                                                               | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                        | :heavy_minus_sign:                                                                                                                                                      | Configuration to override the default retry behavior of the client.                                                                                                     |
 
 ### Response
 
-**[models.WalletsListResponse](../../models/walletslistresponse.md)**
+**[models.CustomerPortalWalletsListResponse](../../models/customerportalwalletslistresponse.md)**
 
 ### Errors
 
@@ -59,22 +58,23 @@ with Polar(
 
 ## get
 
-Get a wallet by ID.
+Get a wallet by ID for the authenticated customer.
 
-**Scopes**: `wallets:read`
+**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
-<!-- UsageSnippet language="python" operationID="wallets:get" method="get" path="/v1/wallets/{id}" -->
+<!-- UsageSnippet language="python" operationID="customer_portal:wallets:get" method="get" path="/v1/customer-portal/wallets/{id}" -->
 ```python
+import polar_sdk
 from polar_sdk import Polar
 
 
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
+with Polar() as polar:
 
-    res = polar.wallets.get(id="<value>")
+    res = polar.customer_portal.wallets.get(security=polar_sdk.CustomerPortalWalletsGetSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), id="<value>")
 
     # Handle response
     print(res)
@@ -83,14 +83,15 @@ with Polar(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The wallet ID.                                                      |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `security`                                                                                  | [models.CustomerPortalWalletsGetSecurity](../../models/customerportalwalletsgetsecurity.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `id`                                                                                        | *str*                                                                                       | :heavy_check_mark:                                                                          | The wallet ID.                                                                              |
+| `retries`                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                            | :heavy_minus_sign:                                                                          | Configuration to override the default retry behavior of the client.                         |
 
 ### Response
 
-**[models.Wallet](../../models/wallet.md)**
+**[models.CustomerWallet](../../models/customerwallet.md)**
 
 ### Errors
 
@@ -99,56 +100,3 @@ with Polar(
 | models.ResourceNotFound    | 404                        | application/json           |
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## top_up
-
-Top-up a wallet by adding funds to its balance.
-
-The customer should have a valid payment method on file.
-
-**Scopes**: `wallets:write`
-
-### Example Usage
-
-<!-- UsageSnippet language="python" operationID="wallets:top_up" method="post" path="/v1/wallets/{id}/top-up" -->
-```python
-from polar_sdk import Polar
-
-
-with Polar(
-    access_token="<YOUR_BEARER_TOKEN_HERE>",
-) as polar:
-
-    res = polar.wallets.top_up(id="<value>", wallet_top_up_create={
-        "amount": 2000,
-        "currency": "Venezuelan bolívar",
-    })
-
-    assert res is not None
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The wallet ID.                                                      |
-| `wallet_top_up_create`                                              | [models.WalletTopUpCreate](../../models/wallettopupcreate.md)       | :heavy_check_mark:                                                  | N/A                                                                 |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[models.Wallet](../../models/wallet.md)**
-
-### Errors
-
-| Error Type                       | Status Code                      | Content Type                     |
-| -------------------------------- | -------------------------------- | -------------------------------- |
-| models.PaymentIntentFailedError  | 400                              | application/json                 |
-| models.MissingPaymentMethodError | 402                              | application/json                 |
-| models.ResourceNotFound          | 404                              | application/json                 |
-| models.HTTPValidationError       | 422                              | application/json                 |
-| models.SDKError                  | 4XX, 5XX                         | \*/\*                            |

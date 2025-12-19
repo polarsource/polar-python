@@ -11,3 +11,5 @@ class CustomerBenefitGrantSortProperty(str, Enum):
     MINUS_TYPE = "-type"
     ORGANIZATION = "organization"
     MINUS_ORGANIZATION = "-organization"
+    PRODUCT_BENEFIT = "product_benefit"
+    MINUS_PRODUCT_BENEFIT = "-product_benefit"

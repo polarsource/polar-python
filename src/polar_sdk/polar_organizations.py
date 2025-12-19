@@ -17,7 +17,7 @@ class PolarOrganizations(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerOrganization:
+    ) -> models.CustomerOrganizationData:
         r"""Get Organization
 
         Get a customer portal's organization by slug.
@@ -80,7 +80,7 @@ class PolarOrganizations(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.CustomerOrganization, http_res)
+            return unmarshal_json_response(models.CustomerOrganizationData, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -108,7 +108,7 @@ class PolarOrganizations(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerOrganization:
+    ) -> models.CustomerOrganizationData:
         r"""Get Organization
 
         Get a customer portal's organization by slug.
@@ -171,7 +171,7 @@ class PolarOrganizations(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.CustomerOrganization, http_res)
+            return unmarshal_json_response(models.CustomerOrganizationData, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res

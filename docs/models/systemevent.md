@@ -27,6 +27,12 @@ value: models.BenefitRevokedEvent = /* values here */
 value: models.BenefitUpdatedEvent = /* values here */
 ```
 
+### `models.CheckoutCreatedEvent`
+
+```python
+value: models.CheckoutCreatedEvent = /* values here */
+```
+
 ### `models.CustomerCreatedEvent`
 
 ```python
@@ -69,6 +75,24 @@ value: models.OrderPaidEvent = /* values here */
 value: models.OrderRefundedEvent = /* values here */
 ```
 
+### `models.SubscriptionBillingPeriodUpdatedEvent`
+
+```python
+value: models.SubscriptionBillingPeriodUpdatedEvent = /* values here */
+```
+
+### `models.SubscriptionCanceledEvent`
+
+```python
+value: models.SubscriptionCanceledEvent = /* values here */
+```
+
+### `models.SubscriptionCreatedEvent`
+
+```python
+value: models.SubscriptionCreatedEvent = /* values here */
+```
+
 ### `models.SubscriptionCycledEvent`
 
 ```python
@@ -85,5 +109,17 @@ value: models.SubscriptionProductUpdatedEvent = /* values here */
 
 ```python
 value: models.SubscriptionRevokedEvent = /* values here */
+```
+
+### `models.SubscriptionSeatsUpdatedEvent`
+
+```python
+value: models.SubscriptionSeatsUpdatedEvent = /* values here */
+```
+
+### `models.SubscriptionUncanceledEvent`
+
+```python
+value: models.SubscriptionUncanceledEvent = /* values here */
 ```
 

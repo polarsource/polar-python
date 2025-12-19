@@ -80,6 +80,8 @@ class MetricsGetRequestTypedDict(TypedDict):
     r"""Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases."""
     customer_id: NotRequired[Nullable[MetricsGetQueryParamCustomerIDFilterTypedDict]]
     r"""Filter by customer ID."""
+    metrics: NotRequired[Nullable[List[str]]]
+    r"""List of metric slugs to focus on. When provided, only the queries needed for these metrics will be executed, improving performance. If not provided, all metrics are returned."""
 
 
 class MetricsGetRequest(BaseModel):
@@ -129,6 +131,12 @@ class MetricsGetRequest(BaseModel):
     ] = UNSET
     r"""Filter by customer ID."""
 
+    metrics: Annotated[
+        OptionalNullable[List[str]],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""List of metric slugs to focus on. When provided, only the queries needed for these metrics will be executed, improving performance. If not provided, all metrics are returned."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -137,12 +145,14 @@ class MetricsGetRequest(BaseModel):
             "product_id",
             "billing_type",
             "customer_id",
+            "metrics",
         ]
         nullable_fields = [
             "organization_id",
             "product_id",
             "billing_type",
             "customer_id",
+            "metrics",
         ]
         null_default_fields = []
 

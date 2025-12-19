@@ -29,6 +29,7 @@ from .legacyrecurringproductprice import (
     LegacyRecurringProductPrice,
     LegacyRecurringProductPriceTypedDict,
 )
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
 from .trialinterval import TrialInterval
@@ -50,14 +51,6 @@ CheckoutCustomFieldData = TypeAliasType(
 )
 
 
-CheckoutMetadataTypedDict = TypeAliasType(
-    "CheckoutMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-CheckoutMetadata = TypeAliasType("CheckoutMetadata", Union[str, int, float, bool])
-
-
 CheckoutProductPriceTypedDict = TypeAliasType(
     "CheckoutProductPriceTypedDict",
     Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
@@ -66,6 +59,17 @@ CheckoutProductPriceTypedDict = TypeAliasType(
 
 CheckoutProductPrice = TypeAliasType(
     "CheckoutProductPrice", Union[LegacyRecurringProductPrice, ProductPrice]
+)
+
+
+CheckoutPricesTypedDict = TypeAliasType(
+    "CheckoutPricesTypedDict",
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+)
+
+
+CheckoutPrices = TypeAliasType(
+    "CheckoutPrices", Union[LegacyRecurringProductPrice, ProductPrice]
 )
 
 
@@ -134,6 +138,8 @@ class CheckoutTypedDict(TypedDict):
     r"""Amount in cents, after discounts and taxes."""
     currency: str
     r"""Currency code of the checkout session."""
+    allow_trial: Nullable[bool]
+    r"""Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured."""
     active_trial_interval: Nullable[TrialInterval]
     r"""Interval unit of the trial period, if any. This value is either set from the checkout, if `trial_interval` is set, or from the selected product."""
     active_trial_interval_count: Nullable[int]
@@ -179,7 +185,7 @@ class CheckoutTypedDict(TypedDict):
     r"""The interval unit for the trial period."""
     trial_interval_count: Nullable[int]
     r"""The number of interval units for the trial period."""
-    metadata: Dict[str, CheckoutMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     external_customer_id: Nullable[str]
     r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
     customer_external_id: Nullable[str]
@@ -189,6 +195,8 @@ class CheckoutTypedDict(TypedDict):
     r"""Product selected to checkout."""
     product_price: Nullable[CheckoutProductPriceTypedDict]
     r"""Price of the selected product."""
+    prices: Nullable[Dict[str, List[CheckoutPricesTypedDict]]]
+    r"""Mapping of product IDs to their list of prices."""
     discount: Nullable[CheckoutDiscountTypedDict]
     subscription_id: Nullable[str]
     attached_custom_fields: Nullable[List[AttachedCustomFieldTypedDict]]
@@ -255,6 +263,9 @@ class Checkout(BaseModel):
     currency: str
     r"""Currency code of the checkout session."""
 
+    allow_trial: Nullable[bool]
+    r"""Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured."""
+
     active_trial_interval: Nullable[TrialInterval]
     r"""Interval unit of the trial period, if any. This value is either set from the checkout, if `trial_interval` is set, or from the selected product."""
 
@@ -270,7 +281,12 @@ class Checkout(BaseModel):
     product_id: Nullable[str]
     r"""ID of the product to checkout."""
 
-    product_price_id: Nullable[str]
+    product_price_id: Annotated[
+        Nullable[str],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
     r"""ID of the product price to checkout."""
 
     discount_id: Nullable[str]
@@ -326,7 +342,7 @@ class Checkout(BaseModel):
     trial_interval_count: Nullable[int]
     r"""The number of interval units for the trial period."""
 
-    metadata: Dict[str, CheckoutMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     external_customer_id: Nullable[str]
     r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
@@ -344,8 +360,16 @@ class Checkout(BaseModel):
     product: Nullable[CheckoutProduct]
     r"""Product selected to checkout."""
 
-    product_price: Nullable[CheckoutProductPrice]
+    product_price: Annotated[
+        Nullable[CheckoutProductPrice],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
     r"""Price of the selected product."""
+
+    prices: Nullable[Dict[str, List[CheckoutPrices]]]
+    r"""Mapping of product IDs to their list of prices."""
 
     discount: Nullable[CheckoutDiscount]
 
@@ -374,6 +398,7 @@ class Checkout(BaseModel):
             "seats",
             "price_per_seat",
             "tax_amount",
+            "allow_trial",
             "active_trial_interval",
             "active_trial_interval_count",
             "trial_end",
@@ -393,6 +418,7 @@ class Checkout(BaseModel):
             "customer_external_id",
             "product",
             "product_price",
+            "prices",
             "discount",
             "subscription_id",
             "attached_custom_fields",

@@ -5,25 +5,19 @@ from .benefitlicensekeyssubscriberproperties import (
     BenefitLicenseKeysSubscriberProperties,
     BenefitLicenseKeysSubscriberPropertiesTypedDict,
 )
-from .organization import Organization, OrganizationTypedDict
+from .benefitsubscriberorganization import (
+    BenefitSubscriberOrganization,
+    BenefitSubscriberOrganizationTypedDict,
+)
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Literal, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
-
-
-BenefitLicenseKeysSubscriberMetadataTypedDict = TypeAliasType(
-    "BenefitLicenseKeysSubscriberMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-BenefitLicenseKeysSubscriberMetadata = TypeAliasType(
-    "BenefitLicenseKeysSubscriberMetadata", Union[str, int, float, bool]
-)
+from typing import Dict, Literal
+from typing_extensions import Annotated, TypedDict
 
 
 class BenefitLicenseKeysSubscriberTypedDict(TypedDict):
@@ -41,8 +35,8 @@ class BenefitLicenseKeysSubscriberTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
-    metadata: Dict[str, BenefitLicenseKeysSubscriberMetadataTypedDict]
-    organization: OrganizationTypedDict
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
+    organization: BenefitSubscriberOrganizationTypedDict
     properties: BenefitLicenseKeysSubscriberPropertiesTypedDict
     type: Literal["license_keys"]
 
@@ -69,9 +63,9 @@ class BenefitLicenseKeysSubscriber(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
 
-    metadata: Dict[str, BenefitLicenseKeysSubscriberMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
-    organization: Organization
+    organization: BenefitSubscriberOrganization
 
     properties: BenefitLicenseKeysSubscriberProperties
 

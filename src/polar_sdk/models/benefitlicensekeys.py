@@ -5,24 +5,15 @@ from .benefitlicensekeysproperties import (
     BenefitLicenseKeysProperties,
     BenefitLicenseKeysPropertiesTypedDict,
 )
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Literal, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
-
-
-BenefitLicenseKeysMetadataTypedDict = TypeAliasType(
-    "BenefitLicenseKeysMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-BenefitLicenseKeysMetadata = TypeAliasType(
-    "BenefitLicenseKeysMetadata", Union[str, int, float, bool]
-)
+from typing import Dict, Literal
+from typing_extensions import Annotated, TypedDict
 
 
 class BenefitLicenseKeysTypedDict(TypedDict):
@@ -40,7 +31,7 @@ class BenefitLicenseKeysTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
-    metadata: Dict[str, BenefitLicenseKeysMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     properties: BenefitLicenseKeysPropertiesTypedDict
     type: Literal["license_keys"]
 
@@ -67,7 +58,7 @@ class BenefitLicenseKeys(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
 
-    metadata: Dict[str, BenefitLicenseKeysMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     properties: BenefitLicenseKeysProperties
 

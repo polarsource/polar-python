@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .countaggregation import CountAggregation, CountAggregationTypedDict
 from .filter_ import Filter, FilterTypedDict
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .propertyaggregation import PropertyAggregation, PropertyAggregationTypedDict
 from .uniqueaggregation import UniqueAggregation, UniqueAggregationTypedDict
 from datetime import datetime
@@ -12,14 +13,6 @@ import pydantic
 from pydantic import Discriminator, Tag, model_serializer
 from typing import Dict, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
-
-
-MeterMetadataTypedDict = TypeAliasType(
-    "MeterMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-MeterMetadata = TypeAliasType("MeterMetadata", Union[str, int, float, bool])
 
 
 MeterAggregationTypedDict = TypeAliasType(
@@ -48,7 +41,7 @@ r"""The aggregation to apply on the filtered events to calculate the meter."""
 
 
 class MeterTypedDict(TypedDict):
-    metadata: Dict[str, MeterMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
@@ -67,7 +60,7 @@ class MeterTypedDict(TypedDict):
 
 
 class Meter(BaseModel):
-    metadata: Dict[str, MeterMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     created_at: datetime
     r"""Creation timestamp of the object."""

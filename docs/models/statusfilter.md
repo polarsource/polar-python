@@ -1,19 +1,19 @@
 # StatusFilter
 
-Filter by checkout session status.
+Filter by dispute status.
 
 
 ## Supported Types
 
-### `models.CheckoutStatus`
+### `models.DisputeStatus`
 
 ```python
-value: models.CheckoutStatus = /* values here */
+value: models.DisputeStatus = /* values here */
 ```
 
-### `List[models.CheckoutStatus]`
+### `List[models.DisputeStatus]`
 
 ```python
-value: List[models.CheckoutStatus] = /* values here */
+value: List[models.DisputeStatus] = /* values here */
 ```
 

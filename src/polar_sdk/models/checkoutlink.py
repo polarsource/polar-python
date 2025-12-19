@@ -18,6 +18,7 @@ from .discountpercentagerepeatdurationbase import (
     DiscountPercentageRepeatDurationBase,
     DiscountPercentageRepeatDurationBaseTypedDict,
 )
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .paymentprocessor import PaymentProcessor
 from .trialinterval import TrialInterval
 from datetime import datetime
@@ -25,16 +26,6 @@ from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Union
 from typing_extensions import TypeAliasType, TypedDict
-
-
-CheckoutLinkMetadataTypedDict = TypeAliasType(
-    "CheckoutLinkMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-CheckoutLinkMetadata = TypeAliasType(
-    "CheckoutLinkMetadata", Union[str, int, float, bool]
-)
 
 
 CheckoutLinkDiscountTypedDict = TypeAliasType(
@@ -72,7 +63,7 @@ class CheckoutLinkTypedDict(TypedDict):
     r"""The interval unit for the trial period."""
     trial_interval_count: Nullable[int]
     r"""The number of interval units for the trial period."""
-    metadata: Dict[str, CheckoutLinkMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     payment_processor: PaymentProcessor
     client_secret: str
     r"""Client secret used to access the checkout link."""
@@ -111,7 +102,7 @@ class CheckoutLink(BaseModel):
     trial_interval_count: Nullable[int]
     r"""The number of interval units for the trial period."""
 
-    metadata: Dict[str, CheckoutLinkMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     payment_processor: PaymentProcessor
 

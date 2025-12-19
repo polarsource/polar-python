@@ -5,25 +5,19 @@ from .benefitmetercreditsubscriberproperties import (
     BenefitMeterCreditSubscriberProperties,
     BenefitMeterCreditSubscriberPropertiesTypedDict,
 )
-from .organization import Organization, OrganizationTypedDict
+from .benefitsubscriberorganization import (
+    BenefitSubscriberOrganization,
+    BenefitSubscriberOrganizationTypedDict,
+)
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Literal, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
-
-
-BenefitMeterCreditSubscriberMetadataTypedDict = TypeAliasType(
-    "BenefitMeterCreditSubscriberMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-BenefitMeterCreditSubscriberMetadata = TypeAliasType(
-    "BenefitMeterCreditSubscriberMetadata", Union[str, int, float, bool]
-)
+from typing import Dict, Literal
+from typing_extensions import Annotated, TypedDict
 
 
 class BenefitMeterCreditSubscriberTypedDict(TypedDict):
@@ -41,8 +35,8 @@ class BenefitMeterCreditSubscriberTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
-    metadata: Dict[str, BenefitMeterCreditSubscriberMetadataTypedDict]
-    organization: OrganizationTypedDict
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
+    organization: BenefitSubscriberOrganizationTypedDict
     properties: BenefitMeterCreditSubscriberPropertiesTypedDict
     r"""Properties available to subscribers for a benefit of type `meter_unit`."""
     type: Literal["meter_credit"]
@@ -70,9 +64,9 @@ class BenefitMeterCreditSubscriber(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
 
-    metadata: Dict[str, BenefitMeterCreditSubscriberMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
-    organization: Organization
+    organization: BenefitSubscriberOrganization
 
     properties: BenefitMeterCreditSubscriberProperties
     r"""Properties available to subscribers for a benefit of type `meter_unit`."""

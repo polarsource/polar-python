@@ -5,6 +5,10 @@ from .organizationcustomeremailsettings import (
     OrganizationCustomerEmailSettings,
     OrganizationCustomerEmailSettingsTypedDict,
 )
+from .organizationcustomerportalsettings import (
+    OrganizationCustomerPortalSettings,
+    OrganizationCustomerPortalSettingsTypedDict,
+)
 from .organizationfeaturesettings import (
     OrganizationFeatureSettings,
     OrganizationFeatureSettingsTypedDict,
@@ -22,6 +26,7 @@ from .organizationsubscriptionsettings import (
     OrganizationSubscriptionSettings,
     OrganizationSubscriptionSettingsTypedDict,
 )
+from .subscriptionprorationbehavior import SubscriptionProrationBehavior
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -35,13 +40,16 @@ class OrganizationTypedDict(TypedDict):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
     id: str
-    r"""The organization ID."""
+    r"""The ID of the object."""
     name: str
     r"""Organization name shown in checkout, customer portal, emails etc."""
     slug: str
     r"""Unique organization slug in checkout, customer portal and credit card statements."""
     avatar_url: Nullable[str]
     r"""Avatar URL shown in checkout, customer portal, emails etc."""
+    proration_behavior: SubscriptionProrationBehavior
+    allow_customer_updates: bool
+    r"""Whether customers can update their subscriptions from the customer portal."""
     email: Nullable[str]
     r"""Public support email."""
     website: Nullable[str]
@@ -56,6 +64,7 @@ class OrganizationTypedDict(TypedDict):
     subscription_settings: OrganizationSubscriptionSettingsTypedDict
     notification_settings: OrganizationNotificationSettingsTypedDict
     customer_email_settings: OrganizationCustomerEmailSettingsTypedDict
+    customer_portal_settings: OrganizationCustomerPortalSettingsTypedDict
 
 
 class Organization(BaseModel):
@@ -66,7 +75,7 @@ class Organization(BaseModel):
     r"""Last modification timestamp of the object."""
 
     id: str
-    r"""The organization ID."""
+    r"""The ID of the object."""
 
     name: str
     r"""Organization name shown in checkout, customer portal, emails etc."""
@@ -76,6 +85,11 @@ class Organization(BaseModel):
 
     avatar_url: Nullable[str]
     r"""Avatar URL shown in checkout, customer portal, emails etc."""
+
+    proration_behavior: SubscriptionProrationBehavior
+
+    allow_customer_updates: bool
+    r"""Whether customers can update their subscriptions from the customer portal."""
 
     email: Nullable[str]
     r"""Public support email."""
@@ -99,6 +113,8 @@ class Organization(BaseModel):
     notification_settings: OrganizationNotificationSettings
 
     customer_email_settings: OrganizationCustomerEmailSettings
+
+    customer_portal_settings: OrganizationCustomerPortalSettings
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

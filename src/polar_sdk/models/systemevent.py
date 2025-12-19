@@ -5,6 +5,7 @@ from .benefitcycledevent import BenefitCycledEvent, BenefitCycledEventTypedDict
 from .benefitgrantedevent import BenefitGrantedEvent, BenefitGrantedEventTypedDict
 from .benefitrevokedevent import BenefitRevokedEvent, BenefitRevokedEventTypedDict
 from .benefitupdatedevent import BenefitUpdatedEvent, BenefitUpdatedEventTypedDict
+from .checkoutcreatedevent import CheckoutCreatedEvent, CheckoutCreatedEventTypedDict
 from .customercreatedevent import CustomerCreatedEvent, CustomerCreatedEventTypedDict
 from .customerdeletedevent import CustomerDeletedEvent, CustomerDeletedEventTypedDict
 from .customerupdatedevent import CustomerUpdatedEvent, CustomerUpdatedEventTypedDict
@@ -12,6 +13,18 @@ from .metercreditevent import MeterCreditEvent, MeterCreditEventTypedDict
 from .meterresetevent import MeterResetEvent, MeterResetEventTypedDict
 from .orderpaidevent import OrderPaidEvent, OrderPaidEventTypedDict
 from .orderrefundedevent import OrderRefundedEvent, OrderRefundedEventTypedDict
+from .subscriptionbillingperiodupdatedevent import (
+    SubscriptionBillingPeriodUpdatedEvent,
+    SubscriptionBillingPeriodUpdatedEventTypedDict,
+)
+from .subscriptioncanceledevent import (
+    SubscriptionCanceledEvent,
+    SubscriptionCanceledEventTypedDict,
+)
+from .subscriptioncreatedevent import (
+    SubscriptionCreatedEvent,
+    SubscriptionCreatedEventTypedDict,
+)
 from .subscriptioncycledevent import (
     SubscriptionCycledEvent,
     SubscriptionCycledEventTypedDict,
@@ -23,6 +36,14 @@ from .subscriptionproductupdatedevent import (
 from .subscriptionrevokedevent import (
     SubscriptionRevokedEvent,
     SubscriptionRevokedEventTypedDict,
+)
+from .subscriptionseatsupdatedevent import (
+    SubscriptionSeatsUpdatedEvent,
+    SubscriptionSeatsUpdatedEventTypedDict,
+)
+from .subscriptionuncanceledevent import (
+    SubscriptionUncanceledEvent,
+    SubscriptionUncanceledEventTypedDict,
 )
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
@@ -39,11 +60,17 @@ SystemEventTypedDict = TypeAliasType(
         BenefitCycledEventTypedDict,
         BenefitUpdatedEventTypedDict,
         BenefitRevokedEventTypedDict,
+        SubscriptionCreatedEventTypedDict,
         SubscriptionCycledEventTypedDict,
+        SubscriptionCanceledEventTypedDict,
         SubscriptionRevokedEventTypedDict,
+        SubscriptionUncanceledEventTypedDict,
         SubscriptionProductUpdatedEventTypedDict,
+        SubscriptionSeatsUpdatedEventTypedDict,
+        SubscriptionBillingPeriodUpdatedEventTypedDict,
         OrderPaidEventTypedDict,
         OrderRefundedEventTypedDict,
+        CheckoutCreatedEventTypedDict,
         CustomerCreatedEventTypedDict,
         CustomerUpdatedEventTypedDict,
         CustomerDeletedEventTypedDict,
@@ -57,6 +84,7 @@ SystemEvent = Annotated[
         Annotated[BenefitGrantedEvent, Tag("benefit.granted")],
         Annotated[BenefitRevokedEvent, Tag("benefit.revoked")],
         Annotated[BenefitUpdatedEvent, Tag("benefit.updated")],
+        Annotated[CheckoutCreatedEvent, Tag("checkout.created")],
         Annotated[CustomerCreatedEvent, Tag("customer.created")],
         Annotated[CustomerDeletedEvent, Tag("customer.deleted")],
         Annotated[CustomerUpdatedEvent, Tag("customer.updated")],
@@ -64,9 +92,17 @@ SystemEvent = Annotated[
         Annotated[MeterResetEvent, Tag("meter.reset")],
         Annotated[OrderPaidEvent, Tag("order.paid")],
         Annotated[OrderRefundedEvent, Tag("order.refunded")],
+        Annotated[
+            SubscriptionBillingPeriodUpdatedEvent,
+            Tag("subscription.billing_period_updated"),
+        ],
+        Annotated[SubscriptionCanceledEvent, Tag("subscription.canceled")],
+        Annotated[SubscriptionCreatedEvent, Tag("subscription.created")],
         Annotated[SubscriptionCycledEvent, Tag("subscription.cycled")],
         Annotated[SubscriptionProductUpdatedEvent, Tag("subscription.product_updated")],
         Annotated[SubscriptionRevokedEvent, Tag("subscription.revoked")],
+        Annotated[SubscriptionSeatsUpdatedEvent, Tag("subscription.seats_updated")],
+        Annotated[SubscriptionUncanceledEvent, Tag("subscription.uncanceled")],
     ],
     Discriminator(lambda m: get_discriminator(m, "name", "name")),
 ]

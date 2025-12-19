@@ -5,24 +5,15 @@ from .customfieldtextproperties import (
     CustomFieldTextProperties,
     CustomFieldTextPropertiesTypedDict,
 )
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Literal, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
-
-
-CustomFieldTextMetadataTypedDict = TypeAliasType(
-    "CustomFieldTextMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-CustomFieldTextMetadata = TypeAliasType(
-    "CustomFieldTextMetadata", Union[str, int, float, bool]
-)
+from typing import Dict, Literal
+from typing_extensions import Annotated, TypedDict
 
 
 class CustomFieldTextTypedDict(TypedDict):
@@ -34,7 +25,7 @@ class CustomFieldTextTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
-    metadata: Dict[str, CustomFieldTextMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     slug: str
     r"""Identifier of the custom field. It'll be used as key when storing the value."""
     name: str
@@ -57,7 +48,7 @@ class CustomFieldText(BaseModel):
     id: str
     r"""The ID of the object."""
 
-    metadata: Dict[str, CustomFieldTextMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     slug: str
     r"""Identifier of the custom field. It'll be used as key when storing the value."""

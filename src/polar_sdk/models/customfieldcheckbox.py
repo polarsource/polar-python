@@ -5,24 +5,15 @@ from .customfieldcheckboxproperties import (
     CustomFieldCheckboxProperties,
     CustomFieldCheckboxPropertiesTypedDict,
 )
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Literal, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
-
-
-CustomFieldCheckboxMetadataTypedDict = TypeAliasType(
-    "CustomFieldCheckboxMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-CustomFieldCheckboxMetadata = TypeAliasType(
-    "CustomFieldCheckboxMetadata", Union[str, int, float, bool]
-)
+from typing import Dict, Literal
+from typing_extensions import Annotated, TypedDict
 
 
 class CustomFieldCheckboxTypedDict(TypedDict):
@@ -34,7 +25,7 @@ class CustomFieldCheckboxTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
-    metadata: Dict[str, CustomFieldCheckboxMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     slug: str
     r"""Identifier of the custom field. It'll be used as key when storing the value."""
     name: str
@@ -57,7 +48,7 @@ class CustomFieldCheckbox(BaseModel):
     id: str
     r"""The ID of the object."""
 
-    metadata: Dict[str, CustomFieldCheckboxMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     slug: str
     r"""Identifier of the custom field. It'll be used as key when storing the value."""
