@@ -6,6 +6,7 @@ from .legacyrecurringproductprice import (
     LegacyRecurringProductPrice,
     LegacyRecurringProductPriceTypedDict,
 )
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .productmediafileread import ProductMediaFileRead, ProductMediaFileReadTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
@@ -15,16 +16,6 @@ from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Union
 from typing_extensions import TypeAliasType, TypedDict
-
-
-CheckoutLinkProductMetadataTypedDict = TypeAliasType(
-    "CheckoutLinkProductMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-CheckoutLinkProductMetadata = TypeAliasType(
-    "CheckoutLinkProductMetadata", Union[str, int, float, bool]
-)
 
 
 CheckoutLinkProductPricesTypedDict = TypeAliasType(
@@ -41,7 +32,7 @@ CheckoutLinkProductPrices = TypeAliasType(
 class CheckoutLinkProductTypedDict(TypedDict):
     r"""Product data for a checkout link."""
 
-    metadata: Dict[str, CheckoutLinkProductMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     id: str
     r"""The ID of the object."""
     created_at: datetime
@@ -77,7 +68,7 @@ class CheckoutLinkProductTypedDict(TypedDict):
 class CheckoutLinkProduct(BaseModel):
     r"""Product data for a checkout link."""
 
-    metadata: Dict[str, CheckoutLinkProductMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     id: str
     r"""The ID of the object."""

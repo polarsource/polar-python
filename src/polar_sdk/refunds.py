@@ -45,7 +45,7 @@ class Refunds(BaseSDK):
     ) -> Optional[models.RefundsListResponse]:
         r"""List Refunds
 
-        List products.
+        List refunds.
 
         **Scopes**: `refunds:read` `refunds:write`
 
@@ -208,7 +208,7 @@ class Refunds(BaseSDK):
     ) -> Optional[models.RefundsListResponse]:
         r"""List Refunds
 
-        List products.
+        List refunds.
 
         **Scopes**: `refunds:read` `refunds:write`
 
@@ -407,7 +407,7 @@ class Refunds(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["400", "403", "422", "4XX", "5XX"],
+            error_status_codes=["403", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -416,11 +416,6 @@ class Refunds(BaseSDK):
             return unmarshal_json_response(models.Refund, http_res)
         if utils.match_response(http_res, "201", "*"):
             return None
-        if utils.match_response(http_res, "400", "application/json"):
-            response_data = unmarshal_json_response(
-                models.RefundAmountTooHighData, http_res
-            )
-            raise models.RefundAmountTooHigh(response_data, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(
                 models.RefundedAlreadyData, http_res
@@ -511,7 +506,7 @@ class Refunds(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["400", "403", "422", "4XX", "5XX"],
+            error_status_codes=["403", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -520,11 +515,6 @@ class Refunds(BaseSDK):
             return unmarshal_json_response(models.Refund, http_res)
         if utils.match_response(http_res, "201", "*"):
             return None
-        if utils.match_response(http_res, "400", "application/json"):
-            response_data = unmarshal_json_response(
-                models.RefundAmountTooHighData, http_res
-            )
-            raise models.RefundAmountTooHigh(response_data, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(
                 models.RefundedAlreadyData, http_res

@@ -6,7 +6,7 @@ from polar_sdk import models, utils
 from polar_sdk._hooks import HookContext
 from polar_sdk.types import OptionalNullable, UNSET
 from polar_sdk.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Mapping, Optional, Union
+from typing import Any, List, Mapping, Optional, Union
 
 
 class MetricsSDK(BaseSDK):
@@ -41,6 +41,7 @@ class MetricsSDK(BaseSDK):
                 models.MetricsGetQueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        metrics: OptionalNullable[List[str]] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -62,6 +63,7 @@ class MetricsSDK(BaseSDK):
         :param product_id: Filter by product ID.
         :param billing_type: Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
         :param customer_id: Filter by customer ID.
+        :param metrics: List of metric slugs to focus on. When provided, only the queries needed for these metrics will be executed, improving performance. If not provided, all metrics are returned.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -86,6 +88,7 @@ class MetricsSDK(BaseSDK):
             product_id=product_id,
             billing_type=billing_type,
             customer_id=customer_id,
+            metrics=metrics,
         )
 
         req = self._build_request(
@@ -173,6 +176,7 @@ class MetricsSDK(BaseSDK):
                 models.MetricsGetQueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        metrics: OptionalNullable[List[str]] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -194,6 +198,7 @@ class MetricsSDK(BaseSDK):
         :param product_id: Filter by product ID.
         :param billing_type: Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
         :param customer_id: Filter by customer ID.
+        :param metrics: List of metric slugs to focus on. When provided, only the queries needed for these metrics will be executed, improving performance. If not provided, all metrics are returned.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -218,6 +223,7 @@ class MetricsSDK(BaseSDK):
             product_id=product_id,
             billing_type=billing_type,
             customer_id=customer_id,
+            metrics=metrics,
         )
 
         req = self._build_request_async(

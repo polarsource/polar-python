@@ -1,19 +1,19 @@
 # QueryParamStatusFilter
 
-Filter by payment status.
+Filter by checkout session status.
 
 
 ## Supported Types
 
-### `models.PaymentStatus`
+### `models.CheckoutStatus`
 
 ```python
-value: models.PaymentStatus = /* values here */
+value: models.CheckoutStatus = /* values here */
 ```
 
-### `List[models.PaymentStatus]`
+### `List[models.CheckoutStatus]`
 
 ```python
-value: List[models.PaymentStatus] = /* values here */
+value: List[models.CheckoutStatus] = /* values here */
 ```
 

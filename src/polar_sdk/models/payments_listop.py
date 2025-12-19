@@ -47,14 +47,15 @@ PaymentsListQueryParamOrderIDFilter = TypeAliasType(
 r"""Filter by order ID."""
 
 
-QueryParamStatusFilterTypedDict = TypeAliasType(
-    "QueryParamStatusFilterTypedDict", Union[PaymentStatus, List[PaymentStatus]]
+PaymentsListQueryParamStatusFilterTypedDict = TypeAliasType(
+    "PaymentsListQueryParamStatusFilterTypedDict",
+    Union[PaymentStatus, List[PaymentStatus]],
 )
 r"""Filter by payment status."""
 
 
-QueryParamStatusFilter = TypeAliasType(
-    "QueryParamStatusFilter", Union[PaymentStatus, List[PaymentStatus]]
+PaymentsListQueryParamStatusFilter = TypeAliasType(
+    "PaymentsListQueryParamStatusFilter", Union[PaymentStatus, List[PaymentStatus]]
 )
 r"""Filter by payment status."""
 
@@ -86,7 +87,7 @@ class PaymentsListRequestTypedDict(TypedDict):
     r"""Filter by checkout ID."""
     order_id: NotRequired[Nullable[PaymentsListQueryParamOrderIDFilterTypedDict]]
     r"""Filter by order ID."""
-    status: NotRequired[Nullable[QueryParamStatusFilterTypedDict]]
+    status: NotRequired[Nullable[PaymentsListQueryParamStatusFilterTypedDict]]
     r"""Filter by payment status."""
     method: NotRequired[Nullable[MethodFilterTypedDict]]
     r"""Filter by payment method."""
@@ -120,7 +121,7 @@ class PaymentsListRequest(BaseModel):
     r"""Filter by order ID."""
 
     status: Annotated[
-        OptionalNullable[QueryParamStatusFilter],
+        OptionalNullable[PaymentsListQueryParamStatusFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by payment status."""

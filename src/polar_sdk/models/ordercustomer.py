@@ -2,22 +2,13 @@
 
 from __future__ import annotations
 from .address import Address, AddressTypedDict
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .taxidformat import TaxIDFormat
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Union
 from typing_extensions import TypeAliasType, TypedDict
-
-
-OrderCustomerMetadataTypedDict = TypeAliasType(
-    "OrderCustomerMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-OrderCustomerMetadata = TypeAliasType(
-    "OrderCustomerMetadata", Union[str, int, float, bool]
-)
 
 
 OrderCustomerTaxIDTypedDict = TypeAliasType(
@@ -35,7 +26,7 @@ class OrderCustomerTypedDict(TypedDict):
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
-    metadata: Dict[str, OrderCustomerMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     external_id: Nullable[str]
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
     email: str
@@ -63,7 +54,7 @@ class OrderCustomer(BaseModel):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
 
-    metadata: Dict[str, OrderCustomerMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     external_id: Nullable[str]
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""

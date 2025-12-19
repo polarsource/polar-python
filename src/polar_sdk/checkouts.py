@@ -32,7 +32,7 @@ class Checkouts(BaseSDK):
             ]
         ] = UNSET,
         status: OptionalNullable[
-            Union[models.StatusFilter, models.StatusFilterTypedDict]
+            Union[models.QueryParamStatusFilter, models.QueryParamStatusFilterTypedDict]
         ] = UNSET,
         query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
@@ -192,7 +192,7 @@ class Checkouts(BaseSDK):
             ]
         ] = UNSET,
         status: OptionalNullable[
-            Union[models.StatusFilter, models.StatusFilterTypedDict]
+            Union[models.QueryParamStatusFilter, models.QueryParamStatusFilterTypedDict]
         ] = UNSET,
         query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,

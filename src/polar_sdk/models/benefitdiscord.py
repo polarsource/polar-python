@@ -5,24 +5,15 @@ from .benefitdiscordproperties import (
     BenefitDiscordProperties,
     BenefitDiscordPropertiesTypedDict,
 )
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Literal, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
-
-
-BenefitDiscordMetadataTypedDict = TypeAliasType(
-    "BenefitDiscordMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-BenefitDiscordMetadata = TypeAliasType(
-    "BenefitDiscordMetadata", Union[str, int, float, bool]
-)
+from typing import Dict, Literal
+from typing_extensions import Annotated, TypedDict
 
 
 class BenefitDiscordTypedDict(TypedDict):
@@ -45,7 +36,7 @@ class BenefitDiscordTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
-    metadata: Dict[str, BenefitDiscordMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     properties: BenefitDiscordPropertiesTypedDict
     r"""Properties for a benefit of type `discord`."""
     type: Literal["discord"]
@@ -78,7 +69,7 @@ class BenefitDiscord(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
 
-    metadata: Dict[str, BenefitDiscordMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     properties: BenefitDiscordProperties
     r"""Properties for a benefit of type `discord`."""

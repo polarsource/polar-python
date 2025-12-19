@@ -3,22 +3,12 @@
 from __future__ import annotations
 from .discountduration import DiscountDuration
 from .discounttype import DiscountType
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict, Union
-from typing_extensions import TypeAliasType, TypedDict
-
-
-DiscountFixedOnceForeverDurationBaseMetadataTypedDict = TypeAliasType(
-    "DiscountFixedOnceForeverDurationBaseMetadataTypedDict",
-    Union[str, int, float, bool],
-)
-
-
-DiscountFixedOnceForeverDurationBaseMetadata = TypeAliasType(
-    "DiscountFixedOnceForeverDurationBaseMetadata", Union[str, int, float, bool]
-)
+from typing import Dict
+from typing_extensions import TypedDict
 
 
 class DiscountFixedOnceForeverDurationBaseTypedDict(TypedDict):
@@ -32,7 +22,7 @@ class DiscountFixedOnceForeverDurationBaseTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
-    metadata: Dict[str, DiscountFixedOnceForeverDurationBaseMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     name: str
     r"""Name of the discount. Will be displayed to the customer when the discount is applied."""
     code: Nullable[str]
@@ -67,7 +57,7 @@ class DiscountFixedOnceForeverDurationBase(BaseModel):
     id: str
     r"""The ID of the object."""
 
-    metadata: Dict[str, DiscountFixedOnceForeverDurationBaseMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     name: str
     r"""Name of the discount. Will be displayed to the customer when the discount is applied."""

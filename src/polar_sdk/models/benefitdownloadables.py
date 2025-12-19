@@ -5,24 +5,15 @@ from .benefitdownloadablesproperties import (
     BenefitDownloadablesProperties,
     BenefitDownloadablesPropertiesTypedDict,
 )
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Literal, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
-
-
-BenefitDownloadablesMetadataTypedDict = TypeAliasType(
-    "BenefitDownloadablesMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-BenefitDownloadablesMetadata = TypeAliasType(
-    "BenefitDownloadablesMetadata", Union[str, int, float, bool]
-)
+from typing import Dict, Literal
+from typing_extensions import Annotated, TypedDict
 
 
 class BenefitDownloadablesTypedDict(TypedDict):
@@ -40,7 +31,7 @@ class BenefitDownloadablesTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
-    metadata: Dict[str, BenefitDownloadablesMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     properties: BenefitDownloadablesPropertiesTypedDict
     type: Literal["downloadables"]
 
@@ -67,7 +58,7 @@ class BenefitDownloadables(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
 
-    metadata: Dict[str, BenefitDownloadablesMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     properties: BenefitDownloadablesProperties
 

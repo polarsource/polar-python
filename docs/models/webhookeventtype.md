@@ -24,6 +24,7 @@
 | `SUBSCRIPTION_CANCELED`   | subscription.canceled     |
 | `SUBSCRIPTION_UNCANCELED` | subscription.uncanceled   |
 | `SUBSCRIPTION_REVOKED`    | subscription.revoked      |
+| `SUBSCRIPTION_PAST_DUE`   | subscription.past_due     |
 | `REFUND_CREATED`          | refund.created            |
 | `REFUND_UPDATED`          | refund.updated            |
 | `PRODUCT_CREATED`         | product.created           |

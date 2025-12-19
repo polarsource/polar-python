@@ -5,24 +5,15 @@ from .benefitmetercreditproperties import (
     BenefitMeterCreditProperties,
     BenefitMeterCreditPropertiesTypedDict,
 )
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Literal, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
-
-
-BenefitMeterCreditMetadataTypedDict = TypeAliasType(
-    "BenefitMeterCreditMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-BenefitMeterCreditMetadata = TypeAliasType(
-    "BenefitMeterCreditMetadata", Union[str, int, float, bool]
-)
+from typing import Dict, Literal
+from typing_extensions import Annotated, TypedDict
 
 
 class BenefitMeterCreditTypedDict(TypedDict):
@@ -45,7 +36,7 @@ class BenefitMeterCreditTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
-    metadata: Dict[str, BenefitMeterCreditMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     properties: BenefitMeterCreditPropertiesTypedDict
     r"""Properties for a benefit of type `meter_unit`."""
     type: Literal["meter_credit"]
@@ -78,7 +69,7 @@ class BenefitMeterCredit(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
 
-    metadata: Dict[str, BenefitMeterCreditMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     properties: BenefitMeterCreditProperties
     r"""Properties for a benefit of type `meter_unit`."""

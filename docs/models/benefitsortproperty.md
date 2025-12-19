@@ -11,3 +11,5 @@
 | `MINUS_DESCRIPTION` | -description        |
 | `TYPE`              | type                |
 | `MINUS_TYPE`        | -type               |
+| `USER_ORDER`        | user_order          |
+| `MINUS_USER_ORDER`  | -user_order         |

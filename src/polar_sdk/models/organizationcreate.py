@@ -5,6 +5,10 @@ from .organizationcustomeremailsettings import (
     OrganizationCustomerEmailSettings,
     OrganizationCustomerEmailSettingsTypedDict,
 )
+from .organizationcustomerportalsettings import (
+    OrganizationCustomerPortalSettings,
+    OrganizationCustomerPortalSettingsTypedDict,
+)
 from .organizationdetails import OrganizationDetails, OrganizationDetailsTypedDict
 from .organizationfeaturesettings import (
     OrganizationFeatureSettings,
@@ -50,6 +54,9 @@ class OrganizationCreateTypedDict(TypedDict):
     customer_email_settings: NotRequired[
         Nullable[OrganizationCustomerEmailSettingsTypedDict]
     ]
+    customer_portal_settings: NotRequired[
+        Nullable[OrganizationCustomerPortalSettingsTypedDict]
+    ]
 
 
 class OrganizationCreate(BaseModel):
@@ -79,6 +86,10 @@ class OrganizationCreate(BaseModel):
 
     customer_email_settings: OptionalNullable[OrganizationCustomerEmailSettings] = UNSET
 
+    customer_portal_settings: OptionalNullable[OrganizationCustomerPortalSettings] = (
+        UNSET
+    )
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -91,6 +102,7 @@ class OrganizationCreate(BaseModel):
             "subscription_settings",
             "notification_settings",
             "customer_email_settings",
+            "customer_portal_settings",
         ]
         nullable_fields = [
             "avatar_url",
@@ -102,6 +114,7 @@ class OrganizationCreate(BaseModel):
             "subscription_settings",
             "notification_settings",
             "customer_email_settings",
+            "customer_portal_settings",
         ]
         null_default_fields = []
 

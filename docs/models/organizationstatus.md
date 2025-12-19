@@ -7,6 +7,7 @@
 | -------------------- | -------------------- |
 | `CREATED`            | created              |
 | `ONBOARDING_STARTED` | onboarding_started   |
-| `UNDER_REVIEW`       | under_review         |
+| `INITIAL_REVIEW`     | initial_review       |
+| `ONGOING_REVIEW`     | ongoing_review       |
 | `DENIED`             | denied               |
 | `ACTIVE`             | active               |

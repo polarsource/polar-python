@@ -6,14 +6,10 @@ from typing import Dict, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
-SubscriptionCreateCustomerMetadataTypedDict = TypeAliasType(
-    "SubscriptionCreateCustomerMetadataTypedDict", Union[str, int, float, bool]
-)
+MetadataTypedDict = TypeAliasType("MetadataTypedDict", Union[str, int, float, bool])
 
 
-SubscriptionCreateCustomerMetadata = TypeAliasType(
-    "SubscriptionCreateCustomerMetadata", Union[str, int, float, bool]
-)
+Metadata = TypeAliasType("Metadata", Union[str, int, float, bool])
 
 
 class SubscriptionCreateCustomerTypedDict(TypedDict):
@@ -23,7 +19,7 @@ class SubscriptionCreateCustomerTypedDict(TypedDict):
     r"""The ID of the recurring product to subscribe to. Must be a free product, otherwise the customer should go through a checkout flow."""
     customer_id: str
     r"""The ID of the customer to create the subscription for."""
-    metadata: NotRequired[Dict[str, SubscriptionCreateCustomerMetadataTypedDict]]
+    metadata: NotRequired[Dict[str, MetadataTypedDict]]
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
@@ -47,7 +43,7 @@ class SubscriptionCreateCustomer(BaseModel):
     customer_id: str
     r"""The ID of the customer to create the subscription for."""
 
-    metadata: Optional[Dict[str, SubscriptionCreateCustomerMetadata]] = None
+    metadata: Optional[Dict[str, Metadata]] = None
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.

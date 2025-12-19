@@ -26,8 +26,9 @@ generation:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
+  persistentEdits: {}
 python:
-  version: 0.28.0
+  version: 0.28.1
   additionalDependencies:
     dev:
       pydantic-ai-slim: ^0.1.0
@@ -43,6 +44,7 @@ python:
     - Polar
   baseErrorName: PolarError
   clientServerStatusCodesAsErrors: true
+  constFieldCasing: upper
   defaultErrorName: SDKError
   description: Polar SDK for Python
   enableCustomCodeRegions: true
@@ -60,14 +62,18 @@ python:
       operations: ""
       shared: ""
       webhooks: ""
+  inferUnionDiscriminators: true
   inputModelSuffix: input
   legacyPyright: true
+  license: ""
   maxMethodParams: 100
   methodArguments: infer-optional-args
   moduleName: ""
+  multipartArrayFormat: legacy
   outputModelSuffix: output
   packageManager: poetry
   packageName: polar-sdk
+  preApplyUnionDiscriminators: false
   pytestFilterWarnings: []
   pytestTimeout: 0
   responseFormat: flat

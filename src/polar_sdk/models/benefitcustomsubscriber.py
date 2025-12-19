@@ -5,25 +5,19 @@ from .benefitcustomsubscriberproperties import (
     BenefitCustomSubscriberProperties,
     BenefitCustomSubscriberPropertiesTypedDict,
 )
-from .organization import Organization, OrganizationTypedDict
+from .benefitsubscriberorganization import (
+    BenefitSubscriberOrganization,
+    BenefitSubscriberOrganizationTypedDict,
+)
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Literal, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
-
-
-BenefitCustomSubscriberMetadataTypedDict = TypeAliasType(
-    "BenefitCustomSubscriberMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-BenefitCustomSubscriberMetadata = TypeAliasType(
-    "BenefitCustomSubscriberMetadata", Union[str, int, float, bool]
-)
+from typing import Dict, Literal
+from typing_extensions import Annotated, TypedDict
 
 
 class BenefitCustomSubscriberTypedDict(TypedDict):
@@ -41,8 +35,8 @@ class BenefitCustomSubscriberTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
-    metadata: Dict[str, BenefitCustomSubscriberMetadataTypedDict]
-    organization: OrganizationTypedDict
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
+    organization: BenefitSubscriberOrganizationTypedDict
     properties: BenefitCustomSubscriberPropertiesTypedDict
     r"""Properties available to subscribers for a benefit of type `custom`."""
     type: Literal["custom"]
@@ -70,9 +64,9 @@ class BenefitCustomSubscriber(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
 
-    metadata: Dict[str, BenefitCustomSubscriberMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
-    organization: Organization
+    organization: BenefitSubscriberOrganization
 
     properties: BenefitCustomSubscriberProperties
     r"""Properties available to subscribers for a benefit of type `custom`."""

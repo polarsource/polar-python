@@ -2,210 +2,258 @@
 
 from __future__ import annotations
 from .metric import Metric, MetricTypedDict
-from polar_sdk.types import BaseModel
-from typing_extensions import TypedDict
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from pydantic import model_serializer
+from typing_extensions import NotRequired, TypedDict
 
 
 class MetricsTypedDict(TypedDict):
-    orders: MetricTypedDict
-    r"""Information about a metric."""
-    revenue: MetricTypedDict
-    r"""Information about a metric."""
-    net_revenue: MetricTypedDict
-    r"""Information about a metric."""
-    cumulative_revenue: MetricTypedDict
-    r"""Information about a metric."""
-    net_cumulative_revenue: MetricTypedDict
-    r"""Information about a metric."""
-    costs: MetricTypedDict
-    r"""Information about a metric."""
-    cumulative_costs: MetricTypedDict
-    r"""Information about a metric."""
-    average_order_value: MetricTypedDict
-    r"""Information about a metric."""
-    net_average_order_value: MetricTypedDict
-    r"""Information about a metric."""
-    average_revenue_per_user: MetricTypedDict
-    r"""Information about a metric."""
-    cost_per_user: MetricTypedDict
-    r"""Information about a metric."""
-    active_user_by_event: MetricTypedDict
-    r"""Information about a metric."""
-    one_time_products: MetricTypedDict
-    r"""Information about a metric."""
-    one_time_products_revenue: MetricTypedDict
-    r"""Information about a metric."""
-    one_time_products_net_revenue: MetricTypedDict
-    r"""Information about a metric."""
-    new_subscriptions: MetricTypedDict
-    r"""Information about a metric."""
-    new_subscriptions_revenue: MetricTypedDict
-    r"""Information about a metric."""
-    new_subscriptions_net_revenue: MetricTypedDict
-    r"""Information about a metric."""
-    renewed_subscriptions: MetricTypedDict
-    r"""Information about a metric."""
-    renewed_subscriptions_revenue: MetricTypedDict
-    r"""Information about a metric."""
-    renewed_subscriptions_net_revenue: MetricTypedDict
-    r"""Information about a metric."""
-    active_subscriptions: MetricTypedDict
-    r"""Information about a metric."""
-    monthly_recurring_revenue: MetricTypedDict
-    r"""Information about a metric."""
-    committed_monthly_recurring_revenue: MetricTypedDict
-    r"""Information about a metric."""
-    checkouts: MetricTypedDict
-    r"""Information about a metric."""
-    succeeded_checkouts: MetricTypedDict
-    r"""Information about a metric."""
-    checkouts_conversion: MetricTypedDict
-    r"""Information about a metric."""
-    canceled_subscriptions: MetricTypedDict
-    r"""Information about a metric."""
-    canceled_subscriptions_customer_service: MetricTypedDict
-    r"""Information about a metric."""
-    canceled_subscriptions_low_quality: MetricTypedDict
-    r"""Information about a metric."""
-    canceled_subscriptions_missing_features: MetricTypedDict
-    r"""Information about a metric."""
-    canceled_subscriptions_switched_service: MetricTypedDict
-    r"""Information about a metric."""
-    canceled_subscriptions_too_complex: MetricTypedDict
-    r"""Information about a metric."""
-    canceled_subscriptions_too_expensive: MetricTypedDict
-    r"""Information about a metric."""
-    canceled_subscriptions_unused: MetricTypedDict
-    r"""Information about a metric."""
-    canceled_subscriptions_other: MetricTypedDict
-    r"""Information about a metric."""
-    churn_rate: MetricTypedDict
-    r"""Information about a metric."""
-    gross_margin: MetricTypedDict
-    r"""Information about a metric."""
-    gross_margin_percentage: MetricTypedDict
-    r"""Information about a metric."""
-    cashflow: MetricTypedDict
-    r"""Information about a metric."""
+    orders: NotRequired[Nullable[MetricTypedDict]]
+    revenue: NotRequired[Nullable[MetricTypedDict]]
+    net_revenue: NotRequired[Nullable[MetricTypedDict]]
+    cumulative_revenue: NotRequired[Nullable[MetricTypedDict]]
+    net_cumulative_revenue: NotRequired[Nullable[MetricTypedDict]]
+    costs: NotRequired[Nullable[MetricTypedDict]]
+    cumulative_costs: NotRequired[Nullable[MetricTypedDict]]
+    average_order_value: NotRequired[Nullable[MetricTypedDict]]
+    net_average_order_value: NotRequired[Nullable[MetricTypedDict]]
+    average_revenue_per_user: NotRequired[Nullable[MetricTypedDict]]
+    cost_per_user: NotRequired[Nullable[MetricTypedDict]]
+    active_user_by_event: NotRequired[Nullable[MetricTypedDict]]
+    one_time_products: NotRequired[Nullable[MetricTypedDict]]
+    one_time_products_revenue: NotRequired[Nullable[MetricTypedDict]]
+    one_time_products_net_revenue: NotRequired[Nullable[MetricTypedDict]]
+    new_subscriptions: NotRequired[Nullable[MetricTypedDict]]
+    new_subscriptions_revenue: NotRequired[Nullable[MetricTypedDict]]
+    new_subscriptions_net_revenue: NotRequired[Nullable[MetricTypedDict]]
+    renewed_subscriptions: NotRequired[Nullable[MetricTypedDict]]
+    renewed_subscriptions_revenue: NotRequired[Nullable[MetricTypedDict]]
+    renewed_subscriptions_net_revenue: NotRequired[Nullable[MetricTypedDict]]
+    active_subscriptions: NotRequired[Nullable[MetricTypedDict]]
+    committed_subscriptions: NotRequired[Nullable[MetricTypedDict]]
+    monthly_recurring_revenue: NotRequired[Nullable[MetricTypedDict]]
+    committed_monthly_recurring_revenue: NotRequired[Nullable[MetricTypedDict]]
+    checkouts: NotRequired[Nullable[MetricTypedDict]]
+    succeeded_checkouts: NotRequired[Nullable[MetricTypedDict]]
+    checkouts_conversion: NotRequired[Nullable[MetricTypedDict]]
+    canceled_subscriptions: NotRequired[Nullable[MetricTypedDict]]
+    canceled_subscriptions_customer_service: NotRequired[Nullable[MetricTypedDict]]
+    canceled_subscriptions_low_quality: NotRequired[Nullable[MetricTypedDict]]
+    canceled_subscriptions_missing_features: NotRequired[Nullable[MetricTypedDict]]
+    canceled_subscriptions_switched_service: NotRequired[Nullable[MetricTypedDict]]
+    canceled_subscriptions_too_complex: NotRequired[Nullable[MetricTypedDict]]
+    canceled_subscriptions_too_expensive: NotRequired[Nullable[MetricTypedDict]]
+    canceled_subscriptions_unused: NotRequired[Nullable[MetricTypedDict]]
+    canceled_subscriptions_other: NotRequired[Nullable[MetricTypedDict]]
+    churned_subscriptions: NotRequired[Nullable[MetricTypedDict]]
+    churn_rate: NotRequired[Nullable[MetricTypedDict]]
+    ltv: NotRequired[Nullable[MetricTypedDict]]
+    gross_margin: NotRequired[Nullable[MetricTypedDict]]
+    gross_margin_percentage: NotRequired[Nullable[MetricTypedDict]]
+    cashflow: NotRequired[Nullable[MetricTypedDict]]
 
 
 class Metrics(BaseModel):
-    orders: Metric
-    r"""Information about a metric."""
+    orders: OptionalNullable[Metric] = UNSET
 
-    revenue: Metric
-    r"""Information about a metric."""
+    revenue: OptionalNullable[Metric] = UNSET
 
-    net_revenue: Metric
-    r"""Information about a metric."""
+    net_revenue: OptionalNullable[Metric] = UNSET
 
-    cumulative_revenue: Metric
-    r"""Information about a metric."""
+    cumulative_revenue: OptionalNullable[Metric] = UNSET
 
-    net_cumulative_revenue: Metric
-    r"""Information about a metric."""
+    net_cumulative_revenue: OptionalNullable[Metric] = UNSET
 
-    costs: Metric
-    r"""Information about a metric."""
+    costs: OptionalNullable[Metric] = UNSET
 
-    cumulative_costs: Metric
-    r"""Information about a metric."""
+    cumulative_costs: OptionalNullable[Metric] = UNSET
 
-    average_order_value: Metric
-    r"""Information about a metric."""
+    average_order_value: OptionalNullable[Metric] = UNSET
 
-    net_average_order_value: Metric
-    r"""Information about a metric."""
+    net_average_order_value: OptionalNullable[Metric] = UNSET
 
-    average_revenue_per_user: Metric
-    r"""Information about a metric."""
+    average_revenue_per_user: OptionalNullable[Metric] = UNSET
 
-    cost_per_user: Metric
-    r"""Information about a metric."""
+    cost_per_user: OptionalNullable[Metric] = UNSET
 
-    active_user_by_event: Metric
-    r"""Information about a metric."""
+    active_user_by_event: OptionalNullable[Metric] = UNSET
 
-    one_time_products: Metric
-    r"""Information about a metric."""
+    one_time_products: OptionalNullable[Metric] = UNSET
 
-    one_time_products_revenue: Metric
-    r"""Information about a metric."""
+    one_time_products_revenue: OptionalNullable[Metric] = UNSET
 
-    one_time_products_net_revenue: Metric
-    r"""Information about a metric."""
+    one_time_products_net_revenue: OptionalNullable[Metric] = UNSET
 
-    new_subscriptions: Metric
-    r"""Information about a metric."""
+    new_subscriptions: OptionalNullable[Metric] = UNSET
 
-    new_subscriptions_revenue: Metric
-    r"""Information about a metric."""
+    new_subscriptions_revenue: OptionalNullable[Metric] = UNSET
 
-    new_subscriptions_net_revenue: Metric
-    r"""Information about a metric."""
+    new_subscriptions_net_revenue: OptionalNullable[Metric] = UNSET
 
-    renewed_subscriptions: Metric
-    r"""Information about a metric."""
+    renewed_subscriptions: OptionalNullable[Metric] = UNSET
 
-    renewed_subscriptions_revenue: Metric
-    r"""Information about a metric."""
+    renewed_subscriptions_revenue: OptionalNullable[Metric] = UNSET
 
-    renewed_subscriptions_net_revenue: Metric
-    r"""Information about a metric."""
+    renewed_subscriptions_net_revenue: OptionalNullable[Metric] = UNSET
 
-    active_subscriptions: Metric
-    r"""Information about a metric."""
+    active_subscriptions: OptionalNullable[Metric] = UNSET
 
-    monthly_recurring_revenue: Metric
-    r"""Information about a metric."""
+    committed_subscriptions: OptionalNullable[Metric] = UNSET
 
-    committed_monthly_recurring_revenue: Metric
-    r"""Information about a metric."""
+    monthly_recurring_revenue: OptionalNullable[Metric] = UNSET
 
-    checkouts: Metric
-    r"""Information about a metric."""
+    committed_monthly_recurring_revenue: OptionalNullable[Metric] = UNSET
 
-    succeeded_checkouts: Metric
-    r"""Information about a metric."""
+    checkouts: OptionalNullable[Metric] = UNSET
 
-    checkouts_conversion: Metric
-    r"""Information about a metric."""
+    succeeded_checkouts: OptionalNullable[Metric] = UNSET
 
-    canceled_subscriptions: Metric
-    r"""Information about a metric."""
+    checkouts_conversion: OptionalNullable[Metric] = UNSET
 
-    canceled_subscriptions_customer_service: Metric
-    r"""Information about a metric."""
+    canceled_subscriptions: OptionalNullable[Metric] = UNSET
 
-    canceled_subscriptions_low_quality: Metric
-    r"""Information about a metric."""
+    canceled_subscriptions_customer_service: OptionalNullable[Metric] = UNSET
 
-    canceled_subscriptions_missing_features: Metric
-    r"""Information about a metric."""
+    canceled_subscriptions_low_quality: OptionalNullable[Metric] = UNSET
 
-    canceled_subscriptions_switched_service: Metric
-    r"""Information about a metric."""
+    canceled_subscriptions_missing_features: OptionalNullable[Metric] = UNSET
 
-    canceled_subscriptions_too_complex: Metric
-    r"""Information about a metric."""
+    canceled_subscriptions_switched_service: OptionalNullable[Metric] = UNSET
 
-    canceled_subscriptions_too_expensive: Metric
-    r"""Information about a metric."""
+    canceled_subscriptions_too_complex: OptionalNullable[Metric] = UNSET
 
-    canceled_subscriptions_unused: Metric
-    r"""Information about a metric."""
+    canceled_subscriptions_too_expensive: OptionalNullable[Metric] = UNSET
 
-    canceled_subscriptions_other: Metric
-    r"""Information about a metric."""
+    canceled_subscriptions_unused: OptionalNullable[Metric] = UNSET
 
-    churn_rate: Metric
-    r"""Information about a metric."""
+    canceled_subscriptions_other: OptionalNullable[Metric] = UNSET
 
-    gross_margin: Metric
-    r"""Information about a metric."""
+    churned_subscriptions: OptionalNullable[Metric] = UNSET
 
-    gross_margin_percentage: Metric
-    r"""Information about a metric."""
+    churn_rate: OptionalNullable[Metric] = UNSET
 
-    cashflow: Metric
-    r"""Information about a metric."""
+    ltv: OptionalNullable[Metric] = UNSET
+
+    gross_margin: OptionalNullable[Metric] = UNSET
+
+    gross_margin_percentage: OptionalNullable[Metric] = UNSET
+
+    cashflow: OptionalNullable[Metric] = UNSET
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = [
+            "orders",
+            "revenue",
+            "net_revenue",
+            "cumulative_revenue",
+            "net_cumulative_revenue",
+            "costs",
+            "cumulative_costs",
+            "average_order_value",
+            "net_average_order_value",
+            "average_revenue_per_user",
+            "cost_per_user",
+            "active_user_by_event",
+            "one_time_products",
+            "one_time_products_revenue",
+            "one_time_products_net_revenue",
+            "new_subscriptions",
+            "new_subscriptions_revenue",
+            "new_subscriptions_net_revenue",
+            "renewed_subscriptions",
+            "renewed_subscriptions_revenue",
+            "renewed_subscriptions_net_revenue",
+            "active_subscriptions",
+            "committed_subscriptions",
+            "monthly_recurring_revenue",
+            "committed_monthly_recurring_revenue",
+            "checkouts",
+            "succeeded_checkouts",
+            "checkouts_conversion",
+            "canceled_subscriptions",
+            "canceled_subscriptions_customer_service",
+            "canceled_subscriptions_low_quality",
+            "canceled_subscriptions_missing_features",
+            "canceled_subscriptions_switched_service",
+            "canceled_subscriptions_too_complex",
+            "canceled_subscriptions_too_expensive",
+            "canceled_subscriptions_unused",
+            "canceled_subscriptions_other",
+            "churned_subscriptions",
+            "churn_rate",
+            "ltv",
+            "gross_margin",
+            "gross_margin_percentage",
+            "cashflow",
+        ]
+        nullable_fields = [
+            "orders",
+            "revenue",
+            "net_revenue",
+            "cumulative_revenue",
+            "net_cumulative_revenue",
+            "costs",
+            "cumulative_costs",
+            "average_order_value",
+            "net_average_order_value",
+            "average_revenue_per_user",
+            "cost_per_user",
+            "active_user_by_event",
+            "one_time_products",
+            "one_time_products_revenue",
+            "one_time_products_net_revenue",
+            "new_subscriptions",
+            "new_subscriptions_revenue",
+            "new_subscriptions_net_revenue",
+            "renewed_subscriptions",
+            "renewed_subscriptions_revenue",
+            "renewed_subscriptions_net_revenue",
+            "active_subscriptions",
+            "committed_subscriptions",
+            "monthly_recurring_revenue",
+            "committed_monthly_recurring_revenue",
+            "checkouts",
+            "succeeded_checkouts",
+            "checkouts_conversion",
+            "canceled_subscriptions",
+            "canceled_subscriptions_customer_service",
+            "canceled_subscriptions_low_quality",
+            "canceled_subscriptions_missing_features",
+            "canceled_subscriptions_switched_service",
+            "canceled_subscriptions_too_complex",
+            "canceled_subscriptions_too_expensive",
+            "canceled_subscriptions_unused",
+            "canceled_subscriptions_other",
+            "churned_subscriptions",
+            "churn_rate",
+            "ltv",
+            "gross_margin",
+            "gross_margin_percentage",
+            "cashflow",
+        ]
+        null_default_fields = []
+
+        serialized = handler(self)
+
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+            serialized.pop(k, None)
+
+            optional_nullable = k in optional_fields and k in nullable_fields
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
+
+            if val is not None and val != UNSET_SENTINEL:
+                m[k] = val
+            elif val != UNSET_SENTINEL and (
+                not k in optional_fields or (optional_nullable and is_set)
+            ):
+                m[k] = val
+
+        return m

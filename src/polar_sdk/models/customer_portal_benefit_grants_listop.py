@@ -70,14 +70,15 @@ QueryParamCheckoutIDFilter = TypeAliasType(
 r"""Filter by checkout ID."""
 
 
-QueryParamOrderIDFilterTypedDict = TypeAliasType(
-    "QueryParamOrderIDFilterTypedDict", Union[str, List[str]]
+CustomerPortalBenefitGrantsListQueryParamOrderIDFilterTypedDict = TypeAliasType(
+    "CustomerPortalBenefitGrantsListQueryParamOrderIDFilterTypedDict",
+    Union[str, List[str]],
 )
 r"""Filter by order ID."""
 
 
-QueryParamOrderIDFilter = TypeAliasType(
-    "QueryParamOrderIDFilter", Union[str, List[str]]
+CustomerPortalBenefitGrantsListQueryParamOrderIDFilter = TypeAliasType(
+    "CustomerPortalBenefitGrantsListQueryParamOrderIDFilter", Union[str, List[str]]
 )
 r"""Filter by order ID."""
 
@@ -94,6 +95,18 @@ QueryParamSubscriptionIDFilter = TypeAliasType(
 r"""Filter by subscription ID."""
 
 
+QueryParamMemberIDFilterTypedDict = TypeAliasType(
+    "QueryParamMemberIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by member ID."""
+
+
+QueryParamMemberIDFilter = TypeAliasType(
+    "QueryParamMemberIDFilter", Union[str, List[str]]
+)
+r"""Filter by member ID."""
+
+
 class CustomerPortalBenefitGrantsListRequestTypedDict(TypedDict):
     type_filter: NotRequired[Nullable[QueryParamBenefitTypeFilterTypedDict]]
     r"""Filter by benefit type."""
@@ -103,10 +116,14 @@ class CustomerPortalBenefitGrantsListRequestTypedDict(TypedDict):
     r"""Filter by benefit ID."""
     checkout_id: NotRequired[Nullable[QueryParamCheckoutIDFilterTypedDict]]
     r"""Filter by checkout ID."""
-    order_id: NotRequired[Nullable[QueryParamOrderIDFilterTypedDict]]
+    order_id: NotRequired[
+        Nullable[CustomerPortalBenefitGrantsListQueryParamOrderIDFilterTypedDict]
+    ]
     r"""Filter by order ID."""
     subscription_id: NotRequired[Nullable[QueryParamSubscriptionIDFilterTypedDict]]
     r"""Filter by subscription ID."""
+    member_id: NotRequired[Nullable[QueryParamMemberIDFilterTypedDict]]
+    r"""Filter by member ID."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -136,7 +153,7 @@ class CustomerPortalBenefitGrantsListRequest(BaseModel):
     r"""Filter by checkout ID."""
 
     order_id: Annotated[
-        OptionalNullable[QueryParamOrderIDFilter],
+        OptionalNullable[CustomerPortalBenefitGrantsListQueryParamOrderIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by order ID."""
@@ -146,6 +163,12 @@ class CustomerPortalBenefitGrantsListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by subscription ID."""
+
+    member_id: Annotated[
+        OptionalNullable[QueryParamMemberIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by member ID."""
 
     page: Annotated[
         Optional[int],
@@ -173,6 +196,7 @@ class CustomerPortalBenefitGrantsListRequest(BaseModel):
             "checkout_id",
             "order_id",
             "subscription_id",
+            "member_id",
             "page",
             "limit",
             "sorting",
@@ -183,6 +207,7 @@ class CustomerPortalBenefitGrantsListRequest(BaseModel):
             "checkout_id",
             "order_id",
             "subscription_id",
+            "member_id",
             "sorting",
         ]
         null_default_fields = []

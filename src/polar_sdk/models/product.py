@@ -7,6 +7,7 @@ from .legacyrecurringproductprice import (
     LegacyRecurringProductPrice,
     LegacyRecurringProductPriceTypedDict,
 )
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .productmediafileread import ProductMediaFileRead, ProductMediaFileReadTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
@@ -16,14 +17,6 @@ from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Union
 from typing_extensions import TypeAliasType, TypedDict
-
-
-ProductMetadataTypedDict = TypeAliasType(
-    "ProductMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-ProductMetadata = TypeAliasType("ProductMetadata", Union[str, int, float, bool])
 
 
 PricesTypedDict = TypeAliasType(
@@ -62,7 +55,7 @@ class ProductTypedDict(TypedDict):
     r"""Whether the product is archived and no longer available."""
     organization_id: str
     r"""The ID of the organization owning the product."""
-    metadata: Dict[str, ProductMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     prices: List[PricesTypedDict]
     r"""List of prices for this product."""
     benefits: List[BenefitTypedDict]
@@ -112,7 +105,7 @@ class Product(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the product."""
 
-    metadata: Dict[str, ProductMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     prices: List[Prices]
     r"""List of prices for this product."""

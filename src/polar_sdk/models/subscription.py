@@ -22,6 +22,7 @@ from .legacyrecurringproductprice import (
     LegacyRecurringProductPrice,
     LegacyRecurringProductPriceTypedDict,
 )
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .product import Product, ProductTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
 from .subscriptioncustomer import SubscriptionCustomer, SubscriptionCustomerTypedDict
@@ -33,12 +34,6 @@ from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
-
-
-MetadataTypedDict = TypeAliasType("MetadataTypedDict", Union[str, int, float, bool])
-
-
-Metadata = TypeAliasType("Metadata", Union[str, int, float, bool])
 
 
 CustomFieldDataTypedDict = TypeAliasType(
@@ -124,7 +119,7 @@ class SubscriptionTypedDict(TypedDict):
     checkout_id: Nullable[str]
     customer_cancellation_reason: Nullable[CustomerCancellationReason]
     customer_cancellation_comment: Nullable[str]
-    metadata: Dict[str, MetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     customer: SubscriptionCustomerTypedDict
     product: ProductTypedDict
     r"""A product."""
@@ -204,7 +199,7 @@ class Subscription(BaseModel):
 
     customer_cancellation_comment: Nullable[str]
 
-    metadata: Dict[str, Metadata]
+    metadata: Dict[str, MetadataOutputType]
 
     customer: SubscriptionCustomer
 

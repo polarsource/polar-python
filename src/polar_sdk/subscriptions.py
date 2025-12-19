@@ -32,6 +32,7 @@ class Subscriptions(BaseSDK):
             Union[models.DiscountIDFilter, models.DiscountIDFilterTypedDict]
         ] = UNSET,
         active: OptionalNullable[bool] = UNSET,
+        cancel_at_period_end: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.SubscriptionSortProperty]] = UNSET,
@@ -58,6 +59,7 @@ class Subscriptions(BaseSDK):
         :param external_customer_id: Filter by customer external ID.
         :param discount_id: Filter by discount ID.
         :param active: Filter by active or inactive subscription.
+        :param cancel_at_period_end: Filter by subscriptions that are set to cancel at period end.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -84,6 +86,7 @@ class Subscriptions(BaseSDK):
             external_customer_id=external_customer_id,
             discount_id=discount_id,
             active=active,
+            cancel_at_period_end=cancel_at_period_end,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -152,6 +155,7 @@ class Subscriptions(BaseSDK):
                 external_customer_id=external_customer_id,
                 discount_id=discount_id,
                 active=active,
+                cancel_at_period_end=cancel_at_period_end,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -203,6 +207,7 @@ class Subscriptions(BaseSDK):
             Union[models.DiscountIDFilter, models.DiscountIDFilterTypedDict]
         ] = UNSET,
         active: OptionalNullable[bool] = UNSET,
+        cancel_at_period_end: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.SubscriptionSortProperty]] = UNSET,
@@ -229,6 +234,7 @@ class Subscriptions(BaseSDK):
         :param external_customer_id: Filter by customer external ID.
         :param discount_id: Filter by discount ID.
         :param active: Filter by active or inactive subscription.
+        :param cancel_at_period_end: Filter by subscriptions that are set to cancel at period end.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -255,6 +261,7 @@ class Subscriptions(BaseSDK):
             external_customer_id=external_customer_id,
             discount_id=discount_id,
             active=active,
+            cancel_at_period_end=cancel_at_period_end,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -323,6 +330,7 @@ class Subscriptions(BaseSDK):
                 external_customer_id=external_customer_id,
                 discount_id=discount_id,
                 active=active,
+                cancel_at_period_end=cancel_at_period_end,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,

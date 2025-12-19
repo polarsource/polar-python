@@ -22,6 +22,12 @@ class Benefits(BaseSDK):
         type_filter: OptionalNullable[
             Union[models.BenefitTypeFilter, models.BenefitTypeFilterTypedDict]
         ] = UNSET,
+        id: OptionalNullable[
+            Union[models.FilterIDs, models.FilterIDsTypedDict]
+        ] = UNSET,
+        exclude_id: OptionalNullable[
+            Union[models.ExcludeIDs, models.ExcludeIDsTypedDict]
+        ] = UNSET,
         query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -45,6 +51,8 @@ class Benefits(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param type_filter: Filter by benefit type.
+        :param id: Filter by benefit IDs.
+        :param exclude_id: Exclude benefits with these IDs.
         :param query: Filter by description.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -68,6 +76,8 @@ class Benefits(BaseSDK):
         request = models.BenefitsListRequest(
             organization_id=organization_id,
             type_filter=type_filter,
+            id=id,
+            exclude_id=exclude_id,
             query=query,
             page=page,
             limit=limit,
@@ -133,6 +143,8 @@ class Benefits(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 type_filter=type_filter,
+                id=id,
+                exclude_id=exclude_id,
                 query=query,
                 page=next_page,
                 limit=limit,
@@ -173,6 +185,12 @@ class Benefits(BaseSDK):
         type_filter: OptionalNullable[
             Union[models.BenefitTypeFilter, models.BenefitTypeFilterTypedDict]
         ] = UNSET,
+        id: OptionalNullable[
+            Union[models.FilterIDs, models.FilterIDsTypedDict]
+        ] = UNSET,
+        exclude_id: OptionalNullable[
+            Union[models.ExcludeIDs, models.ExcludeIDsTypedDict]
+        ] = UNSET,
         query: OptionalNullable[str] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -196,6 +214,8 @@ class Benefits(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param type_filter: Filter by benefit type.
+        :param id: Filter by benefit IDs.
+        :param exclude_id: Exclude benefits with these IDs.
         :param query: Filter by description.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -219,6 +239,8 @@ class Benefits(BaseSDK):
         request = models.BenefitsListRequest(
             organization_id=organization_id,
             type_filter=type_filter,
+            id=id,
+            exclude_id=exclude_id,
             query=query,
             page=page,
             limit=limit,
@@ -284,6 +306,8 @@ class Benefits(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 type_filter=type_filter,
+                id=id,
+                exclude_id=exclude_id,
                 query=query,
                 page=next_page,
                 limit=limit,
@@ -1115,6 +1139,9 @@ class Benefits(BaseSDK):
                 models.QueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        member_id: OptionalNullable[
+            Union[models.MemberIDFilter, models.MemberIDFilterTypedDict]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -1133,6 +1160,7 @@ class Benefits(BaseSDK):
         :param id:
         :param is_granted: Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned.
         :param customer_id: Filter by customer.
+        :param member_id: Filter by member.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -1154,6 +1182,7 @@ class Benefits(BaseSDK):
             id=id,
             is_granted=is_granted,
             customer_id=customer_id,
+            member_id=member_id,
             page=page,
             limit=limit,
         )
@@ -1217,6 +1246,7 @@ class Benefits(BaseSDK):
                 id=id,
                 is_granted=is_granted,
                 customer_id=customer_id,
+                member_id=member_id,
                 page=next_page,
                 limit=limit,
                 retries=retries,
@@ -1260,6 +1290,9 @@ class Benefits(BaseSDK):
                 models.QueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        member_id: OptionalNullable[
+            Union[models.MemberIDFilter, models.MemberIDFilterTypedDict]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -1278,6 +1311,7 @@ class Benefits(BaseSDK):
         :param id:
         :param is_granted: Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned.
         :param customer_id: Filter by customer.
+        :param member_id: Filter by member.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -1299,6 +1333,7 @@ class Benefits(BaseSDK):
             id=id,
             is_granted=is_granted,
             customer_id=customer_id,
+            member_id=member_id,
             page=page,
             limit=limit,
         )
@@ -1362,6 +1397,7 @@ class Benefits(BaseSDK):
                 id=id,
                 is_granted=is_granted,
                 customer_id=customer_id,
+                member_id=member_id,
                 page=next_page,
                 limit=limit,
                 retries=retries,

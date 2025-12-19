@@ -5,24 +5,15 @@ from .benefitcustomproperties import (
     BenefitCustomProperties,
     BenefitCustomPropertiesTypedDict,
 )
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Literal, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
-
-
-BenefitCustomMetadataTypedDict = TypeAliasType(
-    "BenefitCustomMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-BenefitCustomMetadata = TypeAliasType(
-    "BenefitCustomMetadata", Union[str, int, float, bool]
-)
+from typing import Dict, Literal
+from typing_extensions import Annotated, TypedDict
 
 
 class BenefitCustomTypedDict(TypedDict):
@@ -45,7 +36,7 @@ class BenefitCustomTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
-    metadata: Dict[str, BenefitCustomMetadataTypedDict]
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
     properties: BenefitCustomPropertiesTypedDict
     r"""Properties for a benefit of type `custom`."""
     type: Literal["custom"]
@@ -78,7 +69,7 @@ class BenefitCustom(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
 
-    metadata: Dict[str, BenefitCustomMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
     properties: BenefitCustomProperties
     r"""Properties for a benefit of type `custom`."""

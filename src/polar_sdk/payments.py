@@ -32,7 +32,10 @@ class Payments(BaseSDK):
             ]
         ] = UNSET,
         status: OptionalNullable[
-            Union[models.QueryParamStatusFilter, models.QueryParamStatusFilterTypedDict]
+            Union[
+                models.PaymentsListQueryParamStatusFilter,
+                models.PaymentsListQueryParamStatusFilterTypedDict,
+            ]
         ] = UNSET,
         method: OptionalNullable[
             Union[models.MethodFilter, models.MethodFilterTypedDict]
@@ -200,7 +203,10 @@ class Payments(BaseSDK):
             ]
         ] = UNSET,
         status: OptionalNullable[
-            Union[models.QueryParamStatusFilter, models.QueryParamStatusFilterTypedDict]
+            Union[
+                models.PaymentsListQueryParamStatusFilter,
+                models.PaymentsListQueryParamStatusFilterTypedDict,
+            ]
         ] = UNSET,
         method: OptionalNullable[
             Union[models.MethodFilter, models.MethodFilterTypedDict]

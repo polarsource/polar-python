@@ -11,8 +11,8 @@ from polar_sdk.polar_license_keys import PolarLicenseKeys
 from polar_sdk.polar_orders import PolarOrders
 from polar_sdk.polar_organizations import PolarOrganizations
 from polar_sdk.polar_subscriptions import PolarSubscriptions
-from polar_sdk.polar_wallets import PolarWallets
 from polar_sdk.seats import Seats
+from polar_sdk.wallets import Wallets
 from typing import Optional
 
 
@@ -27,7 +27,7 @@ class CustomerPortal(BaseSDK):
     orders: PolarOrders
     organizations: PolarOrganizations
     subscriptions: PolarSubscriptions
-    wallets: PolarWallets
+    wallets: Wallets
 
     def __init__(
         self, sdk_config: SDKConfiguration, parent_ref: Optional[object] = None
@@ -63,4 +63,4 @@ class CustomerPortal(BaseSDK):
         self.subscriptions = PolarSubscriptions(
             self.sdk_configuration, parent_ref=self.parent_ref
         )
-        self.wallets = PolarWallets(self.sdk_configuration, parent_ref=self.parent_ref)
+        self.wallets = Wallets(self.sdk_configuration, parent_ref=self.parent_ref)

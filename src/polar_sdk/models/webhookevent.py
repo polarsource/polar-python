@@ -24,6 +24,8 @@ class WebhookEventTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
+    skipped: bool
+    r"""Whether this event was skipped because the webhook endpoint was disabled."""
     payload: Nullable[str]
     r"""The payload of the webhook event."""
     type: WebhookEventType
@@ -53,6 +55,9 @@ class WebhookEvent(BaseModel):
 
     id: str
     r"""The ID of the object."""
+
+    skipped: bool
+    r"""Whether this event was skipped because the webhook endpoint was disabled."""
 
     payload: Nullable[str]
     r"""The payload of the webhook event."""

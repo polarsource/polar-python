@@ -5,25 +5,19 @@ from .benefitdiscordsubscriberproperties import (
     BenefitDiscordSubscriberProperties,
     BenefitDiscordSubscriberPropertiesTypedDict,
 )
-from .organization import Organization, OrganizationTypedDict
+from .benefitsubscriberorganization import (
+    BenefitSubscriberOrganization,
+    BenefitSubscriberOrganizationTypedDict,
+)
+from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Dict, Literal, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
-
-
-BenefitDiscordSubscriberMetadataTypedDict = TypeAliasType(
-    "BenefitDiscordSubscriberMetadataTypedDict", Union[str, int, float, bool]
-)
-
-
-BenefitDiscordSubscriberMetadata = TypeAliasType(
-    "BenefitDiscordSubscriberMetadata", Union[str, int, float, bool]
-)
+from typing import Dict, Literal
+from typing_extensions import Annotated, TypedDict
 
 
 class BenefitDiscordSubscriberTypedDict(TypedDict):
@@ -41,8 +35,8 @@ class BenefitDiscordSubscriberTypedDict(TypedDict):
     r"""Whether the benefit is deletable."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
-    metadata: Dict[str, BenefitDiscordSubscriberMetadataTypedDict]
-    organization: OrganizationTypedDict
+    metadata: Dict[str, MetadataOutputTypeTypedDict]
+    organization: BenefitSubscriberOrganizationTypedDict
     properties: BenefitDiscordSubscriberPropertiesTypedDict
     r"""Properties available to subscribers for a benefit of type `discord`."""
     type: Literal["discord"]
@@ -70,9 +64,9 @@ class BenefitDiscordSubscriber(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
 
-    metadata: Dict[str, BenefitDiscordSubscriberMetadata]
+    metadata: Dict[str, MetadataOutputType]
 
-    organization: Organization
+    organization: BenefitSubscriberOrganization
 
     properties: BenefitDiscordSubscriberProperties
     r"""Properties available to subscribers for a benefit of type `discord`."""

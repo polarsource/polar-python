@@ -14,9 +14,9 @@ from .customerportalcustomer import (
     CustomerPortalCustomerTypedDict,
 )
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
 class CustomerBenefitGrantGitHubRepositoryTypedDict(TypedDict):
@@ -37,6 +37,7 @@ class CustomerBenefitGrantGitHubRepositoryTypedDict(TypedDict):
     customer: CustomerPortalCustomerTypedDict
     benefit: BenefitGitHubRepositorySubscriberTypedDict
     properties: BenefitGrantGitHubRepositoryPropertiesTypedDict
+    member_id: NotRequired[Nullable[str]]
 
 
 class CustomerBenefitGrantGitHubRepository(BaseModel):
@@ -71,13 +72,16 @@ class CustomerBenefitGrantGitHubRepository(BaseModel):
 
     properties: BenefitGrantGitHubRepositoryProperties
 
+    member_id: OptionalNullable[str] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["member_id"]
         nullable_fields = [
             "modified_at",
             "granted_at",
             "revoked_at",
+            "member_id",
             "subscription_id",
             "order_id",
         ]

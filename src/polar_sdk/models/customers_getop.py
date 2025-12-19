@@ -2,13 +2,16 @@
 
 from __future__ import annotations
 from polar_sdk.types import BaseModel
-from polar_sdk.utils import FieldMetadata, PathParamMetadata
-from typing_extensions import Annotated, TypedDict
+from polar_sdk.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CustomersGetRequestTypedDict(TypedDict):
     id: str
     r"""The customer ID."""
+    include_members: NotRequired[bool]
+    r"""Include members in the response. Only populated when set to true."""
 
 
 class CustomersGetRequest(BaseModel):
@@ -16,3 +19,9 @@ class CustomersGetRequest(BaseModel):
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
     r"""The customer ID."""
+
+    include_members: Annotated[
+        Optional[bool],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = False
+    r"""Include members in the response. Only populated when set to true."""

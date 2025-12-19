@@ -37,13 +37,20 @@ class PolarBenefitGrants(BaseSDK):
         ] = UNSET,
         order_id: OptionalNullable[
             Union[
-                models.QueryParamOrderIDFilter, models.QueryParamOrderIDFilterTypedDict
+                models.CustomerPortalBenefitGrantsListQueryParamOrderIDFilter,
+                models.CustomerPortalBenefitGrantsListQueryParamOrderIDFilterTypedDict,
             ]
         ] = UNSET,
         subscription_id: OptionalNullable[
             Union[
                 models.QueryParamSubscriptionIDFilter,
                 models.QueryParamSubscriptionIDFilterTypedDict,
+            ]
+        ] = UNSET,
+        member_id: OptionalNullable[
+            Union[
+                models.QueryParamMemberIDFilter,
+                models.QueryParamMemberIDFilterTypedDict,
             ]
         ] = UNSET,
         page: Optional[int] = 1,
@@ -68,6 +75,7 @@ class PolarBenefitGrants(BaseSDK):
         :param checkout_id: Filter by checkout ID.
         :param order_id: Filter by order ID.
         :param subscription_id: Filter by subscription ID.
+        :param member_id: Filter by member ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -92,6 +100,7 @@ class PolarBenefitGrants(BaseSDK):
             checkout_id=checkout_id,
             order_id=order_id,
             subscription_id=subscription_id,
+            member_id=member_id,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -161,6 +170,7 @@ class PolarBenefitGrants(BaseSDK):
                 checkout_id=checkout_id,
                 order_id=order_id,
                 subscription_id=subscription_id,
+                member_id=member_id,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -216,13 +226,20 @@ class PolarBenefitGrants(BaseSDK):
         ] = UNSET,
         order_id: OptionalNullable[
             Union[
-                models.QueryParamOrderIDFilter, models.QueryParamOrderIDFilterTypedDict
+                models.CustomerPortalBenefitGrantsListQueryParamOrderIDFilter,
+                models.CustomerPortalBenefitGrantsListQueryParamOrderIDFilterTypedDict,
             ]
         ] = UNSET,
         subscription_id: OptionalNullable[
             Union[
                 models.QueryParamSubscriptionIDFilter,
                 models.QueryParamSubscriptionIDFilterTypedDict,
+            ]
+        ] = UNSET,
+        member_id: OptionalNullable[
+            Union[
+                models.QueryParamMemberIDFilter,
+                models.QueryParamMemberIDFilterTypedDict,
             ]
         ] = UNSET,
         page: Optional[int] = 1,
@@ -247,6 +264,7 @@ class PolarBenefitGrants(BaseSDK):
         :param checkout_id: Filter by checkout ID.
         :param order_id: Filter by order ID.
         :param subscription_id: Filter by subscription ID.
+        :param member_id: Filter by member ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -271,6 +289,7 @@ class PolarBenefitGrants(BaseSDK):
             checkout_id=checkout_id,
             order_id=order_id,
             subscription_id=subscription_id,
+            member_id=member_id,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -340,6 +359,7 @@ class PolarBenefitGrants(BaseSDK):
                 checkout_id=checkout_id,
                 order_id=order_id,
                 subscription_id=subscription_id,
+                member_id=member_id,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,

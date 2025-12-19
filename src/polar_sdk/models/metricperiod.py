@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 from datetime import datetime
-from polar_sdk.types import BaseModel
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from pydantic import model_serializer
 from typing import Union
-from typing_extensions import TypeAliasType, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 OrdersModelTypedDict = TypeAliasType("OrdersModelTypedDict", Union[int, float])
@@ -177,6 +178,14 @@ ActiveSubscriptionsTypedDict = TypeAliasType(
 ActiveSubscriptions = TypeAliasType("ActiveSubscriptions", Union[int, float])
 
 
+CommittedSubscriptionsTypedDict = TypeAliasType(
+    "CommittedSubscriptionsTypedDict", Union[int, float]
+)
+
+
+CommittedSubscriptions = TypeAliasType("CommittedSubscriptions", Union[int, float])
+
+
 MonthlyRecurringRevenueTypedDict = TypeAliasType(
     "MonthlyRecurringRevenueTypedDict", Union[int, float]
 )
@@ -305,10 +314,24 @@ CanceledSubscriptionsOther = TypeAliasType(
 )
 
 
+ChurnedSubscriptionsTypedDict = TypeAliasType(
+    "ChurnedSubscriptionsTypedDict", Union[int, float]
+)
+
+
+ChurnedSubscriptions = TypeAliasType("ChurnedSubscriptions", Union[int, float])
+
+
 ChurnRateTypedDict = TypeAliasType("ChurnRateTypedDict", Union[int, float])
 
 
 ChurnRate = TypeAliasType("ChurnRate", Union[int, float])
+
+
+LtvTypedDict = TypeAliasType("LtvTypedDict", Union[int, float])
+
+
+Ltv = TypeAliasType("Ltv", Union[int, float])
 
 
 GrossMarginTypedDict = TypeAliasType("GrossMarginTypedDict", Union[int, float])
@@ -334,134 +357,297 @@ Cashflow = TypeAliasType("Cashflow", Union[int, float])
 class MetricPeriodTypedDict(TypedDict):
     timestamp: datetime
     r"""Timestamp of this period data."""
-    orders: OrdersModelTypedDict
-    revenue: RevenueTypedDict
-    net_revenue: NetRevenueTypedDict
-    cumulative_revenue: CumulativeRevenueTypedDict
-    net_cumulative_revenue: NetCumulativeRevenueTypedDict
-    costs: CostsTypedDict
-    cumulative_costs: CumulativeCostsTypedDict
-    average_order_value: AverageOrderValueTypedDict
-    net_average_order_value: NetAverageOrderValueTypedDict
-    average_revenue_per_user: AverageRevenuePerUserTypedDict
-    cost_per_user: CostPerUserTypedDict
-    active_user_by_event: ActiveUserByEventTypedDict
-    one_time_products: OneTimeProductsTypedDict
-    one_time_products_revenue: OneTimeProductsRevenueTypedDict
-    one_time_products_net_revenue: OneTimeProductsNetRevenueTypedDict
-    new_subscriptions: NewSubscriptionsTypedDict
-    new_subscriptions_revenue: NewSubscriptionsRevenueTypedDict
-    new_subscriptions_net_revenue: NewSubscriptionsNetRevenueTypedDict
-    renewed_subscriptions: RenewedSubscriptionsTypedDict
-    renewed_subscriptions_revenue: RenewedSubscriptionsRevenueTypedDict
-    renewed_subscriptions_net_revenue: RenewedSubscriptionsNetRevenueTypedDict
-    active_subscriptions: ActiveSubscriptionsTypedDict
-    monthly_recurring_revenue: MonthlyRecurringRevenueTypedDict
-    committed_monthly_recurring_revenue: CommittedMonthlyRecurringRevenueTypedDict
-    checkouts: CheckoutsModelTypedDict
-    succeeded_checkouts: SucceededCheckoutsTypedDict
-    checkouts_conversion: CheckoutsConversionTypedDict
-    canceled_subscriptions: CanceledSubscriptionsTypedDict
-    canceled_subscriptions_customer_service: (
-        CanceledSubscriptionsCustomerServiceTypedDict
-    )
-    canceled_subscriptions_low_quality: CanceledSubscriptionsLowQualityTypedDict
-    canceled_subscriptions_missing_features: (
-        CanceledSubscriptionsMissingFeaturesTypedDict
-    )
-    canceled_subscriptions_switched_service: (
-        CanceledSubscriptionsSwitchedServiceTypedDict
-    )
-    canceled_subscriptions_too_complex: CanceledSubscriptionsTooComplexTypedDict
-    canceled_subscriptions_too_expensive: CanceledSubscriptionsTooExpensiveTypedDict
-    canceled_subscriptions_unused: CanceledSubscriptionsUnusedTypedDict
-    canceled_subscriptions_other: CanceledSubscriptionsOtherTypedDict
-    churn_rate: ChurnRateTypedDict
-    gross_margin: GrossMarginTypedDict
-    gross_margin_percentage: GrossMarginPercentageTypedDict
-    cashflow: CashflowTypedDict
+    orders: NotRequired[Nullable[OrdersModelTypedDict]]
+    revenue: NotRequired[Nullable[RevenueTypedDict]]
+    net_revenue: NotRequired[Nullable[NetRevenueTypedDict]]
+    cumulative_revenue: NotRequired[Nullable[CumulativeRevenueTypedDict]]
+    net_cumulative_revenue: NotRequired[Nullable[NetCumulativeRevenueTypedDict]]
+    costs: NotRequired[Nullable[CostsTypedDict]]
+    cumulative_costs: NotRequired[Nullable[CumulativeCostsTypedDict]]
+    average_order_value: NotRequired[Nullable[AverageOrderValueTypedDict]]
+    net_average_order_value: NotRequired[Nullable[NetAverageOrderValueTypedDict]]
+    average_revenue_per_user: NotRequired[Nullable[AverageRevenuePerUserTypedDict]]
+    cost_per_user: NotRequired[Nullable[CostPerUserTypedDict]]
+    active_user_by_event: NotRequired[Nullable[ActiveUserByEventTypedDict]]
+    one_time_products: NotRequired[Nullable[OneTimeProductsTypedDict]]
+    one_time_products_revenue: NotRequired[Nullable[OneTimeProductsRevenueTypedDict]]
+    one_time_products_net_revenue: NotRequired[
+        Nullable[OneTimeProductsNetRevenueTypedDict]
+    ]
+    new_subscriptions: NotRequired[Nullable[NewSubscriptionsTypedDict]]
+    new_subscriptions_revenue: NotRequired[Nullable[NewSubscriptionsRevenueTypedDict]]
+    new_subscriptions_net_revenue: NotRequired[
+        Nullable[NewSubscriptionsNetRevenueTypedDict]
+    ]
+    renewed_subscriptions: NotRequired[Nullable[RenewedSubscriptionsTypedDict]]
+    renewed_subscriptions_revenue: NotRequired[
+        Nullable[RenewedSubscriptionsRevenueTypedDict]
+    ]
+    renewed_subscriptions_net_revenue: NotRequired[
+        Nullable[RenewedSubscriptionsNetRevenueTypedDict]
+    ]
+    active_subscriptions: NotRequired[Nullable[ActiveSubscriptionsTypedDict]]
+    committed_subscriptions: NotRequired[Nullable[CommittedSubscriptionsTypedDict]]
+    monthly_recurring_revenue: NotRequired[Nullable[MonthlyRecurringRevenueTypedDict]]
+    committed_monthly_recurring_revenue: NotRequired[
+        Nullable[CommittedMonthlyRecurringRevenueTypedDict]
+    ]
+    checkouts: NotRequired[Nullable[CheckoutsModelTypedDict]]
+    succeeded_checkouts: NotRequired[Nullable[SucceededCheckoutsTypedDict]]
+    checkouts_conversion: NotRequired[Nullable[CheckoutsConversionTypedDict]]
+    canceled_subscriptions: NotRequired[Nullable[CanceledSubscriptionsTypedDict]]
+    canceled_subscriptions_customer_service: NotRequired[
+        Nullable[CanceledSubscriptionsCustomerServiceTypedDict]
+    ]
+    canceled_subscriptions_low_quality: NotRequired[
+        Nullable[CanceledSubscriptionsLowQualityTypedDict]
+    ]
+    canceled_subscriptions_missing_features: NotRequired[
+        Nullable[CanceledSubscriptionsMissingFeaturesTypedDict]
+    ]
+    canceled_subscriptions_switched_service: NotRequired[
+        Nullable[CanceledSubscriptionsSwitchedServiceTypedDict]
+    ]
+    canceled_subscriptions_too_complex: NotRequired[
+        Nullable[CanceledSubscriptionsTooComplexTypedDict]
+    ]
+    canceled_subscriptions_too_expensive: NotRequired[
+        Nullable[CanceledSubscriptionsTooExpensiveTypedDict]
+    ]
+    canceled_subscriptions_unused: NotRequired[
+        Nullable[CanceledSubscriptionsUnusedTypedDict]
+    ]
+    canceled_subscriptions_other: NotRequired[
+        Nullable[CanceledSubscriptionsOtherTypedDict]
+    ]
+    churned_subscriptions: NotRequired[Nullable[ChurnedSubscriptionsTypedDict]]
+    churn_rate: NotRequired[Nullable[ChurnRateTypedDict]]
+    ltv: NotRequired[Nullable[LtvTypedDict]]
+    gross_margin: NotRequired[Nullable[GrossMarginTypedDict]]
+    gross_margin_percentage: NotRequired[Nullable[GrossMarginPercentageTypedDict]]
+    cashflow: NotRequired[Nullable[CashflowTypedDict]]
 
 
 class MetricPeriod(BaseModel):
     timestamp: datetime
     r"""Timestamp of this period data."""
 
-    orders: OrdersModel
+    orders: OptionalNullable[OrdersModel] = UNSET
 
-    revenue: Revenue
+    revenue: OptionalNullable[Revenue] = UNSET
 
-    net_revenue: NetRevenue
+    net_revenue: OptionalNullable[NetRevenue] = UNSET
 
-    cumulative_revenue: CumulativeRevenue
+    cumulative_revenue: OptionalNullable[CumulativeRevenue] = UNSET
 
-    net_cumulative_revenue: NetCumulativeRevenue
+    net_cumulative_revenue: OptionalNullable[NetCumulativeRevenue] = UNSET
 
-    costs: Costs
+    costs: OptionalNullable[Costs] = UNSET
 
-    cumulative_costs: CumulativeCosts
+    cumulative_costs: OptionalNullable[CumulativeCosts] = UNSET
 
-    average_order_value: AverageOrderValue
+    average_order_value: OptionalNullable[AverageOrderValue] = UNSET
 
-    net_average_order_value: NetAverageOrderValue
+    net_average_order_value: OptionalNullable[NetAverageOrderValue] = UNSET
 
-    average_revenue_per_user: AverageRevenuePerUser
+    average_revenue_per_user: OptionalNullable[AverageRevenuePerUser] = UNSET
 
-    cost_per_user: CostPerUser
+    cost_per_user: OptionalNullable[CostPerUser] = UNSET
 
-    active_user_by_event: ActiveUserByEvent
+    active_user_by_event: OptionalNullable[ActiveUserByEvent] = UNSET
 
-    one_time_products: OneTimeProducts
+    one_time_products: OptionalNullable[OneTimeProducts] = UNSET
 
-    one_time_products_revenue: OneTimeProductsRevenue
+    one_time_products_revenue: OptionalNullable[OneTimeProductsRevenue] = UNSET
 
-    one_time_products_net_revenue: OneTimeProductsNetRevenue
+    one_time_products_net_revenue: OptionalNullable[OneTimeProductsNetRevenue] = UNSET
 
-    new_subscriptions: NewSubscriptions
+    new_subscriptions: OptionalNullable[NewSubscriptions] = UNSET
 
-    new_subscriptions_revenue: NewSubscriptionsRevenue
+    new_subscriptions_revenue: OptionalNullable[NewSubscriptionsRevenue] = UNSET
 
-    new_subscriptions_net_revenue: NewSubscriptionsNetRevenue
+    new_subscriptions_net_revenue: OptionalNullable[NewSubscriptionsNetRevenue] = UNSET
 
-    renewed_subscriptions: RenewedSubscriptions
+    renewed_subscriptions: OptionalNullable[RenewedSubscriptions] = UNSET
 
-    renewed_subscriptions_revenue: RenewedSubscriptionsRevenue
+    renewed_subscriptions_revenue: OptionalNullable[RenewedSubscriptionsRevenue] = UNSET
 
-    renewed_subscriptions_net_revenue: RenewedSubscriptionsNetRevenue
+    renewed_subscriptions_net_revenue: OptionalNullable[
+        RenewedSubscriptionsNetRevenue
+    ] = UNSET
 
-    active_subscriptions: ActiveSubscriptions
+    active_subscriptions: OptionalNullable[ActiveSubscriptions] = UNSET
 
-    monthly_recurring_revenue: MonthlyRecurringRevenue
+    committed_subscriptions: OptionalNullable[CommittedSubscriptions] = UNSET
 
-    committed_monthly_recurring_revenue: CommittedMonthlyRecurringRevenue
+    monthly_recurring_revenue: OptionalNullable[MonthlyRecurringRevenue] = UNSET
 
-    checkouts: CheckoutsModel
+    committed_monthly_recurring_revenue: OptionalNullable[
+        CommittedMonthlyRecurringRevenue
+    ] = UNSET
 
-    succeeded_checkouts: SucceededCheckouts
+    checkouts: OptionalNullable[CheckoutsModel] = UNSET
 
-    checkouts_conversion: CheckoutsConversion
+    succeeded_checkouts: OptionalNullable[SucceededCheckouts] = UNSET
 
-    canceled_subscriptions: CanceledSubscriptions
+    checkouts_conversion: OptionalNullable[CheckoutsConversion] = UNSET
 
-    canceled_subscriptions_customer_service: CanceledSubscriptionsCustomerService
+    canceled_subscriptions: OptionalNullable[CanceledSubscriptions] = UNSET
 
-    canceled_subscriptions_low_quality: CanceledSubscriptionsLowQuality
+    canceled_subscriptions_customer_service: OptionalNullable[
+        CanceledSubscriptionsCustomerService
+    ] = UNSET
 
-    canceled_subscriptions_missing_features: CanceledSubscriptionsMissingFeatures
+    canceled_subscriptions_low_quality: OptionalNullable[
+        CanceledSubscriptionsLowQuality
+    ] = UNSET
 
-    canceled_subscriptions_switched_service: CanceledSubscriptionsSwitchedService
+    canceled_subscriptions_missing_features: OptionalNullable[
+        CanceledSubscriptionsMissingFeatures
+    ] = UNSET
 
-    canceled_subscriptions_too_complex: CanceledSubscriptionsTooComplex
+    canceled_subscriptions_switched_service: OptionalNullable[
+        CanceledSubscriptionsSwitchedService
+    ] = UNSET
 
-    canceled_subscriptions_too_expensive: CanceledSubscriptionsTooExpensive
+    canceled_subscriptions_too_complex: OptionalNullable[
+        CanceledSubscriptionsTooComplex
+    ] = UNSET
 
-    canceled_subscriptions_unused: CanceledSubscriptionsUnused
+    canceled_subscriptions_too_expensive: OptionalNullable[
+        CanceledSubscriptionsTooExpensive
+    ] = UNSET
 
-    canceled_subscriptions_other: CanceledSubscriptionsOther
+    canceled_subscriptions_unused: OptionalNullable[CanceledSubscriptionsUnused] = UNSET
 
-    churn_rate: ChurnRate
+    canceled_subscriptions_other: OptionalNullable[CanceledSubscriptionsOther] = UNSET
 
-    gross_margin: GrossMargin
+    churned_subscriptions: OptionalNullable[ChurnedSubscriptions] = UNSET
 
-    gross_margin_percentage: GrossMarginPercentage
+    churn_rate: OptionalNullable[ChurnRate] = UNSET
 
-    cashflow: Cashflow
+    ltv: OptionalNullable[Ltv] = UNSET
+
+    gross_margin: OptionalNullable[GrossMargin] = UNSET
+
+    gross_margin_percentage: OptionalNullable[GrossMarginPercentage] = UNSET
+
+    cashflow: OptionalNullable[Cashflow] = UNSET
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = [
+            "orders",
+            "revenue",
+            "net_revenue",
+            "cumulative_revenue",
+            "net_cumulative_revenue",
+            "costs",
+            "cumulative_costs",
+            "average_order_value",
+            "net_average_order_value",
+            "average_revenue_per_user",
+            "cost_per_user",
+            "active_user_by_event",
+            "one_time_products",
+            "one_time_products_revenue",
+            "one_time_products_net_revenue",
+            "new_subscriptions",
+            "new_subscriptions_revenue",
+            "new_subscriptions_net_revenue",
+            "renewed_subscriptions",
+            "renewed_subscriptions_revenue",
+            "renewed_subscriptions_net_revenue",
+            "active_subscriptions",
+            "committed_subscriptions",
+            "monthly_recurring_revenue",
+            "committed_monthly_recurring_revenue",
+            "checkouts",
+            "succeeded_checkouts",
+            "checkouts_conversion",
+            "canceled_subscriptions",
+            "canceled_subscriptions_customer_service",
+            "canceled_subscriptions_low_quality",
+            "canceled_subscriptions_missing_features",
+            "canceled_subscriptions_switched_service",
+            "canceled_subscriptions_too_complex",
+            "canceled_subscriptions_too_expensive",
+            "canceled_subscriptions_unused",
+            "canceled_subscriptions_other",
+            "churned_subscriptions",
+            "churn_rate",
+            "ltv",
+            "gross_margin",
+            "gross_margin_percentage",
+            "cashflow",
+        ]
+        nullable_fields = [
+            "orders",
+            "revenue",
+            "net_revenue",
+            "cumulative_revenue",
+            "net_cumulative_revenue",
+            "costs",
+            "cumulative_costs",
+            "average_order_value",
+            "net_average_order_value",
+            "average_revenue_per_user",
+            "cost_per_user",
+            "active_user_by_event",
+            "one_time_products",
+            "one_time_products_revenue",
+            "one_time_products_net_revenue",
+            "new_subscriptions",
+            "new_subscriptions_revenue",
+            "new_subscriptions_net_revenue",
+            "renewed_subscriptions",
+            "renewed_subscriptions_revenue",
+            "renewed_subscriptions_net_revenue",
+            "active_subscriptions",
+            "committed_subscriptions",
+            "monthly_recurring_revenue",
+            "committed_monthly_recurring_revenue",
+            "checkouts",
+            "succeeded_checkouts",
+            "checkouts_conversion",
+            "canceled_subscriptions",
+            "canceled_subscriptions_customer_service",
+            "canceled_subscriptions_low_quality",
+            "canceled_subscriptions_missing_features",
+            "canceled_subscriptions_switched_service",
+            "canceled_subscriptions_too_complex",
+            "canceled_subscriptions_too_expensive",
+            "canceled_subscriptions_unused",
+            "canceled_subscriptions_other",
+            "churned_subscriptions",
+            "churn_rate",
+            "ltv",
+            "gross_margin",
+            "gross_margin_percentage",
+            "cashflow",
+        ]
+        null_default_fields = []
+
+        serialized = handler(self)
+
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+            serialized.pop(k, None)
+
+            optional_nullable = k in optional_fields and k in nullable_fields
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
+
+            if val is not None and val != UNSET_SENTINEL:
+                m[k] = val
+            elif val != UNSET_SENTINEL and (
+                not k in optional_fields or (optional_nullable and is_set)
+            ):
+                m[k] = val
+
+        return m

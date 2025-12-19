@@ -24,12 +24,24 @@ QueryParamCustomerIDFilter = TypeAliasType(
 r"""Filter by customer."""
 
 
+MemberIDFilterTypedDict = TypeAliasType(
+    "MemberIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by member."""
+
+
+MemberIDFilter = TypeAliasType("MemberIDFilter", Union[str, List[str]])
+r"""Filter by member."""
+
+
 class BenefitsGrantsRequestTypedDict(TypedDict):
     id: str
     is_granted: NotRequired[Nullable[bool]]
     r"""Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned."""
     customer_id: NotRequired[Nullable[QueryParamCustomerIDFilterTypedDict]]
     r"""Filter by customer."""
+    member_id: NotRequired[Nullable[MemberIDFilterTypedDict]]
+    r"""Filter by member."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -53,6 +65,12 @@ class BenefitsGrantsRequest(BaseModel):
     ] = UNSET
     r"""Filter by customer."""
 
+    member_id: Annotated[
+        OptionalNullable[MemberIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by member."""
+
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -67,8 +85,8 @@ class BenefitsGrantsRequest(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["is_granted", "customer_id", "page", "limit"]
-        nullable_fields = ["is_granted", "customer_id"]
+        optional_fields = ["is_granted", "customer_id", "member_id", "page", "limit"]
+        nullable_fields = ["is_granted", "customer_id", "member_id"]
         null_default_fields = []
 
         serialized = handler(self)

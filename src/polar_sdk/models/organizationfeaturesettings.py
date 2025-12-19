@@ -15,6 +15,8 @@ class OrganizationFeatureSettingsTypedDict(TypedDict):
     r"""If this organization has RevOps enabled"""
     wallets_enabled: NotRequired[bool]
     r"""If this organization has Wallets enabled"""
+    member_model_enabled: NotRequired[bool]
+    r"""If this organization has the Member model enabled"""
 
 
 class OrganizationFeatureSettings(BaseModel):
@@ -29,3 +31,6 @@ class OrganizationFeatureSettings(BaseModel):
 
     wallets_enabled: Optional[bool] = False
     r"""If this organization has Wallets enabled"""
+
+    member_model_enabled: Optional[bool] = False
+    r"""If this organization has the Member model enabled"""
