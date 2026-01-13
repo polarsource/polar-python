@@ -28,7 +28,7 @@ generation:
     skipResponseBodyAssertions: false
   persistentEdits: {}
 python:
-  version: 0.28.1
+  version: 0.28.2
   additionalDependencies:
     dev:
       pydantic-ai-slim: ^0.1.0

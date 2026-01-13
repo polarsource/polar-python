@@ -34,7 +34,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.customers.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737", include_members=False, page=1, limit=10)
+    res = polar.customers.list(organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737", page=1, limit=10)
 
     while res is not None:
         # Handle items
@@ -50,7 +50,6 @@ with Polar(
 | `organization_id`                                                                                                                                                       | [OptionalNullable[models.CustomersListQueryParamOrganizationIDFilter]](../../models/customerslistqueryparamorganizationidfilter.md)                                     | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
 | `email`                                                                                                                                                                 | *OptionalNullable[str]*                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                      | Filter by exact email.                                                                                                                                                  |
 | `query`                                                                                                                                                                 | *OptionalNullable[str]*                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                      | Filter by name, email, or external ID.                                                                                                                                  |
-| `include_members`                                                                                                                                                       | *Optional[bool]*                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                      | Include members in the response. Only populated when set to true.                                                                                                       |
 | `page`                                                                                                                                                                  | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Page number, defaults to 1.                                                                                                                                             |
 | `limit`                                                                                                                                                                 | *Optional[int]*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Size of a page, defaults to 10. Maximum is 100.                                                                                                                         |
 | `sorting`                                                                                                                                                               | List[[models.CustomerSortProperty](../../models/customersortproperty.md)]                                                                                               | :heavy_minus_sign:                                                                                                                                                      | Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order. |
@@ -86,7 +85,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.customers.create(customer_create={
+    res = polar.customers.create(request={
         "external_id": "usr_1337",
         "email": "customer@example.com",
         "name": "John Doe",
@@ -103,7 +102,7 @@ with Polar(
             "name": "Jane Doe",
             "external_id": "usr_1337",
         },
-    }, include_members=False)
+    })
 
     # Handle response
     print(res)
@@ -114,8 +113,7 @@ with Polar(
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `customer_create`                                                   | [models.CustomerCreate](../../models/customercreate.md)             | :heavy_check_mark:                                                  | N/A                                                                 |
-| `include_members`                                                   | *Optional[bool]*                                                    | :heavy_minus_sign:                                                  | Include members in the response. Only populated when set to true.   |
+| `request`                                                           | [models.CustomerCreate](../../models/customercreate.md)             | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -188,7 +186,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.customers.get(id="<value>", include_members=False)
+    res = polar.customers.get(id="<value>")
 
     # Handle response
     print(res)
@@ -200,7 +198,6 @@ with Polar(
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The customer ID.                                                    |
-| `include_members`                                                   | *Optional[bool]*                                                    | :heavy_minus_sign:                                                  | Include members in the response. Only populated when set to true.   |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -244,7 +241,7 @@ with Polar(
             "us_ein",
         ],
         "external_id": "usr_1337",
-    }, include_members=False)
+    })
 
     # Handle response
     print(res)
@@ -257,7 +254,6 @@ with Polar(
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The customer ID.                                                    |
 | `customer_update`                                                   | [models.CustomerUpdate](../../models/customerupdate.md)             | :heavy_check_mark:                                                  | N/A                                                                 |
-| `include_members`                                                   | *Optional[bool]*                                                    | :heavy_minus_sign:                                                  | Include members in the response. Only populated when set to true.   |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -339,7 +335,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.customers.get_external(external_id="<id>", include_members=False)
+    res = polar.customers.get_external(external_id="<id>")
 
     # Handle response
     print(res)
@@ -351,7 +347,6 @@ with Polar(
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `external_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | The customer external ID.                                           |
-| `include_members`                                                   | *Optional[bool]*                                                    | :heavy_minus_sign:                                                  | Include members in the response. Only populated when set to true.   |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -391,7 +386,7 @@ with Polar(
             "911144442",
             "us_ein",
         ],
-    }, include_members=False)
+    })
 
     # Handle response
     print(res)
@@ -404,7 +399,6 @@ with Polar(
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | `external_id`                                                               | *str*                                                                       | :heavy_check_mark:                                                          | The customer external ID.                                                   |
 | `customer_update_external_id`                                               | [models.CustomerUpdateExternalID](../../models/customerupdateexternalid.md) | :heavy_check_mark:                                                          | N/A                                                                         |
-| `include_members`                                                           | *Optional[bool]*                                                            | :heavy_minus_sign:                                                          | Include members in the response. Only populated when set to true.           |
 | `retries`                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)            | :heavy_minus_sign:                                                          | Configuration to override the default retry behavior of the client.         |
 
 ### Response

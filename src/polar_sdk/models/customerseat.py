@@ -22,7 +22,11 @@ class CustomerSeatTypedDict(TypedDict):
     order_id: NotRequired[Nullable[str]]
     r"""The order ID (for one-time purchase seats)"""
     customer_id: NotRequired[Nullable[str]]
-    r"""The assigned customer ID"""
+    r"""The customer ID. When member_model_enabled is true, this is the billing customer (purchaser). When false, this is the seat member customer."""
+    member_id: NotRequired[Nullable[str]]
+    r"""The member ID of the seat occupant"""
+    email: NotRequired[Nullable[str]]
+    r"""Email of the seat member (set when member_model_enabled is true)"""
     customer_email: NotRequired[Nullable[str]]
     r"""The assigned customer email"""
     invitation_token_expires_at: NotRequired[Nullable[datetime]]
@@ -54,7 +58,13 @@ class CustomerSeat(BaseModel):
     r"""The order ID (for one-time purchase seats)"""
 
     customer_id: OptionalNullable[str] = UNSET
-    r"""The assigned customer ID"""
+    r"""The customer ID. When member_model_enabled is true, this is the billing customer (purchaser). When false, this is the seat member customer."""
+
+    member_id: OptionalNullable[str] = UNSET
+    r"""The member ID of the seat occupant"""
+
+    email: OptionalNullable[str] = UNSET
+    r"""Email of the seat member (set when member_model_enabled is true)"""
 
     customer_email: OptionalNullable[str] = UNSET
     r"""The assigned customer email"""
@@ -77,6 +87,8 @@ class CustomerSeat(BaseModel):
             "subscription_id",
             "order_id",
             "customer_id",
+            "member_id",
+            "email",
             "customer_email",
             "invitation_token_expires_at",
             "claimed_at",
@@ -88,6 +100,8 @@ class CustomerSeat(BaseModel):
             "subscription_id",
             "order_id",
             "customer_id",
+            "member_id",
+            "email",
             "customer_email",
             "invitation_token_expires_at",
             "claimed_at",

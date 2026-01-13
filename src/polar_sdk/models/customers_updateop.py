@@ -3,22 +3,14 @@
 from __future__ import annotations
 from .customerupdate import CustomerUpdate, CustomerUpdateTypedDict
 from polar_sdk.types import BaseModel
-from polar_sdk.utils import (
-    FieldMetadata,
-    PathParamMetadata,
-    QueryParamMetadata,
-    RequestMetadata,
-)
-from typing import Optional
-from typing_extensions import Annotated, NotRequired, TypedDict
+from polar_sdk.utils import FieldMetadata, PathParamMetadata, RequestMetadata
+from typing_extensions import Annotated, TypedDict
 
 
 class CustomersUpdateRequestTypedDict(TypedDict):
     id: str
     r"""The customer ID."""
     customer_update: CustomerUpdateTypedDict
-    include_members: NotRequired[bool]
-    r"""Include members in the response. Only populated when set to true."""
 
 
 class CustomersUpdateRequest(BaseModel):
@@ -31,9 +23,3 @@ class CustomersUpdateRequest(BaseModel):
         CustomerUpdate,
         FieldMetadata(request=RequestMetadata(media_type="application/json")),
     ]
-
-    include_members: Annotated[
-        Optional[bool],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = False
-    r"""Include members in the response. Only populated when set to true."""

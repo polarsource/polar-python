@@ -852,8 +852,6 @@ class CustomersListRequestTypedDict(TypedDict):
     r"""Filter by exact email."""
     query: NotRequired[Nullable[str]]
     r"""Filter by name, email, or external ID."""
-    include_members: NotRequired[bool]
-    r"""Include members in the response. Only populated when set to true."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -882,12 +880,6 @@ class CustomersListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by name, email, or external ID."""
-
-    include_members: Annotated[
-        Optional[bool],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = False
-    r"""Include members in the response. Only populated when set to true."""
 
     page: Annotated[
         Optional[int],
@@ -919,7 +911,6 @@ class CustomersListRequest(BaseModel):
             "organization_id",
             "email",
             "query",
-            "include_members",
             "page",
             "limit",
             "sorting",
