@@ -3,6 +3,36 @@
 
 ## Supported Types
 
+### `models.BalanceDisputeEvent`
+
+```python
+value: models.BalanceDisputeEvent = /* values here */
+```
+
+### `models.BalanceDisputeReversalEvent`
+
+```python
+value: models.BalanceDisputeReversalEvent = /* values here */
+```
+
+### `models.BalanceOrderEvent`
+
+```python
+value: models.BalanceOrderEvent = /* values here */
+```
+
+### `models.BalanceRefundEvent`
+
+```python
+value: models.BalanceRefundEvent = /* values here */
+```
+
+### `models.BalanceRefundReversalEvent`
+
+```python
+value: models.BalanceRefundReversalEvent = /* values here */
+```
+
 ### `models.BenefitCycledEvent`
 
 ```python

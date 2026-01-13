@@ -6,22 +6,14 @@ from .customerupdateexternalid import (
     CustomerUpdateExternalIDTypedDict,
 )
 from polar_sdk.types import BaseModel
-from polar_sdk.utils import (
-    FieldMetadata,
-    PathParamMetadata,
-    QueryParamMetadata,
-    RequestMetadata,
-)
-from typing import Optional
-from typing_extensions import Annotated, NotRequired, TypedDict
+from polar_sdk.utils import FieldMetadata, PathParamMetadata, RequestMetadata
+from typing_extensions import Annotated, TypedDict
 
 
 class CustomersUpdateExternalRequestTypedDict(TypedDict):
     external_id: str
     r"""The customer external ID."""
     customer_update_external_id: CustomerUpdateExternalIDTypedDict
-    include_members: NotRequired[bool]
-    r"""Include members in the response. Only populated when set to true."""
 
 
 class CustomersUpdateExternalRequest(BaseModel):
@@ -34,9 +26,3 @@ class CustomersUpdateExternalRequest(BaseModel):
         CustomerUpdateExternalID,
         FieldMetadata(request=RequestMetadata(media_type="application/json")),
     ]
-
-    include_members: Annotated[
-        Optional[bool],
-        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
-    ] = False
-    r"""Include members in the response. Only populated when set to true."""

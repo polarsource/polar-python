@@ -42,6 +42,29 @@ if TYPE_CHECKING:
         AuthorizeResponseUserTypedDict,
     )
     from .authorizeuser import AuthorizeUser, AuthorizeUserTypedDict
+    from .balancedisputeevent import BalanceDisputeEvent, BalanceDisputeEventTypedDict
+    from .balancedisputemetadata import (
+        BalanceDisputeMetadata,
+        BalanceDisputeMetadataTypedDict,
+    )
+    from .balancedisputereversalevent import (
+        BalanceDisputeReversalEvent,
+        BalanceDisputeReversalEventTypedDict,
+    )
+    from .balanceorderevent import BalanceOrderEvent, BalanceOrderEventTypedDict
+    from .balanceordermetadata import (
+        BalanceOrderMetadata,
+        BalanceOrderMetadataTypedDict,
+    )
+    from .balancerefundevent import BalanceRefundEvent, BalanceRefundEventTypedDict
+    from .balancerefundmetadata import (
+        BalanceRefundMetadata,
+        BalanceRefundMetadataTypedDict,
+    )
+    from .balancerefundreversalevent import (
+        BalanceRefundReversalEvent,
+        BalanceRefundReversalEventTypedDict,
+    )
     from .benefit import Benefit, BenefitTypedDict
     from .benefit_grants_listop import (
         BenefitGrantsListQueryParamCustomerIDFilter,
@@ -1049,10 +1072,6 @@ if TYPE_CHECKING:
         CustomerProductPrices,
         CustomerProductPricesTypedDict,
         CustomerProductTypedDict,
-    )
-    from .customers_createop import (
-        CustomersCreateRequest,
-        CustomersCreateRequestTypedDict,
     )
     from .customers_delete_externalop import (
         CustomersDeleteExternalRequest,
@@ -2148,6 +2167,7 @@ if TYPE_CHECKING:
     )
     from .paymentsortproperty import PaymentSortProperty
     from .paymentstatus import PaymentStatus
+    from .presentmentcurrency import PresentmentCurrency
     from .product import Prices, PricesTypedDict, Product, ProductTypedDict
     from .productbenefitsupdate import (
         ProductBenefitsUpdate,
@@ -2218,9 +2238,13 @@ if TYPE_CHECKING:
         ProductPriceSeatTier,
         ProductPriceSeatTierTypedDict,
     )
-    from .productpriceseattiers import (
-        ProductPriceSeatTiers,
-        ProductPriceSeatTiersTypedDict,
+    from .productpriceseattiers_input import (
+        ProductPriceSeatTiersInput,
+        ProductPriceSeatTiersInputTypedDict,
+    )
+    from .productpriceseattiers_output import (
+        ProductPriceSeatTiersOutput,
+        ProductPriceSeatTiersOutputTypedDict,
     )
     from .productpricesource import ProductPriceSource
     from .productpricetype import ProductPriceType
@@ -2778,6 +2802,22 @@ __all__ = [
     "AverageOrderValueTypedDict",
     "AverageRevenuePerUser",
     "AverageRevenuePerUserTypedDict",
+    "BalanceDisputeEvent",
+    "BalanceDisputeEventTypedDict",
+    "BalanceDisputeMetadata",
+    "BalanceDisputeMetadataTypedDict",
+    "BalanceDisputeReversalEvent",
+    "BalanceDisputeReversalEventTypedDict",
+    "BalanceOrderEvent",
+    "BalanceOrderEventTypedDict",
+    "BalanceOrderMetadata",
+    "BalanceOrderMetadataTypedDict",
+    "BalanceRefundEvent",
+    "BalanceRefundEventTypedDict",
+    "BalanceRefundMetadata",
+    "BalanceRefundMetadataTypedDict",
+    "BalanceRefundReversalEvent",
+    "BalanceRefundReversalEventTypedDict",
     "Benefit",
     "BenefitCreate",
     "BenefitCreateTypedDict",
@@ -3631,8 +3671,6 @@ __all__ = [
     "CustomerWithMembersTaxID",
     "CustomerWithMembersTaxIDTypedDict",
     "CustomerWithMembersTypedDict",
-    "CustomersCreateRequest",
-    "CustomersCreateRequestTypedDict",
     "CustomersDeleteExternalRequest",
     "CustomersDeleteExternalRequestTypedDict",
     "CustomersDeleteRequest",
@@ -4349,6 +4387,7 @@ __all__ = [
     "PaymentsListResponseTypedDict",
     "Permission",
     "PolarError",
+    "PresentmentCurrency",
     "Prices",
     "PricesTypedDict",
     "Product",
@@ -4402,8 +4441,10 @@ __all__ = [
     "ProductPriceSeatBasedTypedDict",
     "ProductPriceSeatTier",
     "ProductPriceSeatTierTypedDict",
-    "ProductPriceSeatTiers",
-    "ProductPriceSeatTiersTypedDict",
+    "ProductPriceSeatTiersInput",
+    "ProductPriceSeatTiersInputTypedDict",
+    "ProductPriceSeatTiersOutput",
+    "ProductPriceSeatTiersOutputTypedDict",
     "ProductPriceSource",
     "ProductPriceType",
     "ProductPriceTypedDict",
@@ -4783,6 +4824,22 @@ _dynamic_imports: dict[str, str] = {
     "AuthorizeResponseUserTypedDict": ".authorizeresponseuser",
     "AuthorizeUser": ".authorizeuser",
     "AuthorizeUserTypedDict": ".authorizeuser",
+    "BalanceDisputeEvent": ".balancedisputeevent",
+    "BalanceDisputeEventTypedDict": ".balancedisputeevent",
+    "BalanceDisputeMetadata": ".balancedisputemetadata",
+    "BalanceDisputeMetadataTypedDict": ".balancedisputemetadata",
+    "BalanceDisputeReversalEvent": ".balancedisputereversalevent",
+    "BalanceDisputeReversalEventTypedDict": ".balancedisputereversalevent",
+    "BalanceOrderEvent": ".balanceorderevent",
+    "BalanceOrderEventTypedDict": ".balanceorderevent",
+    "BalanceOrderMetadata": ".balanceordermetadata",
+    "BalanceOrderMetadataTypedDict": ".balanceordermetadata",
+    "BalanceRefundEvent": ".balancerefundevent",
+    "BalanceRefundEventTypedDict": ".balancerefundevent",
+    "BalanceRefundMetadata": ".balancerefundmetadata",
+    "BalanceRefundMetadataTypedDict": ".balancerefundmetadata",
+    "BalanceRefundReversalEvent": ".balancerefundreversalevent",
+    "BalanceRefundReversalEventTypedDict": ".balancerefundreversalevent",
     "Benefit": ".benefit",
     "BenefitTypedDict": ".benefit",
     "BenefitGrantsListQueryParamCustomerIDFilter": ".benefit_grants_listop",
@@ -5453,8 +5510,6 @@ _dynamic_imports: dict[str, str] = {
     "CustomerProductPrices": ".customerproduct",
     "CustomerProductPricesTypedDict": ".customerproduct",
     "CustomerProductTypedDict": ".customerproduct",
-    "CustomersCreateRequest": ".customers_createop",
-    "CustomersCreateRequestTypedDict": ".customers_createop",
     "CustomersDeleteExternalRequest": ".customers_delete_externalop",
     "CustomersDeleteExternalRequestTypedDict": ".customers_delete_externalop",
     "CustomersDeleteRequest": ".customers_deleteop",
@@ -6327,6 +6382,7 @@ _dynamic_imports: dict[str, str] = {
     "PaymentsListResponseTypedDict": ".payments_listop",
     "PaymentSortProperty": ".paymentsortproperty",
     "PaymentStatus": ".paymentstatus",
+    "PresentmentCurrency": ".presentmentcurrency",
     "Prices": ".product",
     "PricesTypedDict": ".product",
     "Product": ".product",
@@ -6380,8 +6436,10 @@ _dynamic_imports: dict[str, str] = {
     "ProductPriceSeatBasedCreateTypedDict": ".productpriceseatbasedcreate",
     "ProductPriceSeatTier": ".productpriceseattier",
     "ProductPriceSeatTierTypedDict": ".productpriceseattier",
-    "ProductPriceSeatTiers": ".productpriceseattiers",
-    "ProductPriceSeatTiersTypedDict": ".productpriceseattiers",
+    "ProductPriceSeatTiersInput": ".productpriceseattiers_input",
+    "ProductPriceSeatTiersInputTypedDict": ".productpriceseattiers_input",
+    "ProductPriceSeatTiersOutput": ".productpriceseattiers_output",
+    "ProductPriceSeatTiersOutputTypedDict": ".productpriceseattiers_output",
     "ProductPriceSource": ".productpricesource",
     "ProductPriceType": ".productpricetype",
     "ProductsGetRequest": ".products_getop",

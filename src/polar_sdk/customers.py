@@ -4,9 +4,9 @@ from .basesdk import BaseSDK
 from jsonpath import JSONPath
 from polar_sdk import models, utils
 from polar_sdk._hooks import HookContext
-from polar_sdk.types import OptionalNullable, UNSET
+from polar_sdk.types import BaseModel, OptionalNullable, UNSET
 from polar_sdk.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Dict, List, Mapping, Optional, Union
+from typing import Any, Dict, List, Mapping, Optional, Union, cast
 
 
 class Customers(BaseSDK):
@@ -21,7 +21,6 @@ class Customers(BaseSDK):
         ] = UNSET,
         email: OptionalNullable[str] = UNSET,
         query: OptionalNullable[str] = UNSET,
-        include_members: Optional[bool] = False,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.CustomerSortProperty]] = UNSET,
@@ -45,7 +44,6 @@ class Customers(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param email: Filter by exact email.
         :param query: Filter by name, email, or external ID.
-        :param include_members: Include members in the response. Only populated when set to true.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -69,7 +67,6 @@ class Customers(BaseSDK):
             organization_id=organization_id,
             email=email,
             query=query,
-            include_members=include_members,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -135,7 +132,6 @@ class Customers(BaseSDK):
                 organization_id=organization_id,
                 email=email,
                 query=query,
-                include_members=include_members,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -176,7 +172,6 @@ class Customers(BaseSDK):
         ] = UNSET,
         email: OptionalNullable[str] = UNSET,
         query: OptionalNullable[str] = UNSET,
-        include_members: Optional[bool] = False,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.CustomerSortProperty]] = UNSET,
@@ -200,7 +195,6 @@ class Customers(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param email: Filter by exact email.
         :param query: Filter by name, email, or external ID.
-        :param include_members: Include members in the response. Only populated when set to true.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -224,7 +218,6 @@ class Customers(BaseSDK):
             organization_id=organization_id,
             email=email,
             query=query,
-            include_members=include_members,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -290,7 +283,6 @@ class Customers(BaseSDK):
                 organization_id=organization_id,
                 email=email,
                 query=query,
-                include_members=include_members,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -323,8 +315,7 @@ class Customers(BaseSDK):
     def create(
         self,
         *,
-        customer_create: Union[models.CustomerCreate, models.CustomerCreateTypedDict],
-        include_members: Optional[bool] = False,
+        request: Union[models.CustomerCreate, models.CustomerCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -336,8 +327,7 @@ class Customers(BaseSDK):
 
         **Scopes**: `customers:write`
 
-        :param customer_create:
-        :param include_members: Include members in the response. Only populated when set to true.
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -353,12 +343,9 @@ class Customers(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.CustomersCreateRequest(
-            include_members=include_members,
-            customer_create=utils.get_pydantic_model(
-                customer_create, models.CustomerCreate
-            ),
-        )
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, models.CustomerCreate)
+        request = cast(models.CustomerCreate, request)
 
         req = self._build_request(
             method="POST",
@@ -374,7 +361,7 @@ class Customers(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.customer_create, False, False, "json", models.CustomerCreate
+                request, False, False, "json", models.CustomerCreate
             ),
             timeout_ms=timeout_ms,
         )
@@ -420,8 +407,7 @@ class Customers(BaseSDK):
     async def create_async(
         self,
         *,
-        customer_create: Union[models.CustomerCreate, models.CustomerCreateTypedDict],
-        include_members: Optional[bool] = False,
+        request: Union[models.CustomerCreate, models.CustomerCreateTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -433,8 +419,7 @@ class Customers(BaseSDK):
 
         **Scopes**: `customers:write`
 
-        :param customer_create:
-        :param include_members: Include members in the response. Only populated when set to true.
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -450,12 +435,9 @@ class Customers(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.CustomersCreateRequest(
-            include_members=include_members,
-            customer_create=utils.get_pydantic_model(
-                customer_create, models.CustomerCreate
-            ),
-        )
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, models.CustomerCreate)
+        request = cast(models.CustomerCreate, request)
 
         req = self._build_request_async(
             method="POST",
@@ -471,7 +453,7 @@ class Customers(BaseSDK):
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request.customer_create, False, False, "json", models.CustomerCreate
+                request, False, False, "json", models.CustomerCreate
             ),
             timeout_ms=timeout_ms,
         )
@@ -706,7 +688,6 @@ class Customers(BaseSDK):
         self,
         *,
         id: str,
-        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -719,7 +700,6 @@ class Customers(BaseSDK):
         **Scopes**: `customers:read` `customers:write`
 
         :param id: The customer ID.
-        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -737,7 +717,6 @@ class Customers(BaseSDK):
 
         request = models.CustomersGetRequest(
             id=id,
-            include_members=include_members,
         )
 
         req = self._build_request(
@@ -803,7 +782,6 @@ class Customers(BaseSDK):
         self,
         *,
         id: str,
-        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -816,7 +794,6 @@ class Customers(BaseSDK):
         **Scopes**: `customers:read` `customers:write`
 
         :param id: The customer ID.
-        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -834,7 +811,6 @@ class Customers(BaseSDK):
 
         request = models.CustomersGetRequest(
             id=id,
-            include_members=include_members,
         )
 
         req = self._build_request_async(
@@ -901,7 +877,6 @@ class Customers(BaseSDK):
         *,
         id: str,
         customer_update: Union[models.CustomerUpdate, models.CustomerUpdateTypedDict],
-        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -915,7 +890,6 @@ class Customers(BaseSDK):
 
         :param id: The customer ID.
         :param customer_update:
-        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -933,7 +907,6 @@ class Customers(BaseSDK):
 
         request = models.CustomersUpdateRequest(
             id=id,
-            include_members=include_members,
             customer_update=utils.get_pydantic_model(
                 customer_update, models.CustomerUpdate
             ),
@@ -1006,7 +979,6 @@ class Customers(BaseSDK):
         *,
         id: str,
         customer_update: Union[models.CustomerUpdate, models.CustomerUpdateTypedDict],
-        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1020,7 +992,6 @@ class Customers(BaseSDK):
 
         :param id: The customer ID.
         :param customer_update:
-        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1038,7 +1009,6 @@ class Customers(BaseSDK):
 
         request = models.CustomersUpdateRequest(
             id=id,
-            include_members=include_members,
             customer_update=utils.get_pydantic_model(
                 customer_update, models.CustomerUpdate
             ),
@@ -1322,7 +1292,6 @@ class Customers(BaseSDK):
         self,
         *,
         external_id: str,
-        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1335,7 +1304,6 @@ class Customers(BaseSDK):
         **Scopes**: `customers:read` `customers:write`
 
         :param external_id: The customer external ID.
-        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1353,7 +1321,6 @@ class Customers(BaseSDK):
 
         request = models.CustomersGetExternalRequest(
             external_id=external_id,
-            include_members=include_members,
         )
 
         req = self._build_request(
@@ -1419,7 +1386,6 @@ class Customers(BaseSDK):
         self,
         *,
         external_id: str,
-        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1432,7 +1398,6 @@ class Customers(BaseSDK):
         **Scopes**: `customers:read` `customers:write`
 
         :param external_id: The customer external ID.
-        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1450,7 +1415,6 @@ class Customers(BaseSDK):
 
         request = models.CustomersGetExternalRequest(
             external_id=external_id,
-            include_members=include_members,
         )
 
         req = self._build_request_async(
@@ -1519,7 +1483,6 @@ class Customers(BaseSDK):
         customer_update_external_id: Union[
             models.CustomerUpdateExternalID, models.CustomerUpdateExternalIDTypedDict
         ],
-        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1533,7 +1496,6 @@ class Customers(BaseSDK):
 
         :param external_id: The customer external ID.
         :param customer_update_external_id:
-        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1551,7 +1513,6 @@ class Customers(BaseSDK):
 
         request = models.CustomersUpdateExternalRequest(
             external_id=external_id,
-            include_members=include_members,
             customer_update_external_id=utils.get_pydantic_model(
                 customer_update_external_id, models.CustomerUpdateExternalID
             ),
@@ -1630,7 +1591,6 @@ class Customers(BaseSDK):
         customer_update_external_id: Union[
             models.CustomerUpdateExternalID, models.CustomerUpdateExternalIDTypedDict
         ],
-        include_members: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1644,7 +1604,6 @@ class Customers(BaseSDK):
 
         :param external_id: The customer external ID.
         :param customer_update_external_id:
-        :param include_members: Include members in the response. Only populated when set to true.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1662,7 +1621,6 @@ class Customers(BaseSDK):
 
         request = models.CustomersUpdateExternalRequest(
             external_id=external_id,
-            include_members=include_members,
             customer_update_external_id=utils.get_pydantic_model(
                 customer_update_external_id, models.CustomerUpdateExternalID
             ),

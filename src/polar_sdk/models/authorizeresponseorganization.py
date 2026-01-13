@@ -9,8 +9,8 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import List, Literal
-from typing_extensions import Annotated, TypedDict
+from typing import Dict, List, Literal, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class AuthorizeResponseOrganizationTypedDict(TypedDict):
@@ -19,6 +19,7 @@ class AuthorizeResponseOrganizationTypedDict(TypedDict):
     scopes: List[Scope]
     organizations: List[AuthorizeOrganizationTypedDict]
     sub_type: Literal["organization"]
+    scope_display_names: NotRequired[Dict[str, str]]
 
 
 class AuthorizeResponseOrganization(BaseModel):
@@ -37,9 +38,11 @@ class AuthorizeResponseOrganization(BaseModel):
         pydantic.Field(alias="sub_type"),
     ] = "organization"
 
+    scope_display_names: Optional[Dict[str, str]] = None
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["scope_display_names"]
         nullable_fields = ["sub"]
         null_default_fields = []
 

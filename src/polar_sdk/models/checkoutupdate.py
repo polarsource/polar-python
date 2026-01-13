@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .addressinput import AddressInput, AddressInputTypedDict
+from .presentmentcurrency import PresentmentCurrency
 from .trialinterval import TrialInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
@@ -78,6 +79,7 @@ class CheckoutUpdateTypedDict(TypedDict):
 
     You can store up to **50 key-value pairs**.
     """
+    currency: NotRequired[Nullable[PresentmentCurrency]]
     discount_id: NotRequired[Nullable[str]]
     r"""ID of the discount to apply to the checkout."""
     allow_discount_codes: NotRequired[Nullable[bool]]
@@ -166,6 +168,8 @@ class CheckoutUpdate(BaseModel):
     You can store up to **50 key-value pairs**.
     """
 
+    currency: OptionalNullable[PresentmentCurrency] = UNSET
+
     discount_id: OptionalNullable[str] = UNSET
     r"""ID of the discount to apply to the checkout."""
 
@@ -222,6 +226,7 @@ class CheckoutUpdate(BaseModel):
             "trial_interval",
             "trial_interval_count",
             "metadata",
+            "currency",
             "discount_id",
             "allow_discount_codes",
             "require_billing_address",
@@ -245,6 +250,7 @@ class CheckoutUpdate(BaseModel):
             "customer_tax_id",
             "trial_interval",
             "trial_interval_count",
+            "currency",
             "discount_id",
             "allow_discount_codes",
             "require_billing_address",
