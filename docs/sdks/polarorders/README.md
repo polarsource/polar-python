@@ -129,7 +129,6 @@ with Polar() as polar:
     res = polar.customer_portal.orders.update(security=polar_sdk.CustomerPortalOrdersUpdateSecurity(
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
     ), id="<value>", customer_order_update={
-        "billing_name": "<value>",
         "billing_address": {
             "country": polar_sdk.CountryAlpha2Input.US,
         },

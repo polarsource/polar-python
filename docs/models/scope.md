@@ -47,6 +47,7 @@
 | `DISPUTES_READ`                 | disputes:read                   |
 | `CUSTOMER_METERS_READ`          | customer_meters:read            |
 | `CUSTOMER_SESSIONS_WRITE`       | customer_sessions:write         |
+| `MEMBER_SESSIONS_WRITE`         | member_sessions:write           |
 | `CUSTOMER_SEATS_READ`           | customer_seats:read             |
 | `CUSTOMER_SEATS_WRITE`          | customer_seats:write            |
 | `ORDERS_READ`                   | orders:read                     |
