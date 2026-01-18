@@ -1724,13 +1724,24 @@ if TYPE_CHECKING:
         MembersDeleteMemberRequest,
         MembersDeleteMemberRequestTypedDict,
     )
+    from .members_get_memberop import (
+        MembersGetMemberRequest,
+        MembersGetMemberRequestTypedDict,
+    )
     from .members_list_membersop import (
         MembersListMembersRequest,
         MembersListMembersRequestTypedDict,
         MembersListMembersResponse,
         MembersListMembersResponseTypedDict,
     )
+    from .members_update_memberop import (
+        MembersUpdateMemberRequest,
+        MembersUpdateMemberRequestTypedDict,
+    )
+    from .membersession import MemberSession, MemberSessionTypedDict
+    from .membersessioncreate import MemberSessionCreate, MemberSessionCreateTypedDict
     from .membersortproperty import MemberSortProperty
+    from .memberupdate import MemberUpdate, MemberUpdateTypedDict
     from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
     from .meter import (
         Meter,
@@ -4021,14 +4032,24 @@ __all__ = [
     "MemberIDFilter",
     "MemberIDFilterTypedDict",
     "MemberRole",
+    "MemberSession",
+    "MemberSessionCreate",
+    "MemberSessionCreateTypedDict",
+    "MemberSessionTypedDict",
     "MemberSortProperty",
     "MemberTypedDict",
+    "MemberUpdate",
+    "MemberUpdateTypedDict",
     "MembersDeleteMemberRequest",
     "MembersDeleteMemberRequestTypedDict",
+    "MembersGetMemberRequest",
+    "MembersGetMemberRequestTypedDict",
     "MembersListMembersRequest",
     "MembersListMembersRequestTypedDict",
     "MembersListMembersResponse",
     "MembersListMembersResponseTypedDict",
+    "MembersUpdateMemberRequest",
+    "MembersUpdateMemberRequestTypedDict",
     "Meta",
     "MetaTypedDict",
     "Metadata",
@@ -5986,11 +6007,21 @@ _dynamic_imports: dict[str, str] = {
     "MemberRole": ".memberrole",
     "MembersDeleteMemberRequest": ".members_delete_memberop",
     "MembersDeleteMemberRequestTypedDict": ".members_delete_memberop",
+    "MembersGetMemberRequest": ".members_get_memberop",
+    "MembersGetMemberRequestTypedDict": ".members_get_memberop",
     "MembersListMembersRequest": ".members_list_membersop",
     "MembersListMembersRequestTypedDict": ".members_list_membersop",
     "MembersListMembersResponse": ".members_list_membersop",
     "MembersListMembersResponseTypedDict": ".members_list_membersop",
+    "MembersUpdateMemberRequest": ".members_update_memberop",
+    "MembersUpdateMemberRequestTypedDict": ".members_update_memberop",
+    "MemberSession": ".membersession",
+    "MemberSessionTypedDict": ".membersession",
+    "MemberSessionCreate": ".membersessioncreate",
+    "MemberSessionCreateTypedDict": ".membersessioncreate",
     "MemberSortProperty": ".membersortproperty",
+    "MemberUpdate": ".memberupdate",
+    "MemberUpdateTypedDict": ".memberupdate",
     "MetadataOutputType": ".metadataoutputtype",
     "MetadataOutputTypeTypedDict": ".metadataoutputtype",
     "Meter": ".meter",

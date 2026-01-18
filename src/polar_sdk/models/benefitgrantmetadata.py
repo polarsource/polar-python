@@ -3,13 +3,15 @@
 from __future__ import annotations
 from .benefittype import BenefitType
 from polar_sdk.types import BaseModel
-from typing_extensions import TypedDict
+from typing import Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class BenefitGrantMetadataTypedDict(TypedDict):
     benefit_id: str
     benefit_grant_id: str
     benefit_type: BenefitType
+    member_id: NotRequired[str]
 
 
 class BenefitGrantMetadata(BaseModel):
@@ -18,3 +20,5 @@ class BenefitGrantMetadata(BaseModel):
     benefit_grant_id: str
 
     benefit_type: BenefitType
+
+    member_id: Optional[str] = None

@@ -170,7 +170,6 @@ with Polar(
 ) as polar:
 
     res = polar.orders.update(id="<value>", order_update={
-        "billing_name": "<value>",
         "billing_address": {
             "country": polar_sdk.CountryAlpha2Input.US,
         },
