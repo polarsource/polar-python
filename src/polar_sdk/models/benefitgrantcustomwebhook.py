@@ -8,6 +8,7 @@ from .benefitgrantcustomproperties import (
 )
 from .benefitgranterror import BenefitGrantError, BenefitGrantErrorTypedDict
 from .customer import Customer, CustomerTypedDict
+from .member import Member, MemberTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -49,6 +50,7 @@ class BenefitGrantCustomWebhookTypedDict(TypedDict):
     r"""The ID of the member concerned by this grant."""
     error: NotRequired[Nullable[BenefitGrantErrorTypedDict]]
     r"""The error information if the benefit grant failed with an unrecoverable error."""
+    member: NotRequired[Nullable[MemberTypedDict]]
     previous_properties: NotRequired[Nullable[BenefitGrantCustomPropertiesTypedDict]]
 
 
@@ -103,6 +105,8 @@ class BenefitGrantCustomWebhook(BaseModel):
     error: OptionalNullable[BenefitGrantError] = UNSET
     r"""The error information if the benefit grant failed with an unrecoverable error."""
 
+    member: OptionalNullable[Member] = UNSET
+
     previous_properties: OptionalNullable[BenefitGrantCustomProperties] = UNSET
 
     @model_serializer(mode="wrap")
@@ -112,6 +116,7 @@ class BenefitGrantCustomWebhook(BaseModel):
             "revoked_at",
             "member_id",
             "error",
+            "member",
             "previous_properties",
         ]
         nullable_fields = [
@@ -122,6 +127,7 @@ class BenefitGrantCustomWebhook(BaseModel):
             "order_id",
             "member_id",
             "error",
+            "member",
             "previous_properties",
         ]
         null_default_fields = []

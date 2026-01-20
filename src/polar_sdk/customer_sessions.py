@@ -25,6 +25,9 @@ class CustomerSessions(BaseSDK):
 
         Create a customer session.
 
+        For organizations with `member_model_enabled`, this will automatically
+        create a member session for the owner member of the customer.
+
         **Scopes**: `customer_sessions:write`
 
         :param request: The request object to send.
@@ -125,6 +128,9 @@ class CustomerSessions(BaseSDK):
         r"""Create Customer Session
 
         Create a customer session.
+
+        For organizations with `member_model_enabled`, this will automatically
+        create a member session for the owner member of the customer.
 
         **Scopes**: `customer_sessions:write`
 

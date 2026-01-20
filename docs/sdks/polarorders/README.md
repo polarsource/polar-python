@@ -17,8 +17,6 @@
 
 List orders of the authenticated customer.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="python" operationID="customer_portal:orders:list" method="get" path="/v1/customer-portal/orders/" -->
@@ -69,8 +67,6 @@ with Polar() as polar:
 
 Get an order by ID for the authenticated customer.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="python" operationID="customer_portal:orders:get" method="get" path="/v1/customer-portal/orders/{id}" -->
@@ -114,8 +110,6 @@ with Polar() as polar:
 
 Update an order for the authenticated customer.
 
-**Scopes**: `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="python" operationID="customer_portal:orders:update" method="patch" path="/v1/customer-portal/orders/{id}" -->
@@ -129,7 +123,6 @@ with Polar() as polar:
     res = polar.customer_portal.orders.update(security=polar_sdk.CustomerPortalOrdersUpdateSecurity(
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
     ), id="<value>", customer_order_update={
-        "billing_name": "<value>",
         "billing_address": {
             "country": polar_sdk.CountryAlpha2Input.US,
         },
@@ -164,8 +157,6 @@ with Polar() as polar:
 ## generate_invoice
 
 Trigger generation of an order's invoice.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
@@ -210,8 +201,6 @@ with Polar() as polar:
 
 Get an order's invoice data.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="python" operationID="customer_portal:orders:invoice" method="get" path="/v1/customer-portal/orders/{id}/invoice" -->
@@ -255,8 +244,6 @@ with Polar() as polar:
 
 Get the current payment status for an order.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="python" operationID="customer_portal:orders:get_payment_status" method="get" path="/v1/customer-portal/orders/{id}/payment-status" -->
@@ -299,8 +286,6 @@ with Polar() as polar:
 ## confirm_retry_payment
 
 Confirm a retry payment using a Stripe confirmation token.
-
-**Scopes**: `customer_portal:write`
 
 ### Example Usage
 

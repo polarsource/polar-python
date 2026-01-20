@@ -676,6 +676,10 @@ if TYPE_CHECKING:
         MeterIDFilter,
         MeterIDFilterTypedDict,
     )
+    from .customer_portal_customer_session_get_authenticated_userop import (
+        CustomerPortalCustomerSessionGetAuthenticatedUserSecurity,
+        CustomerPortalCustomerSessionGetAuthenticatedUserSecurityTypedDict,
+    )
     from .customer_portal_customer_session_introspectop import (
         CustomerPortalCustomerSessionIntrospectSecurity,
         CustomerPortalCustomerSessionIntrospectSecurityTypedDict,
@@ -1724,13 +1728,24 @@ if TYPE_CHECKING:
         MembersDeleteMemberRequest,
         MembersDeleteMemberRequestTypedDict,
     )
+    from .members_get_memberop import (
+        MembersGetMemberRequest,
+        MembersGetMemberRequestTypedDict,
+    )
     from .members_list_membersop import (
         MembersListMembersRequest,
         MembersListMembersRequestTypedDict,
         MembersListMembersResponse,
         MembersListMembersResponseTypedDict,
     )
+    from .members_update_memberop import (
+        MembersUpdateMemberRequest,
+        MembersUpdateMemberRequestTypedDict,
+    )
+    from .membersession import MemberSession, MemberSessionTypedDict
+    from .membersessioncreate import MemberSessionCreate, MemberSessionCreateTypedDict
     from .membersortproperty import MemberSortProperty
+    from .memberupdate import MemberUpdate, MemberUpdateTypedDict
     from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
     from .meter import (
         Meter,
@@ -2167,6 +2182,10 @@ if TYPE_CHECKING:
     )
     from .paymentsortproperty import PaymentSortProperty
     from .paymentstatus import PaymentStatus
+    from .portalauthenticateduser import (
+        PortalAuthenticatedUser,
+        PortalAuthenticatedUserTypedDict,
+    )
     from .presentmentcurrency import PresentmentCurrency
     from .product import Prices, PricesTypedDict, Product, ProductTypedDict
     from .productbenefitsupdate import (
@@ -3444,6 +3463,8 @@ __all__ = [
     "CustomerPortalCustomerMetersListResponseTypedDict",
     "CustomerPortalCustomerMetersListSecurity",
     "CustomerPortalCustomerMetersListSecurityTypedDict",
+    "CustomerPortalCustomerSessionGetAuthenticatedUserSecurity",
+    "CustomerPortalCustomerSessionGetAuthenticatedUserSecurityTypedDict",
     "CustomerPortalCustomerSessionIntrospectSecurity",
     "CustomerPortalCustomerSessionIntrospectSecurityTypedDict",
     "CustomerPortalCustomerTaxID",
@@ -4021,14 +4042,24 @@ __all__ = [
     "MemberIDFilter",
     "MemberIDFilterTypedDict",
     "MemberRole",
+    "MemberSession",
+    "MemberSessionCreate",
+    "MemberSessionCreateTypedDict",
+    "MemberSessionTypedDict",
     "MemberSortProperty",
     "MemberTypedDict",
+    "MemberUpdate",
+    "MemberUpdateTypedDict",
     "MembersDeleteMemberRequest",
     "MembersDeleteMemberRequestTypedDict",
+    "MembersGetMemberRequest",
+    "MembersGetMemberRequestTypedDict",
     "MembersListMembersRequest",
     "MembersListMembersRequestTypedDict",
     "MembersListMembersResponse",
     "MembersListMembersResponseTypedDict",
+    "MembersUpdateMemberRequest",
+    "MembersUpdateMemberRequestTypedDict",
     "Meta",
     "MetaTypedDict",
     "Metadata",
@@ -4387,6 +4418,8 @@ __all__ = [
     "PaymentsListResponseTypedDict",
     "Permission",
     "PolarError",
+    "PortalAuthenticatedUser",
+    "PortalAuthenticatedUserTypedDict",
     "PresentmentCurrency",
     "Prices",
     "PricesTypedDict",
@@ -5265,6 +5298,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalCustomerMetersListSecurityTypedDict": ".customer_portal_customer_meters_listop",
     "MeterIDFilter": ".customer_portal_customer_meters_listop",
     "MeterIDFilterTypedDict": ".customer_portal_customer_meters_listop",
+    "CustomerPortalCustomerSessionGetAuthenticatedUserSecurity": ".customer_portal_customer_session_get_authenticated_userop",
+    "CustomerPortalCustomerSessionGetAuthenticatedUserSecurityTypedDict": ".customer_portal_customer_session_get_authenticated_userop",
     "CustomerPortalCustomerSessionIntrospectSecurity": ".customer_portal_customer_session_introspectop",
     "CustomerPortalCustomerSessionIntrospectSecurityTypedDict": ".customer_portal_customer_session_introspectop",
     "CustomerPortalCustomersAddPaymentMethodSecurity": ".customer_portal_customers_add_payment_methodop",
@@ -5986,11 +6021,21 @@ _dynamic_imports: dict[str, str] = {
     "MemberRole": ".memberrole",
     "MembersDeleteMemberRequest": ".members_delete_memberop",
     "MembersDeleteMemberRequestTypedDict": ".members_delete_memberop",
+    "MembersGetMemberRequest": ".members_get_memberop",
+    "MembersGetMemberRequestTypedDict": ".members_get_memberop",
     "MembersListMembersRequest": ".members_list_membersop",
     "MembersListMembersRequestTypedDict": ".members_list_membersop",
     "MembersListMembersResponse": ".members_list_membersop",
     "MembersListMembersResponseTypedDict": ".members_list_membersop",
+    "MembersUpdateMemberRequest": ".members_update_memberop",
+    "MembersUpdateMemberRequestTypedDict": ".members_update_memberop",
+    "MemberSession": ".membersession",
+    "MemberSessionTypedDict": ".membersession",
+    "MemberSessionCreate": ".membersessioncreate",
+    "MemberSessionCreateTypedDict": ".membersessioncreate",
     "MemberSortProperty": ".membersortproperty",
+    "MemberUpdate": ".memberupdate",
+    "MemberUpdateTypedDict": ".memberupdate",
     "MetadataOutputType": ".metadataoutputtype",
     "MetadataOutputTypeTypedDict": ".metadataoutputtype",
     "Meter": ".meter",
@@ -6382,6 +6427,8 @@ _dynamic_imports: dict[str, str] = {
     "PaymentsListResponseTypedDict": ".payments_listop",
     "PaymentSortProperty": ".paymentsortproperty",
     "PaymentStatus": ".paymentstatus",
+    "PortalAuthenticatedUser": ".portalauthenticateduser",
+    "PortalAuthenticatedUserTypedDict": ".portalauthenticateduser",
     "PresentmentCurrency": ".presentmentcurrency",
     "Prices": ".product",
     "PricesTypedDict": ".product",

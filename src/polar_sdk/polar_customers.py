@@ -196,8 +196,6 @@ class PolarCustomers(BaseSDK):
 
         Update authenticated customer.
 
-        **Scopes**: `customer_portal:write`
-
         :param security:
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -298,8 +296,6 @@ class PolarCustomers(BaseSDK):
 
         Update authenticated customer.
 
-        **Scopes**: `customer_portal:write`
-
         :param security:
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -397,8 +393,6 @@ class PolarCustomers(BaseSDK):
         r"""List Customer Payment Methods
 
         Get saved payment methods of the authenticated customer.
-
-        **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
         :param page: Page number, defaults to 1.
@@ -528,8 +522,6 @@ class PolarCustomers(BaseSDK):
         r"""List Customer Payment Methods
 
         Get saved payment methods of the authenticated customer.
-
-        **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
         :param page: Page number, defaults to 1.
@@ -662,8 +654,6 @@ class PolarCustomers(BaseSDK):
 
         Add a payment method to the authenticated customer.
 
-        **Scopes**: `customer_portal:read` `customer_portal:write`
-
         :param security:
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -766,8 +756,6 @@ class PolarCustomers(BaseSDK):
 
         Add a payment method to the authenticated customer.
 
-        **Scopes**: `customer_portal:read` `customer_portal:write`
-
         :param security:
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -869,8 +857,6 @@ class PolarCustomers(BaseSDK):
         r"""Confirm Customer Payment Method
 
         Confirm a payment method for the authenticated customer.
-
-        **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
         :param request: The request object to send.
@@ -979,8 +965,6 @@ class PolarCustomers(BaseSDK):
 
         Confirm a payment method for the authenticated customer.
 
-        **Scopes**: `customer_portal:read` `customer_portal:write`
-
         :param security:
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -1085,8 +1069,6 @@ class PolarCustomers(BaseSDK):
 
         Delete a payment method from the authenticated customer.
 
-        **Scopes**: `customer_portal:read` `customer_portal:write`
-
         :param security:
         :param id:
         :param retries: Override the default retry configuration for this method
@@ -1190,8 +1172,6 @@ class PolarCustomers(BaseSDK):
         r"""Delete Customer Payment Method
 
         Delete a payment method from the authenticated customer.
-
-        **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
         :param id:

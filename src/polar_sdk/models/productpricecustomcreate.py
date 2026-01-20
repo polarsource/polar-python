@@ -16,7 +16,7 @@ class ProductPriceCustomCreateTypedDict(TypedDict):
     amount_type: Literal["custom"]
     price_currency: NotRequired[str]
     r"""The currency. Currently, only `usd` is supported."""
-    minimum_amount: NotRequired[Nullable[int]]
+    minimum_amount: NotRequired[int]
     r"""The minimum amount the customer can pay."""
     maximum_amount: NotRequired[Nullable[int]]
     r"""The maximum amount the customer can pay."""
@@ -35,7 +35,7 @@ class ProductPriceCustomCreate(BaseModel):
     price_currency: Optional[str] = "usd"
     r"""The currency. Currently, only `usd` is supported."""
 
-    minimum_amount: OptionalNullable[int] = UNSET
+    minimum_amount: Optional[int] = 50
     r"""The minimum amount the customer can pay."""
 
     maximum_amount: OptionalNullable[int] = UNSET
@@ -52,7 +52,7 @@ class ProductPriceCustomCreate(BaseModel):
             "maximum_amount",
             "preset_amount",
         ]
-        nullable_fields = ["minimum_amount", "maximum_amount", "preset_amount"]
+        nullable_fields = ["maximum_amount", "preset_amount"]
         null_default_fields = []
 
         serialized = handler(self)

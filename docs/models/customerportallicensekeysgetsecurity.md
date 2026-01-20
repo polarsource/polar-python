@@ -5,4 +5,5 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `customer_session` | *str*              | :heavy_check_mark: | N/A                |
+| `customer_session` | *Optional[str]*    | :heavy_minus_sign: | N/A                |
+| `member_session`   | *Optional[str]*    | :heavy_minus_sign: | N/A                |

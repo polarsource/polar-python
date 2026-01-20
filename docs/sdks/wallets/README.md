@@ -12,8 +12,6 @@
 
 List wallets of the authenticated customer.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="python" operationID="customer_portal:wallets:list" method="get" path="/v1/customer-portal/wallets/" -->
@@ -59,8 +57,6 @@ with Polar() as polar:
 ## get
 
 Get a wallet by ID for the authenticated customer.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
