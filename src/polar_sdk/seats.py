@@ -218,8 +218,6 @@ class Seats(BaseSDK):
     ) -> models.CustomerSeat:
         r"""Assign Seat
 
-        **Scopes**: `customer_portal:write`
-
         :param security:
         :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
@@ -314,8 +312,6 @@ class Seats(BaseSDK):
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.CustomerSeat:
         r"""Assign Seat
-
-        **Scopes**: `customer_portal:write`
 
         :param security:
         :param request: The request object to send.
@@ -412,8 +408,6 @@ class Seats(BaseSDK):
     ) -> models.CustomerSeat:
         r"""Revoke Seat
 
-        **Scopes**: `customer_portal:write`
-
         :param security:
         :param seat_id:
         :param retries: Override the default retry configuration for this method
@@ -505,8 +499,6 @@ class Seats(BaseSDK):
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.CustomerSeat:
         r"""Revoke Seat
-
-        **Scopes**: `customer_portal:write`
 
         :param security:
         :param seat_id:
@@ -600,8 +592,6 @@ class Seats(BaseSDK):
     ) -> models.CustomerSeat:
         r"""Resend Invitation
 
-        **Scopes**: `customer_portal:write`
-
         :param security:
         :param seat_id:
         :param retries: Override the default retry configuration for this method
@@ -693,8 +683,6 @@ class Seats(BaseSDK):
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.CustomerSeat:
         r"""Resend Invitation
-
-        **Scopes**: `customer_portal:write`
 
         :param security:
         :param seat_id:

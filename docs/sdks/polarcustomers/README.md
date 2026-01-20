@@ -58,8 +58,6 @@ with Polar() as polar:
 
 Update authenticated customer.
 
-**Scopes**: `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="python" operationID="customer_portal:customers:update" method="patch" path="/v1/customer-portal/customers/me" -->
@@ -106,8 +104,6 @@ with Polar() as polar:
 
 Get saved payment methods of the authenticated customer.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="python" operationID="customer_portal:customers:list_payment_methods" method="get" path="/v1/customer-portal/customers/me/payment-methods" -->
@@ -152,8 +148,6 @@ with Polar() as polar:
 ## add_payment_method
 
 Add a payment method to the authenticated customer.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 
@@ -201,8 +195,6 @@ with Polar() as polar:
 
 Confirm a payment method for the authenticated customer.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="python" operationID="customer_portal:customers:confirm_payment_method" method="post" path="/v1/customer-portal/customers/me/payment-methods/confirm" -->
@@ -248,8 +240,6 @@ with Polar() as polar:
 ## delete_payment_method
 
 Delete a payment method from the authenticated customer.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
 
 ### Example Usage
 

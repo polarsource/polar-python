@@ -12,12 +12,13 @@ from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CustomerPortalCustomersListPaymentMethodsSecurityTypedDict(TypedDict):
-    customer_session: str
+    customer_session: NotRequired[str]
+    member_session: NotRequired[str]
 
 
 class CustomerPortalCustomersListPaymentMethodsSecurity(BaseModel):
     customer_session: Annotated[
-        str,
+        Optional[str],
         FieldMetadata(
             security=SecurityMetadata(
                 scheme=True,
@@ -26,7 +27,19 @@ class CustomerPortalCustomersListPaymentMethodsSecurity(BaseModel):
                 field_name="Authorization",
             )
         ),
-    ]
+    ] = None
+
+    member_session: Annotated[
+        Optional[str],
+        FieldMetadata(
+            security=SecurityMetadata(
+                scheme=True,
+                scheme_type="http",
+                sub_type="bearer",
+                field_name="Authorization",
+            )
+        ),
+    ] = None
 
 
 class CustomerPortalCustomersListPaymentMethodsRequestTypedDict(TypedDict):

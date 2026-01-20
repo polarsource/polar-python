@@ -4,16 +4,18 @@ from __future__ import annotations
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata, SecurityMetadata
 from pydantic import model_serializer
+from typing import Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CustomerPortalSeatsListSeatsSecurityTypedDict(TypedDict):
-    customer_session: str
+    customer_session: NotRequired[str]
+    member_session: NotRequired[str]
 
 
 class CustomerPortalSeatsListSeatsSecurity(BaseModel):
     customer_session: Annotated[
-        str,
+        Optional[str],
         FieldMetadata(
             security=SecurityMetadata(
                 scheme=True,
@@ -22,7 +24,19 @@ class CustomerPortalSeatsListSeatsSecurity(BaseModel):
                 field_name="Authorization",
             )
         ),
-    ]
+    ] = None
+
+    member_session: Annotated[
+        Optional[str],
+        FieldMetadata(
+            security=SecurityMetadata(
+                scheme=True,
+                scheme_type="http",
+                sub_type="bearer",
+                field_name="Authorization",
+            )
+        ),
+    ] = None
 
 
 class CustomerPortalSeatsListSeatsRequestTypedDict(TypedDict):

@@ -32,7 +32,7 @@ class ProductPriceCustomTypedDict(TypedDict):
     recurring_interval: Nullable[SubscriptionRecurringInterval]
     price_currency: str
     r"""The currency."""
-    minimum_amount: Nullable[int]
+    minimum_amount: int
     r"""The minimum amount the customer can pay."""
     maximum_amount: Nullable[int]
     r"""The maximum amount the customer can pay."""
@@ -73,7 +73,7 @@ class ProductPriceCustom(BaseModel):
     price_currency: str
     r"""The currency."""
 
-    minimum_amount: Nullable[int]
+    minimum_amount: int
     r"""The minimum amount the customer can pay."""
 
     maximum_amount: Nullable[int]
@@ -93,7 +93,6 @@ class ProductPriceCustom(BaseModel):
         nullable_fields = [
             "modified_at",
             "recurring_interval",
-            "minimum_amount",
             "maximum_amount",
             "preset_amount",
         ]

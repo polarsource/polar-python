@@ -15,12 +15,13 @@ from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 class CustomerPortalOrdersListSecurityTypedDict(TypedDict):
-    customer_session: str
+    customer_session: NotRequired[str]
+    member_session: NotRequired[str]
 
 
 class CustomerPortalOrdersListSecurity(BaseModel):
     customer_session: Annotated[
-        str,
+        Optional[str],
         FieldMetadata(
             security=SecurityMetadata(
                 scheme=True,
@@ -29,7 +30,19 @@ class CustomerPortalOrdersListSecurity(BaseModel):
                 field_name="Authorization",
             )
         ),
-    ]
+    ] = None
+
+    member_session: Annotated[
+        Optional[str],
+        FieldMetadata(
+            security=SecurityMetadata(
+                scheme=True,
+                scheme_type="http",
+                sub_type="bearer",
+                field_name="Authorization",
+            )
+        ),
+    ] = None
 
 
 CustomerPortalOrdersListQueryParamProductIDFilterTypedDict = TypeAliasType(

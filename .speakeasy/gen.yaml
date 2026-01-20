@@ -16,6 +16,7 @@ generation:
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: false
     sharedErrorComponentsApr2025: false
+    sharedNestedComponentsJan2026: false
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
@@ -28,7 +29,7 @@ generation:
     skipResponseBodyAssertions: false
   persistentEdits: {}
 python:
-  version: 0.28.2
+  version: 0.28.3
   additionalDependencies:
     dev:
       pydantic-ai-slim: ^0.1.0
@@ -79,3 +80,4 @@ python:
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2
+  useAsyncHooks: false

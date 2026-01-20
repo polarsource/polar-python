@@ -11,6 +11,9 @@
 
 Create a customer session.
 
+For organizations with `member_model_enabled`, this will automatically
+create a member session for the owner member of the customer.
+
 **Scopes**: `customer_sessions:write`
 
 ### Example Usage

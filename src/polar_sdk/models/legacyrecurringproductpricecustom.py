@@ -33,7 +33,7 @@ class LegacyRecurringProductPriceCustomTypedDict(TypedDict):
     recurring_interval: SubscriptionRecurringInterval
     price_currency: str
     r"""The currency."""
-    minimum_amount: Nullable[int]
+    minimum_amount: int
     r"""The minimum amount the customer can pay."""
     maximum_amount: Nullable[int]
     r"""The maximum amount the customer can pay."""
@@ -73,7 +73,7 @@ class LegacyRecurringProductPriceCustom(BaseModel):
     price_currency: str
     r"""The currency."""
 
-    minimum_amount: Nullable[int]
+    minimum_amount: int
     r"""The minimum amount the customer can pay."""
 
     maximum_amount: Nullable[int]
@@ -101,12 +101,7 @@ class LegacyRecurringProductPriceCustom(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
-        nullable_fields = [
-            "modified_at",
-            "minimum_amount",
-            "maximum_amount",
-            "preset_amount",
-        ]
+        nullable_fields = ["modified_at", "maximum_amount", "preset_amount"]
         null_default_fields = []
 
         serialized = handler(self)

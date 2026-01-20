@@ -48,8 +48,6 @@ class PolarOrders(BaseSDK):
 
         List orders of the authenticated customer.
 
-        **Scopes**: `customer_portal:read` `customer_portal:write`
-
         :param security:
         :param product_id: Filter by product ID.
         :param product_billing_type: Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
@@ -212,8 +210,6 @@ class PolarOrders(BaseSDK):
 
         List orders of the authenticated customer.
 
-        **Scopes**: `customer_portal:read` `customer_portal:write`
-
         :param security:
         :param product_id: Filter by product ID.
         :param product_billing_type: Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
@@ -355,8 +351,6 @@ class PolarOrders(BaseSDK):
 
         Get an order by ID for the authenticated customer.
 
-        **Scopes**: `customer_portal:read` `customer_portal:write`
-
         :param security:
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
@@ -455,8 +449,6 @@ class PolarOrders(BaseSDK):
         r"""Get Order
 
         Get an order by ID for the authenticated customer.
-
-        **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
         :param id: The order ID.
@@ -559,8 +551,6 @@ class PolarOrders(BaseSDK):
         r"""Update Order
 
         Update an order for the authenticated customer.
-
-        **Scopes**: `customer_portal:write`
 
         :param security:
         :param id: The order ID.
@@ -675,8 +665,6 @@ class PolarOrders(BaseSDK):
 
         Update an order for the authenticated customer.
 
-        **Scopes**: `customer_portal:write`
-
         :param security:
         :param id: The order ID.
         :param customer_order_update:
@@ -787,8 +775,6 @@ class PolarOrders(BaseSDK):
 
         Trigger generation of an order's invoice.
 
-        **Scopes**: `customer_portal:read` `customer_portal:write`
-
         :param security:
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
@@ -886,8 +872,6 @@ class PolarOrders(BaseSDK):
 
         Trigger generation of an order's invoice.
 
-        **Scopes**: `customer_portal:read` `customer_portal:write`
-
         :param security:
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
@@ -984,8 +968,6 @@ class PolarOrders(BaseSDK):
         r"""Get Order Invoice
 
         Get an order's invoice data.
-
-        **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
         :param id: The order ID.
@@ -1086,8 +1068,6 @@ class PolarOrders(BaseSDK):
 
         Get an order's invoice data.
 
-        **Scopes**: `customer_portal:read` `customer_portal:write`
-
         :param security:
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
@@ -1187,8 +1167,6 @@ class PolarOrders(BaseSDK):
 
         Get the current payment status for an order.
 
-        **Scopes**: `customer_portal:read` `customer_portal:write`
-
         :param security:
         :param id: The order ID.
         :param retries: Override the default retry configuration for this method
@@ -1287,8 +1265,6 @@ class PolarOrders(BaseSDK):
         r"""Get Order Payment Status
 
         Get the current payment status for an order.
-
-        **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
         :param id: The order ID.
@@ -1392,8 +1368,6 @@ class PolarOrders(BaseSDK):
         r"""Confirm Retry Payment
 
         Confirm a retry payment using a Stripe confirmation token.
-
-        **Scopes**: `customer_portal:write`
 
         :param security:
         :param id: The order ID.
@@ -1515,8 +1489,6 @@ class PolarOrders(BaseSDK):
         r"""Confirm Retry Payment
 
         Confirm a retry payment using a Stripe confirmation token.
-
-        **Scopes**: `customer_portal:write`
 
         :param security:
         :param id: The order ID.

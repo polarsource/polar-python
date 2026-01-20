@@ -2,32 +2,32 @@
 
 from __future__ import annotations
 from .addressinput import AddressInput, AddressInputTypedDict
-from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
 class OrderUpdateTypedDict(TypedDict):
     r"""Schema to update an order."""
 
-    billing_name: Nullable[str]
-    r"""The name of the customer that should appear on the invoice. Can't be updated after the invoice is generated."""
-    billing_address: Nullable[AddressInputTypedDict]
-    r"""The address of the customer that should appear on the invoice. Can't be updated after the invoice is generated."""
+    billing_name: NotRequired[Nullable[str]]
+    r"""The name of the customer that should appear on the invoice."""
+    billing_address: NotRequired[Nullable[AddressInputTypedDict]]
+    r"""The address of the customer that should appear on the invoice. Country and state fields cannot be updated."""
 
 
 class OrderUpdate(BaseModel):
     r"""Schema to update an order."""
 
-    billing_name: Nullable[str]
-    r"""The name of the customer that should appear on the invoice. Can't be updated after the invoice is generated."""
+    billing_name: OptionalNullable[str] = UNSET
+    r"""The name of the customer that should appear on the invoice."""
 
-    billing_address: Nullable[AddressInput]
-    r"""The address of the customer that should appear on the invoice. Can't be updated after the invoice is generated."""
+    billing_address: OptionalNullable[AddressInput] = UNSET
+    r"""The address of the customer that should appear on the invoice. Country and state fields cannot be updated."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["billing_name", "billing_address"]
         nullable_fields = ["billing_name", "billing_address"]
         null_default_fields = []
 

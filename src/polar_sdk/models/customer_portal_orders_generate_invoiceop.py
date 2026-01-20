@@ -9,16 +9,17 @@ from polar_sdk.models import PolarError
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, PathParamMetadata, SecurityMetadata
 from typing import Optional, Union
-from typing_extensions import Annotated, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 class CustomerPortalOrdersGenerateInvoiceSecurityTypedDict(TypedDict):
-    customer_session: str
+    customer_session: NotRequired[str]
+    member_session: NotRequired[str]
 
 
 class CustomerPortalOrdersGenerateInvoiceSecurity(BaseModel):
     customer_session: Annotated[
-        str,
+        Optional[str],
         FieldMetadata(
             security=SecurityMetadata(
                 scheme=True,
@@ -27,7 +28,19 @@ class CustomerPortalOrdersGenerateInvoiceSecurity(BaseModel):
                 field_name="Authorization",
             )
         ),
-    ]
+    ] = None
+
+    member_session: Annotated[
+        Optional[str],
+        FieldMetadata(
+            security=SecurityMetadata(
+                scheme=True,
+                scheme_type="http",
+                sub_type="bearer",
+                field_name="Authorization",
+            )
+        ),
+    ] = None
 
 
 class CustomerPortalOrdersGenerateInvoiceRequestTypedDict(TypedDict):

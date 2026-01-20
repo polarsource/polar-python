@@ -56,7 +56,7 @@ with Polar() as polar:
 
 ## assign_seat
 
-**Scopes**: `customer_portal:write`
+Assign Seat
 
 ### Example Usage
 
@@ -98,7 +98,7 @@ with Polar() as polar:
 
 ## revoke_seat
 
-**Scopes**: `customer_portal:write`
+Revoke Seat
 
 ### Example Usage
 
@@ -140,7 +140,7 @@ with Polar() as polar:
 
 ## resend_invitation
 
-**Scopes**: `customer_portal:write`
+Resend Invitation
 
 ### Example Usage
 

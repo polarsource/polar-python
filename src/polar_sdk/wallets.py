@@ -29,8 +29,6 @@ class Wallets(BaseSDK):
 
         List wallets of the authenticated customer.
 
-        **Scopes**: `customer_portal:read` `customer_portal:write`
-
         :param security:
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -162,8 +160,6 @@ class Wallets(BaseSDK):
 
         List wallets of the authenticated customer.
 
-        **Scopes**: `customer_portal:read` `customer_portal:write`
-
         :param security:
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -293,8 +289,6 @@ class Wallets(BaseSDK):
 
         Get a wallet by ID for the authenticated customer.
 
-        **Scopes**: `customer_portal:read` `customer_portal:write`
-
         :param security:
         :param id: The wallet ID.
         :param retries: Override the default retry configuration for this method
@@ -393,8 +387,6 @@ class Wallets(BaseSDK):
         r"""Get Wallet
 
         Get a wallet by ID for the authenticated customer.
-
-        **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
         :param id: The wallet ID.
