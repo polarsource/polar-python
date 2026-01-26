@@ -1251,6 +1251,12 @@ class Webhooks(BaseSDK):
         ] = UNSET,
         start_timestamp: OptionalNullable[datetime] = UNSET,
         end_timestamp: OptionalNullable[datetime] = UNSET,
+        succeeded: OptionalNullable[bool] = UNSET,
+        query: OptionalNullable[str] = UNSET,
+        http_code_class: OptionalNullable[models.HTTPCodeClass] = UNSET,
+        event_type: OptionalNullable[
+            Union[models.QueryParamEventType, models.QueryParamEventTypeTypedDict]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -1269,6 +1275,10 @@ class Webhooks(BaseSDK):
         :param endpoint_id: Filter by webhook endpoint ID.
         :param start_timestamp: Filter deliveries after this timestamp.
         :param end_timestamp: Filter deliveries before this timestamp.
+        :param succeeded: Filter by delivery success status.
+        :param query: Query to filter webhook deliveries.
+        :param http_code_class: Filter by HTTP response code class (2xx, 3xx, 4xx, 5xx).
+        :param event_type: Filter by webhook event type.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -1290,6 +1300,10 @@ class Webhooks(BaseSDK):
             endpoint_id=endpoint_id,
             start_timestamp=start_timestamp,
             end_timestamp=end_timestamp,
+            succeeded=succeeded,
+            query=query,
+            http_code_class=http_code_class,
+            event_type=event_type,
             page=page,
             limit=limit,
         )
@@ -1353,6 +1367,10 @@ class Webhooks(BaseSDK):
                 endpoint_id=endpoint_id,
                 start_timestamp=start_timestamp,
                 end_timestamp=end_timestamp,
+                succeeded=succeeded,
+                query=query,
+                http_code_class=http_code_class,
+                event_type=event_type,
                 page=next_page,
                 limit=limit,
                 retries=retries,
@@ -1388,6 +1406,12 @@ class Webhooks(BaseSDK):
         ] = UNSET,
         start_timestamp: OptionalNullable[datetime] = UNSET,
         end_timestamp: OptionalNullable[datetime] = UNSET,
+        succeeded: OptionalNullable[bool] = UNSET,
+        query: OptionalNullable[str] = UNSET,
+        http_code_class: OptionalNullable[models.HTTPCodeClass] = UNSET,
+        event_type: OptionalNullable[
+            Union[models.QueryParamEventType, models.QueryParamEventTypeTypedDict]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -1406,6 +1430,10 @@ class Webhooks(BaseSDK):
         :param endpoint_id: Filter by webhook endpoint ID.
         :param start_timestamp: Filter deliveries after this timestamp.
         :param end_timestamp: Filter deliveries before this timestamp.
+        :param succeeded: Filter by delivery success status.
+        :param query: Query to filter webhook deliveries.
+        :param http_code_class: Filter by HTTP response code class (2xx, 3xx, 4xx, 5xx).
+        :param event_type: Filter by webhook event type.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -1427,6 +1455,10 @@ class Webhooks(BaseSDK):
             endpoint_id=endpoint_id,
             start_timestamp=start_timestamp,
             end_timestamp=end_timestamp,
+            succeeded=succeeded,
+            query=query,
+            http_code_class=http_code_class,
+            event_type=event_type,
             page=page,
             limit=limit,
         )
@@ -1490,6 +1522,10 @@ class Webhooks(BaseSDK):
                 endpoint_id=endpoint_id,
                 start_timestamp=start_timestamp,
                 end_timestamp=end_timestamp,
+                succeeded=succeeded,
+                query=query,
+                http_code_class=http_code_class,
+                event_type=event_type,
                 page=next_page,
                 limit=limit,
                 retries=retries,

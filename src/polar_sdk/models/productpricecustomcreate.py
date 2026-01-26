@@ -17,11 +17,11 @@ class ProductPriceCustomCreateTypedDict(TypedDict):
     price_currency: NotRequired[str]
     r"""The currency. Currently, only `usd` is supported."""
     minimum_amount: NotRequired[int]
-    r"""The minimum amount the customer can pay."""
+    r"""The minimum amount the customer can pay. If set to 0, the price is 'free or pay what you want' and $0 is accepted. If set to a value between 1-49, it will be rejected. Defaults to 50 cents."""
     maximum_amount: NotRequired[Nullable[int]]
     r"""The maximum amount the customer can pay."""
     preset_amount: NotRequired[Nullable[int]]
-    r"""The initial amount shown to the customer."""
+    r"""The initial amount shown to the customer. If 0, the customer will see $0 as the default. Values between 1-49 are rejected."""
 
 
 class ProductPriceCustomCreate(BaseModel):
@@ -36,13 +36,13 @@ class ProductPriceCustomCreate(BaseModel):
     r"""The currency. Currently, only `usd` is supported."""
 
     minimum_amount: Optional[int] = 50
-    r"""The minimum amount the customer can pay."""
+    r"""The minimum amount the customer can pay. If set to 0, the price is 'free or pay what you want' and $0 is accepted. If set to a value between 1-49, it will be rejected. Defaults to 50 cents."""
 
     maximum_amount: OptionalNullable[int] = UNSET
     r"""The maximum amount the customer can pay."""
 
     preset_amount: OptionalNullable[int] = UNSET
-    r"""The initial amount shown to the customer."""
+    r"""The initial amount shown to the customer. If 0, the customer will see $0 as the default. Values between 1-49 are rejected."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

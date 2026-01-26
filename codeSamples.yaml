@@ -452,7 +452,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    polar.customers.delete_external(external_id=\"<id>\")\n\n    # Use the SDK ..."
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    polar.customers.delete_external(external_id=\"<id>\", anonymize=False)\n\n    # Use the SDK ..."
   - target: $["paths"]["/v1/customers/external/{external_id}"]["get"]
     update:
       "x-codeSamples":
@@ -476,7 +476,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    polar.customers.delete(id=\"<value>\")\n\n    # Use the SDK ..."
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    polar.customers.delete(id=\"<value>\", anonymize=False)\n\n    # Use the SDK ..."
   - target: $["paths"]["/v1/customers/{id}"]["get"]
     update:
       "x-codeSamples":
@@ -813,6 +813,30 @@ actions:
         - "lang": "python"
           "label": "Python (SDK)"
           "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.orders.generate_invoice(id=\"<value>\")\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/organization-access-tokens/"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.organization_access_tokens.list(organization_id=\"1dbfc517-0bbf-4301-9ba8-555ca42b9737\", page=1, limit=10)\n\n    while res is not None:\n        # Handle items\n\n        res = res.next()"
+  - target: $["paths"]["/v1/organization-access-tokens/"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.organization_access_tokens.create(request={\n        \"comment\": \"The Football Is Good For Training And Recreational Purposes\",\n        \"scopes\": [],\n    })\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/organization-access-tokens/{id}"]["delete"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    polar.organization_access_tokens.delete(id=\"<value>\")\n\n    # Use the SDK ..."
+  - target: $["paths"]["/v1/organization-access-tokens/{id}"]["patch"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.organization_access_tokens.update(id=\"<value>\", organization_access_token_update={})\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/organizations/"]["get"]
     update:
       "x-codeSamples":

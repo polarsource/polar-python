@@ -17,6 +17,7 @@ class BalanceRefundMetadataTypedDict(TypedDict):
     tax_amount: int
     fee: int
     order_id: NotRequired[str]
+    order_created_at: NotRequired[str]
     product_id: NotRequired[str]
     subscription_id: NotRequired[str]
     refundable_amount: NotRequired[int]
@@ -43,6 +44,8 @@ class BalanceRefundMetadata(BaseModel):
 
     order_id: Optional[str] = None
 
+    order_created_at: Optional[str] = None
+
     product_id: Optional[str] = None
 
     subscription_id: Optional[str] = None
@@ -57,6 +60,7 @@ class BalanceRefundMetadata(BaseModel):
     def serialize_model(self, handler):
         optional_fields = [
             "order_id",
+            "order_created_at",
             "product_id",
             "subscription_id",
             "refundable_amount",

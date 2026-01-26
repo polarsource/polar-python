@@ -13,6 +13,8 @@ from typing_extensions import Annotated, NotRequired, TypedDict
 class MembersListMembersRequestTypedDict(TypedDict):
     customer_id: NotRequired[Nullable[str]]
     r"""Filter by customer ID."""
+    external_customer_id: NotRequired[Nullable[str]]
+    r"""Filter by customer external ID."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -27,6 +29,12 @@ class MembersListMembersRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by customer ID."""
+
+    external_customer_id: Annotated[
+        OptionalNullable[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by customer external ID."""
 
     page: Annotated[
         Optional[int],
@@ -48,8 +56,14 @@ class MembersListMembersRequest(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["customer_id", "page", "limit", "sorting"]
-        nullable_fields = ["customer_id", "sorting"]
+        optional_fields = [
+            "customer_id",
+            "external_customer_id",
+            "page",
+            "limit",
+            "sorting",
+        ]
+        nullable_fields = ["customer_id", "external_customer_id", "sorting"]
         null_default_fields = []
 
         serialized = handler(self)

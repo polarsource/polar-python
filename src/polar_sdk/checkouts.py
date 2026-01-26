@@ -31,6 +31,12 @@ class Checkouts(BaseSDK):
                 models.CheckoutsListQueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        external_customer_id: OptionalNullable[
+            Union[
+                models.CheckoutsListQueryParamExternalCustomerIDFilter,
+                models.CheckoutsListQueryParamExternalCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
         status: OptionalNullable[
             Union[models.QueryParamStatusFilter, models.QueryParamStatusFilterTypedDict]
         ] = UNSET,
@@ -52,6 +58,7 @@ class Checkouts(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param customer_id: Filter by customer ID.
+        :param external_customer_id: Filter by customer external ID.
         :param status: Filter by checkout session status.
         :param query: Filter by customer email.
         :param page: Page number, defaults to 1.
@@ -76,6 +83,7 @@ class Checkouts(BaseSDK):
             organization_id=organization_id,
             product_id=product_id,
             customer_id=customer_id,
+            external_customer_id=external_customer_id,
             status=status,
             query=query,
             page=page,
@@ -142,6 +150,7 @@ class Checkouts(BaseSDK):
                 organization_id=organization_id,
                 product_id=product_id,
                 customer_id=customer_id,
+                external_customer_id=external_customer_id,
                 status=status,
                 query=query,
                 page=next_page,
@@ -191,6 +200,12 @@ class Checkouts(BaseSDK):
                 models.CheckoutsListQueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        external_customer_id: OptionalNullable[
+            Union[
+                models.CheckoutsListQueryParamExternalCustomerIDFilter,
+                models.CheckoutsListQueryParamExternalCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
         status: OptionalNullable[
             Union[models.QueryParamStatusFilter, models.QueryParamStatusFilterTypedDict]
         ] = UNSET,
@@ -212,6 +227,7 @@ class Checkouts(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param product_id: Filter by product ID.
         :param customer_id: Filter by customer ID.
+        :param external_customer_id: Filter by customer external ID.
         :param status: Filter by checkout session status.
         :param query: Filter by customer email.
         :param page: Page number, defaults to 1.
@@ -236,6 +252,7 @@ class Checkouts(BaseSDK):
             organization_id=organization_id,
             product_id=product_id,
             customer_id=customer_id,
+            external_customer_id=external_customer_id,
             status=status,
             query=query,
             page=page,
@@ -302,6 +319,7 @@ class Checkouts(BaseSDK):
                 organization_id=organization_id,
                 product_id=product_id,
                 customer_id=customer_id,
+                external_customer_id=external_customer_id,
                 status=status,
                 query=query,
                 page=next_page,

@@ -37,6 +37,18 @@ BenefitGrantsListQueryParamCustomerIDFilter = TypeAliasType(
 r"""Filter by customer ID."""
 
 
+QueryParamExternalCustomerIDFilterTypedDict = TypeAliasType(
+    "QueryParamExternalCustomerIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by customer external ID."""
+
+
+QueryParamExternalCustomerIDFilter = TypeAliasType(
+    "QueryParamExternalCustomerIDFilter", Union[str, List[str]]
+)
+r"""Filter by customer external ID."""
+
+
 class BenefitGrantsListRequestTypedDict(TypedDict):
     organization_id: NotRequired[
         Nullable[BenefitGrantsListQueryParamOrganizationIDFilterTypedDict]
@@ -46,6 +58,10 @@ class BenefitGrantsListRequestTypedDict(TypedDict):
         Nullable[BenefitGrantsListQueryParamCustomerIDFilterTypedDict]
     ]
     r"""Filter by customer ID."""
+    external_customer_id: NotRequired[
+        Nullable[QueryParamExternalCustomerIDFilterTypedDict]
+    ]
+    r"""Filter by customer external ID."""
     is_granted: NotRequired[Nullable[bool]]
     r"""Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned."""
     page: NotRequired[int]
@@ -68,6 +84,12 @@ class BenefitGrantsListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by customer ID."""
+
+    external_customer_id: Annotated[
+        OptionalNullable[QueryParamExternalCustomerIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by customer external ID."""
 
     is_granted: Annotated[
         OptionalNullable[bool],
@@ -98,12 +120,19 @@ class BenefitGrantsListRequest(BaseModel):
         optional_fields = [
             "organization_id",
             "customer_id",
+            "external_customer_id",
             "is_granted",
             "page",
             "limit",
             "sorting",
         ]
-        nullable_fields = ["organization_id", "customer_id", "is_granted", "sorting"]
+        nullable_fields = [
+            "organization_id",
+            "customer_id",
+            "external_customer_id",
+            "is_granted",
+            "sorting",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

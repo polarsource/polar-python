@@ -71,3 +71,5 @@ class Scope(str, Enum):
     NOTIFICATIONS_WRITE = "notifications:write"
     NOTIFICATION_RECIPIENTS_READ = "notification_recipients:read"
     NOTIFICATION_RECIPIENTS_WRITE = "notification_recipients:write"
+    ORGANIZATION_ACCESS_TOKENS_READ = "organization_access_tokens:read"
+    ORGANIZATION_ACCESS_TOKENS_WRITE = "organization_access_tokens:write"

@@ -43,6 +43,12 @@ class Orders(BaseSDK):
                 models.OrdersListQueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        external_customer_id: OptionalNullable[
+            Union[
+                models.OrdersListQueryParamExternalCustomerIDFilter,
+                models.OrdersListQueryParamExternalCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
         checkout_id: OptionalNullable[
             Union[models.CheckoutIDFilter, models.CheckoutIDFilterTypedDict]
         ] = UNSET,
@@ -71,6 +77,7 @@ class Orders(BaseSDK):
         :param product_billing_type: Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
         :param discount_id: Filter by discount ID.
         :param customer_id: Filter by customer ID.
+        :param external_customer_id: Filter by customer external ID.
         :param checkout_id: Filter by checkout ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -97,6 +104,7 @@ class Orders(BaseSDK):
             product_billing_type=product_billing_type,
             discount_id=discount_id,
             customer_id=customer_id,
+            external_customer_id=external_customer_id,
             checkout_id=checkout_id,
             page=page,
             limit=limit,
@@ -165,6 +173,7 @@ class Orders(BaseSDK):
                 product_billing_type=product_billing_type,
                 discount_id=discount_id,
                 customer_id=customer_id,
+                external_customer_id=external_customer_id,
                 checkout_id=checkout_id,
                 page=next_page,
                 limit=limit,
@@ -226,6 +235,12 @@ class Orders(BaseSDK):
                 models.OrdersListQueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        external_customer_id: OptionalNullable[
+            Union[
+                models.OrdersListQueryParamExternalCustomerIDFilter,
+                models.OrdersListQueryParamExternalCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
         checkout_id: OptionalNullable[
             Union[models.CheckoutIDFilter, models.CheckoutIDFilterTypedDict]
         ] = UNSET,
@@ -254,6 +269,7 @@ class Orders(BaseSDK):
         :param product_billing_type: Filter by product billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases.
         :param discount_id: Filter by discount ID.
         :param customer_id: Filter by customer ID.
+        :param external_customer_id: Filter by customer external ID.
         :param checkout_id: Filter by checkout ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -280,6 +296,7 @@ class Orders(BaseSDK):
             product_billing_type=product_billing_type,
             discount_id=discount_id,
             customer_id=customer_id,
+            external_customer_id=external_customer_id,
             checkout_id=checkout_id,
             page=page,
             limit=limit,
@@ -348,6 +365,7 @@ class Orders(BaseSDK):
                 product_billing_type=product_billing_type,
                 discount_id=discount_id,
                 customer_id=customer_id,
+                external_customer_id=external_customer_id,
                 checkout_id=checkout_id,
                 page=next_page,
                 limit=limit,

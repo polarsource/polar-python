@@ -37,6 +37,7 @@ if TYPE_CHECKING:
     from polar_sdk.metrics_sdk import MetricsSDK
     from polar_sdk.oauth2 import Oauth2
     from polar_sdk.orders import Orders
+    from polar_sdk.organization_access_tokens import OrganizationAccessTokens
     from polar_sdk.organizations import Organizations
     from polar_sdk.payments import Payments
     from polar_sdk.products import Products
@@ -77,6 +78,7 @@ class Polar(BaseSDK):
     events: "Events"
     event_types: "EventTypes"
     meters: "Meters"
+    organization_access_tokens: "OrganizationAccessTokens"
     customer_meters: "CustomerMeters"
     payments: "Payments"
     _sub_sdk_map = {
@@ -106,6 +108,10 @@ class Polar(BaseSDK):
         "events": ("polar_sdk.events", "Events"),
         "event_types": ("polar_sdk.event_types", "EventTypes"),
         "meters": ("polar_sdk.meters", "Meters"),
+        "organization_access_tokens": (
+            "polar_sdk.organization_access_tokens",
+            "OrganizationAccessTokens",
+        ),
         "customer_meters": ("polar_sdk.customer_meters", "CustomerMeters"),
         "payments": ("polar_sdk.payments", "Payments"),
     }
