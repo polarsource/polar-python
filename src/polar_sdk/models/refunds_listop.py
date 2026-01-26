@@ -62,6 +62,18 @@ RefundsListQueryParamCustomerIDFilter = TypeAliasType(
 r"""Filter by customer ID."""
 
 
+RefundsListQueryParamExternalCustomerIDFilterTypedDict = TypeAliasType(
+    "RefundsListQueryParamExternalCustomerIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by customer external ID."""
+
+
+RefundsListQueryParamExternalCustomerIDFilter = TypeAliasType(
+    "RefundsListQueryParamExternalCustomerIDFilter", Union[str, List[str]]
+)
+r"""Filter by customer external ID."""
+
+
 class RefundsListRequestTypedDict(TypedDict):
     id: NotRequired[Nullable[RefundIDFilterTypedDict]]
     r"""Filter by refund ID."""
@@ -75,6 +87,10 @@ class RefundsListRequestTypedDict(TypedDict):
     r"""Filter by subscription ID."""
     customer_id: NotRequired[Nullable[RefundsListQueryParamCustomerIDFilterTypedDict]]
     r"""Filter by customer ID."""
+    external_customer_id: NotRequired[
+        Nullable[RefundsListQueryParamExternalCustomerIDFilterTypedDict]
+    ]
+    r"""Filter by customer external ID."""
     succeeded: NotRequired[Nullable[bool]]
     r"""Filter by `succeeded`."""
     page: NotRequired[int]
@@ -116,6 +132,12 @@ class RefundsListRequest(BaseModel):
     ] = UNSET
     r"""Filter by customer ID."""
 
+    external_customer_id: Annotated[
+        OptionalNullable[RefundsListQueryParamExternalCustomerIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by customer external ID."""
+
     succeeded: Annotated[
         OptionalNullable[bool],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -148,6 +170,7 @@ class RefundsListRequest(BaseModel):
             "order_id",
             "subscription_id",
             "customer_id",
+            "external_customer_id",
             "succeeded",
             "page",
             "limit",
@@ -159,6 +182,7 @@ class RefundsListRequest(BaseModel):
             "order_id",
             "subscription_id",
             "customer_id",
+            "external_customer_id",
             "succeeded",
             "sorting",
         ]

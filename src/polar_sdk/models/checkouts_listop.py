@@ -47,6 +47,18 @@ CheckoutsListQueryParamCustomerIDFilter = TypeAliasType(
 r"""Filter by customer ID."""
 
 
+CheckoutsListQueryParamExternalCustomerIDFilterTypedDict = TypeAliasType(
+    "CheckoutsListQueryParamExternalCustomerIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by customer external ID."""
+
+
+CheckoutsListQueryParamExternalCustomerIDFilter = TypeAliasType(
+    "CheckoutsListQueryParamExternalCustomerIDFilter", Union[str, List[str]]
+)
+r"""Filter by customer external ID."""
+
+
 QueryParamStatusFilterTypedDict = TypeAliasType(
     "QueryParamStatusFilterTypedDict", Union[CheckoutStatus, List[CheckoutStatus]]
 )
@@ -68,6 +80,10 @@ class CheckoutsListRequestTypedDict(TypedDict):
     r"""Filter by product ID."""
     customer_id: NotRequired[Nullable[CheckoutsListQueryParamCustomerIDFilterTypedDict]]
     r"""Filter by customer ID."""
+    external_customer_id: NotRequired[
+        Nullable[CheckoutsListQueryParamExternalCustomerIDFilterTypedDict]
+    ]
+    r"""Filter by customer external ID."""
     status: NotRequired[Nullable[QueryParamStatusFilterTypedDict]]
     r"""Filter by checkout session status."""
     query: NotRequired[Nullable[str]]
@@ -98,6 +114,12 @@ class CheckoutsListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by customer ID."""
+
+    external_customer_id: Annotated[
+        OptionalNullable[CheckoutsListQueryParamExternalCustomerIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by customer external ID."""
 
     status: Annotated[
         OptionalNullable[QueryParamStatusFilter],
@@ -135,6 +157,7 @@ class CheckoutsListRequest(BaseModel):
             "organization_id",
             "product_id",
             "customer_id",
+            "external_customer_id",
             "status",
             "query",
             "page",
@@ -145,6 +168,7 @@ class CheckoutsListRequest(BaseModel):
             "organization_id",
             "product_id",
             "customer_id",
+            "external_customer_id",
             "status",
             "query",
             "sorting",

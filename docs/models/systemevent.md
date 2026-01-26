@@ -3,6 +3,12 @@
 
 ## Supported Types
 
+### `models.BalanceCreditOrderEvent`
+
+```python
+value: models.BalanceCreditOrderEvent = /* values here */
+```
+
 ### `models.BalanceDisputeEvent`
 
 ```python

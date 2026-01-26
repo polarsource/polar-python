@@ -284,6 +284,8 @@ a specific subscription or revoke certain benefits.
 Note: The customers information will nonetheless be retained for historic
 orders and subscriptions.
 
+Set `anonymize=true` to also anonymize PII for GDPR compliance.
+
 **Scopes**: `customers:write`
 
 ### Example Usage
@@ -297,7 +299,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    polar.customers.delete(id="<value>")
+    polar.customers.delete(id="<value>", anonymize=False)
 
     # Use the SDK ...
 
@@ -305,10 +307,11 @@ with Polar(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The customer ID.                                                    |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                                                                                                                                                                                              | Type                                                                                                                                                                                                                                                   | Required                                                                                                                                                                                                                                               | Description                                                                                                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`                                                                                                                                                                                                                                                   | *str*                                                                                                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                                                                                     | The customer ID.                                                                                                                                                                                                                                       |
+| `anonymize`                                                                                                                                                                                                                                            | *Optional[bool]*                                                                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                                                     | If true, also anonymize the customer's personal data for GDPR compliance. This replaces email with a hashed version, hashes name and billing name (name preserved for businesses with tax_id), clears billing address, and removes OAuth account data. |
+| `retries`                                                                                                                                                                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                                                     | Configuration to override the default retry behavior of the client.                                                                                                                                                                                    |
 
 ### Errors
 
@@ -419,6 +422,8 @@ Delete a customer by external ID.
 
 Immediately cancels any active subscriptions and revokes any active benefits.
 
+Set `anonymize=true` to also anonymize PII for GDPR compliance.
+
 **Scopes**: `customers:write`
 
 ### Example Usage
@@ -432,7 +437,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    polar.customers.delete_external(external_id="<id>")
+    polar.customers.delete_external(external_id="<id>", anonymize=False)
 
     # Use the SDK ...
 
@@ -440,10 +445,11 @@ with Polar(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `external_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | The customer external ID.                                           |
-| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `external_id`                                                             | *str*                                                                     | :heavy_check_mark:                                                        | The customer external ID.                                                 |
+| `anonymize`                                                               | *Optional[bool]*                                                          | :heavy_minus_sign:                                                        | If true, also anonymize the customer's personal data for GDPR compliance. |
+| `retries`                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)          | :heavy_minus_sign:                                                        | Configuration to override the default retry behavior of the client.       |
 
 ### Errors
 

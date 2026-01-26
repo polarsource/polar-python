@@ -31,8 +31,8 @@ class Events(BaseSDK):
         ] = UNSET,
         external_customer_id: OptionalNullable[
             Union[
-                models.QueryParamExternalCustomerIDFilter,
-                models.QueryParamExternalCustomerIDFilterTypedDict,
+                models.EventsListQueryParamExternalCustomerIDFilter,
+                models.EventsListQueryParamExternalCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
         meter_id: OptionalNullable[str] = UNSET,
@@ -191,8 +191,8 @@ class Events(BaseSDK):
         ] = UNSET,
         external_customer_id: OptionalNullable[
             Union[
-                models.QueryParamExternalCustomerIDFilter,
-                models.QueryParamExternalCustomerIDFilterTypedDict,
+                models.EventsListQueryParamExternalCustomerIDFilter,
+                models.EventsListQueryParamExternalCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
         meter_id: OptionalNullable[str] = UNSET,

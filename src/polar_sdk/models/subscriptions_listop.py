@@ -674,6 +674,18 @@ OrdersListQueryParamCustomerIDFilter = TypeAliasType(
 r"""Filter by customer ID."""
 
 
+OrdersListQueryParamExternalCustomerIDFilterTypedDict = TypeAliasType(
+    "OrdersListQueryParamExternalCustomerIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by customer external ID."""
+
+
+OrdersListQueryParamExternalCustomerIDFilter = TypeAliasType(
+    "OrdersListQueryParamExternalCustomerIDFilter", Union[str, List[str]]
+)
+r"""Filter by customer external ID."""
+
+
 CheckoutIDFilterTypedDict = TypeAliasType(
     "CheckoutIDFilterTypedDict", Union[str, List[str]]
 )
@@ -697,6 +709,10 @@ class OrdersListRequestTypedDict(TypedDict):
     r"""Filter by discount ID."""
     customer_id: NotRequired[Nullable[OrdersListQueryParamCustomerIDFilterTypedDict]]
     r"""Filter by customer ID."""
+    external_customer_id: NotRequired[
+        Nullable[OrdersListQueryParamExternalCustomerIDFilterTypedDict]
+    ]
+    r"""Filter by customer external ID."""
     checkout_id: NotRequired[Nullable[CheckoutIDFilterTypedDict]]
     r"""Filter by checkout ID."""
     page: NotRequired[int]
@@ -740,6 +756,12 @@ class OrdersListRequest(BaseModel):
     ] = UNSET
     r"""Filter by customer ID."""
 
+    external_customer_id: Annotated[
+        OptionalNullable[OrdersListQueryParamExternalCustomerIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by customer external ID."""
+
     checkout_id: Annotated[
         OptionalNullable[CheckoutIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -778,6 +800,7 @@ class OrdersListRequest(BaseModel):
             "product_billing_type",
             "discount_id",
             "customer_id",
+            "external_customer_id",
             "checkout_id",
             "page",
             "limit",
@@ -790,6 +813,7 @@ class OrdersListRequest(BaseModel):
             "product_billing_type",
             "discount_id",
             "customer_id",
+            "external_customer_id",
             "checkout_id",
             "sorting",
             "metadata",
@@ -978,14 +1002,14 @@ EventsListQueryParamCustomerIDFilter = TypeAliasType(
 r"""Filter by customer ID."""
 
 
-QueryParamExternalCustomerIDFilterTypedDict = TypeAliasType(
-    "QueryParamExternalCustomerIDFilterTypedDict", Union[str, List[str]]
+EventsListQueryParamExternalCustomerIDFilterTypedDict = TypeAliasType(
+    "EventsListQueryParamExternalCustomerIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by external customer ID."""
 
 
-QueryParamExternalCustomerIDFilter = TypeAliasType(
-    "QueryParamExternalCustomerIDFilter", Union[str, List[str]]
+EventsListQueryParamExternalCustomerIDFilter = TypeAliasType(
+    "EventsListQueryParamExternalCustomerIDFilter", Union[str, List[str]]
 )
 r"""Filter by external customer ID."""
 
@@ -1022,7 +1046,7 @@ class EventsListRequestTypedDict(TypedDict):
     customer_id: NotRequired[Nullable[EventsListQueryParamCustomerIDFilterTypedDict]]
     r"""Filter by customer ID."""
     external_customer_id: NotRequired[
-        Nullable[QueryParamExternalCustomerIDFilterTypedDict]
+        Nullable[EventsListQueryParamExternalCustomerIDFilterTypedDict]
     ]
     r"""Filter by external customer ID."""
     meter_id: NotRequired[Nullable[str]]
@@ -1080,7 +1104,7 @@ class EventsListRequest(BaseModel):
     r"""Filter by customer ID."""
 
     external_customer_id: Annotated[
-        OptionalNullable[QueryParamExternalCustomerIDFilter],
+        OptionalNullable[EventsListQueryParamExternalCustomerIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by external customer ID."""

@@ -1080,6 +1080,7 @@ class Customers(BaseSDK):
         self,
         *,
         id: str,
+        anonymize: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1101,9 +1102,12 @@ class Customers(BaseSDK):
         Note: The customers information will nonetheless be retained for historic
         orders and subscriptions.
 
+        Set `anonymize=true` to also anonymize PII for GDPR compliance.
+
         **Scopes**: `customers:write`
 
         :param id: The customer ID.
+        :param anonymize: If true, also anonymize the customer's personal data for GDPR compliance. This replaces email with a hashed version, hashes name and billing name (name preserved for businesses with tax_id), clears billing address, and removes OAuth account data.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1121,6 +1125,7 @@ class Customers(BaseSDK):
 
         request = models.CustomersDeleteRequest(
             id=id,
+            anonymize=anonymize,
         )
 
         req = self._build_request(
@@ -1186,6 +1191,7 @@ class Customers(BaseSDK):
         self,
         *,
         id: str,
+        anonymize: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1207,9 +1213,12 @@ class Customers(BaseSDK):
         Note: The customers information will nonetheless be retained for historic
         orders and subscriptions.
 
+        Set `anonymize=true` to also anonymize PII for GDPR compliance.
+
         **Scopes**: `customers:write`
 
         :param id: The customer ID.
+        :param anonymize: If true, also anonymize the customer's personal data for GDPR compliance. This replaces email with a hashed version, hashes name and billing name (name preserved for businesses with tax_id), clears billing address, and removes OAuth account data.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1227,6 +1236,7 @@ class Customers(BaseSDK):
 
         request = models.CustomersDeleteRequest(
             id=id,
+            anonymize=anonymize,
         )
 
         req = self._build_request_async(
@@ -1696,6 +1706,7 @@ class Customers(BaseSDK):
         self,
         *,
         external_id: str,
+        anonymize: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1707,9 +1718,12 @@ class Customers(BaseSDK):
 
         Immediately cancels any active subscriptions and revokes any active benefits.
 
+        Set `anonymize=true` to also anonymize PII for GDPR compliance.
+
         **Scopes**: `customers:write`
 
         :param external_id: The customer external ID.
+        :param anonymize: If true, also anonymize the customer's personal data for GDPR compliance.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1727,6 +1741,7 @@ class Customers(BaseSDK):
 
         request = models.CustomersDeleteExternalRequest(
             external_id=external_id,
+            anonymize=anonymize,
         )
 
         req = self._build_request(
@@ -1792,6 +1807,7 @@ class Customers(BaseSDK):
         self,
         *,
         external_id: str,
+        anonymize: Optional[bool] = False,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1803,9 +1819,12 @@ class Customers(BaseSDK):
 
         Immediately cancels any active subscriptions and revokes any active benefits.
 
+        Set `anonymize=true` to also anonymize PII for GDPR compliance.
+
         **Scopes**: `customers:write`
 
         :param external_id: The customer external ID.
+        :param anonymize: If true, also anonymize the customer's personal data for GDPR compliance.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1823,6 +1842,7 @@ class Customers(BaseSDK):
 
         request = models.CustomersDeleteExternalRequest(
             external_id=external_id,
+            anonymize=anonymize,
         )
 
         req = self._build_request_async(

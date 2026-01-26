@@ -33,7 +33,7 @@ class ProductPriceCustomTypedDict(TypedDict):
     price_currency: str
     r"""The currency."""
     minimum_amount: int
-    r"""The minimum amount the customer can pay."""
+    r"""The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'. Defaults to 50 cents."""
     maximum_amount: Nullable[int]
     r"""The maximum amount the customer can pay."""
     preset_amount: Nullable[int]
@@ -74,7 +74,7 @@ class ProductPriceCustom(BaseModel):
     r"""The currency."""
 
     minimum_amount: int
-    r"""The minimum amount the customer can pay."""
+    r"""The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'. Defaults to 50 cents."""
 
     maximum_amount: Nullable[int]
     r"""The maximum amount the customer can pay."""

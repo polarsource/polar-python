@@ -34,6 +34,12 @@ class Refunds(BaseSDK):
                 models.RefundsListQueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        external_customer_id: OptionalNullable[
+            Union[
+                models.RefundsListQueryParamExternalCustomerIDFilter,
+                models.RefundsListQueryParamExternalCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
         succeeded: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -54,6 +60,7 @@ class Refunds(BaseSDK):
         :param order_id: Filter by order ID.
         :param subscription_id: Filter by subscription ID.
         :param customer_id: Filter by customer ID.
+        :param external_customer_id: Filter by customer external ID.
         :param succeeded: Filter by `succeeded`.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -79,6 +86,7 @@ class Refunds(BaseSDK):
             order_id=order_id,
             subscription_id=subscription_id,
             customer_id=customer_id,
+            external_customer_id=external_customer_id,
             succeeded=succeeded,
             page=page,
             limit=limit,
@@ -146,6 +154,7 @@ class Refunds(BaseSDK):
                 order_id=order_id,
                 subscription_id=subscription_id,
                 customer_id=customer_id,
+                external_customer_id=external_customer_id,
                 succeeded=succeeded,
                 page=next_page,
                 limit=limit,
@@ -197,6 +206,12 @@ class Refunds(BaseSDK):
                 models.RefundsListQueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        external_customer_id: OptionalNullable[
+            Union[
+                models.RefundsListQueryParamExternalCustomerIDFilter,
+                models.RefundsListQueryParamExternalCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
         succeeded: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -217,6 +232,7 @@ class Refunds(BaseSDK):
         :param order_id: Filter by order ID.
         :param subscription_id: Filter by subscription ID.
         :param customer_id: Filter by customer ID.
+        :param external_customer_id: Filter by customer external ID.
         :param succeeded: Filter by `succeeded`.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -242,6 +258,7 @@ class Refunds(BaseSDK):
             order_id=order_id,
             subscription_id=subscription_id,
             customer_id=customer_id,
+            external_customer_id=external_customer_id,
             succeeded=succeeded,
             page=page,
             limit=limit,
@@ -309,6 +326,7 @@ class Refunds(BaseSDK):
                 order_id=order_id,
                 subscription_id=subscription_id,
                 customer_id=customer_id,
+                external_customer_id=external_customer_id,
                 succeeded=succeeded,
                 page=next_page,
                 limit=limit,

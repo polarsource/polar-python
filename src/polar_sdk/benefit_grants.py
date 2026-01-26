@@ -25,6 +25,12 @@ class BenefitGrants(BaseSDK):
                 models.BenefitGrantsListQueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        external_customer_id: OptionalNullable[
+            Union[
+                models.QueryParamExternalCustomerIDFilter,
+                models.QueryParamExternalCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
         is_granted: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -42,6 +48,7 @@ class BenefitGrants(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param customer_id: Filter by customer ID.
+        :param external_customer_id: Filter by customer external ID.
         :param is_granted: Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -64,6 +71,7 @@ class BenefitGrants(BaseSDK):
         request = models.BenefitGrantsListRequest(
             organization_id=organization_id,
             customer_id=customer_id,
+            external_customer_id=external_customer_id,
             is_granted=is_granted,
             page=page,
             limit=limit,
@@ -128,6 +136,7 @@ class BenefitGrants(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 customer_id=customer_id,
+                external_customer_id=external_customer_id,
                 is_granted=is_granted,
                 page=next_page,
                 limit=limit,
@@ -172,6 +181,12 @@ class BenefitGrants(BaseSDK):
                 models.BenefitGrantsListQueryParamCustomerIDFilterTypedDict,
             ]
         ] = UNSET,
+        external_customer_id: OptionalNullable[
+            Union[
+                models.QueryParamExternalCustomerIDFilter,
+                models.QueryParamExternalCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
         is_granted: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -189,6 +204,7 @@ class BenefitGrants(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param customer_id: Filter by customer ID.
+        :param external_customer_id: Filter by customer external ID.
         :param is_granted: Filter by granted status. If `true`, only granted benefits will be returned. If `false`, only revoked benefits will be returned.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
@@ -211,6 +227,7 @@ class BenefitGrants(BaseSDK):
         request = models.BenefitGrantsListRequest(
             organization_id=organization_id,
             customer_id=customer_id,
+            external_customer_id=external_customer_id,
             is_granted=is_granted,
             page=page,
             limit=limit,
@@ -275,6 +292,7 @@ class BenefitGrants(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 customer_id=customer_id,
+                external_customer_id=external_customer_id,
                 is_granted=is_granted,
                 page=next_page,
                 limit=limit,

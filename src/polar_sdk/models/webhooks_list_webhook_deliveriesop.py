@@ -5,7 +5,9 @@ from .listresource_webhookdelivery_ import (
     ListResourceWebhookDelivery,
     ListResourceWebhookDeliveryTypedDict,
 )
+from .webhookeventtype import WebhookEventType
 from datetime import datetime
+from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
@@ -21,6 +23,27 @@ EndpointID = TypeAliasType("EndpointID", Union[str, List[str]])
 r"""Filter by webhook endpoint ID."""
 
 
+class HTTPCodeClass(str, Enum):
+    r"""Filter by HTTP response code class (2xx, 3xx, 4xx, 5xx)."""
+
+    TWOXX = "2xx"
+    THREEXX = "3xx"
+    FOURXX = "4xx"
+    FIVEXX = "5xx"
+
+
+QueryParamEventTypeTypedDict = TypeAliasType(
+    "QueryParamEventTypeTypedDict", Union[WebhookEventType, List[WebhookEventType]]
+)
+r"""Filter by webhook event type."""
+
+
+QueryParamEventType = TypeAliasType(
+    "QueryParamEventType", Union[WebhookEventType, List[WebhookEventType]]
+)
+r"""Filter by webhook event type."""
+
+
 class WebhooksListWebhookDeliveriesRequestTypedDict(TypedDict):
     endpoint_id: NotRequired[Nullable[EndpointIDTypedDict]]
     r"""Filter by webhook endpoint ID."""
@@ -28,6 +51,14 @@ class WebhooksListWebhookDeliveriesRequestTypedDict(TypedDict):
     r"""Filter deliveries after this timestamp."""
     end_timestamp: NotRequired[Nullable[datetime]]
     r"""Filter deliveries before this timestamp."""
+    succeeded: NotRequired[Nullable[bool]]
+    r"""Filter by delivery success status."""
+    query: NotRequired[Nullable[str]]
+    r"""Query to filter webhook deliveries."""
+    http_code_class: NotRequired[Nullable[HTTPCodeClass]]
+    r"""Filter by HTTP response code class (2xx, 3xx, 4xx, 5xx)."""
+    event_type: NotRequired[Nullable[QueryParamEventTypeTypedDict]]
+    r"""Filter by webhook event type."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -53,6 +84,30 @@ class WebhooksListWebhookDeliveriesRequest(BaseModel):
     ] = UNSET
     r"""Filter deliveries before this timestamp."""
 
+    succeeded: Annotated[
+        OptionalNullable[bool],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by delivery success status."""
+
+    query: Annotated[
+        OptionalNullable[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Query to filter webhook deliveries."""
+
+    http_code_class: Annotated[
+        OptionalNullable[HTTPCodeClass],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by HTTP response code class (2xx, 3xx, 4xx, 5xx)."""
+
+    event_type: Annotated[
+        OptionalNullable[QueryParamEventType],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by webhook event type."""
+
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -71,10 +126,22 @@ class WebhooksListWebhookDeliveriesRequest(BaseModel):
             "endpoint_id",
             "start_timestamp",
             "end_timestamp",
+            "succeeded",
+            "query",
+            "http_code_class",
+            "event_type",
             "page",
             "limit",
         ]
-        nullable_fields = ["endpoint_id", "start_timestamp", "end_timestamp"]
+        nullable_fields = [
+            "endpoint_id",
+            "start_timestamp",
+            "end_timestamp",
+            "succeeded",
+            "query",
+            "http_code_class",
+            "event_type",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

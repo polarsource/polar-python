@@ -2,13 +2,16 @@
 
 from __future__ import annotations
 from polar_sdk.types import BaseModel
-from polar_sdk.utils import FieldMetadata, PathParamMetadata
-from typing_extensions import Annotated, TypedDict
+from polar_sdk.utils import FieldMetadata, PathParamMetadata, QueryParamMetadata
+from typing import Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class CustomersDeleteExternalRequestTypedDict(TypedDict):
     external_id: str
     r"""The customer external ID."""
+    anonymize: NotRequired[bool]
+    r"""If true, also anonymize the customer's personal data for GDPR compliance."""
 
 
 class CustomersDeleteExternalRequest(BaseModel):
@@ -16,3 +19,9 @@ class CustomersDeleteExternalRequest(BaseModel):
         str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
     ]
     r"""The customer external ID."""
+
+    anonymize: Annotated[
+        Optional[bool],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = False
+    r"""If true, also anonymize the customer's personal data for GDPR compliance."""
