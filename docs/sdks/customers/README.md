@@ -96,6 +96,7 @@ with Polar(
             "911144442",
             "us_ein",
         ],
+        "type": polar_sdk.CustomerType.INDIVIDUAL,
         "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
         "owner": {
             "email": "member@example.com",
@@ -241,6 +242,7 @@ with Polar(
             "us_ein",
         ],
         "external_id": "usr_1337",
+        "type": polar_sdk.CustomerType.INDIVIDUAL,
     })
 
     # Handle response

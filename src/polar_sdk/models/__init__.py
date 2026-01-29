@@ -1201,6 +1201,7 @@ if TYPE_CHECKING:
         CustomerSubscriptionUpdateSeats,
         CustomerSubscriptionUpdateSeatsTypedDict,
     )
+    from .customertype import CustomerType
     from .customerupdate import (
         CustomerUpdate,
         CustomerUpdateMetadata,
@@ -3728,6 +3729,7 @@ __all__ = [
     "CustomerSubscriptionUpdateTypedDict",
     "CustomerTaxID",
     "CustomerTaxIDTypedDict",
+    "CustomerType",
     "CustomerTypedDict",
     "CustomerUpdate",
     "CustomerUpdateExternalID",
@@ -5717,6 +5719,7 @@ _dynamic_imports: dict[str, str] = {
     "CustomerSubscriptionUpdateProductTypedDict": ".customersubscriptionupdateproduct",
     "CustomerSubscriptionUpdateSeats": ".customersubscriptionupdateseats",
     "CustomerSubscriptionUpdateSeatsTypedDict": ".customersubscriptionupdateseats",
+    "CustomerType": ".customertype",
     "CustomerUpdate": ".customerupdate",
     "CustomerUpdateMetadata": ".customerupdate",
     "CustomerUpdateMetadataTypedDict": ".customerupdate",
