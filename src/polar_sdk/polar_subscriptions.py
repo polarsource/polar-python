@@ -537,8 +537,6 @@ class PolarSubscriptions(BaseSDK):
 
         Update a subscription of the authenticated customer.
 
-        **Scopes**: `customer_portal:write`
-
         :param security:
         :param id: The subscription ID.
         :param customer_subscription_update:
@@ -658,8 +656,6 @@ class PolarSubscriptions(BaseSDK):
 
         Update a subscription of the authenticated customer.
 
-        **Scopes**: `customer_portal:write`
-
         :param security:
         :param id: The subscription ID.
         :param customer_subscription_update:
@@ -775,8 +771,6 @@ class PolarSubscriptions(BaseSDK):
 
         Cancel a subscription of the authenticated customer.
 
-        **Scopes**: `customer_portal:write`
-
         :param security:
         :param id: The subscription ID.
         :param retries: Override the default retry configuration for this method
@@ -880,8 +874,6 @@ class PolarSubscriptions(BaseSDK):
         r"""Cancel Subscription
 
         Cancel a subscription of the authenticated customer.
-
-        **Scopes**: `customer_portal:write`
 
         :param security:
         :param id: The subscription ID.
