@@ -26,6 +26,7 @@ from .organizationsubscriptionsettings import (
     OrganizationSubscriptionSettings,
     OrganizationSubscriptionSettingsTypedDict,
 )
+from .presentmentcurrency import PresentmentCurrency
 from .subscriptionprorationbehavior import SubscriptionProrationBehavior
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -59,6 +60,7 @@ class OrganizationTypedDict(TypedDict):
     status: OrganizationStatus
     details_submitted_at: Nullable[datetime]
     r"""When the business details were submitted."""
+    default_presentment_currency: PresentmentCurrency
     feature_settings: Nullable[OrganizationFeatureSettingsTypedDict]
     r"""Organization feature settings"""
     subscription_settings: OrganizationSubscriptionSettingsTypedDict
@@ -104,6 +106,8 @@ class Organization(BaseModel):
 
     details_submitted_at: Nullable[datetime]
     r"""When the business details were submitted."""
+
+    default_presentment_currency: PresentmentCurrency
 
     feature_settings: Nullable[OrganizationFeatureSettings]
     r"""Organization feature settings"""

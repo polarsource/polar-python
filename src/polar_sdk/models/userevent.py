@@ -33,6 +33,10 @@ class UserEventTypedDict(TypedDict):
     name: str
     r"""The name of the event."""
     metadata: Dict[str, EventMetadataOutputTypedDict]
+    member_id: NotRequired[Nullable[str]]
+    r"""ID of the member within the customer's organization who performed the action inside B2B."""
+    external_member_id: NotRequired[Nullable[str]]
+    r"""ID of the member in your system within the customer's organization who performed the action inside B2B."""
     child_count: NotRequired[int]
     r"""Number of direct child events linked to this event."""
     parent_id: NotRequired[Nullable[str]]
@@ -70,6 +74,12 @@ class UserEvent(BaseModel):
 
     metadata: Dict[str, EventMetadataOutput]
 
+    member_id: OptionalNullable[str] = UNSET
+    r"""ID of the member within the customer's organization who performed the action inside B2B."""
+
+    external_member_id: OptionalNullable[str] = UNSET
+    r"""ID of the member in your system within the customer's organization who performed the action inside B2B."""
+
     child_count: Optional[int] = 0
     r"""Number of direct child events linked to this event."""
 
@@ -84,11 +94,18 @@ class UserEvent(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["child_count", "parent_id"]
+        optional_fields = [
+            "member_id",
+            "external_member_id",
+            "child_count",
+            "parent_id",
+        ]
         nullable_fields = [
             "customer_id",
             "customer",
             "external_customer_id",
+            "member_id",
+            "external_member_id",
             "parent_id",
         ]
         null_default_fields = []
