@@ -17,6 +17,10 @@ class OrganizationFeatureSettingsTypedDict(TypedDict):
     r"""If this organization has Wallets enabled"""
     member_model_enabled: NotRequired[bool]
     r"""If this organization has the Member model enabled"""
+    tinybird_read: NotRequired[bool]
+    r"""If this organization reads from Tinybird"""
+    tinybird_compare: NotRequired[bool]
+    r"""If this organization compares Tinybird results with database"""
 
 
 class OrganizationFeatureSettings(BaseModel):
@@ -34,3 +38,9 @@ class OrganizationFeatureSettings(BaseModel):
 
     member_model_enabled: Optional[bool] = False
     r"""If this organization has the Member model enabled"""
+
+    tinybird_read: Optional[bool] = False
+    r"""If this organization reads from Tinybird"""
+
+    tinybird_compare: Optional[bool] = False
+    r"""If this organization compares Tinybird results with database"""

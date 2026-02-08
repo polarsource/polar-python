@@ -751,6 +751,14 @@ if TYPE_CHECKING:
         CustomerPortalLicenseKeysListSecurity,
         CustomerPortalLicenseKeysListSecurityTypedDict,
     )
+    from .customer_portal_members_remove_memberop import (
+        CustomerPortalMembersRemoveMemberRequest,
+        CustomerPortalMembersRemoveMemberRequestTypedDict,
+    )
+    from .customer_portal_members_update_memberop import (
+        CustomerPortalMembersUpdateMemberRequest,
+        CustomerPortalMembersUpdateMemberRequestTypedDict,
+    )
     from .customer_portal_orders_confirm_retry_paymentop import (
         CustomerPortalOrdersConfirmRetryPaymentRequest,
         CustomerPortalOrdersConfirmRetryPaymentRequestTypedDict,
@@ -1038,6 +1046,10 @@ if TYPE_CHECKING:
         CustomerOrganizationData,
         CustomerOrganizationDataTypedDict,
     )
+    from .customerorganizationfeaturesettings import (
+        CustomerOrganizationFeatureSettings,
+        CustomerOrganizationFeatureSettingsTypedDict,
+    )
     from .customerpaymentmethod import (
         CustomerPaymentMethod,
         CustomerPaymentMethodTypedDict,
@@ -1071,6 +1083,18 @@ if TYPE_CHECKING:
     from .customerportalcustomerupdate import (
         CustomerPortalCustomerUpdate,
         CustomerPortalCustomerUpdateTypedDict,
+    )
+    from .customerportalmember import (
+        CustomerPortalMember,
+        CustomerPortalMemberTypedDict,
+    )
+    from .customerportalmembercreate import (
+        CustomerPortalMemberCreate,
+        CustomerPortalMemberCreateTypedDict,
+    )
+    from .customerportalmemberupdate import (
+        CustomerPortalMemberUpdate,
+        CustomerPortalMemberUpdateTypedDict,
     )
     from .customerportaloauthaccount import (
         CustomerPortalOAuthAccount,
@@ -1201,6 +1225,7 @@ if TYPE_CHECKING:
         CustomerSubscriptionUpdateSeats,
         CustomerSubscriptionUpdateSeatsTypedDict,
     )
+    from .customertype import CustomerType
     from .customerupdate import (
         CustomerUpdate,
         CustomerUpdateMetadata,
@@ -2334,6 +2359,7 @@ if TYPE_CHECKING:
         Two,
         TwoTypedDict,
     )
+    from .productvisibility import ProductVisibility
     from .propertyaggregation import (
         Func,
         PropertyAggregation,
@@ -2684,6 +2710,10 @@ if TYPE_CHECKING:
         WebhookCheckoutCreatedPayload,
         WebhookCheckoutCreatedPayloadTypedDict,
     )
+    from .webhookcheckoutexpiredpayload import (
+        WebhookCheckoutExpiredPayload,
+        WebhookCheckoutExpiredPayloadTypedDict,
+    )
     from .webhookcheckoutupdatedpayload import (
         WebhookCheckoutUpdatedPayload,
         WebhookCheckoutUpdatedPayloadTypedDict,
@@ -2729,6 +2759,18 @@ if TYPE_CHECKING:
     from .webhookevent import WebhookEvent, WebhookEventTypedDict
     from .webhookeventtype import WebhookEventType
     from .webhookformat import WebhookFormat
+    from .webhookmembercreatedpayload import (
+        WebhookMemberCreatedPayload,
+        WebhookMemberCreatedPayloadTypedDict,
+    )
+    from .webhookmemberdeletedpayload import (
+        WebhookMemberDeletedPayload,
+        WebhookMemberDeletedPayloadTypedDict,
+    )
+    from .webhookmemberupdatedpayload import (
+        WebhookMemberUpdatedPayload,
+        WebhookMemberUpdatedPayloadTypedDict,
+    )
     from .webhookordercreatedpayload import (
         WebhookOrderCreatedPayload,
         WebhookOrderCreatedPayloadTypedDict,
@@ -3485,6 +3527,8 @@ __all__ = [
     "CustomerOrganization",
     "CustomerOrganizationData",
     "CustomerOrganizationDataTypedDict",
+    "CustomerOrganizationFeatureSettings",
+    "CustomerOrganizationFeatureSettingsTypedDict",
     "CustomerOrganizationTypedDict",
     "CustomerPaymentMethod",
     "CustomerPaymentMethodConfirm",
@@ -3572,6 +3616,16 @@ __all__ = [
     "CustomerPortalLicenseKeysListResponseTypedDict",
     "CustomerPortalLicenseKeysListSecurity",
     "CustomerPortalLicenseKeysListSecurityTypedDict",
+    "CustomerPortalMember",
+    "CustomerPortalMemberCreate",
+    "CustomerPortalMemberCreateTypedDict",
+    "CustomerPortalMemberTypedDict",
+    "CustomerPortalMemberUpdate",
+    "CustomerPortalMemberUpdateTypedDict",
+    "CustomerPortalMembersRemoveMemberRequest",
+    "CustomerPortalMembersRemoveMemberRequestTypedDict",
+    "CustomerPortalMembersUpdateMemberRequest",
+    "CustomerPortalMembersUpdateMemberRequestTypedDict",
     "CustomerPortalOAuthAccount",
     "CustomerPortalOAuthAccountTypedDict",
     "CustomerPortalOrdersConfirmRetryPaymentRequest",
@@ -3728,6 +3782,7 @@ __all__ = [
     "CustomerSubscriptionUpdateTypedDict",
     "CustomerTaxID",
     "CustomerTaxIDTypedDict",
+    "CustomerType",
     "CustomerTypedDict",
     "CustomerUpdate",
     "CustomerUpdateExternalID",
@@ -4579,6 +4634,7 @@ __all__ = [
     "ProductUpdatePrices",
     "ProductUpdatePricesTypedDict",
     "ProductUpdateTypedDict",
+    "ProductVisibility",
     "ProductsGetRequest",
     "ProductsGetRequestTypedDict",
     "ProductsListQueryParamOrganizationIDFilter",
@@ -4843,6 +4899,8 @@ __all__ = [
     "WebhookBenefitUpdatedPayloadTypedDict",
     "WebhookCheckoutCreatedPayload",
     "WebhookCheckoutCreatedPayloadTypedDict",
+    "WebhookCheckoutExpiredPayload",
+    "WebhookCheckoutExpiredPayloadTypedDict",
     "WebhookCheckoutUpdatedPayload",
     "WebhookCheckoutUpdatedPayloadTypedDict",
     "WebhookCustomerCreatedPayload",
@@ -4871,6 +4929,12 @@ __all__ = [
     "WebhookEventType",
     "WebhookEventTypedDict",
     "WebhookFormat",
+    "WebhookMemberCreatedPayload",
+    "WebhookMemberCreatedPayloadTypedDict",
+    "WebhookMemberDeletedPayload",
+    "WebhookMemberDeletedPayloadTypedDict",
+    "WebhookMemberUpdatedPayload",
+    "WebhookMemberUpdatedPayloadTypedDict",
     "WebhookOrderCreatedPayload",
     "WebhookOrderCreatedPayloadTypedDict",
     "WebhookOrderPaidPayload",
@@ -5441,6 +5505,10 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalLicenseKeysListResponseTypedDict": ".customer_portal_license_keys_listop",
     "CustomerPortalLicenseKeysListSecurity": ".customer_portal_license_keys_listop",
     "CustomerPortalLicenseKeysListSecurityTypedDict": ".customer_portal_license_keys_listop",
+    "CustomerPortalMembersRemoveMemberRequest": ".customer_portal_members_remove_memberop",
+    "CustomerPortalMembersRemoveMemberRequestTypedDict": ".customer_portal_members_remove_memberop",
+    "CustomerPortalMembersUpdateMemberRequest": ".customer_portal_members_update_memberop",
+    "CustomerPortalMembersUpdateMemberRequestTypedDict": ".customer_portal_members_update_memberop",
     "CustomerPortalOrdersConfirmRetryPaymentRequest": ".customer_portal_orders_confirm_retry_paymentop",
     "CustomerPortalOrdersConfirmRetryPaymentRequestTypedDict": ".customer_portal_orders_confirm_retry_paymentop",
     "CustomerPortalOrdersConfirmRetryPaymentSecurity": ".customer_portal_orders_confirm_retry_paymentop",
@@ -5620,6 +5688,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerOrganizationTypedDict": ".customerorganization",
     "CustomerOrganizationData": ".customerorganizationdata",
     "CustomerOrganizationDataTypedDict": ".customerorganizationdata",
+    "CustomerOrganizationFeatureSettings": ".customerorganizationfeaturesettings",
+    "CustomerOrganizationFeatureSettingsTypedDict": ".customerorganizationfeaturesettings",
     "CustomerPaymentMethod": ".customerpaymentmethod",
     "CustomerPaymentMethodTypedDict": ".customerpaymentmethod",
     "CustomerPaymentMethodConfirm": ".customerpaymentmethodconfirm",
@@ -5638,6 +5708,12 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalCustomerTypedDict": ".customerportalcustomer",
     "CustomerPortalCustomerUpdate": ".customerportalcustomerupdate",
     "CustomerPortalCustomerUpdateTypedDict": ".customerportalcustomerupdate",
+    "CustomerPortalMember": ".customerportalmember",
+    "CustomerPortalMemberTypedDict": ".customerportalmember",
+    "CustomerPortalMemberCreate": ".customerportalmembercreate",
+    "CustomerPortalMemberCreateTypedDict": ".customerportalmembercreate",
+    "CustomerPortalMemberUpdate": ".customerportalmemberupdate",
+    "CustomerPortalMemberUpdateTypedDict": ".customerportalmemberupdate",
     "CustomerPortalOAuthAccount": ".customerportaloauthaccount",
     "CustomerPortalOAuthAccountTypedDict": ".customerportaloauthaccount",
     "CustomerPortalSubscriptionSettings": ".customerportalsubscriptionsettings",
@@ -5717,6 +5793,7 @@ _dynamic_imports: dict[str, str] = {
     "CustomerSubscriptionUpdateProductTypedDict": ".customersubscriptionupdateproduct",
     "CustomerSubscriptionUpdateSeats": ".customersubscriptionupdateseats",
     "CustomerSubscriptionUpdateSeatsTypedDict": ".customersubscriptionupdateseats",
+    "CustomerType": ".customertype",
     "CustomerUpdate": ".customerupdate",
     "CustomerUpdateMetadata": ".customerupdate",
     "CustomerUpdateMetadataTypedDict": ".customerupdate",
@@ -6628,6 +6705,7 @@ _dynamic_imports: dict[str, str] = {
     "ProductUpdateTypedDict": ".productupdate",
     "Two": ".productupdate",
     "TwoTypedDict": ".productupdate",
+    "ProductVisibility": ".productvisibility",
     "Func": ".propertyaggregation",
     "PropertyAggregation": ".propertyaggregation",
     "PropertyAggregationTypedDict": ".propertyaggregation",
@@ -6911,6 +6989,8 @@ _dynamic_imports: dict[str, str] = {
     "WebhookBenefitUpdatedPayloadTypedDict": ".webhookbenefitupdatedpayload",
     "WebhookCheckoutCreatedPayload": ".webhookcheckoutcreatedpayload",
     "WebhookCheckoutCreatedPayloadTypedDict": ".webhookcheckoutcreatedpayload",
+    "WebhookCheckoutExpiredPayload": ".webhookcheckoutexpiredpayload",
+    "WebhookCheckoutExpiredPayloadTypedDict": ".webhookcheckoutexpiredpayload",
     "WebhookCheckoutUpdatedPayload": ".webhookcheckoutupdatedpayload",
     "WebhookCheckoutUpdatedPayloadTypedDict": ".webhookcheckoutupdatedpayload",
     "WebhookCustomerCreatedPayload": ".webhookcustomercreatedpayload",
@@ -6939,6 +7019,12 @@ _dynamic_imports: dict[str, str] = {
     "WebhookEventTypedDict": ".webhookevent",
     "WebhookEventType": ".webhookeventtype",
     "WebhookFormat": ".webhookformat",
+    "WebhookMemberCreatedPayload": ".webhookmembercreatedpayload",
+    "WebhookMemberCreatedPayloadTypedDict": ".webhookmembercreatedpayload",
+    "WebhookMemberDeletedPayload": ".webhookmemberdeletedpayload",
+    "WebhookMemberDeletedPayloadTypedDict": ".webhookmemberdeletedpayload",
+    "WebhookMemberUpdatedPayload": ".webhookmemberupdatedpayload",
+    "WebhookMemberUpdatedPayloadTypedDict": ".webhookmemberupdatedpayload",
     "WebhookOrderCreatedPayload": ".webhookordercreatedpayload",
     "WebhookOrderCreatedPayloadTypedDict": ".webhookordercreatedpayload",
     "WebhookOrderPaidPayload": ".webhookorderpaidpayload",

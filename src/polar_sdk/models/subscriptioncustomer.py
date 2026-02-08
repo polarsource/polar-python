@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 from .address import Address, AddressTypedDict
+from .customertype import CustomerType
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .taxidformat import TaxIDFormat
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Union
-from typing_extensions import TypeAliasType, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 TaxIDTypedDict = TypeAliasType("TaxIDTypedDict", Union[str, TaxIDFormat])
@@ -40,6 +41,8 @@ class SubscriptionCustomerTypedDict(TypedDict):
     deleted_at: Nullable[datetime]
     r"""Timestamp for when the customer was soft deleted."""
     avatar_url: str
+    type: NotRequired[Nullable[CustomerType]]
+    r"""The type of customer: 'individual' for single users, 'team' for customers with multiple members. Legacy customers may have NULL type which is treated as 'individual'."""
 
 
 class SubscriptionCustomer(BaseModel):
@@ -78,12 +81,16 @@ class SubscriptionCustomer(BaseModel):
 
     avatar_url: str
 
+    type: OptionalNullable[CustomerType] = UNSET
+    r"""The type of customer: 'individual' for single users, 'team' for customers with multiple members. Legacy customers may have NULL type which is treated as 'individual'."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["type"]
         nullable_fields = [
             "modified_at",
             "external_id",
+            "type",
             "name",
             "billing_address",
             "tax_id",

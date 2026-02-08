@@ -121,6 +121,8 @@ r"""Filter by member ID."""
 
 
 class CustomerPortalBenefitGrantsListRequestTypedDict(TypedDict):
+    query: NotRequired[Nullable[str]]
+    r"""Filter by benefit description."""
     type_filter: NotRequired[Nullable[QueryParamBenefitTypeFilterTypedDict]]
     r"""Filter by benefit type."""
     benefit_id: NotRequired[
@@ -146,6 +148,12 @@ class CustomerPortalBenefitGrantsListRequestTypedDict(TypedDict):
 
 
 class CustomerPortalBenefitGrantsListRequest(BaseModel):
+    query: Annotated[
+        OptionalNullable[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by benefit description."""
+
     type_filter: Annotated[
         OptionalNullable[QueryParamBenefitTypeFilter],
         pydantic.Field(alias="type"),
@@ -204,6 +212,7 @@ class CustomerPortalBenefitGrantsListRequest(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "query",
             "type_filter",
             "benefit_id",
             "checkout_id",
@@ -215,6 +224,7 @@ class CustomerPortalBenefitGrantsListRequest(BaseModel):
             "sorting",
         ]
         nullable_fields = [
+            "query",
             "type_filter",
             "benefit_id",
             "checkout_id",

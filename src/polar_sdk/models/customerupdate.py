@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .addressinput import AddressInput, AddressInputTypedDict
+from .customertype import CustomerType
 from .taxidformat import TaxIDFormat
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -48,6 +49,8 @@ class CustomerUpdateTypedDict(TypedDict):
     tax_id: NotRequired[Nullable[List[Nullable[CustomerUpdateTaxIDTypedDict]]]]
     external_id: NotRequired[Nullable[str]]
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
+    type: NotRequired[Nullable[CustomerType]]
+    r"""The customer type. Can only be upgraded from 'individual' to 'team', never downgraded."""
 
 
 class CustomerUpdate(BaseModel):
@@ -77,6 +80,9 @@ class CustomerUpdate(BaseModel):
     external_id: OptionalNullable[str] = UNSET
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
 
+    type: OptionalNullable[CustomerType] = UNSET
+    r"""The customer type. Can only be upgraded from 'individual' to 'team', never downgraded."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -86,8 +92,16 @@ class CustomerUpdate(BaseModel):
             "billing_address",
             "tax_id",
             "external_id",
+            "type",
         ]
-        nullable_fields = ["email", "name", "billing_address", "tax_id", "external_id"]
+        nullable_fields = [
+            "email",
+            "name",
+            "billing_address",
+            "tax_id",
+            "external_id",
+            "type",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

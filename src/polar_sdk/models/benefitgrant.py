@@ -24,6 +24,7 @@ from .benefitgrantlicensekeysproperties import (
     BenefitGrantLicenseKeysPropertiesTypedDict,
 )
 from .customer import Customer, CustomerTypedDict
+from .member import Member, MemberTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -86,6 +87,7 @@ class BenefitGrantTypedDict(TypedDict):
     r"""The ID of the member concerned by this grant."""
     error: NotRequired[Nullable[BenefitGrantErrorTypedDict]]
     r"""The error information if the benefit grant failed with an unrecoverable error."""
+    member: NotRequired[Nullable[MemberTypedDict]]
 
 
 class BenefitGrant(BaseModel):
@@ -135,9 +137,11 @@ class BenefitGrant(BaseModel):
     error: OptionalNullable[BenefitGrantError] = UNSET
     r"""The error information if the benefit grant failed with an unrecoverable error."""
 
+    member: OptionalNullable[Member] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["granted_at", "revoked_at", "member_id", "error"]
+        optional_fields = ["granted_at", "revoked_at", "member_id", "error", "member"]
         nullable_fields = [
             "modified_at",
             "granted_at",
@@ -146,6 +150,7 @@ class BenefitGrant(BaseModel):
             "order_id",
             "member_id",
             "error",
+            "member",
         ]
         null_default_fields = []
 

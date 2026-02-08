@@ -26,9 +26,10 @@ from .organizationsubscriptionsettings import (
     OrganizationSubscriptionSettings,
     OrganizationSubscriptionSettingsTypedDict,
 )
+from .presentmentcurrency import PresentmentCurrency
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import List
+from typing import List, Optional
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -57,6 +58,7 @@ class OrganizationCreateTypedDict(TypedDict):
     customer_portal_settings: NotRequired[
         Nullable[OrganizationCustomerPortalSettingsTypedDict]
     ]
+    default_presentment_currency: NotRequired[PresentmentCurrency]
 
 
 class OrganizationCreate(BaseModel):
@@ -90,6 +92,8 @@ class OrganizationCreate(BaseModel):
         UNSET
     )
 
+    default_presentment_currency: Optional[PresentmentCurrency] = None
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -103,6 +107,7 @@ class OrganizationCreate(BaseModel):
             "notification_settings",
             "customer_email_settings",
             "customer_portal_settings",
+            "default_presentment_currency",
         ]
         nullable_fields = [
             "avatar_url",
