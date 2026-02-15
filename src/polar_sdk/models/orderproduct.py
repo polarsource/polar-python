@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
+from .productvisibility import ProductVisibility
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .trialinterval import TrialInterval
 from datetime import datetime
@@ -27,6 +28,7 @@ class OrderProductTypedDict(TypedDict):
     r"""The name of the product."""
     description: Nullable[str]
     r"""The description of the product."""
+    visibility: ProductVisibility
     recurring_interval: Nullable[SubscriptionRecurringInterval]
     r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
     recurring_interval_count: Nullable[int]
@@ -62,6 +64,8 @@ class OrderProduct(BaseModel):
 
     description: Nullable[str]
     r"""The description of the product."""
+
+    visibility: ProductVisibility
 
     recurring_interval: Nullable[SubscriptionRecurringInterval]
     r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""

@@ -96,6 +96,8 @@ with Polar(
             "911144442",
             "us_ein",
         ],
+        "locale": "en",
+        "type": polar_sdk.CustomerType.INDIVIDUAL,
         "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
         "owner": {
             "email": "member@example.com",
@@ -240,7 +242,9 @@ with Polar(
             "911144442",
             "us_ein",
         ],
+        "locale": "en",
         "external_id": "usr_1337",
+        "type": polar_sdk.CustomerType.INDIVIDUAL,
     })
 
     # Handle response
@@ -389,6 +393,7 @@ with Polar(
             "911144442",
             "us_ein",
         ],
+        "locale": "en",
     })
 
     # Handle response

@@ -23,6 +23,7 @@ class BalanceRefundMetadataTypedDict(TypedDict):
     refundable_amount: NotRequired[int]
     tax_state: NotRequired[Nullable[str]]
     tax_country: NotRequired[Nullable[str]]
+    exchange_rate: NotRequired[float]
 
 
 class BalanceRefundMetadata(BaseModel):
@@ -56,6 +57,8 @@ class BalanceRefundMetadata(BaseModel):
 
     tax_country: OptionalNullable[str] = UNSET
 
+    exchange_rate: Optional[float] = None
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -66,6 +69,7 @@ class BalanceRefundMetadata(BaseModel):
             "refundable_amount",
             "tax_state",
             "tax_country",
+            "exchange_rate",
         ]
         nullable_fields = ["tax_state", "tax_country"]
         null_default_fields = []

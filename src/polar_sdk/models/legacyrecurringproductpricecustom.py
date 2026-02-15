@@ -26,13 +26,13 @@ class LegacyRecurringProductPriceCustomTypedDict(TypedDict):
     id: str
     r"""The ID of the price."""
     source: ProductPriceSource
+    price_currency: str
+    r"""The currency in which the customer will be charged."""
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
     product_id: str
     r"""The ID of the product owning the price."""
     recurring_interval: SubscriptionRecurringInterval
-    price_currency: str
-    r"""The currency."""
     minimum_amount: int
     r"""The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'. Defaults to 50 cents."""
     maximum_amount: Nullable[int]
@@ -62,6 +62,9 @@ class LegacyRecurringProductPriceCustom(BaseModel):
 
     source: ProductPriceSource
 
+    price_currency: str
+    r"""The currency in which the customer will be charged."""
+
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
 
@@ -69,9 +72,6 @@ class LegacyRecurringProductPriceCustom(BaseModel):
     r"""The ID of the product owning the price."""
 
     recurring_interval: SubscriptionRecurringInterval
-
-    price_currency: str
-    r"""The currency."""
 
     minimum_amount: int
     r"""The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'. Defaults to 50 cents."""

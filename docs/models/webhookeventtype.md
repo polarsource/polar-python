@@ -7,6 +7,7 @@
 | ------------------------- | ------------------------- |
 | `CHECKOUT_CREATED`        | checkout.created          |
 | `CHECKOUT_UPDATED`        | checkout.updated          |
+| `CHECKOUT_EXPIRED`        | checkout.expired          |
 | `CUSTOMER_CREATED`        | customer.created          |
 | `CUSTOMER_UPDATED`        | customer.updated          |
 | `CUSTOMER_DELETED`        | customer.deleted          |
@@ -14,6 +15,9 @@
 | `CUSTOMER_SEAT_ASSIGNED`  | customer_seat.assigned    |
 | `CUSTOMER_SEAT_CLAIMED`   | customer_seat.claimed     |
 | `CUSTOMER_SEAT_REVOKED`   | customer_seat.revoked     |
+| `MEMBER_CREATED`          | member.created            |
+| `MEMBER_UPDATED`          | member.updated            |
+| `MEMBER_DELETED`          | member.deleted            |
 | `ORDER_CREATED`           | order.created             |
 | `ORDER_UPDATED`           | order.updated             |
 | `ORDER_PAID`              | order.paid                |

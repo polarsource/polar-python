@@ -17,6 +17,8 @@ class PortalAuthenticatedUserTypedDict(TypedDict):
     r"""User's email address."""
     customer_id: str
     r"""Associated customer ID."""
+    member_id: NotRequired[Nullable[str]]
+    r"""Member ID. Only set for members."""
     role: NotRequired[Nullable[str]]
     r"""Member role (owner, billing_manager, member). Only set for members."""
 
@@ -36,13 +38,16 @@ class PortalAuthenticatedUser(BaseModel):
     customer_id: str
     r"""Associated customer ID."""
 
+    member_id: OptionalNullable[str] = UNSET
+    r"""Member ID. Only set for members."""
+
     role: OptionalNullable[str] = UNSET
     r"""Member role (owner, billing_manager, member). Only set for members."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["role"]
-        nullable_fields = ["name", "role"]
+        optional_fields = ["member_id", "role"]
+        nullable_fields = ["name", "member_id", "role"]
         null_default_fields = []
 
         serialized = handler(self)

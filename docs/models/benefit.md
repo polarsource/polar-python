@@ -15,16 +15,16 @@ value: models.BenefitCustom = /* values here */
 value: models.BenefitDiscord = /* values here */
 ```
 
-### `models.BenefitGitHubRepository`
-
-```python
-value: models.BenefitGitHubRepository = /* values here */
-```
-
 ### `models.BenefitDownloadables`
 
 ```python
 value: models.BenefitDownloadables = /* values here */
+```
+
+### `models.BenefitGitHubRepository`
+
+```python
+value: models.BenefitGitHubRepository = /* values here */
 ```
 
 ### `models.BenefitLicenseKeys`

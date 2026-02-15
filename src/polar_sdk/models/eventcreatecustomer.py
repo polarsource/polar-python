@@ -23,6 +23,8 @@ class EventCreateCustomerTypedDict(TypedDict):
     parent_id: NotRequired[Nullable[str]]
     r"""The ID of the parent event. Can be either a Polar event ID (UUID) or an external event ID."""
     metadata: NotRequired[Dict[str, EventMetadataInputTypedDict]]
+    member_id: NotRequired[Nullable[str]]
+    r"""ID of the member within the customer's organization who performed the action. Used for member-level attribution in B2B."""
 
 
 class EventCreateCustomer(BaseModel):
@@ -46,6 +48,9 @@ class EventCreateCustomer(BaseModel):
 
     metadata: Optional[Dict[str, EventMetadataInput]] = None
 
+    member_id: OptionalNullable[str] = UNSET
+    r"""ID of the member within the customer's organization who performed the action. Used for member-level attribution in B2B."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -54,8 +59,9 @@ class EventCreateCustomer(BaseModel):
             "external_id",
             "parent_id",
             "metadata",
+            "member_id",
         ]
-        nullable_fields = ["organization_id", "external_id", "parent_id"]
+        nullable_fields = ["organization_id", "external_id", "parent_id", "member_id"]
         null_default_fields = []
 
         serialized = handler(self)

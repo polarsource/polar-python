@@ -9,6 +9,7 @@ from .legacyrecurringproductprice import (
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .productmediafileread import ProductMediaFileRead, ProductMediaFileReadTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
+from .productvisibility import ProductVisibility
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .trialinterval import TrialInterval
 from datetime import datetime
@@ -47,6 +48,7 @@ class CheckoutLinkProductTypedDict(TypedDict):
     r"""The name of the product."""
     description: Nullable[str]
     r"""The description of the product."""
+    visibility: ProductVisibility
     recurring_interval: Nullable[SubscriptionRecurringInterval]
     r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
     recurring_interval_count: Nullable[int]
@@ -90,6 +92,8 @@ class CheckoutLinkProduct(BaseModel):
 
     description: Nullable[str]
     r"""The description of the product."""
+
+    visibility: ProductVisibility
 
     recurring_interval: Nullable[SubscriptionRecurringInterval]
     r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""

@@ -7,11 +7,14 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class BenefitGrantLicenseKeysPropertiesTypedDict(TypedDict):
+    user_provided_key: NotRequired[str]
     license_key_id: NotRequired[str]
     display_key: NotRequired[str]
 
 
 class BenefitGrantLicenseKeysProperties(BaseModel):
+    user_provided_key: Optional[str] = None
+
     license_key_id: Optional[str] = None
 
     display_key: Optional[str] = None

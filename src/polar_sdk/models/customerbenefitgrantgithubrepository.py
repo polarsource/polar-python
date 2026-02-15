@@ -5,6 +5,7 @@ from .benefitgithubrepositorysubscriber import (
     BenefitGitHubRepositorySubscriber,
     BenefitGitHubRepositorySubscriberTypedDict,
 )
+from .benefitgranterror import BenefitGrantError, BenefitGrantErrorTypedDict
 from .benefitgrantgithubrepositoryproperties import (
     BenefitGrantGitHubRepositoryProperties,
     BenefitGrantGitHubRepositoryPropertiesTypedDict,
@@ -38,6 +39,7 @@ class CustomerBenefitGrantGitHubRepositoryTypedDict(TypedDict):
     benefit: BenefitGitHubRepositorySubscriberTypedDict
     properties: BenefitGrantGitHubRepositoryPropertiesTypedDict
     member_id: NotRequired[Nullable[str]]
+    error: NotRequired[Nullable[BenefitGrantErrorTypedDict]]
 
 
 class CustomerBenefitGrantGitHubRepository(BaseModel):
@@ -74,9 +76,11 @@ class CustomerBenefitGrantGitHubRepository(BaseModel):
 
     member_id: OptionalNullable[str] = UNSET
 
+    error: OptionalNullable[BenefitGrantError] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["member_id"]
+        optional_fields = ["member_id", "error"]
         nullable_fields = [
             "modified_at",
             "granted_at",
@@ -84,6 +88,7 @@ class CustomerBenefitGrantGitHubRepository(BaseModel):
             "member_id",
             "subscription_id",
             "order_id",
+            "error",
         ]
         null_default_fields = []
 

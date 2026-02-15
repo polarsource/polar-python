@@ -26,13 +26,13 @@ class LegacyRecurringProductPriceFixedTypedDict(TypedDict):
     id: str
     r"""The ID of the price."""
     source: ProductPriceSource
+    price_currency: str
+    r"""The currency in which the customer will be charged."""
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
     product_id: str
     r"""The ID of the product owning the price."""
     recurring_interval: SubscriptionRecurringInterval
-    price_currency: str
-    r"""The currency."""
     price_amount: int
     r"""The price in cents."""
     amount_type: Literal["fixed"]
@@ -58,6 +58,9 @@ class LegacyRecurringProductPriceFixed(BaseModel):
 
     source: ProductPriceSource
 
+    price_currency: str
+    r"""The currency in which the customer will be charged."""
+
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
 
@@ -65,9 +68,6 @@ class LegacyRecurringProductPriceFixed(BaseModel):
     r"""The ID of the product owning the price."""
 
     recurring_interval: SubscriptionRecurringInterval
-
-    price_currency: str
-    r"""The currency."""
 
     price_amount: int
     r"""The price in cents."""

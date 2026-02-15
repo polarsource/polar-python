@@ -25,6 +25,7 @@ from .productpriceseatbasedcreate import (
     ProductPriceSeatBasedCreate,
     ProductPriceSeatBasedCreateTypedDict,
 )
+from .productvisibility import ProductVisibility
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .trialinterval import TrialInterval
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
@@ -89,6 +90,7 @@ class ProductCreateRecurringTypedDict(TypedDict):
     """
     description: NotRequired[Nullable[str]]
     r"""The description of the product."""
+    visibility: NotRequired[ProductVisibility]
     medias: NotRequired[Nullable[List[str]]]
     r"""List of file IDs. Each one must be on the same organization as the product, of type `product_media` and correctly uploaded."""
     attached_custom_fields: NotRequired[List[AttachedCustomFieldCreateTypedDict]]
@@ -129,6 +131,8 @@ class ProductCreateRecurring(BaseModel):
     description: OptionalNullable[str] = UNSET
     r"""The description of the product."""
 
+    visibility: Optional[ProductVisibility] = None
+
     medias: OptionalNullable[List[str]] = UNSET
     r"""List of file IDs. Each one must be on the same organization as the product, of type `product_media` and correctly uploaded."""
 
@@ -152,6 +156,7 @@ class ProductCreateRecurring(BaseModel):
         optional_fields = [
             "metadata",
             "description",
+            "visibility",
             "medias",
             "attached_custom_fields",
             "organization_id",

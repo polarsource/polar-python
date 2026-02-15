@@ -62,6 +62,7 @@ class CheckoutUpdateTypedDict(TypedDict):
     customer_billing_name: NotRequired[Nullable[str]]
     customer_billing_address: NotRequired[Nullable[AddressInputTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
+    locale: NotRequired[Nullable[str]]
     trial_interval: NotRequired[Nullable[TrialInterval]]
     r"""The interval unit for the trial period."""
     trial_interval_count: NotRequired[Nullable[int]]
@@ -148,6 +149,8 @@ class CheckoutUpdate(BaseModel):
 
     customer_tax_id: OptionalNullable[str] = UNSET
 
+    locale: OptionalNullable[str] = UNSET
+
     trial_interval: OptionalNullable[TrialInterval] = UNSET
     r"""The interval unit for the trial period."""
 
@@ -223,6 +226,7 @@ class CheckoutUpdate(BaseModel):
             "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
+            "locale",
             "trial_interval",
             "trial_interval_count",
             "metadata",
@@ -248,6 +252,7 @@ class CheckoutUpdate(BaseModel):
             "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
+            "locale",
             "trial_interval",
             "trial_interval_count",
             "currency",

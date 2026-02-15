@@ -192,6 +192,7 @@ class CheckoutPublicTypedDict(TypedDict):
     r"""Number of seats for seat-based pricing."""
     price_per_seat: NotRequired[Nullable[int]]
     r"""Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing."""
+    locale: NotRequired[Nullable[str]]
 
 
 class CheckoutPublic(BaseModel):
@@ -353,9 +354,11 @@ class CheckoutPublic(BaseModel):
     price_per_seat: OptionalNullable[int] = UNSET
     r"""Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing."""
 
+    locale: OptionalNullable[str] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["custom_field_data", "seats", "price_per_seat"]
+        optional_fields = ["custom_field_data", "seats", "price_per_seat", "locale"]
         nullable_fields = [
             "modified_at",
             "return_url",
@@ -377,6 +380,7 @@ class CheckoutPublic(BaseModel):
             "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
+            "locale",
             "product",
             "product_price",
             "prices",
