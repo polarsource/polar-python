@@ -9,6 +9,7 @@ from .benefitgrantcustomproperties import (
     BenefitGrantCustomProperties,
     BenefitGrantCustomPropertiesTypedDict,
 )
+from .benefitgranterror import BenefitGrantError, BenefitGrantErrorTypedDict
 from .customerportalcustomer import (
     CustomerPortalCustomer,
     CustomerPortalCustomerTypedDict,
@@ -38,6 +39,7 @@ class CustomerBenefitGrantCustomTypedDict(TypedDict):
     benefit: BenefitCustomSubscriberTypedDict
     properties: BenefitGrantCustomPropertiesTypedDict
     member_id: NotRequired[Nullable[str]]
+    error: NotRequired[Nullable[BenefitGrantErrorTypedDict]]
 
 
 class CustomerBenefitGrantCustom(BaseModel):
@@ -74,9 +76,11 @@ class CustomerBenefitGrantCustom(BaseModel):
 
     member_id: OptionalNullable[str] = UNSET
 
+    error: OptionalNullable[BenefitGrantError] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["member_id"]
+        optional_fields = ["member_id", "error"]
         nullable_fields = [
             "modified_at",
             "granted_at",
@@ -84,6 +88,7 @@ class CustomerBenefitGrantCustom(BaseModel):
             "member_id",
             "subscription_id",
             "order_id",
+            "error",
         ]
         null_default_fields = []
 

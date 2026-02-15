@@ -9,6 +9,7 @@ from .benefitgrantdiscordproperties import (
     BenefitGrantDiscordProperties,
     BenefitGrantDiscordPropertiesTypedDict,
 )
+from .benefitgranterror import BenefitGrantError, BenefitGrantErrorTypedDict
 from .customerportalcustomer import (
     CustomerPortalCustomer,
     CustomerPortalCustomerTypedDict,
@@ -38,6 +39,7 @@ class CustomerBenefitGrantDiscordTypedDict(TypedDict):
     benefit: BenefitDiscordSubscriberTypedDict
     properties: BenefitGrantDiscordPropertiesTypedDict
     member_id: NotRequired[Nullable[str]]
+    error: NotRequired[Nullable[BenefitGrantErrorTypedDict]]
 
 
 class CustomerBenefitGrantDiscord(BaseModel):
@@ -74,9 +76,11 @@ class CustomerBenefitGrantDiscord(BaseModel):
 
     member_id: OptionalNullable[str] = UNSET
 
+    error: OptionalNullable[BenefitGrantError] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["member_id"]
+        optional_fields = ["member_id", "error"]
         nullable_fields = [
             "modified_at",
             "granted_at",
@@ -84,6 +88,7 @@ class CustomerBenefitGrantDiscord(BaseModel):
             "member_id",
             "subscription_id",
             "order_id",
+            "error",
         ]
         null_default_fields = []
 

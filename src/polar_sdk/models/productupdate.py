@@ -26,6 +26,7 @@ from .productpriceseatbasedcreate import (
     ProductPriceSeatBasedCreate,
     ProductPriceSeatBasedCreateTypedDict,
 )
+from .productvisibility import ProductVisibility
 from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .trialinterval import TrialInterval
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
@@ -108,6 +109,8 @@ class ProductUpdateTypedDict(TypedDict):
     r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on. Once set, it can't be changed.**"""
     is_archived: NotRequired[Nullable[bool]]
     r"""Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally."""
+    visibility: NotRequired[Nullable[ProductVisibility]]
+    r"""The visibility of the product."""
     prices: NotRequired[Nullable[List[ProductUpdatePricesTypedDict]]]
     r"""List of available prices for this product. If you want to keep existing prices, include them in the list as an `ExistingProductPrice` object."""
     medias: NotRequired[Nullable[List[str]]]
@@ -154,6 +157,9 @@ class ProductUpdate(BaseModel):
     is_archived: OptionalNullable[bool] = UNSET
     r"""Whether the product is archived. If `true`, the product won't be available for purchase anymore. Existing customers will still have access to their benefits, and subscriptions will continue normally."""
 
+    visibility: OptionalNullable[ProductVisibility] = UNSET
+    r"""The visibility of the product."""
+
     prices: OptionalNullable[List[ProductUpdatePrices]] = UNSET
     r"""List of available prices for this product. If you want to keep existing prices, include them in the list as an `ExistingProductPrice` object."""
 
@@ -173,6 +179,7 @@ class ProductUpdate(BaseModel):
             "recurring_interval",
             "recurring_interval_count",
             "is_archived",
+            "visibility",
             "prices",
             "medias",
             "attached_custom_fields",
@@ -185,6 +192,7 @@ class ProductUpdate(BaseModel):
             "recurring_interval",
             "recurring_interval_count",
             "is_archived",
+            "visibility",
             "prices",
             "medias",
             "attached_custom_fields",

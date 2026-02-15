@@ -42,6 +42,7 @@ class CheckoutConfirmStripeTypedDict(TypedDict):
     customer_billing_name: NotRequired[Nullable[str]]
     customer_billing_address: NotRequired[Nullable[AddressInputTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
+    locale: NotRequired[Nullable[str]]
     discount_code: NotRequired[Nullable[str]]
     r"""Discount code to apply to the checkout."""
     allow_trial: Nullable[Literal[False]]
@@ -86,6 +87,8 @@ class CheckoutConfirmStripe(BaseModel):
 
     customer_tax_id: OptionalNullable[str] = UNSET
 
+    locale: OptionalNullable[str] = UNSET
+
     discount_code: OptionalNullable[str] = UNSET
     r"""Discount code to apply to the checkout."""
 
@@ -114,6 +117,7 @@ class CheckoutConfirmStripe(BaseModel):
             "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
+            "locale",
             "discount_code",
             "allow_trial",
             "confirmation_token_id",
@@ -129,6 +133,7 @@ class CheckoutConfirmStripe(BaseModel):
             "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
+            "locale",
             "discount_code",
             "allow_trial",
             "confirmation_token_id",

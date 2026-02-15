@@ -20,6 +20,10 @@ class SeatAssignTypedDict(TypedDict):
     r"""External customer ID for the seat assignment"""
     customer_id: NotRequired[Nullable[str]]
     r"""Customer ID for the seat assignment"""
+    external_member_id: NotRequired[Nullable[str]]
+    r"""External member ID for the seat assignment. Only supported when member_model_enabled is true. Can be used alone (lookup existing member) or with email (create/validate member)."""
+    member_id: NotRequired[Nullable[str]]
+    r"""Member ID for the seat assignment. Only supported when member_model_enabled is true."""
     metadata: NotRequired[Nullable[Dict[str, Any]]]
     r"""Additional metadata for the seat (max 10 keys, 1KB total)"""
     immediate_claim: NotRequired[bool]
@@ -45,6 +49,12 @@ class SeatAssign(BaseModel):
     customer_id: OptionalNullable[str] = UNSET
     r"""Customer ID for the seat assignment"""
 
+    external_member_id: OptionalNullable[str] = UNSET
+    r"""External member ID for the seat assignment. Only supported when member_model_enabled is true. Can be used alone (lookup existing member) or with email (create/validate member)."""
+
+    member_id: OptionalNullable[str] = UNSET
+    r"""Member ID for the seat assignment. Only supported when member_model_enabled is true."""
+
     metadata: OptionalNullable[Dict[str, Any]] = UNSET
     r"""Additional metadata for the seat (max 10 keys, 1KB total)"""
 
@@ -60,6 +70,8 @@ class SeatAssign(BaseModel):
             "email",
             "external_customer_id",
             "customer_id",
+            "external_member_id",
+            "member_id",
             "metadata",
             "immediate_claim",
         ]
@@ -70,6 +82,8 @@ class SeatAssign(BaseModel):
             "email",
             "external_customer_id",
             "customer_id",
+            "external_member_id",
+            "member_id",
             "metadata",
         ]
         null_default_fields = []

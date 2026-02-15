@@ -28,8 +28,9 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
   persistentEdits: {}
+  versioningStrategy: automatic
 python:
-  version: 0.28.4
+  version: 0.28.5
   additionalDependencies:
     dev:
       pydantic-ai-slim: ^0.1.0
@@ -55,6 +56,8 @@ python:
   flattenGlobalSecurity: true
   flattenRequests: false
   flatteningOrder: parameters-first
+  forwardCompatibleEnumsByDefault: false
+  forwardCompatibleUnionsByDefault: "false"
   imports:
     option: openapi
     paths:

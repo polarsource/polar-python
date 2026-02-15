@@ -11,13 +11,14 @@ from .customerstatesubscription import (
     CustomerStateSubscription,
     CustomerStateSubscriptionTypedDict,
 )
+from .customertype import CustomerType
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .taxidformat import TaxIDFormat
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Dict, List, Union
-from typing_extensions import TypeAliasType, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 CustomerStateTaxIDTypedDict = TypeAliasType(
@@ -64,6 +65,9 @@ class CustomerStateTypedDict(TypedDict):
     active_meters: List[CustomerStateMeterTypedDict]
     r"""The customer's active meters."""
     avatar_url: str
+    type: NotRequired[Nullable[CustomerType]]
+    r"""The type of customer: 'individual' for single users, 'team' for customers with multiple members. Legacy customers may have NULL type which is treated as 'individual'."""
+    locale: NotRequired[Nullable[str]]
 
 
 class CustomerState(BaseModel):
@@ -118,15 +122,22 @@ class CustomerState(BaseModel):
 
     avatar_url: str
 
+    type: OptionalNullable[CustomerType] = UNSET
+    r"""The type of customer: 'individual' for single users, 'team' for customers with multiple members. Legacy customers may have NULL type which is treated as 'individual'."""
+
+    locale: OptionalNullable[str] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["type", "locale"]
         nullable_fields = [
             "modified_at",
             "external_id",
+            "type",
             "name",
             "billing_address",
             "tax_id",
+            "locale",
             "deleted_at",
         ]
         null_default_fields = []

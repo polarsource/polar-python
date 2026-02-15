@@ -88,6 +88,7 @@ with Polar(
         "customer_billing_address": {
             "country": polar_sdk.CountryAlpha2Input.US,
         },
+        "locale": "en",
         "products": [
             "<value 1>",
             "<value 2>",
@@ -184,6 +185,7 @@ with Polar(
         "customer_billing_address": {
             "country": polar_sdk.CountryAlpha2Input.US,
         },
+        "locale": "en",
     })
 
     # Handle response
@@ -271,6 +273,7 @@ with Polar() as polar:
     res = polar.checkouts.client_update(client_secret="<value>", checkout_update_public={
         "customer_name": "John Doe",
         "customer_billing_address": None,
+        "locale": "en",
         "allow_trial": False,
     })
 
@@ -327,6 +330,7 @@ with Polar(
         "customer_billing_address": {
             "country": polar_sdk.CountryAlpha2Input.US,
         },
+        "locale": "en",
         "allow_trial": False,
     })
 

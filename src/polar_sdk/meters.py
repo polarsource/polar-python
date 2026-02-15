@@ -888,6 +888,7 @@ class Meters(BaseSDK):
         start_timestamp: datetime,
         end_timestamp: datetime,
         interval: models.TimeInterval,
+        timezone: Optional[str] = "UTC",
         customer_id: OptionalNullable[
             Union[
                 models.MetersQuantitiesQueryParamCustomerIDFilter,
@@ -924,6 +925,7 @@ class Meters(BaseSDK):
         :param start_timestamp: Start timestamp.
         :param end_timestamp: End timestamp.
         :param interval: Interval between two timestamps.
+        :param timezone: Timezone to use for the timestamps. Default is UTC.
         :param customer_id: Filter by customer ID.
         :param external_customer_id: Filter by external customer ID.
         :param customer_aggregation_function: If set, will first compute the quantities per customer before aggregating them using the given function. If not set, the quantities will be aggregated across all events.
@@ -948,6 +950,7 @@ class Meters(BaseSDK):
             start_timestamp=start_timestamp,
             end_timestamp=end_timestamp,
             interval=interval,
+            timezone=timezone,
             customer_id=customer_id,
             external_customer_id=external_customer_id,
             customer_aggregation_function=customer_aggregation_function,
@@ -1020,6 +1023,7 @@ class Meters(BaseSDK):
         start_timestamp: datetime,
         end_timestamp: datetime,
         interval: models.TimeInterval,
+        timezone: Optional[str] = "UTC",
         customer_id: OptionalNullable[
             Union[
                 models.MetersQuantitiesQueryParamCustomerIDFilter,
@@ -1056,6 +1060,7 @@ class Meters(BaseSDK):
         :param start_timestamp: Start timestamp.
         :param end_timestamp: End timestamp.
         :param interval: Interval between two timestamps.
+        :param timezone: Timezone to use for the timestamps. Default is UTC.
         :param customer_id: Filter by customer ID.
         :param external_customer_id: Filter by external customer ID.
         :param customer_aggregation_function: If set, will first compute the quantities per customer before aggregating them using the given function. If not set, the quantities will be aggregated across all events.
@@ -1080,6 +1085,7 @@ class Meters(BaseSDK):
             start_timestamp=start_timestamp,
             end_timestamp=end_timestamp,
             interval=interval,
+            timezone=timezone,
             customer_id=customer_id,
             external_customer_id=external_customer_id,
             customer_aggregation_function=customer_aggregation_function,

@@ -25,14 +25,14 @@ class ProductPriceMeteredUnitTypedDict(TypedDict):
     id: str
     r"""The ID of the price."""
     source: ProductPriceSource
+    price_currency: str
+    r"""The currency in which the customer will be charged."""
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
     product_id: str
     r"""The ID of the product owning the price."""
     type: ProductPriceType
     recurring_interval: Nullable[SubscriptionRecurringInterval]
-    price_currency: str
-    r"""The currency."""
     unit_amount: str
     r"""The price per unit in cents."""
     cap_amount: Nullable[int]
@@ -58,6 +58,9 @@ class ProductPriceMeteredUnit(BaseModel):
 
     source: ProductPriceSource
 
+    price_currency: str
+    r"""The currency in which the customer will be charged."""
+
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
 
@@ -72,9 +75,6 @@ class ProductPriceMeteredUnit(BaseModel):
             deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
         ),
     ]
-
-    price_currency: str
-    r"""The currency."""
 
     unit_amount: str
     r"""The price per unit in cents."""
