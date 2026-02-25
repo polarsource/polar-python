@@ -59,6 +59,8 @@ class OrganizationTypedDict(TypedDict):
     status: OrganizationStatus
     details_submitted_at: Nullable[datetime]
     r"""When the business details were submitted."""
+    default_presentment_currency: str
+    r"""Default presentment currency. Used as fallback in checkout and customer portal, if the customer's local currency is not available."""
     feature_settings: Nullable[OrganizationFeatureSettingsTypedDict]
     r"""Organization feature settings"""
     subscription_settings: OrganizationSubscriptionSettingsTypedDict
@@ -104,6 +106,9 @@ class Organization(BaseModel):
 
     details_submitted_at: Nullable[datetime]
     r"""When the business details were submitted."""
+
+    default_presentment_currency: str
+    r"""Default presentment currency. Used as fallback in checkout and customer portal, if the customer's local currency is not available."""
 
     feature_settings: Nullable[OrganizationFeatureSettings]
     r"""Organization feature settings"""

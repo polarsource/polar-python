@@ -149,7 +149,7 @@ with Polar(
 
 ### Response
 
-**[Any](../../models/.md)**
+**[models.SubscriptionsExportResponse](../../models/subscriptionsexportresponse.md)**
 
 ### Errors
 

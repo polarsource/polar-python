@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .discountduration import DiscountDuration
 from .discounttype import DiscountType
+from .presentmentcurrency import PresentmentCurrency
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -49,7 +50,7 @@ class DiscountUpdateTypedDict(TypedDict):
     duration_in_months: NotRequired[Nullable[int]]
     type: NotRequired[Nullable[DiscountType]]
     amount: NotRequired[Nullable[int]]
-    currency: NotRequired[Nullable[str]]
+    currency: NotRequired[Nullable[PresentmentCurrency]]
     basis_points: NotRequired[Nullable[int]]
     products: NotRequired[Nullable[List[str]]]
 
@@ -93,7 +94,7 @@ class DiscountUpdate(BaseModel):
 
     amount: OptionalNullable[int] = UNSET
 
-    currency: OptionalNullable[str] = UNSET
+    currency: OptionalNullable[PresentmentCurrency] = UNSET
 
     basis_points: OptionalNullable[int] = UNSET
 

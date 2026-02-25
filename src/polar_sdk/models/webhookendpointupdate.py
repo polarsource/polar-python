@@ -14,7 +14,6 @@ class WebhookEndpointUpdateTypedDict(TypedDict):
     r"""Schema to update a webhook endpoint."""
 
     url: NotRequired[Nullable[str]]
-    secret: NotRequired[Nullable[str]]
     format_: NotRequired[Nullable[WebhookFormat]]
     events: NotRequired[Nullable[List[WebhookEventType]]]
     enabled: NotRequired[Nullable[bool]]
@@ -25,13 +24,6 @@ class WebhookEndpointUpdate(BaseModel):
     r"""Schema to update a webhook endpoint."""
 
     url: OptionalNullable[str] = UNSET
-
-    secret: Annotated[
-        OptionalNullable[str],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ] = UNSET
 
     format_: Annotated[
         OptionalNullable[WebhookFormat], pydantic.Field(alias="format")
@@ -44,8 +36,8 @@ class WebhookEndpointUpdate(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["url", "secret", "format", "events", "enabled"]
-        nullable_fields = ["url", "secret", "format", "events", "enabled"]
+        optional_fields = ["url", "format", "events", "enabled"]
+        nullable_fields = ["url", "format", "events", "enabled"]
         null_default_fields = []
 
         serialized = handler(self)

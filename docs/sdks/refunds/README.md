@@ -85,8 +85,6 @@ with Polar(
         "amount": 90,
     })
 
-    assert res is not None
-
     # Handle response
     print(res)
 

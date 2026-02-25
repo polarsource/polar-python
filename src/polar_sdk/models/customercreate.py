@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .addressinput import AddressInput, AddressInputTypedDict
+from .customertype import CustomerType
 from .ownercreate import OwnerCreate, OwnerCreateTypedDict
 from .taxidformat import TaxIDFormat
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
@@ -49,6 +50,9 @@ class CustomerCreateTypedDict(TypedDict):
     name: NotRequired[Nullable[str]]
     billing_address: NotRequired[Nullable[AddressInputTypedDict]]
     tax_id: NotRequired[Nullable[List[Nullable[CustomerCreateTaxIDTypedDict]]]]
+    locale: NotRequired[Nullable[str]]
+    type: NotRequired[Nullable[CustomerType]]
+    r"""The type of customer. Defaults to 'individual'. Set to 'team' for customers that can have multiple members."""
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the customer. **Required unless you use an organization token.**"""
     owner: NotRequired[Nullable[OwnerCreateTypedDict]]
@@ -82,6 +86,11 @@ class CustomerCreate(BaseModel):
 
     tax_id: OptionalNullable[List[Nullable[CustomerCreateTaxID]]] = UNSET
 
+    locale: OptionalNullable[str] = UNSET
+
+    type: OptionalNullable[CustomerType] = UNSET
+    r"""The type of customer. Defaults to 'individual'. Set to 'team' for customers that can have multiple members."""
+
     organization_id: OptionalNullable[str] = UNSET
     r"""The ID of the organization owning the customer. **Required unless you use an organization token.**"""
 
@@ -96,6 +105,8 @@ class CustomerCreate(BaseModel):
             "name",
             "billing_address",
             "tax_id",
+            "locale",
+            "type",
             "organization_id",
             "owner",
         ]
@@ -104,6 +115,8 @@ class CustomerCreate(BaseModel):
             "name",
             "billing_address",
             "tax_id",
+            "locale",
+            "type",
             "organization_id",
             "owner",
         ]

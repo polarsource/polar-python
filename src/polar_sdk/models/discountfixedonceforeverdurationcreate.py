@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .discountduration import DiscountDuration
 from .discounttype import DiscountType
+from .presentmentcurrency import PresentmentCurrency
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -30,8 +31,7 @@ class DiscountFixedOnceForeverDurationCreateTypedDict(TypedDict):
     r"""Fixed amount to discount from the invoice total."""
     name: str
     r"""Name of the discount. Will be displayed to the customer when the discount is applied."""
-    currency: NotRequired[str]
-    r"""The currency. Currently, only `usd` is supported."""
+    currency: NotRequired[PresentmentCurrency]
     metadata: NotRequired[
         Dict[str, DiscountFixedOnceForeverDurationCreateMetadataTypedDict]
     ]
@@ -73,8 +73,7 @@ class DiscountFixedOnceForeverDurationCreate(BaseModel):
     name: str
     r"""Name of the discount. Will be displayed to the customer when the discount is applied."""
 
-    currency: Optional[str] = "usd"
-    r"""The currency. Currently, only `usd` is supported."""
+    currency: Optional[PresentmentCurrency] = None
 
     metadata: Optional[Dict[str, DiscountFixedOnceForeverDurationCreateMetadata]] = None
     r"""Key-value object allowing you to store additional information.

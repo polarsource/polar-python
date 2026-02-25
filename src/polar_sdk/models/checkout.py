@@ -35,10 +35,9 @@ from .productprice import ProductPrice, ProductPriceTypedDict
 from .trialinterval import TrialInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 CheckoutCustomFieldDataTypedDict = TypeAliasType(
@@ -48,17 +47,6 @@ CheckoutCustomFieldDataTypedDict = TypeAliasType(
 
 CheckoutCustomFieldData = TypeAliasType(
     "CheckoutCustomFieldData", Union[str, int, bool, datetime]
-)
-
-
-CheckoutProductPriceTypedDict = TypeAliasType(
-    "CheckoutProductPriceTypedDict",
-    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
-)
-
-
-CheckoutProductPrice = TypeAliasType(
-    "CheckoutProductPrice", Union[LegacyRecurringProductPrice, ProductPrice]
 )
 
 
@@ -150,8 +138,6 @@ class CheckoutTypedDict(TypedDict):
     r"""ID of the organization owning the checkout session."""
     product_id: Nullable[str]
     r"""ID of the product to checkout."""
-    product_price_id: Nullable[str]
-    r"""ID of the product price to checkout."""
     discount_id: Nullable[str]
     r"""ID of the discount applied to the checkout."""
     allow_discount_codes: bool
@@ -188,13 +174,10 @@ class CheckoutTypedDict(TypedDict):
     metadata: Dict[str, MetadataOutputTypeTypedDict]
     external_customer_id: Nullable[str]
     r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
-    customer_external_id: Nullable[str]
     products: List[CheckoutProductTypedDict]
     r"""List of products available to select."""
     product: Nullable[CheckoutProductTypedDict]
     r"""Product selected to checkout."""
-    product_price: Nullable[CheckoutProductPriceTypedDict]
-    r"""Price of the selected product."""
     prices: Nullable[Dict[str, List[CheckoutPricesTypedDict]]]
     r"""Mapping of product IDs to their list of prices."""
     discount: Nullable[CheckoutDiscountTypedDict]
@@ -209,6 +192,7 @@ class CheckoutTypedDict(TypedDict):
     r"""Number of seats for seat-based pricing."""
     price_per_seat: NotRequired[Nullable[int]]
     r"""Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing."""
+    locale: NotRequired[Nullable[str]]
 
 
 class Checkout(BaseModel):
@@ -281,14 +265,6 @@ class Checkout(BaseModel):
     product_id: Nullable[str]
     r"""ID of the product to checkout."""
 
-    product_price_id: Annotated[
-        Nullable[str],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-    r"""ID of the product price to checkout."""
-
     discount_id: Nullable[str]
     r"""ID of the discount applied to the checkout."""
 
@@ -347,26 +323,11 @@ class Checkout(BaseModel):
     external_customer_id: Nullable[str]
     r"""ID of the customer in your system. If a matching customer exists on Polar, the resulting order will be linked to this customer. Otherwise, a new customer will be created with this external ID set."""
 
-    customer_external_id: Annotated[
-        Nullable[str],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-
     products: List[CheckoutProduct]
     r"""List of products available to select."""
 
     product: Nullable[CheckoutProduct]
     r"""Product selected to checkout."""
-
-    product_price: Annotated[
-        Nullable[CheckoutProductPrice],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
-    r"""Price of the selected product."""
 
     prices: Nullable[Dict[str, List[CheckoutPrices]]]
     r"""Mapping of product IDs to their list of prices."""
@@ -388,9 +349,11 @@ class Checkout(BaseModel):
     price_per_seat: OptionalNullable[int] = UNSET
     r"""Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing."""
 
+    locale: OptionalNullable[str] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["custom_field_data", "seats", "price_per_seat"]
+        optional_fields = ["custom_field_data", "seats", "price_per_seat", "locale"]
         nullable_fields = [
             "modified_at",
             "return_url",
@@ -403,7 +366,6 @@ class Checkout(BaseModel):
             "active_trial_interval_count",
             "trial_end",
             "product_id",
-            "product_price_id",
             "discount_id",
             "customer_id",
             "customer_name",
@@ -412,12 +374,11 @@ class Checkout(BaseModel):
             "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
+            "locale",
             "trial_interval",
             "trial_interval_count",
             "external_customer_id",
-            "customer_external_id",
             "product",
-            "product_price",
             "prices",
             "discount",
             "subscription_id",

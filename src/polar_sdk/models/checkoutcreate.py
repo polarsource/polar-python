@@ -161,6 +161,7 @@ class CheckoutCreateTypedDict(TypedDict):
     r"""When set, a back button will be shown in the checkout to return to this URL."""
     embed_origin: NotRequired[Nullable[str]]
     r"""If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page."""
+    locale: NotRequired[Nullable[str]]
     currency: NotRequired[Nullable[PresentmentCurrency]]
     prices: NotRequired[Nullable[Dict[str, List[CheckoutCreatePricesTypedDict]]]]
     r"""Optional mapping of product IDs to a list of ad-hoc prices to create for that product. If not set, catalog prices of the product will be used."""
@@ -266,6 +267,8 @@ class CheckoutCreate(BaseModel):
     embed_origin: OptionalNullable[str] = UNSET
     r"""If you plan to embed the checkout session, set this to the Origin of the embedding page. It'll allow the Polar iframe to communicate with the parent page."""
 
+    locale: OptionalNullable[str] = UNSET
+
     currency: OptionalNullable[PresentmentCurrency] = UNSET
 
     prices: OptionalNullable[Dict[str, List[CheckoutCreatePrices]]] = UNSET
@@ -298,6 +301,7 @@ class CheckoutCreate(BaseModel):
             "success_url",
             "return_url",
             "embed_origin",
+            "locale",
             "currency",
             "prices",
         ]
@@ -319,6 +323,7 @@ class CheckoutCreate(BaseModel):
             "success_url",
             "return_url",
             "embed_origin",
+            "locale",
             "currency",
             "prices",
         ]

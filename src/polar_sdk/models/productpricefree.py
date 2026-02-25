@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 from .productpricesource import ProductPriceSource
-from .productpricetype import ProductPriceType
-from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
@@ -24,12 +22,12 @@ class ProductPriceFreeTypedDict(TypedDict):
     id: str
     r"""The ID of the price."""
     source: ProductPriceSource
+    price_currency: str
+    r"""The currency in which the customer will be charged."""
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
     product_id: str
     r"""The ID of the product owning the price."""
-    type: ProductPriceType
-    recurring_interval: Nullable[SubscriptionRecurringInterval]
     amount_type: Literal["free"]
 
 
@@ -47,20 +45,14 @@ class ProductPriceFree(BaseModel):
 
     source: ProductPriceSource
 
+    price_currency: str
+    r"""The currency in which the customer will be charged."""
+
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
 
     product_id: str
     r"""The ID of the product owning the price."""
-
-    type: ProductPriceType
-
-    recurring_interval: Annotated[
-        Nullable[SubscriptionRecurringInterval],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
 
     AMOUNT_TYPE: Annotated[
         Annotated[Literal["free"], AfterValidator(validate_const("free"))],
@@ -70,7 +62,7 @@ class ProductPriceFree(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
-        nullable_fields = ["modified_at", "recurring_interval"]
+        nullable_fields = ["modified_at"]
         null_default_fields = []
 
         serialized = handler(self)

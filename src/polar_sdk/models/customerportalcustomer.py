@@ -6,6 +6,7 @@ from .customerportaloauthaccount import (
     CustomerPortalOAuthAccount,
     CustomerPortalOAuthAccountTypedDict,
 )
+from .customertype import CustomerType
 from .taxidformat import TaxIDFormat
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
@@ -39,6 +40,7 @@ class CustomerPortalCustomerTypedDict(TypedDict):
     tax_id: Nullable[List[Nullable[CustomerPortalCustomerTaxIDTypedDict]]]
     oauth_accounts: Dict[str, CustomerPortalOAuthAccountTypedDict]
     default_payment_method_id: NotRequired[Nullable[str]]
+    type: NotRequired[Nullable[CustomerType]]
 
 
 class CustomerPortalCustomer(BaseModel):
@@ -67,9 +69,11 @@ class CustomerPortalCustomer(BaseModel):
 
     default_payment_method_id: OptionalNullable[str] = UNSET
 
+    type: OptionalNullable[CustomerType] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["default_payment_method_id"]
+        optional_fields = ["default_payment_method_id", "type"]
         nullable_fields = [
             "modified_at",
             "name",
@@ -77,6 +81,7 @@ class CustomerPortalCustomer(BaseModel):
             "billing_address",
             "tax_id",
             "default_payment_method_id",
+            "type",
         ]
         null_default_fields = []
 
