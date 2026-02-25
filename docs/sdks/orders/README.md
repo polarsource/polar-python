@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [list](#list) - List Orders
-* [export](#export) - Export Subscriptions
+* [export](#export) - Export Orders
 * [get](#get) - Get Order
 * [update](#update) - Update Order
 * [generate_invoice](#generate_invoice) - Generate Order Invoice
@@ -100,7 +100,7 @@ with Polar(
 
 ### Response
 
-**[Any](../../models/.md)**
+**[models.OrdersExportResponse](../../models/ordersexportresponse.md)**
 
 ### Errors
 

@@ -362,7 +362,7 @@ class Refunds(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[models.Refund]:
+    ) -> models.Refund:
         r"""Create Refund
 
         Create a refund.
@@ -430,10 +430,8 @@ class Refunds(BaseSDK):
         )
 
         response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
+        if utils.match_response(http_res, "201", "application/json"):
             return unmarshal_json_response(models.Refund, http_res)
-        if utils.match_response(http_res, "201", "*"):
-            return None
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(
                 models.RefundedAlreadyData, http_res
@@ -461,7 +459,7 @@ class Refunds(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[models.Refund]:
+    ) -> models.Refund:
         r"""Create Refund
 
         Create a refund.
@@ -529,10 +527,8 @@ class Refunds(BaseSDK):
         )
 
         response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
+        if utils.match_response(http_res, "201", "application/json"):
             return unmarshal_json_response(models.Refund, http_res)
-        if utils.match_response(http_res, "201", "*"):
-            return None
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(
                 models.RefundedAlreadyData, http_res

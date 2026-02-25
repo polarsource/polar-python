@@ -6,10 +6,9 @@ from .presentmentcurrency import PresentmentCurrency
 from .trialinterval import TrialInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import Dict, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 CheckoutUpdateCustomFieldDataTypedDict = TypeAliasType(
@@ -51,8 +50,6 @@ class CheckoutUpdateTypedDict(TypedDict):
     r"""Key-value object storing custom field values."""
     product_id: NotRequired[Nullable[str]]
     r"""ID of the product to checkout. Must be present in the checkout's product list."""
-    product_price_id: NotRequired[Nullable[str]]
-    r"""ID of the product price to checkout. Must correspond to a price present in the checkout's product list."""
     amount: NotRequired[Nullable[int]]
     seats: NotRequired[Nullable[int]]
     r"""Number of seats for seat-based pricing."""
@@ -62,6 +59,7 @@ class CheckoutUpdateTypedDict(TypedDict):
     customer_billing_name: NotRequired[Nullable[str]]
     customer_billing_address: NotRequired[Nullable[AddressInputTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
+    locale: NotRequired[Nullable[str]]
     trial_interval: NotRequired[Nullable[TrialInterval]]
     r"""The interval unit for the trial period."""
     trial_interval_count: NotRequired[Nullable[int]]
@@ -123,14 +121,6 @@ class CheckoutUpdate(BaseModel):
     product_id: OptionalNullable[str] = UNSET
     r"""ID of the product to checkout. Must be present in the checkout's product list."""
 
-    product_price_id: Annotated[
-        OptionalNullable[str],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ] = UNSET
-    r"""ID of the product price to checkout. Must correspond to a price present in the checkout's product list."""
-
     amount: OptionalNullable[int] = UNSET
 
     seats: OptionalNullable[int] = UNSET
@@ -147,6 +137,8 @@ class CheckoutUpdate(BaseModel):
     customer_billing_address: OptionalNullable[AddressInput] = UNSET
 
     customer_tax_id: OptionalNullable[str] = UNSET
+
+    locale: OptionalNullable[str] = UNSET
 
     trial_interval: OptionalNullable[TrialInterval] = UNSET
     r"""The interval unit for the trial period."""
@@ -214,7 +206,6 @@ class CheckoutUpdate(BaseModel):
         optional_fields = [
             "custom_field_data",
             "product_id",
-            "product_price_id",
             "amount",
             "seats",
             "is_business_customer",
@@ -223,6 +214,7 @@ class CheckoutUpdate(BaseModel):
             "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
+            "locale",
             "trial_interval",
             "trial_interval_count",
             "metadata",
@@ -239,7 +231,6 @@ class CheckoutUpdate(BaseModel):
         ]
         nullable_fields = [
             "product_id",
-            "product_price_id",
             "amount",
             "seats",
             "is_business_customer",
@@ -248,6 +239,7 @@ class CheckoutUpdate(BaseModel):
             "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
+            "locale",
             "trial_interval",
             "trial_interval_count",
             "currency",

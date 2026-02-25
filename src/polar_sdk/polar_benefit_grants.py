@@ -17,6 +17,7 @@ class PolarBenefitGrants(BaseSDK):
             models.CustomerPortalBenefitGrantsListSecurity,
             models.CustomerPortalBenefitGrantsListSecurityTypedDict,
         ],
+        query: OptionalNullable[str] = UNSET,
         type_filter: OptionalNullable[
             Union[
                 models.QueryParamBenefitTypeFilter,
@@ -70,6 +71,7 @@ class PolarBenefitGrants(BaseSDK):
         **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
+        :param query: Filter by benefit description.
         :param type_filter: Filter by benefit type.
         :param benefit_id: Filter by benefit ID.
         :param checkout_id: Filter by checkout ID.
@@ -95,6 +97,7 @@ class PolarBenefitGrants(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalBenefitGrantsListRequest(
+            query=query,
             type_filter=type_filter,
             benefit_id=benefit_id,
             checkout_id=checkout_id,
@@ -165,6 +168,7 @@ class PolarBenefitGrants(BaseSDK):
 
             return self.list(
                 security=security,
+                query=query,
                 type_filter=type_filter,
                 benefit_id=benefit_id,
                 checkout_id=checkout_id,
@@ -206,6 +210,7 @@ class PolarBenefitGrants(BaseSDK):
             models.CustomerPortalBenefitGrantsListSecurity,
             models.CustomerPortalBenefitGrantsListSecurityTypedDict,
         ],
+        query: OptionalNullable[str] = UNSET,
         type_filter: OptionalNullable[
             Union[
                 models.QueryParamBenefitTypeFilter,
@@ -259,6 +264,7 @@ class PolarBenefitGrants(BaseSDK):
         **Scopes**: `customer_portal:read` `customer_portal:write`
 
         :param security:
+        :param query: Filter by benefit description.
         :param type_filter: Filter by benefit type.
         :param benefit_id: Filter by benefit ID.
         :param checkout_id: Filter by checkout ID.
@@ -284,6 +290,7 @@ class PolarBenefitGrants(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         request = models.CustomerPortalBenefitGrantsListRequest(
+            query=query,
             type_filter=type_filter,
             benefit_id=benefit_id,
             checkout_id=checkout_id,
@@ -354,6 +361,7 @@ class PolarBenefitGrants(BaseSDK):
 
             return self.list(
                 security=security,
+                query=query,
                 type_filter=type_filter,
                 benefit_id=benefit_id,
                 checkout_id=checkout_id,

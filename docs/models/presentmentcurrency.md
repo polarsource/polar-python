@@ -5,11 +5,13 @@
 
 | Name  | Value |
 | ----- | ----- |
-| `USD` | usd   |
-| `EUR` | eur   |
-| `GBP` | gbp   |
-| `CAD` | cad   |
 | `AUD` | aud   |
-| `JPY` | jpy   |
+| `BRL` | brl   |
+| `CAD` | cad   |
 | `CHF` | chf   |
+| `EUR` | eur   |
+| `INR` | inr   |
+| `GBP` | gbp   |
+| `JPY` | jpy   |
 | `SEK` | sek   |
+| `USD` | usd   |

@@ -49,6 +49,8 @@ class CheckoutLinkUpdateTypedDict(TypedDict):
     r"""ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored."""
     success_url: NotRequired[Nullable[str]]
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
+    return_url: NotRequired[Nullable[str]]
+    r"""When set, a back button will be shown in the checkout to return to this URL."""
 
 
 class CheckoutLinkUpdate(BaseModel):
@@ -91,6 +93,9 @@ class CheckoutLinkUpdate(BaseModel):
     success_url: OptionalNullable[str] = UNSET
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
 
+    return_url: OptionalNullable[str] = UNSET
+    r"""When set, a back button will be shown in the checkout to return to this URL."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -103,6 +108,7 @@ class CheckoutLinkUpdate(BaseModel):
             "require_billing_address",
             "discount_id",
             "success_url",
+            "return_url",
         ]
         nullable_fields = [
             "trial_interval",
@@ -113,6 +119,7 @@ class CheckoutLinkUpdate(BaseModel):
             "require_billing_address",
             "discount_id",
             "success_url",
+            "return_url",
         ]
         null_default_fields = []
 

@@ -26,6 +26,8 @@ class LegacyRecurringProductPriceFreeTypedDict(TypedDict):
     id: str
     r"""The ID of the price."""
     source: ProductPriceSource
+    price_currency: str
+    r"""The currency in which the customer will be charged."""
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
     product_id: str
@@ -53,6 +55,9 @@ class LegacyRecurringProductPriceFree(BaseModel):
     r"""The ID of the price."""
 
     source: ProductPriceSource
+
+    price_currency: str
+    r"""The currency in which the customer will be charged."""
 
     is_archived: bool
     r"""Whether the price is archived and no longer available."""

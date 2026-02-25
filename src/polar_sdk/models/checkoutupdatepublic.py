@@ -31,8 +31,6 @@ class CheckoutUpdatePublicTypedDict(TypedDict):
     r"""Key-value object storing custom field values."""
     product_id: NotRequired[Nullable[str]]
     r"""ID of the product to checkout. Must be present in the checkout's product list."""
-    product_price_id: NotRequired[Nullable[str]]
-    r"""ID of the product price to checkout. Must correspond to a price present in the checkout's product list."""
     amount: NotRequired[Nullable[int]]
     seats: NotRequired[Nullable[int]]
     r"""Number of seats for seat-based pricing."""
@@ -42,6 +40,7 @@ class CheckoutUpdatePublicTypedDict(TypedDict):
     customer_billing_name: NotRequired[Nullable[str]]
     customer_billing_address: NotRequired[Nullable[AddressInputTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
+    locale: NotRequired[Nullable[str]]
     discount_code: NotRequired[Nullable[str]]
     r"""Discount code to apply to the checkout."""
     allow_trial: Nullable[Literal[False]]
@@ -58,14 +57,6 @@ class CheckoutUpdatePublic(BaseModel):
 
     product_id: OptionalNullable[str] = UNSET
     r"""ID of the product to checkout. Must be present in the checkout's product list."""
-
-    product_price_id: Annotated[
-        OptionalNullable[str],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ] = UNSET
-    r"""ID of the product price to checkout. Must correspond to a price present in the checkout's product list."""
 
     amount: OptionalNullable[int] = UNSET
 
@@ -84,6 +75,8 @@ class CheckoutUpdatePublic(BaseModel):
 
     customer_tax_id: OptionalNullable[str] = UNSET
 
+    locale: OptionalNullable[str] = UNSET
+
     discount_code: OptionalNullable[str] = UNSET
     r"""Discount code to apply to the checkout."""
 
@@ -100,7 +93,6 @@ class CheckoutUpdatePublic(BaseModel):
         optional_fields = [
             "custom_field_data",
             "product_id",
-            "product_price_id",
             "amount",
             "seats",
             "is_business_customer",
@@ -109,12 +101,12 @@ class CheckoutUpdatePublic(BaseModel):
             "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
+            "locale",
             "discount_code",
             "allow_trial",
         ]
         nullable_fields = [
             "product_id",
-            "product_price_id",
             "amount",
             "seats",
             "is_business_customer",
@@ -123,6 +115,7 @@ class CheckoutUpdatePublic(BaseModel):
             "customer_billing_name",
             "customer_billing_address",
             "customer_tax_id",
+            "locale",
             "discount_code",
             "allow_trial",
         ]

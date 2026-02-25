@@ -4,6 +4,7 @@ from __future__ import annotations
 from enum import Enum
 
 
-class ProductPriceType(str, Enum):
-    ONE_TIME = "one_time"
-    RECURRING = "recurring"
+class ProductVisibility(str, Enum):
+    DRAFT = "draft"
+    PRIVATE = "private"
+    PUBLIC = "public"

@@ -25,6 +25,7 @@ from .productpriceseatbasedcreate import (
     ProductPriceSeatBasedCreate,
     ProductPriceSeatBasedCreateTypedDict,
 )
+from .productvisibility import ProductVisibility
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag, model_serializer
@@ -86,6 +87,7 @@ class ProductCreateOneTimeTypedDict(TypedDict):
     """
     description: NotRequired[Nullable[str]]
     r"""The description of the product."""
+    visibility: NotRequired[ProductVisibility]
     medias: NotRequired[Nullable[List[str]]]
     r"""List of file IDs. Each one must be on the same organization as the product, of type `product_media` and correctly uploaded."""
     attached_custom_fields: NotRequired[List[AttachedCustomFieldCreateTypedDict]]
@@ -122,6 +124,8 @@ class ProductCreateOneTime(BaseModel):
     description: OptionalNullable[str] = UNSET
     r"""The description of the product."""
 
+    visibility: Optional[ProductVisibility] = None
+
     medias: OptionalNullable[List[str]] = UNSET
     r"""List of file IDs. Each one must be on the same organization as the product, of type `product_media` and correctly uploaded."""
 
@@ -142,6 +146,7 @@ class ProductCreateOneTime(BaseModel):
         optional_fields = [
             "metadata",
             "description",
+            "visibility",
             "medias",
             "attached_custom_fields",
             "organization_id",

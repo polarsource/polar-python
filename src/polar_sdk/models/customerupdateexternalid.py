@@ -50,6 +50,7 @@ class CustomerUpdateExternalIDTypedDict(TypedDict):
     tax_id: NotRequired[
         Nullable[List[Nullable[CustomerUpdateExternalIDTaxIDTypedDict]]]
     ]
+    locale: NotRequired[Nullable[str]]
 
 
 class CustomerUpdateExternalID(BaseModel):
@@ -76,10 +77,19 @@ class CustomerUpdateExternalID(BaseModel):
 
     tax_id: OptionalNullable[List[Nullable[CustomerUpdateExternalIDTaxID]]] = UNSET
 
+    locale: OptionalNullable[str] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["metadata", "email", "name", "billing_address", "tax_id"]
-        nullable_fields = ["email", "name", "billing_address", "tax_id"]
+        optional_fields = [
+            "metadata",
+            "email",
+            "name",
+            "billing_address",
+            "tax_id",
+            "locale",
+        ]
+        nullable_fields = ["email", "name", "billing_address", "tax_id", "locale"]
         null_default_fields = []
 
         serialized = handler(self)

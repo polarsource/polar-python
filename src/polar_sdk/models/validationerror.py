@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 from polar_sdk.types import BaseModel
-from typing import List, Union
-from typing_extensions import TypeAliasType, TypedDict
+from typing import Any, List, Optional, Union
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 LocTypedDict = TypeAliasType("LocTypedDict", Union[str, int])
@@ -12,10 +12,20 @@ LocTypedDict = TypeAliasType("LocTypedDict", Union[str, int])
 Loc = TypeAliasType("Loc", Union[str, int])
 
 
+class ContextTypedDict(TypedDict):
+    pass
+
+
+class Context(BaseModel):
+    pass
+
+
 class ValidationErrorTypedDict(TypedDict):
     loc: List[LocTypedDict]
     msg: str
     type: str
+    input: NotRequired[Any]
+    ctx: NotRequired[ContextTypedDict]
 
 
 class ValidationError(BaseModel):
@@ -24,3 +34,7 @@ class ValidationError(BaseModel):
     msg: str
 
     type: str
+
+    input: Optional[Any] = None
+
+    ctx: Optional[Context] = None

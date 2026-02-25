@@ -110,8 +110,6 @@ with Polar() as polar:
 
 Update a subscription of the authenticated customer.
 
-**Scopes**: `customer_portal:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="python" operationID="customer_portal:subscriptions:update" method="patch" path="/v1/customer-portal/subscriptions/{id}" -->
@@ -156,8 +154,6 @@ with Polar() as polar:
 ## cancel
 
 Cancel a subscription of the authenticated customer.
-
-**Scopes**: `customer_portal:write`
 
 ### Example Usage
 

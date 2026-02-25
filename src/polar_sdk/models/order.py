@@ -27,10 +27,9 @@ from .orderstatus import OrderStatus
 from .ordersubscription import OrderSubscription, OrderSubscriptionTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
 OrderCustomFieldDataTypedDict = TypeAliasType(
@@ -113,7 +112,6 @@ class OrderTypedDict(TypedDict):
     platform_fee_currency: Nullable[str]
     r"""Currency of the platform fee."""
     customer: OrderCustomerTypedDict
-    user_id: str
     product: Nullable[OrderProductTypedDict]
     discount: Nullable[OrderDiscountTypedDict]
     subscription: Nullable[OrderSubscriptionTypedDict]
@@ -203,13 +201,6 @@ class Order(BaseModel):
     r"""Currency of the platform fee."""
 
     customer: OrderCustomer
-
-    user_id: Annotated[
-        str,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
 
     product: Nullable[OrderProduct]
 

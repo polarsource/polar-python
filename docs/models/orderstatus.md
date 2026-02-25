@@ -9,3 +9,4 @@
 | `PAID`               | paid                 |
 | `REFUNDED`           | refunded             |
 | `PARTIALLY_REFUNDED` | partially_refunded   |
+| `VOID`               | void                 |

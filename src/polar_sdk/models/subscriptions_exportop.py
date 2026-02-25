@@ -4,7 +4,7 @@ from __future__ import annotations
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
-from typing import List, Union
+from typing import Any, List, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -59,3 +59,13 @@ class SubscriptionsExportRequest(BaseModel):
                 m[k] = val
 
         return m
+
+
+SubscriptionsExportResponseTypedDict = TypeAliasType(
+    "SubscriptionsExportResponseTypedDict", Union[Any, str]
+)
+
+
+SubscriptionsExportResponse = TypeAliasType(
+    "SubscriptionsExportResponse", Union[Any, str]
+)

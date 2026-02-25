@@ -28,6 +28,7 @@ from .metersortproperty import MeterSortProperty
 from .ordersortproperty import OrderSortProperty
 from .productbillingtype import ProductBillingType
 from .productsortproperty import ProductSortProperty
+from .productvisibility import ProductVisibility
 from .subscriptionsortproperty import SubscriptionSortProperty
 from .timeinterval import TimeInterval
 from datetime import datetime
@@ -481,6 +482,8 @@ class ProductsListRequestTypedDict(TypedDict):
     r"""Filter on recurring products. If `true`, only subscriptions tiers are returned. If `false`, only one-time purchase products are returned."""
     benefit_id: NotRequired[Nullable[BenefitIDFilterTypedDict]]
     r"""Filter products granting specific benefit."""
+    visibility: NotRequired[Nullable[List[ProductVisibility]]]
+    r"""Filter by visibility."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -528,6 +531,12 @@ class ProductsListRequest(BaseModel):
     ] = UNSET
     r"""Filter products granting specific benefit."""
 
+    visibility: Annotated[
+        OptionalNullable[List[ProductVisibility]],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by visibility."""
+
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -561,6 +570,7 @@ class ProductsListRequest(BaseModel):
             "is_archived",
             "is_recurring",
             "benefit_id",
+            "visibility",
             "page",
             "limit",
             "sorting",
@@ -573,6 +583,7 @@ class ProductsListRequest(BaseModel):
             "is_archived",
             "is_recurring",
             "benefit_id",
+            "visibility",
             "sorting",
             "metadata",
         ]
@@ -1408,6 +1419,8 @@ class MetersQuantitiesRequestTypedDict(TypedDict):
     r"""End timestamp."""
     interval: TimeInterval
     r"""Interval between two timestamps."""
+    timezone: NotRequired[str]
+    r"""Timezone to use for the timestamps. Default is UTC."""
     customer_id: NotRequired[
         Nullable[MetersQuantitiesQueryParamCustomerIDFilterTypedDict]
     ]
@@ -1444,6 +1457,12 @@ class MetersQuantitiesRequest(BaseModel):
     ]
     r"""Interval between two timestamps."""
 
+    timezone: Annotated[
+        Optional[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = "UTC"
+    r"""Timezone to use for the timestamps. Default is UTC."""
+
     customer_id: Annotated[
         OptionalNullable[MetersQuantitiesQueryParamCustomerIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -1471,6 +1490,7 @@ class MetersQuantitiesRequest(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "timezone",
             "customer_id",
             "external_customer_id",
             "customer_aggregation_function",

@@ -19,3 +19,4 @@
 | `tax_state`             | *OptionalNullable[str]* | :heavy_minus_sign:      | N/A                     |
 | `tax_country`           | *OptionalNullable[str]* | :heavy_minus_sign:      | N/A                     |
 | `fee`                   | *int*                   | :heavy_check_mark:      | N/A                     |
+| `exchange_rate`         | *Optional[float]*       | :heavy_minus_sign:      | N/A                     |

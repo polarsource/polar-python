@@ -69,6 +69,8 @@ class CheckoutLinkTypedDict(TypedDict):
     r"""Client secret used to access the checkout link."""
     success_url: Nullable[str]
     r"""URL where the customer will be redirected after a successful payment."""
+    return_url: Nullable[str]
+    r"""When set, a back button will be shown in the checkout to return to this URL."""
     label: Nullable[str]
     r"""Optional label to distinguish links internally"""
     allow_discount_codes: bool
@@ -112,6 +114,9 @@ class CheckoutLink(BaseModel):
     success_url: Nullable[str]
     r"""URL where the customer will be redirected after a successful payment."""
 
+    return_url: Nullable[str]
+    r"""When set, a back button will be shown in the checkout to return to this URL."""
+
     label: Nullable[str]
     r"""Optional label to distinguish links internally"""
 
@@ -141,6 +146,7 @@ class CheckoutLink(BaseModel):
             "trial_interval",
             "trial_interval_count",
             "success_url",
+            "return_url",
             "label",
             "discount_id",
             "discount",

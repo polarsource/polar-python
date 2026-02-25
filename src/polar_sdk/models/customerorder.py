@@ -12,10 +12,9 @@ from .orderitemschema import OrderItemSchema, OrderItemSchemaTypedDict
 from .orderstatus import OrderStatus
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
-import pydantic
 from pydantic import model_serializer
 from typing import List
-from typing_extensions import Annotated, NotRequired, TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
 class CustomerOrderTypedDict(TypedDict):
@@ -60,7 +59,6 @@ class CustomerOrderTypedDict(TypedDict):
     discount_id: Nullable[str]
     subscription_id: Nullable[str]
     checkout_id: Nullable[str]
-    user_id: str
     product: Nullable[CustomerOrderProductTypedDict]
     subscription: Nullable[CustomerOrderSubscriptionTypedDict]
     items: List[OrderItemSchemaTypedDict]
@@ -139,13 +137,6 @@ class CustomerOrder(BaseModel):
     subscription_id: Nullable[str]
 
     checkout_id: Nullable[str]
-
-    user_id: Annotated[
-        str,
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ]
 
     product: Nullable[CustomerOrderProduct]
 
