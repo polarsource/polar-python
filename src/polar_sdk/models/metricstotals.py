@@ -7,6 +7,94 @@ from typing import Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
+MetricsTotalsActiveSubscriptionsTypedDict = TypeAliasType(
+    "MetricsTotalsActiveSubscriptionsTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsActiveSubscriptions = TypeAliasType(
+    "MetricsTotalsActiveSubscriptions", Union[int, float]
+)
+
+
+MetricsTotalsCommittedSubscriptionsTypedDict = TypeAliasType(
+    "MetricsTotalsCommittedSubscriptionsTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCommittedSubscriptions = TypeAliasType(
+    "MetricsTotalsCommittedSubscriptions", Union[int, float]
+)
+
+
+MetricsTotalsMonthlyRecurringRevenueTypedDict = TypeAliasType(
+    "MetricsTotalsMonthlyRecurringRevenueTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsMonthlyRecurringRevenue = TypeAliasType(
+    "MetricsTotalsMonthlyRecurringRevenue", Union[int, float]
+)
+
+
+MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict = TypeAliasType(
+    "MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCommittedMonthlyRecurringRevenue = TypeAliasType(
+    "MetricsTotalsCommittedMonthlyRecurringRevenue", Union[int, float]
+)
+
+
+MetricsTotalsAverageRevenuePerUserTypedDict = TypeAliasType(
+    "MetricsTotalsAverageRevenuePerUserTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsAverageRevenuePerUser = TypeAliasType(
+    "MetricsTotalsAverageRevenuePerUser", Union[int, float]
+)
+
+
+MetricsTotalsCheckoutsTypedDict = TypeAliasType(
+    "MetricsTotalsCheckoutsTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCheckouts = TypeAliasType("MetricsTotalsCheckouts", Union[int, float])
+
+
+MetricsTotalsSucceededCheckoutsTypedDict = TypeAliasType(
+    "MetricsTotalsSucceededCheckoutsTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsSucceededCheckouts = TypeAliasType(
+    "MetricsTotalsSucceededCheckouts", Union[int, float]
+)
+
+
+MetricsTotalsCheckoutsConversionTypedDict = TypeAliasType(
+    "MetricsTotalsCheckoutsConversionTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCheckoutsConversion = TypeAliasType(
+    "MetricsTotalsCheckoutsConversion", Union[int, float]
+)
+
+
+MetricsTotalsChurnedSubscriptionsTypedDict = TypeAliasType(
+    "MetricsTotalsChurnedSubscriptionsTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsChurnedSubscriptions = TypeAliasType(
+    "MetricsTotalsChurnedSubscriptions", Union[int, float]
+)
+
+
 MetricsTotalsOrdersTypedDict = TypeAliasType(
     "MetricsTotalsOrdersTypedDict", Union[int, float]
 )
@@ -86,16 +174,6 @@ MetricsTotalsNetAverageOrderValueTypedDict = TypeAliasType(
 
 MetricsTotalsNetAverageOrderValue = TypeAliasType(
     "MetricsTotalsNetAverageOrderValue", Union[int, float]
-)
-
-
-MetricsTotalsAverageRevenuePerUserTypedDict = TypeAliasType(
-    "MetricsTotalsAverageRevenuePerUserTypedDict", Union[int, float]
-)
-
-
-MetricsTotalsAverageRevenuePerUser = TypeAliasType(
-    "MetricsTotalsAverageRevenuePerUser", Union[int, float]
 )
 
 
@@ -207,74 +285,6 @@ MetricsTotalsRenewedSubscriptionsNetRevenue = TypeAliasType(
 )
 
 
-MetricsTotalsActiveSubscriptionsTypedDict = TypeAliasType(
-    "MetricsTotalsActiveSubscriptionsTypedDict", Union[int, float]
-)
-
-
-MetricsTotalsActiveSubscriptions = TypeAliasType(
-    "MetricsTotalsActiveSubscriptions", Union[int, float]
-)
-
-
-MetricsTotalsCommittedSubscriptionsTypedDict = TypeAliasType(
-    "MetricsTotalsCommittedSubscriptionsTypedDict", Union[int, float]
-)
-
-
-MetricsTotalsCommittedSubscriptions = TypeAliasType(
-    "MetricsTotalsCommittedSubscriptions", Union[int, float]
-)
-
-
-MetricsTotalsMonthlyRecurringRevenueTypedDict = TypeAliasType(
-    "MetricsTotalsMonthlyRecurringRevenueTypedDict", Union[int, float]
-)
-
-
-MetricsTotalsMonthlyRecurringRevenue = TypeAliasType(
-    "MetricsTotalsMonthlyRecurringRevenue", Union[int, float]
-)
-
-
-MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict = TypeAliasType(
-    "MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict", Union[int, float]
-)
-
-
-MetricsTotalsCommittedMonthlyRecurringRevenue = TypeAliasType(
-    "MetricsTotalsCommittedMonthlyRecurringRevenue", Union[int, float]
-)
-
-
-MetricsTotalsCheckoutsTypedDict = TypeAliasType(
-    "MetricsTotalsCheckoutsTypedDict", Union[int, float]
-)
-
-
-MetricsTotalsCheckouts = TypeAliasType("MetricsTotalsCheckouts", Union[int, float])
-
-
-MetricsTotalsSucceededCheckoutsTypedDict = TypeAliasType(
-    "MetricsTotalsSucceededCheckoutsTypedDict", Union[int, float]
-)
-
-
-MetricsTotalsSucceededCheckouts = TypeAliasType(
-    "MetricsTotalsSucceededCheckouts", Union[int, float]
-)
-
-
-MetricsTotalsCheckoutsConversionTypedDict = TypeAliasType(
-    "MetricsTotalsCheckoutsConversionTypedDict", Union[int, float]
-)
-
-
-MetricsTotalsCheckoutsConversion = TypeAliasType(
-    "MetricsTotalsCheckoutsConversion", Union[int, float]
-)
-
-
 MetricsTotalsCanceledSubscriptionsTypedDict = TypeAliasType(
     "MetricsTotalsCanceledSubscriptionsTypedDict", Union[int, float]
 )
@@ -365,16 +375,6 @@ MetricsTotalsCanceledSubscriptionsOther = TypeAliasType(
 )
 
 
-MetricsTotalsChurnedSubscriptionsTypedDict = TypeAliasType(
-    "MetricsTotalsChurnedSubscriptionsTypedDict", Union[int, float]
-)
-
-
-MetricsTotalsChurnedSubscriptions = TypeAliasType(
-    "MetricsTotalsChurnedSubscriptions", Union[int, float]
-)
-
-
 MetricsTotalsChurnRateTypedDict = TypeAliasType(
     "MetricsTotalsChurnRateTypedDict", Union[int, float]
 )
@@ -418,6 +418,29 @@ MetricsTotalsCashflow = TypeAliasType("MetricsTotalsCashflow", Union[int, float]
 
 
 class MetricsTotalsTypedDict(TypedDict):
+    active_subscriptions: NotRequired[
+        Nullable[MetricsTotalsActiveSubscriptionsTypedDict]
+    ]
+    committed_subscriptions: NotRequired[
+        Nullable[MetricsTotalsCommittedSubscriptionsTypedDict]
+    ]
+    monthly_recurring_revenue: NotRequired[
+        Nullable[MetricsTotalsMonthlyRecurringRevenueTypedDict]
+    ]
+    committed_monthly_recurring_revenue: NotRequired[
+        Nullable[MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict]
+    ]
+    average_revenue_per_user: NotRequired[
+        Nullable[MetricsTotalsAverageRevenuePerUserTypedDict]
+    ]
+    checkouts: NotRequired[Nullable[MetricsTotalsCheckoutsTypedDict]]
+    succeeded_checkouts: NotRequired[Nullable[MetricsTotalsSucceededCheckoutsTypedDict]]
+    checkouts_conversion: NotRequired[
+        Nullable[MetricsTotalsCheckoutsConversionTypedDict]
+    ]
+    churned_subscriptions: NotRequired[
+        Nullable[MetricsTotalsChurnedSubscriptionsTypedDict]
+    ]
     orders: NotRequired[Nullable[MetricsTotalsOrdersTypedDict]]
     revenue: NotRequired[Nullable[MetricsTotalsRevenueTypedDict]]
     net_revenue: NotRequired[Nullable[MetricsTotalsNetRevenueTypedDict]]
@@ -430,9 +453,6 @@ class MetricsTotalsTypedDict(TypedDict):
     average_order_value: NotRequired[Nullable[MetricsTotalsAverageOrderValueTypedDict]]
     net_average_order_value: NotRequired[
         Nullable[MetricsTotalsNetAverageOrderValueTypedDict]
-    ]
-    average_revenue_per_user: NotRequired[
-        Nullable[MetricsTotalsAverageRevenuePerUserTypedDict]
     ]
     cost_per_user: NotRequired[Nullable[MetricsTotalsCostPerUserTypedDict]]
     active_user_by_event: NotRequired[Nullable[MetricsTotalsActiveUserByEventTypedDict]]
@@ -458,23 +478,6 @@ class MetricsTotalsTypedDict(TypedDict):
     ]
     renewed_subscriptions_net_revenue: NotRequired[
         Nullable[MetricsTotalsRenewedSubscriptionsNetRevenueTypedDict]
-    ]
-    active_subscriptions: NotRequired[
-        Nullable[MetricsTotalsActiveSubscriptionsTypedDict]
-    ]
-    committed_subscriptions: NotRequired[
-        Nullable[MetricsTotalsCommittedSubscriptionsTypedDict]
-    ]
-    monthly_recurring_revenue: NotRequired[
-        Nullable[MetricsTotalsMonthlyRecurringRevenueTypedDict]
-    ]
-    committed_monthly_recurring_revenue: NotRequired[
-        Nullable[MetricsTotalsCommittedMonthlyRecurringRevenueTypedDict]
-    ]
-    checkouts: NotRequired[Nullable[MetricsTotalsCheckoutsTypedDict]]
-    succeeded_checkouts: NotRequired[Nullable[MetricsTotalsSucceededCheckoutsTypedDict]]
-    checkouts_conversion: NotRequired[
-        Nullable[MetricsTotalsCheckoutsConversionTypedDict]
     ]
     canceled_subscriptions: NotRequired[
         Nullable[MetricsTotalsCanceledSubscriptionsTypedDict]
@@ -503,9 +506,6 @@ class MetricsTotalsTypedDict(TypedDict):
     canceled_subscriptions_other: NotRequired[
         Nullable[MetricsTotalsCanceledSubscriptionsOtherTypedDict]
     ]
-    churned_subscriptions: NotRequired[
-        Nullable[MetricsTotalsChurnedSubscriptionsTypedDict]
-    ]
     churn_rate: NotRequired[Nullable[MetricsTotalsChurnRateTypedDict]]
     ltv: NotRequired[Nullable[MetricsTotalsLtvTypedDict]]
     gross_margin: NotRequired[Nullable[MetricsTotalsGrossMarginTypedDict]]
@@ -516,6 +516,32 @@ class MetricsTotalsTypedDict(TypedDict):
 
 
 class MetricsTotals(BaseModel):
+    active_subscriptions: OptionalNullable[MetricsTotalsActiveSubscriptions] = UNSET
+
+    committed_subscriptions: OptionalNullable[MetricsTotalsCommittedSubscriptions] = (
+        UNSET
+    )
+
+    monthly_recurring_revenue: OptionalNullable[
+        MetricsTotalsMonthlyRecurringRevenue
+    ] = UNSET
+
+    committed_monthly_recurring_revenue: OptionalNullable[
+        MetricsTotalsCommittedMonthlyRecurringRevenue
+    ] = UNSET
+
+    average_revenue_per_user: OptionalNullable[MetricsTotalsAverageRevenuePerUser] = (
+        UNSET
+    )
+
+    checkouts: OptionalNullable[MetricsTotalsCheckouts] = UNSET
+
+    succeeded_checkouts: OptionalNullable[MetricsTotalsSucceededCheckouts] = UNSET
+
+    checkouts_conversion: OptionalNullable[MetricsTotalsCheckoutsConversion] = UNSET
+
+    churned_subscriptions: OptionalNullable[MetricsTotalsChurnedSubscriptions] = UNSET
+
     orders: OptionalNullable[MetricsTotalsOrders] = UNSET
 
     revenue: OptionalNullable[MetricsTotalsRevenue] = UNSET
@@ -533,10 +559,6 @@ class MetricsTotals(BaseModel):
     average_order_value: OptionalNullable[MetricsTotalsAverageOrderValue] = UNSET
 
     net_average_order_value: OptionalNullable[MetricsTotalsNetAverageOrderValue] = UNSET
-
-    average_revenue_per_user: OptionalNullable[MetricsTotalsAverageRevenuePerUser] = (
-        UNSET
-    )
 
     cost_per_user: OptionalNullable[MetricsTotalsCostPerUser] = UNSET
 
@@ -572,26 +594,6 @@ class MetricsTotals(BaseModel):
         MetricsTotalsRenewedSubscriptionsNetRevenue
     ] = UNSET
 
-    active_subscriptions: OptionalNullable[MetricsTotalsActiveSubscriptions] = UNSET
-
-    committed_subscriptions: OptionalNullable[MetricsTotalsCommittedSubscriptions] = (
-        UNSET
-    )
-
-    monthly_recurring_revenue: OptionalNullable[
-        MetricsTotalsMonthlyRecurringRevenue
-    ] = UNSET
-
-    committed_monthly_recurring_revenue: OptionalNullable[
-        MetricsTotalsCommittedMonthlyRecurringRevenue
-    ] = UNSET
-
-    checkouts: OptionalNullable[MetricsTotalsCheckouts] = UNSET
-
-    succeeded_checkouts: OptionalNullable[MetricsTotalsSucceededCheckouts] = UNSET
-
-    checkouts_conversion: OptionalNullable[MetricsTotalsCheckoutsConversion] = UNSET
-
     canceled_subscriptions: OptionalNullable[MetricsTotalsCanceledSubscriptions] = UNSET
 
     canceled_subscriptions_customer_service: OptionalNullable[
@@ -626,8 +628,6 @@ class MetricsTotals(BaseModel):
         MetricsTotalsCanceledSubscriptionsOther
     ] = UNSET
 
-    churned_subscriptions: OptionalNullable[MetricsTotalsChurnedSubscriptions] = UNSET
-
     churn_rate: OptionalNullable[MetricsTotalsChurnRate] = UNSET
 
     ltv: OptionalNullable[MetricsTotalsLtv] = UNSET
@@ -643,6 +643,15 @@ class MetricsTotals(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "active_subscriptions",
+            "committed_subscriptions",
+            "monthly_recurring_revenue",
+            "committed_monthly_recurring_revenue",
+            "average_revenue_per_user",
+            "checkouts",
+            "succeeded_checkouts",
+            "checkouts_conversion",
+            "churned_subscriptions",
             "orders",
             "revenue",
             "net_revenue",
@@ -652,7 +661,6 @@ class MetricsTotals(BaseModel):
             "cumulative_costs",
             "average_order_value",
             "net_average_order_value",
-            "average_revenue_per_user",
             "cost_per_user",
             "active_user_by_event",
             "one_time_products",
@@ -664,13 +672,6 @@ class MetricsTotals(BaseModel):
             "renewed_subscriptions",
             "renewed_subscriptions_revenue",
             "renewed_subscriptions_net_revenue",
-            "active_subscriptions",
-            "committed_subscriptions",
-            "monthly_recurring_revenue",
-            "committed_monthly_recurring_revenue",
-            "checkouts",
-            "succeeded_checkouts",
-            "checkouts_conversion",
             "canceled_subscriptions",
             "canceled_subscriptions_customer_service",
             "canceled_subscriptions_low_quality",
@@ -680,7 +681,6 @@ class MetricsTotals(BaseModel):
             "canceled_subscriptions_too_expensive",
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
-            "churned_subscriptions",
             "churn_rate",
             "ltv",
             "gross_margin",
@@ -688,6 +688,15 @@ class MetricsTotals(BaseModel):
             "cashflow",
         ]
         nullable_fields = [
+            "active_subscriptions",
+            "committed_subscriptions",
+            "monthly_recurring_revenue",
+            "committed_monthly_recurring_revenue",
+            "average_revenue_per_user",
+            "checkouts",
+            "succeeded_checkouts",
+            "checkouts_conversion",
+            "churned_subscriptions",
             "orders",
             "revenue",
             "net_revenue",
@@ -697,7 +706,6 @@ class MetricsTotals(BaseModel):
             "cumulative_costs",
             "average_order_value",
             "net_average_order_value",
-            "average_revenue_per_user",
             "cost_per_user",
             "active_user_by_event",
             "one_time_products",
@@ -709,13 +717,6 @@ class MetricsTotals(BaseModel):
             "renewed_subscriptions",
             "renewed_subscriptions_revenue",
             "renewed_subscriptions_net_revenue",
-            "active_subscriptions",
-            "committed_subscriptions",
-            "monthly_recurring_revenue",
-            "committed_monthly_recurring_revenue",
-            "checkouts",
-            "succeeded_checkouts",
-            "checkouts_conversion",
             "canceled_subscriptions",
             "canceled_subscriptions_customer_service",
             "canceled_subscriptions_low_quality",
@@ -725,7 +726,6 @@ class MetricsTotals(BaseModel):
             "canceled_subscriptions_too_expensive",
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
-            "churned_subscriptions",
             "churn_rate",
             "ltv",
             "gross_margin",

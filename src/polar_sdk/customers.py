@@ -148,9 +148,7 @@ class Customers(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.CustomersListResponse(
-                result=unmarshal_json_response(
-                    models.ListResourceCustomerWithMembers, http_res
-                ),
+                result=unmarshal_json_response(models.ListResourceCustomer, http_res),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -299,9 +297,7 @@ class Customers(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.CustomersListResponse(
-                result=unmarshal_json_response(
-                    models.ListResourceCustomerWithMembers, http_res
-                ),
+                result=unmarshal_json_response(models.ListResourceCustomer, http_res),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -326,7 +322,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerWithMembers:
+    ) -> models.Customer:
         r"""Create Customer
 
         Create a customer.
@@ -395,7 +391,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.CustomerWithMembers, http_res)
+            return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -418,7 +414,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerWithMembers:
+    ) -> models.Customer:
         r"""Create Customer
 
         Create a customer.
@@ -487,7 +483,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.CustomerWithMembers, http_res)
+            return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -710,7 +706,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerWithMembers:
+    ) -> models.Customer:
         r"""Get Customer
 
         Get a customer by ID.
@@ -776,7 +772,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.CustomerWithMembers, http_res)
+            return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -804,7 +800,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerWithMembers:
+    ) -> models.Customer:
         r"""Get Customer
 
         Get a customer by ID.
@@ -870,7 +866,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.CustomerWithMembers, http_res)
+            return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -899,7 +895,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerWithMembers:
+    ) -> models.Customer:
         r"""Update Customer
 
         Update a customer.
@@ -972,7 +968,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.CustomerWithMembers, http_res)
+            return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -1001,7 +997,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerWithMembers:
+    ) -> models.Customer:
         r"""Update Customer
 
         Update a customer.
@@ -1074,7 +1070,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.CustomerWithMembers, http_res)
+            return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -1324,7 +1320,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerWithMembers:
+    ) -> models.Customer:
         r"""Get Customer by External ID
 
         Get a customer by external ID.
@@ -1390,7 +1386,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.CustomerWithMembers, http_res)
+            return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -1418,7 +1414,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerWithMembers:
+    ) -> models.Customer:
         r"""Get Customer by External ID
 
         Get a customer by external ID.
@@ -1484,7 +1480,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.CustomerWithMembers, http_res)
+            return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -1515,7 +1511,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerWithMembers:
+    ) -> models.Customer:
         r"""Update Customer by External ID
 
         Update a customer by external ID.
@@ -1592,7 +1588,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.CustomerWithMembers, http_res)
+            return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -1623,7 +1619,7 @@ class Customers(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.CustomerWithMembers:
+    ) -> models.Customer:
         r"""Update Customer by External ID
 
         Update a customer by external ID.
@@ -1700,7 +1696,7 @@ class Customers(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.CustomerWithMembers, http_res)
+            return unmarshal_json_response(models.Customer, http_res)
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res

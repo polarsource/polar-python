@@ -18,6 +18,8 @@ class WebhookEndpointCreateTypedDict(TypedDict):
     format_: WebhookFormat
     events: List[WebhookEventType]
     r"""The events that will trigger the webhook."""
+    name: NotRequired[Nullable[str]]
+    r"""An optional name for the webhook endpoint to help organize and identify it."""
     organization_id: NotRequired[Nullable[str]]
     r"""The organization ID associated with the webhook endpoint. **Required unless you use an organization token.**"""
 
@@ -33,13 +35,16 @@ class WebhookEndpointCreate(BaseModel):
     events: List[WebhookEventType]
     r"""The events that will trigger the webhook."""
 
+    name: OptionalNullable[str] = UNSET
+    r"""An optional name for the webhook endpoint to help organize and identify it."""
+
     organization_id: OptionalNullable[str] = UNSET
     r"""The organization ID associated with the webhook endpoint. **Required unless you use an organization token.**"""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["organization_id"]
-        nullable_fields = ["organization_id"]
+        optional_fields = ["name", "organization_id"]
+        nullable_fields = ["name", "organization_id"]
         null_default_fields = []
 
         serialized = handler(self)

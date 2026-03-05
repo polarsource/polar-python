@@ -13,6 +13,10 @@ from .benefitgrantdownloadableswebhook import (
     BenefitGrantDownloadablesWebhook,
     BenefitGrantDownloadablesWebhookTypedDict,
 )
+from .benefitgrantfeatureflagwebhook import (
+    BenefitGrantFeatureFlagWebhook,
+    BenefitGrantFeatureFlagWebhookTypedDict,
+)
 from .benefitgrantgithubrepositorywebhook import (
     BenefitGrantGitHubRepositoryWebhook,
     BenefitGrantGitHubRepositoryWebhookTypedDict,
@@ -38,6 +42,7 @@ BenefitGrantWebhookTypedDict = TypeAliasType(
         BenefitGrantDownloadablesWebhookTypedDict,
         BenefitGrantLicenseKeysWebhookTypedDict,
         BenefitGrantMeterCreditWebhookTypedDict,
+        BenefitGrantFeatureFlagWebhookTypedDict,
     ],
 )
 
@@ -51,5 +56,6 @@ BenefitGrantWebhook = TypeAliasType(
         BenefitGrantDownloadablesWebhook,
         BenefitGrantLicenseKeysWebhook,
         BenefitGrantMeterCreditWebhook,
+        BenefitGrantFeatureFlagWebhook,
     ],
 )

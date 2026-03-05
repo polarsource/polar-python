@@ -39,3 +39,9 @@ value: models.CustomerBenefitGrantCustom = /* values here */
 value: models.CustomerBenefitGrantMeterCredit = /* values here */
 ```
 
+### `models.CustomerBenefitGrantFeatureFlag`
+
+```python
+value: models.CustomerBenefitGrantFeatureFlag = /* values here */
+```
+

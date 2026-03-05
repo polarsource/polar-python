@@ -179,6 +179,35 @@ if TYPE_CHECKING:
         BenefitDownloadablesUpdateMetadataTypedDict,
         BenefitDownloadablesUpdateTypedDict,
     )
+    from .benefitfeatureflag import BenefitFeatureFlag, BenefitFeatureFlagTypedDict
+    from .benefitfeatureflagcreate import (
+        BenefitFeatureFlagCreate,
+        BenefitFeatureFlagCreateMetadata,
+        BenefitFeatureFlagCreateMetadataTypedDict,
+        BenefitFeatureFlagCreateTypedDict,
+    )
+    from .benefitfeatureflagcreateproperties import (
+        BenefitFeatureFlagCreateProperties,
+        BenefitFeatureFlagCreatePropertiesTypedDict,
+    )
+    from .benefitfeatureflagproperties import (
+        BenefitFeatureFlagProperties,
+        BenefitFeatureFlagPropertiesTypedDict,
+    )
+    from .benefitfeatureflagsubscriber import (
+        BenefitFeatureFlagSubscriber,
+        BenefitFeatureFlagSubscriberTypedDict,
+    )
+    from .benefitfeatureflagsubscriberproperties import (
+        BenefitFeatureFlagSubscriberProperties,
+        BenefitFeatureFlagSubscriberPropertiesTypedDict,
+    )
+    from .benefitfeatureflagupdate import (
+        BenefitFeatureFlagUpdate,
+        BenefitFeatureFlagUpdateMetadata,
+        BenefitFeatureFlagUpdateMetadataTypedDict,
+        BenefitFeatureFlagUpdateTypedDict,
+    )
     from .benefitgithubrepository import (
         BenefitGitHubRepository,
         BenefitGitHubRepositoryTypedDict,
@@ -245,6 +274,14 @@ if TYPE_CHECKING:
     )
     from .benefitgrantedevent import BenefitGrantedEvent, BenefitGrantedEventTypedDict
     from .benefitgranterror import BenefitGrantError, BenefitGrantErrorTypedDict
+    from .benefitgrantfeatureflagproperties import (
+        BenefitGrantFeatureFlagProperties,
+        BenefitGrantFeatureFlagPropertiesTypedDict,
+    )
+    from .benefitgrantfeatureflagwebhook import (
+        BenefitGrantFeatureFlagWebhook,
+        BenefitGrantFeatureFlagWebhookTypedDict,
+    )
     from .benefitgrantgithubrepositoryproperties import (
         BenefitGrantGitHubRepositoryProperties,
         BenefitGrantGitHubRepositoryPropertiesPermission,
@@ -385,6 +422,8 @@ if TYPE_CHECKING:
         CheckoutDiscountTypedDict,
         CheckoutPrices,
         CheckoutPricesTypedDict,
+        CheckoutProductPrice,
+        CheckoutProductPriceTypedDict,
         CheckoutTypedDict,
         CustomerMetadata,
         CustomerMetadataTypedDict,
@@ -517,6 +556,8 @@ if TYPE_CHECKING:
         CheckoutPublicDiscountTypedDict,
         CheckoutPublicPrices,
         CheckoutPublicPricesTypedDict,
+        CheckoutPublicProductPrice,
+        CheckoutPublicProductPriceTypedDict,
         CheckoutPublicTypedDict,
     )
     from .checkoutpublicconfirmed import (
@@ -527,6 +568,8 @@ if TYPE_CHECKING:
         CheckoutPublicConfirmedDiscountTypedDict,
         CheckoutPublicConfirmedPrices,
         CheckoutPublicConfirmedPricesTypedDict,
+        CheckoutPublicConfirmedProductPrice,
+        CheckoutPublicConfirmedProductPriceTypedDict,
         CheckoutPublicConfirmedTypedDict,
     )
     from .checkouts_client_confirmop import (
@@ -939,6 +982,14 @@ if TYPE_CHECKING:
         CustomerBenefitGrantDownloadablesUpdate,
         CustomerBenefitGrantDownloadablesUpdateTypedDict,
     )
+    from .customerbenefitgrantfeatureflag import (
+        CustomerBenefitGrantFeatureFlag,
+        CustomerBenefitGrantFeatureFlagTypedDict,
+    )
+    from .customerbenefitgrantfeatureflagupdate import (
+        CustomerBenefitGrantFeatureFlagUpdate,
+        CustomerBenefitGrantFeatureFlagUpdateTypedDict,
+    )
     from .customerbenefitgrantgithubrepository import (
         CustomerBenefitGrantGitHubRepository,
         CustomerBenefitGrantGitHubRepositoryTypedDict,
@@ -1264,12 +1315,6 @@ if TYPE_CHECKING:
     )
     from .customerwallet import CustomerWallet, CustomerWalletTypedDict
     from .customerwalletsortproperty import CustomerWalletSortProperty
-    from .customerwithmembers import (
-        CustomerWithMembers,
-        CustomerWithMembersTaxID,
-        CustomerWithMembersTaxIDTypedDict,
-        CustomerWithMembersTypedDict,
-    )
     from .customfield import CustomField, CustomFieldTypedDict
     from .customfieldcheckbox import CustomFieldCheckbox, CustomFieldCheckboxTypedDict
     from .customfieldcheckboxproperties import (
@@ -1675,6 +1720,10 @@ if TYPE_CHECKING:
         ListResourceCheckoutLink,
         ListResourceCheckoutLinkTypedDict,
     )
+    from .listresource_customer_ import (
+        ListResourceCustomer,
+        ListResourceCustomerTypedDict,
+    )
     from .listresource_customerbenefitgrant_ import (
         ListResourceCustomerBenefitGrant,
         ListResourceCustomerBenefitGrantTypedDict,
@@ -1706,10 +1755,6 @@ if TYPE_CHECKING:
     from .listresource_customerwallet_ import (
         ListResourceCustomerWallet,
         ListResourceCustomerWalletTypedDict,
-    )
-    from .listresource_customerwithmembers_ import (
-        ListResourceCustomerWithMembers,
-        ListResourceCustomerWithMembersTypedDict,
     )
     from .listresource_customfield_ import (
         ListResourceCustomField,
@@ -1794,8 +1839,6 @@ if TYPE_CHECKING:
         MembersUpdateMemberRequest,
         MembersUpdateMemberRequestTypedDict,
     )
-    from .membersession import MemberSession, MemberSessionTypedDict
-    from .membersessioncreate import MemberSessionCreate, MemberSessionCreateTypedDict
     from .membersortproperty import MemberSortProperty
     from .memberupdate import MemberUpdate, MemberUpdateTypedDict
     from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
@@ -3015,6 +3058,24 @@ __all__ = [
     "BenefitDownloadablesUpdateMetadata",
     "BenefitDownloadablesUpdateMetadataTypedDict",
     "BenefitDownloadablesUpdateTypedDict",
+    "BenefitFeatureFlag",
+    "BenefitFeatureFlagCreate",
+    "BenefitFeatureFlagCreateMetadata",
+    "BenefitFeatureFlagCreateMetadataTypedDict",
+    "BenefitFeatureFlagCreateProperties",
+    "BenefitFeatureFlagCreatePropertiesTypedDict",
+    "BenefitFeatureFlagCreateTypedDict",
+    "BenefitFeatureFlagProperties",
+    "BenefitFeatureFlagPropertiesTypedDict",
+    "BenefitFeatureFlagSubscriber",
+    "BenefitFeatureFlagSubscriberProperties",
+    "BenefitFeatureFlagSubscriberPropertiesTypedDict",
+    "BenefitFeatureFlagSubscriberTypedDict",
+    "BenefitFeatureFlagTypedDict",
+    "BenefitFeatureFlagUpdate",
+    "BenefitFeatureFlagUpdateMetadata",
+    "BenefitFeatureFlagUpdateMetadataTypedDict",
+    "BenefitFeatureFlagUpdateTypedDict",
     "BenefitGitHubRepository",
     "BenefitGitHubRepositoryCreate",
     "BenefitGitHubRepositoryCreateMetadata",
@@ -3049,6 +3110,10 @@ __all__ = [
     "BenefitGrantDownloadablesWebhookTypedDict",
     "BenefitGrantError",
     "BenefitGrantErrorTypedDict",
+    "BenefitGrantFeatureFlagProperties",
+    "BenefitGrantFeatureFlagPropertiesTypedDict",
+    "BenefitGrantFeatureFlagWebhook",
+    "BenefitGrantFeatureFlagWebhookTypedDict",
     "BenefitGrantGitHubRepositoryProperties",
     "BenefitGrantGitHubRepositoryPropertiesPermission",
     "BenefitGrantGitHubRepositoryPropertiesTypedDict",
@@ -3259,6 +3324,8 @@ __all__ = [
     "CheckoutPrices",
     "CheckoutPricesTypedDict",
     "CheckoutProduct",
+    "CheckoutProductPrice",
+    "CheckoutProductPriceTypedDict",
     "CheckoutProductPrices",
     "CheckoutProductPricesTypedDict",
     "CheckoutProductTypedDict",
@@ -3270,6 +3337,8 @@ __all__ = [
     "CheckoutPublicConfirmedDiscountTypedDict",
     "CheckoutPublicConfirmedPrices",
     "CheckoutPublicConfirmedPricesTypedDict",
+    "CheckoutPublicConfirmedProductPrice",
+    "CheckoutPublicConfirmedProductPriceTypedDict",
     "CheckoutPublicConfirmedTypedDict",
     "CheckoutPublicCustomFieldData",
     "CheckoutPublicCustomFieldDataTypedDict",
@@ -3277,6 +3346,8 @@ __all__ = [
     "CheckoutPublicDiscountTypedDict",
     "CheckoutPublicPrices",
     "CheckoutPublicPricesTypedDict",
+    "CheckoutPublicProductPrice",
+    "CheckoutPublicProductPriceTypedDict",
     "CheckoutPublicTypedDict",
     "CheckoutSortProperty",
     "CheckoutStatus",
@@ -3453,6 +3524,10 @@ __all__ = [
     "CustomerBenefitGrantDownloadablesTypedDict",
     "CustomerBenefitGrantDownloadablesUpdate",
     "CustomerBenefitGrantDownloadablesUpdateTypedDict",
+    "CustomerBenefitGrantFeatureFlag",
+    "CustomerBenefitGrantFeatureFlagTypedDict",
+    "CustomerBenefitGrantFeatureFlagUpdate",
+    "CustomerBenefitGrantFeatureFlagUpdateTypedDict",
     "CustomerBenefitGrantGitHubRepository",
     "CustomerBenefitGrantGitHubRepositoryPropertiesUpdate",
     "CustomerBenefitGrantGitHubRepositoryPropertiesUpdateTypedDict",
@@ -3826,10 +3901,6 @@ __all__ = [
     "CustomerWallet",
     "CustomerWalletSortProperty",
     "CustomerWalletTypedDict",
-    "CustomerWithMembers",
-    "CustomerWithMembersTaxID",
-    "CustomerWithMembersTaxIDTypedDict",
-    "CustomerWithMembersTypedDict",
     "CustomersDeleteExternalRequest",
     "CustomersDeleteExternalRequestTypedDict",
     "CustomersDeleteRequest",
@@ -4122,6 +4193,7 @@ __all__ = [
     "ListResourceCheckoutTypedDict",
     "ListResourceCustomField",
     "ListResourceCustomFieldTypedDict",
+    "ListResourceCustomer",
     "ListResourceCustomerBenefitGrant",
     "ListResourceCustomerBenefitGrantTypedDict",
     "ListResourceCustomerCustomerMeter",
@@ -4136,10 +4208,9 @@ __all__ = [
     "ListResourceCustomerPortalMemberTypedDict",
     "ListResourceCustomerSubscription",
     "ListResourceCustomerSubscriptionTypedDict",
+    "ListResourceCustomerTypedDict",
     "ListResourceCustomerWallet",
     "ListResourceCustomerWalletTypedDict",
-    "ListResourceCustomerWithMembers",
-    "ListResourceCustomerWithMembersTypedDict",
     "ListResourceDiscount",
     "ListResourceDiscountTypedDict",
     "ListResourceDispute",
@@ -4189,10 +4260,6 @@ __all__ = [
     "MemberIDFilter",
     "MemberIDFilterTypedDict",
     "MemberRole",
-    "MemberSession",
-    "MemberSessionCreate",
-    "MemberSessionCreateTypedDict",
-    "MemberSessionTypedDict",
     "MemberSortProperty",
     "MemberTypedDict",
     "MemberUpdate",
@@ -5132,6 +5199,24 @@ _dynamic_imports: dict[str, str] = {
     "BenefitDownloadablesUpdateMetadata": ".benefitdownloadablesupdate",
     "BenefitDownloadablesUpdateMetadataTypedDict": ".benefitdownloadablesupdate",
     "BenefitDownloadablesUpdateTypedDict": ".benefitdownloadablesupdate",
+    "BenefitFeatureFlag": ".benefitfeatureflag",
+    "BenefitFeatureFlagTypedDict": ".benefitfeatureflag",
+    "BenefitFeatureFlagCreate": ".benefitfeatureflagcreate",
+    "BenefitFeatureFlagCreateMetadata": ".benefitfeatureflagcreate",
+    "BenefitFeatureFlagCreateMetadataTypedDict": ".benefitfeatureflagcreate",
+    "BenefitFeatureFlagCreateTypedDict": ".benefitfeatureflagcreate",
+    "BenefitFeatureFlagCreateProperties": ".benefitfeatureflagcreateproperties",
+    "BenefitFeatureFlagCreatePropertiesTypedDict": ".benefitfeatureflagcreateproperties",
+    "BenefitFeatureFlagProperties": ".benefitfeatureflagproperties",
+    "BenefitFeatureFlagPropertiesTypedDict": ".benefitfeatureflagproperties",
+    "BenefitFeatureFlagSubscriber": ".benefitfeatureflagsubscriber",
+    "BenefitFeatureFlagSubscriberTypedDict": ".benefitfeatureflagsubscriber",
+    "BenefitFeatureFlagSubscriberProperties": ".benefitfeatureflagsubscriberproperties",
+    "BenefitFeatureFlagSubscriberPropertiesTypedDict": ".benefitfeatureflagsubscriberproperties",
+    "BenefitFeatureFlagUpdate": ".benefitfeatureflagupdate",
+    "BenefitFeatureFlagUpdateMetadata": ".benefitfeatureflagupdate",
+    "BenefitFeatureFlagUpdateMetadataTypedDict": ".benefitfeatureflagupdate",
+    "BenefitFeatureFlagUpdateTypedDict": ".benefitfeatureflagupdate",
     "BenefitGitHubRepository": ".benefitgithubrepository",
     "BenefitGitHubRepositoryTypedDict": ".benefitgithubrepository",
     "BenefitGitHubRepositoryCreate": ".benefitgithubrepositorycreate",
@@ -5172,6 +5257,10 @@ _dynamic_imports: dict[str, str] = {
     "BenefitGrantedEventTypedDict": ".benefitgrantedevent",
     "BenefitGrantError": ".benefitgranterror",
     "BenefitGrantErrorTypedDict": ".benefitgranterror",
+    "BenefitGrantFeatureFlagProperties": ".benefitgrantfeatureflagproperties",
+    "BenefitGrantFeatureFlagPropertiesTypedDict": ".benefitgrantfeatureflagproperties",
+    "BenefitGrantFeatureFlagWebhook": ".benefitgrantfeatureflagwebhook",
+    "BenefitGrantFeatureFlagWebhookTypedDict": ".benefitgrantfeatureflagwebhook",
     "BenefitGrantGitHubRepositoryProperties": ".benefitgrantgithubrepositoryproperties",
     "BenefitGrantGitHubRepositoryPropertiesPermission": ".benefitgrantgithubrepositoryproperties",
     "BenefitGrantGitHubRepositoryPropertiesTypedDict": ".benefitgrantgithubrepositoryproperties",
@@ -5271,6 +5360,8 @@ _dynamic_imports: dict[str, str] = {
     "CheckoutDiscountTypedDict": ".checkout",
     "CheckoutPrices": ".checkout",
     "CheckoutPricesTypedDict": ".checkout",
+    "CheckoutProductPrice": ".checkout",
+    "CheckoutProductPriceTypedDict": ".checkout",
     "CheckoutTypedDict": ".checkout",
     "CustomerMetadata": ".checkout",
     "CustomerMetadataTypedDict": ".checkout",
@@ -5358,6 +5449,8 @@ _dynamic_imports: dict[str, str] = {
     "CheckoutPublicDiscountTypedDict": ".checkoutpublic",
     "CheckoutPublicPrices": ".checkoutpublic",
     "CheckoutPublicPricesTypedDict": ".checkoutpublic",
+    "CheckoutPublicProductPrice": ".checkoutpublic",
+    "CheckoutPublicProductPriceTypedDict": ".checkoutpublic",
     "CheckoutPublicTypedDict": ".checkoutpublic",
     "CheckoutPublicConfirmed": ".checkoutpublicconfirmed",
     "CheckoutPublicConfirmedCustomFieldData": ".checkoutpublicconfirmed",
@@ -5366,6 +5459,8 @@ _dynamic_imports: dict[str, str] = {
     "CheckoutPublicConfirmedDiscountTypedDict": ".checkoutpublicconfirmed",
     "CheckoutPublicConfirmedPrices": ".checkoutpublicconfirmed",
     "CheckoutPublicConfirmedPricesTypedDict": ".checkoutpublicconfirmed",
+    "CheckoutPublicConfirmedProductPrice": ".checkoutpublicconfirmed",
+    "CheckoutPublicConfirmedProductPriceTypedDict": ".checkoutpublicconfirmed",
     "CheckoutPublicConfirmedTypedDict": ".checkoutpublicconfirmed",
     "CheckoutsClientConfirmRequest": ".checkouts_client_confirmop",
     "CheckoutsClientConfirmRequestTypedDict": ".checkouts_client_confirmop",
@@ -5649,6 +5744,10 @@ _dynamic_imports: dict[str, str] = {
     "CustomerBenefitGrantDownloadablesTypedDict": ".customerbenefitgrantdownloadables",
     "CustomerBenefitGrantDownloadablesUpdate": ".customerbenefitgrantdownloadablesupdate",
     "CustomerBenefitGrantDownloadablesUpdateTypedDict": ".customerbenefitgrantdownloadablesupdate",
+    "CustomerBenefitGrantFeatureFlag": ".customerbenefitgrantfeatureflag",
+    "CustomerBenefitGrantFeatureFlagTypedDict": ".customerbenefitgrantfeatureflag",
+    "CustomerBenefitGrantFeatureFlagUpdate": ".customerbenefitgrantfeatureflagupdate",
+    "CustomerBenefitGrantFeatureFlagUpdateTypedDict": ".customerbenefitgrantfeatureflagupdate",
     "CustomerBenefitGrantGitHubRepository": ".customerbenefitgrantgithubrepository",
     "CustomerBenefitGrantGitHubRepositoryTypedDict": ".customerbenefitgrantgithubrepository",
     "CustomerBenefitGrantGitHubRepositoryPropertiesUpdate": ".customerbenefitgrantgithubrepositorypropertiesupdate",
@@ -5847,10 +5946,6 @@ _dynamic_imports: dict[str, str] = {
     "CustomerWallet": ".customerwallet",
     "CustomerWalletTypedDict": ".customerwallet",
     "CustomerWalletSortProperty": ".customerwalletsortproperty",
-    "CustomerWithMembers": ".customerwithmembers",
-    "CustomerWithMembersTaxID": ".customerwithmembers",
-    "CustomerWithMembersTaxIDTypedDict": ".customerwithmembers",
-    "CustomerWithMembersTypedDict": ".customerwithmembers",
     "CustomField": ".customfield",
     "CustomFieldTypedDict": ".customfield",
     "CustomFieldCheckbox": ".customfieldcheckbox",
@@ -6166,6 +6261,8 @@ _dynamic_imports: dict[str, str] = {
     "ListResourceCheckoutTypedDict": ".listresource_checkout_",
     "ListResourceCheckoutLink": ".listresource_checkoutlink_",
     "ListResourceCheckoutLinkTypedDict": ".listresource_checkoutlink_",
+    "ListResourceCustomer": ".listresource_customer_",
+    "ListResourceCustomerTypedDict": ".listresource_customer_",
     "ListResourceCustomerBenefitGrant": ".listresource_customerbenefitgrant_",
     "ListResourceCustomerBenefitGrantTypedDict": ".listresource_customerbenefitgrant_",
     "ListResourceCustomerCustomerMeter": ".listresource_customercustomermeter_",
@@ -6182,8 +6279,6 @@ _dynamic_imports: dict[str, str] = {
     "ListResourceCustomerSubscriptionTypedDict": ".listresource_customersubscription_",
     "ListResourceCustomerWallet": ".listresource_customerwallet_",
     "ListResourceCustomerWalletTypedDict": ".listresource_customerwallet_",
-    "ListResourceCustomerWithMembers": ".listresource_customerwithmembers_",
-    "ListResourceCustomerWithMembersTypedDict": ".listresource_customerwithmembers_",
     "ListResourceCustomField": ".listresource_customfield_",
     "ListResourceCustomFieldTypedDict": ".listresource_customfield_",
     "ListResourceDiscount": ".listresource_discount_",
@@ -6243,10 +6338,6 @@ _dynamic_imports: dict[str, str] = {
     "MembersListMembersResponseTypedDict": ".members_list_membersop",
     "MembersUpdateMemberRequest": ".members_update_memberop",
     "MembersUpdateMemberRequestTypedDict": ".members_update_memberop",
-    "MemberSession": ".membersession",
-    "MemberSessionTypedDict": ".membersession",
-    "MemberSessionCreate": ".membersessioncreate",
-    "MemberSessionCreateTypedDict": ".membersessioncreate",
     "MemberSortProperty": ".membersortproperty",
     "MemberUpdate": ".memberupdate",
     "MemberUpdateTypedDict": ".memberupdate",

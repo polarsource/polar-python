@@ -33,3 +33,9 @@ value: models.BenefitGrantLicenseKeysProperties = /* values here */
 value: models.BenefitGrantCustomProperties = /* values here */
 ```
 
+### `models.BenefitGrantFeatureFlagProperties`
+
+```python
+value: models.BenefitGrantFeatureFlagProperties = /* values here */
+```
+

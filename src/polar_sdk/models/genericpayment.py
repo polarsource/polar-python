@@ -30,7 +30,7 @@ class GenericPaymentTypedDict(TypedDict):
     decline_reason: Nullable[str]
     r"""Error code, if the payment was declined."""
     decline_message: Nullable[str]
-    r"""Human-reasable error message, if the payment was declined."""
+    r"""Human-readable error message, if the payment was declined."""
     organization_id: str
     r"""The ID of the organization that owns the payment."""
     checkout_id: Nullable[str]
@@ -70,7 +70,7 @@ class GenericPayment(BaseModel):
     r"""Error code, if the payment was declined."""
 
     decline_message: Nullable[str]
-    r"""Human-reasable error message, if the payment was declined."""
+    r"""Human-readable error message, if the payment was declined."""
 
     organization_id: str
     r"""The ID of the organization that owns the payment."""

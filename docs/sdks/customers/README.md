@@ -120,7 +120,7 @@ with Polar(
 
 ### Response
 
-**[models.CustomerWithMembers](../../models/customerwithmembers.md)**
+**[models.Customer](../../models/customer.md)**
 
 ### Errors
 
@@ -204,7 +204,7 @@ with Polar(
 
 ### Response
 
-**[models.CustomerWithMembers](../../models/customerwithmembers.md)**
+**[models.Customer](../../models/customer.md)**
 
 ### Errors
 
@@ -262,7 +262,7 @@ with Polar(
 
 ### Response
 
-**[models.CustomerWithMembers](../../models/customerwithmembers.md)**
+**[models.Customer](../../models/customer.md)**
 
 ### Errors
 
@@ -358,7 +358,7 @@ with Polar(
 
 ### Response
 
-**[models.CustomerWithMembers](../../models/customerwithmembers.md)**
+**[models.Customer](../../models/customer.md)**
 
 ### Errors
 
@@ -411,7 +411,7 @@ with Polar(
 
 ### Response
 
-**[models.CustomerWithMembers](../../models/customerwithmembers.md)**
+**[models.Customer](../../models/customer.md)**
 
 ### Errors
 

@@ -30,7 +30,7 @@ class OrderSubscriptionTypedDict(TypedDict):
     status: SubscriptionStatus
     current_period_start: datetime
     r"""The start timestamp of the current billing period."""
-    current_period_end: Nullable[datetime]
+    current_period_end: datetime
     r"""The end timestamp of the current billing period."""
     trial_start: Nullable[datetime]
     r"""The start timestamp of the trial period, if any."""
@@ -87,7 +87,7 @@ class OrderSubscription(BaseModel):
     current_period_start: datetime
     r"""The start timestamp of the current billing period."""
 
-    current_period_end: Nullable[datetime]
+    current_period_end: datetime
     r"""The end timestamp of the current billing period."""
 
     trial_start: Nullable[datetime]
@@ -134,7 +134,6 @@ class OrderSubscription(BaseModel):
         optional_fields = ["seats"]
         nullable_fields = [
             "modified_at",
-            "current_period_end",
             "trial_start",
             "trial_end",
             "canceled_at",

@@ -8,6 +8,15 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class MetricsTypedDict(TypedDict):
+    active_subscriptions: NotRequired[Nullable[MetricTypedDict]]
+    committed_subscriptions: NotRequired[Nullable[MetricTypedDict]]
+    monthly_recurring_revenue: NotRequired[Nullable[MetricTypedDict]]
+    committed_monthly_recurring_revenue: NotRequired[Nullable[MetricTypedDict]]
+    average_revenue_per_user: NotRequired[Nullable[MetricTypedDict]]
+    checkouts: NotRequired[Nullable[MetricTypedDict]]
+    succeeded_checkouts: NotRequired[Nullable[MetricTypedDict]]
+    checkouts_conversion: NotRequired[Nullable[MetricTypedDict]]
+    churned_subscriptions: NotRequired[Nullable[MetricTypedDict]]
     orders: NotRequired[Nullable[MetricTypedDict]]
     revenue: NotRequired[Nullable[MetricTypedDict]]
     net_revenue: NotRequired[Nullable[MetricTypedDict]]
@@ -17,7 +26,6 @@ class MetricsTypedDict(TypedDict):
     cumulative_costs: NotRequired[Nullable[MetricTypedDict]]
     average_order_value: NotRequired[Nullable[MetricTypedDict]]
     net_average_order_value: NotRequired[Nullable[MetricTypedDict]]
-    average_revenue_per_user: NotRequired[Nullable[MetricTypedDict]]
     cost_per_user: NotRequired[Nullable[MetricTypedDict]]
     active_user_by_event: NotRequired[Nullable[MetricTypedDict]]
     one_time_products: NotRequired[Nullable[MetricTypedDict]]
@@ -29,13 +37,6 @@ class MetricsTypedDict(TypedDict):
     renewed_subscriptions: NotRequired[Nullable[MetricTypedDict]]
     renewed_subscriptions_revenue: NotRequired[Nullable[MetricTypedDict]]
     renewed_subscriptions_net_revenue: NotRequired[Nullable[MetricTypedDict]]
-    active_subscriptions: NotRequired[Nullable[MetricTypedDict]]
-    committed_subscriptions: NotRequired[Nullable[MetricTypedDict]]
-    monthly_recurring_revenue: NotRequired[Nullable[MetricTypedDict]]
-    committed_monthly_recurring_revenue: NotRequired[Nullable[MetricTypedDict]]
-    checkouts: NotRequired[Nullable[MetricTypedDict]]
-    succeeded_checkouts: NotRequired[Nullable[MetricTypedDict]]
-    checkouts_conversion: NotRequired[Nullable[MetricTypedDict]]
     canceled_subscriptions: NotRequired[Nullable[MetricTypedDict]]
     canceled_subscriptions_customer_service: NotRequired[Nullable[MetricTypedDict]]
     canceled_subscriptions_low_quality: NotRequired[Nullable[MetricTypedDict]]
@@ -45,7 +46,6 @@ class MetricsTypedDict(TypedDict):
     canceled_subscriptions_too_expensive: NotRequired[Nullable[MetricTypedDict]]
     canceled_subscriptions_unused: NotRequired[Nullable[MetricTypedDict]]
     canceled_subscriptions_other: NotRequired[Nullable[MetricTypedDict]]
-    churned_subscriptions: NotRequired[Nullable[MetricTypedDict]]
     churn_rate: NotRequired[Nullable[MetricTypedDict]]
     ltv: NotRequired[Nullable[MetricTypedDict]]
     gross_margin: NotRequired[Nullable[MetricTypedDict]]
@@ -54,6 +54,24 @@ class MetricsTypedDict(TypedDict):
 
 
 class Metrics(BaseModel):
+    active_subscriptions: OptionalNullable[Metric] = UNSET
+
+    committed_subscriptions: OptionalNullable[Metric] = UNSET
+
+    monthly_recurring_revenue: OptionalNullable[Metric] = UNSET
+
+    committed_monthly_recurring_revenue: OptionalNullable[Metric] = UNSET
+
+    average_revenue_per_user: OptionalNullable[Metric] = UNSET
+
+    checkouts: OptionalNullable[Metric] = UNSET
+
+    succeeded_checkouts: OptionalNullable[Metric] = UNSET
+
+    checkouts_conversion: OptionalNullable[Metric] = UNSET
+
+    churned_subscriptions: OptionalNullable[Metric] = UNSET
+
     orders: OptionalNullable[Metric] = UNSET
 
     revenue: OptionalNullable[Metric] = UNSET
@@ -71,8 +89,6 @@ class Metrics(BaseModel):
     average_order_value: OptionalNullable[Metric] = UNSET
 
     net_average_order_value: OptionalNullable[Metric] = UNSET
-
-    average_revenue_per_user: OptionalNullable[Metric] = UNSET
 
     cost_per_user: OptionalNullable[Metric] = UNSET
 
@@ -96,20 +112,6 @@ class Metrics(BaseModel):
 
     renewed_subscriptions_net_revenue: OptionalNullable[Metric] = UNSET
 
-    active_subscriptions: OptionalNullable[Metric] = UNSET
-
-    committed_subscriptions: OptionalNullable[Metric] = UNSET
-
-    monthly_recurring_revenue: OptionalNullable[Metric] = UNSET
-
-    committed_monthly_recurring_revenue: OptionalNullable[Metric] = UNSET
-
-    checkouts: OptionalNullable[Metric] = UNSET
-
-    succeeded_checkouts: OptionalNullable[Metric] = UNSET
-
-    checkouts_conversion: OptionalNullable[Metric] = UNSET
-
     canceled_subscriptions: OptionalNullable[Metric] = UNSET
 
     canceled_subscriptions_customer_service: OptionalNullable[Metric] = UNSET
@@ -128,8 +130,6 @@ class Metrics(BaseModel):
 
     canceled_subscriptions_other: OptionalNullable[Metric] = UNSET
 
-    churned_subscriptions: OptionalNullable[Metric] = UNSET
-
     churn_rate: OptionalNullable[Metric] = UNSET
 
     ltv: OptionalNullable[Metric] = UNSET
@@ -143,6 +143,15 @@ class Metrics(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "active_subscriptions",
+            "committed_subscriptions",
+            "monthly_recurring_revenue",
+            "committed_monthly_recurring_revenue",
+            "average_revenue_per_user",
+            "checkouts",
+            "succeeded_checkouts",
+            "checkouts_conversion",
+            "churned_subscriptions",
             "orders",
             "revenue",
             "net_revenue",
@@ -152,7 +161,6 @@ class Metrics(BaseModel):
             "cumulative_costs",
             "average_order_value",
             "net_average_order_value",
-            "average_revenue_per_user",
             "cost_per_user",
             "active_user_by_event",
             "one_time_products",
@@ -164,13 +172,6 @@ class Metrics(BaseModel):
             "renewed_subscriptions",
             "renewed_subscriptions_revenue",
             "renewed_subscriptions_net_revenue",
-            "active_subscriptions",
-            "committed_subscriptions",
-            "monthly_recurring_revenue",
-            "committed_monthly_recurring_revenue",
-            "checkouts",
-            "succeeded_checkouts",
-            "checkouts_conversion",
             "canceled_subscriptions",
             "canceled_subscriptions_customer_service",
             "canceled_subscriptions_low_quality",
@@ -180,7 +181,6 @@ class Metrics(BaseModel):
             "canceled_subscriptions_too_expensive",
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
-            "churned_subscriptions",
             "churn_rate",
             "ltv",
             "gross_margin",
@@ -188,6 +188,15 @@ class Metrics(BaseModel):
             "cashflow",
         ]
         nullable_fields = [
+            "active_subscriptions",
+            "committed_subscriptions",
+            "monthly_recurring_revenue",
+            "committed_monthly_recurring_revenue",
+            "average_revenue_per_user",
+            "checkouts",
+            "succeeded_checkouts",
+            "checkouts_conversion",
+            "churned_subscriptions",
             "orders",
             "revenue",
             "net_revenue",
@@ -197,7 +206,6 @@ class Metrics(BaseModel):
             "cumulative_costs",
             "average_order_value",
             "net_average_order_value",
-            "average_revenue_per_user",
             "cost_per_user",
             "active_user_by_event",
             "one_time_products",
@@ -209,13 +217,6 @@ class Metrics(BaseModel):
             "renewed_subscriptions",
             "renewed_subscriptions_revenue",
             "renewed_subscriptions_net_revenue",
-            "active_subscriptions",
-            "committed_subscriptions",
-            "monthly_recurring_revenue",
-            "committed_monthly_recurring_revenue",
-            "checkouts",
-            "succeeded_checkouts",
-            "checkouts_conversion",
             "canceled_subscriptions",
             "canceled_subscriptions_customer_service",
             "canceled_subscriptions_low_quality",
@@ -225,7 +226,6 @@ class Metrics(BaseModel):
             "canceled_subscriptions_too_expensive",
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
-            "churned_subscriptions",
             "churn_rate",
             "ltv",
             "gross_margin",

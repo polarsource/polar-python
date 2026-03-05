@@ -13,6 +13,10 @@ from .benefitgrantdownloadablesproperties import (
     BenefitGrantDownloadablesProperties,
     BenefitGrantDownloadablesPropertiesTypedDict,
 )
+from .benefitgrantfeatureflagproperties import (
+    BenefitGrantFeatureFlagProperties,
+    BenefitGrantFeatureFlagPropertiesTypedDict,
+)
 from .benefitgrantgithubrepositoryproperties import (
     BenefitGrantGitHubRepositoryProperties,
     BenefitGrantGitHubRepositoryPropertiesTypedDict,
@@ -34,6 +38,7 @@ CustomerStateBenefitGrantPropertiesTypedDict = TypeAliasType(
     "CustomerStateBenefitGrantPropertiesTypedDict",
     Union[
         BenefitGrantCustomPropertiesTypedDict,
+        BenefitGrantFeatureFlagPropertiesTypedDict,
         BenefitGrantDownloadablesPropertiesTypedDict,
         BenefitGrantLicenseKeysPropertiesTypedDict,
         BenefitGrantDiscordPropertiesTypedDict,
@@ -46,6 +51,7 @@ CustomerStateBenefitGrantProperties = TypeAliasType(
     "CustomerStateBenefitGrantProperties",
     Union[
         BenefitGrantCustomProperties,
+        BenefitGrantFeatureFlagProperties,
         BenefitGrantDownloadablesProperties,
         BenefitGrantLicenseKeysProperties,
         BenefitGrantDiscordProperties,

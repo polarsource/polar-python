@@ -11,3 +11,4 @@ class BenefitType(str, Enum):
     DOWNLOADABLES = "downloadables"
     LICENSE_KEYS = "license_keys"
     METER_CREDIT = "meter_credit"
+    FEATURE_FLAG = "feature_flag"
