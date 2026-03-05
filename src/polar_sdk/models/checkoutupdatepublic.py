@@ -31,6 +31,8 @@ class CheckoutUpdatePublicTypedDict(TypedDict):
     r"""Key-value object storing custom field values."""
     product_id: NotRequired[Nullable[str]]
     r"""ID of the product to checkout. Must be present in the checkout's product list."""
+    product_price_id: NotRequired[Nullable[str]]
+    r"""ID of the product price to checkout. Must correspond to a price present in the checkout's product list."""
     amount: NotRequired[Nullable[int]]
     seats: NotRequired[Nullable[int]]
     r"""Number of seats for seat-based pricing."""
@@ -57,6 +59,14 @@ class CheckoutUpdatePublic(BaseModel):
 
     product_id: OptionalNullable[str] = UNSET
     r"""ID of the product to checkout. Must be present in the checkout's product list."""
+
+    product_price_id: Annotated[
+        OptionalNullable[str],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ] = UNSET
+    r"""ID of the product price to checkout. Must correspond to a price present in the checkout's product list."""
 
     amount: OptionalNullable[int] = UNSET
 
@@ -93,6 +103,7 @@ class CheckoutUpdatePublic(BaseModel):
         optional_fields = [
             "custom_field_data",
             "product_id",
+            "product_price_id",
             "amount",
             "seats",
             "is_business_customer",
@@ -107,6 +118,7 @@ class CheckoutUpdatePublic(BaseModel):
         ]
         nullable_fields = [
             "product_id",
+            "product_price_id",
             "amount",
             "seats",
             "is_business_customer",

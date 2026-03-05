@@ -13,6 +13,10 @@ from .customerbenefitgrantdownloadablesupdate import (
     CustomerBenefitGrantDownloadablesUpdate,
     CustomerBenefitGrantDownloadablesUpdateTypedDict,
 )
+from .customerbenefitgrantfeatureflagupdate import (
+    CustomerBenefitGrantFeatureFlagUpdate,
+    CustomerBenefitGrantFeatureFlagUpdateTypedDict,
+)
 from .customerbenefitgrantgithubrepositoryupdate import (
     CustomerBenefitGrantGitHubRepositoryUpdate,
     CustomerBenefitGrantGitHubRepositoryUpdateTypedDict,
@@ -38,6 +42,7 @@ CustomerBenefitGrantUpdateTypedDict = TypeAliasType(
         CustomerBenefitGrantLicenseKeysUpdateTypedDict,
         CustomerBenefitGrantCustomUpdateTypedDict,
         CustomerBenefitGrantMeterCreditUpdateTypedDict,
+        CustomerBenefitGrantFeatureFlagUpdateTypedDict,
         CustomerBenefitGrantDiscordUpdateTypedDict,
         CustomerBenefitGrantGitHubRepositoryUpdateTypedDict,
     ],
@@ -49,6 +54,7 @@ CustomerBenefitGrantUpdate = Annotated[
         Annotated[CustomerBenefitGrantCustomUpdate, Tag("custom")],
         Annotated[CustomerBenefitGrantDiscordUpdate, Tag("discord")],
         Annotated[CustomerBenefitGrantDownloadablesUpdate, Tag("downloadables")],
+        Annotated[CustomerBenefitGrantFeatureFlagUpdate, Tag("feature_flag")],
         Annotated[CustomerBenefitGrantGitHubRepositoryUpdate, Tag("github_repository")],
         Annotated[CustomerBenefitGrantLicenseKeysUpdate, Tag("license_keys")],
         Annotated[CustomerBenefitGrantMeterCreditUpdate, Tag("meter_credit")],

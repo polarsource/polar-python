@@ -4,6 +4,7 @@ from __future__ import annotations
 from .benefitcustom import BenefitCustom, BenefitCustomTypedDict
 from .benefitdiscord import BenefitDiscord, BenefitDiscordTypedDict
 from .benefitdownloadables import BenefitDownloadables, BenefitDownloadablesTypedDict
+from .benefitfeatureflag import BenefitFeatureFlag, BenefitFeatureFlagTypedDict
 from .benefitgithubrepository import (
     BenefitGitHubRepository,
     BenefitGitHubRepositoryTypedDict,
@@ -25,6 +26,7 @@ BenefitTypedDict = TypeAliasType(
         BenefitDownloadablesTypedDict,
         BenefitLicenseKeysTypedDict,
         BenefitMeterCreditTypedDict,
+        BenefitFeatureFlagTypedDict,
     ],
 )
 
@@ -34,6 +36,7 @@ Benefit = Annotated[
         Annotated[BenefitCustom, Tag("custom")],
         Annotated[BenefitDiscord, Tag("discord")],
         Annotated[BenefitDownloadables, Tag("downloadables")],
+        Annotated[BenefitFeatureFlag, Tag("feature_flag")],
         Annotated[BenefitGitHubRepository, Tag("github_repository")],
         Annotated[BenefitLicenseKeys, Tag("license_keys")],
         Annotated[BenefitMeterCredit, Tag("meter_credit")],

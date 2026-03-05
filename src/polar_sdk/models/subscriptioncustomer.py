@@ -26,8 +26,6 @@ class SubscriptionCustomerTypedDict(TypedDict):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
     metadata: Dict[str, MetadataOutputTypeTypedDict]
-    external_id: Nullable[str]
-    r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
     email: str
     r"""The email address of the customer. This must be unique within the organization."""
     email_verified: bool
@@ -41,6 +39,8 @@ class SubscriptionCustomerTypedDict(TypedDict):
     deleted_at: Nullable[datetime]
     r"""Timestamp for when the customer was soft deleted."""
     avatar_url: str
+    external_id: NotRequired[Nullable[str]]
+    r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
     type: NotRequired[Nullable[CustomerType]]
     r"""The type of customer: 'individual' for single users, 'team' for customers with multiple members. Legacy customers may have NULL type which is treated as 'individual'."""
     locale: NotRequired[Nullable[str]]
@@ -57,9 +57,6 @@ class SubscriptionCustomer(BaseModel):
     r"""Last modification timestamp of the object."""
 
     metadata: Dict[str, MetadataOutputType]
-
-    external_id: Nullable[str]
-    r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
 
     email: str
     r"""The email address of the customer. This must be unique within the organization."""
@@ -82,6 +79,9 @@ class SubscriptionCustomer(BaseModel):
 
     avatar_url: str
 
+    external_id: OptionalNullable[str] = UNSET
+    r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
+
     type: OptionalNullable[CustomerType] = UNSET
     r"""The type of customer: 'individual' for single users, 'team' for customers with multiple members. Legacy customers may have NULL type which is treated as 'individual'."""
 
@@ -89,7 +89,7 @@ class SubscriptionCustomer(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["type", "locale"]
+        optional_fields = ["external_id", "type", "locale"]
         nullable_fields = [
             "modified_at",
             "external_id",

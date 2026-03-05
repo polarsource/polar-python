@@ -11,6 +11,10 @@ class CustomerSessionCustomerIDCreateTypedDict(TypedDict):
 
     customer_id: str
     r"""ID of the customer to create a session for."""
+    member_id: NotRequired[Nullable[str]]
+    r"""ID of the member to create a session for. When not provided and the organization has `member_model_enabled`, the owner member of the customer will be used for individual customers."""
+    external_member_id: NotRequired[Nullable[str]]
+    r"""External ID of the member to create a session for. Alternative to `member_id`."""
     return_url: NotRequired[Nullable[str]]
     r"""When set, a back button will be shown in the customer portal to return to this URL."""
 
@@ -21,13 +25,19 @@ class CustomerSessionCustomerIDCreate(BaseModel):
     customer_id: str
     r"""ID of the customer to create a session for."""
 
+    member_id: OptionalNullable[str] = UNSET
+    r"""ID of the member to create a session for. When not provided and the organization has `member_model_enabled`, the owner member of the customer will be used for individual customers."""
+
+    external_member_id: OptionalNullable[str] = UNSET
+    r"""External ID of the member to create a session for. Alternative to `member_id`."""
+
     return_url: OptionalNullable[str] = UNSET
     r"""When set, a back button will be shown in the customer portal to return to this URL."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["return_url"]
-        nullable_fields = ["return_url"]
+        optional_fields = ["member_id", "external_member_id", "return_url"]
+        nullable_fields = ["member_id", "external_member_id", "return_url"]
         null_default_fields = []
 
         serialized = handler(self)

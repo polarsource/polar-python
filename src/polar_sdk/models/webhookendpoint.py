@@ -4,11 +4,11 @@ from __future__ import annotations
 from .webhookeventtype import WebhookEventType
 from .webhookformat import WebhookFormat
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 import pydantic
 from pydantic import model_serializer
 from typing import List
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class WebhookEndpointTypedDict(TypedDict):
@@ -31,6 +31,8 @@ class WebhookEndpointTypedDict(TypedDict):
     r"""The events that will trigger the webhook."""
     enabled: bool
     r"""Whether the webhook endpoint is enabled and will receive events."""
+    name: NotRequired[Nullable[str]]
+    r"""An optional name for the webhook endpoint to help organize and identify it."""
 
 
 class WebhookEndpoint(BaseModel):
@@ -62,10 +64,13 @@ class WebhookEndpoint(BaseModel):
     enabled: bool
     r"""Whether the webhook endpoint is enabled and will receive events."""
 
+    name: OptionalNullable[str] = UNSET
+    r"""An optional name for the webhook endpoint to help organize and identify it."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
-        nullable_fields = ["modified_at"]
+        optional_fields = ["name"]
+        nullable_fields = ["modified_at", "name"]
         null_default_fields = []
 
         serialized = handler(self)

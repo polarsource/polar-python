@@ -13,6 +13,10 @@ from .customerbenefitgrantdownloadables import (
     CustomerBenefitGrantDownloadables,
     CustomerBenefitGrantDownloadablesTypedDict,
 )
+from .customerbenefitgrantfeatureflag import (
+    CustomerBenefitGrantFeatureFlag,
+    CustomerBenefitGrantFeatureFlagTypedDict,
+)
 from .customerbenefitgrantgithubrepository import (
     CustomerBenefitGrantGitHubRepository,
     CustomerBenefitGrantGitHubRepositoryTypedDict,
@@ -38,6 +42,7 @@ CustomerBenefitGrantTypedDict = TypeAliasType(
         CustomerBenefitGrantLicenseKeysTypedDict,
         CustomerBenefitGrantCustomTypedDict,
         CustomerBenefitGrantMeterCreditTypedDict,
+        CustomerBenefitGrantFeatureFlagTypedDict,
     ],
 )
 
@@ -51,5 +56,6 @@ CustomerBenefitGrant = TypeAliasType(
         CustomerBenefitGrantLicenseKeys,
         CustomerBenefitGrantCustom,
         CustomerBenefitGrantMeterCredit,
+        CustomerBenefitGrantFeatureFlag,
     ],
 )

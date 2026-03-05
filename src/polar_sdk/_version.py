@@ -3,10 +3,10 @@
 import importlib.metadata
 
 __title__: str = "polar-sdk"
-__version__: str = "0.29.0"
+__version__: str = "0.30.0"
 __openapi_doc_version__: str = "0.1.0"
 __gen_version__: str = "2.737.0"
-__user_agent__: str = "speakeasy-sdk/python 0.29.0 2.737.0 0.1.0 polar-sdk"
+__user_agent__: str = "speakeasy-sdk/python 0.30.0 2.737.0 0.1.0 polar-sdk"
 
 try:
     if __package__ is not None:

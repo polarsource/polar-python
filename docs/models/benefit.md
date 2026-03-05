@@ -21,6 +21,12 @@ value: models.BenefitDiscord = /* values here */
 value: models.BenefitDownloadables = /* values here */
 ```
 
+### `models.BenefitFeatureFlag`
+
+```python
+value: models.BenefitFeatureFlag = /* values here */
+```
+
 ### `models.BenefitGitHubRepository`
 
 ```python

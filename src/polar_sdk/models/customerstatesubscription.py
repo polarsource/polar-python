@@ -48,7 +48,7 @@ class CustomerStateSubscriptionTypedDict(TypedDict):
     recurring_interval: SubscriptionRecurringInterval
     current_period_start: datetime
     r"""The start timestamp of the current billing period."""
-    current_period_end: Nullable[datetime]
+    current_period_end: datetime
     r"""The end timestamp of the current billing period."""
     trial_start: Nullable[datetime]
     r"""The start timestamp of the trial period, if any."""
@@ -101,7 +101,7 @@ class CustomerStateSubscription(BaseModel):
     current_period_start: datetime
     r"""The start timestamp of the current billing period."""
 
-    current_period_end: Nullable[datetime]
+    current_period_end: datetime
     r"""The end timestamp of the current billing period."""
 
     trial_start: Nullable[datetime]
@@ -141,7 +141,6 @@ class CustomerStateSubscription(BaseModel):
         optional_fields = ["custom_field_data"]
         nullable_fields = [
             "modified_at",
-            "current_period_end",
             "trial_start",
             "trial_end",
             "canceled_at",

@@ -54,6 +54,7 @@ Ref: https://docs.stripe.com/billing/customer/tax-ids#supported-tax-id
 | `KR_BRN`     | kr_brn       |
 | `KZ_BIN`     | kz_bin       |
 | `LI_UID`     | li_uid       |
+| `MK_VAT`     | mk_vat       |
 | `MX_RFC`     | mx_rfc       |
 | `MY_FRP`     | my_frp       |
 | `MY_ITN`     | my_itn       |

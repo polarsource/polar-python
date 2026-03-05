@@ -39,3 +39,9 @@ value: models.BenefitLicenseKeysUpdate = /* values here */
 value: models.BenefitMeterCreditUpdate = /* values here */
 ```
 
+### `models.BenefitFeatureFlagUpdate`
+
+```python
+value: models.BenefitFeatureFlagUpdate = /* values here */
+```
+

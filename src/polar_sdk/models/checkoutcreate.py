@@ -125,7 +125,11 @@ class CheckoutCreateTypedDict(TypedDict):
     r"""Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting. If you preset the billing address, this setting will be automatically set to `true`."""
     amount: NotRequired[Nullable[int]]
     seats: NotRequired[Nullable[int]]
-    r"""Number of seats for seat-based pricing. Required for seat-based products."""
+    r"""Predefined number of seats (works with seat-based pricing only)"""
+    min_seats: NotRequired[Nullable[int]]
+    r"""Minimum number of seats (works with seat-based pricing only)"""
+    max_seats: NotRequired[Nullable[int]]
+    r"""Maximum number of seats (works with seat-based pricing only)"""
     allow_trial: NotRequired[bool]
     r"""Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured."""
     customer_id: NotRequired[Nullable[str]]
@@ -215,7 +219,13 @@ class CheckoutCreate(BaseModel):
     amount: OptionalNullable[int] = UNSET
 
     seats: OptionalNullable[int] = UNSET
-    r"""Number of seats for seat-based pricing. Required for seat-based products."""
+    r"""Predefined number of seats (works with seat-based pricing only)"""
+
+    min_seats: OptionalNullable[int] = UNSET
+    r"""Minimum number of seats (works with seat-based pricing only)"""
+
+    max_seats: OptionalNullable[int] = UNSET
+    r"""Maximum number of seats (works with seat-based pricing only)"""
 
     allow_trial: Optional[bool] = True
     r"""Whether to enable the trial period for the checkout session. If `false`, the trial period will be disabled, even if the selected product has a trial configured."""
@@ -286,6 +296,8 @@ class CheckoutCreate(BaseModel):
             "require_billing_address",
             "amount",
             "seats",
+            "min_seats",
+            "max_seats",
             "allow_trial",
             "customer_id",
             "is_business_customer",
@@ -311,6 +323,8 @@ class CheckoutCreate(BaseModel):
             "discount_id",
             "amount",
             "seats",
+            "min_seats",
+            "max_seats",
             "customer_id",
             "external_customer_id",
             "customer_name",

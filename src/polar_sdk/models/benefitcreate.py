@@ -7,6 +7,10 @@ from .benefitdownloadablescreate import (
     BenefitDownloadablesCreate,
     BenefitDownloadablesCreateTypedDict,
 )
+from .benefitfeatureflagcreate import (
+    BenefitFeatureFlagCreate,
+    BenefitFeatureFlagCreateTypedDict,
+)
 from .benefitgithubrepositorycreate import (
     BenefitGitHubRepositoryCreate,
     BenefitGitHubRepositoryCreateTypedDict,
@@ -34,6 +38,7 @@ BenefitCreateTypedDict = TypeAliasType(
         BenefitDownloadablesCreateTypedDict,
         BenefitLicenseKeysCreateTypedDict,
         BenefitMeterCreditCreateTypedDict,
+        BenefitFeatureFlagCreateTypedDict,
     ],
 )
 
@@ -43,6 +48,7 @@ BenefitCreate = Annotated[
         Annotated[BenefitCustomCreate, Tag("custom")],
         Annotated[BenefitDiscordCreate, Tag("discord")],
         Annotated[BenefitDownloadablesCreate, Tag("downloadables")],
+        Annotated[BenefitFeatureFlagCreate, Tag("feature_flag")],
         Annotated[BenefitGitHubRepositoryCreate, Tag("github_repository")],
         Annotated[BenefitLicenseKeysCreate, Tag("license_keys")],
         Annotated[BenefitMeterCreditCreate, Tag("meter_credit")],

@@ -8,10 +8,7 @@ from .customersortproperty import CustomerSortProperty
 from .eventsortproperty import EventSortProperty
 from .eventsource import EventSource
 from .listresource_benefit_ import ListResourceBenefit, ListResourceBenefitTypedDict
-from .listresource_customerwithmembers_ import (
-    ListResourceCustomerWithMembers,
-    ListResourceCustomerWithMembersTypedDict,
-)
+from .listresource_customer_ import ListResourceCustomer, ListResourceCustomerTypedDict
 from .listresource_event_ import ListResourceEvent, ListResourceEventTypedDict
 from .listresource_meter_ import ListResourceMeter, ListResourceMeterTypedDict
 from .listresource_order_ import ListResourceOrder, ListResourceOrderTypedDict
@@ -980,13 +977,13 @@ class CustomersListRequest(BaseModel):
 
 
 class CustomersListResponseTypedDict(TypedDict):
-    result: ListResourceCustomerWithMembersTypedDict
+    result: ListResourceCustomerTypedDict
 
 
 class CustomersListResponse(BaseModel):
     next: Callable[[], Optional[CustomersListResponse]]
 
-    result: ListResourceCustomerWithMembers
+    result: ListResourceCustomer
 
 
 EventsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(

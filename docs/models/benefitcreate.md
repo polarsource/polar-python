@@ -21,6 +21,12 @@ value: models.BenefitDiscordCreate = /* values here */
 value: models.BenefitDownloadablesCreate = /* values here */
 ```
 
+### `models.BenefitFeatureFlagCreate`
+
+```python
+value: models.BenefitFeatureFlagCreate = /* values here */
+```
+
 ### `models.BenefitGitHubRepositoryCreate`
 
 ```python

@@ -31,7 +31,6 @@ if TYPE_CHECKING:
     from polar_sdk.events import Events
     from polar_sdk.files import Files
     from polar_sdk.license_keys import LicenseKeys
-    from polar_sdk.member_sessions import MemberSessions
     from polar_sdk.members import Members
     from polar_sdk.meters import Meters
     from polar_sdk.metrics_sdk import MetricsSDK
@@ -74,7 +73,6 @@ class Polar(BaseSDK):
     customer_portal: "CustomerPortal"
     customer_seats: "CustomerSeats"
     customer_sessions: "CustomerSessions"
-    member_sessions: "MemberSessions"
     events: "Events"
     event_types: "EventTypes"
     meters: "Meters"
@@ -104,7 +102,6 @@ class Polar(BaseSDK):
         "customer_portal": ("polar_sdk.customer_portal", "CustomerPortal"),
         "customer_seats": ("polar_sdk.customer_seats", "CustomerSeats"),
         "customer_sessions": ("polar_sdk.customer_sessions", "CustomerSessions"),
-        "member_sessions": ("polar_sdk.member_sessions", "MemberSessions"),
         "events": ("polar_sdk.events", "Events"),
         "event_types": ("polar_sdk.event_types", "EventTypes"),
         "meters": ("polar_sdk.meters", "Meters"),

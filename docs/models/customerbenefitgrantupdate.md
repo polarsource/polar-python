@@ -21,6 +21,12 @@ value: models.CustomerBenefitGrantDiscordUpdate = /* values here */
 value: models.CustomerBenefitGrantDownloadablesUpdate = /* values here */
 ```
 
+### `models.CustomerBenefitGrantFeatureFlagUpdate`
+
+```python
+value: models.CustomerBenefitGrantFeatureFlagUpdate = /* values here */
+```
+
 ### `models.CustomerBenefitGrantGitHubRepositoryUpdate`
 
 ```python

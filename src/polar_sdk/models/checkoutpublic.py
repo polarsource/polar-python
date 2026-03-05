@@ -35,9 +35,10 @@ from .productprice import ProductPrice, ProductPriceTypedDict
 from .trialinterval import TrialInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 CheckoutPublicCustomFieldDataTypedDict = TypeAliasType(
@@ -47,6 +48,17 @@ CheckoutPublicCustomFieldDataTypedDict = TypeAliasType(
 
 CheckoutPublicCustomFieldData = TypeAliasType(
     "CheckoutPublicCustomFieldData", Union[str, int, bool, datetime]
+)
+
+
+CheckoutPublicProductPriceTypedDict = TypeAliasType(
+    "CheckoutPublicProductPriceTypedDict",
+    Union[LegacyRecurringProductPriceTypedDict, ProductPriceTypedDict],
+)
+
+
+CheckoutPublicProductPrice = TypeAliasType(
+    "CheckoutPublicProductPrice", Union[LegacyRecurringProductPrice, ProductPrice]
 )
 
 
@@ -130,6 +142,8 @@ class CheckoutPublicTypedDict(TypedDict):
     r"""ID of the organization owning the checkout session."""
     product_id: Nullable[str]
     r"""ID of the product to checkout."""
+    product_price_id: Nullable[str]
+    r"""ID of the product price to checkout."""
     discount_id: Nullable[str]
     r"""ID of the discount applied to the checkout."""
     allow_discount_codes: bool
@@ -163,6 +177,8 @@ class CheckoutPublicTypedDict(TypedDict):
     r"""List of products available to select."""
     product: Nullable[CheckoutProductTypedDict]
     r"""Product selected to checkout."""
+    product_price: Nullable[CheckoutPublicProductPriceTypedDict]
+    r"""Price of the selected product."""
     prices: Nullable[Dict[str, List[CheckoutPublicPricesTypedDict]]]
     r"""Mapping of product IDs to their list of prices."""
     discount: Nullable[CheckoutPublicDiscountTypedDict]
@@ -173,7 +189,11 @@ class CheckoutPublicTypedDict(TypedDict):
     ]
     r"""Key-value object storing custom field values."""
     seats: NotRequired[Nullable[int]]
-    r"""Number of seats for seat-based pricing."""
+    r"""Predefined number of seats (works with seat-based pricing only)"""
+    min_seats: NotRequired[Nullable[int]]
+    r"""Minimum number of seats (works with seat-based pricing only)"""
+    max_seats: NotRequired[Nullable[int]]
+    r"""Maximum number of seats (works with seat-based pricing only)"""
     price_per_seat: NotRequired[Nullable[int]]
     r"""Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing."""
     locale: NotRequired[Nullable[str]]
@@ -249,6 +269,14 @@ class CheckoutPublic(BaseModel):
     product_id: Nullable[str]
     r"""ID of the product to checkout."""
 
+    product_price_id: Annotated[
+        Nullable[str],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+    r"""ID of the product price to checkout."""
+
     discount_id: Nullable[str]
     r"""ID of the discount applied to the checkout."""
 
@@ -302,6 +330,14 @@ class CheckoutPublic(BaseModel):
     product: Nullable[CheckoutProduct]
     r"""Product selected to checkout."""
 
+    product_price: Annotated[
+        Nullable[CheckoutPublicProductPrice],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+    r"""Price of the selected product."""
+
     prices: Nullable[Dict[str, List[CheckoutPublicPrices]]]
     r"""Mapping of product IDs to their list of prices."""
 
@@ -317,7 +353,13 @@ class CheckoutPublic(BaseModel):
     r"""Key-value object storing custom field values."""
 
     seats: OptionalNullable[int] = UNSET
-    r"""Number of seats for seat-based pricing."""
+    r"""Predefined number of seats (works with seat-based pricing only)"""
+
+    min_seats: OptionalNullable[int] = UNSET
+    r"""Minimum number of seats (works with seat-based pricing only)"""
+
+    max_seats: OptionalNullable[int] = UNSET
+    r"""Maximum number of seats (works with seat-based pricing only)"""
 
     price_per_seat: OptionalNullable[int] = UNSET
     r"""Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing."""
@@ -326,12 +368,21 @@ class CheckoutPublic(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["custom_field_data", "seats", "price_per_seat", "locale"]
+        optional_fields = [
+            "custom_field_data",
+            "seats",
+            "min_seats",
+            "max_seats",
+            "price_per_seat",
+            "locale",
+        ]
         nullable_fields = [
             "modified_at",
             "return_url",
             "embed_origin",
             "seats",
+            "min_seats",
+            "max_seats",
             "price_per_seat",
             "tax_amount",
             "allow_trial",
@@ -339,6 +390,7 @@ class CheckoutPublic(BaseModel):
             "active_trial_interval_count",
             "trial_end",
             "product_id",
+            "product_price_id",
             "discount_id",
             "customer_id",
             "customer_name",
@@ -349,6 +401,7 @@ class CheckoutPublic(BaseModel):
             "customer_tax_id",
             "locale",
             "product",
+            "product_price",
             "prices",
             "discount",
             "attached_custom_fields",

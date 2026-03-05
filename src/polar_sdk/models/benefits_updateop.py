@@ -7,6 +7,10 @@ from .benefitdownloadablesupdate import (
     BenefitDownloadablesUpdate,
     BenefitDownloadablesUpdateTypedDict,
 )
+from .benefitfeatureflagupdate import (
+    BenefitFeatureFlagUpdate,
+    BenefitFeatureFlagUpdateTypedDict,
+)
 from .benefitgithubrepositoryupdate import (
     BenefitGitHubRepositoryUpdate,
     BenefitGitHubRepositoryUpdateTypedDict,
@@ -34,6 +38,7 @@ BenefitsUpdateBenefitUpdateTypedDict = TypeAliasType(
         BenefitDownloadablesUpdateTypedDict,
         BenefitLicenseKeysUpdateTypedDict,
         BenefitMeterCreditUpdateTypedDict,
+        BenefitFeatureFlagUpdateTypedDict,
     ],
 )
 
@@ -47,6 +52,7 @@ BenefitsUpdateBenefitUpdate = TypeAliasType(
         BenefitDownloadablesUpdate,
         BenefitLicenseKeysUpdate,
         BenefitMeterCreditUpdate,
+        BenefitFeatureFlagUpdate,
     ],
 )
 
