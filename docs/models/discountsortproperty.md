@@ -13,3 +13,5 @@
 | `MINUS_CODE`              | -code                     |
 | `REDEMPTIONS_COUNT`       | redemptions_count         |
 | `MINUS_REDEMPTIONS_COUNT` | -redemptions_count        |
+| `ENDS_AT`                 | ends_at                   |
+| `MINUS_ENDS_AT`           | -ends_at                  |
