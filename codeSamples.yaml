@@ -464,7 +464,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customers.create(request={\n        \"external_id\": \"usr_1337\",\n        \"email\": \"customer@example.com\",\n        \"name\": \"John Doe\",\n        \"billing_address\": {\n            \"country\": polar_sdk.CountryAlpha2Input.US,\n        },\n        \"tax_id\": [\n            \"911144442\",\n            \"us_ein\",\n        ],\n        \"locale\": \"en\",\n        \"type\": polar_sdk.CustomerType.INDIVIDUAL,\n        \"organization_id\": \"1dbfc517-0bbf-4301-9ba8-555ca42b9737\",\n        \"owner\": {\n            \"email\": \"member@example.com\",\n            \"name\": \"Jane Doe\",\n            \"external_id\": \"usr_1337\",\n        },\n    })\n\n    # Handle response\n    print(res)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customers.create(request={\n        \"external_id\": \"usr_1337\",\n        \"email\": \"customer@example.com\",\n        \"name\": \"John Doe\",\n        \"billing_address\": {\n            \"country\": polar_sdk.CountryAlpha2Input.US,\n        },\n        \"locale\": \"en\",\n        \"type\": polar_sdk.CustomerType.INDIVIDUAL,\n        \"organization_id\": \"1dbfc517-0bbf-4301-9ba8-555ca42b9737\",\n        \"owner\": {\n            \"email\": \"member@example.com\",\n            \"name\": \"Jane Doe\",\n            \"external_id\": \"usr_1337\",\n        },\n    })\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customers/export"]["get"]
     update:
       "x-codeSamples":
@@ -488,7 +488,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customers.update_external(external_id=\"<id>\", customer_update_external_id={\n        \"email\": \"customer@example.com\",\n        \"name\": \"John Doe\",\n        \"billing_address\": None,\n        \"tax_id\": [\n            \"911144442\",\n            \"us_ein\",\n        ],\n        \"locale\": \"en\",\n    })\n\n    # Handle response\n    print(res)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customers.update_external(external_id=\"<id>\", customer_update_external_id={\n        \"email\": \"customer@example.com\",\n        \"name\": \"John Doe\",\n        \"billing_address\": None,\n        \"locale\": \"en\",\n    })\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customers/external/{external_id}/state"]["get"]
     update:
       "x-codeSamples":
@@ -512,7 +512,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customers.update(id=\"<value>\", customer_update={\n        \"email\": \"customer@example.com\",\n        \"name\": \"John Doe\",\n        \"billing_address\": {\n            \"country\": polar_sdk.CountryAlpha2Input.US,\n        },\n        \"tax_id\": [\n            \"911144442\",\n            \"us_ein\",\n        ],\n        \"locale\": \"en\",\n        \"external_id\": \"usr_1337\",\n        \"type\": polar_sdk.CustomerType.INDIVIDUAL,\n    })\n\n    # Handle response\n    print(res)"
+          "source": "import polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.customers.update(id=\"<value>\", customer_update={\n        \"email\": \"customer@example.com\",\n        \"name\": \"John Doe\",\n        \"billing_address\": {\n            \"country\": polar_sdk.CountryAlpha2Input.US,\n        },\n        \"locale\": \"en\",\n        \"external_id\": \"usr_1337\",\n        \"type\": polar_sdk.CustomerType.INDIVIDUAL,\n    })\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/customers/{id}/state"]["get"]
     update:
       "x-codeSamples":
