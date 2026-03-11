@@ -1028,8 +1028,6 @@ if TYPE_CHECKING:
         CustomerCreate,
         CustomerCreateMetadata,
         CustomerCreateMetadataTypedDict,
-        CustomerCreateTaxID,
-        CustomerCreateTaxIDTypedDict,
         CustomerCreateTypedDict,
     )
     from .customercreatedevent import (
@@ -1287,8 +1285,6 @@ if TYPE_CHECKING:
         CustomerUpdate,
         CustomerUpdateMetadata,
         CustomerUpdateMetadataTypedDict,
-        CustomerUpdateTaxID,
-        CustomerUpdateTaxIDTypedDict,
         CustomerUpdateTypedDict,
     )
     from .customerupdatedevent import (
@@ -1309,8 +1305,6 @@ if TYPE_CHECKING:
         CustomerUpdateExternalID,
         CustomerUpdateExternalIDMetadata,
         CustomerUpdateExternalIDMetadataTypedDict,
-        CustomerUpdateExternalIDTaxID,
-        CustomerUpdateExternalIDTaxIDTypedDict,
         CustomerUpdateExternalIDTypedDict,
     )
     from .customerwallet import CustomerWallet, CustomerWalletTypedDict
@@ -2700,9 +2694,35 @@ if TYPE_CHECKING:
         SubscriptionUpdateBillingPeriod,
         SubscriptionUpdateBillingPeriodTypedDict,
     )
+    from .subscriptionupdatedbillingperiodmetadata import (
+        SubscriptionUpdatedBillingPeriodMetadata,
+        SubscriptionUpdatedBillingPeriodMetadataTypedDict,
+    )
+    from .subscriptionupdateddiscountmetadata import (
+        SubscriptionUpdatedDiscountMetadata,
+        SubscriptionUpdatedDiscountMetadataTypedDict,
+    )
+    from .subscriptionupdatedevent import (
+        SubscriptionUpdatedEvent,
+        SubscriptionUpdatedEventMetadata,
+        SubscriptionUpdatedEventMetadataTypedDict,
+        SubscriptionUpdatedEventTypedDict,
+    )
     from .subscriptionupdatediscount import (
         SubscriptionUpdateDiscount,
         SubscriptionUpdateDiscountTypedDict,
+    )
+    from .subscriptionupdatedproductmetadata import (
+        SubscriptionUpdatedProductMetadata,
+        SubscriptionUpdatedProductMetadataTypedDict,
+    )
+    from .subscriptionupdatedseatsmetadata import (
+        SubscriptionUpdatedSeatsMetadata,
+        SubscriptionUpdatedSeatsMetadataTypedDict,
+    )
+    from .subscriptionupdatedtrialmetadata import (
+        SubscriptionUpdatedTrialMetadata,
+        SubscriptionUpdatedTrialMetadataTypedDict,
     )
     from .subscriptionupdateproduct import (
         SubscriptionUpdateProduct,
@@ -3550,8 +3570,6 @@ __all__ = [
     "CustomerCreate",
     "CustomerCreateMetadata",
     "CustomerCreateMetadataTypedDict",
-    "CustomerCreateTaxID",
-    "CustomerCreateTaxIDTypedDict",
     "CustomerCreateTypedDict",
     "CustomerCreatedEvent",
     "CustomerCreatedEventTypedDict",
@@ -3882,13 +3900,9 @@ __all__ = [
     "CustomerUpdateExternalID",
     "CustomerUpdateExternalIDMetadata",
     "CustomerUpdateExternalIDMetadataTypedDict",
-    "CustomerUpdateExternalIDTaxID",
-    "CustomerUpdateExternalIDTaxIDTypedDict",
     "CustomerUpdateExternalIDTypedDict",
     "CustomerUpdateMetadata",
     "CustomerUpdateMetadataTypedDict",
-    "CustomerUpdateTaxID",
-    "CustomerUpdateTaxIDTypedDict",
     "CustomerUpdateTypedDict",
     "CustomerUpdatedEvent",
     "CustomerUpdatedEventTypedDict",
@@ -4921,6 +4935,20 @@ __all__ = [
     "SubscriptionUpdateTrial",
     "SubscriptionUpdateTrialTypedDict",
     "SubscriptionUpdateTypedDict",
+    "SubscriptionUpdatedBillingPeriodMetadata",
+    "SubscriptionUpdatedBillingPeriodMetadataTypedDict",
+    "SubscriptionUpdatedDiscountMetadata",
+    "SubscriptionUpdatedDiscountMetadataTypedDict",
+    "SubscriptionUpdatedEvent",
+    "SubscriptionUpdatedEventMetadata",
+    "SubscriptionUpdatedEventMetadataTypedDict",
+    "SubscriptionUpdatedEventTypedDict",
+    "SubscriptionUpdatedProductMetadata",
+    "SubscriptionUpdatedProductMetadataTypedDict",
+    "SubscriptionUpdatedSeatsMetadata",
+    "SubscriptionUpdatedSeatsMetadataTypedDict",
+    "SubscriptionUpdatedTrialMetadata",
+    "SubscriptionUpdatedTrialMetadataTypedDict",
     "SubscriptionsCreateSubscriptionCreate",
     "SubscriptionsCreateSubscriptionCreateTypedDict",
     "SubscriptionsExportRequest",
@@ -5769,8 +5797,6 @@ _dynamic_imports: dict[str, str] = {
     "CustomerCreate": ".customercreate",
     "CustomerCreateMetadata": ".customercreate",
     "CustomerCreateMetadataTypedDict": ".customercreate",
-    "CustomerCreateTaxID": ".customercreate",
-    "CustomerCreateTaxIDTypedDict": ".customercreate",
     "CustomerCreateTypedDict": ".customercreate",
     "CustomerCreatedEvent": ".customercreatedevent",
     "CustomerCreatedEventTypedDict": ".customercreatedevent",
@@ -5926,8 +5952,6 @@ _dynamic_imports: dict[str, str] = {
     "CustomerUpdate": ".customerupdate",
     "CustomerUpdateMetadata": ".customerupdate",
     "CustomerUpdateMetadataTypedDict": ".customerupdate",
-    "CustomerUpdateTaxID": ".customerupdate",
-    "CustomerUpdateTaxIDTypedDict": ".customerupdate",
     "CustomerUpdateTypedDict": ".customerupdate",
     "CustomerUpdatedEvent": ".customerupdatedevent",
     "CustomerUpdatedEventTypedDict": ".customerupdatedevent",
@@ -5940,8 +5964,6 @@ _dynamic_imports: dict[str, str] = {
     "CustomerUpdateExternalID": ".customerupdateexternalid",
     "CustomerUpdateExternalIDMetadata": ".customerupdateexternalid",
     "CustomerUpdateExternalIDMetadataTypedDict": ".customerupdateexternalid",
-    "CustomerUpdateExternalIDTaxID": ".customerupdateexternalid",
-    "CustomerUpdateExternalIDTaxIDTypedDict": ".customerupdateexternalid",
     "CustomerUpdateExternalIDTypedDict": ".customerupdateexternalid",
     "CustomerWallet": ".customerwallet",
     "CustomerWalletTypedDict": ".customerwallet",
@@ -7067,8 +7089,22 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionUpdateTypedDict": ".subscriptionupdate",
     "SubscriptionUpdateBillingPeriod": ".subscriptionupdatebillingperiod",
     "SubscriptionUpdateBillingPeriodTypedDict": ".subscriptionupdatebillingperiod",
+    "SubscriptionUpdatedBillingPeriodMetadata": ".subscriptionupdatedbillingperiodmetadata",
+    "SubscriptionUpdatedBillingPeriodMetadataTypedDict": ".subscriptionupdatedbillingperiodmetadata",
+    "SubscriptionUpdatedDiscountMetadata": ".subscriptionupdateddiscountmetadata",
+    "SubscriptionUpdatedDiscountMetadataTypedDict": ".subscriptionupdateddiscountmetadata",
+    "SubscriptionUpdatedEvent": ".subscriptionupdatedevent",
+    "SubscriptionUpdatedEventMetadata": ".subscriptionupdatedevent",
+    "SubscriptionUpdatedEventMetadataTypedDict": ".subscriptionupdatedevent",
+    "SubscriptionUpdatedEventTypedDict": ".subscriptionupdatedevent",
     "SubscriptionUpdateDiscount": ".subscriptionupdatediscount",
     "SubscriptionUpdateDiscountTypedDict": ".subscriptionupdatediscount",
+    "SubscriptionUpdatedProductMetadata": ".subscriptionupdatedproductmetadata",
+    "SubscriptionUpdatedProductMetadataTypedDict": ".subscriptionupdatedproductmetadata",
+    "SubscriptionUpdatedSeatsMetadata": ".subscriptionupdatedseatsmetadata",
+    "SubscriptionUpdatedSeatsMetadataTypedDict": ".subscriptionupdatedseatsmetadata",
+    "SubscriptionUpdatedTrialMetadata": ".subscriptionupdatedtrialmetadata",
+    "SubscriptionUpdatedTrialMetadataTypedDict": ".subscriptionupdatedtrialmetadata",
     "SubscriptionUpdateProduct": ".subscriptionupdateproduct",
     "SubscriptionUpdateProductTypedDict": ".subscriptionupdateproduct",
     "SubscriptionUpdateSeats": ".subscriptionupdateseats",

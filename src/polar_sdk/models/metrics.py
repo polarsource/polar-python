@@ -15,7 +15,6 @@ class MetricsTypedDict(TypedDict):
     average_revenue_per_user: NotRequired[Nullable[MetricTypedDict]]
     checkouts: NotRequired[Nullable[MetricTypedDict]]
     succeeded_checkouts: NotRequired[Nullable[MetricTypedDict]]
-    checkouts_conversion: NotRequired[Nullable[MetricTypedDict]]
     churned_subscriptions: NotRequired[Nullable[MetricTypedDict]]
     orders: NotRequired[Nullable[MetricTypedDict]]
     revenue: NotRequired[Nullable[MetricTypedDict]]
@@ -46,6 +45,7 @@ class MetricsTypedDict(TypedDict):
     canceled_subscriptions_too_expensive: NotRequired[Nullable[MetricTypedDict]]
     canceled_subscriptions_unused: NotRequired[Nullable[MetricTypedDict]]
     canceled_subscriptions_other: NotRequired[Nullable[MetricTypedDict]]
+    checkouts_conversion: NotRequired[Nullable[MetricTypedDict]]
     churn_rate: NotRequired[Nullable[MetricTypedDict]]
     ltv: NotRequired[Nullable[MetricTypedDict]]
     gross_margin: NotRequired[Nullable[MetricTypedDict]]
@@ -67,8 +67,6 @@ class Metrics(BaseModel):
     checkouts: OptionalNullable[Metric] = UNSET
 
     succeeded_checkouts: OptionalNullable[Metric] = UNSET
-
-    checkouts_conversion: OptionalNullable[Metric] = UNSET
 
     churned_subscriptions: OptionalNullable[Metric] = UNSET
 
@@ -130,6 +128,8 @@ class Metrics(BaseModel):
 
     canceled_subscriptions_other: OptionalNullable[Metric] = UNSET
 
+    checkouts_conversion: OptionalNullable[Metric] = UNSET
+
     churn_rate: OptionalNullable[Metric] = UNSET
 
     ltv: OptionalNullable[Metric] = UNSET
@@ -150,7 +150,6 @@ class Metrics(BaseModel):
             "average_revenue_per_user",
             "checkouts",
             "succeeded_checkouts",
-            "checkouts_conversion",
             "churned_subscriptions",
             "orders",
             "revenue",
@@ -181,6 +180,7 @@ class Metrics(BaseModel):
             "canceled_subscriptions_too_expensive",
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
+            "checkouts_conversion",
             "churn_rate",
             "ltv",
             "gross_margin",
@@ -195,7 +195,6 @@ class Metrics(BaseModel):
             "average_revenue_per_user",
             "checkouts",
             "succeeded_checkouts",
-            "checkouts_conversion",
             "churned_subscriptions",
             "orders",
             "revenue",
@@ -226,6 +225,7 @@ class Metrics(BaseModel):
             "canceled_subscriptions_too_expensive",
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
+            "checkouts_conversion",
             "churn_rate",
             "ltv",
             "gross_margin",

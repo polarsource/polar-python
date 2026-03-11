@@ -75,16 +75,6 @@ MetricsTotalsSucceededCheckouts = TypeAliasType(
 )
 
 
-MetricsTotalsCheckoutsConversionTypedDict = TypeAliasType(
-    "MetricsTotalsCheckoutsConversionTypedDict", Union[int, float]
-)
-
-
-MetricsTotalsCheckoutsConversion = TypeAliasType(
-    "MetricsTotalsCheckoutsConversion", Union[int, float]
-)
-
-
 MetricsTotalsChurnedSubscriptionsTypedDict = TypeAliasType(
     "MetricsTotalsChurnedSubscriptionsTypedDict", Union[int, float]
 )
@@ -375,6 +365,16 @@ MetricsTotalsCanceledSubscriptionsOther = TypeAliasType(
 )
 
 
+MetricsTotalsCheckoutsConversionTypedDict = TypeAliasType(
+    "MetricsTotalsCheckoutsConversionTypedDict", Union[int, float]
+)
+
+
+MetricsTotalsCheckoutsConversion = TypeAliasType(
+    "MetricsTotalsCheckoutsConversion", Union[int, float]
+)
+
+
 MetricsTotalsChurnRateTypedDict = TypeAliasType(
     "MetricsTotalsChurnRateTypedDict", Union[int, float]
 )
@@ -435,9 +435,6 @@ class MetricsTotalsTypedDict(TypedDict):
     ]
     checkouts: NotRequired[Nullable[MetricsTotalsCheckoutsTypedDict]]
     succeeded_checkouts: NotRequired[Nullable[MetricsTotalsSucceededCheckoutsTypedDict]]
-    checkouts_conversion: NotRequired[
-        Nullable[MetricsTotalsCheckoutsConversionTypedDict]
-    ]
     churned_subscriptions: NotRequired[
         Nullable[MetricsTotalsChurnedSubscriptionsTypedDict]
     ]
@@ -506,6 +503,9 @@ class MetricsTotalsTypedDict(TypedDict):
     canceled_subscriptions_other: NotRequired[
         Nullable[MetricsTotalsCanceledSubscriptionsOtherTypedDict]
     ]
+    checkouts_conversion: NotRequired[
+        Nullable[MetricsTotalsCheckoutsConversionTypedDict]
+    ]
     churn_rate: NotRequired[Nullable[MetricsTotalsChurnRateTypedDict]]
     ltv: NotRequired[Nullable[MetricsTotalsLtvTypedDict]]
     gross_margin: NotRequired[Nullable[MetricsTotalsGrossMarginTypedDict]]
@@ -537,8 +537,6 @@ class MetricsTotals(BaseModel):
     checkouts: OptionalNullable[MetricsTotalsCheckouts] = UNSET
 
     succeeded_checkouts: OptionalNullable[MetricsTotalsSucceededCheckouts] = UNSET
-
-    checkouts_conversion: OptionalNullable[MetricsTotalsCheckoutsConversion] = UNSET
 
     churned_subscriptions: OptionalNullable[MetricsTotalsChurnedSubscriptions] = UNSET
 
@@ -628,6 +626,8 @@ class MetricsTotals(BaseModel):
         MetricsTotalsCanceledSubscriptionsOther
     ] = UNSET
 
+    checkouts_conversion: OptionalNullable[MetricsTotalsCheckoutsConversion] = UNSET
+
     churn_rate: OptionalNullable[MetricsTotalsChurnRate] = UNSET
 
     ltv: OptionalNullable[MetricsTotalsLtv] = UNSET
@@ -650,7 +650,6 @@ class MetricsTotals(BaseModel):
             "average_revenue_per_user",
             "checkouts",
             "succeeded_checkouts",
-            "checkouts_conversion",
             "churned_subscriptions",
             "orders",
             "revenue",
@@ -681,6 +680,7 @@ class MetricsTotals(BaseModel):
             "canceled_subscriptions_too_expensive",
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
+            "checkouts_conversion",
             "churn_rate",
             "ltv",
             "gross_margin",
@@ -695,7 +695,6 @@ class MetricsTotals(BaseModel):
             "average_revenue_per_user",
             "checkouts",
             "succeeded_checkouts",
-            "checkouts_conversion",
             "churned_subscriptions",
             "orders",
             "revenue",
@@ -726,6 +725,7 @@ class MetricsTotals(BaseModel):
             "canceled_subscriptions_too_expensive",
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
+            "checkouts_conversion",
             "churn_rate",
             "ltv",
             "gross_margin",

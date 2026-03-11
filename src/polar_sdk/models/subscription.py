@@ -48,8 +48,8 @@ SubscriptionDiscountTypedDict = TypeAliasType(
     "SubscriptionDiscountTypedDict",
     Union[
         DiscountPercentageOnceForeverDurationBaseTypedDict,
-        DiscountFixedOnceForeverDurationBaseTypedDict,
         DiscountPercentageRepeatDurationBaseTypedDict,
+        DiscountFixedOnceForeverDurationBaseTypedDict,
         DiscountFixedRepeatDurationBaseTypedDict,
     ],
 )
@@ -59,8 +59,8 @@ SubscriptionDiscount = TypeAliasType(
     "SubscriptionDiscount",
     Union[
         DiscountPercentageOnceForeverDurationBase,
-        DiscountFixedOnceForeverDurationBase,
         DiscountPercentageRepeatDurationBase,
+        DiscountFixedOnceForeverDurationBase,
         DiscountFixedRepeatDurationBase,
     ],
 )

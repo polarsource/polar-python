@@ -6,9 +6,10 @@ from .discounttype import DiscountType
 from .presentmentcurrency import PresentmentCurrency
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 DiscountUpdateMetadataTypedDict = TypeAliasType(
@@ -51,6 +52,7 @@ class DiscountUpdateTypedDict(TypedDict):
     type: NotRequired[Nullable[DiscountType]]
     amount: NotRequired[Nullable[int]]
     currency: NotRequired[Nullable[PresentmentCurrency]]
+    amounts: NotRequired[Nullable[Dict[str, int]]]
     basis_points: NotRequired[Nullable[int]]
     products: NotRequired[Nullable[List[str]]]
 
@@ -92,9 +94,21 @@ class DiscountUpdate(BaseModel):
 
     type: OptionalNullable[DiscountType] = UNSET
 
-    amount: OptionalNullable[int] = UNSET
+    amount: Annotated[
+        OptionalNullable[int],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ] = UNSET
 
-    currency: OptionalNullable[PresentmentCurrency] = UNSET
+    currency: Annotated[
+        OptionalNullable[PresentmentCurrency],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ] = UNSET
+
+    amounts: OptionalNullable[Dict[str, int]] = UNSET
 
     basis_points: OptionalNullable[int] = UNSET
 
@@ -114,6 +128,7 @@ class DiscountUpdate(BaseModel):
             "type",
             "amount",
             "currency",
+            "amounts",
             "basis_points",
             "products",
         ]
@@ -128,6 +143,7 @@ class DiscountUpdate(BaseModel):
             "type",
             "amount",
             "currency",
+            "amounts",
             "basis_points",
             "products",
         ]

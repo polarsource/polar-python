@@ -6,9 +6,10 @@ from .discounttype import DiscountType
 from .presentmentcurrency import PresentmentCurrency
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
 from typing import Dict, List, Optional, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
 DiscountFixedRepeatDurationCreateMetadataTypedDict = TypeAliasType(
@@ -34,11 +35,11 @@ class DiscountFixedRepeatDurationCreateTypedDict(TypedDict):
     For example, to apply the discount for 2 years, set this to 24.
     """
     type: DiscountType
-    amount: int
-    r"""Fixed amount to discount from the invoice total."""
     name: str
     r"""Name of the discount. Will be displayed to the customer when the discount is applied."""
-    currency: NotRequired[PresentmentCurrency]
+    amount: NotRequired[Nullable[int]]
+    currency: NotRequired[Nullable[PresentmentCurrency]]
+    amounts: NotRequired[Nullable[Dict[str, int]]]
     metadata: NotRequired[Dict[str, DiscountFixedRepeatDurationCreateMetadataTypedDict]]
     r"""Key-value object allowing you to store additional information.
 
@@ -81,13 +82,24 @@ class DiscountFixedRepeatDurationCreate(BaseModel):
 
     type: DiscountType
 
-    amount: int
-    r"""Fixed amount to discount from the invoice total."""
-
     name: str
     r"""Name of the discount. Will be displayed to the customer when the discount is applied."""
 
-    currency: Optional[PresentmentCurrency] = None
+    amount: Annotated[
+        OptionalNullable[int],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ] = UNSET
+
+    currency: Annotated[
+        OptionalNullable[PresentmentCurrency],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ] = UNSET
+
+    amounts: OptionalNullable[Dict[str, int]] = UNSET
 
     metadata: Optional[Dict[str, DiscountFixedRepeatDurationCreateMetadata]] = None
     r"""Key-value object allowing you to store additional information.
@@ -123,7 +135,9 @@ class DiscountFixedRepeatDurationCreate(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "amount",
             "currency",
+            "amounts",
             "metadata",
             "code",
             "starts_at",
@@ -133,6 +147,9 @@ class DiscountFixedRepeatDurationCreate(BaseModel):
             "organization_id",
         ]
         nullable_fields = [
+            "amount",
+            "currency",
+            "amounts",
             "code",
             "starts_at",
             "ends_at",

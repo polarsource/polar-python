@@ -79,8 +79,8 @@ CheckoutPublicConfirmedDiscountTypedDict = TypeAliasType(
     "CheckoutPublicConfirmedDiscountTypedDict",
     Union[
         CheckoutDiscountPercentageOnceForeverDurationTypedDict,
-        CheckoutDiscountFixedOnceForeverDurationTypedDict,
         CheckoutDiscountPercentageRepeatDurationTypedDict,
+        CheckoutDiscountFixedOnceForeverDurationTypedDict,
         CheckoutDiscountFixedRepeatDurationTypedDict,
     ],
 )
@@ -90,8 +90,8 @@ CheckoutPublicConfirmedDiscount = TypeAliasType(
     "CheckoutPublicConfirmedDiscount",
     Union[
         CheckoutDiscountPercentageOnceForeverDuration,
-        CheckoutDiscountFixedOnceForeverDuration,
         CheckoutDiscountPercentageRepeatDuration,
+        CheckoutDiscountFixedOnceForeverDuration,
         CheckoutDiscountFixedRepeatDuration,
     ],
 )

@@ -4,8 +4,10 @@ from __future__ import annotations
 from .discountduration import DiscountDuration
 from .discounttype import DiscountType
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
-from typing_extensions import TypedDict
+from typing import Dict
+from typing_extensions import Annotated, TypedDict
 
 
 class CheckoutDiscountFixedOnceForeverDurationTypedDict(TypedDict):
@@ -15,6 +17,8 @@ class CheckoutDiscountFixedOnceForeverDurationTypedDict(TypedDict):
     type: DiscountType
     amount: int
     currency: str
+    amounts: Dict[str, int]
+    r"""Map of currency to fixed amount to discount from the total."""
     id: str
     r"""The ID of the object."""
     name: str
@@ -28,9 +32,22 @@ class CheckoutDiscountFixedOnceForeverDuration(BaseModel):
 
     type: DiscountType
 
-    amount: int
+    amount: Annotated[
+        int,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
 
-    currency: str
+    currency: Annotated[
+        str,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    amounts: Dict[str, int]
+    r"""Map of currency to fixed amount to discount from the total."""
 
     id: str
     r"""The ID of the object."""
