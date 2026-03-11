@@ -25,8 +25,8 @@ DiscountCreateTypedDict = TypeAliasType(
     "DiscountCreateTypedDict",
     Union[
         DiscountPercentageOnceForeverDurationCreateTypedDict,
-        DiscountFixedOnceForeverDurationCreateTypedDict,
         DiscountPercentageRepeatDurationCreateTypedDict,
+        DiscountFixedOnceForeverDurationCreateTypedDict,
         DiscountFixedRepeatDurationCreateTypedDict,
     ],
 )
@@ -36,8 +36,8 @@ DiscountCreate = TypeAliasType(
     "DiscountCreate",
     Union[
         DiscountPercentageOnceForeverDurationCreate,
-        DiscountFixedOnceForeverDurationCreate,
         DiscountPercentageRepeatDurationCreate,
+        DiscountFixedOnceForeverDurationCreate,
         DiscountFixedRepeatDurationCreate,
     ],
 )

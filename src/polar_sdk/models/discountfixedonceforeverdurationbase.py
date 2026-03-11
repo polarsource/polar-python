@@ -6,9 +6,10 @@ from .discounttype import DiscountType
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
 from typing import Dict
-from typing_extensions import TypedDict
+from typing_extensions import Annotated, TypedDict
 
 
 class DiscountFixedOnceForeverDurationBaseTypedDict(TypedDict):
@@ -16,6 +17,8 @@ class DiscountFixedOnceForeverDurationBaseTypedDict(TypedDict):
     type: DiscountType
     amount: int
     currency: str
+    amounts: Dict[str, int]
+    r"""Map of currency to fixed amount to discount from the total."""
     created_at: datetime
     r"""Creation timestamp of the object."""
     modified_at: Nullable[datetime]
@@ -44,9 +47,22 @@ class DiscountFixedOnceForeverDurationBase(BaseModel):
 
     type: DiscountType
 
-    amount: int
+    amount: Annotated[
+        int,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
 
-    currency: str
+    currency: Annotated[
+        str,
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ]
+
+    amounts: Dict[str, int]
+    r"""Map of currency to fixed amount to discount from the total."""
 
     created_at: datetime
     r"""Creation timestamp of the object."""

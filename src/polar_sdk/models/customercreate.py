@@ -4,10 +4,9 @@ from __future__ import annotations
 from .addressinput import AddressInput, AddressInputTypedDict
 from .customertype import CustomerType
 from .ownercreate import OwnerCreate, OwnerCreateTypedDict
-from .taxidformat import TaxIDFormat
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict, List, Optional, Union
+from typing import Dict, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
@@ -19,14 +18,6 @@ CustomerCreateMetadataTypedDict = TypeAliasType(
 CustomerCreateMetadata = TypeAliasType(
     "CustomerCreateMetadata", Union[str, int, float, bool]
 )
-
-
-CustomerCreateTaxIDTypedDict = TypeAliasType(
-    "CustomerCreateTaxIDTypedDict", Union[str, TaxIDFormat]
-)
-
-
-CustomerCreateTaxID = TypeAliasType("CustomerCreateTaxID", Union[str, TaxIDFormat])
 
 
 class CustomerCreateTypedDict(TypedDict):
@@ -49,7 +40,7 @@ class CustomerCreateTypedDict(TypedDict):
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
     name: NotRequired[Nullable[str]]
     billing_address: NotRequired[Nullable[AddressInputTypedDict]]
-    tax_id: NotRequired[Nullable[List[Nullable[CustomerCreateTaxIDTypedDict]]]]
+    tax_id: NotRequired[Nullable[str]]
     locale: NotRequired[Nullable[str]]
     type: NotRequired[Nullable[CustomerType]]
     r"""The type of customer. Defaults to 'individual'. Set to 'team' for customers that can have multiple members."""
@@ -84,7 +75,7 @@ class CustomerCreate(BaseModel):
 
     billing_address: OptionalNullable[AddressInput] = UNSET
 
-    tax_id: OptionalNullable[List[Nullable[CustomerCreateTaxID]]] = UNSET
+    tax_id: OptionalNullable[str] = UNSET
 
     locale: OptionalNullable[str] = UNSET
 

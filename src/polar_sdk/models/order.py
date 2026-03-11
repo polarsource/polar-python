@@ -46,8 +46,8 @@ OrderDiscountTypedDict = TypeAliasType(
     "OrderDiscountTypedDict",
     Union[
         DiscountPercentageOnceForeverDurationBaseTypedDict,
-        DiscountFixedOnceForeverDurationBaseTypedDict,
         DiscountPercentageRepeatDurationBaseTypedDict,
+        DiscountFixedOnceForeverDurationBaseTypedDict,
         DiscountFixedRepeatDurationBaseTypedDict,
     ],
 )
@@ -57,8 +57,8 @@ OrderDiscount = TypeAliasType(
     "OrderDiscount",
     Union[
         DiscountPercentageOnceForeverDurationBase,
-        DiscountFixedOnceForeverDurationBase,
         DiscountPercentageRepeatDurationBase,
+        DiscountFixedOnceForeverDurationBase,
         DiscountFixedRepeatDurationBase,
     ],
 )

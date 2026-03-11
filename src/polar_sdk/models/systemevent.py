@@ -60,6 +60,10 @@ from .subscriptionuncanceledevent import (
     SubscriptionUncanceledEvent,
     SubscriptionUncanceledEventTypedDict,
 )
+from .subscriptionupdatedevent import (
+    SubscriptionUpdatedEvent,
+    SubscriptionUpdatedEventTypedDict,
+)
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
@@ -76,6 +80,7 @@ SystemEventTypedDict = TypeAliasType(
         BenefitUpdatedEventTypedDict,
         BenefitRevokedEventTypedDict,
         SubscriptionCreatedEventTypedDict,
+        SubscriptionUpdatedEventTypedDict,
         SubscriptionCycledEventTypedDict,
         SubscriptionCanceledEventTypedDict,
         SubscriptionRevokedEventTypedDict,
@@ -130,6 +135,7 @@ SystemEvent = Annotated[
         Annotated[SubscriptionRevokedEvent, Tag("subscription.revoked")],
         Annotated[SubscriptionSeatsUpdatedEvent, Tag("subscription.seats_updated")],
         Annotated[SubscriptionUncanceledEvent, Tag("subscription.uncanceled")],
+        Annotated[SubscriptionUpdatedEvent, Tag("subscription.updated")],
     ],
     Discriminator(lambda m: get_discriminator(m, "name", "name")),
 ]

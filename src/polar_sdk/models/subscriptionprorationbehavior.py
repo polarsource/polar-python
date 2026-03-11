@@ -7,3 +7,4 @@ from enum import Enum
 class SubscriptionProrationBehavior(str, Enum):
     INVOICE = "invoice"
     PRORATE = "prorate"
+    NEXT_PERIOD = "next_period"

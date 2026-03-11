@@ -3,10 +3,9 @@
 from __future__ import annotations
 from .addressinput import AddressInput, AddressInputTypedDict
 from .customertype import CustomerType
-from .taxidformat import TaxIDFormat
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import Dict, List, Optional, Union
+from typing import Dict, Optional, Union
 from typing_extensions import NotRequired, TypeAliasType, TypedDict
 
 
@@ -18,14 +17,6 @@ CustomerUpdateMetadataTypedDict = TypeAliasType(
 CustomerUpdateMetadata = TypeAliasType(
     "CustomerUpdateMetadata", Union[str, int, float, bool]
 )
-
-
-CustomerUpdateTaxIDTypedDict = TypeAliasType(
-    "CustomerUpdateTaxIDTypedDict", Union[str, TaxIDFormat]
-)
-
-
-CustomerUpdateTaxID = TypeAliasType("CustomerUpdateTaxID", Union[str, TaxIDFormat])
 
 
 class CustomerUpdateTypedDict(TypedDict):
@@ -46,7 +37,7 @@ class CustomerUpdateTypedDict(TypedDict):
     r"""The email address of the customer. This must be unique within the organization."""
     name: NotRequired[Nullable[str]]
     billing_address: NotRequired[Nullable[AddressInputTypedDict]]
-    tax_id: NotRequired[Nullable[List[Nullable[CustomerUpdateTaxIDTypedDict]]]]
+    tax_id: NotRequired[Nullable[str]]
     locale: NotRequired[Nullable[str]]
     external_id: NotRequired[Nullable[str]]
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
@@ -76,7 +67,7 @@ class CustomerUpdate(BaseModel):
 
     billing_address: OptionalNullable[AddressInput] = UNSET
 
-    tax_id: OptionalNullable[List[Nullable[CustomerUpdateTaxID]]] = UNSET
+    tax_id: OptionalNullable[str] = UNSET
 
     locale: OptionalNullable[str] = UNSET
 

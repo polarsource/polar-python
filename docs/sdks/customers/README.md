@@ -92,10 +92,6 @@ with Polar(
         "billing_address": {
             "country": polar_sdk.CountryAlpha2Input.US,
         },
-        "tax_id": [
-            "911144442",
-            "us_ein",
-        ],
         "locale": "en",
         "type": polar_sdk.CustomerType.INDIVIDUAL,
         "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
@@ -238,10 +234,6 @@ with Polar(
         "billing_address": {
             "country": polar_sdk.CountryAlpha2Input.US,
         },
-        "tax_id": [
-            "911144442",
-            "us_ein",
-        ],
         "locale": "en",
         "external_id": "usr_1337",
         "type": polar_sdk.CustomerType.INDIVIDUAL,
@@ -389,10 +381,6 @@ with Polar(
         "email": "customer@example.com",
         "name": "John Doe",
         "billing_address": None,
-        "tax_id": [
-            "911144442",
-            "us_ein",
-        ],
         "locale": "en",
     })
 
