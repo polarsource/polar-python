@@ -146,6 +146,7 @@ with Polar() as polar:
 
 | Error Type                         | Status Code                        | Content Type                       |
 | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| models.PaymentFailed               | 402                                | application/json                   |
 | models.AlreadyCanceledSubscription | 403                                | application/json                   |
 | models.ResourceNotFound            | 404                                | application/json                   |
 | models.HTTPValidationError         | 422                                | application/json                   |
