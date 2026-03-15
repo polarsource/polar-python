@@ -2270,6 +2270,7 @@ if TYPE_CHECKING:
         PaymentAlreadyInProgressData,
     )
     from .paymenterror import PaymentError, PaymentErrorData
+    from .paymentfailed import PaymentFailed, PaymentFailedData
     from .paymentmethodcard import PaymentMethodCard, PaymentMethodCardTypedDict
     from .paymentmethodcardmetadata import (
         PaymentMethodCardMetadata,
@@ -2306,6 +2307,10 @@ if TYPE_CHECKING:
     )
     from .paymentsortproperty import PaymentSortProperty
     from .paymentstatus import PaymentStatus
+    from .pendingsubscriptionupdate import (
+        PendingSubscriptionUpdate,
+        PendingSubscriptionUpdateTypedDict,
+    )
     from .portalauthenticateduser import (
         PortalAuthenticatedUser,
         PortalAuthenticatedUserTypedDict,
@@ -4639,6 +4644,8 @@ __all__ = [
     "PaymentAlreadyInProgressData",
     "PaymentError",
     "PaymentErrorData",
+    "PaymentFailed",
+    "PaymentFailedData",
     "PaymentMethodCard",
     "PaymentMethodCardMetadata",
     "PaymentMethodCardMetadataTypedDict",
@@ -4667,6 +4674,8 @@ __all__ = [
     "PaymentsListRequestTypedDict",
     "PaymentsListResponse",
     "PaymentsListResponseTypedDict",
+    "PendingSubscriptionUpdate",
+    "PendingSubscriptionUpdateTypedDict",
     "Permission",
     "PolarError",
     "PortalAuthenticatedUser",
@@ -6744,6 +6753,8 @@ _dynamic_imports: dict[str, str] = {
     "PaymentAlreadyInProgressData": ".paymentalreadyinprogress",
     "PaymentError": ".paymenterror",
     "PaymentErrorData": ".paymenterror",
+    "PaymentFailed": ".paymentfailed",
+    "PaymentFailedData": ".paymentfailed",
     "PaymentMethodCard": ".paymentmethodcard",
     "PaymentMethodCardTypedDict": ".paymentmethodcard",
     "PaymentMethodCardMetadata": ".paymentmethodcardmetadata",
@@ -6775,6 +6786,8 @@ _dynamic_imports: dict[str, str] = {
     "PaymentsListResponseTypedDict": ".payments_listop",
     "PaymentSortProperty": ".paymentsortproperty",
     "PaymentStatus": ".paymentstatus",
+    "PendingSubscriptionUpdate": ".pendingsubscriptionupdate",
+    "PendingSubscriptionUpdateTypedDict": ".pendingsubscriptionupdate",
     "PortalAuthenticatedUser": ".portalauthenticateduser",
     "PortalAuthenticatedUserTypedDict": ".portalauthenticateduser",
     "PresentmentCurrency": ".presentmentcurrency",
