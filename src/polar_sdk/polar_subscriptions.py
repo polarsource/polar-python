@@ -604,13 +604,16 @@ class PolarSubscriptions(BaseSDK):
                 security_source=security,
             ),
             request=req,
-            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["402", "403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.CustomerSubscription, http_res)
+        if utils.match_response(http_res, "402", "application/json"):
+            response_data = unmarshal_json_response(models.PaymentFailedData, http_res)
+            raise models.PaymentFailed(response_data, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(
                 models.AlreadyCanceledSubscriptionData, http_res
@@ -723,13 +726,16 @@ class PolarSubscriptions(BaseSDK):
                 security_source=security,
             ),
             request=req,
-            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["402", "403", "404", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.CustomerSubscription, http_res)
+        if utils.match_response(http_res, "402", "application/json"):
+            response_data = unmarshal_json_response(models.PaymentFailedData, http_res)
+            raise models.PaymentFailed(response_data, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(
                 models.AlreadyCanceledSubscriptionData, http_res

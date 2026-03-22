@@ -194,8 +194,6 @@ class CheckoutPublicTypedDict(TypedDict):
     r"""Minimum number of seats (works with seat-based pricing only)"""
     max_seats: NotRequired[Nullable[int]]
     r"""Maximum number of seats (works with seat-based pricing only)"""
-    price_per_seat: NotRequired[Nullable[int]]
-    r"""Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing."""
     locale: NotRequired[Nullable[str]]
 
 
@@ -361,9 +359,6 @@ class CheckoutPublic(BaseModel):
     max_seats: OptionalNullable[int] = UNSET
     r"""Maximum number of seats (works with seat-based pricing only)"""
 
-    price_per_seat: OptionalNullable[int] = UNSET
-    r"""Price per seat in cents for the current seat count, based on the applicable tier. Only relevant for seat-based pricing."""
-
     locale: OptionalNullable[str] = UNSET
 
     @model_serializer(mode="wrap")
@@ -373,7 +368,6 @@ class CheckoutPublic(BaseModel):
             "seats",
             "min_seats",
             "max_seats",
-            "price_per_seat",
             "locale",
         ]
         nullable_fields = [
@@ -383,7 +377,6 @@ class CheckoutPublic(BaseModel):
             "seats",
             "min_seats",
             "max_seats",
-            "price_per_seat",
             "tax_amount",
             "allow_trial",
             "active_trial_interval",

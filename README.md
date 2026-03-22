@@ -576,7 +576,7 @@ with Polar(
 * [`PolarError`](./src/polar_sdk/models/polarerror.py): The base class for HTTP error responses.
   * [`HTTPValidationError`](./src/polar_sdk/models/httpvalidationerror.py): Validation Error. Status code `422`. *
 
-<details><summary>Less common errors (23)</summary>
+<details><summary>Less common errors (24)</summary>
 
 <br />
 
@@ -596,6 +596,7 @@ with Polar(
 * [`PaymentNotReady`](./src/polar_sdk/models/paymentnotready.py): The checkout is expired, the customer already has an active subscription, or the organization is not ready to accept payments. Status code `403`. Applicable to 3 of 169 methods.*
 * [`TrialAlreadyRedeemed`](./src/polar_sdk/models/trialalreadyredeemed.py): The checkout is expired, the customer already has an active subscription, or the organization is not ready to accept payments. Status code `403`. Applicable to 3 of 169 methods.*
 * [`ExpiredCheckoutError`](./src/polar_sdk/models/expiredcheckouterror.py): The checkout session is expired. Status code `410`. Applicable to 3 of 169 methods.*
+* [`PaymentFailed`](./src/polar_sdk/models/paymentfailed.py): Payment required to apply the subscription update. Status code `402`. Applicable to 2 of 169 methods.*
 * [`SubscriptionLocked`](./src/polar_sdk/models/subscriptionlocked.py): Subscription is pending an update. Status code `409`. Applicable to 2 of 169 methods.*
 * [`MissingInvoiceBillingDetails`](./src/polar_sdk/models/missinginvoicebillingdetails.py): Order is not paid or is missing billing name or address. Status code `422`. Applicable to 2 of 169 methods.*
 * [`NotPaidOrder`](./src/polar_sdk/models/notpaidorder.py): Order is not paid or is missing billing name or address. Status code `422`. Applicable to 2 of 169 methods.*
