@@ -124,7 +124,7 @@ with Polar() as polar:
         customer_session="<YOUR_BEARER_TOKEN_HERE>",
     ), id="<value>", customer_order_update={
         "billing_address": {
-            "country": polar_sdk.CountryAlpha2Input.US,
+            "country": polar_sdk.AddressInputCountryAlpha2Input.US,
         },
     })
 

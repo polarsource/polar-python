@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 from .productpriceseattier import ProductPriceSeatTier, ProductPriceSeatTierTypedDict
+from .seattiertype import SeatTierType
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing import List
-from typing_extensions import TypedDict
+from typing import List, Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class ProductPriceSeatTiersOutputTypedDict(TypedDict):
@@ -22,6 +23,7 @@ class ProductPriceSeatTiersOutputTypedDict(TypedDict):
     r"""Minimum number of seats required for purchase, derived from first tier."""
     maximum_seats: Nullable[int]
     r"""Maximum number of seats allowed for purchase, derived from last tier. None for unlimited."""
+    seat_tier_type: NotRequired[SeatTierType]
 
 
 class ProductPriceSeatTiersOutput(BaseModel):
@@ -41,9 +43,11 @@ class ProductPriceSeatTiersOutput(BaseModel):
     maximum_seats: Nullable[int]
     r"""Maximum number of seats allowed for purchase, derived from last tier. None for unlimited."""
 
+    seat_tier_type: Optional[SeatTierType] = None
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = []
+        optional_fields = ["seat_tier_type"]
         nullable_fields = ["maximum_seats"]
         null_default_fields = []
 

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .listresource_member_ import ListResourceMember, ListResourceMemberTypedDict
+from .memberrole import MemberRole
 from .membersortproperty import MemberSortProperty
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
@@ -15,6 +16,8 @@ class MembersListMembersRequestTypedDict(TypedDict):
     r"""Filter by customer ID."""
     external_customer_id: NotRequired[Nullable[str]]
     r"""Filter by customer external ID."""
+    role: NotRequired[Nullable[MemberRole]]
+    r"""Filter by member role."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -35,6 +38,12 @@ class MembersListMembersRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by customer external ID."""
+
+    role: Annotated[
+        OptionalNullable[MemberRole],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by member role."""
 
     page: Annotated[
         Optional[int],
@@ -59,11 +68,12 @@ class MembersListMembersRequest(BaseModel):
         optional_fields = [
             "customer_id",
             "external_customer_id",
+            "role",
             "page",
             "limit",
             "sorting",
         ]
-        nullable_fields = ["customer_id", "external_customer_id", "sorting"]
+        nullable_fields = ["customer_id", "external_customer_id", "role", "sorting"]
         null_default_fields = []
 
         serialized = handler(self)

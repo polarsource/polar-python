@@ -23,6 +23,10 @@ from .legacyrecurringproductprice import (
     LegacyRecurringProductPriceTypedDict,
 )
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
+from .pendingsubscriptionupdate import (
+    PendingSubscriptionUpdate,
+    PendingSubscriptionUpdateTypedDict,
+)
 from .product import Product, ProductTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
 from .subscriptioncustomer import SubscriptionCustomer, SubscriptionCustomerTypedDict
@@ -128,6 +132,8 @@ class SubscriptionTypedDict(TypedDict):
     r"""List of enabled prices for the subscription."""
     meters: List[SubscriptionMeterTypedDict]
     r"""List of meters associated with the subscription."""
+    pending_update: Nullable[PendingSubscriptionUpdateTypedDict]
+    r"""Pending subscription update that will be applied at the beginning of the next period. If `null`, there is no pending update."""
     seats: NotRequired[Nullable[int]]
     r"""The number of seats for seat-based subscriptions. None for non-seat subscriptions."""
     custom_field_data: NotRequired[Dict[str, Nullable[CustomFieldDataTypedDict]]]
@@ -214,6 +220,9 @@ class Subscription(BaseModel):
     meters: List[SubscriptionMeter]
     r"""List of meters associated with the subscription."""
 
+    pending_update: Nullable[PendingSubscriptionUpdate]
+    r"""Pending subscription update that will be applied at the beginning of the next period. If `null`, there is no pending update."""
+
     seats: OptionalNullable[int] = UNSET
     r"""The number of seats for seat-based subscriptions. None for non-seat subscriptions."""
 
@@ -237,6 +246,7 @@ class Subscription(BaseModel):
             "customer_cancellation_reason",
             "customer_cancellation_comment",
             "discount",
+            "pending_update",
         ]
         null_default_fields = []
 
