@@ -86,7 +86,7 @@ with Polar(
     res = polar.checkouts.create(request={
         "customer_name": "John Doe",
         "customer_billing_address": {
-            "country": polar_sdk.CountryAlpha2Input.US,
+            "country": polar_sdk.AddressInputCountryAlpha2Input.US,
         },
         "locale": "en",
         "products": [
@@ -183,7 +183,7 @@ with Polar(
     res = polar.checkouts.update(id="<value>", checkout_update={
         "customer_name": "John Doe",
         "customer_billing_address": {
-            "country": polar_sdk.CountryAlpha2Input.US,
+            "country": polar_sdk.AddressInputCountryAlpha2Input.US,
         },
         "locale": "en",
     })
@@ -328,7 +328,7 @@ with Polar(
     res = polar.checkouts.client_confirm(client_secret="<value>", checkout_confirm_stripe={
         "customer_name": "John Doe",
         "customer_billing_address": {
-            "country": polar_sdk.CountryAlpha2Input.US,
+            "country": polar_sdk.AddressInputCountryAlpha2Input.US,
         },
         "locale": "en",
         "allow_trial": False,

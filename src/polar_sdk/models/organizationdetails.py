@@ -3,9 +3,10 @@
 from __future__ import annotations
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
 from typing import List, Optional
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class SwitchingFrom(str, Enum):
@@ -17,53 +18,106 @@ class SwitchingFrom(str, Enum):
 
 
 class OrganizationDetailsTypedDict(TypedDict):
-    about: str
+    about: NotRequired[Nullable[str]]
     r"""Brief information about you and your business."""
-    product_description: str
+    product_description: NotRequired[Nullable[str]]
     r"""Description of digital products being sold."""
-    intended_use: str
+    selling_categories: NotRequired[List[str]]
+    r"""Categories of products being sold."""
+    pricing_models: NotRequired[List[str]]
+    r"""Pricing models used by the organization."""
+    intended_use: NotRequired[Nullable[str]]
     r"""How the organization will integrate and use Polar."""
-    customer_acquisition: List[str]
+    customer_acquisition: NotRequired[List[str]]
     r"""Main customer acquisition channels."""
-    future_annual_revenue: int
+    future_annual_revenue: NotRequired[Nullable[int]]
     r"""Estimated revenue in the next 12 months"""
     switching: NotRequired[bool]
     r"""Switching from another platform?"""
     switching_from: NotRequired[Nullable[SwitchingFrom]]
     r"""Which platform the organization is migrating from."""
-    previous_annual_revenue: NotRequired[int]
+    previous_annual_revenue: NotRequired[Nullable[int]]
     r"""Revenue from last year if applicable."""
 
 
 class OrganizationDetails(BaseModel):
-    about: str
+    about: Annotated[
+        OptionalNullable[str],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ] = UNSET
     r"""Brief information about you and your business."""
 
-    product_description: str
+    product_description: OptionalNullable[str] = UNSET
     r"""Description of digital products being sold."""
 
-    intended_use: str
+    selling_categories: Optional[List[str]] = None
+    r"""Categories of products being sold."""
+
+    pricing_models: Optional[List[str]] = None
+    r"""Pricing models used by the organization."""
+
+    intended_use: Annotated[
+        OptionalNullable[str],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ] = UNSET
     r"""How the organization will integrate and use Polar."""
 
-    customer_acquisition: List[str]
+    customer_acquisition: Annotated[
+        Optional[List[str]],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ] = None
     r"""Main customer acquisition channels."""
 
-    future_annual_revenue: int
+    future_annual_revenue: Annotated[
+        OptionalNullable[int],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ] = UNSET
     r"""Estimated revenue in the next 12 months"""
 
-    switching: Optional[bool] = True
+    switching: Optional[bool] = False
     r"""Switching from another platform?"""
 
     switching_from: OptionalNullable[SwitchingFrom] = UNSET
     r"""Which platform the organization is migrating from."""
 
-    previous_annual_revenue: Optional[int] = 0
+    previous_annual_revenue: Annotated[
+        OptionalNullable[int],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
+    ] = UNSET
     r"""Revenue from last year if applicable."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["switching", "switching_from", "previous_annual_revenue"]
-        nullable_fields = ["switching_from"]
+        optional_fields = [
+            "about",
+            "product_description",
+            "selling_categories",
+            "pricing_models",
+            "intended_use",
+            "customer_acquisition",
+            "future_annual_revenue",
+            "switching",
+            "switching_from",
+            "previous_annual_revenue",
+        ]
+        nullable_fields = [
+            "about",
+            "product_description",
+            "intended_use",
+            "future_annual_revenue",
+            "switching_from",
+            "previous_annual_revenue",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 from .productpriceseattier import ProductPriceSeatTier, ProductPriceSeatTierTypedDict
+from .seattiertype import SeatTierType
 from polar_sdk.types import BaseModel
-from typing import List
-from typing_extensions import TypedDict
+from typing import List, Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class ProductPriceSeatTiersInputTypedDict(TypedDict):
@@ -17,6 +18,7 @@ class ProductPriceSeatTiersInputTypedDict(TypedDict):
 
     tiers: List[ProductPriceSeatTierTypedDict]
     r"""List of pricing tiers"""
+    seat_tier_type: NotRequired[SeatTierType]
 
 
 class ProductPriceSeatTiersInput(BaseModel):
@@ -29,3 +31,5 @@ class ProductPriceSeatTiersInput(BaseModel):
 
     tiers: List[ProductPriceSeatTier]
     r"""List of pricing tiers"""
+
+    seat_tier_type: Optional[SeatTierType] = None

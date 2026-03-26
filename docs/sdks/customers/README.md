@@ -90,7 +90,7 @@ with Polar(
         "email": "customer@example.com",
         "name": "John Doe",
         "billing_address": {
-            "country": polar_sdk.CountryAlpha2Input.US,
+            "country": polar_sdk.AddressInputCountryAlpha2Input.US,
         },
         "locale": "en",
         "type": polar_sdk.CustomerType.INDIVIDUAL,
@@ -232,7 +232,7 @@ with Polar(
         "email": "customer@example.com",
         "name": "John Doe",
         "billing_address": {
-            "country": polar_sdk.CountryAlpha2Input.US,
+            "country": polar_sdk.AddressInputCountryAlpha2Input.US,
         },
         "locale": "en",
         "external_id": "usr_1337",

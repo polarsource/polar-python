@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .presentmentcurrency import PresentmentCurrency
+from .taxbehavioroption import TaxBehaviorOption
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
@@ -28,6 +29,8 @@ class ProductPriceMeteredUnitCreateTypedDict(TypedDict):
     r"""The price per unit in cents. Supports up to 12 decimal places."""
     amount_type: Literal["metered_unit"]
     price_currency: NotRequired[PresentmentCurrency]
+    tax_behavior: NotRequired[Nullable[TaxBehaviorOption]]
+    r"""The tax behavior of the price. If not set, it will default to the organization's default tax behavior."""
     cap_amount: NotRequired[Nullable[int]]
     r"""Optional maximum amount in cents that can be charged, regardless of the number of units consumed."""
 
@@ -50,13 +53,16 @@ class ProductPriceMeteredUnitCreate(BaseModel):
 
     price_currency: Optional[PresentmentCurrency] = None
 
+    tax_behavior: OptionalNullable[TaxBehaviorOption] = UNSET
+    r"""The tax behavior of the price. If not set, it will default to the organization's default tax behavior."""
+
     cap_amount: OptionalNullable[int] = UNSET
     r"""Optional maximum amount in cents that can be charged, regardless of the number of units consumed."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["price_currency", "cap_amount"]
-        nullable_fields = ["cap_amount"]
+        optional_fields = ["price_currency", "tax_behavior", "cap_amount"]
+        nullable_fields = ["tax_behavior", "cap_amount"]
         null_default_fields = []
 
         serialized = handler(self)

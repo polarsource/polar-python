@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 from .presentmentcurrency import PresentmentCurrency
-from polar_sdk.types import BaseModel
+from .taxbehavioroption import TaxBehaviorOption
+from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
+from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
 from typing import Literal, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
@@ -14,16 +16,84 @@ class ProductPriceFixedCreateTypedDict(TypedDict):
     r"""Schema to create a fixed price."""
 
     price_amount: int
-    r"""The price in cents."""
+    r"""The price in cents.
+    Minimum amounts per currency:
+    - USD: $0.50
+    - AED: AED2.00
+    - ARS: ARS0.50
+    - AUD: A$0.50
+    - BRL: R$0.50
+    - CAD: CA$0.50
+    - CHF: CHF0.50
+    - COP: COP0.50
+    - CZK: CZK15.00
+    - DKK: DKK2.50
+    - EUR: €0.50
+    - GBP: £0.30
+    - HKD: HK$4.00
+    - HUF: HUF175.00
+    - IDR: IDR0.50
+    - ILS: ₪0.50
+    - INR: ₹60.00
+    - JPY: ¥50
+    - KRW: ₩50
+    - MXN: MX$0.10
+    - MYR: MYR2.00
+    - NOK: NOK3.00
+    - NZD: NZ$0.50
+    - PHP: ₱0.50
+    - PLN: PLN2.00
+    - RON: RON2.00
+    - RUB: RUB0.50
+    - SEK: SEK3.00
+    - SGD: SGD0.50
+    - THB: THB0.10
+    - ZAR: ZAR0.50
+    """
     amount_type: Literal["fixed"]
     price_currency: NotRequired[PresentmentCurrency]
+    tax_behavior: NotRequired[Nullable[TaxBehaviorOption]]
+    r"""The tax behavior of the price. If not set, it will default to the organization's default tax behavior."""
 
 
 class ProductPriceFixedCreate(BaseModel):
     r"""Schema to create a fixed price."""
 
     price_amount: int
-    r"""The price in cents."""
+    r"""The price in cents.
+    Minimum amounts per currency:
+    - USD: $0.50
+    - AED: AED2.00
+    - ARS: ARS0.50
+    - AUD: A$0.50
+    - BRL: R$0.50
+    - CAD: CA$0.50
+    - CHF: CHF0.50
+    - COP: COP0.50
+    - CZK: CZK15.00
+    - DKK: DKK2.50
+    - EUR: €0.50
+    - GBP: £0.30
+    - HKD: HK$4.00
+    - HUF: HUF175.00
+    - IDR: IDR0.50
+    - ILS: ₪0.50
+    - INR: ₹60.00
+    - JPY: ¥50
+    - KRW: ₩50
+    - MXN: MX$0.10
+    - MYR: MYR2.00
+    - NOK: NOK3.00
+    - NZD: NZ$0.50
+    - PHP: ₱0.50
+    - PLN: PLN2.00
+    - RON: RON2.00
+    - RUB: RUB0.50
+    - SEK: SEK3.00
+    - SGD: SGD0.50
+    - THB: THB0.10
+    - ZAR: ZAR0.50
+    """
 
     AMOUNT_TYPE: Annotated[
         Annotated[Literal["fixed"], AfterValidator(validate_const("fixed"))],
@@ -31,3 +101,36 @@ class ProductPriceFixedCreate(BaseModel):
     ] = "fixed"
 
     price_currency: Optional[PresentmentCurrency] = None
+
+    tax_behavior: OptionalNullable[TaxBehaviorOption] = UNSET
+    r"""The tax behavior of the price. If not set, it will default to the organization's default tax behavior."""
+
+    @model_serializer(mode="wrap")
+    def serialize_model(self, handler):
+        optional_fields = ["price_currency", "tax_behavior"]
+        nullable_fields = ["tax_behavior"]
+        null_default_fields = []
+
+        serialized = handler(self)
+
+        m = {}
+
+        for n, f in type(self).model_fields.items():
+            k = f.alias or n
+            val = serialized.get(k)
+            serialized.pop(k, None)
+
+            optional_nullable = k in optional_fields and k in nullable_fields
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
+
+            if val is not None and val != UNSET_SENTINEL:
+                m[k] = val
+            elif val != UNSET_SENTINEL and (
+                not k in optional_fields or (optional_nullable and is_set)
+            ):
+                m[k] = val
+
+        return m

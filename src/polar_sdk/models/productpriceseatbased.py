@@ -6,6 +6,7 @@ from .productpriceseattiers_output import (
     ProductPriceSeatTiersOutputTypedDict,
 )
 from .productpricesource import ProductPriceSource
+from .taxbehavioroption import TaxBehaviorOption
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
@@ -28,6 +29,8 @@ class ProductPriceSeatBasedTypedDict(TypedDict):
     source: ProductPriceSource
     price_currency: str
     r"""The currency in which the customer will be charged."""
+    tax_behavior: Nullable[TaxBehaviorOption]
+    r"""The tax behavior of the price. If null, it defaults to the organization's default tax behavior."""
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
     product_id: str
@@ -59,6 +62,9 @@ class ProductPriceSeatBased(BaseModel):
     price_currency: str
     r"""The currency in which the customer will be charged."""
 
+    tax_behavior: Nullable[TaxBehaviorOption]
+    r"""The tax behavior of the price. If null, it defaults to the organization's default tax behavior."""
+
     is_archived: bool
     r"""Whether the price is archived and no longer available."""
 
@@ -81,7 +87,7 @@ class ProductPriceSeatBased(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
-        nullable_fields = ["modified_at"]
+        nullable_fields = ["modified_at", "tax_behavior"]
         null_default_fields = []
 
         serialized = handler(self)

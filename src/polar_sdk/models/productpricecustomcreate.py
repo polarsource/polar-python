@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .presentmentcurrency import PresentmentCurrency
+from .taxbehavioroption import TaxBehaviorOption
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
@@ -16,6 +17,8 @@ class ProductPriceCustomCreateTypedDict(TypedDict):
 
     amount_type: Literal["custom"]
     price_currency: NotRequired[PresentmentCurrency]
+    tax_behavior: NotRequired[Nullable[TaxBehaviorOption]]
+    r"""The tax behavior of the price. If not set, it will default to the organization's default tax behavior."""
     minimum_amount: NotRequired[int]
     r"""The minimum amount the customer can pay. If set to 0, the price is 'free or pay what you want' and $0 is accepted. If set to a value between 1-49, it will be rejected. Defaults to 50 cents."""
     maximum_amount: NotRequired[Nullable[int]]
@@ -34,6 +37,9 @@ class ProductPriceCustomCreate(BaseModel):
 
     price_currency: Optional[PresentmentCurrency] = None
 
+    tax_behavior: OptionalNullable[TaxBehaviorOption] = UNSET
+    r"""The tax behavior of the price. If not set, it will default to the organization's default tax behavior."""
+
     minimum_amount: Optional[int] = 50
     r"""The minimum amount the customer can pay. If set to 0, the price is 'free or pay what you want' and $0 is accepted. If set to a value between 1-49, it will be rejected. Defaults to 50 cents."""
 
@@ -47,11 +53,12 @@ class ProductPriceCustomCreate(BaseModel):
     def serialize_model(self, handler):
         optional_fields = [
             "price_currency",
+            "tax_behavior",
             "minimum_amount",
             "maximum_amount",
             "preset_amount",
         ]
-        nullable_fields = ["maximum_amount", "preset_amount"]
+        nullable_fields = ["tax_behavior", "maximum_amount", "preset_amount"]
         null_default_fields = []
 
         serialized = handler(self)
