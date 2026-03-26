@@ -15,6 +15,7 @@ class Members(BaseSDK):
         *,
         customer_id: OptionalNullable[str] = UNSET,
         external_customer_id: OptionalNullable[str] = UNSET,
+        role: OptionalNullable[models.MemberRole] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.MemberSortProperty]] = UNSET,
@@ -31,6 +32,7 @@ class Members(BaseSDK):
 
         :param customer_id: Filter by customer ID.
         :param external_customer_id: Filter by customer external ID.
+        :param role: Filter by member role.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -52,6 +54,7 @@ class Members(BaseSDK):
         request = models.MembersListMembersRequest(
             customer_id=customer_id,
             external_customer_id=external_customer_id,
+            role=role,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -115,6 +118,7 @@ class Members(BaseSDK):
             return self.list_members(
                 customer_id=customer_id,
                 external_customer_id=external_customer_id,
+                role=role,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -146,6 +150,7 @@ class Members(BaseSDK):
         *,
         customer_id: OptionalNullable[str] = UNSET,
         external_customer_id: OptionalNullable[str] = UNSET,
+        role: OptionalNullable[models.MemberRole] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.MemberSortProperty]] = UNSET,
@@ -162,6 +167,7 @@ class Members(BaseSDK):
 
         :param customer_id: Filter by customer ID.
         :param external_customer_id: Filter by customer external ID.
+        :param role: Filter by member role.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -183,6 +189,7 @@ class Members(BaseSDK):
         request = models.MembersListMembersRequest(
             customer_id=customer_id,
             external_customer_id=external_customer_id,
+            role=role,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -246,6 +253,7 @@ class Members(BaseSDK):
             return self.list_members(
                 customer_id=customer_id,
                 external_customer_id=external_customer_id,
+                role=role,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,

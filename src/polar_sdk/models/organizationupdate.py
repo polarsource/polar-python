@@ -27,10 +27,259 @@ from .organizationsubscriptionsettings import (
     OrganizationSubscriptionSettingsTypedDict,
 )
 from .presentmentcurrency import PresentmentCurrency
+from .taxbehavioroption import TaxBehaviorOption
+from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import List
 from typing_extensions import NotRequired, TypedDict
+
+
+class CountryCountryAlpha2Input(str, Enum):
+    AD = "AD"
+    AE = "AE"
+    AF = "AF"
+    AG = "AG"
+    AI = "AI"
+    AL = "AL"
+    AM = "AM"
+    AO = "AO"
+    AQ = "AQ"
+    AR = "AR"
+    AS = "AS"
+    AT = "AT"
+    AU = "AU"
+    AW = "AW"
+    AX = "AX"
+    AZ = "AZ"
+    BA = "BA"
+    BB = "BB"
+    BD = "BD"
+    BE = "BE"
+    BF = "BF"
+    BG = "BG"
+    BH = "BH"
+    BI = "BI"
+    BJ = "BJ"
+    BL = "BL"
+    BM = "BM"
+    BN = "BN"
+    BO = "BO"
+    BQ = "BQ"
+    BR = "BR"
+    BS = "BS"
+    BT = "BT"
+    BV = "BV"
+    BW = "BW"
+    BY = "BY"
+    BZ = "BZ"
+    CA = "CA"
+    CC = "CC"
+    CD = "CD"
+    CF = "CF"
+    CG = "CG"
+    CH = "CH"
+    CI = "CI"
+    CK = "CK"
+    CL = "CL"
+    CM = "CM"
+    CN = "CN"
+    CO = "CO"
+    CR = "CR"
+    CV = "CV"
+    CW = "CW"
+    CX = "CX"
+    CY = "CY"
+    CZ = "CZ"
+    DE = "DE"
+    DJ = "DJ"
+    DK = "DK"
+    DM = "DM"
+    DO = "DO"
+    DZ = "DZ"
+    EC = "EC"
+    EE = "EE"
+    EG = "EG"
+    EH = "EH"
+    ER = "ER"
+    ES = "ES"
+    ET = "ET"
+    FI = "FI"
+    FJ = "FJ"
+    FK = "FK"
+    FM = "FM"
+    FO = "FO"
+    FR = "FR"
+    GA = "GA"
+    GB = "GB"
+    GD = "GD"
+    GE = "GE"
+    GF = "GF"
+    GG = "GG"
+    GH = "GH"
+    GI = "GI"
+    GL = "GL"
+    GM = "GM"
+    GN = "GN"
+    GP = "GP"
+    GQ = "GQ"
+    GR = "GR"
+    GS = "GS"
+    GT = "GT"
+    GU = "GU"
+    GW = "GW"
+    GY = "GY"
+    HK = "HK"
+    HM = "HM"
+    HN = "HN"
+    HR = "HR"
+    HT = "HT"
+    HU = "HU"
+    ID = "ID"
+    IE = "IE"
+    IL = "IL"
+    IM = "IM"
+    IN = "IN"
+    IO = "IO"
+    IQ = "IQ"
+    IS = "IS"
+    IT = "IT"
+    JE = "JE"
+    JM = "JM"
+    JO = "JO"
+    JP = "JP"
+    KE = "KE"
+    KG = "KG"
+    KH = "KH"
+    KI = "KI"
+    KM = "KM"
+    KN = "KN"
+    KR = "KR"
+    KW = "KW"
+    KY = "KY"
+    KZ = "KZ"
+    LA = "LA"
+    LB = "LB"
+    LC = "LC"
+    LI = "LI"
+    LK = "LK"
+    LR = "LR"
+    LS = "LS"
+    LT = "LT"
+    LU = "LU"
+    LV = "LV"
+    LY = "LY"
+    MA = "MA"
+    MC = "MC"
+    MD = "MD"
+    ME = "ME"
+    MF = "MF"
+    MG = "MG"
+    MH = "MH"
+    MK = "MK"
+    ML = "ML"
+    MM = "MM"
+    MN = "MN"
+    MO = "MO"
+    MP = "MP"
+    MQ = "MQ"
+    MR = "MR"
+    MS = "MS"
+    MT = "MT"
+    MU = "MU"
+    MV = "MV"
+    MW = "MW"
+    MX = "MX"
+    MY = "MY"
+    MZ = "MZ"
+    NA = "NA"
+    NC = "NC"
+    NE = "NE"
+    NF = "NF"
+    NG = "NG"
+    NI = "NI"
+    NL = "NL"
+    NO = "NO"
+    NP = "NP"
+    NR = "NR"
+    NU = "NU"
+    NZ = "NZ"
+    OM = "OM"
+    PA = "PA"
+    PE = "PE"
+    PF = "PF"
+    PG = "PG"
+    PH = "PH"
+    PK = "PK"
+    PL = "PL"
+    PM = "PM"
+    PN = "PN"
+    PR = "PR"
+    PS = "PS"
+    PT = "PT"
+    PW = "PW"
+    PY = "PY"
+    QA = "QA"
+    RE = "RE"
+    RO = "RO"
+    RS = "RS"
+    RW = "RW"
+    SA = "SA"
+    SB = "SB"
+    SC = "SC"
+    SD = "SD"
+    SE = "SE"
+    SG = "SG"
+    SH = "SH"
+    SI = "SI"
+    SJ = "SJ"
+    SK = "SK"
+    SL = "SL"
+    SM = "SM"
+    SN = "SN"
+    SO = "SO"
+    SR = "SR"
+    SS = "SS"
+    ST = "ST"
+    SV = "SV"
+    SX = "SX"
+    SZ = "SZ"
+    TC = "TC"
+    TD = "TD"
+    TF = "TF"
+    TG = "TG"
+    TH = "TH"
+    TJ = "TJ"
+    TK = "TK"
+    TL = "TL"
+    TM = "TM"
+    TN = "TN"
+    TO = "TO"
+    TR = "TR"
+    TT = "TT"
+    TV = "TV"
+    TW = "TW"
+    TZ = "TZ"
+    UA = "UA"
+    UG = "UG"
+    UM = "UM"
+    US = "US"
+    UY = "UY"
+    UZ = "UZ"
+    VA = "VA"
+    VC = "VC"
+    VE = "VE"
+    VG = "VG"
+    VI = "VI"
+    VN = "VN"
+    VU = "VU"
+    WF = "WF"
+    WS = "WS"
+    YE = "YE"
+    YT = "YT"
+    ZA = "ZA"
+    ZM = "ZM"
+    ZW = "ZW"
 
 
 class OrganizationUpdateTypedDict(TypedDict):
@@ -44,6 +293,8 @@ class OrganizationUpdateTypedDict(TypedDict):
     r"""Links to social profiles."""
     details: NotRequired[Nullable[OrganizationDetailsTypedDict]]
     r"""Additional, private, business details Polar needs about active organizations for compliance (KYC)."""
+    country: NotRequired[Nullable[CountryCountryAlpha2Input]]
+    r"""Two-letter country code (ISO 3166-1 alpha-2)."""
     feature_settings: NotRequired[Nullable[OrganizationFeatureSettingsTypedDict]]
     subscription_settings: NotRequired[
         Nullable[OrganizationSubscriptionSettingsTypedDict]
@@ -59,6 +310,8 @@ class OrganizationUpdateTypedDict(TypedDict):
     ]
     default_presentment_currency: NotRequired[Nullable[PresentmentCurrency]]
     r"""Default presentment currency for the organization"""
+    default_tax_behavior: NotRequired[Nullable[TaxBehaviorOption]]
+    r"""Default tax behavior applied on products."""
 
 
 class OrganizationUpdate(BaseModel):
@@ -78,6 +331,9 @@ class OrganizationUpdate(BaseModel):
     details: OptionalNullable[OrganizationDetails] = UNSET
     r"""Additional, private, business details Polar needs about active organizations for compliance (KYC)."""
 
+    country: OptionalNullable[CountryCountryAlpha2Input] = UNSET
+    r"""Two-letter country code (ISO 3166-1 alpha-2)."""
+
     feature_settings: OptionalNullable[OrganizationFeatureSettings] = UNSET
 
     subscription_settings: OptionalNullable[OrganizationSubscriptionSettings] = UNSET
@@ -93,6 +349,9 @@ class OrganizationUpdate(BaseModel):
     default_presentment_currency: OptionalNullable[PresentmentCurrency] = UNSET
     r"""Default presentment currency for the organization"""
 
+    default_tax_behavior: OptionalNullable[TaxBehaviorOption] = UNSET
+    r"""Default tax behavior applied on products."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -102,12 +361,14 @@ class OrganizationUpdate(BaseModel):
             "website",
             "socials",
             "details",
+            "country",
             "feature_settings",
             "subscription_settings",
             "notification_settings",
             "customer_email_settings",
             "customer_portal_settings",
             "default_presentment_currency",
+            "default_tax_behavior",
         ]
         nullable_fields = [
             "name",
@@ -116,12 +377,14 @@ class OrganizationUpdate(BaseModel):
             "website",
             "socials",
             "details",
+            "country",
             "feature_settings",
             "subscription_settings",
             "notification_settings",
             "customer_email_settings",
             "customer_portal_settings",
             "default_presentment_currency",
+            "default_tax_behavior",
         ]
         null_default_fields = []
 

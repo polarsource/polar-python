@@ -7,7 +7,7 @@ from pydantic import model_serializer
 from typing_extensions import NotRequired, TypedDict
 
 
-class CountryAlpha2(str, Enum):
+class AddressCountryAlpha2(str, Enum):
     AD = "AD"
     AE = "AE"
     AF = "AF"
@@ -260,7 +260,7 @@ class CountryAlpha2(str, Enum):
 
 
 class AddressTypedDict(TypedDict):
-    country: CountryAlpha2
+    country: AddressCountryAlpha2
     line1: NotRequired[Nullable[str]]
     line2: NotRequired[Nullable[str]]
     postal_code: NotRequired[Nullable[str]]
@@ -269,7 +269,7 @@ class AddressTypedDict(TypedDict):
 
 
 class Address(BaseModel):
-    country: CountryAlpha2
+    country: AddressCountryAlpha2
 
     line1: OptionalNullable[str] = UNSET
 

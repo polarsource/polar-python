@@ -8,9 +8,13 @@ import builtins
 import sys
 
 if TYPE_CHECKING:
-    from .address import Address, AddressTypedDict, CountryAlpha2
+    from .address import Address, AddressCountryAlpha2, AddressTypedDict
     from .addressdict import AddressDict, AddressDictTypedDict
-    from .addressinput import AddressInput, AddressInputTypedDict, CountryAlpha2Input
+    from .addressinput import (
+        AddressInput,
+        AddressInputCountryAlpha2Input,
+        AddressInputTypedDict,
+    )
     from .aggregationfunction import AggregationFunction
     from .alreadyactivesubscriptionerror import (
         AlreadyActiveSubscriptionError,
@@ -2172,7 +2176,7 @@ if TYPE_CHECKING:
     from .orderstatus import OrderStatus
     from .ordersubscription import OrderSubscription, OrderSubscriptionTypedDict
     from .orderupdate import OrderUpdate, OrderUpdateTypedDict
-    from .organization import Organization, OrganizationTypedDict
+    from .organization import CountryAlpha2, Organization, OrganizationTypedDict
     from .organization_access_tokens_deleteop import (
         OrganizationAccessTokensDeleteRequest,
         OrganizationAccessTokensDeleteRequestTypedDict,
@@ -2214,7 +2218,17 @@ if TYPE_CHECKING:
         OrganizationAvatarFileRead,
         OrganizationAvatarFileReadTypedDict,
     )
-    from .organizationcreate import OrganizationCreate, OrganizationCreateTypedDict
+    from .organizationcompanylegalentityschema import (
+        OrganizationCompanyLegalEntitySchema,
+        OrganizationCompanyLegalEntitySchemaTypedDict,
+    )
+    from .organizationcreate import (
+        CountryAlpha2Input,
+        LegalEntity,
+        LegalEntityTypedDict,
+        OrganizationCreate,
+        OrganizationCreateTypedDict,
+    )
     from .organizationcustomeremailsettings import (
         OrganizationCustomerEmailSettings,
         OrganizationCustomerEmailSettingsTypedDict,
@@ -2231,6 +2245,10 @@ if TYPE_CHECKING:
     from .organizationfeaturesettings import (
         OrganizationFeatureSettings,
         OrganizationFeatureSettingsTypedDict,
+    )
+    from .organizationindividuallegalentityschema import (
+        OrganizationIndividualLegalEntitySchema,
+        OrganizationIndividualLegalEntitySchemaTypedDict,
     )
     from .organizationnotificationsettings import (
         OrganizationNotificationSettings,
@@ -2261,7 +2279,11 @@ if TYPE_CHECKING:
         OrganizationSubscriptionSettings,
         OrganizationSubscriptionSettingsTypedDict,
     )
-    from .organizationupdate import OrganizationUpdate, OrganizationUpdateTypedDict
+    from .organizationupdate import (
+        CountryCountryAlpha2Input,
+        OrganizationUpdate,
+        OrganizationUpdateTypedDict,
+    )
     from .ownercreate import OwnerCreate, OwnerCreateTypedDict
     from .pagination import Pagination, PaginationTypedDict
     from .payment import Payment, PaymentTypedDict
@@ -2270,6 +2292,7 @@ if TYPE_CHECKING:
         PaymentAlreadyInProgressData,
     )
     from .paymenterror import PaymentError, PaymentErrorData
+    from .paymentfailed import PaymentFailed, PaymentFailedData
     from .paymentmethodcard import PaymentMethodCard, PaymentMethodCardTypedDict
     from .paymentmethodcardmetadata import (
         PaymentMethodCardMetadata,
@@ -2306,6 +2329,10 @@ if TYPE_CHECKING:
     )
     from .paymentsortproperty import PaymentSortProperty
     from .paymentstatus import PaymentStatus
+    from .pendingsubscriptionupdate import (
+        PendingSubscriptionUpdate,
+        PendingSubscriptionUpdateTypedDict,
+    )
     from .portalauthenticateduser import (
         PortalAuthenticatedUser,
         PortalAuthenticatedUserTypedDict,
@@ -2474,6 +2501,7 @@ if TYPE_CHECKING:
     from .seatclaiminfo import SeatClaimInfo, SeatClaimInfoTypedDict
     from .seatslist import SeatsList, SeatsListTypedDict
     from .seatstatus import SeatStatus
+    from .seattiertype import SeatTierType
     from .security import Security, SecurityTypedDict
     from .subscription import (
         CustomFieldData,
@@ -2738,6 +2766,7 @@ if TYPE_CHECKING:
     )
     from .subtype import SubType
     from .systemevent import SystemEvent, SystemEventTypedDict
+    from .taxbehavioroption import TaxBehaviorOption
     from .taxidformat import TaxIDFormat
     from .timeinterval import TimeInterval
     from .tokenresponse import TokenResponse, TokenResponseTypedDict
@@ -2966,9 +2995,11 @@ __all__ = [
     "ActiveUserByEvent",
     "ActiveUserByEventTypedDict",
     "Address",
+    "AddressCountryAlpha2",
     "AddressDict",
     "AddressDictTypedDict",
     "AddressInput",
+    "AddressInputCountryAlpha2Input",
     "AddressInputTypedDict",
     "AddressTypedDict",
     "Aggregation",
@@ -3436,6 +3467,7 @@ __all__ = [
     "CountAggregationTypedDict",
     "CountryAlpha2",
     "CountryAlpha2Input",
+    "CountryCountryAlpha2Input",
     "CumulativeCosts",
     "CumulativeCostsTypedDict",
     "CumulativeRevenue",
@@ -4157,6 +4189,8 @@ __all__ = [
     "LegacyRecurringProductPriceFree",
     "LegacyRecurringProductPriceFreeTypedDict",
     "LegacyRecurringProductPriceTypedDict",
+    "LegalEntity",
+    "LegalEntityTypedDict",
     "LicenseKeyActivate",
     "LicenseKeyActivateConditions",
     "LicenseKeyActivateConditionsTypedDict",
@@ -4596,6 +4630,8 @@ __all__ = [
     "OrganizationAvatarFileCreateTypedDict",
     "OrganizationAvatarFileRead",
     "OrganizationAvatarFileReadTypedDict",
+    "OrganizationCompanyLegalEntitySchema",
+    "OrganizationCompanyLegalEntitySchemaTypedDict",
     "OrganizationCreate",
     "OrganizationCreateTypedDict",
     "OrganizationCustomerEmailSettings",
@@ -4610,6 +4646,8 @@ __all__ = [
     "OrganizationIDFilter",
     "OrganizationIDFilterTypedDict",
     "OrganizationIDTypedDict",
+    "OrganizationIndividualLegalEntitySchema",
+    "OrganizationIndividualLegalEntitySchemaTypedDict",
     "OrganizationNotificationSettings",
     "OrganizationNotificationSettingsTypedDict",
     "OrganizationSocialLink",
@@ -4639,6 +4677,8 @@ __all__ = [
     "PaymentAlreadyInProgressData",
     "PaymentError",
     "PaymentErrorData",
+    "PaymentFailed",
+    "PaymentFailedData",
     "PaymentMethodCard",
     "PaymentMethodCardMetadata",
     "PaymentMethodCardMetadataTypedDict",
@@ -4667,6 +4707,8 @@ __all__ = [
     "PaymentsListRequestTypedDict",
     "PaymentsListResponse",
     "PaymentsListResponseTypedDict",
+    "PendingSubscriptionUpdate",
+    "PendingSubscriptionUpdateTypedDict",
     "Permission",
     "PolarError",
     "PortalAuthenticatedUser",
@@ -4853,6 +4895,7 @@ __all__ = [
     "SeatClaimInfoTypedDict",
     "SeatClaimTypedDict",
     "SeatStatus",
+    "SeatTierType",
     "SeatsList",
     "SeatsListTypedDict",
     "Security",
@@ -4970,6 +5013,7 @@ __all__ = [
     "SwitchingFrom",
     "SystemEvent",
     "SystemEventTypedDict",
+    "TaxBehaviorOption",
     "TaxID",
     "TaxIDFormat",
     "TaxIDTypedDict",
@@ -5110,13 +5154,13 @@ __all__ = [
 
 _dynamic_imports: dict[str, str] = {
     "Address": ".address",
+    "AddressCountryAlpha2": ".address",
     "AddressTypedDict": ".address",
-    "CountryAlpha2": ".address",
     "AddressDict": ".addressdict",
     "AddressDictTypedDict": ".addressdict",
     "AddressInput": ".addressinput",
+    "AddressInputCountryAlpha2Input": ".addressinput",
     "AddressInputTypedDict": ".addressinput",
-    "CountryAlpha2Input": ".addressinput",
     "AggregationFunction": ".aggregationfunction",
     "AlreadyActiveSubscriptionError": ".alreadyactivesubscriptionerror",
     "AlreadyActiveSubscriptionErrorData": ".alreadyactivesubscriptionerror",
@@ -6679,6 +6723,7 @@ _dynamic_imports: dict[str, str] = {
     "OrderSubscriptionTypedDict": ".ordersubscription",
     "OrderUpdate": ".orderupdate",
     "OrderUpdateTypedDict": ".orderupdate",
+    "CountryAlpha2": ".organization",
     "Organization": ".organization",
     "OrganizationTypedDict": ".organization",
     "OrganizationAccessTokensDeleteRequest": ".organization_access_tokens_deleteop",
@@ -6704,6 +6749,11 @@ _dynamic_imports: dict[str, str] = {
     "OrganizationAvatarFileCreateTypedDict": ".organizationavatarfilecreate",
     "OrganizationAvatarFileRead": ".organizationavatarfileread",
     "OrganizationAvatarFileReadTypedDict": ".organizationavatarfileread",
+    "OrganizationCompanyLegalEntitySchema": ".organizationcompanylegalentityschema",
+    "OrganizationCompanyLegalEntitySchemaTypedDict": ".organizationcompanylegalentityschema",
+    "CountryAlpha2Input": ".organizationcreate",
+    "LegalEntity": ".organizationcreate",
+    "LegalEntityTypedDict": ".organizationcreate",
     "OrganizationCreate": ".organizationcreate",
     "OrganizationCreateTypedDict": ".organizationcreate",
     "OrganizationCustomerEmailSettings": ".organizationcustomeremailsettings",
@@ -6715,6 +6765,8 @@ _dynamic_imports: dict[str, str] = {
     "SwitchingFrom": ".organizationdetails",
     "OrganizationFeatureSettings": ".organizationfeaturesettings",
     "OrganizationFeatureSettingsTypedDict": ".organizationfeaturesettings",
+    "OrganizationIndividualLegalEntitySchema": ".organizationindividuallegalentityschema",
+    "OrganizationIndividualLegalEntitySchemaTypedDict": ".organizationindividuallegalentityschema",
     "OrganizationNotificationSettings": ".organizationnotificationsettings",
     "OrganizationNotificationSettingsTypedDict": ".organizationnotificationsettings",
     "OrganizationsGetRequest": ".organizations_getop",
@@ -6732,6 +6784,7 @@ _dynamic_imports: dict[str, str] = {
     "OrganizationStatus": ".organizationstatus",
     "OrganizationSubscriptionSettings": ".organizationsubscriptionsettings",
     "OrganizationSubscriptionSettingsTypedDict": ".organizationsubscriptionsettings",
+    "CountryCountryAlpha2Input": ".organizationupdate",
     "OrganizationUpdate": ".organizationupdate",
     "OrganizationUpdateTypedDict": ".organizationupdate",
     "OwnerCreate": ".ownercreate",
@@ -6744,6 +6797,8 @@ _dynamic_imports: dict[str, str] = {
     "PaymentAlreadyInProgressData": ".paymentalreadyinprogress",
     "PaymentError": ".paymenterror",
     "PaymentErrorData": ".paymenterror",
+    "PaymentFailed": ".paymentfailed",
+    "PaymentFailedData": ".paymentfailed",
     "PaymentMethodCard": ".paymentmethodcard",
     "PaymentMethodCardTypedDict": ".paymentmethodcard",
     "PaymentMethodCardMetadata": ".paymentmethodcardmetadata",
@@ -6775,6 +6830,8 @@ _dynamic_imports: dict[str, str] = {
     "PaymentsListResponseTypedDict": ".payments_listop",
     "PaymentSortProperty": ".paymentsortproperty",
     "PaymentStatus": ".paymentstatus",
+    "PendingSubscriptionUpdate": ".pendingsubscriptionupdate",
+    "PendingSubscriptionUpdateTypedDict": ".pendingsubscriptionupdate",
     "PortalAuthenticatedUser": ".portalauthenticateduser",
     "PortalAuthenticatedUserTypedDict": ".portalauthenticateduser",
     "PresentmentCurrency": ".presentmentcurrency",
@@ -6917,6 +6974,7 @@ _dynamic_imports: dict[str, str] = {
     "SeatsList": ".seatslist",
     "SeatsListTypedDict": ".seatslist",
     "SeatStatus": ".seatstatus",
+    "SeatTierType": ".seattiertype",
     "Security": ".security",
     "SecurityTypedDict": ".security",
     "CustomFieldData": ".subscription",
@@ -7114,6 +7172,7 @@ _dynamic_imports: dict[str, str] = {
     "SubType": ".subtype",
     "SystemEvent": ".systemevent",
     "SystemEventTypedDict": ".systemevent",
+    "TaxBehaviorOption": ".taxbehavioroption",
     "TaxIDFormat": ".taxidformat",
     "TimeInterval": ".timeinterval",
     "TokenResponse": ".tokenresponse",

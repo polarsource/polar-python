@@ -72,6 +72,12 @@ ChurnedSubscriptionsTypedDict = TypeAliasType(
 ChurnedSubscriptions = TypeAliasType("ChurnedSubscriptions", Union[int, float])
 
 
+ChurnRateTypedDict = TypeAliasType("ChurnRateTypedDict", Union[int, float])
+
+
+ChurnRate = TypeAliasType("ChurnRate", Union[int, float])
+
+
 OrdersModelTypedDict = TypeAliasType("OrdersModelTypedDict", Union[int, float])
 
 
@@ -322,12 +328,6 @@ CheckoutsConversionTypedDict = TypeAliasType(
 CheckoutsConversion = TypeAliasType("CheckoutsConversion", Union[int, float])
 
 
-ChurnRateTypedDict = TypeAliasType("ChurnRateTypedDict", Union[int, float])
-
-
-ChurnRate = TypeAliasType("ChurnRate", Union[int, float])
-
-
 LtvTypedDict = TypeAliasType("LtvTypedDict", Union[int, float])
 
 
@@ -367,6 +367,7 @@ class MetricPeriodTypedDict(TypedDict):
     checkouts: NotRequired[Nullable[CheckoutsModelTypedDict]]
     succeeded_checkouts: NotRequired[Nullable[SucceededCheckoutsTypedDict]]
     churned_subscriptions: NotRequired[Nullable[ChurnedSubscriptionsTypedDict]]
+    churn_rate: NotRequired[Nullable[ChurnRateTypedDict]]
     orders: NotRequired[Nullable[OrdersModelTypedDict]]
     revenue: NotRequired[Nullable[RevenueTypedDict]]
     net_revenue: NotRequired[Nullable[NetRevenueTypedDict]]
@@ -421,7 +422,6 @@ class MetricPeriodTypedDict(TypedDict):
         Nullable[CanceledSubscriptionsOtherTypedDict]
     ]
     checkouts_conversion: NotRequired[Nullable[CheckoutsConversionTypedDict]]
-    churn_rate: NotRequired[Nullable[ChurnRateTypedDict]]
     ltv: NotRequired[Nullable[LtvTypedDict]]
     gross_margin: NotRequired[Nullable[GrossMarginTypedDict]]
     gross_margin_percentage: NotRequired[Nullable[GrossMarginPercentageTypedDict]]
@@ -449,6 +449,8 @@ class MetricPeriod(BaseModel):
     succeeded_checkouts: OptionalNullable[SucceededCheckouts] = UNSET
 
     churned_subscriptions: OptionalNullable[ChurnedSubscriptions] = UNSET
+
+    churn_rate: OptionalNullable[ChurnRate] = UNSET
 
     orders: OptionalNullable[OrdersModel] = UNSET
 
@@ -524,8 +526,6 @@ class MetricPeriod(BaseModel):
 
     checkouts_conversion: OptionalNullable[CheckoutsConversion] = UNSET
 
-    churn_rate: OptionalNullable[ChurnRate] = UNSET
-
     ltv: OptionalNullable[Ltv] = UNSET
 
     gross_margin: OptionalNullable[GrossMargin] = UNSET
@@ -545,6 +545,7 @@ class MetricPeriod(BaseModel):
             "checkouts",
             "succeeded_checkouts",
             "churned_subscriptions",
+            "churn_rate",
             "orders",
             "revenue",
             "net_revenue",
@@ -575,7 +576,6 @@ class MetricPeriod(BaseModel):
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
             "checkouts_conversion",
-            "churn_rate",
             "ltv",
             "gross_margin",
             "gross_margin_percentage",
@@ -590,6 +590,7 @@ class MetricPeriod(BaseModel):
             "checkouts",
             "succeeded_checkouts",
             "churned_subscriptions",
+            "churn_rate",
             "orders",
             "revenue",
             "net_revenue",
@@ -620,7 +621,6 @@ class MetricPeriod(BaseModel):
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
             "checkouts_conversion",
-            "churn_rate",
             "ltv",
             "gross_margin",
             "gross_margin_percentage",

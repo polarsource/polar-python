@@ -16,6 +16,7 @@ class MetricsTypedDict(TypedDict):
     checkouts: NotRequired[Nullable[MetricTypedDict]]
     succeeded_checkouts: NotRequired[Nullable[MetricTypedDict]]
     churned_subscriptions: NotRequired[Nullable[MetricTypedDict]]
+    churn_rate: NotRequired[Nullable[MetricTypedDict]]
     orders: NotRequired[Nullable[MetricTypedDict]]
     revenue: NotRequired[Nullable[MetricTypedDict]]
     net_revenue: NotRequired[Nullable[MetricTypedDict]]
@@ -46,7 +47,6 @@ class MetricsTypedDict(TypedDict):
     canceled_subscriptions_unused: NotRequired[Nullable[MetricTypedDict]]
     canceled_subscriptions_other: NotRequired[Nullable[MetricTypedDict]]
     checkouts_conversion: NotRequired[Nullable[MetricTypedDict]]
-    churn_rate: NotRequired[Nullable[MetricTypedDict]]
     ltv: NotRequired[Nullable[MetricTypedDict]]
     gross_margin: NotRequired[Nullable[MetricTypedDict]]
     gross_margin_percentage: NotRequired[Nullable[MetricTypedDict]]
@@ -69,6 +69,8 @@ class Metrics(BaseModel):
     succeeded_checkouts: OptionalNullable[Metric] = UNSET
 
     churned_subscriptions: OptionalNullable[Metric] = UNSET
+
+    churn_rate: OptionalNullable[Metric] = UNSET
 
     orders: OptionalNullable[Metric] = UNSET
 
@@ -130,8 +132,6 @@ class Metrics(BaseModel):
 
     checkouts_conversion: OptionalNullable[Metric] = UNSET
 
-    churn_rate: OptionalNullable[Metric] = UNSET
-
     ltv: OptionalNullable[Metric] = UNSET
 
     gross_margin: OptionalNullable[Metric] = UNSET
@@ -151,6 +151,7 @@ class Metrics(BaseModel):
             "checkouts",
             "succeeded_checkouts",
             "churned_subscriptions",
+            "churn_rate",
             "orders",
             "revenue",
             "net_revenue",
@@ -181,7 +182,6 @@ class Metrics(BaseModel):
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
             "checkouts_conversion",
-            "churn_rate",
             "ltv",
             "gross_margin",
             "gross_margin_percentage",
@@ -196,6 +196,7 @@ class Metrics(BaseModel):
             "checkouts",
             "succeeded_checkouts",
             "churned_subscriptions",
+            "churn_rate",
             "orders",
             "revenue",
             "net_revenue",
@@ -226,7 +227,6 @@ class Metrics(BaseModel):
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
             "checkouts_conversion",
-            "churn_rate",
             "ltv",
             "gross_margin",
             "gross_margin_percentage",
