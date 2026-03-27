@@ -35,7 +35,6 @@ class BenefitGrantFeatureFlagWebhookTypedDict(TypedDict):
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
     customer: CustomerTypedDict
-    r"""A customer in an organization."""
     benefit: BenefitFeatureFlagTypedDict
     r"""A benefit of type `feature_flag`.
 
@@ -86,7 +85,6 @@ class BenefitGrantFeatureFlagWebhook(BaseModel):
     r"""The ID of the benefit concerned by this grant."""
 
     customer: Customer
-    r"""A customer in an organization."""
 
     benefit: BenefitFeatureFlag
     r"""A benefit of type `feature_flag`.

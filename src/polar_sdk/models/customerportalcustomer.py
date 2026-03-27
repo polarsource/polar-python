@@ -32,7 +32,7 @@ class CustomerPortalCustomerTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The ID of the object."""
-    email: str
+    email: Nullable[str]
     email_verified: bool
     name: Nullable[str]
     billing_name: Nullable[str]
@@ -53,7 +53,7 @@ class CustomerPortalCustomer(BaseModel):
     id: str
     r"""The ID of the object."""
 
-    email: str
+    email: Nullable[str]
 
     email_verified: bool
 
@@ -76,6 +76,7 @@ class CustomerPortalCustomer(BaseModel):
         optional_fields = ["default_payment_method_id", "type"]
         nullable_fields = [
             "modified_at",
+            "email",
             "name",
             "billing_name",
             "billing_address",

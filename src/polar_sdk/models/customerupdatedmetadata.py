@@ -9,7 +9,7 @@ from typing_extensions import TypedDict
 
 class CustomerUpdatedMetadataTypedDict(TypedDict):
     customer_id: str
-    customer_email: str
+    customer_email: Nullable[str]
     customer_name: Nullable[str]
     customer_external_id: Nullable[str]
     updated_fields: CustomerUpdatedFieldsTypedDict
@@ -18,7 +18,7 @@ class CustomerUpdatedMetadataTypedDict(TypedDict):
 class CustomerUpdatedMetadata(BaseModel):
     customer_id: str
 
-    customer_email: str
+    customer_email: Nullable[str]
 
     customer_name: Nullable[str]
 
@@ -29,7 +29,7 @@ class CustomerUpdatedMetadata(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
-        nullable_fields = ["customer_name", "customer_external_id"]
+        nullable_fields = ["customer_email", "customer_name", "customer_external_id"]
         null_default_fields = []
 
         serialized = handler(self)

@@ -87,19 +87,19 @@ with Polar(
 
     res = polar.customers.create(request={
         "external_id": "usr_1337",
-        "email": "customer@example.com",
         "name": "John Doe",
         "billing_address": {
             "country": polar_sdk.AddressInputCountryAlpha2Input.US,
         },
         "locale": "en",
-        "type": polar_sdk.CustomerType.INDIVIDUAL,
         "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
         "owner": {
             "email": "member@example.com",
             "name": "Jane Doe",
             "external_id": "usr_1337",
         },
+        "type": "individual",
+        "email": "customer@example.com",
     })
 
     # Handle response
@@ -236,7 +236,6 @@ with Polar(
         },
         "locale": "en",
         "external_id": "usr_1337",
-        "type": polar_sdk.CustomerType.INDIVIDUAL,
     })
 
     # Handle response

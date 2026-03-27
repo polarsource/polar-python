@@ -23,7 +23,6 @@ class CustomerSessionTypedDict(TypedDict):
     customer_portal_url: str
     customer_id: str
     customer: CustomerTypedDict
-    r"""A customer in an organization."""
 
 
 class CustomerSession(BaseModel):
@@ -49,7 +48,6 @@ class CustomerSession(BaseModel):
     customer_id: str
 
     customer: Customer
-    r"""A customer in an organization."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

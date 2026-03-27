@@ -82,7 +82,6 @@ class BenefitGrantTypedDict(TypedDict):
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
     customer: CustomerTypedDict
-    r"""A customer in an organization."""
     benefit: BenefitTypedDict
     properties: PropertiesTypedDict
     granted_at: NotRequired[Nullable[datetime]]
@@ -125,7 +124,6 @@ class BenefitGrant(BaseModel):
     r"""The ID of the benefit concerned by this grant."""
 
     customer: Customer
-    r"""A customer in an organization."""
 
     benefit: Benefit
 

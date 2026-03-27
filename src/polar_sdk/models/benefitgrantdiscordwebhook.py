@@ -35,7 +35,6 @@ class BenefitGrantDiscordWebhookTypedDict(TypedDict):
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
     customer: CustomerTypedDict
-    r"""A customer in an organization."""
     benefit: BenefitDiscordTypedDict
     r"""A benefit of type `discord`.
 
@@ -83,7 +82,6 @@ class BenefitGrantDiscordWebhook(BaseModel):
     r"""The ID of the benefit concerned by this grant."""
 
     customer: Customer
-    r"""A customer in an organization."""
 
     benefit: BenefitDiscord
     r"""A benefit of type `discord`.

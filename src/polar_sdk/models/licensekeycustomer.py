@@ -30,10 +30,9 @@ class LicenseKeyCustomerTypedDict(TypedDict):
     modified_at: Nullable[datetime]
     r"""Last modification timestamp of the object."""
     metadata: Dict[str, MetadataOutputTypeTypedDict]
-    email: str
-    r"""The email address of the customer. This must be unique within the organization."""
     email_verified: bool
     r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
+    type: CustomerType
     name: Nullable[str]
     r"""The name of the customer."""
     billing_address: Nullable[AddressTypedDict]
@@ -45,8 +44,8 @@ class LicenseKeyCustomerTypedDict(TypedDict):
     avatar_url: str
     external_id: NotRequired[Nullable[str]]
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
-    type: NotRequired[Nullable[CustomerType]]
-    r"""The type of customer: 'individual' for single users, 'team' for customers with multiple members. Legacy customers may have NULL type which is treated as 'individual'."""
+    email: NotRequired[Nullable[str]]
+    r"""The email address of the customer. This must be unique within the organization."""
     locale: NotRequired[Nullable[str]]
 
 
@@ -62,11 +61,10 @@ class LicenseKeyCustomer(BaseModel):
 
     metadata: Dict[str, MetadataOutputType]
 
-    email: str
-    r"""The email address of the customer. This must be unique within the organization."""
-
     email_verified: bool
     r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
+
+    type: CustomerType
 
     name: Nullable[str]
     r"""The name of the customer."""
@@ -86,18 +84,18 @@ class LicenseKeyCustomer(BaseModel):
     external_id: OptionalNullable[str] = UNSET
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
 
-    type: OptionalNullable[CustomerType] = UNSET
-    r"""The type of customer: 'individual' for single users, 'team' for customers with multiple members. Legacy customers may have NULL type which is treated as 'individual'."""
+    email: OptionalNullable[str] = UNSET
+    r"""The email address of the customer. This must be unique within the organization."""
 
     locale: OptionalNullable[str] = UNSET
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["external_id", "type", "locale"]
+        optional_fields = ["external_id", "email", "locale"]
         nullable_fields = [
             "modified_at",
             "external_id",
-            "type",
+            "email",
             "name",
             "billing_address",
             "tax_id",

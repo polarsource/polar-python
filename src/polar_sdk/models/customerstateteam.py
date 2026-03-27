@@ -2,23 +2,45 @@
 
 from __future__ import annotations
 from .address import Address, AddressTypedDict
-from .customertype import CustomerType
+from .customerstatebenefitgrant import (
+    CustomerStateBenefitGrant,
+    CustomerStateBenefitGrantTypedDict,
+)
+from .customerstatemeter import CustomerStateMeter, CustomerStateMeterTypedDict
+from .customerstatesubscription import (
+    CustomerStateSubscription,
+    CustomerStateSubscriptionTypedDict,
+)
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .taxidformat import TaxIDFormat
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
+import pydantic
 from pydantic import model_serializer
-from typing import Dict, List, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from pydantic.functional_validators import AfterValidator
+from typing import Dict, List, Literal, Union
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-TaxIDTypedDict = TypeAliasType("TaxIDTypedDict", Union[str, TaxIDFormat])
+CustomerStateTeamTaxIDTypedDict = TypeAliasType(
+    "CustomerStateTeamTaxIDTypedDict", Union[str, TaxIDFormat]
+)
 
 
-TaxID = TypeAliasType("TaxID", Union[str, TaxIDFormat])
+CustomerStateTeamTaxID = TypeAliasType(
+    "CustomerStateTeamTaxID", Union[str, TaxIDFormat]
+)
 
 
-class SubscriptionCustomerTypedDict(TypedDict):
+class CustomerStateTeamTypedDict(TypedDict):
+    r"""A team customer along with additional state information:
+
+    * Active subscriptions
+    * Granted benefits
+    * Active meters
+    """
+
     id: str
     r"""The ID of the customer."""
     created_at: datetime
@@ -28,24 +50,38 @@ class SubscriptionCustomerTypedDict(TypedDict):
     metadata: Dict[str, MetadataOutputTypeTypedDict]
     email_verified: bool
     r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
-    type: CustomerType
     name: Nullable[str]
     r"""The name of the customer."""
     billing_address: Nullable[AddressTypedDict]
-    tax_id: Nullable[List[Nullable[TaxIDTypedDict]]]
+    tax_id: Nullable[List[Nullable[CustomerStateTeamTaxIDTypedDict]]]
     organization_id: str
     r"""The ID of the organization owning the customer."""
     deleted_at: Nullable[datetime]
     r"""Timestamp for when the customer was soft deleted."""
+    active_subscriptions: List[CustomerStateSubscriptionTypedDict]
+    r"""The customer's active subscriptions."""
+    granted_benefits: List[CustomerStateBenefitGrantTypedDict]
+    r"""The customer's active benefit grants."""
+    active_meters: List[CustomerStateMeterTypedDict]
+    r"""The customer's active meters."""
     avatar_url: str
     external_id: NotRequired[Nullable[str]]
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
     email: NotRequired[Nullable[str]]
     r"""The email address of the customer. This must be unique within the organization."""
+    type: Literal["team"]
+    r"""The type of customer. Team customers can have multiple members."""
     locale: NotRequired[Nullable[str]]
 
 
-class SubscriptionCustomer(BaseModel):
+class CustomerStateTeam(BaseModel):
+    r"""A team customer along with additional state information:
+
+    * Active subscriptions
+    * Granted benefits
+    * Active meters
+    """
+
     id: str
     r"""The ID of the customer."""
 
@@ -60,20 +96,27 @@ class SubscriptionCustomer(BaseModel):
     email_verified: bool
     r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
 
-    type: CustomerType
-
     name: Nullable[str]
     r"""The name of the customer."""
 
     billing_address: Nullable[Address]
 
-    tax_id: Nullable[List[Nullable[TaxID]]]
+    tax_id: Nullable[List[Nullable[CustomerStateTeamTaxID]]]
 
     organization_id: str
     r"""The ID of the organization owning the customer."""
 
     deleted_at: Nullable[datetime]
     r"""Timestamp for when the customer was soft deleted."""
+
+    active_subscriptions: List[CustomerStateSubscription]
+    r"""The customer's active subscriptions."""
+
+    granted_benefits: List[CustomerStateBenefitGrant]
+    r"""The customer's active benefit grants."""
+
+    active_meters: List[CustomerStateMeter]
+    r"""The customer's active meters."""
 
     avatar_url: str
 
@@ -82,6 +125,12 @@ class SubscriptionCustomer(BaseModel):
 
     email: OptionalNullable[str] = UNSET
     r"""The email address of the customer. This must be unique within the organization."""
+
+    TYPE: Annotated[
+        Annotated[Literal["team"], AfterValidator(validate_const("team"))],
+        pydantic.Field(alias="type"),
+    ] = "team"
+    r"""The type of customer. Team customers can have multiple members."""
 
     locale: OptionalNullable[str] = UNSET
 

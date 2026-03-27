@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: 3daf94fecbceadc93fcf32b748558822
+  docChecksum: 0e452ff6a9bde44daac84b2b42e5b6b8
   docVersion: 0.1.0
   speakeasyVersion: 1.648.0
   generationVersion: 2.737.0
-  releaseVersion: 0.30.2
-  configChecksum: 05fa919479d611801ae8ec1beea06610
+  releaseVersion: 0.31.0
+  configChecksum: 92d0bf112f54af5b2983ed79456c5890
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -322,7 +322,6 @@ generatedFiles:
   - docs/models/customercreate.md
   - docs/models/customercreatedevent.md
   - docs/models/customercreatedmetadata.md
-  - docs/models/customercreatemetadata.md
   - docs/models/customercustomermeter.md
   - docs/models/customercustomermetermeter.md
   - docs/models/customercustomermetersortproperty.md
@@ -331,6 +330,10 @@ generatedFiles:
   - docs/models/customerdeletedmetadata.md
   - docs/models/customeremailfilter.md
   - docs/models/customeridfilter.md
+  - docs/models/customerindividual.md
+  - docs/models/customerindividualcreate.md
+  - docs/models/customerindividualcreatemetadata.md
+  - docs/models/customerindividualtaxid.md
   - docs/models/customermetadata.md
   - docs/models/customermeter.md
   - docs/models/customermetersgetrequest.md
@@ -480,11 +483,14 @@ generatedFiles:
   - docs/models/customerstate.md
   - docs/models/customerstatebenefitgrant.md
   - docs/models/customerstatebenefitgrantproperties.md
+  - docs/models/customerstateindividual.md
+  - docs/models/customerstateindividualtaxid.md
   - docs/models/customerstatemeter.md
   - docs/models/customerstatesubscription.md
   - docs/models/customerstatesubscriptioncustomfielddata.md
   - docs/models/customerstatesubscriptionmeter.md
-  - docs/models/customerstatetaxid.md
+  - docs/models/customerstateteam.md
+  - docs/models/customerstateteamtaxid.md
   - docs/models/customersubscription.md
   - docs/models/customersubscriptioncancel.md
   - docs/models/customersubscriptionmeter.md
@@ -498,7 +504,10 @@ generatedFiles:
   - docs/models/customersubscriptionupdateseats.md
   - docs/models/customersupdateexternalrequest.md
   - docs/models/customersupdaterequest.md
-  - docs/models/customertaxid.md
+  - docs/models/customerteam.md
+  - docs/models/customerteamcreate.md
+  - docs/models/customerteamcreatemetadata.md
+  - docs/models/customerteamtaxid.md
   - docs/models/customertype.md
   - docs/models/customerupdate.md
   - docs/models/customerupdatedevent.md
@@ -694,7 +703,6 @@ generatedFiles:
   - docs/models/listresourcebenefitgrant.md
   - docs/models/listresourcecheckout.md
   - docs/models/listresourcecheckoutlink.md
-  - docs/models/listresourcecustomer.md
   - docs/models/listresourcecustomerbenefitgrant.md
   - docs/models/listresourcecustomercustomermeter.md
   - docs/models/listresourcecustomermeter.md
@@ -729,6 +737,7 @@ generatedFiles:
   - docs/models/member.md
   - docs/models/membercreate.md
   - docs/models/memberidfilter.md
+  - docs/models/memberownercreate.md
   - docs/models/memberrole.md
   - docs/models/membersdeletememberrequest.md
   - docs/models/membersgetmemberrequest.md
@@ -915,7 +924,6 @@ generatedFiles:
   - docs/models/organizationsubscriptionsettings.md
   - docs/models/organizationsupdaterequest.md
   - docs/models/organizationupdate.md
-  - docs/models/ownercreate.md
   - docs/models/pagination.md
   - docs/models/payment.md
   - docs/models/paymentalreadyinprogress.md
@@ -1481,6 +1489,8 @@ generatedFiles:
   - src/polar_sdk/models/customercustomersession.py
   - src/polar_sdk/models/customerdeletedevent.py
   - src/polar_sdk/models/customerdeletedmetadata.py
+  - src/polar_sdk/models/customerindividual.py
+  - src/polar_sdk/models/customerindividualcreate.py
   - src/polar_sdk/models/customermeter.py
   - src/polar_sdk/models/customermetersortproperty.py
   - src/polar_sdk/models/customernotready.py
@@ -1528,9 +1538,11 @@ generatedFiles:
   - src/polar_sdk/models/customersortproperty.py
   - src/polar_sdk/models/customerstate.py
   - src/polar_sdk/models/customerstatebenefitgrant.py
+  - src/polar_sdk/models/customerstateindividual.py
   - src/polar_sdk/models/customerstatemeter.py
   - src/polar_sdk/models/customerstatesubscription.py
   - src/polar_sdk/models/customerstatesubscriptionmeter.py
+  - src/polar_sdk/models/customerstateteam.py
   - src/polar_sdk/models/customersubscription.py
   - src/polar_sdk/models/customersubscriptioncancel.py
   - src/polar_sdk/models/customersubscriptionmeter.py
@@ -1540,6 +1552,8 @@ generatedFiles:
   - src/polar_sdk/models/customersubscriptionupdate.py
   - src/polar_sdk/models/customersubscriptionupdateproduct.py
   - src/polar_sdk/models/customersubscriptionupdateseats.py
+  - src/polar_sdk/models/customerteam.py
+  - src/polar_sdk/models/customerteamcreate.py
   - src/polar_sdk/models/customertype.py
   - src/polar_sdk/models/customerupdate.py
   - src/polar_sdk/models/customerupdatedevent.py
@@ -1667,7 +1681,6 @@ generatedFiles:
   - src/polar_sdk/models/listresource_benefitgrant_.py
   - src/polar_sdk/models/listresource_checkout_.py
   - src/polar_sdk/models/listresource_checkoutlink_.py
-  - src/polar_sdk/models/listresource_customer_.py
   - src/polar_sdk/models/listresource_customerbenefitgrant_.py
   - src/polar_sdk/models/listresource_customercustomermeter_.py
   - src/polar_sdk/models/listresource_customermeter_.py
@@ -1699,6 +1712,7 @@ generatedFiles:
   - src/polar_sdk/models/llmmetadata.py
   - src/polar_sdk/models/member.py
   - src/polar_sdk/models/membercreate.py
+  - src/polar_sdk/models/memberownercreate.py
   - src/polar_sdk/models/memberrole.py
   - src/polar_sdk/models/members_delete_memberop.py
   - src/polar_sdk/models/members_get_memberop.py
@@ -1791,7 +1805,6 @@ generatedFiles:
   - src/polar_sdk/models/organizationstatus.py
   - src/polar_sdk/models/organizationsubscriptionsettings.py
   - src/polar_sdk/models/organizationupdate.py
-  - src/polar_sdk/models/ownercreate.py
   - src/polar_sdk/models/pagination.py
   - src/polar_sdk/models/payment.py
   - src/polar_sdk/models/paymentalreadyinprogress.py
@@ -2233,7 +2246,7 @@ examples:
   _endpointbenefit_grant_created_post:
     speakeasy-default-endpointbenefit-grant-created-post:
       requestBody:
-        application/json: {"type": "benefit_grant.created", "timestamp": "2025-07-29T09:12:26.895Z", "data": {"created_at": "2025-07-29T09:12:26.895Z", "modified_at": "2025-07-26T11:51:14.320Z", "id": "<value>", "is_granted": false, "is_revoked": true, "subscription_id": "<value>", "order_id": "<value>", "customer_id": "<value>", "benefit_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2024-05-22T17:07:22.158Z", "modified_at": "2025-05-12T01:27:02.379Z", "metadata": {"key": 74631, "key1": 8472.54, "key2": "<value>"}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2024-02-04T07:22:26.555Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "benefit": {"id": "<value>", "created_at": "2023-06-12T14:51:22.188Z", "modified_at": "2023-06-04T11:09:21.440Z", "type": "github_repository", "description": "vibraphone however abseil yet conservative", "selectable": false, "deletable": true, "organization_id": "<value>", "metadata": {"key": "<value>", "key1": 164738, "key2": 826637}, "properties": {"repository_owner": "polarsource", "repository_name": "private_repo", "permission": "maintain"}}, "properties": {}}}
+        application/json: {"type": "benefit_grant.created", "timestamp": "2025-07-29T09:12:26.895Z", "data": {"created_at": "2025-07-29T09:12:26.895Z", "modified_at": "2025-07-26T11:51:14.320Z", "id": "<value>", "is_granted": false, "is_revoked": true, "subscription_id": "<value>", "order_id": "<value>", "customer_id": "<value>", "benefit_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2024-05-22T17:07:22.158Z", "modified_at": "2025-05-12T01:27:02.379Z", "metadata": {"key": 74631, "key1": 8472.54, "key2": "<value>"}, "email": "customer@example.com", "email_verified": true, "type": "individual", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2024-02-04T07:22:26.555Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "member": {"id": "<value>", "created_at": "2026-08-22T13:30:01.170Z", "modified_at": "2025-08-09T21:03:19.855Z", "customer_id": "<value>", "email": "member@example.com", "name": "Jane Doe", "external_id": "usr_1337", "role": "owner"}, "benefit": {"id": "<value>", "created_at": "2023-06-12T14:51:22.188Z", "modified_at": "2023-06-04T11:09:21.440Z", "type": "feature_flag", "description": "vibraphone however abseil yet conservative", "selectable": false, "deletable": true, "organization_id": "<value>", "metadata": {"key": "<value>", "key1": 164738, "key2": 826637}, "properties": {}}, "properties": {}}}
       responses:
         "200":
           application/json: "<value>"
@@ -2242,7 +2255,7 @@ examples:
   _endpointbenefit_grant_updated_post:
     speakeasy-default-endpointbenefit-grant-updated-post:
       requestBody:
-        application/json: {"type": "benefit_grant.updated", "timestamp": "2023-06-15T00:42:20.858Z", "data": {"created_at": "2023-06-15T00:42:20.858Z", "modified_at": "2023-09-09T02:35:13.085Z", "id": "<value>", "is_granted": true, "is_revoked": true, "subscription_id": "<value>", "order_id": "<value>", "customer_id": "<value>", "benefit_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2023-07-19T15:08:59.439Z", "modified_at": "2024-06-22T06:57:35.281Z", "metadata": {"key": false, "key1": 322224}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-09-29T05:46:04.457Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "benefit": {"id": "<value>", "created_at": "2023-12-23T22:21:47.780Z", "modified_at": "2024-02-26T16:39:20.374Z", "type": "downloadables", "description": "cutlet flickering ecstatic materialise verbally appliance", "selectable": true, "deletable": false, "organization_id": "<value>", "metadata": {"key": 2069.39, "key1": "<value>"}, "properties": {"archived": {}, "files": ["<value 1>"]}}, "properties": {}}}
+        application/json: {"type": "benefit_grant.updated", "timestamp": "2023-06-15T00:42:20.858Z", "data": {"created_at": "2023-06-15T00:42:20.858Z", "modified_at": "2023-09-09T02:35:13.085Z", "id": "<value>", "is_granted": true, "is_revoked": true, "subscription_id": "<value>", "order_id": "<value>", "customer_id": "<value>", "benefit_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2023-07-19T15:08:59.439Z", "modified_at": "2024-06-22T06:57:35.281Z", "metadata": {"key": false, "key1": 322224}, "email_verified": true, "type": "team", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-09-29T05:46:04.457Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "member": {"id": "<value>", "created_at": "2025-05-01T02:45:33.425Z", "modified_at": "2025-05-06T16:18:09.644Z", "customer_id": "<value>", "email": "member@example.com", "name": "Jane Doe", "external_id": "usr_1337", "role": "billing_manager"}, "benefit": {"id": "<value>", "created_at": "2023-12-23T22:21:47.780Z", "modified_at": "2024-02-26T16:39:20.374Z", "type": "custom", "description": "cutlet flickering ecstatic materialise verbally appliance", "selectable": true, "deletable": false, "organization_id": "<value>", "metadata": {"key": 2069.39, "key1": "<value>"}, "properties": {"note": "<value>"}}, "properties": {}}}
       responses:
         "200":
           application/json: "<value>"
@@ -2251,7 +2264,7 @@ examples:
   _endpointbenefit_grant_cycled_post:
     speakeasy-default-endpointbenefit-grant-cycled-post:
       requestBody:
-        application/json: {"type": "benefit_grant.cycled", "timestamp": "2023-11-21T13:26:50.948Z", "data": {"created_at": "2023-11-21T13:26:50.948Z", "modified_at": null, "id": "<value>", "is_granted": true, "is_revoked": true, "subscription_id": "<value>", "order_id": "<value>", "customer_id": "<value>", "benefit_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-02-09T07:31:14.605Z", "modified_at": "2024-01-29T22:31:09.229Z", "metadata": {"key": true}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": null, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-08-25T13:47:56.433Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "benefit": {"id": "<value>", "created_at": "2025-07-14T03:36:29.696Z", "modified_at": "2023-08-20T01:19:24.073Z", "type": "downloadables", "description": "witty noisily negative colligate hence geez phew pacemaker marten", "selectable": true, "deletable": false, "organization_id": "<value>", "metadata": {"key": "<value>"}, "properties": {"archived": {"key": true}, "files": []}}, "properties": {}}}
+        application/json: {"type": "benefit_grant.cycled", "timestamp": "2023-11-21T13:26:50.948Z", "data": {"created_at": "2023-11-21T13:26:50.948Z", "modified_at": null, "id": "<value>", "is_granted": true, "is_revoked": true, "subscription_id": "<value>", "order_id": "<value>", "customer_id": "<value>", "benefit_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-02-09T07:31:14.605Z", "modified_at": "2024-01-29T22:31:09.229Z", "metadata": {"key": true}, "email": "customer@example.com", "email_verified": true, "type": "individual", "name": "John Doe", "billing_address": null, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-08-25T13:47:56.433Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "member": {"id": "<value>", "created_at": "2024-08-31T19:32:06.118Z", "modified_at": "2026-09-06T18:50:36.104Z", "customer_id": "<value>", "email": "member@example.com", "name": "Jane Doe", "external_id": "usr_1337", "role": "member"}, "benefit": {"id": "<value>", "created_at": "2025-07-14T03:36:29.696Z", "modified_at": "2023-08-20T01:19:24.073Z", "type": "github_repository", "description": "witty noisily negative colligate hence geez phew pacemaker marten", "selectable": true, "deletable": false, "organization_id": "<value>", "metadata": {"key": "<value>"}, "properties": {"repository_owner": "polarsource", "repository_name": "private_repo", "permission": "admin"}}, "properties": {}}}
       responses:
         "200":
           application/json: "<value>"
@@ -2260,7 +2273,7 @@ examples:
   _endpointbenefit_grant_revoked_post:
     speakeasy-default-endpointbenefit-grant-revoked-post:
       requestBody:
-        application/json: {"type": "benefit_grant.revoked", "timestamp": "2025-10-11T18:40:00.865Z", "data": {"created_at": "2025-10-11T18:40:00.865Z", "modified_at": null, "id": "<value>", "is_granted": true, "is_revoked": true, "subscription_id": "<value>", "order_id": "<value>", "customer_id": "<value>", "benefit_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2024-02-19T18:50:01.394Z", "modified_at": "2024-11-20T19:24:54.327Z", "metadata": {"key": 571706}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": null, "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "benefit": {"id": "<value>", "created_at": "2024-03-12T16:39:36.178Z", "modified_at": "2024-07-08T07:08:59.377Z", "type": "meter_credit", "description": "grandiose royal surface before ouch silently authentic more override reassuringly", "selectable": false, "deletable": true, "organization_id": "<value>", "metadata": {"key": "<value>", "key1": 6254.36, "key2": "<value>"}, "properties": {"units": 708154, "rollover": true, "meter_id": "<value>"}}, "properties": {}}}
+        application/json: {"type": "benefit_grant.revoked", "timestamp": "2025-10-11T18:40:00.865Z", "data": {"created_at": "2025-10-11T18:40:00.865Z", "modified_at": null, "id": "<value>", "is_granted": true, "is_revoked": true, "subscription_id": "<value>", "order_id": "<value>", "customer_id": "<value>", "benefit_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2024-02-19T18:50:01.394Z", "modified_at": "2024-11-20T19:24:54.327Z", "metadata": {"key": 571706}, "email": "customer@example.com", "email_verified": true, "type": "individual", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": null, "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "member": {"id": "<value>", "created_at": "2024-05-28T06:20:36.006Z", "modified_at": "2025-05-30T15:42:00.265Z", "customer_id": "<value>", "email": "member@example.com", "name": "Jane Doe", "external_id": "usr_1337", "role": "billing_manager"}, "benefit": {"id": "<value>", "created_at": "2024-03-12T16:39:36.178Z", "modified_at": "2024-07-08T07:08:59.377Z", "type": "feature_flag", "description": "grandiose royal surface before ouch silently authentic more override reassuringly", "selectable": false, "deletable": true, "organization_id": "<value>", "metadata": {"key": "<value>", "key1": 6254.36, "key2": "<value>"}, "properties": {}}, "properties": {}}}
       responses:
         "200":
           application/json: "<value>"
@@ -2323,7 +2336,7 @@ examples:
           limit: 10
       responses:
         "200":
-          application/json: {"items": [{"created_at": "2024-11-06T13:01:30.486Z", "modified_at": "2024-03-26T10:08:00.196Z", "id": "<value>", "amount": 492124, "currency": "Rial Omani", "recurring_interval": "year", "recurring_interval_count": 742797, "status": "canceled", "current_period_start": "2025-09-23T15:13:06.761Z", "current_period_end": "2023-09-22T22:50:40.236Z", "trial_start": "2024-10-01T10:10:26.018Z", "trial_end": "2023-12-05T04:37:49.573Z", "cancel_at_period_end": true, "canceled_at": "2024-06-12T10:43:36.497Z", "started_at": "2025-03-14T07:47:35.696Z", "ends_at": "2025-07-03T16:46:46.137Z", "ended_at": "2024-03-20T05:19:38.088Z", "customer_id": "<value>", "product_id": "<value>", "discount_id": "<value>", "checkout_id": "<value>", "customer_cancellation_reason": "low_quality", "customer_cancellation_comment": "<value>", "metadata": {"key": true, "key1": 142409}, "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2023-08-24T17:03:16.161Z", "modified_at": "2025-05-07T18:20:34.107Z", "metadata": {}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": null, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-06-25T13:44:42.918Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, "product": {"id": "<value>", "created_at": "2024-12-09T00:06:17.749Z", "modified_at": "2025-08-24T16:27:54.472Z", "trial_interval": "week", "trial_interval_count": 960252, "name": "<value>", "description": "er making aha doing offset oh incidentally aside hm", "visibility": "public", "recurring_interval": "year", "recurring_interval_count": 616371, "is_recurring": true, "is_archived": true, "organization_id": "<value>", "metadata": {"key": false, "key1": false, "key2": false}, "prices": [], "benefits": [{"id": "<value>", "created_at": "2025-04-05T16:53:07.702Z", "modified_at": "2024-05-11T08:58:06.412Z", "type": "custom", "description": "border pink insert sonnet membership access made-up aha an", "selectable": false, "deletable": true, "organization_id": "<value>", "metadata": {"key": "<value>"}, "properties": {"note": "<value>"}}, {"id": "<value>", "created_at": "2025-05-20T14:55:17.223Z", "modified_at": "2025-04-09T10:13:23.999Z", "type": "github_repository", "description": "quarrelsome joyously diligently mmm joshingly sailor or jury annex", "selectable": true, "deletable": false, "organization_id": "<value>", "metadata": {"key": 810447, "key1": 8377.26, "key2": 623085}, "properties": {"repository_owner": "polarsource", "repository_name": "private_repo", "permission": "push"}}, {"id": "<value>", "created_at": "2025-05-20T14:55:17.223Z", "modified_at": "2025-04-09T10:13:23.999Z", "type": "github_repository", "description": "quarrelsome joyously diligently mmm joshingly sailor or jury annex", "selectable": true, "deletable": false, "organization_id": "<value>", "metadata": {"key": 810447, "key1": 8377.26, "key2": 623085}, "properties": {"repository_owner": "polarsource", "repository_name": "private_repo", "permission": "push"}}], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/opt/include", "mime_type": "<value>", "size": 39873, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-10-09T14:35:38.900Z", "version": null, "service": "product_media", "is_uploaded": false, "created_at": "2023-06-02T18:03:00.031Z", "size_readable": "<value>", "public_url": "https://aggravating-graffiti.info/"}, {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/opt/include", "mime_type": "<value>", "size": 39873, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-10-09T14:35:38.900Z", "version": null, "service": "product_media", "is_uploaded": false, "created_at": "2023-06-02T18:03:00.031Z", "size_readable": "<value>", "public_url": "https://aggravating-graffiti.info/"}], "attached_custom_fields": [{"custom_field_id": "<value>", "custom_field": {"created_at": "2024-08-14T02:26:18.152Z", "modified_at": null, "id": "<value>", "metadata": {"key": 496263, "key1": "<value>", "key2": "<value>"}, "type": "date", "slug": "<value>", "name": "<value>", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "properties": {}}, "order": 561607, "required": false}, {"custom_field_id": "<value>", "custom_field": {"created_at": "2024-08-14T02:26:18.152Z", "modified_at": null, "id": "<value>", "metadata": {"key": 496263, "key1": "<value>", "key2": "<value>"}, "type": "date", "slug": "<value>", "name": "<value>", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "properties": {}}, "order": 561607, "required": false}]}, "discount": {"duration": "forever", "type": "percentage", "basis_points": 1000, "created_at": "2024-12-04T04:37:49.573Z", "modified_at": "2025-06-23T08:50:11.993Z", "id": "<value>", "metadata": {"key": false}, "name": "<value>", "code": "<value>", "starts_at": "2024-09-21T22:50:40.236Z", "ends_at": "2026-05-03T04:33:34.190Z", "max_redemptions": 265915, "redemptions_count": 732961, "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737"}, "prices": [{"created_at": "2024-11-06T13:01:30.486Z", "modified_at": "2024-03-26T10:08:00.196Z", "id": "<value>", "source": "ad_hoc", "amount_type": "free", "price_currency": "<value>", "tax_behavior": "inclusive", "is_archived": true, "product_id": "<value>", "type": "recurring", "recurring_interval": "year", "legacy": true}, {"created_at": "2023-09-22T22:50:40.236Z", "modified_at": "2025-05-03T04:33:34.190Z", "id": "<value>", "source": "ad_hoc", "amount_type": "fixed", "price_currency": "<value>", "tax_behavior": "location", "is_archived": true, "product_id": "<value>", "type": "recurring", "recurring_interval": "year", "price_amount": 834580, "legacy": true}], "meters": [], "pending_update": {"created_at": "2025-06-23T08:50:11.993Z", "modified_at": "2026-11-18T10:27:58.317Z", "id": "<value>", "applies_at": "2026-04-10T00:55:03.476Z", "product_id": "<value>", "seats": 241744}}, {"created_at": "2024-11-06T13:01:30.486Z", "modified_at": "2024-03-26T10:08:00.196Z", "id": "<value>", "amount": 492124, "currency": "Rial Omani", "recurring_interval": "year", "recurring_interval_count": 308570, "status": "canceled", "current_period_start": "2025-09-23T15:13:06.761Z", "current_period_end": "2023-09-22T22:50:40.236Z", "trial_start": "2025-09-23T15:13:06.761Z", "trial_end": "2023-09-22T22:50:40.236Z", "cancel_at_period_end": true, "canceled_at": "2024-06-12T10:43:36.497Z", "started_at": "2025-03-14T07:47:35.696Z", "ends_at": "2025-07-03T16:46:46.137Z", "ended_at": "2024-03-20T05:19:38.088Z", "customer_id": "<value>", "product_id": "<value>", "discount_id": "<value>", "checkout_id": "<value>", "customer_cancellation_reason": "low_quality", "customer_cancellation_comment": "<value>", "metadata": {"key": true, "key1": 142409}, "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2023-08-24T17:03:16.161Z", "modified_at": "2025-05-07T18:20:34.107Z", "metadata": {}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": null, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-06-25T13:44:42.918Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, "product": {"id": "<value>", "created_at": "2024-12-09T00:06:17.749Z", "modified_at": "2025-08-24T16:27:54.472Z", "trial_interval": "year", "trial_interval_count": 265915, "name": "<value>", "description": "er making aha doing offset oh incidentally aside hm", "visibility": "private", "recurring_interval": "year", "recurring_interval_count": 492124, "is_recurring": true, "is_archived": true, "organization_id": "<value>", "metadata": {"key": false, "key1": false, "key2": false}, "prices": [], "benefits": [{"id": "<value>", "created_at": "2025-04-05T16:53:07.702Z", "modified_at": "2024-05-11T08:58:06.412Z", "type": "custom", "description": "border pink insert sonnet membership access made-up aha an", "selectable": false, "deletable": true, "organization_id": "<value>", "metadata": {"key": "<value>"}, "properties": {"note": "<value>"}}, {"id": "<value>", "created_at": "2025-05-20T14:55:17.223Z", "modified_at": "2025-04-09T10:13:23.999Z", "type": "github_repository", "description": "quarrelsome joyously diligently mmm joshingly sailor or jury annex", "selectable": true, "deletable": false, "organization_id": "<value>", "metadata": {"key": 810447, "key1": 8377.26, "key2": 623085}, "properties": {"repository_owner": "polarsource", "repository_name": "private_repo", "permission": "push"}}, {"id": "<value>", "created_at": "2025-05-20T14:55:17.223Z", "modified_at": "2025-04-09T10:13:23.999Z", "type": "github_repository", "description": "quarrelsome joyously diligently mmm joshingly sailor or jury annex", "selectable": true, "deletable": false, "organization_id": "<value>", "metadata": {"key": 810447, "key1": 8377.26, "key2": 623085}, "properties": {"repository_owner": "polarsource", "repository_name": "private_repo", "permission": "push"}}], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/opt/include", "mime_type": "<value>", "size": 39873, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-10-09T14:35:38.900Z", "version": null, "service": "product_media", "is_uploaded": false, "created_at": "2023-06-02T18:03:00.031Z", "size_readable": "<value>", "public_url": "https://aggravating-graffiti.info/"}, {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/opt/include", "mime_type": "<value>", "size": 39873, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-10-09T14:35:38.900Z", "version": null, "service": "product_media", "is_uploaded": false, "created_at": "2023-06-02T18:03:00.031Z", "size_readable": "<value>", "public_url": "https://aggravating-graffiti.info/"}], "attached_custom_fields": [{"custom_field_id": "<value>", "custom_field": {"created_at": "2024-08-14T02:26:18.152Z", "modified_at": null, "id": "<value>", "metadata": {"key": 496263, "key1": "<value>", "key2": "<value>"}, "type": "date", "slug": "<value>", "name": "<value>", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "properties": {}}, "order": 561607, "required": false}, {"custom_field_id": "<value>", "custom_field": {"created_at": "2024-08-14T02:26:18.152Z", "modified_at": null, "id": "<value>", "metadata": {"key": 496263, "key1": "<value>", "key2": "<value>"}, "type": "date", "slug": "<value>", "name": "<value>", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "properties": {}}, "order": 561607, "required": false}]}, "discount": {"duration": "repeating", "duration_in_months": 786734, "type": "fixed", "basis_points": 1000, "created_at": "2026-04-30T02:52:35.936Z", "modified_at": "2024-10-28T13:21:35.872Z", "id": "<value>", "metadata": {}, "name": "<value>", "code": "<value>", "starts_at": "2026-09-12T12:57:56.639Z", "ends_at": "2024-11-10T17:51:02.571Z", "max_redemptions": 215064, "redemptions_count": 776767, "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737"}, "prices": [{"created_at": "2025-04-30T02:52:35.936Z", "modified_at": "2023-10-29T13:21:35.872Z", "id": "<value>", "source": "ad_hoc", "amount_type": "fixed", "price_currency": "<value>", "tax_behavior": "exclusive", "is_archived": true, "product_id": "<value>", "type": "recurring", "recurring_interval": "year", "price_amount": 262272, "legacy": true}, {"created_at": "2023-08-24T17:03:16.161Z", "modified_at": "2025-05-07T18:20:34.107Z", "id": "<value>", "source": "catalog", "amount_type": "custom", "price_currency": "<value>", "tax_behavior": "location", "is_archived": true, "product_id": "<value>", "type": "recurring", "recurring_interval": "month", "minimum_amount": 827165, "maximum_amount": 310545, "preset_amount": 154160, "legacy": true}], "meters": [], "pending_update": {"created_at": "2025-06-23T08:50:11.993Z", "modified_at": "2026-11-18T10:27:58.317Z", "id": "<value>", "applies_at": "2026-04-10T00:55:03.476Z", "product_id": "<value>", "seats": 241744}}], "pagination": {"total_count": 947589, "max_page": 388476}}
+          application/json: {"items": [{"created_at": "2024-11-06T13:01:30.486Z", "modified_at": "2024-03-26T10:08:00.196Z", "id": "<value>", "amount": 492124, "currency": "Rial Omani", "recurring_interval": "year", "recurring_interval_count": 742797, "status": "canceled", "current_period_start": "2025-09-23T15:13:06.761Z", "current_period_end": "2023-09-22T22:50:40.236Z", "trial_start": "2024-10-01T10:10:26.018Z", "trial_end": "2023-12-05T04:37:49.573Z", "cancel_at_period_end": true, "canceled_at": "2024-06-12T10:43:36.497Z", "started_at": "2025-03-14T07:47:35.696Z", "ends_at": "2025-07-03T16:46:46.137Z", "ended_at": "2024-03-20T05:19:38.088Z", "customer_id": "<value>", "product_id": "<value>", "discount_id": "<value>", "checkout_id": "<value>", "customer_cancellation_reason": "low_quality", "customer_cancellation_comment": "<value>", "metadata": {"key": true, "key1": 142409}, "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2023-08-24T17:03:16.161Z", "modified_at": "2025-05-07T18:20:34.107Z", "metadata": {}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "type": "team", "name": "John Doe", "billing_address": null, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-06-25T13:44:42.918Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, "product": {"id": "<value>", "created_at": "2024-12-09T00:06:17.749Z", "modified_at": "2025-08-24T16:27:54.472Z", "trial_interval": "week", "trial_interval_count": 960252, "name": "<value>", "description": "er making aha doing offset oh incidentally aside hm", "visibility": "public", "recurring_interval": "year", "recurring_interval_count": 616371, "is_recurring": true, "is_archived": true, "organization_id": "<value>", "metadata": {"key": false, "key1": false, "key2": false}, "prices": [], "benefits": [{"id": "<value>", "created_at": "2025-04-05T16:53:07.702Z", "modified_at": "2024-05-11T08:58:06.412Z", "type": "custom", "description": "border pink insert sonnet membership access made-up aha an", "selectable": false, "deletable": true, "organization_id": "<value>", "metadata": {"key": "<value>"}, "properties": {"note": "<value>"}}, {"id": "<value>", "created_at": "2025-05-20T14:55:17.223Z", "modified_at": "2025-04-09T10:13:23.999Z", "type": "github_repository", "description": "quarrelsome joyously diligently mmm joshingly sailor or jury annex", "selectable": true, "deletable": false, "organization_id": "<value>", "metadata": {"key": 810447, "key1": 8377.26, "key2": 623085}, "properties": {"repository_owner": "polarsource", "repository_name": "private_repo", "permission": "push"}}, {"id": "<value>", "created_at": "2025-05-20T14:55:17.223Z", "modified_at": "2025-04-09T10:13:23.999Z", "type": "github_repository", "description": "quarrelsome joyously diligently mmm joshingly sailor or jury annex", "selectable": true, "deletable": false, "organization_id": "<value>", "metadata": {"key": 810447, "key1": 8377.26, "key2": 623085}, "properties": {"repository_owner": "polarsource", "repository_name": "private_repo", "permission": "push"}}], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/opt/include", "mime_type": "<value>", "size": 39873, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-10-09T14:35:38.900Z", "version": null, "service": "product_media", "is_uploaded": false, "created_at": "2023-06-02T18:03:00.031Z", "size_readable": "<value>", "public_url": "https://aggravating-graffiti.info/"}, {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/opt/include", "mime_type": "<value>", "size": 39873, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-10-09T14:35:38.900Z", "version": null, "service": "product_media", "is_uploaded": false, "created_at": "2023-06-02T18:03:00.031Z", "size_readable": "<value>", "public_url": "https://aggravating-graffiti.info/"}], "attached_custom_fields": [{"custom_field_id": "<value>", "custom_field": {"created_at": "2024-08-14T02:26:18.152Z", "modified_at": null, "id": "<value>", "metadata": {"key": 496263, "key1": "<value>", "key2": "<value>"}, "type": "date", "slug": "<value>", "name": "<value>", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "properties": {}}, "order": 561607, "required": false}, {"custom_field_id": "<value>", "custom_field": {"created_at": "2024-08-14T02:26:18.152Z", "modified_at": null, "id": "<value>", "metadata": {"key": 496263, "key1": "<value>", "key2": "<value>"}, "type": "date", "slug": "<value>", "name": "<value>", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "properties": {}}, "order": 561607, "required": false}]}, "discount": {"duration": "forever", "type": "percentage", "basis_points": 1000, "created_at": "2024-12-04T04:37:49.573Z", "modified_at": "2025-06-23T08:50:11.993Z", "id": "<value>", "metadata": {"key": false}, "name": "<value>", "code": "<value>", "starts_at": "2024-09-21T22:50:40.236Z", "ends_at": "2026-05-03T04:33:34.190Z", "max_redemptions": 265915, "redemptions_count": 732961, "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737"}, "prices": [{"created_at": "2024-11-06T13:01:30.486Z", "modified_at": "2024-03-26T10:08:00.196Z", "id": "<value>", "source": "ad_hoc", "amount_type": "free", "price_currency": "<value>", "tax_behavior": "inclusive", "is_archived": true, "product_id": "<value>", "type": "recurring", "recurring_interval": "year", "legacy": true}, {"created_at": "2023-09-22T22:50:40.236Z", "modified_at": "2025-05-03T04:33:34.190Z", "id": "<value>", "source": "ad_hoc", "amount_type": "fixed", "price_currency": "<value>", "tax_behavior": "location", "is_archived": true, "product_id": "<value>", "type": "recurring", "recurring_interval": "year", "price_amount": 834580, "legacy": true}], "meters": [], "pending_update": {"created_at": "2025-06-23T08:50:11.993Z", "modified_at": "2026-11-18T10:27:58.317Z", "id": "<value>", "applies_at": "2026-04-10T00:55:03.476Z", "product_id": "<value>", "seats": 241744}}, {"created_at": "2024-11-06T13:01:30.486Z", "modified_at": "2024-03-26T10:08:00.196Z", "id": "<value>", "amount": 492124, "currency": "Rial Omani", "recurring_interval": "year", "recurring_interval_count": 308570, "status": "canceled", "current_period_start": "2025-09-23T15:13:06.761Z", "current_period_end": "2023-09-22T22:50:40.236Z", "trial_start": "2025-09-23T15:13:06.761Z", "trial_end": "2023-09-22T22:50:40.236Z", "cancel_at_period_end": true, "canceled_at": "2024-06-12T10:43:36.497Z", "started_at": "2025-03-14T07:47:35.696Z", "ends_at": "2025-07-03T16:46:46.137Z", "ended_at": "2024-03-20T05:19:38.088Z", "customer_id": "<value>", "product_id": "<value>", "discount_id": "<value>", "checkout_id": "<value>", "customer_cancellation_reason": "low_quality", "customer_cancellation_comment": "<value>", "metadata": {"key": true, "key1": 142409}, "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2023-08-24T17:03:16.161Z", "modified_at": "2025-05-07T18:20:34.107Z", "metadata": {}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "type": "team", "name": "John Doe", "billing_address": null, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-06-25T13:44:42.918Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, "product": {"id": "<value>", "created_at": "2024-12-09T00:06:17.749Z", "modified_at": "2025-08-24T16:27:54.472Z", "trial_interval": "year", "trial_interval_count": 265915, "name": "<value>", "description": "er making aha doing offset oh incidentally aside hm", "visibility": "private", "recurring_interval": "year", "recurring_interval_count": 492124, "is_recurring": true, "is_archived": true, "organization_id": "<value>", "metadata": {"key": false, "key1": false, "key2": false}, "prices": [], "benefits": [{"id": "<value>", "created_at": "2025-04-05T16:53:07.702Z", "modified_at": "2024-05-11T08:58:06.412Z", "type": "custom", "description": "border pink insert sonnet membership access made-up aha an", "selectable": false, "deletable": true, "organization_id": "<value>", "metadata": {"key": "<value>"}, "properties": {"note": "<value>"}}, {"id": "<value>", "created_at": "2025-05-20T14:55:17.223Z", "modified_at": "2025-04-09T10:13:23.999Z", "type": "github_repository", "description": "quarrelsome joyously diligently mmm joshingly sailor or jury annex", "selectable": true, "deletable": false, "organization_id": "<value>", "metadata": {"key": 810447, "key1": 8377.26, "key2": 623085}, "properties": {"repository_owner": "polarsource", "repository_name": "private_repo", "permission": "push"}}, {"id": "<value>", "created_at": "2025-05-20T14:55:17.223Z", "modified_at": "2025-04-09T10:13:23.999Z", "type": "github_repository", "description": "quarrelsome joyously diligently mmm joshingly sailor or jury annex", "selectable": true, "deletable": false, "organization_id": "<value>", "metadata": {"key": 810447, "key1": 8377.26, "key2": 623085}, "properties": {"repository_owner": "polarsource", "repository_name": "private_repo", "permission": "push"}}], "medias": [{"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/opt/include", "mime_type": "<value>", "size": 39873, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-10-09T14:35:38.900Z", "version": null, "service": "product_media", "is_uploaded": false, "created_at": "2023-06-02T18:03:00.031Z", "size_readable": "<value>", "public_url": "https://aggravating-graffiti.info/"}, {"id": "<value>", "organization_id": "<value>", "name": "<value>", "path": "/opt/include", "mime_type": "<value>", "size": 39873, "storage_version": "<value>", "checksum_etag": "<value>", "checksum_sha256_base64": "<value>", "checksum_sha256_hex": "<value>", "last_modified_at": "2023-10-09T14:35:38.900Z", "version": null, "service": "product_media", "is_uploaded": false, "created_at": "2023-06-02T18:03:00.031Z", "size_readable": "<value>", "public_url": "https://aggravating-graffiti.info/"}], "attached_custom_fields": [{"custom_field_id": "<value>", "custom_field": {"created_at": "2024-08-14T02:26:18.152Z", "modified_at": null, "id": "<value>", "metadata": {"key": 496263, "key1": "<value>", "key2": "<value>"}, "type": "date", "slug": "<value>", "name": "<value>", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "properties": {}}, "order": 561607, "required": false}, {"custom_field_id": "<value>", "custom_field": {"created_at": "2024-08-14T02:26:18.152Z", "modified_at": null, "id": "<value>", "metadata": {"key": 496263, "key1": "<value>", "key2": "<value>"}, "type": "date", "slug": "<value>", "name": "<value>", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "properties": {}}, "order": 561607, "required": false}]}, "discount": {"duration": "repeating", "duration_in_months": 786734, "type": "fixed", "basis_points": 1000, "created_at": "2026-04-30T02:52:35.936Z", "modified_at": "2024-10-28T13:21:35.872Z", "id": "<value>", "metadata": {}, "name": "<value>", "code": "<value>", "starts_at": "2026-09-12T12:57:56.639Z", "ends_at": "2024-11-10T17:51:02.571Z", "max_redemptions": 215064, "redemptions_count": 776767, "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737"}, "prices": [{"created_at": "2025-04-30T02:52:35.936Z", "modified_at": "2023-10-29T13:21:35.872Z", "id": "<value>", "source": "ad_hoc", "amount_type": "fixed", "price_currency": "<value>", "tax_behavior": "exclusive", "is_archived": true, "product_id": "<value>", "type": "recurring", "recurring_interval": "year", "price_amount": 262272, "legacy": true}, {"created_at": "2023-08-24T17:03:16.161Z", "modified_at": "2025-05-07T18:20:34.107Z", "id": "<value>", "source": "catalog", "amount_type": "custom", "price_currency": "<value>", "tax_behavior": "location", "is_archived": true, "product_id": "<value>", "type": "recurring", "recurring_interval": "month", "minimum_amount": 827165, "maximum_amount": 310545, "preset_amount": 154160, "legacy": true}], "meters": [], "pending_update": {"created_at": "2025-06-23T08:50:11.993Z", "modified_at": "2026-11-18T10:27:58.317Z", "id": "<value>", "applies_at": "2026-04-10T00:55:03.476Z", "product_id": "<value>", "seats": 241744}}], "pagination": {"total_count": 947589, "max_page": 388476}}
         "422":
           application/json: {}
   subscriptions:export:
@@ -2616,7 +2629,7 @@ examples:
           limit: 10
       responses:
         "200":
-          application/json: {"items": [{"id": "<value>", "created_at": "2023-03-26T01:22:53.189Z", "modified_at": "2024-02-10T15:29:33.963Z", "status": "refunded", "paid": true, "subtotal_amount": 15468, "discount_amount": 962179, "net_amount": 308936, "tax_amount": 449820, "total_amount": 375942, "applied_balance_amount": 901379, "due_amount": 465509, "refunded_amount": 70124, "refunded_tax_amount": 297395, "currency": "Balboa", "billing_reason": "subscription_cycle", "billing_name": "<value>", "billing_address": {"country": "US"}, "invoice_number": "<value>", "is_invoice_generated": true, "customer_id": "<value>", "product_id": "<value>", "discount_id": "<value>", "subscription_id": "<value>", "checkout_id": "<value>", "metadata": {}, "platform_fee_amount": 500, "platform_fee_currency": "usd", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2024-03-16T14:29:40.056Z", "modified_at": "2024-12-01T04:46:22.222Z", "metadata": {"key": 7966.23}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-09-01T05:52:58.262Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, "product": {"metadata": {}, "id": "<value>", "created_at": "2025-02-24T18:51:29.694Z", "modified_at": "2025-04-13T23:14:41.573Z", "trial_interval": "week", "trial_interval_count": null, "name": "<value>", "description": "expense pip blue furthermore gnash frail yet ugly", "visibility": "public", "recurring_interval": "year", "recurring_interval_count": 465509, "is_recurring": true, "is_archived": false, "organization_id": "<value>"}, "discount": {"duration": "once", "duration_in_months": 782667, "type": "percentage", "basis_points": 224838, "created_at": "2024-11-05T22:56:54.203Z", "modified_at": "2024-08-14T13:19:22.767Z", "id": "<value>", "metadata": {}, "name": "<value>", "code": "<value>", "starts_at": "2023-03-15T19:46:41.506Z", "ends_at": "2025-06-29T08:50:29.569Z", "max_redemptions": 759343, "redemptions_count": 214063, "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737"}, "subscription": {"metadata": {"key": false, "key1": 6606.6}, "created_at": "2024-07-13T07:19:52.472Z", "modified_at": "2023-05-30T18:04:05.234Z", "id": "<value>", "amount": 941727, "currency": "CFA Franc BCEAO", "recurring_interval": "month", "recurring_interval_count": 76694, "status": "past_due", "current_period_start": "2023-08-06T07:04:45.093Z", "current_period_end": "2024-09-25T19:02:24.370Z", "trial_start": "2024-02-10T15:29:33.963Z", "trial_end": "2023-01-17T22:53:29.526Z", "cancel_at_period_end": true, "canceled_at": "2023-09-12T07:04:22.765Z", "started_at": "2023-01-18T06:49:58.589Z", "ends_at": "2023-10-25T10:02:37.340Z", "ended_at": "2023-07-26T14:27:14.451Z", "customer_id": "<value>", "product_id": "<value>", "discount_id": null, "checkout_id": "<value>", "customer_cancellation_reason": "unused", "customer_cancellation_comment": "<value>"}, "items": [{"created_at": "2024-02-19T18:25:16.033Z", "modified_at": "2025-09-17T15:07:41.764Z", "id": "<value>", "label": "<value>", "amount": 92904, "tax_amount": 275681, "proration": false, "product_price_id": "<value>"}, {"created_at": "2024-02-19T18:25:16.033Z", "modified_at": "2025-09-17T15:07:41.764Z", "id": "<value>", "label": "<value>", "amount": 92904, "tax_amount": 275681, "proration": false, "product_price_id": "<value>"}], "description": "Pro Plan"}], "pagination": {"total_count": 754496, "max_page": 599128}}
+          application/json: {"items": [{"id": "<value>", "created_at": "2023-03-26T01:22:53.189Z", "modified_at": "2024-02-10T15:29:33.963Z", "status": "refunded", "paid": true, "subtotal_amount": 15468, "discount_amount": 962179, "net_amount": 308936, "tax_amount": 449820, "total_amount": 375942, "applied_balance_amount": 901379, "due_amount": 465509, "refunded_amount": 70124, "refunded_tax_amount": 297395, "currency": "Balboa", "billing_reason": "subscription_cycle", "billing_name": "<value>", "billing_address": {"country": "US"}, "invoice_number": "<value>", "is_invoice_generated": true, "customer_id": "<value>", "product_id": "<value>", "discount_id": "<value>", "subscription_id": "<value>", "checkout_id": "<value>", "metadata": {}, "platform_fee_amount": 500, "platform_fee_currency": "usd", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2024-03-16T14:29:40.056Z", "modified_at": "2024-12-01T04:46:22.222Z", "metadata": {"key": 7966.23}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "type": "team", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-09-01T05:52:58.262Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, "product": {"metadata": {}, "id": "<value>", "created_at": "2025-02-24T18:51:29.694Z", "modified_at": "2025-04-13T23:14:41.573Z", "trial_interval": "week", "trial_interval_count": null, "name": "<value>", "description": "expense pip blue furthermore gnash frail yet ugly", "visibility": "public", "recurring_interval": "year", "recurring_interval_count": 465509, "is_recurring": true, "is_archived": false, "organization_id": "<value>"}, "discount": {"duration": "once", "duration_in_months": 782667, "type": "percentage", "basis_points": 224838, "created_at": "2024-11-05T22:56:54.203Z", "modified_at": "2024-08-14T13:19:22.767Z", "id": "<value>", "metadata": {}, "name": "<value>", "code": "<value>", "starts_at": "2023-03-15T19:46:41.506Z", "ends_at": "2025-06-29T08:50:29.569Z", "max_redemptions": 759343, "redemptions_count": 214063, "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737"}, "subscription": {"metadata": {"key": false, "key1": 6606.6}, "created_at": "2024-07-13T07:19:52.472Z", "modified_at": "2023-05-30T18:04:05.234Z", "id": "<value>", "amount": 941727, "currency": "CFA Franc BCEAO", "recurring_interval": "month", "recurring_interval_count": 76694, "status": "past_due", "current_period_start": "2023-08-06T07:04:45.093Z", "current_period_end": "2024-09-25T19:02:24.370Z", "trial_start": "2024-02-10T15:29:33.963Z", "trial_end": "2023-01-17T22:53:29.526Z", "cancel_at_period_end": true, "canceled_at": "2023-09-12T07:04:22.765Z", "started_at": "2023-01-18T06:49:58.589Z", "ends_at": "2023-10-25T10:02:37.340Z", "ended_at": "2023-07-26T14:27:14.451Z", "customer_id": "<value>", "product_id": "<value>", "discount_id": null, "checkout_id": "<value>", "customer_cancellation_reason": "unused", "customer_cancellation_comment": "<value>"}, "items": [{"created_at": "2024-02-19T18:25:16.033Z", "modified_at": "2025-09-17T15:07:41.764Z", "id": "<value>", "label": "<value>", "amount": 92904, "tax_amount": 275681, "proration": false, "product_price_id": "<value>"}, {"created_at": "2024-02-19T18:25:16.033Z", "modified_at": "2025-09-17T15:07:41.764Z", "id": "<value>", "label": "<value>", "amount": 92904, "tax_amount": 275681, "proration": false, "product_price_id": "<value>"}], "description": "Pro Plan"}], "pagination": {"total_count": 754496, "max_page": 599128}}
         "422":
           application/json: {}
   orders:get:
@@ -3097,7 +3110,7 @@ examples:
           include_members: false
       responses:
         "200":
-          application/json: {"items": [{"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-01-24T11:10:48.726Z", "modified_at": null, "metadata": {"key": 712185, "key1": true}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2024-09-16T01:33:30.089Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-01-24T11:10:48.726Z", "modified_at": null, "metadata": {"key": 712185, "key1": true}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2024-09-16T01:33:30.089Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-01-24T11:10:48.726Z", "modified_at": null, "metadata": {"key": 712185, "key1": true}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2024-09-16T01:33:30.089Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}], "pagination": {"total_count": 72225, "max_page": 542988}}
+          application/json: {"items": [{"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2026-11-26T22:42:18.922Z", "modified_at": "2024-03-05T17:31:52.935Z", "metadata": {"key": 712185}, "email_verified": true, "type": "team", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": null, "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2026-07-09T17:44:59.175Z", "modified_at": "2024-03-20T03:49:35.883Z", "metadata": {"key": 3696.01}, "email_verified": true, "type": "team", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2024-03-01T12:05:38.521Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2026-04-06T10:59:28.244Z", "modified_at": "2026-03-11T20:23:23.090Z", "metadata": {}, "email_verified": true, "type": "team", "name": "John Doe", "billing_address": null, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-04-20T10:04:36.256Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}], "pagination": {"total_count": 72225, "max_page": 542988}}
         "422":
           application/json: {}
   customers:create:
@@ -3106,7 +3119,7 @@ examples:
         query:
           include_members: false
       requestBody:
-        application/json: {"external_id": "usr_1337", "email": "customer@example.com", "name": "John Doe", "billing_address": {"country": "US"}, "locale": "en", "type": "individual", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "owner": {"email": "member@example.com", "name": "Jane Doe", "external_id": "usr_1337"}}
+        application/json: {"external_id": "usr_1337", "name": "John Doe", "billing_address": {"country": "US"}, "locale": "en", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "owner": {"email": "member@example.com", "name": "Jane Doe", "external_id": "usr_1337"}, "type": "individual", "email": "customer@example.com"}
       responses:
         "201":
           application/json: {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-12-18T06:01:42.001Z", "modified_at": null, "metadata": {"key": 404263}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "type": "individual", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2024-12-23T07:32:24.258Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}
@@ -3134,7 +3147,7 @@ examples:
         query:
           include_members: false
       requestBody:
-        application/json: {"email": "customer@example.com", "name": "John Doe", "billing_address": {"country": "US"}, "locale": "en", "external_id": "usr_1337", "type": "individual"}
+        application/json: {"email": "customer@example.com", "name": "John Doe", "billing_address": {"country": "US"}, "locale": "en", "external_id": "usr_1337"}
       responses:
         "200":
           application/json: {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2024-03-16T17:26:39.570Z", "modified_at": null, "metadata": {}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "type": "individual", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-04-14T07:55:04.911Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}
@@ -3264,14 +3277,14 @@ examples:
     speakeasy-default-customer-portal:customers:get:
       responses:
         "200":
-          application/json: {"created_at": "2024-01-04T22:57:05.515Z", "modified_at": "2024-11-27T21:33:00.017Z", "id": "<value>", "email": "Rosetta24@hotmail.com", "email_verified": false, "name": "<value>", "billing_name": "<value>", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "oauth_accounts": {"key": {"account_id": "<id>", "account_username": "<value>"}, "key1": {"account_id": "<id>", "account_username": "<value>"}}, "type": "individual"}
+          application/json: {"created_at": "2024-01-04T22:57:05.515Z", "modified_at": "2024-11-27T21:33:00.017Z", "id": "<value>", "email": "Rosetta24@hotmail.com", "email_verified": false, "name": "<value>", "billing_name": "<value>", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "oauth_accounts": {"key": {"account_id": "<id>", "account_username": "<value>"}, "key1": {"account_id": "<id>", "account_username": "<value>"}}}
   customer_portal:customers:update:
     speakeasy-default-customer-portal:customers:update:
       requestBody:
         application/json: {"billing_address": {"country": "US"}}
       responses:
         "200":
-          application/json: {"created_at": "2024-02-15T02:33:28.067Z", "modified_at": "2024-03-16T18:44:25.390Z", "id": "<value>", "email": "Jett.Thompson@gmail.com", "email_verified": false, "name": "<value>", "billing_name": "<value>", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "oauth_accounts": {"key": {"account_id": "<id>", "account_username": "<value>"}, "key1": {"account_id": "<id>", "account_username": "<value>"}, "key2": {"account_id": "<id>", "account_username": "<value>"}}, "type": "individual"}
+          application/json: {"created_at": "2024-02-15T02:33:28.067Z", "modified_at": "2024-03-16T18:44:25.390Z", "id": "<value>", "email": "Jett.Thompson@gmail.com", "email_verified": false, "name": "<value>", "billing_name": "<value>", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "oauth_accounts": {"key": {"account_id": "<id>", "account_username": "<value>"}, "key1": {"account_id": "<id>", "account_username": "<value>"}, "key2": {"account_id": "<id>", "account_username": "<value>"}}}
         "422":
           application/json: {}
   customer_portal:customers:get_payment_methods:
@@ -3360,7 +3373,7 @@ examples:
           limit: 10
       responses:
         "200":
-          application/json: {"items": [{"id": "<value>", "created_at": "2025-10-12T13:16:32.342Z", "modified_at": "2024-02-15T22:19:38.712Z", "organization_id": "<value>", "customer_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-02-09T18:15:36.544Z", "modified_at": "2024-01-08T08:07:33.400Z", "metadata": {}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-02-23T12:07:25.822Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "disabled", "limit_activations": 541102, "usage": 249832, "limit_usage": 894001, "validations": 230754, "last_validated_at": "2023-11-03T16:10:09.874Z", "expires_at": "2025-07-17T22:47:09.408Z"}, {"id": "<value>", "created_at": "2025-10-12T13:16:32.342Z", "modified_at": "2024-02-15T22:19:38.712Z", "organization_id": "<value>", "customer_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-02-09T18:15:36.544Z", "modified_at": "2024-01-08T08:07:33.400Z", "metadata": {}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-02-23T12:07:25.822Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "disabled", "limit_activations": 541102, "usage": 249832, "limit_usage": 894001, "validations": 230754, "last_validated_at": "2023-11-03T16:10:09.874Z", "expires_at": "2025-07-17T22:47:09.408Z"}, {"id": "<value>", "created_at": "2025-10-12T13:16:32.342Z", "modified_at": "2024-02-15T22:19:38.712Z", "organization_id": "<value>", "customer_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-02-09T18:15:36.544Z", "modified_at": "2024-01-08T08:07:33.400Z", "metadata": {}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-02-23T12:07:25.822Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "disabled", "limit_activations": 541102, "usage": 249832, "limit_usage": 894001, "validations": 230754, "last_validated_at": "2023-11-03T16:10:09.874Z", "expires_at": "2025-07-17T22:47:09.408Z"}], "pagination": {"total_count": 541762, "max_page": 612074}}
+          application/json: {"items": [{"id": "<value>", "created_at": "2025-10-12T13:16:32.342Z", "modified_at": "2024-02-15T22:19:38.712Z", "organization_id": "<value>", "customer_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-02-09T18:15:36.544Z", "modified_at": "2024-01-08T08:07:33.400Z", "metadata": {}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "type": "team", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-02-23T12:07:25.822Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "disabled", "limit_activations": 541102, "usage": 249832, "limit_usage": 894001, "validations": 230754, "last_validated_at": "2023-11-03T16:10:09.874Z", "expires_at": "2025-07-17T22:47:09.408Z"}, {"id": "<value>", "created_at": "2025-10-12T13:16:32.342Z", "modified_at": "2024-02-15T22:19:38.712Z", "organization_id": "<value>", "customer_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-02-09T18:15:36.544Z", "modified_at": "2024-01-08T08:07:33.400Z", "metadata": {}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "type": "team", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-02-23T12:07:25.822Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "disabled", "limit_activations": 541102, "usage": 249832, "limit_usage": 894001, "validations": 230754, "last_validated_at": "2023-11-03T16:10:09.874Z", "expires_at": "2025-07-17T22:47:09.408Z"}, {"id": "<value>", "created_at": "2025-10-12T13:16:32.342Z", "modified_at": "2024-02-15T22:19:38.712Z", "organization_id": "<value>", "customer_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-02-09T18:15:36.544Z", "modified_at": "2024-01-08T08:07:33.400Z", "metadata": {}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "type": "team", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-02-23T12:07:25.822Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, "benefit_id": "<value>", "key": "<key>", "display_key": "<value>", "status": "disabled", "limit_activations": 541102, "usage": 249832, "limit_usage": 894001, "validations": 230754, "last_validated_at": "2023-11-03T16:10:09.874Z", "expires_at": "2025-07-17T22:47:09.408Z"}], "pagination": {"total_count": 541762, "max_page": 612074}}
         "401":
           application/json: {"error": "Unauthorized", "detail": "<value>"}
         "404":
@@ -3534,7 +3547,7 @@ examples:
           limit: 10
       responses:
         "200":
-          application/json: {"items": [{"id": "<value>", "timestamp": "2024-04-23T12:38:06.948Z", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "customer_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2024-10-18T16:53:49.550Z", "modified_at": "2023-07-21T19:02:11.375Z", "metadata": {"key": "<value>"}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2024-12-11T18:14:49.510Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "external_customer_id": null, "child_count": 0, "label": "<value>", "name": "<value>", "source": "user", "metadata": {}}, {"id": "<value>", "timestamp": "2024-04-23T12:38:06.948Z", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "customer_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2024-10-18T16:53:49.550Z", "modified_at": "2023-07-21T19:02:11.375Z", "metadata": {"key": "<value>"}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2024-12-11T18:14:49.510Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "external_customer_id": null, "child_count": 0, "label": "<value>", "name": "<value>", "source": "user", "metadata": {}}], "pagination": {"has_next_page": true}}
+          application/json: {"items": [{"id": "<value>", "timestamp": "2025-04-23T12:38:06.948Z", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "customer_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2026-11-05T19:10:02.206Z", "modified_at": "2026-06-07T22:31:55.492Z", "metadata": {}, "email_verified": true, "type": "team", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-12-11T18:14:49.510Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "external_customer_id": null, "child_count": 0, "label": "<value>", "name": "<value>", "source": "user", "metadata": {}}, {"id": "<value>", "timestamp": "2025-04-23T12:38:06.948Z", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "customer_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2026-11-05T19:10:02.206Z", "modified_at": "2026-06-07T22:31:55.492Z", "metadata": {}, "email_verified": true, "type": "team", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-12-11T18:14:49.510Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "external_customer_id": null, "child_count": 0, "label": "<value>", "name": "<value>", "source": "user", "metadata": {}}], "pagination": {"has_next_page": true}}
         "422":
           application/json: {}
   events:list_names:
@@ -3556,7 +3569,7 @@ examples:
           id: "<value>"
       responses:
         "200":
-          application/json: {"id": "<value>", "timestamp": "2025-07-15T01:45:09.588Z", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "customer_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-09-23T01:46:04.113Z", "modified_at": "2024-10-13T09:06:05.186Z", "metadata": {"key": "<value>", "key1": "<value>", "key2": 4128.23}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2023-06-16T14:05:11.716Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "external_customer_id": "<id>", "child_count": 0, "label": "<value>", "name": "<value>", "source": "user", "metadata": {}}
+          application/json: {"id": "<value>", "timestamp": "2025-07-15T01:45:09.588Z", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "customer_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-09-23T01:46:04.113Z", "modified_at": "2024-10-13T09:06:05.186Z", "metadata": {"key": "<value>", "key1": "<value>", "key2": 4128.23}, "email": "customer@example.com", "email_verified": true, "type": "individual", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2023-06-16T14:05:11.716Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "external_customer_id": "<id>", "child_count": 0, "label": "<value>", "name": "<value>", "source": "user", "metadata": {}}
         "404":
           application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "422":
@@ -3643,7 +3656,7 @@ examples:
           limit: 10
       responses:
         "200":
-          application/json: {"items": [{"id": "<value>", "created_at": "2023-09-26T20:59:43.930Z", "modified_at": null, "customer_id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "meter_id": "d498a884-e2cd-4d3e-8002-f536468a8b22", "consumed_units": 25, "credited_units": 100, "balance": 75, "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2024-11-12T11:50:33.934Z", "modified_at": "2025-11-02T13:42:04.539Z", "metadata": {"key": "<value>", "key1": false}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2023-05-20T01:40:34.211Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=blank"}, "meter": {"metadata": {"key": "<value>", "key1": false}, "created_at": "2024-06-12T02:14:05.392Z", "modified_at": "2024-03-25T10:32:46.808Z", "id": "<value>", "name": "<value>", "filter": {"conjunction": "or", "clauses": [{"conjunction": "or", "clauses": []}, {"property": "<value>", "operator": "gte", "value": "<value>"}]}, "aggregation": {"func": "avg", "property": "<value>"}, "organization_id": "<value>"}}], "pagination": {"total_count": 434507, "max_page": 960740}}
+          application/json: {"items": [{"id": "<value>", "created_at": "2023-09-26T20:59:43.930Z", "modified_at": null, "customer_id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "meter_id": "d498a884-e2cd-4d3e-8002-f536468a8b22", "consumed_units": 25, "credited_units": 100, "balance": 75, "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-01-19T17:27:25.354Z", "modified_at": "2024-02-06T00:18:45.743Z", "metadata": {"key": 9457.77}, "email_verified": true, "type": "team", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": null, "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "meter": {"metadata": {"key": "<value>", "key1": false}, "created_at": "2024-06-12T02:14:05.392Z", "modified_at": "2024-03-25T10:32:46.808Z", "id": "<value>", "name": "<value>", "filter": {"conjunction": "or", "clauses": [{"conjunction": "or", "clauses": []}, {"property": "<value>", "operator": "gte", "value": "<value>"}]}, "aggregation": {"func": "avg", "property": "<value>"}, "organization_id": "<value>"}}], "pagination": {"total_count": 434507, "max_page": 960740}}
         "422":
           application/json: {}
   customer_meters:get:
@@ -3667,7 +3680,7 @@ examples:
           limit: 10
       responses:
         "200":
-          application/json: {"items": [{"created_at": "2025-11-17T14:42:10.265Z", "modified_at": "2024-11-01T23:43:16.180Z", "id": "<value>", "processor": "stripe", "status": "failed", "amount": 1000, "currency": "usd", "method": "card", "decline_reason": "insufficient_funds", "decline_message": "Your card has insufficient funds.", "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "checkout_id": "e4b478fa-cd25-4253-9f1f-8a41e6370ede", "order_id": "e4b478fa-cd25-4253-9f1f-8a41e6370ede", "method_metadata": {"brand": "visa", "last4": "4242"}}], "pagination": {"total_count": 881287, "max_page": 142671}}
+          application/json: {"items": [{"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-06-28T14:46:14.367Z", "modified_at": "2026-11-17T14:42:10.265Z", "metadata": {"key": 8355.22}, "email": "customer@example.com", "email_verified": true, "type": "individual", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2024-02-21T05:15:13.267Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}], "pagination": {"total_count": 881287, "max_page": 142671}}
         "422":
           application/json: {}
   payments:get:
@@ -3921,7 +3934,7 @@ examples:
           limit: 10
       responses:
         "200":
-          application/json: {"items": [{"created_at": "2024-08-12T11:30:34.106Z", "modified_at": "2024-09-26T02:26:48.405Z", "id": "<value>", "is_granted": true, "is_revoked": true, "subscription_id": "<value>", "order_id": "<value>", "customer_id": "<value>", "benefit_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2023-06-01T22:42:28.725Z", "modified_at": "2025-01-17T12:45:17.064Z", "metadata": {}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2025-05-30T19:02:44.214Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "benefit": {"id": "<value>", "created_at": "2024-11-24T19:12:31.430Z", "modified_at": "2023-04-29T21:15:24.343Z", "type": "discord", "description": "foot pro completion nor which worthy geez slimy zany", "selectable": true, "deletable": true, "organization_id": "<value>", "metadata": {"key": true}, "properties": {"guild_id": "<id>", "role_id": "<id>", "kick_member": false, "guild_token": "<value>"}}, "properties": {}}], "pagination": {"total_count": 61031, "max_page": 387885}}
+          application/json: {"items": [{"created_at": "2024-08-12T11:30:34.106Z", "modified_at": "2024-09-26T02:26:48.405Z", "id": "<value>", "is_granted": true, "is_revoked": true, "subscription_id": "<value>", "order_id": "<value>", "customer_id": "<value>", "benefit_id": "<value>", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-08-20T04:26:19.977Z", "modified_at": "2025-04-19T16:34:47.779Z", "metadata": {"key": "<value>"}, "email_verified": true, "type": "team", "name": "John Doe", "billing_address": {"country": "US"}, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2024-08-23T14:02:07.707Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "benefit": {"id": "<value>", "created_at": "2024-11-24T19:12:31.430Z", "modified_at": "2023-04-29T21:15:24.343Z", "type": "discord", "description": "foot pro completion nor which worthy geez slimy zany", "selectable": true, "deletable": true, "organization_id": "<value>", "metadata": {"key": true}, "properties": {"guild_id": "<id>", "role_id": "<id>", "kick_member": false, "guild_token": "<value>"}}, "properties": {}}], "pagination": {"total_count": 61031, "max_page": 387885}}
         "422":
           application/json: {}
   customers:export:
@@ -4429,7 +4442,7 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Python SDK Changes Detected:\n* `polar._endpointcheckout_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointcheckout_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointcheckout_expired_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_active_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_canceled_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_uncanceled_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_revoked_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_past_due_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointproduct_created_post()`: \n  *  `request.data.prices.[]` **Changed** **Breaking** :warning:\n* `polar._endpointproduct_updated_post()`: \n  *  `request.data.prices.[]` **Changed** **Breaking** :warning:\n* `polar._endpointorganization_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar.checkouts.client_confirm()`:  `response` **Changed** **Breaking** :warning:\n* `polar.organizations.create()`: \n  *  `request` **Changed** **Breaking** :warning:\n  *  `response` **Changed**\n* `polar.checkouts.client_update()`:  `response` **Changed** **Breaking** :warning:\n* `polar.organizations.update()`: \n  *  `request.organization_update` **Changed** **Breaking** :warning:\n  *  `response` **Changed**\n* `polar.checkouts.client_get()`:  `response` **Changed** **Breaking** :warning:\n* `polar.checkouts.update()`:  `response` **Changed** **Breaking** :warning:\n* `polar.checkouts.get()`:  `response` **Changed** **Breaking** :warning:\n* `polar.checkouts.create()`: \n  *  `request.prices.{}.[]` **Changed**\n  *  `response` **Changed** **Breaking** :warning:\n* `polar.checkouts.list()`:  `response.items.[]` **Changed** **Breaking** :warning:\n* `polar.products.get()`:  `response.prices.[]` **Changed**\n* `polar.checkout-links.create()`:  `response.products.[].prices.[]` **Changed**\n* `polar.products.list()`:  `response.items.[].prices.[]` **Changed**\n* `polar.products.update()`: \n  *  `request.product_update.prices.[].[2]` **Changed**\n  *  `response.prices.[]` **Changed**\n* `polar.products.update_benefits()`:  `response.prices.[]` **Changed**\n* `polar.subscriptions.update()`: \n  *  `response` **Changed**\n  *  `error.status[402]` **Added**\n* `polar.subscriptions.revoke()`:  `response` **Changed**\n* `polar.subscriptions.get()`:  `response` **Changed**\n* `polar.subscriptions.create()`:  `response` **Changed**\n* `polar.subscriptions.list()`:  `response.items.[]` **Changed**\n* `polar.organizations.get()`:  `response` **Changed**\n* `polar.organizations.list()`:  `response.items.[]` **Changed**\n* `polar.checkout-links.list()`:  `response.items.[].products.[].prices.[]` **Changed**\n* `polar.products.create()`: \n  *  `request.[product_create_recurring].prices.[]` **Changed**\n  *  `response.prices.[]` **Changed**\n* `polar.checkout-links.get()`:  `response.products.[].prices.[]` **Changed**\n* `polar.checkout-links.update()`:  `response.products.[].prices.[]` **Changed**\n* `polar.members.list_members()`:  `request.role` **Added**\n* `polar.customer_portal.seats.list_claimed_subscriptions()`:  `response.items.[]` **Changed**\n* `polar.customer_portal.orders.list()`:  `response.items.[].product.prices.[]` **Changed**\n* `polar.customer_portal.orders.get()`:  `response.product.prices.[]` **Changed**\n* `polar.customer_portal.orders.update()`:  `response.product.prices.[]` **Changed**\n* `polar.customer_portal.organizations.get()`:  `response.products.[].prices.[]` **Changed**\n* `polar.customer_portal.subscriptions.list()`:  `response.items.[]` **Changed**\n* `polar.customer_portal.subscriptions.get()`:  `response` **Changed**\n* `polar.customer_portal.subscriptions.cancel()`:  `response` **Changed**\n* `polar.customer_portal.subscriptions.update()`: \n  *  `response` **Changed**\n  *  `error.status[402]` **Added**\n"
+releaseNotes: "## Python SDK Changes Detected:\n* `polar._endpointcustomer_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointcustomer_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointcustomer_deleted_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointcustomer_state_changed_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointorder_created_post()`: \n  *  `request.data.customer` **Changed** **Breaking** :warning:\n* `polar._endpointorder_updated_post()`: \n  *  `request.data.customer` **Changed** **Breaking** :warning:\n* `polar._endpointorder_paid_post()`: \n  *  `request.data.customer` **Changed** **Breaking** :warning:\n* `polar._endpointorder_refunded_post()`: \n  *  `request.data.customer` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_created_post()`: \n  *  `request.data.customer` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_updated_post()`: \n  *  `request.data.customer` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_active_post()`: \n  *  `request.data.customer` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_canceled_post()`: \n  *  `request.data.customer` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_uncanceled_post()`: \n  *  `request.data.customer` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_revoked_post()`: \n  *  `request.data.customer` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_past_due_post()`: \n  *  `request.data.customer` **Changed** **Breaking** :warning:\n* `polar._endpointbenefit_grant_created_post()`: \n  *  `request.data.[benefit_grant_downloadables_webhook].customer` **Changed** **Breaking** :warning:\n* `polar._endpointbenefit_grant_updated_post()`: \n  *  `request.data.[benefit_grant_discord_webhook].customer` **Changed** **Breaking** :warning:\n* `polar._endpointbenefit_grant_cycled_post()`: \n  *  `request.data.[benefit_grant_git_hub_repository_webhook].customer` **Changed** **Breaking** :warning:\n* `polar._endpointbenefit_grant_revoked_post()`: \n  *  `request.data.[benefit_grant_downloadables_webhook].customer` **Changed** **Breaking** :warning:\n* `polar.subscriptions.list()`:  `response.items.[].customer` **Changed** **Breaking** :warning:\n* `polar.subscriptions.create()`:  `response.customer` **Changed** **Breaking** :warning:\n* `polar.subscriptions.get()`:  `response.customer` **Changed** **Breaking** :warning:\n* `polar.subscriptions.revoke()`:  `response.customer` **Changed** **Breaking** :warning:\n* `polar.subscriptions.update()`:  `response.customer` **Changed** **Breaking** :warning:\n* `polar.benefits.grants()`:  `response.items.[].customer` **Changed** **Breaking** :warning:\n* `polar.benefit-grants.list()`:  `response.items.[].customer` **Changed** **Breaking** :warning:\n* `polar.orders.list()`:  `response.items.[].customer` **Changed** **Breaking** :warning:\n* `polar.orders.get()`:  `response.customer` **Changed** **Breaking** :warning:\n* `polar.orders.update()`:  `response.customer` **Changed** **Breaking** :warning:\n* `polar.license_keys.list()`:  `response.items.[].customer` **Changed** **Breaking** :warning:\n* `polar.license_keys.get()`:  `response.customer` **Changed** **Breaking** :warning:\n* `polar.license_keys.update()`:  `response.customer` **Changed** **Breaking** :warning:\n* `polar.license_keys.get_activation()`:  `response.license_key.customer` **Changed** **Breaking** :warning:\n* `polar.license_keys.validate()`:  `response.customer` **Changed** **Breaking** :warning:\n* `polar.license_keys.activate()`:  `response.license_key.customer` **Changed** **Breaking** :warning:\n* `polar.customers.list()`:  `response.items.[]` **Changed** **Breaking** :warning:\n* `polar.customers.create()`: \n  *  `request` **Changed** **Breaking** :warning:\n  *  `response` **Changed** **Breaking** :warning:\n* `polar.customers.get()`:  `response` **Changed** **Breaking** :warning:\n* `polar.customers.update()`:  `response` **Changed** **Breaking** :warning:\n* `polar.customers.get_external()`:  `response` **Changed** **Breaking** :warning:\n* `polar.customers.update_external()`:  `response` **Changed** **Breaking** :warning:\n* `polar.customers.get_state()`:  `response` **Changed** **Breaking** :warning:\n* `polar.customers.get_state_external()`:  `response` **Changed** **Breaking** :warning:\n* `polar.customer_portal.benefit-grants.list()`:  `response.items.[].[customer_benefit_grant_feature_flag].customer.email` **Changed** **Breaking** :warning:\n* `polar.customer_portal.benefit-grants.get()`:  `response.[customer_benefit_grant_meter_credit].customer.email` **Changed** **Breaking** :warning:\n* `polar.customer_portal.benefit-grants.update()`:  `response.[customer_benefit_grant_custom].customer.email` **Changed** **Breaking** :warning:\n* `polar.customer_portal.customers.get()`:  `response.email` **Changed** **Breaking** :warning:\n* `polar.customer_portal.customers.update()`:  `response.email` **Changed** **Breaking** :warning:\n* `polar.customer_portal.license_keys.list()`:  `response.items.[].customer` **Changed** **Breaking** :warning:\n* `polar.customer_portal.license_keys.get()`:  `response.customer` **Changed** **Breaking** :warning:\n* `polar.customer_portal.license_keys.validate()`:  `response.customer` **Changed** **Breaking** :warning:\n* `polar.customer_portal.license_keys.activate()`:  `response.license_key.customer` **Changed** **Breaking** :warning:\n* `polar.customer-sessions.create()`:  `response.customer` **Changed** **Breaking** :warning:\n* `polar.events.list()`:  `response.[list_resource_event_].items.[].[system_event]` **Changed** **Breaking** :warning:\n* `polar.events.get()`:  `response.[system_event]` **Changed** **Breaking** :warning:\n* `polar.customer_meters.list()`:  `response.items.[].customer` **Changed** **Breaking** :warning:\n* `polar.customer_meters.get()`:  `response.customer` **Changed** **Breaking** :warning:\n* `polar.payments.list()`:  `response.items.[]` **Changed**\n"
 trackedFiles:
   .devcontainer/README.md:
     last_write_checksum: sha1:e2a191a1fa8ceb27387eb32eabf36f7ad16a532c
@@ -4606,19 +4619,19 @@ trackedFiles:
   docs/models/benefitgithubrepositoryupdatemetadata.md:
     last_write_checksum: sha1:98e37f59f1c52381260fe98a38043280fbcf2396
   docs/models/benefitgrant.md:
-    last_write_checksum: sha1:373e195dc47fae40be687643bbcf10332597e623
+    last_write_checksum: sha1:7bee7f73f139b125538ff8db9227b0cfc55cbd56
   docs/models/benefitgrantcustomproperties.md:
     last_write_checksum: sha1:cf876e9f736a3dae7b6c0348e6a13f6714673134
   docs/models/benefitgrantcustomwebhook.md:
-    last_write_checksum: sha1:58b96a548b3a10b23927793cbc0902353d4816f5
+    last_write_checksum: sha1:62335aec47544e2821b5acea8937aa696c7587a6
   docs/models/benefitgrantdiscordproperties.md:
     last_write_checksum: sha1:00513f7b891a6339223b7541c863699ba9c92521
   docs/models/benefitgrantdiscordwebhook.md:
-    last_write_checksum: sha1:50b5491304f37fd2493a872567d60340c3f1cb39
+    last_write_checksum: sha1:11ea55f2132e1c13a552b15eaa8c45a0500cadc9
   docs/models/benefitgrantdownloadablesproperties.md:
     last_write_checksum: sha1:f3b71e648e917e81df93761da3da4b043a93bf8a
   docs/models/benefitgrantdownloadableswebhook.md:
-    last_write_checksum: sha1:45c69a0493ee5c720b2d544a14c0e66412850b7a
+    last_write_checksum: sha1:f4a0275d4833c97b89473f11baf00edc15b76fb8
   docs/models/benefitgrantedevent.md:
     last_write_checksum: sha1:bf4c893a4a5528e65d45836e67af859744fb57f4
   docs/models/benefitgranterror.md:
@@ -4626,23 +4639,23 @@ trackedFiles:
   docs/models/benefitgrantfeatureflagproperties.md:
     last_write_checksum: sha1:ac1a45c5a0114bcdea380f163dcbe566a09898c5
   docs/models/benefitgrantfeatureflagwebhook.md:
-    last_write_checksum: sha1:bee929f7e7723ac75e53201ec13aea4e20037e3f
+    last_write_checksum: sha1:eb94d05dcadb02fb775613184267d0f5324d76c4
   docs/models/benefitgrantgithubrepositoryproperties.md:
     last_write_checksum: sha1:efee0b2d81679c2d462543572d86e7a0aa553d22
   docs/models/benefitgrantgithubrepositorypropertiespermission.md:
     last_write_checksum: sha1:32845f97ca0e467021bdd0856130686d96b2fb7b
   docs/models/benefitgrantgithubrepositorywebhook.md:
-    last_write_checksum: sha1:a60afff8677f672a3e8da4cd9b8858540a9eefb9
+    last_write_checksum: sha1:09cd829444d75943f78110ec880fc93ab4aa1104
   docs/models/benefitgrantlicensekeysproperties.md:
     last_write_checksum: sha1:0a8a2a99eff609d946c659f21b6157d6470062cd
   docs/models/benefitgrantlicensekeyswebhook.md:
-    last_write_checksum: sha1:0fd9b70823d62860f7301c9e330594db32999aa8
+    last_write_checksum: sha1:3cfe98c7a53ec9414a6c9873b58d327c5e55e124
   docs/models/benefitgrantmetadata.md:
     last_write_checksum: sha1:b3cd86d8df5ac96a060cd1ee12f6af829dab58da
   docs/models/benefitgrantmetercreditproperties.md:
     last_write_checksum: sha1:2427903a94495e7c5fac3f611ce630e1639e4cb9
   docs/models/benefitgrantmetercreditwebhook.md:
-    last_write_checksum: sha1:92c37d990223b383efcf8494300c11694dead8b5
+    last_write_checksum: sha1:35ea802ca3c9d3c2372d5755fa889e87bcd06b7c
   docs/models/benefitgrantslistqueryparamcustomeridfilter.md:
     last_write_checksum: sha1:7e4e1e5a37de6c0cd8395a1e88a4bb0230ffcf5f
   docs/models/benefitgrantslistqueryparamorganizationidfilter.md:
@@ -4944,7 +4957,7 @@ trackedFiles:
   docs/models/cursorpagination.md:
     last_write_checksum: sha1:fa2063f2776d648ede7081386c040aa2fece5cad
   docs/models/customer.md:
-    last_write_checksum: sha1:9c6bca794a112e3179ab4c38065b4f2cc3e48090
+    last_write_checksum: sha1:273257bda7828498684abefd55e4eed84eadfd19
   docs/models/customerbenefitgrant.md:
     last_write_checksum: sha1:d6786372873dd0132a53ebb084de6b86b8d78170
   docs/models/customerbenefitgrantcustom.md:
@@ -4986,13 +4999,11 @@ trackedFiles:
   docs/models/customercancellationreason.md:
     last_write_checksum: sha1:ebb7063b0228ef4a0969c2b2ca156d2fde1f0c3e
   docs/models/customercreate.md:
-    last_write_checksum: sha1:7e34bbf7f8365d0d048395c8a555fae2bf51c7b8
+    last_write_checksum: sha1:d4d11b77c1b51e581945f9ca39e2d87c74e0d55d
   docs/models/customercreatedevent.md:
     last_write_checksum: sha1:22ad38e38debc7a1ac99207777702bdd9c7c5abe
   docs/models/customercreatedmetadata.md:
-    last_write_checksum: sha1:ba5e7747fb7d02f26e9994bbc7f2bddfe7353bf7
-  docs/models/customercreatemetadata.md:
-    last_write_checksum: sha1:ce6f0affad13bec14a6420471eefa97ca2905439
+    last_write_checksum: sha1:32e396371d65a1a94ea636ba0c697d17cfdc7616
   docs/models/customercustomermeter.md:
     last_write_checksum: sha1:0d9870dddada224eb77115169c3a906f81ccc2b6
   docs/models/customercustomermetermeter.md:
@@ -5004,15 +5015,23 @@ trackedFiles:
   docs/models/customerdeletedevent.md:
     last_write_checksum: sha1:e92170b719193b3b4415c3362f95fec33d9fc1a0
   docs/models/customerdeletedmetadata.md:
-    last_write_checksum: sha1:30bacf89954b115ecd74e332c1e9ce1e05bb98dc
+    last_write_checksum: sha1:3a4ae59253f481bf444b4032b87993efa47808a6
   docs/models/customeremailfilter.md:
     last_write_checksum: sha1:fde0f2840678a9f141cce80b969fed5047cd1f92
   docs/models/customeridfilter.md:
     last_write_checksum: sha1:9e9ff05b6e673fadfd6d483a95b64c9d43878d42
+  docs/models/customerindividual.md:
+    last_write_checksum: sha1:60d780a56a648c85ad16ee86510770ad9a363eeb
+  docs/models/customerindividualcreate.md:
+    last_write_checksum: sha1:8e45ab29d04cf4b0b73e4f40adfac99a34da05de
+  docs/models/customerindividualcreatemetadata.md:
+    last_write_checksum: sha1:97fdf1aed09e77427d5ca97751d333b94486d54e
+  docs/models/customerindividualtaxid.md:
+    last_write_checksum: sha1:bdb5987e70b7b252c32f11194bf500c9d4f0913e
   docs/models/customermetadata.md:
     last_write_checksum: sha1:8daa157500af38e886c32774f88d4c7d31ebdeaf
   docs/models/customermeter.md:
-    last_write_checksum: sha1:44132d7cfbd9ad9300153bc96076838e34823be6
+    last_write_checksum: sha1:ead378fe57348602c885616e23b7d65c4be66dbf
   docs/models/customermetersgetrequest.md:
     last_write_checksum: sha1:91359cbd09c6971cdc6ca339e5cce4ad18021482
   docs/models/customermeterslistqueryparamcustomeridfilter.md:
@@ -5086,7 +5105,7 @@ trackedFiles:
   docs/models/customerportalbenefitgrantsupdatesecurity.md:
     last_write_checksum: sha1:52d4211bea73cfb3a1d25aed09cc2389b776bc62
   docs/models/customerportalcustomer.md:
-    last_write_checksum: sha1:225aa23e864809722d165ce83cf44611650a6e20
+    last_write_checksum: sha1:353c2197b328f68df80b321d2f49b4384d2ef1ff
   docs/models/customerportalcustomermetersgetrequest.md:
     last_write_checksum: sha1:a33b9ff9b4adf9434feb24c1f645db7651d40893
   docs/models/customerportalcustomermetersgetsecurity.md:
@@ -5272,7 +5291,7 @@ trackedFiles:
   docs/models/customerseatsrevokeseatrequest.md:
     last_write_checksum: sha1:50236d07becae1f08f04c3a4e60713dd1a18863d
   docs/models/customersession.md:
-    last_write_checksum: sha1:1e712abee3e6471d18b3b33c42fb473bbd9365dc
+    last_write_checksum: sha1:8de486886079230ddeaf21f271f4338b58d26323
   docs/models/customersessioncustomerexternalidcreate.md:
     last_write_checksum: sha1:3364c1c1f26abc86f10096c42b7b024e0e272d18
   docs/models/customersessioncustomeridcreate.md:
@@ -5298,15 +5317,19 @@ trackedFiles:
   docs/models/customerslistrequest.md:
     last_write_checksum: sha1:170c64fefb80210d20d0baf03184294288f7113e
   docs/models/customerslistresponse.md:
-    last_write_checksum: sha1:90281a239335ca50f1e83bd1fa015a9659fec192
+    last_write_checksum: sha1:4d72f196aff1fa127249095d5692120cad611faf
   docs/models/customersortproperty.md:
     last_write_checksum: sha1:9dc090b857dba1f5ac42b36144b4e76d2ddaaac9
   docs/models/customerstate.md:
-    last_write_checksum: sha1:931473210aac031ef32364be6102a58dc1209691
+    last_write_checksum: sha1:01a1edddce815c70b3632eebf8cf7aa1fa3f43cb
   docs/models/customerstatebenefitgrant.md:
     last_write_checksum: sha1:5cf765aa45669dbae8ca5456efc6d03c1f8ca7ec
   docs/models/customerstatebenefitgrantproperties.md:
     last_write_checksum: sha1:a27ec100afd9e2729b6e38f8223d30048c8de298
+  docs/models/customerstateindividual.md:
+    last_write_checksum: sha1:192682765dddf09567011ea5a53b900ed79ec1ab
+  docs/models/customerstateindividualtaxid.md:
+    last_write_checksum: sha1:51c0fa6e66a608c1d8464e49dbdff699b0378353
   docs/models/customerstatemeter.md:
     last_write_checksum: sha1:1ba8ac262f0636091a3ce06800e51c29ceedd0d7
   docs/models/customerstatesubscription.md:
@@ -5315,8 +5338,10 @@ trackedFiles:
     last_write_checksum: sha1:c04fbeb00da810348c90975c31fc0616ac6c1def
   docs/models/customerstatesubscriptionmeter.md:
     last_write_checksum: sha1:3af44933abda2103b86c7e035b60bf89359d6257
-  docs/models/customerstatetaxid.md:
-    last_write_checksum: sha1:e0c84fc7dfb7b4185064a04c99c8e93126c5844d
+  docs/models/customerstateteam.md:
+    last_write_checksum: sha1:2018144da8c7d12076de305b5c6912519d1103e4
+  docs/models/customerstateteamtaxid.md:
+    last_write_checksum: sha1:8a9d30f4c311997bd4afe831296a43d7d6a953a5
   docs/models/customersubscription.md:
     last_write_checksum: sha1:0688cd6a63437aef874d5071714198d20f1e9d5e
   docs/models/customersubscriptioncancel.md:
@@ -5343,12 +5368,18 @@ trackedFiles:
     last_write_checksum: sha1:f29681dfb1610d442afb902502eb7daf1b0dd4ef
   docs/models/customersupdaterequest.md:
     last_write_checksum: sha1:1e071c37ea30d848c52e6d64c6a372d0ca658d6c
-  docs/models/customertaxid.md:
-    last_write_checksum: sha1:cb7c9a256fb019375aabd65ec44a15b7dd239a70
+  docs/models/customerteam.md:
+    last_write_checksum: sha1:1094adb2f468f9383c524a1c135e5de92d194e20
+  docs/models/customerteamcreate.md:
+    last_write_checksum: sha1:4c5b6ab7b7834472b1b7ada9d29f823bf9885aaf
+  docs/models/customerteamcreatemetadata.md:
+    last_write_checksum: sha1:f91a3939321deabb8874c20f2aab6c8cbe027b77
+  docs/models/customerteamtaxid.md:
+    last_write_checksum: sha1:8bcb8b56102bb5f7a170c9a51cdb613a05045b8a
   docs/models/customertype.md:
     last_write_checksum: sha1:35201a14a9748c49772b1496f10de7f0a875165f
   docs/models/customerupdate.md:
-    last_write_checksum: sha1:af2da13e65276d6d766265839381211737e323ad
+    last_write_checksum: sha1:c17e44bff6cc24598f6b51a8f72c3af4097dc712
   docs/models/customerupdatedevent.md:
     last_write_checksum: sha1:3889bbaf09e15b87ace86c59980f26ff2f449600
   docs/models/customerupdatedfields.md:
@@ -5356,7 +5387,7 @@ trackedFiles:
   docs/models/customerupdatedfieldsmetadata.md:
     last_write_checksum: sha1:67e571ba0f7abe6f0d2252e5b1ec5acc88767cb5
   docs/models/customerupdatedmetadata.md:
-    last_write_checksum: sha1:83744c6a651b2fcc9b794f2772b988789d2ef5df
+    last_write_checksum: sha1:a8e98b23f770cd97895ba229b8f8598ad441a1bd
   docs/models/customerupdateexternalid.md:
     last_write_checksum: sha1:dcc5086a8c7bcab716149e2f59f537918683e3a1
   docs/models/customerupdateexternalidmetadata.md:
@@ -5698,7 +5729,7 @@ trackedFiles:
   docs/models/licensekeyactivationreadmeta.md:
     last_write_checksum: sha1:04c6c266c45dba0b3d18e64b4a7202fbbfc5533e
   docs/models/licensekeycustomer.md:
-    last_write_checksum: sha1:d76fc0e3fe01c4688450e32b30898af35b333232
+    last_write_checksum: sha1:1b04fdcd15afcfb1d1e3c7933a81bf3d0eb0b2d5
   docs/models/licensekeycustomertaxid.md:
     last_write_checksum: sha1:17f958a0d1a86b1370561ba966159f1fb2dc2f77
   docs/models/licensekeydeactivate.md:
@@ -5726,7 +5757,7 @@ trackedFiles:
   docs/models/licensekeywithactivations.md:
     last_write_checksum: sha1:cb89559e84076a9efa7305928acd429c2524ac32
   docs/models/listresource.md:
-    last_write_checksum: sha1:35394b92805ecbc8db0efa0092c1e26166874708
+    last_write_checksum: sha1:8e22e1d4eaa3eb63b81d9ddcae6e1c79bf3a8b32
   docs/models/listresourcebenefit.md:
     last_write_checksum: sha1:ffa3eb7752415dc152fd9172bbdb698f00c723fc
   docs/models/listresourcebenefitgrant.md:
@@ -5735,8 +5766,6 @@ trackedFiles:
     last_write_checksum: sha1:9ab9bee989b2291eddd35284f18b6c7c29653c11
   docs/models/listresourcecheckoutlink.md:
     last_write_checksum: sha1:14cf897d29a1db0eb91298a2394e2014c0fe2f16
-  docs/models/listresourcecustomer.md:
-    last_write_checksum: sha1:7835f74efafecdde142062b370d3f75e33dff5bd
   docs/models/listresourcecustomerbenefitgrant.md:
     last_write_checksum: sha1:17b7fe25b87df30b9605292ada0027463d6dc32d
   docs/models/listresourcecustomercustomermeter.md:
@@ -5805,6 +5834,8 @@ trackedFiles:
     last_write_checksum: sha1:37c9269a53df9c1cbfa81e4a5e3292b68048497b
   docs/models/memberidfilter.md:
     last_write_checksum: sha1:ad7d80f7e079909732dfc4ab78e3bb59c5c693a1
+  docs/models/memberownercreate.md:
+    last_write_checksum: sha1:37f7d72be05253b1026a0b5b587233fa4ef4ca7b
   docs/models/memberrole.md:
     last_write_checksum: sha1:06170100a3109672deaf18d3715a2bf1ee7673fe
   docs/models/membersdeletememberrequest.md:
@@ -6046,7 +6077,7 @@ trackedFiles:
   docs/models/orderbillingreason.md:
     last_write_checksum: sha1:fdbf3af4604ebfc3f7d5cf2b5bed2528ab3d7cab
   docs/models/ordercustomer.md:
-    last_write_checksum: sha1:2d00b67f5029656bda3b2afe1bc2a275cc70f141
+    last_write_checksum: sha1:006de59831c12de08c6d430d6ccdb5b5ae5be70c
   docs/models/ordercustomertaxid.md:
     last_write_checksum: sha1:2b00fc78c61f7408167a1d75173b7882d6adad2e
   docs/models/ordercustomfielddata.md:
@@ -6177,8 +6208,6 @@ trackedFiles:
     last_write_checksum: sha1:82706bcd42b79c644b18f80c221a18df21a3ea9d
   docs/models/organizationupdate.md:
     last_write_checksum: sha1:c13e180ecbb2d31f41a19e989d630bb8baf00487
-  docs/models/ownercreate.md:
-    last_write_checksum: sha1:7cea3d4fa7ea00655a762c29cdaf13db9a55af12
   docs/models/pagination.md:
     last_write_checksum: sha1:1aedcef9b4f0bc5ab25ef1e9542e22d82088682a
   docs/models/payment.md:
@@ -6450,7 +6479,7 @@ trackedFiles:
   docs/models/subscriptioncreateexternalcustomermetadata.md:
     last_write_checksum: sha1:85e1b41fa20c903f06f408a26e86b33224ddf631
   docs/models/subscriptioncustomer.md:
-    last_write_checksum: sha1:1a350fae93db317b02abd8938ad26ec6733e9815
+    last_write_checksum: sha1:36884169e064b181b37d1645550fae98c3173b32
   docs/models/subscriptioncycledevent.md:
     last_write_checksum: sha1:4d909d313cd1c1c5861038d4e7d3bd8665b3c5e6
   docs/models/subscriptioncycledmetadata.md:
@@ -6604,9 +6633,9 @@ trackedFiles:
   docs/models/webhookcheckoutupdatedpayload.md:
     last_write_checksum: sha1:4ffd64e1a23d4a8521595c35d0a0ab9872698587
   docs/models/webhookcustomercreatedpayload.md:
-    last_write_checksum: sha1:63f03a211625127caa0a4971425ddf40d6862c44
+    last_write_checksum: sha1:fe4c4d09d3f8fea1ea9305a201cdb1a29ec4cac3
   docs/models/webhookcustomerdeletedpayload.md:
-    last_write_checksum: sha1:97b456c6b2c51c1b6ea6e512325c2bb69859ed06
+    last_write_checksum: sha1:028b99954898dbf0585cd034f6f6f25394bca108
   docs/models/webhookcustomerseatassignedpayload.md:
     last_write_checksum: sha1:bcf16fab7d97946aba3b5d493bbdf6b5623e9273
   docs/models/webhookcustomerseatclaimedpayload.md:
@@ -6614,9 +6643,9 @@ trackedFiles:
   docs/models/webhookcustomerseatrevokedpayload.md:
     last_write_checksum: sha1:cd26c67451bd313f2217a7c837d1261b3a103ad2
   docs/models/webhookcustomerstatechangedpayload.md:
-    last_write_checksum: sha1:d48562a48824622b058793cfb0b49dddb9455589
+    last_write_checksum: sha1:3c3a26ad132ab94c34f2ae13981db6efe76c2df5
   docs/models/webhookcustomerupdatedpayload.md:
-    last_write_checksum: sha1:62f6a3f6e9f9a318b1749973a83c706559094c52
+    last_write_checksum: sha1:d5d56532af0e090a2c1c074f716d4b6b0321fcae
   docs/models/webhookdelivery.md:
     last_write_checksum: sha1:ad3347208c254800e88f97b02fdc1aa35ea56fc6
   docs/models/webhookendpoint.md:
@@ -6704,7 +6733,7 @@ trackedFiles:
   docs/sdks/customermeters/README.md:
     last_write_checksum: sha1:b90c86939a9133539681534059241026b501c783
   docs/sdks/customers/README.md:
-    last_write_checksum: sha1:a7b97ac47d28045bd4d947c3c7ace5872402e227
+    last_write_checksum: sha1:fb75054ed57677f444b4c3e61e7d9694d4fa6175
   docs/sdks/customerseats/README.md:
     last_write_checksum: sha1:7f63eb8dd09fcc98ffb4dc15cb4c9241bab5ae7d
   docs/sdks/customersessions/README.md:
@@ -6818,7 +6847,7 @@ trackedFiles:
   src/polar_sdk/customer_sessions.py:
     last_write_checksum: sha1:9dcac4b97cff20d10c5f1d3ad480f5b9d799d7c5
   src/polar_sdk/customers.py:
-    last_write_checksum: sha1:87e651fca281f6b34a6d40c230548c06f62d2be2
+    last_write_checksum: sha1:35e82cfb517d9d1d8894f6b5d16f04042f7f8237
   src/polar_sdk/discounts.py:
     last_write_checksum: sha1:4b4aab638350670cde3838c2a0d194b58a70ab03
   src/polar_sdk/disputes.py:
@@ -6842,7 +6871,7 @@ trackedFiles:
   src/polar_sdk/metrics_sdk.py:
     last_write_checksum: sha1:d35cb2e65dcc84d88d36a8f68ccf5a46868aff0f
   src/polar_sdk/models/__init__.py:
-    last_write_checksum: sha1:a1a01ff27e662e39f0061f853e6132ec229a0eaa
+    last_write_checksum: sha1:ff9418023bf658878bda29ceafb0c6ad59798b1d
   src/polar_sdk/models/address.py:
     last_write_checksum: sha1:083edb7f045174ac1aea30545e9981c33f07d57d
   src/polar_sdk/models/addressdict.py:
@@ -6970,19 +6999,19 @@ trackedFiles:
   src/polar_sdk/models/benefitgithubrepositoryupdate.py:
     last_write_checksum: sha1:69435ace4958334e63c75f5ee2d57d1b3fb7cfc4
   src/polar_sdk/models/benefitgrant.py:
-    last_write_checksum: sha1:a63d0ec643ef4689b0d2312743b7ebf3552564ff
+    last_write_checksum: sha1:eb7b3e9243a5cefe84b9880eb7c66e485830303f
   src/polar_sdk/models/benefitgrantcustomproperties.py:
     last_write_checksum: sha1:c7a00e22c356cae26b0ea82aca051234c266d708
   src/polar_sdk/models/benefitgrantcustomwebhook.py:
-    last_write_checksum: sha1:93eba99d4a3bf6816364a2472158062b1f78e57d
+    last_write_checksum: sha1:a6559308dc1982a1592bf394d1ca505ff3ec8616
   src/polar_sdk/models/benefitgrantdiscordproperties.py:
     last_write_checksum: sha1:15a7db105b0b998ed2eba0ab78c51e515a5f144a
   src/polar_sdk/models/benefitgrantdiscordwebhook.py:
-    last_write_checksum: sha1:5a10b55c5d1de202a448681e94b02303d5ed588b
+    last_write_checksum: sha1:390ebdefa48c208df1d8373ba027edcfeee05f24
   src/polar_sdk/models/benefitgrantdownloadablesproperties.py:
     last_write_checksum: sha1:f4bdfc6cd29fa0d5c35f74ac3d340fd42d9e3e05
   src/polar_sdk/models/benefitgrantdownloadableswebhook.py:
-    last_write_checksum: sha1:08b94587ece4248391a4d383dd6df6076ad8432f
+    last_write_checksum: sha1:e2c5bdcc81b28fafdc98e1cc1718521fe4367072
   src/polar_sdk/models/benefitgrantedevent.py:
     last_write_checksum: sha1:a184a5a4c4e9a6ab2ef10abe4a099e5a454b62b3
   src/polar_sdk/models/benefitgranterror.py:
@@ -6990,21 +7019,21 @@ trackedFiles:
   src/polar_sdk/models/benefitgrantfeatureflagproperties.py:
     last_write_checksum: sha1:0730a7d37fe3e91b06cc453b2c21b49f80e39fc0
   src/polar_sdk/models/benefitgrantfeatureflagwebhook.py:
-    last_write_checksum: sha1:393f3247e9a70b4bb76e96c21c57deadd22be128
+    last_write_checksum: sha1:883dd76a23a71172377eb5a3a96759f8f76ee7df
   src/polar_sdk/models/benefitgrantgithubrepositoryproperties.py:
     last_write_checksum: sha1:ba4a3cbdbe496d1e5d69edd8cbf11c7b57282816
   src/polar_sdk/models/benefitgrantgithubrepositorywebhook.py:
-    last_write_checksum: sha1:44b85926c3fa8cb375e0e17b4317f00fd7eab341
+    last_write_checksum: sha1:ca56b41d1f59740b3e97b86008a7cf3b03351d81
   src/polar_sdk/models/benefitgrantlicensekeysproperties.py:
     last_write_checksum: sha1:735263f31040e25fca35bbfb34b90eba8632e3fa
   src/polar_sdk/models/benefitgrantlicensekeyswebhook.py:
-    last_write_checksum: sha1:294e1a3231429d4b2fcf8277f125c50c202b3ea2
+    last_write_checksum: sha1:90510d12b6c0748535139d3dc5e4441478f95899
   src/polar_sdk/models/benefitgrantmetadata.py:
     last_write_checksum: sha1:f3a0e5f478e96f46f6fa26492715bad64951bf05
   src/polar_sdk/models/benefitgrantmetercreditproperties.py:
     last_write_checksum: sha1:f737e6dddc3f2556a467943929e2253609c53f92
   src/polar_sdk/models/benefitgrantmetercreditwebhook.py:
-    last_write_checksum: sha1:c8c969c3a8a34c03269f91557f89575a84fe5fad
+    last_write_checksum: sha1:5cd60727f33652ec162271c3803492c558108585
   src/polar_sdk/models/benefitgrantsortproperty.py:
     last_write_checksum: sha1:de11bf40a2ff133087533ce8b1f10565eddbe408
   src/polar_sdk/models/benefitgrantwebhook.py:
@@ -7160,7 +7189,7 @@ trackedFiles:
   src/polar_sdk/models/custom_fields_updateop.py:
     last_write_checksum: sha1:08d7f34bec7994241c6635ae5b865809085a8f1d
   src/polar_sdk/models/customer.py:
-    last_write_checksum: sha1:a8a66c1d44a51adbf61b906e6c46c00918768d1d
+    last_write_checksum: sha1:c0b1b8fae87d1150c11ad4fdb0cd154b792ceb09
   src/polar_sdk/models/customer_meters_getop.py:
     last_write_checksum: sha1:cf9ea34cba6706991da057ed07cfd3298616e06b
   src/polar_sdk/models/customer_meters_listop.py:
@@ -7292,11 +7321,11 @@ trackedFiles:
   src/polar_sdk/models/customercancellationreason.py:
     last_write_checksum: sha1:78228d1bffecbbdc5f3be42766ef805d6091743f
   src/polar_sdk/models/customercreate.py:
-    last_write_checksum: sha1:e3dbcb429f4f6892cb5d5f79efc4fff872b13a24
+    last_write_checksum: sha1:ef22aeb6b5e3f4dd9bc1db31eddc5c576991fdd0
   src/polar_sdk/models/customercreatedevent.py:
     last_write_checksum: sha1:9735aaf23d79fb05f806342e724bb8dc7203354f
   src/polar_sdk/models/customercreatedmetadata.py:
-    last_write_checksum: sha1:6d9973f903a5bd61fdb9310b7650fe2cc0b1fca2
+    last_write_checksum: sha1:d4a1bd4becf208a69bfd57c3ea88b6bb9fd6205d
   src/polar_sdk/models/customercustomermeter.py:
     last_write_checksum: sha1:8d75416afa769d06496f3aa9d028b7a96c6e570a
   src/polar_sdk/models/customercustomermetermeter.py:
@@ -7308,9 +7337,13 @@ trackedFiles:
   src/polar_sdk/models/customerdeletedevent.py:
     last_write_checksum: sha1:6e19d98ea00b0b47f116526a175600d3c502d2f8
   src/polar_sdk/models/customerdeletedmetadata.py:
-    last_write_checksum: sha1:d3e5c7ef781938ea5127001bcd93c914306924df
+    last_write_checksum: sha1:de7a794ec3358ee0376a073f46edf14249f0b136
+  src/polar_sdk/models/customerindividual.py:
+    last_write_checksum: sha1:b0104402c28776b339788dd53f7743eeced57500
+  src/polar_sdk/models/customerindividualcreate.py:
+    last_write_checksum: sha1:cad00ae0088103811e414898946fa01a4cafcd39
   src/polar_sdk/models/customermeter.py:
-    last_write_checksum: sha1:f91f6bfd86ba3bded443c71f4943ac7c35005871
+    last_write_checksum: sha1:5752c1f23f12787c3b9ab176022f809b2d51e2df
   src/polar_sdk/models/customermetersortproperty.py:
     last_write_checksum: sha1:e3a380e12ed8a9f3e2aeffb4dde17f0bec5dfdaf
   src/polar_sdk/models/customernotready.py:
@@ -7352,7 +7385,7 @@ trackedFiles:
   src/polar_sdk/models/customerpaymentmethodcreatesucceededresponse.py:
     last_write_checksum: sha1:434015438b0b7617025824e801b081c2602daac1
   src/polar_sdk/models/customerportalcustomer.py:
-    last_write_checksum: sha1:c4808985a91e5e32406cedcfb2e7025e3cf9238e
+    last_write_checksum: sha1:4484b729dd8135a699969fcd0269e39976ff5b79
   src/polar_sdk/models/customerportalcustomerupdate.py:
     last_write_checksum: sha1:2dc3f34acf3904c81d1935e1cd1bc7863156b5d3
   src/polar_sdk/models/customerportalmember.py:
@@ -7392,7 +7425,7 @@ trackedFiles:
   src/polar_sdk/models/customerseatclaimresponse.py:
     last_write_checksum: sha1:a13f57e778b286d50e5deda5031b62dcfe70ed28
   src/polar_sdk/models/customersession.py:
-    last_write_checksum: sha1:d82081340f059a9194b969573a5e0258976f79a1
+    last_write_checksum: sha1:81bc4469fc928c2e553e51188e5365ddc5995f77
   src/polar_sdk/models/customersessioncustomerexternalidcreate.py:
     last_write_checksum: sha1:0fd84f196d0205ec5e18c6b531adaa21508abad9
   src/polar_sdk/models/customersessioncustomeridcreate.py:
@@ -7400,15 +7433,19 @@ trackedFiles:
   src/polar_sdk/models/customersortproperty.py:
     last_write_checksum: sha1:91b2ba75dad715b2b559c19888967183cba8c2ae
   src/polar_sdk/models/customerstate.py:
-    last_write_checksum: sha1:4abed26bd8bc032f2c30325beafb20454cb275a7
+    last_write_checksum: sha1:ed9ac3d2fe7b4ddfb4e792b1934aa240cf3f884f
   src/polar_sdk/models/customerstatebenefitgrant.py:
     last_write_checksum: sha1:9140cc6cf16bb1e5b161f246e18bd8cfb037dd53
+  src/polar_sdk/models/customerstateindividual.py:
+    last_write_checksum: sha1:9c2495bf727e96ce2dcd8eccbd144e912c46e98b
   src/polar_sdk/models/customerstatemeter.py:
     last_write_checksum: sha1:80a0c50fba7bb8939c5d13c6c61d00a192bcc337
   src/polar_sdk/models/customerstatesubscription.py:
     last_write_checksum: sha1:7a5582409db7d5fb9609e0dceb766412c337a09b
   src/polar_sdk/models/customerstatesubscriptionmeter.py:
     last_write_checksum: sha1:68b7f0d40544c69e4720cb950ed4167726757625
+  src/polar_sdk/models/customerstateteam.py:
+    last_write_checksum: sha1:0c9c3adb993cd52e7cbd9019cfb6f96d3b9bc2a6
   src/polar_sdk/models/customersubscription.py:
     last_write_checksum: sha1:014bbf96d19594571faa35d563993e478f5cc831
   src/polar_sdk/models/customersubscriptioncancel.py:
@@ -7427,6 +7464,10 @@ trackedFiles:
     last_write_checksum: sha1:b711f93042bee59ea1c95e07f36fc426928417de
   src/polar_sdk/models/customersubscriptionupdateseats.py:
     last_write_checksum: sha1:27bb7fe72d93014b227449cc4189317550030ac1
+  src/polar_sdk/models/customerteam.py:
+    last_write_checksum: sha1:42cd7e755cb7c27c7c08ad3abbd98a480d613324
+  src/polar_sdk/models/customerteamcreate.py:
+    last_write_checksum: sha1:7de6e3bc6b32990f841af1716b70cf9755ab11d7
   src/polar_sdk/models/customertype.py:
     last_write_checksum: sha1:997439be7592250f2929b02b734c9d46f8b058b0
   src/polar_sdk/models/customerupdate.py:
@@ -7436,7 +7477,7 @@ trackedFiles:
   src/polar_sdk/models/customerupdatedfields.py:
     last_write_checksum: sha1:922baf74a60b2cdaa566d78c011c38c45ba5d3b8
   src/polar_sdk/models/customerupdatedmetadata.py:
-    last_write_checksum: sha1:e97cbaf39f0763e9f06231a0b215ed715afdde44
+    last_write_checksum: sha1:3ad2bf3562e97ecbe83578626a5a262ecbfe43fb
   src/polar_sdk/models/customerupdateexternalid.py:
     last_write_checksum: sha1:1d3d28da388b7cf52385ce6f0b9a6f8242f383ff
   src/polar_sdk/models/customerwallet.py:
@@ -7658,7 +7699,7 @@ trackedFiles:
   src/polar_sdk/models/licensekeyactivationread.py:
     last_write_checksum: sha1:73ffced48dd1a99d33b6a091e19f4cc9d42ae6d2
   src/polar_sdk/models/licensekeycustomer.py:
-    last_write_checksum: sha1:53af55fe4f839b796f8c09999712d88ab042140a
+    last_write_checksum: sha1:9c518c8a45e4a7a06f1563ae502ac2933a3e2d21
   src/polar_sdk/models/licensekeydeactivate.py:
     last_write_checksum: sha1:11c04cc65dbaeff84247ac2c3eeae27ec69a200d
   src/polar_sdk/models/licensekeyread.py:
@@ -7672,7 +7713,7 @@ trackedFiles:
   src/polar_sdk/models/licensekeywithactivations.py:
     last_write_checksum: sha1:4a577f0acf2c66edc8675d96ca35e91e87a5307d
   src/polar_sdk/models/listresource_.py:
-    last_write_checksum: sha1:cb7afaefd3d2c52045d5d5829a8d2263e3d6f16a
+    last_write_checksum: sha1:ef9702935aba625cd869164838426291b448f121
   src/polar_sdk/models/listresource_benefit_.py:
     last_write_checksum: sha1:6e8a46e0c79dd45a732056fcda5fdee013c57b00
   src/polar_sdk/models/listresource_benefitgrant_.py:
@@ -7681,8 +7722,6 @@ trackedFiles:
     last_write_checksum: sha1:c9422c13b606d0a7cff8390091004f842e3aeae0
   src/polar_sdk/models/listresource_checkoutlink_.py:
     last_write_checksum: sha1:a91afebd5326eb503d5a8a56f4d5b6411aae8160
-  src/polar_sdk/models/listresource_customer_.py:
-    last_write_checksum: sha1:1c6f564969b8b9010eeaf4414bd6f5108f2b6468
   src/polar_sdk/models/listresource_customerbenefitgrant_.py:
     last_write_checksum: sha1:a8a82861bc24c859b702b5e30a564179685d6482
   src/polar_sdk/models/listresource_customercustomermeter_.py:
@@ -7745,6 +7784,8 @@ trackedFiles:
     last_write_checksum: sha1:443d5e7ebea45bcc8637d77a6c4605a26c83e0c3
   src/polar_sdk/models/membercreate.py:
     last_write_checksum: sha1:af33547abf917189af16701cac43bc377ab4874b
+  src/polar_sdk/models/memberownercreate.py:
+    last_write_checksum: sha1:9ba42af7585c62cc7425b4c2315c37bea4f62f92
   src/polar_sdk/models/memberrole.py:
     last_write_checksum: sha1:065f7730427b55768fd76b2f12dba48129a6b4d2
   src/polar_sdk/models/members_delete_memberop.py:
@@ -7838,7 +7879,7 @@ trackedFiles:
   src/polar_sdk/models/orderbillingreason.py:
     last_write_checksum: sha1:3b294070e89e6d9f91bdd42c34207bc44769b5b1
   src/polar_sdk/models/ordercustomer.py:
-    last_write_checksum: sha1:b6a7a9de66689b710ee93599a5478df38f0738e5
+    last_write_checksum: sha1:6568290f7335f21ca1e84a6ec2676ab31dba7346
   src/polar_sdk/models/orderinvoice.py:
     last_write_checksum: sha1:21020a291e1d6153cf8efa40bdff3f50f7def599
   src/polar_sdk/models/orderitemschema.py:
@@ -7929,8 +7970,6 @@ trackedFiles:
     last_write_checksum: sha1:73a282ee26583928dae0e91c03a6e9941be37a75
   src/polar_sdk/models/organizationupdate.py:
     last_write_checksum: sha1:6c402c1339a3c3911ab3d6026a98e00bd8b6fa72
-  src/polar_sdk/models/ownercreate.py:
-    last_write_checksum: sha1:3c81078036b943e2e2204ec43bcc38c77b173d89
   src/polar_sdk/models/pagination.py:
     last_write_checksum: sha1:88b8cafcf8bbbb722ffc53957982fecae18d95bf
   src/polar_sdk/models/payment.py:
@@ -8108,7 +8147,7 @@ trackedFiles:
   src/polar_sdk/models/subscriptioncreateexternalcustomer.py:
     last_write_checksum: sha1:671691e0be327af0275f10fbd3fefc81f3a61115
   src/polar_sdk/models/subscriptioncustomer.py:
-    last_write_checksum: sha1:db2b90f3f5e17c914d00db11182c993fec86c175
+    last_write_checksum: sha1:92ebc3df802f31ac967377b71814d8bcb7a7d74a
   src/polar_sdk/models/subscriptioncycledevent.py:
     last_write_checksum: sha1:75242e5fcffb7d293053b6e3ae967b48f8dbd36c
   src/polar_sdk/models/subscriptioncycledmetadata.py:
@@ -8138,7 +8177,7 @@ trackedFiles:
   src/polar_sdk/models/subscriptions_getop.py:
     last_write_checksum: sha1:74872cc7de547940f4189bbabea5d8d4803837e1
   src/polar_sdk/models/subscriptions_listop.py:
-    last_write_checksum: sha1:0dc5a50dcacf3b1b76329c8262e4d72ac007da4b
+    last_write_checksum: sha1:72cb199a4b77efa0eaa6980b049b0ae018cb63ed
   src/polar_sdk/models/subscriptions_revokeop.py:
     last_write_checksum: sha1:e1ca41a0bf57c37d748d641ca62cea7b71509537
   src/polar_sdk/models/subscriptions_updateop.py:
@@ -8228,9 +8267,9 @@ trackedFiles:
   src/polar_sdk/models/webhookcheckoutupdatedpayload.py:
     last_write_checksum: sha1:bd484533753f04a233368d9aced3929e0bc5b9af
   src/polar_sdk/models/webhookcustomercreatedpayload.py:
-    last_write_checksum: sha1:47342cb789b075b273c99af47a2e4f84a11b150e
+    last_write_checksum: sha1:d61065b58068027314c1f9d5f158f51556eb548c
   src/polar_sdk/models/webhookcustomerdeletedpayload.py:
-    last_write_checksum: sha1:d5c315855ff2cd2c01c69f0a37098bd6f1c1420c
+    last_write_checksum: sha1:ef32d320be0fbe660d4809c013f8631212125f90
   src/polar_sdk/models/webhookcustomerseatassignedpayload.py:
     last_write_checksum: sha1:70508d46594593a88fd5747cbf30cc9011d9fd41
   src/polar_sdk/models/webhookcustomerseatclaimedpayload.py:
@@ -8238,9 +8277,9 @@ trackedFiles:
   src/polar_sdk/models/webhookcustomerseatrevokedpayload.py:
     last_write_checksum: sha1:e662445a7d2f2eb1b9c3a6fee7218ed294ff584e
   src/polar_sdk/models/webhookcustomerstatechangedpayload.py:
-    last_write_checksum: sha1:b28b8c695178351f7d9d7cb95b326ac04ce89656
+    last_write_checksum: sha1:d961f5c1dc26464924cbdf2bc78e279e71003c93
   src/polar_sdk/models/webhookcustomerupdatedpayload.py:
-    last_write_checksum: sha1:2fb902cb07e57f0fad95c55be7ad5b2fa2f89a5a
+    last_write_checksum: sha1:bd2ffacdbc489e79886979c2ed55335e0afba5cb
   src/polar_sdk/models/webhookdelivery.py:
     last_write_checksum: sha1:961fb639b9e83c7f4cef0ab634513bc8b51c77c4
   src/polar_sdk/models/webhookendpoint.py:

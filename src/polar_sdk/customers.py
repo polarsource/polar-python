@@ -148,7 +148,7 @@ class Customers(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.CustomersListResponse(
-                result=unmarshal_json_response(models.ListResourceCustomer, http_res),
+                result=unmarshal_json_response(models.ListResource, http_res),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -297,7 +297,7 @@ class Customers(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.CustomersListResponse(
-                result=unmarshal_json_response(models.ListResourceCustomer, http_res),
+                result=unmarshal_json_response(models.ListResource, http_res),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):

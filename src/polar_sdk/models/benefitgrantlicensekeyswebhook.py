@@ -35,7 +35,6 @@ class BenefitGrantLicenseKeysWebhookTypedDict(TypedDict):
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
     customer: CustomerTypedDict
-    r"""A customer in an organization."""
     benefit: BenefitLicenseKeysTypedDict
     properties: BenefitGrantLicenseKeysPropertiesTypedDict
     granted_at: NotRequired[Nullable[datetime]]
@@ -81,7 +80,6 @@ class BenefitGrantLicenseKeysWebhook(BaseModel):
     r"""The ID of the benefit concerned by this grant."""
 
     customer: Customer
-    r"""A customer in an organization."""
 
     benefit: BenefitLicenseKeys
 

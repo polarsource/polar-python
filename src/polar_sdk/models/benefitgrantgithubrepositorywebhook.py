@@ -38,7 +38,6 @@ class BenefitGrantGitHubRepositoryWebhookTypedDict(TypedDict):
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
     customer: CustomerTypedDict
-    r"""A customer in an organization."""
     benefit: BenefitGitHubRepositoryTypedDict
     r"""A benefit of type `github_repository`.
 
@@ -88,7 +87,6 @@ class BenefitGrantGitHubRepositoryWebhook(BaseModel):
     r"""The ID of the benefit concerned by this grant."""
 
     customer: Customer
-    r"""A customer in an organization."""
 
     benefit: BenefitGitHubRepository
     r"""A benefit of type `github_repository`.
