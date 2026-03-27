@@ -23,7 +23,6 @@ class WebhookCustomerUpdatedPayloadTypedDict(TypedDict):
 
     timestamp: datetime
     data: CustomerTypedDict
-    r"""A customer in an organization."""
     type: Literal["customer.updated"]
 
 
@@ -40,7 +39,6 @@ class WebhookCustomerUpdatedPayload(BaseModel):
     timestamp: datetime
 
     data: Customer
-    r"""A customer in an organization."""
 
     TYPE: Annotated[
         Annotated[

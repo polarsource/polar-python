@@ -6,20 +6,20 @@ from pydantic import model_serializer
 from typing_extensions import NotRequired, TypedDict
 
 
-class OwnerCreateTypedDict(TypedDict):
+class MemberOwnerCreateTypedDict(TypedDict):
     r"""Schema for creating an owner member during customer creation."""
 
-    email: NotRequired[Nullable[str]]
+    email: str
     r"""The email address of the member."""
     name: NotRequired[Nullable[str]]
     external_id: NotRequired[Nullable[str]]
     r"""The ID of the member in your system. This must be unique within the customer."""
 
 
-class OwnerCreate(BaseModel):
+class MemberOwnerCreate(BaseModel):
     r"""Schema for creating an owner member during customer creation."""
 
-    email: OptionalNullable[str] = UNSET
+    email: str
     r"""The email address of the member."""
 
     name: OptionalNullable[str] = UNSET
@@ -29,8 +29,8 @@ class OwnerCreate(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["email", "name", "external_id"]
-        nullable_fields = ["email", "name", "external_id"]
+        optional_fields = ["name", "external_id"]
+        nullable_fields = ["name", "external_id"]
         null_default_fields = []
 
         serialized = handler(self)

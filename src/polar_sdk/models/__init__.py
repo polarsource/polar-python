@@ -658,12 +658,7 @@ if TYPE_CHECKING:
         CustomFieldsUpdateRequest,
         CustomFieldsUpdateRequestTypedDict,
     )
-    from .customer import (
-        Customer,
-        CustomerTaxID,
-        CustomerTaxIDTypedDict,
-        CustomerTypedDict,
-    )
+    from .customer import Customer, CustomerTypedDict
     from .customer_meters_getop import (
         CustomerMetersGetRequest,
         CustomerMetersGetRequestTypedDict,
@@ -1028,12 +1023,7 @@ if TYPE_CHECKING:
         CustomerBenefitGrantUpdateTypedDict,
     )
     from .customercancellationreason import CustomerCancellationReason
-    from .customercreate import (
-        CustomerCreate,
-        CustomerCreateMetadata,
-        CustomerCreateMetadataTypedDict,
-        CustomerCreateTypedDict,
-    )
+    from .customercreate import CustomerCreate, CustomerCreateTypedDict
     from .customercreatedevent import (
         CustomerCreatedEvent,
         CustomerCreatedEventTypedDict,
@@ -1062,6 +1052,18 @@ if TYPE_CHECKING:
     from .customerdeletedmetadata import (
         CustomerDeletedMetadata,
         CustomerDeletedMetadataTypedDict,
+    )
+    from .customerindividual import (
+        CustomerIndividual,
+        CustomerIndividualTaxID,
+        CustomerIndividualTaxIDTypedDict,
+        CustomerIndividualTypedDict,
+    )
+    from .customerindividualcreate import (
+        CustomerIndividualCreate,
+        CustomerIndividualCreateMetadata,
+        CustomerIndividualCreateMetadataTypedDict,
+        CustomerIndividualCreateTypedDict,
     )
     from .customermeter import CustomerMeter, CustomerMeterTypedDict
     from .customermetersortproperty import CustomerMeterSortProperty
@@ -1223,17 +1225,18 @@ if TYPE_CHECKING:
         CustomerSessionCustomerIDCreateTypedDict,
     )
     from .customersortproperty import CustomerSortProperty
-    from .customerstate import (
-        CustomerState,
-        CustomerStateTaxID,
-        CustomerStateTaxIDTypedDict,
-        CustomerStateTypedDict,
-    )
+    from .customerstate import CustomerState, CustomerStateTypedDict
     from .customerstatebenefitgrant import (
         CustomerStateBenefitGrant,
         CustomerStateBenefitGrantProperties,
         CustomerStateBenefitGrantPropertiesTypedDict,
         CustomerStateBenefitGrantTypedDict,
+    )
+    from .customerstateindividual import (
+        CustomerStateIndividual,
+        CustomerStateIndividualTaxID,
+        CustomerStateIndividualTaxIDTypedDict,
+        CustomerStateIndividualTypedDict,
     )
     from .customerstatemeter import CustomerStateMeter, CustomerStateMeterTypedDict
     from .customerstatesubscription import (
@@ -1246,6 +1249,12 @@ if TYPE_CHECKING:
     from .customerstatesubscriptionmeter import (
         CustomerStateSubscriptionMeter,
         CustomerStateSubscriptionMeterTypedDict,
+    )
+    from .customerstateteam import (
+        CustomerStateTeam,
+        CustomerStateTeamTaxID,
+        CustomerStateTeamTaxIDTypedDict,
+        CustomerStateTeamTypedDict,
     )
     from .customersubscription import (
         CustomerSubscription,
@@ -1283,6 +1292,18 @@ if TYPE_CHECKING:
     from .customersubscriptionupdateseats import (
         CustomerSubscriptionUpdateSeats,
         CustomerSubscriptionUpdateSeatsTypedDict,
+    )
+    from .customerteam import (
+        CustomerTeam,
+        CustomerTeamTaxID,
+        CustomerTeamTaxIDTypedDict,
+        CustomerTeamTypedDict,
+    )
+    from .customerteamcreate import (
+        CustomerTeamCreate,
+        CustomerTeamCreateMetadata,
+        CustomerTeamCreateMetadataTypedDict,
+        CustomerTeamCreateTypedDict,
     )
     from .customertype import CustomerType
     from .customerupdate import (
@@ -1718,10 +1739,6 @@ if TYPE_CHECKING:
         ListResourceCheckoutLink,
         ListResourceCheckoutLinkTypedDict,
     )
-    from .listresource_customer_ import (
-        ListResourceCustomer,
-        ListResourceCustomerTypedDict,
-    )
     from .listresource_customerbenefitgrant_ import (
         ListResourceCustomerBenefitGrant,
         ListResourceCustomerBenefitGrantTypedDict,
@@ -1818,6 +1835,7 @@ if TYPE_CHECKING:
     from .llmmetadata import LLMMetadata, LLMMetadataTypedDict
     from .member import Member, MemberTypedDict
     from .membercreate import MemberCreate, MemberCreateTypedDict
+    from .memberownercreate import MemberOwnerCreate, MemberOwnerCreateTypedDict
     from .memberrole import MemberRole
     from .members_delete_memberop import (
         MembersDeleteMemberRequest,
@@ -2284,7 +2302,6 @@ if TYPE_CHECKING:
         OrganizationUpdate,
         OrganizationUpdateTypedDict,
     )
-    from .ownercreate import OwnerCreate, OwnerCreateTypedDict
     from .pagination import Pagination, PaginationTypedDict
     from .payment import Payment, PaymentTypedDict
     from .paymentalreadyinprogress import (
@@ -3600,8 +3617,6 @@ __all__ = [
     "CustomerBenefitGrantUpdateTypedDict",
     "CustomerCancellationReason",
     "CustomerCreate",
-    "CustomerCreateMetadata",
-    "CustomerCreateMetadataTypedDict",
     "CustomerCreateTypedDict",
     "CustomerCreatedEvent",
     "CustomerCreatedEventTypedDict",
@@ -3622,6 +3637,14 @@ __all__ = [
     "CustomerEmailFilterTypedDict",
     "CustomerIDFilter",
     "CustomerIDFilterTypedDict",
+    "CustomerIndividual",
+    "CustomerIndividualCreate",
+    "CustomerIndividualCreateMetadata",
+    "CustomerIndividualCreateMetadataTypedDict",
+    "CustomerIndividualCreateTypedDict",
+    "CustomerIndividualTaxID",
+    "CustomerIndividualTaxIDTypedDict",
+    "CustomerIndividualTypedDict",
     "CustomerMetadata",
     "CustomerMetadataTypedDict",
     "CustomerMeter",
@@ -3892,6 +3915,10 @@ __all__ = [
     "CustomerStateBenefitGrantProperties",
     "CustomerStateBenefitGrantPropertiesTypedDict",
     "CustomerStateBenefitGrantTypedDict",
+    "CustomerStateIndividual",
+    "CustomerStateIndividualTaxID",
+    "CustomerStateIndividualTaxIDTypedDict",
+    "CustomerStateIndividualTypedDict",
     "CustomerStateMeter",
     "CustomerStateMeterTypedDict",
     "CustomerStateSubscription",
@@ -3900,8 +3927,10 @@ __all__ = [
     "CustomerStateSubscriptionMeter",
     "CustomerStateSubscriptionMeterTypedDict",
     "CustomerStateSubscriptionTypedDict",
-    "CustomerStateTaxID",
-    "CustomerStateTaxIDTypedDict",
+    "CustomerStateTeam",
+    "CustomerStateTeamTaxID",
+    "CustomerStateTeamTaxIDTypedDict",
+    "CustomerStateTeamTypedDict",
     "CustomerStateTypedDict",
     "CustomerSubscription",
     "CustomerSubscriptionCancel",
@@ -3924,8 +3953,14 @@ __all__ = [
     "CustomerSubscriptionUpdateSeats",
     "CustomerSubscriptionUpdateSeatsTypedDict",
     "CustomerSubscriptionUpdateTypedDict",
-    "CustomerTaxID",
-    "CustomerTaxIDTypedDict",
+    "CustomerTeam",
+    "CustomerTeamCreate",
+    "CustomerTeamCreateMetadata",
+    "CustomerTeamCreateMetadataTypedDict",
+    "CustomerTeamCreateTypedDict",
+    "CustomerTeamTaxID",
+    "CustomerTeamTaxIDTypedDict",
+    "CustomerTeamTypedDict",
     "CustomerType",
     "CustomerTypedDict",
     "CustomerUpdate",
@@ -4241,7 +4276,6 @@ __all__ = [
     "ListResourceCheckoutTypedDict",
     "ListResourceCustomField",
     "ListResourceCustomFieldTypedDict",
-    "ListResourceCustomer",
     "ListResourceCustomerBenefitGrant",
     "ListResourceCustomerBenefitGrantTypedDict",
     "ListResourceCustomerCustomerMeter",
@@ -4256,7 +4290,6 @@ __all__ = [
     "ListResourceCustomerPortalMemberTypedDict",
     "ListResourceCustomerSubscription",
     "ListResourceCustomerSubscriptionTypedDict",
-    "ListResourceCustomerTypedDict",
     "ListResourceCustomerWallet",
     "ListResourceCustomerWalletTypedDict",
     "ListResourceDiscount",
@@ -4307,6 +4340,8 @@ __all__ = [
     "MemberCreateTypedDict",
     "MemberIDFilter",
     "MemberIDFilterTypedDict",
+    "MemberOwnerCreate",
+    "MemberOwnerCreateTypedDict",
     "MemberRole",
     "MemberSortProperty",
     "MemberTypedDict",
@@ -4668,8 +4703,6 @@ __all__ = [
     "OrganizationsListResponseTypedDict",
     "OrganizationsUpdateRequest",
     "OrganizationsUpdateRequestTypedDict",
-    "OwnerCreate",
-    "OwnerCreateTypedDict",
     "Pagination",
     "PaginationTypedDict",
     "Payment",
@@ -5597,8 +5630,6 @@ _dynamic_imports: dict[str, str] = {
     "CustomFieldsUpdateRequest": ".custom_fields_updateop",
     "CustomFieldsUpdateRequestTypedDict": ".custom_fields_updateop",
     "Customer": ".customer",
-    "CustomerTaxID": ".customer",
-    "CustomerTaxIDTypedDict": ".customer",
     "CustomerTypedDict": ".customer",
     "CustomerMetersGetRequest": ".customer_meters_getop",
     "CustomerMetersGetRequestTypedDict": ".customer_meters_getop",
@@ -5839,8 +5870,6 @@ _dynamic_imports: dict[str, str] = {
     "CustomerBenefitGrantUpdateTypedDict": ".customerbenefitgrantupdate",
     "CustomerCancellationReason": ".customercancellationreason",
     "CustomerCreate": ".customercreate",
-    "CustomerCreateMetadata": ".customercreate",
-    "CustomerCreateMetadataTypedDict": ".customercreate",
     "CustomerCreateTypedDict": ".customercreate",
     "CustomerCreatedEvent": ".customercreatedevent",
     "CustomerCreatedEventTypedDict": ".customercreatedevent",
@@ -5857,6 +5886,14 @@ _dynamic_imports: dict[str, str] = {
     "CustomerDeletedEventTypedDict": ".customerdeletedevent",
     "CustomerDeletedMetadata": ".customerdeletedmetadata",
     "CustomerDeletedMetadataTypedDict": ".customerdeletedmetadata",
+    "CustomerIndividual": ".customerindividual",
+    "CustomerIndividualTaxID": ".customerindividual",
+    "CustomerIndividualTaxIDTypedDict": ".customerindividual",
+    "CustomerIndividualTypedDict": ".customerindividual",
+    "CustomerIndividualCreate": ".customerindividualcreate",
+    "CustomerIndividualCreateMetadata": ".customerindividualcreate",
+    "CustomerIndividualCreateMetadataTypedDict": ".customerindividualcreate",
+    "CustomerIndividualCreateTypedDict": ".customerindividualcreate",
     "CustomerMeter": ".customermeter",
     "CustomerMeterTypedDict": ".customermeter",
     "CustomerMeterSortProperty": ".customermetersortproperty",
@@ -5955,13 +5992,15 @@ _dynamic_imports: dict[str, str] = {
     "CustomerSessionCustomerIDCreateTypedDict": ".customersessioncustomeridcreate",
     "CustomerSortProperty": ".customersortproperty",
     "CustomerState": ".customerstate",
-    "CustomerStateTaxID": ".customerstate",
-    "CustomerStateTaxIDTypedDict": ".customerstate",
     "CustomerStateTypedDict": ".customerstate",
     "CustomerStateBenefitGrant": ".customerstatebenefitgrant",
     "CustomerStateBenefitGrantProperties": ".customerstatebenefitgrant",
     "CustomerStateBenefitGrantPropertiesTypedDict": ".customerstatebenefitgrant",
     "CustomerStateBenefitGrantTypedDict": ".customerstatebenefitgrant",
+    "CustomerStateIndividual": ".customerstateindividual",
+    "CustomerStateIndividualTaxID": ".customerstateindividual",
+    "CustomerStateIndividualTaxIDTypedDict": ".customerstateindividual",
+    "CustomerStateIndividualTypedDict": ".customerstateindividual",
     "CustomerStateMeter": ".customerstatemeter",
     "CustomerStateMeterTypedDict": ".customerstatemeter",
     "CustomerStateSubscription": ".customerstatesubscription",
@@ -5971,6 +6010,10 @@ _dynamic_imports: dict[str, str] = {
     "Status": ".customerstatesubscription",
     "CustomerStateSubscriptionMeter": ".customerstatesubscriptionmeter",
     "CustomerStateSubscriptionMeterTypedDict": ".customerstatesubscriptionmeter",
+    "CustomerStateTeam": ".customerstateteam",
+    "CustomerStateTeamTaxID": ".customerstateteam",
+    "CustomerStateTeamTaxIDTypedDict": ".customerstateteam",
+    "CustomerStateTeamTypedDict": ".customerstateteam",
     "CustomerSubscription": ".customersubscription",
     "CustomerSubscriptionPrices": ".customersubscription",
     "CustomerSubscriptionPricesTypedDict": ".customersubscription",
@@ -5992,6 +6035,14 @@ _dynamic_imports: dict[str, str] = {
     "CustomerSubscriptionUpdateProductTypedDict": ".customersubscriptionupdateproduct",
     "CustomerSubscriptionUpdateSeats": ".customersubscriptionupdateseats",
     "CustomerSubscriptionUpdateSeatsTypedDict": ".customersubscriptionupdateseats",
+    "CustomerTeam": ".customerteam",
+    "CustomerTeamTaxID": ".customerteam",
+    "CustomerTeamTaxIDTypedDict": ".customerteam",
+    "CustomerTeamTypedDict": ".customerteam",
+    "CustomerTeamCreate": ".customerteamcreate",
+    "CustomerTeamCreateMetadata": ".customerteamcreate",
+    "CustomerTeamCreateMetadataTypedDict": ".customerteamcreate",
+    "CustomerTeamCreateTypedDict": ".customerteamcreate",
     "CustomerType": ".customertype",
     "CustomerUpdate": ".customerupdate",
     "CustomerUpdateMetadata": ".customerupdate",
@@ -6327,8 +6378,6 @@ _dynamic_imports: dict[str, str] = {
     "ListResourceCheckoutTypedDict": ".listresource_checkout_",
     "ListResourceCheckoutLink": ".listresource_checkoutlink_",
     "ListResourceCheckoutLinkTypedDict": ".listresource_checkoutlink_",
-    "ListResourceCustomer": ".listresource_customer_",
-    "ListResourceCustomerTypedDict": ".listresource_customer_",
     "ListResourceCustomerBenefitGrant": ".listresource_customerbenefitgrant_",
     "ListResourceCustomerBenefitGrantTypedDict": ".listresource_customerbenefitgrant_",
     "ListResourceCustomerCustomerMeter": ".listresource_customercustomermeter_",
@@ -6393,6 +6442,8 @@ _dynamic_imports: dict[str, str] = {
     "MemberTypedDict": ".member",
     "MemberCreate": ".membercreate",
     "MemberCreateTypedDict": ".membercreate",
+    "MemberOwnerCreate": ".memberownercreate",
+    "MemberOwnerCreateTypedDict": ".memberownercreate",
     "MemberRole": ".memberrole",
     "MembersDeleteMemberRequest": ".members_delete_memberop",
     "MembersDeleteMemberRequestTypedDict": ".members_delete_memberop",
@@ -6787,8 +6838,6 @@ _dynamic_imports: dict[str, str] = {
     "CountryCountryAlpha2Input": ".organizationupdate",
     "OrganizationUpdate": ".organizationupdate",
     "OrganizationUpdateTypedDict": ".organizationupdate",
-    "OwnerCreate": ".ownercreate",
-    "OwnerCreateTypedDict": ".ownercreate",
     "Pagination": ".pagination",
     "PaginationTypedDict": ".pagination",
     "Payment": ".payment",

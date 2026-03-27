@@ -35,7 +35,6 @@ class BenefitGrantMeterCreditWebhookTypedDict(TypedDict):
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
     customer: CustomerTypedDict
-    r"""A customer in an organization."""
     benefit: BenefitMeterCreditTypedDict
     r"""A benefit of type `meter_unit`.
 
@@ -85,7 +84,6 @@ class BenefitGrantMeterCreditWebhook(BaseModel):
     r"""The ID of the benefit concerned by this grant."""
 
     customer: Customer
-    r"""A customer in an organization."""
 
     benefit: BenefitMeterCredit
     r"""A benefit of type `meter_unit`.

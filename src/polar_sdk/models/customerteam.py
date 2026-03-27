@@ -2,23 +2,29 @@
 
 from __future__ import annotations
 from .address import Address, AddressTypedDict
-from .customertype import CustomerType
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from .taxidformat import TaxIDFormat
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
+import pydantic
 from pydantic import model_serializer
-from typing import Dict, List, Union
-from typing_extensions import NotRequired, TypeAliasType, TypedDict
+from pydantic.functional_validators import AfterValidator
+from typing import Dict, List, Literal, Union
+from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-TaxIDTypedDict = TypeAliasType("TaxIDTypedDict", Union[str, TaxIDFormat])
+CustomerTeamTaxIDTypedDict = TypeAliasType(
+    "CustomerTeamTaxIDTypedDict", Union[str, TaxIDFormat]
+)
 
 
-TaxID = TypeAliasType("TaxID", Union[str, TaxIDFormat])
+CustomerTeamTaxID = TypeAliasType("CustomerTeamTaxID", Union[str, TaxIDFormat])
 
 
-class SubscriptionCustomerTypedDict(TypedDict):
+class CustomerTeamTypedDict(TypedDict):
+    r"""A team customer in an organization."""
+
     id: str
     r"""The ID of the customer."""
     created_at: datetime
@@ -28,11 +34,10 @@ class SubscriptionCustomerTypedDict(TypedDict):
     metadata: Dict[str, MetadataOutputTypeTypedDict]
     email_verified: bool
     r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
-    type: CustomerType
     name: Nullable[str]
     r"""The name of the customer."""
     billing_address: Nullable[AddressTypedDict]
-    tax_id: Nullable[List[Nullable[TaxIDTypedDict]]]
+    tax_id: Nullable[List[Nullable[CustomerTeamTaxIDTypedDict]]]
     organization_id: str
     r"""The ID of the organization owning the customer."""
     deleted_at: Nullable[datetime]
@@ -42,10 +47,14 @@ class SubscriptionCustomerTypedDict(TypedDict):
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
     email: NotRequired[Nullable[str]]
     r"""The email address of the customer. This must be unique within the organization."""
+    type: Literal["team"]
+    r"""The type of customer. Team customers can have multiple members."""
     locale: NotRequired[Nullable[str]]
 
 
-class SubscriptionCustomer(BaseModel):
+class CustomerTeam(BaseModel):
+    r"""A team customer in an organization."""
+
     id: str
     r"""The ID of the customer."""
 
@@ -60,14 +69,12 @@ class SubscriptionCustomer(BaseModel):
     email_verified: bool
     r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
 
-    type: CustomerType
-
     name: Nullable[str]
     r"""The name of the customer."""
 
     billing_address: Nullable[Address]
 
-    tax_id: Nullable[List[Nullable[TaxID]]]
+    tax_id: Nullable[List[Nullable[CustomerTeamTaxID]]]
 
     organization_id: str
     r"""The ID of the organization owning the customer."""
@@ -82,6 +89,12 @@ class SubscriptionCustomer(BaseModel):
 
     email: OptionalNullable[str] = UNSET
     r"""The email address of the customer. This must be unique within the organization."""
+
+    TYPE: Annotated[
+        Annotated[Literal["team"], AfterValidator(validate_const("team"))],
+        pydantic.Field(alias="type"),
+    ] = "team"
+    r"""The type of customer. Team customers can have multiple members."""
 
     locale: OptionalNullable[str] = UNSET
 

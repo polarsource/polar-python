@@ -35,7 +35,6 @@ class BenefitGrantDownloadablesWebhookTypedDict(TypedDict):
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
     customer: CustomerTypedDict
-    r"""A customer in an organization."""
     benefit: BenefitDownloadablesTypedDict
     properties: BenefitGrantDownloadablesPropertiesTypedDict
     granted_at: NotRequired[Nullable[datetime]]
@@ -81,7 +80,6 @@ class BenefitGrantDownloadablesWebhook(BaseModel):
     r"""The ID of the benefit concerned by this grant."""
 
     customer: Customer
-    r"""A customer in an organization."""
 
     benefit: BenefitDownloadables
 

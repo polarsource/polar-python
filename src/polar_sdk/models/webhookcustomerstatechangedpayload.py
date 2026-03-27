@@ -25,12 +25,6 @@ class WebhookCustomerStateChangedPayloadTypedDict(TypedDict):
 
     timestamp: datetime
     data: CustomerStateTypedDict
-    r"""A customer along with additional state information:
-
-    * Active subscriptions
-    * Granted benefits
-    * Active meters
-    """
     type: Literal["customer.state_changed"]
 
 
@@ -49,12 +43,6 @@ class WebhookCustomerStateChangedPayload(BaseModel):
     timestamp: datetime
 
     data: CustomerState
-    r"""A customer along with additional state information:
-
-    * Active subscriptions
-    * Granted benefits
-    * Active meters
-    """
 
     TYPE: Annotated[
         Annotated[

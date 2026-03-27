@@ -35,7 +35,6 @@ class BenefitGrantCustomWebhookTypedDict(TypedDict):
     benefit_id: str
     r"""The ID of the benefit concerned by this grant."""
     customer: CustomerTypedDict
-    r"""A customer in an organization."""
     benefit: BenefitCustomTypedDict
     r"""A benefit of type `custom`.
 
@@ -83,7 +82,6 @@ class BenefitGrantCustomWebhook(BaseModel):
     r"""The ID of the benefit concerned by this grant."""
 
     customer: Customer
-    r"""A customer in an organization."""
 
     benefit: BenefitCustom
     r"""A benefit of type `custom`.

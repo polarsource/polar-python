@@ -29,7 +29,6 @@ class CustomerMeterTypedDict(TypedDict):
     balance: float
     r"""The balance of the meter, i.e. the difference between credited and consumed units."""
     customer: CustomerTypedDict
-    r"""A customer in an organization."""
     meter: MeterTypedDict
 
 
@@ -61,7 +60,6 @@ class CustomerMeter(BaseModel):
     r"""The balance of the meter, i.e. the difference between credited and consumed units."""
 
     customer: Customer
-    r"""A customer in an organization."""
 
     meter: Meter
 
