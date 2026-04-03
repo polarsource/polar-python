@@ -8,12 +8,12 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class ListResourceTypedDict(TypedDict):
+class ListResourceCustomerTypedDict(TypedDict):
     items: List[CustomerTypedDict]
     pagination: PaginationTypedDict
 
 
-class ListResource(BaseModel):
+class ListResourceCustomer(BaseModel):
     items: List[Customer]
 
     pagination: Pagination

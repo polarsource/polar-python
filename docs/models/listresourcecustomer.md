@@ -1,4 +1,4 @@
-# ListResource
+# ListResourceCustomer
 
 
 ## Fields

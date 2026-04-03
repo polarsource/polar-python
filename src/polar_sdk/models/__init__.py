@@ -1725,7 +1725,6 @@ if TYPE_CHECKING:
         LicenseKeyWithActivations,
         LicenseKeyWithActivationsTypedDict,
     )
-    from .listresource_ import ListResource, ListResourceTypedDict
     from .listresource_benefit_ import ListResourceBenefit, ListResourceBenefitTypedDict
     from .listresource_benefitgrant_ import (
         ListResourceBenefitGrant,
@@ -1738,6 +1737,10 @@ if TYPE_CHECKING:
     from .listresource_checkoutlink_ import (
         ListResourceCheckoutLink,
         ListResourceCheckoutLinkTypedDict,
+    )
+    from .listresource_customer_ import (
+        ListResourceCustomer,
+        ListResourceCustomerTypedDict,
     )
     from .listresource_customerbenefitgrant_ import (
         ListResourceCustomerBenefitGrant,
@@ -1814,6 +1817,7 @@ if TYPE_CHECKING:
         ListResourceOrganizationAccessToken,
         ListResourceOrganizationAccessTokenTypedDict,
     )
+    from .listresource_payment_ import ListResourcePayment, ListResourcePaymentTypedDict
     from .listresource_product_ import ListResourceProduct, ListResourceProductTypedDict
     from .listresource_refund_ import ListResourceRefund, ListResourceRefundTypedDict
     from .listresource_subscription_ import (
@@ -1893,6 +1897,18 @@ if TYPE_CHECKING:
         MeterUpdateTypedDict,
     )
     from .metric import Metric, MetricTypedDict
+    from .metricdashboardcreate import (
+        MetricDashboardCreate,
+        MetricDashboardCreateTypedDict,
+    )
+    from .metricdashboardschema import (
+        MetricDashboardSchema,
+        MetricDashboardSchemaTypedDict,
+    )
+    from .metricdashboardupdate import (
+        MetricDashboardUpdate,
+        MetricDashboardUpdateTypedDict,
+    )
     from .metricperiod import (
         ActiveSubscriptions,
         ActiveSubscriptionsTypedDict,
@@ -1984,6 +2000,14 @@ if TYPE_CHECKING:
         SucceededCheckoutsTypedDict,
     )
     from .metrics import Metrics, MetricsTypedDict
+    from .metrics_delete_dashboardop import (
+        MetricsDeleteDashboardRequest,
+        MetricsDeleteDashboardRequestTypedDict,
+    )
+    from .metrics_get_dashboardop import (
+        MetricsGetDashboardRequest,
+        MetricsGetDashboardRequestTypedDict,
+    )
     from .metrics_getop import (
         MetricsGetQueryParamCustomerIDFilter,
         MetricsGetQueryParamCustomerIDFilterTypedDict,
@@ -1995,6 +2019,16 @@ if TYPE_CHECKING:
         MetricsGetRequestTypedDict,
         QueryParamProductBillingTypeFilter,
         QueryParamProductBillingTypeFilterTypedDict,
+    )
+    from .metrics_list_dashboardsop import (
+        MetricsListDashboardsQueryParamOrganizationIDFilter,
+        MetricsListDashboardsQueryParamOrganizationIDFilterTypedDict,
+        MetricsListDashboardsRequest,
+        MetricsListDashboardsRequestTypedDict,
+    )
+    from .metrics_update_dashboardop import (
+        MetricsUpdateDashboardRequest,
+        MetricsUpdateDashboardRequestTypedDict,
     )
     from .metricsintervallimit import (
         MetricsIntervalLimit,
@@ -2194,6 +2228,8 @@ if TYPE_CHECKING:
     from .orderstatus import OrderStatus
     from .ordersubscription import OrderSubscription, OrderSubscriptionTypedDict
     from .orderupdate import OrderUpdate, OrderUpdateTypedDict
+    from .ordervoidedevent import OrderVoidedEvent, OrderVoidedEventTypedDict
+    from .ordervoidedmetadata import OrderVoidedMetadata, OrderVoidedMetadataTypedDict
     from .organization import CountryAlpha2, Organization, OrganizationTypedDict
     from .organization_access_tokens_deleteop import (
         OrganizationAccessTokensDeleteRequest,
@@ -2629,6 +2665,8 @@ if TYPE_CHECKING:
         BenefitsListResponseTypedDict,
         CheckoutIDFilter,
         CheckoutIDFilterTypedDict,
+        CustomerCancellationReasonFilter,
+        CustomerCancellationReasonFilterTypedDict,
         CustomerIDFilter,
         CustomerIDFilterTypedDict,
         CustomersListQueryParamOrganizationIDFilter,
@@ -3616,6 +3654,8 @@ __all__ = [
     "CustomerBenefitGrantUpdate",
     "CustomerBenefitGrantUpdateTypedDict",
     "CustomerCancellationReason",
+    "CustomerCancellationReasonFilter",
+    "CustomerCancellationReasonFilterTypedDict",
     "CustomerCreate",
     "CustomerCreateTypedDict",
     "CustomerCreatedEvent",
@@ -4265,7 +4305,6 @@ __all__ = [
     "LicenseKeysListResponseTypedDict",
     "LicenseKeysUpdateRequest",
     "LicenseKeysUpdateRequestTypedDict",
-    "ListResource",
     "ListResourceBenefit",
     "ListResourceBenefitGrant",
     "ListResourceBenefitGrantTypedDict",
@@ -4276,6 +4315,7 @@ __all__ = [
     "ListResourceCheckoutTypedDict",
     "ListResourceCustomField",
     "ListResourceCustomFieldTypedDict",
+    "ListResourceCustomer",
     "ListResourceCustomerBenefitGrant",
     "ListResourceCustomerBenefitGrantTypedDict",
     "ListResourceCustomerCustomerMeter",
@@ -4290,6 +4330,7 @@ __all__ = [
     "ListResourceCustomerPortalMemberTypedDict",
     "ListResourceCustomerSubscription",
     "ListResourceCustomerSubscriptionTypedDict",
+    "ListResourceCustomerTypedDict",
     "ListResourceCustomerWallet",
     "ListResourceCustomerWalletTypedDict",
     "ListResourceDiscount",
@@ -4318,13 +4359,14 @@ __all__ = [
     "ListResourceOrganizationAccessToken",
     "ListResourceOrganizationAccessTokenTypedDict",
     "ListResourceOrganizationTypedDict",
+    "ListResourcePayment",
+    "ListResourcePaymentTypedDict",
     "ListResourceProduct",
     "ListResourceProductTypedDict",
     "ListResourceRefund",
     "ListResourceRefundTypedDict",
     "ListResourceSubscription",
     "ListResourceSubscriptionTypedDict",
-    "ListResourceTypedDict",
     "ListResourceWebhookDelivery",
     "ListResourceWebhookDeliveryTypedDict",
     "ListResourceWebhookEndpoint",
@@ -4413,11 +4455,21 @@ __all__ = [
     "MethodFilter",
     "MethodFilterTypedDict",
     "Metric",
+    "MetricDashboardCreate",
+    "MetricDashboardCreateTypedDict",
+    "MetricDashboardSchema",
+    "MetricDashboardSchemaTypedDict",
+    "MetricDashboardUpdate",
+    "MetricDashboardUpdateTypedDict",
     "MetricPeriod",
     "MetricPeriodTypedDict",
     "MetricType",
     "MetricTypedDict",
     "Metrics",
+    "MetricsDeleteDashboardRequest",
+    "MetricsDeleteDashboardRequestTypedDict",
+    "MetricsGetDashboardRequest",
+    "MetricsGetDashboardRequestTypedDict",
     "MetricsGetQueryParamCustomerIDFilter",
     "MetricsGetQueryParamCustomerIDFilterTypedDict",
     "MetricsGetQueryParamOrganizationIDFilter",
@@ -4432,6 +4484,10 @@ __all__ = [
     "MetricsIntervalsLimitsTypedDict",
     "MetricsLimits",
     "MetricsLimitsTypedDict",
+    "MetricsListDashboardsQueryParamOrganizationIDFilter",
+    "MetricsListDashboardsQueryParamOrganizationIDFilterTypedDict",
+    "MetricsListDashboardsRequest",
+    "MetricsListDashboardsRequestTypedDict",
     "MetricsResponse",
     "MetricsResponseTypedDict",
     "MetricsTotals",
@@ -4523,6 +4579,8 @@ __all__ = [
     "MetricsTotalsSucceededCheckoutsTypedDict",
     "MetricsTotalsTypedDict",
     "MetricsTypedDict",
+    "MetricsUpdateDashboardRequest",
+    "MetricsUpdateDashboardRequestTypedDict",
     "MissingInvoiceBillingDetails",
     "MissingInvoiceBillingDetailsData",
     "MonthlyRecurringRevenue",
@@ -4609,6 +4667,10 @@ __all__ = [
     "OrderTypedDict",
     "OrderUpdate",
     "OrderUpdateTypedDict",
+    "OrderVoidedEvent",
+    "OrderVoidedEventTypedDict",
+    "OrderVoidedMetadata",
+    "OrderVoidedMetadataTypedDict",
     "OrdersExportQueryParamOrganizationIDFilter",
     "OrdersExportQueryParamOrganizationIDFilterTypedDict",
     "OrdersExportQueryParamProductIDFilter",
@@ -6368,8 +6430,6 @@ _dynamic_imports: dict[str, str] = {
     "LicenseKeyValidateTypedDict": ".licensekeyvalidate",
     "LicenseKeyWithActivations": ".licensekeywithactivations",
     "LicenseKeyWithActivationsTypedDict": ".licensekeywithactivations",
-    "ListResource": ".listresource_",
-    "ListResourceTypedDict": ".listresource_",
     "ListResourceBenefit": ".listresource_benefit_",
     "ListResourceBenefitTypedDict": ".listresource_benefit_",
     "ListResourceBenefitGrant": ".listresource_benefitgrant_",
@@ -6378,6 +6438,8 @@ _dynamic_imports: dict[str, str] = {
     "ListResourceCheckoutTypedDict": ".listresource_checkout_",
     "ListResourceCheckoutLink": ".listresource_checkoutlink_",
     "ListResourceCheckoutLinkTypedDict": ".listresource_checkoutlink_",
+    "ListResourceCustomer": ".listresource_customer_",
+    "ListResourceCustomerTypedDict": ".listresource_customer_",
     "ListResourceCustomerBenefitGrant": ".listresource_customerbenefitgrant_",
     "ListResourceCustomerBenefitGrantTypedDict": ".listresource_customerbenefitgrant_",
     "ListResourceCustomerCustomerMeter": ".listresource_customercustomermeter_",
@@ -6424,6 +6486,8 @@ _dynamic_imports: dict[str, str] = {
     "ListResourceOrganizationTypedDict": ".listresource_organization_",
     "ListResourceOrganizationAccessToken": ".listresource_organizationaccesstoken_",
     "ListResourceOrganizationAccessTokenTypedDict": ".listresource_organizationaccesstoken_",
+    "ListResourcePayment": ".listresource_payment_",
+    "ListResourcePaymentTypedDict": ".listresource_payment_",
     "ListResourceProduct": ".listresource_product_",
     "ListResourceProductTypedDict": ".listresource_product_",
     "ListResourceRefund": ".listresource_refund_",
@@ -6495,6 +6559,12 @@ _dynamic_imports: dict[str, str] = {
     "MeterUpdateTypedDict": ".meterupdate",
     "Metric": ".metric",
     "MetricTypedDict": ".metric",
+    "MetricDashboardCreate": ".metricdashboardcreate",
+    "MetricDashboardCreateTypedDict": ".metricdashboardcreate",
+    "MetricDashboardSchema": ".metricdashboardschema",
+    "MetricDashboardSchemaTypedDict": ".metricdashboardschema",
+    "MetricDashboardUpdate": ".metricdashboardupdate",
+    "MetricDashboardUpdateTypedDict": ".metricdashboardupdate",
     "ActiveSubscriptions": ".metricperiod",
     "ActiveSubscriptionsTypedDict": ".metricperiod",
     "ActiveUserByEvent": ".metricperiod",
@@ -6585,6 +6655,10 @@ _dynamic_imports: dict[str, str] = {
     "SucceededCheckoutsTypedDict": ".metricperiod",
     "Metrics": ".metrics",
     "MetricsTypedDict": ".metrics",
+    "MetricsDeleteDashboardRequest": ".metrics_delete_dashboardop",
+    "MetricsDeleteDashboardRequestTypedDict": ".metrics_delete_dashboardop",
+    "MetricsGetDashboardRequest": ".metrics_get_dashboardop",
+    "MetricsGetDashboardRequestTypedDict": ".metrics_get_dashboardop",
     "MetricsGetQueryParamCustomerIDFilter": ".metrics_getop",
     "MetricsGetQueryParamCustomerIDFilterTypedDict": ".metrics_getop",
     "MetricsGetQueryParamOrganizationIDFilter": ".metrics_getop",
@@ -6595,6 +6669,12 @@ _dynamic_imports: dict[str, str] = {
     "MetricsGetRequestTypedDict": ".metrics_getop",
     "QueryParamProductBillingTypeFilter": ".metrics_getop",
     "QueryParamProductBillingTypeFilterTypedDict": ".metrics_getop",
+    "MetricsListDashboardsQueryParamOrganizationIDFilter": ".metrics_list_dashboardsop",
+    "MetricsListDashboardsQueryParamOrganizationIDFilterTypedDict": ".metrics_list_dashboardsop",
+    "MetricsListDashboardsRequest": ".metrics_list_dashboardsop",
+    "MetricsListDashboardsRequestTypedDict": ".metrics_list_dashboardsop",
+    "MetricsUpdateDashboardRequest": ".metrics_update_dashboardop",
+    "MetricsUpdateDashboardRequestTypedDict": ".metrics_update_dashboardop",
     "MetricsIntervalLimit": ".metricsintervallimit",
     "MetricsIntervalLimitTypedDict": ".metricsintervallimit",
     "MetricsIntervalsLimits": ".metricsintervalslimits",
@@ -6774,6 +6854,10 @@ _dynamic_imports: dict[str, str] = {
     "OrderSubscriptionTypedDict": ".ordersubscription",
     "OrderUpdate": ".orderupdate",
     "OrderUpdateTypedDict": ".orderupdate",
+    "OrderVoidedEvent": ".ordervoidedevent",
+    "OrderVoidedEventTypedDict": ".ordervoidedevent",
+    "OrderVoidedMetadata": ".ordervoidedmetadata",
+    "OrderVoidedMetadataTypedDict": ".ordervoidedmetadata",
     "CountryAlpha2": ".organization",
     "Organization": ".organization",
     "OrganizationTypedDict": ".organization",
@@ -7100,6 +7184,8 @@ _dynamic_imports: dict[str, str] = {
     "BenefitsListResponseTypedDict": ".subscriptions_listop",
     "CheckoutIDFilter": ".subscriptions_listop",
     "CheckoutIDFilterTypedDict": ".subscriptions_listop",
+    "CustomerCancellationReasonFilter": ".subscriptions_listop",
+    "CustomerCancellationReasonFilterTypedDict": ".subscriptions_listop",
     "CustomerIDFilter": ".subscriptions_listop",
     "CustomerIDFilterTypedDict": ".subscriptions_listop",
     "CustomersListQueryParamOrganizationIDFilter": ".subscriptions_listop",

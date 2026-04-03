@@ -4,11 +4,12 @@ from __future__ import annotations
 from .aggregationfunction import AggregationFunction
 from .benefitsortproperty import BenefitSortProperty
 from .benefittype import BenefitType
+from .customercancellationreason import CustomerCancellationReason
 from .customersortproperty import CustomerSortProperty
 from .eventsortproperty import EventSortProperty
 from .eventsource import EventSource
-from .listresource_ import ListResource, ListResourceTypedDict
 from .listresource_benefit_ import ListResourceBenefit, ListResourceBenefitTypedDict
+from .listresource_customer_ import ListResourceCustomer, ListResourceCustomerTypedDict
 from .listresource_event_ import ListResourceEvent, ListResourceEventTypedDict
 from .listresource_meter_ import ListResourceMeter, ListResourceMeterTypedDict
 from .listresource_order_ import ListResourceOrder, ListResourceOrderTypedDict
@@ -89,6 +90,20 @@ DiscountIDFilter = TypeAliasType("DiscountIDFilter", Union[str, List[str]])
 r"""Filter by discount ID."""
 
 
+CustomerCancellationReasonFilterTypedDict = TypeAliasType(
+    "CustomerCancellationReasonFilterTypedDict",
+    Union[CustomerCancellationReason, List[CustomerCancellationReason]],
+)
+r"""Filter by customer cancellation reason."""
+
+
+CustomerCancellationReasonFilter = TypeAliasType(
+    "CustomerCancellationReasonFilter",
+    Union[CustomerCancellationReason, List[CustomerCancellationReason]],
+)
+r"""Filter by customer cancellation reason."""
+
+
 MetadataQueryTypedDict = TypeAliasType(
     "MetadataQueryTypedDict", Union[str, int, bool, List[str], List[int], List[bool]]
 )
@@ -114,6 +129,14 @@ class SubscriptionsListRequestTypedDict(TypedDict):
     r"""Filter by active or inactive subscription."""
     cancel_at_period_end: NotRequired[Nullable[bool]]
     r"""Filter by subscriptions that are set to cancel at period end."""
+    customer_cancellation_reason: NotRequired[
+        Nullable[CustomerCancellationReasonFilterTypedDict]
+    ]
+    r"""Filter by customer cancellation reason."""
+    canceled_at_after: NotRequired[Nullable[datetime]]
+    r"""Filter by cancellation date (after or equal to)."""
+    canceled_at_before: NotRequired[Nullable[datetime]]
+    r"""Filter by cancellation date (before or equal to)."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -167,6 +190,24 @@ class SubscriptionsListRequest(BaseModel):
     ] = UNSET
     r"""Filter by subscriptions that are set to cancel at period end."""
 
+    customer_cancellation_reason: Annotated[
+        OptionalNullable[CustomerCancellationReasonFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by customer cancellation reason."""
+
+    canceled_at_after: Annotated[
+        OptionalNullable[datetime],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by cancellation date (after or equal to)."""
+
+    canceled_at_before: Annotated[
+        OptionalNullable[datetime],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by cancellation date (before or equal to)."""
+
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -201,6 +242,9 @@ class SubscriptionsListRequest(BaseModel):
             "discount_id",
             "active",
             "cancel_at_period_end",
+            "customer_cancellation_reason",
+            "canceled_at_after",
+            "canceled_at_before",
             "page",
             "limit",
             "sorting",
@@ -214,6 +258,9 @@ class SubscriptionsListRequest(BaseModel):
             "discount_id",
             "active",
             "cancel_at_period_end",
+            "customer_cancellation_reason",
+            "canceled_at_after",
+            "canceled_at_before",
             "sorting",
             "metadata",
         ]
@@ -977,13 +1024,13 @@ class CustomersListRequest(BaseModel):
 
 
 class CustomersListResponseTypedDict(TypedDict):
-    result: ListResourceTypedDict
+    result: ListResourceCustomerTypedDict
 
 
 class CustomersListResponse(BaseModel):
     next: Callable[[], Optional[CustomersListResponse]]
 
-    result: ListResource
+    result: ListResourceCustomer
 
 
 EventsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(

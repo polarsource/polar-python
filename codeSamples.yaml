@@ -735,6 +735,36 @@ actions:
         - "lang": "python"
           "label": "Python (SDK)"
           "source": "from datetime import date\nimport polar_sdk\nfrom polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.metrics.get(start_date=date.fromisoformat(\"2026-03-14\"), end_date=date.fromisoformat(\"2026-03-18\"), interval=polar_sdk.TimeInterval.HOUR, timezone=\"UTC\", organization_id=None)\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/metrics/dashboards"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.metrics.list_dashboards(organization_id=\"1dbfc517-0bbf-4301-9ba8-555ca42b9737\")\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/metrics/dashboards"]["post"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.metrics.create_dashboard(request={\n        \"name\": \"<value>\",\n        \"organization_id\": \"1dbfc517-0bbf-4301-9ba8-555ca42b9737\",\n    })\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/metrics/dashboards/{id}"]["delete"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    polar.metrics.delete_dashboard(id=\"<value>\")\n\n    # Use the SDK ..."
+  - target: $["paths"]["/v1/metrics/dashboards/{id}"]["get"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.metrics.get_dashboard(id=\"<value>\")\n\n    # Handle response\n    print(res)"
+  - target: $["paths"]["/v1/metrics/dashboards/{id}"]["patch"]
+    update:
+      "x-codeSamples":
+        - "lang": "python"
+          "label": "Python (SDK)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.metrics.update_dashboard(id=\"<value>\", metric_dashboard_update={})\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/metrics/limits"]["get"]
     update:
       "x-codeSamples":
