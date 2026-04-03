@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: 322614411507d8b0e4eeb453bd360f16
+  docChecksum: 3ba52618a73098fc139e82b17d1d7b60
   docVersion: 0.1.0
   speakeasyVersion: 1.648.0
   generationVersion: 2.737.0
-  releaseVersion: 0.31.1
-  configChecksum: 3fcf8954029e1de446c6e47cc5f4bc44
+  releaseVersion: 0.31.2
+  configChecksum: 973255c51ea01b71f98832e4b56f10bb
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -1004,6 +1004,7 @@ generatedFiles:
   - docs/models/productvisibility.md
   - docs/models/properties.md
   - docs/models/propertyaggregation.md
+  - docs/models/prorationbehavior.md
   - docs/models/queryparambenefitidfilter.md
   - docs/models/queryparambenefittypefilter.md
   - docs/models/queryparamcheckoutidfilter.md
@@ -2241,7 +2242,7 @@ examples:
   _endpointorganization_updated_post:
     speakeasy-default-endpointorganization-updated-post:
       requestBody:
-        application/json: {"type": "organization.updated", "timestamp": "2025-08-19T15:02:44.139Z", "data": {"created_at": "2025-08-19T15:02:44.139Z", "modified_at": "2025-08-23T00:45:50.780Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": null, "proration_behavior": "prorate", "allow_customer_updates": false, "email": "Lemuel44@gmail.com", "website": "<value>", "socials": [{"platform": "tiktok", "url": "https://grizzled-patroller.info/"}, {"platform": "tiktok", "url": "https://grizzled-patroller.info/"}], "status": "active", "details_submitted_at": null, "default_presentment_currency": "<value>", "default_tax_behavior": "exclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "revops_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "tinybird_read": false, "tinybird_compare": false, "checkout_localization_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": true, "allow_customer_updates": false, "proration_behavior": "invoice", "benefit_revocation_grace_period": 877397, "prevent_trial_abuse": false}, "notification_settings": {"new_order": false, "new_subscription": false}, "customer_email_settings": {"order_confirmation": false, "subscription_cancellation": false, "subscription_confirmation": false, "subscription_cycled": true, "subscription_cycled_after_trial": false, "subscription_past_due": true, "subscription_renewal_reminder": false, "subscription_revoked": true, "subscription_trial_conversion_reminder": false, "subscription_uncanceled": false, "subscription_updated": true}, "customer_portal_settings": {"usage": {"show": true}, "subscription": {"update_seats": true, "update_plan": true}}}}
+        application/json: {"type": "organization.updated", "timestamp": "2025-08-19T15:02:44.139Z", "data": {"created_at": "2025-08-19T15:02:44.139Z", "modified_at": "2025-08-23T00:45:50.780Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": null, "proration_behavior": "prorate", "allow_customer_updates": false, "email": "Lemuel44@gmail.com", "website": "<value>", "socials": [{"platform": "tiktok", "url": "https://grizzled-patroller.info/"}, {"platform": "tiktok", "url": "https://grizzled-patroller.info/"}], "status": "active", "details_submitted_at": null, "default_presentment_currency": "<value>", "default_tax_behavior": "exclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "revops_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "tinybird_read": false, "tinybird_compare": false, "checkout_localization_enabled": false, "reset_proration_behavior_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": true, "proration_behavior": "invoice", "benefit_revocation_grace_period": 877397, "prevent_trial_abuse": false, "allow_customer_updates": false}, "notification_settings": {"new_order": false, "new_subscription": false}, "customer_email_settings": {"order_confirmation": false, "subscription_cancellation": false, "subscription_confirmation": false, "subscription_cycled": true, "subscription_cycled_after_trial": false, "subscription_past_due": true, "subscription_renewal_reminder": false, "subscription_revoked": true, "subscription_trial_conversion_reminder": false, "subscription_uncanceled": false, "subscription_updated": true}, "customer_portal_settings": {"usage": {"show": true}, "subscription": {"update_seats": true, "update_plan": true}}}}
       responses:
         "200":
           application/json: "<value>"
@@ -2318,7 +2319,7 @@ examples:
         application/json: {"name": "<value>", "slug": "<value>"}
       responses:
         "201":
-          application/json: {"created_at": "2024-12-19T02:20:41.368Z", "modified_at": "2024-07-08T16:38:56.712Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://menacing-draft.net", "proration_behavior": "prorate", "allow_customer_updates": false, "email": "Ursula99@yahoo.com", "website": "<value>", "socials": [{"platform": "facebook", "url": "https://likable-commodity.biz/"}], "status": "denied", "details_submitted_at": "2024-04-04T18:10:47.254Z", "default_presentment_currency": "<value>", "default_tax_behavior": "inclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "revops_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "tinybird_read": false, "tinybird_compare": false, "checkout_localization_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": false, "allow_customer_updates": true, "proration_behavior": "prorate", "benefit_revocation_grace_period": 655199, "prevent_trial_abuse": false}, "notification_settings": {"new_order": false, "new_subscription": false}, "customer_email_settings": {"order_confirmation": false, "subscription_cancellation": false, "subscription_confirmation": false, "subscription_cycled": false, "subscription_cycled_after_trial": false, "subscription_past_due": false, "subscription_renewal_reminder": false, "subscription_revoked": false, "subscription_trial_conversion_reminder": false, "subscription_uncanceled": true, "subscription_updated": false}, "customer_portal_settings": {"usage": {"show": false}, "subscription": {"update_seats": false, "update_plan": false}}}
+          application/json: {"created_at": "2024-12-19T02:20:41.368Z", "modified_at": "2024-07-08T16:38:56.712Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://menacing-draft.net", "proration_behavior": "prorate", "allow_customer_updates": false, "email": "Ursula99@yahoo.com", "website": "<value>", "socials": [{"platform": "facebook", "url": "https://likable-commodity.biz/"}], "status": "denied", "details_submitted_at": "2024-04-04T18:10:47.254Z", "default_presentment_currency": "<value>", "default_tax_behavior": "inclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "revops_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "tinybird_read": false, "tinybird_compare": false, "checkout_localization_enabled": false, "reset_proration_behavior_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": false, "proration_behavior": "prorate", "benefit_revocation_grace_period": 655199, "prevent_trial_abuse": false, "allow_customer_updates": true}, "notification_settings": {"new_order": false, "new_subscription": false}, "customer_email_settings": {"order_confirmation": false, "subscription_cancellation": false, "subscription_confirmation": false, "subscription_cycled": false, "subscription_cycled_after_trial": false, "subscription_past_due": false, "subscription_renewal_reminder": false, "subscription_revoked": false, "subscription_trial_conversion_reminder": false, "subscription_uncanceled": true, "subscription_updated": false}, "customer_portal_settings": {"usage": {"show": false}, "subscription": {"update_seats": false, "update_plan": false}}}
         "422":
           application/json: {}
   organizations:get:
@@ -2328,7 +2329,7 @@ examples:
           id: "1dbfc517-0bbf-4301-9ba8-555ca42b9737"
       responses:
         "200":
-          application/json: {"created_at": "2024-06-18T23:12:24.609Z", "modified_at": "2023-11-22T07:49:02.109Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://far-off-resource.com", "proration_behavior": "invoice", "allow_customer_updates": true, "email": "Dejon.Jakubowski-Bashirian6@gmail.com", "website": null, "socials": [{"platform": "other", "url": "https://tedious-habit.com"}, {"platform": "other", "url": "https://tedious-habit.com"}, {"platform": "other", "url": "https://tedious-habit.com"}], "status": "onboarding_started", "details_submitted_at": "2023-07-16T01:59:28.607Z", "default_presentment_currency": "<value>", "default_tax_behavior": "inclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "revops_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "tinybird_read": false, "tinybird_compare": false, "checkout_localization_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": true, "allow_customer_updates": false, "proration_behavior": "prorate", "benefit_revocation_grace_period": 488109, "prevent_trial_abuse": false}, "notification_settings": {"new_order": true, "new_subscription": true}, "customer_email_settings": {"order_confirmation": true, "subscription_cancellation": true, "subscription_confirmation": true, "subscription_cycled": false, "subscription_cycled_after_trial": true, "subscription_past_due": false, "subscription_renewal_reminder": true, "subscription_revoked": true, "subscription_trial_conversion_reminder": true, "subscription_uncanceled": false, "subscription_updated": true}, "customer_portal_settings": {"usage": {"show": false}, "subscription": {"update_seats": true, "update_plan": false}}}
+          application/json: {"created_at": "2024-06-18T23:12:24.609Z", "modified_at": "2023-11-22T07:49:02.109Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://far-off-resource.com", "proration_behavior": "invoice", "allow_customer_updates": true, "email": "Dejon.Jakubowski-Bashirian6@gmail.com", "website": null, "socials": [{"platform": "other", "url": "https://tedious-habit.com"}, {"platform": "other", "url": "https://tedious-habit.com"}, {"platform": "other", "url": "https://tedious-habit.com"}], "status": "onboarding_started", "details_submitted_at": "2023-07-16T01:59:28.607Z", "default_presentment_currency": "<value>", "default_tax_behavior": "inclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "revops_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "tinybird_read": false, "tinybird_compare": false, "checkout_localization_enabled": false, "reset_proration_behavior_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": true, "proration_behavior": "prorate", "benefit_revocation_grace_period": 488109, "prevent_trial_abuse": false, "allow_customer_updates": false}, "notification_settings": {"new_order": true, "new_subscription": true}, "customer_email_settings": {"order_confirmation": true, "subscription_cancellation": true, "subscription_confirmation": true, "subscription_cycled": false, "subscription_cycled_after_trial": true, "subscription_past_due": false, "subscription_renewal_reminder": true, "subscription_revoked": true, "subscription_trial_conversion_reminder": true, "subscription_uncanceled": false, "subscription_updated": true}, "customer_portal_settings": {"usage": {"show": false}, "subscription": {"update_seats": true, "update_plan": false}}}
         "404":
           application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "422":
@@ -2342,7 +2343,7 @@ examples:
         application/json: {}
       responses:
         "200":
-          application/json: {"created_at": "2024-01-10T12:09:47.665Z", "modified_at": "2025-07-12T14:18:16.022Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://juvenile-deed.name/", "proration_behavior": "invoice", "allow_customer_updates": false, "email": "Stanford.Streich62@gmail.com", "website": "<value>", "socials": [{"platform": "github", "url": "https://violent-ownership.org/"}], "status": "onboarding_started", "details_submitted_at": "2024-05-08T13:53:13.516Z", "default_presentment_currency": "<value>", "default_tax_behavior": "inclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "revops_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "tinybird_read": false, "tinybird_compare": false, "checkout_localization_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": false, "allow_customer_updates": false, "proration_behavior": "invoice", "benefit_revocation_grace_period": 341703, "prevent_trial_abuse": false}, "notification_settings": {"new_order": true, "new_subscription": false}, "customer_email_settings": {"order_confirmation": true, "subscription_cancellation": false, "subscription_confirmation": false, "subscription_cycled": false, "subscription_cycled_after_trial": true, "subscription_past_due": true, "subscription_renewal_reminder": false, "subscription_revoked": true, "subscription_trial_conversion_reminder": false, "subscription_uncanceled": true, "subscription_updated": false}, "customer_portal_settings": {"usage": {"show": false}, "subscription": {"update_seats": true, "update_plan": true}}}
+          application/json: {"created_at": "2024-01-10T12:09:47.665Z", "modified_at": "2025-07-12T14:18:16.022Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://juvenile-deed.name/", "proration_behavior": "invoice", "allow_customer_updates": false, "email": "Stanford.Streich62@gmail.com", "website": "<value>", "socials": [{"platform": "github", "url": "https://violent-ownership.org/"}], "status": "onboarding_started", "details_submitted_at": "2024-05-08T13:53:13.516Z", "default_presentment_currency": "<value>", "default_tax_behavior": "inclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "revops_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "tinybird_read": false, "tinybird_compare": false, "checkout_localization_enabled": false, "reset_proration_behavior_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": false, "proration_behavior": "invoice", "benefit_revocation_grace_period": 341703, "prevent_trial_abuse": false, "allow_customer_updates": false}, "notification_settings": {"new_order": true, "new_subscription": false}, "customer_email_settings": {"order_confirmation": true, "subscription_cancellation": false, "subscription_confirmation": false, "subscription_cycled": false, "subscription_cycled_after_trial": true, "subscription_past_due": true, "subscription_renewal_reminder": false, "subscription_revoked": true, "subscription_trial_conversion_reminder": false, "subscription_uncanceled": true, "subscription_updated": false}, "customer_portal_settings": {"usage": {"show": false}, "subscription": {"update_seats": true, "update_plan": true}}}
         "403":
           application/json: {"error": "NotPermitted", "detail": "<value>"}
         "404":
@@ -4513,17 +4514,7 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Python SDK Changes Detected:
-  * `polar.events.list()`:  `response.[list_resource_event_].items.[].[system_event]` **Changed** **Breaking** :warning:
-  * `polar.events.get()`:  `response.[system_event]` **Changed** **Breaking** :warning:
-  * `polar.metrics.list_dashboards()`: **Added**
-  * `polar.metrics.create_dashboard()`: **Added**
-  * `polar.metrics.get_dashboard()`: **Added**
-  * `polar.metrics.update_dashboard()`: **Added**
-  * `polar.metrics.delete_dashboard()`: **Added**
-  * `polar.subscriptions.list()`:  `request` **Changed**
-  * `polar.payments.list()`:  `response.items.[]` **Changed**
+releaseNotes: "## Python SDK Changes Detected:\n* `polar._endpointorganization_updated_post()`: \n  *  `request.data.feature_settings.reset_proration_behavior_enabled` **Added**\n* `polar.organizations.list()`:  `response.items.[].feature_settings.reset_proration_behavior_enabled` **Added**\n* `polar.organizations.create()`: \n  *  `request.feature_settings.reset_proration_behavior_enabled` **Added**\n  *  `response.feature_settings.reset_proration_behavior_enabled` **Added**\n* `polar.organizations.get()`:  `response.feature_settings.reset_proration_behavior_enabled` **Added**\n* `polar.organizations.update()`: \n  *  `request.organization_update.feature_settings.reset_proration_behavior_enabled` **Added**\n  *  `response.feature_settings.reset_proration_behavior_enabled` **Added**\n"
 trackedFiles:
   .devcontainer/README.md:
     last_write_checksum: sha1:e2a191a1fa8ceb27387eb32eabf36f7ad16a532c
@@ -6284,7 +6275,7 @@ trackedFiles:
   docs/models/organizationdetails.md:
     last_write_checksum: sha1:59784eef0c4fcb65f8c7006ffd0c3df8a7cfba0b
   docs/models/organizationfeaturesettings.md:
-    last_write_checksum: sha1:deebd5f7da8e9ac5792ff09a59dea3b1ca15d948
+    last_write_checksum: sha1:4e034d6db21082a21a202706af91d56e9d2191d7
   docs/models/organizationid.md:
     last_write_checksum: sha1:5adf4fb1a723f361ac66da12542fedbe34fd9e5d
   docs/models/organizationidfilter.md:
@@ -6308,7 +6299,7 @@ trackedFiles:
   docs/models/organizationstatus.md:
     last_write_checksum: sha1:b39f9d626f068ca3d7e1d5d68566a69900310767
   docs/models/organizationsubscriptionsettings.md:
-    last_write_checksum: sha1:0566d50afe9af997d79509c108093f65f487c1a3
+    last_write_checksum: sha1:a49bfc2dec2b99a0c37ec944d6dfcd339847e054
   docs/models/organizationsupdaterequest.md:
     last_write_checksum: sha1:82706bcd42b79c644b18f80c221a18df21a3ea9d
   docs/models/organizationupdate.md:
@@ -6449,6 +6440,8 @@ trackedFiles:
     last_write_checksum: sha1:84839699980f9b304d2368f5d2ca229e453db898
   docs/models/propertyaggregation.md:
     last_write_checksum: sha1:321820e7221f812441f8833a73dccc897128215f
+  docs/models/prorationbehavior.md:
+    last_write_checksum: sha1:3cf92cab60d5802c8766cd254ebe63927cde8136
   docs/models/queryparambenefitidfilter.md:
     last_write_checksum: sha1:75c0bcfb1b6da7cc53cdadebe99144ef263229ff
   docs/models/queryparambenefittypefilter.md:
@@ -6604,7 +6597,7 @@ trackedFiles:
   docs/models/subscriptionproductupdatedmetadata.md:
     last_write_checksum: sha1:8b4f3f7bdec02e3d65dd0e29813812c030929a20
   docs/models/subscriptionprorationbehavior.md:
-    last_write_checksum: sha1:f606c72b093fe4d0872ef16a2e9e71c0f820324b
+    last_write_checksum: sha1:a6fcd0297b2f6829d51e413c75b583a207078ba6
   docs/models/subscriptionrecurringinterval.md:
     last_write_checksum: sha1:97fe5695e6d3da484321d67ff05ce3b41714473f
   docs/models/subscriptionrevoke.md:
@@ -6976,7 +6969,7 @@ trackedFiles:
   src/polar_sdk/metrics_sdk.py:
     last_write_checksum: sha1:e8f2f65dec40c8f763eb15700e2dabcd6b386f8a
   src/polar_sdk/models/__init__.py:
-    last_write_checksum: sha1:12d62008e0b4deb8cae08853ef50386204d7a980
+    last_write_checksum: sha1:f0aaaf598e194ba5eca3aafbe5d2387c1543b6d7
   src/polar_sdk/models/address.py:
     last_write_checksum: sha1:083edb7f045174ac1aea30545e9981c33f07d57d
   src/polar_sdk/models/addressdict.py:
@@ -8072,7 +8065,7 @@ trackedFiles:
   src/polar_sdk/models/organizationdetails.py:
     last_write_checksum: sha1:74233062d4ab6a42a6799705ac3cfd820ba3244c
   src/polar_sdk/models/organizationfeaturesettings.py:
-    last_write_checksum: sha1:53e717110cdfbb8a4cf1c27cff963d16e84885c8
+    last_write_checksum: sha1:17d64913a7e39e1d05a09ec1b74e6c5a22064895
   src/polar_sdk/models/organizationindividuallegalentityschema.py:
     last_write_checksum: sha1:33b021299f8a9ef86b315e3030acf6e34ccedeb4
   src/polar_sdk/models/organizationnotificationsettings.py:
@@ -8092,7 +8085,7 @@ trackedFiles:
   src/polar_sdk/models/organizationstatus.py:
     last_write_checksum: sha1:21e4cab51469d737b152a0e319808f787c03a93e
   src/polar_sdk/models/organizationsubscriptionsettings.py:
-    last_write_checksum: sha1:73a282ee26583928dae0e91c03a6e9941be37a75
+    last_write_checksum: sha1:d451061a8d774e1e3d68b078f506b80a059e42e7
   src/polar_sdk/models/organizationupdate.py:
     last_write_checksum: sha1:6c402c1339a3c3911ab3d6026a98e00bd8b6fa72
   src/polar_sdk/models/pagination.py:
@@ -8286,7 +8279,7 @@ trackedFiles:
   src/polar_sdk/models/subscriptionproductupdatedmetadata.py:
     last_write_checksum: sha1:30d2e991818d04c91325383c3389481f400fe4fc
   src/polar_sdk/models/subscriptionprorationbehavior.py:
-    last_write_checksum: sha1:5f9702cb520eb78a4aba30a1a0fec9ae27605c47
+    last_write_checksum: sha1:f6ce61cddc61ff1d19cc049c56b5a285c77f542c
   src/polar_sdk/models/subscriptionrecurringinterval.py:
     last_write_checksum: sha1:50e3c8d161461516c61f3e5ff97fe69ce52648fd
   src/polar_sdk/models/subscriptionrevoke.py:

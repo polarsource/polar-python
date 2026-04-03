@@ -2332,6 +2332,7 @@ if TYPE_CHECKING:
     from .organizationsubscriptionsettings import (
         OrganizationSubscriptionSettings,
         OrganizationSubscriptionSettingsTypedDict,
+        ProrationBehavior,
     )
     from .organizationupdate import (
         CountryCountryAlpha2Input,
@@ -4893,6 +4894,7 @@ __all__ = [
     "PropertiesTypedDict",
     "PropertyAggregation",
     "PropertyAggregationTypedDict",
+    "ProrationBehavior",
     "QueryParamBenefitIDFilter",
     "QueryParamBenefitIDFilterTypedDict",
     "QueryParamBenefitTypeFilter",
@@ -6919,6 +6921,7 @@ _dynamic_imports: dict[str, str] = {
     "OrganizationStatus": ".organizationstatus",
     "OrganizationSubscriptionSettings": ".organizationsubscriptionsettings",
     "OrganizationSubscriptionSettingsTypedDict": ".organizationsubscriptionsettings",
+    "ProrationBehavior": ".organizationsubscriptionsettings",
     "CountryCountryAlpha2Input": ".organizationupdate",
     "OrganizationUpdate": ".organizationupdate",
     "OrganizationUpdateTypedDict": ".organizationupdate",
