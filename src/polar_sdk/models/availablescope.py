@@ -54,6 +54,7 @@ class AvailableScope(str, Enum):
     REFUNDS_WRITE = "refunds:write"
     PAYMENTS_READ = "payments:read"
     METRICS_READ = "metrics:read"
+    METRICS_WRITE = "metrics:write"
     WEBHOOKS_READ = "webhooks:read"
     WEBHOOKS_WRITE = "webhooks:write"
     LICENSE_KEYS_READ = "license_keys:read"

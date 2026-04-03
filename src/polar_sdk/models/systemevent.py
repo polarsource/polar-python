@@ -28,6 +28,7 @@ from .metercreditevent import MeterCreditEvent, MeterCreditEventTypedDict
 from .meterresetevent import MeterResetEvent, MeterResetEventTypedDict
 from .orderpaidevent import OrderPaidEvent, OrderPaidEventTypedDict
 from .orderrefundedevent import OrderRefundedEvent, OrderRefundedEventTypedDict
+from .ordervoidedevent import OrderVoidedEvent, OrderVoidedEventTypedDict
 from .subscriptionbillingperiodupdatedevent import (
     SubscriptionBillingPeriodUpdatedEvent,
     SubscriptionBillingPeriodUpdatedEventTypedDict,
@@ -90,6 +91,7 @@ SystemEventTypedDict = TypeAliasType(
         SubscriptionBillingPeriodUpdatedEventTypedDict,
         OrderPaidEventTypedDict,
         OrderRefundedEventTypedDict,
+        OrderVoidedEventTypedDict,
         CheckoutCreatedEventTypedDict,
         CustomerCreatedEventTypedDict,
         CustomerUpdatedEventTypedDict,
@@ -124,6 +126,7 @@ SystemEvent = Annotated[
         Annotated[MeterResetEvent, Tag("meter.reset")],
         Annotated[OrderPaidEvent, Tag("order.paid")],
         Annotated[OrderRefundedEvent, Tag("order.refunded")],
+        Annotated[OrderVoidedEvent, Tag("order.voided")],
         Annotated[
             SubscriptionBillingPeriodUpdatedEvent,
             Tag("subscription.billing_period_updated"),

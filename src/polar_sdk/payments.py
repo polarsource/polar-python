@@ -164,7 +164,7 @@ class Payments(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.PaymentsListResponse(
-                result=unmarshal_json_response(models.ListResource, http_res),
+                result=unmarshal_json_response(models.ListResourcePayment, http_res),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
@@ -335,7 +335,7 @@ class Payments(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return models.PaymentsListResponse(
-                result=unmarshal_json_response(models.ListResource, http_res),
+                result=unmarshal_json_response(models.ListResourcePayment, http_res),
                 next=next_func,
             )
         if utils.match_response(http_res, "422", "application/json"):
