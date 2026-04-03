@@ -8,3 +8,4 @@ class SubscriptionProrationBehavior(str, Enum):
     INVOICE = "invoice"
     PRORATE = "prorate"
     NEXT_PERIOD = "next_period"
+    RESET = "reset"

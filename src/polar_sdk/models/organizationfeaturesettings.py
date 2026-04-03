@@ -26,6 +26,8 @@ class OrganizationFeatureSettingsTypedDict(TypedDict):
     r"""If this organization has checkout localization enabled"""
     overview_metrics: NotRequired[Nullable[List[str]]]
     r"""Ordered list of metric slugs shown on the dashboard overview."""
+    reset_proration_behavior_enabled: NotRequired[bool]
+    r"""If this organization has access to reset proration behavior."""
 
 
 class OrganizationFeatureSettings(BaseModel):
@@ -56,6 +58,9 @@ class OrganizationFeatureSettings(BaseModel):
     overview_metrics: OptionalNullable[List[str]] = UNSET
     r"""Ordered list of metric slugs shown on the dashboard overview."""
 
+    reset_proration_behavior_enabled: Optional[bool] = False
+    r"""If this organization has access to reset proration behavior."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -68,6 +73,7 @@ class OrganizationFeatureSettings(BaseModel):
             "tinybird_compare",
             "checkout_localization_enabled",
             "overview_metrics",
+            "reset_proration_behavior_enabled",
         ]
         nullable_fields = ["overview_metrics"]
         null_default_fields = []
