@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .countaggregation import CountAggregation, CountAggregationTypedDict
 from .filter_ import Filter, FilterTypedDict
+from .meterunit import MeterUnit
 from .propertyaggregation import PropertyAggregation, PropertyAggregationTypedDict
 from .uniqueaggregation import UniqueAggregation, UniqueAggregationTypedDict
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
@@ -60,6 +61,12 @@ class MeterUpdateTypedDict(TypedDict):
     """
     name: NotRequired[Nullable[str]]
     r"""The name of the meter. Will be shown on customer's invoices and usage."""
+    unit: NotRequired[Nullable[MeterUnit]]
+    r"""The unit of the meter."""
+    custom_label: NotRequired[Nullable[str]]
+    r"""The label for the custom unit. Required when unit is 'custom'."""
+    custom_multiplier: NotRequired[Nullable[int]]
+    r"""The multiplier to convert from base unit to display scale. Required when unit is 'custom'."""
     filter_: NotRequired[Nullable[FilterTypedDict]]
     r"""The filter to apply on events that'll be used to calculate the meter."""
     aggregation: NotRequired[Nullable[AggregationTypedDict]]
@@ -86,6 +93,15 @@ class MeterUpdate(BaseModel):
     name: OptionalNullable[str] = UNSET
     r"""The name of the meter. Will be shown on customer's invoices and usage."""
 
+    unit: OptionalNullable[MeterUnit] = UNSET
+    r"""The unit of the meter."""
+
+    custom_label: OptionalNullable[str] = UNSET
+    r"""The label for the custom unit. Required when unit is 'custom'."""
+
+    custom_multiplier: OptionalNullable[int] = UNSET
+    r"""The multiplier to convert from base unit to display scale. Required when unit is 'custom'."""
+
     filter_: Annotated[OptionalNullable[Filter], pydantic.Field(alias="filter")] = UNSET
     r"""The filter to apply on events that'll be used to calculate the meter."""
 
@@ -97,8 +113,25 @@ class MeterUpdate(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["metadata", "name", "filter", "aggregation", "is_archived"]
-        nullable_fields = ["name", "filter", "aggregation", "is_archived"]
+        optional_fields = [
+            "metadata",
+            "name",
+            "unit",
+            "custom_label",
+            "custom_multiplier",
+            "filter",
+            "aggregation",
+            "is_archived",
+        ]
+        nullable_fields = [
+            "name",
+            "unit",
+            "custom_label",
+            "custom_multiplier",
+            "filter",
+            "aggregation",
+            "is_archived",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

@@ -44,8 +44,8 @@ class PolarBenefitGrants(BaseSDK):
         ] = UNSET,
         subscription_id: OptionalNullable[
             Union[
-                models.QueryParamSubscriptionIDFilter,
-                models.QueryParamSubscriptionIDFilterTypedDict,
+                models.CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilter,
+                models.CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilterTypedDict,
             ]
         ] = UNSET,
         member_id: OptionalNullable[
@@ -237,8 +237,8 @@ class PolarBenefitGrants(BaseSDK):
         ] = UNSET,
         subscription_id: OptionalNullable[
             Union[
-                models.QueryParamSubscriptionIDFilter,
-                models.QueryParamSubscriptionIDFilterTypedDict,
+                models.CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilter,
+                models.CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilterTypedDict,
             ]
         ] = UNSET,
         member_id: OptionalNullable[

@@ -326,4 +326,5 @@ with Polar() as polar:
 | models.ResourceNotFound         | 404                             | application/json                |
 | models.PaymentAlreadyInProgress | 409                             | application/json                |
 | models.OrderNotEligibleForRetry | 422                             | application/json                |
+| models.ManualRetryLimitExceeded | 429                             | application/json                |
 | models.SDKError                 | 4XX, 5XX                        | \*/\*                           |

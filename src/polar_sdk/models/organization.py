@@ -322,6 +322,10 @@ class OrganizationTypedDict(TypedDict):
     notification_settings: OrganizationNotificationSettingsTypedDict
     customer_email_settings: OrganizationCustomerEmailSettingsTypedDict
     customer_portal_settings: OrganizationCustomerPortalSettingsTypedDict
+    account_id: Nullable[str]
+    r"""ID of the transactions account."""
+    payout_account_id: Nullable[str]
+    r"""ID of the payout account."""
     country: NotRequired[Nullable[CountryAlpha2]]
     r"""Two-letter country code (ISO 3166-1 alpha-2)."""
 
@@ -380,6 +384,12 @@ class Organization(BaseModel):
 
     customer_portal_settings: OrganizationCustomerPortalSettings
 
+    account_id: Nullable[str]
+    r"""ID of the transactions account."""
+
+    payout_account_id: Nullable[str]
+    r"""ID of the payout account."""
+
     country: OptionalNullable[CountryAlpha2] = UNSET
     r"""Two-letter country code (ISO 3166-1 alpha-2)."""
 
@@ -394,6 +404,8 @@ class Organization(BaseModel):
             "details_submitted_at",
             "feature_settings",
             "country",
+            "account_id",
+            "payout_account_id",
         ]
         null_default_fields = []
 

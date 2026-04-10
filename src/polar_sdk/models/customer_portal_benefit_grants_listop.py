@@ -96,14 +96,16 @@ CustomerPortalBenefitGrantsListQueryParamOrderIDFilter = TypeAliasType(
 r"""Filter by order ID."""
 
 
-QueryParamSubscriptionIDFilterTypedDict = TypeAliasType(
-    "QueryParamSubscriptionIDFilterTypedDict", Union[str, List[str]]
+CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilterTypedDict = TypeAliasType(
+    "CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilterTypedDict",
+    Union[str, List[str]],
 )
 r"""Filter by subscription ID."""
 
 
-QueryParamSubscriptionIDFilter = TypeAliasType(
-    "QueryParamSubscriptionIDFilter", Union[str, List[str]]
+CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilter = TypeAliasType(
+    "CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilter",
+    Union[str, List[str]],
 )
 r"""Filter by subscription ID."""
 
@@ -135,7 +137,9 @@ class CustomerPortalBenefitGrantsListRequestTypedDict(TypedDict):
         Nullable[CustomerPortalBenefitGrantsListQueryParamOrderIDFilterTypedDict]
     ]
     r"""Filter by order ID."""
-    subscription_id: NotRequired[Nullable[QueryParamSubscriptionIDFilterTypedDict]]
+    subscription_id: NotRequired[
+        Nullable[CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilterTypedDict]
+    ]
     r"""Filter by subscription ID."""
     member_id: NotRequired[Nullable[QueryParamMemberIDFilterTypedDict]]
     r"""Filter by member ID."""
@@ -180,7 +184,7 @@ class CustomerPortalBenefitGrantsListRequest(BaseModel):
     r"""Filter by order ID."""
 
     subscription_id: Annotated[
-        OptionalNullable[QueryParamSubscriptionIDFilter],
+        OptionalNullable[CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by subscription ID."""

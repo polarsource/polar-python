@@ -4,6 +4,7 @@ from __future__ import annotations
 from .countaggregation import CountAggregation, CountAggregationTypedDict
 from .filter_ import Filter, FilterTypedDict
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
+from .meterunit import MeterUnit
 from .propertyaggregation import PropertyAggregation, PropertyAggregationTypedDict
 from .uniqueaggregation import UniqueAggregation, UniqueAggregationTypedDict
 from datetime import datetime
@@ -50,11 +51,16 @@ class MeterTypedDict(TypedDict):
     r"""The ID of the object."""
     name: str
     r"""The name of the meter. Will be shown on customer's invoices and usage."""
+    unit: MeterUnit
     filter_: FilterTypedDict
     aggregation: MeterAggregationTypedDict
     r"""The aggregation to apply on the filtered events to calculate the meter."""
     organization_id: str
     r"""The ID of the organization owning the meter."""
+    custom_label: NotRequired[Nullable[str]]
+    r"""The label for the custom unit."""
+    custom_multiplier: NotRequired[Nullable[int]]
+    r"""The multiplier to convert from base unit to display scale."""
     archived_at: NotRequired[Nullable[datetime]]
     r"""Whether the meter is archived and the time it was archived."""
 
@@ -74,6 +80,8 @@ class Meter(BaseModel):
     name: str
     r"""The name of the meter. Will be shown on customer's invoices and usage."""
 
+    unit: MeterUnit
+
     filter_: Annotated[Filter, pydantic.Field(alias="filter")]
 
     aggregation: MeterAggregation
@@ -82,13 +90,24 @@ class Meter(BaseModel):
     organization_id: str
     r"""The ID of the organization owning the meter."""
 
+    custom_label: OptionalNullable[str] = UNSET
+    r"""The label for the custom unit."""
+
+    custom_multiplier: OptionalNullable[int] = UNSET
+    r"""The multiplier to convert from base unit to display scale."""
+
     archived_at: OptionalNullable[datetime] = UNSET
     r"""Whether the meter is archived and the time it was archived."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["archived_at"]
-        nullable_fields = ["modified_at", "archived_at"]
+        optional_fields = ["custom_label", "custom_multiplier", "archived_at"]
+        nullable_fields = [
+            "modified_at",
+            "custom_label",
+            "custom_multiplier",
+            "archived_at",
+        ]
         null_default_fields = []
 
         serialized = handler(self)
