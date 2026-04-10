@@ -1436,7 +1436,7 @@ class PolarOrders(BaseSDK):
                 security_source=security,
             ),
             request=req,
-            error_status_codes=["404", "409", "422", "4XX", "5XX"],
+            error_status_codes=["404", "409", "422", "429", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1460,6 +1460,11 @@ class PolarOrders(BaseSDK):
                 models.OrderNotEligibleForRetryData, http_res
             )
             raise models.OrderNotEligibleForRetry(response_data, http_res)
+        if utils.match_response(http_res, "429", "application/json"):
+            response_data = unmarshal_json_response(
+                models.ManualRetryLimitExceededData, http_res
+            )
+            raise models.ManualRetryLimitExceeded(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.SDKError("API error occurred", http_res, http_res_text)
@@ -1557,7 +1562,7 @@ class PolarOrders(BaseSDK):
                 security_source=security,
             ),
             request=req,
-            error_status_codes=["404", "409", "422", "4XX", "5XX"],
+            error_status_codes=["404", "409", "422", "429", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -1581,6 +1586,11 @@ class PolarOrders(BaseSDK):
                 models.OrderNotEligibleForRetryData, http_res
             )
             raise models.OrderNotEligibleForRetry(response_data, http_res)
+        if utils.match_response(http_res, "429", "application/json"):
+            response_data = unmarshal_json_response(
+                models.ManualRetryLimitExceededData, http_res
+            )
+            raise models.ManualRetryLimitExceeded(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.SDKError("API error occurred", http_res, http_res_text)

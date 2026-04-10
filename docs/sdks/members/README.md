@@ -10,6 +10,9 @@
 * [get_member](#get_member) - Get Member
 * [update_member](#update_member) - Update Member
 * [delete_member](#delete_member) - Delete Member
+* [get_member_by_external_id](#get_member_by_external_id) - Get Member by External ID
+* [update_member_by_external_id](#update_member_by_external_id) - Update Member by External ID
+* [delete_member_by_external_id](#delete_member_by_external_id) - Delete Member by External ID
 
 ## list_members
 
@@ -235,6 +238,133 @@ with Polar(
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## get_member_by_external_id
+
+Get a member by external ID.
+
+**Scopes**: `members:read` `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="members:get_member_by_external_id" method="get" path="/v1/members/external/{external_id}" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.members.get_member_by_external_id(external_id="<id>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `external_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | The member external ID.                                             |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.Member](../../models/member.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## update_member_by_external_id
+
+Update a member by external ID.
+
+**Scopes**: `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="members:update_member_by_external_id" method="patch" path="/v1/members/external/{external_id}" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.members.update_member_by_external_id(external_id="<id>", member_update={
+        "name": "Jane Doe",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `external_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | The member external ID.                                             |
+| `member_update`                                                     | [models.MemberUpdate](../../models/memberupdate.md)                 | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.Member](../../models/member.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## delete_member_by_external_id
+
+Delete a member by external ID.
+
+**Scopes**: `members:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="members:delete_member_by_external_id" method="delete" path="/v1/members/external/{external_id}" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    polar.members.delete_member_by_external_id(external_id="<id>")
+
+    # Use the SDK ...
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `external_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | The member external ID.                                             |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Errors

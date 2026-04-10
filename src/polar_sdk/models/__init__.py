@@ -688,6 +688,8 @@ if TYPE_CHECKING:
         CustomerPortalBenefitGrantsListQueryParamBenefitIDFilterTypedDict,
         CustomerPortalBenefitGrantsListQueryParamOrderIDFilter,
         CustomerPortalBenefitGrantsListQueryParamOrderIDFilterTypedDict,
+        CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilter,
+        CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilterTypedDict,
         CustomerPortalBenefitGrantsListRequest,
         CustomerPortalBenefitGrantsListRequestTypedDict,
         CustomerPortalBenefitGrantsListResponse,
@@ -700,8 +702,6 @@ if TYPE_CHECKING:
         QueryParamCheckoutIDFilterTypedDict,
         QueryParamMemberIDFilter,
         QueryParamMemberIDFilterTypedDict,
-        QueryParamSubscriptionIDFilter,
-        QueryParamSubscriptionIDFilterTypedDict,
     )
     from .customer_portal_benefit_grants_updateop import (
         CustomerPortalBenefitGrantsUpdateRequest,
@@ -1837,13 +1837,25 @@ if TYPE_CHECKING:
         ListResourceWithCursorPaginationEventTypedDict,
     )
     from .llmmetadata import LLMMetadata, LLMMetadataTypedDict
+    from .manualretrylimitexceeded import (
+        ManualRetryLimitExceeded,
+        ManualRetryLimitExceededData,
+    )
     from .member import Member, MemberTypedDict
     from .membercreate import MemberCreate, MemberCreateTypedDict
     from .memberownercreate import MemberOwnerCreate, MemberOwnerCreateTypedDict
     from .memberrole import MemberRole
+    from .members_delete_member_by_external_idop import (
+        MembersDeleteMemberByExternalIDRequest,
+        MembersDeleteMemberByExternalIDRequestTypedDict,
+    )
     from .members_delete_memberop import (
         MembersDeleteMemberRequest,
         MembersDeleteMemberRequestTypedDict,
+    )
+    from .members_get_member_by_external_idop import (
+        MembersGetMemberByExternalIDRequest,
+        MembersGetMemberByExternalIDRequestTypedDict,
     )
     from .members_get_memberop import (
         MembersGetMemberRequest,
@@ -1854,6 +1866,10 @@ if TYPE_CHECKING:
         MembersListMembersRequestTypedDict,
         MembersListMembersResponse,
         MembersListMembersResponseTypedDict,
+    )
+    from .members_update_member_by_external_idop import (
+        MembersUpdateMemberByExternalIDRequest,
+        MembersUpdateMemberByExternalIDRequestTypedDict,
     )
     from .members_update_memberop import (
         MembersUpdateMemberRequest,
@@ -1888,6 +1904,7 @@ if TYPE_CHECKING:
     from .meters_getop import MetersGetRequest, MetersGetRequestTypedDict
     from .meters_updateop import MetersUpdateRequest, MetersUpdateRequestTypedDict
     from .metersortproperty import MeterSortProperty
+    from .meterunit import MeterUnit
     from .meterupdate import (
         Aggregation,
         AggregationTypedDict,
@@ -2003,6 +2020,20 @@ if TYPE_CHECKING:
     from .metrics_delete_dashboardop import (
         MetricsDeleteDashboardRequest,
         MetricsDeleteDashboardRequestTypedDict,
+    )
+    from .metrics_exportop import (
+        MetricsExportQueryParamCustomerIDFilter,
+        MetricsExportQueryParamCustomerIDFilterTypedDict,
+        MetricsExportQueryParamOrganizationIDFilter,
+        MetricsExportQueryParamOrganizationIDFilterTypedDict,
+        MetricsExportQueryParamProductBillingTypeFilter,
+        MetricsExportQueryParamProductBillingTypeFilterTypedDict,
+        MetricsExportQueryParamProductIDFilter,
+        MetricsExportQueryParamProductIDFilterTypedDict,
+        MetricsExportRequest,
+        MetricsExportRequestTypedDict,
+        MetricsExportResponse,
+        MetricsExportResponseTypedDict,
     )
     from .metrics_get_dashboardop import (
         MetricsGetDashboardRequest,
@@ -2508,6 +2539,8 @@ if TYPE_CHECKING:
     from .refunds_listop import (
         OrderIDFilter,
         OrderIDFilterTypedDict,
+        QueryParamSubscriptionIDFilter,
+        QueryParamSubscriptionIDFilterTypedDict,
         RefundIDFilter,
         RefundIDFilterTypedDict,
         RefundsListQueryParamCustomerIDFilter,
@@ -2520,8 +2553,6 @@ if TYPE_CHECKING:
         RefundsListRequestTypedDict,
         RefundsListResponse,
         RefundsListResponseTypedDict,
-        SubscriptionIDFilter,
-        SubscriptionIDFilterTypedDict,
     )
     from .refundsortproperty import RefundSortProperty
     from .refundstatus import RefundStatus
@@ -2742,6 +2773,8 @@ if TYPE_CHECKING:
         QueryParamProductIDFilterTypedDict,
         SourceFilter,
         SourceFilterTypedDict,
+        SubscriptionIDFilter,
+        SubscriptionIDFilterTypedDict,
         SubscriptionsListRequest,
         SubscriptionsListRequestTypedDict,
         SubscriptionsListResponse,
@@ -3750,6 +3783,8 @@ __all__ = [
     "CustomerPortalBenefitGrantsListQueryParamBenefitIDFilterTypedDict",
     "CustomerPortalBenefitGrantsListQueryParamOrderIDFilter",
     "CustomerPortalBenefitGrantsListQueryParamOrderIDFilterTypedDict",
+    "CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilter",
+    "CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilterTypedDict",
     "CustomerPortalBenefitGrantsListRequest",
     "CustomerPortalBenefitGrantsListRequestTypedDict",
     "CustomerPortalBenefitGrantsListResponse",
@@ -4378,6 +4413,8 @@ __all__ = [
     "LocTypedDict",
     "Ltv",
     "LtvTypedDict",
+    "ManualRetryLimitExceeded",
+    "ManualRetryLimitExceededData",
     "Member",
     "MemberCreate",
     "MemberCreateTypedDict",
@@ -4390,14 +4427,20 @@ __all__ = [
     "MemberTypedDict",
     "MemberUpdate",
     "MemberUpdateTypedDict",
+    "MembersDeleteMemberByExternalIDRequest",
+    "MembersDeleteMemberByExternalIDRequestTypedDict",
     "MembersDeleteMemberRequest",
     "MembersDeleteMemberRequestTypedDict",
+    "MembersGetMemberByExternalIDRequest",
+    "MembersGetMemberByExternalIDRequestTypedDict",
     "MembersGetMemberRequest",
     "MembersGetMemberRequestTypedDict",
     "MembersListMembersRequest",
     "MembersListMembersRequestTypedDict",
     "MembersListMembersResponse",
     "MembersListMembersResponseTypedDict",
+    "MembersUpdateMemberByExternalIDRequest",
+    "MembersUpdateMemberByExternalIDRequestTypedDict",
     "MembersUpdateMemberRequest",
     "MembersUpdateMemberRequestTypedDict",
     "Meta",
@@ -4433,6 +4476,7 @@ __all__ = [
     "MeterResetMetadataTypedDict",
     "MeterSortProperty",
     "MeterTypedDict",
+    "MeterUnit",
     "MeterUpdate",
     "MeterUpdateMetadata",
     "MeterUpdateMetadataTypedDict",
@@ -4469,6 +4513,18 @@ __all__ = [
     "Metrics",
     "MetricsDeleteDashboardRequest",
     "MetricsDeleteDashboardRequestTypedDict",
+    "MetricsExportQueryParamCustomerIDFilter",
+    "MetricsExportQueryParamCustomerIDFilterTypedDict",
+    "MetricsExportQueryParamOrganizationIDFilter",
+    "MetricsExportQueryParamOrganizationIDFilterTypedDict",
+    "MetricsExportQueryParamProductBillingTypeFilter",
+    "MetricsExportQueryParamProductBillingTypeFilterTypedDict",
+    "MetricsExportQueryParamProductIDFilter",
+    "MetricsExportQueryParamProductIDFilterTypedDict",
+    "MetricsExportRequest",
+    "MetricsExportRequestTypedDict",
+    "MetricsExportResponse",
+    "MetricsExportResponseTypedDict",
     "MetricsGetDashboardRequest",
     "MetricsGetDashboardRequestTypedDict",
     "MetricsGetQueryParamCustomerIDFilter",
@@ -5717,6 +5773,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalBenefitGrantsListQueryParamBenefitIDFilterTypedDict": ".customer_portal_benefit_grants_listop",
     "CustomerPortalBenefitGrantsListQueryParamOrderIDFilter": ".customer_portal_benefit_grants_listop",
     "CustomerPortalBenefitGrantsListQueryParamOrderIDFilterTypedDict": ".customer_portal_benefit_grants_listop",
+    "CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilter": ".customer_portal_benefit_grants_listop",
+    "CustomerPortalBenefitGrantsListQueryParamSubscriptionIDFilterTypedDict": ".customer_portal_benefit_grants_listop",
     "CustomerPortalBenefitGrantsListRequest": ".customer_portal_benefit_grants_listop",
     "CustomerPortalBenefitGrantsListRequestTypedDict": ".customer_portal_benefit_grants_listop",
     "CustomerPortalBenefitGrantsListResponse": ".customer_portal_benefit_grants_listop",
@@ -5729,8 +5787,6 @@ _dynamic_imports: dict[str, str] = {
     "QueryParamCheckoutIDFilterTypedDict": ".customer_portal_benefit_grants_listop",
     "QueryParamMemberIDFilter": ".customer_portal_benefit_grants_listop",
     "QueryParamMemberIDFilterTypedDict": ".customer_portal_benefit_grants_listop",
-    "QueryParamSubscriptionIDFilter": ".customer_portal_benefit_grants_listop",
-    "QueryParamSubscriptionIDFilterTypedDict": ".customer_portal_benefit_grants_listop",
     "CustomerPortalBenefitGrantsUpdateRequest": ".customer_portal_benefit_grants_updateop",
     "CustomerPortalBenefitGrantsUpdateRequestTypedDict": ".customer_portal_benefit_grants_updateop",
     "CustomerPortalBenefitGrantsUpdateSecurity": ".customer_portal_benefit_grants_updateop",
@@ -6504,6 +6560,8 @@ _dynamic_imports: dict[str, str] = {
     "ListResourceWithCursorPaginationEventTypedDict": ".listresourcewithcursorpagination_event_",
     "LLMMetadata": ".llmmetadata",
     "LLMMetadataTypedDict": ".llmmetadata",
+    "ManualRetryLimitExceeded": ".manualretrylimitexceeded",
+    "ManualRetryLimitExceededData": ".manualretrylimitexceeded",
     "Member": ".member",
     "MemberTypedDict": ".member",
     "MemberCreate": ".membercreate",
@@ -6511,14 +6569,20 @@ _dynamic_imports: dict[str, str] = {
     "MemberOwnerCreate": ".memberownercreate",
     "MemberOwnerCreateTypedDict": ".memberownercreate",
     "MemberRole": ".memberrole",
+    "MembersDeleteMemberByExternalIDRequest": ".members_delete_member_by_external_idop",
+    "MembersDeleteMemberByExternalIDRequestTypedDict": ".members_delete_member_by_external_idop",
     "MembersDeleteMemberRequest": ".members_delete_memberop",
     "MembersDeleteMemberRequestTypedDict": ".members_delete_memberop",
+    "MembersGetMemberByExternalIDRequest": ".members_get_member_by_external_idop",
+    "MembersGetMemberByExternalIDRequestTypedDict": ".members_get_member_by_external_idop",
     "MembersGetMemberRequest": ".members_get_memberop",
     "MembersGetMemberRequestTypedDict": ".members_get_memberop",
     "MembersListMembersRequest": ".members_list_membersop",
     "MembersListMembersRequestTypedDict": ".members_list_membersop",
     "MembersListMembersResponse": ".members_list_membersop",
     "MembersListMembersResponseTypedDict": ".members_list_membersop",
+    "MembersUpdateMemberByExternalIDRequest": ".members_update_member_by_external_idop",
+    "MembersUpdateMemberByExternalIDRequestTypedDict": ".members_update_member_by_external_idop",
     "MembersUpdateMemberRequest": ".members_update_memberop",
     "MembersUpdateMemberRequestTypedDict": ".members_update_memberop",
     "MemberSortProperty": ".membersortproperty",
@@ -6553,6 +6617,7 @@ _dynamic_imports: dict[str, str] = {
     "MetersUpdateRequest": ".meters_updateop",
     "MetersUpdateRequestTypedDict": ".meters_updateop",
     "MeterSortProperty": ".metersortproperty",
+    "MeterUnit": ".meterunit",
     "Aggregation": ".meterupdate",
     "AggregationTypedDict": ".meterupdate",
     "MeterUpdate": ".meterupdate",
@@ -6659,6 +6724,18 @@ _dynamic_imports: dict[str, str] = {
     "MetricsTypedDict": ".metrics",
     "MetricsDeleteDashboardRequest": ".metrics_delete_dashboardop",
     "MetricsDeleteDashboardRequestTypedDict": ".metrics_delete_dashboardop",
+    "MetricsExportQueryParamCustomerIDFilter": ".metrics_exportop",
+    "MetricsExportQueryParamCustomerIDFilterTypedDict": ".metrics_exportop",
+    "MetricsExportQueryParamOrganizationIDFilter": ".metrics_exportop",
+    "MetricsExportQueryParamOrganizationIDFilterTypedDict": ".metrics_exportop",
+    "MetricsExportQueryParamProductBillingTypeFilter": ".metrics_exportop",
+    "MetricsExportQueryParamProductBillingTypeFilterTypedDict": ".metrics_exportop",
+    "MetricsExportQueryParamProductIDFilter": ".metrics_exportop",
+    "MetricsExportQueryParamProductIDFilterTypedDict": ".metrics_exportop",
+    "MetricsExportRequest": ".metrics_exportop",
+    "MetricsExportRequestTypedDict": ".metrics_exportop",
+    "MetricsExportResponse": ".metrics_exportop",
+    "MetricsExportResponseTypedDict": ".metrics_exportop",
     "MetricsGetDashboardRequest": ".metrics_get_dashboardop",
     "MetricsGetDashboardRequestTypedDict": ".metrics_get_dashboardop",
     "MetricsGetQueryParamCustomerIDFilter": ".metrics_getop",
@@ -7063,6 +7140,8 @@ _dynamic_imports: dict[str, str] = {
     "RefundReason": ".refundreason",
     "OrderIDFilter": ".refunds_listop",
     "OrderIDFilterTypedDict": ".refunds_listop",
+    "QueryParamSubscriptionIDFilter": ".refunds_listop",
+    "QueryParamSubscriptionIDFilterTypedDict": ".refunds_listop",
     "RefundIDFilter": ".refunds_listop",
     "RefundIDFilterTypedDict": ".refunds_listop",
     "RefundsListQueryParamCustomerIDFilter": ".refunds_listop",
@@ -7075,8 +7154,6 @@ _dynamic_imports: dict[str, str] = {
     "RefundsListRequestTypedDict": ".refunds_listop",
     "RefundsListResponse": ".refunds_listop",
     "RefundsListResponseTypedDict": ".refunds_listop",
-    "SubscriptionIDFilter": ".refunds_listop",
-    "SubscriptionIDFilterTypedDict": ".refunds_listop",
     "RefundSortProperty": ".refundsortproperty",
     "RefundStatus": ".refundstatus",
     "ResourceNotFound": ".resourcenotfound",
@@ -7263,6 +7340,8 @@ _dynamic_imports: dict[str, str] = {
     "QueryParamProductIDFilterTypedDict": ".subscriptions_listop",
     "SourceFilter": ".subscriptions_listop",
     "SourceFilterTypedDict": ".subscriptions_listop",
+    "SubscriptionIDFilter": ".subscriptions_listop",
+    "SubscriptionIDFilterTypedDict": ".subscriptions_listop",
     "SubscriptionsListRequest": ".subscriptions_listop",
     "SubscriptionsListRequestTypedDict": ".subscriptions_listop",
     "SubscriptionsListResponse": ".subscriptions_listop",

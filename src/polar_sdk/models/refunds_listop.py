@@ -40,13 +40,15 @@ OrderIDFilter = TypeAliasType("OrderIDFilter", Union[str, List[str]])
 r"""Filter by order ID."""
 
 
-SubscriptionIDFilterTypedDict = TypeAliasType(
-    "SubscriptionIDFilterTypedDict", Union[str, List[str]]
+QueryParamSubscriptionIDFilterTypedDict = TypeAliasType(
+    "QueryParamSubscriptionIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by subscription ID."""
 
 
-SubscriptionIDFilter = TypeAliasType("SubscriptionIDFilter", Union[str, List[str]])
+QueryParamSubscriptionIDFilter = TypeAliasType(
+    "QueryParamSubscriptionIDFilter", Union[str, List[str]]
+)
 r"""Filter by subscription ID."""
 
 
@@ -83,7 +85,7 @@ class RefundsListRequestTypedDict(TypedDict):
     r"""Filter by organization ID."""
     order_id: NotRequired[Nullable[OrderIDFilterTypedDict]]
     r"""Filter by order ID."""
-    subscription_id: NotRequired[Nullable[SubscriptionIDFilterTypedDict]]
+    subscription_id: NotRequired[Nullable[QueryParamSubscriptionIDFilterTypedDict]]
     r"""Filter by subscription ID."""
     customer_id: NotRequired[Nullable[RefundsListQueryParamCustomerIDFilterTypedDict]]
     r"""Filter by customer ID."""
@@ -121,7 +123,7 @@ class RefundsListRequest(BaseModel):
     r"""Filter by order ID."""
 
     subscription_id: Annotated[
-        OptionalNullable[SubscriptionIDFilter],
+        OptionalNullable[QueryParamSubscriptionIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by subscription ID."""

@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .countaggregation import CountAggregation, CountAggregationTypedDict
 from .filter_ import Filter, FilterTypedDict
+from .meterunit import MeterUnit
 from .propertyaggregation import PropertyAggregation, PropertyAggregationTypedDict
 from .uniqueaggregation import UniqueAggregation, UniqueAggregationTypedDict
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
@@ -65,6 +66,11 @@ class MeterCreateTypedDict(TypedDict):
 
     You can store up to **50 key-value pairs**.
     """
+    unit: NotRequired[MeterUnit]
+    custom_label: NotRequired[Nullable[str]]
+    r"""The label for the custom unit, e.g. 'request'. Required when unit is 'custom'."""
+    custom_multiplier: NotRequired[Nullable[int]]
+    r"""The multiplier to convert from the base unit to display scale, e.g. 1000 to display per 1000 units. Defaults to 1 when not provided."""
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the meter. **Required unless you use an organization token.**"""
 
@@ -92,13 +98,27 @@ class MeterCreate(BaseModel):
     You can store up to **50 key-value pairs**.
     """
 
+    unit: Optional[MeterUnit] = None
+
+    custom_label: OptionalNullable[str] = UNSET
+    r"""The label for the custom unit, e.g. 'request'. Required when unit is 'custom'."""
+
+    custom_multiplier: OptionalNullable[int] = UNSET
+    r"""The multiplier to convert from the base unit to display scale, e.g. 1000 to display per 1000 units. Defaults to 1 when not provided."""
+
     organization_id: OptionalNullable[str] = UNSET
     r"""The ID of the organization owning the meter. **Required unless you use an organization token.**"""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["metadata", "organization_id"]
-        nullable_fields = ["organization_id"]
+        optional_fields = [
+            "metadata",
+            "unit",
+            "custom_label",
+            "custom_multiplier",
+            "organization_id",
+        ]
+        nullable_fields = ["custom_label", "custom_multiplier", "organization_id"]
         null_default_fields = []
 
         serialized = handler(self)
