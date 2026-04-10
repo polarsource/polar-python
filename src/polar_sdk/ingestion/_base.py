@@ -48,7 +48,7 @@ class Ingestion:
 
         self._stack = contextlib.ExitStack()
         self._client = self._stack.enter_context(
-            Polar(access_token, server, server_url)
+            Polar(access_token=access_token, server=server, server_url=server_url)
         )
 
         self._queue = queue.Queue["EventsModelTypedDict"](maxsize=max_queue_size)
