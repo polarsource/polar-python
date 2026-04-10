@@ -58,6 +58,9 @@ class Orders(BaseSDK):
         checkout_id: OptionalNullable[
             Union[models.CheckoutIDFilter, models.CheckoutIDFilterTypedDict]
         ] = UNSET,
+        subscription_id: OptionalNullable[
+            Union[models.SubscriptionIDFilter, models.SubscriptionIDFilterTypedDict]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.OrderSortProperty]] = UNSET,
@@ -85,6 +88,7 @@ class Orders(BaseSDK):
         :param customer_id: Filter by customer ID.
         :param external_customer_id: Filter by customer external ID.
         :param checkout_id: Filter by checkout ID.
+        :param subscription_id: Filter by subscription ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -112,6 +116,7 @@ class Orders(BaseSDK):
             customer_id=customer_id,
             external_customer_id=external_customer_id,
             checkout_id=checkout_id,
+            subscription_id=subscription_id,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -181,6 +186,7 @@ class Orders(BaseSDK):
                 customer_id=customer_id,
                 external_customer_id=external_customer_id,
                 checkout_id=checkout_id,
+                subscription_id=subscription_id,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -250,6 +256,9 @@ class Orders(BaseSDK):
         checkout_id: OptionalNullable[
             Union[models.CheckoutIDFilter, models.CheckoutIDFilterTypedDict]
         ] = UNSET,
+        subscription_id: OptionalNullable[
+            Union[models.SubscriptionIDFilter, models.SubscriptionIDFilterTypedDict]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.OrderSortProperty]] = UNSET,
@@ -277,6 +286,7 @@ class Orders(BaseSDK):
         :param customer_id: Filter by customer ID.
         :param external_customer_id: Filter by customer external ID.
         :param checkout_id: Filter by checkout ID.
+        :param subscription_id: Filter by subscription ID.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -304,6 +314,7 @@ class Orders(BaseSDK):
             customer_id=customer_id,
             external_customer_id=external_customer_id,
             checkout_id=checkout_id,
+            subscription_id=subscription_id,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -373,6 +384,7 @@ class Orders(BaseSDK):
                 customer_id=customer_id,
                 external_customer_id=external_customer_id,
                 checkout_id=checkout_id,
+                subscription_id=subscription_id,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,

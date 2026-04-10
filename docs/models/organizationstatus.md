@@ -11,3 +11,4 @@
 | `ONGOING_REVIEW`     | ongoing_review       |
 | `DENIED`             | denied               |
 | `ACTIVE`             | active               |
+| `OFFBOARDING`        | offboarding          |

@@ -26,7 +26,10 @@ class Refunds(BaseSDK):
             Union[models.OrderIDFilter, models.OrderIDFilterTypedDict]
         ] = UNSET,
         subscription_id: OptionalNullable[
-            Union[models.SubscriptionIDFilter, models.SubscriptionIDFilterTypedDict]
+            Union[
+                models.QueryParamSubscriptionIDFilter,
+                models.QueryParamSubscriptionIDFilterTypedDict,
+            ]
         ] = UNSET,
         customer_id: OptionalNullable[
             Union[
@@ -198,7 +201,10 @@ class Refunds(BaseSDK):
             Union[models.OrderIDFilter, models.OrderIDFilterTypedDict]
         ] = UNSET,
         subscription_id: OptionalNullable[
-            Union[models.SubscriptionIDFilter, models.SubscriptionIDFilterTypedDict]
+            Union[
+                models.QueryParamSubscriptionIDFilter,
+                models.QueryParamSubscriptionIDFilterTypedDict,
+            ]
         ] = UNSET,
         customer_id: OptionalNullable[
             Union[

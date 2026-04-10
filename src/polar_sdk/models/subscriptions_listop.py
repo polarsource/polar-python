@@ -751,6 +751,16 @@ CheckoutIDFilter = TypeAliasType("CheckoutIDFilter", Union[str, List[str]])
 r"""Filter by checkout ID."""
 
 
+SubscriptionIDFilterTypedDict = TypeAliasType(
+    "SubscriptionIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by subscription ID."""
+
+
+SubscriptionIDFilter = TypeAliasType("SubscriptionIDFilter", Union[str, List[str]])
+r"""Filter by subscription ID."""
+
+
 class OrdersListRequestTypedDict(TypedDict):
     organization_id: NotRequired[
         Nullable[OrdersListQueryParamOrganizationIDFilterTypedDict]
@@ -770,6 +780,8 @@ class OrdersListRequestTypedDict(TypedDict):
     r"""Filter by customer external ID."""
     checkout_id: NotRequired[Nullable[CheckoutIDFilterTypedDict]]
     r"""Filter by checkout ID."""
+    subscription_id: NotRequired[Nullable[SubscriptionIDFilterTypedDict]]
+    r"""Filter by subscription ID."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -823,6 +835,12 @@ class OrdersListRequest(BaseModel):
     ] = UNSET
     r"""Filter by checkout ID."""
 
+    subscription_id: Annotated[
+        OptionalNullable[SubscriptionIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by subscription ID."""
+
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -857,6 +875,7 @@ class OrdersListRequest(BaseModel):
             "customer_id",
             "external_customer_id",
             "checkout_id",
+            "subscription_id",
             "page",
             "limit",
             "sorting",
@@ -870,6 +889,7 @@ class OrdersListRequest(BaseModel):
             "customer_id",
             "external_customer_id",
             "checkout_id",
+            "subscription_id",
             "sorting",
             "metadata",
         ]

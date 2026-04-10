@@ -6,6 +6,7 @@
 ### Available Operations
 
 * [get](#get) - Get Metrics
+* [export](#export) - Export Metrics
 * [limits](#limits) - Get Metrics Limits
 * [list_dashboards](#list_dashboards) - List Metric Dashboards
 * [create_dashboard](#create_dashboard) - Create Metric Dashboard
@@ -59,6 +60,58 @@ with Polar(
 ### Response
 
 **[models.MetricsResponse](../../models/metricsresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## export
+
+Export metrics as a CSV file.
+
+**Scopes**: `metrics:read`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="metrics:export" method="get" path="/v1/metrics/export" -->
+```python
+from datetime import date
+import polar_sdk
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.metrics.export(start_date=date.fromisoformat("2026-07-17"), end_date=date.fromisoformat("2024-05-06"), interval=polar_sdk.TimeInterval.YEAR, timezone="UTC", organization_id="1dbfc517-0bbf-4301-9ba8-555ca42b9737")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                   | Type                                                                                                                                                                        | Required                                                                                                                                                                    | Description                                                                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `start_date`                                                                                                                                                                | [datetime](https://docs.python.org/3/library/datetime.html#datetime-objects)                                                                                                | :heavy_check_mark:                                                                                                                                                          | Start date.                                                                                                                                                                 |
+| `end_date`                                                                                                                                                                  | [datetime](https://docs.python.org/3/library/datetime.html#datetime-objects)                                                                                                | :heavy_check_mark:                                                                                                                                                          | End date.                                                                                                                                                                   |
+| `interval`                                                                                                                                                                  | [models.TimeInterval](../../models/timeinterval.md)                                                                                                                         | :heavy_check_mark:                                                                                                                                                          | Interval between two timestamps.                                                                                                                                            |
+| `timezone`                                                                                                                                                                  | *Optional[str]*                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                          | Timezone to use for the timestamps. Default is UTC.                                                                                                                         |
+| `organization_id`                                                                                                                                                           | [OptionalNullable[models.MetricsExportQueryParamOrganizationIDFilter]](../../models/metricsexportqueryparamorganizationidfilter.md)                                         | :heavy_minus_sign:                                                                                                                                                          | Filter by organization ID.                                                                                                                                                  |
+| `product_id`                                                                                                                                                                | [OptionalNullable[models.MetricsExportQueryParamProductIDFilter]](../../models/metricsexportqueryparamproductidfilter.md)                                                   | :heavy_minus_sign:                                                                                                                                                          | Filter by product ID.                                                                                                                                                       |
+| `billing_type`                                                                                                                                                              | [OptionalNullable[models.MetricsExportQueryParamProductBillingTypeFilter]](../../models/metricsexportqueryparamproductbillingtypefilter.md)                                 | :heavy_minus_sign:                                                                                                                                                          | Filter by billing type. `recurring` will filter data corresponding to subscriptions creations or renewals. `one_time` will filter data corresponding to one-time purchases. |
+| `customer_id`                                                                                                                                                               | [OptionalNullable[models.MetricsExportQueryParamCustomerIDFilter]](../../models/metricsexportqueryparamcustomeridfilter.md)                                                 | :heavy_minus_sign:                                                                                                                                                          | Filter by customer ID.                                                                                                                                                      |
+| `metrics`                                                                                                                                                                   | List[*str*]                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                          | List of metric slugs to include in the export. If not provided, all metrics are exported.                                                                                   |
+| `retries`                                                                                                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                            | :heavy_minus_sign:                                                                                                                                                          | Configuration to override the default retry behavior of the client.                                                                                                         |
+
+### Response
+
+**[models.MetricsExportResponse](../../models/metricsexportresponse.md)**
 
 ### Errors
 
