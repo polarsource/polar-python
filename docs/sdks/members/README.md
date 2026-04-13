@@ -250,7 +250,7 @@ with Polar(
 
 ## get_member_by_external_id
 
-Get a member by external ID.
+Get a member by external ID. One of customer_id or external_customer_id must be specified.
 
 **Scopes**: `members:read` `members:write`
 
@@ -277,6 +277,8 @@ with Polar(
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `external_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | The member external ID.                                             |
+| `customer_id`                                                       | *OptionalNullable[str]*                                             | :heavy_minus_sign:                                                  | The customer ID.                                                    |
+| `external_customer_id`                                              | *OptionalNullable[str]*                                             | :heavy_minus_sign:                                                  | The customer external ID.                                           |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -293,7 +295,7 @@ with Polar(
 
 ## update_member_by_external_id
 
-Update a member by external ID.
+Update a member by external ID. One of customer_id or external_customer_id must be specified.
 
 **Scopes**: `members:write`
 
@@ -323,6 +325,8 @@ with Polar(
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `external_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | The member external ID.                                             |
 | `member_update`                                                     | [models.MemberUpdate](../../models/memberupdate.md)                 | :heavy_check_mark:                                                  | N/A                                                                 |
+| `customer_id`                                                       | *OptionalNullable[str]*                                             | :heavy_minus_sign:                                                  | The customer ID.                                                    |
+| `external_customer_id`                                              | *OptionalNullable[str]*                                             | :heavy_minus_sign:                                                  | The customer external ID.                                           |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
@@ -339,7 +343,7 @@ with Polar(
 
 ## delete_member_by_external_id
 
-Delete a member by external ID.
+Delete a member by external ID. One of customer_id or external_customer_id must be specified.
 
 **Scopes**: `members:write`
 
@@ -365,6 +369,8 @@ with Polar(
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `external_id`                                                       | *str*                                                               | :heavy_check_mark:                                                  | The member external ID.                                             |
+| `customer_id`                                                       | *OptionalNullable[str]*                                             | :heavy_minus_sign:                                                  | The customer ID.                                                    |
+| `external_customer_id`                                              | *OptionalNullable[str]*                                             | :heavy_minus_sign:                                                  | The customer external ID.                                           |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Errors

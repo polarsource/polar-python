@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: da4cdf87c50025e494b6a104c9d2868e
+  docChecksum: c0af35ee2da0a9e1ba20eafe8d7d91e3
   docVersion: 0.1.0
   speakeasyVersion: 1.648.0
   generationVersion: 2.737.0
-  releaseVersion: 0.31.3
-  configChecksum: d2a48f7ae77cbd19d1f3440fd2d87a06
+  releaseVersion: 0.31.4
+  configChecksum: ec856ac07327b342be114bcf4015df7f
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -4585,7 +4585,11 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Python SDK Changes Detected:\n* `polar._endpointcheckout_created_post()`: \n  *  `request.data.products.[].prices.[].[product_price].[seat_based].meter` **Changed** **Breaking** :warning:\n* `polar._endpointcheckout_updated_post()`: \n  *  `request.data.products.[].prices.[].[product_price].[seat_based].meter` **Changed** **Breaking** :warning:\n* `polar._endpointcheckout_expired_post()`: \n  *  `request.data.products.[].prices.[].[product_price].[seat_based].meter` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_active_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_canceled_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_uncanceled_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_revoked_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_past_due_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointproduct_created_post()`: \n  *  `request.data.prices.[].[product_price].[seat_based].meter` **Changed** **Breaking** :warning:\n* `polar._endpointproduct_updated_post()`: \n  *  `request.data.prices.[].[product_price].[seat_based].meter` **Changed** **Breaking** :warning:\n* `polar._endpointorganization_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar.metrics.export()`: **Added**\n* `polar.members.get_member_by_external_id()`: **Added**\n* `polar.members.update_member_by_external_id()`: **Added**\n* `polar.members.delete_member_by_external_id()`: **Added**\n* `polar.organizations.list()`:  `response.items.[]` **Changed**\n* `polar.organizations.create()`:  `response` **Changed**\n* `polar.organizations.get()`:  `response` **Changed**\n* `polar.organizations.update()`:  `response` **Changed**\n* `polar.subscriptions.list()`:  `response.items.[]` **Changed**\n* `polar.subscriptions.create()`:  `response` **Changed**\n* `polar.subscriptions.get()`:  `response` **Changed**\n* `polar.subscriptions.revoke()`:  `response` **Changed**\n* `polar.subscriptions.update()`:  `response` **Changed**\n* `polar.products.list()`:  `response.items.[].prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.products.create()`:  `response.prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.products.get()`:  `response.prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.products.update()`:  `response.prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.products.update_benefits()`:  `response.prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.orders.list()`:  `request.subscription_id` **Added**\n* `polar.checkouts.list()`:  `response.items.[].products.[].prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.checkouts.create()`:  `response.products.[].prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.checkouts.get()`:  `response.products.[].prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.checkouts.update()`:  `response.products.[].prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.checkouts.client_get()`:  `response.products.[].prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.checkouts.client_update()`:  `response.products.[].prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.checkouts.client_confirm()`:  `response.products.[].prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.checkout-links.list()`:  `response.items.[].products.[].prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.checkout-links.create()`:  `response.products.[].prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.checkout-links.get()`:  `response.products.[].prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.checkout-links.update()`:  `response.products.[].prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.customer_portal.seats.list_claimed_subscriptions()`:  `response.items.[].product.prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.customer_portal.orders.list()`:  `response.items.[].product.prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.customer_portal.orders.get()`:  `response.product.prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.customer_portal.orders.update()`:  `response.product.prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.customer_portal.orders.confirm_retry_payment()`:  `error.status[429]` **Added**\n* `polar.customer_portal.organizations.get()`:  `response.products.[].prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.customer_portal.subscriptions.list()`:  `response.items.[].product.prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.customer_portal.subscriptions.get()`:  `response.product.prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.customer_portal.subscriptions.cancel()`:  `response.product.prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.customer_portal.subscriptions.update()`:  `response.product.prices.[].[product_price].[seat_based].meter` **Changed**\n* `polar.meters.list()`:  `response.items.[]` **Changed**\n* `polar.meters.create()`: \n  *  `request` **Changed**\n  *  `response` **Changed**\n* `polar.meters.get()`:  `response` **Changed**\n* `polar.meters.update()`: \n  *  `request.meter_update` **Changed**\n  *  `response` **Changed**\n* `polar.customer_meters.list()`:  `response.items.[].meter` **Changed**\n* `polar.customer_meters.get()`:  `response.meter` **Changed**\n"
+releaseNotes: |
+  ## Python SDK Changes Detected:
+  * `polar.members.get_member_by_external_id()`:  `request` **Changed**
+  * `polar.members.delete_member_by_external_id()`:  `request` **Changed**
+  * `polar.members.update_member_by_external_id()`:  `request` **Changed**
 trackedFiles:
   .devcontainer/README.md:
     last_write_checksum: sha1:e2a191a1fa8ceb27387eb32eabf36f7ad16a532c
@@ -5990,11 +5994,11 @@ trackedFiles:
   docs/models/memberrole.md:
     last_write_checksum: sha1:06170100a3109672deaf18d3715a2bf1ee7673fe
   docs/models/membersdeletememberbyexternalidrequest.md:
-    last_write_checksum: sha1:657190358fba009dae481dc1eb0507f70550d921
+    last_write_checksum: sha1:b5cc9fb3a3d13c5ae931f228c9217fb8833c5487
   docs/models/membersdeletememberrequest.md:
     last_write_checksum: sha1:46b13e5cd11cc99b094561f5ac763b77e4b79072
   docs/models/membersgetmemberbyexternalidrequest.md:
-    last_write_checksum: sha1:d41a113b2c4f81435bae87db1225800dcec40637
+    last_write_checksum: sha1:7888f9d86eb8b6e96bbc47d5138f737c10e21ebc
   docs/models/membersgetmemberrequest.md:
     last_write_checksum: sha1:dec2743653b66b14d36c7cf27b2642466043ef02
   docs/models/memberslistmembersrequest.md:
@@ -6004,7 +6008,7 @@ trackedFiles:
   docs/models/membersortproperty.md:
     last_write_checksum: sha1:39a69c23343bf61a98136128ad048bbe5bcd0a40
   docs/models/membersupdatememberbyexternalidrequest.md:
-    last_write_checksum: sha1:62a970eeb2c24aa4f30acabff6b7c8bddd08cbc9
+    last_write_checksum: sha1:bfd17abcfc60046731fd33cb271dc66df4374748
   docs/models/membersupdatememberrequest.md:
     last_write_checksum: sha1:cce637d553b5a8e5771d409bae5001138a8ae426
   docs/models/memberupdate.md:
@@ -6950,7 +6954,7 @@ trackedFiles:
   docs/sdks/licensekeys/README.md:
     last_write_checksum: sha1:df9ec3e5784b8655379d3f0cceb52ea60dd72243
   docs/sdks/members/README.md:
-    last_write_checksum: sha1:f800e86dd5786491edc5c7ae4bb2ec92ad315625
+    last_write_checksum: sha1:efb819c9e01bfcf32311eebc75c2483a4fdeef5a
   docs/sdks/meters/README.md:
     last_write_checksum: sha1:780e81712d38d5a5bfbb6f72832b23a8bbed9bd9
   docs/sdks/metricssdk/README.md:
@@ -7014,7 +7018,7 @@ trackedFiles:
   src/polar_sdk/_hooks/types.py:
     last_write_checksum: sha1:a218c66f3e2d1f1b9af54f270472b970b0cc1913
   src/polar_sdk/_version.py:
-    last_write_checksum: sha1:34447deefb19eeaae307da04e2be1cc22a95d8c4
+    last_write_checksum: sha1:82a7f64245f03e2288d163730a398bab2ac9a202
   src/polar_sdk/basesdk.py:
     last_write_checksum: sha1:a913b5a583f9f34a14f2872dc6f8c453e4aca1f5
   src/polar_sdk/benefit_grants.py:
@@ -7058,7 +7062,7 @@ trackedFiles:
   src/polar_sdk/license_keys.py:
     last_write_checksum: sha1:01c7801ac11df3d5be4395be672029a2badad56c
   src/polar_sdk/members.py:
-    last_write_checksum: sha1:088e6086eea8e7c6dc76589f1a22a4dad0da4558
+    last_write_checksum: sha1:2f9129c22a3000e4d55e7dce41fe2df7594ff98f
   src/polar_sdk/meters.py:
     last_write_checksum: sha1:30e1968d86ff6c37245c60790531af517fd1338b
   src/polar_sdk/metrics_sdk.py:
@@ -7986,17 +7990,17 @@ trackedFiles:
   src/polar_sdk/models/memberrole.py:
     last_write_checksum: sha1:065f7730427b55768fd76b2f12dba48129a6b4d2
   src/polar_sdk/models/members_delete_member_by_external_idop.py:
-    last_write_checksum: sha1:601467f32c1d55ffa5cc18c8a26b9c318f42aed9
+    last_write_checksum: sha1:187f948b68b30379b01d73ed38bf1adf2e7bd11d
   src/polar_sdk/models/members_delete_memberop.py:
     last_write_checksum: sha1:c4e4960b5c344133404816a71a210c646f464345
   src/polar_sdk/models/members_get_member_by_external_idop.py:
-    last_write_checksum: sha1:869443ca99d40941f1e97e1e6675b6ec3304aa2e
+    last_write_checksum: sha1:68e95d64c8c83b028b51024f12362753764d654c
   src/polar_sdk/models/members_get_memberop.py:
     last_write_checksum: sha1:7a1b33eef42ad23eaf2b5f524e4baf616c0f44ae
   src/polar_sdk/models/members_list_membersop.py:
     last_write_checksum: sha1:1f7e158072976dd865365fff56f5316824bf9223
   src/polar_sdk/models/members_update_member_by_external_idop.py:
-    last_write_checksum: sha1:e85d40da4a0bac3bf06fb948a2d91123da417f1c
+    last_write_checksum: sha1:48de97fd91f8b2075dc03c53dbabd98d644e1ad5
   src/polar_sdk/models/members_update_memberop.py:
     last_write_checksum: sha1:7ebe88b82aedebef4167705d14f5e8a51873d0d5
   src/polar_sdk/models/membersortproperty.py:
