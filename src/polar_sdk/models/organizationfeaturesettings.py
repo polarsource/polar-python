@@ -12,8 +12,6 @@ class OrganizationFeatureSettingsTypedDict(TypedDict):
     r"""If this organization has issue funding enabled"""
     seat_based_pricing_enabled: NotRequired[bool]
     r"""If this organization has seat-based pricing enabled"""
-    revops_enabled: NotRequired[bool]
-    r"""If this organization has RevOps enabled"""
     wallets_enabled: NotRequired[bool]
     r"""If this organization has Wallets enabled"""
     member_model_enabled: NotRequired[bool]
@@ -36,9 +34,6 @@ class OrganizationFeatureSettings(BaseModel):
 
     seat_based_pricing_enabled: Optional[bool] = False
     r"""If this organization has seat-based pricing enabled"""
-
-    revops_enabled: Optional[bool] = False
-    r"""If this organization has RevOps enabled"""
 
     wallets_enabled: Optional[bool] = False
     r"""If this organization has Wallets enabled"""
@@ -66,7 +61,6 @@ class OrganizationFeatureSettings(BaseModel):
         optional_fields = [
             "issue_funding_enabled",
             "seat_based_pricing_enabled",
-            "revops_enabled",
             "wallets_enabled",
             "member_model_enabled",
             "tinybird_read",

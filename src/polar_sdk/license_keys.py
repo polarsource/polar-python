@@ -25,6 +25,9 @@ class LicenseKeys(BaseSDK):
                 models.QueryParamBenefitIDFilterTypedDict,
             ]
         ] = UNSET,
+        status: OptionalNullable[
+            Union[models.LicenseKeyStatusFilter, models.LicenseKeyStatusFilterTypedDict]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -40,6 +43,7 @@ class LicenseKeys(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param benefit_id: Filter by benefit ID.
+        :param status: Filter by license key status.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -60,6 +64,7 @@ class LicenseKeys(BaseSDK):
         request = models.LicenseKeysListRequest(
             organization_id=organization_id,
             benefit_id=benefit_id,
+            status=status,
             page=page,
             limit=limit,
         )
@@ -122,6 +127,7 @@ class LicenseKeys(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 benefit_id=benefit_id,
+                status=status,
                 page=next_page,
                 limit=limit,
                 retries=retries,
@@ -172,6 +178,9 @@ class LicenseKeys(BaseSDK):
                 models.QueryParamBenefitIDFilterTypedDict,
             ]
         ] = UNSET,
+        status: OptionalNullable[
+            Union[models.LicenseKeyStatusFilter, models.LicenseKeyStatusFilterTypedDict]
+        ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -187,6 +196,7 @@ class LicenseKeys(BaseSDK):
 
         :param organization_id: Filter by organization ID.
         :param benefit_id: Filter by benefit ID.
+        :param status: Filter by license key status.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param retries: Override the default retry configuration for this method
@@ -207,6 +217,7 @@ class LicenseKeys(BaseSDK):
         request = models.LicenseKeysListRequest(
             organization_id=organization_id,
             benefit_id=benefit_id,
+            status=status,
             page=page,
             limit=limit,
         )
@@ -269,6 +280,7 @@ class LicenseKeys(BaseSDK):
             return self.list(
                 organization_id=organization_id,
                 benefit_id=benefit_id,
+                status=status,
                 page=next_page,
                 limit=limit,
                 retries=retries,

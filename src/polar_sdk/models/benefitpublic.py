@@ -22,6 +22,8 @@ class BenefitPublicTypedDict(TypedDict):
     r"""Whether the benefit is selectable when creating a product."""
     deletable: bool
     r"""Whether the benefit is deletable."""
+    is_deleted: bool
+    r"""Whether the benefit is deleted."""
     organization_id: str
     r"""The ID of the organization owning the benefit."""
 
@@ -46,6 +48,9 @@ class BenefitPublic(BaseModel):
 
     deletable: bool
     r"""Whether the benefit is deletable."""
+
+    is_deleted: bool
+    r"""Whether the benefit is deleted."""
 
     organization_id: str
     r"""The ID of the organization owning the benefit."""

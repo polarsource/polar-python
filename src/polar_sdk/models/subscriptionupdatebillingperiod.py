@@ -8,7 +8,7 @@ from typing_extensions import TypedDict
 
 class SubscriptionUpdateBillingPeriodTypedDict(TypedDict):
     current_billing_period_end: datetime
-    r"""Set a new date for the end of the current billing period. The subscription will renew on this date. Needs to be later than the current value.
+    r"""Set a new date for the end of the current billing period. The subscription will renew on this date. The new date can be earlier or later than the current period end, as long as it's in the future.
 
     It is not possible to update the current billing period on a canceled subscription.
     """
@@ -16,7 +16,7 @@ class SubscriptionUpdateBillingPeriodTypedDict(TypedDict):
 
 class SubscriptionUpdateBillingPeriod(BaseModel):
     current_billing_period_end: datetime
-    r"""Set a new date for the end of the current billing period. The subscription will renew on this date. Needs to be later than the current value.
+    r"""Set a new date for the end of the current billing period. The subscription will renew on this date. The new date can be earlier or later than the current period end, as long as it's in the future.
 
     It is not possible to update the current billing period on a canceled subscription.
     """

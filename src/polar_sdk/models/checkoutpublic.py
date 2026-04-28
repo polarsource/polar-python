@@ -32,6 +32,7 @@ from .legacyrecurringproductprice import (
 )
 from .paymentprocessor import PaymentProcessor
 from .productprice import ProductPrice, ProductPriceTypedDict
+from .taxbehavior import TaxBehavior
 from .trialinterval import TrialInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
@@ -126,6 +127,8 @@ class CheckoutPublicTypedDict(TypedDict):
     r"""Amount in cents, after discounts but before taxes."""
     tax_amount: Nullable[int]
     r"""Sales tax amount in cents. If `null`, it means there is no enough information yet to calculate it."""
+    tax_behavior: Nullable[TaxBehavior]
+    r"""Tax behavior of the checkout. `inclusive` means the price includes tax, `exclusive` means tax is added on top. If `null`, tax is not yet calculated."""
     total_amount: int
     r"""Amount in cents, after discounts and taxes."""
     currency: str
@@ -242,6 +245,9 @@ class CheckoutPublic(BaseModel):
 
     tax_amount: Nullable[int]
     r"""Sales tax amount in cents. If `null`, it means there is no enough information yet to calculate it."""
+
+    tax_behavior: Nullable[TaxBehavior]
+    r"""Tax behavior of the checkout. `inclusive` means the price includes tax, `exclusive` means tax is added on top. If `null`, tax is not yet calculated."""
 
     total_amount: int
     r"""Amount in cents, after discounts and taxes."""
@@ -378,6 +384,7 @@ class CheckoutPublic(BaseModel):
             "min_seats",
             "max_seats",
             "tax_amount",
+            "tax_behavior",
             "allow_trial",
             "active_trial_interval",
             "active_trial_interval_count",

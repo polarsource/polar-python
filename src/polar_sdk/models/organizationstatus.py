@@ -6,9 +6,9 @@ from enum import Enum
 
 class OrganizationStatus(str, Enum):
     CREATED = "created"
-    ONBOARDING_STARTED = "onboarding_started"
-    INITIAL_REVIEW = "initial_review"
-    ONGOING_REVIEW = "ongoing_review"
+    REVIEW = "review"
+    SNOOZED = "snoozed"
     DENIED = "denied"
     ACTIVE = "active"
+    BLOCKED = "blocked"
     OFFBOARDING = "offboarding"

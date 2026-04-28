@@ -1,4 +1,4 @@
-# ProrationBehavior
+# PublicSubscriptionProrationBehavior
 
 
 ## Values

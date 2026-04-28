@@ -362,6 +362,8 @@ class EventTypes(BaseSDK):
 
         Update an event type's label.
 
+        **Scopes**: `events:write`
+
         :param id: The event type ID.
         :param event_type_update:
         :param retries: Override the default retry configuration for this method
@@ -458,6 +460,8 @@ class EventTypes(BaseSDK):
         r"""Update Event Type
 
         Update an event type's label.
+
+        **Scopes**: `events:write`
 
         :param id: The event type ID.
         :param event_type_update:

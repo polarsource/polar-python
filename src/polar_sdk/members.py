@@ -1074,6 +1074,8 @@ class Members(BaseSDK):
         self,
         *,
         external_id: str,
+        customer_id: OptionalNullable[str] = UNSET,
+        external_customer_id: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1081,11 +1083,13 @@ class Members(BaseSDK):
     ) -> models.Member:
         r"""Get Member by External ID
 
-        Get a member by external ID.
+        Get a member by external ID. One of customer_id or external_customer_id must be specified.
 
         **Scopes**: `members:read` `members:write`
 
         :param external_id: The member external ID.
+        :param customer_id: The customer ID.
+        :param external_customer_id: The customer external ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1103,6 +1107,8 @@ class Members(BaseSDK):
 
         request = models.MembersGetMemberByExternalIDRequest(
             external_id=external_id,
+            customer_id=customer_id,
+            external_customer_id=external_customer_id,
         )
 
         req = self._build_request(
@@ -1168,6 +1174,8 @@ class Members(BaseSDK):
         self,
         *,
         external_id: str,
+        customer_id: OptionalNullable[str] = UNSET,
+        external_customer_id: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1175,11 +1183,13 @@ class Members(BaseSDK):
     ) -> models.Member:
         r"""Get Member by External ID
 
-        Get a member by external ID.
+        Get a member by external ID. One of customer_id or external_customer_id must be specified.
 
         **Scopes**: `members:read` `members:write`
 
         :param external_id: The member external ID.
+        :param customer_id: The customer ID.
+        :param external_customer_id: The customer external ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1197,6 +1207,8 @@ class Members(BaseSDK):
 
         request = models.MembersGetMemberByExternalIDRequest(
             external_id=external_id,
+            customer_id=customer_id,
+            external_customer_id=external_customer_id,
         )
 
         req = self._build_request_async(
@@ -1263,6 +1275,8 @@ class Members(BaseSDK):
         *,
         external_id: str,
         member_update: Union[models.MemberUpdate, models.MemberUpdateTypedDict],
+        customer_id: OptionalNullable[str] = UNSET,
+        external_customer_id: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1270,12 +1284,14 @@ class Members(BaseSDK):
     ) -> models.Member:
         r"""Update Member by External ID
 
-        Update a member by external ID.
+        Update a member by external ID. One of customer_id or external_customer_id must be specified.
 
         **Scopes**: `members:write`
 
         :param external_id: The member external ID.
         :param member_update:
+        :param customer_id: The customer ID.
+        :param external_customer_id: The customer external ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1293,6 +1309,8 @@ class Members(BaseSDK):
 
         request = models.MembersUpdateMemberByExternalIDRequest(
             external_id=external_id,
+            customer_id=customer_id,
+            external_customer_id=external_customer_id,
             member_update=utils.get_pydantic_model(member_update, models.MemberUpdate),
         )
 
@@ -1363,6 +1381,8 @@ class Members(BaseSDK):
         *,
         external_id: str,
         member_update: Union[models.MemberUpdate, models.MemberUpdateTypedDict],
+        customer_id: OptionalNullable[str] = UNSET,
+        external_customer_id: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1370,12 +1390,14 @@ class Members(BaseSDK):
     ) -> models.Member:
         r"""Update Member by External ID
 
-        Update a member by external ID.
+        Update a member by external ID. One of customer_id or external_customer_id must be specified.
 
         **Scopes**: `members:write`
 
         :param external_id: The member external ID.
         :param member_update:
+        :param customer_id: The customer ID.
+        :param external_customer_id: The customer external ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1393,6 +1415,8 @@ class Members(BaseSDK):
 
         request = models.MembersUpdateMemberByExternalIDRequest(
             external_id=external_id,
+            customer_id=customer_id,
+            external_customer_id=external_customer_id,
             member_update=utils.get_pydantic_model(member_update, models.MemberUpdate),
         )
 
@@ -1462,6 +1486,8 @@ class Members(BaseSDK):
         self,
         *,
         external_id: str,
+        customer_id: OptionalNullable[str] = UNSET,
+        external_customer_id: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1469,11 +1495,13 @@ class Members(BaseSDK):
     ):
         r"""Delete Member by External ID
 
-        Delete a member by external ID.
+        Delete a member by external ID. One of customer_id or external_customer_id must be specified.
 
         **Scopes**: `members:write`
 
         :param external_id: The member external ID.
+        :param customer_id: The customer ID.
+        :param external_customer_id: The customer external ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1491,6 +1519,8 @@ class Members(BaseSDK):
 
         request = models.MembersDeleteMemberByExternalIDRequest(
             external_id=external_id,
+            customer_id=customer_id,
+            external_customer_id=external_customer_id,
         )
 
         req = self._build_request(
@@ -1556,6 +1586,8 @@ class Members(BaseSDK):
         self,
         *,
         external_id: str,
+        customer_id: OptionalNullable[str] = UNSET,
+        external_customer_id: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1563,11 +1595,13 @@ class Members(BaseSDK):
     ):
         r"""Delete Member by External ID
 
-        Delete a member by external ID.
+        Delete a member by external ID. One of customer_id or external_customer_id must be specified.
 
         **Scopes**: `members:write`
 
         :param external_id: The member external ID.
+        :param customer_id: The customer ID.
+        :param external_customer_id: The customer external ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1585,6 +1619,8 @@ class Members(BaseSDK):
 
         request = models.MembersDeleteMemberByExternalIDRequest(
             external_id=external_id,
+            customer_id=customer_id,
+            external_customer_id=external_customer_id,
         )
 
         req = self._build_request_async(
