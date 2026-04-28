@@ -6,7 +6,7 @@ from polar_sdk.types import BaseModel
 from typing_extensions import TypedDict
 
 
-class ProrationBehavior(str, Enum):
+class PublicSubscriptionProrationBehavior(str, Enum):
     INVOICE = "invoice"
     PRORATE = "prorate"
     NEXT_PERIOD = "next_period"
@@ -14,7 +14,7 @@ class ProrationBehavior(str, Enum):
 
 class OrganizationSubscriptionSettingsTypedDict(TypedDict):
     allow_multiple_subscriptions: bool
-    proration_behavior: ProrationBehavior
+    proration_behavior: PublicSubscriptionProrationBehavior
     benefit_revocation_grace_period: int
     prevent_trial_abuse: bool
     allow_customer_updates: bool
@@ -23,7 +23,7 @@ class OrganizationSubscriptionSettingsTypedDict(TypedDict):
 class OrganizationSubscriptionSettings(BaseModel):
     allow_multiple_subscriptions: bool
 
-    proration_behavior: ProrationBehavior
+    proration_behavior: PublicSubscriptionProrationBehavior
 
     benefit_revocation_grace_period: int
 

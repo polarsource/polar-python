@@ -12,6 +12,8 @@ class SeatAssignTypedDict(TypedDict):
     r"""Subscription ID. Required if checkout_id and order_id are not provided."""
     checkout_id: NotRequired[Nullable[str]]
     r"""Checkout ID. Used to look up subscription or order from the checkout page."""
+    checkout_client_secret: NotRequired[Nullable[str]]
+    r"""Client secret of the checkout. Required when assigning seats via checkout_id as an anonymous caller (e.g. the checkout confirmation page)."""
     order_id: NotRequired[Nullable[str]]
     r"""Order ID for one-time purchases. Required if subscription_id and checkout_id are not provided."""
     email: NotRequired[Nullable[str]]
@@ -36,6 +38,9 @@ class SeatAssign(BaseModel):
 
     checkout_id: OptionalNullable[str] = UNSET
     r"""Checkout ID. Used to look up subscription or order from the checkout page."""
+
+    checkout_client_secret: OptionalNullable[str] = UNSET
+    r"""Client secret of the checkout. Required when assigning seats via checkout_id as an anonymous caller (e.g. the checkout confirmation page)."""
 
     order_id: OptionalNullable[str] = UNSET
     r"""Order ID for one-time purchases. Required if subscription_id and checkout_id are not provided."""
@@ -66,6 +71,7 @@ class SeatAssign(BaseModel):
         optional_fields = [
             "subscription_id",
             "checkout_id",
+            "checkout_client_secret",
             "order_id",
             "email",
             "external_customer_id",
@@ -78,6 +84,7 @@ class SeatAssign(BaseModel):
         nullable_fields = [
             "subscription_id",
             "checkout_id",
+            "checkout_client_secret",
             "order_id",
             "email",
             "external_customer_id",

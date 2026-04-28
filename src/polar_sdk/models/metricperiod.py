@@ -32,6 +32,16 @@ MonthlyRecurringRevenueTypedDict = TypeAliasType(
 MonthlyRecurringRevenue = TypeAliasType("MonthlyRecurringRevenue", Union[int, float])
 
 
+TrialMonthlyRecurringRevenueTypedDict = TypeAliasType(
+    "TrialMonthlyRecurringRevenueTypedDict", Union[int, float]
+)
+
+
+TrialMonthlyRecurringRevenue = TypeAliasType(
+    "TrialMonthlyRecurringRevenue", Union[int, float]
+)
+
+
 CommittedMonthlyRecurringRevenueTypedDict = TypeAliasType(
     "CommittedMonthlyRecurringRevenueTypedDict", Union[int, float]
 )
@@ -39,6 +49,16 @@ CommittedMonthlyRecurringRevenueTypedDict = TypeAliasType(
 
 CommittedMonthlyRecurringRevenue = TypeAliasType(
     "CommittedMonthlyRecurringRevenue", Union[int, float]
+)
+
+
+TrialCommittedMonthlyRecurringRevenueTypedDict = TypeAliasType(
+    "TrialCommittedMonthlyRecurringRevenueTypedDict", Union[int, float]
+)
+
+
+TrialCommittedMonthlyRecurringRevenue = TypeAliasType(
+    "TrialCommittedMonthlyRecurringRevenue", Union[int, float]
 )
 
 
@@ -76,6 +96,46 @@ ChurnRateTypedDict = TypeAliasType("ChurnRateTypedDict", Union[int, float])
 
 
 ChurnRate = TypeAliasType("ChurnRate", Union[int, float])
+
+
+SeatsTotalTypedDict = TypeAliasType("SeatsTotalTypedDict", Union[int, float])
+
+
+SeatsTotal = TypeAliasType("SeatsTotal", Union[int, float])
+
+
+SeatsClaimedTypedDict = TypeAliasType("SeatsClaimedTypedDict", Union[int, float])
+
+
+SeatsClaimed = TypeAliasType("SeatsClaimed", Union[int, float])
+
+
+SeatsPendingTypedDict = TypeAliasType("SeatsPendingTypedDict", Union[int, float])
+
+
+SeatsPending = TypeAliasType("SeatsPending", Union[int, float])
+
+
+SeatCustomersTypedDict = TypeAliasType("SeatCustomersTypedDict", Union[int, float])
+
+
+SeatCustomers = TypeAliasType("SeatCustomers", Union[int, float])
+
+
+NewSeatCustomersTypedDict = TypeAliasType(
+    "NewSeatCustomersTypedDict", Union[int, float]
+)
+
+
+NewSeatCustomers = TypeAliasType("NewSeatCustomers", Union[int, float])
+
+
+ChurnedSeatCustomersTypedDict = TypeAliasType(
+    "ChurnedSeatCustomersTypedDict", Union[int, float]
+)
+
+
+ChurnedSeatCustomers = TypeAliasType("ChurnedSeatCustomers", Union[int, float])
 
 
 OrdersModelTypedDict = TypeAliasType("OrdersModelTypedDict", Union[int, float])
@@ -320,6 +380,24 @@ CanceledSubscriptionsOther = TypeAliasType(
 )
 
 
+AnnualRecurringRevenueTypedDict = TypeAliasType(
+    "AnnualRecurringRevenueTypedDict", Union[int, float]
+)
+
+
+AnnualRecurringRevenue = TypeAliasType("AnnualRecurringRevenue", Union[int, float])
+
+
+CommittedAnnualRecurringRevenueTypedDict = TypeAliasType(
+    "CommittedAnnualRecurringRevenueTypedDict", Union[int, float]
+)
+
+
+CommittedAnnualRecurringRevenue = TypeAliasType(
+    "CommittedAnnualRecurringRevenue", Union[int, float]
+)
+
+
 CheckoutsConversionTypedDict = TypeAliasType(
     "CheckoutsConversionTypedDict", Union[int, float]
 )
@@ -354,20 +432,48 @@ CashflowTypedDict = TypeAliasType("CashflowTypedDict", Union[int, float])
 Cashflow = TypeAliasType("Cashflow", Union[int, float])
 
 
+AverageSeatsPerCustomerTypedDict = TypeAliasType(
+    "AverageSeatsPerCustomerTypedDict", Union[int, float]
+)
+
+
+AverageSeatsPerCustomer = TypeAliasType("AverageSeatsPerCustomer", Union[int, float])
+
+
+SeatUtilizationRateTypedDict = TypeAliasType(
+    "SeatUtilizationRateTypedDict", Union[int, float]
+)
+
+
+SeatUtilizationRate = TypeAliasType("SeatUtilizationRate", Union[int, float])
+
+
 class MetricPeriodTypedDict(TypedDict):
     timestamp: datetime
     r"""Timestamp of this period data."""
     active_subscriptions: NotRequired[Nullable[ActiveSubscriptionsTypedDict]]
     committed_subscriptions: NotRequired[Nullable[CommittedSubscriptionsTypedDict]]
     monthly_recurring_revenue: NotRequired[Nullable[MonthlyRecurringRevenueTypedDict]]
+    trial_monthly_recurring_revenue: NotRequired[
+        Nullable[TrialMonthlyRecurringRevenueTypedDict]
+    ]
     committed_monthly_recurring_revenue: NotRequired[
         Nullable[CommittedMonthlyRecurringRevenueTypedDict]
+    ]
+    trial_committed_monthly_recurring_revenue: NotRequired[
+        Nullable[TrialCommittedMonthlyRecurringRevenueTypedDict]
     ]
     average_revenue_per_user: NotRequired[Nullable[AverageRevenuePerUserTypedDict]]
     checkouts: NotRequired[Nullable[CheckoutsModelTypedDict]]
     succeeded_checkouts: NotRequired[Nullable[SucceededCheckoutsTypedDict]]
     churned_subscriptions: NotRequired[Nullable[ChurnedSubscriptionsTypedDict]]
     churn_rate: NotRequired[Nullable[ChurnRateTypedDict]]
+    seats_total: NotRequired[Nullable[SeatsTotalTypedDict]]
+    seats_claimed: NotRequired[Nullable[SeatsClaimedTypedDict]]
+    seats_pending: NotRequired[Nullable[SeatsPendingTypedDict]]
+    seat_customers: NotRequired[Nullable[SeatCustomersTypedDict]]
+    new_seat_customers: NotRequired[Nullable[NewSeatCustomersTypedDict]]
+    churned_seat_customers: NotRequired[Nullable[ChurnedSeatCustomersTypedDict]]
     orders: NotRequired[Nullable[OrdersModelTypedDict]]
     revenue: NotRequired[Nullable[RevenueTypedDict]]
     net_revenue: NotRequired[Nullable[NetRevenueTypedDict]]
@@ -421,11 +527,17 @@ class MetricPeriodTypedDict(TypedDict):
     canceled_subscriptions_other: NotRequired[
         Nullable[CanceledSubscriptionsOtherTypedDict]
     ]
+    annual_recurring_revenue: NotRequired[Nullable[AnnualRecurringRevenueTypedDict]]
+    committed_annual_recurring_revenue: NotRequired[
+        Nullable[CommittedAnnualRecurringRevenueTypedDict]
+    ]
     checkouts_conversion: NotRequired[Nullable[CheckoutsConversionTypedDict]]
     ltv: NotRequired[Nullable[LtvTypedDict]]
     gross_margin: NotRequired[Nullable[GrossMarginTypedDict]]
     gross_margin_percentage: NotRequired[Nullable[GrossMarginPercentageTypedDict]]
     cashflow: NotRequired[Nullable[CashflowTypedDict]]
+    average_seats_per_customer: NotRequired[Nullable[AverageSeatsPerCustomerTypedDict]]
+    seat_utilization_rate: NotRequired[Nullable[SeatUtilizationRateTypedDict]]
 
 
 class MetricPeriod(BaseModel):
@@ -438,8 +550,16 @@ class MetricPeriod(BaseModel):
 
     monthly_recurring_revenue: OptionalNullable[MonthlyRecurringRevenue] = UNSET
 
+    trial_monthly_recurring_revenue: OptionalNullable[TrialMonthlyRecurringRevenue] = (
+        UNSET
+    )
+
     committed_monthly_recurring_revenue: OptionalNullable[
         CommittedMonthlyRecurringRevenue
+    ] = UNSET
+
+    trial_committed_monthly_recurring_revenue: OptionalNullable[
+        TrialCommittedMonthlyRecurringRevenue
     ] = UNSET
 
     average_revenue_per_user: OptionalNullable[AverageRevenuePerUser] = UNSET
@@ -451,6 +571,18 @@ class MetricPeriod(BaseModel):
     churned_subscriptions: OptionalNullable[ChurnedSubscriptions] = UNSET
 
     churn_rate: OptionalNullable[ChurnRate] = UNSET
+
+    seats_total: OptionalNullable[SeatsTotal] = UNSET
+
+    seats_claimed: OptionalNullable[SeatsClaimed] = UNSET
+
+    seats_pending: OptionalNullable[SeatsPending] = UNSET
+
+    seat_customers: OptionalNullable[SeatCustomers] = UNSET
+
+    new_seat_customers: OptionalNullable[NewSeatCustomers] = UNSET
+
+    churned_seat_customers: OptionalNullable[ChurnedSeatCustomers] = UNSET
 
     orders: OptionalNullable[OrdersModel] = UNSET
 
@@ -524,6 +656,12 @@ class MetricPeriod(BaseModel):
 
     canceled_subscriptions_other: OptionalNullable[CanceledSubscriptionsOther] = UNSET
 
+    annual_recurring_revenue: OptionalNullable[AnnualRecurringRevenue] = UNSET
+
+    committed_annual_recurring_revenue: OptionalNullable[
+        CommittedAnnualRecurringRevenue
+    ] = UNSET
+
     checkouts_conversion: OptionalNullable[CheckoutsConversion] = UNSET
 
     ltv: OptionalNullable[Ltv] = UNSET
@@ -534,18 +672,30 @@ class MetricPeriod(BaseModel):
 
     cashflow: OptionalNullable[Cashflow] = UNSET
 
+    average_seats_per_customer: OptionalNullable[AverageSeatsPerCustomer] = UNSET
+
+    seat_utilization_rate: OptionalNullable[SeatUtilizationRate] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
             "active_subscriptions",
             "committed_subscriptions",
             "monthly_recurring_revenue",
+            "trial_monthly_recurring_revenue",
             "committed_monthly_recurring_revenue",
+            "trial_committed_monthly_recurring_revenue",
             "average_revenue_per_user",
             "checkouts",
             "succeeded_checkouts",
             "churned_subscriptions",
             "churn_rate",
+            "seats_total",
+            "seats_claimed",
+            "seats_pending",
+            "seat_customers",
+            "new_seat_customers",
+            "churned_seat_customers",
             "orders",
             "revenue",
             "net_revenue",
@@ -575,22 +725,34 @@ class MetricPeriod(BaseModel):
             "canceled_subscriptions_too_expensive",
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
+            "annual_recurring_revenue",
+            "committed_annual_recurring_revenue",
             "checkouts_conversion",
             "ltv",
             "gross_margin",
             "gross_margin_percentage",
             "cashflow",
+            "average_seats_per_customer",
+            "seat_utilization_rate",
         ]
         nullable_fields = [
             "active_subscriptions",
             "committed_subscriptions",
             "monthly_recurring_revenue",
+            "trial_monthly_recurring_revenue",
             "committed_monthly_recurring_revenue",
+            "trial_committed_monthly_recurring_revenue",
             "average_revenue_per_user",
             "checkouts",
             "succeeded_checkouts",
             "churned_subscriptions",
             "churn_rate",
+            "seats_total",
+            "seats_claimed",
+            "seats_pending",
+            "seat_customers",
+            "new_seat_customers",
+            "churned_seat_customers",
             "orders",
             "revenue",
             "net_revenue",
@@ -620,11 +782,15 @@ class MetricPeriod(BaseModel):
             "canceled_subscriptions_too_expensive",
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
+            "annual_recurring_revenue",
+            "committed_annual_recurring_revenue",
             "checkouts_conversion",
             "ltv",
             "gross_margin",
             "gross_margin_percentage",
             "cashflow",
+            "average_seats_per_customer",
+            "seat_utilization_rate",
         ]
         null_default_fields = []
 

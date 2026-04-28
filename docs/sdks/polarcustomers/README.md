@@ -11,6 +11,9 @@
 * [add_payment_method](#add_payment_method) - Add Customer Payment Method
 * [confirm_payment_method](#confirm_payment_method) - Confirm Customer Payment Method
 * [delete_payment_method](#delete_payment_method) - Delete Customer Payment Method
+* [request_email_update](#request_email_update) - Request Email Change
+* [check_email_update](#check_email_update) - Check Email Change Token
+* [verify_email_update](#verify_email_update) - Verify Email Change
 
 ## get
 
@@ -275,3 +278,119 @@ with Polar() as polar:
 | models.ResourceNotFound                       | 404                                           | application/json                              |
 | models.HTTPValidationError                    | 422                                           | application/json                              |
 | models.SDKError                               | 4XX, 5XX                                      | \*/\*                                         |
+
+## request_email_update
+
+Request an email change for the authenticated customer.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="customer_portal:customers:request_email_update" method="post" path="/v1/customer-portal/customers/me/email-update/request" -->
+```python
+import polar_sdk
+from polar_sdk import Polar
+
+
+with Polar() as polar:
+
+    res = polar.customer_portal.customers.request_email_update(security=polar_sdk.CustomerPortalCustomersRequestEmailUpdateSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), request={
+        "email": "Tommie_Larkin78@gmail.com",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                              | [models.CustomerEmailUpdateRequest](../../models/customeremailupdaterequest.md)                                        | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
+| `security`                                                                                                             | [models.CustomerPortalCustomersRequestEmailUpdateSecurity](../../customerportalcustomersrequestemailupdatesecurity.md) | :heavy_check_mark:                                                                                                     | The security requirements to use for the request.                                                                      |
+| `retries`                                                                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                       | :heavy_minus_sign:                                                                                                     | Configuration to override the default retry behavior of the client.                                                    |
+
+### Response
+
+**[Any](../../models/.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## check_email_update
+
+Check if an email change verification token is still valid.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="customer_portal:customers:check_email_update" method="get" path="/v1/customer-portal/customers/me/email-update/check" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar() as polar:
+
+    polar.customer_portal.customers.check_email_update(token="<value>")
+
+    # Use the SDK ...
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `token`                                                             | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## verify_email_update
+
+Verify an email change using the token from the verification email.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="customer_portal:customers:verify_email_update" method="post" path="/v1/customer-portal/customers/me/email-update/verify" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar() as polar:
+
+    res = polar.customer_portal.customers.verify_email_update(request={
+        "token": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `request`                                                                                   | [models.CustomerEmailUpdateVerifyRequest](../../models/customeremailupdateverifyrequest.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
+| `retries`                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                            | :heavy_minus_sign:                                                                          | Configuration to override the default retry behavior of the client.                         |
+
+### Response
+
+**[models.CustomerEmailUpdateVerifyResponse](../../models/customeremailupdateverifyresponse.md)**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |

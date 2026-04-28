@@ -42,7 +42,7 @@ class BenefitGrants(BaseSDK):
     ) -> Optional[models.BenefitGrantsListResponse]:
         r"""List Benefit Grants
 
-        List benefit grants across all benefits for the authenticated organization.
+        List benefit grants across all benefits accessible to the authenticated subject.
 
         **Scopes**: `benefits:read` `benefits:write`
 
@@ -198,7 +198,7 @@ class BenefitGrants(BaseSDK):
     ) -> Optional[models.BenefitGrantsListResponse]:
         r"""List Benefit Grants
 
-        List benefit grants across all benefits for the authenticated organization.
+        List benefit grants across all benefits accessible to the authenticated subject.
 
         **Scopes**: `benefits:read` `benefits:write`
 

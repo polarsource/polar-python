@@ -11,12 +11,20 @@ class MetricsTypedDict(TypedDict):
     active_subscriptions: NotRequired[Nullable[MetricTypedDict]]
     committed_subscriptions: NotRequired[Nullable[MetricTypedDict]]
     monthly_recurring_revenue: NotRequired[Nullable[MetricTypedDict]]
+    trial_monthly_recurring_revenue: NotRequired[Nullable[MetricTypedDict]]
     committed_monthly_recurring_revenue: NotRequired[Nullable[MetricTypedDict]]
+    trial_committed_monthly_recurring_revenue: NotRequired[Nullable[MetricTypedDict]]
     average_revenue_per_user: NotRequired[Nullable[MetricTypedDict]]
     checkouts: NotRequired[Nullable[MetricTypedDict]]
     succeeded_checkouts: NotRequired[Nullable[MetricTypedDict]]
     churned_subscriptions: NotRequired[Nullable[MetricTypedDict]]
     churn_rate: NotRequired[Nullable[MetricTypedDict]]
+    seats_total: NotRequired[Nullable[MetricTypedDict]]
+    seats_claimed: NotRequired[Nullable[MetricTypedDict]]
+    seats_pending: NotRequired[Nullable[MetricTypedDict]]
+    seat_customers: NotRequired[Nullable[MetricTypedDict]]
+    new_seat_customers: NotRequired[Nullable[MetricTypedDict]]
+    churned_seat_customers: NotRequired[Nullable[MetricTypedDict]]
     orders: NotRequired[Nullable[MetricTypedDict]]
     revenue: NotRequired[Nullable[MetricTypedDict]]
     net_revenue: NotRequired[Nullable[MetricTypedDict]]
@@ -46,11 +54,15 @@ class MetricsTypedDict(TypedDict):
     canceled_subscriptions_too_expensive: NotRequired[Nullable[MetricTypedDict]]
     canceled_subscriptions_unused: NotRequired[Nullable[MetricTypedDict]]
     canceled_subscriptions_other: NotRequired[Nullable[MetricTypedDict]]
+    annual_recurring_revenue: NotRequired[Nullable[MetricTypedDict]]
+    committed_annual_recurring_revenue: NotRequired[Nullable[MetricTypedDict]]
     checkouts_conversion: NotRequired[Nullable[MetricTypedDict]]
     ltv: NotRequired[Nullable[MetricTypedDict]]
     gross_margin: NotRequired[Nullable[MetricTypedDict]]
     gross_margin_percentage: NotRequired[Nullable[MetricTypedDict]]
     cashflow: NotRequired[Nullable[MetricTypedDict]]
+    average_seats_per_customer: NotRequired[Nullable[MetricTypedDict]]
+    seat_utilization_rate: NotRequired[Nullable[MetricTypedDict]]
 
 
 class Metrics(BaseModel):
@@ -60,7 +72,11 @@ class Metrics(BaseModel):
 
     monthly_recurring_revenue: OptionalNullable[Metric] = UNSET
 
+    trial_monthly_recurring_revenue: OptionalNullable[Metric] = UNSET
+
     committed_monthly_recurring_revenue: OptionalNullable[Metric] = UNSET
+
+    trial_committed_monthly_recurring_revenue: OptionalNullable[Metric] = UNSET
 
     average_revenue_per_user: OptionalNullable[Metric] = UNSET
 
@@ -71,6 +87,18 @@ class Metrics(BaseModel):
     churned_subscriptions: OptionalNullable[Metric] = UNSET
 
     churn_rate: OptionalNullable[Metric] = UNSET
+
+    seats_total: OptionalNullable[Metric] = UNSET
+
+    seats_claimed: OptionalNullable[Metric] = UNSET
+
+    seats_pending: OptionalNullable[Metric] = UNSET
+
+    seat_customers: OptionalNullable[Metric] = UNSET
+
+    new_seat_customers: OptionalNullable[Metric] = UNSET
+
+    churned_seat_customers: OptionalNullable[Metric] = UNSET
 
     orders: OptionalNullable[Metric] = UNSET
 
@@ -130,6 +158,10 @@ class Metrics(BaseModel):
 
     canceled_subscriptions_other: OptionalNullable[Metric] = UNSET
 
+    annual_recurring_revenue: OptionalNullable[Metric] = UNSET
+
+    committed_annual_recurring_revenue: OptionalNullable[Metric] = UNSET
+
     checkouts_conversion: OptionalNullable[Metric] = UNSET
 
     ltv: OptionalNullable[Metric] = UNSET
@@ -140,18 +172,30 @@ class Metrics(BaseModel):
 
     cashflow: OptionalNullable[Metric] = UNSET
 
+    average_seats_per_customer: OptionalNullable[Metric] = UNSET
+
+    seat_utilization_rate: OptionalNullable[Metric] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
             "active_subscriptions",
             "committed_subscriptions",
             "monthly_recurring_revenue",
+            "trial_monthly_recurring_revenue",
             "committed_monthly_recurring_revenue",
+            "trial_committed_monthly_recurring_revenue",
             "average_revenue_per_user",
             "checkouts",
             "succeeded_checkouts",
             "churned_subscriptions",
             "churn_rate",
+            "seats_total",
+            "seats_claimed",
+            "seats_pending",
+            "seat_customers",
+            "new_seat_customers",
+            "churned_seat_customers",
             "orders",
             "revenue",
             "net_revenue",
@@ -181,22 +225,34 @@ class Metrics(BaseModel):
             "canceled_subscriptions_too_expensive",
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
+            "annual_recurring_revenue",
+            "committed_annual_recurring_revenue",
             "checkouts_conversion",
             "ltv",
             "gross_margin",
             "gross_margin_percentage",
             "cashflow",
+            "average_seats_per_customer",
+            "seat_utilization_rate",
         ]
         nullable_fields = [
             "active_subscriptions",
             "committed_subscriptions",
             "monthly_recurring_revenue",
+            "trial_monthly_recurring_revenue",
             "committed_monthly_recurring_revenue",
+            "trial_committed_monthly_recurring_revenue",
             "average_revenue_per_user",
             "checkouts",
             "succeeded_checkouts",
             "churned_subscriptions",
             "churn_rate",
+            "seats_total",
+            "seats_claimed",
+            "seats_pending",
+            "seat_customers",
+            "new_seat_customers",
+            "churned_seat_customers",
             "orders",
             "revenue",
             "net_revenue",
@@ -226,11 +282,15 @@ class Metrics(BaseModel):
             "canceled_subscriptions_too_expensive",
             "canceled_subscriptions_unused",
             "canceled_subscriptions_other",
+            "annual_recurring_revenue",
+            "committed_annual_recurring_revenue",
             "checkouts_conversion",
             "ltv",
             "gross_margin",
             "gross_margin_percentage",
             "cashflow",
+            "average_seats_per_customer",
+            "seat_utilization_rate",
         ]
         null_default_fields = []
 
