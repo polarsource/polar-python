@@ -10,7 +10,12 @@ from polar_sdk.utils.unmarshal_json_response import unmarshal_json_response
 from typing import Any, Dict, List, Mapping, Optional, Union, cast
 
 # region imports
-from ._webhooks import WebhookVerificationError, WebhoookPayload, validate_event  # pylint: disable=unused-import
+from ._webhooks import (
+    UnknownEventTypeError as UnknownEventTypeError,
+    WebhookVerificationError as WebhookVerificationError,
+    WebhoookPayload as WebhoookPayload,
+    validate_event as validate_event,
+)
 # endregion imports
 
 
