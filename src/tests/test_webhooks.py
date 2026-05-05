@@ -19,7 +19,7 @@ from polar_sdk.models.productpricetype import ProductPriceType
 from polar_sdk.models.webhookcheckoutcreatedpayload import WebhookCheckoutCreatedPayload
 from polar_sdk.models.webhookeventtype import WebhookEventType
 from polar_sdk.webhooks import (
-    UnknownEventTypeError,
+    WebhookUnknownTypeError,
     WebhookVerificationError,
     WebhoookPayload,
     validate_event,
@@ -154,7 +154,7 @@ def test_invalid_payload() -> None:
     body = '{"type": "unknown"}'
     headers = get_headers(body)
 
-    with pytest.raises(UnknownEventTypeError):
+    with pytest.raises(WebhookUnknownTypeError):
         validate_event(body, headers, WEBHOOK_SECRET)
 
 

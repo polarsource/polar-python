@@ -24,6 +24,7 @@ from polar_sdk.models import (
     WebhookCustomerSeatRevokedPayload,
     WebhookCustomerStateChangedPayload,
     WebhookCustomerUpdatedPayload,
+    WebhookEventType,
     WebhookMemberCreatedPayload,
     WebhookMemberDeletedPayload,
     WebhookMemberUpdatedPayload,
@@ -93,6 +94,10 @@ WebhoookPayload = Annotated[
     Discriminator(_get_discriminator),
 ]
 
+
+_KNOWN_EVENT_TYPES: frozenset[str] = frozenset(t.value for t in WebhookEventType)
+
+
 WebhookPayloadAdapter: TypeAdapter[WebhoookPayload] = TypeAdapter(WebhoookPayload)
 
 
@@ -100,6 +105,15 @@ class WebhookVerificationError(_WebhookVerificationError):
     def __init__(self, message: str) -> None:
         self.message = message
         super().__init__(message)
+
+
+class WebhookUnknownTypeError(Exception):
+    """Webhook signature was valid, but the event type isn't known to this
+    SDK version. Callers may safely ignore (e.g. for forward compatibility)."""
+
+    def __init__(self, event_type: str | None) -> None:
+        self.event_type = event_type
+        super().__init__(f"Unknown webhook event type: {event_type!r}")
 
 
 def validate_event(
@@ -113,10 +127,16 @@ def validate_event(
     except _WebhookVerificationError as e:
         raise WebhookVerificationError(str(e)) from e
 
+    if isinstance(data, dict):
+        event_type = data.get("type")
+        if event_type not in _KNOWN_EVENT_TYPES:
+            raise WebhookUnknownTypeError(event_type)
+
     return WebhookPayloadAdapter.validate_python(data)
 
 
 __all__ = [
+    "WebhookUnknownTypeError",
     "WebhookVerificationError",
     "WebhoookPayload",
     "validate_event",

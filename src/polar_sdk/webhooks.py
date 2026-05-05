@@ -11,7 +11,7 @@ from typing import Any, Dict, List, Mapping, Optional, Union, cast
 
 # region imports
 from ._webhooks import (
-    UnknownEventTypeError as UnknownEventTypeError,
+    WebhookUnknownTypeError as WebhookUnknownTypeError,
     WebhookVerificationError as WebhookVerificationError,
     WebhoookPayload as WebhoookPayload,
     validate_event as validate_event,

@@ -160,7 +160,11 @@ The SDK has built-in support to validate webhook events. Here is an example with
 
 ```py
 from flask import Flask, request
-from polar_sdk.webhooks import validate_event, WebhookVerificationError
+from polar_sdk.webhooks import (
+    validate_event,
+    WebhookUnknownTypeError,
+    WebhookVerificationError,
+)
 
 app = Flask(__name__)
 
@@ -176,9 +180,19 @@ def webhook():
         # Process the event
 
         return "", 202
-    except WebhookVerificationError as e:
+    except WebhookVerificationError:
         return "", 403
+    except WebhookUnknownTypeError:
+        # The signature was valid, but the event `type` is not known to this
+        # SDK version (e.g. the API has shipped a new event type and you
+        # haven't upgraded yet). Safe to ignore for forward compatibility,
+        # or log and acknowledge so the webhook isn't retried.
+        return "", 202
 ```
+
+`WebhookUnknownTypeError` is raised after signature verification but before
+payload parsing, so a stale SDK can still acknowledge unknown events instead
+of crashing on a `pydantic.ValidationError`.
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
