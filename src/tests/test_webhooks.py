@@ -1,10 +1,10 @@
 import base64
 import datetime
 import uuid
-from typing import Union
+from typing import Union, get_args
 
 import pytest
-from pydantic import ValidationError
+from pydantic import Tag, ValidationError
 from standardwebhooks.webhooks import Webhook
 
 from polar_sdk.models.checkout import Checkout
@@ -17,7 +17,13 @@ from polar_sdk.models.paymentprocessor import PaymentProcessor
 from polar_sdk.models.productpricefixed import ProductPriceFixed
 from polar_sdk.models.productpricetype import ProductPriceType
 from polar_sdk.models.webhookcheckoutcreatedpayload import WebhookCheckoutCreatedPayload
-from polar_sdk.webhooks import WebhookVerificationError, validate_event
+from polar_sdk.models.webhookeventtype import WebhookEventType
+from polar_sdk.webhooks import (
+    WebhookUnknownTypeError,
+    WebhookVerificationError,
+    WebhoookPayload,
+    validate_event,
+)
 
 ORGANIZATION_ID = str(uuid.uuid4())
 PRODUCT_ID = str(uuid.uuid4())
@@ -148,5 +154,30 @@ def test_invalid_payload() -> None:
     body = '{"type": "unknown"}'
     headers = get_headers(body)
 
+    with pytest.raises(WebhookUnknownTypeError):
+        validate_event(body, headers, WEBHOOK_SECRET)
+
+
+def test_malformed_known_payload_still_raises_validation_error() -> None:
+    body = '{"type": "checkout.created"}'
+    headers = get_headers(body)
+
     with pytest.raises(ValidationError):
         validate_event(body, headers, WEBHOOK_SECRET)
+
+
+def test_webhook_payload_union_covers_all_event_types() -> None:
+    union_args = get_args(get_args(WebhoookPayload)[0])
+    union_tags: set[str] = set()
+    for arg in union_args:
+        for meta in getattr(arg, "__metadata__", ()):
+            if isinstance(meta, Tag):
+                union_tags.add(meta.tag)
+
+    expected = {t.value for t in WebhookEventType}
+    missing = expected - union_tags
+    extra = union_tags - expected
+    assert not missing and not extra, (
+        f"WebhoookPayload union out of sync with WebhookEventType. "
+        f"Missing tags: {sorted(missing)}. Unexpected tags: {sorted(extra)}."
+    )

@@ -15,6 +15,7 @@ from polar_sdk.models import (
     WebhookBenefitGrantUpdatedPayload,
     WebhookBenefitUpdatedPayload,
     WebhookCheckoutCreatedPayload,
+    WebhookCheckoutExpiredPayload,
     WebhookCheckoutUpdatedPayload,
     WebhookCustomerCreatedPayload,
     WebhookCustomerDeletedPayload,
@@ -23,6 +24,10 @@ from polar_sdk.models import (
     WebhookCustomerSeatRevokedPayload,
     WebhookCustomerStateChangedPayload,
     WebhookCustomerUpdatedPayload,
+    WebhookEventType,
+    WebhookMemberCreatedPayload,
+    WebhookMemberDeletedPayload,
+    WebhookMemberUpdatedPayload,
     WebhookOrderCreatedPayload,
     WebhookOrderPaidPayload,
     WebhookOrderRefundedPayload,
@@ -52,6 +57,7 @@ WebhoookPayload = Annotated[
     Union[
         Annotated[WebhookCheckoutCreatedPayload, Tag("checkout.created")],
         Annotated[WebhookCheckoutUpdatedPayload, Tag("checkout.updated")],
+        Annotated[WebhookCheckoutExpiredPayload, Tag("checkout.expired")],
         Annotated[WebhookCustomerCreatedPayload, Tag("customer.created")],
         Annotated[WebhookCustomerUpdatedPayload, Tag("customer.updated")],
         Annotated[WebhookCustomerDeletedPayload, Tag("customer.deleted")],
@@ -59,6 +65,9 @@ WebhoookPayload = Annotated[
         Annotated[WebhookCustomerSeatAssignedPayload, Tag("customer_seat.assigned")],
         Annotated[WebhookCustomerSeatClaimedPayload, Tag("customer_seat.claimed")],
         Annotated[WebhookCustomerSeatRevokedPayload, Tag("customer_seat.revoked")],
+        Annotated[WebhookMemberCreatedPayload, Tag("member.created")],
+        Annotated[WebhookMemberUpdatedPayload, Tag("member.updated")],
+        Annotated[WebhookMemberDeletedPayload, Tag("member.deleted")],
         Annotated[WebhookOrderCreatedPayload, Tag("order.created")],
         Annotated[WebhookOrderUpdatedPayload, Tag("order.updated")],
         Annotated[WebhookOrderPaidPayload, Tag("order.paid")],
@@ -85,6 +94,10 @@ WebhoookPayload = Annotated[
     Discriminator(_get_discriminator),
 ]
 
+
+_KNOWN_EVENT_TYPES: frozenset[str] = frozenset(t.value for t in WebhookEventType)
+
+
 WebhookPayloadAdapter: TypeAdapter[WebhoookPayload] = TypeAdapter(WebhoookPayload)
 
 
@@ -92,6 +105,15 @@ class WebhookVerificationError(_WebhookVerificationError):
     def __init__(self, message: str) -> None:
         self.message = message
         super().__init__(message)
+
+
+class WebhookUnknownTypeError(Exception):
+    """Webhook signature was valid, but the event type isn't known to this
+    SDK version. Callers may safely ignore (e.g. for forward compatibility)."""
+
+    def __init__(self, event_type: str | None) -> None:
+        self.event_type = event_type
+        super().__init__(f"Unknown webhook event type: {event_type!r}")
 
 
 def validate_event(
@@ -105,10 +127,16 @@ def validate_event(
     except _WebhookVerificationError as e:
         raise WebhookVerificationError(str(e)) from e
 
+    if isinstance(data, dict):
+        event_type = data.get("type")
+        if event_type not in _KNOWN_EVENT_TYPES:
+            raise WebhookUnknownTypeError(event_type)
+
     return WebhookPayloadAdapter.validate_python(data)
 
 
 __all__ = [
+    "WebhookUnknownTypeError",
     "WebhookVerificationError",
     "WebhoookPayload",
     "validate_event",
