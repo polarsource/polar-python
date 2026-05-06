@@ -16,6 +16,7 @@ generation:
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: false
     sharedErrorComponentsApr2025: false
+    asyncPaginationSep2025: true
     nameOverrideFeb2026: false
     sharedNestedComponentsJan2026: false
   auth:
