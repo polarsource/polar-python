@@ -106,8 +106,6 @@ with Polar(
 
 Get an organization by ID.
 
-**Scopes**: `organizations:read` `organizations:write`
-
 ### Example Usage
 
 <!-- UsageSnippet language="python" operationID="organizations:get" method="get" path="/v1/organizations/{id}" -->
@@ -148,8 +146,6 @@ with Polar(
 ## update
 
 Update an organization.
-
-**Scopes**: `organizations:write`
 
 ### Example Usage
 

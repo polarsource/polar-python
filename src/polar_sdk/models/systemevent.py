@@ -61,6 +61,10 @@ from .subscriptionuncanceledevent import (
     SubscriptionUncanceledEvent,
     SubscriptionUncanceledEventTypedDict,
 )
+from .subscriptionupdateclearedevent import (
+    SubscriptionUpdateClearedEvent,
+    SubscriptionUpdateClearedEventTypedDict,
+)
 from .subscriptionupdatedevent import (
     SubscriptionUpdatedEvent,
     SubscriptionUpdatedEventTypedDict,
@@ -89,6 +93,7 @@ SystemEventTypedDict = TypeAliasType(
         SubscriptionProductUpdatedEventTypedDict,
         SubscriptionSeatsUpdatedEventTypedDict,
         SubscriptionBillingPeriodUpdatedEventTypedDict,
+        SubscriptionUpdateClearedEventTypedDict,
         OrderPaidEventTypedDict,
         OrderRefundedEventTypedDict,
         OrderVoidedEventTypedDict,
@@ -138,6 +143,7 @@ SystemEvent = Annotated[
         Annotated[SubscriptionRevokedEvent, Tag("subscription.revoked")],
         Annotated[SubscriptionSeatsUpdatedEvent, Tag("subscription.seats_updated")],
         Annotated[SubscriptionUncanceledEvent, Tag("subscription.uncanceled")],
+        Annotated[SubscriptionUpdateClearedEvent, Tag("subscription.update_cleared")],
         Annotated[SubscriptionUpdatedEvent, Tag("subscription.updated")],
     ],
     Discriminator(lambda m: get_discriminator(m, "name", "name")),

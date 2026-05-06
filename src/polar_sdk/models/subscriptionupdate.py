@@ -7,6 +7,10 @@ from .subscriptionupdatebillingperiod import (
     SubscriptionUpdateBillingPeriod,
     SubscriptionUpdateBillingPeriodTypedDict,
 )
+from .subscriptionupdateclear import (
+    SubscriptionUpdateClear,
+    SubscriptionUpdateClearTypedDict,
+)
 from .subscriptionupdatediscount import (
     SubscriptionUpdateDiscount,
     SubscriptionUpdateDiscountTypedDict,
@@ -33,6 +37,7 @@ SubscriptionUpdateTypedDict = TypeAliasType(
         SubscriptionUpdateDiscountTypedDict,
         SubscriptionUpdateTrialTypedDict,
         SubscriptionUpdateBillingPeriodTypedDict,
+        SubscriptionUpdateClearTypedDict,
         SubscriptionUpdateProductTypedDict,
         SubscriptionUpdateSeatsTypedDict,
         SubscriptionCancelTypedDict,
@@ -47,6 +52,7 @@ SubscriptionUpdate = TypeAliasType(
         SubscriptionUpdateDiscount,
         SubscriptionUpdateTrial,
         SubscriptionUpdateBillingPeriod,
+        SubscriptionUpdateClear,
         SubscriptionUpdateProduct,
         SubscriptionUpdateSeats,
         SubscriptionCancel,

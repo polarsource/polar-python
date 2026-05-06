@@ -165,6 +165,12 @@ value: models.SubscriptionSeatsUpdatedEvent = /* values here */
 value: models.SubscriptionUncanceledEvent = /* values here */
 ```
 
+### `models.SubscriptionUpdateClearedEvent`
+
+```python
+value: models.SubscriptionUpdateClearedEvent = /* values here */
+```
+
 ### `models.SubscriptionUpdatedEvent`
 
 ```python

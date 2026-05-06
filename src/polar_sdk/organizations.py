@@ -465,8 +465,6 @@ class Organizations(BaseSDK):
 
         Get an organization by ID.
 
-        **Scopes**: `organizations:read` `organizations:write`
-
         :param id:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -558,8 +556,6 @@ class Organizations(BaseSDK):
         r"""Get Organization
 
         Get an organization by ID.
-
-        **Scopes**: `organizations:read` `organizations:write`
 
         :param id:
         :param retries: Override the default retry configuration for this method
@@ -655,8 +651,6 @@ class Organizations(BaseSDK):
         r"""Update Organization
 
         Update an organization.
-
-        **Scopes**: `organizations:write`
 
         :param id:
         :param organization_update:
@@ -766,8 +760,6 @@ class Organizations(BaseSDK):
         r"""Update Organization
 
         Update an organization.
-
-        **Scopes**: `organizations:write`
 
         :param id:
         :param organization_update:

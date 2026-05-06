@@ -54,6 +54,8 @@ class CustomerOrderTypedDict(TypedDict):
     r"""The invoice number associated with this order."""
     is_invoice_generated: bool
     r"""Whether an invoice has been generated for this order."""
+    receipt_number: Nullable[str]
+    r"""The receipt number for this order. Set once the order is paid for organizations with receipts enabled. When set, a downloadable receipt PDF can be obtained via the receipt endpoint."""
     customer_id: str
     product_id: Nullable[str]
     discount_id: Nullable[str]
@@ -65,6 +67,10 @@ class CustomerOrderTypedDict(TypedDict):
     r"""Line items composing the order."""
     description: str
     r"""A summary description of the order."""
+    refundable_amount: int
+    r"""Amount in cents that can still be refunded (net, before taxes). Accounts for any applied customer balance and previous refunds."""
+    refundable_tax_amount: int
+    r"""Sales tax in cents that would be refunded if the full refundable amount is refunded."""
     seats: NotRequired[Nullable[int]]
     r"""Number of seats purchased (for seat-based one-time orders)."""
     next_payment_attempt_at: NotRequired[Nullable[datetime]]
@@ -128,6 +134,9 @@ class CustomerOrder(BaseModel):
     is_invoice_generated: bool
     r"""Whether an invoice has been generated for this order."""
 
+    receipt_number: Nullable[str]
+    r"""The receipt number for this order. Set once the order is paid for organizations with receipts enabled. When set, a downloadable receipt PDF can be obtained via the receipt endpoint."""
+
     customer_id: str
 
     product_id: Nullable[str]
@@ -148,6 +157,12 @@ class CustomerOrder(BaseModel):
     description: str
     r"""A summary description of the order."""
 
+    refundable_amount: int
+    r"""Amount in cents that can still be refunded (net, before taxes). Accounts for any applied customer balance and previous refunds."""
+
+    refundable_tax_amount: int
+    r"""Sales tax in cents that would be refunded if the full refundable amount is refunded."""
+
     seats: OptionalNullable[int] = UNSET
     r"""Number of seats purchased (for seat-based one-time orders)."""
 
@@ -161,6 +176,7 @@ class CustomerOrder(BaseModel):
             "modified_at",
             "billing_name",
             "billing_address",
+            "receipt_number",
             "seats",
             "product_id",
             "discount_id",
