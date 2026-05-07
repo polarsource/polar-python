@@ -111,7 +111,7 @@ class WebhookUnknownTypeError(Exception):
     """Webhook signature was valid, but the event type isn't known to this
     SDK version. Callers may safely ignore (e.g. for forward compatibility)."""
 
-    def __init__(self, event_type: str | None) -> None:
+    def __init__(self, event_type: Union[str, None]) -> None:
         self.event_type = event_type
         super().__init__(f"Unknown webhook event type: {event_type!r}")
 
