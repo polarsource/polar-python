@@ -11,11 +11,18 @@ from typing import Any, Dict, List, Mapping, Optional, Union, cast
 
 # region imports
 from ._webhooks import (
-    WebhookUnknownTypeError as WebhookUnknownTypeError,
-    WebhookVerificationError as WebhookVerificationError,
-    WebhoookPayload as WebhoookPayload,
-    validate_event as validate_event,
+    WebhookUnknownTypeError,
+    WebhookVerificationError,
+    WebhoookPayload,
+    validate_event,
 )
+__all__ = [
+    "WebhookUnknownTypeError",
+    "WebhookVerificationError",
+    "WebhoookPayload",
+    "validate_event",
+    "Webhooks",
+]
 # endregion imports
 
 
