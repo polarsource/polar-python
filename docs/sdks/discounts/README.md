@@ -78,11 +78,10 @@ with Polar(
 ) as polar:
 
     res = polar.discounts.create(request={
-        "duration": polar_sdk.DiscountDuration.ONCE,
-        "type": polar_sdk.DiscountType.FIXED,
-        "basis_points": 449604,
         "name": "<value>",
         "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+        "type": "fixed",
+        "duration": polar_sdk.DiscountDuration.ONCE,
     })
 
     # Handle response

@@ -10,6 +10,7 @@
 * [update](#update) - Update Order
 * [generate_invoice](#generate_invoice) - Generate Order Invoice
 * [invoice](#invoice) - Get Order Invoice
+* [receipt](#receipt) - Get Order Receipt
 * [get_payment_status](#get_payment_status) - Get Order Payment Status
 * [confirm_retry_payment](#confirm_retry_payment) - Confirm Retry Payment
 
@@ -231,6 +232,51 @@ with Polar() as polar:
 ### Response
 
 **[models.CustomerOrderInvoice](../../models/customerorderinvoice.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## receipt
+
+Get a presigned URL to download an order's receipt PDF.
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="customer_portal:orders:receipt" method="get" path="/v1/customer-portal/orders/{id}/receipt" -->
+```python
+import polar_sdk
+from polar_sdk import Polar
+
+
+with Polar() as polar:
+
+    res = polar.customer_portal.orders.receipt(security=polar_sdk.CustomerPortalOrdersReceiptSecurity(
+        customer_session="<YOUR_BEARER_TOKEN_HERE>",
+    ), id="<value>")
+
+    assert res is not None
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `security`                                                                                        | [models.CustomerPortalOrdersReceiptSecurity](../../models/customerportalordersreceiptsecurity.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `id`                                                                                              | *str*                                                                                             | :heavy_check_mark:                                                                                | The order ID.                                                                                     |
+| `retries`                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                  | :heavy_minus_sign:                                                                                | Configuration to override the default retry behavior of the client.                               |
+
+### Response
+
+**[models.CustomerOrderReceipt](../../models/customerorderreceipt.md)**
 
 ### Errors
 

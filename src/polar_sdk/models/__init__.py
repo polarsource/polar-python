@@ -855,6 +855,12 @@ if TYPE_CHECKING:
         CustomerPortalOrdersListSecurity,
         CustomerPortalOrdersListSecurityTypedDict,
     )
+    from .customer_portal_orders_receiptop import (
+        CustomerPortalOrdersReceiptRequest,
+        CustomerPortalOrdersReceiptRequestTypedDict,
+        CustomerPortalOrdersReceiptSecurity,
+        CustomerPortalOrdersReceiptSecurityTypedDict,
+    )
     from .customer_portal_orders_updateop import (
         CustomerPortalOrdersUpdateRequest,
         CustomerPortalOrdersUpdateRequestTypedDict,
@@ -1111,6 +1117,10 @@ if TYPE_CHECKING:
         CustomerOrderProductPricesTypedDict,
         CustomerOrderProductTypedDict,
     )
+    from .customerorderreceipt import (
+        CustomerOrderReceipt,
+        CustomerOrderReceiptTypedDict,
+    )
     from .customerordersortproperty import CustomerOrderSortProperty
     from .customerordersubscription import (
         CustomerOrderSubscription,
@@ -1235,6 +1245,7 @@ if TYPE_CHECKING:
         CustomersUpdateRequestTypedDict,
     )
     from .customerseat import CustomerSeat, CustomerSeatTypedDict
+    from .customerseatassign import CustomerSeatAssign, CustomerSeatAssignTypedDict
     from .customerseatclaimresponse import (
         CustomerSeatClaimResponse,
         CustomerSeatClaimResponseTypedDict,
@@ -1308,6 +1319,10 @@ if TYPE_CHECKING:
     from .customersubscriptionupdate import (
         CustomerSubscriptionUpdate,
         CustomerSubscriptionUpdateTypedDict,
+    )
+    from .customersubscriptionupdateclear import (
+        CustomerSubscriptionUpdateClear,
+        CustomerSubscriptionUpdateClearTypedDict,
     )
     from .customersubscriptionupdateproduct import (
         CustomerSubscriptionUpdateProduct,
@@ -1455,6 +1470,12 @@ if TYPE_CHECKING:
     from .discount import Discount, DiscountTypedDict
     from .discountcreate import DiscountCreate, DiscountCreateTypedDict
     from .discountduration import DiscountDuration
+    from .discountfixedcreate import (
+        DiscountFixedCreate,
+        DiscountFixedCreateMetadata,
+        DiscountFixedCreateMetadataTypedDict,
+        DiscountFixedCreateTypedDict,
+    )
     from .discountfixedonceforeverduration import (
         DiscountFixedOnceForeverDuration,
         DiscountFixedOnceForeverDurationTypedDict,
@@ -1462,12 +1483,6 @@ if TYPE_CHECKING:
     from .discountfixedonceforeverdurationbase import (
         DiscountFixedOnceForeverDurationBase,
         DiscountFixedOnceForeverDurationBaseTypedDict,
-    )
-    from .discountfixedonceforeverdurationcreate import (
-        DiscountFixedOnceForeverDurationCreate,
-        DiscountFixedOnceForeverDurationCreateMetadata,
-        DiscountFixedOnceForeverDurationCreateMetadataTypedDict,
-        DiscountFixedOnceForeverDurationCreateTypedDict,
     )
     from .discountfixedrepeatduration import (
         DiscountFixedRepeatDuration,
@@ -1477,11 +1492,11 @@ if TYPE_CHECKING:
         DiscountFixedRepeatDurationBase,
         DiscountFixedRepeatDurationBaseTypedDict,
     )
-    from .discountfixedrepeatdurationcreate import (
-        DiscountFixedRepeatDurationCreate,
-        DiscountFixedRepeatDurationCreateMetadata,
-        DiscountFixedRepeatDurationCreateMetadataTypedDict,
-        DiscountFixedRepeatDurationCreateTypedDict,
+    from .discountpercentagecreate import (
+        DiscountPercentageCreate,
+        DiscountPercentageCreateMetadata,
+        DiscountPercentageCreateMetadataTypedDict,
+        DiscountPercentageCreateTypedDict,
     )
     from .discountpercentageonceforeverduration import (
         DiscountPercentageOnceForeverDuration,
@@ -1491,12 +1506,6 @@ if TYPE_CHECKING:
         DiscountPercentageOnceForeverDurationBase,
         DiscountPercentageOnceForeverDurationBaseTypedDict,
     )
-    from .discountpercentageonceforeverdurationcreate import (
-        DiscountPercentageOnceForeverDurationCreate,
-        DiscountPercentageOnceForeverDurationCreateMetadata,
-        DiscountPercentageOnceForeverDurationCreateMetadataTypedDict,
-        DiscountPercentageOnceForeverDurationCreateTypedDict,
-    )
     from .discountpercentagerepeatduration import (
         DiscountPercentageRepeatDuration,
         DiscountPercentageRepeatDurationTypedDict,
@@ -1504,12 +1513,6 @@ if TYPE_CHECKING:
     from .discountpercentagerepeatdurationbase import (
         DiscountPercentageRepeatDurationBase,
         DiscountPercentageRepeatDurationBaseTypedDict,
-    )
-    from .discountpercentagerepeatdurationcreate import (
-        DiscountPercentageRepeatDurationCreate,
-        DiscountPercentageRepeatDurationCreateMetadata,
-        DiscountPercentageRepeatDurationCreateMetadataTypedDict,
-        DiscountPercentageRepeatDurationCreateTypedDict,
     )
     from .discountproduct import DiscountProduct, DiscountProductTypedDict
     from .discounts_deleteop import (
@@ -1868,7 +1871,7 @@ if TYPE_CHECKING:
         ManualRetryLimitExceededData,
     )
     from .member import Member, MemberTypedDict
-    from .membercreate import MemberCreate, MemberCreateTypedDict
+    from .membercreate import MemberCreate, MemberCreateTypedDict, Role
     from .memberownercreate import MemberOwnerCreate, MemberOwnerCreateTypedDict
     from .memberrole import MemberRole
     from .members_delete_member_by_external_idop import (
@@ -2305,6 +2308,7 @@ if TYPE_CHECKING:
     from .orderpaidevent import OrderPaidEvent, OrderPaidEventTypedDict
     from .orderpaidmetadata import OrderPaidMetadata, OrderPaidMetadataTypedDict
     from .orderproduct import OrderProduct, OrderProductTypedDict
+    from .orderreceipt import OrderReceipt, OrderReceiptTypedDict
     from .orderrefundedevent import OrderRefundedEvent, OrderRefundedEventTypedDict
     from .orderrefundedmetadata import (
         OrderRefundedMetadata,
@@ -2328,6 +2332,7 @@ if TYPE_CHECKING:
     )
     from .orders_getop import OrdersGetRequest, OrdersGetRequestTypedDict
     from .orders_invoiceop import OrdersInvoiceRequest, OrdersInvoiceRequestTypedDict
+    from .orders_receiptop import OrdersReceiptRequest, OrdersReceiptRequestTypedDict
     from .orders_updateop import OrdersUpdateRequest, OrdersUpdateRequestTypedDict
     from .ordersortproperty import OrderSortProperty
     from .orderstatus import OrderStatus
@@ -2729,6 +2734,14 @@ if TYPE_CHECKING:
     )
     from .subscriptionlocked import SubscriptionLocked, SubscriptionLockedData
     from .subscriptionmeter import SubscriptionMeter, SubscriptionMeterTypedDict
+    from .subscriptionpastdueevent import (
+        SubscriptionPastDueEvent,
+        SubscriptionPastDueEventTypedDict,
+    )
+    from .subscriptionpastduemetadata import (
+        SubscriptionPastDueMetadata,
+        SubscriptionPastDueMetadataTypedDict,
+    )
     from .subscriptionproductupdatedevent import (
         SubscriptionProductUpdatedEvent,
         SubscriptionProductUpdatedEventTypedDict,
@@ -2738,6 +2751,14 @@ if TYPE_CHECKING:
         SubscriptionProductUpdatedMetadataTypedDict,
     )
     from .subscriptionprorationbehavior import SubscriptionProrationBehavior
+    from .subscriptionreactivatedevent import (
+        SubscriptionReactivatedEvent,
+        SubscriptionReactivatedEventTypedDict,
+    )
+    from .subscriptionreactivatedmetadata import (
+        SubscriptionReactivatedMetadata,
+        SubscriptionReactivatedMetadataTypedDict,
+    )
     from .subscriptionrecurringinterval import SubscriptionRecurringInterval
     from .subscriptionrevoke import SubscriptionRevoke, SubscriptionRevokeTypedDict
     from .subscriptionrevokedevent import (
@@ -2888,6 +2909,18 @@ if TYPE_CHECKING:
     from .subscriptionupdatebillingperiod import (
         SubscriptionUpdateBillingPeriod,
         SubscriptionUpdateBillingPeriodTypedDict,
+    )
+    from .subscriptionupdateclear import (
+        SubscriptionUpdateClear,
+        SubscriptionUpdateClearTypedDict,
+    )
+    from .subscriptionupdateclearedevent import (
+        SubscriptionUpdateClearedEvent,
+        SubscriptionUpdateClearedEventTypedDict,
+    )
+    from .subscriptionupdateclearedmetadata import (
+        SubscriptionUpdateClearedMetadata,
+        SubscriptionUpdateClearedMetadataTypedDict,
     )
     from .subscriptionupdatedbillingperiodmetadata import (
         SubscriptionUpdatedBillingPeriodMetadata,
@@ -3844,6 +3877,8 @@ __all__ = [
     "CustomerOrderProductPrices",
     "CustomerOrderProductPricesTypedDict",
     "CustomerOrderProductTypedDict",
+    "CustomerOrderReceipt",
+    "CustomerOrderReceiptTypedDict",
     "CustomerOrderSortProperty",
     "CustomerOrderSubscription",
     "CustomerOrderSubscriptionTypedDict",
@@ -4000,6 +4035,10 @@ __all__ = [
     "CustomerPortalOrdersListResponseTypedDict",
     "CustomerPortalOrdersListSecurity",
     "CustomerPortalOrdersListSecurityTypedDict",
+    "CustomerPortalOrdersReceiptRequest",
+    "CustomerPortalOrdersReceiptRequestTypedDict",
+    "CustomerPortalOrdersReceiptSecurity",
+    "CustomerPortalOrdersReceiptSecurityTypedDict",
     "CustomerPortalOrdersUpdateRequest",
     "CustomerPortalOrdersUpdateRequestTypedDict",
     "CustomerPortalOrdersUpdateSecurity",
@@ -4065,6 +4104,8 @@ __all__ = [
     "CustomerProductPricesTypedDict",
     "CustomerProductTypedDict",
     "CustomerSeat",
+    "CustomerSeatAssign",
+    "CustomerSeatAssignTypedDict",
     "CustomerSeatClaimResponse",
     "CustomerSeatClaimResponseTypedDict",
     "CustomerSeatTypedDict",
@@ -4123,6 +4164,8 @@ __all__ = [
     "CustomerSubscriptionSortProperty",
     "CustomerSubscriptionTypedDict",
     "CustomerSubscriptionUpdate",
+    "CustomerSubscriptionUpdateClear",
+    "CustomerSubscriptionUpdateClearTypedDict",
     "CustomerSubscriptionUpdateProduct",
     "CustomerSubscriptionUpdateProductTypedDict",
     "CustomerSubscriptionUpdateSeats",
@@ -4189,39 +4232,31 @@ __all__ = [
     "DiscountCreate",
     "DiscountCreateTypedDict",
     "DiscountDuration",
+    "DiscountFixedCreate",
+    "DiscountFixedCreateMetadata",
+    "DiscountFixedCreateMetadataTypedDict",
+    "DiscountFixedCreateTypedDict",
     "DiscountFixedOnceForeverDuration",
     "DiscountFixedOnceForeverDurationBase",
     "DiscountFixedOnceForeverDurationBaseTypedDict",
-    "DiscountFixedOnceForeverDurationCreate",
-    "DiscountFixedOnceForeverDurationCreateMetadata",
-    "DiscountFixedOnceForeverDurationCreateMetadataTypedDict",
-    "DiscountFixedOnceForeverDurationCreateTypedDict",
     "DiscountFixedOnceForeverDurationTypedDict",
     "DiscountFixedRepeatDuration",
     "DiscountFixedRepeatDurationBase",
     "DiscountFixedRepeatDurationBaseTypedDict",
-    "DiscountFixedRepeatDurationCreate",
-    "DiscountFixedRepeatDurationCreateMetadata",
-    "DiscountFixedRepeatDurationCreateMetadataTypedDict",
-    "DiscountFixedRepeatDurationCreateTypedDict",
     "DiscountFixedRepeatDurationTypedDict",
     "DiscountIDFilter",
     "DiscountIDFilterTypedDict",
+    "DiscountPercentageCreate",
+    "DiscountPercentageCreateMetadata",
+    "DiscountPercentageCreateMetadataTypedDict",
+    "DiscountPercentageCreateTypedDict",
     "DiscountPercentageOnceForeverDuration",
     "DiscountPercentageOnceForeverDurationBase",
     "DiscountPercentageOnceForeverDurationBaseTypedDict",
-    "DiscountPercentageOnceForeverDurationCreate",
-    "DiscountPercentageOnceForeverDurationCreateMetadata",
-    "DiscountPercentageOnceForeverDurationCreateMetadataTypedDict",
-    "DiscountPercentageOnceForeverDurationCreateTypedDict",
     "DiscountPercentageOnceForeverDurationTypedDict",
     "DiscountPercentageRepeatDuration",
     "DiscountPercentageRepeatDurationBase",
     "DiscountPercentageRepeatDurationBaseTypedDict",
-    "DiscountPercentageRepeatDurationCreate",
-    "DiscountPercentageRepeatDurationCreateMetadata",
-    "DiscountPercentageRepeatDurationCreateMetadataTypedDict",
-    "DiscountPercentageRepeatDurationCreateTypedDict",
     "DiscountPercentageRepeatDurationTypedDict",
     "DiscountProduct",
     "DiscountProductTypedDict",
@@ -4840,6 +4875,8 @@ __all__ = [
     "OrderPaidMetadataTypedDict",
     "OrderProduct",
     "OrderProductTypedDict",
+    "OrderReceipt",
+    "OrderReceiptTypedDict",
     "OrderRefundedEvent",
     "OrderRefundedEventTypedDict",
     "OrderRefundedMetadata",
@@ -4885,6 +4922,8 @@ __all__ = [
     "OrdersListResponseTypedDict",
     "OrdersModel",
     "OrdersModelTypedDict",
+    "OrdersReceiptRequest",
+    "OrdersReceiptRequestTypedDict",
     "OrdersUpdateRequest",
     "OrdersUpdateRequestTypedDict",
     "Organization",
@@ -5156,6 +5195,7 @@ __all__ = [
     "RevokeTokenRequestTypedDict",
     "RevokeTokenResponse",
     "RevokeTokenResponseTypedDict",
+    "Role",
     "S3DownloadURL",
     "S3DownloadURLTypedDict",
     "S3FileCreateMultipart",
@@ -5233,6 +5273,10 @@ __all__ = [
     "SubscriptionLockedData",
     "SubscriptionMeter",
     "SubscriptionMeterTypedDict",
+    "SubscriptionPastDueEvent",
+    "SubscriptionPastDueEventTypedDict",
+    "SubscriptionPastDueMetadata",
+    "SubscriptionPastDueMetadataTypedDict",
     "SubscriptionPrices",
     "SubscriptionPricesTypedDict",
     "SubscriptionProductUpdatedEvent",
@@ -5240,6 +5284,10 @@ __all__ = [
     "SubscriptionProductUpdatedMetadata",
     "SubscriptionProductUpdatedMetadataTypedDict",
     "SubscriptionProrationBehavior",
+    "SubscriptionReactivatedEvent",
+    "SubscriptionReactivatedEventTypedDict",
+    "SubscriptionReactivatedMetadata",
+    "SubscriptionReactivatedMetadataTypedDict",
     "SubscriptionRecurringInterval",
     "SubscriptionRevoke",
     "SubscriptionRevokeTypedDict",
@@ -5261,6 +5309,12 @@ __all__ = [
     "SubscriptionUpdate",
     "SubscriptionUpdateBillingPeriod",
     "SubscriptionUpdateBillingPeriodTypedDict",
+    "SubscriptionUpdateClear",
+    "SubscriptionUpdateClearTypedDict",
+    "SubscriptionUpdateClearedEvent",
+    "SubscriptionUpdateClearedEventTypedDict",
+    "SubscriptionUpdateClearedMetadata",
+    "SubscriptionUpdateClearedMetadataTypedDict",
     "SubscriptionUpdateDiscount",
     "SubscriptionUpdateDiscountTypedDict",
     "SubscriptionUpdateProduct",
@@ -6033,6 +6087,10 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPortalOrdersListResponseTypedDict": ".customer_portal_orders_listop",
     "CustomerPortalOrdersListSecurity": ".customer_portal_orders_listop",
     "CustomerPortalOrdersListSecurityTypedDict": ".customer_portal_orders_listop",
+    "CustomerPortalOrdersReceiptRequest": ".customer_portal_orders_receiptop",
+    "CustomerPortalOrdersReceiptRequestTypedDict": ".customer_portal_orders_receiptop",
+    "CustomerPortalOrdersReceiptSecurity": ".customer_portal_orders_receiptop",
+    "CustomerPortalOrdersReceiptSecurityTypedDict": ".customer_portal_orders_receiptop",
     "CustomerPortalOrdersUpdateRequest": ".customer_portal_orders_updateop",
     "CustomerPortalOrdersUpdateRequestTypedDict": ".customer_portal_orders_updateop",
     "CustomerPortalOrdersUpdateSecurity": ".customer_portal_orders_updateop",
@@ -6187,6 +6245,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerOrderProductPrices": ".customerorderproduct",
     "CustomerOrderProductPricesTypedDict": ".customerorderproduct",
     "CustomerOrderProductTypedDict": ".customerorderproduct",
+    "CustomerOrderReceipt": ".customerorderreceipt",
+    "CustomerOrderReceiptTypedDict": ".customerorderreceipt",
     "CustomerOrderSortProperty": ".customerordersortproperty",
     "CustomerOrderSubscription": ".customerordersubscription",
     "CustomerOrderSubscriptionTypedDict": ".customerordersubscription",
@@ -6258,6 +6318,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomersUpdateRequestTypedDict": ".customers_updateop",
     "CustomerSeat": ".customerseat",
     "CustomerSeatTypedDict": ".customerseat",
+    "CustomerSeatAssign": ".customerseatassign",
+    "CustomerSeatAssignTypedDict": ".customerseatassign",
     "CustomerSeatClaimResponse": ".customerseatclaimresponse",
     "CustomerSeatClaimResponseTypedDict": ".customerseatclaimresponse",
     "CustomerSession": ".customersession",
@@ -6307,6 +6369,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerSubscriptionSortProperty": ".customersubscriptionsortproperty",
     "CustomerSubscriptionUpdate": ".customersubscriptionupdate",
     "CustomerSubscriptionUpdateTypedDict": ".customersubscriptionupdate",
+    "CustomerSubscriptionUpdateClear": ".customersubscriptionupdateclear",
+    "CustomerSubscriptionUpdateClearTypedDict": ".customersubscriptionupdateclear",
     "CustomerSubscriptionUpdateProduct": ".customersubscriptionupdateproduct",
     "CustomerSubscriptionUpdateProductTypedDict": ".customersubscriptionupdateproduct",
     "CustomerSubscriptionUpdateSeats": ".customersubscriptionupdateseats",
@@ -6414,38 +6478,30 @@ _dynamic_imports: dict[str, str] = {
     "DiscountCreate": ".discountcreate",
     "DiscountCreateTypedDict": ".discountcreate",
     "DiscountDuration": ".discountduration",
+    "DiscountFixedCreate": ".discountfixedcreate",
+    "DiscountFixedCreateMetadata": ".discountfixedcreate",
+    "DiscountFixedCreateMetadataTypedDict": ".discountfixedcreate",
+    "DiscountFixedCreateTypedDict": ".discountfixedcreate",
     "DiscountFixedOnceForeverDuration": ".discountfixedonceforeverduration",
     "DiscountFixedOnceForeverDurationTypedDict": ".discountfixedonceforeverduration",
     "DiscountFixedOnceForeverDurationBase": ".discountfixedonceforeverdurationbase",
     "DiscountFixedOnceForeverDurationBaseTypedDict": ".discountfixedonceforeverdurationbase",
-    "DiscountFixedOnceForeverDurationCreate": ".discountfixedonceforeverdurationcreate",
-    "DiscountFixedOnceForeverDurationCreateMetadata": ".discountfixedonceforeverdurationcreate",
-    "DiscountFixedOnceForeverDurationCreateMetadataTypedDict": ".discountfixedonceforeverdurationcreate",
-    "DiscountFixedOnceForeverDurationCreateTypedDict": ".discountfixedonceforeverdurationcreate",
     "DiscountFixedRepeatDuration": ".discountfixedrepeatduration",
     "DiscountFixedRepeatDurationTypedDict": ".discountfixedrepeatduration",
     "DiscountFixedRepeatDurationBase": ".discountfixedrepeatdurationbase",
     "DiscountFixedRepeatDurationBaseTypedDict": ".discountfixedrepeatdurationbase",
-    "DiscountFixedRepeatDurationCreate": ".discountfixedrepeatdurationcreate",
-    "DiscountFixedRepeatDurationCreateMetadata": ".discountfixedrepeatdurationcreate",
-    "DiscountFixedRepeatDurationCreateMetadataTypedDict": ".discountfixedrepeatdurationcreate",
-    "DiscountFixedRepeatDurationCreateTypedDict": ".discountfixedrepeatdurationcreate",
+    "DiscountPercentageCreate": ".discountpercentagecreate",
+    "DiscountPercentageCreateMetadata": ".discountpercentagecreate",
+    "DiscountPercentageCreateMetadataTypedDict": ".discountpercentagecreate",
+    "DiscountPercentageCreateTypedDict": ".discountpercentagecreate",
     "DiscountPercentageOnceForeverDuration": ".discountpercentageonceforeverduration",
     "DiscountPercentageOnceForeverDurationTypedDict": ".discountpercentageonceforeverduration",
     "DiscountPercentageOnceForeverDurationBase": ".discountpercentageonceforeverdurationbase",
     "DiscountPercentageOnceForeverDurationBaseTypedDict": ".discountpercentageonceforeverdurationbase",
-    "DiscountPercentageOnceForeverDurationCreate": ".discountpercentageonceforeverdurationcreate",
-    "DiscountPercentageOnceForeverDurationCreateMetadata": ".discountpercentageonceforeverdurationcreate",
-    "DiscountPercentageOnceForeverDurationCreateMetadataTypedDict": ".discountpercentageonceforeverdurationcreate",
-    "DiscountPercentageOnceForeverDurationCreateTypedDict": ".discountpercentageonceforeverdurationcreate",
     "DiscountPercentageRepeatDuration": ".discountpercentagerepeatduration",
     "DiscountPercentageRepeatDurationTypedDict": ".discountpercentagerepeatduration",
     "DiscountPercentageRepeatDurationBase": ".discountpercentagerepeatdurationbase",
     "DiscountPercentageRepeatDurationBaseTypedDict": ".discountpercentagerepeatdurationbase",
-    "DiscountPercentageRepeatDurationCreate": ".discountpercentagerepeatdurationcreate",
-    "DiscountPercentageRepeatDurationCreateMetadata": ".discountpercentagerepeatdurationcreate",
-    "DiscountPercentageRepeatDurationCreateMetadataTypedDict": ".discountpercentagerepeatdurationcreate",
-    "DiscountPercentageRepeatDurationCreateTypedDict": ".discountpercentagerepeatdurationcreate",
     "DiscountProduct": ".discountproduct",
     "DiscountProductTypedDict": ".discountproduct",
     "DiscountsDeleteRequest": ".discounts_deleteop",
@@ -6724,6 +6780,7 @@ _dynamic_imports: dict[str, str] = {
     "MemberTypedDict": ".member",
     "MemberCreate": ".membercreate",
     "MemberCreateTypedDict": ".membercreate",
+    "Role": ".membercreate",
     "MemberOwnerCreate": ".memberownercreate",
     "MemberOwnerCreateTypedDict": ".memberownercreate",
     "MemberRole": ".memberrole",
@@ -7111,6 +7168,8 @@ _dynamic_imports: dict[str, str] = {
     "OrderPaidMetadataTypedDict": ".orderpaidmetadata",
     "OrderProduct": ".orderproduct",
     "OrderProductTypedDict": ".orderproduct",
+    "OrderReceipt": ".orderreceipt",
+    "OrderReceiptTypedDict": ".orderreceipt",
     "OrderRefundedEvent": ".orderrefundedevent",
     "OrderRefundedEventTypedDict": ".orderrefundedevent",
     "OrderRefundedMetadata": ".orderrefundedmetadata",
@@ -7131,6 +7190,8 @@ _dynamic_imports: dict[str, str] = {
     "OrdersGetRequestTypedDict": ".orders_getop",
     "OrdersInvoiceRequest": ".orders_invoiceop",
     "OrdersInvoiceRequestTypedDict": ".orders_invoiceop",
+    "OrdersReceiptRequest": ".orders_receiptop",
+    "OrdersReceiptRequestTypedDict": ".orders_receiptop",
     "OrdersUpdateRequest": ".orders_updateop",
     "OrdersUpdateRequestTypedDict": ".orders_updateop",
     "OrderSortProperty": ".ordersortproperty",
@@ -7440,11 +7501,19 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionLockedData": ".subscriptionlocked",
     "SubscriptionMeter": ".subscriptionmeter",
     "SubscriptionMeterTypedDict": ".subscriptionmeter",
+    "SubscriptionPastDueEvent": ".subscriptionpastdueevent",
+    "SubscriptionPastDueEventTypedDict": ".subscriptionpastdueevent",
+    "SubscriptionPastDueMetadata": ".subscriptionpastduemetadata",
+    "SubscriptionPastDueMetadataTypedDict": ".subscriptionpastduemetadata",
     "SubscriptionProductUpdatedEvent": ".subscriptionproductupdatedevent",
     "SubscriptionProductUpdatedEventTypedDict": ".subscriptionproductupdatedevent",
     "SubscriptionProductUpdatedMetadata": ".subscriptionproductupdatedmetadata",
     "SubscriptionProductUpdatedMetadataTypedDict": ".subscriptionproductupdatedmetadata",
     "SubscriptionProrationBehavior": ".subscriptionprorationbehavior",
+    "SubscriptionReactivatedEvent": ".subscriptionreactivatedevent",
+    "SubscriptionReactivatedEventTypedDict": ".subscriptionreactivatedevent",
+    "SubscriptionReactivatedMetadata": ".subscriptionreactivatedmetadata",
+    "SubscriptionReactivatedMetadataTypedDict": ".subscriptionreactivatedmetadata",
     "SubscriptionRecurringInterval": ".subscriptionrecurringinterval",
     "SubscriptionRevoke": ".subscriptionrevoke",
     "SubscriptionRevokeTypedDict": ".subscriptionrevoke",
@@ -7572,6 +7641,12 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionUpdateTypedDict": ".subscriptionupdate",
     "SubscriptionUpdateBillingPeriod": ".subscriptionupdatebillingperiod",
     "SubscriptionUpdateBillingPeriodTypedDict": ".subscriptionupdatebillingperiod",
+    "SubscriptionUpdateClear": ".subscriptionupdateclear",
+    "SubscriptionUpdateClearTypedDict": ".subscriptionupdateclear",
+    "SubscriptionUpdateClearedEvent": ".subscriptionupdateclearedevent",
+    "SubscriptionUpdateClearedEventTypedDict": ".subscriptionupdateclearedevent",
+    "SubscriptionUpdateClearedMetadata": ".subscriptionupdateclearedmetadata",
+    "SubscriptionUpdateClearedMetadataTypedDict": ".subscriptionupdateclearedmetadata",
     "SubscriptionUpdatedBillingPeriodMetadata": ".subscriptionupdatedbillingperiodmetadata",
     "SubscriptionUpdatedBillingPeriodMetadataTypedDict": ".subscriptionupdatedbillingperiodmetadata",
     "SubscriptionUpdatedDiscountMetadata": ".subscriptionupdateddiscountmetadata",
