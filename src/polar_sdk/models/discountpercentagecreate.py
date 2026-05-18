@@ -2,40 +2,39 @@
 
 from __future__ import annotations
 from .discountduration import DiscountDuration
-from .discounttype import DiscountType
-from .presentmentcurrency import PresentmentCurrency
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
-from typing import Dict, List, Optional, Union
+from pydantic.functional_validators import AfterValidator
+from typing import Dict, List, Literal, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-DiscountFixedOnceForeverDurationCreateMetadataTypedDict = TypeAliasType(
-    "DiscountFixedOnceForeverDurationCreateMetadataTypedDict",
-    Union[str, int, float, bool],
+DiscountPercentageCreateMetadataTypedDict = TypeAliasType(
+    "DiscountPercentageCreateMetadataTypedDict", Union[str, int, float, bool]
 )
 
 
-DiscountFixedOnceForeverDurationCreateMetadata = TypeAliasType(
-    "DiscountFixedOnceForeverDurationCreateMetadata", Union[str, int, float, bool]
+DiscountPercentageCreateMetadata = TypeAliasType(
+    "DiscountPercentageCreateMetadata", Union[str, int, float, bool]
 )
 
 
-class DiscountFixedOnceForeverDurationCreateTypedDict(TypedDict):
-    r"""Schema to create a fixed amount discount that is applied once or forever."""
+class DiscountPercentageCreateTypedDict(TypedDict):
+    r"""Schema to create a percentage discount."""
 
-    duration: DiscountDuration
-    type: DiscountType
     name: str
     r"""Name of the discount. Will be displayed to the customer when the discount is applied."""
-    amount: NotRequired[Nullable[int]]
-    currency: NotRequired[Nullable[PresentmentCurrency]]
-    amounts: NotRequired[Nullable[Dict[str, int]]]
-    metadata: NotRequired[
-        Dict[str, DiscountFixedOnceForeverDurationCreateMetadataTypedDict]
-    ]
+    duration: DiscountDuration
+    basis_points: int
+    r"""Discount percentage in basis points.
+
+    A basis point is 1/100th of a percent.
+    For example, to create a 25.5% discount, set this to 2550.
+    """
+    metadata: NotRequired[Dict[str, DiscountPercentageCreateMetadataTypedDict]]
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
@@ -59,35 +58,33 @@ class DiscountFixedOnceForeverDurationCreateTypedDict(TypedDict):
     products: NotRequired[Nullable[List[str]]]
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the discount. **Required unless you use an organization token.**"""
+    type: Literal["percentage"]
+    duration_in_months: NotRequired[Nullable[int]]
+    r"""Number of months the discount should be applied.
+
+    Required when `duration` is `repeating`. Must be omitted otherwise.
+
+    For this to work on yearly pricing, you should multiply this by 12.
+    For example, to apply the discount for 2 years, set this to 24.
+    """
 
 
-class DiscountFixedOnceForeverDurationCreate(BaseModel):
-    r"""Schema to create a fixed amount discount that is applied once or forever."""
-
-    duration: DiscountDuration
-
-    type: DiscountType
+class DiscountPercentageCreate(BaseModel):
+    r"""Schema to create a percentage discount."""
 
     name: str
     r"""Name of the discount. Will be displayed to the customer when the discount is applied."""
 
-    amount: Annotated[
-        OptionalNullable[int],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ] = UNSET
+    duration: DiscountDuration
 
-    currency: Annotated[
-        OptionalNullable[PresentmentCurrency],
-        pydantic.Field(
-            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
-        ),
-    ] = UNSET
+    basis_points: int
+    r"""Discount percentage in basis points.
 
-    amounts: OptionalNullable[Dict[str, int]] = UNSET
+    A basis point is 1/100th of a percent.
+    For example, to create a 25.5% discount, set this to 2550.
+    """
 
-    metadata: Optional[Dict[str, DiscountFixedOnceForeverDurationCreateMetadata]] = None
+    metadata: Optional[Dict[str, DiscountPercentageCreateMetadata]] = None
     r"""Key-value object allowing you to store additional information.
 
     The key must be a string with a maximum length of **40 characters**.
@@ -118,12 +115,26 @@ class DiscountFixedOnceForeverDurationCreate(BaseModel):
     organization_id: OptionalNullable[str] = UNSET
     r"""The ID of the organization owning the discount. **Required unless you use an organization token.**"""
 
+    TYPE: Annotated[
+        Annotated[
+            Optional[Literal["percentage"]],
+            AfterValidator(validate_const("percentage")),
+        ],
+        pydantic.Field(alias="type"),
+    ] = "percentage"
+
+    duration_in_months: OptionalNullable[int] = UNSET
+    r"""Number of months the discount should be applied.
+
+    Required when `duration` is `repeating`. Must be omitted otherwise.
+
+    For this to work on yearly pricing, you should multiply this by 12.
+    For example, to apply the discount for 2 years, set this to 24.
+    """
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
-            "amount",
-            "currency",
-            "amounts",
             "metadata",
             "code",
             "starts_at",
@@ -131,17 +142,17 @@ class DiscountFixedOnceForeverDurationCreate(BaseModel):
             "max_redemptions",
             "products",
             "organization_id",
+            "type",
+            "duration_in_months",
         ]
         nullable_fields = [
-            "amount",
-            "currency",
-            "amounts",
             "code",
             "starts_at",
             "ends_at",
             "max_redemptions",
             "products",
             "organization_id",
+            "duration_in_months",
         ]
         null_default_fields = []
 
