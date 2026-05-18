@@ -5,6 +5,10 @@ from .customersubscriptioncancel import (
     CustomerSubscriptionCancel,
     CustomerSubscriptionCancelTypedDict,
 )
+from .customersubscriptionupdateclear import (
+    CustomerSubscriptionUpdateClear,
+    CustomerSubscriptionUpdateClearTypedDict,
+)
 from .customersubscriptionupdateproduct import (
     CustomerSubscriptionUpdateProduct,
     CustomerSubscriptionUpdateProductTypedDict,
@@ -21,6 +25,7 @@ CustomerSubscriptionUpdateTypedDict = TypeAliasType(
     "CustomerSubscriptionUpdateTypedDict",
     Union[
         CustomerSubscriptionUpdateProductTypedDict,
+        CustomerSubscriptionUpdateClearTypedDict,
         CustomerSubscriptionUpdateSeatsTypedDict,
         CustomerSubscriptionCancelTypedDict,
     ],
@@ -31,6 +36,7 @@ CustomerSubscriptionUpdate = TypeAliasType(
     "CustomerSubscriptionUpdate",
     Union[
         CustomerSubscriptionUpdateProduct,
+        CustomerSubscriptionUpdateClear,
         CustomerSubscriptionUpdateSeats,
         CustomerSubscriptionCancel,
     ],

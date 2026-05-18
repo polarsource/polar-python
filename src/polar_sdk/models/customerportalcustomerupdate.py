@@ -11,6 +11,7 @@ class CustomerPortalCustomerUpdateTypedDict(TypedDict):
     billing_name: NotRequired[Nullable[str]]
     billing_address: NotRequired[Nullable[AddressInputTypedDict]]
     tax_id: NotRequired[Nullable[str]]
+    default_payment_method_id: NotRequired[Nullable[str]]
 
 
 class CustomerPortalCustomerUpdate(BaseModel):
@@ -20,10 +21,22 @@ class CustomerPortalCustomerUpdate(BaseModel):
 
     tax_id: OptionalNullable[str] = UNSET
 
+    default_payment_method_id: OptionalNullable[str] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["billing_name", "billing_address", "tax_id"]
-        nullable_fields = ["billing_name", "billing_address", "tax_id"]
+        optional_fields = [
+            "billing_name",
+            "billing_address",
+            "tax_id",
+            "default_payment_method_id",
+        ]
+        nullable_fields = [
+            "billing_name",
+            "billing_address",
+            "tax_id",
+            "default_payment_method_id",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

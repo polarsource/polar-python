@@ -17,6 +17,7 @@ class BalanceCreditOrderMetadataTypedDict(TypedDict):
     subscription_id: NotRequired[str]
     tax_state: NotRequired[Nullable[str]]
     tax_country: NotRequired[Nullable[str]]
+    exchange_rate: NotRequired[float]
 
 
 class BalanceCreditOrderMetadata(BaseModel):
@@ -38,9 +39,17 @@ class BalanceCreditOrderMetadata(BaseModel):
 
     tax_country: OptionalNullable[str] = UNSET
 
+    exchange_rate: Optional[float] = None
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["product_id", "subscription_id", "tax_state", "tax_country"]
+        optional_fields = [
+            "product_id",
+            "subscription_id",
+            "tax_state",
+            "tax_country",
+            "exchange_rate",
+        ]
         nullable_fields = ["tax_state", "tax_country"]
         null_default_fields = []
 

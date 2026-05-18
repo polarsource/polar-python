@@ -21,3 +21,9 @@ value: models.CustomerSubscriptionUpdateSeats = /* values here */
 value: models.CustomerSubscriptionCancel = /* values here */
 ```
 
+### `models.CustomerSubscriptionUpdateClear`
+
+```python
+value: models.CustomerSubscriptionUpdateClear = /* values here */
+```
+

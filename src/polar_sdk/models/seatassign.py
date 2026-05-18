@@ -9,13 +9,9 @@ from typing_extensions import NotRequired, TypedDict
 
 class SeatAssignTypedDict(TypedDict):
     subscription_id: NotRequired[Nullable[str]]
-    r"""Subscription ID. Required if checkout_id and order_id are not provided."""
-    checkout_id: NotRequired[Nullable[str]]
-    r"""Checkout ID. Used to look up subscription or order from the checkout page."""
-    checkout_client_secret: NotRequired[Nullable[str]]
-    r"""Client secret of the checkout. Required when assigning seats via checkout_id as an anonymous caller (e.g. the checkout confirmation page)."""
+    r"""Subscription ID. Required if neither order_id nor checkout_id is provided."""
     order_id: NotRequired[Nullable[str]]
-    r"""Order ID for one-time purchases. Required if subscription_id and checkout_id are not provided."""
+    r"""Order ID for one-time purchases. Required if subscription_id is not provided."""
     email: NotRequired[Nullable[str]]
     r"""Email of the customer to assign the seat to"""
     external_customer_id: NotRequired[Nullable[str]]
@@ -34,16 +30,10 @@ class SeatAssignTypedDict(TypedDict):
 
 class SeatAssign(BaseModel):
     subscription_id: OptionalNullable[str] = UNSET
-    r"""Subscription ID. Required if checkout_id and order_id are not provided."""
-
-    checkout_id: OptionalNullable[str] = UNSET
-    r"""Checkout ID. Used to look up subscription or order from the checkout page."""
-
-    checkout_client_secret: OptionalNullable[str] = UNSET
-    r"""Client secret of the checkout. Required when assigning seats via checkout_id as an anonymous caller (e.g. the checkout confirmation page)."""
+    r"""Subscription ID. Required if neither order_id nor checkout_id is provided."""
 
     order_id: OptionalNullable[str] = UNSET
-    r"""Order ID for one-time purchases. Required if subscription_id and checkout_id are not provided."""
+    r"""Order ID for one-time purchases. Required if subscription_id is not provided."""
 
     email: OptionalNullable[str] = UNSET
     r"""Email of the customer to assign the seat to"""
@@ -70,8 +60,6 @@ class SeatAssign(BaseModel):
     def serialize_model(self, handler):
         optional_fields = [
             "subscription_id",
-            "checkout_id",
-            "checkout_client_secret",
             "order_id",
             "email",
             "external_customer_id",
@@ -83,8 +71,6 @@ class SeatAssign(BaseModel):
         ]
         nullable_fields = [
             "subscription_id",
-            "checkout_id",
-            "checkout_client_secret",
             "order_id",
             "email",
             "external_customer_id",
