@@ -16,16 +16,16 @@ class OrganizationFeatureSettingsTypedDict(TypedDict):
     r"""If this organization has Wallets enabled"""
     member_model_enabled: NotRequired[bool]
     r"""If this organization has the Member model enabled"""
-    tinybird_read: NotRequired[bool]
-    r"""If this organization reads from Tinybird"""
-    tinybird_compare: NotRequired[bool]
-    r"""If this organization compares Tinybird results with database"""
     checkout_localization_enabled: NotRequired[bool]
     r"""If this organization has checkout localization enabled"""
+    account_review_v2_enabled: NotRequired[bool]
+    r"""If this organization sees the new account review checklist UI."""
     overview_metrics: NotRequired[Nullable[List[str]]]
     r"""Ordered list of metric slugs shown on the dashboard overview."""
     reset_proration_behavior_enabled: NotRequired[bool]
     r"""If this organization has access to reset proration behavior."""
+    billing_enabled: NotRequired[bool]
+    r"""If this organization has billing enabled"""
 
 
 class OrganizationFeatureSettings(BaseModel):
@@ -41,20 +41,20 @@ class OrganizationFeatureSettings(BaseModel):
     member_model_enabled: Optional[bool] = False
     r"""If this organization has the Member model enabled"""
 
-    tinybird_read: Optional[bool] = False
-    r"""If this organization reads from Tinybird"""
-
-    tinybird_compare: Optional[bool] = False
-    r"""If this organization compares Tinybird results with database"""
-
     checkout_localization_enabled: Optional[bool] = False
     r"""If this organization has checkout localization enabled"""
+
+    account_review_v2_enabled: Optional[bool] = False
+    r"""If this organization sees the new account review checklist UI."""
 
     overview_metrics: OptionalNullable[List[str]] = UNSET
     r"""Ordered list of metric slugs shown on the dashboard overview."""
 
     reset_proration_behavior_enabled: Optional[bool] = False
     r"""If this organization has access to reset proration behavior."""
+
+    billing_enabled: Optional[bool] = False
+    r"""If this organization has billing enabled"""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -63,11 +63,11 @@ class OrganizationFeatureSettings(BaseModel):
             "seat_based_pricing_enabled",
             "wallets_enabled",
             "member_model_enabled",
-            "tinybird_read",
-            "tinybird_compare",
             "checkout_localization_enabled",
+            "account_review_v2_enabled",
             "overview_metrics",
             "reset_proration_behavior_enabled",
+            "billing_enabled",
         ]
         nullable_fields = ["overview_metrics"]
         null_default_fields = []

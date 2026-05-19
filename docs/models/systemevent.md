@@ -141,10 +141,22 @@ value: models.SubscriptionCreatedEvent = /* values here */
 value: models.SubscriptionCycledEvent = /* values here */
 ```
 
+### `models.SubscriptionPastDueEvent`
+
+```python
+value: models.SubscriptionPastDueEvent = /* values here */
+```
+
 ### `models.SubscriptionProductUpdatedEvent`
 
 ```python
 value: models.SubscriptionProductUpdatedEvent = /* values here */
+```
+
+### `models.SubscriptionReactivatedEvent`
+
+```python
+value: models.SubscriptionReactivatedEvent = /* values here */
 ```
 
 ### `models.SubscriptionRevokedEvent`
@@ -163,6 +175,12 @@ value: models.SubscriptionSeatsUpdatedEvent = /* values here */
 
 ```python
 value: models.SubscriptionUncanceledEvent = /* values here */
+```
+
+### `models.SubscriptionUpdateClearedEvent`
+
+```python
+value: models.SubscriptionUpdateClearedEvent = /* values here */
 ```
 
 ### `models.SubscriptionUpdatedEvent`

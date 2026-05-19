@@ -32,7 +32,7 @@ class ProductPriceCustomTypedDict(TypedDict):
     product_id: str
     r"""The ID of the product owning the price."""
     minimum_amount: int
-    r"""The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'. Defaults to 50 cents."""
+    r"""The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'."""
     maximum_amount: Nullable[int]
     r"""The maximum amount the customer can pay."""
     preset_amount: Nullable[int]
@@ -67,7 +67,7 @@ class ProductPriceCustom(BaseModel):
     r"""The ID of the product owning the price."""
 
     minimum_amount: int
-    r"""The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'. Defaults to 50 cents."""
+    r"""The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'."""
 
     maximum_amount: Nullable[int]
     r"""The maximum amount the customer can pay."""

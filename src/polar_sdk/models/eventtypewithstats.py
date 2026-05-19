@@ -9,12 +9,6 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class EventTypeWithStatsTypedDict(TypedDict):
-    created_at: datetime
-    r"""Creation timestamp of the object."""
-    modified_at: Nullable[datetime]
-    r"""Last modification timestamp of the object."""
-    id: str
-    r"""The ID of the object."""
     name: str
     r"""The name of the event type."""
     label: str
@@ -28,20 +22,17 @@ class EventTypeWithStatsTypedDict(TypedDict):
     r"""The first time the event occurred."""
     last_seen: datetime
     r"""The last time the event occurred."""
+    id: NotRequired[Nullable[str]]
+    r"""The ID of the event type. Null for system event types."""
+    created_at: NotRequired[Nullable[datetime]]
+    r"""Creation timestamp of the event type. Null for system event types."""
+    modified_at: NotRequired[Nullable[datetime]]
+    r"""Last modification timestamp of the event type. Null for system event types."""
     label_property_selector: NotRequired[Nullable[str]]
     r"""Property path to extract dynamic label from event metadata."""
 
 
 class EventTypeWithStats(BaseModel):
-    created_at: datetime
-    r"""Creation timestamp of the object."""
-
-    modified_at: Nullable[datetime]
-    r"""Last modification timestamp of the object."""
-
-    id: str
-    r"""The ID of the object."""
-
     name: str
     r"""The name of the event type."""
 
@@ -61,14 +52,23 @@ class EventTypeWithStats(BaseModel):
 
     last_seen: datetime
     r"""The last time the event occurred."""
+
+    id: OptionalNullable[str] = UNSET
+    r"""The ID of the event type. Null for system event types."""
+
+    created_at: OptionalNullable[datetime] = UNSET
+    r"""Creation timestamp of the event type. Null for system event types."""
+
+    modified_at: OptionalNullable[datetime] = UNSET
+    r"""Last modification timestamp of the event type. Null for system event types."""
 
     label_property_selector: OptionalNullable[str] = UNSET
     r"""Property path to extract dynamic label from event metadata."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["label_property_selector"]
-        nullable_fields = ["modified_at", "label_property_selector"]
+        optional_fields = ["id", "created_at", "modified_at", "label_property_selector"]
+        nullable_fields = ["id", "created_at", "modified_at", "label_property_selector"]
         null_default_fields = []
 
         serialized = handler(self)

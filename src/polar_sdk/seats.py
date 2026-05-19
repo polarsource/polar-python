@@ -211,7 +211,7 @@ class Seats(BaseSDK):
             models.CustomerPortalSeatsAssignSeatSecurity,
             models.CustomerPortalSeatsAssignSeatSecurityTypedDict,
         ],
-        request: Union[models.SeatAssign, models.SeatAssignTypedDict],
+        request: Union[models.CustomerSeatAssign, models.CustomerSeatAssignTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -237,8 +237,8 @@ class Seats(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.SeatAssign)
-        request = cast(models.SeatAssign, request)
+            request = utils.unmarshal(request, models.CustomerSeatAssign)
+        request = cast(models.CustomerSeatAssign, request)
 
         req = self._build_request(
             method="POST",
@@ -256,7 +256,7 @@ class Seats(BaseSDK):
                 security, models.CustomerPortalSeatsAssignSeatSecurity
             ),
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.SeatAssign
+                request, False, False, "json", models.CustomerSeatAssign
             ),
             timeout_ms=timeout_ms,
         )
@@ -306,7 +306,7 @@ class Seats(BaseSDK):
             models.CustomerPortalSeatsAssignSeatSecurity,
             models.CustomerPortalSeatsAssignSeatSecurityTypedDict,
         ],
-        request: Union[models.SeatAssign, models.SeatAssignTypedDict],
+        request: Union[models.CustomerSeatAssign, models.CustomerSeatAssignTypedDict],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -332,8 +332,8 @@ class Seats(BaseSDK):
             base_url = self._get_url(base_url, url_variables)
 
         if not isinstance(request, BaseModel):
-            request = utils.unmarshal(request, models.SeatAssign)
-        request = cast(models.SeatAssign, request)
+            request = utils.unmarshal(request, models.CustomerSeatAssign)
+        request = cast(models.CustomerSeatAssign, request)
 
         req = self._build_request_async(
             method="POST",
@@ -351,7 +351,7 @@ class Seats(BaseSDK):
                 security, models.CustomerPortalSeatsAssignSeatSecurity
             ),
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.SeatAssign
+                request, False, False, "json", models.CustomerSeatAssign
             ),
             timeout_ms=timeout_ms,
         )

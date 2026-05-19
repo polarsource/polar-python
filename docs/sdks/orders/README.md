@@ -11,6 +11,7 @@
 * [update](#update) - Update Order
 * [generate_invoice](#generate_invoice) - Generate Order Invoice
 * [invoice](#invoice) - Get Order Invoice
+* [receipt](#receipt) - Get Order Receipt
 
 ## list
 
@@ -279,6 +280,51 @@ with Polar(
 ### Response
 
 **[models.OrderInvoice](../../models/orderinvoice.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## receipt
+
+Get a presigned URL to download an order's receipt PDF.
+
+**Scopes**: `orders:read`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="orders:receipt" method="get" path="/v1/orders/{id}/receipt" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.orders.receipt(id="<value>")
+
+    assert res is not None
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The order ID.                                                       |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.OrderReceipt](../../models/orderreceipt.md)**
 
 ### Errors
 
