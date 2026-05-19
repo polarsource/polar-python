@@ -3,27 +3,15 @@
 
 ## Supported Types
 
-### `models.DiscountFixedOnceForeverDurationCreate`
+### `models.DiscountFixedCreate`
 
 ```python
-value: models.DiscountFixedOnceForeverDurationCreate = /* values here */
+value: models.DiscountFixedCreate = /* values here */
 ```
 
-### `models.DiscountFixedRepeatDurationCreate`
+### `models.DiscountPercentageCreate`
 
 ```python
-value: models.DiscountFixedRepeatDurationCreate = /* values here */
-```
-
-### `models.DiscountPercentageOnceForeverDurationCreate`
-
-```python
-value: models.DiscountPercentageOnceForeverDurationCreate = /* values here */
-```
-
-### `models.DiscountPercentageRepeatDurationCreate`
-
-```python
-value: models.DiscountPercentageRepeatDurationCreate = /* values here */
+value: models.DiscountPercentageCreate = /* values here */
 ```
 
