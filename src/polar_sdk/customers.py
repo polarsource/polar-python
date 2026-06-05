@@ -27,6 +27,7 @@ class Customers(BaseSDK):
         ] = UNSET,
         email: OptionalNullable[str] = UNSET,
         query: OptionalNullable[str] = UNSET,
+        active: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.CustomerSortProperty]] = UNSET,
@@ -50,6 +51,7 @@ class Customers(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param email: Filter by exact email.
         :param query: Filter by name, email, or external ID.
+        :param active: Filter by active customers, i.e. customers with at least one trialing, active or past_due subscription.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -73,6 +75,7 @@ class Customers(BaseSDK):
             organization_id=organization_id,
             email=email,
             query=query,
+            active=active,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -138,6 +141,7 @@ class Customers(BaseSDK):
                 organization_id=organization_id,
                 email=email,
                 query=query,
+                active=active,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -176,6 +180,7 @@ class Customers(BaseSDK):
         ] = UNSET,
         email: OptionalNullable[str] = UNSET,
         query: OptionalNullable[str] = UNSET,
+        active: OptionalNullable[bool] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.CustomerSortProperty]] = UNSET,
@@ -199,6 +204,7 @@ class Customers(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param email: Filter by exact email.
         :param query: Filter by name, email, or external ID.
+        :param active: Filter by active customers, i.e. customers with at least one trialing, active or past_due subscription.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -222,6 +228,7 @@ class Customers(BaseSDK):
             organization_id=organization_id,
             email=email,
             query=query,
+            active=active,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -287,6 +294,7 @@ class Customers(BaseSDK):
                 organization_id=organization_id,
                 email=email,
                 query=query,
+                active=active,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -2299,6 +2307,526 @@ class Customers(BaseSDK):
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return unmarshal_json_response(models.CustomerState, http_res)
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                models.ResourceNotFoundData, http_res
+            )
+            raise models.ResourceNotFound(response_data, http_res)
+        if utils.match_response(http_res, "422", "application/json"):
+            response_data = unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
+            )
+            raise models.HTTPValidationError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def list_payment_methods(
+        self,
+        *,
+        id: str,
+        page: Optional[int] = 1,
+        limit: Optional[int] = 10,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.CustomersListPaymentMethodsResponse]:
+        r"""List Customer Payment Methods
+
+        Get saved payment methods of a customer.
+
+        **Scopes**: `customers:read` `customers:write`
+
+        :param id: The customer ID.
+        :param page: Page number, defaults to 1.
+        :param limit: Size of a page, defaults to 10. Maximum is 100.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.CustomersListPaymentMethodsRequest(
+            id=id,
+            page=page,
+            limit=limit,
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/v1/customers/{id}/payment-methods",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="customers:list_payment_methods",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        def next_func() -> Optional[models.CustomersListPaymentMethodsResponse]:
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
+            page = request.page if not request.page is None else 1
+            next_page = page + 1
+
+            num_pages = JSONPath("$.pagination.max_page").parse(body)
+            if len(num_pages) == 0 or num_pages[0] <= page:
+                return None
+
+            if not http_res.text:
+                return None
+            results = JSONPath("$.items").parse(body)
+            if len(results) == 0 or len(results[0]) == 0:
+                return None
+            limit = request.limit if not request.limit is None else 10
+            if len(results[0]) < limit:
+                return None
+
+            return self.list_payment_methods(
+                id=id,
+                page=next_page,
+                limit=limit,
+                retries=retries,
+            )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.CustomersListPaymentMethodsResponse(
+                result=unmarshal_json_response(
+                    models.ListResourcePaymentMethod, http_res
+                ),
+                next=next_func,
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                models.ResourceNotFoundData, http_res
+            )
+            raise models.ResourceNotFound(response_data, http_res)
+        if utils.match_response(http_res, "422", "application/json"):
+            response_data = unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
+            )
+            raise models.HTTPValidationError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def list_payment_methods_async(
+        self,
+        *,
+        id: str,
+        page: Optional[int] = 1,
+        limit: Optional[int] = 10,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.CustomersListPaymentMethodsResponse]:
+        r"""List Customer Payment Methods
+
+        Get saved payment methods of a customer.
+
+        **Scopes**: `customers:read` `customers:write`
+
+        :param id: The customer ID.
+        :param page: Page number, defaults to 1.
+        :param limit: Size of a page, defaults to 10. Maximum is 100.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.CustomersListPaymentMethodsRequest(
+            id=id,
+            page=page,
+            limit=limit,
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v1/customers/{id}/payment-methods",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="customers:list_payment_methods",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        def next_func() -> Optional[models.CustomersListPaymentMethodsResponse]:
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
+            page = request.page if not request.page is None else 1
+            next_page = page + 1
+
+            num_pages = JSONPath("$.pagination.max_page").parse(body)
+            if len(num_pages) == 0 or num_pages[0] <= page:
+                return None
+
+            if not http_res.text:
+                return None
+            results = JSONPath("$.items").parse(body)
+            if len(results) == 0 or len(results[0]) == 0:
+                return None
+            limit = request.limit if not request.limit is None else 10
+            if len(results[0]) < limit:
+                return None
+
+            return self.list_payment_methods(
+                id=id,
+                page=next_page,
+                limit=limit,
+                retries=retries,
+            )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.CustomersListPaymentMethodsResponse(
+                result=unmarshal_json_response(
+                    models.ListResourcePaymentMethod, http_res
+                ),
+                next=next_func,
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                models.ResourceNotFoundData, http_res
+            )
+            raise models.ResourceNotFound(response_data, http_res)
+        if utils.match_response(http_res, "422", "application/json"):
+            response_data = unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
+            )
+            raise models.HTTPValidationError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def list_payment_methods_external(
+        self,
+        *,
+        external_id: str,
+        page: Optional[int] = 1,
+        limit: Optional[int] = 10,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.CustomersListPaymentMethodsExternalResponse]:
+        r"""List Customer Payment Methods by External ID
+
+        Get saved payment methods of a customer by external ID.
+
+        **Scopes**: `customers:read` `customers:write`
+
+        :param external_id: The customer external ID.
+        :param page: Page number, defaults to 1.
+        :param limit: Size of a page, defaults to 10. Maximum is 100.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.CustomersListPaymentMethodsExternalRequest(
+            external_id=external_id,
+            page=page,
+            limit=limit,
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/v1/customers/external/{external_id}/payment-methods",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="customers:list_payment_methods_external",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        def next_func() -> Optional[models.CustomersListPaymentMethodsExternalResponse]:
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
+            page = request.page if not request.page is None else 1
+            next_page = page + 1
+
+            num_pages = JSONPath("$.pagination.max_page").parse(body)
+            if len(num_pages) == 0 or num_pages[0] <= page:
+                return None
+
+            if not http_res.text:
+                return None
+            results = JSONPath("$.items").parse(body)
+            if len(results) == 0 or len(results[0]) == 0:
+                return None
+            limit = request.limit if not request.limit is None else 10
+            if len(results[0]) < limit:
+                return None
+
+            return self.list_payment_methods_external(
+                external_id=external_id,
+                page=next_page,
+                limit=limit,
+                retries=retries,
+            )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.CustomersListPaymentMethodsExternalResponse(
+                result=unmarshal_json_response(
+                    models.ListResourcePaymentMethod, http_res
+                ),
+                next=next_func,
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                models.ResourceNotFoundData, http_res
+            )
+            raise models.ResourceNotFound(response_data, http_res)
+        if utils.match_response(http_res, "422", "application/json"):
+            response_data = unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
+            )
+            raise models.HTTPValidationError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def list_payment_methods_external_async(
+        self,
+        *,
+        external_id: str,
+        page: Optional[int] = 1,
+        limit: Optional[int] = 10,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.CustomersListPaymentMethodsExternalResponse]:
+        r"""List Customer Payment Methods by External ID
+
+        Get saved payment methods of a customer by external ID.
+
+        **Scopes**: `customers:read` `customers:write`
+
+        :param external_id: The customer external ID.
+        :param page: Page number, defaults to 1.
+        :param limit: Size of a page, defaults to 10. Maximum is 100.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.CustomersListPaymentMethodsExternalRequest(
+            external_id=external_id,
+            page=page,
+            limit=limit,
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v1/customers/external/{external_id}/payment-methods",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="customers:list_payment_methods_external",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        def next_func() -> Optional[models.CustomersListPaymentMethodsExternalResponse]:
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
+            page = request.page if not request.page is None else 1
+            next_page = page + 1
+
+            num_pages = JSONPath("$.pagination.max_page").parse(body)
+            if len(num_pages) == 0 or num_pages[0] <= page:
+                return None
+
+            if not http_res.text:
+                return None
+            results = JSONPath("$.items").parse(body)
+            if len(results) == 0 or len(results[0]) == 0:
+                return None
+            limit = request.limit if not request.limit is None else 10
+            if len(results[0]) < limit:
+                return None
+
+            return self.list_payment_methods_external(
+                external_id=external_id,
+                page=next_page,
+                limit=limit,
+                retries=retries,
+            )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.CustomersListPaymentMethodsExternalResponse(
+                result=unmarshal_json_response(
+                    models.ListResourcePaymentMethod, http_res
+                ),
+                next=next_func,
+            )
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res

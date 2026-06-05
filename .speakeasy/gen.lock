@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: f9f2707053257f5298131d6530946e63
+  docChecksum: eb0a541030a6863744031bea2a02a4ec
   docVersion: 0.1.0
   speakeasyVersion: 1.648.0
   generationVersion: 2.737.0
-  releaseVersion: 0.31.5
-  configChecksum: 0822c8291f14ca7037c4188b08d3ff60
+  releaseVersion: 0.31.6
+  configChecksum: db8e3767495ca8eda5b66e3c2ce586a5
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -367,11 +367,13 @@ generatedFiles:
   - docs/models/customerorganizationdata.md
   - docs/models/customerorganizationfeaturesettings.md
   - docs/models/customerpaymentmethod.md
+  - docs/models/customerpaymentmethodcard.md
   - docs/models/customerpaymentmethodconfirm.md
   - docs/models/customerpaymentmethodcreate.md
   - docs/models/customerpaymentmethodcreaterequiresactionresponse.md
   - docs/models/customerpaymentmethodcreateresponse.md
   - docs/models/customerpaymentmethodcreatesucceededresponse.md
+  - docs/models/customerpaymentmethodgeneric.md
   - docs/models/customerportalbenefitgrantsgetrequest.md
   - docs/models/customerportalbenefitgrantsgetsecurity.md
   - docs/models/customerportalbenefitgrantslistqueryparambenefitidfilter.md
@@ -492,6 +494,10 @@ generatedFiles:
   - docs/models/customersgetrequest.md
   - docs/models/customersgetstateexternalrequest.md
   - docs/models/customersgetstaterequest.md
+  - docs/models/customerslistpaymentmethodsexternalrequest.md
+  - docs/models/customerslistpaymentmethodsexternalresponse.md
+  - docs/models/customerslistpaymentmethodsrequest.md
+  - docs/models/customerslistpaymentmethodsresponse.md
   - docs/models/customerslistqueryparamorganizationidfilter.md
   - docs/models/customerslistrequest.md
   - docs/models/customerslistresponse.md
@@ -740,6 +746,7 @@ generatedFiles:
   - docs/models/listresourceorganization.md
   - docs/models/listresourceorganizationaccesstoken.md
   - docs/models/listresourcepayment.md
+  - docs/models/listresourcepaymentmethod.md
   - docs/models/listresourceproduct.md
   - docs/models/listresourcerefund.md
   - docs/models/listresourcesubscription.md
@@ -900,18 +907,24 @@ generatedFiles:
   - docs/models/oauth2clientsoauth2updateclientrequest.md
   - docs/models/oauth2requesttokenrequestbody.md
   - docs/models/oauth2userinforesponseoauth2userinfo.md
+  - docs/models/offsessionchargesnotenabled.md
   - docs/models/onetimeproducts.md
   - docs/models/onetimeproductsnetrevenue.md
   - docs/models/onetimeproductsrevenue.md
   - docs/models/order.md
   - docs/models/orderbillingreason.md
+  - docs/models/ordercreate.md
+  - docs/models/ordercreatecustomfielddata.md
+  - docs/models/ordercreatemetadata.md
   - docs/models/ordercustomer.md
   - docs/models/ordercustomertaxid.md
   - docs/models/ordercustomfielddata.md
   - docs/models/orderdiscount.md
+  - docs/models/orderfinalize.md
   - docs/models/orderidfilter.md
   - docs/models/orderinvoice.md
   - docs/models/orderitemschema.md
+  - docs/models/ordernotdraft.md
   - docs/models/ordernoteligibleforretry.md
   - docs/models/orderpaidevent.md
   - docs/models/orderpaidmetadata.md
@@ -923,6 +936,9 @@ generatedFiles:
   - docs/models/ordersexportqueryparamproductidfilter.md
   - docs/models/ordersexportrequest.md
   - docs/models/ordersexportresponse.md
+  - docs/models/ordersfinalizerequest.md
+  - docs/models/ordersfinalizeresponse402ordersfinalize.md
+  - docs/models/ordersfinalizeresponse403ordersfinalize.md
   - docs/models/ordersgenerateinvoicerequest.md
   - docs/models/ordersgenerateinvoiceresponse422ordersgenerateinvoice.md
   - docs/models/ordersgetrequest.md
@@ -966,6 +982,7 @@ generatedFiles:
   - docs/models/organizationidfilter.md
   - docs/models/organizationindividuallegalentityschema.md
   - docs/models/organizationnotificationsettings.md
+  - docs/models/organizationnotreadyforpayments.md
   - docs/models/organizationsgetrequest.md
   - docs/models/organizationslistrequest.md
   - docs/models/organizationslistresponse.md
@@ -978,17 +995,21 @@ generatedFiles:
   - docs/models/organizationupdate.md
   - docs/models/pagination.md
   - docs/models/payment.md
+  - docs/models/paymentactionrequired.md
   - docs/models/paymentalreadyinprogress.md
   - docs/models/paymenterror.md
   - docs/models/paymentfailed.md
+  - docs/models/paymentmethod.md
   - docs/models/paymentmethodcard.md
   - docs/models/paymentmethodcardmetadata.md
   - docs/models/paymentmethodgeneric.md
   - docs/models/paymentmethodinusebyactivesubscription.md
+  - docs/models/paymentmethodsetupfailed.md
   - docs/models/paymentnotready.md
   - docs/models/paymentprocessor.md
   - docs/models/paymentsgetrequest.md
   - docs/models/paymentslistqueryparamcheckoutidfilter.md
+  - docs/models/paymentslistqueryparamcustomeridfilter.md
   - docs/models/paymentslistqueryparamorderidfilter.md
   - docs/models/paymentslistqueryparamorganizationidfilter.md
   - docs/models/paymentslistqueryparamstatusfilter.md
@@ -1156,14 +1177,9 @@ generatedFiles:
   - docs/models/subscriptionupdateclear.md
   - docs/models/subscriptionupdateclearedevent.md
   - docs/models/subscriptionupdateclearedmetadata.md
-  - docs/models/subscriptionupdatedbillingperiodmetadata.md
-  - docs/models/subscriptionupdateddiscountmetadata.md
   - docs/models/subscriptionupdatedevent.md
-  - docs/models/subscriptionupdatedeventmetadata.md
   - docs/models/subscriptionupdatediscount.md
-  - docs/models/subscriptionupdatedproductmetadata.md
-  - docs/models/subscriptionupdatedseatsmetadata.md
-  - docs/models/subscriptionupdatedtrialmetadata.md
+  - docs/models/subscriptionupdatedmetadata.md
   - docs/models/subscriptionupdateproduct.md
   - docs/models/subscriptionupdateseats.md
   - docs/models/subscriptionupdatetrial.md
@@ -1583,11 +1599,13 @@ generatedFiles:
   - src/polar_sdk/models/customerorganizationdata.py
   - src/polar_sdk/models/customerorganizationfeaturesettings.py
   - src/polar_sdk/models/customerpaymentmethod.py
+  - src/polar_sdk/models/customerpaymentmethodcard.py
   - src/polar_sdk/models/customerpaymentmethodconfirm.py
   - src/polar_sdk/models/customerpaymentmethodcreate.py
   - src/polar_sdk/models/customerpaymentmethodcreaterequiresactionresponse.py
   - src/polar_sdk/models/customerpaymentmethodcreateresponse.py
   - src/polar_sdk/models/customerpaymentmethodcreatesucceededresponse.py
+  - src/polar_sdk/models/customerpaymentmethodgeneric.py
   - src/polar_sdk/models/customerportalcustomer.py
   - src/polar_sdk/models/customerportalcustomersettings.py
   - src/polar_sdk/models/customerportalcustomerupdate.py
@@ -1605,6 +1623,8 @@ generatedFiles:
   - src/polar_sdk/models/customers_get_state_externalop.py
   - src/polar_sdk/models/customers_get_stateop.py
   - src/polar_sdk/models/customers_getop.py
+  - src/polar_sdk/models/customers_list_payment_methods_externalop.py
+  - src/polar_sdk/models/customers_list_payment_methodsop.py
   - src/polar_sdk/models/customers_update_externalop.py
   - src/polar_sdk/models/customers_updateop.py
   - src/polar_sdk/models/customerseat.py
@@ -1781,6 +1801,7 @@ generatedFiles:
   - src/polar_sdk/models/listresource_organization_.py
   - src/polar_sdk/models/listresource_organizationaccesstoken_.py
   - src/polar_sdk/models/listresource_payment_.py
+  - src/polar_sdk/models/listresource_paymentmethod_.py
   - src/polar_sdk/models/listresource_product_.py
   - src/polar_sdk/models/listresource_refund_.py
   - src/polar_sdk/models/listresource_subscription_.py
@@ -1848,11 +1869,15 @@ generatedFiles:
   - src/polar_sdk/models/oauth2clientconfiguration.py
   - src/polar_sdk/models/oauth2clientconfigurationupdate.py
   - src/polar_sdk/models/oauth2clientpublic.py
+  - src/polar_sdk/models/offsessionchargesnotenabled.py
   - src/polar_sdk/models/order.py
   - src/polar_sdk/models/orderbillingreason.py
+  - src/polar_sdk/models/ordercreate.py
   - src/polar_sdk/models/ordercustomer.py
+  - src/polar_sdk/models/orderfinalize.py
   - src/polar_sdk/models/orderinvoice.py
   - src/polar_sdk/models/orderitemschema.py
+  - src/polar_sdk/models/ordernotdraft.py
   - src/polar_sdk/models/ordernoteligibleforretry.py
   - src/polar_sdk/models/orderpaidevent.py
   - src/polar_sdk/models/orderpaidmetadata.py
@@ -1861,6 +1886,7 @@ generatedFiles:
   - src/polar_sdk/models/orderrefundedevent.py
   - src/polar_sdk/models/orderrefundedmetadata.py
   - src/polar_sdk/models/orders_exportop.py
+  - src/polar_sdk/models/orders_finalizeop.py
   - src/polar_sdk/models/orders_generate_invoiceop.py
   - src/polar_sdk/models/orders_getop.py
   - src/polar_sdk/models/orders_invoiceop.py
@@ -1892,6 +1918,7 @@ generatedFiles:
   - src/polar_sdk/models/organizationfeaturesettings.py
   - src/polar_sdk/models/organizationindividuallegalentityschema.py
   - src/polar_sdk/models/organizationnotificationsettings.py
+  - src/polar_sdk/models/organizationnotreadyforpayments.py
   - src/polar_sdk/models/organizations_getop.py
   - src/polar_sdk/models/organizations_listop.py
   - src/polar_sdk/models/organizations_updateop.py
@@ -1903,13 +1930,16 @@ generatedFiles:
   - src/polar_sdk/models/organizationupdate.py
   - src/polar_sdk/models/pagination.py
   - src/polar_sdk/models/payment.py
+  - src/polar_sdk/models/paymentactionrequired.py
   - src/polar_sdk/models/paymentalreadyinprogress.py
   - src/polar_sdk/models/paymenterror.py
   - src/polar_sdk/models/paymentfailed.py
+  - src/polar_sdk/models/paymentmethod.py
   - src/polar_sdk/models/paymentmethodcard.py
   - src/polar_sdk/models/paymentmethodcardmetadata.py
   - src/polar_sdk/models/paymentmethodgeneric.py
   - src/polar_sdk/models/paymentmethodinusebyactivesubscription.py
+  - src/polar_sdk/models/paymentmethodsetupfailed.py
   - src/polar_sdk/models/paymentnotready.py
   - src/polar_sdk/models/paymentprocessor.py
   - src/polar_sdk/models/payments_getop.py
@@ -2022,13 +2052,9 @@ generatedFiles:
   - src/polar_sdk/models/subscriptionupdateclear.py
   - src/polar_sdk/models/subscriptionupdateclearedevent.py
   - src/polar_sdk/models/subscriptionupdateclearedmetadata.py
-  - src/polar_sdk/models/subscriptionupdatedbillingperiodmetadata.py
-  - src/polar_sdk/models/subscriptionupdateddiscountmetadata.py
   - src/polar_sdk/models/subscriptionupdatedevent.py
   - src/polar_sdk/models/subscriptionupdatediscount.py
-  - src/polar_sdk/models/subscriptionupdatedproductmetadata.py
-  - src/polar_sdk/models/subscriptionupdatedseatsmetadata.py
-  - src/polar_sdk/models/subscriptionupdatedtrialmetadata.py
+  - src/polar_sdk/models/subscriptionupdatedmetadata.py
   - src/polar_sdk/models/subscriptionupdateproduct.py
   - src/polar_sdk/models/subscriptionupdateseats.py
   - src/polar_sdk/models/subscriptionupdatetrial.py
@@ -2323,7 +2349,7 @@ examples:
   _endpointorganization_updated_post:
     speakeasy-default-endpointorganization-updated-post:
       requestBody:
-        application/json: {"type": "organization.updated", "timestamp": "2025-08-19T15:02:44.139Z", "data": {"created_at": "2025-08-19T15:02:44.139Z", "modified_at": "2025-08-23T00:45:50.780Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": null, "proration_behavior": "prorate", "allow_customer_updates": false, "email": "Lemuel44@gmail.com", "website": "<value>", "socials": [{"platform": "tiktok", "url": "https://grizzled-patroller.info/"}, {"platform": "tiktok", "url": "https://grizzled-patroller.info/"}], "status": "active", "details_submitted_at": null, "default_presentment_currency": "<value>", "default_tax_behavior": "exclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "checkout_localization_enabled": false, "account_review_v2_enabled": false, "reset_proration_behavior_enabled": false, "billing_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": true, "proration_behavior": "invoice", "benefit_revocation_grace_period": 877397, "prevent_trial_abuse": false, "allow_customer_updates": false}, "notification_settings": {"new_order": false, "new_subscription": false}, "customer_email_settings": {"order_confirmation": false, "subscription_cancellation": false, "subscription_confirmation": false, "subscription_cycled": true, "subscription_cycled_after_trial": false, "subscription_past_due": true, "subscription_renewal_reminder": false, "subscription_revoked": true, "subscription_trial_conversion_reminder": false, "subscription_uncanceled": false, "subscription_updated": true}, "customer_portal_settings": {"usage": {"show": true}, "subscription": {"update_seats": true, "update_plan": true}}, "account_id": "<value>", "payout_account_id": "<value>", "capabilities": {"checkout_payments": false, "subscription_renewals": false, "payouts": false, "refunds": true, "api_access": true, "dashboard_access": true}}}
+        application/json: {"type": "organization.updated", "timestamp": "2025-08-19T15:02:44.139Z", "data": {"created_at": "2025-08-19T15:02:44.139Z", "modified_at": "2025-08-23T00:45:50.780Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": null, "proration_behavior": "prorate", "allow_customer_updates": false, "email": "Lemuel44@gmail.com", "website": "<value>", "socials": [{"platform": "tiktok", "url": "https://grizzled-patroller.info/"}, {"platform": "tiktok", "url": "https://grizzled-patroller.info/"}], "status": "active", "details_submitted_at": null, "default_presentment_currency": "<value>", "default_tax_behavior": "exclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "checkout_localization_enabled": false, "account_review_v2_enabled": false, "reset_proration_behavior_enabled": false, "off_session_charges_enabled": false, "billing_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": true, "proration_behavior": "invoice", "benefit_revocation_grace_period": 877397, "prevent_trial_abuse": false, "allow_customer_updates": false}, "notification_settings": {"new_order": false, "new_subscription": false}, "customer_email_settings": {"order_confirmation": false, "subscription_cancellation": false, "subscription_confirmation": false, "subscription_cycled": true, "subscription_cycled_after_trial": false, "subscription_past_due": true, "subscription_renewal_reminder": false, "subscription_revoked": true, "subscription_trial_conversion_reminder": false, "subscription_uncanceled": false, "subscription_updated": true}, "customer_portal_settings": {"usage": {"show": true}, "subscription": {"update_seats": true, "update_plan": true}}, "account_id": "<value>", "payout_account_id": "<value>", "capabilities": {"checkout_payments": false, "subscription_renewals": false, "payouts": false, "refunds": true, "api_access": true, "dashboard_access": true}}}
       responses:
         "200":
           application/json: "<value>"
@@ -2400,7 +2426,7 @@ examples:
         application/json: {"name": "<value>", "slug": "<value>"}
       responses:
         "201":
-          application/json: {"created_at": "2024-12-19T02:20:41.368Z", "modified_at": "2024-07-08T16:38:56.712Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://menacing-draft.net", "proration_behavior": "prorate", "allow_customer_updates": false, "email": "Ursula99@yahoo.com", "website": "<value>", "socials": [{"platform": "facebook", "url": "https://likable-commodity.biz/"}], "status": "denied", "details_submitted_at": "2024-04-04T18:10:47.254Z", "default_presentment_currency": "<value>", "default_tax_behavior": "inclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "checkout_localization_enabled": false, "account_review_v2_enabled": false, "reset_proration_behavior_enabled": false, "billing_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": false, "proration_behavior": "prorate", "benefit_revocation_grace_period": 655199, "prevent_trial_abuse": false, "allow_customer_updates": true}, "notification_settings": {"new_order": false, "new_subscription": false}, "customer_email_settings": {"order_confirmation": false, "subscription_cancellation": false, "subscription_confirmation": false, "subscription_cycled": false, "subscription_cycled_after_trial": false, "subscription_past_due": false, "subscription_renewal_reminder": false, "subscription_revoked": false, "subscription_trial_conversion_reminder": false, "subscription_uncanceled": true, "subscription_updated": false}, "customer_portal_settings": {"usage": {"show": false}, "subscription": {"update_seats": false, "update_plan": false}}, "account_id": "<value>", "payout_account_id": "<value>", "capabilities": {"checkout_payments": false, "subscription_renewals": false, "payouts": false, "refunds": false, "api_access": false, "dashboard_access": false}}
+          application/json: {"created_at": "2024-12-19T02:20:41.368Z", "modified_at": "2024-07-08T16:38:56.712Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://menacing-draft.net", "proration_behavior": "prorate", "allow_customer_updates": false, "email": "Ursula99@yahoo.com", "website": "<value>", "socials": [{"platform": "facebook", "url": "https://likable-commodity.biz/"}], "status": "denied", "details_submitted_at": "2024-04-04T18:10:47.254Z", "default_presentment_currency": "<value>", "default_tax_behavior": "inclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "checkout_localization_enabled": false, "account_review_v2_enabled": false, "reset_proration_behavior_enabled": false, "off_session_charges_enabled": false, "billing_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": false, "proration_behavior": "prorate", "benefit_revocation_grace_period": 655199, "prevent_trial_abuse": false, "allow_customer_updates": true}, "notification_settings": {"new_order": false, "new_subscription": false}, "customer_email_settings": {"order_confirmation": false, "subscription_cancellation": false, "subscription_confirmation": false, "subscription_cycled": false, "subscription_cycled_after_trial": false, "subscription_past_due": false, "subscription_renewal_reminder": false, "subscription_revoked": false, "subscription_trial_conversion_reminder": false, "subscription_uncanceled": true, "subscription_updated": false}, "customer_portal_settings": {"usage": {"show": false}, "subscription": {"update_seats": false, "update_plan": false}}, "account_id": "<value>", "payout_account_id": "<value>", "capabilities": {"checkout_payments": false, "subscription_renewals": false, "payouts": false, "refunds": false, "api_access": false, "dashboard_access": false}}
         "422":
           application/json: {}
   organizations:get:
@@ -2410,7 +2436,7 @@ examples:
           id: "1dbfc517-0bbf-4301-9ba8-555ca42b9737"
       responses:
         "200":
-          application/json: {"created_at": "2024-06-18T23:12:24.609Z", "modified_at": "2023-11-22T07:49:02.109Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://far-off-resource.com", "proration_behavior": "invoice", "allow_customer_updates": true, "email": "Dejon.Jakubowski-Bashirian6@gmail.com", "website": null, "socials": [{"platform": "other", "url": "https://tedious-habit.com"}, {"platform": "other", "url": "https://tedious-habit.com"}, {"platform": "other", "url": "https://tedious-habit.com"}], "status": "denied", "details_submitted_at": "2023-07-16T01:59:28.607Z", "default_presentment_currency": "<value>", "default_tax_behavior": "inclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "checkout_localization_enabled": false, "account_review_v2_enabled": false, "reset_proration_behavior_enabled": false, "billing_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": true, "proration_behavior": "prorate", "benefit_revocation_grace_period": 488109, "prevent_trial_abuse": false, "allow_customer_updates": false}, "notification_settings": {"new_order": true, "new_subscription": true}, "customer_email_settings": {"order_confirmation": true, "subscription_cancellation": true, "subscription_confirmation": true, "subscription_cycled": false, "subscription_cycled_after_trial": true, "subscription_past_due": false, "subscription_renewal_reminder": true, "subscription_revoked": true, "subscription_trial_conversion_reminder": true, "subscription_uncanceled": false, "subscription_updated": true}, "customer_portal_settings": {"usage": {"show": false}, "subscription": {"update_seats": true, "update_plan": false}}, "account_id": "<value>", "payout_account_id": "<value>", "capabilities": {"checkout_payments": true, "subscription_renewals": true, "payouts": false, "refunds": false, "api_access": true, "dashboard_access": false}}
+          application/json: {"created_at": "2024-06-18T23:12:24.609Z", "modified_at": "2023-11-22T07:49:02.109Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://far-off-resource.com", "proration_behavior": "invoice", "allow_customer_updates": true, "email": "Dejon.Jakubowski-Bashirian6@gmail.com", "website": null, "socials": [{"platform": "other", "url": "https://tedious-habit.com"}, {"platform": "other", "url": "https://tedious-habit.com"}, {"platform": "other", "url": "https://tedious-habit.com"}], "status": "denied", "details_submitted_at": "2023-07-16T01:59:28.607Z", "default_presentment_currency": "<value>", "default_tax_behavior": "inclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "checkout_localization_enabled": false, "account_review_v2_enabled": false, "reset_proration_behavior_enabled": false, "off_session_charges_enabled": false, "billing_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": true, "proration_behavior": "prorate", "benefit_revocation_grace_period": 488109, "prevent_trial_abuse": false, "allow_customer_updates": false}, "notification_settings": {"new_order": true, "new_subscription": true}, "customer_email_settings": {"order_confirmation": true, "subscription_cancellation": true, "subscription_confirmation": true, "subscription_cycled": false, "subscription_cycled_after_trial": true, "subscription_past_due": false, "subscription_renewal_reminder": true, "subscription_revoked": true, "subscription_trial_conversion_reminder": true, "subscription_uncanceled": false, "subscription_updated": true}, "customer_portal_settings": {"usage": {"show": false}, "subscription": {"update_seats": true, "update_plan": false}}, "account_id": "<value>", "payout_account_id": "<value>", "capabilities": {"checkout_payments": true, "subscription_renewals": true, "payouts": false, "refunds": false, "api_access": true, "dashboard_access": false}}
         "404":
           application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "422":
@@ -2424,7 +2450,7 @@ examples:
         application/json: {}
       responses:
         "200":
-          application/json: {"created_at": "2024-01-10T12:09:47.665Z", "modified_at": "2025-07-12T14:18:16.022Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://juvenile-deed.name/", "proration_behavior": "invoice", "allow_customer_updates": false, "email": "Stanford.Streich62@gmail.com", "website": "<value>", "socials": [{"platform": "github", "url": "https://violent-ownership.org/"}], "status": "snoozed", "details_submitted_at": "2024-05-08T13:53:13.516Z", "default_presentment_currency": "<value>", "default_tax_behavior": "inclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "checkout_localization_enabled": false, "account_review_v2_enabled": false, "reset_proration_behavior_enabled": false, "billing_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": false, "proration_behavior": "invoice", "benefit_revocation_grace_period": 341703, "prevent_trial_abuse": false, "allow_customer_updates": false}, "notification_settings": {"new_order": true, "new_subscription": false}, "customer_email_settings": {"order_confirmation": true, "subscription_cancellation": false, "subscription_confirmation": false, "subscription_cycled": false, "subscription_cycled_after_trial": true, "subscription_past_due": true, "subscription_renewal_reminder": false, "subscription_revoked": true, "subscription_trial_conversion_reminder": false, "subscription_uncanceled": true, "subscription_updated": false}, "customer_portal_settings": {"usage": {"show": false}, "subscription": {"update_seats": true, "update_plan": true}}, "account_id": "<value>", "payout_account_id": "<value>", "capabilities": {"checkout_payments": false, "subscription_renewals": false, "payouts": false, "refunds": true, "api_access": true, "dashboard_access": true}}
+          application/json: {"created_at": "2024-01-10T12:09:47.665Z", "modified_at": "2025-07-12T14:18:16.022Z", "id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "name": "<value>", "slug": "<value>", "avatar_url": "https://juvenile-deed.name/", "proration_behavior": "invoice", "allow_customer_updates": false, "email": "Stanford.Streich62@gmail.com", "website": "<value>", "socials": [{"platform": "github", "url": "https://violent-ownership.org/"}], "status": "snoozed", "details_submitted_at": "2024-05-08T13:53:13.516Z", "default_presentment_currency": "<value>", "default_tax_behavior": "inclusive", "feature_settings": {"issue_funding_enabled": false, "seat_based_pricing_enabled": false, "wallets_enabled": false, "member_model_enabled": false, "checkout_localization_enabled": false, "account_review_v2_enabled": false, "reset_proration_behavior_enabled": false, "off_session_charges_enabled": false, "billing_enabled": false}, "subscription_settings": {"allow_multiple_subscriptions": false, "proration_behavior": "invoice", "benefit_revocation_grace_period": 341703, "prevent_trial_abuse": false, "allow_customer_updates": false}, "notification_settings": {"new_order": true, "new_subscription": false}, "customer_email_settings": {"order_confirmation": true, "subscription_cancellation": false, "subscription_confirmation": false, "subscription_cycled": false, "subscription_cycled_after_trial": true, "subscription_past_due": true, "subscription_renewal_reminder": false, "subscription_revoked": true, "subscription_trial_conversion_reminder": false, "subscription_uncanceled": true, "subscription_updated": false}, "customer_portal_settings": {"usage": {"show": false}, "subscription": {"update_seats": true, "update_plan": true}}, "account_id": "<value>", "payout_account_id": "<value>", "capabilities": {"checkout_payments": false, "subscription_renewals": false, "payouts": false, "refunds": true, "api_access": true, "dashboard_access": true}}
         "403":
           application/json: {"error": "NotPermitted", "detail": "<value>"}
         "404":
@@ -3411,6 +3437,8 @@ examples:
           application/json: {"status": "succeeded", "payment_method": {"id": "<value>", "created_at": "2025-12-23T00:32:19.874Z", "modified_at": "2025-02-22T23:44:51.542Z", "processor": "stripe", "customer_id": "<value>", "type": "card", "method_metadata": {"brand": "<value>", "last4": "<value>", "exp_month": 510329, "exp_year": 902331}}}
         "422":
           application/json: {}
+        "400":
+          application/json: {"error": "PaymentMethodSetupFailed", "detail": "<value>"}
   customer_portal:customers:delete_payment_method:
     speakeasy-default-customer-portal:customers:delete-payment-method:
       parameters:
@@ -4694,9 +4722,66 @@ examples:
           application/json: {"error": "ResourceNotFound", "detail": "<value>"}
         "422":
           application/json: {}
+  orders:create:
+    speakeasy-default-orders:create:
+      requestBody:
+        application/json: {"organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "customer_id": "<value>", "product_id": "<value>"}
+      responses:
+        "201":
+          application/json: {"id": "<value>", "created_at": "2026-07-18T17:44:54.628Z", "modified_at": null, "status": "void", "paid": true, "subtotal_amount": 10000, "discount_amount": 1000, "net_amount": 9000, "tax_amount": 720, "total_amount": 9720, "applied_balance_amount": 0, "due_amount": 0, "refunded_amount": 0, "refunded_tax_amount": 0, "currency": "usd", "billing_reason": "purchase", "billing_name": null, "billing_address": {"country": "US"}, "invoice_number": "<value>", "is_invoice_generated": true, "receipt_number": null, "customer_id": "<value>", "product_id": "<value>", "discount_id": "<value>", "subscription_id": "<value>", "checkout_id": "<value>", "metadata": {}, "platform_fee_amount": 500, "platform_fee_currency": "usd", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2025-11-29T03:34:26.239Z", "modified_at": "2024-07-12T06:58:01.957Z", "metadata": {"key": 3792.25}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "type": "individual", "name": "John Doe", "billing_address": null, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": null, "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "product": {"metadata": {"key": "<value>"}, "id": "<value>", "created_at": "2026-01-15T20:09:02.162Z", "modified_at": "2024-08-30T12:54:42.214Z", "trial_interval": "year", "trial_interval_count": 699089, "name": "<value>", "description": "resolve pish aha catch", "visibility": "private", "recurring_interval": "year", "recurring_interval_count": null, "is_recurring": true, "is_archived": true, "organization_id": "<value>"}, "discount": {"duration": "forever", "duration_in_months": 656996, "type": "percentage", "amount": 1000, "currency": "usd", "amounts": {"eur": 900, "usd": 1000}, "created_at": "2025-04-17T06:39:47.276Z", "modified_at": "2025-11-02T14:27:57.549Z", "id": "<value>", "metadata": {"key": false}, "name": "<value>", "code": "<value>", "starts_at": "2026-03-17T06:05:44.637Z", "ends_at": null, "max_redemptions": 414158, "redemptions_count": 749098, "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737"}, "subscription": {"metadata": {}, "created_at": "2026-04-25T21:43:56.917Z", "modified_at": "2026-06-17T03:54:09.889Z", "id": "<value>", "amount": 10000, "currency": "usd", "recurring_interval": "month", "recurring_interval_count": 403525, "status": "unpaid", "current_period_start": "2024-03-21T21:52:16.023Z", "current_period_end": "2026-09-21T14:02:23.888Z", "trial_start": "2025-08-11T16:40:47.152Z", "trial_end": "2025-01-06T10:28:40.440Z", "cancel_at_period_end": true, "canceled_at": "2026-12-27T03:53:58.178Z", "started_at": "2024-07-03T14:46:34.620Z", "ends_at": null, "ended_at": "2024-10-29T12:03:40.812Z", "customer_id": "<value>", "product_id": "<value>", "discount_id": "<value>", "checkout_id": "<value>", "customer_cancellation_reason": "too_complex", "customer_cancellation_comment": "<value>"}, "items": [], "description": "Pro Plan", "refundable_amount": 9000, "refundable_tax_amount": 720}
+        "422":
+          application/json: {}
+  orders:finalize:
+    speakeasy-default-orders:finalize:
+      parameters:
+        path:
+          id: "<value>"
+      responses:
+        "200":
+          application/json: {"id": "<value>", "created_at": "2025-05-24T20:30:52.486Z", "modified_at": "2026-03-14T23:42:09.699Z", "status": "refunded", "paid": true, "subtotal_amount": 10000, "discount_amount": 1000, "net_amount": 9000, "tax_amount": 720, "total_amount": 9720, "applied_balance_amount": 0, "due_amount": 0, "refunded_amount": 0, "refunded_tax_amount": 0, "currency": "usd", "billing_reason": "subscription_create", "billing_name": "<value>", "billing_address": {"country": "US"}, "invoice_number": "<value>", "is_invoice_generated": true, "receipt_number": "<value>", "customer_id": "<value>", "product_id": "<value>", "discount_id": "<value>", "subscription_id": "<value>", "checkout_id": "<value>", "metadata": {}, "platform_fee_amount": 500, "platform_fee_currency": "usd", "customer": {"id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b", "created_at": "2024-03-25T22:40:42.220Z", "modified_at": "2024-03-29T16:00:03.359Z", "metadata": {}, "external_id": "usr_1337", "email": "customer@example.com", "email_verified": true, "type": "individual", "name": "John Doe", "billing_address": null, "tax_id": ["911144442", "us_ein"], "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737", "deleted_at": "2024-12-31T05:13:06.739Z", "avatar_url": "https://www.gravatar.com/avatar/xxx?d=404"}, "product": {"metadata": {"key": 62319}, "id": "<value>", "created_at": "2025-03-11T02:25:51.106Z", "modified_at": "2026-08-31T21:34:30.185Z", "trial_interval": null, "trial_interval_count": 996232, "name": "<value>", "description": "outfox pish as triumphantly what supposing hence frightfully", "visibility": "public", "recurring_interval": "day", "recurring_interval_count": 783393, "is_recurring": false, "is_archived": false, "organization_id": "<value>"}, "discount": {"duration": "forever", "type": "fixed", "basis_points": 1000, "created_at": "2024-01-23T22:12:50.534Z", "modified_at": null, "id": "<value>", "metadata": {"key": true}, "name": "<value>", "code": "<value>", "starts_at": "2025-10-27T16:08:34.656Z", "ends_at": "2024-07-04T05:28:05.146Z", "max_redemptions": null, "redemptions_count": 848910, "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737"}, "subscription": null, "items": [], "description": "Pro Plan", "refundable_amount": 9000, "refundable_tax_amount": 720}
+        "402":
+          application/json: {"error": "PaymentFailed", "detail": "<value>"}
+        "403":
+          application/json: {"error": "OffSessionChargesNotEnabled", "detail": "<value>"}
+        "404":
+          application/json: {"error": "ResourceNotFound", "detail": "<value>"}
+        "412":
+          application/json: {"error": "OrderNotDraft", "detail": "<value>"}
+        "422":
+          application/json: {}
+  customers:list_payment_methods:
+    speakeasy-default-customers:list-payment-methods:
+      parameters:
+        path:
+          id: "<value>"
+        query:
+          page: 1
+          limit: 10
+      responses:
+        "200":
+          application/json: {"items": [], "pagination": {"total_count": 517187, "max_page": 568637}}
+        "404":
+          application/json: {"error": "ResourceNotFound", "detail": "<value>"}
+        "422":
+          application/json: {}
+  customers:list_payment_methods_external:
+    speakeasy-default-customers:list-payment-methods-external:
+      parameters:
+        path:
+          external_id: "<id>"
+        query:
+          page: 1
+          limit: 10
+      responses:
+        "200":
+          application/json: {"items": [], "pagination": {"total_count": 11891, "max_page": 59510}}
+        "404":
+          application/json: {"error": "ResourceNotFound", "detail": "<value>"}
+        "422":
+          application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Python SDK Changes Detected:\n* `polar.customer_portal.seats.assign_seat()`: \n  *  `request.checkout_client_secret` **Removed** **Breaking** :warning:\n* `polar.events.list()`:  `response.[list_resource_event_].items.[].[system_event]` **Changed** **Breaking** :warning:\n* `polar._endpointorder_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointorder_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointorder_paid_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointorder_refunded_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointorganization_updated_post()`: \n  *  `request.data.feature_settings` **Changed** **Breaking** :warning:\n* `polar.organizations.list()`:  `response.items.[].feature_settings` **Changed** **Breaking** :warning:\n* `polar.organizations.create()`: \n  *  `request.feature_settings` **Changed** **Breaking** :warning:\n  *  `response.feature_settings` **Changed** **Breaking** :warning:\n* `polar.organizations.get()`:  `response.feature_settings` **Changed** **Breaking** :warning:\n* `polar.organizations.update()`: \n  *  `request.organization_update.feature_settings` **Changed** **Breaking** :warning:\n  *  `response.feature_settings` **Changed** **Breaking** :warning:\n* `polar.event-types.list()`:  `response.items.[]` **Changed** **Breaking** :warning:\n* `polar.events.get()`:  `response.[system_event]` **Changed** **Breaking** :warning:\n* `polar.customer-seats.assign_seat()`:  `request` **Changed** **Breaking** :warning:\n* `polar.discounts.create()`:  `request` **Changed** **Breaking** :warning:\n* `polar.subscriptions.update()`: \n  *  `request.subscription_update.[subscription_update_clear]` **Added**\n* `polar.members.create_member()`: \n  *  `request.role` **Changed**\n* `polar.customer_portal.customers.update()`: \n  *  `request.default_payment_method_id` **Added**\n* `polar.orders.receipt()`: **Added**\n* `polar.customer_portal.orders.list()`:  `response.items.[]` **Changed**\n* `polar.customer_portal.orders.get()`:  `response` **Changed**\n* `polar.customer_portal.orders.update()`:  `response` **Changed**\n* `polar.customer_portal.subscriptions.update()`: \n  *  `request.customer_subscription_update.[customer_subscription_update_clear]` **Added**\n* `polar.orders.list()`:  `response.items.[]` **Changed**\n* `polar.orders.get()`:  `response` **Changed**\n* `polar.customer_portal.orders.receipt()`: **Added**\n* `polar.orders.update()`:  `response` **Changed**\n"
+releaseNotes: "## Python SDK Changes Detected:\n* `polar.orders.list()`:  `response.items.[]` **Changed** **Breaking** :warning:\n* `polar.orders.get()`:  `response` **Changed** **Breaking** :warning:\n* `polar.orders.update()`:  `response` **Changed** **Breaking** :warning:\n* `polar.customer_portal.orders.list()`:  `response.items.[].invoice_number` **Changed** **Breaking** :warning:\n* `polar.customer_portal.orders.get()`:  `response.invoice_number` **Changed** **Breaking** :warning:\n* `polar.events.get()`:  `response.[system_event].[benefit.granted]` **Changed** **Breaking** :warning:\n* `polar.events.list()`:  `response.[list_resource_event_].items.[].[system_event]` **Changed** **Breaking** :warning:\n* `polar.customer_portal.orders.update()`:  `response.invoice_number` **Changed** **Breaking** :warning:\n* `polar.organizations.get()`:  `response.feature_settings.off_session_charges_enabled` **Added**\n* `polar.subscriptions.revoke()`:  `response.customer.default_payment_method_id` **Added**\n* `polar.organizations.list()`: **Deleted** **Breaking** :warning:\n* `polar._endpointcustomer_created_post()`: \n  *  `request.data` **Changed**\n* `polar._endpointcustomer_updated_post()`: \n  *  `request.data` **Changed**\n* `polar._endpointcustomer_deleted_post()`: \n  *  `request.data` **Changed**\n* `polar._endpointcustomer_state_changed_post()`: \n  *  `request.data` **Changed**\n* `polar._endpointorder_created_post()`: \n  *  `request.data` **Changed**\n* `polar._endpointorder_updated_post()`: \n  *  `request.data` **Changed**\n* `polar._endpointorder_paid_post()`: \n  *  `request.data` **Changed**\n* `polar._endpointorder_refunded_post()`: \n  *  `request.data` **Changed**\n* `polar._endpointsubscription_created_post()`: \n  *  `request.data.customer.default_payment_method_id` **Added**\n* `polar._endpointsubscription_updated_post()`: \n  *  `request.data.customer.default_payment_method_id` **Added**\n* `polar._endpointsubscription_active_post()`: \n  *  `request.data.customer.default_payment_method_id` **Added**\n* `polar._endpointsubscription_canceled_post()`: \n  *  `request.data.customer.default_payment_method_id` **Added**\n* `polar._endpointsubscription_uncanceled_post()`: \n  *  `request.data.customer.default_payment_method_id` **Added**\n* `polar._endpointsubscription_revoked_post()`: \n  *  `request.data.customer.default_payment_method_id` **Added**\n* `polar._endpointsubscription_past_due_post()`: \n  *  `request.data.customer.default_payment_method_id` **Added**\n* `polar._endpointorganization_updated_post()`: \n  *  `request.data.feature_settings.off_session_charges_enabled` **Added**\n* `polar._endpointbenefit_grant_created_post()`: \n  *  `request.data.[benefit_grant_feature_flag_webhook].customer` **Changed**\n* `polar._endpointbenefit_grant_updated_post()`: \n  *  `request.data.[benefit_grant_git_hub_repository_webhook].customer` **Changed**\n* `polar._endpointbenefit_grant_cycled_post()`: \n  *  `request.data.[benefit_grant_discord_webhook].customer` **Changed**\n* `polar._endpointbenefit_grant_revoked_post()`: \n  *  `request.data.[benefit_grant_custom_webhook].customer` **Changed**\n* `polar.organizations.create()`: \n  *  `request.feature_settings.off_session_charges_enabled` **Added**\n  *  `response.feature_settings.off_session_charges_enabled` **Added**\n* `polar.customers.list_payment_methods()`: **Added**\n* `polar.organizations.update()`: \n  *  `request.organization_update.feature_settings.off_session_charges_enabled` **Added**\n  *  `response.feature_settings.off_session_charges_enabled` **Added**\n* `polar.subscriptions.list()`:  `response.items.[].customer.default_payment_method_id` **Added**\n* `polar.subscriptions.create()`:  `response.customer.default_payment_method_id` **Added**\n* `polar.subscriptions.get()`:  `response.customer.default_payment_method_id` **Added**\n* `polar.customers.list_payment_methods_external()`: **Added**\n* `polar.subscriptions.update()`:  `response.customer.default_payment_method_id` **Added**\n* `polar.benefits.grants()`:  `response.items.[].customer` **Changed**\n* `polar.benefit-grants.list()`:  `response.items.[].customer` **Changed**\n* `polar.license_keys.list()`:  `response.items.[].customer.default_payment_method_id` **Added**\n* `polar.license_keys.get()`:  `response.customer.default_payment_method_id` **Added**\n* `polar.license_keys.update()`:  `response.customer.default_payment_method_id` **Added**\n* `polar.license_keys.get_activation()`:  `response.license_key.customer.default_payment_method_id` **Added**\n* `polar.license_keys.validate()`:  `response.customer.default_payment_method_id` **Added**\n* `polar.license_keys.activate()`:  `response.license_key.customer.default_payment_method_id` **Added**\n* `polar.customers.list()`: \n  *  `request.active` **Added**\n  *  `response.items.[]` **Changed**\n* `polar.customers.create()`:  `response` **Changed**\n* `polar.customers.get()`:  `response` **Changed**\n* `polar.customers.update()`:  `response` **Changed**\n* `polar.customers.get_external()`:  `response` **Changed**\n* `polar.customers.update_external()`:  `response` **Changed**\n* `polar.customers.get_state()`:  `response` **Changed**\n* `polar.customers.get_state_external()`:  `response` **Changed**\n* `polar.customer_portal.customers.add_payment_method()`:  `error.status[400]` **Added**\n* `polar.customer_portal.license_keys.list()`:  `response.items.[].customer.default_payment_method_id` **Added**\n* `polar.customer_portal.license_keys.get()`:  `response.customer.default_payment_method_id` **Added**\n* `polar.orders.finalize()`: **Added**\n* `polar.customer_portal.license_keys.validate()`:  `response.customer.default_payment_method_id` **Added**\n* `polar.customer_portal.license_keys.activate()`:  `response.license_key.customer.default_payment_method_id` **Added**\n* `polar.customer-sessions.create()`:  `response.customer` **Changed**\n* `polar.orders.create()`: **Added**\n* `polar.organizations.list_organizations()`: **Added**\n* `polar.customer_meters.list()`:  `response.items.[].customer` **Changed**\n* `polar.customer_meters.get()`:  `response.customer` **Changed**\n* `polar.payments.list()`:  `request.customer_id` **Added**\n"
 trackedFiles:
   .devcontainer/README.md:
     last_write_checksum: sha1:e2a191a1fa8ceb27387eb32eabf36f7ad16a532c
@@ -4709,7 +4794,7 @@ trackedFiles:
   .vscode/settings.json:
     last_write_checksum: sha1:f84632c81029fcdda8c3b0c768d02b836fc80526
   USAGE.md:
-    last_write_checksum: sha1:f0b26c208168f2dff9aa26cdbaf5c1a3a8fbff98
+    last_write_checksum: sha1:100ad323976442d76b2055854c14371dbb36e2d5
   docs/models/activesubscriptions.md:
     last_write_checksum: sha1:b3eaf87dcdf62890d684cfc6ec8ddb2f574475c9
   docs/models/activeuserbyevent.md:
@@ -5291,7 +5376,7 @@ trackedFiles:
   docs/models/customeridfilter.md:
     last_write_checksum: sha1:9e9ff05b6e673fadfd6d483a95b64c9d43878d42
   docs/models/customerindividual.md:
-    last_write_checksum: sha1:60d780a56a648c85ad16ee86510770ad9a363eeb
+    last_write_checksum: sha1:1a2e49c5bf6595993f247979d4dd338e296813da
   docs/models/customerindividualcreate.md:
     last_write_checksum: sha1:8e45ab29d04cf4b0b73e4f40adfac99a34da05de
   docs/models/customerindividualcreatemetadata.md:
@@ -5319,7 +5404,7 @@ trackedFiles:
   docs/models/customernotready.md:
     last_write_checksum: sha1:2faa3980f943abc75095106230343a3e8b67e67a
   docs/models/customerorder.md:
-    last_write_checksum: sha1:4650924bfe3aa470634b7cb4ecde3c3b314e8958
+    last_write_checksum: sha1:a5649ac4b004556de0f03305e3a6aea83b0864a9
   docs/models/customerorderconfirmpayment.md:
     last_write_checksum: sha1:d1082e2ca6e98078093253308617e3f1e9039acc
   docs/models/customerorderinvoice.md:
@@ -5348,6 +5433,8 @@ trackedFiles:
     last_write_checksum: sha1:ca8a34e40a85b995a8723c067e2795b19ff9f031
   docs/models/customerpaymentmethod.md:
     last_write_checksum: sha1:39096a4c9a89a666c3f7354696d400aa1d9d0183
+  docs/models/customerpaymentmethodcard.md:
+    last_write_checksum: sha1:e040a00f25d1c931f552ba025f869da4d1a38424
   docs/models/customerpaymentmethodconfirm.md:
     last_write_checksum: sha1:6ba7a1a89cf509c9a5538a3a997cbb0c8e720422
   docs/models/customerpaymentmethodcreate.md:
@@ -5358,6 +5445,8 @@ trackedFiles:
     last_write_checksum: sha1:f8976208358fe274921c627dae61f754f2c88fd4
   docs/models/customerpaymentmethodcreatesucceededresponse.md:
     last_write_checksum: sha1:706ed2d24e57cca6fc75198d99c334afd23466bb
+  docs/models/customerpaymentmethodgeneric.md:
+    last_write_checksum: sha1:02391fcf77702f3f517ead60677c86acebddf3ca
   docs/models/customerportalbenefitgrantsgetrequest.md:
     last_write_checksum: sha1:fde620cbd57cf38f0579d9aa5e9103636e625d78
   docs/models/customerportalbenefitgrantsgetsecurity.md:
@@ -5598,10 +5687,18 @@ trackedFiles:
     last_write_checksum: sha1:e46765ae6b6140cf2b14195a334dcc6c03aada4e
   docs/models/customersgetstaterequest.md:
     last_write_checksum: sha1:f8e2c76c536718bf6b343d49f3871dab7002e485
+  docs/models/customerslistpaymentmethodsexternalrequest.md:
+    last_write_checksum: sha1:6717cbd978078f955ed200afe14c36b60664e1f3
+  docs/models/customerslistpaymentmethodsexternalresponse.md:
+    last_write_checksum: sha1:18706d5c61b0f59a9bd6dca13cc0910f0c5f25e6
+  docs/models/customerslistpaymentmethodsrequest.md:
+    last_write_checksum: sha1:d4bd206c829f3291e075b03e930b56f50a1753a3
+  docs/models/customerslistpaymentmethodsresponse.md:
+    last_write_checksum: sha1:749a7e11c0ba792948f51385e452ecf4af16746c
   docs/models/customerslistqueryparamorganizationidfilter.md:
     last_write_checksum: sha1:943b8d02cc1e5ae96b73fc1cdb8f7987e2689603
   docs/models/customerslistrequest.md:
-    last_write_checksum: sha1:170c64fefb80210d20d0baf03184294288f7113e
+    last_write_checksum: sha1:d7dc8cfaf7d9331d144ec8f05caad05f934336b7
   docs/models/customerslistresponse.md:
     last_write_checksum: sha1:90281a239335ca50f1e83bd1fa015a9659fec192
   docs/models/customersortproperty.md:
@@ -5613,7 +5710,7 @@ trackedFiles:
   docs/models/customerstatebenefitgrantproperties.md:
     last_write_checksum: sha1:a27ec100afd9e2729b6e38f8223d30048c8de298
   docs/models/customerstateindividual.md:
-    last_write_checksum: sha1:192682765dddf09567011ea5a53b900ed79ec1ab
+    last_write_checksum: sha1:e7179d93b7d1f26fc2afaa0de976a0ba7ea62c27
   docs/models/customerstateindividualtaxid.md:
     last_write_checksum: sha1:51c0fa6e66a608c1d8464e49dbdff699b0378353
   docs/models/customerstatemeter.md:
@@ -5625,7 +5722,7 @@ trackedFiles:
   docs/models/customerstatesubscriptionmeter.md:
     last_write_checksum: sha1:3af44933abda2103b86c7e035b60bf89359d6257
   docs/models/customerstateteam.md:
-    last_write_checksum: sha1:2018144da8c7d12076de305b5c6912519d1103e4
+    last_write_checksum: sha1:7b2ecf862a3d136e57816fee11fbdb581da319ba
   docs/models/customerstateteamtaxid.md:
     last_write_checksum: sha1:8a9d30f4c311997bd4afe831296a43d7d6a953a5
   docs/models/customersubscription.md:
@@ -5657,7 +5754,7 @@ trackedFiles:
   docs/models/customersupdaterequest.md:
     last_write_checksum: sha1:1e071c37ea30d848c52e6d64c6a372d0ca658d6c
   docs/models/customerteam.md:
-    last_write_checksum: sha1:1094adb2f468f9383c524a1c135e5de92d194e20
+    last_write_checksum: sha1:3cbc3be9349b756f8b5da29ee968697a06a0c3ec
   docs/models/customerteamcreate.md:
     last_write_checksum: sha1:4c5b6ab7b7834472b1b7ada9d29f823bf9885aaf
   docs/models/customerteamcreatemetadata.md:
@@ -6009,7 +6106,7 @@ trackedFiles:
   docs/models/licensekeyactivationreadmeta.md:
     last_write_checksum: sha1:04c6c266c45dba0b3d18e64b4a7202fbbfc5533e
   docs/models/licensekeycustomer.md:
-    last_write_checksum: sha1:1b04fdcd15afcfb1d1e3c7933a81bf3d0eb0b2d5
+    last_write_checksum: sha1:7686f5d6b871271165534a80f5d0e5e15a25cbd6
   docs/models/licensekeycustomertaxid.md:
     last_write_checksum: sha1:17f958a0d1a86b1370561ba966159f1fb2dc2f77
   docs/models/licensekeydeactivate.md:
@@ -6094,6 +6191,8 @@ trackedFiles:
     last_write_checksum: sha1:8ee642de6103083f1d2fd838611140ce3fa90eb0
   docs/models/listresourcepayment.md:
     last_write_checksum: sha1:4f7f0a738348e89b72ef17ac2c97a0cbf19db2ea
+  docs/models/listresourcepaymentmethod.md:
+    last_write_checksum: sha1:6f6c4447de8f704ef3278acb8faf87bfb5edfed8
   docs/models/listresourceproduct.md:
     last_write_checksum: sha1:413e736237d501c59149372dac6ec9a77c68fe78
   docs/models/listresourcerefund.md:
@@ -6414,6 +6513,8 @@ trackedFiles:
     last_write_checksum: sha1:8fd2b3a37fccafd17bb20225f16a2b9925786987
   docs/models/oauth2userinforesponseoauth2userinfo.md:
     last_write_checksum: sha1:a1d5a8429b64c2d212282767a80301e8f8628d77
+  docs/models/offsessionchargesnotenabled.md:
+    last_write_checksum: sha1:237bcaf76ebbfac1b023443ee018383944612ed7
   docs/models/onetimeproducts.md:
     last_write_checksum: sha1:c9a9888a9ea33c52463aba7ab6368ac1e307add2
   docs/models/onetimeproductsnetrevenue.md:
@@ -6421,23 +6522,33 @@ trackedFiles:
   docs/models/onetimeproductsrevenue.md:
     last_write_checksum: sha1:8e7c90912be37abe552adac8531990fe41efb803
   docs/models/order.md:
-    last_write_checksum: sha1:c97dbd8c24dfe435118458b07db40128c6b1cd6c
+    last_write_checksum: sha1:e3a67db7fd287ce28d4ad583103971b2df0911bf
   docs/models/orderbillingreason.md:
     last_write_checksum: sha1:fdbf3af4604ebfc3f7d5cf2b5bed2528ab3d7cab
+  docs/models/ordercreate.md:
+    last_write_checksum: sha1:836ae7f0985c2578938b9d0fb0da465354cc5be5
+  docs/models/ordercreatecustomfielddata.md:
+    last_write_checksum: sha1:2af083c91fb1eb518eeeb54ac3b1aab40198301d
+  docs/models/ordercreatemetadata.md:
+    last_write_checksum: sha1:91f7d995ed96b594b0ec042db2438c51b58adc4f
   docs/models/ordercustomer.md:
-    last_write_checksum: sha1:006de59831c12de08c6d430d6ccdb5b5ae5be70c
+    last_write_checksum: sha1:95242b9ae31efae8f58e548dcaaf88e4c0572abb
   docs/models/ordercustomertaxid.md:
     last_write_checksum: sha1:2b00fc78c61f7408167a1d75173b7882d6adad2e
   docs/models/ordercustomfielddata.md:
     last_write_checksum: sha1:9b93074a6835a90acd2f999a7ffdf48759b823ae
   docs/models/orderdiscount.md:
     last_write_checksum: sha1:7e135509a9fa50b5713202345da3b00a6344d614
+  docs/models/orderfinalize.md:
+    last_write_checksum: sha1:88c4b89f476c5a34fc23b7b739d33815130964c3
   docs/models/orderidfilter.md:
     last_write_checksum: sha1:80cb3d23aae3aea9a3f03abe3d491a7ffbc6a5f8
   docs/models/orderinvoice.md:
     last_write_checksum: sha1:9d4c485faebb8415766ba66cdc3f26432899ac8b
   docs/models/orderitemschema.md:
     last_write_checksum: sha1:bbdfd2b9367625374157de0b54fad32724b16a1f
+  docs/models/ordernotdraft.md:
+    last_write_checksum: sha1:ecd74711946aec52d49c4e977b3ff899c07b584f
   docs/models/ordernoteligibleforretry.md:
     last_write_checksum: sha1:e2ce6d678b0b5c60623b3b0278d868965a96a9fd
   docs/models/orderpaidevent.md:
@@ -6460,6 +6571,12 @@ trackedFiles:
     last_write_checksum: sha1:eccdd1e558f250211cde2d8844ba288820548558
   docs/models/ordersexportresponse.md:
     last_write_checksum: sha1:ffc26b1180e3b5967e7a5b33b494167fe1a53cae
+  docs/models/ordersfinalizerequest.md:
+    last_write_checksum: sha1:22fc892ee81af3570632b826ca42e48b3c4ebd74
+  docs/models/ordersfinalizeresponse402ordersfinalize.md:
+    last_write_checksum: sha1:9374d3eebeb9ae80b8616a1e0935f9b1cb8d0c7e
+  docs/models/ordersfinalizeresponse403ordersfinalize.md:
+    last_write_checksum: sha1:46b4ad14bdafb453ed7d1ae5265856aa5ef0b39d
   docs/models/ordersgenerateinvoicerequest.md:
     last_write_checksum: sha1:e1bd44ba32fdca15b5526ac870ed157b7e5ff7b1
   docs/models/ordersgenerateinvoiceresponse422ordersgenerateinvoice.md:
@@ -6487,7 +6604,7 @@ trackedFiles:
   docs/models/ordersreceiptrequest.md:
     last_write_checksum: sha1:8d8ac3562231bdcd2874873096895bdd09924a9a
   docs/models/orderstatus.md:
-    last_write_checksum: sha1:ab6604b2d86046ffea690671545d5e80dd5cef2b
+    last_write_checksum: sha1:fc12a2988f8de5657634a8f68ec8b8a6c64de664
   docs/models/ordersubscription.md:
     last_write_checksum: sha1:400c3a0718f96c2038b98f62334c9d08bd4357eb
   docs/models/ordersupdaterequest.md:
@@ -6537,7 +6654,7 @@ trackedFiles:
   docs/models/organizationdetails.md:
     last_write_checksum: sha1:59784eef0c4fcb65f8c7006ffd0c3df8a7cfba0b
   docs/models/organizationfeaturesettings.md:
-    last_write_checksum: sha1:f7fcd59cee6d15252437cc0bcc2c73ebafb47f5e
+    last_write_checksum: sha1:45447412c9e2ea2f7ff5439d8ea6975492483012
   docs/models/organizationid.md:
     last_write_checksum: sha1:5adf4fb1a723f361ac66da12542fedbe34fd9e5d
   docs/models/organizationidfilter.md:
@@ -6546,6 +6663,8 @@ trackedFiles:
     last_write_checksum: sha1:2ea97cdbe83c90aed9605835a6bc942ee2a67596
   docs/models/organizationnotificationsettings.md:
     last_write_checksum: sha1:9dfa31a45e5c019bee16f7633b023be3524d8f42
+  docs/models/organizationnotreadyforpayments.md:
+    last_write_checksum: sha1:02f405d8a3a23fe497d285b25a14032b346e83c4
   docs/models/organizationsgetrequest.md:
     last_write_checksum: sha1:ef9861c86cd9be7f5cc85495e19e574da41c24d5
   docs/models/organizationslistrequest.md:
@@ -6570,12 +6689,16 @@ trackedFiles:
     last_write_checksum: sha1:1aedcef9b4f0bc5ab25ef1e9542e22d82088682a
   docs/models/payment.md:
     last_write_checksum: sha1:be4a62b4543395995c4bd76dfca288bc95b8b0b6
+  docs/models/paymentactionrequired.md:
+    last_write_checksum: sha1:7ed936621233b5254cc63fb193ae1a67ce539bd0
   docs/models/paymentalreadyinprogress.md:
     last_write_checksum: sha1:7a77e5b6ecbe00b15806f0b1c60f0a59b84ac7d2
   docs/models/paymenterror.md:
     last_write_checksum: sha1:63c7b81cc60e4716b0fb96b07a0adb70acdf9611
   docs/models/paymentfailed.md:
     last_write_checksum: sha1:783089efceaa7e73bd26476925cd1693e7fa8ddf
+  docs/models/paymentmethod.md:
+    last_write_checksum: sha1:af6db1f203dba51a63de3a6d69b01f55fcc78a92
   docs/models/paymentmethodcard.md:
     last_write_checksum: sha1:7b4db281156c56d62f5f40412d8e9b6007b27ac8
   docs/models/paymentmethodcardmetadata.md:
@@ -6584,6 +6707,8 @@ trackedFiles:
     last_write_checksum: sha1:88efec40525c06ec229d0416d7f3b94692208d0f
   docs/models/paymentmethodinusebyactivesubscription.md:
     last_write_checksum: sha1:40d4ab667210c5d634601aa941be855d539b2160
+  docs/models/paymentmethodsetupfailed.md:
+    last_write_checksum: sha1:f5a98f6db8c9f98ea5d5bbbdb72eac4d44af46b3
   docs/models/paymentnotready.md:
     last_write_checksum: sha1:432398707451baaf2d86099de54b03ee760df963
   docs/models/paymentprocessor.md:
@@ -6592,6 +6717,8 @@ trackedFiles:
     last_write_checksum: sha1:877dd09682a4bf6eae15f2a5753b1ffe7eaedb73
   docs/models/paymentslistqueryparamcheckoutidfilter.md:
     last_write_checksum: sha1:5df7333528b3d442344366dff4c919ab05ce3daa
+  docs/models/paymentslistqueryparamcustomeridfilter.md:
+    last_write_checksum: sha1:c449209d60b1ddd2427a4dbb2a7d869e500b9271
   docs/models/paymentslistqueryparamorderidfilter.md:
     last_write_checksum: sha1:07a7b964210406c8aa44e28e8b5dcbd6078d1d31
   docs/models/paymentslistqueryparamorganizationidfilter.md:
@@ -6599,7 +6726,7 @@ trackedFiles:
   docs/models/paymentslistqueryparamstatusfilter.md:
     last_write_checksum: sha1:adc2b23a6e930d45f04da1c0fcc55f6302ec7fb4
   docs/models/paymentslistrequest.md:
-    last_write_checksum: sha1:5e6bcda9dd6e6a7097047d1661efd5b7aaa29bfd
+    last_write_checksum: sha1:e7d463e22a64da00d0f82413328f34240906d8c0
   docs/models/paymentslistresponse.md:
     last_write_checksum: sha1:f6336f1f7dccbc0b5bd8381e3b0a558b7e7ac706
   docs/models/paymentsortproperty.md:
@@ -6649,11 +6776,11 @@ trackedFiles:
   docs/models/productpricecustom.md:
     last_write_checksum: sha1:4f1e0f5d1209426a562d94a9eb8c70ec99e16312
   docs/models/productpricecustomcreate.md:
-    last_write_checksum: sha1:f278577a21a2b88c42f15b8dfa1c4421a460cdd6
+    last_write_checksum: sha1:3a06a5c6b110c0bbeae446890dc3fb2664374c61
   docs/models/productpricefixed.md:
     last_write_checksum: sha1:0456129d409689286ceea9254e1f45498566e4da
   docs/models/productpricefixedcreate.md:
-    last_write_checksum: sha1:d5db4e1e023741733aeaa9d0bda78ced09c5ad08
+    last_write_checksum: sha1:148662b9dc9c7015a9e99f536edd1800ec6f4c1b
   docs/models/productpricefree.md:
     last_write_checksum: sha1:5877a4eecbae4dc7951c1733461c1dab37fef3bb
   docs/models/productpricefreecreate.md:
@@ -6797,7 +6924,7 @@ trackedFiles:
   docs/models/s3fileuploadpart.md:
     last_write_checksum: sha1:59c41738e82863712fb78083d1650dc76f060d33
   docs/models/scope.md:
-    last_write_checksum: sha1:004ffe9fb1fcbdfff5053bf9b77f34340e892db2
+    last_write_checksum: sha1:362e208ec433a16d20b544d5d3e4b462e6c5c3dc
   docs/models/seatassign.md:
     last_write_checksum: sha1:64fc1b70a5ea6e0a12c70b10a21b6687e66781cb
   docs/models/seatclaim.md:
@@ -6851,7 +6978,7 @@ trackedFiles:
   docs/models/subscriptioncreateexternalcustomermetadata.md:
     last_write_checksum: sha1:85e1b41fa20c903f06f408a26e86b33224ddf631
   docs/models/subscriptioncustomer.md:
-    last_write_checksum: sha1:36884169e064b181b37d1645550fae98c3173b32
+    last_write_checksum: sha1:0f880acab0dc5b119ff97a651a53903d298f7c35
   docs/models/subscriptioncycledevent.md:
     last_write_checksum: sha1:4d909d313cd1c1c5861038d4e7d3bd8665b3c5e6
   docs/models/subscriptioncycledmetadata.md:
@@ -6926,22 +7053,12 @@ trackedFiles:
     last_write_checksum: sha1:4359382adfe2273fb4fce572f6f818fdd51451da
   docs/models/subscriptionupdateclearedmetadata.md:
     last_write_checksum: sha1:f7d0be9f008335e1f7b469acc1c9a45b4d4ed5a8
-  docs/models/subscriptionupdatedbillingperiodmetadata.md:
-    last_write_checksum: sha1:1796838dfb138d4d022896de089adc05daa9bc87
-  docs/models/subscriptionupdateddiscountmetadata.md:
-    last_write_checksum: sha1:5e1eb667d48a2bb008185dcf9dca6412e6b648f7
   docs/models/subscriptionupdatedevent.md:
-    last_write_checksum: sha1:64a98e51177f4e666b157cdff3cba611bc789df7
-  docs/models/subscriptionupdatedeventmetadata.md:
-    last_write_checksum: sha1:76ec1138332e6c9bec6632c8370fbd20ae6eb0a0
+    last_write_checksum: sha1:0327fbdc2f5a5fd19ace5346b2faf11d27010ca8
   docs/models/subscriptionupdatediscount.md:
     last_write_checksum: sha1:6d8648bf593851a0f2b897c446073ef511479d1e
-  docs/models/subscriptionupdatedproductmetadata.md:
-    last_write_checksum: sha1:8fa96a0cd056f51610be705013c208241e9f98d7
-  docs/models/subscriptionupdatedseatsmetadata.md:
-    last_write_checksum: sha1:43b200f09d0b8ae5c0cc78a4c96c84770382b9e1
-  docs/models/subscriptionupdatedtrialmetadata.md:
-    last_write_checksum: sha1:33387239cc2bc5854e90fcee23034039351947fa
+  docs/models/subscriptionupdatedmetadata.md:
+    last_write_checksum: sha1:ef9fa7640c8ee9d2ae836f3496488a1bd0a24c78
   docs/models/subscriptionupdateproduct.md:
     last_write_checksum: sha1:14416c9f045147b70346ca41e3983a94402a0932
   docs/models/subscriptionupdateseats.md:
@@ -7125,7 +7242,7 @@ trackedFiles:
   docs/sdks/customermeters/README.md:
     last_write_checksum: sha1:b90c86939a9133539681534059241026b501c783
   docs/sdks/customers/README.md:
-    last_write_checksum: sha1:fb75054ed57677f444b4c3e61e7d9694d4fa6175
+    last_write_checksum: sha1:0b6ecb457a0f5760fb11816794fb56acc1435e4c
   docs/sdks/customerseats/README.md:
     last_write_checksum: sha1:7f63eb8dd09fcc98ffb4dc15cb4c9241bab5ae7d
   docs/sdks/customersessions/README.md:
@@ -7157,19 +7274,19 @@ trackedFiles:
   docs/sdks/oauth2/README.md:
     last_write_checksum: sha1:41ab71747a1ea845eb6e342b3a827d347b0209d9
   docs/sdks/orders/README.md:
-    last_write_checksum: sha1:87ae9bc5bc858611760888dabfe63f6a44f43a63
+    last_write_checksum: sha1:c0ac2a63cb65001a8b86a844273c09cc98d2d6cc
   docs/sdks/organizationaccesstokens/README.md:
     last_write_checksum: sha1:05bb349d7b4ac8d0feda927af81a9a71de2e4684
   docs/sdks/organizations/README.md:
-    last_write_checksum: sha1:539a9bb438f60e85284e0630399d566cdb139b2c
+    last_write_checksum: sha1:3fdbe442ff036467bbe8bfcd5befafc7d04c9d40
   docs/sdks/payments/README.md:
-    last_write_checksum: sha1:c0c2c61bef213dfafcb00274baddd1c43ba3e602
+    last_write_checksum: sha1:55ac9bba178fa51cc9d81e8b31660e1b6cef56b1
   docs/sdks/polarbenefitgrants/README.md:
     last_write_checksum: sha1:3250975e14ed5f0eee012ac31d644de61fc8946e
   docs/sdks/polarcustomermeters/README.md:
     last_write_checksum: sha1:3afd1422131745f9eeaf55cb8a28e386d3684d83
   docs/sdks/polarcustomers/README.md:
-    last_write_checksum: sha1:beef732c191b592284cf3511a7b31e05ac6f08a8
+    last_write_checksum: sha1:37ee8734ef1d43389ea8c19278f21c54c8cd673f
   docs/sdks/polarlicensekeys/README.md:
     last_write_checksum: sha1:01f6ad4f58453a9ef561beee742f8aebf20f42d8
   docs/sdks/polarmembers/README.md:
@@ -7213,7 +7330,7 @@ trackedFiles:
   src/polar_sdk/_hooks/types.py:
     last_write_checksum: sha1:a218c66f3e2d1f1b9af54f270472b970b0cc1913
   src/polar_sdk/_version.py:
-    last_write_checksum: sha1:d9ff953d823bfd0059ba15ec4ddc7d34b0cdd5a9
+    last_write_checksum: sha1:e927ba455352bf0952a242f1f46f4fe41677bff6
   src/polar_sdk/basesdk.py:
     last_write_checksum: sha1:4523ea81f1381f171fe2d4e60f85b82203208d02
   src/polar_sdk/benefit_grants.py:
@@ -7239,7 +7356,7 @@ trackedFiles:
   src/polar_sdk/customer_sessions.py:
     last_write_checksum: sha1:25f6cc89c87320a87e76bb4c2548989a145c1303
   src/polar_sdk/customers.py:
-    last_write_checksum: sha1:0c7db239381376f161f322b1903df33a6db17cfa
+    last_write_checksum: sha1:91ed3265817ee9535fb01384262c89707cd14e0b
   src/polar_sdk/discounts.py:
     last_write_checksum: sha1:624026ce7ab6578e5207d7cb7decd3d35e0895a5
   src/polar_sdk/disputes.py:
@@ -7261,9 +7378,9 @@ trackedFiles:
   src/polar_sdk/meters.py:
     last_write_checksum: sha1:b34c6c20fa382d46845215528e2975173984a004
   src/polar_sdk/metrics_sdk.py:
-    last_write_checksum: sha1:c30599374f77c15def258831ff82e18b21155976
+    last_write_checksum: sha1:d77ec52b4757fb51de8e4a1c173032136908af9e
   src/polar_sdk/models/__init__.py:
-    last_write_checksum: sha1:3eaefb9aeeaff31cb27ff3605b83384986504227
+    last_write_checksum: sha1:003351d6ebae766212195619d9b11e7588f4e836
   src/polar_sdk/models/address.py:
     last_write_checksum: sha1:083edb7f045174ac1aea30545e9981c33f07d57d
   src/polar_sdk/models/addressdict.py:
@@ -7743,7 +7860,7 @@ trackedFiles:
   src/polar_sdk/models/customeremailupdateverifyresponse.py:
     last_write_checksum: sha1:35348f86c0237ec5da0f80df98cc1933f7b9d38b
   src/polar_sdk/models/customerindividual.py:
-    last_write_checksum: sha1:b0104402c28776b339788dd53f7743eeced57500
+    last_write_checksum: sha1:9021edf516e979ad24e353ba415d0303ff6129dc
   src/polar_sdk/models/customerindividualcreate.py:
     last_write_checksum: sha1:cad00ae0088103811e414898946fa01a4cafcd39
   src/polar_sdk/models/customermeter.py:
@@ -7753,7 +7870,7 @@ trackedFiles:
   src/polar_sdk/models/customernotready.py:
     last_write_checksum: sha1:bfcfe22b088cbbf10854f6e6bb9f22c046362d28
   src/polar_sdk/models/customerorder.py:
-    last_write_checksum: sha1:910f8ec56288b9bc18523f741d3201b6b4bd395f
+    last_write_checksum: sha1:1b833b6ac2a1ffdb925ab8403d790801b05ad4af
   src/polar_sdk/models/customerorderconfirmpayment.py:
     last_write_checksum: sha1:1a363d74823980436253fc208c5ad3a508e5f97f
   src/polar_sdk/models/customerorderinvoice.py:
@@ -7780,6 +7897,8 @@ trackedFiles:
     last_write_checksum: sha1:24d9960925305479d2bff6791fb83d7ae64dca3e
   src/polar_sdk/models/customerpaymentmethod.py:
     last_write_checksum: sha1:42325a8c394d54fd6e789da4a9046b60c0a619d5
+  src/polar_sdk/models/customerpaymentmethodcard.py:
+    last_write_checksum: sha1:eaccd19d4a1859f196049f27bd5d52a3c2f1093e
   src/polar_sdk/models/customerpaymentmethodconfirm.py:
     last_write_checksum: sha1:cf9d6a932d26d05680e1f527887235528e4ec80a
   src/polar_sdk/models/customerpaymentmethodcreate.py:
@@ -7790,6 +7909,8 @@ trackedFiles:
     last_write_checksum: sha1:eaf845f8c07d8b37e358e49b93c1e49aff270f81
   src/polar_sdk/models/customerpaymentmethodcreatesucceededresponse.py:
     last_write_checksum: sha1:434015438b0b7617025824e801b081c2602daac1
+  src/polar_sdk/models/customerpaymentmethodgeneric.py:
+    last_write_checksum: sha1:42de1dcddb8bc16cfbee504cfd5a6336ad5248ba
   src/polar_sdk/models/customerportalcustomer.py:
     last_write_checksum: sha1:4484b729dd8135a699969fcd0269e39976ff5b79
   src/polar_sdk/models/customerportalcustomersettings.py:
@@ -7824,6 +7945,10 @@ trackedFiles:
     last_write_checksum: sha1:7a23d4e641a69d7986f75436633b733d696df829
   src/polar_sdk/models/customers_getop.py:
     last_write_checksum: sha1:0722e7b84c12d5bb44ab344f2c48ac30a954eecf
+  src/polar_sdk/models/customers_list_payment_methods_externalop.py:
+    last_write_checksum: sha1:4a00bc45a4654e7fb1849c09c355e8902bb7a440
+  src/polar_sdk/models/customers_list_payment_methodsop.py:
+    last_write_checksum: sha1:3f9e0b6f27a374c5a584efa4ba59395d7cbd11e7
   src/polar_sdk/models/customers_update_externalop.py:
     last_write_checksum: sha1:84daeab8661879eb52c85644c7de16c1659b7c11
   src/polar_sdk/models/customers_updateop.py:
@@ -7847,7 +7972,7 @@ trackedFiles:
   src/polar_sdk/models/customerstatebenefitgrant.py:
     last_write_checksum: sha1:9140cc6cf16bb1e5b161f246e18bd8cfb037dd53
   src/polar_sdk/models/customerstateindividual.py:
-    last_write_checksum: sha1:9c2495bf727e96ce2dcd8eccbd144e912c46e98b
+    last_write_checksum: sha1:dc5022e05a29fbb9cf91446fd6bc63400b62931b
   src/polar_sdk/models/customerstatemeter.py:
     last_write_checksum: sha1:80a0c50fba7bb8939c5d13c6c61d00a192bcc337
   src/polar_sdk/models/customerstatesubscription.py:
@@ -7855,7 +7980,7 @@ trackedFiles:
   src/polar_sdk/models/customerstatesubscriptionmeter.py:
     last_write_checksum: sha1:68b7f0d40544c69e4720cb950ed4167726757625
   src/polar_sdk/models/customerstateteam.py:
-    last_write_checksum: sha1:0c9c3adb993cd52e7cbd9019cfb6f96d3b9bc2a6
+    last_write_checksum: sha1:caf24bb8bd003472321fed58872eddad868c12b3
   src/polar_sdk/models/customersubscription.py:
     last_write_checksum: sha1:014bbf96d19594571faa35d563993e478f5cc831
   src/polar_sdk/models/customersubscriptioncancel.py:
@@ -7877,7 +8002,7 @@ trackedFiles:
   src/polar_sdk/models/customersubscriptionupdateseats.py:
     last_write_checksum: sha1:27bb7fe72d93014b227449cc4189317550030ac1
   src/polar_sdk/models/customerteam.py:
-    last_write_checksum: sha1:42cd7e755cb7c27c7c08ad3abbd98a480d613324
+    last_write_checksum: sha1:43367cdff14bb55eb7e1c183bdc220c1d5ea5ac7
   src/polar_sdk/models/customerteamcreate.py:
     last_write_checksum: sha1:7de6e3bc6b32990f841af1716b70cf9755ab11d7
   src/polar_sdk/models/customertype.py:
@@ -8107,7 +8232,7 @@ trackedFiles:
   src/polar_sdk/models/licensekeyactivationread.py:
     last_write_checksum: sha1:73ffced48dd1a99d33b6a091e19f4cc9d42ae6d2
   src/polar_sdk/models/licensekeycustomer.py:
-    last_write_checksum: sha1:9c518c8a45e4a7a06f1563ae502ac2933a3e2d21
+    last_write_checksum: sha1:fff5c87d1a622d806552a3342a5dc21836964b38
   src/polar_sdk/models/licensekeydeactivate.py:
     last_write_checksum: sha1:11c04cc65dbaeff84247ac2c3eeae27ec69a200d
   src/polar_sdk/models/licensekeyread.py:
@@ -8176,6 +8301,8 @@ trackedFiles:
     last_write_checksum: sha1:a0868ded974218dfb8699f5703e79fc24d8d0989
   src/polar_sdk/models/listresource_payment_.py:
     last_write_checksum: sha1:f6a46091ff51a183738fce8430c9f31e711a37d0
+  src/polar_sdk/models/listresource_paymentmethod_.py:
+    last_write_checksum: sha1:c16c5812c163c43024083f076d19286c2dcc21a3
   src/polar_sdk/models/listresource_product_.py:
     last_write_checksum: sha1:089d96211ff1218a342adab4830a73c3e73b2ad2
   src/polar_sdk/models/listresource_refund_.py:
@@ -8310,16 +8437,24 @@ trackedFiles:
     last_write_checksum: sha1:9275201aa87fcca19337f596ebfff7735cc5c9b3
   src/polar_sdk/models/oauth2_userinfoop.py:
     last_write_checksum: sha1:b6b3f96a4dbd2ffe9216d781a6dd997eef4496b8
+  src/polar_sdk/models/offsessionchargesnotenabled.py:
+    last_write_checksum: sha1:425ffa5dc180558667b7012c33c11825594de78d
   src/polar_sdk/models/order.py:
-    last_write_checksum: sha1:d75b8f4968b9032376bb6cae348e7b7137c8641b
+    last_write_checksum: sha1:1a8a7007718a3b433ffae64b6e2bee5b9526e0b9
   src/polar_sdk/models/orderbillingreason.py:
     last_write_checksum: sha1:3b294070e89e6d9f91bdd42c34207bc44769b5b1
+  src/polar_sdk/models/ordercreate.py:
+    last_write_checksum: sha1:a803e616a894b5332a612883a13f038c81e76457
   src/polar_sdk/models/ordercustomer.py:
-    last_write_checksum: sha1:6568290f7335f21ca1e84a6ec2676ab31dba7346
+    last_write_checksum: sha1:403f4a031bface6827645ccef3caec2893da19d7
+  src/polar_sdk/models/orderfinalize.py:
+    last_write_checksum: sha1:af747340ca25c4cb133681da07d058680aae25f1
   src/polar_sdk/models/orderinvoice.py:
     last_write_checksum: sha1:21020a291e1d6153cf8efa40bdff3f50f7def599
   src/polar_sdk/models/orderitemschema.py:
     last_write_checksum: sha1:14067a77d3a47c0985ff26a7b6674f0b5a574341
+  src/polar_sdk/models/ordernotdraft.py:
+    last_write_checksum: sha1:f388d8c8b5adb3d145ac760c596ca59574baebd0
   src/polar_sdk/models/ordernoteligibleforretry.py:
     last_write_checksum: sha1:cd1ab440c9b5bd1d8b438beeb66118e4d053c242
   src/polar_sdk/models/orderpaidevent.py:
@@ -8336,6 +8471,8 @@ trackedFiles:
     last_write_checksum: sha1:3ce8e61cc2ef8c8368ee802783a7783e2c4b9660
   src/polar_sdk/models/orders_exportop.py:
     last_write_checksum: sha1:c8f2b41b7aef39762404a08bf44984e7627e38d8
+  src/polar_sdk/models/orders_finalizeop.py:
+    last_write_checksum: sha1:aea31f009298498eac4ea40c60ebe63aeffc4b4f
   src/polar_sdk/models/orders_generate_invoiceop.py:
     last_write_checksum: sha1:f08138259c636da7da4048963a03f8ddf3e4038a
   src/polar_sdk/models/orders_getop.py:
@@ -8349,7 +8486,7 @@ trackedFiles:
   src/polar_sdk/models/ordersortproperty.py:
     last_write_checksum: sha1:6e6f93d4431b2d28b672669a649cae54786b8f6c
   src/polar_sdk/models/orderstatus.py:
-    last_write_checksum: sha1:89d37b6b4115ba5940f4e1559095be2b7256509d
+    last_write_checksum: sha1:d22b6b744e74c156612aa03b907c16e362de836e
   src/polar_sdk/models/ordersubscription.py:
     last_write_checksum: sha1:2c562ae7ec8743fd25c0808d968da454be0abada
   src/polar_sdk/models/orderupdate.py:
@@ -8393,11 +8530,13 @@ trackedFiles:
   src/polar_sdk/models/organizationdetails.py:
     last_write_checksum: sha1:74233062d4ab6a42a6799705ac3cfd820ba3244c
   src/polar_sdk/models/organizationfeaturesettings.py:
-    last_write_checksum: sha1:43d0b09f41afdb90673b164edacded53fcb4ce22
+    last_write_checksum: sha1:3947f7dd76b5250a52f4158aaff764d144147667
   src/polar_sdk/models/organizationindividuallegalentityschema.py:
     last_write_checksum: sha1:33b021299f8a9ef86b315e3030acf6e34ccedeb4
   src/polar_sdk/models/organizationnotificationsettings.py:
     last_write_checksum: sha1:d56d2a800ac2800e155ca918ff4e6765797ee3ed
+  src/polar_sdk/models/organizationnotreadyforpayments.py:
+    last_write_checksum: sha1:759a373d584d830a2fde026d9692726c5b83dcec
   src/polar_sdk/models/organizations_getop.py:
     last_write_checksum: sha1:022214ce77271823d20259056dcd5b7c735784b3
   src/polar_sdk/models/organizations_listop.py:
@@ -8420,12 +8559,16 @@ trackedFiles:
     last_write_checksum: sha1:88b8cafcf8bbbb722ffc53957982fecae18d95bf
   src/polar_sdk/models/payment.py:
     last_write_checksum: sha1:95ba3eb59845c7d7f9a805c08f11775c2598e0bd
+  src/polar_sdk/models/paymentactionrequired.py:
+    last_write_checksum: sha1:dcfbbc6c332a2ea5cbbd0069148ebd81bf876a75
   src/polar_sdk/models/paymentalreadyinprogress.py:
     last_write_checksum: sha1:fa33f08bd9d50268ed3a87e38589f625a4910e44
   src/polar_sdk/models/paymenterror.py:
     last_write_checksum: sha1:3431d53c1df93442c33c2d8410b333daae4c70d8
   src/polar_sdk/models/paymentfailed.py:
     last_write_checksum: sha1:49079a0a4a2b99f53218c86fac1413db1229228b
+  src/polar_sdk/models/paymentmethod.py:
+    last_write_checksum: sha1:1da6b364eff93c8b9f4ee6e4367b3aba65fed108
   src/polar_sdk/models/paymentmethodcard.py:
     last_write_checksum: sha1:a4ec4575c814e54f0b33fa464503434b2ff296d6
   src/polar_sdk/models/paymentmethodcardmetadata.py:
@@ -8434,6 +8577,8 @@ trackedFiles:
     last_write_checksum: sha1:479565160d08c6c40db2040dc9fc85ff91c1ef23
   src/polar_sdk/models/paymentmethodinusebyactivesubscription.py:
     last_write_checksum: sha1:4c48e18c0fd51dbe2e4da0388f22904a96fdf192
+  src/polar_sdk/models/paymentmethodsetupfailed.py:
+    last_write_checksum: sha1:49a24da7ab74cfe9800505934249743adf44717a
   src/polar_sdk/models/paymentnotready.py:
     last_write_checksum: sha1:984ca3217bddf6b7dff363723bbec523a8b3f836
   src/polar_sdk/models/paymentprocessor.py:
@@ -8441,7 +8586,7 @@ trackedFiles:
   src/polar_sdk/models/payments_getop.py:
     last_write_checksum: sha1:8fe3be2c7cef991aa96ffe23a6c21a6baf18c1dc
   src/polar_sdk/models/payments_listop.py:
-    last_write_checksum: sha1:323e8950aaed26e9f16d2d93622fb00da1ba546f
+    last_write_checksum: sha1:4c3795de9f69aa9b5a46fdc18f2be6c71059227d
   src/polar_sdk/models/paymentsortproperty.py:
     last_write_checksum: sha1:2803a0c85f1046a5e19a3f7f136d789e5b0ca439
   src/polar_sdk/models/paymentstatus.py:
@@ -8475,11 +8620,11 @@ trackedFiles:
   src/polar_sdk/models/productpricecustom.py:
     last_write_checksum: sha1:60c580ba1d7e5755b2e273a5141319d20eadc166
   src/polar_sdk/models/productpricecustomcreate.py:
-    last_write_checksum: sha1:98710526a0b503c6727a07112a495a0845d2e62a
+    last_write_checksum: sha1:edd96818ab0248d09355c8a093f988f0ff67ac04
   src/polar_sdk/models/productpricefixed.py:
     last_write_checksum: sha1:9b5e42ece47c918221067ce8ea86005edf364c93
   src/polar_sdk/models/productpricefixedcreate.py:
-    last_write_checksum: sha1:f0fe11e72034784886e4e9fe20205d817d9042c1
+    last_write_checksum: sha1:21e4d55605bd6e81fafd84dd9b654b269b1d9ceb
   src/polar_sdk/models/productpricefree.py:
     last_write_checksum: sha1:bfacb3a8115f8a96ed2adc4c4e6660abf99632fe
   src/polar_sdk/models/productpricefreecreate.py:
@@ -8555,7 +8700,7 @@ trackedFiles:
   src/polar_sdk/models/s3fileuploadpart.py:
     last_write_checksum: sha1:b0e5a41676f97c5df49525997913dc94bcaf7b6e
   src/polar_sdk/models/scope.py:
-    last_write_checksum: sha1:8ae0f41ff51f9f7c7f0ba0698fd4a710c7fad359
+    last_write_checksum: sha1:497cf57767780009130d9f479e2ba49bacc66247
   src/polar_sdk/models/sdkerror.py:
     last_write_checksum: sha1:409dc5170c233e828971025155f631c8e49dcf70
   src/polar_sdk/models/seatassign.py:
@@ -8593,7 +8738,7 @@ trackedFiles:
   src/polar_sdk/models/subscriptioncreateexternalcustomer.py:
     last_write_checksum: sha1:671691e0be327af0275f10fbd3fefc81f3a61115
   src/polar_sdk/models/subscriptioncustomer.py:
-    last_write_checksum: sha1:92ebc3df802f31ac967377b71814d8bcb7a7d74a
+    last_write_checksum: sha1:312ca14f7352542f02afa75fe332ae823f9a1835
   src/polar_sdk/models/subscriptioncycledevent.py:
     last_write_checksum: sha1:75242e5fcffb7d293053b6e3ae967b48f8dbd36c
   src/polar_sdk/models/subscriptioncycledmetadata.py:
@@ -8631,7 +8776,7 @@ trackedFiles:
   src/polar_sdk/models/subscriptions_getop.py:
     last_write_checksum: sha1:74872cc7de547940f4189bbabea5d8d4803837e1
   src/polar_sdk/models/subscriptions_listop.py:
-    last_write_checksum: sha1:24b8dbf3d9e8a94bffa772ed5329e0dbf004917e
+    last_write_checksum: sha1:781924f5c3d82d82afd175fa61c50589f990235a
   src/polar_sdk/models/subscriptions_revokeop.py:
     last_write_checksum: sha1:e1ca41a0bf57c37d748d641ca62cea7b71509537
   src/polar_sdk/models/subscriptions_updateop.py:
@@ -8658,20 +8803,12 @@ trackedFiles:
     last_write_checksum: sha1:98a4a2797a23664b6c2167009eee00da290944df
   src/polar_sdk/models/subscriptionupdateclearedmetadata.py:
     last_write_checksum: sha1:ee6d6ddaf6d4c175377af7fc09240e3b6b3e9121
-  src/polar_sdk/models/subscriptionupdatedbillingperiodmetadata.py:
-    last_write_checksum: sha1:5a95a7a56753920d39f566e5de68362954f5d339
-  src/polar_sdk/models/subscriptionupdateddiscountmetadata.py:
-    last_write_checksum: sha1:97de5709f7e7fa309019a58d97e2462ec82e6e96
   src/polar_sdk/models/subscriptionupdatedevent.py:
-    last_write_checksum: sha1:be89859d6f6e53af26ecf0141bf40bc3739e19f9
+    last_write_checksum: sha1:2858e56be4bf6c73acd40add1fd10d3ff1943e24
   src/polar_sdk/models/subscriptionupdatediscount.py:
     last_write_checksum: sha1:2441c2536e1865a941bc6e4f8856b2c7b5ed7e6f
-  src/polar_sdk/models/subscriptionupdatedproductmetadata.py:
-    last_write_checksum: sha1:9b75d30ed0935ce6e4e4b9b8e9c86ebb8796e2bd
-  src/polar_sdk/models/subscriptionupdatedseatsmetadata.py:
-    last_write_checksum: sha1:2ce2848f78e8df061ebfcc7d8169a30222fdecd9
-  src/polar_sdk/models/subscriptionupdatedtrialmetadata.py:
-    last_write_checksum: sha1:cd763d1a60aaa65115064153536172d019e7003b
+  src/polar_sdk/models/subscriptionupdatedmetadata.py:
+    last_write_checksum: sha1:10fbb6eb083c8b53d607a2607650456b74a9bd3d
   src/polar_sdk/models/subscriptionupdateproduct.py:
     last_write_checksum: sha1:d74e1cad2854f08849ef1b460c56636f9720e7a4
   src/polar_sdk/models/subscriptionupdateseats.py:
@@ -8813,19 +8950,19 @@ trackedFiles:
   src/polar_sdk/oauth2.py:
     last_write_checksum: sha1:4d04c5a98c3a4b5219d1ff484e7e1c8295b01f47
   src/polar_sdk/orders.py:
-    last_write_checksum: sha1:54324f8787d3e8b07925d79ea3eec3ef4b59b52d
+    last_write_checksum: sha1:f779fbd347a8c545ede84756bc458a85b8fbfdd5
   src/polar_sdk/organization_access_tokens.py:
     last_write_checksum: sha1:fc169e6debb5c6918755d3c3ce2dfdda2fad8ce0
   src/polar_sdk/organizations.py:
-    last_write_checksum: sha1:3c21a0fcba6f317fa1ba9a6b7fcc3ca4f8d1e35a
+    last_write_checksum: sha1:7bbeff0d7a492c946b6eafc1ed411c5d63ecad00
   src/polar_sdk/payments.py:
-    last_write_checksum: sha1:a5dded8ecdfef5faf4ce25fedaeed39c10adb881
+    last_write_checksum: sha1:880ac7db391c26415a194c28e104cf8127959108
   src/polar_sdk/polar_benefit_grants.py:
     last_write_checksum: sha1:0f8f499e162deaa8e1a570afc9327be5f24cda38
   src/polar_sdk/polar_customer_meters.py:
     last_write_checksum: sha1:b2831a77fd6408b00f32ff405a6815865673d569
   src/polar_sdk/polar_customers.py:
-    last_write_checksum: sha1:2e9118e4bea24cfcd8ff21571c1f55826c816fae
+    last_write_checksum: sha1:7f5ae5234e5bb95f63c945eed6dd3d942176ddf3
   src/polar_sdk/polar_license_keys.py:
     last_write_checksum: sha1:21662dddfbe9a0df7f9e4d2992bb493d6fc60f4b
   src/polar_sdk/polar_members.py:
@@ -8843,15 +8980,17 @@ trackedFiles:
   src/polar_sdk/refunds.py:
     last_write_checksum: sha1:3a40acdfa627d784ed220738c094536dbcd1a60f
   src/polar_sdk/sdk.py:
-    last_write_checksum: sha1:8546539ea54f6b9708eff5e463e91e3059f27273
+    last_write_checksum: sha1:7a44c48c491ac2c41d1b0d049bacfd04fbcfcc00
   src/polar_sdk/sdkconfiguration.py:
     last_write_checksum: sha1:b9b14902f71407dd21a4b209f2e342c54a0a86a7
   src/polar_sdk/seats.py:
     last_write_checksum: sha1:157c57cd5aceea3ed4d99e7a78803123d1125de8
   src/polar_sdk/subscriptions.py:
-    last_write_checksum: sha1:f0b56069383999baf694f765fbb009907a36b921
+    last_write_checksum: sha1:ffeb5e545c9ae8a3e60eabbcb484bfa85a6d085c
   src/polar_sdk/types/__init__.py:
-    last_write_checksum: sha1:140ebdd01a46f92ffc710c52c958c4eba3cf68ed
+    last_write_checksum: sha1:f9ad14217f832e74f594285960125add50324be9
+  src/polar_sdk/types/base64fileinput.py:
+    last_write_checksum: sha1:4780e893d3853b5a6e28d9a6ca3ee102ce0f502d
   src/polar_sdk/types/basemodel.py:
     last_write_checksum: sha1:10d84aedeb9d35edfdadf2c3020caa1d24d8b584
   src/polar_sdk/utils/__init__.py:
@@ -8877,7 +9016,7 @@ trackedFiles:
   src/polar_sdk/utils/queryparams.py:
     last_write_checksum: sha1:b94c3f314fd3da0d1d215afc2731f48748e2aa59
   src/polar_sdk/utils/requestbodies.py:
-    last_write_checksum: sha1:41e2d2d2d3ecc394c8122ca4d4b85e1c3e03f054
+    last_write_checksum: sha1:e1fef575283b7fe7fe2ad392dbbb3fb105309124
   src/polar_sdk/utils/retries.py:
     last_write_checksum: sha1:471372f5c5d1dd5583239c9cf3c75f1b636e5d87
   src/polar_sdk/utils/security.py:

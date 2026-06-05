@@ -24,6 +24,8 @@ class OrganizationFeatureSettingsTypedDict(TypedDict):
     r"""Ordered list of metric slugs shown on the dashboard overview."""
     reset_proration_behavior_enabled: NotRequired[bool]
     r"""If this organization has access to reset proration behavior."""
+    off_session_charges_enabled: NotRequired[bool]
+    r"""If this organization can create and finalize draft orders via the API (off-session charges against a saved payment method)."""
     billing_enabled: NotRequired[bool]
     r"""If this organization has billing enabled"""
 
@@ -53,6 +55,9 @@ class OrganizationFeatureSettings(BaseModel):
     reset_proration_behavior_enabled: Optional[bool] = False
     r"""If this organization has access to reset proration behavior."""
 
+    off_session_charges_enabled: Optional[bool] = False
+    r"""If this organization can create and finalize draft orders via the API (off-session charges against a saved payment method)."""
+
     billing_enabled: Optional[bool] = False
     r"""If this organization has billing enabled"""
 
@@ -67,6 +72,7 @@ class OrganizationFeatureSettings(BaseModel):
             "account_review_v2_enabled",
             "overview_metrics",
             "reset_proration_behavior_enabled",
+            "off_session_charges_enabled",
             "billing_enabled",
         ]
         nullable_fields = ["overview_metrics"]

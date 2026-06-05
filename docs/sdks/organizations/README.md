@@ -5,12 +5,12 @@
 
 ### Available Operations
 
-* [list](#list) - List Organizations
+* [list_organizations](#list_organizations) - List Organizations
 * [create](#create) - Create Organization
 * [get](#get) - Get Organization
 * [update](#update) - Update Organization
 
-## list
+## list_organizations
 
 List organizations.
 
@@ -27,7 +27,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.organizations.list(page=1, limit=10)
+    res = polar.organizations.list_organizations(page=1, limit=10)
 
     while res is not None:
         # Handle items
