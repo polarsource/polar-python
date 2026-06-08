@@ -6,9 +6,11 @@
 ### Available Operations
 
 * [list](#list) - List Orders
+* [create](#create) - Create Order
 * [export](#export) - Export Orders
 * [get](#get) - Get Order
 * [update](#update) - Update Order
+* [finalize](#finalize) - Finalize Order
 * [generate_invoice](#generate_invoice) - Generate Order Invoice
 * [invoice](#invoice) - Get Order Invoice
 * [receipt](#receipt) - Get Order Receipt
@@ -60,6 +62,56 @@ with Polar(
 ### Response
 
 **[models.OrdersListResponse](../../models/orderslistresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## create
+
+Create a draft order for an off-session charge against a saved payment
+method. The order is created with `status=draft` and no invoice number;
+call `POST /v1/orders/{id}/finalize` to attempt the charge.
+
+The organization must have the `off_session_charges_enabled` feature flag.
+
+**Scopes**: `orders:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="orders:create" method="post" path="/v1/orders/" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.orders.create(request={
+        "organization_id": "1dbfc517-0bbf-4301-9ba8-555ca42b9737",
+        "customer_id": "<value>",
+        "product_id": "<value>",
+    })
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [models.OrderCreate](../../models/ordercreate.md)                   | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.Order](../../models/order.md)**
 
 ### Errors
 
@@ -202,6 +254,61 @@ with Polar(
 | models.ResourceNotFound    | 404                        | application/json           |
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## finalize
+
+Finalize a draft order and synchronously attempt an off-session charge.
+
+On success, the order transitions to `paid` and benefit grants fire
+before the response returns. On failure (decline, missing payment method,
+SCA challenge), the order stays in `draft` and a 4xx error is returned.
+
+The request fails with 412 if the order is not in `draft` status.
+
+**Scopes**: `orders:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="orders:finalize" method="post" path="/v1/orders/{id}/finalize" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.orders.finalize(id="<value>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The order ID.                                                       |
+| `order_finalize`                                                    | [Optional[models.OrderFinalize]](../../models/orderfinalize.md)     | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.Order](../../models/order.md)**
+
+### Errors
+
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| models.PaymentFailed                   | 402                                    | application/json                       |
+| models.PaymentActionRequired           | 402                                    | application/json                       |
+| models.OffSessionChargesNotEnabled     | 403                                    | application/json                       |
+| models.OrganizationNotReadyForPayments | 403                                    | application/json                       |
+| models.ResourceNotFound                | 404                                    | application/json                       |
+| models.OrderNotDraft                   | 412                                    | application/json                       |
+| models.HTTPValidationError             | 422                                    | application/json                       |
+| models.SDKError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## generate_invoice
 

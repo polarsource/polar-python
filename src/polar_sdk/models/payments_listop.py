@@ -47,6 +47,18 @@ PaymentsListQueryParamOrderIDFilter = TypeAliasType(
 r"""Filter by order ID."""
 
 
+PaymentsListQueryParamCustomerIDFilterTypedDict = TypeAliasType(
+    "PaymentsListQueryParamCustomerIDFilterTypedDict", Union[str, List[str]]
+)
+r"""Filter by customer ID."""
+
+
+PaymentsListQueryParamCustomerIDFilter = TypeAliasType(
+    "PaymentsListQueryParamCustomerIDFilter", Union[str, List[str]]
+)
+r"""Filter by customer ID."""
+
+
 PaymentsListQueryParamStatusFilterTypedDict = TypeAliasType(
     "PaymentsListQueryParamStatusFilterTypedDict",
     Union[PaymentStatus, List[PaymentStatus]],
@@ -87,6 +99,8 @@ class PaymentsListRequestTypedDict(TypedDict):
     r"""Filter by checkout ID."""
     order_id: NotRequired[Nullable[PaymentsListQueryParamOrderIDFilterTypedDict]]
     r"""Filter by order ID."""
+    customer_id: NotRequired[Nullable[PaymentsListQueryParamCustomerIDFilterTypedDict]]
+    r"""Filter by customer ID."""
     status: NotRequired[Nullable[PaymentsListQueryParamStatusFilterTypedDict]]
     r"""Filter by payment status."""
     method: NotRequired[Nullable[MethodFilterTypedDict]]
@@ -119,6 +133,12 @@ class PaymentsListRequest(BaseModel):
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by order ID."""
+
+    customer_id: Annotated[
+        OptionalNullable[PaymentsListQueryParamCustomerIDFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by customer ID."""
 
     status: Annotated[
         OptionalNullable[PaymentsListQueryParamStatusFilter],
@@ -162,6 +182,7 @@ class PaymentsListRequest(BaseModel):
             "organization_id",
             "checkout_id",
             "order_id",
+            "customer_id",
             "status",
             "method",
             "customer_email",
@@ -173,6 +194,7 @@ class PaymentsListRequest(BaseModel):
             "organization_id",
             "checkout_id",
             "order_id",
+            "customer_id",
             "status",
             "method",
             "customer_email",

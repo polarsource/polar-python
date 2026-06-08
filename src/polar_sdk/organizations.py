@@ -10,7 +10,7 @@ from typing import Any, Dict, List, Mapping, Optional, Union, cast
 
 
 class Organizations(BaseSDK):
-    def list(
+    def list_organizations(
         self,
         *,
         slug: OptionalNullable[str] = UNSET,
@@ -109,7 +109,7 @@ class Organizations(BaseSDK):
             if len(results[0]) < limit:
                 return None
 
-            return self.list(
+            return self.list_organizations(
                 slug=slug,
                 page=next_page,
                 limit=limit,
@@ -139,7 +139,7 @@ class Organizations(BaseSDK):
 
         raise models.SDKError("Unexpected response received", http_res)
 
-    async def list_async(
+    async def list_organizations_async(
         self,
         *,
         slug: OptionalNullable[str] = UNSET,
@@ -238,7 +238,7 @@ class Organizations(BaseSDK):
             if len(results[0]) < limit:
                 return None
 
-            return self.list(
+            return self.list_organizations(
                 slug=slug,
                 page=next_page,
                 limit=limit,

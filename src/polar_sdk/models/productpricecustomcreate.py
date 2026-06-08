@@ -147,9 +147,27 @@ class ProductPriceCustomCreateTypedDict(TypedDict):
     - YER: 200
     - ZAR: 9
     - ZMW: 10
+    - Other currencies: 50 minor units
     """
     maximum_amount: NotRequired[Nullable[int]]
-    r"""The maximum amount the customer can pay."""
+    r"""The maximum amount the customer can pay. Maximum per currency:
+    - USD: 999,999.99
+    - EUR: 999,999.99
+    - GBP: 999,999.99
+    - ARS: 1,400,000
+    - CDF: 2,800,000
+    - COP: 4,000,000
+    - IDR: 16,000,000
+    - KHR: 4,000,000
+    - LAK: 21,000,000
+    - MNT: 3,500,000
+    - MWK: 1,750,000
+    - NGN: 1,550,000
+    - TZS: 2,500,000
+    - UGX: 3,700,000
+    - UZS: 12,500,000
+    - Other currencies: 99,999,999 minor units
+    """
     preset_amount: NotRequired[Nullable[int]]
     r"""The initial amount shown to the customer. If 0, the customer will see $0 as the default. If set to a value below the minimum price amount for the currency, it will be rejected.Minimum per currency:
     - USD: 0.5
@@ -278,6 +296,7 @@ class ProductPriceCustomCreateTypedDict(TypedDict):
     - YER: 200
     - ZAR: 9
     - ZMW: 10
+    - Other currencies: 50 minor units
     """
 
 
@@ -422,10 +441,28 @@ class ProductPriceCustomCreate(BaseModel):
     - YER: 200
     - ZAR: 9
     - ZMW: 10
+    - Other currencies: 50 minor units
     """
 
     maximum_amount: OptionalNullable[int] = UNSET
-    r"""The maximum amount the customer can pay."""
+    r"""The maximum amount the customer can pay. Maximum per currency:
+    - USD: 999,999.99
+    - EUR: 999,999.99
+    - GBP: 999,999.99
+    - ARS: 1,400,000
+    - CDF: 2,800,000
+    - COP: 4,000,000
+    - IDR: 16,000,000
+    - KHR: 4,000,000
+    - LAK: 21,000,000
+    - MNT: 3,500,000
+    - MWK: 1,750,000
+    - NGN: 1,550,000
+    - TZS: 2,500,000
+    - UGX: 3,700,000
+    - UZS: 12,500,000
+    - Other currencies: 99,999,999 minor units
+    """
 
     preset_amount: OptionalNullable[int] = UNSET
     r"""The initial amount shown to the customer. If 0, the customer will see $0 as the default. If set to a value below the minimum price amount for the currency, it will be rejected.Minimum per currency:
@@ -555,6 +592,7 @@ class ProductPriceCustomCreate(BaseModel):
     - YER: 200
     - ZAR: 9
     - ZMW: 10
+    - Other currencies: 50 minor units
     """
 
     @model_serializer(mode="wrap")

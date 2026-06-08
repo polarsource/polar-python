@@ -713,7 +713,7 @@ class PolarCustomers(BaseSDK):
                 security_source=security,
             ),
             request=req,
-            error_status_codes=["422", "4XX", "5XX"],
+            error_status_codes=["400", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -722,6 +722,11 @@ class PolarCustomers(BaseSDK):
             return unmarshal_json_response(
                 models.CustomerPaymentMethodCreateResponse, http_res
             )
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                models.PaymentMethodSetupFailedData, http_res
+            )
+            raise models.PaymentMethodSetupFailed(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -815,7 +820,7 @@ class PolarCustomers(BaseSDK):
                 security_source=security,
             ),
             request=req,
-            error_status_codes=["422", "4XX", "5XX"],
+            error_status_codes=["400", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -824,6 +829,11 @@ class PolarCustomers(BaseSDK):
             return unmarshal_json_response(
                 models.CustomerPaymentMethodCreateResponse, http_res
             )
+        if utils.match_response(http_res, "400", "application/json"):
+            response_data = unmarshal_json_response(
+                models.PaymentMethodSetupFailedData, http_res
+            )
+            raise models.PaymentMethodSetupFailed(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res

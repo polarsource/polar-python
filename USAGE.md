@@ -8,7 +8,7 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.organizations.list(page=1, limit=10)
+    res = polar.organizations.list_organizations(page=1, limit=10)
 
     while res is not None:
         # Handle items
@@ -31,7 +31,7 @@ async def main():
         access_token="<YOUR_BEARER_TOKEN_HERE>",
     ) as polar:
 
-        res = await polar.organizations.list_async(page=1, limit=10)
+        res = await polar.organizations.list_organizations_async(page=1, limit=10)
 
         while res is not None:
             # Handle items

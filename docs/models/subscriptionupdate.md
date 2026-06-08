@@ -3,22 +3,10 @@
 
 ## Supported Types
 
-### `models.SubscriptionUpdateProduct`
+### `models.SubscriptionUpdateBase`
 
 ```python
-value: models.SubscriptionUpdateProduct = /* values here */
-```
-
-### `models.SubscriptionUpdateDiscount`
-
-```python
-value: models.SubscriptionUpdateDiscount = /* values here */
-```
-
-### `models.SubscriptionUpdateTrial`
-
-```python
-value: models.SubscriptionUpdateTrial = /* values here */
+value: models.SubscriptionUpdateBase = /* values here */
 ```
 
 ### `models.SubscriptionUpdateSeats`
