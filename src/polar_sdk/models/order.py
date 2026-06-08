@@ -97,8 +97,8 @@ class OrderTypedDict(TypedDict):
     billing_name: Nullable[str]
     r"""The name of the customer that should appear on the invoice."""
     billing_address: Nullable[AddressTypedDict]
-    invoice_number: str
-    r"""The invoice number associated with this order."""
+    invoice_number: Nullable[str]
+    r"""The invoice number associated with this order. `null` while the order is in `draft` status; assigned at finalize."""
     is_invoice_generated: bool
     r"""Whether an invoice has been generated for this order."""
     receipt_number: Nullable[str]
@@ -182,8 +182,8 @@ class Order(BaseModel):
 
     billing_address: Nullable[Address]
 
-    invoice_number: str
-    r"""The invoice number associated with this order."""
+    invoice_number: Nullable[str]
+    r"""The invoice number associated with this order. `null` while the order is in `draft` status; assigned at finalize."""
 
     is_invoice_generated: bool
     r"""Whether an invoice has been generated for this order."""
@@ -242,6 +242,7 @@ class Order(BaseModel):
             "modified_at",
             "billing_name",
             "billing_address",
+            "invoice_number",
             "receipt_number",
             "seats",
             "product_id",

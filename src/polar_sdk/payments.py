@@ -31,6 +31,12 @@ class Payments(BaseSDK):
                 models.PaymentsListQueryParamOrderIDFilterTypedDict,
             ]
         ] = UNSET,
+        customer_id: OptionalNullable[
+            Union[
+                models.PaymentsListQueryParamCustomerIDFilter,
+                models.PaymentsListQueryParamCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
         status: OptionalNullable[
             Union[
                 models.PaymentsListQueryParamStatusFilter,
@@ -60,6 +66,7 @@ class Payments(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param checkout_id: Filter by checkout ID.
         :param order_id: Filter by order ID.
+        :param customer_id: Filter by customer ID.
         :param status: Filter by payment status.
         :param method: Filter by payment method.
         :param customer_email: Filter by customer email.
@@ -85,6 +92,7 @@ class Payments(BaseSDK):
             organization_id=organization_id,
             checkout_id=checkout_id,
             order_id=order_id,
+            customer_id=customer_id,
             status=status,
             method=method,
             customer_email=customer_email,
@@ -152,6 +160,7 @@ class Payments(BaseSDK):
                 organization_id=organization_id,
                 checkout_id=checkout_id,
                 order_id=order_id,
+                customer_id=customer_id,
                 status=status,
                 method=method,
                 customer_email=customer_email,
@@ -202,6 +211,12 @@ class Payments(BaseSDK):
                 models.PaymentsListQueryParamOrderIDFilterTypedDict,
             ]
         ] = UNSET,
+        customer_id: OptionalNullable[
+            Union[
+                models.PaymentsListQueryParamCustomerIDFilter,
+                models.PaymentsListQueryParamCustomerIDFilterTypedDict,
+            ]
+        ] = UNSET,
         status: OptionalNullable[
             Union[
                 models.PaymentsListQueryParamStatusFilter,
@@ -231,6 +246,7 @@ class Payments(BaseSDK):
         :param organization_id: Filter by organization ID.
         :param checkout_id: Filter by checkout ID.
         :param order_id: Filter by order ID.
+        :param customer_id: Filter by customer ID.
         :param status: Filter by payment status.
         :param method: Filter by payment method.
         :param customer_email: Filter by customer email.
@@ -256,6 +272,7 @@ class Payments(BaseSDK):
             organization_id=organization_id,
             checkout_id=checkout_id,
             order_id=order_id,
+            customer_id=customer_id,
             status=status,
             method=method,
             customer_email=customer_email,
@@ -323,6 +340,7 @@ class Payments(BaseSDK):
                 organization_id=organization_id,
                 checkout_id=checkout_id,
                 order_id=order_id,
+                customer_id=customer_id,
                 status=status,
                 method=method,
                 customer_email=customer_email,

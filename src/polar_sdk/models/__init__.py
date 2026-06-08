@@ -1143,6 +1143,10 @@ if TYPE_CHECKING:
         CustomerPaymentMethod,
         CustomerPaymentMethodTypedDict,
     )
+    from .customerpaymentmethodcard import (
+        CustomerPaymentMethodCard,
+        CustomerPaymentMethodCardTypedDict,
+    )
     from .customerpaymentmethodconfirm import (
         CustomerPaymentMethodConfirm,
         CustomerPaymentMethodConfirmTypedDict,
@@ -1162,6 +1166,10 @@ if TYPE_CHECKING:
     from .customerpaymentmethodcreatesucceededresponse import (
         CustomerPaymentMethodCreateSucceededResponse,
         CustomerPaymentMethodCreateSucceededResponseTypedDict,
+    )
+    from .customerpaymentmethodgeneric import (
+        CustomerPaymentMethodGeneric,
+        CustomerPaymentMethodGenericTypedDict,
     )
     from .customerportalcustomer import (
         CustomerPortalCustomer,
@@ -1236,6 +1244,18 @@ if TYPE_CHECKING:
         CustomersGetStateRequestTypedDict,
     )
     from .customers_getop import CustomersGetRequest, CustomersGetRequestTypedDict
+    from .customers_list_payment_methods_externalop import (
+        CustomersListPaymentMethodsExternalRequest,
+        CustomersListPaymentMethodsExternalRequestTypedDict,
+        CustomersListPaymentMethodsExternalResponse,
+        CustomersListPaymentMethodsExternalResponseTypedDict,
+    )
+    from .customers_list_payment_methodsop import (
+        CustomersListPaymentMethodsRequest,
+        CustomersListPaymentMethodsRequestTypedDict,
+        CustomersListPaymentMethodsResponse,
+        CustomersListPaymentMethodsResponseTypedDict,
+    )
     from .customers_update_externalop import (
         CustomersUpdateExternalRequest,
         CustomersUpdateExternalRequestTypedDict,
@@ -1847,6 +1867,10 @@ if TYPE_CHECKING:
         ListResourceOrganizationAccessTokenTypedDict,
     )
     from .listresource_payment_ import ListResourcePayment, ListResourcePaymentTypedDict
+    from .listresource_paymentmethod_ import (
+        ListResourcePaymentMethod,
+        ListResourcePaymentMethodTypedDict,
+    )
     from .listresource_product_ import ListResourceProduct, ListResourceProductTypedDict
     from .listresource_refund_ import ListResourceRefund, ListResourceRefundTypedDict
     from .listresource_subscription_ import (
@@ -2284,6 +2308,10 @@ if TYPE_CHECKING:
         OAuth2ClientConfigurationUpdateTypedDict,
     )
     from .oauth2clientpublic import OAuth2ClientPublic, OAuth2ClientPublicTypedDict
+    from .offsessionchargesnotenabled import (
+        OffSessionChargesNotEnabled,
+        OffSessionChargesNotEnabledData,
+    )
     from .order import (
         Order,
         OrderCustomFieldData,
@@ -2293,14 +2321,24 @@ if TYPE_CHECKING:
         OrderTypedDict,
     )
     from .orderbillingreason import OrderBillingReason
+    from .ordercreate import (
+        OrderCreate,
+        OrderCreateCustomFieldData,
+        OrderCreateCustomFieldDataTypedDict,
+        OrderCreateMetadata,
+        OrderCreateMetadataTypedDict,
+        OrderCreateTypedDict,
+    )
     from .ordercustomer import (
         OrderCustomer,
         OrderCustomerTaxID,
         OrderCustomerTaxIDTypedDict,
         OrderCustomerTypedDict,
     )
+    from .orderfinalize import OrderFinalize, OrderFinalizeTypedDict
     from .orderinvoice import OrderInvoice, OrderInvoiceTypedDict
     from .orderitemschema import OrderItemSchema, OrderItemSchemaTypedDict
+    from .ordernotdraft import OrderNotDraft, OrderNotDraftData
     from .ordernoteligibleforretry import (
         OrderNotEligibleForRetry,
         OrderNotEligibleForRetryData,
@@ -2323,6 +2361,14 @@ if TYPE_CHECKING:
         OrdersExportRequestTypedDict,
         OrdersExportResponse,
         OrdersExportResponseTypedDict,
+    )
+    from .orders_finalizeop import (
+        OrdersFinalizeRequest,
+        OrdersFinalizeRequestTypedDict,
+        OrdersFinalizeResponse402OrdersFinalize,
+        OrdersFinalizeResponse402OrdersFinalizeUnion,
+        OrdersFinalizeResponse403OrdersFinalize,
+        OrdersFinalizeResponse403OrdersFinalizeUnion,
     )
     from .orders_generate_invoiceop import (
         OrdersGenerateInvoiceRequest,
@@ -2422,6 +2468,10 @@ if TYPE_CHECKING:
         OrganizationNotificationSettings,
         OrganizationNotificationSettingsTypedDict,
     )
+    from .organizationnotreadyforpayments import (
+        OrganizationNotReadyForPayments,
+        OrganizationNotReadyForPaymentsData,
+    )
     from .organizations_getop import (
         OrganizationsGetRequest,
         OrganizationsGetRequestTypedDict,
@@ -2455,12 +2505,14 @@ if TYPE_CHECKING:
     )
     from .pagination import Pagination, PaginationTypedDict
     from .payment import Payment, PaymentTypedDict
+    from .paymentactionrequired import PaymentActionRequired, PaymentActionRequiredData
     from .paymentalreadyinprogress import (
         PaymentAlreadyInProgress,
         PaymentAlreadyInProgressData,
     )
     from .paymenterror import PaymentError, PaymentErrorData
     from .paymentfailed import PaymentFailed, PaymentFailedData
+    from .paymentmethod import PaymentMethod, PaymentMethodTypedDict
     from .paymentmethodcard import PaymentMethodCard, PaymentMethodCardTypedDict
     from .paymentmethodcardmetadata import (
         PaymentMethodCardMetadata,
@@ -2474,6 +2526,10 @@ if TYPE_CHECKING:
         PaymentMethodInUseByActiveSubscription,
         PaymentMethodInUseByActiveSubscriptionData,
     )
+    from .paymentmethodsetupfailed import (
+        PaymentMethodSetupFailed,
+        PaymentMethodSetupFailedData,
+    )
     from .paymentnotready import PaymentNotReady, PaymentNotReadyData
     from .paymentprocessor import PaymentProcessor
     from .payments_getop import PaymentsGetRequest, PaymentsGetRequestTypedDict
@@ -2484,6 +2540,8 @@ if TYPE_CHECKING:
         MethodFilterTypedDict,
         PaymentsListQueryParamCheckoutIDFilter,
         PaymentsListQueryParamCheckoutIDFilterTypedDict,
+        PaymentsListQueryParamCustomerIDFilter,
+        PaymentsListQueryParamCustomerIDFilterTypedDict,
         PaymentsListQueryParamOrderIDFilter,
         PaymentsListQueryParamOrderIDFilterTypedDict,
         PaymentsListQueryParamOrganizationIDFilter,
@@ -2906,6 +2964,10 @@ if TYPE_CHECKING:
         SubscriptionUncanceledMetadataTypedDict,
     )
     from .subscriptionupdate import SubscriptionUpdate, SubscriptionUpdateTypedDict
+    from .subscriptionupdatebase import (
+        SubscriptionUpdateBase,
+        SubscriptionUpdateBaseTypedDict,
+    )
     from .subscriptionupdatebillingperiod import (
         SubscriptionUpdateBillingPeriod,
         SubscriptionUpdateBillingPeriodTypedDict,
@@ -2922,47 +2984,17 @@ if TYPE_CHECKING:
         SubscriptionUpdateClearedMetadata,
         SubscriptionUpdateClearedMetadataTypedDict,
     )
-    from .subscriptionupdatedbillingperiodmetadata import (
-        SubscriptionUpdatedBillingPeriodMetadata,
-        SubscriptionUpdatedBillingPeriodMetadataTypedDict,
-    )
-    from .subscriptionupdateddiscountmetadata import (
-        SubscriptionUpdatedDiscountMetadata,
-        SubscriptionUpdatedDiscountMetadataTypedDict,
-    )
     from .subscriptionupdatedevent import (
         SubscriptionUpdatedEvent,
-        SubscriptionUpdatedEventMetadata,
-        SubscriptionUpdatedEventMetadataTypedDict,
         SubscriptionUpdatedEventTypedDict,
     )
-    from .subscriptionupdatediscount import (
-        SubscriptionUpdateDiscount,
-        SubscriptionUpdateDiscountTypedDict,
-    )
-    from .subscriptionupdatedproductmetadata import (
-        SubscriptionUpdatedProductMetadata,
-        SubscriptionUpdatedProductMetadataTypedDict,
-    )
-    from .subscriptionupdatedseatsmetadata import (
-        SubscriptionUpdatedSeatsMetadata,
-        SubscriptionUpdatedSeatsMetadataTypedDict,
-    )
-    from .subscriptionupdatedtrialmetadata import (
-        SubscriptionUpdatedTrialMetadata,
-        SubscriptionUpdatedTrialMetadataTypedDict,
-    )
-    from .subscriptionupdateproduct import (
-        SubscriptionUpdateProduct,
-        SubscriptionUpdateProductTypedDict,
+    from .subscriptionupdatedmetadata import (
+        SubscriptionUpdatedMetadata,
+        SubscriptionUpdatedMetadataTypedDict,
     )
     from .subscriptionupdateseats import (
         SubscriptionUpdateSeats,
         SubscriptionUpdateSeatsTypedDict,
-    )
-    from .subscriptionupdatetrial import (
-        SubscriptionUpdateTrial,
-        SubscriptionUpdateTrialTypedDict,
     )
     from .subtype import SubType
     from .systemevent import SystemEvent, SystemEventTypedDict
@@ -3892,6 +3924,8 @@ __all__ = [
     "CustomerOrganizationFeatureSettingsTypedDict",
     "CustomerOrganizationTypedDict",
     "CustomerPaymentMethod",
+    "CustomerPaymentMethodCard",
+    "CustomerPaymentMethodCardTypedDict",
     "CustomerPaymentMethodConfirm",
     "CustomerPaymentMethodConfirmTypedDict",
     "CustomerPaymentMethodCreate",
@@ -3902,6 +3936,8 @@ __all__ = [
     "CustomerPaymentMethodCreateSucceededResponse",
     "CustomerPaymentMethodCreateSucceededResponseTypedDict",
     "CustomerPaymentMethodCreateTypedDict",
+    "CustomerPaymentMethodGeneric",
+    "CustomerPaymentMethodGenericTypedDict",
     "CustomerPaymentMethodTypedDict",
     "CustomerPortalBenefitGrantsGetRequest",
     "CustomerPortalBenefitGrantsGetRequestTypedDict",
@@ -4218,6 +4254,14 @@ __all__ = [
     "CustomersGetStateExternalRequestTypedDict",
     "CustomersGetStateRequest",
     "CustomersGetStateRequestTypedDict",
+    "CustomersListPaymentMethodsExternalRequest",
+    "CustomersListPaymentMethodsExternalRequestTypedDict",
+    "CustomersListPaymentMethodsExternalResponse",
+    "CustomersListPaymentMethodsExternalResponseTypedDict",
+    "CustomersListPaymentMethodsRequest",
+    "CustomersListPaymentMethodsRequestTypedDict",
+    "CustomersListPaymentMethodsResponse",
+    "CustomersListPaymentMethodsResponseTypedDict",
     "CustomersListQueryParamOrganizationIDFilter",
     "CustomersListQueryParamOrganizationIDFilterTypedDict",
     "CustomersListRequest",
@@ -4532,6 +4576,8 @@ __all__ = [
     "ListResourceOrganizationAccessTokenTypedDict",
     "ListResourceOrganizationTypedDict",
     "ListResourcePayment",
+    "ListResourcePaymentMethod",
+    "ListResourcePaymentMethodTypedDict",
     "ListResourcePaymentTypedDict",
     "ListResourceProduct",
     "ListResourceProductTypedDict",
@@ -4845,6 +4891,8 @@ __all__ = [
     "Oauth2RequestTokenRequestBodyTypedDict",
     "Oauth2UserinfoResponseOauth2Userinfo",
     "Oauth2UserinfoResponseOauth2UserinfoTypedDict",
+    "OffSessionChargesNotEnabled",
+    "OffSessionChargesNotEnabledData",
     "OneTimeProducts",
     "OneTimeProductsNetRevenue",
     "OneTimeProductsNetRevenueTypedDict",
@@ -4853,6 +4901,12 @@ __all__ = [
     "OneTimeProductsTypedDict",
     "Order",
     "OrderBillingReason",
+    "OrderCreate",
+    "OrderCreateCustomFieldData",
+    "OrderCreateCustomFieldDataTypedDict",
+    "OrderCreateMetadata",
+    "OrderCreateMetadataTypedDict",
+    "OrderCreateTypedDict",
     "OrderCustomFieldData",
     "OrderCustomFieldDataTypedDict",
     "OrderCustomer",
@@ -4861,12 +4915,16 @@ __all__ = [
     "OrderCustomerTypedDict",
     "OrderDiscount",
     "OrderDiscountTypedDict",
+    "OrderFinalize",
+    "OrderFinalizeTypedDict",
     "OrderIDFilter",
     "OrderIDFilterTypedDict",
     "OrderInvoice",
     "OrderInvoiceTypedDict",
     "OrderItemSchema",
     "OrderItemSchemaTypedDict",
+    "OrderNotDraft",
+    "OrderNotDraftData",
     "OrderNotEligibleForRetry",
     "OrderNotEligibleForRetryData",
     "OrderPaidEvent",
@@ -4900,6 +4958,12 @@ __all__ = [
     "OrdersExportRequestTypedDict",
     "OrdersExportResponse",
     "OrdersExportResponseTypedDict",
+    "OrdersFinalizeRequest",
+    "OrdersFinalizeRequestTypedDict",
+    "OrdersFinalizeResponse402OrdersFinalize",
+    "OrdersFinalizeResponse402OrdersFinalizeUnion",
+    "OrdersFinalizeResponse403OrdersFinalize",
+    "OrdersFinalizeResponse403OrdersFinalizeUnion",
     "OrdersGenerateInvoiceRequest",
     "OrdersGenerateInvoiceRequestTypedDict",
     "OrdersGenerateInvoiceResponse422OrdersGenerateInvoice",
@@ -4970,6 +5034,8 @@ __all__ = [
     "OrganizationIDTypedDict",
     "OrganizationIndividualLegalEntitySchema",
     "OrganizationIndividualLegalEntitySchemaTypedDict",
+    "OrganizationNotReadyForPayments",
+    "OrganizationNotReadyForPaymentsData",
     "OrganizationNotificationSettings",
     "OrganizationNotificationSettingsTypedDict",
     "OrganizationSocialLink",
@@ -4993,12 +5059,15 @@ __all__ = [
     "Pagination",
     "PaginationTypedDict",
     "Payment",
+    "PaymentActionRequired",
+    "PaymentActionRequiredData",
     "PaymentAlreadyInProgress",
     "PaymentAlreadyInProgressData",
     "PaymentError",
     "PaymentErrorData",
     "PaymentFailed",
     "PaymentFailedData",
+    "PaymentMethod",
     "PaymentMethodCard",
     "PaymentMethodCardMetadata",
     "PaymentMethodCardMetadataTypedDict",
@@ -5007,6 +5076,9 @@ __all__ = [
     "PaymentMethodGenericTypedDict",
     "PaymentMethodInUseByActiveSubscription",
     "PaymentMethodInUseByActiveSubscriptionData",
+    "PaymentMethodSetupFailed",
+    "PaymentMethodSetupFailedData",
+    "PaymentMethodTypedDict",
     "PaymentNotReady",
     "PaymentNotReadyData",
     "PaymentProcessor",
@@ -5017,6 +5089,8 @@ __all__ = [
     "PaymentsGetRequestTypedDict",
     "PaymentsListQueryParamCheckoutIDFilter",
     "PaymentsListQueryParamCheckoutIDFilterTypedDict",
+    "PaymentsListQueryParamCustomerIDFilter",
+    "PaymentsListQueryParamCustomerIDFilterTypedDict",
     "PaymentsListQueryParamOrderIDFilter",
     "PaymentsListQueryParamOrderIDFilterTypedDict",
     "PaymentsListQueryParamOrganizationIDFilter",
@@ -5307,6 +5381,8 @@ __all__ = [
     "SubscriptionUncanceledMetadata",
     "SubscriptionUncanceledMetadataTypedDict",
     "SubscriptionUpdate",
+    "SubscriptionUpdateBase",
+    "SubscriptionUpdateBaseTypedDict",
     "SubscriptionUpdateBillingPeriod",
     "SubscriptionUpdateBillingPeriodTypedDict",
     "SubscriptionUpdateClear",
@@ -5315,29 +5391,13 @@ __all__ = [
     "SubscriptionUpdateClearedEventTypedDict",
     "SubscriptionUpdateClearedMetadata",
     "SubscriptionUpdateClearedMetadataTypedDict",
-    "SubscriptionUpdateDiscount",
-    "SubscriptionUpdateDiscountTypedDict",
-    "SubscriptionUpdateProduct",
-    "SubscriptionUpdateProductTypedDict",
     "SubscriptionUpdateSeats",
     "SubscriptionUpdateSeatsTypedDict",
-    "SubscriptionUpdateTrial",
-    "SubscriptionUpdateTrialTypedDict",
     "SubscriptionUpdateTypedDict",
-    "SubscriptionUpdatedBillingPeriodMetadata",
-    "SubscriptionUpdatedBillingPeriodMetadataTypedDict",
-    "SubscriptionUpdatedDiscountMetadata",
-    "SubscriptionUpdatedDiscountMetadataTypedDict",
     "SubscriptionUpdatedEvent",
-    "SubscriptionUpdatedEventMetadata",
-    "SubscriptionUpdatedEventMetadataTypedDict",
     "SubscriptionUpdatedEventTypedDict",
-    "SubscriptionUpdatedProductMetadata",
-    "SubscriptionUpdatedProductMetadataTypedDict",
-    "SubscriptionUpdatedSeatsMetadata",
-    "SubscriptionUpdatedSeatsMetadataTypedDict",
-    "SubscriptionUpdatedTrialMetadata",
-    "SubscriptionUpdatedTrialMetadataTypedDict",
+    "SubscriptionUpdatedMetadata",
+    "SubscriptionUpdatedMetadataTypedDict",
     "SubscriptionsCreateSubscriptionCreate",
     "SubscriptionsCreateSubscriptionCreateTypedDict",
     "SubscriptionsExportRequest",
@@ -6260,6 +6320,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerOrganizationFeatureSettingsTypedDict": ".customerorganizationfeaturesettings",
     "CustomerPaymentMethod": ".customerpaymentmethod",
     "CustomerPaymentMethodTypedDict": ".customerpaymentmethod",
+    "CustomerPaymentMethodCard": ".customerpaymentmethodcard",
+    "CustomerPaymentMethodCardTypedDict": ".customerpaymentmethodcard",
     "CustomerPaymentMethodConfirm": ".customerpaymentmethodconfirm",
     "CustomerPaymentMethodConfirmTypedDict": ".customerpaymentmethodconfirm",
     "CustomerPaymentMethodCreate": ".customerpaymentmethodcreate",
@@ -6270,6 +6332,8 @@ _dynamic_imports: dict[str, str] = {
     "CustomerPaymentMethodCreateResponseTypedDict": ".customerpaymentmethodcreateresponse",
     "CustomerPaymentMethodCreateSucceededResponse": ".customerpaymentmethodcreatesucceededresponse",
     "CustomerPaymentMethodCreateSucceededResponseTypedDict": ".customerpaymentmethodcreatesucceededresponse",
+    "CustomerPaymentMethodGeneric": ".customerpaymentmethodgeneric",
+    "CustomerPaymentMethodGenericTypedDict": ".customerpaymentmethodgeneric",
     "CustomerPortalCustomer": ".customerportalcustomer",
     "CustomerPortalCustomerTaxID": ".customerportalcustomer",
     "CustomerPortalCustomerTaxIDTypedDict": ".customerportalcustomer",
@@ -6312,6 +6376,14 @@ _dynamic_imports: dict[str, str] = {
     "CustomersGetStateRequestTypedDict": ".customers_get_stateop",
     "CustomersGetRequest": ".customers_getop",
     "CustomersGetRequestTypedDict": ".customers_getop",
+    "CustomersListPaymentMethodsExternalRequest": ".customers_list_payment_methods_externalop",
+    "CustomersListPaymentMethodsExternalRequestTypedDict": ".customers_list_payment_methods_externalop",
+    "CustomersListPaymentMethodsExternalResponse": ".customers_list_payment_methods_externalop",
+    "CustomersListPaymentMethodsExternalResponseTypedDict": ".customers_list_payment_methods_externalop",
+    "CustomersListPaymentMethodsRequest": ".customers_list_payment_methodsop",
+    "CustomersListPaymentMethodsRequestTypedDict": ".customers_list_payment_methodsop",
+    "CustomersListPaymentMethodsResponse": ".customers_list_payment_methodsop",
+    "CustomersListPaymentMethodsResponseTypedDict": ".customers_list_payment_methodsop",
     "CustomersUpdateExternalRequest": ".customers_update_externalop",
     "CustomersUpdateExternalRequestTypedDict": ".customers_update_externalop",
     "CustomersUpdateRequest": ".customers_updateop",
@@ -6760,6 +6832,8 @@ _dynamic_imports: dict[str, str] = {
     "ListResourceOrganizationAccessTokenTypedDict": ".listresource_organizationaccesstoken_",
     "ListResourcePayment": ".listresource_payment_",
     "ListResourcePaymentTypedDict": ".listresource_payment_",
+    "ListResourcePaymentMethod": ".listresource_paymentmethod_",
+    "ListResourcePaymentMethodTypedDict": ".listresource_paymentmethod_",
     "ListResourceProduct": ".listresource_product_",
     "ListResourceProductTypedDict": ".listresource_product_",
     "ListResourceRefund": ".listresource_refund_",
@@ -7145,6 +7219,8 @@ _dynamic_imports: dict[str, str] = {
     "OAuth2ClientConfigurationUpdateTypedDict": ".oauth2clientconfigurationupdate",
     "OAuth2ClientPublic": ".oauth2clientpublic",
     "OAuth2ClientPublicTypedDict": ".oauth2clientpublic",
+    "OffSessionChargesNotEnabled": ".offsessionchargesnotenabled",
+    "OffSessionChargesNotEnabledData": ".offsessionchargesnotenabled",
     "Order": ".order",
     "OrderCustomFieldData": ".order",
     "OrderCustomFieldDataTypedDict": ".order",
@@ -7152,14 +7228,24 @@ _dynamic_imports: dict[str, str] = {
     "OrderDiscountTypedDict": ".order",
     "OrderTypedDict": ".order",
     "OrderBillingReason": ".orderbillingreason",
+    "OrderCreate": ".ordercreate",
+    "OrderCreateCustomFieldData": ".ordercreate",
+    "OrderCreateCustomFieldDataTypedDict": ".ordercreate",
+    "OrderCreateMetadata": ".ordercreate",
+    "OrderCreateMetadataTypedDict": ".ordercreate",
+    "OrderCreateTypedDict": ".ordercreate",
     "OrderCustomer": ".ordercustomer",
     "OrderCustomerTaxID": ".ordercustomer",
     "OrderCustomerTaxIDTypedDict": ".ordercustomer",
     "OrderCustomerTypedDict": ".ordercustomer",
+    "OrderFinalize": ".orderfinalize",
+    "OrderFinalizeTypedDict": ".orderfinalize",
     "OrderInvoice": ".orderinvoice",
     "OrderInvoiceTypedDict": ".orderinvoice",
     "OrderItemSchema": ".orderitemschema",
     "OrderItemSchemaTypedDict": ".orderitemschema",
+    "OrderNotDraft": ".ordernotdraft",
+    "OrderNotDraftData": ".ordernotdraft",
     "OrderNotEligibleForRetry": ".ordernoteligibleforretry",
     "OrderNotEligibleForRetryData": ".ordernoteligibleforretry",
     "OrderPaidEvent": ".orderpaidevent",
@@ -7182,6 +7268,12 @@ _dynamic_imports: dict[str, str] = {
     "OrdersExportRequestTypedDict": ".orders_exportop",
     "OrdersExportResponse": ".orders_exportop",
     "OrdersExportResponseTypedDict": ".orders_exportop",
+    "OrdersFinalizeRequest": ".orders_finalizeop",
+    "OrdersFinalizeRequestTypedDict": ".orders_finalizeop",
+    "OrdersFinalizeResponse402OrdersFinalize": ".orders_finalizeop",
+    "OrdersFinalizeResponse402OrdersFinalizeUnion": ".orders_finalizeop",
+    "OrdersFinalizeResponse403OrdersFinalize": ".orders_finalizeop",
+    "OrdersFinalizeResponse403OrdersFinalizeUnion": ".orders_finalizeop",
     "OrdersGenerateInvoiceRequest": ".orders_generate_invoiceop",
     "OrdersGenerateInvoiceRequestTypedDict": ".orders_generate_invoiceop",
     "OrdersGenerateInvoiceResponse422OrdersGenerateInvoice": ".orders_generate_invoiceop",
@@ -7252,6 +7344,8 @@ _dynamic_imports: dict[str, str] = {
     "OrganizationIndividualLegalEntitySchemaTypedDict": ".organizationindividuallegalentityschema",
     "OrganizationNotificationSettings": ".organizationnotificationsettings",
     "OrganizationNotificationSettingsTypedDict": ".organizationnotificationsettings",
+    "OrganizationNotReadyForPayments": ".organizationnotreadyforpayments",
+    "OrganizationNotReadyForPaymentsData": ".organizationnotreadyforpayments",
     "OrganizationsGetRequest": ".organizations_getop",
     "OrganizationsGetRequestTypedDict": ".organizations_getop",
     "OrganizationsListRequest": ".organizations_listop",
@@ -7275,12 +7369,16 @@ _dynamic_imports: dict[str, str] = {
     "PaginationTypedDict": ".pagination",
     "Payment": ".payment",
     "PaymentTypedDict": ".payment",
+    "PaymentActionRequired": ".paymentactionrequired",
+    "PaymentActionRequiredData": ".paymentactionrequired",
     "PaymentAlreadyInProgress": ".paymentalreadyinprogress",
     "PaymentAlreadyInProgressData": ".paymentalreadyinprogress",
     "PaymentError": ".paymenterror",
     "PaymentErrorData": ".paymenterror",
     "PaymentFailed": ".paymentfailed",
     "PaymentFailedData": ".paymentfailed",
+    "PaymentMethod": ".paymentmethod",
+    "PaymentMethodTypedDict": ".paymentmethod",
     "PaymentMethodCard": ".paymentmethodcard",
     "PaymentMethodCardTypedDict": ".paymentmethodcard",
     "PaymentMethodCardMetadata": ".paymentmethodcardmetadata",
@@ -7289,6 +7387,8 @@ _dynamic_imports: dict[str, str] = {
     "PaymentMethodGenericTypedDict": ".paymentmethodgeneric",
     "PaymentMethodInUseByActiveSubscription": ".paymentmethodinusebyactivesubscription",
     "PaymentMethodInUseByActiveSubscriptionData": ".paymentmethodinusebyactivesubscription",
+    "PaymentMethodSetupFailed": ".paymentmethodsetupfailed",
+    "PaymentMethodSetupFailedData": ".paymentmethodsetupfailed",
     "PaymentNotReady": ".paymentnotready",
     "PaymentNotReadyData": ".paymentnotready",
     "PaymentProcessor": ".paymentprocessor",
@@ -7300,6 +7400,8 @@ _dynamic_imports: dict[str, str] = {
     "MethodFilterTypedDict": ".payments_listop",
     "PaymentsListQueryParamCheckoutIDFilter": ".payments_listop",
     "PaymentsListQueryParamCheckoutIDFilterTypedDict": ".payments_listop",
+    "PaymentsListQueryParamCustomerIDFilter": ".payments_listop",
+    "PaymentsListQueryParamCustomerIDFilterTypedDict": ".payments_listop",
     "PaymentsListQueryParamOrderIDFilter": ".payments_listop",
     "PaymentsListQueryParamOrderIDFilterTypedDict": ".payments_listop",
     "PaymentsListQueryParamOrganizationIDFilter": ".payments_listop",
@@ -7639,6 +7741,8 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionUncanceledMetadataTypedDict": ".subscriptionuncanceledmetadata",
     "SubscriptionUpdate": ".subscriptionupdate",
     "SubscriptionUpdateTypedDict": ".subscriptionupdate",
+    "SubscriptionUpdateBase": ".subscriptionupdatebase",
+    "SubscriptionUpdateBaseTypedDict": ".subscriptionupdatebase",
     "SubscriptionUpdateBillingPeriod": ".subscriptionupdatebillingperiod",
     "SubscriptionUpdateBillingPeriodTypedDict": ".subscriptionupdatebillingperiod",
     "SubscriptionUpdateClear": ".subscriptionupdateclear",
@@ -7647,28 +7751,12 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionUpdateClearedEventTypedDict": ".subscriptionupdateclearedevent",
     "SubscriptionUpdateClearedMetadata": ".subscriptionupdateclearedmetadata",
     "SubscriptionUpdateClearedMetadataTypedDict": ".subscriptionupdateclearedmetadata",
-    "SubscriptionUpdatedBillingPeriodMetadata": ".subscriptionupdatedbillingperiodmetadata",
-    "SubscriptionUpdatedBillingPeriodMetadataTypedDict": ".subscriptionupdatedbillingperiodmetadata",
-    "SubscriptionUpdatedDiscountMetadata": ".subscriptionupdateddiscountmetadata",
-    "SubscriptionUpdatedDiscountMetadataTypedDict": ".subscriptionupdateddiscountmetadata",
     "SubscriptionUpdatedEvent": ".subscriptionupdatedevent",
-    "SubscriptionUpdatedEventMetadata": ".subscriptionupdatedevent",
-    "SubscriptionUpdatedEventMetadataTypedDict": ".subscriptionupdatedevent",
     "SubscriptionUpdatedEventTypedDict": ".subscriptionupdatedevent",
-    "SubscriptionUpdateDiscount": ".subscriptionupdatediscount",
-    "SubscriptionUpdateDiscountTypedDict": ".subscriptionupdatediscount",
-    "SubscriptionUpdatedProductMetadata": ".subscriptionupdatedproductmetadata",
-    "SubscriptionUpdatedProductMetadataTypedDict": ".subscriptionupdatedproductmetadata",
-    "SubscriptionUpdatedSeatsMetadata": ".subscriptionupdatedseatsmetadata",
-    "SubscriptionUpdatedSeatsMetadataTypedDict": ".subscriptionupdatedseatsmetadata",
-    "SubscriptionUpdatedTrialMetadata": ".subscriptionupdatedtrialmetadata",
-    "SubscriptionUpdatedTrialMetadataTypedDict": ".subscriptionupdatedtrialmetadata",
-    "SubscriptionUpdateProduct": ".subscriptionupdateproduct",
-    "SubscriptionUpdateProductTypedDict": ".subscriptionupdateproduct",
+    "SubscriptionUpdatedMetadata": ".subscriptionupdatedmetadata",
+    "SubscriptionUpdatedMetadataTypedDict": ".subscriptionupdatedmetadata",
     "SubscriptionUpdateSeats": ".subscriptionupdateseats",
     "SubscriptionUpdateSeatsTypedDict": ".subscriptionupdateseats",
-    "SubscriptionUpdateTrial": ".subscriptionupdatetrial",
-    "SubscriptionUpdateTrialTypedDict": ".subscriptionupdatetrial",
     "SubType": ".subtype",
     "SystemEvent": ".systemevent",
     "SystemEventTypedDict": ".systemevent",

@@ -2,25 +2,9 @@
 
 from __future__ import annotations
 from .customer import Customer, CustomerTypedDict
-from .subscriptionupdatedbillingperiodmetadata import (
-    SubscriptionUpdatedBillingPeriodMetadata,
-    SubscriptionUpdatedBillingPeriodMetadataTypedDict,
-)
-from .subscriptionupdateddiscountmetadata import (
-    SubscriptionUpdatedDiscountMetadata,
-    SubscriptionUpdatedDiscountMetadataTypedDict,
-)
-from .subscriptionupdatedproductmetadata import (
-    SubscriptionUpdatedProductMetadata,
-    SubscriptionUpdatedProductMetadataTypedDict,
-)
-from .subscriptionupdatedseatsmetadata import (
-    SubscriptionUpdatedSeatsMetadata,
-    SubscriptionUpdatedSeatsMetadataTypedDict,
-)
-from .subscriptionupdatedtrialmetadata import (
-    SubscriptionUpdatedTrialMetadata,
-    SubscriptionUpdatedTrialMetadataTypedDict,
+from .subscriptionupdatedmetadata import (
+    SubscriptionUpdatedMetadata,
+    SubscriptionUpdatedMetadataTypedDict,
 )
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
@@ -28,32 +12,8 @@ from polar_sdk.utils import validate_const
 import pydantic
 from pydantic import model_serializer
 from pydantic.functional_validators import AfterValidator
-from typing import Literal, Optional, Union
-from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
-
-
-SubscriptionUpdatedEventMetadataTypedDict = TypeAliasType(
-    "SubscriptionUpdatedEventMetadataTypedDict",
-    Union[
-        SubscriptionUpdatedDiscountMetadataTypedDict,
-        SubscriptionUpdatedTrialMetadataTypedDict,
-        SubscriptionUpdatedBillingPeriodMetadataTypedDict,
-        SubscriptionUpdatedProductMetadataTypedDict,
-        SubscriptionUpdatedSeatsMetadataTypedDict,
-    ],
-)
-
-
-SubscriptionUpdatedEventMetadata = TypeAliasType(
-    "SubscriptionUpdatedEventMetadata",
-    Union[
-        SubscriptionUpdatedDiscountMetadata,
-        SubscriptionUpdatedTrialMetadata,
-        SubscriptionUpdatedBillingPeriodMetadata,
-        SubscriptionUpdatedProductMetadata,
-        SubscriptionUpdatedSeatsMetadata,
-    ],
-)
+from typing import Literal, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class SubscriptionUpdatedEventTypedDict(TypedDict):
@@ -73,7 +33,7 @@ class SubscriptionUpdatedEventTypedDict(TypedDict):
     r"""ID of the customer in your system associated with the event."""
     label: str
     r"""Human readable label of the event type."""
-    metadata: SubscriptionUpdatedEventMetadataTypedDict
+    metadata: SubscriptionUpdatedMetadataTypedDict
     member_id: NotRequired[Nullable[str]]
     r"""ID of the member within the customer's organization who performed the action inside B2B."""
     external_member_id: NotRequired[Nullable[str]]
@@ -112,7 +72,7 @@ class SubscriptionUpdatedEvent(BaseModel):
     label: str
     r"""Human readable label of the event type."""
 
-    metadata: SubscriptionUpdatedEventMetadata
+    metadata: SubscriptionUpdatedMetadata
 
     member_id: OptionalNullable[str] = UNSET
     r"""ID of the member within the customer's organization who performed the action inside B2B."""

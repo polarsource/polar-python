@@ -3,6 +3,10 @@
 from __future__ import annotations
 from .subscriptioncancel import SubscriptionCancel, SubscriptionCancelTypedDict
 from .subscriptionrevoke import SubscriptionRevoke, SubscriptionRevokeTypedDict
+from .subscriptionupdatebase import (
+    SubscriptionUpdateBase,
+    SubscriptionUpdateBaseTypedDict,
+)
 from .subscriptionupdatebillingperiod import (
     SubscriptionUpdateBillingPeriod,
     SubscriptionUpdateBillingPeriodTypedDict,
@@ -11,21 +15,9 @@ from .subscriptionupdateclear import (
     SubscriptionUpdateClear,
     SubscriptionUpdateClearTypedDict,
 )
-from .subscriptionupdatediscount import (
-    SubscriptionUpdateDiscount,
-    SubscriptionUpdateDiscountTypedDict,
-)
-from .subscriptionupdateproduct import (
-    SubscriptionUpdateProduct,
-    SubscriptionUpdateProductTypedDict,
-)
 from .subscriptionupdateseats import (
     SubscriptionUpdateSeats,
     SubscriptionUpdateSeatsTypedDict,
-)
-from .subscriptionupdatetrial import (
-    SubscriptionUpdateTrial,
-    SubscriptionUpdateTrialTypedDict,
 )
 from typing import Union
 from typing_extensions import TypeAliasType
@@ -34,14 +26,12 @@ from typing_extensions import TypeAliasType
 SubscriptionUpdateTypedDict = TypeAliasType(
     "SubscriptionUpdateTypedDict",
     Union[
-        SubscriptionUpdateDiscountTypedDict,
-        SubscriptionUpdateTrialTypedDict,
         SubscriptionUpdateBillingPeriodTypedDict,
         SubscriptionUpdateClearTypedDict,
-        SubscriptionUpdateProductTypedDict,
         SubscriptionUpdateSeatsTypedDict,
         SubscriptionCancelTypedDict,
         SubscriptionRevokeTypedDict,
+        SubscriptionUpdateBaseTypedDict,
     ],
 )
 
@@ -49,13 +39,11 @@ SubscriptionUpdateTypedDict = TypeAliasType(
 SubscriptionUpdate = TypeAliasType(
     "SubscriptionUpdate",
     Union[
-        SubscriptionUpdateDiscount,
-        SubscriptionUpdateTrial,
         SubscriptionUpdateBillingPeriod,
         SubscriptionUpdateClear,
-        SubscriptionUpdateProduct,
         SubscriptionUpdateSeats,
         SubscriptionCancel,
         SubscriptionRevoke,
+        SubscriptionUpdateBase,
     ],
 )

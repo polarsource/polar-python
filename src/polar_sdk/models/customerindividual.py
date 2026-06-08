@@ -52,6 +52,8 @@ class CustomerIndividualTypedDict(TypedDict):
     type: Literal["individual"]
     r"""The type of customer."""
     locale: NotRequired[Nullable[str]]
+    default_payment_method_id: NotRequired[Nullable[str]]
+    r"""The ID of the customer's default payment method, if any. Use the payment methods endpoint to retrieve its details."""
 
 
 class CustomerIndividual(BaseModel):
@@ -100,9 +102,12 @@ class CustomerIndividual(BaseModel):
 
     locale: OptionalNullable[str] = UNSET
 
+    default_payment_method_id: OptionalNullable[str] = UNSET
+    r"""The ID of the customer's default payment method, if any. Use the payment methods endpoint to retrieve its details."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["external_id", "locale"]
+        optional_fields = ["external_id", "locale", "default_payment_method_id"]
         nullable_fields = [
             "modified_at",
             "external_id",
@@ -110,6 +115,7 @@ class CustomerIndividual(BaseModel):
             "billing_address",
             "tax_id",
             "locale",
+            "default_payment_method_id",
             "deleted_at",
         ]
         null_default_fields = []

@@ -189,10 +189,11 @@ with Polar() as polar:
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                      | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| models.PaymentMethodSetupFailed | 400                             | application/json                |
+| models.HTTPValidationError      | 422                             | application/json                |
+| models.SDKError                 | 4XX, 5XX                        | \*/\*                           |
 
 ## confirm_payment_method
 

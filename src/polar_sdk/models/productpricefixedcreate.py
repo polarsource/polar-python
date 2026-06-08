@@ -144,6 +144,7 @@ class ProductPriceFixedCreateTypedDict(TypedDict):
     - YER: 200
     - ZAR: 9
     - ZMW: 10
+    - Other currencies: 50 minor units
     """
     amount_type: Literal["fixed"]
     price_currency: NotRequired[PresentmentCurrency]
@@ -283,6 +284,7 @@ class ProductPriceFixedCreate(BaseModel):
     - YER: 200
     - ZAR: 9
     - ZMW: 10
+    - Other currencies: 50 minor units
     """
 
     AMOUNT_TYPE: Annotated[

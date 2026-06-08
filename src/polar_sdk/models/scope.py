@@ -10,8 +10,6 @@ class Scope(str, Enum):
     EMAIL = "email"
     USER_READ = "user:read"
     USER_WRITE = "user:write"
-    WEB_READ = "web:read"
-    WEB_WRITE = "web:write"
     ORGANIZATIONS_READ = "organizations:read"
     ORGANIZATIONS_WRITE = "organizations:write"
     CUSTOM_FIELDS_READ = "custom_fields:read"

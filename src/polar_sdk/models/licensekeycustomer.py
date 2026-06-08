@@ -47,6 +47,8 @@ class LicenseKeyCustomerTypedDict(TypedDict):
     email: NotRequired[Nullable[str]]
     r"""The email address of the customer. This must be unique within the organization."""
     locale: NotRequired[Nullable[str]]
+    default_payment_method_id: NotRequired[Nullable[str]]
+    r"""The ID of the customer's default payment method, if any. Use the payment methods endpoint to retrieve its details."""
 
 
 class LicenseKeyCustomer(BaseModel):
@@ -89,9 +91,17 @@ class LicenseKeyCustomer(BaseModel):
 
     locale: OptionalNullable[str] = UNSET
 
+    default_payment_method_id: OptionalNullable[str] = UNSET
+    r"""The ID of the customer's default payment method, if any. Use the payment methods endpoint to retrieve its details."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["external_id", "email", "locale"]
+        optional_fields = [
+            "external_id",
+            "email",
+            "locale",
+            "default_payment_method_id",
+        ]
         nullable_fields = [
             "modified_at",
             "external_id",
@@ -100,6 +110,7 @@ class LicenseKeyCustomer(BaseModel):
             "billing_address",
             "tax_id",
             "locale",
+            "default_payment_method_id",
             "deleted_at",
         ]
         null_default_fields = []
