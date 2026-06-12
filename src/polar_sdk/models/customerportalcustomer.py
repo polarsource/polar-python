@@ -41,6 +41,7 @@ class CustomerPortalCustomerTypedDict(TypedDict):
     oauth_accounts: Dict[str, CustomerPortalOAuthAccountTypedDict]
     default_payment_method_id: NotRequired[Nullable[str]]
     type: NotRequired[Nullable[CustomerType]]
+    locale: NotRequired[Nullable[str]]
 
 
 class CustomerPortalCustomer(BaseModel):
@@ -71,9 +72,11 @@ class CustomerPortalCustomer(BaseModel):
 
     type: OptionalNullable[CustomerType] = UNSET
 
+    locale: OptionalNullable[str] = UNSET
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["default_payment_method_id", "type"]
+        optional_fields = ["default_payment_method_id", "type", "locale"]
         nullable_fields = [
             "modified_at",
             "email",
@@ -83,6 +86,7 @@ class CustomerPortalCustomer(BaseModel):
             "tax_id",
             "default_payment_method_id",
             "type",
+            "locale",
         ]
         null_default_fields = []
 

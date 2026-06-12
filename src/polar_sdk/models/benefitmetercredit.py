@@ -5,6 +5,7 @@ from .benefitmetercreditproperties import (
     BenefitMeterCreditProperties,
     BenefitMeterCreditPropertiesTypedDict,
 )
+from .benefitvisibility import BenefitVisibility
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -39,8 +40,10 @@ class BenefitMeterCreditTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     metadata: Dict[str, MetadataOutputTypeTypedDict]
+    visibility: BenefitVisibility
     properties: BenefitMeterCreditPropertiesTypedDict
     r"""Properties for a benefit of type `meter_unit`."""
+    visibility_configurable: bool
     type: Literal["meter_credit"]
 
 
@@ -76,8 +79,12 @@ class BenefitMeterCredit(BaseModel):
 
     metadata: Dict[str, MetadataOutputType]
 
+    visibility: BenefitVisibility
+
     properties: BenefitMeterCreditProperties
     r"""Properties for a benefit of type `meter_unit`."""
+
+    visibility_configurable: bool
 
     TYPE: Annotated[
         Annotated[

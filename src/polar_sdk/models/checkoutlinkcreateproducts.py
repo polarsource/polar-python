@@ -53,6 +53,8 @@ class CheckoutLinkCreateProductsTypedDict(TypedDict):
     r"""Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting."""
     discount_id: NotRequired[Nullable[str]]
     r"""ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored."""
+    seats: NotRequired[Nullable[int]]
+    r"""Preconfigured number of seats for seat-based pricing. When set, checkout sessions created from this link are locked to this number of seats and the customer won't be able to change it. All products on the link must use seat-based pricing and allow this number of seats. If the products no longer accommodate this value when the link is opened, it'll be ignored."""
     success_url: NotRequired[Nullable[str]]
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
     return_url: NotRequired[Nullable[str]]
@@ -103,6 +105,9 @@ class CheckoutLinkCreateProducts(BaseModel):
     discount_id: OptionalNullable[str] = UNSET
     r"""ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored."""
 
+    seats: OptionalNullable[int] = UNSET
+    r"""Preconfigured number of seats for seat-based pricing. When set, checkout sessions created from this link are locked to this number of seats and the customer won't be able to change it. All products on the link must use seat-based pricing and allow this number of seats. If the products no longer accommodate this value when the link is opened, it'll be ignored."""
+
     success_url: OptionalNullable[str] = UNSET
     r"""URL where the customer will be redirected after a successful payment.You can add the `checkout_id={CHECKOUT_ID}` query parameter to retrieve the checkout session id."""
 
@@ -119,6 +124,7 @@ class CheckoutLinkCreateProducts(BaseModel):
             "allow_discount_codes",
             "require_billing_address",
             "discount_id",
+            "seats",
             "success_url",
             "return_url",
         ]
@@ -127,6 +133,7 @@ class CheckoutLinkCreateProducts(BaseModel):
             "trial_interval_count",
             "label",
             "discount_id",
+            "seats",
             "success_url",
             "return_url",
         ]

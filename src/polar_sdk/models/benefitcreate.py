@@ -23,6 +23,10 @@ from .benefitmetercreditcreate import (
     BenefitMeterCreditCreate,
     BenefitMeterCreditCreateTypedDict,
 )
+from .benefitslacksharedchannelcreate import (
+    BenefitSlackSharedChannelCreate,
+    BenefitSlackSharedChannelCreateTypedDict,
+)
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
@@ -39,6 +43,7 @@ BenefitCreateTypedDict = TypeAliasType(
         BenefitLicenseKeysCreateTypedDict,
         BenefitMeterCreditCreateTypedDict,
         BenefitFeatureFlagCreateTypedDict,
+        BenefitSlackSharedChannelCreateTypedDict,
     ],
 )
 
@@ -52,6 +57,7 @@ BenefitCreate = Annotated[
         Annotated[BenefitGitHubRepositoryCreate, Tag("github_repository")],
         Annotated[BenefitLicenseKeysCreate, Tag("license_keys")],
         Annotated[BenefitMeterCreditCreate, Tag("meter_credit")],
+        Annotated[BenefitSlackSharedChannelCreate, Tag("slack_shared_channel")],
     ],
     Discriminator(lambda m: get_discriminator(m, "type", "type")),
 ]

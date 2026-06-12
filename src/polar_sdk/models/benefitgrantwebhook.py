@@ -29,6 +29,10 @@ from .benefitgrantmetercreditwebhook import (
     BenefitGrantMeterCreditWebhook,
     BenefitGrantMeterCreditWebhookTypedDict,
 )
+from .benefitgrantslacksharedchannelwebhook import (
+    BenefitGrantSlackSharedChannelWebhook,
+    BenefitGrantSlackSharedChannelWebhookTypedDict,
+)
 from typing import Union
 from typing_extensions import TypeAliasType
 
@@ -43,6 +47,7 @@ BenefitGrantWebhookTypedDict = TypeAliasType(
         BenefitGrantLicenseKeysWebhookTypedDict,
         BenefitGrantMeterCreditWebhookTypedDict,
         BenefitGrantFeatureFlagWebhookTypedDict,
+        BenefitGrantSlackSharedChannelWebhookTypedDict,
     ],
 )
 
@@ -57,5 +62,6 @@ BenefitGrantWebhook = TypeAliasType(
         BenefitGrantLicenseKeysWebhook,
         BenefitGrantMeterCreditWebhook,
         BenefitGrantFeatureFlagWebhook,
+        BenefitGrantSlackSharedChannelWebhook,
     ],
 )

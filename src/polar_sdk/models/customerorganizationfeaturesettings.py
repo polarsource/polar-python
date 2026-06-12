@@ -11,6 +11,8 @@ class CustomerOrganizationFeatureSettingsTypedDict(TypedDict):
 
     member_model_enabled: NotRequired[bool]
     r"""Whether the member model is enabled for this organization."""
+    checkout_localization_enabled: NotRequired[bool]
+    r"""Whether localization is enabled for this organization."""
 
 
 class CustomerOrganizationFeatureSettings(BaseModel):
@@ -18,3 +20,6 @@ class CustomerOrganizationFeatureSettings(BaseModel):
 
     member_model_enabled: Optional[bool] = False
     r"""Whether the member model is enabled for this organization."""
+
+    checkout_localization_enabled: Optional[bool] = False
+    r"""Whether localization is enabled for this organization."""

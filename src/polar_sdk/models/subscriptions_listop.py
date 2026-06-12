@@ -28,6 +28,7 @@ from .productbillingtype import ProductBillingType
 from .productsortproperty import ProductSortProperty
 from .productvisibility import ProductVisibility
 from .subscriptionsortproperty import SubscriptionSortProperty
+from .subscriptionstatus import SubscriptionStatus
 from .timeinterval import TimeInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
@@ -90,6 +91,18 @@ DiscountIDFilter = TypeAliasType("DiscountIDFilter", Union[str, List[str]])
 r"""Filter by discount ID."""
 
 
+StatusFilterTypedDict = TypeAliasType(
+    "StatusFilterTypedDict", Union[SubscriptionStatus, List[SubscriptionStatus]]
+)
+r"""Filter by subscription status."""
+
+
+StatusFilter = TypeAliasType(
+    "StatusFilter", Union[SubscriptionStatus, List[SubscriptionStatus]]
+)
+r"""Filter by subscription status."""
+
+
 CustomerCancellationReasonFilterTypedDict = TypeAliasType(
     "CustomerCancellationReasonFilterTypedDict",
     Union[CustomerCancellationReason, List[CustomerCancellationReason]],
@@ -127,6 +140,8 @@ class SubscriptionsListRequestTypedDict(TypedDict):
     r"""Filter by discount ID."""
     active: NotRequired[Nullable[bool]]
     r"""Filter by active or inactive subscription."""
+    status: NotRequired[Nullable[StatusFilterTypedDict]]
+    r"""Filter by subscription status."""
     cancel_at_period_end: NotRequired[Nullable[bool]]
     r"""Filter by subscriptions that are set to cancel at period end."""
     customer_cancellation_reason: NotRequired[
@@ -180,9 +195,18 @@ class SubscriptionsListRequest(BaseModel):
 
     active: Annotated[
         OptionalNullable[bool],
+        pydantic.Field(
+            deprecated="warning: ** DEPRECATED ** - This will be removed in a future release, please migrate away from it as soon as possible."
+        ),
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by active or inactive subscription."""
+
+    status: Annotated[
+        OptionalNullable[StatusFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by subscription status."""
 
     cancel_at_period_end: Annotated[
         OptionalNullable[bool],
@@ -241,6 +265,7 @@ class SubscriptionsListRequest(BaseModel):
             "external_customer_id",
             "discount_id",
             "active",
+            "status",
             "cancel_at_period_end",
             "customer_cancellation_reason",
             "canceled_at_after",
@@ -257,6 +282,7 @@ class SubscriptionsListRequest(BaseModel):
             "external_customer_id",
             "discount_id",
             "active",
+            "status",
             "cancel_at_period_end",
             "customer_cancellation_reason",
             "canceled_at_after",

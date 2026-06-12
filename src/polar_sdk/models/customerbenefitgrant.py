@@ -29,6 +29,10 @@ from .customerbenefitgrantmetercredit import (
     CustomerBenefitGrantMeterCredit,
     CustomerBenefitGrantMeterCreditTypedDict,
 )
+from .customerbenefitgrantslacksharedchannel import (
+    CustomerBenefitGrantSlackSharedChannel,
+    CustomerBenefitGrantSlackSharedChannelTypedDict,
+)
 from typing import Union
 from typing_extensions import TypeAliasType
 
@@ -43,6 +47,7 @@ CustomerBenefitGrantTypedDict = TypeAliasType(
         CustomerBenefitGrantCustomTypedDict,
         CustomerBenefitGrantMeterCreditTypedDict,
         CustomerBenefitGrantFeatureFlagTypedDict,
+        CustomerBenefitGrantSlackSharedChannelTypedDict,
     ],
 )
 
@@ -57,5 +62,6 @@ CustomerBenefitGrant = TypeAliasType(
         CustomerBenefitGrantCustom,
         CustomerBenefitGrantMeterCredit,
         CustomerBenefitGrantFeatureFlag,
+        CustomerBenefitGrantSlackSharedChannel,
     ],
 )

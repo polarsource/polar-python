@@ -45,3 +45,9 @@ value: models.CustomerBenefitGrantLicenseKeysUpdate = /* values here */
 value: models.CustomerBenefitGrantMeterCreditUpdate = /* values here */
 ```
 
+### `models.CustomerBenefitGrantSlackSharedChannelUpdate`
+
+```python
+value: models.CustomerBenefitGrantSlackSharedChannelUpdate = /* values here */
+```
+

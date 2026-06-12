@@ -39,6 +39,9 @@ class Subscriptions(BaseSDK):
             Union[models.DiscountIDFilter, models.DiscountIDFilterTypedDict]
         ] = UNSET,
         active: OptionalNullable[bool] = UNSET,
+        status: OptionalNullable[
+            Union[models.StatusFilter, models.StatusFilterTypedDict]
+        ] = UNSET,
         cancel_at_period_end: OptionalNullable[bool] = UNSET,
         customer_cancellation_reason: OptionalNullable[
             Union[
@@ -74,6 +77,7 @@ class Subscriptions(BaseSDK):
         :param external_customer_id: Filter by customer external ID.
         :param discount_id: Filter by discount ID.
         :param active: Filter by active or inactive subscription.
+        :param status: Filter by subscription status.
         :param cancel_at_period_end: Filter by subscriptions that are set to cancel at period end.
         :param customer_cancellation_reason: Filter by customer cancellation reason.
         :param canceled_at_after: Filter by cancellation date (after or equal to).
@@ -104,6 +108,7 @@ class Subscriptions(BaseSDK):
             external_customer_id=external_customer_id,
             discount_id=discount_id,
             active=active,
+            status=status,
             cancel_at_period_end=cancel_at_period_end,
             customer_cancellation_reason=customer_cancellation_reason,
             canceled_at_after=canceled_at_after,
@@ -176,6 +181,7 @@ class Subscriptions(BaseSDK):
                 external_customer_id=external_customer_id,
                 discount_id=discount_id,
                 active=active,
+                status=status,
                 cancel_at_period_end=cancel_at_period_end,
                 customer_cancellation_reason=customer_cancellation_reason,
                 canceled_at_after=canceled_at_after,
@@ -231,6 +237,9 @@ class Subscriptions(BaseSDK):
             Union[models.DiscountIDFilter, models.DiscountIDFilterTypedDict]
         ] = UNSET,
         active: OptionalNullable[bool] = UNSET,
+        status: OptionalNullable[
+            Union[models.StatusFilter, models.StatusFilterTypedDict]
+        ] = UNSET,
         cancel_at_period_end: OptionalNullable[bool] = UNSET,
         customer_cancellation_reason: OptionalNullable[
             Union[
@@ -266,6 +275,7 @@ class Subscriptions(BaseSDK):
         :param external_customer_id: Filter by customer external ID.
         :param discount_id: Filter by discount ID.
         :param active: Filter by active or inactive subscription.
+        :param status: Filter by subscription status.
         :param cancel_at_period_end: Filter by subscriptions that are set to cancel at period end.
         :param customer_cancellation_reason: Filter by customer cancellation reason.
         :param canceled_at_after: Filter by cancellation date (after or equal to).
@@ -296,6 +306,7 @@ class Subscriptions(BaseSDK):
             external_customer_id=external_customer_id,
             discount_id=discount_id,
             active=active,
+            status=status,
             cancel_at_period_end=cancel_at_period_end,
             customer_cancellation_reason=customer_cancellation_reason,
             canceled_at_after=canceled_at_after,
@@ -368,6 +379,7 @@ class Subscriptions(BaseSDK):
                 external_customer_id=external_customer_id,
                 discount_id=discount_id,
                 active=active,
+                status=status,
                 cancel_at_period_end=cancel_at_period_end,
                 customer_cancellation_reason=customer_cancellation_reason,
                 canceled_at_after=canceled_at_after,

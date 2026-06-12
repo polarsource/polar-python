@@ -27,6 +27,10 @@ from .benefitgrantlicensekeysproperties import (
     BenefitGrantLicenseKeysProperties,
     BenefitGrantLicenseKeysPropertiesTypedDict,
 )
+from .benefitgrantslacksharedchannelproperties import (
+    BenefitGrantSlackSharedChannelProperties,
+    BenefitGrantSlackSharedChannelPropertiesTypedDict,
+)
 from .customer import Customer, CustomerTypedDict
 from .member import Member, MemberTypedDict
 from datetime import datetime
@@ -45,6 +49,7 @@ PropertiesTypedDict = TypeAliasType(
         BenefitGrantLicenseKeysPropertiesTypedDict,
         BenefitGrantDiscordPropertiesTypedDict,
         BenefitGrantGitHubRepositoryPropertiesTypedDict,
+        BenefitGrantSlackSharedChannelPropertiesTypedDict,
     ],
 )
 
@@ -58,6 +63,7 @@ Properties = TypeAliasType(
         BenefitGrantLicenseKeysProperties,
         BenefitGrantDiscordProperties,
         BenefitGrantGitHubRepositoryProperties,
+        BenefitGrantSlackSharedChannelProperties,
     ],
 )
 

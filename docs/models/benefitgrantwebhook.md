@@ -45,3 +45,9 @@ value: models.BenefitGrantMeterCreditWebhook = /* values here */
 value: models.BenefitGrantFeatureFlagWebhook = /* values here */
 ```
 
+### `models.BenefitGrantSlackSharedChannelWebhook`
+
+```python
+value: models.BenefitGrantSlackSharedChannelWebhook = /* values here */
+```
+

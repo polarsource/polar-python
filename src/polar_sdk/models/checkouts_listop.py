@@ -59,14 +59,15 @@ CheckoutsListQueryParamExternalCustomerIDFilter = TypeAliasType(
 r"""Filter by customer external ID."""
 
 
-QueryParamStatusFilterTypedDict = TypeAliasType(
-    "QueryParamStatusFilterTypedDict", Union[CheckoutStatus, List[CheckoutStatus]]
+CheckoutsListQueryParamStatusFilterTypedDict = TypeAliasType(
+    "CheckoutsListQueryParamStatusFilterTypedDict",
+    Union[CheckoutStatus, List[CheckoutStatus]],
 )
 r"""Filter by checkout session status."""
 
 
-QueryParamStatusFilter = TypeAliasType(
-    "QueryParamStatusFilter", Union[CheckoutStatus, List[CheckoutStatus]]
+CheckoutsListQueryParamStatusFilter = TypeAliasType(
+    "CheckoutsListQueryParamStatusFilter", Union[CheckoutStatus, List[CheckoutStatus]]
 )
 r"""Filter by checkout session status."""
 
@@ -84,7 +85,7 @@ class CheckoutsListRequestTypedDict(TypedDict):
         Nullable[CheckoutsListQueryParamExternalCustomerIDFilterTypedDict]
     ]
     r"""Filter by customer external ID."""
-    status: NotRequired[Nullable[QueryParamStatusFilterTypedDict]]
+    status: NotRequired[Nullable[CheckoutsListQueryParamStatusFilterTypedDict]]
     r"""Filter by checkout session status."""
     query: NotRequired[Nullable[str]]
     r"""Filter by customer email."""
@@ -122,7 +123,7 @@ class CheckoutsListRequest(BaseModel):
     r"""Filter by customer external ID."""
 
     status: Annotated[
-        OptionalNullable[QueryParamStatusFilter],
+        OptionalNullable[CheckoutsListQueryParamStatusFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by checkout session status."""

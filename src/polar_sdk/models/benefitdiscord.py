@@ -5,6 +5,7 @@ from .benefitdiscordproperties import (
     BenefitDiscordProperties,
     BenefitDiscordPropertiesTypedDict,
 )
+from .benefitvisibility import BenefitVisibility
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -39,8 +40,10 @@ class BenefitDiscordTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     metadata: Dict[str, MetadataOutputTypeTypedDict]
+    visibility: BenefitVisibility
     properties: BenefitDiscordPropertiesTypedDict
     r"""Properties for a benefit of type `discord`."""
+    visibility_configurable: bool
     type: Literal["discord"]
 
 
@@ -76,8 +79,12 @@ class BenefitDiscord(BaseModel):
 
     metadata: Dict[str, MetadataOutputType]
 
+    visibility: BenefitVisibility
+
     properties: BenefitDiscordProperties
     r"""Properties for a benefit of type `discord`."""
+
+    visibility_configurable: bool
 
     TYPE: Annotated[
         Annotated[Literal["discord"], AfterValidator(validate_const("discord"))],

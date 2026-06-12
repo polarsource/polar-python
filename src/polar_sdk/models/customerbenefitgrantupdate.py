@@ -29,6 +29,10 @@ from .customerbenefitgrantmetercreditupdate import (
     CustomerBenefitGrantMeterCreditUpdate,
     CustomerBenefitGrantMeterCreditUpdateTypedDict,
 )
+from .customerbenefitgrantslacksharedchannelupdate import (
+    CustomerBenefitGrantSlackSharedChannelUpdate,
+    CustomerBenefitGrantSlackSharedChannelUpdateTypedDict,
+)
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
@@ -45,6 +49,7 @@ CustomerBenefitGrantUpdateTypedDict = TypeAliasType(
         CustomerBenefitGrantFeatureFlagUpdateTypedDict,
         CustomerBenefitGrantDiscordUpdateTypedDict,
         CustomerBenefitGrantGitHubRepositoryUpdateTypedDict,
+        CustomerBenefitGrantSlackSharedChannelUpdateTypedDict,
     ],
 )
 
@@ -58,6 +63,9 @@ CustomerBenefitGrantUpdate = Annotated[
         Annotated[CustomerBenefitGrantGitHubRepositoryUpdate, Tag("github_repository")],
         Annotated[CustomerBenefitGrantLicenseKeysUpdate, Tag("license_keys")],
         Annotated[CustomerBenefitGrantMeterCreditUpdate, Tag("meter_credit")],
+        Annotated[
+            CustomerBenefitGrantSlackSharedChannelUpdate, Tag("slack_shared_channel")
+        ],
     ],
     Discriminator(lambda m: get_discriminator(m, "benefit_type", "benefit_type")),
 ]

@@ -5,6 +5,7 @@ from .benefitdownloadablescreateproperties import (
     BenefitDownloadablesCreateProperties,
     BenefitDownloadablesCreatePropertiesTypedDict,
 )
+from .benefitvisibility import BenefitVisibility
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
@@ -40,6 +41,8 @@ class BenefitDownloadablesUpdateTypedDict(TypedDict):
     """
     description: NotRequired[Nullable[str]]
     r"""The description of the benefit. Will be displayed on products having this benefit."""
+    visibility: NotRequired[Nullable[BenefitVisibility]]
+    r"""The visibility of the benefit in the customer portal."""
     type: Literal["downloadables"]
     properties: NotRequired[Nullable[BenefitDownloadablesCreatePropertiesTypedDict]]
 
@@ -62,6 +65,9 @@ class BenefitDownloadablesUpdate(BaseModel):
     description: OptionalNullable[str] = UNSET
     r"""The description of the benefit. Will be displayed on products having this benefit."""
 
+    visibility: OptionalNullable[BenefitVisibility] = UNSET
+    r"""The visibility of the benefit in the customer portal."""
+
     TYPE: Annotated[
         Annotated[
             Literal["downloadables"], AfterValidator(validate_const("downloadables"))
@@ -73,8 +79,8 @@ class BenefitDownloadablesUpdate(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["metadata", "description", "properties"]
-        nullable_fields = ["description", "properties"]
+        optional_fields = ["metadata", "description", "visibility", "properties"]
+        nullable_fields = ["description", "visibility", "properties"]
         null_default_fields = []
 
         serialized = handler(self)

@@ -40,6 +40,8 @@ class CustomerIndividualTypedDict(TypedDict):
     r"""Whether the customer email address is verified. The address is automatically verified when the customer accesses the customer portal using their email address."""
     name: Nullable[str]
     r"""The name of the customer."""
+    billing_name: Nullable[str]
+    r"""The name that should appear on the customer's invoices. Falls back to the customer name when not explicitly set."""
     billing_address: Nullable[AddressTypedDict]
     tax_id: Nullable[List[Nullable[CustomerIndividualTaxIDTypedDict]]]
     organization_id: str
@@ -79,6 +81,9 @@ class CustomerIndividual(BaseModel):
     name: Nullable[str]
     r"""The name of the customer."""
 
+    billing_name: Nullable[str]
+    r"""The name that should appear on the customer's invoices. Falls back to the customer name when not explicitly set."""
+
     billing_address: Nullable[Address]
 
     tax_id: Nullable[List[Nullable[CustomerIndividualTaxID]]]
@@ -112,6 +117,7 @@ class CustomerIndividual(BaseModel):
             "modified_at",
             "external_id",
             "name",
+            "billing_name",
             "billing_address",
             "tax_id",
             "locale",

@@ -14,9 +14,9 @@ from .organizationcustomerportalsettings import (
     OrganizationCustomerPortalSettingsTypedDict,
 )
 from .organizationdetails import OrganizationDetails, OrganizationDetailsTypedDict
-from .organizationfeaturesettings import (
-    OrganizationFeatureSettings,
-    OrganizationFeatureSettingsTypedDict,
+from .organizationfeaturesettingsupdate import (
+    OrganizationFeatureSettingsUpdate,
+    OrganizationFeatureSettingsUpdateTypedDict,
 )
 from .organizationindividuallegalentityschema import (
     OrganizationIndividualLegalEntitySchema,
@@ -324,7 +324,7 @@ class OrganizationCreateTypedDict(TypedDict):
     r"""Additional, private, business details Polar needs about active organizations for compliance (KYC)."""
     country: NotRequired[Nullable[CountryAlpha2Input]]
     r"""Two-letter country code (ISO 3166-1 alpha-2)."""
-    feature_settings: NotRequired[Nullable[OrganizationFeatureSettingsTypedDict]]
+    feature_settings: NotRequired[Nullable[OrganizationFeatureSettingsUpdateTypedDict]]
     subscription_settings: NotRequired[
         Nullable[OrganizationSubscriptionSettingsTypedDict]
     ]
@@ -365,7 +365,7 @@ class OrganizationCreate(BaseModel):
     country: OptionalNullable[CountryAlpha2Input] = UNSET
     r"""Two-letter country code (ISO 3166-1 alpha-2)."""
 
-    feature_settings: OptionalNullable[OrganizationFeatureSettings] = UNSET
+    feature_settings: OptionalNullable[OrganizationFeatureSettingsUpdate] = UNSET
 
     subscription_settings: OptionalNullable[OrganizationSubscriptionSettings] = UNSET
 

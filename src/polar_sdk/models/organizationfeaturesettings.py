@@ -18,8 +18,6 @@ class OrganizationFeatureSettingsTypedDict(TypedDict):
     r"""If this organization has the Member model enabled"""
     checkout_localization_enabled: NotRequired[bool]
     r"""If this organization has checkout localization enabled"""
-    account_review_v2_enabled: NotRequired[bool]
-    r"""If this organization sees the new account review checklist UI."""
     overview_metrics: NotRequired[Nullable[List[str]]]
     r"""Ordered list of metric slugs shown on the dashboard overview."""
     reset_proration_behavior_enabled: NotRequired[bool]
@@ -48,9 +46,6 @@ class OrganizationFeatureSettings(BaseModel):
     checkout_localization_enabled: Optional[bool] = False
     r"""If this organization has checkout localization enabled"""
 
-    account_review_v2_enabled: Optional[bool] = False
-    r"""If this organization sees the new account review checklist UI."""
-
     overview_metrics: OptionalNullable[List[str]] = UNSET
     r"""Ordered list of metric slugs shown on the dashboard overview."""
 
@@ -74,7 +69,6 @@ class OrganizationFeatureSettings(BaseModel):
             "wallets_enabled",
             "member_model_enabled",
             "checkout_localization_enabled",
-            "account_review_v2_enabled",
             "overview_metrics",
             "reset_proration_behavior_enabled",
             "off_session_charges_enabled",
