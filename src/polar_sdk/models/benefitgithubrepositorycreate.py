@@ -5,6 +5,7 @@ from .benefitgithubrepositorycreateproperties import (
     BenefitGitHubRepositoryCreateProperties,
     BenefitGitHubRepositoryCreatePropertiesTypedDict,
 )
+from .benefitvisibility import BenefitVisibility
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
 import pydantic
@@ -45,6 +46,8 @@ class BenefitGitHubRepositoryCreateTypedDict(TypedDict):
     type: Literal["github_repository"]
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the benefit. **Required unless you use an organization token.**"""
+    visibility: NotRequired[Nullable[BenefitVisibility]]
+    r"""The visibility of the benefit in the customer portal."""
 
 
 class BenefitGitHubRepositoryCreate(BaseModel):
@@ -79,10 +82,13 @@ class BenefitGitHubRepositoryCreate(BaseModel):
     organization_id: OptionalNullable[str] = UNSET
     r"""The ID of the organization owning the benefit. **Required unless you use an organization token.**"""
 
+    visibility: OptionalNullable[BenefitVisibility] = UNSET
+    r"""The visibility of the benefit in the customer portal."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["metadata", "organization_id"]
-        nullable_fields = ["organization_id"]
+        optional_fields = ["metadata", "organization_id", "visibility"]
+        nullable_fields = ["organization_id", "visibility"]
         null_default_fields = []
 
         serialized = handler(self)

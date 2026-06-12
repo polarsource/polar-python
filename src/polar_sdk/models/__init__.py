@@ -315,6 +315,14 @@ if TYPE_CHECKING:
         BenefitGrantMeterCreditWebhook,
         BenefitGrantMeterCreditWebhookTypedDict,
     )
+    from .benefitgrantslacksharedchannelproperties import (
+        BenefitGrantSlackSharedChannelProperties,
+        BenefitGrantSlackSharedChannelPropertiesTypedDict,
+    )
+    from .benefitgrantslacksharedchannelwebhook import (
+        BenefitGrantSlackSharedChannelWebhook,
+        BenefitGrantSlackSharedChannelWebhookTypedDict,
+    )
     from .benefitgrantsortproperty import BenefitGrantSortProperty
     from .benefitgrantwebhook import BenefitGrantWebhook, BenefitGrantWebhookTypedDict
     from .benefitlicensekeyactivationcreateproperties import (
@@ -408,6 +416,38 @@ if TYPE_CHECKING:
         BenefitsUpdateRequest,
         BenefitsUpdateRequestTypedDict,
     )
+    from .benefitslacksharedchannel import (
+        BenefitSlackSharedChannel,
+        BenefitSlackSharedChannelTypedDict,
+    )
+    from .benefitslacksharedchannelcreate import (
+        BenefitSlackSharedChannelCreate,
+        BenefitSlackSharedChannelCreateMetadata,
+        BenefitSlackSharedChannelCreateMetadataTypedDict,
+        BenefitSlackSharedChannelCreateTypedDict,
+    )
+    from .benefitslacksharedchannelcreateproperties import (
+        BenefitSlackSharedChannelCreateProperties,
+        BenefitSlackSharedChannelCreatePropertiesTypedDict,
+    )
+    from .benefitslacksharedchannelproperties import (
+        BenefitSlackSharedChannelProperties,
+        BenefitSlackSharedChannelPropertiesTypedDict,
+    )
+    from .benefitslacksharedchannelsubscriber import (
+        BenefitSlackSharedChannelSubscriber,
+        BenefitSlackSharedChannelSubscriberTypedDict,
+    )
+    from .benefitslacksharedchannelsubscriberproperties import (
+        BenefitSlackSharedChannelSubscriberProperties,
+        BenefitSlackSharedChannelSubscriberPropertiesTypedDict,
+    )
+    from .benefitslacksharedchannelupdate import (
+        BenefitSlackSharedChannelUpdate,
+        BenefitSlackSharedChannelUpdateMetadata,
+        BenefitSlackSharedChannelUpdateMetadataTypedDict,
+        BenefitSlackSharedChannelUpdateTypedDict,
+    )
     from .benefitsortproperty import BenefitSortProperty
     from .benefitsubscriberorganization import (
         BenefitSubscriberOrganization,
@@ -415,6 +455,7 @@ if TYPE_CHECKING:
     )
     from .benefittype import BenefitType
     from .benefitupdatedevent import BenefitUpdatedEvent, BenefitUpdatedEventTypedDict
+    from .benefitvisibility import BenefitVisibility
     from .billingaddressfieldmode import BillingAddressFieldMode
     from .cardpayment import CardPayment, CardPaymentTypedDict
     from .cardpaymentmetadata import CardPaymentMetadata, CardPaymentMetadataTypedDict
@@ -598,12 +639,12 @@ if TYPE_CHECKING:
         CheckoutsListQueryParamOrganizationIDFilterTypedDict,
         CheckoutsListQueryParamProductIDFilter,
         CheckoutsListQueryParamProductIDFilterTypedDict,
+        CheckoutsListQueryParamStatusFilter,
+        CheckoutsListQueryParamStatusFilterTypedDict,
         CheckoutsListRequest,
         CheckoutsListRequestTypedDict,
         CheckoutsListResponse,
         CheckoutsListResponseTypedDict,
-        QueryParamStatusFilter,
-        QueryParamStatusFilterTypedDict,
     )
     from .checkouts_updateop import (
         CheckoutsUpdateRequest,
@@ -1030,6 +1071,18 @@ if TYPE_CHECKING:
     from .customerbenefitgrantmetercreditupdate import (
         CustomerBenefitGrantMeterCreditUpdate,
         CustomerBenefitGrantMeterCreditUpdateTypedDict,
+    )
+    from .customerbenefitgrantslacksharedchannel import (
+        CustomerBenefitGrantSlackSharedChannel,
+        CustomerBenefitGrantSlackSharedChannelTypedDict,
+    )
+    from .customerbenefitgrantslacksharedchannelpropertiesupdate import (
+        CustomerBenefitGrantSlackSharedChannelPropertiesUpdate,
+        CustomerBenefitGrantSlackSharedChannelPropertiesUpdateTypedDict,
+    )
+    from .customerbenefitgrantslacksharedchannelupdate import (
+        CustomerBenefitGrantSlackSharedChannelUpdate,
+        CustomerBenefitGrantSlackSharedChannelUpdateTypedDict,
     )
     from .customerbenefitgrantsortproperty import CustomerBenefitGrantSortProperty
     from .customerbenefitgrantupdate import (
@@ -1571,8 +1624,8 @@ if TYPE_CHECKING:
         DisputesListResponseTypedDict,
         QueryParamOrderIDFilter,
         QueryParamOrderIDFilterTypedDict,
-        StatusFilter,
-        StatusFilterTypedDict,
+        QueryParamStatusFilter,
+        QueryParamStatusFilterTypedDict,
     )
     from .disputesortproperty import DisputeSortProperty
     from .disputestatus import DisputeStatus
@@ -2460,6 +2513,10 @@ if TYPE_CHECKING:
         OrganizationFeatureSettings,
         OrganizationFeatureSettingsTypedDict,
     )
+    from .organizationfeaturesettingsupdate import (
+        OrganizationFeatureSettingsUpdate,
+        OrganizationFeatureSettingsUpdateTypedDict,
+    )
     from .organizationindividuallegalentityschema import (
         OrganizationIndividualLegalEntitySchema,
         OrganizationIndividualLegalEntitySchemaTypedDict,
@@ -2930,6 +2987,8 @@ if TYPE_CHECKING:
         QueryParamProductIDFilterTypedDict,
         SourceFilter,
         SourceFilterTypedDict,
+        StatusFilter,
+        StatusFilterTypedDict,
         SubscriptionIDFilter,
         SubscriptionIDFilterTypedDict,
         SubscriptionsListRequest,
@@ -3417,6 +3476,10 @@ __all__ = [
     "BenefitGrantMeterCreditPropertiesTypedDict",
     "BenefitGrantMeterCreditWebhook",
     "BenefitGrantMeterCreditWebhookTypedDict",
+    "BenefitGrantSlackSharedChannelProperties",
+    "BenefitGrantSlackSharedChannelPropertiesTypedDict",
+    "BenefitGrantSlackSharedChannelWebhook",
+    "BenefitGrantSlackSharedChannelWebhookTypedDict",
     "BenefitGrantSortProperty",
     "BenefitGrantTypedDict",
     "BenefitGrantWebhook",
@@ -3479,6 +3542,24 @@ __all__ = [
     "BenefitPublicTypedDict",
     "BenefitRevokedEvent",
     "BenefitRevokedEventTypedDict",
+    "BenefitSlackSharedChannel",
+    "BenefitSlackSharedChannelCreate",
+    "BenefitSlackSharedChannelCreateMetadata",
+    "BenefitSlackSharedChannelCreateMetadataTypedDict",
+    "BenefitSlackSharedChannelCreateProperties",
+    "BenefitSlackSharedChannelCreatePropertiesTypedDict",
+    "BenefitSlackSharedChannelCreateTypedDict",
+    "BenefitSlackSharedChannelProperties",
+    "BenefitSlackSharedChannelPropertiesTypedDict",
+    "BenefitSlackSharedChannelSubscriber",
+    "BenefitSlackSharedChannelSubscriberProperties",
+    "BenefitSlackSharedChannelSubscriberPropertiesTypedDict",
+    "BenefitSlackSharedChannelSubscriberTypedDict",
+    "BenefitSlackSharedChannelTypedDict",
+    "BenefitSlackSharedChannelUpdate",
+    "BenefitSlackSharedChannelUpdateMetadata",
+    "BenefitSlackSharedChannelUpdateMetadataTypedDict",
+    "BenefitSlackSharedChannelUpdateTypedDict",
     "BenefitSortProperty",
     "BenefitSubscriberOrganization",
     "BenefitSubscriberOrganizationTypedDict",
@@ -3488,6 +3569,7 @@ __all__ = [
     "BenefitTypedDict",
     "BenefitUpdatedEvent",
     "BenefitUpdatedEventTypedDict",
+    "BenefitVisibility",
     "BenefitsDeleteRequest",
     "BenefitsDeleteRequestTypedDict",
     "BenefitsGetRequest",
@@ -3670,6 +3752,8 @@ __all__ = [
     "CheckoutsListQueryParamOrganizationIDFilterTypedDict",
     "CheckoutsListQueryParamProductIDFilter",
     "CheckoutsListQueryParamProductIDFilterTypedDict",
+    "CheckoutsListQueryParamStatusFilter",
+    "CheckoutsListQueryParamStatusFilterTypedDict",
     "CheckoutsListRequest",
     "CheckoutsListRequestTypedDict",
     "CheckoutsListResponse",
@@ -3835,6 +3919,12 @@ __all__ = [
     "CustomerBenefitGrantMeterCreditTypedDict",
     "CustomerBenefitGrantMeterCreditUpdate",
     "CustomerBenefitGrantMeterCreditUpdateTypedDict",
+    "CustomerBenefitGrantSlackSharedChannel",
+    "CustomerBenefitGrantSlackSharedChannelPropertiesUpdate",
+    "CustomerBenefitGrantSlackSharedChannelPropertiesUpdateTypedDict",
+    "CustomerBenefitGrantSlackSharedChannelTypedDict",
+    "CustomerBenefitGrantSlackSharedChannelUpdate",
+    "CustomerBenefitGrantSlackSharedChannelUpdateTypedDict",
     "CustomerBenefitGrantSortProperty",
     "CustomerBenefitGrantTypedDict",
     "CustomerBenefitGrantUpdate",
@@ -5028,6 +5118,8 @@ __all__ = [
     "OrganizationDetailsTypedDict",
     "OrganizationFeatureSettings",
     "OrganizationFeatureSettingsTypedDict",
+    "OrganizationFeatureSettingsUpdate",
+    "OrganizationFeatureSettingsUpdateTypedDict",
     "OrganizationID",
     "OrganizationIDFilter",
     "OrganizationIDFilterTypedDict",
@@ -5759,6 +5851,10 @@ _dynamic_imports: dict[str, str] = {
     "BenefitGrantMeterCreditPropertiesTypedDict": ".benefitgrantmetercreditproperties",
     "BenefitGrantMeterCreditWebhook": ".benefitgrantmetercreditwebhook",
     "BenefitGrantMeterCreditWebhookTypedDict": ".benefitgrantmetercreditwebhook",
+    "BenefitGrantSlackSharedChannelProperties": ".benefitgrantslacksharedchannelproperties",
+    "BenefitGrantSlackSharedChannelPropertiesTypedDict": ".benefitgrantslacksharedchannelproperties",
+    "BenefitGrantSlackSharedChannelWebhook": ".benefitgrantslacksharedchannelwebhook",
+    "BenefitGrantSlackSharedChannelWebhookTypedDict": ".benefitgrantslacksharedchannelwebhook",
     "BenefitGrantSortProperty": ".benefitgrantsortproperty",
     "BenefitGrantWebhook": ".benefitgrantwebhook",
     "BenefitGrantWebhookTypedDict": ".benefitgrantwebhook",
@@ -5825,12 +5921,31 @@ _dynamic_imports: dict[str, str] = {
     "BenefitsUpdateBenefitUpdateTypedDict": ".benefits_updateop",
     "BenefitsUpdateRequest": ".benefits_updateop",
     "BenefitsUpdateRequestTypedDict": ".benefits_updateop",
+    "BenefitSlackSharedChannel": ".benefitslacksharedchannel",
+    "BenefitSlackSharedChannelTypedDict": ".benefitslacksharedchannel",
+    "BenefitSlackSharedChannelCreate": ".benefitslacksharedchannelcreate",
+    "BenefitSlackSharedChannelCreateMetadata": ".benefitslacksharedchannelcreate",
+    "BenefitSlackSharedChannelCreateMetadataTypedDict": ".benefitslacksharedchannelcreate",
+    "BenefitSlackSharedChannelCreateTypedDict": ".benefitslacksharedchannelcreate",
+    "BenefitSlackSharedChannelCreateProperties": ".benefitslacksharedchannelcreateproperties",
+    "BenefitSlackSharedChannelCreatePropertiesTypedDict": ".benefitslacksharedchannelcreateproperties",
+    "BenefitSlackSharedChannelProperties": ".benefitslacksharedchannelproperties",
+    "BenefitSlackSharedChannelPropertiesTypedDict": ".benefitslacksharedchannelproperties",
+    "BenefitSlackSharedChannelSubscriber": ".benefitslacksharedchannelsubscriber",
+    "BenefitSlackSharedChannelSubscriberTypedDict": ".benefitslacksharedchannelsubscriber",
+    "BenefitSlackSharedChannelSubscriberProperties": ".benefitslacksharedchannelsubscriberproperties",
+    "BenefitSlackSharedChannelSubscriberPropertiesTypedDict": ".benefitslacksharedchannelsubscriberproperties",
+    "BenefitSlackSharedChannelUpdate": ".benefitslacksharedchannelupdate",
+    "BenefitSlackSharedChannelUpdateMetadata": ".benefitslacksharedchannelupdate",
+    "BenefitSlackSharedChannelUpdateMetadataTypedDict": ".benefitslacksharedchannelupdate",
+    "BenefitSlackSharedChannelUpdateTypedDict": ".benefitslacksharedchannelupdate",
     "BenefitSortProperty": ".benefitsortproperty",
     "BenefitSubscriberOrganization": ".benefitsubscriberorganization",
     "BenefitSubscriberOrganizationTypedDict": ".benefitsubscriberorganization",
     "BenefitType": ".benefittype",
     "BenefitUpdatedEvent": ".benefitupdatedevent",
     "BenefitUpdatedEventTypedDict": ".benefitupdatedevent",
+    "BenefitVisibility": ".benefitvisibility",
     "BillingAddressFieldMode": ".billingaddressfieldmode",
     "CardPayment": ".cardpayment",
     "CardPaymentTypedDict": ".cardpayment",
@@ -5961,12 +6076,12 @@ _dynamic_imports: dict[str, str] = {
     "CheckoutsListQueryParamOrganizationIDFilterTypedDict": ".checkouts_listop",
     "CheckoutsListQueryParamProductIDFilter": ".checkouts_listop",
     "CheckoutsListQueryParamProductIDFilterTypedDict": ".checkouts_listop",
+    "CheckoutsListQueryParamStatusFilter": ".checkouts_listop",
+    "CheckoutsListQueryParamStatusFilterTypedDict": ".checkouts_listop",
     "CheckoutsListRequest": ".checkouts_listop",
     "CheckoutsListRequestTypedDict": ".checkouts_listop",
     "CheckoutsListResponse": ".checkouts_listop",
     "CheckoutsListResponseTypedDict": ".checkouts_listop",
-    "QueryParamStatusFilter": ".checkouts_listop",
-    "QueryParamStatusFilterTypedDict": ".checkouts_listop",
     "CheckoutsUpdateRequest": ".checkouts_updateop",
     "CheckoutsUpdateRequestTypedDict": ".checkouts_updateop",
     "CheckoutSortProperty": ".checkoutsortproperty",
@@ -6251,6 +6366,12 @@ _dynamic_imports: dict[str, str] = {
     "CustomerBenefitGrantMeterCreditTypedDict": ".customerbenefitgrantmetercredit",
     "CustomerBenefitGrantMeterCreditUpdate": ".customerbenefitgrantmetercreditupdate",
     "CustomerBenefitGrantMeterCreditUpdateTypedDict": ".customerbenefitgrantmetercreditupdate",
+    "CustomerBenefitGrantSlackSharedChannel": ".customerbenefitgrantslacksharedchannel",
+    "CustomerBenefitGrantSlackSharedChannelTypedDict": ".customerbenefitgrantslacksharedchannel",
+    "CustomerBenefitGrantSlackSharedChannelPropertiesUpdate": ".customerbenefitgrantslacksharedchannelpropertiesupdate",
+    "CustomerBenefitGrantSlackSharedChannelPropertiesUpdateTypedDict": ".customerbenefitgrantslacksharedchannelpropertiesupdate",
+    "CustomerBenefitGrantSlackSharedChannelUpdate": ".customerbenefitgrantslacksharedchannelupdate",
+    "CustomerBenefitGrantSlackSharedChannelUpdateTypedDict": ".customerbenefitgrantslacksharedchannelupdate",
     "CustomerBenefitGrantSortProperty": ".customerbenefitgrantsortproperty",
     "CustomerBenefitGrantUpdate": ".customerbenefitgrantupdate",
     "CustomerBenefitGrantUpdateTypedDict": ".customerbenefitgrantupdate",
@@ -6606,8 +6727,8 @@ _dynamic_imports: dict[str, str] = {
     "DisputesListResponseTypedDict": ".disputes_listop",
     "QueryParamOrderIDFilter": ".disputes_listop",
     "QueryParamOrderIDFilterTypedDict": ".disputes_listop",
-    "StatusFilter": ".disputes_listop",
-    "StatusFilterTypedDict": ".disputes_listop",
+    "QueryParamStatusFilter": ".disputes_listop",
+    "QueryParamStatusFilterTypedDict": ".disputes_listop",
     "DisputeSortProperty": ".disputesortproperty",
     "DisputeStatus": ".disputestatus",
     "DownloadableFileCreate": ".downloadablefilecreate",
@@ -7340,6 +7461,8 @@ _dynamic_imports: dict[str, str] = {
     "SwitchingFrom": ".organizationdetails",
     "OrganizationFeatureSettings": ".organizationfeaturesettings",
     "OrganizationFeatureSettingsTypedDict": ".organizationfeaturesettings",
+    "OrganizationFeatureSettingsUpdate": ".organizationfeaturesettingsupdate",
+    "OrganizationFeatureSettingsUpdateTypedDict": ".organizationfeaturesettingsupdate",
     "OrganizationIndividualLegalEntitySchema": ".organizationindividuallegalentityschema",
     "OrganizationIndividualLegalEntitySchemaTypedDict": ".organizationindividuallegalentityschema",
     "OrganizationNotificationSettings": ".organizationnotificationsettings",
@@ -7719,6 +7842,8 @@ _dynamic_imports: dict[str, str] = {
     "QueryParamProductIDFilterTypedDict": ".subscriptions_listop",
     "SourceFilter": ".subscriptions_listop",
     "SourceFilterTypedDict": ".subscriptions_listop",
+    "StatusFilter": ".subscriptions_listop",
+    "StatusFilterTypedDict": ".subscriptions_listop",
     "SubscriptionIDFilter": ".subscriptions_listop",
     "SubscriptionIDFilterTypedDict": ".subscriptions_listop",
     "SubscriptionsListRequest": ".subscriptions_listop",

@@ -20,6 +20,7 @@ CustomerUpdatedFieldsMetadata = TypeAliasType(
 
 class CustomerUpdatedFieldsTypedDict(TypedDict):
     name: NotRequired[Nullable[str]]
+    billing_name: NotRequired[Nullable[str]]
     email: NotRequired[Nullable[str]]
     billing_address: NotRequired[Nullable[AddressDictTypedDict]]
     tax_id: NotRequired[Nullable[str]]
@@ -28,6 +29,8 @@ class CustomerUpdatedFieldsTypedDict(TypedDict):
 
 class CustomerUpdatedFields(BaseModel):
     name: OptionalNullable[str] = UNSET
+
+    billing_name: OptionalNullable[str] = UNSET
 
     email: OptionalNullable[str] = UNSET
 
@@ -39,8 +42,22 @@ class CustomerUpdatedFields(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["name", "email", "billing_address", "tax_id", "metadata"]
-        nullable_fields = ["name", "email", "billing_address", "tax_id", "metadata"]
+        optional_fields = [
+            "name",
+            "billing_name",
+            "email",
+            "billing_address",
+            "tax_id",
+            "metadata",
+        ]
+        nullable_fields = [
+            "name",
+            "billing_name",
+            "email",
+            "billing_address",
+            "tax_id",
+            "metadata",
+        ]
         null_default_fields = []
 
         serialized = handler(self)

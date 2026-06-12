@@ -45,3 +45,9 @@ value: models.BenefitLicenseKeys = /* values here */
 value: models.BenefitMeterCredit = /* values here */
 ```
 
+### `models.BenefitSlackSharedChannel`
+
+```python
+value: models.BenefitSlackSharedChannel = /* values here */
+```
+

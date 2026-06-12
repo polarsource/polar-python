@@ -45,3 +45,9 @@ value: models.BenefitMeterCreditUpdate = /* values here */
 value: models.BenefitFeatureFlagUpdate = /* values here */
 ```
 
+### `models.BenefitSlackSharedChannelUpdate`
+
+```python
+value: models.BenefitSlackSharedChannelUpdate = /* values here */
+```
+

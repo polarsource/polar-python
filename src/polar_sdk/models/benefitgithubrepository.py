@@ -5,6 +5,7 @@ from .benefitgithubrepositoryproperties import (
     BenefitGitHubRepositoryProperties,
     BenefitGitHubRepositoryPropertiesTypedDict,
 )
+from .benefitvisibility import BenefitVisibility
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -39,8 +40,10 @@ class BenefitGitHubRepositoryTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     metadata: Dict[str, MetadataOutputTypeTypedDict]
+    visibility: BenefitVisibility
     properties: BenefitGitHubRepositoryPropertiesTypedDict
     r"""Properties for a benefit of type `github_repository`."""
+    visibility_configurable: bool
     type: Literal["github_repository"]
 
 
@@ -76,8 +79,12 @@ class BenefitGitHubRepository(BaseModel):
 
     metadata: Dict[str, MetadataOutputType]
 
+    visibility: BenefitVisibility
+
     properties: BenefitGitHubRepositoryProperties
     r"""Properties for a benefit of type `github_repository`."""
+
+    visibility_configurable: bool
 
     TYPE: Annotated[
         Annotated[

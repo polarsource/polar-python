@@ -16,7 +16,7 @@ class ProductPriceFixedCreateTypedDict(TypedDict):
     r"""Schema to create a fixed price."""
 
     price_amount: int
-    r"""The price in cents.
+    r"""The price in cents. Set to `0` for a free price.
     Minimum amounts per currency:
     - USD: 0.5
     - AED: 2
@@ -156,7 +156,7 @@ class ProductPriceFixedCreate(BaseModel):
     r"""Schema to create a fixed price."""
 
     price_amount: int
-    r"""The price in cents.
+    r"""The price in cents. Set to `0` for a free price.
     Minimum amounts per currency:
     - USD: 0.5
     - AED: 2

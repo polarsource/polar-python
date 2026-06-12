@@ -2,20 +2,20 @@ speakeasyVersion: 1.648.0
 sources:
     Polar-OAS:
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:fcb24529f23e89e19d56e3282ba6314edbd01b6be1b7d2796d790f49fb269654
-        sourceBlobDigest: sha256:83a14ffd63fcf9ba05c6ae962a2c69a5b18efe5cb476a2e74033ac0579415508
+        sourceRevisionDigest: sha256:2e876fec381971a288210e5d8709f9f5d1ce5fdceb4ab9f9081a12d2706b66a3
+        sourceBlobDigest: sha256:121b4b199951de0444a9d01f4b9ae901c6f73bedd842db8c73380dfdbd1b7108
         tags:
             - latest
-            - speakeasy-sdk-regen-1780792982
+            - speakeasy-sdk-regen-1780965532
             - 0.1.0
 targets:
     polar:
         source: Polar-OAS
         sourceNamespace: polar-oas
-        sourceRevisionDigest: sha256:fcb24529f23e89e19d56e3282ba6314edbd01b6be1b7d2796d790f49fb269654
-        sourceBlobDigest: sha256:83a14ffd63fcf9ba05c6ae962a2c69a5b18efe5cb476a2e74033ac0579415508
+        sourceRevisionDigest: sha256:2e876fec381971a288210e5d8709f9f5d1ce5fdceb4ab9f9081a12d2706b66a3
+        sourceBlobDigest: sha256:121b4b199951de0444a9d01f4b9ae901c6f73bedd842db8c73380dfdbd1b7108
         codeSamplesNamespace: polar-oas-py-code-samples
-        codeSamplesRevisionDigest: sha256:b82c65995d8b9031a8c3571254d2f975677cf540945332da69d7e533b711fc90
+        codeSamplesRevisionDigest: sha256:17f9306179ab5bf2b495f6c13089ff02e295fbb688aac7bbbbd89f340615971d
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

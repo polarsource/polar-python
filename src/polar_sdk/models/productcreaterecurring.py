@@ -73,7 +73,7 @@ class ProductCreateRecurringTypedDict(TypedDict):
     name: str
     r"""The name of the product."""
     prices: List[ProductCreateRecurringPricesTypedDict]
-    r"""List of available prices for this product. It should contain at most one static price (fixed, custom or free), and any number of metered prices. Metered prices are not supported on one-time purchase products."""
+    r"""List of available prices for this product. It may combine at most one fixed price with one seat-based price (billed as `fixed + seat_charge`), or contain a single custom or free price, plus any number of metered prices. A free price cannot be combined with other prices, and a custom price cannot be combined with a fixed or seat-based price. Metered prices are not supported on one-time purchase products."""
     recurring_interval: SubscriptionRecurringInterval
     metadata: NotRequired[Dict[str, ProductCreateRecurringMetadataTypedDict]]
     r"""Key-value object allowing you to store additional information.
@@ -110,7 +110,7 @@ class ProductCreateRecurring(BaseModel):
     r"""The name of the product."""
 
     prices: List[ProductCreateRecurringPrices]
-    r"""List of available prices for this product. It should contain at most one static price (fixed, custom or free), and any number of metered prices. Metered prices are not supported on one-time purchase products."""
+    r"""List of available prices for this product. It may combine at most one fixed price with one seat-based price (billed as `fixed + seat_charge`), or contain a single custom or free price, plus any number of metered prices. A free price cannot be combined with other prices, and a custom price cannot be combined with a fixed or seat-based price. Metered prices are not supported on one-time purchase products."""
 
     recurring_interval: SubscriptionRecurringInterval
 

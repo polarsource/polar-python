@@ -23,6 +23,10 @@ from .benefitmetercreditupdate import (
     BenefitMeterCreditUpdate,
     BenefitMeterCreditUpdateTypedDict,
 )
+from .benefitslacksharedchannelupdate import (
+    BenefitSlackSharedChannelUpdate,
+    BenefitSlackSharedChannelUpdateTypedDict,
+)
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import FieldMetadata, PathParamMetadata, RequestMetadata
 from typing import Union
@@ -39,6 +43,7 @@ BenefitsUpdateBenefitUpdateTypedDict = TypeAliasType(
         BenefitLicenseKeysUpdateTypedDict,
         BenefitMeterCreditUpdateTypedDict,
         BenefitFeatureFlagUpdateTypedDict,
+        BenefitSlackSharedChannelUpdateTypedDict,
     ],
 )
 
@@ -53,6 +58,7 @@ BenefitsUpdateBenefitUpdate = TypeAliasType(
         BenefitLicenseKeysUpdate,
         BenefitMeterCreditUpdate,
         BenefitFeatureFlagUpdate,
+        BenefitSlackSharedChannelUpdate,
     ],
 )
 

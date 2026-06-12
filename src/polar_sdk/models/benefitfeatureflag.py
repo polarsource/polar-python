@@ -5,6 +5,7 @@ from .benefitfeatureflagproperties import (
     BenefitFeatureFlagProperties,
     BenefitFeatureFlagPropertiesTypedDict,
 )
+from .benefitvisibility import BenefitVisibility
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -40,8 +41,10 @@ class BenefitFeatureFlagTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     metadata: Dict[str, MetadataOutputTypeTypedDict]
+    visibility: BenefitVisibility
     properties: BenefitFeatureFlagPropertiesTypedDict
     r"""Properties for a benefit of type `feature_flag`."""
+    visibility_configurable: bool
     type: Literal["feature_flag"]
 
 
@@ -78,8 +81,12 @@ class BenefitFeatureFlag(BaseModel):
 
     metadata: Dict[str, MetadataOutputType]
 
+    visibility: BenefitVisibility
+
     properties: BenefitFeatureFlagProperties
     r"""Properties for a benefit of type `feature_flag`."""
+
+    visibility_configurable: bool
 
     TYPE: Annotated[
         Annotated[

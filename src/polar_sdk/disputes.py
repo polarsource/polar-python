@@ -25,7 +25,7 @@ class Disputes(BaseSDK):
             ]
         ] = UNSET,
         status: OptionalNullable[
-            Union[models.StatusFilter, models.StatusFilterTypedDict]
+            Union[models.QueryParamStatusFilter, models.QueryParamStatusFilterTypedDict]
         ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -171,7 +171,7 @@ class Disputes(BaseSDK):
             ]
         ] = UNSET,
         status: OptionalNullable[
-            Union[models.StatusFilter, models.StatusFilterTypedDict]
+            Union[models.QueryParamStatusFilter, models.QueryParamStatusFilterTypedDict]
         ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,

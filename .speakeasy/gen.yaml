@@ -32,7 +32,7 @@ generation:
   persistentEdits: {}
   versioningStrategy: automatic
 python:
-  version: 0.31.6
+  version: 0.31.7
   additionalDependencies:
     dev:
       pydantic-ai-slim: ^0.1.0
@@ -54,6 +54,9 @@ python:
   description: Polar SDK for Python
   enableCustomCodeRegions: true
   enumFormat: enum
+  eventStreamClassNames:
+    async: EventStreamAsync
+    sync: EventStream
   fixFlags:
     responseRequiredSep2024: true
   flattenGlobalSecurity: true
@@ -71,6 +74,7 @@ python:
       webhooks: ""
   inferUnionDiscriminators: true
   inputModelSuffix: input
+  inputTypedDictSuffix: TypedDict
   legacyPyright: true
   license: ""
   maxMethodParams: 100

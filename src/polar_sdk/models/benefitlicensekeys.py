@@ -5,6 +5,7 @@ from .benefitlicensekeysproperties import (
     BenefitLicenseKeysProperties,
     BenefitLicenseKeysPropertiesTypedDict,
 )
+from .benefitvisibility import BenefitVisibility
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -34,7 +35,9 @@ class BenefitLicenseKeysTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization owning the benefit."""
     metadata: Dict[str, MetadataOutputTypeTypedDict]
+    visibility: BenefitVisibility
     properties: BenefitLicenseKeysPropertiesTypedDict
+    visibility_configurable: bool
     type: Literal["license_keys"]
 
 
@@ -65,7 +68,11 @@ class BenefitLicenseKeys(BaseModel):
 
     metadata: Dict[str, MetadataOutputType]
 
+    visibility: BenefitVisibility
+
     properties: BenefitLicenseKeysProperties
+
+    visibility_configurable: bool
 
     TYPE: Annotated[
         Annotated[

@@ -79,6 +79,8 @@ class CheckoutLinkTypedDict(TypedDict):
     r"""Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting."""
     discount_id: Nullable[str]
     r"""ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored."""
+    seats: Nullable[int]
+    r"""Preconfigured number of seats for seat-based pricing. When set, checkout sessions created from this link are locked to this number of seats and the customer won't be able to change it. All products on the link must use seat-based pricing and allow this number of seats. If the products no longer accommodate this value when the link is opened, it'll be ignored."""
     organization_id: str
     r"""The organization ID."""
     products: List[CheckoutLinkProductTypedDict]
@@ -129,6 +131,9 @@ class CheckoutLink(BaseModel):
     discount_id: Nullable[str]
     r"""ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored."""
 
+    seats: Nullable[int]
+    r"""Preconfigured number of seats for seat-based pricing. When set, checkout sessions created from this link are locked to this number of seats and the customer won't be able to change it. All products on the link must use seat-based pricing and allow this number of seats. If the products no longer accommodate this value when the link is opened, it'll be ignored."""
+
     organization_id: str
     r"""The organization ID."""
 
@@ -149,6 +154,7 @@ class CheckoutLink(BaseModel):
             "return_url",
             "label",
             "discount_id",
+            "seats",
             "discount",
         ]
         null_default_fields = []

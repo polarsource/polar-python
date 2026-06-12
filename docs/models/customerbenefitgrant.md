@@ -45,3 +45,9 @@ value: models.CustomerBenefitGrantMeterCredit = /* values here */
 value: models.CustomerBenefitGrantFeatureFlag = /* values here */
 ```
 
+### `models.CustomerBenefitGrantSlackSharedChannel`
+
+```python
+value: models.CustomerBenefitGrantSlackSharedChannel = /* values here */
+```
+

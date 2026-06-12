@@ -31,6 +31,8 @@ class SubscriptionCustomerTypedDict(TypedDict):
     type: CustomerType
     name: Nullable[str]
     r"""The name of the customer."""
+    billing_name: Nullable[str]
+    r"""The name that should appear on the customer's invoices. Falls back to the customer name when not explicitly set."""
     billing_address: Nullable[AddressTypedDict]
     tax_id: Nullable[List[Nullable[TaxIDTypedDict]]]
     organization_id: str
@@ -66,6 +68,9 @@ class SubscriptionCustomer(BaseModel):
 
     name: Nullable[str]
     r"""The name of the customer."""
+
+    billing_name: Nullable[str]
+    r"""The name that should appear on the customer's invoices. Falls back to the customer name when not explicitly set."""
 
     billing_address: Nullable[Address]
 
@@ -103,6 +108,7 @@ class SubscriptionCustomer(BaseModel):
             "external_id",
             "email",
             "name",
+            "billing_name",
             "billing_address",
             "tax_id",
             "locale",

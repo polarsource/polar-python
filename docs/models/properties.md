@@ -39,3 +39,9 @@ value: models.BenefitGrantCustomProperties = /* values here */
 value: models.BenefitGrantFeatureFlagProperties = /* values here */
 ```
 
+### `models.BenefitGrantSlackSharedChannelProperties`
+
+```python
+value: models.BenefitGrantSlackSharedChannelProperties = /* values here */
+```
+
