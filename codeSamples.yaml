@@ -644,7 +644,7 @@ actions:
       "x-codeSamples":
         - "lang": "python"
           "label": "Python (SDK)"
-          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.files.create(request={\n        \"name\": \"<value>\",\n        \"mime_type\": \"<value>\",\n        \"size\": 612128,\n        \"upload\": {\n            \"parts\": [],\n        },\n        \"service\": \"downloadable\",\n    })\n\n    # Handle response\n    print(res)"
+          "source": "from polar_sdk import Polar\n\n\nwith Polar(\n    access_token=\"<YOUR_BEARER_TOKEN_HERE>\",\n) as polar:\n\n    res = polar.files.create(request={\n        \"name\": \"<value>\",\n        \"mime_type\": \"<value>\",\n        \"size\": 612128,\n        \"upload\": {\n            \"parts\": [],\n        },\n        \"service\": \"organization_avatar\",\n    })\n\n    # Handle response\n    print(res)"
   - target: $["paths"]["/v1/files/{id}"]["delete"]
     update:
       "x-codeSamples":

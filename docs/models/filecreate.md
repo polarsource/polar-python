@@ -21,3 +21,9 @@ value: models.OrganizationAvatarFileCreate = /* values here */
 value: models.ProductMediaFileCreate = /* values here */
 ```
 
+### `models.SupportCaseAttachmentFileCreate`
+
+```python
+value: models.SupportCaseAttachmentFileCreate = /* values here */
+```
+

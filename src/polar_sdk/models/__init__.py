@@ -3056,6 +3056,14 @@ if TYPE_CHECKING:
         SubscriptionUpdateSeatsTypedDict,
     )
     from .subtype import SubType
+    from .supportcaseattachmentfilecreate import (
+        SupportCaseAttachmentFileCreate,
+        SupportCaseAttachmentFileCreateTypedDict,
+    )
+    from .supportcaseattachmentfileread import (
+        SupportCaseAttachmentFileRead,
+        SupportCaseAttachmentFileReadTypedDict,
+    )
     from .systemevent import SystemEvent, SystemEventTypedDict
     from .taxbehavior import TaxBehavior
     from .taxbehavioroption import TaxBehaviorOption
@@ -5508,6 +5516,10 @@ __all__ = [
     "SubscriptionsUpdateRequestTypedDict",
     "SucceededCheckouts",
     "SucceededCheckoutsTypedDict",
+    "SupportCaseAttachmentFileCreate",
+    "SupportCaseAttachmentFileCreateTypedDict",
+    "SupportCaseAttachmentFileRead",
+    "SupportCaseAttachmentFileReadTypedDict",
     "SwitchingFrom",
     "SystemEvent",
     "SystemEventTypedDict",
@@ -7883,6 +7895,10 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionUpdateSeats": ".subscriptionupdateseats",
     "SubscriptionUpdateSeatsTypedDict": ".subscriptionupdateseats",
     "SubType": ".subtype",
+    "SupportCaseAttachmentFileCreate": ".supportcaseattachmentfilecreate",
+    "SupportCaseAttachmentFileCreateTypedDict": ".supportcaseattachmentfilecreate",
+    "SupportCaseAttachmentFileRead": ".supportcaseattachmentfileread",
+    "SupportCaseAttachmentFileReadTypedDict": ".supportcaseattachmentfileread",
     "SystemEvent": ".systemevent",
     "SystemEventTypedDict": ".systemevent",
     "TaxBehavior": ".taxbehavior",
