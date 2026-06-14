@@ -8,6 +8,10 @@ from .organizationavatarfileread import (
     OrganizationAvatarFileReadTypedDict,
 )
 from .productmediafileread import ProductMediaFileRead, ProductMediaFileReadTypedDict
+from .supportcaseattachmentfileread import (
+    SupportCaseAttachmentFileRead,
+    SupportCaseAttachmentFileReadTypedDict,
+)
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import (
     FieldMetadata,
@@ -42,6 +46,7 @@ FilesUploadedResponseFilesUploadedTypedDict = TypeAliasType(
     "FilesUploadedResponseFilesUploadedTypedDict",
     Union[
         DownloadableFileReadTypedDict,
+        SupportCaseAttachmentFileReadTypedDict,
         ProductMediaFileReadTypedDict,
         OrganizationAvatarFileReadTypedDict,
     ],
@@ -54,6 +59,7 @@ FilesUploadedResponseFilesUploaded = Annotated[
         Annotated[DownloadableFileRead, Tag("downloadable")],
         Annotated[ProductMediaFileRead, Tag("product_media")],
         Annotated[OrganizationAvatarFileRead, Tag("organization_avatar")],
+        Annotated[SupportCaseAttachmentFileRead, Tag("support_case_attachment")],
     ],
     Discriminator(lambda m: get_discriminator(m, "service", "service")),
 ]

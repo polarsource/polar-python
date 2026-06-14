@@ -171,7 +171,7 @@ with Polar(
 ) as polar:
 
     res = polar.benefits.update(id="<value>", request_body={
-        "type": "custom",
+        "type": "discord",
     })
 
     # Handle response

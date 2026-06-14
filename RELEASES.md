@@ -1144,3 +1144,13 @@ Based on:
 - [python v0.31.7] .
 ### Releases
 - [PyPI v0.31.7] https://pypi.org/project/polar-sdk/0.31.7 - .
+
+## 2026-06-14 00:44:37
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.648.0 (2.737.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v0.31.8] .
+### Releases
+- [PyPI v0.31.8] https://pypi.org/project/polar-sdk/0.31.8 - .

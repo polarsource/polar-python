@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: e7042734-e669-4c36-85da-bbb4a7500ac8
 management:
-  docChecksum: f8abe2fee4272e1fc4a77b2ad908a93f
+  docChecksum: cff653d8aa8e24ba675598d45f8654e1
   docVersion: 0.1.0
   speakeasyVersion: 1.648.0
   generationVersion: 2.737.0
-  releaseVersion: 0.31.7
-  configChecksum: 2a2d0d298fb1e07a1a1a2e0f2df1a6d0
+  releaseVersion: 0.31.8
+  configChecksum: 010779e8f62f556db25b53ed8f32772f
   repoURL: https://github.com/polarsource/polar-python.git
   installationURL: https://github.com/polarsource/polar-python.git
   published: true
@@ -1200,6 +1200,8 @@ generatedFiles:
   - docs/models/subscriptionupdateseats.md
   - docs/models/subtype.md
   - docs/models/succeededcheckouts.md
+  - docs/models/supportcaseattachmentfilecreate.md
+  - docs/models/supportcaseattachmentfileread.md
   - docs/models/switchingfrom.md
   - docs/models/systemevent.md
   - docs/models/taxbehavior.md
@@ -2086,6 +2088,8 @@ generatedFiles:
   - src/polar_sdk/models/subscriptionupdatedmetadata.py
   - src/polar_sdk/models/subscriptionupdateseats.py
   - src/polar_sdk/models/subtype.py
+  - src/polar_sdk/models/supportcaseattachmentfilecreate.py
+  - src/polar_sdk/models/supportcaseattachmentfileread.py
   - src/polar_sdk/models/systemevent.py
   - src/polar_sdk/models/taxbehavior.py
   - src/polar_sdk/models/taxbehavioroption.py
@@ -2677,7 +2681,7 @@ examples:
         path:
           id: "<value>"
       requestBody:
-        application/json: {"type": "custom"}
+        application/json: {"type": "discord"}
       responses:
         "200":
           application/json: {"id": "<value>", "created_at": "2025-05-22T21:58:57.366Z", "modified_at": "2024-02-01T04:36:57.345Z", "type": "meter_credit", "description": "gosh perfectly fund efface", "selectable": false, "deletable": false, "is_deleted": false, "organization_id": "<value>", "metadata": {"key": false}, "visibility": "public", "properties": {"units": 356294, "rollover": false, "meter_id": "<value>"}, "visibility_configurable": false}
@@ -4808,7 +4812,7 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Python SDK Changes Detected:\n* `polar._endpointcustomer_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointcustomer_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointcustomer_deleted_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointcustomer_state_changed_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointorder_created_post()`: \n  *  `request.data.customer.billing_name` **Added** **Breaking** :warning:\n* `polar._endpointorder_updated_post()`: \n  *  `request.data.customer.billing_name` **Added** **Breaking** :warning:\n* `polar._endpointorder_paid_post()`: \n  *  `request.data.customer.billing_name` **Added** **Breaking** :warning:\n* `polar._endpointorder_refunded_post()`: \n  *  `request.data.customer.billing_name` **Added** **Breaking** :warning:\n* `polar._endpointsubscription_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_active_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_canceled_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_uncanceled_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_revoked_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointsubscription_past_due_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointproduct_created_post()`: \n  *  `request.data.benefits.[]` **Changed** **Breaking** :warning:\n* `polar._endpointproduct_updated_post()`: \n  *  `request.data.benefits.[]` **Changed** **Breaking** :warning:\n* `polar._endpointorganization_updated_post()`: \n  *  `request.data.feature_settings.account_review_v2_enabled` **Removed** **Breaking** :warning:\n* `polar._endpointbenefit_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointbenefit_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointbenefit_grant_created_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointbenefit_grant_updated_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointbenefit_grant_cycled_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar._endpointbenefit_grant_revoked_post()`: \n  *  `request.data` **Changed** **Breaking** :warning:\n* `polar.organizations.list_organizations()`:  `response.items.[].feature_settings.account_review_v2_enabled` **Removed** **Breaking** :warning:\n* `polar.organizations.create()`: \n  *  `request.feature_settings` **Changed** **Breaking** :warning:\n  *  `response.feature_settings.account_review_v2_enabled` **Removed** **Breaking** :warning:\n* `polar.organizations.get()`:  `response.feature_settings.account_review_v2_enabled` **Removed** **Breaking** :warning:\n* `polar.organizations.update()`: \n  *  `request.organization_update.feature_settings` **Changed** **Breaking** :warning:\n  *  `response.feature_settings.account_review_v2_enabled` **Removed** **Breaking** :warning:\n* `polar.customer_portal.benefit-grants.update()`: \n  *  `request.customer_benefit_grant_update.[slack_shared_channel]` **Added**\n  *  `response` **Changed** **Breaking** :warning:\n* `polar.customer_portal.benefit-grants.get()`:  `response` **Changed** **Breaking** :warning:\n* `polar.customer_portal.benefit-grants.list()`: \n  *  `request.type_filter` **Changed**\n  *  `response.items.[]` **Changed** **Breaking** :warning:\n* `polar.orders.list()`:  `response.items.[].customer.billing_name` **Added**\n* `polar.customers.create()`:  `response` **Changed**\n* `polar.benefits.list()`: \n  *  `request.type_filter` **Changed**\n  *  `response.items.[]` **Changed**\n* `polar.benefits.create()`: \n  *  `request` **Changed**\n  *  `response` **Changed**\n* `polar.benefits.get()`:  `response` **Changed**\n* `polar.benefits.update()`: \n  *  `request_body` **Changed**\n  *  `response` **Changed**\n* `polar.benefits.grants()`:  `response.items.[]` **Changed**\n* `polar.benefit-grants.list()`:  `response.items.[]` **Changed**\n* `polar.products.list()`:  `response.items.[].benefits.[]` **Changed**\n* `polar.products.create()`:  `response.benefits.[]` **Changed**\n* `polar.products.get()`:  `response.benefits.[]` **Changed**\n* `polar.products.update()`:  `response.benefits.[]` **Changed**\n* `polar.products.update_benefits()`:  `response.benefits.[]` **Changed**\n* `polar.subscriptions.revoke()`:  `response` **Changed**\n* `polar.orders.create()`:  `response.customer.billing_name` **Added**\n* `polar.orders.get()`:  `response.customer.billing_name` **Added**\n* `polar.orders.update()`:  `response.customer.billing_name` **Added**\n* `polar.orders.finalize()`:  `response.customer.billing_name` **Added**\n* `polar.license_keys.list()`:  `response.items.[].customer.billing_name` **Added**\n* `polar.license_keys.get()`:  `response.customer.billing_name` **Added**\n* `polar.license_keys.update()`:  `response.customer.billing_name` **Added**\n* `polar.license_keys.get_activation()`:  `response.license_key.customer.billing_name` **Added**\n* `polar.license_keys.validate()`:  `response.customer.billing_name` **Added**\n* `polar.license_keys.activate()`:  `response.license_key.customer.billing_name` **Added**\n* `polar.checkout-links.list()`:  `response.items.[].seats` **Added**\n* `polar.checkout-links.create()`: \n  *  `request` **Changed**\n  *  `response.seats` **Added**\n* `polar.checkout-links.get()`:  `response.seats` **Added**\n* `polar.checkout-links.update()`: \n  *  `request.checkout_link_update.seats` **Added**\n  *  `response.seats` **Added**\n* `polar.customers.list()`:  `response.items.[]` **Changed**\n* `polar.subscriptions.update()`:  `response` **Changed**\n* `polar.customers.get()`:  `response` **Changed**\n* `polar.customers.update()`:  `response` **Changed**\n* `polar.customers.get_external()`:  `response` **Changed**\n* `polar.customers.update_external()`:  `response` **Changed**\n* `polar.customers.get_state()`:  `response` **Changed**\n* `polar.customers.get_state_external()`:  `response` **Changed**\n* `polar.subscriptions.get()`:  `response` **Changed**\n* `polar.subscriptions.create()`:  `response` **Changed**\n* `polar.subscriptions.list()`: \n  *  `request.status` **Added**\n  *  `response.items.[]` **Changed**\n* `polar.customer_portal.customers.get()`:  `response.locale` **Added**\n* `polar.customer_portal.customers.update()`:  `response.locale` **Added**\n* `polar.customer_portal.seats.list_claimed_subscriptions()`:  `response.items.[].product.organization.organization_features.checkout_localization_enabled` **Added**\n* `polar.customer_portal.license_keys.list()`:  `response.items.[].customer.billing_name` **Added**\n* `polar.customer_portal.license_keys.get()`:  `response.customer.billing_name` **Added**\n* `polar.customer_portal.license_keys.validate()`:  `response.customer.billing_name` **Added**\n* `polar.customer_portal.license_keys.activate()`:  `response.license_key.customer.billing_name` **Added**\n* `polar.customer_portal.orders.list()`:  `response.items.[].product.organization.organization_features.checkout_localization_enabled` **Added**\n* `polar.customer_portal.orders.get()`:  `response.product.organization.organization_features.checkout_localization_enabled` **Added**\n* `polar.customer_portal.orders.update()`:  `response.product.organization.organization_features.checkout_localization_enabled` **Added**\n* `polar.customer_portal.organizations.get()`:  `response.organization.organization_features.checkout_localization_enabled` **Added**\n* `polar.customer_portal.subscriptions.list()`:  `response.items.[].product.organization.organization_features.checkout_localization_enabled` **Added**\n* `polar.customer_portal.subscriptions.get()`:  `response.product.organization.organization_features.checkout_localization_enabled` **Added**\n* `polar.customer_portal.subscriptions.cancel()`:  `response.product.organization.organization_features.checkout_localization_enabled` **Added**\n* `polar.customer_portal.subscriptions.update()`:  `response.product.organization.organization_features.checkout_localization_enabled` **Added**\n* `polar.customer-sessions.create()`:  `response.customer` **Changed**\n* `polar.events.list()`:  `response.[list_resource_event_].items.[].[system_event]` **Changed**\n* `polar.events.get()`:  `response` **Changed**\n* `polar.customer_meters.list()`:  `response.items.[].customer` **Changed**\n* `polar.customer_meters.get()`:  `response.customer` **Changed**\n"
+releaseNotes: "## Python SDK Changes Detected:\n* `polar.benefits.update()`:  `request_body` **Changed** **Breaking** :warning:\n* `polar.files.list()`:  `response.items.[].[support_case_attachment]` **Added**\n* `polar.files.create()`: \n  *  `request.[support_case_attachment]` **Added**\n* `polar.files.uploaded()`:  `response.[support_case_attachment]` **Added**\n* `polar.files.update()`:  `response.[support_case_attachment]` **Added**\n"
 trackedFiles:
   .devcontainer/README.md:
     last_write_checksum: sha1:e2a191a1fa8ceb27387eb32eabf36f7ad16a532c
@@ -4929,7 +4933,7 @@ trackedFiles:
   docs/models/benefitdiscordsubscriberproperties.md:
     last_write_checksum: sha1:779747f7bdb171b7abae83f6df8704bbcad3e6c1
   docs/models/benefitdiscordupdate.md:
-    last_write_checksum: sha1:ae93159960c484e2d8b8464ee98d983fd30410a9
+    last_write_checksum: sha1:c9691208611e0131fd2c9b263ee1b114ee09fe0a
   docs/models/benefitdiscordupdatemetadata.md:
     last_write_checksum: sha1:00f020082569456352ad9138a0018d18d718b0a6
   docs/models/benefitdownloadables.md:
@@ -4947,7 +4951,7 @@ trackedFiles:
   docs/models/benefitdownloadablessubscriberproperties.md:
     last_write_checksum: sha1:c64b45999cc8697d45205eba713c316921c8e81a
   docs/models/benefitdownloadablesupdate.md:
-    last_write_checksum: sha1:36ebbf249c0347405b2877a750a143eb0b6d2839
+    last_write_checksum: sha1:d5c4ad52f4856e18c88fbb08112f9715367a0548
   docs/models/benefitdownloadablesupdatemetadata.md:
     last_write_checksum: sha1:299e7c53534a66e0760f80684dec0f7c4636f517
   docs/models/benefitfeatureflag.md:
@@ -4985,7 +4989,7 @@ trackedFiles:
   docs/models/benefitgithubrepositorysubscriberproperties.md:
     last_write_checksum: sha1:cd9d3594fac0d8a755207c59a6f3c88fac0f0abb
   docs/models/benefitgithubrepositoryupdate.md:
-    last_write_checksum: sha1:7fc93f87c0ee4c9ae8fe957b1d16fee902b25235
+    last_write_checksum: sha1:4ec2db68faaacda875676b954539e124d09c5088
   docs/models/benefitgithubrepositoryupdatemetadata.md:
     last_write_checksum: sha1:98e37f59f1c52381260fe98a38043280fbcf2396
   docs/models/benefitgrant.md:
@@ -5113,7 +5117,7 @@ trackedFiles:
   docs/models/benefitslacksharedchannelsubscriberproperties.md:
     last_write_checksum: sha1:7b6cb51c2ad353214c77921328b253ae2a3908ad
   docs/models/benefitslacksharedchannelupdate.md:
-    last_write_checksum: sha1:700df1d709d783c0b4a3bdfe4cbd8c60cbffa264
+    last_write_checksum: sha1:1fbd1014a51d67a66d038f6e6a4cfef16afde0f7
   docs/models/benefitslacksharedchannelupdatemetadata.md:
     last_write_checksum: sha1:9d91da80eea2f4bd0a82d3a68102a0e0940e9290
   docs/models/benefitslistrequest.md:
@@ -6081,7 +6085,7 @@ trackedFiles:
   docs/models/externalcustomeridfilter.md:
     last_write_checksum: sha1:bc8eb1b1eb121de28f582e755df1ddd67a66c827
   docs/models/filecreate.md:
-    last_write_checksum: sha1:93ce5d4e0fd698dfab22cde302d7e8e52cf75e4a
+    last_write_checksum: sha1:eee6f9f98d987b84318557eb377fe69e58e33428
   docs/models/filedownload.md:
     last_write_checksum: sha1:002adebc41dc9b6fdc802b75df0882b11bcb94df
   docs/models/fileidfilter.md:
@@ -6089,11 +6093,11 @@ trackedFiles:
   docs/models/filepatch.md:
     last_write_checksum: sha1:4c440f280165ffd459c9c9b16dfdc88ee6d5997a
   docs/models/fileread.md:
-    last_write_checksum: sha1:bb04936036059700e170c4936c9a716592635096
+    last_write_checksum: sha1:45ada7eb76ea6258f57eb8a97de8f2c2758c2650
   docs/models/filesdeleterequest.md:
     last_write_checksum: sha1:41ea8effdd7ad4d5e3569128578665cdc346c5de
   docs/models/fileservicetypes.md:
-    last_write_checksum: sha1:8531d2e33b26097cdfa400428e86e3943c6099aa
+    last_write_checksum: sha1:f142e639b218fc418e066f76cc57c1b9e81dda51
   docs/models/fileslistqueryparamorganizationidfilter.md:
     last_write_checksum: sha1:e2e75e45ac9bb84348d5d6c4749b46c046acc8da
   docs/models/fileslistrequest.md:
@@ -6103,11 +6107,11 @@ trackedFiles:
   docs/models/filesupdaterequest.md:
     last_write_checksum: sha1:1d683d8cd34341f6fc629c006c6692dc3c6de513
   docs/models/filesupdateresponsefilesupdate.md:
-    last_write_checksum: sha1:59a8131ff4a05dce66fdd244e28c0d927d1d2ff4
+    last_write_checksum: sha1:3dbe19a8be8ec1da50d298fedcc15c99130ab099
   docs/models/filesuploadedrequest.md:
     last_write_checksum: sha1:35924bed06f46dfec7eb9aa6783fbf60c5958652
   docs/models/filesuploadedresponsefilesuploaded.md:
-    last_write_checksum: sha1:cc1ff68968b60643f762aa4476ea8ecf7b75e682
+    last_write_checksum: sha1:900e2247b0c4d7201e0e085e1231705e0e2cccc0
   docs/models/fileupload.md:
     last_write_checksum: sha1:d81e8d110a414a1d7ca0846eb8a75739dba527f6
   docs/models/fileuploadcompleted.md:
@@ -7126,6 +7130,10 @@ trackedFiles:
     last_write_checksum: sha1:fff1ae2bf27eb6c1c8372ad52ac847a2f6aaf2b5
   docs/models/succeededcheckouts.md:
     last_write_checksum: sha1:fcefd2cc388ea0e4c60515a6bb668859b68c05d9
+  docs/models/supportcaseattachmentfilecreate.md:
+    last_write_checksum: sha1:3fe92536a450669b5ab0a22ee85adc1f7d82496d
+  docs/models/supportcaseattachmentfileread.md:
+    last_write_checksum: sha1:3ce2eb3d621a8be9c6b252ae736fb1177e1902f0
   docs/models/switchingfrom.md:
     last_write_checksum: sha1:242623693cd6649aa665db76babcf7ff2531fd68
   docs/models/systemevent.md:
@@ -7387,7 +7395,7 @@ trackedFiles:
   src/polar_sdk/_hooks/types.py:
     last_write_checksum: sha1:a218c66f3e2d1f1b9af54f270472b970b0cc1913
   src/polar_sdk/_version.py:
-    last_write_checksum: sha1:16da024ffd37254096cc5d99913377b5bda90792
+    last_write_checksum: sha1:42dd527df1846fb63e2f89ec7acd93c20e8a6cb3
   src/polar_sdk/basesdk.py:
     last_write_checksum: sha1:4523ea81f1381f171fe2d4e60f85b82203208d02
   src/polar_sdk/benefit_grants.py:
@@ -7437,7 +7445,7 @@ trackedFiles:
   src/polar_sdk/metrics_sdk.py:
     last_write_checksum: sha1:296283edd527916f50c4a6c17c73354232c98240
   src/polar_sdk/models/__init__.py:
-    last_write_checksum: sha1:8449aea264e34572f2c6fa09418bd93e5f63e905
+    last_write_checksum: sha1:64cd46f582e36770187e695a165a27a8740c07c5
   src/polar_sdk/models/address.py:
     last_write_checksum: sha1:083edb7f045174ac1aea30545e9981c33f07d57d
   src/polar_sdk/models/addressdict.py:
@@ -7521,7 +7529,7 @@ trackedFiles:
   src/polar_sdk/models/benefitdiscordsubscriberproperties.py:
     last_write_checksum: sha1:5553ecb6757a2a7e675b970ae0ccfcafd88e8635
   src/polar_sdk/models/benefitdiscordupdate.py:
-    last_write_checksum: sha1:9de2d108844ce08c45e7bebd80fec5e096a138e2
+    last_write_checksum: sha1:7ada95b130b6d68f7a78d3352cfa89de1a24cb99
   src/polar_sdk/models/benefitdownloadables.py:
     last_write_checksum: sha1:c66fa35bb1bbf1118e09f27721d54f1f3ea32cdc
   src/polar_sdk/models/benefitdownloadablescreate.py:
@@ -7535,7 +7543,7 @@ trackedFiles:
   src/polar_sdk/models/benefitdownloadablessubscriberproperties.py:
     last_write_checksum: sha1:a6b5334b254773e57ff782573bc3171863c0d502
   src/polar_sdk/models/benefitdownloadablesupdate.py:
-    last_write_checksum: sha1:d3c25a28b0b6f58b3cf55433c02f2738777f3811
+    last_write_checksum: sha1:2913b1be7e29317ea7045893fc59f0b9c5c5d4ba
   src/polar_sdk/models/benefitfeatureflag.py:
     last_write_checksum: sha1:14e8667143b0e43e9a6af6b47f430098984d9864
   src/polar_sdk/models/benefitfeatureflagcreate.py:
@@ -7563,7 +7571,7 @@ trackedFiles:
   src/polar_sdk/models/benefitgithubrepositorysubscriberproperties.py:
     last_write_checksum: sha1:2dad7be0986169f2fff35bc0b0a6e638f80aa0d7
   src/polar_sdk/models/benefitgithubrepositoryupdate.py:
-    last_write_checksum: sha1:9c9aff39035403510fb9823dd42418807d88a4cb
+    last_write_checksum: sha1:69435ace4958334e63c75f5ee2d57d1b3fb7cfc4
   src/polar_sdk/models/benefitgrant.py:
     last_write_checksum: sha1:4c07cf5c8472b4a433bbfb59b37fd1501bd73fc2
   src/polar_sdk/models/benefitgrantcustomproperties.py:
@@ -7653,7 +7661,7 @@ trackedFiles:
   src/polar_sdk/models/benefits_grantsop.py:
     last_write_checksum: sha1:fbc84dd5807a068b561573368c1fa2b2ed617ce8
   src/polar_sdk/models/benefits_updateop.py:
-    last_write_checksum: sha1:8c511ffbd851333eb44cfdc0dbdab781fe76b37f
+    last_write_checksum: sha1:7ffaf3be2e834c225472066714d2751d202e51b1
   src/polar_sdk/models/benefitslacksharedchannel.py:
     last_write_checksum: sha1:497c7525effbfe2fbdf9c6406f9b5f37468b3388
   src/polar_sdk/models/benefitslacksharedchannelcreate.py:
@@ -7667,7 +7675,7 @@ trackedFiles:
   src/polar_sdk/models/benefitslacksharedchannelsubscriberproperties.py:
     last_write_checksum: sha1:1ff4a00631cc78eba698be798b03296fe478984d
   src/polar_sdk/models/benefitslacksharedchannelupdate.py:
-    last_write_checksum: sha1:ce7a2fe76b122dc5c577f2cf2a48ad1146d01935
+    last_write_checksum: sha1:8b05b1242e0af95a8bdb0a3e369043d5b228ef4d
   src/polar_sdk/models/benefitsortproperty.py:
     last_write_checksum: sha1:f58ff5c986166b50d352ec9bb675e708d1aa11ac
   src/polar_sdk/models/benefitsubscriberorganization.py:
@@ -8257,7 +8265,7 @@ trackedFiles:
   src/polar_sdk/models/expiredcheckouterror.py:
     last_write_checksum: sha1:50c0cf7b96f45f12cf32b285463cd0bf582d8a34
   src/polar_sdk/models/filecreate.py:
-    last_write_checksum: sha1:f4ca233d72ed14b70aa508525ef4f045bd27f02c
+    last_write_checksum: sha1:b18f789672a3a05ee1f64e0a0588d4ccdbf99c7d
   src/polar_sdk/models/filedownload.py:
     last_write_checksum: sha1:0d02b7f7dbe1225d7230891a3466e9373361dbec
   src/polar_sdk/models/filepatch.py:
@@ -8267,11 +8275,11 @@ trackedFiles:
   src/polar_sdk/models/files_listop.py:
     last_write_checksum: sha1:5ad63fa9eb8fb55445211b1f4a6e27c3534c58e6
   src/polar_sdk/models/files_updateop.py:
-    last_write_checksum: sha1:cea0b489d555407b29f8431cc23c96443c1d16fc
+    last_write_checksum: sha1:04d8cd678cf7f57c2dfb145541c56ee752ac3684
   src/polar_sdk/models/files_uploadedop.py:
-    last_write_checksum: sha1:3e07403eff67b4c37a1e013a82b6f33c51c25a72
+    last_write_checksum: sha1:2e627f7a330586cc2d47edfdadcbc035dc075643
   src/polar_sdk/models/fileservicetypes.py:
-    last_write_checksum: sha1:0cb36e6fbbe95e01473109e2fa508653a545bf32
+    last_write_checksum: sha1:957f7529de2e8d4ee95e3fb7e73713ff85fe7d29
   src/polar_sdk/models/fileupload.py:
     last_write_checksum: sha1:13bee3485f7d42eb123cb7c93bfd2e442aedfae3
   src/polar_sdk/models/fileuploadcompleted.py:
@@ -8369,7 +8377,7 @@ trackedFiles:
   src/polar_sdk/models/listresource_eventtypewithstats_.py:
     last_write_checksum: sha1:afa772bde25fb6a9292aa63f1a6c86191b47e361
   src/polar_sdk/models/listresource_fileread_.py:
-    last_write_checksum: sha1:b16a98eb61c759a5d9b8facbbdeef87fddcc1297
+    last_write_checksum: sha1:21c61e2e5152efc642fa006ec1edd1cbbddec955
   src/polar_sdk/models/listresource_licensekeyread_.py:
     last_write_checksum: sha1:ca5c854e3f225d3aa04749374fb4bebcb9a70423
   src/polar_sdk/models/listresource_member_.py:
@@ -8898,6 +8906,10 @@ trackedFiles:
     last_write_checksum: sha1:81b8edbe158653a9a6a64886200f3827560122b9
   src/polar_sdk/models/subtype.py:
     last_write_checksum: sha1:af98f25883c063ee99b2a99ec3e7fb8c5af32957
+  src/polar_sdk/models/supportcaseattachmentfilecreate.py:
+    last_write_checksum: sha1:75edecf4d30fa9c56f64cf37273485a38fffa83b
+  src/polar_sdk/models/supportcaseattachmentfileread.py:
+    last_write_checksum: sha1:64399f6fb1748b969d196084584292ef27c2940e
   src/polar_sdk/models/systemevent.py:
     last_write_checksum: sha1:643afaeecbca24ae7cec10ba910e0fec3af18b90
   src/polar_sdk/models/taxbehavior.py:
@@ -9071,7 +9083,7 @@ trackedFiles:
   src/polar_sdk/types/__init__.py:
     last_write_checksum: sha1:f9ad14217f832e74f594285960125add50324be9
   src/polar_sdk/types/base64fileinput.py:
-    last_write_checksum: sha1:4780e893d3853b5a6e28d9a6ca3ee102ce0f502d
+    last_write_checksum: sha1:1522687ae3398374c35710cad993a6e82b5ab99d
   src/polar_sdk/types/basemodel.py:
     last_write_checksum: sha1:10d84aedeb9d35edfdadf2c3020caa1d24d8b584
   src/polar_sdk/utils/__init__.py:
@@ -9085,9 +9097,9 @@ trackedFiles:
   src/polar_sdk/utils/enums.py:
     last_write_checksum: sha1:bc8c3c1285ae09ba8a094ee5c3d9c7f41fa1284d
   src/polar_sdk/utils/eventstreaming.py:
-    last_write_checksum: sha1:cad7e4feff4f1b2824afd0d30f2b1964a604f4dd
+    last_write_checksum: sha1:7d1dc68f8b48486ab646653aa05cc38752e1f912
   src/polar_sdk/utils/forms.py:
-    last_write_checksum: sha1:15fa7e9ab1611e062a9984cf06cb20969713d295
+    last_write_checksum: sha1:a971cdb120ad3d416d296d5d0ad89e4808350a7f
   src/polar_sdk/utils/headers.py:
     last_write_checksum: sha1:7c6df233ee006332b566a8afa9ce9a245941d935
   src/polar_sdk/utils/logger.py:

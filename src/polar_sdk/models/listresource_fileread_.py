@@ -8,6 +8,10 @@ from .organizationavatarfileread import (
 )
 from .pagination import Pagination, PaginationTypedDict
 from .productmediafileread import ProductMediaFileRead, ProductMediaFileReadTypedDict
+from .supportcaseattachmentfileread import (
+    SupportCaseAttachmentFileRead,
+    SupportCaseAttachmentFileReadTypedDict,
+)
 from polar_sdk.types import BaseModel
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
@@ -19,6 +23,7 @@ FileReadTypedDict = TypeAliasType(
     "FileReadTypedDict",
     Union[
         DownloadableFileReadTypedDict,
+        SupportCaseAttachmentFileReadTypedDict,
         ProductMediaFileReadTypedDict,
         OrganizationAvatarFileReadTypedDict,
     ],
@@ -30,6 +35,7 @@ FileRead = Annotated[
         Annotated[DownloadableFileRead, Tag("downloadable")],
         Annotated[OrganizationAvatarFileRead, Tag("organization_avatar")],
         Annotated[ProductMediaFileRead, Tag("product_media")],
+        Annotated[SupportCaseAttachmentFileRead, Tag("support_case_attachment")],
     ],
     Discriminator(lambda m: get_discriminator(m, "service", "service")),
 ]

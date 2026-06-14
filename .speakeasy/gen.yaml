@@ -32,7 +32,7 @@ generation:
   persistentEdits: {}
   versioningStrategy: automatic
 python:
-  version: 0.31.7
+  version: 0.31.8
   additionalDependencies:
     dev:
       pydantic-ai-slim: ^0.1.0

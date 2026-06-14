@@ -23,3 +23,9 @@ value: models.ProductMediaFileRead = /* values here */
 value: models.OrganizationAvatarFileRead = /* values here */
 ```
 
+### `models.SupportCaseAttachmentFileRead`
+
+```python
+value: models.SupportCaseAttachmentFileRead = /* values here */
+```
+
