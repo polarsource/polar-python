@@ -76,7 +76,7 @@ python:
   inputModelSuffix: input
   inputTypedDictSuffix: TypedDict
   legacyPyright: true
-  license: ""
+  license: MIT
   maxMethodParams: 100
   methodArguments: infer-optional-args
   methodTimeoutArgument: timeout-ms
