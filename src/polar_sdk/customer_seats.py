@@ -201,7 +201,7 @@ class CustomerSeats(BaseSDK):
     ) -> models.SeatsList:
         r"""List Seats
 
-        **Scopes**: `customer_seats:write`
+        **Scopes**: `customer_seats:read`
 
         :param subscription_id:
         :param order_id:
@@ -291,7 +291,7 @@ class CustomerSeats(BaseSDK):
     ) -> models.SeatsList:
         r"""List Seats
 
-        **Scopes**: `customer_seats:write`
+        **Scopes**: `customer_seats:read`
 
         :param subscription_id:
         :param order_id:

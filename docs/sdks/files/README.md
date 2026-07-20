@@ -162,7 +162,7 @@ with Polar(
 
 ### Response
 
-**[models.FilesUploadedResponseFilesUploaded](../../models/filesuploadedresponsefilesuploaded.md)**
+**[models.FileRead](../../models/fileread.md)**
 
 ### Errors
 
@@ -207,7 +207,7 @@ with Polar(
 
 ### Response
 
-**[models.FilesUpdateResponseFilesUpdate](../../models/filesupdateresponsefilesupdate.md)**
+**[models.FileRead](../../models/fileread.md)**
 
 ### Errors
 

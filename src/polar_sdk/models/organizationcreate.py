@@ -22,10 +22,6 @@ from .organizationindividuallegalentityschema import (
     OrganizationIndividualLegalEntitySchema,
     OrganizationIndividualLegalEntitySchemaTypedDict,
 )
-from .organizationnotificationsettings import (
-    OrganizationNotificationSettings,
-    OrganizationNotificationSettingsTypedDict,
-)
 from .organizationsociallink import (
     OrganizationSocialLink,
     OrganizationSocialLinkTypedDict,
@@ -328,9 +324,6 @@ class OrganizationCreateTypedDict(TypedDict):
     subscription_settings: NotRequired[
         Nullable[OrganizationSubscriptionSettingsTypedDict]
     ]
-    notification_settings: NotRequired[
-        Nullable[OrganizationNotificationSettingsTypedDict]
-    ]
     customer_email_settings: NotRequired[
         Nullable[OrganizationCustomerEmailSettingsTypedDict]
     ]
@@ -369,8 +362,6 @@ class OrganizationCreate(BaseModel):
 
     subscription_settings: OptionalNullable[OrganizationSubscriptionSettings] = UNSET
 
-    notification_settings: OptionalNullable[OrganizationNotificationSettings] = UNSET
-
     customer_email_settings: OptionalNullable[OrganizationCustomerEmailSettings] = UNSET
 
     customer_portal_settings: OptionalNullable[OrganizationCustomerPortalSettings] = (
@@ -393,7 +384,6 @@ class OrganizationCreate(BaseModel):
             "country",
             "feature_settings",
             "subscription_settings",
-            "notification_settings",
             "customer_email_settings",
             "customer_portal_settings",
             "default_presentment_currency",
@@ -409,7 +399,6 @@ class OrganizationCreate(BaseModel):
             "country",
             "feature_settings",
             "subscription_settings",
-            "notification_settings",
             "customer_email_settings",
             "customer_portal_settings",
         ]

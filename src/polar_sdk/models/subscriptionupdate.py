@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 from .subscriptioncancel import SubscriptionCancel, SubscriptionCancelTypedDict
+from .subscriptionpause import SubscriptionPause, SubscriptionPauseTypedDict
+from .subscriptionresume import SubscriptionResume, SubscriptionResumeTypedDict
 from .subscriptionrevoke import SubscriptionRevoke, SubscriptionRevokeTypedDict
 from .subscriptionupdatebase import (
     SubscriptionUpdateBase,
@@ -27,8 +29,10 @@ SubscriptionUpdateTypedDict = TypeAliasType(
     "SubscriptionUpdateTypedDict",
     Union[
         SubscriptionUpdateBillingPeriodTypedDict,
+        SubscriptionResumeTypedDict,
         SubscriptionUpdateClearTypedDict,
         SubscriptionUpdateSeatsTypedDict,
+        SubscriptionPauseTypedDict,
         SubscriptionCancelTypedDict,
         SubscriptionRevokeTypedDict,
         SubscriptionUpdateBaseTypedDict,
@@ -40,8 +44,10 @@ SubscriptionUpdate = TypeAliasType(
     "SubscriptionUpdate",
     Union[
         SubscriptionUpdateBillingPeriod,
+        SubscriptionResume,
         SubscriptionUpdateClear,
         SubscriptionUpdateSeats,
+        SubscriptionPause,
         SubscriptionCancel,
         SubscriptionRevoke,
         SubscriptionUpdateBase,

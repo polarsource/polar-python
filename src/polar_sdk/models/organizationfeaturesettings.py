@@ -24,10 +24,18 @@ class OrganizationFeatureSettingsTypedDict(TypedDict):
     r"""If this organization has access to reset proration behavior."""
     off_session_charges_enabled: NotRequired[bool]
     r"""If this organization can create and finalize draft orders via the API (off-session charges against a saved payment method)."""
-    billing_enabled: NotRequired[bool]
-    r"""If this organization has billing enabled"""
     slack_benefit_enabled: NotRequired[bool]
     r"""Enables the slack shared channel benefit"""
+    preview_access_enabled: NotRequired[bool]
+    r"""If this organization has preview access to new features enabled"""
+    disputes_enabled: NotRequired[bool]
+    r"""If this organization has the disputes dashboard enabled"""
+    sso_enabled: NotRequired[bool]
+    r"""If this organization has single sign-on configuration enabled"""
+    compass_enabled: NotRequired[bool]
+    r"""If this organization has the split product navigation (Billing / Compass / Customers) enabled in the dashboard"""
+    merchant_migration_enabled: NotRequired[bool]
+    r"""If this organization can migrate its billing from another provider (e.g. Stripe) to Polar."""
 
 
 class OrganizationFeatureSettings(BaseModel):
@@ -55,11 +63,23 @@ class OrganizationFeatureSettings(BaseModel):
     off_session_charges_enabled: Optional[bool] = False
     r"""If this organization can create and finalize draft orders via the API (off-session charges against a saved payment method)."""
 
-    billing_enabled: Optional[bool] = False
-    r"""If this organization has billing enabled"""
-
     slack_benefit_enabled: Optional[bool] = False
     r"""Enables the slack shared channel benefit"""
+
+    preview_access_enabled: Optional[bool] = False
+    r"""If this organization has preview access to new features enabled"""
+
+    disputes_enabled: Optional[bool] = False
+    r"""If this organization has the disputes dashboard enabled"""
+
+    sso_enabled: Optional[bool] = False
+    r"""If this organization has single sign-on configuration enabled"""
+
+    compass_enabled: Optional[bool] = False
+    r"""If this organization has the split product navigation (Billing / Compass / Customers) enabled in the dashboard"""
+
+    merchant_migration_enabled: Optional[bool] = False
+    r"""If this organization can migrate its billing from another provider (e.g. Stripe) to Polar."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -72,8 +92,12 @@ class OrganizationFeatureSettings(BaseModel):
             "overview_metrics",
             "reset_proration_behavior_enabled",
             "off_session_charges_enabled",
-            "billing_enabled",
             "slack_benefit_enabled",
+            "preview_access_enabled",
+            "disputes_enabled",
+            "sso_enabled",
+            "compass_enabled",
+            "merchant_migration_enabled",
         ]
         nullable_fields = ["overview_metrics"]
         null_default_fields = []

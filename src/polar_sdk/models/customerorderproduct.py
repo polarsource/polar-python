@@ -10,7 +10,7 @@ from .legacyrecurringproductprice import (
 from .productmediafileread import ProductMediaFileRead, ProductMediaFileReadTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
 from .productvisibility import ProductVisibility
-from .subscriptionrecurringinterval import SubscriptionRecurringInterval
+from .recurringinterval import RecurringInterval
 from .trialinterval import TrialInterval
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -46,10 +46,14 @@ class CustomerOrderProductTypedDict(TypedDict):
     description: Nullable[str]
     r"""The description of the product."""
     visibility: ProductVisibility
-    recurring_interval: Nullable[SubscriptionRecurringInterval]
+    recurring_interval: Nullable[RecurringInterval]
     r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
     recurring_interval_count: Nullable[int]
     r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on. None for one-time products."""
+    meter_interval: Nullable[RecurringInterval]
+    r"""The meter cycle of the product, independent of the billing interval. If `None`, metered concerns follow the billing interval."""
+    meter_interval_count: Nullable[int]
+    r"""Number of meter interval units. None when no meter cycle is set."""
     is_recurring: bool
     r"""Whether the product is a subscription."""
     is_archived: bool
@@ -89,11 +93,17 @@ class CustomerOrderProduct(BaseModel):
 
     visibility: ProductVisibility
 
-    recurring_interval: Nullable[SubscriptionRecurringInterval]
+    recurring_interval: Nullable[RecurringInterval]
     r"""The recurring interval of the product. If `None`, the product is a one-time purchase."""
 
     recurring_interval_count: Nullable[int]
     r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on. None for one-time products."""
+
+    meter_interval: Nullable[RecurringInterval]
+    r"""The meter cycle of the product, independent of the billing interval. If `None`, metered concerns follow the billing interval."""
+
+    meter_interval_count: Nullable[int]
+    r"""Number of meter interval units. None when no meter cycle is set."""
 
     is_recurring: bool
     r"""Whether the product is a subscription."""
@@ -125,6 +135,8 @@ class CustomerOrderProduct(BaseModel):
             "description",
             "recurring_interval",
             "recurring_interval_count",
+            "meter_interval",
+            "meter_interval_count",
         ]
         null_default_fields = []
 

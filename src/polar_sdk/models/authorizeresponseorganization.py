@@ -19,6 +19,7 @@ class AuthorizeResponseOrganizationTypedDict(TypedDict):
     scopes: List[Scope]
     organizations: List[AuthorizeOrganizationTypedDict]
     sub_type: Literal["organization"]
+    requires_single_organization: NotRequired[bool]
     scope_display_names: NotRequired[Dict[str, str]]
 
 
@@ -38,11 +39,13 @@ class AuthorizeResponseOrganization(BaseModel):
         pydantic.Field(alias="sub_type"),
     ] = "organization"
 
+    requires_single_organization: Optional[bool] = False
+
     scope_display_names: Optional[Dict[str, str]] = None
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["scope_display_names"]
+        optional_fields = ["requires_single_organization", "scope_display_names"]
         nullable_fields = ["sub"]
         null_default_fields = []
 

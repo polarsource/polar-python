@@ -339,13 +339,18 @@ class Organizations(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["422", "4XX", "5XX"],
+            error_status_codes=["403", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
             return unmarshal_json_response(models.Organization, http_res)
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                models.CannotCreateOrganizationErrorData, http_res
+            )
+            raise models.CannotCreateOrganizationError(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -431,13 +436,18 @@ class Organizations(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["422", "4XX", "5XX"],
+            error_status_codes=["403", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         response_data: Any = None
         if utils.match_response(http_res, "201", "application/json"):
             return unmarshal_json_response(models.Organization, http_res)
+        if utils.match_response(http_res, "403", "application/json"):
+            response_data = unmarshal_json_response(
+                models.CannotCreateOrganizationErrorData, http_res
+            )
+            raise models.CannotCreateOrganizationError(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -722,7 +732,7 @@ class Organizations(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "409", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -737,6 +747,11 @@ class Organizations(BaseSDK):
                 models.ResourceNotFoundData, http_res
             )
             raise models.ResourceNotFound(response_data, http_res)
+        if utils.match_response(http_res, "409", "application/json"):
+            response_data = unmarshal_json_response(
+                models.SSOEnforcementRequiresConnectionData, http_res
+            )
+            raise models.SSOEnforcementRequiresConnection(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res
@@ -833,7 +848,7 @@ class Organizations(BaseSDK):
                 security_source=self.sdk_configuration.security,
             ),
             request=req,
-            error_status_codes=["403", "404", "422", "4XX", "5XX"],
+            error_status_codes=["403", "404", "409", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
@@ -848,6 +863,11 @@ class Organizations(BaseSDK):
                 models.ResourceNotFoundData, http_res
             )
             raise models.ResourceNotFound(response_data, http_res)
+        if utils.match_response(http_res, "409", "application/json"):
+            response_data = unmarshal_json_response(
+                models.SSOEnforcementRequiresConnectionData, http_res
+            )
+            raise models.SSOEnforcementRequiresConnection(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
                 models.HTTPValidationErrorData, http_res

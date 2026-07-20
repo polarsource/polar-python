@@ -2,18 +2,12 @@
 
 from .basesdk import BaseSDK
 from datetime import datetime
-from enum import Enum
 from jsonpath import JSONPath
 from polar_sdk import models, utils
 from polar_sdk._hooks import HookContext
 from polar_sdk.types import BaseModel, OptionalNullable, UNSET
 from polar_sdk.utils.unmarshal_json_response import unmarshal_json_response
 from typing import Any, Dict, List, Mapping, Optional, Union, cast
-
-
-class ExportAcceptEnum(str, Enum):
-    APPLICATION_JSON = "application/json"
-    TEXT_CSV = "text/csv"
 
 
 class Subscriptions(BaseSDK):
@@ -634,9 +628,8 @@ class Subscriptions(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-        accept_header_override: Optional[ExportAcceptEnum] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.SubscriptionsExportResponse:
+    ) -> str:
         r"""Export Subscriptions
 
         Export subscriptions as a CSV file.
@@ -647,7 +640,6 @@ class Subscriptions(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param accept_header_override: Override the default accept header for this method
         :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
@@ -674,9 +666,7 @@ class Subscriptions(BaseSDK):
             request_has_path_params=False,
             request_has_query_params=True,
             user_agent_header="user-agent",
-            accept_header_value=accept_header_override.value
-            if accept_header_override is not None
-            else "application/json;q=1, text/csv;q=0",
+            accept_header_value="text/csv",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
@@ -704,8 +694,6 @@ class Subscriptions(BaseSDK):
         )
 
         response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(Any, http_res)
         if utils.match_response(http_res, "200", "text/csv"):
             return http_res.text
         if utils.match_response(http_res, "422", "application/json"):
@@ -731,9 +719,8 @@ class Subscriptions(BaseSDK):
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
-        accept_header_override: Optional[ExportAcceptEnum] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.SubscriptionsExportResponse:
+    ) -> str:
         r"""Export Subscriptions
 
         Export subscriptions as a CSV file.
@@ -744,7 +731,6 @@ class Subscriptions(BaseSDK):
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param accept_header_override: Override the default accept header for this method
         :param http_headers: Additional headers to set or replace on requests.
         """
         base_url = None
@@ -771,9 +757,7 @@ class Subscriptions(BaseSDK):
             request_has_path_params=False,
             request_has_query_params=True,
             user_agent_header="user-agent",
-            accept_header_value=accept_header_override.value
-            if accept_header_override is not None
-            else "application/json;q=1, text/csv;q=0",
+            accept_header_value="text/csv",
             http_headers=http_headers,
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
@@ -801,8 +785,6 @@ class Subscriptions(BaseSDK):
         )
 
         response_data: Any = None
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(Any, http_res)
         if utils.match_response(http_res, "200", "text/csv"):
             return http_res.text
         if utils.match_response(http_res, "422", "application/json"):

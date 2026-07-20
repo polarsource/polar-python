@@ -30,6 +30,12 @@ class RefundDisputeTypedDict(TypedDict):
     r"""Tax amount in cents disputed."""
     currency: str
     r"""Currency code of the dispute."""
+    reason: Nullable[str]
+    r"""The reason for the dispute as reported by the card network (e.g. `fraudulent`, `product_not_received`). `None` until the processor reports it."""
+    evidence_due_by: Nullable[datetime]
+    r"""Deadline to submit evidence in response to the dispute. `None` when no response is required."""
+    past_due: bool
+    r"""Whether the evidence submission deadline has passed."""
     order_id: str
     r"""The ID of the order associated with the dispute."""
     payment_id: str
@@ -67,6 +73,15 @@ class RefundDispute(BaseModel):
     currency: str
     r"""Currency code of the dispute."""
 
+    reason: Nullable[str]
+    r"""The reason for the dispute as reported by the card network (e.g. `fraudulent`, `product_not_received`). `None` until the processor reports it."""
+
+    evidence_due_by: Nullable[datetime]
+    r"""Deadline to submit evidence in response to the dispute. `None` when no response is required."""
+
+    past_due: bool
+    r"""Whether the evidence submission deadline has passed."""
+
     order_id: str
     r"""The ID of the order associated with the dispute."""
 
@@ -76,7 +91,7 @@ class RefundDispute(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
-        nullable_fields = ["modified_at"]
+        nullable_fields = ["modified_at", "reason", "evidence_due_by"]
         null_default_fields = []
 
         serialized = handler(self)

@@ -9,10 +9,6 @@ from .legacyrecurringproductpricefixed import (
     LegacyRecurringProductPriceFixed,
     LegacyRecurringProductPriceFixedTypedDict,
 )
-from .legacyrecurringproductpricefree import (
-    LegacyRecurringProductPriceFree,
-    LegacyRecurringProductPriceFreeTypedDict,
-)
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
@@ -22,7 +18,6 @@ from typing_extensions import Annotated, TypeAliasType
 LegacyRecurringProductPriceTypedDict = TypeAliasType(
     "LegacyRecurringProductPriceTypedDict",
     Union[
-        LegacyRecurringProductPriceFreeTypedDict,
         LegacyRecurringProductPriceFixedTypedDict,
         LegacyRecurringProductPriceCustomTypedDict,
     ],
@@ -33,7 +28,6 @@ LegacyRecurringProductPrice = Annotated[
     Union[
         Annotated[LegacyRecurringProductPriceCustom, Tag("custom")],
         Annotated[LegacyRecurringProductPriceFixed, Tag("fixed")],
-        Annotated[LegacyRecurringProductPriceFree, Tag("free")],
     ],
     Discriminator(lambda m: get_discriminator(m, "amount_type", "amount_type")),
 ]

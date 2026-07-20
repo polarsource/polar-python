@@ -29,9 +29,9 @@ from .pendingsubscriptionupdate import (
 )
 from .product import Product, ProductTypedDict
 from .productprice import ProductPrice, ProductPriceTypedDict
+from .recurringinterval import RecurringInterval
 from .subscriptioncustomer import SubscriptionCustomer, SubscriptionCustomerTypedDict
 from .subscriptionmeter import SubscriptionMeter, SubscriptionMeterTypedDict
-from .subscriptionrecurringinterval import SubscriptionRecurringInterval
 from .subscriptionstatus import SubscriptionStatus
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
@@ -92,7 +92,7 @@ class SubscriptionTypedDict(TypedDict):
     r"""The amount of the subscription."""
     currency: str
     r"""The currency of the subscription."""
-    recurring_interval: SubscriptionRecurringInterval
+    recurring_interval: RecurringInterval
     recurring_interval_count: int
     r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on."""
     status: SubscriptionStatus
@@ -100,6 +100,10 @@ class SubscriptionTypedDict(TypedDict):
     r"""The start timestamp of the current billing period."""
     current_period_end: datetime
     r"""The end timestamp of the current billing period."""
+    current_meter_period_start: Nullable[datetime]
+    r"""The start timestamp of the current meter period, if the product has a meter cycle set. Metered credits are granted and overage is settled on this cadence."""
+    current_meter_period_end: Nullable[datetime]
+    r"""The end timestamp of the current meter period, if the product has a meter cycle set. This is when credits next renew."""
     trial_start: Nullable[datetime]
     r"""The start timestamp of the trial period, if any."""
     trial_end: Nullable[datetime]
@@ -114,6 +118,12 @@ class SubscriptionTypedDict(TypedDict):
     r"""The timestamp when the subscription will end."""
     ended_at: Nullable[datetime]
     r"""The timestamp when the subscription ended."""
+    pause_at_period_end: bool
+    r"""Whether the subscription will be paused at the end of the current period."""
+    paused_at: Nullable[datetime]
+    r"""The timestamp when the subscription was paused."""
+    resumes_at: Nullable[datetime]
+    r"""The timestamp when a paused subscription is scheduled to automatically resume, if set."""
     customer_id: str
     r"""The ID of the subscribed customer."""
     product_id: str
@@ -134,6 +144,8 @@ class SubscriptionTypedDict(TypedDict):
     r"""List of meters associated with the subscription."""
     pending_update: Nullable[PendingSubscriptionUpdateTypedDict]
     r"""Pending subscription update that will be applied at the beginning of the next period. If `null`, there is no pending update."""
+    past_due_at: NotRequired[Nullable[datetime]]
+    r"""The timestamp when the subscription entered `past_due` status."""
     seats: NotRequired[Nullable[int]]
     r"""The number of seats for seat-based subscriptions. None for non-seat subscriptions."""
     custom_field_data: NotRequired[Dict[str, Nullable[CustomFieldDataTypedDict]]]
@@ -156,7 +168,7 @@ class Subscription(BaseModel):
     currency: str
     r"""The currency of the subscription."""
 
-    recurring_interval: SubscriptionRecurringInterval
+    recurring_interval: RecurringInterval
 
     recurring_interval_count: int
     r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on."""
@@ -168,6 +180,12 @@ class Subscription(BaseModel):
 
     current_period_end: datetime
     r"""The end timestamp of the current billing period."""
+
+    current_meter_period_start: Nullable[datetime]
+    r"""The start timestamp of the current meter period, if the product has a meter cycle set. Metered credits are granted and overage is settled on this cadence."""
+
+    current_meter_period_end: Nullable[datetime]
+    r"""The end timestamp of the current meter period, if the product has a meter cycle set. This is when credits next renew."""
 
     trial_start: Nullable[datetime]
     r"""The start timestamp of the trial period, if any."""
@@ -189,6 +207,15 @@ class Subscription(BaseModel):
 
     ended_at: Nullable[datetime]
     r"""The timestamp when the subscription ended."""
+
+    pause_at_period_end: bool
+    r"""Whether the subscription will be paused at the end of the current period."""
+
+    paused_at: Nullable[datetime]
+    r"""The timestamp when the subscription was paused."""
+
+    resumes_at: Nullable[datetime]
+    r"""The timestamp when a paused subscription is scheduled to automatically resume, if set."""
 
     customer_id: str
     r"""The ID of the subscribed customer."""
@@ -223,6 +250,9 @@ class Subscription(BaseModel):
     pending_update: Nullable[PendingSubscriptionUpdate]
     r"""Pending subscription update that will be applied at the beginning of the next period. If `null`, there is no pending update."""
 
+    past_due_at: OptionalNullable[datetime] = UNSET
+    r"""The timestamp when the subscription entered `past_due` status."""
+
     seats: OptionalNullable[int] = UNSET
     r"""The number of seats for seat-based subscriptions. None for non-seat subscriptions."""
 
@@ -231,15 +261,20 @@ class Subscription(BaseModel):
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["seats", "custom_field_data"]
+        optional_fields = ["past_due_at", "seats", "custom_field_data"]
         nullable_fields = [
             "modified_at",
+            "current_meter_period_start",
+            "current_meter_period_end",
             "trial_start",
             "trial_end",
             "canceled_at",
             "started_at",
             "ends_at",
             "ended_at",
+            "past_due_at",
+            "paused_at",
+            "resumes_at",
             "discount_id",
             "checkout_id",
             "seats",

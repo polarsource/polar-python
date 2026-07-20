@@ -8,22 +8,27 @@ from typing_extensions import NotRequired, TypedDict
 
 
 class CustomerPortalMemberUpdateTypedDict(TypedDict):
-    r"""Schema for updating a member's role in the customer portal."""
+    r"""Schema for updating a member in the customer portal."""
 
+    name: NotRequired[Nullable[str]]
+    r"""The new name for the member."""
     role: NotRequired[Nullable[MemberRole]]
     r"""The new role for the member."""
 
 
 class CustomerPortalMemberUpdate(BaseModel):
-    r"""Schema for updating a member's role in the customer portal."""
+    r"""Schema for updating a member in the customer portal."""
+
+    name: OptionalNullable[str] = UNSET
+    r"""The new name for the member."""
 
     role: OptionalNullable[MemberRole] = UNSET
     r"""The new role for the member."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["role"]
-        nullable_fields = ["role"]
+        optional_fields = ["name", "role"]
+        nullable_fields = ["name", "role"]
         null_default_fields = []
 
         serialized = handler(self)

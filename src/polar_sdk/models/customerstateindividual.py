@@ -62,13 +62,13 @@ class CustomerStateIndividualTypedDict(TypedDict):
     r"""The ID of the organization owning the customer."""
     deleted_at: Nullable[datetime]
     r"""Timestamp for when the customer was soft deleted."""
+    avatar_url: Nullable[str]
     active_subscriptions: List[CustomerStateSubscriptionTypedDict]
     r"""The customer's active subscriptions."""
     granted_benefits: List[CustomerStateBenefitGrantTypedDict]
     r"""The customer's active benefit grants."""
     active_meters: List[CustomerStateMeterTypedDict]
     r"""The customer's active meters."""
-    avatar_url: str
     external_id: NotRequired[Nullable[str]]
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
     type: Literal["individual"]
@@ -119,6 +119,8 @@ class CustomerStateIndividual(BaseModel):
     deleted_at: Nullable[datetime]
     r"""Timestamp for when the customer was soft deleted."""
 
+    avatar_url: Nullable[str]
+
     active_subscriptions: List[CustomerStateSubscription]
     r"""The customer's active subscriptions."""
 
@@ -127,8 +129,6 @@ class CustomerStateIndividual(BaseModel):
 
     active_meters: List[CustomerStateMeter]
     r"""The customer's active meters."""
-
-    avatar_url: str
 
     external_id: OptionalNullable[str] = UNSET
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
@@ -157,6 +157,7 @@ class CustomerStateIndividual(BaseModel):
             "locale",
             "default_payment_method_id",
             "deleted_at",
+            "avatar_url",
         ]
         null_default_fields = []
 

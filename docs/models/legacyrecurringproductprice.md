@@ -15,9 +15,3 @@ value: models.LegacyRecurringProductPriceCustom = /* values here */
 value: models.LegacyRecurringProductPriceFixed = /* values here */
 ```
 
-### `models.LegacyRecurringProductPriceFree`
-
-```python
-value: models.LegacyRecurringProductPriceFree = /* values here */
-```
-

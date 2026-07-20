@@ -12,6 +12,8 @@ class OrganizationCustomerEmailSettingsTypedDict(TypedDict):
     subscription_cycled: bool
     subscription_cycled_after_trial: bool
     subscription_past_due: bool
+    subscription_paused: bool
+    subscription_resumed: bool
     subscription_renewal_reminder: bool
     subscription_revoked: bool
     subscription_trial_conversion_reminder: bool
@@ -31,6 +33,10 @@ class OrganizationCustomerEmailSettings(BaseModel):
     subscription_cycled_after_trial: bool
 
     subscription_past_due: bool
+
+    subscription_paused: bool
+
+    subscription_resumed: bool
 
     subscription_renewal_reminder: bool
 

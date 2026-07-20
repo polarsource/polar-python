@@ -14,10 +14,6 @@ from .organizationfeaturesettingsupdate import (
     OrganizationFeatureSettingsUpdate,
     OrganizationFeatureSettingsUpdateTypedDict,
 )
-from .organizationnotificationsettings import (
-    OrganizationNotificationSettings,
-    OrganizationNotificationSettingsTypedDict,
-)
 from .organizationsociallink import (
     OrganizationSocialLink,
     OrganizationSocialLinkTypedDict,
@@ -299,9 +295,6 @@ class OrganizationUpdateTypedDict(TypedDict):
     subscription_settings: NotRequired[
         Nullable[OrganizationSubscriptionSettingsTypedDict]
     ]
-    notification_settings: NotRequired[
-        Nullable[OrganizationNotificationSettingsTypedDict]
-    ]
     customer_email_settings: NotRequired[
         Nullable[OrganizationCustomerEmailSettingsTypedDict]
     ]
@@ -312,6 +305,8 @@ class OrganizationUpdateTypedDict(TypedDict):
     r"""Default presentment currency for the organization"""
     default_tax_behavior: NotRequired[Nullable[TaxBehaviorOption]]
     r"""Default tax behavior applied on products."""
+    sso_enforced: NotRequired[Nullable[bool]]
+    r"""Whether members must access this organization through its SSO connection. Turning this on requires an active SSO session for this organization and at least one enabled SSO connection."""
 
 
 class OrganizationUpdate(BaseModel):
@@ -338,8 +333,6 @@ class OrganizationUpdate(BaseModel):
 
     subscription_settings: OptionalNullable[OrganizationSubscriptionSettings] = UNSET
 
-    notification_settings: OptionalNullable[OrganizationNotificationSettings] = UNSET
-
     customer_email_settings: OptionalNullable[OrganizationCustomerEmailSettings] = UNSET
 
     customer_portal_settings: OptionalNullable[OrganizationCustomerPortalSettings] = (
@@ -351,6 +344,9 @@ class OrganizationUpdate(BaseModel):
 
     default_tax_behavior: OptionalNullable[TaxBehaviorOption] = UNSET
     r"""Default tax behavior applied on products."""
+
+    sso_enforced: OptionalNullable[bool] = UNSET
+    r"""Whether members must access this organization through its SSO connection. Turning this on requires an active SSO session for this organization and at least one enabled SSO connection."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -364,11 +360,11 @@ class OrganizationUpdate(BaseModel):
             "country",
             "feature_settings",
             "subscription_settings",
-            "notification_settings",
             "customer_email_settings",
             "customer_portal_settings",
             "default_presentment_currency",
             "default_tax_behavior",
+            "sso_enforced",
         ]
         nullable_fields = [
             "name",
@@ -380,11 +376,11 @@ class OrganizationUpdate(BaseModel):
             "country",
             "feature_settings",
             "subscription_settings",
-            "notification_settings",
             "customer_email_settings",
             "customer_portal_settings",
             "default_presentment_currency",
             "default_tax_behavior",
+            "sso_enforced",
         ]
         null_default_fields = []
 

@@ -1,7 +1,7 @@
 
 [project]
 name = "polar-sdk"
-version = "0.31.7"
+version = "0.32.0"
 description = "Polar SDK for Python"
 authors = [{ name = "Polar" },]
 readme = "README-PYPI.md"
@@ -13,10 +13,10 @@ dependencies = [
     "pydantic >=2.11.2",
     "standardwebhooks (>=1.0.0,<2.0.0)",
 ]
-license = { text = "MIT" }
 
 [tool.poetry]
 repository = "https://github.com/polarsource/polar-python.git"
+license = "MIT"
 packages = [
     { include = "polar_sdk", from = "src" }
 ]

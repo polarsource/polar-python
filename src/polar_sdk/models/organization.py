@@ -17,10 +17,6 @@ from .organizationfeaturesettings import (
     OrganizationFeatureSettings,
     OrganizationFeatureSettingsTypedDict,
 )
-from .organizationnotificationsettings import (
-    OrganizationNotificationSettings,
-    OrganizationNotificationSettingsTypedDict,
-)
 from .organizationsociallink import (
     OrganizationSocialLink,
     OrganizationSocialLinkTypedDict,
@@ -317,13 +313,14 @@ class OrganizationTypedDict(TypedDict):
     status: OrganizationStatus
     details_submitted_at: Nullable[datetime]
     r"""When the business details were submitted for review."""
+    sso_enforced: bool
+    r"""Whether members must access this organization through its SSO connection."""
     default_presentment_currency: str
     r"""Default presentment currency. Used as fallback in checkout and customer portal, if the customer's local currency is not available."""
     default_tax_behavior: TaxBehaviorOption
     feature_settings: Nullable[OrganizationFeatureSettingsTypedDict]
     r"""Organization feature settings"""
     subscription_settings: OrganizationSubscriptionSettingsTypedDict
-    notification_settings: OrganizationNotificationSettingsTypedDict
     customer_email_settings: OrganizationCustomerEmailSettingsTypedDict
     customer_portal_settings: OrganizationCustomerPortalSettingsTypedDict
     account_id: Nullable[str]
@@ -373,6 +370,9 @@ class Organization(BaseModel):
     details_submitted_at: Nullable[datetime]
     r"""When the business details were submitted for review."""
 
+    sso_enforced: bool
+    r"""Whether members must access this organization through its SSO connection."""
+
     default_presentment_currency: str
     r"""Default presentment currency. Used as fallback in checkout and customer portal, if the customer's local currency is not available."""
 
@@ -382,8 +382,6 @@ class Organization(BaseModel):
     r"""Organization feature settings"""
 
     subscription_settings: OrganizationSubscriptionSettings
-
-    notification_settings: OrganizationNotificationSettings
 
     customer_email_settings: OrganizationCustomerEmailSettings
 

@@ -12,3 +12,4 @@ class OrganizationStatus(str, Enum):
     ACTIVE = "active"
     BLOCKED = "blocked"
     OFFBOARDING = "offboarding"
+    OFFBOARDED = "offboarded"

@@ -74,7 +74,7 @@ class CustomerOrderTypedDict(TypedDict):
     seats: NotRequired[Nullable[int]]
     r"""Number of seats purchased (for seat-based one-time orders)."""
     next_payment_attempt_at: NotRequired[Nullable[datetime]]
-    r"""When the next payment retry is scheduled"""
+    r"""When the next automatic payment retry is scheduled. `null` if the order is not in dunning or all retries have been exhausted."""
 
 
 class CustomerOrder(BaseModel):
@@ -167,7 +167,7 @@ class CustomerOrder(BaseModel):
     r"""Number of seats purchased (for seat-based one-time orders)."""
 
     next_payment_attempt_at: OptionalNullable[datetime] = UNSET
-    r"""When the next payment retry is scheduled"""
+    r"""When the next automatic payment retry is scheduled. `null` if the order is not in dunning or all retries have been exhausted."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
@@ -183,9 +183,9 @@ class CustomerOrder(BaseModel):
             "discount_id",
             "subscription_id",
             "checkout_id",
+            "next_payment_attempt_at",
             "product",
             "subscription",
-            "next_payment_attempt_at",
         ]
         null_default_fields = []
 

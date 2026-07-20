@@ -147,6 +147,12 @@ value: models.SubscriptionCycledEvent = /* values here */
 value: models.SubscriptionPastDueEvent = /* values here */
 ```
 
+### `models.SubscriptionPausedEvent`
+
+```python
+value: models.SubscriptionPausedEvent = /* values here */
+```
+
 ### `models.SubscriptionProductUpdatedEvent`
 
 ```python
@@ -157,6 +163,12 @@ value: models.SubscriptionProductUpdatedEvent = /* values here */
 
 ```python
 value: models.SubscriptionReactivatedEvent = /* values here */
+```
+
+### `models.SubscriptionResumedEvent`
+
+```python
+value: models.SubscriptionResumedEvent = /* values here */
 ```
 
 ### `models.SubscriptionRevokedEvent`

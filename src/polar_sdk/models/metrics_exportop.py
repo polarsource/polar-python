@@ -7,7 +7,7 @@ from datetime import date
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import FieldMetadata, QueryParamMetadata
 from pydantic import model_serializer
-from typing import Any, List, Optional, Union
+from typing import List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
@@ -181,11 +181,3 @@ class MetricsExportRequest(BaseModel):
                 m[k] = val
 
         return m
-
-
-MetricsExportResponseTypedDict = TypeAliasType(
-    "MetricsExportResponseTypedDict", Union[Any, str]
-)
-
-
-MetricsExportResponse = TypeAliasType("MetricsExportResponse", Union[Any, str])

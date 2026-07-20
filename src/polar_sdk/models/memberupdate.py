@@ -11,6 +11,7 @@ class MemberUpdateTypedDict(TypedDict):
     r"""Schema for updating a member."""
 
     name: NotRequired[Nullable[str]]
+    email: NotRequired[Nullable[str]]
     role: NotRequired[Nullable[MemberRole]]
     r"""The role of the member within the customer."""
 
@@ -20,13 +21,15 @@ class MemberUpdate(BaseModel):
 
     name: OptionalNullable[str] = UNSET
 
+    email: OptionalNullable[str] = UNSET
+
     role: OptionalNullable[MemberRole] = UNSET
     r"""The role of the member within the customer."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["name", "role"]
-        nullable_fields = ["name", "role"]
+        optional_fields = ["name", "email", "role"]
+        nullable_fields = ["name", "email", "role"]
         null_default_fields = []
 
         serialized = handler(self)

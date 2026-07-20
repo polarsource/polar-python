@@ -473,7 +473,7 @@ class Files(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.FilesUploadedResponseFilesUploaded:
+    ) -> models.FileRead:
         r"""Complete File Upload
 
         Complete a file upload.
@@ -550,9 +550,7 @@ class Files(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(
-                models.FilesUploadedResponseFilesUploaded, http_res
-            )
+            return unmarshal_json_response(models.FileRead, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(models.NotPermittedData, http_res)
             raise models.NotPermitted(response_data, http_res)
@@ -586,7 +584,7 @@ class Files(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.FilesUploadedResponseFilesUploaded:
+    ) -> models.FileRead:
         r"""Complete File Upload
 
         Complete a file upload.
@@ -663,9 +661,7 @@ class Files(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(
-                models.FilesUploadedResponseFilesUploaded, http_res
-            )
+            return unmarshal_json_response(models.FileRead, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(models.NotPermittedData, http_res)
             raise models.NotPermitted(response_data, http_res)
@@ -697,7 +693,7 @@ class Files(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.FilesUpdateResponseFilesUpdate:
+    ) -> models.FileRead:
         r"""Update File
 
         Update a file.
@@ -768,9 +764,7 @@ class Files(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(
-                models.FilesUpdateResponseFilesUpdate, http_res
-            )
+            return unmarshal_json_response(models.FileRead, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(models.NotPermittedData, http_res)
             raise models.NotPermitted(response_data, http_res)
@@ -802,7 +796,7 @@ class Files(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.FilesUpdateResponseFilesUpdate:
+    ) -> models.FileRead:
         r"""Update File
 
         Update a file.
@@ -873,9 +867,7 @@ class Files(BaseSDK):
 
         response_data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(
-                models.FilesUpdateResponseFilesUpdate, http_res
-            )
+            return unmarshal_json_response(models.FileRead, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(models.NotPermittedData, http_res)
             raise models.NotPermitted(response_data, http_res)

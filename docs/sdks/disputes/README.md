@@ -7,12 +7,13 @@
 
 * [list](#list) - List Disputes
 * [get](#get) - Get Dispute
+* [accept](#accept) - Accept Dispute
 
 ## list
 
 List disputes.
 
-**Scopes**: `disputes:read`
+**Scopes**: `disputes:read` `disputes:write`
 
 ### Example Usage
 
@@ -61,7 +62,7 @@ with Polar(
 
 Get a dispute by ID.
 
-**Scopes**: `disputes:read`
+**Scopes**: `disputes:read` `disputes:write`
 
 ### Example Usage
 
@@ -97,5 +98,52 @@ with Polar(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## accept
+
+Accept a dispute, conceding the chargeback.
+
+Closes the dispute with the processor (settling it as `lost`) and records
+the merchant's decision on the dispute's support case.
+
+**Scopes**: `disputes:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="disputes:accept" method="post" path="/v1/disputes/{id}/accept" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.disputes.accept(id="<value>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | The dispute ID.                                                     |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.Dispute](../../models/dispute.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.DisputeNotOpenError | 409                        | application/json           |
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |

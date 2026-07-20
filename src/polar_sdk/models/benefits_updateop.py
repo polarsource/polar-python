@@ -36,14 +36,14 @@ from typing_extensions import Annotated, TypeAliasType, TypedDict
 BenefitsUpdateBenefitUpdateTypedDict = TypeAliasType(
     "BenefitsUpdateBenefitUpdateTypedDict",
     Union[
-        BenefitCustomUpdateTypedDict,
         BenefitDiscordUpdateTypedDict,
         BenefitGitHubRepositoryUpdateTypedDict,
         BenefitDownloadablesUpdateTypedDict,
+        BenefitSlackSharedChannelUpdateTypedDict,
+        BenefitCustomUpdateTypedDict,
         BenefitLicenseKeysUpdateTypedDict,
         BenefitMeterCreditUpdateTypedDict,
         BenefitFeatureFlagUpdateTypedDict,
-        BenefitSlackSharedChannelUpdateTypedDict,
     ],
 )
 
@@ -51,14 +51,14 @@ BenefitsUpdateBenefitUpdateTypedDict = TypeAliasType(
 BenefitsUpdateBenefitUpdate = TypeAliasType(
     "BenefitsUpdateBenefitUpdate",
     Union[
-        BenefitCustomUpdate,
         BenefitDiscordUpdate,
         BenefitGitHubRepositoryUpdate,
         BenefitDownloadablesUpdate,
+        BenefitSlackSharedChannelUpdate,
+        BenefitCustomUpdate,
         BenefitLicenseKeysUpdate,
         BenefitMeterCreditUpdate,
         BenefitFeatureFlagUpdate,
-        BenefitSlackSharedChannelUpdate,
     ],
 )
 

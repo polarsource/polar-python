@@ -32,7 +32,7 @@ generation:
   persistentEdits: {}
   versioningStrategy: automatic
 python:
-  version: 0.31.7
+  version: 0.32.0
   additionalDependencies:
     dev:
       pydantic-ai-slim: ^0.1.0
@@ -52,8 +52,10 @@ python:
   constFieldCasing: upper
   defaultErrorName: SDKError
   description: Polar SDK for Python
+  durationFormat: false
   enableCustomCodeRegions: true
   enumFormat: enum
+  errorSchemaValidation: true
   eventStreamClassNames:
     async: EventStreamAsync
     sync: EventStream
@@ -92,6 +94,8 @@ python:
   pytestTimeout: 0
   rawResponseHelpers: false
   responseFormat: flat
+  responseSchemaValidation: true
   sseFlatResponse: false
   templateVersion: v2
   useAsyncHooks: false
+  uuidFormat: false

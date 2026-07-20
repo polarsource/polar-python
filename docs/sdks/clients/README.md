@@ -159,10 +159,9 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.oauth2.clients.delete(client_id="<id>")
+    polar.oauth2.clients.delete(client_id="<id>")
 
-    # Handle response
-    print(res)
+    # Use the SDK ...
 
 ```
 
@@ -172,10 +171,6 @@ with Polar(
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `client_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[Any](../../models/.md)**
 
 ### Errors
 

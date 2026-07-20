@@ -4,6 +4,7 @@ from __future__ import annotations
 from .subtype import SubType
 from enum import Enum
 from polar_sdk.types import BaseModel
+from typing import List
 from typing_extensions import TypedDict
 
 
@@ -19,6 +20,7 @@ class IntrospectTokenResponseTypedDict(TypedDict):
     scope: str
     sub_type: SubType
     sub: str
+    organizations: List[str]
     aud: str
     iss: str
     exp: int
@@ -37,6 +39,8 @@ class IntrospectTokenResponse(BaseModel):
     sub_type: SubType
 
     sub: str
+
+    organizations: List[str]
 
     aud: str
 

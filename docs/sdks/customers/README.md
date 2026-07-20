@@ -161,7 +161,7 @@ with Polar(
 
 ### Response
 
-**[models.CustomersExportResponse](../../models/customersexportresponse.md)**
+**[str](../../models/.md)**
 
 ### Errors
 

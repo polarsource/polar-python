@@ -4,10 +4,10 @@ from __future__ import annotations
 from .member import Member, MemberTypedDict
 from .seatstatus import SeatStatus
 from datetime import datetime
-from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
 from typing import Any, Dict
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
 class CustomerSeatTypedDict(TypedDict):
@@ -17,28 +17,28 @@ class CustomerSeatTypedDict(TypedDict):
     r"""Last modification timestamp of the object."""
     id: str
     r"""The seat ID"""
-    status: SeatStatus
-    subscription_id: NotRequired[Nullable[str]]
+    subscription_id: Nullable[str]
     r"""The subscription ID (for recurring seats)"""
-    order_id: NotRequired[Nullable[str]]
+    order_id: Nullable[str]
     r"""The order ID (for one-time purchase seats)"""
-    customer_id: NotRequired[Nullable[str]]
+    status: SeatStatus
+    customer_id: Nullable[str]
     r"""The customer ID. When member_model_enabled is true, this is the billing customer (purchaser). When false, this is the seat member customer."""
-    member_id: NotRequired[Nullable[str]]
+    member_id: Nullable[str]
     r"""The member ID of the seat occupant"""
-    member: NotRequired[Nullable[MemberTypedDict]]
+    member: Nullable[MemberTypedDict]
     r"""The member associated with this seat"""
-    email: NotRequired[Nullable[str]]
+    email: Nullable[str]
     r"""Email of the seat member (set when member_model_enabled is true)"""
-    customer_email: NotRequired[Nullable[str]]
+    customer_email: Nullable[str]
     r"""The assigned customer email"""
-    invitation_token_expires_at: NotRequired[Nullable[datetime]]
+    invitation_token_expires_at: Nullable[datetime]
     r"""When the invitation token expires"""
-    claimed_at: NotRequired[Nullable[datetime]]
+    claimed_at: Nullable[datetime]
     r"""When the seat was claimed"""
-    revoked_at: NotRequired[Nullable[datetime]]
+    revoked_at: Nullable[datetime]
     r"""When the seat was revoked"""
-    seat_metadata: NotRequired[Nullable[Dict[str, Any]]]
+    seat_metadata: Nullable[Dict[str, Any]]
     r"""Additional metadata for the seat"""
 
 
@@ -52,56 +52,44 @@ class CustomerSeat(BaseModel):
     id: str
     r"""The seat ID"""
 
-    status: SeatStatus
-
-    subscription_id: OptionalNullable[str] = UNSET
+    subscription_id: Nullable[str]
     r"""The subscription ID (for recurring seats)"""
 
-    order_id: OptionalNullable[str] = UNSET
+    order_id: Nullable[str]
     r"""The order ID (for one-time purchase seats)"""
 
-    customer_id: OptionalNullable[str] = UNSET
+    status: SeatStatus
+
+    customer_id: Nullable[str]
     r"""The customer ID. When member_model_enabled is true, this is the billing customer (purchaser). When false, this is the seat member customer."""
 
-    member_id: OptionalNullable[str] = UNSET
+    member_id: Nullable[str]
     r"""The member ID of the seat occupant"""
 
-    member: OptionalNullable[Member] = UNSET
+    member: Nullable[Member]
     r"""The member associated with this seat"""
 
-    email: OptionalNullable[str] = UNSET
+    email: Nullable[str]
     r"""Email of the seat member (set when member_model_enabled is true)"""
 
-    customer_email: OptionalNullable[str] = UNSET
+    customer_email: Nullable[str]
     r"""The assigned customer email"""
 
-    invitation_token_expires_at: OptionalNullable[datetime] = UNSET
+    invitation_token_expires_at: Nullable[datetime]
     r"""When the invitation token expires"""
 
-    claimed_at: OptionalNullable[datetime] = UNSET
+    claimed_at: Nullable[datetime]
     r"""When the seat was claimed"""
 
-    revoked_at: OptionalNullable[datetime] = UNSET
+    revoked_at: Nullable[datetime]
     r"""When the seat was revoked"""
 
-    seat_metadata: OptionalNullable[Dict[str, Any]] = UNSET
+    seat_metadata: Nullable[Dict[str, Any]]
     r"""Additional metadata for the seat"""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = [
-            "subscription_id",
-            "order_id",
-            "customer_id",
-            "member_id",
-            "member",
-            "email",
-            "customer_email",
-            "invitation_token_expires_at",
-            "claimed_at",
-            "revoked_at",
-            "seat_metadata",
-        ]
+        optional_fields = []
         nullable_fields = [
             "modified_at",
             "subscription_id",
