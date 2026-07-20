@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 from .meterunit import MeterUnit
-from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
 class ProductPriceMeterTypedDict(TypedDict):
@@ -15,9 +15,9 @@ class ProductPriceMeterTypedDict(TypedDict):
     name: str
     r"""The name of the meter."""
     unit: MeterUnit
-    custom_label: NotRequired[Nullable[str]]
+    custom_label: Nullable[str]
     r"""The label for the custom unit."""
-    custom_multiplier: NotRequired[Nullable[int]]
+    custom_multiplier: Nullable[int]
     r"""The multiplier to convert from base unit to display scale."""
 
 
@@ -32,15 +32,15 @@ class ProductPriceMeter(BaseModel):
 
     unit: MeterUnit
 
-    custom_label: OptionalNullable[str] = UNSET
+    custom_label: Nullable[str]
     r"""The label for the custom unit."""
 
-    custom_multiplier: OptionalNullable[int] = UNSET
+    custom_multiplier: Nullable[int]
     r"""The multiplier to convert from base unit to display scale."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["custom_label", "custom_multiplier"]
+        optional_fields = []
         nullable_fields = ["custom_label", "custom_multiplier"]
         null_default_fields = []
 

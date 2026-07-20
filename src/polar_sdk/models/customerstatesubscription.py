@@ -6,7 +6,7 @@ from .customerstatesubscriptionmeter import (
     CustomerStateSubscriptionMeterTypedDict,
 )
 from .metadataoutputtype import MetadataOutputType, MetadataOutputTypeTypedDict
-from .subscriptionrecurringinterval import SubscriptionRecurringInterval
+from .recurringinterval import RecurringInterval
 from datetime import datetime
 from enum import Enum
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -45,7 +45,7 @@ class CustomerStateSubscriptionTypedDict(TypedDict):
     r"""The amount of the subscription."""
     currency: str
     r"""The currency of the subscription."""
-    recurring_interval: SubscriptionRecurringInterval
+    recurring_interval: RecurringInterval
     current_period_start: datetime
     r"""The start timestamp of the current billing period."""
     current_period_end: datetime
@@ -96,7 +96,7 @@ class CustomerStateSubscription(BaseModel):
     currency: str
     r"""The currency of the subscription."""
 
-    recurring_interval: SubscriptionRecurringInterval
+    recurring_interval: RecurringInterval
 
     current_period_start: datetime
     r"""The start timestamp of the current billing period."""

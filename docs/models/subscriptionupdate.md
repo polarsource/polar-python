@@ -33,6 +33,18 @@ value: models.SubscriptionCancel = /* values here */
 value: models.SubscriptionRevoke = /* values here */
 ```
 
+### `models.SubscriptionPause`
+
+```python
+value: models.SubscriptionPause = /* values here */
+```
+
+### `models.SubscriptionResume`
+
+```python
+value: models.SubscriptionResume = /* values here */
+```
+
 ### `models.SubscriptionUpdateClear`
 
 ```python

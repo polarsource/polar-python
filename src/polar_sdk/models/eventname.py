@@ -10,6 +10,8 @@ from typing_extensions import TypedDict
 class EventNameTypedDict(TypedDict):
     name: str
     r"""The name of the event."""
+    label: str
+    r"""Human readable label of the event."""
     source: EventSource
     occurrences: int
     r"""Number of times the event has occurred."""
@@ -22,6 +24,9 @@ class EventNameTypedDict(TypedDict):
 class EventName(BaseModel):
     name: str
     r"""The name of the event."""
+
+    label: str
+    r"""Human readable label of the event."""
 
     source: EventSource
 

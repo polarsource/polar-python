@@ -49,6 +49,10 @@ from .subscriptionpastdueevent import (
     SubscriptionPastDueEvent,
     SubscriptionPastDueEventTypedDict,
 )
+from .subscriptionpausedevent import (
+    SubscriptionPausedEvent,
+    SubscriptionPausedEventTypedDict,
+)
 from .subscriptionproductupdatedevent import (
     SubscriptionProductUpdatedEvent,
     SubscriptionProductUpdatedEventTypedDict,
@@ -56,6 +60,10 @@ from .subscriptionproductupdatedevent import (
 from .subscriptionreactivatedevent import (
     SubscriptionReactivatedEvent,
     SubscriptionReactivatedEventTypedDict,
+)
+from .subscriptionresumedevent import (
+    SubscriptionResumedEvent,
+    SubscriptionResumedEventTypedDict,
 )
 from .subscriptionrevokedevent import (
     SubscriptionRevokedEvent,
@@ -99,6 +107,8 @@ SystemEventTypedDict = TypeAliasType(
         SubscriptionRevokedEventTypedDict,
         SubscriptionPastDueEventTypedDict,
         SubscriptionReactivatedEventTypedDict,
+        SubscriptionPausedEventTypedDict,
+        SubscriptionResumedEventTypedDict,
         SubscriptionUncanceledEventTypedDict,
         SubscriptionProductUpdatedEventTypedDict,
         SubscriptionSeatsUpdatedEventTypedDict,
@@ -150,8 +160,10 @@ SystemEvent = Annotated[
         Annotated[SubscriptionCreatedEvent, Tag("subscription.created")],
         Annotated[SubscriptionCycledEvent, Tag("subscription.cycled")],
         Annotated[SubscriptionPastDueEvent, Tag("subscription.past_due")],
+        Annotated[SubscriptionPausedEvent, Tag("subscription.paused")],
         Annotated[SubscriptionProductUpdatedEvent, Tag("subscription.product_updated")],
         Annotated[SubscriptionReactivatedEvent, Tag("subscription.reactivated")],
+        Annotated[SubscriptionResumedEvent, Tag("subscription.resumed")],
         Annotated[SubscriptionRevokedEvent, Tag("subscription.revoked")],
         Annotated[SubscriptionSeatsUpdatedEvent, Tag("subscription.seats_updated")],
         Annotated[SubscriptionUncanceledEvent, Tag("subscription.uncanceled")],

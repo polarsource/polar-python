@@ -43,6 +43,7 @@ class Scope(str, Enum):
     WALLETS_READ = "wallets:read"
     WALLETS_WRITE = "wallets:write"
     DISPUTES_READ = "disputes:read"
+    DISPUTES_WRITE = "disputes:write"
     CUSTOMER_METERS_READ = "customer_meters:read"
     CUSTOMER_SESSIONS_WRITE = "customer_sessions:write"
     MEMBER_SESSIONS_WRITE = "member_sessions:write"

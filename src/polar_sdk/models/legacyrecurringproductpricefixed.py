@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from .productpricesource import ProductPriceSource
-from .subscriptionrecurringinterval import SubscriptionRecurringInterval
+from .recurringinterval import RecurringInterval
 from .taxbehavioroption import TaxBehaviorOption
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -35,7 +35,7 @@ class LegacyRecurringProductPriceFixedTypedDict(TypedDict):
     r"""Whether the price is archived and no longer available."""
     product_id: str
     r"""The ID of the product owning the price."""
-    recurring_interval: SubscriptionRecurringInterval
+    recurring_interval: RecurringInterval
     price_amount: int
     r"""The price in cents."""
     amount_type: Literal["fixed"]
@@ -73,7 +73,7 @@ class LegacyRecurringProductPriceFixed(BaseModel):
     product_id: str
     r"""The ID of the product owning the price."""
 
-    recurring_interval: SubscriptionRecurringInterval
+    recurring_interval: RecurringInterval
 
     price_amount: int
     r"""The price in cents."""

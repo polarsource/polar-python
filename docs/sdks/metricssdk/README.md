@@ -111,7 +111,7 @@ with Polar(
 
 ### Response
 
-**[models.MetricsExportResponse](../../models/metricsexportresponse.md)**
+**[str](../../models/.md)**
 
 ### Errors
 

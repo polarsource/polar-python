@@ -4,6 +4,7 @@ from __future__ import annotations
 from .cardpaymentmetadata import CardPaymentMetadata, CardPaymentMetadataTypedDict
 from .paymentprocessor import PaymentProcessor
 from .paymentstatus import PaymentStatus
+from .paymenttrigger import PaymentTrigger
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from polar_sdk.utils import validate_const
@@ -29,6 +30,8 @@ class CardPaymentTypedDict(TypedDict):
     r"""The payment amount in cents."""
     currency: str
     r"""The payment currency. Currently, only `usd` is supported."""
+    trigger: Nullable[PaymentTrigger]
+    r"""What initiated this payment attempt, e.g. initial purchase, subscription renewal, or an automated dunning retry."""
     decline_reason: Nullable[str]
     r"""Error code, if the payment was declined."""
     decline_message: Nullable[str]
@@ -69,6 +72,9 @@ class CardPayment(BaseModel):
     currency: str
     r"""The payment currency. Currently, only `usd` is supported."""
 
+    trigger: Nullable[PaymentTrigger]
+    r"""What initiated this payment attempt, e.g. initial purchase, subscription renewal, or an automated dunning retry."""
+
     decline_reason: Nullable[str]
     r"""Error code, if the payment was declined."""
 
@@ -101,6 +107,7 @@ class CardPayment(BaseModel):
         optional_fields = ["processor_metadata"]
         nullable_fields = [
             "modified_at",
+            "trigger",
             "decline_reason",
             "decline_message",
             "checkout_id",

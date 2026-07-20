@@ -2,15 +2,19 @@
 
 from __future__ import annotations
 from polar_sdk.types import BaseModel
-from typing_extensions import TypedDict
+from typing import Optional
+from typing_extensions import NotRequired, TypedDict
 
 
 class CustomerPortalSubscriptionSettingsTypedDict(TypedDict):
     update_seats: bool
     update_plan: bool
+    pause: NotRequired[bool]
 
 
 class CustomerPortalSubscriptionSettings(BaseModel):
     update_seats: bool
 
     update_plan: bool
+
+    pause: Optional[bool] = None

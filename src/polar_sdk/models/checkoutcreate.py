@@ -11,10 +11,6 @@ from .productpricefixedcreate import (
     ProductPriceFixedCreate,
     ProductPriceFixedCreateTypedDict,
 )
-from .productpricefreecreate import (
-    ProductPriceFreeCreate,
-    ProductPriceFreeCreateTypedDict,
-)
 from .productpricemeteredunitcreate import (
     ProductPriceMeteredUnitCreate,
     ProductPriceMeteredUnitCreateTypedDict,
@@ -65,7 +61,6 @@ CheckoutCreateCustomerMetadata = TypeAliasType(
 CheckoutCreatePricesTypedDict = TypeAliasType(
     "CheckoutCreatePricesTypedDict",
     Union[
-        ProductPriceFreeCreateTypedDict,
         ProductPriceFixedCreateTypedDict,
         ProductPriceSeatBasedCreateTypedDict,
         ProductPriceCustomCreateTypedDict,
@@ -78,7 +73,6 @@ CheckoutCreatePrices = Annotated[
     Union[
         Annotated[ProductPriceCustomCreate, Tag("custom")],
         Annotated[ProductPriceFixedCreate, Tag("fixed")],
-        Annotated[ProductPriceFreeCreate, Tag("free")],
         Annotated[ProductPriceMeteredUnitCreate, Tag("metered_unit")],
         Annotated[ProductPriceSeatBasedCreate, Tag("seat_based")],
     ],

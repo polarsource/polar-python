@@ -194,8 +194,9 @@ with Polar() as polar:
 
 | Error Type                          | Status Code                         | Content Type                        |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| models.ResourceNotFound             | 404                                 | application/json                    |
+| models.OrderNotEligibleForInvoice   | 409                                 | application/json                    |
 | models.MissingInvoiceBillingDetails | 422                                 | application/json                    |
-| models.NotPaidOrder                 | 422                                 | application/json                    |
 | models.SDKError                     | 4XX, 5XX                            | \*/\*                               |
 
 ## invoice

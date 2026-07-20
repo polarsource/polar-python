@@ -12,3 +12,4 @@
 | `ACTIVE`      | active        |
 | `BLOCKED`     | blocked       |
 | `OFFBOARDING` | offboarding   |
+| `OFFBOARDED`  | offboarded    |

@@ -14,10 +14,6 @@ from .productpricefixedcreate import (
     ProductPriceFixedCreate,
     ProductPriceFixedCreateTypedDict,
 )
-from .productpricefreecreate import (
-    ProductPriceFreeCreate,
-    ProductPriceFreeCreateTypedDict,
-)
 from .productpricemeteredunitcreate import (
     ProductPriceMeteredUnitCreate,
     ProductPriceMeteredUnitCreateTypedDict,
@@ -27,7 +23,7 @@ from .productpriceseatbasedcreate import (
     ProductPriceSeatBasedCreateTypedDict,
 )
 from .productvisibility import ProductVisibility
-from .subscriptionrecurringinterval import SubscriptionRecurringInterval
+from .recurringinterval import RecurringInterval
 from .trialinterval import TrialInterval
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import get_discriminator
@@ -49,7 +45,6 @@ ProductUpdateMetadata = TypeAliasType(
 TwoTypedDict = TypeAliasType(
     "TwoTypedDict",
     Union[
-        ProductPriceFreeCreateTypedDict,
         ProductPriceFixedCreateTypedDict,
         ProductPriceSeatBasedCreateTypedDict,
         ProductPriceCustomCreateTypedDict,
@@ -62,7 +57,6 @@ Two = Annotated[
     Union[
         Annotated[ProductPriceCustomCreate, Tag("custom")],
         Annotated[ProductPriceFixedCreate, Tag("fixed")],
-        Annotated[ProductPriceFreeCreate, Tag("free")],
         Annotated[ProductPriceMeteredUnitCreate, Tag("metered_unit")],
         Annotated[ProductPriceSeatBasedCreate, Tag("seat_based")],
     ],
@@ -103,7 +97,7 @@ class ProductUpdateTypedDict(TypedDict):
     name: NotRequired[Nullable[str]]
     description: NotRequired[Nullable[str]]
     r"""The description of the product."""
-    recurring_interval: NotRequired[Nullable[SubscriptionRecurringInterval]]
+    recurring_interval: NotRequired[Nullable[RecurringInterval]]
     r"""The recurring interval of the product. If `None`, the product is a one-time purchase. **Can only be set on legacy recurring products. Once set, it can't be changed.**"""
     recurring_interval_count: NotRequired[Nullable[int]]
     r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on. Once set, it can't be changed.**"""
@@ -148,7 +142,7 @@ class ProductUpdate(BaseModel):
     description: OptionalNullable[str] = UNSET
     r"""The description of the product."""
 
-    recurring_interval: OptionalNullable[SubscriptionRecurringInterval] = UNSET
+    recurring_interval: OptionalNullable[RecurringInterval] = UNSET
     r"""The recurring interval of the product. If `None`, the product is a one-time purchase. **Can only be set on legacy recurring products. Once set, it can't be changed.**"""
 
     recurring_interval_count: OptionalNullable[int] = UNSET

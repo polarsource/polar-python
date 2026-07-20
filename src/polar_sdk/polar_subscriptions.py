@@ -616,9 +616,12 @@ class PolarSubscriptions(BaseSDK):
             raise models.PaymentFailed(response_data, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(
-                models.AlreadyCanceledSubscriptionData, http_res
+                models.CustomerPortalSubscriptionsUpdateResponse403CustomerPortalSubscriptionsUpdateUnion,
+                http_res,
             )
-            raise models.AlreadyCanceledSubscription(response_data, http_res)
+            raise models.CustomerPortalSubscriptionsUpdateResponse403CustomerPortalSubscriptionsUpdate(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -738,9 +741,12 @@ class PolarSubscriptions(BaseSDK):
             raise models.PaymentFailed(response_data, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(
-                models.AlreadyCanceledSubscriptionData, http_res
+                models.CustomerPortalSubscriptionsUpdateResponse403CustomerPortalSubscriptionsUpdateUnion,
+                http_res,
             )
-            raise models.AlreadyCanceledSubscription(response_data, http_res)
+            raise models.CustomerPortalSubscriptionsUpdateResponse403CustomerPortalSubscriptionsUpdate(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res

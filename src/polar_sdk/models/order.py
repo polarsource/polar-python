@@ -127,6 +127,8 @@ class OrderTypedDict(TypedDict):
     r"""Sales tax in cents that would be refunded if the full refundable amount is refunded."""
     seats: NotRequired[Nullable[int]]
     r"""Number of seats purchased (for seat-based one-time orders)."""
+    next_payment_attempt_at: NotRequired[Nullable[datetime]]
+    r"""When the next automatic payment retry is scheduled. `null` if the order is not in dunning or all retries have been exhausted."""
     custom_field_data: NotRequired[Dict[str, Nullable[OrderCustomFieldDataTypedDict]]]
     r"""Key-value object storing custom field values."""
 
@@ -232,12 +234,15 @@ class Order(BaseModel):
     seats: OptionalNullable[int] = UNSET
     r"""Number of seats purchased (for seat-based one-time orders)."""
 
+    next_payment_attempt_at: OptionalNullable[datetime] = UNSET
+    r"""When the next automatic payment retry is scheduled. `null` if the order is not in dunning or all retries have been exhausted."""
+
     custom_field_data: Optional[Dict[str, Nullable[OrderCustomFieldData]]] = None
     r"""Key-value object storing custom field values."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = ["seats", "custom_field_data"]
+        optional_fields = ["seats", "next_payment_attempt_at", "custom_field_data"]
         nullable_fields = [
             "modified_at",
             "billing_name",
@@ -249,6 +254,7 @@ class Order(BaseModel):
             "discount_id",
             "subscription_id",
             "checkout_id",
+            "next_payment_attempt_at",
             "platform_fee_currency",
             "product",
             "discount",

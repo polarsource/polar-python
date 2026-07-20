@@ -153,7 +153,7 @@ with Polar(
 
 ### Response
 
-**[models.SubscriptionsExportResponse](../../models/subscriptionsexportresponse.md)**
+**[str](../../models/.md)**
 
 ### Errors
 

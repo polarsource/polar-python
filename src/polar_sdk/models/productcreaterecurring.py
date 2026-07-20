@@ -13,10 +13,6 @@ from .productpricefixedcreate import (
     ProductPriceFixedCreate,
     ProductPriceFixedCreateTypedDict,
 )
-from .productpricefreecreate import (
-    ProductPriceFreeCreate,
-    ProductPriceFreeCreateTypedDict,
-)
 from .productpricemeteredunitcreate import (
     ProductPriceMeteredUnitCreate,
     ProductPriceMeteredUnitCreateTypedDict,
@@ -26,7 +22,7 @@ from .productpriceseatbasedcreate import (
     ProductPriceSeatBasedCreateTypedDict,
 )
 from .productvisibility import ProductVisibility
-from .subscriptionrecurringinterval import SubscriptionRecurringInterval
+from .recurringinterval import RecurringInterval
 from .trialinterval import TrialInterval
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from polar_sdk.utils import get_discriminator
@@ -48,7 +44,6 @@ ProductCreateRecurringMetadata = TypeAliasType(
 ProductCreateRecurringPricesTypedDict = TypeAliasType(
     "ProductCreateRecurringPricesTypedDict",
     Union[
-        ProductPriceFreeCreateTypedDict,
         ProductPriceFixedCreateTypedDict,
         ProductPriceSeatBasedCreateTypedDict,
         ProductPriceCustomCreateTypedDict,
@@ -61,7 +56,6 @@ ProductCreateRecurringPrices = Annotated[
     Union[
         Annotated[ProductPriceCustomCreate, Tag("custom")],
         Annotated[ProductPriceFixedCreate, Tag("fixed")],
-        Annotated[ProductPriceFreeCreate, Tag("free")],
         Annotated[ProductPriceMeteredUnitCreate, Tag("metered_unit")],
         Annotated[ProductPriceSeatBasedCreate, Tag("seat_based")],
     ],
@@ -74,7 +68,7 @@ class ProductCreateRecurringTypedDict(TypedDict):
     r"""The name of the product."""
     prices: List[ProductCreateRecurringPricesTypedDict]
     r"""List of available prices for this product. It may combine at most one fixed price with one seat-based price (billed as `fixed + seat_charge`), or contain a single custom or free price, plus any number of metered prices. A free price cannot be combined with other prices, and a custom price cannot be combined with a fixed or seat-based price. Metered prices are not supported on one-time purchase products."""
-    recurring_interval: SubscriptionRecurringInterval
+    recurring_interval: RecurringInterval
     metadata: NotRequired[Dict[str, ProductCreateRecurringMetadataTypedDict]]
     r"""Key-value object allowing you to store additional information.
 
@@ -103,6 +97,10 @@ class ProductCreateRecurringTypedDict(TypedDict):
     r"""The number of interval units for the trial period."""
     recurring_interval_count: NotRequired[int]
     r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on."""
+    meter_interval: NotRequired[Nullable[RecurringInterval]]
+    r"""Optional meter cycle, independent of the billing interval. When set, overage settlement, meter resets and meter-credit grants run on this cadence rather than the billing interval — e.g. yearly billing with monthly credits. It must evenly divide the billing interval. If `None`, metered concerns follow the billing interval. **Once set, it can't be changed.**"""
+    meter_interval_count: NotRequired[Nullable[int]]
+    r"""Number of meter interval units. Defaults to 1 when `meter_interval` is set. Ignored when `meter_interval` is `None`."""
 
 
 class ProductCreateRecurring(BaseModel):
@@ -112,7 +110,7 @@ class ProductCreateRecurring(BaseModel):
     prices: List[ProductCreateRecurringPrices]
     r"""List of available prices for this product. It may combine at most one fixed price with one seat-based price (billed as `fixed + seat_charge`), or contain a single custom or free price, plus any number of metered prices. A free price cannot be combined with other prices, and a custom price cannot be combined with a fixed or seat-based price. Metered prices are not supported on one-time purchase products."""
 
-    recurring_interval: SubscriptionRecurringInterval
+    recurring_interval: RecurringInterval
 
     metadata: Optional[Dict[str, ProductCreateRecurringMetadata]] = None
     r"""Key-value object allowing you to store additional information.
@@ -151,6 +149,12 @@ class ProductCreateRecurring(BaseModel):
     recurring_interval_count: Optional[int] = 1
     r"""Number of interval units of the subscription. If this is set to 1 the charge will happen every interval (e.g. every month), if set to 2 it will be every other month, and so on."""
 
+    meter_interval: OptionalNullable[RecurringInterval] = UNSET
+    r"""Optional meter cycle, independent of the billing interval. When set, overage settlement, meter resets and meter-credit grants run on this cadence rather than the billing interval — e.g. yearly billing with monthly credits. It must evenly divide the billing interval. If `None`, metered concerns follow the billing interval. **Once set, it can't be changed.**"""
+
+    meter_interval_count: OptionalNullable[int] = UNSET
+    r"""Number of meter interval units. Defaults to 1 when `meter_interval` is set. Ignored when `meter_interval` is `None`."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
@@ -163,6 +167,8 @@ class ProductCreateRecurring(BaseModel):
             "trial_interval",
             "trial_interval_count",
             "recurring_interval_count",
+            "meter_interval",
+            "meter_interval_count",
         ]
         nullable_fields = [
             "description",
@@ -170,6 +176,8 @@ class ProductCreateRecurring(BaseModel):
             "organization_id",
             "trial_interval",
             "trial_interval_count",
+            "meter_interval",
+            "meter_interval_count",
         ]
         null_default_fields = []
 

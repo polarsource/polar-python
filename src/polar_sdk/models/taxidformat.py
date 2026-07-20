@@ -85,3 +85,4 @@ class TaxIDFormat(str, Enum):
     VE_RIF = "ve_rif"
     VN_TIN = "vn_tin"
     ZA_VAT = "za_vat"
+    MU_TAN = "mu_tan"

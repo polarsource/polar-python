@@ -15,12 +15,6 @@ value: models.ProductPriceCustom = /* values here */
 value: models.ProductPriceFixed = /* values here */
 ```
 
-### `models.ProductPriceFree`
-
-```python
-value: models.ProductPriceFree = /* values here */
-```
-
 ### `models.ProductPriceMeteredUnit`
 
 ```python

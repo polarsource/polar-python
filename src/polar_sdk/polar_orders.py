@@ -831,21 +831,28 @@ class PolarOrders(BaseSDK):
                 security_source=security,
             ),
             request=req,
-            error_status_codes=["422", "4XX", "5XX"],
+            error_status_codes=["404", "409", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         response_data: Any = None
         if utils.match_response(http_res, "202", "application/json"):
             return unmarshal_json_response(Any, http_res)
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                models.ResourceNotFoundData, http_res
+            )
+            raise models.ResourceNotFound(response_data, http_res)
+        if utils.match_response(http_res, "409", "application/json"):
+            response_data = unmarshal_json_response(
+                models.OrderNotEligibleForInvoiceData, http_res
+            )
+            raise models.OrderNotEligibleForInvoice(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
-                models.CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoiceUnion,
-                http_res,
+                models.MissingInvoiceBillingDetailsData, http_res
             )
-            raise models.CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoice(
-                response_data, http_res
-            )
+            raise models.MissingInvoiceBillingDetails(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise models.SDKError("API error occurred", http_res, http_res_text)
@@ -928,21 +935,28 @@ class PolarOrders(BaseSDK):
                 security_source=security,
             ),
             request=req,
-            error_status_codes=["422", "4XX", "5XX"],
+            error_status_codes=["404", "409", "422", "4XX", "5XX"],
             retry_config=retry_config,
         )
 
         response_data: Any = None
         if utils.match_response(http_res, "202", "application/json"):
             return unmarshal_json_response(Any, http_res)
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                models.ResourceNotFoundData, http_res
+            )
+            raise models.ResourceNotFound(response_data, http_res)
+        if utils.match_response(http_res, "409", "application/json"):
+            response_data = unmarshal_json_response(
+                models.OrderNotEligibleForInvoiceData, http_res
+            )
+            raise models.OrderNotEligibleForInvoice(response_data, http_res)
         if utils.match_response(http_res, "422", "application/json"):
             response_data = unmarshal_json_response(
-                models.CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoiceUnion,
-                http_res,
+                models.MissingInvoiceBillingDetailsData, http_res
             )
-            raise models.CustomerPortalOrdersGenerateInvoiceResponse422CustomerPortalOrdersGenerateInvoice(
-                response_data, http_res
-            )
+            raise models.MissingInvoiceBillingDetails(response_data, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise models.SDKError("API error occurred", http_res, http_res_text)

@@ -11,6 +11,7 @@
 | `scope`                                    | *str*                                      | :heavy_check_mark:                         | N/A                                        |
 | `sub_type`                                 | [models.SubType](../models/subtype.md)     | :heavy_check_mark:                         | N/A                                        |
 | `sub`                                      | *str*                                      | :heavy_check_mark:                         | N/A                                        |
+| `organizations`                            | List[*str*]                                | :heavy_check_mark:                         | N/A                                        |
 | `aud`                                      | *str*                                      | :heavy_check_mark:                         | N/A                                        |
 | `iss`                                      | *str*                                      | :heavy_check_mark:                         | N/A                                        |
 | `exp`                                      | *int*                                      | :heavy_check_mark:                         | N/A                                        |

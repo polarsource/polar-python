@@ -148,6 +148,7 @@ with Polar() as polar:
 | ---------------------------------- | ---------------------------------- | ---------------------------------- |
 | models.PaymentFailed               | 402                                | application/json                   |
 | models.AlreadyCanceledSubscription | 403                                | application/json                   |
+| models.PauseResumeNotAllowed       | 403                                | application/json                   |
 | models.ResourceNotFound            | 404                                | application/json                   |
 | models.HTTPValidationError         | 422                                | application/json                   |
 | models.SDKError                    | 4XX, 5XX                           | \*/\*                              |

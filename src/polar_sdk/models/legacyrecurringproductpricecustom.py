@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from .productpricesource import ProductPriceSource
-from .subscriptionrecurringinterval import SubscriptionRecurringInterval
+from .recurringinterval import RecurringInterval
 from .taxbehavioroption import TaxBehaviorOption
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
@@ -35,7 +35,7 @@ class LegacyRecurringProductPriceCustomTypedDict(TypedDict):
     r"""Whether the price is archived and no longer available."""
     product_id: str
     r"""The ID of the product owning the price."""
-    recurring_interval: SubscriptionRecurringInterval
+    recurring_interval: RecurringInterval
     minimum_amount: int
     r"""The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'."""
     maximum_amount: Nullable[int]
@@ -77,7 +77,7 @@ class LegacyRecurringProductPriceCustom(BaseModel):
     product_id: str
     r"""The ID of the product owning the price."""
 
-    recurring_interval: SubscriptionRecurringInterval
+    recurring_interval: RecurringInterval
 
     minimum_amount: int
     r"""The minimum amount the customer can pay. If 0, the price is 'free or pay what you want'."""

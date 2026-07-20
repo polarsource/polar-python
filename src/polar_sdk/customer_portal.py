@@ -6,9 +6,9 @@ from polar_sdk.customer_session_sdk import CustomerSessionSDK
 from polar_sdk.downloadables import Downloadables
 from polar_sdk.polar_benefit_grants import PolarBenefitGrants
 from polar_sdk.polar_customer_meters import PolarCustomerMeters
+from polar_sdk.polar_customer_portal_members import PolarCustomerPortalMembers
 from polar_sdk.polar_customers import PolarCustomers
 from polar_sdk.polar_license_keys import PolarLicenseKeys
-from polar_sdk.polar_members import PolarMembers
 from polar_sdk.polar_orders import PolarOrders
 from polar_sdk.polar_organizations import PolarOrganizations
 from polar_sdk.polar_subscriptions import PolarSubscriptions
@@ -25,7 +25,7 @@ class CustomerPortal(BaseSDK):
     customer_session: CustomerSessionSDK
     downloadables: Downloadables
     license_keys: PolarLicenseKeys
-    members: PolarMembers
+    members: PolarCustomerPortalMembers
     orders: PolarOrders
     organizations: PolarOrganizations
     subscriptions: PolarSubscriptions
@@ -58,7 +58,9 @@ class CustomerPortal(BaseSDK):
         self.license_keys = PolarLicenseKeys(
             self.sdk_configuration, parent_ref=self.parent_ref
         )
-        self.members = PolarMembers(self.sdk_configuration, parent_ref=self.parent_ref)
+        self.members = PolarCustomerPortalMembers(
+            self.sdk_configuration, parent_ref=self.parent_ref
+        )
         self.orders = PolarOrders(self.sdk_configuration, parent_ref=self.parent_ref)
         self.organizations = PolarOrganizations(
             self.sdk_configuration, parent_ref=self.parent_ref

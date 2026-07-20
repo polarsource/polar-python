@@ -13,6 +13,10 @@ from .productmediafilecreate import (
     ProductMediaFileCreate,
     ProductMediaFileCreateTypedDict,
 )
+from .supportcaseattachmentfilecreate import (
+    SupportCaseAttachmentFileCreate,
+    SupportCaseAttachmentFileCreateTypedDict,
+)
 from polar_sdk.utils import get_discriminator
 from pydantic import Discriminator, Tag
 from typing import Union
@@ -25,6 +29,7 @@ FileCreateTypedDict = TypeAliasType(
         DownloadableFileCreateTypedDict,
         ProductMediaFileCreateTypedDict,
         OrganizationAvatarFileCreateTypedDict,
+        SupportCaseAttachmentFileCreateTypedDict,
     ],
 )
 
@@ -34,6 +39,7 @@ FileCreate = Annotated[
         Annotated[DownloadableFileCreate, Tag("downloadable")],
         Annotated[OrganizationAvatarFileCreate, Tag("organization_avatar")],
         Annotated[ProductMediaFileCreate, Tag("product_media")],
+        Annotated[SupportCaseAttachmentFileCreate, Tag("support_case_attachment")],
     ],
     Discriminator(lambda m: get_discriminator(m, "service", "service")),
 ]

@@ -3,6 +3,7 @@
 from __future__ import annotations
 from .paymentprocessor import PaymentProcessor
 from .paymentstatus import PaymentStatus
+from .paymenttrigger import PaymentTrigger
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, UNSET_SENTINEL
 from pydantic import model_serializer
@@ -27,6 +28,8 @@ class GenericPaymentTypedDict(TypedDict):
     r"""The payment currency. Currently, only `usd` is supported."""
     method: str
     r"""The payment method used."""
+    trigger: Nullable[PaymentTrigger]
+    r"""What initiated this payment attempt, e.g. initial purchase, subscription renewal, or an automated dunning retry."""
     decline_reason: Nullable[str]
     r"""Error code, if the payment was declined."""
     decline_message: Nullable[str]
@@ -66,6 +69,9 @@ class GenericPayment(BaseModel):
     method: str
     r"""The payment method used."""
 
+    trigger: Nullable[PaymentTrigger]
+    r"""What initiated this payment attempt, e.g. initial purchase, subscription renewal, or an automated dunning retry."""
+
     decline_reason: Nullable[str]
     r"""Error code, if the payment was declined."""
 
@@ -89,6 +95,7 @@ class GenericPayment(BaseModel):
         optional_fields = ["processor_metadata"]
         nullable_fields = [
             "modified_at",
+            "trigger",
             "decline_reason",
             "decline_message",
             "checkout_id",

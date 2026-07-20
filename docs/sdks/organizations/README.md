@@ -97,10 +97,11 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                           | Status Code                          | Content Type                         |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| models.CannotCreateOrganizationError | 403                                  | application/json                     |
+| models.HTTPValidationError           | 422                                  | application/json                     |
+| models.SDKError                      | 4XX, 5XX                             | \*/\*                                |
 
 ## get
 
@@ -183,9 +184,10 @@ with Polar(
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| models.NotPermitted        | 403                        | application/json           |
-| models.ResourceNotFound    | 404                        | application/json           |
-| models.HTTPValidationError | 422                        | application/json           |
-| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| models.NotPermitted                     | 403                                     | application/json                        |
+| models.ResourceNotFound                 | 404                                     | application/json                        |
+| models.SSOEnforcementRequiresConnection | 409                                     | application/json                        |
+| models.HTTPValidationError              | 422                                     | application/json                        |
+| models.SDKError                         | 4XX, 5XX                                | \*/\*                                   |

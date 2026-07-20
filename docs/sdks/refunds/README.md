@@ -81,7 +81,7 @@ with Polar(
 
     res = polar.refunds.create(request={
         "order_id": "<value>",
-        "reason": polar_sdk.RefundReason.CUSTOMER_REQUEST,
+        "reason": polar_sdk.Reason.CUSTOMER_REQUEST,
         "amount": 90,
     })
 

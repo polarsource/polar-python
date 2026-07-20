@@ -3,7 +3,6 @@
 from __future__ import annotations
 from .productpricecustom import ProductPriceCustom, ProductPriceCustomTypedDict
 from .productpricefixed import ProductPriceFixed, ProductPriceFixedTypedDict
-from .productpricefree import ProductPriceFree, ProductPriceFreeTypedDict
 from .productpricemeteredunit import (
     ProductPriceMeteredUnit,
     ProductPriceMeteredUnitTypedDict,
@@ -18,7 +17,6 @@ from typing_extensions import Annotated, TypeAliasType
 ProductPriceTypedDict = TypeAliasType(
     "ProductPriceTypedDict",
     Union[
-        ProductPriceFreeTypedDict,
         ProductPriceFixedTypedDict,
         ProductPriceSeatBasedTypedDict,
         ProductPriceCustomTypedDict,
@@ -31,7 +29,6 @@ ProductPrice = Annotated[
     Union[
         Annotated[ProductPriceCustom, Tag("custom")],
         Annotated[ProductPriceFixed, Tag("fixed")],
-        Annotated[ProductPriceFree, Tag("free")],
         Annotated[ProductPriceMeteredUnit, Tag("metered_unit")],
         Annotated[ProductPriceSeatBased, Tag("seat_based")],
     ],
