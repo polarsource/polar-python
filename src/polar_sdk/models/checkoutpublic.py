@@ -174,6 +174,8 @@ class CheckoutPublicTypedDict(TypedDict):
     customer_billing_name: Nullable[str]
     customer_billing_address: Nullable[AddressTypedDict]
     customer_tax_id: Nullable[str]
+    payment_method_type: Nullable[str]
+    r"""Payment method type selected by the customer in the checkout form, e.g. `card`, `apple_pay` or `upi`."""
     payment_processor_metadata: Dict[str, str]
     billing_address_fields: CheckoutBillingAddressFieldsTypedDict
     products: List[CheckoutProductTypedDict]
@@ -324,6 +326,9 @@ class CheckoutPublic(BaseModel):
 
     customer_tax_id: Nullable[str]
 
+    payment_method_type: Nullable[str]
+    r"""Payment method type selected by the customer in the checkout form, e.g. `card`, `apple_pay` or `upi`."""
+
     payment_processor_metadata: Dict[str, str]
 
     billing_address_fields: CheckoutBillingAddressFields
@@ -400,6 +405,7 @@ class CheckoutPublic(BaseModel):
             "customer_billing_address",
             "customer_tax_id",
             "locale",
+            "payment_method_type",
             "product",
             "product_price",
             "prices",

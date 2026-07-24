@@ -28,6 +28,7 @@ from .metercreditevent import MeterCreditEvent, MeterCreditEventTypedDict
 from .meterresetevent import MeterResetEvent, MeterResetEventTypedDict
 from .orderpaidevent import OrderPaidEvent, OrderPaidEventTypedDict
 from .orderrefundedevent import OrderRefundedEvent, OrderRefundedEventTypedDict
+from .orderunvoidedevent import OrderUnvoidedEvent, OrderUnvoidedEventTypedDict
 from .ordervoidedevent import OrderVoidedEvent, OrderVoidedEventTypedDict
 from .subscriptionbillingperiodupdatedevent import (
     SubscriptionBillingPeriodUpdatedEvent,
@@ -60,6 +61,10 @@ from .subscriptionproductupdatedevent import (
 from .subscriptionreactivatedevent import (
     SubscriptionReactivatedEvent,
     SubscriptionReactivatedEventTypedDict,
+)
+from .subscriptionreinstatedevent import (
+    SubscriptionReinstatedEvent,
+    SubscriptionReinstatedEventTypedDict,
 )
 from .subscriptionresumedevent import (
     SubscriptionResumedEvent,
@@ -107,6 +112,7 @@ SystemEventTypedDict = TypeAliasType(
         SubscriptionRevokedEventTypedDict,
         SubscriptionPastDueEventTypedDict,
         SubscriptionReactivatedEventTypedDict,
+        SubscriptionReinstatedEventTypedDict,
         SubscriptionPausedEventTypedDict,
         SubscriptionResumedEventTypedDict,
         SubscriptionUncanceledEventTypedDict,
@@ -117,6 +123,7 @@ SystemEventTypedDict = TypeAliasType(
         OrderPaidEventTypedDict,
         OrderRefundedEventTypedDict,
         OrderVoidedEventTypedDict,
+        OrderUnvoidedEventTypedDict,
         CheckoutCreatedEventTypedDict,
         CustomerCreatedEventTypedDict,
         CustomerUpdatedEventTypedDict,
@@ -151,6 +158,7 @@ SystemEvent = Annotated[
         Annotated[MeterResetEvent, Tag("meter.reset")],
         Annotated[OrderPaidEvent, Tag("order.paid")],
         Annotated[OrderRefundedEvent, Tag("order.refunded")],
+        Annotated[OrderUnvoidedEvent, Tag("order.unvoided")],
         Annotated[OrderVoidedEvent, Tag("order.voided")],
         Annotated[
             SubscriptionBillingPeriodUpdatedEvent,
@@ -163,6 +171,7 @@ SystemEvent = Annotated[
         Annotated[SubscriptionPausedEvent, Tag("subscription.paused")],
         Annotated[SubscriptionProductUpdatedEvent, Tag("subscription.product_updated")],
         Annotated[SubscriptionReactivatedEvent, Tag("subscription.reactivated")],
+        Annotated[SubscriptionReinstatedEvent, Tag("subscription.reinstated")],
         Annotated[SubscriptionResumedEvent, Tag("subscription.resumed")],
         Annotated[SubscriptionRevokedEvent, Tag("subscription.revoked")],
         Annotated[SubscriptionSeatsUpdatedEvent, Tag("subscription.seats_updated")],
