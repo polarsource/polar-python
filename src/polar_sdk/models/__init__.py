@@ -2447,6 +2447,11 @@ if TYPE_CHECKING:
     from .ordersortproperty import OrderSortProperty
     from .orderstatus import OrderStatus
     from .ordersubscription import OrderSubscription, OrderSubscriptionTypedDict
+    from .orderunvoidedevent import OrderUnvoidedEvent, OrderUnvoidedEventTypedDict
+    from .orderunvoidedmetadata import (
+        OrderUnvoidedMetadata,
+        OrderUnvoidedMetadataTypedDict,
+    )
     from .orderupdate import OrderUpdate, OrderUpdateTypedDict
     from .ordervoidedevent import OrderVoidedEvent, OrderVoidedEventTypedDict
     from .ordervoidedmetadata import OrderVoidedMetadata, OrderVoidedMetadataTypedDict
@@ -2859,6 +2864,14 @@ if TYPE_CHECKING:
     from .subscriptionreactivatedmetadata import (
         SubscriptionReactivatedMetadata,
         SubscriptionReactivatedMetadataTypedDict,
+    )
+    from .subscriptionreinstatedevent import (
+        SubscriptionReinstatedEvent,
+        SubscriptionReinstatedEventTypedDict,
+    )
+    from .subscriptionreinstatedmetadata import (
+        SubscriptionReinstatedMetadata,
+        SubscriptionReinstatedMetadataTypedDict,
     )
     from .subscriptionresume import SubscriptionResume, SubscriptionResumeTypedDict
     from .subscriptionresumedevent import (
@@ -5049,6 +5062,10 @@ __all__ = [
     "OrderSubscription",
     "OrderSubscriptionTypedDict",
     "OrderTypedDict",
+    "OrderUnvoidedEvent",
+    "OrderUnvoidedEventTypedDict",
+    "OrderUnvoidedMetadata",
+    "OrderUnvoidedMetadataTypedDict",
     "OrderUpdate",
     "OrderUpdateTypedDict",
     "OrderVoidedEvent",
@@ -5453,6 +5470,10 @@ __all__ = [
     "SubscriptionReactivatedEventTypedDict",
     "SubscriptionReactivatedMetadata",
     "SubscriptionReactivatedMetadataTypedDict",
+    "SubscriptionReinstatedEvent",
+    "SubscriptionReinstatedEventTypedDict",
+    "SubscriptionReinstatedMetadata",
+    "SubscriptionReinstatedMetadataTypedDict",
     "SubscriptionResume",
     "SubscriptionResumeTypedDict",
     "SubscriptionResumedEvent",
@@ -7424,6 +7445,10 @@ _dynamic_imports: dict[str, str] = {
     "OrderStatus": ".orderstatus",
     "OrderSubscription": ".ordersubscription",
     "OrderSubscriptionTypedDict": ".ordersubscription",
+    "OrderUnvoidedEvent": ".orderunvoidedevent",
+    "OrderUnvoidedEventTypedDict": ".orderunvoidedevent",
+    "OrderUnvoidedMetadata": ".orderunvoidedmetadata",
+    "OrderUnvoidedMetadataTypedDict": ".orderunvoidedmetadata",
     "OrderUpdate": ".orderupdate",
     "OrderUpdateTypedDict": ".orderupdate",
     "OrderVoidedEvent": ".ordervoidedevent",
@@ -7740,6 +7765,10 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionReactivatedEventTypedDict": ".subscriptionreactivatedevent",
     "SubscriptionReactivatedMetadata": ".subscriptionreactivatedmetadata",
     "SubscriptionReactivatedMetadataTypedDict": ".subscriptionreactivatedmetadata",
+    "SubscriptionReinstatedEvent": ".subscriptionreinstatedevent",
+    "SubscriptionReinstatedEventTypedDict": ".subscriptionreinstatedevent",
+    "SubscriptionReinstatedMetadata": ".subscriptionreinstatedmetadata",
+    "SubscriptionReinstatedMetadataTypedDict": ".subscriptionreinstatedmetadata",
     "SubscriptionResume": ".subscriptionresume",
     "SubscriptionResumeTypedDict": ".subscriptionresume",
     "SubscriptionResumedEvent": ".subscriptionresumedevent",
