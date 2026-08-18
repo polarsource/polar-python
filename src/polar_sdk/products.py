@@ -15,8 +15,8 @@ class Products(BaseSDK):
         *,
         id: OptionalNullable[
             Union[
-                models.QueryParamProductIDFilter,
-                models.QueryParamProductIDFilterTypedDict,
+                models.ProductsListQueryParamProductIDFilter,
+                models.ProductsListQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
         organization_id: OptionalNullable[
@@ -187,8 +187,8 @@ class Products(BaseSDK):
         *,
         id: OptionalNullable[
             Union[
-                models.QueryParamProductIDFilter,
-                models.QueryParamProductIDFilterTypedDict,
+                models.ProductsListQueryParamProductIDFilter,
+                models.ProductsListQueryParamProductIDFilterTypedDict,
             ]
         ] = UNSET,
         organization_id: OptionalNullable[

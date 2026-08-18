@@ -12,20 +12,18 @@ from typing import Callable, List, Optional, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-QueryParamOrganizationIDTypedDict = TypeAliasType(
-    "QueryParamOrganizationIDTypedDict", Union[str, List[str]]
+OrganizationIDTypedDict = TypeAliasType(
+    "OrganizationIDTypedDict", Union[str, List[str]]
 )
 r"""Filter by organization ID."""
 
 
-QueryParamOrganizationID = TypeAliasType(
-    "QueryParamOrganizationID", Union[str, List[str]]
-)
+OrganizationID = TypeAliasType("OrganizationID", Union[str, List[str]])
 r"""Filter by organization ID."""
 
 
 class WebhooksListWebhookEndpointsRequestTypedDict(TypedDict):
-    organization_id: NotRequired[Nullable[QueryParamOrganizationIDTypedDict]]
+    organization_id: NotRequired[Nullable[OrganizationIDTypedDict]]
     r"""Filter by organization ID."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
@@ -35,7 +33,7 @@ class WebhooksListWebhookEndpointsRequestTypedDict(TypedDict):
 
 class WebhooksListWebhookEndpointsRequest(BaseModel):
     organization_id: Annotated[
-        OptionalNullable[QueryParamOrganizationID],
+        OptionalNullable[OrganizationID],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by organization ID."""

@@ -519,8 +519,8 @@ class Customers(BaseSDK):
         *,
         organization_id: OptionalNullable[
             Union[
-                models.CustomersExportQueryParamOrganizationID,
-                models.CustomersExportQueryParamOrganizationIDTypedDict,
+                models.QueryParamOrganizationID,
+                models.QueryParamOrganizationIDTypedDict,
             ]
         ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -613,8 +613,8 @@ class Customers(BaseSDK):
         *,
         organization_id: OptionalNullable[
             Union[
-                models.CustomersExportQueryParamOrganizationID,
-                models.CustomersExportQueryParamOrganizationIDTypedDict,
+                models.QueryParamOrganizationID,
+                models.QueryParamOrganizationIDTypedDict,
             ]
         ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,

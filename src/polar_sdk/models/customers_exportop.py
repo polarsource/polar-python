@@ -8,28 +8,26 @@ from typing import List, Union
 from typing_extensions import Annotated, NotRequired, TypeAliasType, TypedDict
 
 
-CustomersExportQueryParamOrganizationIDTypedDict = TypeAliasType(
-    "CustomersExportQueryParamOrganizationIDTypedDict", Union[str, List[str]]
+QueryParamOrganizationIDTypedDict = TypeAliasType(
+    "QueryParamOrganizationIDTypedDict", Union[str, List[str]]
 )
 r"""Filter by organization ID."""
 
 
-CustomersExportQueryParamOrganizationID = TypeAliasType(
-    "CustomersExportQueryParamOrganizationID", Union[str, List[str]]
+QueryParamOrganizationID = TypeAliasType(
+    "QueryParamOrganizationID", Union[str, List[str]]
 )
 r"""Filter by organization ID."""
 
 
 class CustomersExportRequestTypedDict(TypedDict):
-    organization_id: NotRequired[
-        Nullable[CustomersExportQueryParamOrganizationIDTypedDict]
-    ]
+    organization_id: NotRequired[Nullable[QueryParamOrganizationIDTypedDict]]
     r"""Filter by organization ID."""
 
 
 class CustomersExportRequest(BaseModel):
     organization_id: Annotated[
-        OptionalNullable[CustomersExportQueryParamOrganizationID],
+        OptionalNullable[QueryParamOrganizationID],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by organization ID."""

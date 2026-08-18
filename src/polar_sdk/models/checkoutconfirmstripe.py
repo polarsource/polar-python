@@ -43,6 +43,8 @@ class CheckoutConfirmStripeTypedDict(TypedDict):
     customer_billing_address: NotRequired[Nullable[AddressInputTypedDict]]
     customer_tax_id: NotRequired[Nullable[str]]
     locale: NotRequired[Nullable[str]]
+    payment_method_type: NotRequired[Nullable[str]]
+    r"""Payment method type selected by the customer in the checkout form, e.g. `card`, `apple_pay` or `upi`."""
     discount_code: NotRequired[Nullable[str]]
     r"""Discount code to apply to the checkout."""
     allow_trial: Nullable[Literal[False]]
@@ -89,6 +91,9 @@ class CheckoutConfirmStripe(BaseModel):
 
     locale: OptionalNullable[str] = UNSET
 
+    payment_method_type: OptionalNullable[str] = UNSET
+    r"""Payment method type selected by the customer in the checkout form, e.g. `card`, `apple_pay` or `upi`."""
+
     discount_code: OptionalNullable[str] = UNSET
     r"""Discount code to apply to the checkout."""
 
@@ -118,6 +123,7 @@ class CheckoutConfirmStripe(BaseModel):
             "customer_billing_address",
             "customer_tax_id",
             "locale",
+            "payment_method_type",
             "discount_code",
             "allow_trial",
             "confirmation_token_id",
@@ -134,6 +140,7 @@ class CheckoutConfirmStripe(BaseModel):
             "customer_billing_address",
             "customer_tax_id",
             "locale",
+            "payment_method_type",
             "discount_code",
             "allow_trial",
             "confirmation_token_id",

@@ -35,14 +35,15 @@ QueryParamOrderIDFilter = TypeAliasType(
 r"""Filter by order ID."""
 
 
-QueryParamStatusFilterTypedDict = TypeAliasType(
-    "QueryParamStatusFilterTypedDict", Union[DisputeStatus, List[DisputeStatus]]
+DisputesListQueryParamStatusFilterTypedDict = TypeAliasType(
+    "DisputesListQueryParamStatusFilterTypedDict",
+    Union[DisputeStatus, List[DisputeStatus]],
 )
 r"""Filter by dispute status."""
 
 
-QueryParamStatusFilter = TypeAliasType(
-    "QueryParamStatusFilter", Union[DisputeStatus, List[DisputeStatus]]
+DisputesListQueryParamStatusFilter = TypeAliasType(
+    "DisputesListQueryParamStatusFilter", Union[DisputeStatus, List[DisputeStatus]]
 )
 r"""Filter by dispute status."""
 
@@ -54,7 +55,7 @@ class DisputesListRequestTypedDict(TypedDict):
     r"""Filter by organization ID."""
     order_id: NotRequired[Nullable[QueryParamOrderIDFilterTypedDict]]
     r"""Filter by order ID."""
-    status: NotRequired[Nullable[QueryParamStatusFilterTypedDict]]
+    status: NotRequired[Nullable[DisputesListQueryParamStatusFilterTypedDict]]
     r"""Filter by dispute status."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
@@ -78,7 +79,7 @@ class DisputesListRequest(BaseModel):
     r"""Filter by order ID."""
 
     status: Annotated[
-        OptionalNullable[QueryParamStatusFilter],
+        OptionalNullable[DisputesListQueryParamStatusFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by dispute status."""

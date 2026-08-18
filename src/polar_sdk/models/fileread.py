@@ -20,8 +20,8 @@ from typing_extensions import Annotated, TypeAliasType
 FileReadTypedDict = TypeAliasType(
     "FileReadTypedDict",
     Union[
-        DownloadableFileReadTypedDict,
         SupportCaseAttachmentFileReadTypedDict,
+        DownloadableFileReadTypedDict,
         ProductMediaFileReadTypedDict,
         OrganizationAvatarFileReadTypedDict,
     ],

@@ -32,6 +32,8 @@ class OrganizationFeatureSettingsTypedDict(TypedDict):
     r"""If this organization has the disputes dashboard enabled"""
     sso_enabled: NotRequired[bool]
     r"""If this organization has single sign-on configuration enabled"""
+    dispute_auto_accept_enabled: NotRequired[bool]
+    r"""If this organization can set a threshold below which Polar concedes disputes on its behalf. Requires `disputes_enabled`."""
     compass_enabled: NotRequired[bool]
     r"""If this organization has the split product navigation (Billing / Compass / Customers) enabled in the dashboard"""
     merchant_migration_enabled: NotRequired[bool]
@@ -75,6 +77,9 @@ class OrganizationFeatureSettings(BaseModel):
     sso_enabled: Optional[bool] = False
     r"""If this organization has single sign-on configuration enabled"""
 
+    dispute_auto_accept_enabled: Optional[bool] = False
+    r"""If this organization can set a threshold below which Polar concedes disputes on its behalf. Requires `disputes_enabled`."""
+
     compass_enabled: Optional[bool] = False
     r"""If this organization has the split product navigation (Billing / Compass / Customers) enabled in the dashboard"""
 
@@ -96,6 +101,7 @@ class OrganizationFeatureSettings(BaseModel):
             "preview_access_enabled",
             "disputes_enabled",
             "sso_enabled",
+            "dispute_auto_accept_enabled",
             "compass_enabled",
             "merchant_migration_enabled",
         ]

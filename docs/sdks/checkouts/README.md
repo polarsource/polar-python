@@ -213,6 +213,7 @@ with Polar(
 | models.NotOpenCheckout                | 403                                   | application/json                      |
 | models.PaymentNotReady                | 403                                   | application/json                      |
 | models.TrialAlreadyRedeemed           | 403                                   | application/json                      |
+| models.DiscountRedemptionLimitReached | 403                                   | application/json                      |
 | models.ResourceNotFound               | 404                                   | application/json                      |
 | models.HTTPValidationError            | 422                                   | application/json                      |
 | models.SDKError                       | 4XX, 5XX                              | \*/\*                                 |
@@ -302,6 +303,7 @@ with Polar() as polar:
 | models.NotOpenCheckout                | 403                                   | application/json                      |
 | models.PaymentNotReady                | 403                                   | application/json                      |
 | models.TrialAlreadyRedeemed           | 403                                   | application/json                      |
+| models.DiscountRedemptionLimitReached | 403                                   | application/json                      |
 | models.ResourceNotFound               | 404                                   | application/json                      |
 | models.ExpiredCheckoutError           | 410                                   | application/json                      |
 | models.HTTPValidationError            | 422                                   | application/json                      |
@@ -360,6 +362,7 @@ with Polar(
 | models.NotOpenCheckout                | 403                                   | application/json                      |
 | models.PaymentNotReady                | 403                                   | application/json                      |
 | models.TrialAlreadyRedeemed           | 403                                   | application/json                      |
+| models.DiscountRedemptionLimitReached | 403                                   | application/json                      |
 | models.ResourceNotFound               | 404                                   | application/json                      |
 | models.ExpiredCheckoutError           | 410                                   | application/json                      |
 | models.HTTPValidationError            | 422                                   | application/json                      |

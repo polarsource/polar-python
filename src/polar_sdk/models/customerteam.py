@@ -44,6 +44,8 @@ class CustomerTeamTypedDict(TypedDict):
     r"""The ID of the organization owning the customer."""
     deleted_at: Nullable[datetime]
     r"""Timestamp for when the customer was soft deleted."""
+    first_user_event_at: Nullable[datetime]
+    r"""Timestamp of the first event ingested for this customer. Can predate `created_at`, and is null if no event was ever ingested."""
     avatar_url: Nullable[str]
     external_id: NotRequired[Nullable[str]]
     r"""The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated."""
@@ -89,6 +91,9 @@ class CustomerTeam(BaseModel):
     deleted_at: Nullable[datetime]
     r"""Timestamp for when the customer was soft deleted."""
 
+    first_user_event_at: Nullable[datetime]
+    r"""Timestamp of the first event ingested for this customer. Can predate `created_at`, and is null if no event was ever ingested."""
+
     avatar_url: Nullable[str]
 
     external_id: OptionalNullable[str] = UNSET
@@ -127,6 +132,7 @@ class CustomerTeam(BaseModel):
             "locale",
             "default_payment_method_id",
             "deleted_at",
+            "first_user_event_at",
             "avatar_url",
         ]
         null_default_fields = []

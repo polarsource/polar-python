@@ -50,6 +50,8 @@ class DiscountFixedCreateTypedDict(TypedDict):
     r"""Optional timestamp after which the discount is no longer redeemable."""
     max_redemptions: NotRequired[Nullable[int]]
     r"""Optional maximum number of times the discount can be redeemed."""
+    max_redemptions_per_customer: NotRequired[Nullable[int]]
+    r"""Optional maximum number of times the discount can be redeemed by a single customer."""
     products: NotRequired[Nullable[List[str]]]
     organization_id: NotRequired[Nullable[str]]
     r"""The ID of the organization owning the discount. **Required unless you use an organization token.**"""
@@ -101,6 +103,9 @@ class DiscountFixedCreate(BaseModel):
     max_redemptions: OptionalNullable[int] = UNSET
     r"""Optional maximum number of times the discount can be redeemed."""
 
+    max_redemptions_per_customer: OptionalNullable[int] = UNSET
+    r"""Optional maximum number of times the discount can be redeemed by a single customer."""
+
     products: OptionalNullable[List[str]] = UNSET
 
     organization_id: OptionalNullable[str] = UNSET
@@ -144,6 +149,7 @@ class DiscountFixedCreate(BaseModel):
             "starts_at",
             "ends_at",
             "max_redemptions",
+            "max_redemptions_per_customer",
             "products",
             "organization_id",
             "type",
@@ -157,6 +163,7 @@ class DiscountFixedCreate(BaseModel):
             "starts_at",
             "ends_at",
             "max_redemptions",
+            "max_redemptions_per_customer",
             "products",
             "organization_id",
             "duration_in_months",

@@ -154,6 +154,10 @@ if TYPE_CHECKING:
         BenefitDiscordUpdateMetadataTypedDict,
         BenefitDiscordUpdateTypedDict,
     )
+    from .benefitdownloadablefile import (
+        BenefitDownloadableFile,
+        BenefitDownloadableFileTypedDict,
+    )
     from .benefitdownloadables import (
         BenefitDownloadables,
         BenefitDownloadablesTypedDict,
@@ -402,6 +406,12 @@ if TYPE_CHECKING:
     from .benefitpublic import BenefitPublic, BenefitPublicTypedDict
     from .benefitrevokedevent import BenefitRevokedEvent, BenefitRevokedEventTypedDict
     from .benefits_deleteop import BenefitsDeleteRequest, BenefitsDeleteRequestTypedDict
+    from .benefits_filesop import (
+        BenefitsFilesRequest,
+        BenefitsFilesRequestTypedDict,
+        BenefitsFilesResponse,
+        BenefitsFilesResponseTypedDict,
+    )
     from .benefits_getop import BenefitsGetRequest, BenefitsGetRequestTypedDict
     from .benefits_grantsop import (
         BenefitsGrantsRequest,
@@ -1284,10 +1294,10 @@ if TYPE_CHECKING:
         CustomersDeleteRequestTypedDict,
     )
     from .customers_exportop import (
-        CustomersExportQueryParamOrganizationID,
-        CustomersExportQueryParamOrganizationIDTypedDict,
         CustomersExportRequest,
         CustomersExportRequestTypedDict,
+        QueryParamOrganizationID,
+        QueryParamOrganizationIDTypedDict,
     )
     from .customers_get_externalop import (
         CustomersGetExternalRequest,
@@ -1633,6 +1643,10 @@ if TYPE_CHECKING:
         DiscountPercentageRepeatDurationBaseTypedDict,
     )
     from .discountproduct import DiscountProduct, DiscountProductTypedDict
+    from .discountredemptionlimitreached import (
+        DiscountRedemptionLimitReached,
+        DiscountRedemptionLimitReachedData,
+    )
     from .discounts_deleteop import (
         DiscountsDeleteRequest,
         DiscountsDeleteRequestTypedDict,
@@ -1659,6 +1673,10 @@ if TYPE_CHECKING:
         DiscountUpdateTypedDict,
     )
     from .dispute import Dispute, DisputeTypedDict
+    from .disputeautoacceptnotenabled import (
+        DisputeAutoAcceptNotEnabled,
+        DisputeAutoAcceptNotEnabledData,
+    )
     from .disputecustomer import (
         DisputeCustomer,
         DisputeCustomerTaxID,
@@ -1671,14 +1689,14 @@ if TYPE_CHECKING:
     from .disputes_listop import (
         DisputesListQueryParamOrganizationIDFilter,
         DisputesListQueryParamOrganizationIDFilterTypedDict,
+        DisputesListQueryParamStatusFilter,
+        DisputesListQueryParamStatusFilterTypedDict,
         DisputesListRequest,
         DisputesListRequestTypedDict,
         DisputesListResponse,
         DisputesListResponseTypedDict,
         QueryParamOrderIDFilter,
         QueryParamOrderIDFilterTypedDict,
-        QueryParamStatusFilter,
-        QueryParamStatusFilterTypedDict,
     )
     from .disputesortproperty import DisputeSortProperty
     from .disputestatus import DisputeStatus
@@ -1778,6 +1796,7 @@ if TYPE_CHECKING:
     from .filteroperator import FilterOperator
     from .genericpayment import GenericPayment, GenericPaymentTypedDict
     from .httpvalidationerror import HTTPValidationError, HTTPValidationErrorData
+    from .inactivesubscription import InactiveSubscription, InactiveSubscriptionData
     from .introspecttokenrequest import (
         IntrospectTokenRequest,
         IntrospectTokenRequestTokenTypeHint,
@@ -1868,6 +1887,10 @@ if TYPE_CHECKING:
         LicenseKeyWithActivationsTypedDict,
     )
     from .listresource_benefit_ import ListResourceBenefit, ListResourceBenefitTypedDict
+    from .listresource_benefitdownloadablefile_ import (
+        ListResourceBenefitDownloadableFile,
+        ListResourceBenefitDownloadableFileTypedDict,
+    )
     from .listresource_benefitgrant_ import (
         ListResourceBenefitGrant,
         ListResourceBenefitGrantTypedDict,
@@ -2399,6 +2422,7 @@ if TYPE_CHECKING:
         OrderCustomerTaxIDTypedDict,
         OrderCustomerTypedDict,
     )
+    from .orderexportcolumn import OrderExportColumn
     from .orderfinalize import OrderFinalize, OrderFinalizeTypedDict
     from .orderinvoice import OrderInvoice, OrderInvoiceTypedDict
     from .orderitemschema import OrderItemSchema, OrderItemSchemaTypedDict
@@ -2425,8 +2449,12 @@ if TYPE_CHECKING:
         OrdersExportQueryParamOrganizationIDFilterTypedDict,
         OrdersExportQueryParamProductIDFilter,
         OrdersExportQueryParamProductIDFilterTypedDict,
+        OrdersExportQueryParamStatusFilter,
+        OrdersExportQueryParamStatusFilterTypedDict,
         OrdersExportRequest,
         OrdersExportRequestTypedDict,
+        QueryParamColumns,
+        QueryParamColumnsTypedDict,
     )
     from .orders_finalizeop import (
         OrdersFinalizeRequest,
@@ -2447,6 +2475,11 @@ if TYPE_CHECKING:
     from .ordersortproperty import OrderSortProperty
     from .orderstatus import OrderStatus
     from .ordersubscription import OrderSubscription, OrderSubscriptionTypedDict
+    from .orderunvoidedevent import OrderUnvoidedEvent, OrderUnvoidedEventTypedDict
+    from .orderunvoidedmetadata import (
+        OrderUnvoidedMetadata,
+        OrderUnvoidedMetadataTypedDict,
+    )
     from .orderupdate import OrderUpdate, OrderUpdateTypedDict
     from .ordervoidedevent import OrderVoidedEvent, OrderVoidedEventTypedDict
     from .ordervoidedmetadata import OrderVoidedMetadata, OrderVoidedMetadataTypedDict
@@ -2487,6 +2520,14 @@ if TYPE_CHECKING:
         OrganizationDetailsTypedDict,
         SwitchingFrom,
     )
+    from .organizationdisputesettings import (
+        OrganizationDisputeSettings,
+        OrganizationDisputeSettingsTypedDict,
+    )
+    from .organizationdisputesettingsupdate import (
+        OrganizationDisputeSettingsUpdate,
+        OrganizationDisputeSettingsUpdateTypedDict,
+    )
     from .organizationfeaturesettings import (
         OrganizationFeatureSettings,
         OrganizationFeatureSettingsTypedDict,
@@ -2516,6 +2557,8 @@ if TYPE_CHECKING:
     from .organizations_updateop import (
         OrganizationsUpdateRequest,
         OrganizationsUpdateRequestTypedDict,
+        OrganizationsUpdateResponse403OrganizationsUpdate,
+        OrganizationsUpdateResponse403OrganizationsUpdateUnion,
     )
     from .organizationsociallink import (
         OrganizationSocialLink,
@@ -2558,6 +2601,7 @@ if TYPE_CHECKING:
         PaymentMethodInUseByActiveSubscription,
         PaymentMethodInUseByActiveSubscriptionData,
     )
+    from .paymentmethodrequired import PaymentMethodRequired, PaymentMethodRequiredData
     from .paymentmethodsetupfailed import (
         PaymentMethodSetupFailed,
         PaymentMethodSetupFailedData,
@@ -2824,6 +2868,7 @@ if TYPE_CHECKING:
         SubscriptionCycledMetadata,
         SubscriptionCycledMetadataTypedDict,
     )
+    from .subscriptionexportcolumn import SubscriptionExportColumn
     from .subscriptionlocked import SubscriptionLocked, SubscriptionLockedData
     from .subscriptionmeter import SubscriptionMeter, SubscriptionMeterTypedDict
     from .subscriptionpastdueevent import (
@@ -2860,6 +2905,14 @@ if TYPE_CHECKING:
         SubscriptionReactivatedMetadata,
         SubscriptionReactivatedMetadataTypedDict,
     )
+    from .subscriptionreinstatedevent import (
+        SubscriptionReinstatedEvent,
+        SubscriptionReinstatedEventTypedDict,
+    )
+    from .subscriptionreinstatedmetadata import (
+        SubscriptionReinstatedMetadata,
+        SubscriptionReinstatedMetadataTypedDict,
+    )
     from .subscriptionresume import SubscriptionResume, SubscriptionResumeTypedDict
     from .subscriptionresumedevent import (
         SubscriptionResumedEvent,
@@ -2883,8 +2936,14 @@ if TYPE_CHECKING:
         SubscriptionsCreateSubscriptionCreateTypedDict,
     )
     from .subscriptions_exportop import (
-        OrganizationID,
-        OrganizationIDTypedDict,
+        Columns,
+        ColumnsTypedDict,
+        QueryParamOrganizationIDFilter,
+        QueryParamOrganizationIDFilterTypedDict,
+        QueryParamProductIDFilter,
+        QueryParamProductIDFilterTypedDict,
+        QueryParamStatusFilter,
+        QueryParamStatusFilterTypedDict,
         SubscriptionsExportRequest,
         SubscriptionsExportRequestTypedDict,
     )
@@ -2897,6 +2956,8 @@ if TYPE_CHECKING:
         BenefitIDFilterTypedDict,
         BenefitTypeFilter,
         BenefitTypeFilterTypedDict,
+        BenefitsListQueryParamOrganizationIDFilter,
+        BenefitsListQueryParamOrganizationIDFilterTypedDict,
         BenefitsListRequest,
         BenefitsListRequestTypedDict,
         BenefitsListResponse,
@@ -2955,6 +3016,8 @@ if TYPE_CHECKING:
         OrdersListQueryParamOrganizationIDFilterTypedDict,
         OrdersListQueryParamProductIDFilter,
         OrdersListQueryParamProductIDFilterTypedDict,
+        OrdersListQueryParamStatusFilter,
+        OrdersListQueryParamStatusFilterTypedDict,
         OrdersListRequest,
         OrdersListRequestTypedDict,
         OrdersListResponse,
@@ -2967,16 +3030,14 @@ if TYPE_CHECKING:
         ProductIDFilterTypedDict,
         ProductsListQueryParamOrganizationIDFilter,
         ProductsListQueryParamOrganizationIDFilterTypedDict,
+        ProductsListQueryParamProductIDFilter,
+        ProductsListQueryParamProductIDFilterTypedDict,
         ProductsListRequest,
         ProductsListRequestTypedDict,
         ProductsListResponse,
         ProductsListResponseTypedDict,
         QueryParamDiscountIDFilter,
         QueryParamDiscountIDFilterTypedDict,
-        QueryParamOrganizationIDFilter,
-        QueryParamOrganizationIDFilterTypedDict,
-        QueryParamProductIDFilter,
-        QueryParamProductIDFilterTypedDict,
         SourceFilter,
         SourceFilterTypedDict,
         StatusFilter,
@@ -2995,6 +3056,8 @@ if TYPE_CHECKING:
     from .subscriptions_updateop import (
         SubscriptionsUpdateRequest,
         SubscriptionsUpdateRequestTypedDict,
+        SubscriptionsUpdateResponse403SubscriptionsUpdate,
+        SubscriptionsUpdateResponse403SubscriptionsUpdateUnion,
     )
     from .subscriptionseatsupdatedevent import (
         SubscriptionSeatsUpdatedEvent,
@@ -3017,6 +3080,8 @@ if TYPE_CHECKING:
     from .subscriptionupdate import SubscriptionUpdate, SubscriptionUpdateTypedDict
     from .subscriptionupdatebase import (
         SubscriptionUpdateBase,
+        SubscriptionUpdateBaseMetadata,
+        SubscriptionUpdateBaseMetadataTypedDict,
         SubscriptionUpdateBaseTypedDict,
     )
     from .subscriptionupdatebillingperiod import (
@@ -3146,6 +3211,18 @@ if TYPE_CHECKING:
         WebhookCustomerUpdatedPayloadTypedDict,
     )
     from .webhookdelivery import WebhookDelivery, WebhookDeliveryTypedDict
+    from .webhookdiscountcreatedpayload import (
+        WebhookDiscountCreatedPayload,
+        WebhookDiscountCreatedPayloadTypedDict,
+    )
+    from .webhookdiscountdeletedpayload import (
+        WebhookDiscountDeletedPayload,
+        WebhookDiscountDeletedPayloadTypedDict,
+    )
+    from .webhookdiscountupdatedpayload import (
+        WebhookDiscountUpdatedPayload,
+        WebhookDiscountUpdatedPayloadTypedDict,
+    )
     from .webhookendpoint import WebhookEndpoint, WebhookEndpointTypedDict
     from .webhookendpointcreate import (
         WebhookEndpointCreate,
@@ -3226,8 +3303,8 @@ if TYPE_CHECKING:
         WebhooksListWebhookDeliveriesResponseTypedDict,
     )
     from .webhooks_list_webhook_endpointsop import (
-        QueryParamOrganizationID,
-        QueryParamOrganizationIDTypedDict,
+        OrganizationID,
+        OrganizationIDTypedDict,
         WebhooksListWebhookEndpointsRequest,
         WebhooksListWebhookEndpointsRequestTypedDict,
         WebhooksListWebhookEndpointsResponse,
@@ -3256,6 +3333,10 @@ if TYPE_CHECKING:
     from .webhooksubscriptioncreatedpayload import (
         WebhookSubscriptionCreatedPayload,
         WebhookSubscriptionCreatedPayloadTypedDict,
+    )
+    from .webhooksubscriptioncycledpayload import (
+        WebhookSubscriptionCycledPayload,
+        WebhookSubscriptionCycledPayloadTypedDict,
     )
     from .webhooksubscriptionpastduepayload import (
         WebhookSubscriptionPastDuePayload,
@@ -3396,6 +3477,8 @@ __all__ = [
     "BenefitDiscordUpdateMetadata",
     "BenefitDiscordUpdateMetadataTypedDict",
     "BenefitDiscordUpdateTypedDict",
+    "BenefitDownloadableFile",
+    "BenefitDownloadableFileTypedDict",
     "BenefitDownloadables",
     "BenefitDownloadablesCreate",
     "BenefitDownloadablesCreateMetadata",
@@ -3581,12 +3664,18 @@ __all__ = [
     "BenefitVisibility",
     "BenefitsDeleteRequest",
     "BenefitsDeleteRequestTypedDict",
+    "BenefitsFilesRequest",
+    "BenefitsFilesRequestTypedDict",
+    "BenefitsFilesResponse",
+    "BenefitsFilesResponseTypedDict",
     "BenefitsGetRequest",
     "BenefitsGetRequestTypedDict",
     "BenefitsGrantsRequest",
     "BenefitsGrantsRequestTypedDict",
     "BenefitsGrantsResponse",
     "BenefitsGrantsResponseTypedDict",
+    "BenefitsListQueryParamOrganizationIDFilter",
+    "BenefitsListQueryParamOrganizationIDFilterTypedDict",
     "BenefitsListRequest",
     "BenefitsListRequestTypedDict",
     "BenefitsListResponse",
@@ -3781,6 +3870,8 @@ __all__ = [
     "ChurnedSubscriptionsTypedDict",
     "Clauses",
     "ClausesTypedDict",
+    "Columns",
+    "ColumnsTypedDict",
     "CommittedAnnualRecurringRevenue",
     "CommittedAnnualRecurringRevenueTypedDict",
     "CommittedMonthlyRecurringRevenue",
@@ -4345,8 +4436,6 @@ __all__ = [
     "CustomersDeleteExternalRequestTypedDict",
     "CustomersDeleteRequest",
     "CustomersDeleteRequestTypedDict",
-    "CustomersExportQueryParamOrganizationID",
-    "CustomersExportQueryParamOrganizationIDTypedDict",
     "CustomersExportRequest",
     "CustomersExportRequestTypedDict",
     "CustomersGetExternalRequest",
@@ -4423,6 +4512,8 @@ __all__ = [
     "DiscountPercentageRepeatDurationTypedDict",
     "DiscountProduct",
     "DiscountProductTypedDict",
+    "DiscountRedemptionLimitReached",
+    "DiscountRedemptionLimitReachedData",
     "DiscountSortProperty",
     "DiscountType",
     "DiscountTypedDict",
@@ -4443,6 +4534,8 @@ __all__ = [
     "DiscountsUpdateRequest",
     "DiscountsUpdateRequestTypedDict",
     "Dispute",
+    "DisputeAutoAcceptNotEnabled",
+    "DisputeAutoAcceptNotEnabledData",
     "DisputeCustomer",
     "DisputeCustomerTaxID",
     "DisputeCustomerTaxIDTypedDict",
@@ -4458,6 +4551,8 @@ __all__ = [
     "DisputesGetRequestTypedDict",
     "DisputesListQueryParamOrganizationIDFilter",
     "DisputesListQueryParamOrganizationIDFilterTypedDict",
+    "DisputesListQueryParamStatusFilter",
+    "DisputesListQueryParamStatusFilterTypedDict",
     "DisputesListRequest",
     "DisputesListRequestTypedDict",
     "DisputesListResponse",
@@ -4586,6 +4681,8 @@ __all__ = [
     "HTTPCodeClass",
     "HTTPValidationError",
     "HTTPValidationErrorData",
+    "InactiveSubscription",
+    "InactiveSubscriptionData",
     "IntrospectTokenRequest",
     "IntrospectTokenRequestTokenTypeHint",
     "IntrospectTokenRequestTypedDict",
@@ -4643,6 +4740,8 @@ __all__ = [
     "LicenseKeysUpdateRequest",
     "LicenseKeysUpdateRequestTypedDict",
     "ListResourceBenefit",
+    "ListResourceBenefitDownloadableFile",
+    "ListResourceBenefitDownloadableFileTypedDict",
     "ListResourceBenefitGrant",
     "ListResourceBenefitGrantTypedDict",
     "ListResourceBenefitTypedDict",
@@ -5018,6 +5117,7 @@ __all__ = [
     "OrderCustomerTypedDict",
     "OrderDiscount",
     "OrderDiscountTypedDict",
+    "OrderExportColumn",
     "OrderFinalize",
     "OrderFinalizeTypedDict",
     "OrderIDFilter",
@@ -5049,6 +5149,10 @@ __all__ = [
     "OrderSubscription",
     "OrderSubscriptionTypedDict",
     "OrderTypedDict",
+    "OrderUnvoidedEvent",
+    "OrderUnvoidedEventTypedDict",
+    "OrderUnvoidedMetadata",
+    "OrderUnvoidedMetadataTypedDict",
     "OrderUpdate",
     "OrderUpdateTypedDict",
     "OrderVoidedEvent",
@@ -5059,6 +5163,8 @@ __all__ = [
     "OrdersExportQueryParamOrganizationIDFilterTypedDict",
     "OrdersExportQueryParamProductIDFilter",
     "OrdersExportQueryParamProductIDFilterTypedDict",
+    "OrdersExportQueryParamStatusFilter",
+    "OrdersExportQueryParamStatusFilterTypedDict",
     "OrdersExportRequest",
     "OrdersExportRequestTypedDict",
     "OrdersFinalizeRequest",
@@ -5081,6 +5187,8 @@ __all__ = [
     "OrdersListQueryParamOrganizationIDFilterTypedDict",
     "OrdersListQueryParamProductIDFilter",
     "OrdersListQueryParamProductIDFilterTypedDict",
+    "OrdersListQueryParamStatusFilter",
+    "OrdersListQueryParamStatusFilterTypedDict",
     "OrdersListRequest",
     "OrdersListRequestTypedDict",
     "OrdersListResponse",
@@ -5108,6 +5216,10 @@ __all__ = [
     "OrganizationCustomerPortalSettingsTypedDict",
     "OrganizationDetails",
     "OrganizationDetailsTypedDict",
+    "OrganizationDisputeSettings",
+    "OrganizationDisputeSettingsTypedDict",
+    "OrganizationDisputeSettingsUpdate",
+    "OrganizationDisputeSettingsUpdateTypedDict",
     "OrganizationFeatureSettings",
     "OrganizationFeatureSettingsTypedDict",
     "OrganizationFeatureSettingsUpdate",
@@ -5138,6 +5250,8 @@ __all__ = [
     "OrganizationsListResponseTypedDict",
     "OrganizationsUpdateRequest",
     "OrganizationsUpdateRequestTypedDict",
+    "OrganizationsUpdateResponse403OrganizationsUpdate",
+    "OrganizationsUpdateResponse403OrganizationsUpdateUnion",
     "Pagination",
     "PaginationTypedDict",
     "PauseResumeNotAllowed",
@@ -5160,6 +5274,8 @@ __all__ = [
     "PaymentMethodGenericTypedDict",
     "PaymentMethodInUseByActiveSubscription",
     "PaymentMethodInUseByActiveSubscriptionData",
+    "PaymentMethodRequired",
+    "PaymentMethodRequiredData",
     "PaymentMethodSetupFailed",
     "PaymentMethodSetupFailedData",
     "PaymentMethodTypedDict",
@@ -5261,6 +5377,8 @@ __all__ = [
     "ProductsGetRequestTypedDict",
     "ProductsListQueryParamOrganizationIDFilter",
     "ProductsListQueryParamOrganizationIDFilterTypedDict",
+    "ProductsListQueryParamProductIDFilter",
+    "ProductsListQueryParamProductIDFilterTypedDict",
     "ProductsListRequest",
     "ProductsListRequestTypedDict",
     "ProductsListResponse",
@@ -5280,6 +5398,8 @@ __all__ = [
     "QueryParamBenefitTypeFilterTypedDict",
     "QueryParamCheckoutIDFilter",
     "QueryParamCheckoutIDFilterTypedDict",
+    "QueryParamColumns",
+    "QueryParamColumnsTypedDict",
     "QueryParamCustomerIDFilter",
     "QueryParamCustomerIDFilterTypedDict",
     "QueryParamDiscountIDFilter",
@@ -5426,6 +5546,7 @@ __all__ = [
     "SubscriptionCycledMetadataTypedDict",
     "SubscriptionDiscount",
     "SubscriptionDiscountTypedDict",
+    "SubscriptionExportColumn",
     "SubscriptionIDFilter",
     "SubscriptionIDFilterTypedDict",
     "SubscriptionLocked",
@@ -5453,6 +5574,10 @@ __all__ = [
     "SubscriptionReactivatedEventTypedDict",
     "SubscriptionReactivatedMetadata",
     "SubscriptionReactivatedMetadataTypedDict",
+    "SubscriptionReinstatedEvent",
+    "SubscriptionReinstatedEventTypedDict",
+    "SubscriptionReinstatedMetadata",
+    "SubscriptionReinstatedMetadataTypedDict",
     "SubscriptionResume",
     "SubscriptionResumeTypedDict",
     "SubscriptionResumedEvent",
@@ -5478,6 +5603,8 @@ __all__ = [
     "SubscriptionUncanceledMetadataTypedDict",
     "SubscriptionUpdate",
     "SubscriptionUpdateBase",
+    "SubscriptionUpdateBaseMetadata",
+    "SubscriptionUpdateBaseMetadataTypedDict",
     "SubscriptionUpdateBaseTypedDict",
     "SubscriptionUpdateBillingPeriod",
     "SubscriptionUpdateBillingPeriodTypedDict",
@@ -5508,6 +5635,8 @@ __all__ = [
     "SubscriptionsRevokeRequestTypedDict",
     "SubscriptionsUpdateRequest",
     "SubscriptionsUpdateRequestTypedDict",
+    "SubscriptionsUpdateResponse403SubscriptionsUpdate",
+    "SubscriptionsUpdateResponse403SubscriptionsUpdateUnion",
     "SucceededCheckouts",
     "SucceededCheckoutsTypedDict",
     "SupportCaseAttachmentFileCreate",
@@ -5593,6 +5722,12 @@ __all__ = [
     "WebhookCustomerUpdatedPayloadTypedDict",
     "WebhookDelivery",
     "WebhookDeliveryTypedDict",
+    "WebhookDiscountCreatedPayload",
+    "WebhookDiscountCreatedPayloadTypedDict",
+    "WebhookDiscountDeletedPayload",
+    "WebhookDiscountDeletedPayloadTypedDict",
+    "WebhookDiscountUpdatedPayload",
+    "WebhookDiscountUpdatedPayloadTypedDict",
     "WebhookEndpoint",
     "WebhookEndpointCreate",
     "WebhookEndpointCreateTypedDict",
@@ -5633,6 +5768,8 @@ __all__ = [
     "WebhookSubscriptionCanceledPayloadTypedDict",
     "WebhookSubscriptionCreatedPayload",
     "WebhookSubscriptionCreatedPayloadTypedDict",
+    "WebhookSubscriptionCycledPayload",
+    "WebhookSubscriptionCycledPayloadTypedDict",
     "WebhookSubscriptionPastDuePayload",
     "WebhookSubscriptionPastDuePayloadTypedDict",
     "WebhookSubscriptionPausedPayload",
@@ -5767,6 +5904,8 @@ _dynamic_imports: dict[str, str] = {
     "BenefitDiscordUpdateMetadata": ".benefitdiscordupdate",
     "BenefitDiscordUpdateMetadataTypedDict": ".benefitdiscordupdate",
     "BenefitDiscordUpdateTypedDict": ".benefitdiscordupdate",
+    "BenefitDownloadableFile": ".benefitdownloadablefile",
+    "BenefitDownloadableFileTypedDict": ".benefitdownloadablefile",
     "BenefitDownloadables": ".benefitdownloadables",
     "BenefitDownloadablesTypedDict": ".benefitdownloadables",
     "BenefitDownloadablesCreate": ".benefitdownloadablescreate",
@@ -5918,6 +6057,10 @@ _dynamic_imports: dict[str, str] = {
     "BenefitRevokedEventTypedDict": ".benefitrevokedevent",
     "BenefitsDeleteRequest": ".benefits_deleteop",
     "BenefitsDeleteRequestTypedDict": ".benefits_deleteop",
+    "BenefitsFilesRequest": ".benefits_filesop",
+    "BenefitsFilesRequestTypedDict": ".benefits_filesop",
+    "BenefitsFilesResponse": ".benefits_filesop",
+    "BenefitsFilesResponseTypedDict": ".benefits_filesop",
     "BenefitsGetRequest": ".benefits_getop",
     "BenefitsGetRequestTypedDict": ".benefits_getop",
     "BenefitsGrantsRequest": ".benefits_grantsop",
@@ -6496,10 +6639,10 @@ _dynamic_imports: dict[str, str] = {
     "CustomersDeleteExternalRequestTypedDict": ".customers_delete_externalop",
     "CustomersDeleteRequest": ".customers_deleteop",
     "CustomersDeleteRequestTypedDict": ".customers_deleteop",
-    "CustomersExportQueryParamOrganizationID": ".customers_exportop",
-    "CustomersExportQueryParamOrganizationIDTypedDict": ".customers_exportop",
     "CustomersExportRequest": ".customers_exportop",
     "CustomersExportRequestTypedDict": ".customers_exportop",
+    "QueryParamOrganizationID": ".customers_exportop",
+    "QueryParamOrganizationIDTypedDict": ".customers_exportop",
     "CustomersGetExternalRequest": ".customers_get_externalop",
     "CustomersGetExternalRequestTypedDict": ".customers_get_externalop",
     "CustomersGetStateExternalRequest": ".customers_get_state_externalop",
@@ -6728,6 +6871,8 @@ _dynamic_imports: dict[str, str] = {
     "DiscountPercentageRepeatDurationBaseTypedDict": ".discountpercentagerepeatdurationbase",
     "DiscountProduct": ".discountproduct",
     "DiscountProductTypedDict": ".discountproduct",
+    "DiscountRedemptionLimitReached": ".discountredemptionlimitreached",
+    "DiscountRedemptionLimitReachedData": ".discountredemptionlimitreached",
     "DiscountsDeleteRequest": ".discounts_deleteop",
     "DiscountsDeleteRequestTypedDict": ".discounts_deleteop",
     "DiscountsGetRequest": ".discounts_getop",
@@ -6748,6 +6893,8 @@ _dynamic_imports: dict[str, str] = {
     "DiscountUpdateTypedDict": ".discountupdate",
     "Dispute": ".dispute",
     "DisputeTypedDict": ".dispute",
+    "DisputeAutoAcceptNotEnabled": ".disputeautoacceptnotenabled",
+    "DisputeAutoAcceptNotEnabledData": ".disputeautoacceptnotenabled",
     "DisputeCustomer": ".disputecustomer",
     "DisputeCustomerTaxID": ".disputecustomer",
     "DisputeCustomerTaxIDTypedDict": ".disputecustomer",
@@ -6760,14 +6907,14 @@ _dynamic_imports: dict[str, str] = {
     "DisputesGetRequestTypedDict": ".disputes_getop",
     "DisputesListQueryParamOrganizationIDFilter": ".disputes_listop",
     "DisputesListQueryParamOrganizationIDFilterTypedDict": ".disputes_listop",
+    "DisputesListQueryParamStatusFilter": ".disputes_listop",
+    "DisputesListQueryParamStatusFilterTypedDict": ".disputes_listop",
     "DisputesListRequest": ".disputes_listop",
     "DisputesListRequestTypedDict": ".disputes_listop",
     "DisputesListResponse": ".disputes_listop",
     "DisputesListResponseTypedDict": ".disputes_listop",
     "QueryParamOrderIDFilter": ".disputes_listop",
     "QueryParamOrderIDFilterTypedDict": ".disputes_listop",
-    "QueryParamStatusFilter": ".disputes_listop",
-    "QueryParamStatusFilterTypedDict": ".disputes_listop",
     "DisputeSortProperty": ".disputesortproperty",
     "DisputeStatus": ".disputestatus",
     "DownloadableFileCreate": ".downloadablefilecreate",
@@ -6871,6 +7018,8 @@ _dynamic_imports: dict[str, str] = {
     "GenericPaymentTypedDict": ".genericpayment",
     "HTTPValidationError": ".httpvalidationerror",
     "HTTPValidationErrorData": ".httpvalidationerror",
+    "InactiveSubscription": ".inactivesubscription",
+    "InactiveSubscriptionData": ".inactivesubscription",
     "IntrospectTokenRequest": ".introspecttokenrequest",
     "IntrospectTokenRequestTokenTypeHint": ".introspecttokenrequest",
     "IntrospectTokenRequestTypedDict": ".introspecttokenrequest",
@@ -6932,6 +7081,8 @@ _dynamic_imports: dict[str, str] = {
     "LicenseKeyWithActivationsTypedDict": ".licensekeywithactivations",
     "ListResourceBenefit": ".listresource_benefit_",
     "ListResourceBenefitTypedDict": ".listresource_benefit_",
+    "ListResourceBenefitDownloadableFile": ".listresource_benefitdownloadablefile_",
+    "ListResourceBenefitDownloadableFileTypedDict": ".listresource_benefitdownloadablefile_",
     "ListResourceBenefitGrant": ".listresource_benefitgrant_",
     "ListResourceBenefitGrantTypedDict": ".listresource_benefitgrant_",
     "ListResourceCheckout": ".listresource_checkout_",
@@ -7374,6 +7525,7 @@ _dynamic_imports: dict[str, str] = {
     "OrderCustomerTaxID": ".ordercustomer",
     "OrderCustomerTaxIDTypedDict": ".ordercustomer",
     "OrderCustomerTypedDict": ".ordercustomer",
+    "OrderExportColumn": ".orderexportcolumn",
     "OrderFinalize": ".orderfinalize",
     "OrderFinalizeTypedDict": ".orderfinalize",
     "OrderInvoice": ".orderinvoice",
@@ -7402,8 +7554,12 @@ _dynamic_imports: dict[str, str] = {
     "OrdersExportQueryParamOrganizationIDFilterTypedDict": ".orders_exportop",
     "OrdersExportQueryParamProductIDFilter": ".orders_exportop",
     "OrdersExportQueryParamProductIDFilterTypedDict": ".orders_exportop",
+    "OrdersExportQueryParamStatusFilter": ".orders_exportop",
+    "OrdersExportQueryParamStatusFilterTypedDict": ".orders_exportop",
     "OrdersExportRequest": ".orders_exportop",
     "OrdersExportRequestTypedDict": ".orders_exportop",
+    "QueryParamColumns": ".orders_exportop",
+    "QueryParamColumnsTypedDict": ".orders_exportop",
     "OrdersFinalizeRequest": ".orders_finalizeop",
     "OrdersFinalizeRequestTypedDict": ".orders_finalizeop",
     "OrdersFinalizeResponse402OrdersFinalize": ".orders_finalizeop",
@@ -7424,6 +7580,10 @@ _dynamic_imports: dict[str, str] = {
     "OrderStatus": ".orderstatus",
     "OrderSubscription": ".ordersubscription",
     "OrderSubscriptionTypedDict": ".ordersubscription",
+    "OrderUnvoidedEvent": ".orderunvoidedevent",
+    "OrderUnvoidedEventTypedDict": ".orderunvoidedevent",
+    "OrderUnvoidedMetadata": ".orderunvoidedmetadata",
+    "OrderUnvoidedMetadataTypedDict": ".orderunvoidedmetadata",
     "OrderUpdate": ".orderupdate",
     "OrderUpdateTypedDict": ".orderupdate",
     "OrderVoidedEvent": ".ordervoidedevent",
@@ -7453,6 +7613,10 @@ _dynamic_imports: dict[str, str] = {
     "OrganizationDetails": ".organizationdetails",
     "OrganizationDetailsTypedDict": ".organizationdetails",
     "SwitchingFrom": ".organizationdetails",
+    "OrganizationDisputeSettings": ".organizationdisputesettings",
+    "OrganizationDisputeSettingsTypedDict": ".organizationdisputesettings",
+    "OrganizationDisputeSettingsUpdate": ".organizationdisputesettingsupdate",
+    "OrganizationDisputeSettingsUpdateTypedDict": ".organizationdisputesettingsupdate",
     "OrganizationFeatureSettings": ".organizationfeaturesettings",
     "OrganizationFeatureSettingsTypedDict": ".organizationfeaturesettings",
     "OrganizationFeatureSettingsUpdate": ".organizationfeaturesettingsupdate",
@@ -7469,6 +7633,8 @@ _dynamic_imports: dict[str, str] = {
     "OrganizationsListResponseTypedDict": ".organizations_listop",
     "OrganizationsUpdateRequest": ".organizations_updateop",
     "OrganizationsUpdateRequestTypedDict": ".organizations_updateop",
+    "OrganizationsUpdateResponse403OrganizationsUpdate": ".organizations_updateop",
+    "OrganizationsUpdateResponse403OrganizationsUpdateUnion": ".organizations_updateop",
     "OrganizationSocialLink": ".organizationsociallink",
     "OrganizationSocialLinkTypedDict": ".organizationsociallink",
     "OrganizationSocialPlatforms": ".organizationsocialplatforms",
@@ -7504,6 +7670,8 @@ _dynamic_imports: dict[str, str] = {
     "PaymentMethodGenericTypedDict": ".paymentmethodgeneric",
     "PaymentMethodInUseByActiveSubscription": ".paymentmethodinusebyactivesubscription",
     "PaymentMethodInUseByActiveSubscriptionData": ".paymentmethodinusebyactivesubscription",
+    "PaymentMethodRequired": ".paymentmethodrequired",
+    "PaymentMethodRequiredData": ".paymentmethodrequired",
     "PaymentMethodSetupFailed": ".paymentmethodsetupfailed",
     "PaymentMethodSetupFailedData": ".paymentmethodsetupfailed",
     "PaymentNotReady": ".paymentnotready",
@@ -7717,6 +7885,7 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionCycledEventTypedDict": ".subscriptioncycledevent",
     "SubscriptionCycledMetadata": ".subscriptioncycledmetadata",
     "SubscriptionCycledMetadataTypedDict": ".subscriptioncycledmetadata",
+    "SubscriptionExportColumn": ".subscriptionexportcolumn",
     "SubscriptionLocked": ".subscriptionlocked",
     "SubscriptionLockedData": ".subscriptionlocked",
     "SubscriptionMeter": ".subscriptionmeter",
@@ -7740,6 +7909,10 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionReactivatedEventTypedDict": ".subscriptionreactivatedevent",
     "SubscriptionReactivatedMetadata": ".subscriptionreactivatedmetadata",
     "SubscriptionReactivatedMetadataTypedDict": ".subscriptionreactivatedmetadata",
+    "SubscriptionReinstatedEvent": ".subscriptionreinstatedevent",
+    "SubscriptionReinstatedEventTypedDict": ".subscriptionreinstatedevent",
+    "SubscriptionReinstatedMetadata": ".subscriptionreinstatedmetadata",
+    "SubscriptionReinstatedMetadataTypedDict": ".subscriptionreinstatedmetadata",
     "SubscriptionResume": ".subscriptionresume",
     "SubscriptionResumeTypedDict": ".subscriptionresume",
     "SubscriptionResumedEvent": ".subscriptionresumedevent",
@@ -7754,8 +7927,14 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionRevokedMetadataTypedDict": ".subscriptionrevokedmetadata",
     "SubscriptionsCreateSubscriptionCreate": ".subscriptions_createop",
     "SubscriptionsCreateSubscriptionCreateTypedDict": ".subscriptions_createop",
-    "OrganizationID": ".subscriptions_exportop",
-    "OrganizationIDTypedDict": ".subscriptions_exportop",
+    "Columns": ".subscriptions_exportop",
+    "ColumnsTypedDict": ".subscriptions_exportop",
+    "QueryParamOrganizationIDFilter": ".subscriptions_exportop",
+    "QueryParamOrganizationIDFilterTypedDict": ".subscriptions_exportop",
+    "QueryParamProductIDFilter": ".subscriptions_exportop",
+    "QueryParamProductIDFilterTypedDict": ".subscriptions_exportop",
+    "QueryParamStatusFilter": ".subscriptions_exportop",
+    "QueryParamStatusFilterTypedDict": ".subscriptions_exportop",
     "SubscriptionsExportRequest": ".subscriptions_exportop",
     "SubscriptionsExportRequestTypedDict": ".subscriptions_exportop",
     "SubscriptionsGetRequest": ".subscriptions_getop",
@@ -7764,6 +7943,8 @@ _dynamic_imports: dict[str, str] = {
     "BenefitIDFilterTypedDict": ".subscriptions_listop",
     "BenefitTypeFilter": ".subscriptions_listop",
     "BenefitTypeFilterTypedDict": ".subscriptions_listop",
+    "BenefitsListQueryParamOrganizationIDFilter": ".subscriptions_listop",
+    "BenefitsListQueryParamOrganizationIDFilterTypedDict": ".subscriptions_listop",
     "BenefitsListRequest": ".subscriptions_listop",
     "BenefitsListRequestTypedDict": ".subscriptions_listop",
     "BenefitsListResponse": ".subscriptions_listop",
@@ -7822,6 +8003,8 @@ _dynamic_imports: dict[str, str] = {
     "OrdersListQueryParamOrganizationIDFilterTypedDict": ".subscriptions_listop",
     "OrdersListQueryParamProductIDFilter": ".subscriptions_listop",
     "OrdersListQueryParamProductIDFilterTypedDict": ".subscriptions_listop",
+    "OrdersListQueryParamStatusFilter": ".subscriptions_listop",
+    "OrdersListQueryParamStatusFilterTypedDict": ".subscriptions_listop",
     "OrdersListRequest": ".subscriptions_listop",
     "OrdersListRequestTypedDict": ".subscriptions_listop",
     "OrdersListResponse": ".subscriptions_listop",
@@ -7834,16 +8017,14 @@ _dynamic_imports: dict[str, str] = {
     "ProductIDFilterTypedDict": ".subscriptions_listop",
     "ProductsListQueryParamOrganizationIDFilter": ".subscriptions_listop",
     "ProductsListQueryParamOrganizationIDFilterTypedDict": ".subscriptions_listop",
+    "ProductsListQueryParamProductIDFilter": ".subscriptions_listop",
+    "ProductsListQueryParamProductIDFilterTypedDict": ".subscriptions_listop",
     "ProductsListRequest": ".subscriptions_listop",
     "ProductsListRequestTypedDict": ".subscriptions_listop",
     "ProductsListResponse": ".subscriptions_listop",
     "ProductsListResponseTypedDict": ".subscriptions_listop",
     "QueryParamDiscountIDFilter": ".subscriptions_listop",
     "QueryParamDiscountIDFilterTypedDict": ".subscriptions_listop",
-    "QueryParamOrganizationIDFilter": ".subscriptions_listop",
-    "QueryParamOrganizationIDFilterTypedDict": ".subscriptions_listop",
-    "QueryParamProductIDFilter": ".subscriptions_listop",
-    "QueryParamProductIDFilterTypedDict": ".subscriptions_listop",
     "SourceFilter": ".subscriptions_listop",
     "SourceFilterTypedDict": ".subscriptions_listop",
     "StatusFilter": ".subscriptions_listop",
@@ -7858,6 +8039,8 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionsRevokeRequestTypedDict": ".subscriptions_revokeop",
     "SubscriptionsUpdateRequest": ".subscriptions_updateop",
     "SubscriptionsUpdateRequestTypedDict": ".subscriptions_updateop",
+    "SubscriptionsUpdateResponse403SubscriptionsUpdate": ".subscriptions_updateop",
+    "SubscriptionsUpdateResponse403SubscriptionsUpdateUnion": ".subscriptions_updateop",
     "SubscriptionSeatsUpdatedEvent": ".subscriptionseatsupdatedevent",
     "SubscriptionSeatsUpdatedEventTypedDict": ".subscriptionseatsupdatedevent",
     "SubscriptionSeatsUpdatedMetadata": ".subscriptionseatsupdatedmetadata",
@@ -7871,6 +8054,8 @@ _dynamic_imports: dict[str, str] = {
     "SubscriptionUpdate": ".subscriptionupdate",
     "SubscriptionUpdateTypedDict": ".subscriptionupdate",
     "SubscriptionUpdateBase": ".subscriptionupdatebase",
+    "SubscriptionUpdateBaseMetadata": ".subscriptionupdatebase",
+    "SubscriptionUpdateBaseMetadataTypedDict": ".subscriptionupdatebase",
     "SubscriptionUpdateBaseTypedDict": ".subscriptionupdatebase",
     "SubscriptionUpdateBillingPeriod": ".subscriptionupdatebillingperiod",
     "SubscriptionUpdateBillingPeriodTypedDict": ".subscriptionupdatebillingperiod",
@@ -7954,6 +8139,12 @@ _dynamic_imports: dict[str, str] = {
     "WebhookCustomerUpdatedPayloadTypedDict": ".webhookcustomerupdatedpayload",
     "WebhookDelivery": ".webhookdelivery",
     "WebhookDeliveryTypedDict": ".webhookdelivery",
+    "WebhookDiscountCreatedPayload": ".webhookdiscountcreatedpayload",
+    "WebhookDiscountCreatedPayloadTypedDict": ".webhookdiscountcreatedpayload",
+    "WebhookDiscountDeletedPayload": ".webhookdiscountdeletedpayload",
+    "WebhookDiscountDeletedPayloadTypedDict": ".webhookdiscountdeletedpayload",
+    "WebhookDiscountUpdatedPayload": ".webhookdiscountupdatedpayload",
+    "WebhookDiscountUpdatedPayloadTypedDict": ".webhookdiscountupdatedpayload",
     "WebhookEndpoint": ".webhookendpoint",
     "WebhookEndpointTypedDict": ".webhookendpoint",
     "WebhookEndpointCreate": ".webhookendpointcreate",
@@ -8001,8 +8192,8 @@ _dynamic_imports: dict[str, str] = {
     "WebhooksListWebhookDeliveriesRequestTypedDict": ".webhooks_list_webhook_deliveriesop",
     "WebhooksListWebhookDeliveriesResponse": ".webhooks_list_webhook_deliveriesop",
     "WebhooksListWebhookDeliveriesResponseTypedDict": ".webhooks_list_webhook_deliveriesop",
-    "QueryParamOrganizationID": ".webhooks_list_webhook_endpointsop",
-    "QueryParamOrganizationIDTypedDict": ".webhooks_list_webhook_endpointsop",
+    "OrganizationID": ".webhooks_list_webhook_endpointsop",
+    "OrganizationIDTypedDict": ".webhooks_list_webhook_endpointsop",
     "WebhooksListWebhookEndpointsRequest": ".webhooks_list_webhook_endpointsop",
     "WebhooksListWebhookEndpointsRequestTypedDict": ".webhooks_list_webhook_endpointsop",
     "WebhooksListWebhookEndpointsResponse": ".webhooks_list_webhook_endpointsop",
@@ -8019,6 +8210,8 @@ _dynamic_imports: dict[str, str] = {
     "WebhookSubscriptionCanceledPayloadTypedDict": ".webhooksubscriptioncanceledpayload",
     "WebhookSubscriptionCreatedPayload": ".webhooksubscriptioncreatedpayload",
     "WebhookSubscriptionCreatedPayloadTypedDict": ".webhooksubscriptioncreatedpayload",
+    "WebhookSubscriptionCycledPayload": ".webhooksubscriptioncycledpayload",
+    "WebhookSubscriptionCycledPayloadTypedDict": ".webhooksubscriptioncycledpayload",
     "WebhookSubscriptionPastDuePayload": ".webhooksubscriptionpastduepayload",
     "WebhookSubscriptionPastDuePayloadTypedDict": ".webhooksubscriptionpastduepayload",
     "WebhookSubscriptionPausedPayload": ".webhooksubscriptionpausedpayload",

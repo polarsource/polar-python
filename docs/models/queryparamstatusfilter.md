@@ -1,19 +1,19 @@
 # QueryParamStatusFilter
 
-Filter by dispute status.
+Filter by subscription status.
 
 
 ## Supported Types
 
-### `models.DisputeStatus`
+### `models.SubscriptionStatus`
 
 ```python
-value: models.DisputeStatus = /* values here */
+value: models.SubscriptionStatus = /* values here */
 ```
 
-### `List[models.DisputeStatus]`
+### `List[models.SubscriptionStatus]`
 
 ```python
-value: List[models.DisputeStatus] = /* values here */
+value: List[models.SubscriptionStatus] = /* values here */
 ```
 

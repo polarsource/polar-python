@@ -24,6 +24,7 @@ from .listresourcewithcursorpagination_event_ import (
 )
 from .metersortproperty import MeterSortProperty
 from .ordersortproperty import OrderSortProperty
+from .orderstatus import OrderStatus
 from .productbillingtype import ProductBillingType
 from .productsortproperty import ProductSortProperty
 from .productvisibility import ProductVisibility
@@ -152,6 +153,10 @@ class SubscriptionsListRequestTypedDict(TypedDict):
     r"""Filter by cancellation date (after or equal to)."""
     canceled_at_before: NotRequired[Nullable[datetime]]
     r"""Filter by cancellation date (before or equal to)."""
+    started_after: NotRequired[Nullable[datetime]]
+    r"""Only include subscriptions started after this date."""
+    started_before: NotRequired[Nullable[datetime]]
+    r"""Only include subscriptions started before this date."""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -232,6 +237,18 @@ class SubscriptionsListRequest(BaseModel):
     ] = UNSET
     r"""Filter by cancellation date (before or equal to)."""
 
+    started_after: Annotated[
+        OptionalNullable[datetime],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Only include subscriptions started after this date."""
+
+    started_before: Annotated[
+        OptionalNullable[datetime],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Only include subscriptions started before this date."""
+
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -270,6 +287,8 @@ class SubscriptionsListRequest(BaseModel):
             "customer_cancellation_reason",
             "canceled_at_after",
             "canceled_at_before",
+            "started_after",
+            "started_before",
             "page",
             "limit",
             "sorting",
@@ -287,6 +306,8 @@ class SubscriptionsListRequest(BaseModel):
             "customer_cancellation_reason",
             "canceled_at_after",
             "canceled_at_before",
+            "started_after",
+            "started_before",
             "sorting",
             "metadata",
         ]
@@ -327,14 +348,14 @@ class SubscriptionsListResponse(BaseModel):
     result: ListResourceSubscription
 
 
-QueryParamOrganizationIDFilterTypedDict = TypeAliasType(
-    "QueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
+BenefitsListQueryParamOrganizationIDFilterTypedDict = TypeAliasType(
+    "BenefitsListQueryParamOrganizationIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by organization ID."""
 
 
-QueryParamOrganizationIDFilter = TypeAliasType(
-    "QueryParamOrganizationIDFilter", Union[str, List[str]]
+BenefitsListQueryParamOrganizationIDFilter = TypeAliasType(
+    "BenefitsListQueryParamOrganizationIDFilter", Union[str, List[str]]
 )
 r"""Filter by organization ID."""
 
@@ -368,7 +389,9 @@ r"""Exclude benefits with these IDs."""
 
 
 class BenefitsListRequestTypedDict(TypedDict):
-    organization_id: NotRequired[Nullable[QueryParamOrganizationIDFilterTypedDict]]
+    organization_id: NotRequired[
+        Nullable[BenefitsListQueryParamOrganizationIDFilterTypedDict]
+    ]
     r"""Filter by organization ID."""
     type_filter: NotRequired[Nullable[BenefitTypeFilterTypedDict]]
     r"""Filter by benefit type."""
@@ -390,7 +413,7 @@ class BenefitsListRequestTypedDict(TypedDict):
 
 class BenefitsListRequest(BaseModel):
     organization_id: Annotated[
-        OptionalNullable[QueryParamOrganizationIDFilter],
+        OptionalNullable[BenefitsListQueryParamOrganizationIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by organization ID."""
@@ -503,14 +526,14 @@ class BenefitsListResponse(BaseModel):
     result: ListResourceBenefit
 
 
-QueryParamProductIDFilterTypedDict = TypeAliasType(
-    "QueryParamProductIDFilterTypedDict", Union[str, List[str]]
+ProductsListQueryParamProductIDFilterTypedDict = TypeAliasType(
+    "ProductsListQueryParamProductIDFilterTypedDict", Union[str, List[str]]
 )
 r"""Filter by product ID."""
 
 
-QueryParamProductIDFilter = TypeAliasType(
-    "QueryParamProductIDFilter", Union[str, List[str]]
+ProductsListQueryParamProductIDFilter = TypeAliasType(
+    "ProductsListQueryParamProductIDFilter", Union[str, List[str]]
 )
 r"""Filter by product ID."""
 
@@ -538,7 +561,7 @@ r"""Filter products granting specific benefit."""
 
 
 class ProductsListRequestTypedDict(TypedDict):
-    id: NotRequired[Nullable[QueryParamProductIDFilterTypedDict]]
+    id: NotRequired[Nullable[ProductsListQueryParamProductIDFilterTypedDict]]
     r"""Filter by product ID."""
     organization_id: NotRequired[
         Nullable[ProductsListQueryParamOrganizationIDFilterTypedDict]
@@ -566,7 +589,7 @@ class ProductsListRequestTypedDict(TypedDict):
 
 class ProductsListRequest(BaseModel):
     id: Annotated[
-        OptionalNullable[QueryParamProductIDFilter],
+        OptionalNullable[ProductsListQueryParamProductIDFilter],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
     ] = UNSET
     r"""Filter by product ID."""
@@ -787,6 +810,18 @@ SubscriptionIDFilter = TypeAliasType("SubscriptionIDFilter", Union[str, List[str
 r"""Filter by subscription ID."""
 
 
+OrdersListQueryParamStatusFilterTypedDict = TypeAliasType(
+    "OrdersListQueryParamStatusFilterTypedDict", Union[OrderStatus, List[OrderStatus]]
+)
+r"""Filter by order status."""
+
+
+OrdersListQueryParamStatusFilter = TypeAliasType(
+    "OrdersListQueryParamStatusFilter", Union[OrderStatus, List[OrderStatus]]
+)
+r"""Filter by order status."""
+
+
 class OrdersListRequestTypedDict(TypedDict):
     organization_id: NotRequired[
         Nullable[OrdersListQueryParamOrganizationIDFilterTypedDict]
@@ -808,6 +843,12 @@ class OrdersListRequestTypedDict(TypedDict):
     r"""Filter by checkout ID."""
     subscription_id: NotRequired[Nullable[SubscriptionIDFilterTypedDict]]
     r"""Filter by subscription ID."""
+    status: NotRequired[Nullable[OrdersListQueryParamStatusFilterTypedDict]]
+    r"""Filter by order status."""
+    created_after: NotRequired[Nullable[datetime]]
+    r"""Only include orders created after this date"""
+    created_before: NotRequired[Nullable[datetime]]
+    r"""Only include orders created before this date"""
     page: NotRequired[int]
     r"""Page number, defaults to 1."""
     limit: NotRequired[int]
@@ -867,6 +908,24 @@ class OrdersListRequest(BaseModel):
     ] = UNSET
     r"""Filter by subscription ID."""
 
+    status: Annotated[
+        OptionalNullable[OrdersListQueryParamStatusFilter],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Filter by order status."""
+
+    created_after: Annotated[
+        OptionalNullable[datetime],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Only include orders created after this date"""
+
+    created_before: Annotated[
+        OptionalNullable[datetime],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = UNSET
+    r"""Only include orders created before this date"""
+
     page: Annotated[
         Optional[int],
         FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
@@ -902,6 +961,9 @@ class OrdersListRequest(BaseModel):
             "external_customer_id",
             "checkout_id",
             "subscription_id",
+            "status",
+            "created_after",
+            "created_before",
             "page",
             "limit",
             "sorting",
@@ -916,6 +978,9 @@ class OrdersListRequest(BaseModel):
             "external_customer_id",
             "checkout_id",
             "subscription_id",
+            "status",
+            "created_after",
+            "created_before",
             "sorting",
             "metadata",
         ]

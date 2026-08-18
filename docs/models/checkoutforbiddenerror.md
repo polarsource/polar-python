@@ -27,3 +27,9 @@ value: models.PaymentNotReady = /* values here */
 value: models.TrialAlreadyRedeemed = /* values here */
 ```
 
+### `models.DiscountRedemptionLimitReached`
+
+```python
+value: models.DiscountRedemptionLimitReached = /* values here */
+```
+

@@ -111,6 +111,12 @@ value: models.OrderPaidEvent = /* values here */
 value: models.OrderRefundedEvent = /* values here */
 ```
 
+### `models.OrderUnvoidedEvent`
+
+```python
+value: models.OrderUnvoidedEvent = /* values here */
+```
+
 ### `models.OrderVoidedEvent`
 
 ```python
@@ -163,6 +169,12 @@ value: models.SubscriptionProductUpdatedEvent = /* values here */
 
 ```python
 value: models.SubscriptionReactivatedEvent = /* values here */
+```
+
+### `models.SubscriptionReinstatedEvent`
+
+```python
+value: models.SubscriptionReinstatedEvent = /* values here */
 ```
 
 ### `models.SubscriptionResumedEvent`

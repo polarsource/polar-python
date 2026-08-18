@@ -45,6 +45,8 @@ class Subscriptions(BaseSDK):
         ] = UNSET,
         canceled_at_after: OptionalNullable[datetime] = UNSET,
         canceled_at_before: OptionalNullable[datetime] = UNSET,
+        started_after: OptionalNullable[datetime] = UNSET,
+        started_before: OptionalNullable[datetime] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.SubscriptionSortProperty]] = UNSET,
@@ -76,6 +78,8 @@ class Subscriptions(BaseSDK):
         :param customer_cancellation_reason: Filter by customer cancellation reason.
         :param canceled_at_after: Filter by cancellation date (after or equal to).
         :param canceled_at_before: Filter by cancellation date (before or equal to).
+        :param started_after: Only include subscriptions started after this date.
+        :param started_before: Only include subscriptions started before this date.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -107,6 +111,8 @@ class Subscriptions(BaseSDK):
             customer_cancellation_reason=customer_cancellation_reason,
             canceled_at_after=canceled_at_after,
             canceled_at_before=canceled_at_before,
+            started_after=started_after,
+            started_before=started_before,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -180,6 +186,8 @@ class Subscriptions(BaseSDK):
                 customer_cancellation_reason=customer_cancellation_reason,
                 canceled_at_after=canceled_at_after,
                 canceled_at_before=canceled_at_before,
+                started_after=started_after,
+                started_before=started_before,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -243,6 +251,8 @@ class Subscriptions(BaseSDK):
         ] = UNSET,
         canceled_at_after: OptionalNullable[datetime] = UNSET,
         canceled_at_before: OptionalNullable[datetime] = UNSET,
+        started_after: OptionalNullable[datetime] = UNSET,
+        started_before: OptionalNullable[datetime] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
         sorting: OptionalNullable[List[models.SubscriptionSortProperty]] = UNSET,
@@ -274,6 +284,8 @@ class Subscriptions(BaseSDK):
         :param customer_cancellation_reason: Filter by customer cancellation reason.
         :param canceled_at_after: Filter by cancellation date (after or equal to).
         :param canceled_at_before: Filter by cancellation date (before or equal to).
+        :param started_after: Only include subscriptions started after this date.
+        :param started_before: Only include subscriptions started before this date.
         :param page: Page number, defaults to 1.
         :param limit: Size of a page, defaults to 10. Maximum is 100.
         :param sorting: Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
@@ -305,6 +317,8 @@ class Subscriptions(BaseSDK):
             customer_cancellation_reason=customer_cancellation_reason,
             canceled_at_after=canceled_at_after,
             canceled_at_before=canceled_at_before,
+            started_after=started_after,
+            started_before=started_before,
             page=page,
             limit=limit,
             sorting=sorting,
@@ -378,6 +392,8 @@ class Subscriptions(BaseSDK):
                 customer_cancellation_reason=customer_cancellation_reason,
                 canceled_at_after=canceled_at_after,
                 canceled_at_before=canceled_at_before,
+                started_after=started_after,
+                started_before=started_before,
                 page=next_page,
                 limit=limit,
                 sorting=sorting,
@@ -623,7 +639,26 @@ class Subscriptions(BaseSDK):
         self,
         *,
         organization_id: OptionalNullable[
-            Union[models.OrganizationID, models.OrganizationIDTypedDict]
+            Union[
+                models.QueryParamOrganizationIDFilter,
+                models.QueryParamOrganizationIDFilterTypedDict,
+            ]
+        ] = UNSET,
+        product_id: OptionalNullable[
+            Union[
+                models.QueryParamProductIDFilter,
+                models.QueryParamProductIDFilterTypedDict,
+            ]
+        ] = UNSET,
+        status: OptionalNullable[
+            Union[models.QueryParamStatusFilter, models.QueryParamStatusFilterTypedDict]
+        ] = UNSET,
+        cancel_at_period_end: OptionalNullable[bool] = UNSET,
+        started_after: OptionalNullable[datetime] = UNSET,
+        started_before: OptionalNullable[datetime] = UNSET,
+        timezone: Optional[str] = "UTC",
+        columns: OptionalNullable[
+            Union[models.Columns, models.ColumnsTypedDict]
         ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -637,6 +672,13 @@ class Subscriptions(BaseSDK):
         **Scopes**: `subscriptions:read` `subscriptions:write`
 
         :param organization_id: Filter by organization ID.
+        :param product_id: Filter by product ID.
+        :param status: Filter by subscription status.
+        :param cancel_at_period_end: Filter by subscriptions that are set to cancel at period end.
+        :param started_after: Only include subscriptions started after this date. Must include a UTC offset.
+        :param started_before: Only include subscriptions started before this date. Must include a UTC offset.
+        :param timezone: Time zone used to render dates in the CSV.
+        :param columns: Columns to include in the CSV, in order. Defaults to email, started_at, product, amount, currency, status and recurring_interval.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -654,6 +696,13 @@ class Subscriptions(BaseSDK):
 
         request = models.SubscriptionsExportRequest(
             organization_id=organization_id,
+            product_id=product_id,
+            status=status,
+            cancel_at_period_end=cancel_at_period_end,
+            started_after=started_after,
+            started_before=started_before,
+            timezone=timezone,
+            columns=columns,
         )
 
         req = self._build_request(
@@ -714,7 +763,26 @@ class Subscriptions(BaseSDK):
         self,
         *,
         organization_id: OptionalNullable[
-            Union[models.OrganizationID, models.OrganizationIDTypedDict]
+            Union[
+                models.QueryParamOrganizationIDFilter,
+                models.QueryParamOrganizationIDFilterTypedDict,
+            ]
+        ] = UNSET,
+        product_id: OptionalNullable[
+            Union[
+                models.QueryParamProductIDFilter,
+                models.QueryParamProductIDFilterTypedDict,
+            ]
+        ] = UNSET,
+        status: OptionalNullable[
+            Union[models.QueryParamStatusFilter, models.QueryParamStatusFilterTypedDict]
+        ] = UNSET,
+        cancel_at_period_end: OptionalNullable[bool] = UNSET,
+        started_after: OptionalNullable[datetime] = UNSET,
+        started_before: OptionalNullable[datetime] = UNSET,
+        timezone: Optional[str] = "UTC",
+        columns: OptionalNullable[
+            Union[models.Columns, models.ColumnsTypedDict]
         ] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -728,6 +796,13 @@ class Subscriptions(BaseSDK):
         **Scopes**: `subscriptions:read` `subscriptions:write`
 
         :param organization_id: Filter by organization ID.
+        :param product_id: Filter by product ID.
+        :param status: Filter by subscription status.
+        :param cancel_at_period_end: Filter by subscriptions that are set to cancel at period end.
+        :param started_after: Only include subscriptions started after this date. Must include a UTC offset.
+        :param started_before: Only include subscriptions started before this date. Must include a UTC offset.
+        :param timezone: Time zone used to render dates in the CSV.
+        :param columns: Columns to include in the CSV, in order. Defaults to email, started_at, product, amount, currency, status and recurring_interval.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -745,6 +820,13 @@ class Subscriptions(BaseSDK):
 
         request = models.SubscriptionsExportRequest(
             organization_id=organization_id,
+            product_id=product_id,
+            status=status,
+            cancel_at_period_end=cancel_at_period_end,
+            started_after=started_after,
+            started_before=started_before,
+            timezone=timezone,
+            columns=columns,
         )
 
         req = self._build_request_async(
@@ -1083,9 +1165,11 @@ class Subscriptions(BaseSDK):
             raise models.PaymentFailed(response_data, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(
-                models.AlreadyCanceledSubscriptionData, http_res
+                models.SubscriptionsUpdateResponse403SubscriptionsUpdateUnion, http_res
             )
-            raise models.AlreadyCanceledSubscription(response_data, http_res)
+            raise models.SubscriptionsUpdateResponse403SubscriptionsUpdate(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
@@ -1204,9 +1288,11 @@ class Subscriptions(BaseSDK):
             raise models.PaymentFailed(response_data, http_res)
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(
-                models.AlreadyCanceledSubscriptionData, http_res
+                models.SubscriptionsUpdateResponse403SubscriptionsUpdateUnion, http_res
             )
-            raise models.AlreadyCanceledSubscription(response_data, http_res)
+            raise models.SubscriptionsUpdateResponse403SubscriptionsUpdate(
+                response_data, http_res
+            )
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res

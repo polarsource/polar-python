@@ -32,10 +32,7 @@ class Webhooks(BaseSDK):
         self,
         *,
         organization_id: OptionalNullable[
-            Union[
-                models.QueryParamOrganizationID,
-                models.QueryParamOrganizationIDTypedDict,
-            ]
+            Union[models.OrganizationID, models.OrganizationIDTypedDict]
         ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,
@@ -162,10 +159,7 @@ class Webhooks(BaseSDK):
         self,
         *,
         organization_id: OptionalNullable[
-            Union[
-                models.QueryParamOrganizationID,
-                models.QueryParamOrganizationIDTypedDict,
-            ]
+            Union[models.OrganizationID, models.OrganizationIDTypedDict]
         ] = UNSET,
         page: Optional[int] = 1,
         limit: Optional[int] = 10,

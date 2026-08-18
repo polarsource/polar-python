@@ -10,6 +10,10 @@ from .organizationcustomerportalsettings import (
     OrganizationCustomerPortalSettingsTypedDict,
 )
 from .organizationdetails import OrganizationDetails, OrganizationDetailsTypedDict
+from .organizationdisputesettingsupdate import (
+    OrganizationDisputeSettingsUpdate,
+    OrganizationDisputeSettingsUpdateTypedDict,
+)
 from .organizationfeaturesettingsupdate import (
     OrganizationFeatureSettingsUpdate,
     OrganizationFeatureSettingsUpdateTypedDict,
@@ -301,6 +305,8 @@ class OrganizationUpdateTypedDict(TypedDict):
     customer_portal_settings: NotRequired[
         Nullable[OrganizationCustomerPortalSettingsTypedDict]
     ]
+    dispute_settings: NotRequired[Nullable[OrganizationDisputeSettingsUpdateTypedDict]]
+    embed_hosts: NotRequired[Nullable[List[str]]]
     default_presentment_currency: NotRequired[Nullable[PresentmentCurrency]]
     r"""Default presentment currency for the organization"""
     default_tax_behavior: NotRequired[Nullable[TaxBehaviorOption]]
@@ -339,6 +345,10 @@ class OrganizationUpdate(BaseModel):
         UNSET
     )
 
+    dispute_settings: OptionalNullable[OrganizationDisputeSettingsUpdate] = UNSET
+
+    embed_hosts: OptionalNullable[List[str]] = UNSET
+
     default_presentment_currency: OptionalNullable[PresentmentCurrency] = UNSET
     r"""Default presentment currency for the organization"""
 
@@ -362,6 +372,8 @@ class OrganizationUpdate(BaseModel):
             "subscription_settings",
             "customer_email_settings",
             "customer_portal_settings",
+            "dispute_settings",
+            "embed_hosts",
             "default_presentment_currency",
             "default_tax_behavior",
             "sso_enforced",
@@ -378,6 +390,8 @@ class OrganizationUpdate(BaseModel):
             "subscription_settings",
             "customer_email_settings",
             "customer_portal_settings",
+            "dispute_settings",
+            "embed_hosts",
             "default_presentment_currency",
             "default_tax_behavior",
             "sso_enforced",

@@ -10,6 +10,7 @@
 * [get](#get) - Get Benefit
 * [update](#update) - Update Benefit
 * [delete](#delete) - Delete Benefit
+* [files](#files) - List Benefit Files
 * [grants](#grants) - List Benefit Grants
 
 ## list
@@ -42,7 +43,7 @@ with Polar(
 
 | Parameter                                                                                                                                                               | Type                                                                                                                                                                    | Required                                                                                                                                                                | Description                                                                                                                                                             |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `organization_id`                                                                                                                                                       | [OptionalNullable[models.QueryParamOrganizationIDFilter]](../../models/queryparamorganizationidfilter.md)                                                               | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
+| `organization_id`                                                                                                                                                       | [OptionalNullable[models.BenefitsListQueryParamOrganizationIDFilter]](../../models/benefitslistqueryparamorganizationidfilter.md)                                       | :heavy_minus_sign:                                                                                                                                                      | Filter by organization ID.                                                                                                                                              |
 | `type_filter`                                                                                                                                                           | [OptionalNullable[models.BenefitTypeFilter]](../../models/benefittypefilter.md)                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Filter by benefit type.                                                                                                                                                 |
 | `id`                                                                                                                                                                    | [OptionalNullable[models.FilterIDs]](../../models/filterids.md)                                                                                                         | :heavy_minus_sign:                                                                                                                                                      | Filter by benefit IDs.                                                                                                                                                  |
 | `exclude_id`                                                                                                                                                            | [OptionalNullable[models.ExcludeIDs]](../../models/excludeids.md)                                                                                                       | :heavy_minus_sign:                                                                                                                                                      | Exclude benefits with these IDs.                                                                                                                                        |
@@ -238,6 +239,53 @@ with Polar(
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | models.NotPermitted        | 403                        | application/json           |
+| models.ResourceNotFound    | 404                        | application/json           |
+| models.HTTPValidationError | 422                        | application/json           |
+| models.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## files
+
+List the downloadable files for a benefit with their download statistics.
+
+**Scopes**: `benefits:read` `benefits:write`
+
+### Example Usage
+
+<!-- UsageSnippet language="python" operationID="benefits:files" method="get" path="/v1/benefits/{id}/files" -->
+```python
+from polar_sdk import Polar
+
+
+with Polar(
+    access_token="<YOUR_BEARER_TOKEN_HERE>",
+) as polar:
+
+    res = polar.benefits.files(id="<value>", page=1, limit=10)
+
+    while res is not None:
+        # Handle items
+
+        res = res.next()
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `page`                                                              | *Optional[int]*                                                     | :heavy_minus_sign:                                                  | Page number, defaults to 1.                                         |
+| `limit`                                                             | *Optional[int]*                                                     | :heavy_minus_sign:                                                  | Size of a page, defaults to 10. Maximum is 100.                     |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[models.BenefitsFilesResponse](../../models/benefitsfilesresponse.md)**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
 | models.ResourceNotFound    | 404                        | application/json           |
 | models.HTTPValidationError | 422                        | application/json           |
 | models.SDKError            | 4XX, 5XX                   | \*/\*                      |

@@ -29,6 +29,7 @@ class DownloadableFileReadTypedDict(TypedDict):
     version: Nullable[str]
     is_uploaded: bool
     created_at: datetime
+    flagged_malicious_at: Nullable[datetime]
     size_readable: str
     service: Literal["downloadable"]
 
@@ -65,6 +66,8 @@ class DownloadableFileRead(BaseModel):
 
     created_at: datetime
 
+    flagged_malicious_at: Nullable[datetime]
+
     size_readable: str
 
     SERVICE: Annotated[
@@ -84,6 +87,7 @@ class DownloadableFileRead(BaseModel):
             "checksum_sha256_hex",
             "last_modified_at",
             "version",
+            "flagged_malicious_at",
         ]
         null_default_fields = []
 

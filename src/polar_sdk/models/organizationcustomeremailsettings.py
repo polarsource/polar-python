@@ -7,6 +7,7 @@ from typing_extensions import TypedDict
 
 class OrganizationCustomerEmailSettingsTypedDict(TypedDict):
     order_confirmation: bool
+    payment_method_expiration_reminder: bool
     subscription_cancellation: bool
     subscription_confirmation: bool
     subscription_cycled: bool
@@ -23,6 +24,8 @@ class OrganizationCustomerEmailSettingsTypedDict(TypedDict):
 
 class OrganizationCustomerEmailSettings(BaseModel):
     order_confirmation: bool
+
+    payment_method_expiration_reminder: bool
 
     subscription_cancellation: bool
 

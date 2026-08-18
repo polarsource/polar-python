@@ -6,6 +6,7 @@
 | Field                                    | Type                                     | Required                                 | Description                              |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | `order_confirmation`                     | *bool*                                   | :heavy_check_mark:                       | N/A                                      |
+| `payment_method_expiration_reminder`     | *bool*                                   | :heavy_check_mark:                       | N/A                                      |
 | `subscription_cancellation`              | *bool*                                   | :heavy_check_mark:                       | N/A                                      |
 | `subscription_confirmation`              | *bool*                                   | :heavy_check_mark:                       | N/A                                      |
 | `subscription_cycled`                    | *bool*                                   | :heavy_check_mark:                       | N/A                                      |

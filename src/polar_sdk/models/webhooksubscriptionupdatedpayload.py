@@ -16,7 +16,7 @@ class WebhookSubscriptionUpdatedPayloadTypedDict(TypedDict):
 
     If you want more specific events, you can listen to `subscription.active`, `subscription.canceled`, `subscription.past_due`, and `subscription.revoked`.
 
-    To listen specifically for renewals, you can listen to `order.created` events and check the `billing_reason` field.
+    To listen specifically for renewals, listen to `subscription.cycled`.
 
     **Discord & Slack support:** On cancellation, past due, and revocation. Renewals are skipped.
     """
@@ -31,7 +31,7 @@ class WebhookSubscriptionUpdatedPayload(BaseModel):
 
     If you want more specific events, you can listen to `subscription.active`, `subscription.canceled`, `subscription.past_due`, and `subscription.revoked`.
 
-    To listen specifically for renewals, you can listen to `order.created` events and check the `billing_reason` field.
+    To listen specifically for renewals, listen to `subscription.cycled`.
 
     **Discord & Slack support:** On cancellation, past due, and revocation. Renewals are skipped.
     """

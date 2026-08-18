@@ -5,10 +5,34 @@ from .subscriptionprorationbehavior import SubscriptionProrationBehavior
 from datetime import datetime
 from polar_sdk.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
 from pydantic import model_serializer
-from typing_extensions import NotRequired, TypedDict
+from typing import Dict, Optional, Union
+from typing_extensions import NotRequired, TypeAliasType, TypedDict
+
+
+SubscriptionUpdateBaseMetadataTypedDict = TypeAliasType(
+    "SubscriptionUpdateBaseMetadataTypedDict", Union[str, int, float, bool]
+)
+
+
+SubscriptionUpdateBaseMetadata = TypeAliasType(
+    "SubscriptionUpdateBaseMetadata", Union[str, int, float, bool]
+)
 
 
 class SubscriptionUpdateBaseTypedDict(TypedDict):
+    metadata: NotRequired[Dict[str, SubscriptionUpdateBaseMetadataTypedDict]]
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A floating-point number
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
     product_id: NotRequired[Nullable[str]]
     r"""Update subscription to another product."""
     proration_behavior: NotRequired[Nullable[SubscriptionProrationBehavior]]
@@ -20,6 +44,20 @@ class SubscriptionUpdateBaseTypedDict(TypedDict):
 
 
 class SubscriptionUpdateBase(BaseModel):
+    metadata: Optional[Dict[str, SubscriptionUpdateBaseMetadata]] = None
+    r"""Key-value object allowing you to store additional information.
+
+    The key must be a string with a maximum length of **40 characters**.
+    The value must be either:
+
+    * A string with a maximum length of **500 characters**
+    * An integer
+    * A floating-point number
+    * A boolean
+
+    You can store up to **50 key-value pairs**.
+    """
+
     product_id: OptionalNullable[str] = UNSET
     r"""Update subscription to another product."""
 
@@ -35,6 +73,7 @@ class SubscriptionUpdateBase(BaseModel):
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = [
+            "metadata",
             "product_id",
             "proration_behavior",
             "discount_id",

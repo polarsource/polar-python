@@ -163,7 +163,13 @@ with Polar(
     access_token="<YOUR_BEARER_TOKEN_HERE>",
 ) as polar:
 
-    res = polar.organizations.update(id="1dbfc517-0bbf-4301-9ba8-555ca42b9737", organization_update={})
+    res = polar.organizations.update(id="1dbfc517-0bbf-4301-9ba8-555ca42b9737", organization_update={
+        "embed_hosts": [
+            "example.com",
+            "*.example.com",
+            "localhost:3000",
+        ],
+    })
 
     # Handle response
     print(res)
@@ -187,6 +193,7 @@ with Polar(
 | Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | models.NotPermitted                     | 403                                     | application/json                        |
+| models.DisputeAutoAcceptNotEnabled      | 403                                     | application/json                        |
 | models.ResourceNotFound                 | 404                                     | application/json                        |
 | models.SSOEnforcementRequiresConnection | 409                                     | application/json                        |
 | models.HTTPValidationError              | 422                                     | application/json                        |

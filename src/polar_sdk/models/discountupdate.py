@@ -47,6 +47,8 @@ class DiscountUpdateTypedDict(TypedDict):
     r"""Optional timestamp after which the discount is no longer redeemable."""
     max_redemptions: NotRequired[Nullable[int]]
     r"""Optional maximum number of times the discount can be redeemed."""
+    max_redemptions_per_customer: NotRequired[Nullable[int]]
+    r"""Optional maximum number of times the discount can be redeemed by a single customer."""
     duration: NotRequired[Nullable[DiscountDuration]]
     duration_in_months: NotRequired[Nullable[int]]
     type: NotRequired[Nullable[DiscountType]]
@@ -88,6 +90,9 @@ class DiscountUpdate(BaseModel):
     max_redemptions: OptionalNullable[int] = UNSET
     r"""Optional maximum number of times the discount can be redeemed."""
 
+    max_redemptions_per_customer: OptionalNullable[int] = UNSET
+    r"""Optional maximum number of times the discount can be redeemed by a single customer."""
+
     duration: OptionalNullable[DiscountDuration] = UNSET
 
     duration_in_months: OptionalNullable[int] = UNSET
@@ -123,6 +128,7 @@ class DiscountUpdate(BaseModel):
             "starts_at",
             "ends_at",
             "max_redemptions",
+            "max_redemptions_per_customer",
             "duration",
             "duration_in_months",
             "type",
@@ -138,6 +144,7 @@ class DiscountUpdate(BaseModel):
             "starts_at",
             "ends_at",
             "max_redemptions",
+            "max_redemptions_per_customer",
             "duration",
             "duration_in_months",
             "type",

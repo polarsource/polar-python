@@ -1,4 +1,4 @@
-# CustomersExportQueryParamOrganizationID
+# BenefitsListQueryParamOrganizationIDFilter
 
 Filter by organization ID.
 

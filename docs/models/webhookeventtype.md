@@ -27,6 +27,7 @@
 | `SUBSCRIPTION_ACTIVE`     | subscription.active       |
 | `SUBSCRIPTION_CANCELED`   | subscription.canceled     |
 | `SUBSCRIPTION_UNCANCELED` | subscription.uncanceled   |
+| `SUBSCRIPTION_CYCLED`     | subscription.cycled       |
 | `SUBSCRIPTION_REVOKED`    | subscription.revoked      |
 | `SUBSCRIPTION_PAST_DUE`   | subscription.past_due     |
 | `SUBSCRIPTION_PAUSED`     | subscription.paused       |
@@ -35,6 +36,9 @@
 | `REFUND_UPDATED`          | refund.updated            |
 | `PRODUCT_CREATED`         | product.created           |
 | `PRODUCT_UPDATED`         | product.updated           |
+| `DISCOUNT_CREATED`        | discount.created          |
+| `DISCOUNT_UPDATED`        | discount.updated          |
+| `DISCOUNT_DELETED`        | discount.deleted          |
 | `BENEFIT_CREATED`         | benefit.created           |
 | `BENEFIT_UPDATED`         | benefit.updated           |
 | `BENEFIT_GRANT_CREATED`   | benefit_grant.created     |

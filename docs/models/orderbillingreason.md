@@ -3,9 +3,10 @@
 
 ## Values
 
-| Name                  | Value                 |
-| --------------------- | --------------------- |
-| `PURCHASE`            | purchase              |
-| `SUBSCRIPTION_CREATE` | subscription_create   |
-| `SUBSCRIPTION_CYCLE`  | subscription_cycle    |
-| `SUBSCRIPTION_UPDATE` | subscription_update   |
+| Name                       | Value                      |
+| -------------------------- | -------------------------- |
+| `PURCHASE`                 | purchase                   |
+| `SUBSCRIPTION_CREATE`      | subscription_create        |
+| `SUBSCRIPTION_CYCLE`       | subscription_cycle         |
+| `SUBSCRIPTION_UPDATE`      | subscription_update        |
+| `SUBSCRIPTION_METER_CYCLE` | subscription_meter_cycle   |

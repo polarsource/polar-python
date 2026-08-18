@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 from .alreadyactivesubscriptionerror import AlreadyActiveSubscriptionErrorData
+from .discountredemptionlimitreached import DiscountRedemptionLimitReachedData
 from .notopencheckout import NotOpenCheckoutData
 from .paymentnotready import PaymentNotReadyData
 from .trialalreadyredeemed import TrialAlreadyRedeemedData
@@ -19,6 +20,7 @@ CheckoutForbiddenErrorUnion = TypeAliasType(
         NotOpenCheckoutData,
         PaymentNotReadyData,
         TrialAlreadyRedeemedData,
+        DiscountRedemptionLimitReachedData,
     ],
 )
 

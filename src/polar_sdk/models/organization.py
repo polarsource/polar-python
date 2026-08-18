@@ -13,6 +13,10 @@ from .organizationcustomerportalsettings import (
     OrganizationCustomerPortalSettings,
     OrganizationCustomerPortalSettingsTypedDict,
 )
+from .organizationdisputesettings import (
+    OrganizationDisputeSettings,
+    OrganizationDisputeSettingsTypedDict,
+)
 from .organizationfeaturesettings import (
     OrganizationFeatureSettings,
     OrganizationFeatureSettingsTypedDict,
@@ -313,6 +317,8 @@ class OrganizationTypedDict(TypedDict):
     status: OrganizationStatus
     details_submitted_at: Nullable[datetime]
     r"""When the business details were submitted for review."""
+    onboarding_resubmission_requested_at: Nullable[datetime]
+    r"""When Polar requested that the organization review and resubmit its onboarding information, if applicable."""
     sso_enforced: bool
     r"""Whether members must access this organization through its SSO connection."""
     default_presentment_currency: str
@@ -323,6 +329,12 @@ class OrganizationTypedDict(TypedDict):
     subscription_settings: OrganizationSubscriptionSettingsTypedDict
     customer_email_settings: OrganizationCustomerEmailSettingsTypedDict
     customer_portal_settings: OrganizationCustomerPortalSettingsTypedDict
+    dispute_settings: OrganizationDisputeSettingsTypedDict
+    r"""`auto_accept_below_amount` is in Polar's settlement currency (USD)."""
+    embed_hosts: List[str]
+    r"""Hosts allowed to embed this organization's checkout. An entry is a host and an optional port, without a scheme: HTTPS is always allowed, and HTTP too for local hosts — `localhost`, any `.localhost` or `.local` name, and loopback or private addresses. `*.example.com` matches any subdomain, but not `example.com` itself. An app origin such as `chrome-extension://abcdef` carries its scheme, having no host to match on."""
+    embed_hosts_enforced: bool
+    r"""Whether an embedding page's origin must match `embed_hosts`. Organizations that have not configured a list yet embed unchecked until the allowlist is enforced for everyone."""
     account_id: Nullable[str]
     r"""ID of the transactions account."""
     payout_account_id: Nullable[str]
@@ -370,6 +382,9 @@ class Organization(BaseModel):
     details_submitted_at: Nullable[datetime]
     r"""When the business details were submitted for review."""
 
+    onboarding_resubmission_requested_at: Nullable[datetime]
+    r"""When Polar requested that the organization review and resubmit its onboarding information, if applicable."""
+
     sso_enforced: bool
     r"""Whether members must access this organization through its SSO connection."""
 
@@ -386,6 +401,15 @@ class Organization(BaseModel):
     customer_email_settings: OrganizationCustomerEmailSettings
 
     customer_portal_settings: OrganizationCustomerPortalSettings
+
+    dispute_settings: OrganizationDisputeSettings
+    r"""`auto_accept_below_amount` is in Polar's settlement currency (USD)."""
+
+    embed_hosts: List[str]
+    r"""Hosts allowed to embed this organization's checkout. An entry is a host and an optional port, without a scheme: HTTPS is always allowed, and HTTP too for local hosts — `localhost`, any `.localhost` or `.local` name, and loopback or private addresses. `*.example.com` matches any subdomain, but not `example.com` itself. An app origin such as `chrome-extension://abcdef` carries its scheme, having no host to match on."""
+
+    embed_hosts_enforced: bool
+    r"""Whether an embedding page's origin must match `embed_hosts`. Organizations that have not configured a list yet embed unchecked until the allowlist is enforced for everyone."""
 
     account_id: Nullable[str]
     r"""ID of the transactions account."""
@@ -407,6 +431,7 @@ class Organization(BaseModel):
             "email",
             "website",
             "details_submitted_at",
+            "onboarding_resubmission_requested_at",
             "feature_settings",
             "country",
             "account_id",

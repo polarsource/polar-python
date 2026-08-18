@@ -39,6 +39,8 @@ class DiscountFixedOnceForeverDurationTypedDict(TypedDict):
     r"""Timestamp after which the discount is no longer redeemable."""
     max_redemptions: Nullable[int]
     r"""Maximum number of times the discount can be redeemed."""
+    max_redemptions_per_customer: Nullable[int]
+    r"""Maximum number of times the discount can be redeemed by a single customer."""
     redemptions_count: int
     r"""Number of times the discount has been redeemed."""
     organization_id: str
@@ -96,6 +98,9 @@ class DiscountFixedOnceForeverDuration(BaseModel):
     max_redemptions: Nullable[int]
     r"""Maximum number of times the discount can be redeemed."""
 
+    max_redemptions_per_customer: Nullable[int]
+    r"""Maximum number of times the discount can be redeemed by a single customer."""
+
     redemptions_count: int
     r"""Number of times the discount has been redeemed."""
 
@@ -113,6 +118,7 @@ class DiscountFixedOnceForeverDuration(BaseModel):
             "starts_at",
             "ends_at",
             "max_redemptions",
+            "max_redemptions_per_customer",
         ]
         null_default_fields = []
 

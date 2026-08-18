@@ -15,8 +15,8 @@ class Benefits(BaseSDK):
         *,
         organization_id: OptionalNullable[
             Union[
-                models.QueryParamOrganizationIDFilter,
-                models.QueryParamOrganizationIDFilterTypedDict,
+                models.BenefitsListQueryParamOrganizationIDFilter,
+                models.BenefitsListQueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
         type_filter: OptionalNullable[
@@ -178,8 +178,8 @@ class Benefits(BaseSDK):
         *,
         organization_id: OptionalNullable[
             Union[
-                models.QueryParamOrganizationIDFilter,
-                models.QueryParamOrganizationIDFilterTypedDict,
+                models.BenefitsListQueryParamOrganizationIDFilter,
+                models.BenefitsListQueryParamOrganizationIDFilterTypedDict,
             ]
         ] = UNSET,
         type_filter: OptionalNullable[
@@ -1109,6 +1109,266 @@ class Benefits(BaseSDK):
         if utils.match_response(http_res, "403", "application/json"):
             response_data = unmarshal_json_response(models.NotPermittedData, http_res)
             raise models.NotPermitted(response_data, http_res)
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                models.ResourceNotFoundData, http_res
+            )
+            raise models.ResourceNotFound(response_data, http_res)
+        if utils.match_response(http_res, "422", "application/json"):
+            response_data = unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
+            )
+            raise models.HTTPValidationError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    def files(
+        self,
+        *,
+        id: str,
+        page: Optional[int] = 1,
+        limit: Optional[int] = 10,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.BenefitsFilesResponse]:
+        r"""List Benefit Files
+
+        List the downloadable files for a benefit with their download statistics.
+
+        **Scopes**: `benefits:read` `benefits:write`
+
+        :param id:
+        :param page: Page number, defaults to 1.
+        :param limit: Size of a page, defaults to 10. Maximum is 100.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.BenefitsFilesRequest(
+            id=id,
+            page=page,
+            limit=limit,
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/v1/benefits/{id}/files",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="benefits:files",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        def next_func() -> Optional[models.BenefitsFilesResponse]:
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
+            page = request.page if not request.page is None else 1
+            next_page = page + 1
+
+            num_pages = JSONPath("$.pagination.max_page").parse(body)
+            if len(num_pages) == 0 or num_pages[0] <= page:
+                return None
+
+            if not http_res.text:
+                return None
+            results = JSONPath("$.items").parse(body)
+            if len(results) == 0 or len(results[0]) == 0:
+                return None
+            limit = request.limit if not request.limit is None else 10
+            if len(results[0]) < limit:
+                return None
+
+            return self.files(
+                id=id,
+                page=next_page,
+                limit=limit,
+                retries=retries,
+            )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.BenefitsFilesResponse(
+                result=unmarshal_json_response(
+                    models.ListResourceBenefitDownloadableFile, http_res
+                ),
+                next=next_func,
+            )
+        if utils.match_response(http_res, "404", "application/json"):
+            response_data = unmarshal_json_response(
+                models.ResourceNotFoundData, http_res
+            )
+            raise models.ResourceNotFound(response_data, http_res)
+        if utils.match_response(http_res, "422", "application/json"):
+            response_data = unmarshal_json_response(
+                models.HTTPValidationErrorData, http_res
+            )
+            raise models.HTTPValidationError(response_data, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "5XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError("API error occurred", http_res, http_res_text)
+
+        raise models.SDKError("Unexpected response received", http_res)
+
+    async def files_async(
+        self,
+        *,
+        id: str,
+        page: Optional[int] = 1,
+        limit: Optional[int] = 10,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> Optional[models.BenefitsFilesResponse]:
+        r"""List Benefit Files
+
+        List the downloadable files for a benefit with their download statistics.
+
+        **Scopes**: `benefits:read` `benefits:write`
+
+        :param id:
+        :param page: Page number, defaults to 1.
+        :param limit: Size of a page, defaults to 10. Maximum is 100.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.BenefitsFilesRequest(
+            id=id,
+            page=page,
+            limit=limit,
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v1/benefits/{id}/files",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="benefits:files",
+                oauth2_scopes=None,
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["404", "422", "4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        def next_func() -> Optional[models.BenefitsFilesResponse]:
+            body = utils.unmarshal_json(http_res.text, Union[Dict[Any, Any], List[Any]])
+            page = request.page if not request.page is None else 1
+            next_page = page + 1
+
+            num_pages = JSONPath("$.pagination.max_page").parse(body)
+            if len(num_pages) == 0 or num_pages[0] <= page:
+                return None
+
+            if not http_res.text:
+                return None
+            results = JSONPath("$.items").parse(body)
+            if len(results) == 0 or len(results[0]) == 0:
+                return None
+            limit = request.limit if not request.limit is None else 10
+            if len(results[0]) < limit:
+                return None
+
+            return self.files(
+                id=id,
+                page=next_page,
+                limit=limit,
+                retries=retries,
+            )
+
+        response_data: Any = None
+        if utils.match_response(http_res, "200", "application/json"):
+            return models.BenefitsFilesResponse(
+                result=unmarshal_json_response(
+                    models.ListResourceBenefitDownloadableFile, http_res
+                ),
+                next=next_func,
+            )
         if utils.match_response(http_res, "404", "application/json"):
             response_data = unmarshal_json_response(
                 models.ResourceNotFoundData, http_res
