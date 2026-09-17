@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> This SDK is now deprecated and archived.
+> 
+> We now have a new Python SDK with a new home: https://github.com/polarsource/polar/tree/main/sdk/python
+
 # polar-sdk
 
 <div align="left">
